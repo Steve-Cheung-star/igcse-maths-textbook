@@ -1,0 +1,8 @@
+/* Make math formulas slightly larger and centered */
+.katex-display {
+  font-size: 1.2em;
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
