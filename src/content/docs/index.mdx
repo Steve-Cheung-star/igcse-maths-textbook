@@ -1,40 +1,46 @@
 ---
-title: Cambridge IGCSE Maths 0607 Textbooks
-description: Get started building your docs site with Starlight.
-template: splash # Remove or comment out this line to display the site sidebar on this page.
-hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
-  actions:
-    - text: Example Guide
-      link: /01-number/01-types-of-numbers/
-      icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
+title: IGCSE International Maths 0607
+description: Interactive textbook by Steve Cheung.
 ---
 
-import { Card, CardGrid } from '@astrojs/starlight/components';
+import { Card, CardGrid, LinkButton } from '@astrojs/starlight/components';
+import ResumeBanner from '../../components/ResumeBanner.jsx';
 
-## Next steps
+{/* 1. THE WELCOME SECTION */}
+<div style="padding: 2rem 0; text-align: center; border-bottom: 1px solid var(--sl-color-gray-5); margin-bottom: 2rem;">
+  <div style="font-size: 5rem; margin-bottom: 1rem;">📐</div>
+  <h2 style="margin: 0; color: var(--sl-color-white);">Master the 0607 Syllabus</h2>
+  <p style="font-size: 1.2rem; color: var(--sl-color-gray-3); max-width: 600px; margin: 1rem auto;">
+    Interactive lessons and AI-powered practice curated by <strong>Steve Cheung</strong>.
+  </p>
+  <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem;">
+    <LinkButton href="/01-number/01-types-of-numbers/" icon="right-arrow">Start Learning</LinkButton>
+    <LinkButton href="/my-revision/" variant="secondary" icon="list-format">My Revision</LinkButton>
+  </div>
+</div>
+
+{/* 2. THE RESUME BANNER */}
+<ResumeBanner client:load />
+
+{/* 3. THE FEATURES SECTION */}
+## Course Features
 
 <CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Change page layout" icon="document">
-		Delete `template: splash` in `src/content/docs/index.mdx` to display a
-		sidebar on this page.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
+    <Card title="Expert Guidance" icon="pencil">
+        Content designed specifically for the Cambridge IGCSE 0607 curriculum by **Steve Cheung**.
+    </Card>
+    <Card title="Interactive AI Practice" icon="rocket">
+        Generate infinite practice problems for every topic with instant LaTeX solutions.
+    </Card>
+    <Card title="Smart Revision" icon="star">
+        Bookmark tricky questions and review your history to focus your study time.
+    </Card>
+    <Card title="Exam Ready" icon="document">
+        Comprehensive coverage from Number & Algebra to Probability & Statistics.
+    </Card>
 </CardGrid>
+
+---
+
+### About the Author
+This platform was developed by **Steve Cheung** to provide students with a high-tech way to master International Mathematics. By combining standard syllabus theory with real-time AI feedback, this textbook helps you prepare for the rigors of the 0607 exam.

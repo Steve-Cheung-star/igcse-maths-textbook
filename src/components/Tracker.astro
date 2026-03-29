@@ -1,0 +1,19 @@
+---
+import DefaultSocialIcons from '@astrojs/starlight/components/SocialIcons.astro';
+---
+
+<DefaultSocialIcons {...Astro.props} />
+
+<script is:inline>
+  // This runs in the browser, perfectly safe.
+  (function() {
+    const pageData = {
+      title: document.title.split('|')[0].trim(),
+      url: window.location.pathname,
+    };
+
+    if (pageData.url !== '/' && pageData.url !== '/my-revision/' && pageData.url !== '') {
+      localStorage.setItem('last_visited_page', JSON.stringify(pageData));
+    }
+  })();
+</script>

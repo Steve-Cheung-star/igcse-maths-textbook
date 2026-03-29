@@ -8,7 +8,7 @@ import rehypeKatex from 'rehype-katex';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  output: 'static', // Change this to static
+  output: 'static', 
   adapter: vercel(),
 
   integrations: [
@@ -16,6 +16,11 @@ export default defineConfig({
     react(),
     starlight({
       title: 'IGCSE Math 0607',
+      // This tells Starlight to load our Tracker on every page
+      components: {
+        // Point to the .astro version
+        SocialIcons: './src/components/Tracker.astro',
+      },
       head: [
         {
           tag: 'link',
@@ -36,6 +41,10 @@ export default defineConfig({
         { label: '8. Transformations & Vectors', autogenerate: { directory: '08-transformations-vectors' } },
         { label: '9. Probability', autogenerate: { directory: '09-probability' } },
         { label: '10. Statistics', autogenerate: { directory: '10-statistics' } },
+        {
+          label: 'My Revision History',
+          link: '/my-revision/',
+        },
       ],
     }),
     mdx(),

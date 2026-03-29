@@ -8,12 +8,38 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Core" }) {
   const [solution, setSolution] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  
+  // New state to prevent saving the same question multiple times
+  const [hasSaved, setHasSaved] = useState(false);
+
+  // Helper function to save to localStorage
+  const saveToHistory = (problemText, solutionText) => {
+    try {
+      const existingHistory = JSON.parse(localStorage.getItem('igcse_ai_history') || '[]');
+      const newRecord = {
+        id: crypto.randomUUID(), // Creates a unique ID
+        date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
+        topic: topic,
+        difficulty: difficulty,
+        question: problemText,
+        studentAnswer: "N/A (Self-graded)", // Since there is no input field yet
+        feedback: solutionText,
+        bookmarked: false
+      };
+      
+      const updatedHistory = [newRecord, ...existingHistory];
+      localStorage.setItem('igcse_ai_history', JSON.stringify(updatedHistory));
+    } catch (err) {
+      console.error("Failed to save to history:", err);
+    }
+  };
 
   const generateProblem = async () => {
     setLoading(true);
     setProblem('');
     setSolution('');
     setError(null);
+    setHasSaved(false); // Reset the save state for the new question
     
     try {
       // We call our internal API route instead of Google directly
@@ -33,10 +59,10 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Core" }) {
 
       const text = data.text;
 
-      // Split the AI response into Problem and Solution sections
+      // Split the AI response and strip out accidental Markdown code block indentations
       const parts = text.split('SOLUTION:');
-      const problemPart = parts[0].replace('PROBLEM:', '').trim();
-      const solutionPart = parts[1] ? parts[1].trim() : 'Solution not provided by AI.';
+      const problemPart = parts[0].replace('PROBLEM:', '').replace(/^[ \t]+/gm, '').trim();
+      const solutionPart = parts[1] ? parts[1].replace(/^[ \t]+/gm, '').trim() : 'Solution not provided by AI.';
 
       setProblem(problemPart);
       setSolution(solutionPart);
@@ -49,6 +75,15 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Core" }) {
     }
   };
 
+  // Triggers when the <details> tag is opened or closed
+  const handleReveal = (e) => {
+    // Only save if it is opening, and hasn't been saved yet
+    if (e.target.open && !hasSaved) {
+      saveToHistory(problem, solution);
+      setHasSaved(true);
+    }
+  };
+
   return (
     <div style={{ 
       border: '1px solid var(--sl-color-gray-5)', 
@@ -58,6 +93,15 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Core" }) {
       backgroundColor: 'var(--sl-color-bg-nav)',
       boxShadow: 'var(--sl-shadow-sm)'
     }}>
+      {/* ADD THIS STYLE BLOCK TO FORCE TEXT WRAPPING */}
+      <style>{`
+        .math-renderer pre {
+          white-space: pre-wrap !important;
+          word-break: break-word !important;
+          overflow-x: auto;
+        }
+      `}</style>
+      
       <h3 style={{ marginTop: 0, color: 'var(--sl-color-white)' }}>🤖 AI Practice Generator</h3>
       <p style={{ color: 'var(--sl-color-gray-3)', fontSize: '0.9rem' }}>
         Topic: <strong>{topic}</strong> | Level: <strong>{difficulty}</strong>
@@ -105,13 +149,17 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Core" }) {
       )}
 
       {solution && (
-        <details style={{ 
-          marginTop: '1rem', 
-          padding: '1rem', 
-          backgroundColor: 'var(--sl-color-gray-6)', 
-          borderRadius: '4px',
-          borderLeft: '4px solid var(--sl-color-success)'
-        }}>
+        <details 
+          onToggle={handleReveal}
+          style={{ 
+            marginTop: '1rem', 
+            padding: '1rem', 
+            backgroundColor: 'var(--sl-color-gray-6)', 
+            borderRadius: '4px',
+            borderLeft: '4px solid var(--sl-color-success)',
+            position: 'relative'
+          }}
+        >
           <summary style={{ 
             cursor: 'pointer', 
             fontWeight: 'bold', 
@@ -119,6 +167,23 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Core" }) {
           }}>
             Show Step-by-Step Solution
           </summary>
+          
+          {hasSaved && (
+            <span style={{
+              position: 'absolute',
+              top: '1rem',
+              right: '1rem',
+              fontSize: '0.75rem',
+              backgroundColor: 'var(--sl-color-success-low)',
+              color: 'var(--sl-color-success-high)',
+              padding: '0.2rem 0.5rem',
+              borderRadius: '999px',
+              fontWeight: 'bold'
+            }}>
+              ✓ Saved to History
+            </span>
+          )}
+
           <div style={{ marginTop: '1rem' }} className="math-renderer">
             <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
               {solution}
