@@ -6,19 +6,30 @@ import mermaid from 'astro-mermaid';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import vercel from '@astrojs/vercel';
+import AutoImport from 'astro-auto-import'; // 1. Import the tool
 
 export default defineConfig({
   output: 'static', 
   adapter: vercel(),
 
   integrations: [
+    // 2. Add AutoImport BEFORE starlight and mdx
+    AutoImport({
+      imports: [
+        // Your custom components
+        './src/components/AIGenerator.jsx',
+        './src/components/SteveTip.astro',
+        // Starlight built-ins (so you don't have to import them either)
+        {
+          '@astrojs/starlight/components': ['Steps', 'Aside', 'Tabs', 'TabItem'],
+        },
+      ],
+    }),
     mermaid(),
     react(),
     starlight({
-      title: 'IGCSE Math 0607',
-      // This tells Starlight to load our Tracker on every page
+      title: 'Intl. Maths 0607',
       components: {
-        // Point to the .astro version
         SocialIcons: './src/components/Tracker.astro',
       },
       head: [

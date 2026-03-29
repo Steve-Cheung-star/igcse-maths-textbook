@@ -1,0 +1,184 @@
+---
+title: 1.9 Estimation
+description: Master the rules of rounding to decimal places and significant figures, and learn how to estimate complex calculations for IGCSE 0607.
+---
+
+Estimation is the "common sense" check of mathematics. In a high-pressure exam, it is easy to type a number into your calculator incorrectly and get an answer that is 10 times too large. Estimation gives you the "ballpark" figure so you can spot those mistakes instantly.
+
+---
+
+## 1. Place Value: The Red vs. Blue Divide
+
+To round correctly, you must know the name of the "target" column. Think of the decimal point as a mirror. As you move left, numbers get **10x larger** (the Red Side). As you move right, they get **10x smaller** (the Blue Side).
+
+### The Decimal Mirror
+* **Whole Numbers (Red Side):** These end in **-s** (Tens, Hundreds, Thousands, Millions).
+* **Decimal Parts (Blue Side):** These end in **-ths** (Tenths, Hundredths, Thousandths).
+
+<Aside type="note" title="The Place Value Map">
+| <span style="color:red">Millions</span> | <span style="color:red">Thousands</span> | <span style="color:red">Hundreds</span> | <span style="color:red">Tens</span> | <span style="color:red">Units</span> | . | <span style="color:blue">Tenths</span> | <span style="color:blue">Hundredths</span> | <span style="color:blue">Thousandths</span> |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| <span style="color:red">1,000,000</span> | <span style="color:red">1,000</span> | <span style="color:red">100</span> | <span style="color:red">10</span> | <span style="color:red">1</span> | **.** | <span style="color:blue">0.1</span> | <span style="color:blue">0.01</span> | <span style="color:blue">0.001</span> |
+
+
+</Aside>
+
+---
+
+## 2. Rounding: The "Next Door" Rule
+
+Rounding is the process of making a number "simpler" while keeping its value close to the original. 
+
+1. **Find your target:** Underline the digit in the column you are rounding to.
+2. **Look next door:** Look at the digit immediately to the **right**.
+3. **The Decision:** * If it is **5, 6, 7, 8, or 9**, round the target digit **UP**.
+   * If it is **0, 1, 2, 3, or 4**, keep the target digit **THE SAME**.
+4. **Fill the gaps:** For whole numbers, fill any remaining columns before the decimal with **placeholder zeros**.
+
+### The "Chain Reaction" (Rounding 9s)
+When you round a $9$ up, it becomes a $10$. You put down the $0$ and "carry" the $1$ to the next column on the left.
+* **Example:** Round $0.096$ to **2 decimal places**.
+* The 2nd d.p. is $9$. Next door is $6$ (round up).
+* $9$ becomes $10$. The $1$ carries to the first d.p.
+* **Answer:** $0.10$
+
+<SteveTip title="The Essential Zero">
+If a question asks for **hundredths** (2 d.p.) and your answer is $4.5$, you **must** write **$4.50$**. In science and maths, $4.5$ means "somewhere between 4.45 and 4.55," but $4.50$ means "exactly 4.50." The zero proves your level of accuracy.
+</SteveTip>
+
+---
+
+## 3. Significant Figures (s.f.)
+
+Significant figures (s.f.) are used to show the precision of a measurement. Unlike decimal places, they don't care where the decimal point is—they care about the **digits themselves**.
+
+
+
+### The Three Types of Zeros
+1.  **Leading Zeros (The Placeholders):** $0.0004$
+    * These are **NEVER** significant. They just tell you how small the number is.
+2.  **Trapped Zeros (The Sandwiches):** $4005$
+    * These are **ALWAYS** significant. They are part of the actual measurement.
+3.  **Trailing Zeros (The Precision-Makers):** $5.200$
+    * In a decimal, these **ARE** significant because they show exactly how precisely you measured the number.
+
+---
+
+## 4. Estimation Strategies
+
+In the IGCSE, "Estimate" is code for: **Round everything to 1 significant figure first.**
+
+<SteveTip title="The 1 s.f. Method Mark">
+If you calculate $\frac{19.2}{4.1}$ on your calculator ($4.68...$) and then round it to $5$, you get **0 marks**. 
+You **must** show the rounded values first: $\frac{20}{4} = 5$. The examiner is testing your ability to simplify the problem, not your ability to use a calculator.
+</SteveTip>
+
+### Advanced Estimation Tricks
+* **Roots:** Don't round $\sqrt{35}$ to $\sqrt{40}$ (1 s.f.) if you can't solve it. Round it to the nearest **square number** ($\sqrt{36} = 6$).
+* **Division by Decimals:** * Dividing by $0.5$ is the same as **doubling** ($\times 2$).
+  * Dividing by $0.2$ is the same as **multiplying by 5**.
+  * Dividing by $0.1$ is the same as **multiplying by 10**.
+
+---
+
+## 5. Practice Problems
+
+### Part A: Place Value & Decimal Places
+
+<Tabs>
+  <TabItem label="📝 Question 1: Nearest Thousand">
+    Write $5764$ correct to the nearest thousand.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    1. The thousands digit is 5.
+    2. The digit "next door" is 7.
+    3. Since 7 is "5 or more," round the 5 up to 6.
+    4. Fill the remaining columns with placeholder zeros.
+    **Answer:** $6000$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 2: Hundredths">
+    Write $0.0765$ correct to **2 decimal places**.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    1. The 2nd d.p. is 7.
+    2. The digit "next door" is 6.
+    3. Round the 7 up to 8.
+    **Answer:** $0.08$
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Rounding to place values (millions to thousandths) and decimal places" difficulty="IGCSE Core" client:load />
+
+### Part B: Significant Figures
+
+<Tabs>
+  <TabItem label="📝 Question 3: Leading Zeros">
+    Write $0.004096$ correct to **2 significant figures**.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    1. Skip the leading zeros. The 1st s.f. is 4.
+    2. The 2nd s.f. is 0 (trapped zeros count).
+    3. The digit "next door" is 9. Round the 0 up to 1.
+    **Answer:** $0.0041$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 4: Trailing Zeros">
+    Round $8.002$ correct to **3 significant figures**.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    1. The first three digits are 8, 0, and 0.
+    2. The digit "next door" is 2.
+    3. Keep the digits as they are. You **must** keep the zeros to show the 3 s.f. accuracy.
+    **Answer:** $8.00$
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Significant figures including leading, trapped, and trailing zeros" difficulty="IGCSE Core/Extended" client:load />
+
+### Part C: Complex Estimation (Syllabus Examples)
+
+<Tabs>
+  <TabItem label="📝 Question 5: Fraction Estimation">
+    By writing each number correct to **1 significant figure**, estimate the value of:
+    $$ \frac{41.3}{9.79 \times 0.765} $$
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    1. Round $41.3 \rightarrow 40$ (1 s.f.)
+    2. Round $9.79 \rightarrow 10$ (1 s.f.)
+    3. Round $0.765 \rightarrow 0.8$ (1 s.f. - leading zeros don't count!)
+    4. Substitute: $\frac{40}{10 \times 0.8} = \frac{40}{8}$
+    **Answer:** $5$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: Root Estimation">
+    Estimate the value of $\sqrt{98.2} \times 4.9$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    1. Round $98.2 \rightarrow 100$ (This is 1 s.f. AND a square number).
+    2. Round $4.9 \rightarrow 5$.
+    3. Calculate: $\sqrt{100} \times 5 = 10 \times 5$
+    **Answer:** $50$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: The Division Trap">
+    Estimate the value of:
+    $$ \frac{19.8 \times 3.04}{0.485} $$
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    1. Round to 1 s.f.: $20$, $3$, and $0.5$.
+    2. Calculation: $\frac{20 \times 3}{0.5} = \frac{60}{0.5}$
+    3. Use the division trick: $60 \times 2 = 120$.
+    **Answer:** $120$
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Estimating complex calculations using 1 significant figure rounding" difficulty="IGCSE Extended" client:load />

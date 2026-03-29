@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+// 1. IMPORT THE IMAGE HERE AT THE TOP
+import steveProfile from '../assets/steve-icon.png';
+
+interface Props {
+  title?: string;
+}
+
+const { title } = Astro.props;
+---
+
+<aside class="starlight-aside starlight-aside--tip steve-tip">
+  <div class="steve-tip__header">
+    <div class="steve-tip__icon-wrapper">
+      {/* 2. USE THE VARIABLE HERE */}
+      <Image 
+        src={steveProfile} 
+        alt="Steve Cheung" 
+        width={400} 
+        height={400} 
+      />
+    </div>
+    
+    <div class="steve-tip__title-area">
+      <span class="steve-tip__author">Steve's Exam Wisdom</span>
+      {title && <p class="steve-tip__title">{title}</p>}
+    </div>
+  </div>
+
+  <div class="steve-tip__content">
+    <slot />
+  </div>
+</aside>
+
+<style>
+  /* Keep your existing styles here */
+  .steve-tip {
+    border-radius: var(--sl-border-radius-large);
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    box-shadow: var(--sl-shadow-lg);
+    background-color: var(--sl-color-bg-nav);
+  }
+  .steve-tip__header { display: flex; align-items: center; gap: 1rem; }
+  .steve-tip__icon-wrapper { 
+    width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid var(--sl-color-tip);
+  }
+  .steve-tip__author { font-weight: bold; color: var(--sl-color-tip); font-size: 0.8rem; }
+  .steve-tip__title { font-weight: bold; margin: 0 !important; color: white; }
+</style>
