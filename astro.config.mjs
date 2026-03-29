@@ -8,9 +8,8 @@ import rehypeKatex from 'rehype-katex';
 import vercel from '@astrojs/vercel';
 
 export default defineConfig({
-  adapter: vercel({
-    entrypointResolution: 'auto'
-  }),
+  output: 'static', // Change this to static
+  adapter: vercel(),
 
   integrations: [
     mermaid(),
