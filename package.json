@@ -10,8 +10,21 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/react": "^5.0.2",
     "@astrojs/starlight": "^0.38.2",
-    "astro": "^6.0.1",
+    "@astrojs/vercel": "^8.2.11",
+    "@google/generative-ai": "^0.24.1",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "astro": "^6.1.1",
+    "astro-mermaid": "^2.0.1",
+    "mermaid": "^11.13.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-markdown": "^10.1.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
     "sharp": "^0.34.2"
   }
 }
