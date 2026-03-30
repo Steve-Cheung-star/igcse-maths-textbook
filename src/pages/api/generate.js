@@ -13,7 +13,7 @@ export const POST = async ({ request }) => {
     const { topic, difficulty } = data;
 
     const genAI = new GoogleGenerativeAI(import.meta.env.GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
 
     const prompt = `Act as an expert IGCSE Math teacher. Generate one unique ${difficulty} level practice problem about ${topic}. 
     Use standard LaTeX enclosed in single $ for inline math and double $$ for block math. 

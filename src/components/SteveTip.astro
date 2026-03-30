@@ -47,5 +47,11 @@ const { title } = Astro.props;
     width: 48px; height: 48px; border-radius: 50%; overflow: hidden; border: 2px solid var(--sl-color-tip);
   }
   .steve-tip__author { font-weight: bold; color: var(--sl-color-tip); font-size: 0.8rem; }
-  .steve-tip__title { font-weight: bold; margin: 0 !important; color: white; }
+  .steve-tip__title { 
+    font-weight: bold; 
+    margin: 0 !important; 
+    /* Change 'white' to a variable that flips based on the theme */
+    color: var(--sl-color-white); 
+    font-size: 1.2rem;
+  }
 </style>

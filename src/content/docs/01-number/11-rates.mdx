@@ -1,0 +1,198 @@
+---
+title: 1.11 Rates and Speed
+description: Master the calculation of common rates including speed, hourly pay, fuel consumption, and flow rates for IGCSE 0607.
+---
+
+A **rate** is a way of comparing two different quantities (like distance and time, or money and hours). In mathematics, the word "per" almost always means **divide**.
+
+---
+
+## 1. Common Measures of Rate
+
+A rate tells you how much of one thing happens for every one unit of another. The units themselves usually tell you the formula you need to use.
+
+| Rate Type | Common Units | Calculation Logic |
+| :--- | :--- | :--- |
+| **Hourly Pay** | £/hr | Total Pay $\div$ Hours worked |
+| **Fuel Consumption** | km/L | Distance $\div$ Fuel used |
+| **Flow Rate** | L/sec | Volume $\div$ Time |
+| **Density** | g/cm³ | Mass $\div$ Volume |
+
+<Aside type="note" title="Reading the Units">
+The forward slash ($/$) in units like **m/s** is literally a division sign. It tells you to take the **metres** and divide them by the **seconds**. If you forget a formula in the exam, just look at the units in the question!
+</Aside>
+
+---
+
+## 2. Speed, Distance, and Time
+
+Speed is the rate at which distance changes over time. You must be able to rearrange the relationship between these three variables.
+
+
+
+### The Core Formulae
+* $\text{Speed} = \frac{\text{Distance}}{\text{Time}}$
+* $\text{Distance} = \text{Speed} \times \text{Time}$
+* $\text{Time} = \frac{\text{Distance}}{\text{Speed}}$
+
+### The $m/s$ to $km/h$ Shortcut
+In the exam, you often need to convert between these two. Instead of doing three separate conversions (metres to km, seconds to mins, mins to hours), use the **3.6 Rule**:
+
+* **To go from $m/s \rightarrow km/h$:** Multiply by **$3.6$**.
+* **To go from $km/h \rightarrow m/s$:** Divide by **$3.6$**.
+
+> **Why 3.6?** There are $3600$ seconds in an hour and $1000$ metres in a km. $\frac{3600}{1000} = 3.6$.
+
+---
+
+## 3. The "Time Trap" (Minutes vs. Decimals)
+
+This is the #1 place students lose marks. You **cannot** calculate with minutes directly in a speed formula.
+
+### Entering the Formula (Minutes $\rightarrow$ Decimal)
+If the question gives you $2\text{ hours } 15\text{ mins}$, you must convert to a decimal before multiplying or dividing:
+$$ 15 \div 60 = 0.25 \rightarrow \mathbf{2.25 \text{ hours}} $$
+
+### Exiting the Formula (Decimal $\rightarrow$ Minutes)
+If your calculation gives you a time like $4.3\text{ hours}$, this is **NOT** 4 hours and 3 minutes.
+1. **The "Whole" is hours:** $4\text{ hours}$.
+2. **The decimal is minutes:** Multiply the decimal part by 60.
+3. $0.3 \times 60 = 18\text{ minutes}$.
+**Answer:** $4\text{ hours and } 18\text{ minutes}$.
+
+
+
+<SteveTip title="The 0.45 Illusion">
+Students often write $1.45$ for $1\text{ hour } 45\text{ mins}$. This is a guaranteed way to lose the method mark. Always ask: "Is 45 minutes nearly an hour?" Yes. So the decimal must be $0.75$. If you find yourself writing the minutes exactly as the decimal, stop and divide by 60!
+</SteveTip>
+
+---
+
+## 4. Time Zones and Flight Times
+
+Examiners love to give you a flight that leaves at one local time and arrives at another. To solve these, always find the **Duration** in a neutral space.
+
+**Example: A flight leaves London (GMT) at 10:00 and arrives in New York (GMT-5) at 13:00. How long was the flight?**
+
+1.  **Bring to same Time Zone:** When it is 13:00 in New York, what time is it in London? New York is 5 hours behind, so London is 18:00.
+2.  **Calculate Difference:** $18:00 - 10:00 = 8\text{ hours}$.
+**Answer:** $8\text{ hours}$.
+
+---
+
+## 5. Speed Equations & Algebra
+
+### Linear Speed Equations
+Sometimes you are told a journey takes $20\text{ minutes}$ longer if the speed is reduced by $10\text{ km/h}$. You set this up by making the **Time** the subject:
+$$ \text{Time}_1 - \text{Time}_2 = \frac{20}{60} $$
+
+### Quadratic Speed Equations (Sneak Peek)
+In harder Paper 4 questions, you might see something like: *"A car travels $100\text{ km}$. If the speed increases by $x$, the time taken decreases by $1\text{ hour}$."*
+
+$$ \frac{100}{v} - \frac{100}{v+x} = 1 $$
+
+Multiplying this out leads to a **Quadratic Equation**.
+<Aside type="note" title="Coming Soon">
+We will cover how to solve these equations in **Chapter 2: Algebra**. For now, focus on being able to write the initial fraction correctly!
+</Aside>
+
+<SteveTip title="The Difference Equation">
+When setting up time difference equations, always do:
+**[Slow Time] - [Fast Time] = [Time Difference]**
+Since the slower speed takes *more* time, it must come first to get a positive result.
+</SteveTip>
+
+---
+
+## 6. Practice Problems
+
+### Part A: Speed and Time Conversions
+<Tabs>
+  <TabItem label="📝 Question 1: Shortcut">
+    A wind turbine spins such that the tip of the blade moves at $15\text{ m/s}$. Calculate this speed in $\text{km/h}$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    1. Use the $3.6$ shortcut: $15 \times 3.6 = 54$.
+    **Answer:** $54\text{ km/h}$
+  </TabItem>
+  <TabItem label="📝 Question 2: The Reverse Time Trap">
+    A train travels $154\text{ km}$ at an average speed of $70\text{ km/h}$. Calculate the time taken in **hours and minutes**.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    1. $\text{Time} = 154 \div 70 = 2.2\text{ hours}$.
+    2. Convert decimal: $0.2 \times 60 = 12\text{ minutes}$.
+    **Answer:** $2\text{ hours and } 12\text{ minutes}$.
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Speed, distance, and time with decimal/minute conversions" difficulty="IGCSE Core/Extended" client:load />
+
+### Part B: Time Zones & Flights
+<Tabs>
+  <TabItem label="📝 Question 3">
+    A flight leaves Dubai (GMT+4) at 08:30. The flight takes $7\text{ hours } 15\text{ minutes}$. If London is GMT, what is the local time of arrival?
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    1. Departure in GMT: $08:30 - 4\text{ hours} = 04:30\text{ GMT}$.
+    2. Add Duration: $04:30 + 7\text{ hrs } 15\text{ mins} = 11:45\text{ GMT}$.
+    3. London is GMT: So local time is $11:45$.
+    **Answer:** $11:45$
+  </TabItem>
+  <TabItem label="📝 Question 4: Return Flight">
+    A plane flies from Singapore (GMT+8) to Sydney (GMT+11). Departure is 23:00 local time. Arrival is 09:30 local time the next day. How long was the flight?
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    1. Convert Arrival to Singapore Time: $09:30 - 3\text{ hours} = 06:30$.
+    2. Duration from 23:00 to 06:30: $1\text{ hour to midnight} + 6.5\text{ hours} = 7.5\text{ hours}$.
+    **Answer:** $7\text{ hours } 30\text{ minutes}$.
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Flight times and duration across different time zones" difficulty="IGCSE Core/Extended" client:load />
+
+### Part C: Setting up Algebra Equations
+<Tabs>
+  <TabItem label="📝 Question 5: Linear Time Difference">
+    A journey of $15\text{ km}$ takes $20\text{ minutes}$. Find the speed in **km/h**.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    1. Convert minutes to decimal: $20/60 = 1/3$.
+    2. Speed = $15 \div (1/3) = 45$.
+    **Answer:** $45\text{ km/h}$
+  </TabItem>
+  <TabItem label="📝 Question 6: The Quadratic Setup">
+    A car travels $200\text{ km}$ at an average speed of $x\text{ km/h}$. If the speed was $(x+10)\text{ km/h}$, the journey would take 1 hour less. Show that $x^2 + 10x - 2000 = 0$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    1. $\text{Time}_1 = \frac{200}{x}$, $\text{Time}_2 = \frac{200}{x+10}$.
+    2. $\frac{200}{x} - \frac{200}{x+10} = 1$.
+    3. Multiply by $x(x+10)$: $200(x+10) - 200x = x(x+10)$.
+    4. $200x + 2000 - 200x = x^2 + 10x \rightarrow 2000 = x^2 + 10x$.
+    **Result:** $x^2 + 10x - 2000 = 0$.
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Setting up linear and quadratic speed/time equations" difficulty="IGCSE Extended" client:load />
+
+### Part D: Rates and Pay
+<Tabs>
+  <TabItem label="📝 Question 7: Annual Pay">
+    An apprentice earns £8.50 per hour. They work 38 hours a week. Calculate their annual pay (52 weeks).
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    1. Weekly pay: $8.50 \times 38 = £323$.
+    2. Annual pay: $323 \times 52 = £16,796$.
+    **Answer:** £16,796
+  </TabItem>
+  <TabItem label="📝 Question 8: Flow Rate (Volume)">
+    A tap fills a $500\text{ ml}$ jug in 4 seconds. How long will it take to fill a $12\text{ litre}$ bucket?
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    1. Flow rate: $500 \div 4 = 125\text{ ml/sec}$.
+    2. Volume: $12\text{ Litres} = 12,000\text{ ml}$.
+    3. Time: $12,000 \div 125 = 96\text{ seconds}$.
+    **Answer:** $1\text{ minute } 36\text{ seconds}$.
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Complex rates involving pay, fuel, and flow" difficulty="IGCSE Core" client:load />

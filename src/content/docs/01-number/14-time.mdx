@@ -1,0 +1,159 @@
+---
+title: 1.14 Time
+description: Master time calculations, convert between 12-hour and 24-hour clocks, read timetables, and solve time zone differences involving flight speeds.
+---
+
+Time is one of the few areas in maths that doesn't operate on a base-10 or base-100 system, which makes it a frequent trap for students. You need to be confident converting between units, jumping across time zones, and reading real-world timetables.
+
+---
+
+## 1. Units of Time and Conversions
+
+You must know the exact relationship between all standard units of time. For the purposes of your exams, leap years are ignored unless specifically mentioned.
+
+* **1 minute** = 60 seconds
+* **1 hour** = 60 minutes
+* **1 day** = 24 hours
+* **1 week** = 7 days
+* **1 year** = 12 months
+* **1 year** = 52 weeks
+* **1 year** = 365 days
+
+<Aside type="caution" title="Exam Tip: The Decimal Trap">
+Remember from our calculator lesson: **time is not decimal!** A duration of `2.5 hours` is NOT 2 hours and 50 minutes. Because an hour is 60 minutes, `0.5` of an hour is half of 60, which is 30 minutes. Always multiply the decimal part of an hour by 60 to find the exact minutes!
+</Aside>
+
+---
+
+## 2. The 12-Hour and 24-Hour Clock
+
+Exam questions will frequently use the 24-hour clock, especially when dealing with timetables. 
+
+* **12-Hour Clock:** Uses **a.m.** (morning) and **p.m.** (afternoon/evening).
+* **24-Hour Clock:** Always uses **four digits** and counts continuously from midnight (`00 00`) to one minute to midnight (`23 59`).
+
+### Conversion Rules:
+* **a.m. times:** Keep the numbers the same, but ensure there are four digits. (e.g., 6.15 a.m. becomes `06 15`). *Exception: 12.xx a.m. (midnight) translates to `00 xx`.*
+* **p.m. times:** Add 12 to the hours. (e.g., 3.15 p.m. becomes $3 + 12 = 15$, so it is written as `15 15`). *Exception: 12.xx p.m. (midday) stays as `12 xx`.*
+
+<SteveTip title="Cambridge Formatting Quirk">
+You are probably used to seeing digital time written with a colon (like `15:15`). However, the Cambridge syllabus officially denotes 24-hour time with a space instead of a colon, such as **`15 15`** or **`03 15`**. Get used to reading and writing it this way for your exam!
+</SteveTip>
+
+---
+
+## 3. Calculating Durations and Reading Timetables
+
+When calculating how long a journey takes, the safest method is **counting up** (or using a "time line"). Do not try to subtract times using standard column subtraction, because time operates in 60s, not 100s!
+
+**Example:** A bus leaves at `08 45` and arrives at `11 20`. How long is the journey?
+1. Jump to the next full hour: `08 45` to `09 00` is **15 minutes**.
+2. Jump the full hours: `09 00` to `11 00` is **2 hours**.
+3. Jump the remaining minutes: `11 00` to `11 20` is **20 minutes**.
+4. Total duration: 2 hours + 15 mins + 20 mins = **2 hours 35 minutes**.
+
+---
+
+## 4. Time Zones, Speed, and Local Time
+
+
+
+The world is split into different time zones. When it is morning in London, it is evening in Tokyo. Exam questions will often combine time zones with a speed calculation to make you find the flight duration first.
+
+
+
+### Integrating Speed and Distance
+To find the duration of a flight when given the distance and average speed, use the formula:
+$Time = \frac{Distance}{Speed}$
+
+This will usually give you a decimal hour (like 11.25 hours). Remember to multiply the decimal part by 60 to convert it into exact minutes before adding it to your departure time!
+
+**The Golden Rule for Flights:**
+Always calculate the arrival time in the **country of departure first**, then apply the time zone difference at the very end.
+
+---
+
+## 5. Standard Practice Problems
+
+<Tabs>
+  <TabItem label="📝 Question 1: Time Conversions">
+    Convert the following times:
+    a) Write 8.45 p.m. in the 24-hour clock.
+    b) Write `07 05` in the 12-hour clock.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** Because it is p.m., add 12 to the hours: $8 + 12 = 20$. 
+    **Answer:** `20 45`
+
+    **b)** Because the hours are less than 12, it is a.m. Drop the leading zero and add a.m.
+    **Answer:** 7.05 a.m.
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Converting between 12-hour and 24-hour clock formats" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Timetables">
+    A train departs at `14 35`. The journey takes 3 hours and 45 minutes. What time does the train arrive? Give your answer in the 24-hour clock.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    Use the counting up method:
+    1. Add the hours first: `14 35` + 3 hours = `17 35`.
+    2. Add the minutes: `17 35` + 45 minutes.
+    3. To make it easier, jump to the next hour first: `17 35` + 25 mins = `18 00`.
+    4. You have 20 minutes left to add (45 - 25 = 20).
+    5. `18 00` + 20 mins = `18 20`.
+    **Answer:** `18 20`
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Calculating arrival times and journey durations using the 24-hour clock" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Time Zones">
+    New York is 5 hours behind London. 
+    A flight leaves New York at `21 30` local time and takes 7 hours and 10 minutes to reach London. 
+    What is the local time in London when the flight arrives?
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Step 1:** Calculate the arrival time in New York's local time.
+    * Departure: `21 30`
+    * Add 7 hours: `21 30` + 7 hours = `28 30`. 
+    * Because `28 30` is past midnight (`24 00`), subtract 24. $28 - 24 = 4$. So it arrives at `04 30` the next day (New York time).
+    * Add the 10 minutes: `04 30` + 10 mins = `04 40` (New York time).
+
+    **Step 2:** Apply the time difference.
+    * New York is 5 hours *behind* London, which means London is 5 hours *ahead* of New York.
+    * Add 5 hours to the New York arrival time: `04 40` + 5 hours = `09 40`.
+    
+    **Answer:** `09 40`
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 4: Speed and Time Zones">
+    An airplane flies from London to Tokyo, a distance of 9000 km. The average speed of the plane is 800 km/h. 
+    Tokyo is 9 hours ahead of London. 
+    If the flight leaves London at `14 30` local time on Tuesday, what is the local time and day in Tokyo when it arrives?
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **Step 1: Calculate the flight duration.**
+    * $Time = \frac{Distance}{Speed} = \frac{9000}{800} = 11.25$ hours.
+    * Convert 0.25 hours into minutes: $0.25 \times 60 = 15$ minutes.
+    * Total flight time = 11 hours 15 minutes.
+
+    **Step 2: Find the arrival time in London's local time.**
+    * Departure: `14 30`
+    * Add 11 hours: `14 30` + 11 hours = `25 30`.
+    * Add 15 minutes: `25 30` + 15 mins = `25 45`.
+    * Subtract 24 hours to step into the next day: $25 - 24 = 1$. The plane lands at `01 45` on Wednesday (London time).
+
+    **Step 3: Apply the time difference for Tokyo.**
+    * Tokyo is 9 hours ahead, so we add 9 hours to the London arrival time.
+    * `01 45` + 9 hours = `10 45`.
+    
+    **Answer:** `10 45` on Wednesday
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Complex time zone differences involving flight speed and distance calculations" difficulty="IGCSE Extended" client:load />
