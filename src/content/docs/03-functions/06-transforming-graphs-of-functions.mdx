@@ -1,0 +1,205 @@
+---
+title: 3.6 Transforming Graphs of Functions
+description: Learn how to describe and identify graph translations y = f(x) + k and y = f(x + k) using column vectors for IGCSE 0607.
+---
+
+In mathematics, you can take a standard graph and "move" it around the coordinate grid. Sliding a graph up, down, left, or right without changing its fundamental shape or orientation is called a **translation**. 
+
+In the IGCSE 0607 syllabus, you need to understand how adding or subtracting an integer $k$ to a function changes its graph, and how to describe this movement using a translation vector.
+
+---
+
+## 1. Vertical Translations: $y = f(x) + k$
+
+When you add or subtract a number on the *outside* of a function, it affects the $y$-values directly. This causes the entire graph to slide vertically.
+
+* If you have **$y = f(x) + k$** (where $k$ is positive), the graph shifts **UP** by $k$ units.
+* If you have **$y = f(x) - k$** (where $k$ is positive), the graph shifts **DOWN** by $k$ units.
+
+Let's look at the base graph of $f(x) = x^2$ and see what happens when we apply vertical translations:
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="550px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="0" y1="200" x2="400" y2="200" />
+      <polygon points="392,196 400,200 392,204" fill="#cbd5e1" stroke-width="0" />
+      <line x1="200" y1="300" x2="200" y2="0" />
+      <polygon points="196,8 200,0 204,8" fill="#cbd5e1" stroke-width="0" />
+    </g>
+    <text x="385" y="190" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+    <text x="185" y="215" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
+
+    {/* Math Scale: 1 unit = 20px. Origin at (200, 200) */}
+    
+    {/* Base Curve: f(x) = x^2 (Black/Gray) */}
+    <polyline fill="none" stroke="#64748b" stroke-width="3" stroke-dasharray="4 4" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 20;
+      let mathY = Math.pow(mathX, 2);
+      let pixelY = 200 - mathY * 20;
+      return `${x},${pixelY}`;
+    }).filter(p => parseFloat(p.split(',')[1]) >= -50).join(' ')} />
+    <text x="250" y="160" font-size="14" font-weight="bold" fill="#64748b" font-family="sans-serif">f(x)</text>
+
+    {/* Shift Up: f(x) + 3 (Blue) */}
+    <polyline fill="none" stroke="#3b82f6" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 20;
+      let mathY = Math.pow(mathX, 2) + 3;
+      let pixelY = 200 - mathY * 20;
+      return `${x},${pixelY}`;
+    }).filter(p => parseFloat(p.split(',')[1]) >= -50).join(' ')} />
+    <text x="250" y="80" font-size="14" font-weight="bold" fill="#2563eb" font-family="sans-serif">f(x) + 3</text>
+
+    {/* Shift Down: f(x) - 2 (Red) */}
+    <polyline fill="none" stroke="#ef4444" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 20;
+      let mathY = Math.pow(mathX, 2) - 2;
+      let pixelY = 200 - mathY * 20;
+      return `${x},${pixelY}`;
+    }).filter(p => parseFloat(p.split(',')[1]) >= -50).join(' ')} />
+    <text x="260" y="240" font-size="14" font-weight="bold" fill="#dc2626" font-family="sans-serif">f(x) - 2</text>
+  </svg>
+</div>
+
+Notice how the vertex of the parabola moves exactly according to the number added or subtracted at the end of the equation.
+
+---
+
+## 2. Horizontal Translations: $y = f(x + k)$
+
+When you add or subtract a number on the *inside* of the function's brackets, it affects the $x$-values before the function evaluates them. This causes the entire graph to slide horizontally.
+
+<SteveTip title="The Opposite Direction Trap">
+Horizontal translations are counter-intuitive. They do the **opposite** of what the sign suggests!
+* A plus sign inside the bracket shifts the graph to the **LEFT** (the negative direction).
+* A minus sign inside the bracket shifts the graph to the **RIGHT** (the positive direction).
+</SteveTip>
+
+* **$y = f(x + k)$** shifts the graph **LEFT** by $k$ units.
+* **$y = f(x - k)$** shifts the graph **RIGHT** by $k$ units.
+
+Let's look at the base graph of $f(x) = x^2$ again, this time with horizontal translations:
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="550px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="0" y1="250" x2="400" y2="250" />
+      <polygon points="392,246 400,250 392,254" fill="#cbd5e1" stroke-width="0" />
+      <line x1="200" y1="300" x2="200" y2="0" />
+      <polygon points="196,8 200,0 204,8" fill="#cbd5e1" stroke-width="0" />
+    </g>
+    <text x="385" y="240" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+    <text x="185" y="265" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
+
+    {/* Math Scale: 1 unit = 20px. Origin at (200, 250) */}
+    
+    {/* Base Curve: f(x) = x^2 (Black/Gray) */}
+    <polyline fill="none" stroke="#64748b" stroke-width="3" stroke-dasharray="4 4" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 20;
+      let mathY = Math.pow(mathX, 2);
+      let pixelY = 250 - mathY * 20;
+      return `${x},${pixelY}`;
+    }).filter(p => parseFloat(p.split(',')[1]) >= -50).join(' ')} />
+    <text x="215" y="200" font-size="14" font-weight="bold" fill="#64748b" font-family="sans-serif">f(x)</text>
+
+    {/* Shift Right: f(x - 4) (Green) */}
+    <polyline fill="none" stroke="#10b981" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 20;
+      let mathY = Math.pow(mathX - 4, 2);
+      let pixelY = 250 - mathY * 20;
+      return `${x},${pixelY}`;
+    }).filter(p => parseFloat(p.split(',')[1]) >= -50).join(' ')} />
+    <text x="300" y="200" font-size="14" font-weight="bold" fill="#047857" font-family="sans-serif">f(x - 4)</text>
+
+    {/* Shift Left: f(x + 3) (Purple) */}
+    <polyline fill="none" stroke="#a855f7" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 20;
+      let mathY = Math.pow(mathX + 3, 2);
+      let pixelY = 250 - mathY * 20;
+      return `${x},${pixelY}`;
+    }).filter(p => parseFloat(p.split(',')[1]) >= -50).join(' ')} />
+    <text x="60" y="200" font-size="14" font-weight="bold" fill="#7e22ce" font-family="sans-serif">f(x + 3)</text>
+  </svg>
+</div>
+
+Notice that $f(x - 4)$ shifted the vertex to the *positive* side ($x = 4$), while $f(x + 3)$ shifted the vertex to the *negative* side ($x = -3$).
+
+---
+
+## 3. Describing Transformations using Column Vectors
+
+In exams, you are frequently asked to describe a translation using a column vector. A column vector looks like this: $\begin{pmatrix} p \\ q \end{pmatrix}$.
+
+* The top number ($p$) tells you the **horizontal** movement (left/right).
+* The bottom number ($q$) tells you the **vertical** movement (up/down).
+
+If a function $f(x)$ is translated by the vector $\begin{pmatrix} p \\ q \end{pmatrix}$ to become a new function $g(x)$, the formula is:
+$$g(x) = f(x - p) + q$$
+
+<Aside type="note" title="Connecting the Formula to the Vector">
+Because of the "opposite direction trap" for horizontal translations, the horizontal shift ($p$) takes a minus sign inside the brackets, but the vertical shift ($q$) stays precisely as it is on the outside.
+
+For example, translating by $\begin{pmatrix} -5 \\ 2 \end{pmatrix}$ means going left 5 and up 2. 
+The new function would be $y = f(x + 5) + 2$.
+</Aside>
+
+---
+
+## 4. Practice Problems
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding the Equation">
+    The graph of $y = f(x)$ is translated down by 7 units to form the graph of $y = g(x)$. 
+    Write down $g(x)$ in terms of $f(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    A downward shift is a vertical translation. We subtract from the outside of the function.
+    
+    **Answer:** $g(x) = f(x) - 7$
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Writing basic vertical and horizontal translation equations in function notation" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Applying a Vector">
+    The graph of $y = x^2$ is mapped onto the graph of $y = g(x)$ by a translation with the vector $\begin{pmatrix} 3 \\ -1 \end{pmatrix}$. 
+    Find $g(x)$ in terms of $x$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    The vector $\begin{pmatrix} 3 \\ -1 \end{pmatrix}$ means:
+    * Shift right by 3 units (horizontal).
+    * Shift down by 1 unit (vertical).
+    
+    Start with $f(x) = x^2$.
+    * Horizontal shift right by 3 means replacing $x$ with $(x - 3)$. This gives $(x - 3)^2$.
+    * Vertical shift down by 1 means subtracting 1 at the end. This gives $(x - 3)^2 - 1$.
+    
+    **Answer:** $g(x) = (x - 3)^2 - 1$
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Applying translation column vectors to algebraic functions to find a new equation" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Finding the Vector">
+    The function $f(x) = \frac{1}{x}$ is translated to become $g(x) = \frac{1}{x + 6} + 4$. 
+    Write down the column vector that represents this translation.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    Let's break down the changes from $f(x)$ to $g(x)$:
+    * The denominator changed from $x$ to $x + 6$. Because it's a $+6$ on the *inside* of the fraction, this is a shift to the **LEFT** by 6 units. The horizontal vector component is $-6$.
+    * There is a $+ 4$ added to the *outside* of the fraction. This is a shift **UP** by 4 units. The vertical vector component is $4$.
+    
+    **Answer:** The translation vector is $\begin{pmatrix} -6 \\ 4 \end{pmatrix}$.
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Identifying the column vector of a translation by comparing two algebraic functions" difficulty="IGCSE Extended" client:load />
