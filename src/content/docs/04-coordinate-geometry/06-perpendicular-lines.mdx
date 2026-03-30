@@ -48,12 +48,18 @@ Unlike parallel lines, perpendicular lines travel in entirely different directio
 If the **original line (Line 1)** has a gradient of $m_1 = \frac{a}{b}$ (meaning it goes **up $a$** for every **$b$ right**), then the **perpendicular line (Line 2)** must travel **right $a$** for every **down $b$**.
 
 The gradient of the perpendicular line is:
+
 $$
 m_2 = \frac{-b}{a}
 $$
+
 This is the **negative reciprocal**. You flip the fraction and change the sign. Multiplying them always gives $-1$:
+
 $$
-m_1 \times m_2 = -1 \quad \rightarrow \quad \left(\frac{a}{b}\right) \times \left(-\frac{b}{a}\right) = -1
+\begin{aligned}
+m_1 \times m_2 &= -1 \\
+\left(\frac{a}{b}\right) \times \left(-\frac{b}{a}\right) &= -1
+\end{aligned}
 $$
 
 <SteveTip title="Flip and Flip">
@@ -72,15 +78,32 @@ You must ensure the equation is in the form $y = mx + c$ before you can identify
 Find the gradient of a line perpendicular to $2y = 3x + 1$.
 
 1.  **Find the original gradient:** The equation is not in $y = mx + c$ form yet. Rearrange it:
+
     $$
     \begin{aligned}
     \frac{2y}{2} &= \frac{3x + 1}{2} \\
     y &= \frac{3}{2}x + \frac{1}{2}
     \end{aligned}
     $$
+
     The original gradient ($m_1$) is $\frac{3}{2}$.
+
 2.  **Find the perpendicular gradient:** Flip $\frac{3}{2}$ and change the sign to negative.
+
     **Answer:** The perpendicular gradient ($m_2$) is $\boldsymbol{-\frac{2}{3}}$.
+
+<SteveTip title="Speed Trick: The Standard Form Shortcut">
+If you are given an equation in standard form **$ax + by = c$**, you don't actually need to rearrange it to $y = mx + c$! 
+
+The perpendicular line will *always* take the form **$bx - ay = k$** (or $-bx + ay = k$). 
+
+If you need the line to pass through a specific point $(p, q)$, simply substitute $x = p$ and $y = q$ into your new form to find $k$.
+
+$$
+b(p) - a(q) = k
+$$
+
+</SteveTip>
 
 ---
 
@@ -92,7 +115,9 @@ For any given line and any given point ($P$) **not on that line**, there is **ex
 
 <Steps>
 1.  **Find the perpendicular gradient ($m_2$):** The original gradient is $3$. The perpendicular gradient is $m_2 = -\frac{1}{3}$.
+
 2.  **Substitute into $y = mx + c$:** Use your perpendicular gradient and the given point $x = -6$, $y = 4$.
+
     $$
     \begin{aligned}
     4 &= \left(-\frac{1}{3}\right)(-6) + c \\
@@ -100,7 +125,9 @@ For any given line and any given point ($P$) **not on that line**, there is **ex
     c &= \mathbf{2}
     \end{aligned}
     $$
+
 3.  **Write the final equation:**
+
     **Answer:** $\boldsymbol{y = -\frac{1}{3}x + 2}$
 </Steps>
 
@@ -146,26 +173,37 @@ Find the equation of the perpendicular bisector of the line joining the points $
 
 <Steps>
 1.  **Find the Midpoint ($M$):** You *must* know where the middle is.
+
     $$
     M = \left( \frac{-3 + 9}{2}, \frac{8 + (-2)}{2} \right) = \left( \frac{6}{2}, \frac{6}{2} \right) = \mathbf{(3, 3)}
     $$
+
     *Our perpendicular bisector must pass through $(3, 3)$.*
+
 2.  **Find the Original Gradient ($m_1$):**
+
     $$
     m_1 = \frac{y_2 - y_1}{x_2 - x_1} = \frac{-2 - 8}{9 - (-3)} = \frac{-10}{12} = \mathbf{-\frac{5}{6}}
     $$
+
 3.  **Find the Perpendicular Gradient ($m_2$):**
+
     $$
     m_2 = \mathbf{\frac{6}{5}}
     $$
+
 4.  **Build the Equation:** Use $m = \frac{6}{5}$ and the midpoint $(3, 3)$. Substitute into $y = mx + c$:
+
     $$
     \begin{aligned}
-    3 &= \left(\frac{6}{5}\right)(3) + c \quad \rightarrow \quad 3 = \frac{18}{5} + c \\
-    c &= 3 - \frac{18}{5} = \frac{15}{5} - \frac{18}{5} \\
+    3 &= \left(\frac{6}{5}\right)(3) + c \\
+    3 &= \frac{18}{5} + c \\
+    c &= 3 - \frac{18}{5} \\
+    c &= \frac{15}{5} - \frac{18}{5} \\
     c &= \mathbf{-\frac{3}{5}}
     \end{aligned}
     $$
+
     **Answer:** $\boldsymbol{y = \frac{6}{5}x - \frac{3}{5}}$
 </Steps>
 
@@ -211,90 +249,148 @@ This concept is used in optimization problems (e.g., finding the closest point o
 
 ---
 
-## 6. Synthesis: Finding Triangle Area using Roots and Perpendicular Lines
+## 6. Synthesis: Area of a Scalene Triangle
 
-This is a high-difficulty application that brings together multiple skills.
+This is a high-difficulty application that brings together multiple skills from Coordinate Geometry. 
 
-**The Problem:** Find the area of the triangle formed by the origin and the two points where the perpendicular line through $(4, 8)$ to the curve $y = x^2 - 8$ cuts the $x$-axis. *(Note: The triangle is formed by the origin, the point $(4,8)$, and the x-intercept of the perpendicular normal line).*
+**The Problem:** Find the exact area of the scalene triangle defined by the vertices $A(1, 1)$, $B(7, 4)$, and $C(3, 8)$ by calculating the shortest distance from $C$ to the base $AB$.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
-  <svg viewBox="0 0 740 160" width="100%" maxWidth="740px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-    {/* Subtle grid to show scale */}
+  <svg viewBox="0 0 360 400" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
     <defs>
-      <pattern id="grid4" width="20" height="20" patternUnits="userSpaceOnUse">
-        <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#e2e8f0" stroke-width="0.5"/>
+      <pattern id="grid4" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1"/>
       </pattern>
     </defs>
     <rect width="100%" height="100%" fill="url(#grid4)" />
 
-    {/* The Area Triangle (O, Q, R) */}
-    <polygon points="20,120 60,40 700,120" fill="#dcfce3" stroke="none" />
+    {/* The Scalene Triangle ABC */}
+    <polygon points="40,360 280,240 120,80" fill="#dcfce3" stroke="none" />
     
-    {/* Right Angle Marker at Q(60, 40) */}
-    <polygon points="60,40 61.2,30.1 71.1,31.3 69.9,41.2" fill="#cbd5e1" stroke="#64748b" stroke-width="1" />
+    {/* Right Angle Marker at I(216, 272) */}
+    <polygon points="216,272 207,276.5 202.5,267.5 211.5,263" fill="#cbd5e1" stroke="#64748b" stroke-width="1" />
 
-    {/* Normal Line (Perpendicular to Tangent) */}
-    <line x1="60" y1="40" x2="700" y2="120" stroke="#22c55e" stroke-width="2" />
-    <text x="350" y="70" font-size="12" font-weight="bold" fill="#16a34a" font-family="sans-serif">Perpendicular Normal</text>
-
-    {/* The Curve y = x^2 - 8 (Approximated locally) */}
-    <polyline points="45,160 50,110 55,77.5 60,40 65,-2.5" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
-    <text x="30" y="20" font-size="14" font-weight="bold" fill="#2563eb" font-family="sans-serif">Curve y = x² - 8</text>
-
-    {/* Tangent Line at Q */}
-    <line x1="55" y1="80" x2="65" y2="0" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 2" />
-
-    {/* Axes */}
-    <line x1="10" y1="120" x2="720" y2="120" stroke="#94a3b8" stroke-width="2" /> {/* X-axis */}
-    <line x1="20" y1="10" x2="20" y2="140" stroke="#94a3b8" stroke-width="2" /> {/* Y-axis */}
+    {/* Base AB */}
+    <line x1="40" y1="360" x2="280" y2="240" stroke="#3b82f6" stroke-width="3" />
     
-    {/* Triangle Base Line */}
-    <line x1="20" y1="120" x2="700" y2="120" stroke="#22c55e" stroke-width="3" />
-    <line x1="20" y1="120" x2="60" y2="40" stroke="#22c55e" stroke-width="3" />
+    {/* Other Sides AC and BC */}
+    <line x1="40" y1="360" x2="120" y2="80" stroke="#94a3b8" stroke-width="2" />
+    <line x1="280" y1="240" x2="120" y2="80" stroke="#94a3b8" stroke-width="2" />
 
-    {/* Height Indicator */}
-    <line x1="60" y1="40" x2="60" y2="120" stroke="#be185d" stroke-width="2" stroke-dasharray="4 4" />
-    <text x="65" y="90" font-size="12" font-weight="bold" fill="#be185d" font-family="sans-serif">Height = 8</text>
-    <text x="350" y="140" font-size="12" font-weight="bold" fill="#16a34a" font-family="sans-serif">Base = 68 units</text>
+    {/* Perpendicular Height CI */}
+    <line x1="120" y1="80" x2="216" y2="272" stroke="#be185d" stroke-width="2" stroke-dasharray="6 4" />
+    <text x="175" y="180" font-size="14" font-weight="bold" fill="#be185d" font-family="sans-serif">Height</text>
 
-    {/* Vertex Points and Labels */}
-    <circle cx="20" cy="120" r="4" fill="#1e293b" />
-    <text x="10" y="138" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">O(0,0)</text>
+    {/* Axes & Labels */}
+    <line x1="0" y1="400" x2="360" y2="400" stroke="#64748b" stroke-width="4" /> {/* X-axis bottom edge */}
+    <line x1="0" y1="0" x2="0" y2="400" stroke="#64748b" stroke-width="4" /> {/* Y-axis left edge */}
+    <text x="140" y="320" font-size="14" font-weight="bold" fill="#2563eb" font-family="sans-serif">Base AB</text>
 
-    <circle cx="60" cy="40" r="4" fill="#1e293b" />
-    <text x="20" y="55" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">Q(4,8)</text>
+    {/* Vertices and Intersections */}
+    <circle cx="40" cy="360" r="5" fill="#1e293b" />
+    <text x="10" y="375" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">A(1,1)</text>
 
-    <circle cx="700" cy="120" r="4" fill="#1e293b" />
-    <text x="665" y="138" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">R(68,0)</text>
+    <circle cx="280" cy="240" r="5" fill="#1e293b" />
+    <text x="290" y="245" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">B(7,4)</text>
+
+    <circle cx="120" cy="80" r="5" fill="#1e293b" />
+    <text x="110" y="70" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">C(3,8)</text>
+
+    <circle cx="216" cy="272" r="4" fill="#be185d" />
+    <text x="225" y="290" font-size="12" font-weight="bold" fill="#be185d" font-family="sans-serif">I(5.4, 3.2)</text>
   </svg>
 </div>
 
 **The Steps:**
 
 <Steps>
-1.  **Find the gradient of the curve at $(4, 8)$:** This uses differentiation (Syllabus 8.1). The gradient of $y = x^2 - 8$ is calculated by its derivative $dy/dx = 2x$. At $x=4$, the gradient of the tangent is $2(4) = \mathbf{8}$.
-2.  **Find the perpendicular gradient:** This is the normal gradient. $m = -\frac{1}{8}$.
-3.  **Find the equation of the perpendicular line through $(4, 8)$:**
-    $$
-    y - 8 = -\frac{1}{8}(x - 4)
-    $$
-4.  **Find where this line cuts the x-axis:** We need to set $y=0$ in the line equation to find our 3rd vertex.
+1.  **Find the equation of the base line $AB$:** Gradient of $AB = \frac{4 - 1}{7 - 1} = \frac{3}{6} = \frac{1}{2}$.
+
+    Using $A(1, 1)$ in $y = mx + c$:
+
     $$
     \begin{aligned}
-    0 - 8 &= -\frac{1}{8}(x - 4) \\
-    -8 &= -\frac{1}{8}x + \frac{4}{8} \\
-    -8.5 &= -0.125x \\
-    x &= \frac{8.5}{0.125} = \mathbf{68}
+    1 &= \frac{1}{2}(1) + c \\
+    c &= \frac{1}{2}
     \end{aligned}
     $$
-    The three vertices of our triangle are the origin $O(0, 0)$, the point on the curve $Q(4, 8)$, and the intersection $R(68, 0)$.
-5.  **Calculate Triangle Area:**
-    * **Base:** The distance on the x-axis from $O(0,0)$ to $R(68,0)$ is **$68$ units**.
-    * **Height:** The shortest distance from Vertex $Q(4,8)$ to the base (the $x$-axis) is simply its perpendicular $y$-coordinate. **Height = $8$ units**.
-    * **Area:**
+
+    Equation of $AB$: **$y = 0.5x + 0.5$**
+
+2.  **Find the equation of the perpendicular height from $C$:**
+    
+    The perpendicular gradient is the negative reciprocal of $\frac{1}{2}$, which is **$-2$**.
+
+    Using point $C(3, 8)$ in $y = mx + c$:
+
     $$
-    \text{Area} = \frac{1}{2} \times \text{base} \times \text{height} = \frac{1}{2} \times 68 \times 8 = 34 \times 8 = \mathbf{272 \text{ units}^2}
+    \begin{aligned}
+    8 &= -2(3) + c \\
+    8 &= -6 + c \\
+    c &= 14
+    \end{aligned}
     $$
+
+    Equation of perpendicular: **$y = -2x + 14$**
+
+3.  **Find the intersection point ($I$) to get the height's end point:**
+    
+    Set the two line equations equal to each other:
+
+    $$
+    \begin{aligned}
+    0.5x + 0.5 &= -2x + 14 \\
+    2.5x &= 13.5 \\
+    x &= \mathbf{5.4}
+    \end{aligned}
+    $$
+
+    Substitute $x$ back in to find $y$: 
+    
+    $$
+    \begin{aligned}
+    y &= -2(5.4) + 14 \\
+    y &= \mathbf{3.2}
+    \end{aligned}
+    $$
+    
+    The intersection is **$I(5.4, 3.2)$**.
+
+4.  **Calculate lengths using the Distance Formula:**
+    
+    **Base Length ($AB$):**
+    
+    $$
+    \begin{aligned}
+    AB &= \sqrt{(7 - 1)^2 + (4 - 1)^2} \\
+    &= \sqrt{36 + 9} \\
+    &= \mathbf{\sqrt{45}}
+    \end{aligned}
+    $$
+    
+    **Perpendicular Height ($CI$):**
+    
+    $$
+    \begin{aligned}
+    CI &= \sqrt{(5.4 - 3)^2 + (3.2 - 8)^2} \\
+    &= \sqrt{(2.4)^2 + (-4.8)^2} \\
+    &= \sqrt{5.76 + 23.04} \\
+    &= \mathbf{\sqrt{28.8}}
+    \end{aligned}
+    $$
+
+5.  **Calculate Final Area:**
+    
+    $$
+    \begin{aligned}
+    \text{Area} &= \frac{1}{2} \times \text{Base} \times \text{Height} \\
+    &= \frac{1}{2} \times \sqrt{45} \times \sqrt{28.8} \\
+    &= \frac{1}{2} \times \sqrt{1296} \\
+    &= \frac{1}{2} \times 36 \\
+    &= \mathbf{18 \text{ units}^2}
+    \end{aligned}
+    $$
+
 </Steps>
 
 ---
@@ -322,20 +418,21 @@ This is a high-difficulty application that brings together multiple skills.
   </TabItem>
   <TabItem label="✅ Solution 2">
     First, rearrange the equation into $y = mx + c$ form to find the original gradient.
+
     $$
     \begin{aligned}
     5y &= -3x + 20 \\
     y &= -\frac{3}{5}x + 4
     \end{aligned}
     $$
+
     The original gradient is $-\frac{3}{5}$.
     
     Take the negative reciprocal: flip and flip the sign.
+    
     **Answer:** $\boldsymbol{\frac{5}{3}}$
   </TabItem>
 </Tabs>
-
-<AIGenerator topic="Finding the gradient of a line perpendicular to an equation in the form ax + by = c" difficulty="IGCSE Extended" client:load />
 
 <Tabs>
   <TabItem label="📝 Question 3: Find Line Equation">
@@ -345,6 +442,7 @@ This is a high-difficulty application that brings together multiple skills.
     Step 1: The original gradient is $2$. The perpendicular gradient is $m = -\frac{1}{2}$.
     
     Step 2: Substitute $m = -\frac{1}{2}$ and the point $(4, 7)$ into $y = mx + c$.
+
     $$
     \begin{aligned}
     7 &= \left(-\frac{1}{2}\right)(4) + c \\
@@ -352,41 +450,126 @@ This is a high-difficulty application that brings together multiple skills.
     c &= 9
     \end{aligned}
     $$
+
     **Answer:** $\boldsymbol{y = -\frac{1}{2}x + 9}$
   </TabItem>
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 4: Perpendicular through Ratio Point">
-    Line segment $AB$ connects $A(0, 0)$ and $B(10, 0)$. A third point $P$ divides the line segment $AB$ internally in the ratio $1:1$ (it is the midpoint). Find the equation of the line perpendicular to $AB$ passing through $P$.
+  <TabItem label="📝 Question 4: Perpendicular Bisector">
+    Find the equation of the perpendicular bisector of the line segment joining the points $A(1, 2)$ and $B(7, 10)$. Give your answer in the form $y = mx + c$.
   </TabItem>
   <TabItem label="✅ Solution 4">
-    Step 1: Find Point $P$. Since the ratio is $1:1$, $P$ is the midpoint of $AB$.
-    $$M = \left(\frac{0+10}{2}, \frac{0+0}{2}\right) = (5, 0)$$
-    Step 2: Find the original gradient ($m_1$). Segment $AB$ is on the $x$-axis, so its gradient is $0$. It is a horizontal line.
-    Step 3: Find the perpendicular gradient ($m_2$). The perpendicular to a horizontal line ($m=0$) is a vertical line (gradient is **undefined**).
-    Step 4: Build Equation. A vertical line passing through $x=5$ has the equation $x=5$.
+    Step 1: Find the midpoint of $AB$.
+
+    $$
+    M = \left(\frac{1+7}{2}, \frac{2+10}{2}\right) = (4, 6)
+    $$
     
-    **Answer:** $\boldsymbol{x = 5}$
+    Step 2: Find the original gradient ($m_1$) of $AB$.
+
+    $$
+    m_1 = \frac{10 - 2}{7 - 1} = \frac{8}{6} = \frac{4}{3}
+    $$
+    
+    Step 3: Find the perpendicular gradient ($m_2$).
+
+    $$
+    m_2 = -\frac{3}{4}
+    $$
+
+    Step 4: Build the equation using $m = -\frac{3}{4}$ and midpoint $(4, 6)$.
+
+    $$
+    \begin{aligned}
+    6 &= \left(-\frac{3}{4}\right)(4) + c \\
+    6 &= -3 + c \\
+    c &= 9
+    \end{aligned}
+    $$
+    
+    **Answer:** $\boldsymbol{y = -0.75x + 9}$ (or $y = -\frac{3}{4}x + 9$)
   </TabItem>
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 5: Area of Triangle synthesis">
+  <TabItem label="📝 Question 5: Perpendicular through a Ratio">
+    The line segment joining $A(2, 1)$ to $B(11, 7)$ is divided internally at point $P$ in the ratio $2:1$. Find the equation of the line perpendicular to $AB$ passing through $P$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    Step 1: Find the coordinates of $P$. Since it's a $2:1$ ratio, $P$ is $\frac{2}{3}$ of the way along the segment from $A$ to $B$.
+    
+    * $x$-coordinate: $2 + \frac{2}{3}(11 - 2) = 2 + \frac{2}{3}(9) = 2 + 6 = 8$
+    * $y$-coordinate: $1 + \frac{2}{3}(7 - 1) = 1 + \frac{2}{3}(6) = 1 + 4 = 5$
+
+    Point $P$ is $(8, 5)$.
+
+    Step 2: Find the gradient of $AB$.
+
+    $$
+    m = \frac{7 - 1}{11 - 2} = \frac{6}{9} = \frac{2}{3}
+    $$
+
+    Step 3: Find the perpendicular gradient.
+
+    $$
+    m_{\perp} = -\frac{3}{2}
+    $$
+
+    Step 4: Substitute $m = -\frac{3}{2}$ and point $P(8, 5)$ into $y = mx + c$.
+
+    $$
+    \begin{aligned}
+    5 &= \left(-\frac{3}{2}\right)(8) + c \\
+    5 &= -12 + c \\
+    c &= 17
+    \end{aligned}
+    $$
+    
+    **Answer:** $\boldsymbol{y = -1.5x + 17}$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: The Standard Form Shortcut">
+    Use the standard form shortcut to find the equation of the line perpendicular to $4x + 3y = 12$ that passes through the point $(2, -5)$. Leave your answer in the form $ax + by = c$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    Step 1: Using the rule, the perpendicular to $ax + by = c$ is $bx - ay = k$. 
+    Therefore, the perpendicular line has the form $3x - 4y = k$.
+    
+    Step 2: Substitute the point $(2, -5)$ into this new form to solve for $k$.
+
+    $$
+    \begin{aligned}
+    3(2) - 4(-5) &= k \\
+    6 + 20 &= k \\
+    26 &= k
+    \end{aligned}
+    $$
+    
+    **Answer:** $\boldsymbol{3x - 4y = 26}$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Area of Triangle synthesis">
     A straight line perpendicular to $3x + 4y = 12$ passes through the origin $(0, 0)$. 
     Find the area of the triangle formed by this perpendicular line, the origin, and the coordinate point where the original line $3x + 4y = 12$ intersects the $x$-axis.
   </TabItem>
-  <TabItem label="✅ Solution 5">
+  <TabItem label="✅ Solution 7">
     We need to solve for three vertices to find the Area.
     Vertex 1: Origin $(0, 0)$.
     
     Step 1: Find the original gradient.
+
     $$
     \begin{aligned}
     4y &= -3x + 12 \\
     y &= -\frac{3}{4}x + 3
     \end{aligned}
     $$
+
     Gradient $m_1 = -\frac{3}{4}$.
     
     Step 2: Find the perpendicular line passing through the origin.
@@ -395,6 +578,7 @@ This is a high-difficulty application that brings together multiple skills.
     
     Step 3: Find Vertex 3 (where original line $3x + 4y = 12$ cuts the x-axis).
     Set $y=0$ in the original equation:
+
     $$
     \begin{aligned}
     3x + 4(0) &= 12 \\
@@ -402,19 +586,24 @@ This is a high-difficulty application that brings together multiple skills.
     x &= 4
     \end{aligned}
     $$
+
     Vertex 3 is $(4, 0)$.
     
     Step 4: Find Vertex 2 (intersection of original and perpendicular lines).
     We have $y = \frac{4}{3}x$. Substitute into $3x + 4y = 12$:
+
     $$
     \begin{aligned}
     3x + 4\left(\frac{4}{3}x\right) &= 12 \\
     3x + \frac{16}{3}x &= 12 \quad (\times 3) \\
     9x + 16x &= 36 \\
-    25x &= 36 \rightarrow x = \frac{36}{25} \\
-    y = \frac{4}{3}\left(\frac{36}{25}\right) &= \frac{4 \times 12}{25} = \frac{48}{25}
+    25x &= 36 \\
+    x &= \frac{36}{25} \\
+    y &= \frac{4}{3}\left(\frac{36}{25}\right) \\
+    y &= \frac{48}{25}
     \end{aligned}
     $$
+
     Vertex 2 is $\left(\frac{36}{25}, \frac{48}{25}\right)$.
     
     Step 5: Calculate Area. The triangle vertices are $O(0, 0)$, $V_2\left(\frac{36}{25}, \frac{48}{25}\right)$, and $V_3(4, 0)$.
@@ -422,8 +611,14 @@ This is a high-difficulty application that brings together multiple skills.
     The height is the perpendicular distance from $V_2$ to the x-axis. Height = **$\frac{48}{25}$ units**.
     
     $$
-    \text{Area} = \frac{1}{2} \times 4 \times \frac{48}{25} = 2 \times \frac{48}{25} = \frac{96}{25} = \boldsymbol{3.84 \text{ units}^2}
+    \begin{aligned}
+    \text{Area} &= \frac{1}{2} \times 4 \times \frac{48}{25} \\
+    &= 2 \times \frac{48}{25} \\
+    &= \frac{96}{25} \\
+    &= \boldsymbol{3.84 \text{ units}^2}
+    \end{aligned}
     $$
+
   </TabItem>
 </Tabs>
 

@@ -1,0 +1,446 @@
+---
+title: E5.3 Similarity
+description: Master the properties of similar shapes, including linear, area, and volume scale factors, algebraic proportions, and proving triangle similarity for IGCSE 0607.
+---
+
+In geometry, it is crucial to distinguish between shapes that are **congruent** and shapes that are **similar**. Two shapes are said to be congruent if they have the exact same shape and the exact same size. Two shapes are said to be **similar** if they have the same shape but different sizes. Think of similarity as a mathematical enlargement or reduction; the shape can also be rotated or reflected, but its internal proportions and angles remain completely identical.
+
+---
+
+## 1. Proving Similarity in Triangles
+
+Before calculating missing lengths, you are often required to prove *why* two shapes are similar. For triangles, this simplifies into checking any of the following standard conditions:
+
+* **AA (Angle-Angle) Similarity:** If 2 pairs of angles are the same, the third pair must also be the same (since angles in a triangle sum to $180^\circ$).
+* **SSS (Side-Side-Side) Similarity:** All 3 pairs of sides are in the exact same proportion.
+* **SAS (Side-Angle-Side) Similarity:** 2 pairs of sides are proportional and the included angles between those sides are the same.
+
+<SteveTip title="State the Reason">
+Examiners will not award marks if you simply write "the angles are the same". You must use the correct geometric vocabulary to justify your proof: state whether angles are **alternate**, **corresponding**, **vertically opposite**, or **shared/common** angles.
+</SteveTip>
+
+### The Two Classic Triangle Configurations
+
+In IGCSE exams, similar triangles usually appear in one of two formats: the **Nested Triangle** or the **Hourglass (Bowtie) Triangle**. Both rely heavily on parallel line rules.
+
+#### Configuration A: The Nested Triangle
+Here, a smaller triangle is drawn inside a larger one by drawing a line parallel to the base. 
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Large Triangle ABC */}
+    <polygon points="200,40 50,250 350,250" fill="none" stroke="#1e293b" strokeWidth="2" />
+    
+    {/* Parallel Line DE */}
+    <line x1="125" y1="145" x2="275" y2="145" stroke="#3b82f6" strokeWidth="2" />
+    
+    {/* Parallel arrows */}
+    <polygon points="200,145 190,140 190,150" fill="#3b82f6" />
+    <polygon points="200,250 190,245 190,255" fill="#1e293b" />
+    
+    {/* Labels */}
+    <text x="200" y="30" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#1e293b">A</text>
+    <text x="35" y="260" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#1e293b">B</text>
+    <text x="365" y="260" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#1e293b">C</text>
+    <text x="110" y="140" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#3b82f6">D</text>
+    <text x="290" y="140" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#3b82f6">E</text>
+
+    {/* Angle Arcs */}
+    <path d="M 80 250 A 30 30 0 0 0 68 225" fill="none" stroke="#ef4444" strokeWidth="2" />
+    <path d="M 155 145 A 30 30 0 0 0 143 120" fill="none" stroke="#ef4444" strokeWidth="2" />
+    <path d="M 320 250 A 30 30 0 0 1 332 225" fill="none" stroke="#10b981" strokeWidth="2" />
+    <path d="M 245 145 A 30 30 0 0 1 257 120" fill="none" stroke="#10b981" strokeWidth="2" />
+  </svg>
+</div>
+
+Triangle $ADE$ is similar to triangle $ABC$ (AA Similarity) because:
+1. Angle $A$ is a **common angle** shared by both triangles.
+2. Angle $ADE$ = Angle $ABC$ (**Corresponding angles**, since line $DE$ is parallel to line $BC$).
+
+#### Configuration B: The Hourglass (Bowtie)
+Here, two parallel lines form the bases, and the sides cross over each other, creating vertically opposite triangles. 
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 350" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Triangle Top */}
+    <polygon points="100,50 300,50 200,150" fill="none" stroke="#1e293b" strokeWidth="2" />
+    {/* Triangle Bottom */}
+    <polygon points="50,300 350,300 200,150" fill="none" stroke="#3b82f6" strokeWidth="2" />
+    
+    {/* Parallel arrows */}
+    <polygon points="200,50 190,45 190,55" fill="#1e293b" />
+    <polygon points="200,300 190,295 190,305" fill="#3b82f6" />
+    
+    {/* Labels */}
+    <text x="85" y="45" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#1e293b">P</text>
+    <text x="315" y="45" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#1e293b">Q</text>
+    <text x="35" y="310" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#3b82f6">R</text>
+    <text x="365" y="310" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#3b82f6">S</text>
+    <text x="215" y="155" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#ef4444">X</text>
+
+    {/* Vertically Opposite */}
+    <path d="M 185 135 A 20 20 0 0 1 215 135" fill="none" stroke="#ef4444" strokeWidth="2" />
+    <path d="M 185 165 A 20 20 0 0 0 215 165" fill="none" stroke="#ef4444" strokeWidth="2" />
+    
+    {/* Alternate Angles */}
+    <path d="M 130 50 A 30 30 0 0 1 120 70" fill="none" stroke="#10b981" strokeWidth="2" />
+    <path d="M 320 300 A 30 30 0 0 1 330 280" fill="none" stroke="#10b981" strokeWidth="2" />
+  </svg>
+</div>
+
+Triangle $PXQ$ is similar to triangle $SXR$ (AA Similarity) because:
+1. Angle $PXQ$ = Angle $SXR$ (**Vertically opposite angles**).
+2. Angle $QPX$ = Angle $RSX$ (**Alternate angles**, as $PQ$ is parallel to $RS$. Notice the "Z" shape mapping $P$ to $S$!).
+
+<Aside type="caution" title="Match the Corresponding Sides Carefully">
+In the hourglass shape, the sides cross over. This means side $PX$ corresponds to side $SX$ (not $RX$), and side $QX$ corresponds to side $RX$. Always trace the angles to find corresponding sides.
+</Aside>
+
+---
+
+## 2. Calculating Lengths: Proportions and Linear Equations
+
+Once similarity is established, we use the **Linear Scale Factor (LSF)** to find missing lengths. A highly reliable method that minimises confusion is to always calculate the scale factor as a number greater than 1. 
+
+$$
+\begin{aligned}
+\text{Linear Scale Factor (LSF)} = \frac{\text{Length of BIGGER shape}}{\text{Corresponding length of SMALLER shape}}
+\end{aligned}
+$$
+
+* **To find a BIGGER missing length:** Take the smaller corresponding length and **multiply** by the LSF.
+* **To find a SMALLER missing length:** Take the bigger corresponding length and **divide** by the LSF.
+
+At the Extended level, side lengths are often given as algebraic expressions, requiring you to set up and solve a linear equation using proportional ratios.
+
+**Example 1: Algebraic Similarity** In the similar triangles $ADE$ and $ABC$ from Configuration A (Nested), you are given:  
+$AD = x$, $DB = 4\text{ cm}$, $AE = 6\text{ cm}$, and $EC = 8\text{ cm}$.  
+Find the value of $x$.
+
+<Steps>
+  1. First, clearly identify the corresponding sides of the **small triangle** and the **large triangle**:
+     * Small triangle side $AD = x$
+     * Large triangle side $AB = x + 4$ 
+     * Small triangle side $AE = 6$
+     * Large triangle side $AC = 6 + 8 = 14$
+  2. Since the triangles are similar, the ratios of their corresponding sides must be equal. We set up an equation and solve:
+     $$
+     \begin{aligned}
+     \frac{\text{Large Side } AB}{\text{Small Side } AD} &= \frac{\text{Large Side } AC}{\text{Small Side } AE} \\[1.5ex]
+     \frac{x + 4}{x} &= \frac{14}{6} \\[1.5ex]
+     \frac{x + 4}{x} &= \frac{7}{3} \\[1.5ex]
+     3(x + 4) &= 7x \\[1.5ex]
+     3x + 12 &= 7x \\[1.5ex]
+     12 &= 4x \\[1.5ex]
+     x &= 3
+     \end{aligned}
+     $$
+</Steps>
+
+**Answer:** $x = 3$ (So the small side $AD$ is $3\text{ cm}$, and the large side $AB$ is $7\text{ cm}$).
+
+---
+
+## 3. Relationships Between Lengths, Areas, and Volumes
+
+The most critical part of this topic is understanding how scaling a 1-dimensional length affects 2-dimensional areas and 3-dimensional volumes. 
+
+<Aside type="note" title="Anatomy of Scale Factors">
+When two solids are mathematically similar, their measurements scale based on their dimensions:
+* **1D - Linear Scale Factor (LSF):** Used for length, width, height, perimeter, radius, and circumference.
+* **2D - Area Scale Factor (ASF):** Area also applies to total surface area and cross-sectional area. 
+  $$
+  \begin{aligned}
+  \text{ASF} &= (\text{LSF})^2
+  \end{aligned}
+  $$
+* **3D - Volume Scale Factor (VSF):** Volume also applies to capacity, mass, and weight (assuming uniform density). 
+  $$
+  \begin{aligned}
+  \text{VSF} &= (\text{LSF})^3
+  \end{aligned}
+  $$
+</Aside>
+
+### Working Backwards Between Scale Factors
+
+You will frequently be given the areas or volumes of two similar shapes and asked to find a length. You cannot jump directly from Area to Volume. You must **always return to the Linear Scale Factor first**.
+
+* To find LSF from Area: $\text{LSF} = \sqrt{\text{ASF}}$
+* To find LSF from Volume: $\text{LSF} = \sqrt[3]{\text{VSF}}$
+* To convert Area to Volume: $\text{VSF} = (\sqrt{\text{ASF}})^3$
+
+**Example 2: Working Backwards with Area** Two similar rectangular badges are printed. The small badge has a width of $4\text{ cm}$ and an area of $12\text{ cm}^2$. The large badge has an area of $108\text{ cm}^2$. Find the width of the large badge.
+
+<Steps>
+  1. Find the Area Scale Factor (Big $\div$ Small):
+     $$
+     \begin{aligned}
+     \text{ASF} &= \frac{108}{12} \\[1.5ex]
+     \text{ASF} &= 9
+     \end{aligned}
+     $$
+  2. Square root to find the Linear Scale Factor:
+     $$
+     \begin{aligned}
+     \text{LSF} &= \sqrt{9} \\[1.5ex]
+     \text{LSF} &= 3
+     \end{aligned}
+     $$
+  3. We need the width of the *larger* badge, so we **multiply** the small width by the LSF:
+     $$
+     \begin{aligned}
+     \text{Large Width} &= 4 \times 3 \\[1.5ex]
+     \text{Large Width} &= 12\text{ cm}
+     \end{aligned}
+     $$
+</Steps>
+
+**Answer:** $12\text{ cm}$
+
+### Extended Application: Quadratics and 3D Objects
+
+In Extended math, similarity problems often intersect with solving quadratics and manipulating 3D properties like density and mass. Let's look at two models side-by-side.
+
+<div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', margin: '2rem 0', flexWrap: 'wrap', alignItems: 'flex-end' }}>
+  {/* Small Jelly */}
+  <svg viewBox="0 0 200 200" width="100%" maxWidth="150px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
+    <path d="M 50 140 Q 50 80 100 80 Q 150 80 150 140 C 150 160 130 170 100 170 C 70 170 50 160 50 140 Z" fill="#f472b6" stroke="#db2777" strokeWidth="4" />
+    <circle cx="85" cy="115" r="6" fill="#fff" />
+    <circle cx="115" cy="115" r="6" fill="#fff" />
+    <circle cx="85" cy="115" r="2" fill="#1e293b" />
+    <circle cx="115" cy="115" r="2" fill="#1e293b" />
+    <path d="M 95 125 Q 100 132 105 125" fill="none" stroke="#1e293b" strokeWidth="2" strokeLinecap="round" />
+    <text x="100" y="30" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#db2777">Small Jelly</text>
+    <text x="100" y="50" fontSize="12" textAnchor="middle" fill="#64748b">Height: 10 cm</text>
+  </svg>
+  
+  {/* Large Jelly */}
+  <svg viewBox="0 0 200 200" width="100%" maxWidth="220px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
+    <path d="M 30 140 Q 30 50 100 50 Q 170 50 170 140 C 170 170 140 180 100 180 C 60 180 30 170 30 140 Z" fill="#f472b6" stroke="#db2777" strokeWidth="4" />
+    <circle cx="75" cy="105" r="10" fill="#fff" />
+    <circle cx="125" cy="105" r="10" fill="#fff" />
+    <circle cx="75" cy="105" r="4" fill="#1e293b" />
+    <circle cx="125" cy="105" r="4" fill="#1e293b" />
+    <path d="M 90 125 Q 100 140 110 125" fill="none" stroke="#1e293b" strokeWidth="3" strokeLinecap="round" />
+    <text x="100" y="25" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#db2777">Large Jelly</text>
+    <text x="100" y="45" fontSize="12" textAnchor="middle" fill="#64748b">Height: 15 cm</text>
+  </svg>
+</div>
+
+**Example 3: Volume and Mass (Jellies)** The two mathematically similar jellies shown above have heights of $10\text{ cm}$ and $15\text{ cm}$.   
+If the small jelly requires $200\text{ g}$ of gelatin mix to make, calculate the mass of gelatin mix required for the large jelly.
+
+Remember: Mass and weight scale with volume!
+<Steps>
+  1. Find the Linear Scale Factor (LSF) (Big $\div$ Small):
+     $$
+     \begin{aligned}
+     \text{LSF} &= \frac{15}{10} \\[1.5ex]
+     \text{LSF} &= 1.5
+     \end{aligned}
+     $$
+  2. Convert LSF to Volume Scale Factor (VSF):
+     $$
+     \begin{aligned}
+     \text{VSF} &= (1.5)^3 \\[1.5ex]
+     \text{VSF} &= 3.375
+     \end{aligned}
+     $$
+  3. Multiply the small mass by the VSF to find the large mass:
+     $$
+     \begin{aligned}
+     \text{Mass of large jelly} &= 200 \times 3.375 \\[1.5ex]
+     \text{Mass of large jelly} &= 675\text{ g}
+     \end{aligned}
+     $$
+</Steps>
+
+**Answer:** $675\text{ g}$
+
+
+**Example 4: Areas leading to Quadratics** Two mathematically similar triangles have a Linear Scale Factor of $2$.   
+The area of the smaller triangle is given by the expression $x$.   
+The area of the larger triangle is given by the expression $x^2 - 12$.  
+Calculate the exact area of the smaller triangle.
+
+<Steps>
+  1. We know the Linear Scale Factor is $2$.
+  2. Therefore, the Area Scale Factor must be $2^2 = 4$.
+  3. This tells us that $4 \times (\text{Small Area}) = \text{Large Area}$.
+  4. Substitute the expressions to form an equation and solve:
+     $$
+     \begin{aligned}
+     4(x) &= x^2 - 12 \\[1.5ex]
+     0 &= x^2 - 4x - 12 \\[1.5ex]
+     0 &= (x - 6)(x + 2)
+     \end{aligned}
+     $$
+  5. Solve for $x$: 
+     $$
+     \begin{aligned}
+     x = 6 \quad \text{or} \quad x = -2
+     \end{aligned}
+     $$
+  6. Since an area cannot be negative, $x$ must be $6$. The area of the smaller triangle is $6$.
+</Steps>
+
+**Answer:** $6$
+
+---
+
+## 4. Standard Practice Problems
+
+Try these practice questions on your own before checking the solutions. Use the AI Generators to spawn more questions of the same type if you need extra practice.
+
+### Algebraic Similar Triangles
+
+<Tabs>
+  <TabItem label="📝 Question 1: Hourglass Algebra">
+    Triangles $ABE$ and $CDE$ form an hourglass shape intersecting at $E$, with $AB$ parallel to $CD$.  
+    $AB = 5\text{ cm}$ and $CD = 15\text{ cm}$.   
+    If $AE = x + 1$ and $CE = 4x - 1$, set up an equation and find the value of $x$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+      1. Identify corresponding sides: $AB$ corresponds to $CD$, and $AE$ corresponds to $CE$.
+      2. Find the LSF from small to large: 
+         $$
+         \begin{aligned}
+         \text{LSF} &= \frac{15}{5} \\[1.5ex]
+         \text{LSF} &= 3
+         \end{aligned}
+         $$
+      3. Apply the LSF to the algebraic sides and solve: 
+         $$
+         \begin{aligned}
+         3 \times (AE) &= CE \\[1.5ex]
+         3(x + 1) &= 4x - 1 \\[1.5ex]
+         3x + 3 &= 4x - 1 \\[1.5ex]
+         4 &= x
+         \end{aligned}
+         $$
+    </Steps>
+    **Answer:** $x = 4$
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Solving for algebraic side lengths using similar triangles and proportions" difficulty="IGCSE Extended" client:load />
+
+### Working Backwards with Area
+
+<Tabs>
+  <TabItem label="📝 Question 2: Areas of Polygons">
+    Two regular hexagons are similar. The larger hexagon has a perimeter of $60\text{ cm}$ and an area of $250\text{ cm}^2$. The smaller hexagon has an area of $90\text{ cm}^2$. Calculate the perimeter of the smaller hexagon.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    Perimeter is a 1-dimensional measurement, so it uses the LSF.
+    <Steps>
+      1. Find the Area Scale Factor (Big $\div$ Small):
+         $$
+         \begin{aligned}
+         \text{ASF} &= \frac{250}{90} \\[1.5ex]
+         \text{ASF} &= \frac{25}{9}
+         \end{aligned}
+         $$
+      2. Square root to find the Linear Scale Factor:
+         $$
+         \begin{aligned}
+         \text{LSF} &= \sqrt{\frac{25}{9}} \\[1.5ex]
+         \text{LSF} &= \frac{5}{3}
+         \end{aligned}
+         $$
+      3. We need the smaller perimeter, so divide the large perimeter by the LSF:
+         $$
+         \begin{aligned}
+         \text{Small Perimeter} &= 60 \div \frac{5}{3} \\[1.5ex]
+         \text{Small Perimeter} &= 60 \times \frac{3}{5} \\[1.5ex]
+         \text{Small Perimeter} &= 36\text{ cm}
+         \end{aligned}
+         $$
+    </Steps>
+    **Answer:** $36\text{ cm}$
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Calculating 1D lengths or perimeters given the areas of similar shapes by finding the area scale factor" difficulty="IGCSE Extended" client:load />
+
+### Working Backwards with Volume and Mass
+
+<Tabs>
+  <TabItem label="📝 Question 3: Melting Gold Ingots">
+    Two mathematically similar gold ingots have widths of $12\text{ cm}$ and $21\text{ cm}$. The lighter ingot weighs $2.05\text{ kg}$. Calculate the weight of the heavier ingot.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+      1. Find the Linear Scale Factor (Big $\div$ Small):
+         $$
+         \begin{aligned}
+         \text{LSF} &= \frac{21}{12} \\[1.5ex]
+         \text{LSF} &= \frac{7}{4}
+         \end{aligned}
+         $$
+      2. Cube it to find the Volume Scale Factor (which applies to weight):
+         $$
+         \begin{aligned}
+         \text{VSF} &= \left(\frac{7}{4}\right)^3 \\[1.5ex]
+         \text{VSF} &= \frac{343}{64}
+         \end{aligned}
+         $$
+      3. We need the heavier weight, so multiply to scale up:
+         $$
+         \begin{aligned}
+         \text{Heavy Weight} &= 2.05 \times \frac{343}{64} \\[1.5ex]
+         \text{Heavy Weight} &= 10.9859...
+         \end{aligned}
+         $$
+    </Steps>
+    **Answer:** $11.0\text{ kg}$
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Calculating volumes and masses of similar 3D solids using linear and volume scale factors" difficulty="IGCSE Extended" client:load />
+
+### Complex Area to Volume Conversions
+
+<Tabs>
+  <TabItem label="📝 Question 4: The Russian Dolls">
+    A set of Russian dolls are mathematically similar.   
+    The smallest doll has a surface area of $150\text{ cm}^2$ and a volume of $250\text{ cm}^3$.  
+    The largest doll has a surface area of $540\text{ cm}^2$. Find the volume of the largest doll.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+      1. Find the Area Scale Factor (Big $\div$ Small):
+         $$
+         \begin{aligned}
+         \text{ASF} &= \frac{540}{150} \\[1.5ex]
+         \text{ASF} &= 3.6
+         \end{aligned}
+         $$
+      2. Square root to find the Linear Scale Factor:
+         $$
+         \begin{aligned}
+         \text{LSF} &= \sqrt{3.6}
+         \end{aligned}
+         $$
+      3. Cube the LSF to find the Volume Scale Factor:
+         $$
+         \begin{aligned}
+         \text{VSF} &= (\sqrt{3.6})^3 \\[1.5ex]
+         \text{VSF} &\approx 6.8305
+         \end{aligned}
+         $$
+      4. Multiply the small volume by the VSF:
+         $$
+         \begin{aligned}
+         \text{Large Volume} &= 250 \times 6.8305 \\[1.5ex]
+         \text{Large Volume} &\approx 1707.6\text{ cm}^3
+         \end{aligned}
+         $$
+    </Steps>
+    **Answer:** $1707.6\text{ cm}^3$
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Converting between surface area and volume of similar solids by working through the linear scale factor" difficulty="IGCSE Extended" client:load />
