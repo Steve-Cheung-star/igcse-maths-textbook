@@ -5,7 +5,7 @@ import react from '@astrojs/react';
 import mermaid from 'astro-mermaid';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import vercel from '@astrojs/vercel';
+import vercel from '@astrojs/vercel/serverless';
 import AutoImport from 'astro-auto-import'; // 1. Import the tool
 
 export default defineConfig({
