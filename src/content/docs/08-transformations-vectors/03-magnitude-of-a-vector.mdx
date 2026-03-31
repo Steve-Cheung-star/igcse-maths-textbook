@@ -1,0 +1,142 @@
+---
+title: 8.3 Magnitude of a Vector
+description: Understand modulus notation and calculate the magnitude (length) of a vector using Pythagoras' theorem for IGCSE 0607.
+---
+
+Even though you may have seen a preview of this in the previous section, it is crucial to formally define how we measure the "size" of a vector. A vector has both direction and magnitude. The **magnitude** is simply its physical length.
+
+---
+
+## 1. Notation and the Modulus Sign
+
+Because magnitude represents a length, it is a **scalar** quantity and must always be a positive number (or zero). We denote the magnitude of a vector by placing it inside **modulus signs** (vertical bars):
+
+* The magnitude of vector $\mathbf{a}$ is written as **$|\mathbf{a}|$**.
+* The magnitude of the displacement vector $\overrightarrow{AB}$ is written as **$|\overrightarrow{AB}|$**.
+
+<SteveTip title="Absolute Value">
+You might recognise the modulus lines from "absolute value" in algebra. They do the exact same job here: they strip away the "direction" (the positive/negative signs of the components) and leave you strictly with the positive size!
+</SteveTip>
+
+---
+
+## 2. Calculating Magnitude
+
+Every column vector $\begin{pmatrix} x \\ y \end{pmatrix}$ forms a right-angled triangle with the horizontal and vertical grid lines. 
+
+* The horizontal movement ($x$) is the base of the triangle.
+* The vertical movement ($y$) is the height of the triangle.
+* The vector itself is the **hypotenuse**.
+
+Therefore, to calculate the exact length of the vector, we apply **Pythagoras' Theorem** ($a^2 + b^2 = c^2$).
+
+<Aside type="tip" title="Magnitude Formula">
+For any vector $\mathbf{v} = \begin{pmatrix} x \\ y \end{pmatrix}$, its magnitude is calculated as:
+
+$$
+|\mathbf{v}| = \sqrt{x^2 + y^2}
+$$
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="-20 -20 260 200" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <g stroke="#e2e8f0" stroke-width="1">
+      {/* Horizontal grid lines */}
+      {Array.from({length: 11}).map((_, i) => <line key={`x-${i}`} x1="-20" y1={-20 + i*20} x2="240" y2={-20 + i*20} />)}
+      {/* Vertical grid lines */}
+      {Array.from({length: 13}).map((_, i) => <line key={`y-${i}`} x1={-20 + i*20} y1="-20" x2={-20 + i*20} y2="240" />)}
+    </g>
+    
+    {/* x component: (20, 140) to (180, 140) -> length 160px = 8 units */}
+    <path d="M 20 140 L 180 140" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <text x="100" y="155" font-weight="bold" fill="#64748b" text-anchor="middle">x = 8</text>
+    
+    {/* y component: (180, 140) to (180, 20) -> length 120px = 6 units */}
+    <path d="M 180 140 L 180 20" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <text x="200" y="85" font-weight="bold" fill="#64748b" text-anchor="middle">y = 6</text>
+
+    {/* Right angle square */}
+    <path d="M 170 140 L 170 130 L 180 130" fill="none" stroke="#64748b" stroke-width="1.5" />
+
+    {/* Vector v */}
+    <path d="M 20 140 L 180 20" stroke="#3b82f6" stroke-width="3" fill="none" marker-end="url(#arrow-blue)" />
+    
+    {/* Label for magnitude */}
+    <text x="80" y="70" font-weight="bold" fill="#3b82f6" text-anchor="middle">|v| = 10</text>
+
+    <defs>
+      <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+
+
+<Aside type="caution" title="Squaring Negatives">
+A very common exam mistake is entering negative numbers incorrectly into a calculator. Remember that squaring a negative component always results in a positive number! 
+$(-3)^2$ is $+9$, not $-9$. A vector's length can never be negative. If your calculator says $\sqrt{-16}$, you have made a mistake.
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Basic Magnitude">
+    Find the magnitude of the vector $\mathbf{p} = \begin{pmatrix} -5 \\ 12 \end{pmatrix}$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. Identify the $x$ and $y$ components: $x = -5$ and $y = 12$.
+    2. Substitute them into the magnitude formula: $|\mathbf{p}| = \sqrt{(-5)^2 + 12^2}$.
+    3. Square the components (remembering that $(-5) \times (-5) = 25$): $|\mathbf{p}| = \sqrt{25 + 144}$.
+    4. Add them together: $|\mathbf{p}| = \sqrt{169}$.
+    5. Find the square root: $|\mathbf{p}| = 13$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Calculating the magnitude of column vectors with negative components" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Magnitude from Coordinates">
+    Point $A$ has coordinates $(-2, 4)$ and point $B$ has coordinates $(4, -4)$.
+    
+    Calculate $|\overrightarrow{AB}|$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. First, find the displacement vector $\overrightarrow{AB}$ by calculating the change in $x$ and the change in $y$.
+    2. $x$-movement: $4 - (-2) = 6$.
+    3. $y$-movement: $-4 - 4 = -8$.
+    4. The column vector is $\overrightarrow{AB} = \begin{pmatrix} 6 \\ -8 \end{pmatrix}$.
+    5. Apply the magnitude formula: $|\overrightarrow{AB}| = \sqrt{6^2 + (-8)^2}$.
+    6. Simplify: $|\overrightarrow{AB}| = \sqrt{36 + 64} = \sqrt{100}$.
+    7. Final answer: $|\overrightarrow{AB}| = 10$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Finding displacement vectors between coordinates and calculating their magnitudes" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Scalar Multiples & Magnitude">
+    Given $\mathbf{q} = \begin{pmatrix} 3 \\ -4 \end{pmatrix}$.
+    
+    Calculate the exact value of $|2\mathbf{q}|$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. First, find the vector $2\mathbf{q}$ by performing scalar multiplication.
+    2. Multiply both components by 2: $2\mathbf{q} = 2 \begin{pmatrix} 3 \\ -4 \end{pmatrix} = \begin{pmatrix} 6 \\ -8 \end{pmatrix}$.
+    3. Now, find the magnitude of this new vector: $|2\mathbf{q}| = \sqrt{6^2 + (-8)^2}$.
+    4. Simplify the squares: $|2\mathbf{q}| = \sqrt{36 + 64}$.
+    5.  $|2\mathbf{q}| = \sqrt{100} = 10$.
+    6. *(Shortcut tip: You could also find $|\mathbf{q}| = 5$, and since the vector is scaled by 2, its length is simply $5 \times 2 = 10$!)*
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Combining scalar multiplication with magnitude calculations" difficulty="IGCSE Extended" client:load />

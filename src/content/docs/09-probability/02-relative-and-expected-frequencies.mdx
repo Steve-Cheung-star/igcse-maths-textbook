@@ -1,0 +1,235 @@
+---
+title: 9.2 Relative and Expected Frequencies
+description: Understand experimental probability, calculate relative and expected frequencies, and identify fair, biased, and random events for IGCSE 0607.
+---
+
+Probability can be approached in two ways: what we *expect* to happen mathematically (**theoretical probability**), and what *actually* happens when we perform an experiment (**experimental probability**).
+
+<Aside type="note" title="Probability Terminology">
+1. **Theoretical Probability:** What should happen in a perfect world. For a fair coin, the theoretical probability of getting Heads is exactly $0.5$.
+2. **Relative Frequency:** Also known as experimental probability. This is what actually happens when you run an experiment. If you flip a coin 10 times and get 7 Heads, the relative frequency of Heads is $\frac{7}{10}$ or $0.7$.
+3. **Expected Frequency:** Using probability to predict how many times an event will occur over a large number of trials or within a whole population.
+</Aside>
+
+---
+
+## 1. Relative Frequency
+
+When we perform an experiment (like spinning a spinner or dropping a piece of toast), we record the outcomes. The **relative frequency** is an estimate of the true probability based purely on those experimental results.
+
+<Aside type="tip" title="Relative Frequency Formula">
+$$
+\text{Relative Frequency} = \frac{\text{Number of successful trials}}{\text{Total number of trials}}
+$$
+</Aside>
+
+### The Law of Large Numbers
+
+If you flip a coin 10 times, you might get 8 Heads. The relative frequency ($0.8$) is very different from the theoretical probability ($0.5$). However, if you flip that same coin 10,000 times, the relative frequency will settle down and get extremely close to $0.5$. 
+
+<SteveTip title="More Trials = Better Estimate">
+In exams, if you are asked how to make an experimental estimate more reliable, the answer is always: **"Perform more trials"** or **"Repeat the experiment more times."**
+</SteveTip>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="-40 -20 440 240" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <g stroke="#e2e8f0" stroke-width="1">
+      {/* Horizontal grid lines */}
+      {Array.from({length: 11}).map((_, i) => <line key={`x-${i}`} x1="0" y1={i*20} x2="360" y2={i*20} />)}
+      {/* Vertical grid lines */}
+      {Array.from({length: 10}).map((_, i) => <line key={`y-${i}`} x1={i*40} y1="0" x2={i*40} y2="200" />)}
+    </g>
+    
+    {/* Axes */}
+    <line x1="0" y1="200" x2="380" y2="200" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="0" y1="200" x2="0" y2="-10" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)" />
+    
+    <text x="180" y="230" font-weight="bold" fill="#1e293b" text-anchor="middle">Number of Trials</text>
+    <text x="-30" y="100" font-weight="bold" fill="#1e293b" text-anchor="middle" transform="rotate(-90, -30, 100)">Relative Frequency</text>
+    
+    {/* Labels Y axis */}
+    <text x="-10" y="204" font-size="10" fill="#64748b" text-anchor="end">0.0</text>
+    <text x="-10" y="104" font-size="10" fill="#64748b" text-anchor="end">0.5</text>
+    <text x="-10" y="4" font-size="10" fill="#64748b" text-anchor="end">1.0</text>
+
+    {/* Labels X axis */}
+    <text x="40" y="215" font-size="10" fill="#64748b" text-anchor="middle">10</text>
+    <text x="120" y="215" font-size="10" fill="#64748b" text-anchor="middle">50</text>
+    <text x="200" y="215" font-size="10" fill="#64748b" text-anchor="middle">100</text>
+    <text x="360" y="215" font-size="10" fill="#64748b" text-anchor="middle">500</text>
+
+    {/* Theoretical Probability Line (y = 0.5 -> SVG y = 100) */}
+    <line x1="0" y1="100" x2="360" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4" />
+    <text x="365" y="95" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="start">Theoretical (0.5)</text>
+
+    {/* Fluctuating line representing experimental data */}
+    <path d="M 0 200 L 20 20 L 40 140 L 60 60 L 80 120 L 100 80 L 120 110 L 160 90 L 200 105 L 240 98 L 280 101 L 320 99 L 360 100" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linejoin="round" />
+    <text x="250" y="75" font-size="10" font-weight="bold" fill="#3b82f6" text-anchor="middle">Experimental Results</text>
+
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#1e293b" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+
+
+---
+
+## 2. Fair, Bias, and Random
+
+These three words have very specific mathematical meanings that frequently appear in IGCSE questions.
+
+<Aside type="caution" title="Definitions">
+* **Random:** An event is random if every single possible item or outcome has an **equal chance** of being selected.
+* **Fair:** An object (like a dice or a coin) is fair if all of its faces/outcomes have an **equal theoretical probability** of occurring.
+* **Bias:** An object is biased if the outcomes are **not equally likely**, usually due to a physical flaw, extra weight on one side, or uneven sections.
+</Aside>
+
+How do we test for bias? We use relative frequency! If we roll a dice 600 times, we expect each number to appear roughly 100 times. If the number six appears 450 times, we have strong experimental evidence that the dice is biased.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 200" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Fair Spinner */}
+    <g transform="translate(100, 100)">
+      <circle cx="0" cy="0" r="70" fill="#fff" stroke="#1e293b" stroke-width="3" />
+      {/* Quarters */}
+      <path d="M 0 0 L 0 -70 A 70 70 0 0 1 70 0 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="2" />
+      <path d="M 0 0 L 70 0 A 70 70 0 0 1 0 70 Z" fill="#ef4444" stroke="#1e293b" stroke-width="2" />
+      <path d="M 0 0 L 0 70 A 70 70 0 0 1 -70 0 Z" fill="#10b981" stroke="#1e293b" stroke-width="2" />
+      <path d="M 0 0 L -70 0 A 70 70 0 0 1 0 -70 Z" fill="#f59e0b" stroke="#1e293b" stroke-width="2" />
+      
+      {/* Pointer */}
+      <polygon points="-4,0 0,-55 4,0" fill="#1e293b" transform="rotate(45)" />
+      <circle cx="0" cy="0" r="6" fill="#1e293b" />
+      <circle cx="0" cy="0" r="2" fill="#f8fafc" />
+      <text x="0" y="95" font-weight="bold" fill="#1e293b" text-anchor="middle">Fair Spinner</text>
+    </g>
+
+    {/* Biased Spinner */}
+    <g transform="translate(300, 100)">
+      <circle cx="0" cy="0" r="70" fill="#fff" stroke="#1e293b" stroke-width="3" />
+      {/* Unequal sections */}
+      <path d="M 0 0 L 0 -70 A 70 70 0 0 1 70 0 A 70 70 0 0 1 0 70 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="2" /> {/* Half circle */}
+      <path d="M 0 0 L 0 70 A 70 70 0 0 1 -50 49 Z" fill="#ef4444" stroke="#1e293b" stroke-width="2" />
+      <path d="M 0 0 L -50 49 A 70 70 0 0 1 -50 -49 Z" fill="#10b981" stroke="#1e293b" stroke-width="2" />
+      <path d="M 0 0 L -50 -49 A 70 70 0 0 1 0 -70 Z" fill="#f59e0b" stroke="#1e293b" stroke-width="2" />
+      
+      {/* Pointer */}
+      <polygon points="-4,0 0,-55 4,0" fill="#1e293b" transform="rotate(-30)" />
+      <circle cx="0" cy="0" r="6" fill="#1e293b" />
+      <circle cx="0" cy="0" r="2" fill="#f8fafc" />
+      <text x="0" y="95" font-weight="bold" fill="#1e293b" text-anchor="middle">Biased Spinner</text>
+    </g>
+  </svg>
+</div>
+
+
+
+---
+
+## 3. Expected Frequencies
+
+If we know the probability of an event (either theoretical or from past experimental data), we can predict how many times we **expect** that event to happen over a certain number of trials.
+
+<Aside type="tip" title="Expected Frequency Formula">
+$$
+\text{Expected Frequency} = \text{Probability of the event} \times \text{Total number of trials}
+$$
+</Aside>
+
+**Example:** A factory produces 5000 lightbulbs. Historically, the probability of a lightbulb being defective is $0.02$. How many defective lightbulbs do we *expect* in this batch?
+
+$$
+\begin{aligned}
+\text{Expected defects} &= 0.02 \times 5000 \\
+&= 100 \text{ lightbulbs}
+\end{aligned}
+$$
+
+<SteveTip title="To Round or Not To Round?">
+Mathematically, an expected frequency does **NOT** need to be rounded to a whole number. It is an average expectation. For example, if you flip a biased coin 10 times and the expected number of Heads is $3.5$, you leave the answer as $3.5$. 
+
+*However*, always read the question carefully! If the context or instructions explicitly ask for an integer (e.g., "Estimate the number of whole days it will rain"), you should round appropriately.
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Relative Frequency from a Table">
+    A spinner has four colours: Red, Blue, Green, and Yellow. Sarah spins the spinner 200 times. Her results are recorded in the table below.
+
+    | Colour | Red | Blue | Green | Yellow |
+    | :--- | :--- | :--- | :--- | :--- |
+    | Frequency | 95 | 40 | 35 | 30 |
+
+    1. Calculate the relative frequency of the spinner landing on Red.
+    2. Do you think this spinner is fair? Give a reason for your answer.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+      1. Use the formula: Relative Frequency = (Successful trials) / (Total trials).
+      2. For Red, there were $95$ successful trials out of $200$ total spins.
+      3. Relative frequency of Red = $95 \div 200 = 0.475$.
+      4. To determine if it is fair, consider the theoretical probability. If fair, each of the 4 colours should have a probability of $\frac{1}{4}$ (or $0.25$).
+      5. The relative frequency for Red ($0.475$) is almost double the expected $0.25$. Therefore, the spinner is **biased** towards Red and is **not fair**.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Calculating relative frequencies from experimental tables and identifying bias" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Expected Frequency">
+    The probability that a seed germinates and grows into a plant is $0.85$. 
+    A farmer plants $400$ of these seeds.
+    
+    Calculate the number of seeds the farmer expects to germinate.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+      1. Identify the probability: $P(\text{Germinates}) = 0.85$.
+      2. Identify the total number of trials (seeds planted): $\text{Total} = 400$.
+      3. Use the formula: Expected Frequency = Probability $\times$ Total trials.
+         $$
+         \begin{aligned}
+         \text{Expected} &= 0.85 \times 400 \\
+         &= 340
+         \end{aligned}
+         $$
+      4. The farmer expects $340$ seeds to germinate.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Using probabilities to calculate expected frequencies in populations" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Combining Relative and Expected Frequencies">
+    A quality control inspector tests 80 toys from a production line and finds that 3 of them have a manufacturing defect. 
+    
+    The factory produces 12,000 toys in a week. Based on the inspector's sample, how many toys would you expect to be defective in that week?
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+      1. First, calculate the relative frequency (experimental probability) of a defect from the sample.
+      2. $P(\text{Defect}) = \frac{3}{80}$.
+      3. Next, apply this probability to the whole population ($12,000$ toys) to find the expected frequency.
+      4. Expected defects = $P(\text{Defect}) \times \text{Total production}$.
+         $$
+         \begin{aligned}
+         \text{Expected defects} &= \frac{3}{80} \times 12000 \\
+         &= 3 \times 150 \\
+         &= 450
+         \end{aligned}
+         $$
+      5. We expect $450$ toys to be defective.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Using relative frequencies from small samples to estimate expected outcomes in large populations" difficulty="IGCSE Extended" client:load />

@@ -1,0 +1,224 @@
+---
+title: 10.4 Averages and Measures of Spread
+description: Master the calculation of the mean, median, mode, quartiles, and range for individual data, and learn to estimate the mean for grouped data in IGCSE 0607.
+---
+
+When analysing data, we usually want to find two things: a single value that represents the "centre" of the data (an **average**), and a value that tells us how stretched out or consistent the data is (a **measure of spread**).
+
+<Aside type="note" title="The Three Averages">
+* **Mode:** The most frequent value.
+* **Median:** The middle value when the data is in order.
+* **Mean:** The sum of all values divided by the total number of values.
+</Aside>
+
+---
+
+## 1. Averages for Individual Data
+
+Let's look at a raw list of data: $4, 7, 2, 7, 9, 10, 3$.
+
+Before doing anything with median or quartiles, **always sort the data into ascending order:**
+$2, 3, 4, 7, 7, 9, 10$
+
+### The Mode
+The **mode** is the number that appears most often. 
+In our list, the number $7$ appears twice, while all others appear once. 
+* **Mode = 7**
+
+### The Median
+The **median** is the exact middle value. Cross off numbers from both ends until you reach the centre.
+$2, 3, 4, \mathbf{7}, 7, 9, 10$
+* **Median = 7**
+
+*(If there are two middle numbers, add them together and divide by 2).*
+
+### The Mean
+To find the **mean** (often represented by $\bar{x}$), add up all the numbers and divide by how many numbers there are.
+
+$$
+\text{Mean} = \frac{2 + 3 + 4 + 7 + 7 + 9 + 10}{7} = \frac{42}{7} = 6
+$$
+
+---
+
+## 2. Measures of Spread: Range and Quartiles
+
+Averages tell you about the centre, but they don't tell you how spread out the numbers are. For that, we use the **range** and the **interquartile range (IQR)**.
+
+<Aside type="tip" title="Range vs. IQR">
+* **Range:** The difference between the largest and smallest values. It is heavily affected by extreme outliers.
+* **Interquartile Range (IQR):** The spread of the middle 50% of the data. It ignores extreme outliers, making it a more reliable measure of consistency.
+</Aside>
+
+### Calculating Quartiles
+Quartiles split the data into four equal parts.
+1. **Lower Quartile ($Q_1$):** The median of the lower half of the data.
+2. **Median ($Q_2$):** The middle of the whole data set.
+3. **Upper Quartile ($Q_3$):** The median of the upper half of the data.
+
+Using our previous sorted list: $\mathbf{2}, 3, \mathbf{4}, 7, \mathbf{7}, 9, \mathbf{10}$
+* **Minimum** = $2$
+* **$Q_1$ (Lower Quartile)** = $3$ (middle of $2, 3, 4$)
+* **Median** = $7$
+* **$Q_3$ (Upper Quartile)** = $9$ (middle of $7, 9, 10$)
+* **Maximum** = $10$
+
+$$
+\text{Range} = \text{Maximum} - \text{Minimum} = 10 - 2 = 8
+$$
+
+$$
+\text{Interquartile Range (IQR)} = Q_3 - Q_1 = 9 - 3 = 6
+$$
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 200" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Number Line */}
+    <line x1="50" y1="140" x2="550" y2="140" stroke="#64748b" stroke-width="2" />
+    <text x="50" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">2</text>
+    <text x="133" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">4</text>
+    <text x="216" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">6</text>
+    <text x="300" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">8</text>
+    <text x="383" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">10</text>
+    <text x="466" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">12</text>
+
+    {/* Box Plot Elements */}
+    {/* Whiskers */}
+    <line x1="50" y1="90" x2="91" y2="90" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 4" />
+    <line x1="341" y1="90" x2="383" y2="90" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 4" />
+    
+    {/* Whiskers end caps */}
+    <line x1="50" y1="75" x2="50" y2="105" stroke="#0284c7" stroke-width="3" />
+    <line x1="383" y1="75" x2="383" y2="105" stroke="#0284c7" stroke-width="3" />
+
+    {/* The Box (Q1 to Q3) */}
+    <rect x="91" y="60" width="250" height="60" fill="#bae6fd" stroke="#0284c7" stroke-width="3" />
+    
+    {/* Median Line */}
+    <line x1="258" y1="60" x2="258" y2="120" stroke="#0369a1" stroke-width="4" />
+
+    {/* Labels */}
+    <text x="50" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Min</text>
+    <text x="91" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Q1 (3)</text>
+    <text x="258" y="45" font-size="14" font-weight="bold" fill="#0369a1" text-anchor="middle" font-family="sans-serif">Median (7)</text>
+    <text x="341" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Q3 (9)</text>
+    <text x="383" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Max</text>
+    
+    {/* IQR Indicator */}
+    <path d="M 91 180 L 91 190 L 341 190 L 341 180" fill="none" stroke="#ef4444" stroke-width="2" />
+    <text x="216" y="185" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif" background="white">IQR = 6</text>
+  </svg>
+</div>
+
+---
+
+## 3. Which Average is Best?
+
+You must understand the purpose of each average, as examiners will ask you to justify your choice.
+
+* **Mode:** Used for categorical (non-numerical) data or finding the most popular item (e.g., shoe size to stock in a shop).
+* **Median:** The best average to use when the data contains extreme outliers (e.g., house prices or salaries), because it is not distorted by abnormally high or low values.
+* **Mean:** Uses all the data values. Best when the data is fairly symmetrical without extreme outliers.
+
+---
+
+## 4. Grouped Data
+
+When data is grouped into classes, we lose the exact original numbers. We only know how many numbers fall into a certain category.
+
+### The Modal Class
+Instead of finding a single mode, we find the **modal class**—the group with the highest frequency.
+
+### Estimating the Mean
+Because we don't know the exact values in each group, we use the **midpoint** ($x$) of each class as a representative value. 
+
+We then multiply each midpoint by its frequency ($f$) to get an estimated total for that row, sum these totals, and divide by the total frequency.
+
+$$
+\text{Estimated Mean} = \frac{\sum fx}{\sum f}
+$$
+
+**Example:** The heights of 40 plants are recorded.
+
+| Height, $h$ (cm) | Frequency ($f$) | Midpoint ($x$) | $f \times x$ |
+| :--- | :--- | :--- | :--- |
+| $0 < h \le 10$ | 8 | 5 | $8 \times 5 = 40$ |
+| $10 < h \le 20$ | 20 | 15 | $20 \times 15 = 300$ |
+| $20 < h \le 30$ | 12 | 25 | $12 \times 25 = 300$ |
+| **Totals:** | **$\sum f = 40$** | | **$\sum fx = 640$** |
+
+$$
+\text{Estimated Mean} = \frac{640}{40} = 16\text{ cm}
+$$
+
+<SteveTip title="The 'Estimate' Trick Question">
+Examiners love asking: *"Explain why your answer is only an estimate."*
+**Perfect Answer:** "Because the exact values within each class interval are unknown, so we must assume they are evenly distributed around the midpoint."
+</SteveTip>
+
+<Aside type="caution" title="Common Misconception">
+When dividing to find the mean of a grouped table, always divide by the **Total Frequency** ($\sum f$). A very common mistake is dividing by the number of rows in the table!
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Individual Data">
+    The ages of 9 children in a club are: $12, 10, 15, 11, 10, 13, 14, 10, 16$.
+    
+    Calculate:
+    1. The mode
+    2. The median
+    3. The mean
+    4. The range
+    5. The interquartile range (IQR)
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+      1. **Sort the data:** $10, 10, 10, 11, 12, 13, 14, 15, 16$
+      2. **Mode:** $10$ (appears three times).
+      3. **Median:** The middle value of the 9 numbers is the 5th number. Median = $12$.
+      4. **Mean:** Sum $= 10+10+10+11+12+13+14+15+16 = 111$. 
+         Mean $= 111 \div 9 = 12.33$ (to 2 d.p.).
+      5. **Range:** Max - Min $= 16 - 10 = 6$.
+      6. **IQR:** Lower half is $10, 10, 10, 11$ -> $Q_1 = 10$. 
+         Upper half is $13, 14, 15, 16$ -> $Q_3 = 14.5$. 
+         IQR $= 14.5 - 10 = 4.5$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Calculating mean, median, mode, range and IQR from a raw list of data" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Grouped Data (Extended)">
+    The table shows the time, $t$ minutes, taken by 50 students to travel to school.
+
+    | Time ($t$ mins) | Frequency |
+    | :--- | :--- |
+    | $0 < t \le 10$ | $7$ |
+    | $10 < t \le 20$ | $18$ |
+    | $20 < t \le 30$ | $15$ |
+    | $30 < t \le 40$ | $10$ |
+
+    1. Write down the modal class.
+    2. Calculate an estimate for the mean time taken.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+      1. **Modal class:** This is the group with the highest frequency. The highest frequency is $18$. Therefore, the modal class is **$10 < t \le 20$**.
+      2. **Estimated Mean:** Find midpoints ($x$) and multiply by frequencies ($f$).
+         * $0 < t \le 10$: $x = 5$, $fx = 7 \times 5 = 35$
+         * $10 < t \le 20$: $x = 15$, $fx = 18 \times 15 = 270$
+         * $20 < t \le 30$: $x = 25$, $fx = 15 \times 25 = 375$
+         * $30 < t \le 40$: $x = 35$, $fx = 10 \times 35 = 350$
+      3. Total frequency ($\sum f$) = $50$.
+      4. Total $fx$ ($\sum fx$) = $35 + 270 + 375 + 350 = 1030$.
+      5. Estimated Mean = $1030 \div 50 = \mathbf{20.6}$ minutes.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Estimating the mean and identifying the modal class from grouped frequency tables" difficulty="IGCSE Extended" client:load />
