@@ -1,0 +1,393 @@
+---
+title: 10.6 Statistical Charts and Diagrams
+description: Learn how to draw and interpret bar charts, pie charts, pictograms, stem-and-leaf diagrams, and simple frequency distributions for IGCSE 0607.
+---
+
+Once data has been collected, it needs to be presented in a way that is easy to understand at a glance. Examiners will test your ability to both **draw** these charts accurately and **interpret** them to find averages or compare different sets of data.
+
+<Aside type="note" title="Types of Categorical & Discrete Data Charts">
+* **Bar Charts:** Compare quantities using bar height. Includes dual and composite variations.
+* **Pie Charts:** Show proportions of a whole using angles.
+* **Pictograms:** Represent data using symbols or icons.
+* **Stem-and-Leaf Diagrams:** Order and display exact raw data while showing its shape.
+</Aside>
+
+---
+
+## 1. Simple Frequency Distributions
+
+Before drawing any chart, data is usually organised into a **frequency distribution**. For simple discrete data, this is often done using a tally chart to count occurrences, which are then summed into a frequency column.
+
+| Number of Siblings | Tally | Frequency |
+| :--- | :--- | :--- |
+| 0 | |||| | 4 |
+| 1 | |||| ||| | 8 |
+| 2 | ||| | 3 |
+
+This frequency table is the blueprint for everything that follows.
+
+---
+
+## 2. Bar Charts
+
+A standard bar chart uses rectangular bars to represent frequencies. For discrete or categorical data, there **must be gaps** between the bars.
+
+<Aside type="tip" title="Bar Chart Rules">
+1. All bars must be the **same width**.
+2. The **gaps** between the bars must be equal.
+3. The vertical axis (Frequency) must have a uniform scale and start from zero.
+4. Always label both axes!
+</Aside>
+
+### Dual (Side-by-Side) and Composite (Stacked) Bar Charts
+When comparing two different groups (e.g., Boys and Girls), we use more advanced bar charts.
+* **Dual Bar Chart:** Places the bars for each category side-by-side. Excellent for directly comparing groups.
+* **Composite (Stacked) Bar Chart:** Stacks the bars on top of each other. Excellent for showing the *total* frequency while still showing the breakdown.
+
+<div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', margin: '2rem 0', flexWrap: 'wrap' }}>
+  {/* Dual Bar Chart */}
+  <div style={{ textAlign: 'center' }}>
+    <h4 style={{ marginBottom: '1rem', color: '#1e293b' }}>Dual Bar Chart</h4>
+    <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+      {/* Grid */}
+      <line x1="40" y1="50" x2="280" y2="50" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="40" y1="100" x2="280" y2="100" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="40" y1="150" x2="280" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      {/* Axes */}
+      <path d="M 40 20 L 40 200 L 280 200" fill="none" stroke="#334155" stroke-width="2" />
+      
+      {/* Category A */}
+      <rect x="60" y="100" width="20" height="100" fill="#3b82f6" stroke="#1e40af" stroke-width="1" />
+      <rect x="80" y="140" width="20" height="60" fill="#f43f5e" stroke="#9f1239" stroke-width="1" />
+      
+      {/* Category B */}
+      <rect x="140" y="60" width="20" height="140" fill="#3b82f6" stroke="#1e40af" stroke-width="1" />
+      <rect x="160" y="100" width="20" height="100" fill="#f43f5e" stroke="#9f1239" stroke-width="1" />
+
+      {/* Category C */}
+      <rect x="220" y="150" width="20" height="50" fill="#3b82f6" stroke="#1e40af" stroke-width="1" />
+      <rect x="240" y="120" width="20" height="80" fill="#f43f5e" stroke="#9f1239" stroke-width="1" />
+
+      {/* Key */}
+      <rect x="50" y="220" width="10" height="10" fill="#3b82f6" />
+      <text x="65" y="230" font-size="10" fill="#475569" font-family="sans-serif">Boys</text>
+      <rect x="110" y="220" width="10" height="10" fill="#f43f5e" />
+      <text x="125" y="230" font-size="10" fill="#475569" font-family="sans-serif">Girls</text>
+    </svg>
+  </div>
+
+  {/* Composite Bar Chart */}
+  <div style={{ textAlign: 'center' }}>
+    <h4 style={{ marginBottom: '1rem', color: '#1e293b' }}>Composite (Stacked) Chart</h4>
+    <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+      {/* Grid */}
+      <line x1="40" y1="50" x2="280" y2="50" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="40" y1="100" x2="280" y2="100" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="40" y1="150" x2="280" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      {/* Axes */}
+      <path d="M 40 20 L 40 200 L 280 200" fill="none" stroke="#334155" stroke-width="2" />
+      
+      {/* Category A (Total 160: Blue 100, Red 60) -> Scaled to chart */}
+      <rect x="70" y="100" width="30" height="100" fill="#3b82f6" stroke="#1e40af" stroke-width="1" />
+      <rect x="70" y="40" width="30" height="60" fill="#f43f5e" stroke="#9f1239" stroke-width="1" />
+      
+      {/* Category B */}
+      <rect x="140" y="60" width="30" height="140" fill="#3b82f6" stroke="#1e40af" stroke-width="1" />
+      <rect x="140" y="20" width="30" height="40" fill="#f43f5e" stroke="#9f1239" stroke-width="1" />
+
+      {/* Category C */}
+      <rect x="210" y="150" width="30" height="50" fill="#3b82f6" stroke="#1e40af" stroke-width="1" />
+      <rect x="210" y="70" width="30" height="80" fill="#f43f5e" stroke="#9f1239" stroke-width="1" />
+    </svg>
+  </div>
+</div>
+
+---
+
+## 3. Pie Charts
+
+A pie chart uses sectors of a circle to show the relative sizes of data. The whole circle represents the total frequency ($360^\circ$).
+
+### Calculating Angles
+To draw a pie chart, you must convert frequencies into angles.
+
+<Aside type="tip" title="The Angle Formula">
+
+$$
+\text{Angle} = \frac{\text{Frequency}}{\text{Total Frequency}} \times 360^\circ
+$$
+
+</Aside>
+
+**Example:**
+A shop sells 60 ice creams: 30 Vanilla, 20 Chocolate, and 10 Strawberry.
+* Total Frequency = 60
+* Vanilla Angle = $\frac{30}{60} \times 360^\circ = 180^\circ$
+* Chocolate Angle = $\frac{20}{60} \times 360^\circ = 120^\circ$
+* Strawberry Angle = $\frac{10}{60} \times 360^\circ = 60^\circ$
+
+*(Always check that your angles add up to exactly $360^\circ$!)*
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 300 300" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Vanilla 180 deg (top half) */}
+    <path d="M 150 150 L 50 150 A 100 100 0 0 1 250 150 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
+    {/* Chocolate 120 deg (bottom right-ish) */}
+    <path d="M 150 150 L 250 150 A 100 100 0 0 1 100 236 Z" fill="#78350f" stroke="#451a03" stroke-width="2" />
+    {/* Strawberry 60 deg (bottom left-ish) */}
+    <path d="M 150 150 L 100 236 A 100 100 0 0 1 50 150 Z" fill="#fca5a5" stroke="#b91c1c" stroke-width="2" />
+    
+    {/* Labels */}
+    <text x="150" y="100" font-size="14" font-weight="bold" fill="#854d0e" text-anchor="middle" font-family="sans-serif">Vanilla (180°)</text>
+    <text x="200" y="200" font-size="12" font-weight="bold" fill="#fcd34d" text-anchor="middle" font-family="sans-serif">Choc (120°)</text>
+    <text x="90" y="190" font-size="12" font-weight="bold" fill="#7f1d1d" text-anchor="middle" font-family="sans-serif">Straw (60°)</text>
+  </svg>
+</div>
+
+<Aside type="caution" title="Common Misconception">
+A pie chart does **not** show the actual frequencies, only the proportions. If you are given a pie chart and asked "How many people chose Chocolate?", you **cannot** answer it unless you are given the Total Frequency in the question!
+</Aside>
+
+---
+
+## 4. Pictograms
+
+A pictogram uses pictures or symbols to represent frequencies. In modern data presentation, it adds a fun visual flair while still retaining mathematical precision.
+
+For example, a student tracked how many times their teacher, Mr. Cheung, was called alternative names by the class over a term. The student used a heart symbol to represent the counts.
+
+<SteveTip title="The Golden Rule of Pictograms">
+You **MUST** include a key! Without a key telling the examiner what one symbol represents (e.g., "1 heart = 4 times"), the entire diagram is meaningless.
+</SteveTip>
+
+If a full symbol represents 4 units, then half a symbol represents 2 units, and a quarter of a symbol represents 1 unit. You can show fractions of a symbol to represent precise data.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 230" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+    <defs>
+      {/* Quarter clip (Top-left quadrant) */}
+      <clipPath id="c1"><rect x="0" y="0" width="10" height="10" /></clipPath>
+      {/* Half clip (Left half) */}
+      <clipPath id="c2"><rect x="0" y="0" width="10" height="20" /></clipPath>
+      {/* Three-quarter clip (Everything except bottom-right) */}
+      <clipPath id="c3"><path d="M 0 0 L 20 0 L 20 10 L 10 10 L 10 20 L 0 20 Z" /></clipPath>
+      {/* Base Heart Path */}
+      <path id="heart" d="M 10 18 C 10 18 2 12 2 6 A 4 4 0 0 1 10 4 A 4 4 0 0 1 18 6 C 18 12 10 18 10 18 Z" />
+    </defs>
+
+    {/* Title */}
+    <text x="250" y="25" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle">Alternative Names Used for Mr. Cheung</text>
+
+    {/* Key */}
+    <rect x="340" y="50" width="140" height="30" fill="white" stroke="#94a3b8" stroke-width="1" rx="4" />
+    <g transform="translate(350, 55)">
+      <use href="#heart" fill="#ec4899" stroke="#be185d" stroke-width="1" />
+    </g>
+    <text x="380" y="70" font-size="12" fill="#334155">Key: = 4 times</text>
+
+    {/* Mr. Li (13 -> 3 full, 1 quarter) */}
+    <text x="140" y="75" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="end">Mr. Li</text>
+    <g transform="translate(150, 60)"><use href="#heart" fill="#ec4899" stroke="#be185d" stroke-width="1" /></g>
+    <g transform="translate(180, 60)"><use href="#heart" fill="#ec4899" stroke="#be185d" stroke-width="1" /></g>
+    <g transform="translate(210, 60)"><use href="#heart" fill="#ec4899" stroke="#be185d" stroke-width="1" /></g>
+    <g transform="translate(240, 60)">
+      <use href="#heart" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+      <use href="#heart" fill="#ec4899" stroke="#be185d" stroke-width="1" clip-path="url(#c1)" />
+    </g>
+    <text x="270" y="75" font-size="12" fill="#64748b" font-style="italic">(13)</text>
+
+    {/* Monkey (10 -> 2 full, 1 half) */}
+    <text x="140" y="115" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="end">Monkey</text>
+    <g transform="translate(150, 100)"><use href="#heart" fill="#ec4899" stroke="#be185d" stroke-width="1" /></g>
+    <g transform="translate(180, 100)"><use href="#heart" fill="#ec4899" stroke="#be185d" stroke-width="1" /></g>
+    <g transform="translate(210, 100)">
+      <use href="#heart" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+      <use href="#heart" fill="#ec4899" stroke="#be185d" stroke-width="1" clip-path="url(#c2)" />
+    </g>
+    <text x="240" y="115" font-size="12" fill="#64748b" font-style="italic">(10)</text>
+
+    {/* Eternal Oblivion (7 -> 1 full, 3 quarters) */}
+    <text x="140" y="155" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="end">Eternal Oblivion</text>
+    <g transform="translate(150, 140)"><use href="#heart" fill="#ec4899" stroke="#be185d" stroke-width="1" /></g>
+    <g transform="translate(180, 140)">
+      <use href="#heart" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+      <use href="#heart" fill="#ec4899" stroke="#be185d" stroke-width="1" clip-path="url(#c3)" />
+    </g>
+    <text x="210" y="155" font-size="12" fill="#64748b" font-style="italic">(7)</text>
+
+    {/* Transformers (2 -> 1 half) */}
+    <text x="140" y="195" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="end">Transformers</text>
+    <g transform="translate(150, 180)">
+      <use href="#heart" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+      <use href="#heart" fill="#ec4899" stroke="#be185d" stroke-width="1" clip-path="url(#c2)" />
+    </g>
+    <text x="180" y="195" font-size="12" fill="#64748b" font-style="italic">(2)</text>
+  </svg>
+</div>
+
+---
+
+## 5. Stem-and-Leaf Diagrams
+
+A stem-and-leaf diagram is a brilliant way to group data while keeping every single exact original value visible. 
+
+**Data:** $12, 14, 18, 21, 23, 23, 27, 30, 32, 45$
+
+The "stem" is usually the tens digit, and the "leaf" is the units digit. 
+* Remember: The leaves **must** be ordered from smallest to largest!
+* You **must** include a key.
+
+| Stem | Leaf |
+| :--- | :--- |
+| **1** | $2 \ \ \ 4 \ \ \ 8$ |
+| **2** | $1 \ \ \ 3 \ \ \ 3 \ \ \ 7$ |
+| **3** | $0 \ \ \ 2$ |
+| **4** | $5$ |
+
+**Key:** $1 | 2$ represents $12$
+
+### Finding Averages from a Stem-and-Leaf
+Because the data is perfectly ordered, it is very easy to find the median and quartiles directly from the diagram.
+
+<Steps>
+  1. **Count the leaves** to find total frequency ($n = 10$).
+  2. **Find the median:** The middle of 10 values is between the 5th and 6th value.
+     * Counting through the leaves: 12, 14, 18, 21, **23, 23**...
+     * The 5th value is 23, the 6th is 23. The median is $23$.
+  3. **Mode:** The most common leaf in a single row. The row for '2' has two '3's. Mode = $23$.
+</Steps>
+
+<Aside type="caution" title="Common Misconception">
+When asked for the mode, students often just write down the leaf. If the most common leaf is '3' in the '2' row, the mode is **23**, not just 3!
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Pie Chart Angles">
+    A survey of 120 people asked for their favourite season.
+    * Spring: 30
+    * Summer: 45
+    * Autumn: 15
+    * Winter: 30
+
+    Calculate the sector angle for Summer.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+      1. Verify the total frequency: $30 + 45 + 15 + 30 = 120$.
+      2. Use the angle formula: 
+         
+         $$
+         \text{Angle} = \frac{\text{Frequency}}{\text{Total}} \times 360^\circ
+         $$
+         
+      3. Calculate for Summer:
+         
+         $$
+         \text{Angle} = \frac{45}{120} \times 360^\circ
+         $$
+         
+      4. Simplify: $\frac{45}{120} = \frac{3}{8}$. 
+         $\frac{3}{8} \times 360 = 135^\circ$.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Calculating pie chart sector angles from frequency data" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q2: Working Backwards with Pie Charts">
+    In a pie chart showing the favourite sports of a school, the sector for Football has an angle of $144^\circ$. 
+    If 80 students chose Football, calculate the total number of students in the school.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+      1. Set up the formula algebraically:
+         
+         $$
+         \frac{80}{\text{Total}} \times 360 = 144
+         $$
+         
+      2. Rearrange to make Total the subject. Divide both sides by 360:
+         
+         $$
+         \frac{80}{\text{Total}} = \frac{144}{360}
+         $$
+         
+      3. Simplify the fraction: $\frac{144}{360} = 0.4$.
+         
+         $$
+         \frac{80}{\text{Total}} = 0.4
+         $$
+         
+      4. Multiply by Total and divide by 0.4:
+         
+         $$
+         \text{Total} = \frac{80}{0.4} = 200 \ \text{students}
+         $$
+         
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Using pie chart angles to find total frequencies by setting up algebraic equations" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q3: Interpreting a Stem-and-Leaf">
+    A stem-and-leaf diagram shows the marks of 15 students in a test.
+    
+    | Stem | Leaf |
+    | :--- | :--- |
+    | **2** | $0 \ \ 5 \ \ 8$ |
+    | **3** | $1 \ \ 2 \ \ 2 \ \ 4 \ \ 9$ |
+    | **4** | $0 \ \ 3 \ \ 5 \ \ 5 \ \ 5$ |
+    | **5** | $1 \ \ 4$ |
+    
+    Key: $2 | 0$ represents 20 marks.
+
+    Find:
+    a) The range of the marks
+    b) The mode
+    c) The median
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+      1. **Range:** Maximum mark - Minimum mark. 
+         Max = $54$, Min = $20$.
+         Range = $54 - 20 = 34$.
+      2. **Mode:** Look for the most repeated leaf in a single row. In the '4' row, the leaf '5' appears three times.
+         Mode = $45$.
+      3. **Median:** With 15 students, the middle position is $\frac{15 + 1}{2} = 8$th value.
+         Count 8 leaves from the top:
+         Row 2: 20 (1), 25 (2), 28 (3)
+         Row 3: 31 (4), 32 (5), 32 (6), 34 (7), **39 (8)**.
+         The 8th value is $39$. Median = $39$.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Extracting range, mode, median, and quartiles from an ordered stem-and-leaf diagram" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q4: Interpreting Composite Bar Charts">
+    A composite bar chart shows the ticket sales for a cinema over the weekend. 
+    The Friday bar reaches a total height of 200. The bottom section of the Friday bar (Adults) reaches up to 120. The top section is for Children.
+    
+    Calculate the number of Child tickets sold on Friday.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+      1. Understand the stacked nature of the chart. The top of the bar shows the **Total** tickets.
+      2. Total tickets = 200.
+      3. The bottom section represents Adult tickets directly. Adults = 120.
+      4. The remaining height represents the Child tickets.
+         
+         $$
+         200 - 120 = 80
+         $$
+         
+      5. 80 Child tickets were sold.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Interpreting heights and segments of composite and dual bar charts" difficulty="IGCSE Extended" client:load />

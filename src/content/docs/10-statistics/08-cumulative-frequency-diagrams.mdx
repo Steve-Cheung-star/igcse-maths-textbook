@@ -1,0 +1,538 @@
+---
+title: 10.8 Cumulative Frequency Diagrams
+description: Learn how to draw cumulative frequency tables and curves, and use them to estimate the median, quartiles, percentiles, and interquartile range for IGCSE 0607.
+---
+
+When dealing with grouped continuous data, a **cumulative frequency diagram** (sometimes called an ogive) is an incredibly powerful visual tool. It plots the running total of frequencies against the data values, allowing us to estimate averages and the spread of the data.
+
+---
+
+## 1. Cumulative Frequency Tables and Diagrams
+
+To draw a cumulative frequency diagram, you first need to convert a standard frequency table into a cumulative frequency table by keeping a running total.
+
+### Example: Creating the Table
+The table below shows the time taken ($t$ minutes) by 80 students to complete a puzzle.
+
+| Time ($t$ mins) | Frequency | Cumulative Frequency (Running Total) |
+| :--- | :--- | :--- |
+| $0 < t \le 10$ | 4 | **4** |
+| $10 < t \le 20$ | 12 | 4 + 12 = **16** |
+| $20 < t \le 30$ | 28 | 16 + 28 = **44** |
+| $30 < t \le 40$ | 22 | 44 + 22 = **66** |
+| $40 < t \le 50$ | 10 | 66 + 10 = **76** |
+| $50 < t \le 60$ | 4 | 76 + 4 = **80** |
+
+<SteveTip title="The Golden Rule of Plotting">
+When plotting your points, you **must** plot the cumulative frequency against the **upper class boundary** of the interval. 
+For example, the first point is plotted at $(10, 4)$, the second at $(20, 16)$, and so on. **Never** plot against the midpoint!
+</SteveTip>
+
+### Drawing the Diagram
+
+Just like with scatter diagrams, the exam board has strict rules for drawing these:
+1. Plot the points using small, clear **crosses ($\times$)**.
+2. Join the points with a **smooth curve**. Do *not* use a ruler to connect the points with straight lines!
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 450 350" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+    <defs>
+      <pattern id="smallGrid_cf" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="20">
+        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+      </pattern>
+      <pattern id="majorGrid_cf" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+        <rect width="50" height="50" fill="url(#smallGrid_cf)" />
+        <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+      </pattern>
+    </defs>
+
+    {/* Grid Area: 300px width (0 to 60 mins), 250px height (0 to 100 CF) */}
+    {/* X-axis: 50px = 10 mins. Y-axis: 50px = 20 CF */}
+    <rect x="50" y="20" width="300" height="250" fill="url(#majorGrid_cf)" stroke="#94a3b8" stroke-width="1.5" />
+
+    {/* Axes Labels */}
+    <text x="200" y="320" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Time Taken (minutes)</text>
+    <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Frequency</text>
+
+    {/* X Axis Ticks & Text */}
+    <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
+    <text x="100" y="290" font-size="10" fill="#475569" text-anchor="middle">10</text>
+    <text x="150" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
+    <text x="200" y="290" font-size="10" fill="#475569" text-anchor="middle">30</text>
+    <text x="250" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
+    <text x="300" y="290" font-size="10" fill="#475569" text-anchor="middle">50</text>
+    <text x="350" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
+
+    {/* Y Axis Ticks & Text */}
+    <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
+    <text x="40" y="224" font-size="10" fill="#475569" text-anchor="end">20</text>
+    <text x="40" y="174" font-size="10" fill="#475569" text-anchor="end">40</text>
+    <text x="40" y="124" font-size="10" fill="#475569" text-anchor="end">60</text>
+    <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">80</text>
+    <text x="40" y="24" font-size="10" fill="#475569" text-anchor="end">100</text>
+
+    {/* Perfectly Smooth Cubic Bezier Path (Aligned Tangents) */}
+    <path d="M 50 270 C 70 270, 80 268, 100 260 C 120 252, 130 250, 150 230 C 170 210, 180 185, 200 160 C 220 135, 230 121, 250 105 C 270 89, 280 87, 300 80 C 320 73, 330 70, 350 70" fill="none" stroke="#2563eb" stroke-width="2.5" />
+
+    {/* Plotted Points (Crosses) */}
+    <path d="M 46 266 L 54 274 M 46 274 L 54 266" stroke="#1e40af" stroke-width="2" />
+    <path d="M 96 256 L 104 264 M 96 264 L 104 256" stroke="#1e40af" stroke-width="2" />
+    <path d="M 146 226 L 154 234 M 146 234 L 154 226" stroke="#1e40af" stroke-width="2" />
+    <path d="M 196 156 L 204 164 M 196 164 L 204 156" stroke="#1e40af" stroke-width="2" />
+    <path d="M 246 101 L 254 109 M 246 109 L 254 101" stroke="#1e40af" stroke-width="2" />
+    <path d="M 296 76 L 304 84 M 296 84 L 304 76" stroke="#1e40af" stroke-width="2" />
+    <path d="M 346 66 L 354 74 M 346 74 L 354 66" stroke="#1e40af" stroke-width="2" />
+  </svg>
+</div>
+
+---
+
+## 2. Estimating the Median, Quartiles, and IQR
+
+Once your curve is drawn, you can use it to estimate key statistical values. To do this, you read **across** from the cumulative frequency (y-axis) to your curve, and then **down** to the data value (x-axis).
+
+* **Total Frequency ($n$):** The maximum y-value of your curve (in our example, $n = 80$).
+* **Median ($Q_2$):** The value at $50\%$ of the total frequency. Read across from $n \div 2$.
+* **Lower Quartile ($Q_1$):** The value at $25\%$ of the total frequency. Read across from $n \div 4$.
+* **Upper Quartile ($Q_3$):** The value at $75\%$ of the total frequency. Read across from $3n \div 4$.
+* **Interquartile Range (IQR):** The difference between the Upper and Lower Quartiles.
+    $$
+    \text{IQR} = Q_3 - Q_1
+    $$
+
+<Aside type="note" title="What about Percentiles?">
+A percentile simply tells you the value below which a given percentage of data falls. For example, to find the **90th percentile** for our 80 students, calculate $90\%$ of $80$ ($0.9 \times 80 = 72$). Read across from $72$ on the y-axis, and down to the x-axis.
+</Aside>
+
+### Example: Reading the Curve
+
+Let's use our graph of the 80 students to find the Median and IQR.
+
+<Steps>
+  1. **Median:** Half of 80 is 40. Read across from 40 on the y-axis, hit the curve, and go down. The median is roughly **28 minutes**.
+  2. **Lower Quartile ($Q_1$):** A quarter of 80 is 20. Read across from 20 on the y-axis and down. $Q_1$ is roughly **21.5 minutes**.
+  3. **Upper Quartile ($Q_3$):** Three-quarters of 80 is 60. Read across from 60 on the y-axis and down. $Q_3$ is roughly **37.5 minutes**.
+  4. **IQR:** Subtract $Q_1$ from $Q_3$.
+     $$
+     \text{IQR} = 37.5 - 21.5 = 16 \text{ minutes}
+     $$
+</Steps>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 450 350" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+    <defs>
+      <pattern id="majorGrid_reading" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+        <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#e2e8f0" stroke-width="1.5" />
+      </pattern>
+    </defs>
+
+    <rect x="50" y="20" width="300" height="250" fill="url(#majorGrid_reading)" stroke="#94a3b8" stroke-width="1.5" />
+
+    {/* Axes Labels */}
+    <text x="200" y="320" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Time Taken (minutes)</text>
+    <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Frequency</text>
+
+    {/* X Axis Ticks & Text */}
+    <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
+    <text x="100" y="290" font-size="10" fill="#475569" text-anchor="middle">10</text>
+    <text x="150" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
+    <text x="200" y="290" font-size="10" fill="#475569" text-anchor="middle">30</text>
+    <text x="250" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
+    <text x="300" y="290" font-size="10" fill="#475569" text-anchor="middle">50</text>
+    <text x="350" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
+
+    {/* Y Axis Ticks & Text */}
+    <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
+    <text x="40" y="224" font-size="10" fill="#475569" text-anchor="end">20</text>
+    <text x="40" y="174" font-size="10" fill="#475569" text-anchor="end">40</text>
+    <text x="40" y="124" font-size="10" fill="#475569" text-anchor="end">60</text>
+    <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">80</text>
+    <text x="40" y="24" font-size="10" fill="#475569" text-anchor="end">100</text>
+
+    {/* Smooth Curve */}
+    <path d="M 50 270 C 70 270, 80 268, 100 260 C 120 252, 130 250, 150 230 C 170 210, 180 185, 200 160 C 220 135, 230 121, 250 105 C 270 89, 280 87, 300 80 C 320 73, 330 70, 350 70" fill="none" stroke="#2563eb" stroke-width="2.5" />
+
+    {/* Median Lines */}
+    <path d="M 50 170 L 190 170 L 190 270" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="5 5" />
+    <text x="54" y="166" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="start">40</text>
+    <text x="198" y="260" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="start" transform="rotate(-90 198 260)">Median (28)</text>
+
+    {/* Lower Quartile Lines */}
+    <path d="M 50 220 L 158 220 L 158 270" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="5 5" />
+    <text x="54" y="216" font-size="10" font-weight="bold" fill="#10b981" text-anchor="start">20</text>
+    <text x="166" y="260" font-size="12" font-weight="bold" fill="#10b981" text-anchor="start" transform="rotate(-90 166 260)">LQ (21.5)</text>
+
+    {/* Upper Quartile Lines */}
+    <path d="M 50 120 L 237 120 L 237 270" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5" />
+    <text x="54" y="116" font-size="10" font-weight="bold" fill="#f59e0b" text-anchor="start">60</text>
+    <text x="245" y="260" font-size="12" font-weight="bold" fill="#f59e0b" text-anchor="start" transform="rotate(-90 245 260)">UQ (37.5)</text>
+  </svg>
+</div>
+
+---
+
+## 3. Estimating Probability
+
+Because the y-axis gives us a running total of the data, we can also use cumulative frequency curves to estimate basic probabilities. 
+
+If you are asked to find the probability of a value being **less than** a certain amount, you simply read the cumulative frequency at that point and divide by the total number of items. 
+
+If you need the probability of a value being **more than** a certain amount, remember that the graph reads from the bottom up! You need to subtract the cumulative frequency reading from the total frequency first.
+
+### Example: Calculating Probability
+Using our puzzle times graph, **what is the probability that a randomly selected student took more than 45 minutes to complete the puzzle?**
+
+<Steps>
+  1. Find 45 minutes on the x-axis.
+  2. Read a straight line up to the curve, and across to the y-axis. At 45 minutes, the cumulative frequency is roughly **72**.
+  3. This means 72 students took *less* than 45 minutes.
+  4. To find the number who took *more* than 45 minutes, subtract from the total (80): 
+     $80 - 72 = 8 \text{ students}$
+  5. Write it as a probability: 
+     $P(>45 \text{ mins}) = \frac{8}{80} = \frac{1}{10}$ (or 10%)
+</Steps>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Missing Table Cells">
+    A teacher records the distances ($d$ km) students travel to school. Some entries in her frequency and cumulative frequency tables are missing.
+    
+    | Distance ($d$ km) | Frequency | Cumulative Frequency |
+    | :--- | :--- | :--- |
+    | $0 < d \le 10$ | $5$ | $5$ |
+    | $10 < d \le 20$ | $a$ | $17$ |
+    | $20 < d \le 30$ | $15$ | $b$ |
+    | $30 < d \le 40$ | $c$ | $50$ |
+    | $40 < d \le 50$ | $10$ | $d$ |
+    
+    Work backwards to find the values of $a, b, c$, and $d$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+      1. **Find $a$:** The CF jumps from 5 to 17. The difference is the frequency for that class. 
+         $a = 17 - 5 = \mathbf{12}$.
+      2. **Find $b$:** The previous CF is 17. Add the next frequency (15). 
+         $b = 17 + 15 = \mathbf{32}$.
+      3. **Find $c$:** The CF jumps from 32 to 50. 
+         $c = 50 - 32 = \mathbf{18}$.
+      4. **Find $d$:** The previous CF is 50. Add the final frequency (10). 
+         $d = 50 + 10 = \mathbf{60}$.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Completing missing values in frequency and cumulative frequency tables by working backwards" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q2: Drawing a Curve">
+    The table shows the mass ($m$ grams) of 60 apples.
+    
+    | Mass ($m$ g) | Cumulative Frequency |
+    | :--- | :--- |
+    | $m \le 20$ | $4$ |
+    | $m \le 40$ | $14$ |
+    | $m \le 60$ | $34$ |
+    | $m \le 80$ | $52$ |
+    | $m \le 100$ | $60$ |
+    
+    Plot this data on the empty grid below and draw a smooth cumulative frequency curve.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 450 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q2grid_s" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q2grid_m" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="50" fill="url(#q2grid_s)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+        <rect x="50" y="20" width="300" height="250" fill="url(#q2grid_m)" stroke="#94a3b8" stroke-width="1.5" />
+        <path d="M 50 20 L 50 270 L 350 270" fill="none" stroke="#334155" stroke-width="2" />
+        <text x="200" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Mass (grams)</text>
+        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Freq.</text>
+        {/* X Axis */}
+        <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
+        <text x="110" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
+        <text x="170" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
+        <text x="230" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
+        <text x="290" y="290" font-size="10" fill="#475569" text-anchor="middle">80</text>
+        <text x="350" y="290" font-size="10" fill="#475569" text-anchor="middle">100</text>
+        {/* Y Axis */}
+        <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
+        <text x="40" y="234" font-size="10" fill="#475569" text-anchor="end">10</text>
+        <text x="40" y="194" font-size="10" fill="#475569" text-anchor="end">20</text>
+        <text x="40" y="154" font-size="10" fill="#475569" text-anchor="end">30</text>
+        <text x="40" y="114" font-size="10" fill="#475569" text-anchor="end">40</text>
+        <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">50</text>
+        <text x="40" y="34" font-size="10" fill="#475569" text-anchor="end">60</text>
+      </svg>
+    </div>
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+      1. Remember to plot against the **upper bound** of each mass interval.
+      2. Plot small crosses at: $(20, 4)$, $(40, 14)$, $(60, 34)$, $(80, 52)$, and $(100, 60)$. Also plot $(0,0)$.
+      3. Draw a smooth curve passing through the crosses.
+    </Steps>
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 450 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q2grid_s2" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q2grid_m2" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="50" fill="url(#q2grid_s2)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+        <rect x="50" y="20" width="300" height="250" fill="url(#q2grid_m2)" stroke="#94a3b8" stroke-width="1.5" />
+        <path d="M 50 20 L 50 270 L 350 270" fill="none" stroke="#334155" stroke-width="2" />
+        <text x="200" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Mass (grams)</text>
+        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Freq.</text>
+        <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
+        <text x="110" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
+        <text x="170" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
+        <text x="230" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
+        <text x="290" y="290" font-size="10" fill="#475569" text-anchor="middle">80</text>
+        <text x="350" y="290" font-size="10" fill="#475569" text-anchor="middle">100</text>
+        <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
+        <text x="40" y="234" font-size="10" fill="#475569" text-anchor="end">10</text>
+        <text x="40" y="194" font-size="10" fill="#475569" text-anchor="end">20</text>
+        <text x="40" y="154" font-size="10" fill="#475569" text-anchor="end">30</text>
+        <text x="40" y="114" font-size="10" fill="#475569" text-anchor="end">40</text>
+        <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">50</text>
+        <text x="40" y="34" font-size="10" fill="#475569" text-anchor="end">60</text>
+
+        {/* Perfectly Smoothed Cubic Bezier Curve */}
+        <path d="M 50 270 C 70 270, 90 262, 110 254 C 130 246, 150 226, 170 214 C 190 202, 210 166, 230 134 C 250 102, 270 74, 290 62 C 310 50, 330 30, 350 30" fill="none" stroke="#2563eb" stroke-width="2.5" />
+        
+        {/* Crosses */}
+        <path d="M 46 266 L 54 274 M 46 274 L 54 266" stroke="#1e40af" stroke-width="2" />
+        <path d="M 106 250 L 114 258 M 106 258 L 114 250" stroke="#1e40af" stroke-width="2" />
+        <path d="M 166 210 L 174 218 M 166 218 L 174 210" stroke="#1e40af" stroke-width="2" />
+        <path d="M 226 130 L 234 138 M 226 138 L 234 130" stroke="#1e40af" stroke-width="2" />
+        <path d="M 286 58 L 294 66 M 286 66 L 294 58" stroke="#1e40af" stroke-width="2" />
+        <path d="M 346 26 L 354 34 M 346 34 L 354 26" stroke="#1e40af" stroke-width="2" />
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Plotting and drawing a smooth cumulative frequency curve from a table" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q3: Adding to an Incomplete Curve">
+    A botanist measures the heights of 100 plants. She has drawn the cumulative frequency curve for the first 60 plants (up to 40 cm). 
+    
+    The remaining data is given below:
+    | Height ($h$ cm) | Frequency |
+    | :--- | :--- |
+    | $40 < h \le 50$ | $25$ |
+    | $50 < h \le 60$ | $15$ |
+
+    Work out the missing cumulative frequencies and plot the rest of the curve.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 450 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q3grid" width="50" height="25" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="25" fill="none" stroke="#e2e8f0" stroke-width="1" />
+          </pattern>
+        </defs>
+        <rect x="50" y="20" width="300" height="250" fill="url(#q3grid)" stroke="#94a3b8" stroke-width="1.5" />
+        <path d="M 50 20 L 50 270 L 350 270" fill="none" stroke="#334155" stroke-width="2" />
+        <text x="200" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Height (cm)</text>
+        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Freq.</text>
+        
+        {/* X Axis */}
+        <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
+        <text x="100" y="290" font-size="10" fill="#475569" text-anchor="middle">10</text>
+        <text x="150" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
+        <text x="200" y="290" font-size="10" fill="#475569" text-anchor="middle">30</text>
+        <text x="250" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
+        <text x="300" y="290" font-size="10" fill="#475569" text-anchor="middle">50</text>
+        <text x="350" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
+        
+        {/* Y Axis */}
+        <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
+        <text x="40" y="224" font-size="10" fill="#475569" text-anchor="end">20</text>
+        <text x="40" y="174" font-size="10" fill="#475569" text-anchor="end">40</text>
+        <text x="40" y="124" font-size="10" fill="#475569" text-anchor="end">60</text>
+        <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">80</text>
+        <text x="40" y="24" font-size="10" fill="#475569" text-anchor="end">100</text>
+
+        {/* Smoothed Incomplete Curve */}
+        <path d="M 50 270 C 70 270, 85 262.5, 100 257.5 C 115 252.5, 135 242.5, 150 232.5 C 165 222.5, 185 200, 200 182.5 C 215 165, 235 140, 250 120" fill="none" stroke="#2563eb" stroke-width="2.5" />
+        
+        {/* Crosses */}
+        <path d="M 46 266 L 54 274 M 46 274 L 54 266" stroke="#1e40af" stroke-width="2" />
+        <path d="M 96 253.5 L 104 261.5 M 96 261.5 L 104 253.5" stroke="#1e40af" stroke-width="2" />
+        <path d="M 146 228.5 L 154 236.5 M 146 236.5 L 154 228.5" stroke="#1e40af" stroke-width="2" />
+        <path d="M 196 178.5 L 204 186.5 M 196 186.5 L 204 178.5" stroke="#1e40af" stroke-width="2" />
+        <path d="M 246 116 L 254 124 M 246 124 L 254 116" stroke="#1e40af" stroke-width="2" />
+      </svg>
+    </div>
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+      1. The current curve ends at a cumulative frequency of $60$ (at height $40$cm).
+      2. Add the next frequency ($25$) to find the CF for height $50$cm: $60 + 25 = \mathbf{85}$. Plot $(50, 85)$.
+      3. Add the final frequency ($15$) to find the CF for height $60$cm: $85 + 15 = \mathbf{100}$. Plot $(60, 100)$.
+      4. Extend the smooth curve through these new points.
+    </Steps>
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 450 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q3grid_2" width="50" height="25" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="25" fill="none" stroke="#e2e8f0" stroke-width="1" />
+          </pattern>
+        </defs>
+        <rect x="50" y="20" width="300" height="250" fill="url(#q3grid_2)" stroke="#94a3b8" stroke-width="1.5" />
+        <path d="M 50 20 L 50 270 L 350 270" fill="none" stroke="#334155" stroke-width="2" />
+        <text x="200" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Height (cm)</text>
+        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Freq.</text>
+        
+        <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
+        <text x="100" y="290" font-size="10" fill="#475569" text-anchor="middle">10</text>
+        <text x="150" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
+        <text x="200" y="290" font-size="10" fill="#475569" text-anchor="middle">30</text>
+        <text x="250" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
+        <text x="300" y="290" font-size="10" fill="#475569" text-anchor="middle">50</text>
+        <text x="350" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
+        
+        <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
+        <text x="40" y="224" font-size="10" fill="#475569" text-anchor="end">20</text>
+        <text x="40" y="174" font-size="10" fill="#475569" text-anchor="end">40</text>
+        <text x="40" y="124" font-size="10" fill="#475569" text-anchor="end">60</text>
+        <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">80</text>
+        <text x="40" y="24" font-size="10" fill="#475569" text-anchor="end">100</text>
+
+        {/* Smoothed Full Curve */}
+        <path d="M 50 270 C 70 270, 85 262.5, 100 257.5 C 115 252.5, 135 242.5, 150 232.5 C 165 222.5, 185 200, 200 182.5 C 215 165, 235 140, 250 120 C 265 100, 285 75, 300 57.5 C 315 40, 335 20, 350 20" fill="none" stroke="#2563eb" stroke-width="2.5" />
+        
+        {/* Original Crosses */}
+        <path d="M 46 266 L 54 274 M 46 274 L 54 266" stroke="#1e40af" stroke-width="2" />
+        <path d="M 96 253.5 L 104 261.5 M 96 261.5 L 104 253.5" stroke="#1e40af" stroke-width="2" />
+        <path d="M 146 228.5 L 154 236.5 M 146 236.5 L 154 228.5" stroke="#1e40af" stroke-width="2" />
+        <path d="M 196 178.5 L 204 186.5 M 196 186.5 L 204 178.5" stroke="#1e40af" stroke-width="2" />
+        <path d="M 246 116 L 254 124 M 246 124 L 254 116" stroke="#1e40af" stroke-width="2" />
+        
+        {/* New Added Crosses (Red) */}
+        <path d="M 296 53.5 L 304 61.5 M 296 61.5 L 304 53.5" stroke="#ef4444" stroke-width="2" />
+        <path d="M 346 16 L 354 24 M 346 24 L 354 16" stroke="#ef4444" stroke-width="2" />
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Completing a cumulative frequency graph by adding calculated points" difficulty="IGCSE Extended" client:load />
+
+### Test Results Graph (For Questions 4, 5, and 6)
+The graph below shows the marks scored out of 80 by 120 students in a final exam. Use this graph to answer the remaining practice questions.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 450 350" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+    <defs>
+      <pattern id="q4grid_s" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="30">
+        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+      </pattern>
+      <pattern id="q4grid_m" width="40" height="40" patternUnits="userSpaceOnUse" x="50" y="30">
+        <rect width="40" height="40" fill="url(#q4grid_s)" />
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+      </pattern>
+    </defs>
+
+    {/* Grid Area: x=50 to 370 (320px = 80 marks). y=30 to 270 (240px = 120 CF). */}
+    <rect x="50" y="30" width="320" height="240" fill="url(#q4grid_m)" stroke="#94a3b8" stroke-width="1.5" />
+    <path d="M 50 30 L 50 270 L 370 270" fill="none" stroke="#334155" stroke-width="2" />
+    
+    <text x="210" y="315" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Marks Scored</text>
+    <text x="15" y="150" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 150)">Cumulative Frequency</text>
+
+    {/* X Axis */}
+    <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
+    <text x="90" y="290" font-size="10" fill="#475569" text-anchor="middle">10</text>
+    <text x="130" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
+    <text x="170" y="290" font-size="10" fill="#475569" text-anchor="middle">30</text>
+    <text x="210" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
+    <text x="250" y="290" font-size="10" fill="#475569" text-anchor="middle">50</text>
+    <text x="290" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
+    <text x="330" y="290" font-size="10" fill="#475569" text-anchor="middle">70</text>
+    <text x="370" y="290" font-size="10" fill="#475569" text-anchor="middle">80</text>
+
+    {/* Y Axis (1 unit = 2px) */}
+    <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
+    <text x="40" y="234" font-size="10" fill="#475569" text-anchor="end">20</text>
+    <text x="40" y="194" font-size="10" fill="#475569" text-anchor="end">40</text>
+    <text x="40" y="154" font-size="10" fill="#475569" text-anchor="end">60</text>
+    <text x="40" y="114" font-size="10" fill="#475569" text-anchor="end">80</text>
+    <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">100</text>
+    <text x="40" y="34" font-size="10" fill="#475569" text-anchor="end">120</text>
+
+    {/* Smoothed Cubic Bezier Curve */}
+    <path d="M 50 270 C 80 270, 115 255, 130 250 C 145 245, 155 230, 170 220 C 185 210, 195 190, 210 170 C 225 150, 235 130, 250 110 C 265 90, 275 75, 290 60 C 305 45, 315 47.5, 330 40 C 345 32.5, 355 30, 370 30" fill="none" stroke="#2563eb" stroke-width="2.5" />
+    
+    {/* Points (Optional, but good for clarity) */}
+    <path d="M 126 246 L 134 254 M 126 254 L 134 246" stroke="#1e40af" stroke-width="2" />
+    <path d="M 166 216 L 174 224 M 166 224 L 174 216" stroke="#1e40af" stroke-width="2" />
+    <path d="M 206 166 L 214 174 M 206 174 L 214 166" stroke="#1e40af" stroke-width="2" />
+    <path d="M 246 106 L 254 114 M 246 114 L 254 106" stroke="#1e40af" stroke-width="2" />
+    <path d="M 286 56 L 294 64 M 286 64 L 294 56" stroke="#1e40af" stroke-width="2" />
+    <path d="M 326 36 L 334 44 M 326 44 L 334 36" stroke="#1e40af" stroke-width="2" />
+    <path d="M 366 26 L 374 34 M 366 34 L 374 26" stroke="#1e40af" stroke-width="2" />
+  </svg>
+</div>
+
+<Tabs>
+  <TabItem label="📝 Q4: Extracting IQR">
+    Using the Test Results Graph above, estimate:
+    a) The median mark
+    b) The interquartile range (IQR)
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+      1. **Median:** Total frequency $n = 120$. Half is 60. Read across from 60 on the y-axis, down to the x-axis. 
+         Median $\approx \mathbf{43}$ marks.
+      2. **Lower Quartile ($Q_1$):** Quarter of 120 is 30. Read across from 30 on the y-axis. 
+         $Q_1 \approx \mathbf{32}$ marks.
+      3. **Upper Quartile ($Q_3$):** Three-quarters of 120 is 90. Read across from 90 on the y-axis.
+         $Q_3 \approx \mathbf{54}$ marks.
+      4. **IQR:** $Q_3 - Q_1 = 54 - 32 = \mathbf{22}$ marks. *(Note: Small variations in estimates like $\pm 1$ mark are accepted in exams).*
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Extracting median and quartiles to calculate IQR from a cumulative frequency curve" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q5: Percentiles">
+    Using the Test Results Graph, estimate the mark corresponding to the 90th percentile.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+      1. Find $90\%$ of the total frequency ($120$).
+         $0.90 \times 120 = 108$
+      2. Draw a line across from **108** on the y-axis to the curve, and drop down to the x-axis.
+      3. The line hits the x-axis at roughly **63 marks**. This is the 90th percentile.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Calculating and locating percentiles on a cumulative frequency graph" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q6: Finding 'k' (Top Performers)">
+    To achieve a Distinction in the exam, a student must be in the top 15 of the class. 
+    Using the Test Results Graph, estimate the minimum mark required to receive a Distinction.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+      1. The "top 15" students are the highest scorers. Since the graph totals 120, these students represent the cumulative frequency from $105$ to $120$.
+         ($120 - 15 = 105$)
+      2. The minimum mark to be in this group is found by reading the mark at a cumulative frequency of exactly **105**.
+      3. Draw a horizontal line from 105 on the y-axis to the curve, and read down to the x-axis.
+      4. The value on the x-axis is exactly **60 marks**.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Solving 'top k' and 'more than' threshold problems using a CF graph" difficulty="IGCSE Extended" client:load />
