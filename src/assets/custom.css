@@ -6,3 +6,16 @@
   background: rgba(255, 255, 255, 0.05);
   border-radius: 8px;
 }
+
+/* Make axis labels and ticks easier to read */
+.function-plot .axis text {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  fill: #64748b;
+}
+
+.function-plot .axis path, 
+.function-plot .axis line {
+  stroke: #cbd5e1;
+}
+

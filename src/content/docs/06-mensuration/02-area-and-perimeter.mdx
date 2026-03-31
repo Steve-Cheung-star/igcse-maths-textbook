@@ -1,0 +1,253 @@
+---
+title: 6.2 Area and Perimeter
+description: Calculate the perimeter and area of rectangles, triangles, parallelograms, and trapeziums for IGCSE 0607.
+---
+
+Understanding how to calculate the perimeter and area of 2D shapes is a core skill in geometry. In the IGCSE Extended exam, you will not be given the formulas for rectangles, parallelograms, or trapeziums—you must memorise them! 
+
+<Aside type="note" title="Perimeter vs. Area">
+* **Perimeter:** The total distance *around the outside* of a 2D shape. Imagine walking along the boundary. It is measured in 1D units (e.g., $\text{cm}$, $\text{m}$).
+* **Area:** The amount of flat space *inside* the shape. Imagine painting the surface. It is measured in 2D squared units (e.g., $\text{cm}^2$, $\text{m}^2$).
+</Aside>
+
+<SteveTip title="The Perpendicular Height Rule">
+For areas of triangles, parallelograms, and trapeziums, you must **always** use the perpendicular height (the height that meets the base at exactly $90^\circ$). Examiners will frequently give you the "slant height" as a trap. Do not use the slanted edge for area!
+</SteveTip>
+
+---
+
+## 1. Rectangles and Triangles
+
+These are your foundational shapes. All other area formulas are effectively derived from the rectangle.
+
+### The Rectangle
+* **Perimeter:** Add all four sides together: $2 \times \text{base} + 2 \times \text{height}$
+* **Area:**
+  $$
+  \text{Area} = \text{base} \times \text{height}
+  $$
+
+<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', margin: '2rem 0' }}>
+  {/* Rectangle */}
+  <svg viewBox="0 0 250 180" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <rect x="40" y="40" width="170" height="100" fill="#f1f5f9" stroke="#1e293b" stroke-width="3" />
+    <polygon points="40,140 40,130 50,130 50,140" fill="#e2e8f0" stroke="#ef4444" stroke-width="2" />
+    <text x="125" y="160" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">base (b)</text>
+    <text x="25" y="95" font-size="14" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif" transform="rotate(-90 25,95)">height (h)</text>
+  </svg>
+</div>
+
+### The Triangle
+Every triangle is exactly half of a rectangle (or half of a parallelogram).
+* **Perimeter:** Simply add the lengths of the three outer sides.
+* **Area:**
+  $$
+  \text{Area} = \frac{1}{2} \times \text{base} \times \text{perpendicular height}
+  $$
+
+<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', margin: '2rem 0' }}>
+  {/* Triangle */}
+  <svg viewBox="0 0 250 180" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <polygon points="30,140 220,140 100,40" fill="#f1f5f9" stroke="#1e293b" stroke-width="3" />
+    <line x1="100" y1="40" x2="100" y2="140" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <polygon points="100,140 100,130 110,130 110,140" fill="#e2e8f0" stroke="#ef4444" stroke-width="2" />
+    <text x="125" y="160" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">base (b)</text>
+    <text x="85" y="95" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="end" font-family="sans-serif">height (h)</text>
+  </svg>
+</div>
+
+---
+
+## 2. Parallelograms
+
+A parallelogram is like a rectangle that has been pushed over. If you chop off the triangular end of a parallelogram and move it to the other side, it forms a perfect rectangle. 
+
+Because of this, the area formula is exactly the same as a rectangle, provided you use the **perpendicular height**.
+
+* **Perimeter:** Add the four outer sides ($2 \times \text{base} + 2 \times \text{slant edge}$).
+* **Area:**
+  $$
+  \text{Area} = \text{base} \times \text{perpendicular height}
+  $$
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 180" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Base parallelogram */}
+    <polygon points="60,140 280,140 320,40 100,40" fill="#f1f5f9" stroke="#1e293b" stroke-width="3" />
+    
+    {/* Perpendicular height line */}
+    <line x1="100" y1="40" x2="100" y2="140" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <polygon points="100,140 100,130 110,130 110,140" fill="#e2e8f0" stroke="#ef4444" stroke-width="2" />
+    
+    {/* Labels */}
+    <text x="170" y="160" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">base (b)</text>
+    <text x="85" y="95" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="end" font-family="sans-serif">perpendicular height (h)</text>
+    <text x="315" y="100" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">slant edge</text>
+    
+    {/* Illustrating the "chop and move" concept with dotted lines */}
+    <polygon points="280,140 320,140 320,40" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+  </svg>
+</div>
+
+---
+
+## 3. Trapeziums
+
+A trapezium is a quadrilateral with exactly one pair of parallel sides. 
+To find the area, we take the **average of the two parallel sides** and multiply it by the **perpendicular height**.
+
+* **Perimeter:** Add the four outer sides together.
+* **Area:**
+  $$
+  \text{Area} = \frac{1}{2} \times (a + b) \times h
+  $$
+  *(where $a$ and $b$ are the parallel sides, and $h$ is the perpendicular height).*
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 200" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Trapezium */}
+    <polygon points="50,150 300,150 220,50 110,50" fill="#f1f5f9" stroke="#1e293b" stroke-width="3" />
+    
+    {/* Parallel arrows */}
+    <path d="M 155 45 L 165 50 L 155 55" fill="none" stroke="#1e293b" stroke-width="2" />
+    <path d="M 165 145 L 175 150 L 165 155" fill="none" stroke="#1e293b" stroke-width="2" />
+
+    {/* Perpendicular height */}
+    <line x1="110" y1="50" x2="110" y2="150" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <polygon points="110,150 110,140 120,140 120,150" fill="#e2e8f0" stroke="#ef4444" stroke-width="2" />
+
+    {/* Labels */}
+    <text x="165" y="35" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Parallel side (a)</text>
+    <text x="175" y="175" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Parallel side (b)</text>
+    <text x="100" y="105" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="end" font-family="sans-serif">height (h)</text>
+  </svg>
+</div>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: The Parallelogram Trap (Core)">
+    A parallelogram has a base of $12\text{ cm}$. Its slanted edge measures $7\text{ cm}$, and its perpendicular height is $5\text{ cm}$.
+    1. Calculate the perimeter of the parallelogram.
+    2. Calculate the area of the parallelogram.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Perimeter:** The perimeter requires the lengths of the outer boundaries. A parallelogram has two pairs of equal opposite sides (two bases of 12, two slanted edges of 7).
+       $$
+       \text{Perimeter} = 12 + 12 + 7 + 7 = 38\text{ cm}
+       $$
+    2. **Area:** The area requires the base and the *perpendicular* height. We ignore the slanted edge of 7cm for this calculation!
+       $$
+       \text{Area} = 12 \times 5 = 60\text{ cm}^2
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Calculating area and perimeter of parallelograms identifying the correct height" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Trapezium Area (Core)">
+    The parallel sides of a trapezium are $8\text{ m}$ and $14\text{ m}$. The perpendicular distance between them is $6\text{ m}$. 
+    Calculate the area of the trapezium.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. Identify the values: $a = 8$, $b = 14$, $h = 6$.
+    2. Write down the trapezium area formula:
+       $$
+       \text{Area} = \frac{1}{2} \times (a + b) \times h
+       $$
+    3. Substitute the values into the formula:
+       $$
+       \text{Area} = \frac{1}{2} \times (8 + 14) \times 6
+       $$
+    4. Calculate the brackets first (BIDMAS):
+       $$
+       \text{Area} = \frac{1}{2} \times (22) \times 6
+       $$
+    5. Complete the multiplication:
+       $$
+       \text{Area} = 11 \times 6 = 66\text{ m}^2
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Calculating the area of trapeziums given parallel sides and height" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Working Backwards (Extended)">
+    The area of a triangle is $45\text{ cm}^2$. Its perpendicular height is $9\text{ cm}$. 
+    Calculate the length of its base.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. Write down the formula for the area of a triangle:
+       $$
+       \text{Area} = \frac{1}{2} \times \text{base} \times \text{height}
+       $$
+    2. Substitute the known values into the equation:
+       $$
+       45 = \frac{1}{2} \times \text{base} \times 9
+       $$
+    3. Multiply both sides by 2 to remove the fraction:
+       $$
+       90 = \text{base} \times 9
+       $$
+    4. Divide by 9 to isolate the base:
+       $$
+       \text{base} = 90 \div 9 = 10\text{ cm}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Working backwards from the area to find missing lengths in triangles and trapeziums" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Compound Shapes (Extended)">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 200" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <polygon points="50,150 250,150 250,90 150,30 50,90" fill="#f1f5f9" stroke="#1e293b" stroke-width="3" />
+        <line x1="50" y1="90" x2="250" y2="90" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+        <line x1="150" y1="30" x2="150" y2="90" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+        
+        <text x="150" y="170" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">12 m</text>
+        <text x="30" y="125" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="end" font-family="sans-serif">8 m</text>
+        <text x="160" y="65" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">4 m</text>
+      </svg>
+    </div>
+    The diagram shows the side profile of a shed consisting of a rectangle and a triangle on top. 
+    The total width of the shed is $12\text{ m}$. The height of the rectangular section is $8\text{ m}$, and the perpendicular height of the triangular roof section is $4\text{ m}$.
+    Calculate the total area of the profile.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Split the shape:** The shape is composed of a rectangle at the bottom and a triangle at the top. We calculate their areas separately and add them together.
+    2. **Area of the Rectangle:**
+       $$
+       \text{Area}_{\text{rect}} = \text{base} \times \text{height}
+       $$
+       $$
+       \text{Area}_{\text{rect}} = 12 \times 8 = 96\text{ m}^2
+       $$
+    3. **Area of the Triangle:** The base of the triangle is the same as the width of the rectangle ($12\text{ m}$).
+       $$
+       \text{Area}_{\text{tri}} = \frac{1}{2} \times \text{base} \times \text{perpendicular height}
+       $$
+       $$
+       \text{Area}_{\text{tri}} = \frac{1}{2} \times 12 \times 4 = 24\text{ m}^2
+       $$
+    4. **Total Area:**
+       $$
+       \text{Total Area} = 96 + 24 = 120\text{ m}^2
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Calculating the area of compound shapes consisting of rectangles, triangles, and trapeziums" difficulty="IGCSE Extended" client:load />

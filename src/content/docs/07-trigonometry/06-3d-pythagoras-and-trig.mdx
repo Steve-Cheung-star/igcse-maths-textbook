@@ -1,0 +1,609 @@
+---
+title: 7.6 Pythagoras' Theorem and Trigonometry in 3D
+description: Notes and examples on carrying out calculations and solving problems in three dimensions, including calculating the angle between a line and a plane.
+---
+
+Moving from 2D to 3D can feel intimidating because the diagrams look much more complicated. However, there is only one fundamental secret you need to know for this entire topic:
+
+**Every 3D problem is just a series of 2D problems hidden inside a 3D shape.** Your main goal is to have "x-ray vision" to find the hidden right-angled triangles floating inside cuboids, pyramids, and prisms. Once you extract that flat 2D triangle, you just use standard Pythagoras and SOH CAH TOA!
+
+---
+
+## 1. 3D Pythagoras (The Shortcut)
+
+If you need to find the longest diagonal stretching across an empty room (from the bottom-front-left corner to the top-back-right corner), you are finding the **space diagonal** of a cuboid.
+
+You *could* do Pythagoras twice (once to find the diagonal across the floor, and once using that floor diagonal to go up to the ceiling), but there is a brilliant shortcut formula. 
+
+For a cuboid with length $l$, width $w$, and height $h$, the space diagonal $d$ is:
+$$
+d = \sqrt{l^2 + w^2 + h^2}
+$$
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 280" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+    {/* Back faces and hidden lines */}
+    <line x1="120" y1="180" x2="270" y2="180" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="120" y1="180" x2="70" y2="230" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="120" y1="180" x2="120" y2="80" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    
+    {/* Solid visible edges */}
+    <polygon points="70,230 220,230 220,130 70,130" fill="#f1f5f9" stroke="#1e293b" stroke-width="2" />
+    <polygon points="220,230 270,180 270,80 220,130" fill="#e2e8f0" stroke="#1e293b" stroke-width="2" />
+    <polygon points="70,130 220,130 270,80 120,80" fill="#cbd5e1" stroke="#1e293b" stroke-width="2" />
+    
+    {/* The Space Diagonal */}
+    <line x1="70" y1="230" x2="270" y2="80" stroke="#ef4444" stroke-width="3" />
+    <text x="160" y="145" font-weight="bold" fill="#ef4444" font-size="20">d</text>
+    
+    {/* Labels */}
+    <text x="145" y="250" font-weight="bold" fill="#3b82f6" font-style="italic">l</text>
+    <text x="255" y="215" font-weight="bold" fill="#10b981" font-style="italic">w</text>
+    <text x="285" y="135" font-weight="bold" fill="#f59e0b" font-style="italic">h</text>
+  </svg>
+</div>
+
+---
+
+## 2. The Angle Between a Line and a Plane
+
+This is the most heavily tested concept in 3D trigonometry. A **plane** is just a flat surface (like the floor of a room or the base of a pyramid). 
+
+To find the angle between a sloped 3D line and a flat plane, you must find the line's **"shadow"** (its mathematical name is the *projection*).
+
+
+
+**The 3-Step "Drop and Connect" Method:**
+1. Look at the top point of your sloping line. 
+2. Imagine dropping a rock straight down so it hits the plane perfectly vertically. 
+3. Draw a line from where the rock landed back to the bottom of your sloping line. This is your "shadow".
+
+The angle between a line and a plane is **always** the angle tucked between the sloping line and its flat shadow.
+
+<SteveTip>
+If you are struggling to visualize the "shadow" of a line, imagine shining a bright flashlight from the ceiling pointing straight down at the floor. The dark line cast onto the floor by your sloping 3D edge is exactly the shadow you need to draw your 2D triangle!
+</SteveTip>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+    {/* The Plane */}
+    <polygon points="40,200 280,200 360,120 120,120" fill="#e0f2fe" stroke="#3b82f6" stroke-width="2" />
+    <text x="60" y="190" fill="#3b82f6" font-weight="bold">The Plane (Floor)</text>
+
+    {/* The Triangle components */}
+    {/* Vertical Drop */}
+    <line x1="250" y1="40" x2="250" y2="160" stroke="#10b981" stroke-width="3" stroke-dasharray="6,6" />
+    <text x="260" y="100" fill="#10b981" font-weight="bold">Vertical Drop</text>
+    
+    {/* Right Angle Box */}
+    <polyline points="250,150 240,150 240,160" fill="none" stroke="#1e293b" stroke-width="2" />
+
+    {/* The Shadow */}
+    <line x1="100" y1="160" x2="250" y2="160" stroke="#f59e0b" stroke-width="3" />
+    <text x="150" y="180" fill="#f59e0b" font-weight="bold">The "Shadow"</text>
+
+    {/* The Sloping Line */}
+    <line x1="100" y1="160" x2="250" y2="40" stroke="#ef4444" stroke-width="3" />
+    <text x="120" y="90" fill="#ef4444" font-weight="bold" transform="rotate(-38 120 90)">Sloping Line</text>
+
+    {/* The Target Angle */}
+    <path d="M 140 160 A 40 40 0 0 0 131.2 135.0" fill="none" stroke="#1e293b" stroke-width="2" />
+    <text x="145" y="150" font-weight="bold" font-size="16">θ</text>
+    
+    <text x="250" y="30" font-weight="bold" text-anchor="middle">Top</text>
+    <text x="80" y="165" font-weight="bold" text-anchor="middle">Bottom</text>
+  </svg>
+</div>
+
+<Aside type="caution" title="Sloping Edge vs. Sloping Face!">
+In pyramid questions, examiners love to trick you by asking for the angle between a **sloping face** (the flat triangular side) and the base, instead of a **sloping edge**. 
+
+The method is similar, but your flashlight casts a different shadow. The vertical drop goes to the center, but the shadow connects to the **middle of the base edge**, NOT to the corner! Always read carefully to see if they want the edge or the face.
+</Aside>
+
+---
+
+## Practice Questions
+
+Practice using your "x-ray vision" to extract hidden right-angled triangles from complex 3D scenarios.
+
+<Tabs>
+  <TabItem label="📝 Question 1: Cuboid Diagnostics">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        {/* Invisible dashed lines made thicker and fully visible by removing polygon fills */}
+        <line x1="100" y1="170" x2="250" y2="170" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="100" y1="170" x2="50" y2="220" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="100" y1="170" x2="100" y2="70" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
+        
+        <polygon points="50,220 200,220 200,120 50,120" fill="none" stroke="#1e293b" stroke-width="2" />
+        <polygon points="200,220 250,170 250,70 200,120" fill="none" stroke="#1e293b" stroke-width="2" />
+        <polygon points="50,120 200,120 250,70 100,70" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        <text x="35" y="230" font-weight="bold">A</text>
+        <text x="205" y="235" font-weight="bold">B</text>
+        <text x="260" y="175" font-weight="bold">C</text>
+        <text x="85" y="175" font-weight="bold">D</text>
+        <text x="260" y="65" font-weight="bold">G</text>
+        
+        <text x="120" y="240" font-weight="bold" text-anchor="middle">8 cm</text>
+        <text x="235" y="210" font-weight="bold" text-anchor="middle">6 cm</text>
+        <text x="260" y="125" font-weight="bold" text-anchor="middle">5 cm</text>
+      </svg>
+    </div>
+
+    A cuboid $ABCDEFGH$ has a rectangular base $ABCD$. 
+    $AB = 8$ cm, $BC = 6$ cm, and the height $CG = 5$ cm. 
+    
+    **(a)** Calculate the length of the space diagonal $AG$.
+    **(b)** Calculate the angle between the diagonal $AG$ and the base $ABCD$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <line x1="100" y1="170" x2="250" y2="170" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="100" y1="170" x2="50" y2="220" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="100" y1="170" x2="100" y2="70" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
+        
+        <polygon points="50,220 200,220 200,120 50,120" fill="none" stroke="#1e293b" stroke-width="2" />
+        <polygon points="200,220 250,170 250,70 200,120" fill="none" stroke="#1e293b" stroke-width="2" />
+        <polygon points="50,120 200,120 250,70 100,70" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        <text x="35" y="230" font-weight="bold">A</text>
+        <text x="205" y="235" font-weight="bold">B</text>
+        <text x="260" y="175" font-weight="bold">C</text>
+        <text x="85" y="175" font-weight="bold">D</text>
+        <text x="260" y="65" font-weight="bold">G</text>
+        
+        <text x="120" y="240" font-weight="bold" text-anchor="middle">8 cm</text>
+        <text x="235" y="210" font-weight="bold" text-anchor="middle">6 cm</text>
+        <text x="260" y="125" font-weight="bold" text-anchor="middle">5 cm</text>
+
+        {/* Triangle ACG highlight */}
+        <polygon points="50,220 250,170 250,70" fill="#eff6ff" opacity="0.6" stroke="none" />
+        <line x1="50" y1="220" x2="250" y2="70" stroke="#ef4444" stroke-width="2" /> {/* AG */}
+        <line x1="50" y1="220" x2="250" y2="170" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,6" /> {/* AC */}
+        <line x1="250" y1="170" x2="250" y2="70" stroke="#10b981" stroke-width="2" /> {/* CG */}
+        
+        {/* Arc precisely touches AC and AG */}
+        <path d="M 90 210 A 40 40 0 0 0 85 194" fill="none" stroke="#1e293b" stroke-width="2" />
+      </svg>
+    </div>
+    
+    <Steps>
+    1. **(a) Length of AG:** Use the 3D Pythagoras shortcut.
+       $$
+       \begin{aligned}
+       d &= \sqrt{l^2 + w^2 + h^2} \\
+       AG &= \sqrt{8^2 + 6^2 + 5^2} \\
+       AG &= \sqrt{64 + 36 + 25} \\
+       AG &= \sqrt{125} \approx 11.2 \text{ cm (to 3 s.f.)}
+       \end{aligned}
+       $$
+    2. **(b) Angle between AG and base ABCD:** Look at line $AG$. The bottom is $A$, the top is $G$. Drop a vertical line from $G$ down to the base. It lands at $C$. The "shadow" on the base is $AC$. We need the angle $CAG$. We just created a 2D right-angled triangle $\Delta ACG$.
+    3. **Find the length of the shadow ($AC$):**
+       Using standard Pythagoras on the floor ($\Delta ABC$):
+       $$AC = \sqrt{8^2 + 6^2} = \sqrt{100} = 10 \text{ cm}$$
+    4. **Calculate the angle:**
+       In the upright right-angled triangle $\Delta ACG$, we know Opposite ($CG$) = 5 cm and Adjacent ($AC$) = 10 cm.
+       $$
+       \begin{aligned}
+       \tan(CAG) &= \frac{\text{Opposite}}{\text{Adjacent}} \\
+       \tan(CAG) &= \frac{5}{10} = 0.5 \\
+       CAG &= \tan^{-1}(0.5) \\
+       CAG &\approx 26.6^\circ \text{ (to 1 d.p.)}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+---
+
+<Tabs>
+  <TabItem label="📝 Question 2: The Square-Based Pyramid">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <polygon points="50,220 220,220 270,170 100,170" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="50" y1="220" x2="270" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        <line x1="220" y1="220" x2="100" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        <line x1="160" y1="50" x2="50" y2="220" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="50" x2="220" y2="220" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="50" x2="270" y2="170" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="50" x2="100" y2="170" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" />
+        
+        <text x="35" y="230" font-weight="bold">A</text>
+        <text x="225" y="235" font-weight="bold">B</text>
+        <text x="280" y="175" font-weight="bold">C</text>
+        <text x="85" y="165" font-weight="bold">D</text>
+        <text x="160" y="40" font-weight="bold" text-anchor="middle">V</text>
+        <text x="160" y="215" font-weight="bold" text-anchor="middle">M</text>
+        
+        <text x="135" y="235" font-weight="bold" text-anchor="middle">12 cm</text>
+        <text x="80" y="125" font-weight="bold" text-anchor="middle">15 cm</text>
+      </svg>
+    </div>
+
+    $VABCD$ is a right square-based pyramid. 
+    The base $ABCD$ is a square of side 12 cm. 
+    The vertex $V$ is directly above the center of the base, $M$.
+    Every sloping edge ($VA$, $VB$, $VC$, $VD$) is 15 cm long.
+    
+    **(a)** Find the vertical height of the pyramid ($VM$).
+    **(b)** Find the angle between the sloping edge $VA$ and the base $ABCD$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <polygon points="50,220 220,220 270,170 100,170" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="50" y1="220" x2="270" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        <line x1="220" y1="220" x2="100" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        <line x1="160" y1="50" x2="50" y2="220" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="50" x2="220" y2="220" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="50" x2="270" y2="170" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="50" x2="100" y2="170" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" />
+        
+        <polygon points="160,50 50,220 160,195" fill="#eff6ff" opacity="0.6" stroke="none" />
+        <line x1="160" y1="50" x2="160" y2="195" stroke="#10b981" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="50" y1="220" x2="160" y2="195" stroke="#f59e0b" stroke-width="3" />
+        <line x1="160" y1="50" x2="50" y2="220" stroke="#ef4444" stroke-width="3" />
+        
+        <text x="35" y="230" font-weight="bold">A</text>
+        <text x="225" y="235" font-weight="bold">B</text>
+        <text x="280" y="175" font-weight="bold">C</text>
+        <text x="85" y="165" font-weight="bold">D</text>
+        <text x="160" y="40" font-weight="bold" text-anchor="middle">V</text>
+        <text x="160" y="215" font-weight="bold" text-anchor="middle">M</text>
+        
+        <text x="135" y="235" font-weight="bold" text-anchor="middle">12 cm</text>
+        <text x="80" y="125" font-weight="bold" fill="#ef4444" text-anchor="middle">15 cm</text>
+        
+        {/* Arc precisely touches AM and VA */}
+        <path d="M 90 203 A 40 40 0 0 0 81.3 181.2" fill="none" stroke="#1e293b" stroke-width="2" />
+      </svg>
+    </div>
+
+    <Steps>
+    1. **Extract the 2D Triangle:** We want to work with the upright right-angled triangle $\Delta VAM$. Hypotenuse = $VA = 15$ cm. Vertical Height = $VM$. Base/Shadow = $AM$ (half of the full floor diagonal $AC$).
+    2. **Find the full floor diagonal ($AC$):**
+       The base is a $12 \times 12$ square.
+       $$AC = \sqrt{12^2 + 12^2} = \sqrt{144 + 144} = \sqrt{288} \approx 16.97 \text{ cm}$$
+    3. **Find the shadow ($AM$):**
+       $AM$ is exactly half of the full diagonal because the apex $V$ is exactly in the center.
+       $$AM = \frac{\sqrt{288}}{2} \approx 8.485 \text{ cm}$$
+    4. **(a) Find the vertical height ($VM$):**
+       Use Pythagoras on our target triangle $\Delta VAM$. We know the hypotenuse is 15.
+       $$
+       \begin{aligned}
+       VM^2 + AM^2 &= VA^2 \\
+       VM^2 + (8.485...)^2 &= 15^2 \\
+       VM^2 + 72 &= 225 \\
+       VM^2 &= 153 \\
+       VM &= \sqrt{153} \approx 12.4 \text{ cm (to 3 s.f.)}
+       \end{aligned}
+       $$
+    5. **(b) Angle between VA and the base:**
+       The angle is $\angle VAM$. We have the Adjacent ($AM \approx 8.485$) and Hypotenuse ($VA = 15$).
+       $$
+       \begin{aligned}
+       \cos(VAM) &= \frac{\text{Adjacent}}{\text{Hypotenuse}} \\
+       \cos(VAM) &= \frac{8.485...}{15} \\
+       VAM &= \cos^{-1}\left(\frac{8.485...}{15}\right) \\
+       VAM &\approx 55.6^\circ \text{ (to 1 d.p.)}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+---
+
+<Tabs>
+  <TabItem label="📝 Question 3: Square Pyramid (Working Backwards)">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <polygon points="50,220 220,220 270,170 100,170" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="50" y1="220" x2="270" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        <line x1="220" y1="220" x2="100" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        <line x1="160" y1="50" x2="50" y2="220" stroke="#ef4444" stroke-width="2" />
+        <line x1="160" y1="50" x2="220" y2="220" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="50" x2="270" y2="170" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="50" x2="100" y2="170" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" />
+        
+        <text x="35" y="230" font-weight="bold">A</text>
+        <text x="160" y="40" font-weight="bold" text-anchor="middle">V</text>
+        <text x="165" y="215" font-weight="bold" text-anchor="middle">M</text>
+        
+        <text x="135" y="240" font-weight="bold" fill="#3b82f6" text-anchor="middle">x cm</text>
+        <text x="80" y="125" font-weight="bold" fill="#ef4444" text-anchor="middle">20 cm</text>
+        {/* Removed 45 degree arc and text as requested */}
+      </svg>
+    </div>
+
+    A square-based pyramid has a sloping edge of 20 cm. 
+    The angle between a sloping edge and the square base is $45^\circ$.
+    
+    Calculate the length of one side of the square base.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <polygon points="50,220 220,220 270,170 100,170" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="50" y1="220" x2="270" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        <line x1="220" y1="220" x2="100" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        <line x1="160" y1="50" x2="50" y2="220" stroke="#ef4444" stroke-width="3" />
+        <line x1="160" y1="50" x2="220" y2="220" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="50" x2="270" y2="170" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="50" x2="100" y2="170" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" />
+        
+        <polygon points="160,50 50,220 160,195" fill="#eff6ff" opacity="0.6" stroke="none" />
+        <line x1="160" y1="50" x2="160" y2="195" stroke="#10b981" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="50" y1="220" x2="160" y2="195" stroke="#f59e0b" stroke-width="3" stroke-dasharray="6,6" />
+        
+        <text x="35" y="230" font-weight="bold">A</text>
+        <text x="160" y="40" font-weight="bold" text-anchor="middle">V</text>
+        <text x="165" y="215" font-weight="bold" text-anchor="middle">M</text>
+        
+        <text x="135" y="240" font-weight="bold" fill="#3b82f6" text-anchor="middle">x cm</text>
+        <text x="105" y="210" font-weight="bold" fill="#f59e0b" text-anchor="middle">y cm</text>
+        <text x="80" y="125" font-weight="bold" fill="#ef4444" text-anchor="middle">20 cm</text>
+        
+        {/* Arc added back here in solution for context, precisely touching arms */}
+        <path d="M 85 198 A 30 30 0 0 0 65 210" fill="none" stroke="#1e293b" stroke-width="2" />
+        <text x="90" y="215" font-size="14" font-weight="bold" text-anchor="start">45°</text>
+      </svg>
+    </div>
+    <Steps>
+    1. **Extract the 2D Triangle:** We look at the right-angled triangle formed by the sloping edge, the vertical drop to the center, and the shadow (half the floor diagonal). 
+       * Hypotenuse = 20 cm
+       * Angle at base = $45^\circ$
+       * We need to find the shadow (Adjacent). Let's call the shadow $y$.
+    2. **Find the shadow using Trigonometry:**
+       $$
+       \begin{aligned}
+       \cos(45^\circ) &= \frac{\text{Adjacent}}{\text{Hypotenuse}} \\
+       \cos(45^\circ) &= \frac{y}{20} \\
+       y &= 20 \times \cos(45^\circ) \\
+       y &= 20 \times \left(\frac{\sqrt{2}}{2}\right) = 10\sqrt{2} \approx 14.14 \text{ cm}
+       \end{aligned}
+       $$
+    3. **Find the full diagonal of the base:**
+       The shadow is exactly half the diagonal.
+       $$ \text{Full Diagonal} = 2 \times 10\sqrt{2} = 20\sqrt{2} \approx 28.28 \text{ cm} $$
+    4. **Find the side length of the square base:**
+       Let the side length of the square be $x$. The base is a square, so standard 2D Pythagoras applies:
+       $$
+       \begin{aligned}
+       x^2 + x^2 &= \text{Diagonal}^2 \\
+       2x^2 &= (20\sqrt{2})^2 \\
+       2x^2 &= 400 \times 2 \\
+       2x^2 &= 800 \\
+       x^2 &= 400 \\
+       x &= \sqrt{400} = 20 \text{ cm}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+---
+
+<Tabs>
+  <TabItem label="📝 Question 4: Triangular Prism">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <polygon points="50,200 250,200 300,130 100,130" fill="none" stroke="#1e293b" stroke-width="2" />
+        {/* Dashed lines made heavily visible with stroke-width 4 */}
+        <line x1="100" y1="130" x2="300" y2="130" stroke="#94a3b8" stroke-width="4" stroke-dasharray="8,6" />
+        <line x1="50" y1="200" x2="100" y2="130" stroke="#94a3b8" stroke-width="4" stroke-dasharray="8,6" />
+        <line x1="50" y1="200" x2="50" y2="80" stroke="#1e293b" stroke-width="2" />
+        <line x1="250" y1="200" x2="250" y2="80" stroke="#1e293b" stroke-width="2" />
+        <line x1="50" y1="80" x2="250" y2="80" stroke="#1e293b" stroke-width="2" />
+        <line x1="50" y1="80" x2="100" y2="130" stroke="#1e293b" stroke-width="2" />
+        <line x1="250" y1="80" x2="300" y2="130" stroke="#1e293b" stroke-width="2" />
+        
+        <text x="35" y="205" font-weight="bold">B</text>
+        <text x="255" y="215" font-weight="bold">A</text>
+        <text x="310" y="135" font-weight="bold">D</text>
+        <text x="35" y="75" font-weight="bold">C</text>
+        
+        <text x="140" y="220" font-weight="bold" text-anchor="middle">10 cm</text>
+        <text x="275" y="180" font-weight="bold" text-anchor="middle">15 cm</text>
+        <text x="20" y="140" font-weight="bold" text-anchor="middle">8 cm</text>
+        {/* Removed internal black lines entirely as requested */}
+      </svg>
+    </div>
+
+    A right triangular prism has a rectangular base $ABDE$ on the floor. 
+    $AB = 10$ cm and the length $AD = 15$ cm. 
+    The front face is a right-angled triangle $ABC$, where angle $ABC = 90^\circ$ and the vertical height $BC = 8$ cm.
+    
+    Calculate the angle between the diagonal $CD$ (stretching from the top-front corner to the bottom-back corner) and the rectangular base.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <polygon points="50,200 250,200 300,130 100,130" fill="none" stroke="#1e293b" stroke-width="2" />
+        {/* Thickened dashed lines */}
+        <line x1="100" y1="130" x2="300" y2="130" stroke="#94a3b8" stroke-width="4" stroke-dasharray="8,6" />
+        <line x1="50" y1="200" x2="100" y2="130" stroke="#94a3b8" stroke-width="4" stroke-dasharray="8,6" />
+        <line x1="50" y1="200" x2="50" y2="80" stroke="#1e293b" stroke-width="2" />
+        <line x1="250" y1="200" x2="250" y2="80" stroke="#1e293b" stroke-width="2" />
+        <line x1="50" y1="80" x2="250" y2="80" stroke="#1e293b" stroke-width="2" />
+        <line x1="50" y1="80" x2="100" y2="130" stroke="#1e293b" stroke-width="2" />
+        <line x1="250" y1="80" x2="300" y2="130" stroke="#1e293b" stroke-width="2" />
+        
+        <text x="35" y="205" font-weight="bold">B</text>
+        <text x="255" y="215" font-weight="bold">A</text>
+        <text x="310" y="135" font-weight="bold">D</text>
+        <text x="35" y="75" font-weight="bold">C</text>
+        
+        <text x="140" y="220" font-weight="bold" text-anchor="middle">10 cm</text>
+        <text x="275" y="180" font-weight="bold" text-anchor="middle">15 cm</text>
+        <text x="20" y="140" font-weight="bold" text-anchor="middle">8 cm</text>
+        
+        <polygon points="50,200 300,130 50,80" fill="#eff6ff" opacity="0.6" stroke="none" />
+        <line x1="50" y1="80" x2="300" y2="130" stroke="#ef4444" stroke-width="3" />
+        <line x1="50" y1="200" x2="300" y2="130" stroke="#f59e0b" stroke-width="4" stroke-dasharray="8,6" /> {/* Shadow BD */}
+        <line x1="50" y1="200" x2="50" y2="80" stroke="#10b981" stroke-width="3" />
+        
+        {/* Arc precisely touches arms BD and CD */}
+        <path d="M 270 138 A 40 40 0 0 0 263 123" fill="none" stroke="#1e293b" stroke-width="2" />
+      </svg>
+    </div>
+    <Steps>
+    1. **Identify the Triangle:** * Top point of the diagonal is $C$.
+       * Drop a vertical line to the base—it lands perfectly on $B$ (since the front face is vertical).
+       * Connect $B$ to the end of the diagonal $D$. The line $BD$ is our shadow!
+       * We are working with the vertical right-angled triangle $\Delta CBD$. We want the angle $CDB$.
+    2. **Find the length of the shadow ($BD$):**
+       The shadow stretches directly across the rectangular base $ABDE$. Use 2D Pythagoras on the floor.
+       $$
+       \begin{aligned}
+       BD &= \sqrt{AB^2 + AD^2} \\
+       BD &= \sqrt{10^2 + 15^2} \\
+       BD &= \sqrt{100 + 225} = \sqrt{325} \approx 18.03 \text{ cm}
+       \end{aligned}
+       $$
+    3. **Calculate the angle:**
+       In triangle $\Delta CBD$, the vertical Opposite side ($CB$) is 8 cm, and the Adjacent shadow ($BD$) is $\sqrt{325}$.
+       $$
+       \begin{aligned}
+       \tan(CDB) &= \frac{\text{Opposite}}{\text{Adjacent}} \\
+       \tan(CDB) &= \frac{8}{\sqrt{325}} \\
+       CDB &= \tan^{-1}\left(\frac{8}{\sqrt{325}}\right) \\
+       CDB &\approx 23.9^\circ \text{ (to 1 d.p.)}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+---
+
+<Tabs>
+  <TabItem label="📝 Question 5: Cylinder Internal Diagonal">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <ellipse cx="175" cy="200" rx="80" ry="25" fill="none" stroke="#1e293b" stroke-width="2" />
+        <ellipse cx="175" cy="50" rx="80" ry="25" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="95" y1="50" x2="95" y2="200" stroke="#1e293b" stroke-width="2" />
+        <line x1="255" y1="50" x2="255" y2="200" stroke="#1e293b" stroke-width="2" />
+        <line x1="95" y1="50" x2="255" y2="200" stroke="#ef4444" stroke-width="3" /> 
+        
+        <text x="175" y="245" font-weight="bold" text-anchor="middle">Radius = 4 cm</text>
+        <text x="60" y="130" font-weight="bold" text-anchor="middle">12 cm</text>
+      </svg>
+    </div>
+
+    A cylinder has a base radius of 4 cm and a height of 12 cm. 
+    
+    **(a)** Calculate the length of the longest straight line that can fit inside the cylinder.
+    **(b)** Calculate the angle this longest line makes with the circular base.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <ellipse cx="175" cy="200" rx="80" ry="25" fill="none" stroke="#1e293b" stroke-width="2" />
+        <ellipse cx="175" cy="50" rx="80" ry="25" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="95" y1="50" x2="95" y2="200" stroke="#1e293b" stroke-width="2" />
+        <line x1="255" y1="50" x2="255" y2="200" stroke="#1e293b" stroke-width="2" />
+        
+        <line x1="95" y1="50" x2="95" y2="200" stroke="#10b981" stroke-width="3" stroke-dasharray="4,4" />
+        <line x1="95" y1="200" x2="255" y2="200" stroke="#f59e0b" stroke-width="3" stroke-dasharray="4,4" />
+        <line x1="95" y1="50" x2="255" y2="200" stroke="#ef4444" stroke-width="3" />
+        
+        <text x="175" y="245" font-weight="bold" text-anchor="middle">Radius = 4 cm</text>
+        <text x="60" y="130" font-weight="bold" text-anchor="middle">12 cm</text>
+        
+        {/* Arc precisely touches diameter shadow and diagonal */}
+        <path d="M 220 200 A 35 35 0 0 0 216 163.5" fill="none" stroke="#1e293b" stroke-width="2" />
+      </svg>
+    </div>
+    <Steps>
+    1. **Visualize the Longest Line:** The longest line stretches from the bottom edge of the cylinder straight through the middle to the exact opposite top edge. 
+       If we shine our flashlight down from the top edge, the drop is the vertical height of the cylinder (12 cm). The "shadow" cast directly across the circular floor is the **diameter** of the base.
+    2. **(a) Length of the diagonal:**
+       The radius is 4 cm, so the full diameter (shadow) is $2 \times 4 = 8$ cm.
+       Use Pythagoras with the height and diameter:
+       $$
+       \begin{aligned}
+       \text{Diagonal}^2 &= 8^2 + 12^2 \\
+       \text{Diagonal}^2 &= 64 + 144 \\
+       \text{Diagonal}^2 &= 208 \\
+       \text{Diagonal} &= \sqrt{208} \approx 14.4 \text{ cm (to 3 s.f.)}
+       \end{aligned}
+       $$
+    3. **(b) Angle with the base:**
+       We have a right-angled triangle. Opposite (height) = 12 cm. Adjacent (diameter) = 8 cm.
+       $$
+       \begin{aligned}
+       \tan(\theta) &= \frac{12}{8} \\
+       \theta &= \tan^{-1}(1.5) \\
+       \theta &\approx 56.3^\circ \text{ (to 1 d.p.)}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+---
+
+<Tabs>
+  <TabItem label="📝 Question 6: Cone Geometry">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <ellipse cx="175" cy="200" rx="80" ry="25" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="175" y1="40" x2="95" y2="200" stroke="#1e293b" stroke-width="2" />
+        <line x1="175" y1="40" x2="255" y2="200" stroke="#ef4444" stroke-width="3" />
+        
+        <text x="215" y="225" font-weight="bold" text-anchor="middle">6 cm</text>
+        <text x="235" y="115" font-weight="bold" fill="#ef4444" text-anchor="middle">10 cm</text>
+      </svg>
+    </div>
+
+    A solid cone has a base radius of 6 cm and a slant height of 10 cm. 
+    
+    **(a)** Calculate the perpendicular vertical height of the cone.
+    **(b)** Calculate the angle the slant height makes with the flat circular base.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <ellipse cx="175" cy="200" rx="80" ry="25" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="175" y1="40" x2="95" y2="200" stroke="#1e293b" stroke-width="2" />
+        <line x1="175" y1="40" x2="255" y2="200" stroke="#ef4444" stroke-width="3" />
+        
+        <line x1="175" y1="40" x2="175" y2="200" stroke="#10b981" stroke-width="3" stroke-dasharray="4,4" />
+        <line x1="175" y1="200" x2="255" y2="200" stroke="#f59e0b" stroke-width="3" stroke-dasharray="4,4" />
+        
+        <text x="215" y="225" font-weight="bold" text-anchor="middle">6 cm</text>
+        <text x="235" y="115" font-weight="bold" fill="#ef4444" text-anchor="middle">10 cm</text>
+        
+        {/* Arc precisely touches radius and slant height */}
+        <path d="M 225 200 A 30 30 0 0 0 216.5 140" fill="none" stroke="#1e293b" stroke-width="2" />
+      </svg>
+    </div>
+    <Steps>
+    1. **(a) Vertical Height:** The vertical height, the radius (shadow), and the slant height form a perfect right-angled triangle. We need a shorter side, so we subtract using Pythagoras.
+       $$
+       \begin{aligned}
+       \text{Height}^2 + 6^2 &= 10^2 \\
+       \text{Height}^2 &= 100 - 36 \\
+       \text{Height}^2 &= 64 \\
+       \text{Height} &= \sqrt{64} = 8 \text{ cm}
+       \end{aligned}
+       $$
+    2. **(b) Angle with the base:**
+       Use the original numbers given to avoid rounding errors. We have the Adjacent (radius = 6) and the Hypotenuse (slant height = 10).
+       $$
+       \begin{aligned}
+       \cos(\theta) &= \frac{\text{Adjacent}}{\text{Hypotenuse}} \\
+       \cos(\theta) &= \frac{6}{10} = 0.6 \\
+       \theta &= \cos^{-1}(0.6) \\
+       \theta &\approx 53.1^\circ \text{ (to 1 d.p.)}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>

@@ -1,0 +1,732 @@
+---
+title: 7.1 Pythagoras' Theorem
+description: Notes and examples on using Pythagoras' theorem, including finding missing sides, Pythagorean triples, accuracy with surds, grids, and circles for IGCSE 0607.
+---
+
+Pythagoras' theorem is a fundamental rule in geometry that relates the three sides of a **right-angled triangle**. It states that the square of the longest side (the **hypotenuse**) is equal to the sum of the squares of the other two shorter sides.
+
+<SteveTip title="The Hypotenuse">
+The hypotenuse is *always* the longest side of a right-angled triangle, and it is *always* directly opposite the $90^\circ$ right angle. Identifying the hypotenuse correctly is the most important step!
+</SteveTip>
+
+The formula is universally written as:
+$$
+a^2 + b^2 = c^2
+$$
+Where $c$ is the hypotenuse, and $a$ and $b$ are the two shorter sides (legs).
+
+---
+
+## 1. Basic Pythagoras: Finding Missing Sides
+
+Before moving to complex shapes or coordinate grids, you must master the two basic mechanics: finding the hypotenuse, and working backward to find a shorter side.
+
+### Example 1a: Finding the Hypotenuse
+If you know the two shorter sides, you square them, add them together, and then square root the result to find the hypotenuse.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <polygon points="50,150 170,150 50,50" fill="#dbeafe" stroke="#2563eb" stroke-width="3" />
+    <rect x="50" y="135" width="15" height="15" fill="none" stroke="#2563eb" stroke-width="1.5" />
+    <text x="110" y="170" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">12 cm</text>
+    <text x="30" y="105" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">5 cm</text>
+    <text x="125" y="90" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="middle">c = ?</text>
+  </svg>
+</div>
+
+<Steps>
+1. **Set up the equation:** Let $a = 5$ and $b = 12$. The hypotenuse is $c$.
+   $$
+   \begin{aligned}
+   5^2 + 12^2 &= c^2
+   \end{aligned}
+   $$
+
+2. **Solve for $c$:**
+   $$
+   \begin{aligned}
+   25 + 144 &= c^2 \\
+   169 &= c^2 \\
+   c &= \sqrt{169} \\
+   &= 13 \text{ cm}
+   \end{aligned}
+   $$
+</Steps>
+
+### Example 1b: Finding a Shorter Side (A Leg)
+If you already know the hypotenuse and one shorter side, you must **subtract** the squares instead of adding them.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <polygon points="50,150 200,150 200,30" fill="#fef3c7" stroke="#d97706" stroke-width="3" />
+    <rect x="185" y="135" width="15" height="15" fill="none" stroke="#d97706" stroke-width="1.5" />
+    <text x="125" y="170" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">9 cm</text>
+    <text x="115" y="80" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">15 cm</text>
+    <text x="220" y="100" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="middle">x = ?</text>
+  </svg>
+</div>
+
+<Steps>
+1. **Set up the equation:** The hypotenuse is $c = 15$. Let $a = 9$ and the unknown side be $b = x$.
+   $$
+   \begin{aligned}
+   9^2 + x^2 &= 15^2
+   \end{aligned}
+   $$
+
+2. **Solve for $x$:**
+   $$
+   \begin{aligned}
+   81 + x^2 &= 225 \\
+   x^2 &= 225 - 81 \\
+   x^2 &= 144 \\
+   x &= \sqrt{144} \\
+   &= 12 \text{ cm}
+   \end{aligned}
+   $$
+</Steps>
+
+---
+
+## 2. Pythagorean Triples (The "Cheat Codes")
+
+A **Pythagorean triple** is a set of three whole numbers that perfectly fit Pythagoras' theorem. Memorizing the most common ones is a massive advantage for **Paper 2** (where calculators are not allowed) and **Paper 6** (where spotting number patterns is key to investigations).
+
+If you recognize two sides of a right-angled triangle from a triple, you can instantly know the third side without doing any calculations!
+
+**The Essential Triples to Memorize:**
+* **3, 4, 5**
+* **5, 12, 13**
+* **8, 15, 17**
+* **7, 24, 25**
+
+<Aside type="note" title="Multiples of Triples">
+Any multiple of a Pythagorean triple is *also* a Pythagorean triple. 
+For example, if you multiply the **3-4-5** triangle by 2, you get **6-8-10**. If you multiply it by 10, you get **30-40-50**. Notice that **Example 1b** above (9, 12, 15) is just the 3-4-5 triangle multiplied by 3!
+</Aside>
+
+---
+
+## 3. Accuracy: Surds, 3 s.f., and Shared Edges
+
+In IGCSE Mathematics, you must leave your final answers to **3 significant figures (s.f.)** unless the value is exact or the question specifies otherwise. 
+
+However, in multi-step questions with triangles that share an edge, **never round your intermediate answers**. If a side length is a long decimal, keep it in its exact **surd form** (e.g., $\sqrt{18}$) until the very final step. Rounding too early will create compounding errors that cost you accuracy marks.
+
+### Example 2: Triangles with a Shared Edge
+Calculate the exact length of $x$, and give your final answer to 3 significant figures.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 200" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Left Triangle */}
+    <polygon points="150,160 50,160 150,60" fill="#e0e7ff" stroke="#4f46e5" stroke-width="3" />
+    <rect x="135" y="145" width="15" height="15" fill="none" stroke="#4f46e5" stroke-width="1.5" />
+    
+    {/* Right Triangle */}
+    <polygon points="150,160 320,160 150,60" fill="#fce7f3" stroke="#db2777" stroke-width="3" />
+    <rect x="150" y="145" width="15" height="15" fill="none" stroke="#db2777" stroke-width="1.5" />
+
+    {/* Labels Left */}
+    <text x="100" y="180" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">3 cm</text>
+    <text x="80" y="100" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">3 cm</text>
+    
+    {/* Labels Shared */}
+    <text x="135" y="115" font-family="sans-serif" font-weight="bold" fill="#64748b" text-anchor="middle">h</text>
+    
+    {/* Labels Right */}
+    <text x="245" y="100" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">10 cm</text>
+    <text x="235" y="180" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="middle">x = ?</text>
+  </svg>
+</div>
+
+<Steps>
+1. **Find the shared edge ($h$) exactly:**
+   $$
+   \begin{aligned}
+   3^2 + 3^2 &= h^2 \\
+   9 + 9 &= h^2 \\
+   18 &= h^2 \\
+   h &= \sqrt{18} \text{ cm}
+   \end{aligned}
+   $$
+   *(Do **not** write $h = 4.24$. Keep it as $\sqrt{18}$!)*
+
+2. **Use the exact surd to find $x$:**
+   $$
+   \begin{aligned}
+   x^2 + (\sqrt{18})^2 &= 10^2 \\
+   x^2 + 18 &= 100 \\
+   x^2 &= 100 - 18 \\
+   &= 82 \\
+   x &= \sqrt{82} \\
+   &\approx 9.05538... \\
+   &\implies 9.06 \text{ cm (to 3 s.f.)}
+   \end{aligned}
+   $$
+</Steps>
+
+<Aside type="caution" title="What happens if you round too early?">
+If you had rounded $h = \sqrt{18}$ to **4.2 cm** early on, your next step would be:
+$x^2 + 4.2^2 = 100 \implies x^2 + 17.64 = 100 \implies x^2 = 82.36 \implies x = 9.075...$
+Your final answer would be **9.08 cm**, which is mathematically incorrect and will lose you the final accuracy mark! Always keep surds.
+</Aside>
+
+---
+
+## 4. Finding the Distance Between Two Points on a Grid
+
+You can use Pythagoras' theorem to find the straight-line distance between any two coordinate points on a Cartesian grid. By drawing horizontal and vertical lines from the points, you can create a right-angled triangle where the distance between the points is the hypotenuse.
+
+### Example 3: Distance on a Coordinate Grid
+Find the distance between point $A(2, 3)$ and point $B(8, 11)$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 300" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid lines (faint) */}
+    <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M 25 0 L 0 0 0 25" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+    </pattern>
+    <rect width="350" height="300" fill="url(#grid)" />
+    
+    {/* Axes */}
+    <line x1="25" y1="275" x2="325" y2="275" stroke="#94a3b8" stroke-width="2" />
+    <line x1="25" y1="275" x2="25" y2="25" stroke="#94a3b8" stroke-width="2" />
+    <text x="315" y="290" font-family="sans-serif" font-size="12" fill="#64748b">x</text>
+    <text x="10" y="35" font-family="sans-serif" font-size="12" fill="#64748b">y</text>
+
+    {/* The Triangle */}
+    <path d="M 75 200 L 225 200 L 225 50" fill="none" stroke="#ef4444" stroke-dasharray="6 4" stroke-width="2" />
+    <line x1="75" y1="200" x2="225" y2="50" stroke="#2563eb" stroke-width="3" />
+    
+    {/* Right angle square */}
+    <rect x="210" y="185" width="15" height="15" fill="none" stroke="#ef4444" stroke-width="1.5" />
+
+    {/* Points and Coordinates */}
+    <circle cx="75" cy="200" r="5" fill="#1e293b" />
+    <text x="35" y="215" font-family="sans-serif" font-weight="bold" fill="#1e293b">A(2, 3)</text>
+    
+    <circle cx="225" cy="50" r="5" fill="#1e293b" />
+    <text x="235" y="45" font-family="sans-serif" font-weight="bold" fill="#1e293b">B(8, 11)</text>
+
+    {/* Side Labels */}
+    <text x="150" y="220" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="middle">Horizontal: 8 - 2 = 6</text>
+    <text x="240" y="130" font-family="sans-serif" font-weight="bold" fill="#ef4444" transform="rotate(-90 240 130)" text-anchor="middle">Vertical: 11 - 3 = 8</text>
+    
+    <text x="135" y="115" font-family="sans-serif" font-weight="bold" fill="#2563eb" transform="rotate(-45 135 115)" text-anchor="middle">Distance (c)</text>
+  </svg>
+</div>
+
+<Steps>
+1. **Find the horizontal and vertical distances:**
+   $$
+   \begin{aligned}
+   \text{Horizontal } (a) &= 8 - 2 \\
+   &= 6 \\
+   \text{Vertical } (b) &= 11 - 3 \\
+   &= 8
+   \end{aligned}
+   $$
+
+2. **Apply Pythagoras' theorem:**
+   $$
+   \begin{aligned}
+   a^2 + b^2 &= c^2 \\
+   6^2 + 8^2 &= c^2 \\
+   36 + 64 &= c^2 \\
+   100 &= c^2 \\
+   c &= \sqrt{100} \\
+   &= 10 \text{ units}
+   \end{aligned}
+   $$
+</Steps>
+
+---
+
+## 5. Pythagoras in Circles: Chords and Distances
+
+A **chord** is a straight line segment whose endpoints lie on the circle. Pythagoras' theorem frequently appears in circle problems due to a very specific and important circle property.
+
+<Aside type="note" title="Crucial Circle Property">
+A perpendicular line drawn from the **centre** of a circle to a **chord** will always cut that chord exactly in half (bisect it). 
+
+Drawing the radius from the centre to the end of the chord forms a **right-angled triangle**, allowing you to use Pythagoras' theorem!
+</Aside>
+
+### Example 4: Finding the Length of a Chord
+A circle has a radius of **13 cm**. A chord is located at a perpendicular distance of **5 cm** from the centre of the circle. Calculate the exact length of the chord.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 300 300" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Circle */}
+    <circle cx="150" cy="150" r="120" fill="#dbeafe" stroke="#2563eb" stroke-width="3" />
+    
+    {/* Center Point */}
+    <circle cx="150" cy="150" r="4" fill="#1e293b" />
+    <text x="145" y="140" font-family="sans-serif" font-weight="bold" fill="#1e293b">O</text>
+
+    {/* Chord */}
+    <line x1="40" y1="198" x2="260" y2="198" stroke="#059669" stroke-width="3" />
+    
+    {/* Perpendicular Distance */}
+    <line x1="150" y1="150" x2="150" y2="198" stroke="#ef4444" stroke-width="2.5" />
+    
+    {/* Radius (Hypotenuse) */}
+    <line x1="150" y1="150" x2="260" y2="198" stroke="#7e22ce" stroke-width="2.5" />
+
+    {/* Right angle marker */}
+    <rect x="150" y="186" width="12" height="12" fill="none" stroke="#1e293b" stroke-width="1.5" />
+
+    {/* Points on Chord */}
+    <circle cx="40" cy="198" r="3" fill="#059669" />
+    <circle cx="260" cy="198" r="3" fill="#059669" />
+    <text x="25" y="215" font-family="sans-serif" font-weight="bold" fill="#059669">A</text>
+    <text x="265" y="215" font-family="sans-serif" font-weight="bold" fill="#059669">B</text>
+
+    {/* Labels */}
+    <text x="110" y="180" font-family="sans-serif" font-weight="bold" fill="#ef4444">5 cm</text>
+    <text x="190" y="165" font-family="sans-serif" font-weight="bold" fill="#7e22ce">13 cm</text>
+    <text x="190" y="220" font-family="sans-serif" font-weight="bold" fill="#1e293b">x</text>
+  </svg>
+</div>
+
+<Steps>
+1. **Set up the right-angled triangle:**
+   Let $x$ be half the length of the chord. 
+   The hypotenuse is the radius ($c = 13$). The shorter side is the distance from the centre ($a = 5$).
+   $$
+   \begin{aligned}
+   a^2 + x^2 &= c^2 \\
+   5^2 + x^2 &= 13^2
+   \end{aligned}
+   $$
+
+2. **Solve for half the chord ($x$):**
+   $$
+   \begin{aligned}
+   25 + x^2 &= 169 \\
+   x^2 &= 169 - 25 \\
+   &= 144 \\
+   x &= \sqrt{144} \\
+   &= 12 \text{ cm}
+   \end{aligned}
+   $$
+
+3. **Find the full chord length:**
+   Because the perpendicular bisects the chord, the full length is twice the value of $x$.
+   $$
+   \begin{aligned}
+   \text{Full Chord} &= 2 \times 12 \\
+   &= 24 \text{ cm}
+   \end{aligned}
+   $$
+</Steps>
+
+---
+
+## 6. The Converse of Pythagoras' Theorem
+
+The **converse** of Pythagoras' theorem works backwards to check if an unknown triangle has a right angle. 
+
+If you know the lengths of all three sides of a triangle, you can test if it is a right-angled triangle:
+* **If $a^2 + b^2 = c^2$**, then the triangle **IS** a right-angled triangle.
+* **If $a^2 + b^2 \neq c^2$**, then the triangle **IS NOT** a right-angled triangle.
+
+*(Always ensure $c$ is the longest side when setting up your test!)*
+
+### Example 5: Checking for a Right Angle
+A triangle has side lengths of **7 cm**, **24 cm**, and **25 cm**. Is this a right-angled triangle?
+
+<Steps>
+1. **Identify the longest side:** The longest side is **25 cm**, so this must be $c$.
+2. **Calculate the sum of the squares of the shorter sides:**
+   $$
+   \begin{aligned}
+   a^2 + b^2 &= 7^2 + 24^2 \\
+   &= 49 + 576 \\
+   &= 625
+   \end{aligned}
+   $$
+3. **Calculate the square of the longest side:**
+   $$
+   \begin{aligned}
+   c^2 &= 25^2 \\
+   &= 625
+   \end{aligned}
+   $$
+4. **Compare the results:**
+   $$
+   \begin{aligned}
+   625 &= 625
+   \end{aligned}
+   $$
+   Since $a^2 + b^2 = c^2$, this **is** a right-angled triangle.
+</Steps>
+
+---
+
+## 7. Classifying Triangles on a Grid
+
+By calculating the distances between three coordinate points, we can determine the exact side lengths of a triangle. Once we have the side lengths, we can classify the triangle based on its properties:
+* **Equilateral:** All three sides are equal.
+* **Isosceles:** Exactly two sides are equal.
+* **Scalene:** All three sides are different lengths.
+* **Right-angled:** The sides satisfy $a^2 + b^2 = c^2$.
+
+### Example 6: Classifying by Coordinates
+The points $A(2, 2)$, $B(5, 6)$, and $C(8, 2)$ form a triangle. Find the exact lengths of the three sides and classify the triangle.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid lines (faint) */}
+    <pattern id="grid2" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+    </pattern>
+    <rect width="350" height="250" fill="url(#grid2)" />
+    
+    {/* Axes */}
+    <line x1="30" y1="220" x2="320" y2="220" stroke="#94a3b8" stroke-width="2" />
+    <line x1="30" y1="220" x2="30" y2="20" stroke="#94a3b8" stroke-width="2" />
+
+    {/* The Triangle */}
+    <polygon points="90,160 180,40 270,160" fill="#dbeafe" fill-opacity="0.5" stroke="#2563eb" stroke-width="3" />
+
+    {/* Points and Coordinates */}
+    <circle cx="90" cy="160" r="5" fill="#1e293b" />
+    <text x="45" y="175" font-family="sans-serif" font-weight="bold" fill="#1e293b">A(2, 2)</text>
+    
+    <circle cx="180" cy="40" r="5" fill="#1e293b" />
+    <text x="150" y="25" font-family="sans-serif" font-weight="bold" fill="#1e293b">B(5, 6)</text>
+
+    <circle cx="270" cy="160" r="5" fill="#1e293b" />
+    <text x="280" y="175" font-family="sans-serif" font-weight="bold" fill="#1e293b">C(8, 2)</text>
+    
+    {/* Dotted lines for distance breakdown */}
+    <line x1="90" y1="160" x2="180" y2="160" stroke="#ef4444" stroke-dasharray="4 4" stroke-width="2" />
+    <line x1="180" y1="160" x2="180" y2="40" stroke="#ef4444" stroke-dasharray="4 4" stroke-width="2" />
+    <rect x="170" y="150" width="10" height="10" fill="none" stroke="#ef4444" stroke-width="1.5" />
+  </svg>
+</div>
+
+<Steps>
+1. **Find the length of $AB$ using Pythagoras:**
+   The horizontal distance is $5 - 2 = 3$. The vertical distance is $6 - 2 = 4$.
+   $$
+   \begin{aligned}
+   AB^2 &= 3^2 + 4^2 \\
+   &= 9 + 16 \\
+   &= 25 \\
+   AB &= \sqrt{25} \\
+   &= 5 \text{ units}
+   \end{aligned}
+   $$
+
+2. **Find the length of $BC$ using Pythagoras:**
+   The horizontal distance is $8 - 5 = 3$. The vertical distance is $6 - 2 = 4$.
+   $$
+   \begin{aligned}
+   BC^2 &= 3^2 + 4^2 \\
+   &= 9 + 16 \\
+   &= 25 \\
+   BC &= \sqrt{25} \\
+   &= 5 \text{ units}
+   \end{aligned}
+   $$
+
+3. **Find the length of $AC$ (Horizontal Line):**
+   Because $A$ and $C$ are on the same $y$-level, we can just subtract their $x$-coordinates.
+   $$
+   \begin{aligned}
+   AC &= 8 - 2 \\
+   &= 6 \text{ units}
+   \end{aligned}
+   $$
+
+4. **Classify the Triangle:**
+   Because two sides are equal in length ($AB = 5$ and $BC = 5$), the triangle is **Isosceles**.
+</Steps>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding the Hypotenuse (Core)">
+    A rectangular field has a length of **15 m** and a width of **8 m**. Calculate the exact length of the diagonal path across the field.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Set up the equation:** The diagonal creates a right-angled triangle where the diagonal is the hypotenuse ($c$).
+       $$
+       \begin{aligned}
+       8^2 + 15^2 &= c^2
+       \end{aligned}
+       $$
+    2. **Solve for $c$:**
+       $$
+       \begin{aligned}
+       64 + 225 &= c^2 \\
+       289 &= c^2 \\
+       c &= \sqrt{289} \\
+       &= 17 \text{ m}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Finding the hypotenuse in real-life rectangle word problems" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Finding a Leg (Core)">
+    A ladder is **5 m** long and leans against a vertical wall. The base of the ladder is **1.5 m** away from the bottom of the wall. How high up the wall does the ladder reach? Give your answer to 3 s.f.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Set up the equation:** The ladder is the hypotenuse ($c = 5$). Let the height be $h$.
+       $$
+       \begin{aligned}
+       1.5^2 + h^2 &= 5^2
+       \end{aligned}
+       $$
+    2. **Solve for $h$:**
+       $$
+       \begin{aligned}
+       2.25 + h^2 &= 25 \\
+       h^2 &= 25 - 2.25 \\
+       h^2 &= 22.75 \\
+       h &= \sqrt{22.75} \\
+       &\approx 4.769... \\
+       &\implies 4.77 \text{ m (to 3 s.f.)}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Finding a shorter side in real-life ladder word problems" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Pythagorean Triples (Extended)">
+    A right-angled triangle has a hypotenuse of **50 cm** and a leg of **40 cm**. Without using a calculator, determine the length of the third side. State the Pythagorean triple used.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **Identify the base triple:** The numbers $40$ and $50$ are multiples of $4$ and $5$.
+    2. **Apply the scale factor:**
+       This triangle is based on the **3-4-5** Pythagorean triple, multiplied by a scale factor of 10.
+    3. **State the missing side:**
+       The missing side is $3 \times 10 = \mathbf{30 \text{ cm}}$.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Identifying and scaling Pythagorean triples without a calculator" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Multi-step with Surds (Extended)">
+    Triangle A has legs of **4 cm** and **7 cm**. The hypotenuse of Triangle A forms the base of Triangle B. Triangle B is a right-angled triangle with a height of **6 cm**. Calculate the exact length of the hypotenuse of Triangle B.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Find the shared hypotenuse ($h$) of Triangle A exactly:**
+       $$
+       \begin{aligned}
+       4^2 + 7^2 &= h^2 \\
+       16 + 49 &= h^2 \\
+       65 &= h^2 \\
+       h &= \sqrt{65} \text{ cm}
+       \end{aligned}
+       $$
+    2. **Find the hypotenuse ($x$) of Triangle B using the exact surd:**
+       $$
+       \begin{aligned}
+       (\sqrt{65})^2 + 6^2 &= x^2 \\
+       65 + 36 &= x^2 \\
+       101 &= x^2 \\
+       x &= \sqrt{101} \text{ cm}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Solving multi-step shared edge triangles using surds for exact accuracy" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Distance on a Grid (Core)">
+    Calculate the exact distance between the coordinate points $P(-3, 4)$ and $Q(5, -2)$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+    1. **Calculate the horizontal and vertical distances:**
+       $$
+       \begin{aligned}
+       \text{Horizontal } (a) &= 5 - (-3) = 8 \\
+       \text{Vertical } (b) &= 4 - (-2) = 6
+       \end{aligned}
+       $$
+    2. **Apply Pythagoras' theorem:**
+       $$
+       \begin{aligned}
+       8^2 + 6^2 &= c^2 \\
+       64 + 36 &= c^2 \\
+       100 &= c^2 \\
+       c &= \sqrt{100} \\
+       &= 10 \text{ units}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Finding the exact distance between coordinate points on a Cartesian grid" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Circle Chord Length (Extended)">
+    A circle has a radius of **10 cm**. A chord is drawn at a perpendicular distance of **6 cm** from the centre. Calculate the exact length of the chord.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+    1. **Set up the triangle to find half the chord ($x$):**
+       $$
+       \begin{aligned}
+       6^2 + x^2 &= 10^2 \\
+       36 + x^2 &= 100 \\
+       x^2 &= 64 \\
+       x &= 8 \text{ cm}
+       \end{aligned}
+       $$
+    2. **Double it for the full chord length:**
+       $$
+       \begin{aligned}
+       \text{Chord} &= 8 \times 2 \\
+       &= 16 \text{ cm}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Calculating the length of a chord given the circle radius and distance to centre" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Circle Distance to Centre (Extended)">
+    A chord of length **30 cm** is drawn in a circle with a radius of **17 cm**. Calculate the perpendicular distance from the centre of the circle to the chord.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+    1. **Find the length of half the chord:**
+       $$
+       \begin{aligned}
+       \text{Half-chord} &= 30 \div 2 \\
+       &= 15 \text{ cm}
+       \end{aligned}
+       $$
+    2. **Set up the triangle to find the distance ($d$):**
+       $$
+       \begin{aligned}
+       d^2 + 15^2 &= 17^2 \\
+       d^2 + 225 &= 289 \\
+       d^2 &= 289 - 225 \\
+       d^2 &= 64 \\
+       d &= \sqrt{64} \\
+       &= 8 \text{ cm}
+       \end{aligned}
+       $$
+       *(Note the 8-15-17 Pythagorean triple!)*
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Calculating perpendicular distance from the centre of a circle to a known chord" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 8: The Converse Theorem (Core)">
+    A triangle has side lengths of **9 cm**, **40 cm**, and **41 cm**. Prove mathematically whether or not this is a right-angled triangle.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    <Steps>
+    1. **Identify the longest side as $c$:** $c = 41$. The legs are $a = 9$ and $b = 40$.
+    2. **Calculate $a^2 + b^2$:**
+       $$
+       \begin{aligned}
+       9^2 + 40^2 &= 81 + 1600 \\
+       &= 1681
+       \end{aligned}
+       $$
+    3. **Calculate $c^2$:**
+       $$
+       \begin{aligned}
+       41^2 &= 1681
+       \end{aligned}
+       $$
+    4. **Conclusion:**
+       Because $9^2 + 40^2 = 41^2$, the triangle **is** a right-angled triangle.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Using the Converse of Pythagoras' theorem to prove a triangle is right-angled" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Classifying on a Grid (Extended)">
+    The points $P(1, 1)$, $Q(4, 5)$, and $R(7, 1)$ form a triangle. Calculate the lengths of all three sides and state the specific classification of the triangle.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    <Steps>
+    1. **Length of $PQ$:**
+       Horizontal = 3, Vertical = 4.
+       $$
+       \begin{aligned}
+       PQ^2 &= 3^2 + 4^2 \\
+       PQ &= \sqrt{25} = 5 \text{ units}
+       \end{aligned}
+       $$
+    2. **Length of $QR$:**
+       Horizontal = 3, Vertical = -4.
+       $$
+       \begin{aligned}
+       QR^2 &= 3^2 + (-4)^2 \\
+       QR &= \sqrt{25} = 5 \text{ units}
+       \end{aligned}
+       $$
+    3. **Length of $PR$ (Horizontal line):**
+       $$
+       \begin{aligned}
+       PR &= 7 - 1 = 6 \text{ units}
+       \end{aligned}
+       $$
+    4. **Classification:**
+       Because $PQ = QR = 5$, two sides are equal. The triangle is an **Isosceles Triangle**.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Calculating side lengths on a grid to classify a triangle as isosceles, scalene, or right-angled" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 10: Compound Shapes (Extended)">
+    A right-angled trapezium has two parallel vertical sides of length **12 cm** and **7 cm**. The horizontal bottom edge is **12 cm** long. Calculate the exact perimeter of the trapezium.
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    <Steps>
+    1. **Create a right-angled triangle:**
+       Draw a horizontal line across from the top of the 7 cm side to the 12 cm side. This forms a rectangle at the bottom and a right-angled triangle at the top.
+    2. **Find the legs of the newly formed triangle:**
+       $$
+       \begin{aligned}
+       \text{Horizontal leg} &= 12 \text{ cm (same as bottom edge)} \\
+       \text{Vertical leg} &= 12 - 7 = 5 \text{ cm}
+       \end{aligned}
+       $$
+    3. **Find the slant edge (hypotenuse $c$):**
+       $$
+       \begin{aligned}
+       5^2 + 12^2 &= c^2 \\
+       25 + 144 &= c^2 \\
+       169 &= c^2 \\
+       c &= \sqrt{169} = 13 \text{ cm}
+       \end{aligned}
+       $$
+    4. **Calculate total perimeter:**
+       $$
+       \begin{aligned}
+       \text{Perimeter} &= 12 + 7 + 12 + 13 \\
+       &= 44 \text{ cm}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Using Pythagoras to find missing edges and calculate perimeters of compound shapes" difficulty="IGCSE Extended" client:load />

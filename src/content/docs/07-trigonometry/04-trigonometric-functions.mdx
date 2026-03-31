@@ -1,0 +1,376 @@
+---
+title: 7.4 Trigonometric Functions
+description: Notes and examples on recognizing, sketching, and interpreting the graphs of sine, cosine, and tangent, and solving trigonometric equations for 0° ⩽ x ⩽ 360°.
+---
+
+Up until now, we've looked at trigonometry inside triangles. But trigonometric functions can also be graphed on a coordinate plane. For IGCSE, you need to be able to sketch and interpret these graphs between $0^\circ$ and $360^\circ$, and use them to solve equations.
+
+<SteveTip title="Mode Check">
+Before you do *any* trigonometry in your exam, look at the top right of your TI-Nspire GDC screen. Make sure it says **DEG**. If it says **RAD** or **GRAD**, your graphs and equation answers will be completely wrong! You can usually just click on it with the touchpad to change it quickly.
+</SteveTip>
+
+---
+
+## 1. The Trigonometric Graphs ($0^\circ \leqslant x \leqslant 360^\circ$)
+
+All three main trigonometric graphs have a repeating pattern (they are **periodic**). You must memorize their general shapes, where they cross the axes, and their maximum/minimum values.
+
+### The Sine Graph: $y = \sin x$
+* **Starts at:** $(0, 0)$
+* **Maximum value:** $1$ (at $90^\circ$)
+* **Minimum value:** $-1$ (at $270^\circ$)
+* **Roots (crosses x-axis):** $0^\circ, 180^\circ, 360^\circ$
+
+<MathPlot 
+  client:load
+  width={800} 
+  height={400}
+  xDomain={[0, 400]}
+  yDomain={[-1.2, 1.2]}
+  data={[{ fn: 'sin(x * PI / 180)', color: '#3b82f6' }]} 
+/>
+
+### The Cosine Graph: $y = \cos x$
+* **Starts at:** $(0, 1)$ (It looks exactly like the sine wave, but shifted to the left by $90^\circ$)
+* **Maximum value:** $1$ (at $0^\circ$ and $360^\circ$)
+* **Minimum value:** $-1$ (at $180^\circ$)
+* **Roots (crosses x-axis):** $90^\circ, 270^\circ$
+
+<MathPlot 
+  client:load
+  width={800} 
+  height={400}
+  xDomain={[0, 400]}
+  yDomain={[-1.2, 1.2]}
+  data={[{ fn: 'cos(x * PI / 180)', color: '#ef4444' }]} 
+/>
+
+### The Tangent Graph: $y = \tan x$
+* **Starts at:** $(0, 0)$
+* **Maximum/Minimum:** None (It stretches to infinity).
+* **Roots (crosses x-axis):** $0^\circ, 180^\circ, 360^\circ$
+* **Asymptotes:** The graph never touches $x = 90^\circ$ or $x = 270^\circ$ (because $\tan(90^\circ)$ is undefined).
+
+<Aside type="danger" title="Misconception">
+We often talk about the "amplitude" (height) of sine and cosine waves. **Tangent graphs do not have an amplitude.** Because they stretch infinitely upwards and downwards, they have no maximum or minimum peak.
+</Aside>
+
+<MathPlot 
+  client:load
+  width={800} 
+  height={400}
+  xDomain={[0, 400]}
+  yDomain={[-5, 5]}
+  data={[{ fn: 'tan(x * PI / 180)', color: '#10b981' }]} 
+/>
+
+---
+
+## 2. Solving Trigonometric Equations ($0^\circ \leqslant x \leqslant 360^\circ$)
+
+When you use the inverse trig functions ($\sin^{-1}$, $\cos^{-1}$, $\tan^{-1}$) on your TI-Nspire GDC, it only gives you **one** answer. This is called the **Principal Value (PV)**. 
+
+However, because the graphs go up and down and repeat themselves, there is almost always a **second valid angle** between $0^\circ$ and $360^\circ$. You find the second angle using the symmetry of the graphs (or the CAST diagram).
+
+<Aside type="note" title="Principal Value (PV)">
+The Principal Value (PV) is simply the valid angle closest to zero. Sometimes, your TI-Nspire GDC will give you a *negative* angle as the PV. Don't panic! Just apply the symmetry rules to that negative number to find the positive angles in your required range.
+</Aside>
+
+**The Symmetry Rules for finding the second angle:**
+* **For $\sin x$:** Second angle $= 180^\circ - \text{PV}$
+* **For $\cos x$:** Second angle $= 360^\circ - \text{PV}$
+* **For $\tan x$:** Second angle $= 180^\circ + \text{PV}$
+
+### Example 1: Solving a basic Sine equation
+Solve $\sin x = 0.5$ for $0^\circ \leqslant x \leqslant 360^\circ$.
+
+<Steps>
+1. **Find the Principal Value (PV) using your TI-Nspire GDC:**
+   $$
+   \begin{aligned}
+   x &= \sin^{-1}(0.5) \\
+   x &= 30^\circ
+   \end{aligned}
+   $$
+2. **Find the second value using the Sine symmetry rule:**
+   $$
+   \begin{aligned}
+   \text{Second } x &= 180^\circ - 30^\circ \\
+   x &= 150^\circ
+   \end{aligned}
+   $$
+3. **State final answers:**
+   $x = 30^\circ$ or $150^\circ$
+</Steps>
+
+*(Visual check: If you draw a horizontal line at $y = 0.5$ on the sine graph above, you will see it crosses the blue curve twice: once at $30^\circ$ and once at $150^\circ$!)*
+
+### Example 2: Solving a rearranged Cosine equation
+Solve $2 \cos x + 1 = 0$ for $0^\circ \leqslant x \leqslant 360^\circ$.
+
+<Steps>
+1. **Rearrange the equation to isolate $\cos x$:**
+   $$
+   \begin{aligned}
+   2 \cos x &= -1 \\
+   \cos x &= -0.5
+   \end{aligned}
+   $$
+2. **Find the Principal Value (PV):**
+   $$
+   \begin{aligned}
+   x &= \cos^{-1}(-0.5) \\
+   x &= 120^\circ
+   \end{aligned}
+   $$
+3. **Find the second value using the Cosine symmetry rule:**
+   $$
+   \begin{aligned}
+   \text{Second } x &= 360^\circ - 120^\circ \\
+   x &= 240^\circ
+   \end{aligned}
+   $$
+4. **State final answers:**
+   $x = 120^\circ$ or $240^\circ$
+</Steps>
+
+---
+
+## 3. The Unit Circle and the CAST Diagram
+
+While the symmetry rules (like $180^\circ - \text{PV}$) are great to memorize, the **Unit Circle** and the **CAST diagram** explain exactly *why* those rules work and give you a foolproof visual tool for finding second angles.
+
+The Unit Circle is simply a circle with a radius of $1$, centered at the origin $(0,0)$ on a coordinate grid. We measure angles starting from the positive x-axis and rotating **anti-clockwise**.
+
+Because the radius is $1$, any point on the edge of the circle has the coordinates **$(\cos \theta, \sin \theta)$**.
+* The x-coordinate tells you the value of Cosine.
+* The y-coordinate tells you the value of Sine.
+* The slope of the line ($\frac{y}{x}$) tells you the value of Tangent.
+
+By looking at which coordinates are positive or negative in each of the four quadrants, we get the **CAST Diagram**.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 300 300" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid / Axes */}
+    <line x1="20" y1="150" x2="280" y2="150" stroke="#94a3b8" stroke-width="2" />
+    <line x1="150" y1="20" x2="150" y2="280" stroke="#94a3b8" stroke-width="2" />
+    
+    {/* Unit Circle */}
+    <circle cx="150" cy="150" r="100" fill="none" stroke="#e2e8f0" stroke-width="3" />
+    
+    {/* CAST Letters */}
+    <text x="200" y="220" font-family="sans-serif" font-weight="bold" font-size="32" fill="#ef4444" text-anchor="middle">C</text>
+    <text x="200" y="100" font-family="sans-serif" font-weight="bold" font-size="32" fill="#10b981" text-anchor="middle">A</text>
+    <text x="100" y="100" font-family="sans-serif" font-weight="bold" font-size="32" fill="#3b82f6" text-anchor="middle">S</text>
+    <text x="100" y="220" font-family="sans-serif" font-weight="bold" font-size="32" fill="#f59e0b" text-anchor="middle">T</text>
+
+    {/* Quadrant Descriptions */}
+    <text x="200" y="120" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">ALL positive</text>
+    <text x="100" y="120" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">SINE positive</text>
+    <text x="100" y="240" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">TAN positive</text>
+    <text x="200" y="240" font-family="sans-serif" font-size="10" fill="#64748b" text-anchor="middle">COS positive</text>
+
+    {/* Angles */}
+    <text x="280" y="140" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1e293b" text-anchor="end">0° / 360°</text>
+    <text x="155" y="15" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1e293b" text-anchor="start">90°</text>
+    <text x="20" y="140" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1e293b" text-anchor="start">180°</text>
+    <text x="155" y="290" font-family="sans-serif" font-weight="bold" font-size="12" fill="#1e293b" text-anchor="start">270°</text>
+    
+    {/* Rotational Arrow */}
+    <path d="M 180 150 A 30 30 0 0 0 171 129" fill="none" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)" />
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#1e293b" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+### How to use CAST:
+1. Find your Principal Value (PV) using your TI-Nspire GDC. Let's call this base angle $\theta$.
+2. Identify which quadrants your answer should be in. If the original equation was $\sin x = -0.5$ (a negative number), Sine is negative in the **T** (3rd) and **C** (4th) quadrants.
+3. Apply the quadrant formulas to your base angle:
+   * **Quadrant 1 (A):** $\theta$
+   * **Quadrant 2 (S):** $180^\circ - \theta$
+   * **Quadrant 3 (T):** $180^\circ + \theta$
+   * **Quadrant 4 (C):** $360^\circ - \theta$
+
+<Aside type="tip" title="CAST vs Symmetry">
+You do not have to use both the symmetry rules and the CAST diagram. They are two different methods to achieve the exact same result. Pick the method that makes the most sense to you and stick with it!
+</Aside>
+
+---
+
+## 4. Transformations: Amplitude and Period (Section 3.1)
+
+In the *Functions* unit, you learn how multiplying parts of an equation stretches or squishes the graph. For trigonometry, these stretches have specific names: **Amplitude** and **Period**.
+
+When a trigonometric function is written in the form $y = a \sin(bx)$ or $y = a \cos(bx)$:
+
+### 1. Amplitude ($a$)
+The amplitude is the "height" of the wave from its center line to its peak. 
+* A standard sine wave ($y = \sin x$) has an amplitude of $1$.
+* The multiplier $a$ is a **vertical stretch**.
+* **Formula:** $\text{Amplitude} = |a|$ (Always positive, even if $a$ is negative. A negative $a$ just flips the graph upside down).
+
+### 2. Period ($b$)
+The period is how many degrees it takes for the graph to complete one full cycle before it starts repeating.
+* A standard sine wave completes one cycle in $360^\circ$.
+* The multiplier $b$ is a **horizontal squash**. It tells you *how many full waves fit into $360^\circ$*.
+* **Formula:** $\text{Period} = \frac{360^\circ}{b}$
+
+### Example: Sketching $y = 3 \sin(2x)$
+* **Amplitude:** The number in front is $3$. The graph will peak at $3$ and bottom out at $-3$.
+* **Period:** The multiplier inside is $2$. Two full waves fit into $360^\circ$. The length of one single wave is $\frac{360^\circ}{2} = 180^\circ$.
+
+<MathPlot 
+  client:load
+  width={800} 
+  height={400}
+  tickStep={45}
+  xDomain={[0, 400]}
+  yDomain={[-4, 4]}
+  data={[
+    { fn: 'sin(x * PI / 180)', color: '#94a3b8', lineDash: [5, 5] },
+    { fn: '3 * sin(2 * x * PI / 180)', color: '#db2777' }
+  ]} 
+/>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Visualizing Solutions">
+    Use a graphical approach to find the number of solutions to the equation $\sin x = 0.8$ in the range $0^\circ \leqslant x \leqslant 360^\circ$. Approximate their values.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Graph the functions:** We look for where the curve $y = \sin x$ intersects the horizontal line $y = 0.8$.
+    2. **Observe intersections:**
+       <MathPlot 
+         client:load
+         width={800} 
+         height={300}
+         xDomain={[0, 400]}
+         yDomain={[-1.2, 1.2]}
+         data={[
+           { fn: 'sin(x * PI / 180)', color: '#3b82f6' },
+           { fn: '0.8', color: '#f59e0b', lineDash: [4, 4] }
+         ]} 
+       />
+    3. **Calculate exact values:** $x = \sin^{-1}(0.8) \approx 53.1^\circ$ (PV using your GDC)
+       Second $x = 180^\circ - 53.1^\circ = 126.9^\circ$
+    4. **Final Answer:** There are **2 solutions**, approximately at $53.1^\circ$ and $126.9^\circ$.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Finding the number of solutions to a trigonometric equation using graphical methods" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Negative Trig Values via CAST">
+    Solve $\cos x = -0.3$ for $0^\circ \leqslant x \leqslant 360^\circ$. Give your answers to 1 decimal place.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Find the base angle (ignore the negative sign for a moment to use CAST):**
+       $$
+       \begin{aligned}
+       \text{Base angle } \theta &= \cos^{-1}(0.3) \\
+       \theta &= 72.542...^\circ
+       \end{aligned}
+       $$
+    2. **Use CAST:** We want where Cosine is **negative**. Cosine is positive in A (1st) and C (4th). Therefore, it must be negative in **S (2nd)** and **T (3rd)**.
+    3. **Calculate the quadrant values:**
+       * **Quadrant 2 (S):** $180^\circ - 72.542...^\circ = 107.45...^\circ$
+       * **Quadrant 3 (T):** $180^\circ + 72.542...^\circ = 252.54...^\circ$
+    4. **State final answers:**
+       $x = 107.5^\circ$ or $252.5^\circ$
+    </Steps>
+
+    *Visual check: Notice how the horizontal line $y = -0.3$ intersects the cosine wave twice in the negative region!*
+    <MathPlot 
+      client:load
+      width={800} 
+      height={300}
+      xDomain={[0, 400]}
+      yDomain={[-1.2, 1.2]}
+      data={[
+        { fn: 'cos(x * PI / 180)', color: '#ef4444' },
+        { fn: '-0.3', color: '#f59e0b', lineDash: [4, 4] }
+      ]} 
+    />
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Solving trigonometric equations resulting in negative values using the CAST diagram" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Amplitude and Period">
+    State the amplitude and period of the function $y = \frac{1}{2} \cos(4x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **Identify the Amplitude ($a$):**
+       The multiplier in front of the cosine function is $\frac{1}{2}$. 
+       Therefore, the amplitude is **$0.5$**.
+    2. **Calculate the Period ($b$):**
+       The multiplier inside the bracket is $4$. This means $4$ full cycles fit into $360^\circ$.
+       $$
+       \begin{aligned}
+       \text{Period} &= \frac{360^\circ}{4} \\
+       &= 90^\circ
+       \end{aligned}
+       $$
+       The amplitude is $0.5$ and the period is $90^\circ$.
+    </Steps>
+
+    *Here is what the squished, flattened wave looks like (4 full cycles in 360°):*
+    <MathPlot 
+      client:load
+      width={800} 
+      height={300}
+      tickStep={45}
+      xDomain={[0, 400]}
+      yDomain={[-1, 1]}
+      data={[
+        { fn: '0.5 * cos(4 * x * PI / 180)', color: '#8b5cf6' }
+      ]} 
+    />
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Identifying the amplitude and period of transformed trigonometric functions" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Rearranging and Solving Tangent">
+    Solve $3 \tan x - 5 = 0$ for $0^\circ \leqslant x \leqslant 360^\circ$. Give your answers to 1 decimal place.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Rearrange to isolate $\tan x$:**
+       $$
+       \begin{aligned}
+       3 \tan x &= 5 \\
+       \tan x &= \frac{5}{3}
+       \end{aligned}
+       $$
+    2. **Find the Principal Value (PV) using your GDC:**
+       $$
+       \begin{aligned}
+       x &= \tan^{-1}\left(\frac{5}{3}\right) \\
+       x &= 59.036...^\circ
+       \end{aligned}
+       $$
+    3. **Find the second value using Tangent symmetry (or CAST):**
+       Tangent is positive, so it's in the A (1st) and T (3rd) quadrants.
+       $$
+       \begin{aligned}
+       \text{Second } x &= 180^\circ + 59.036...^\circ \\
+       x &= 239.036...^\circ
+       \end{aligned}
+       $$
+    4. **State final answers:**
+       $x = 59.0^\circ$ or $239.0^\circ$
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator topic="Solving rearranged linear trigonometric equations involving tangent" difficulty="IGCSE Extended" client:load />

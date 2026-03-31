@@ -19,6 +19,7 @@ export default defineConfig({
         // Your custom components
         './src/components/AIGenerator.jsx',
         './src/components/SteveTip.astro',
+        './src/components/MathPlot.jsx',
         // Starlight built-ins (so you don't have to import them either)
         {
           '@astrojs/starlight/components': ['Steps', 'Aside', 'Tabs', 'TabItem'],

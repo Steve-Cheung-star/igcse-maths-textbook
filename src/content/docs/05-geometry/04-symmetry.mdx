@@ -1,0 +1,197 @@
+---
+title: 5.4 Symmetry
+description: Recognise line symmetry, rotational symmetry in two dimensions, and symmetry properties of 3D solids including planes and axes of symmetry for IGCSE 0607.
+---
+
+Symmetry is a fundamental geometrical concept that describes how shapes can be mapped onto themselves through reflection or rotation. Mastering symmetry is essential for classifying polygons and understanding the properties of three-dimensional solids.
+
+---
+
+## 1. Symmetry in Two Dimensions
+
+In two-dimensional geometry, we focus on two main types of symmetry: line symmetry and rotational symmetry.
+
+### Line Symmetry
+
+A 2D shape has line symmetry (or reflectional symmetry) if it can be folded along a straight line so that both halves match exactly. The fold line is called the **line of symmetry**.
+
+<Aside type="tip" title="Regular Polygons Rule">
+  A regular polygon with $n$ sides always has exactly $n$ lines of symmetry. For example, a regular hexagon has 6 lines of symmetry.
+</Aside>
+
+### Rotational Symmetry
+
+A shape has rotational symmetry if it still looks exactly the same after a rotation of less than a full turn (360 degrees).
+
+* **Order of rotational symmetry:** The number of times a shape fits exactly onto its original outline during one complete 360-degree turn.
+* **Centre of rotation:** The fixed point around which the shape is rotated.
+
+<Steps>
+1. Place tracing paper over the shape and draw its outline.
+2. Place your pen on the centre of the shape.
+3. Rotate the tracing paper one full turn (360 degrees).
+4. Count how many times the traced outline matches the original shape underneath.
+</Steps>
+
+<SteveTip title="Order 1 is No Symmetry">
+  Every shape fits onto itself after a full 360-degree turn. If a shape ONLY fits onto itself once during a full rotation, we say it has an **order of rotational symmetry of 1**. This effectively means it has NO rotational symmetry.
+</SteveTip>
+
+### Symmetry Properties of Quadrilaterals
+
+It is crucial to memorise the symmetries of special quadrilaterals, as these define many of their geometric properties.
+
+<Aside type="note" title="Quadrilateral Symmetries">
+  * **Square:** 4 lines of symmetry; rotational symmetry order 4.
+  * **Rectangle:** 2 lines of symmetry; rotational symmetry order 2.
+  * **Rhombus:** 2 lines of symmetry (the diagonals); rotational symmetry order 2.
+  * **Kite:** 1 line of symmetry; rotational symmetry order 1.
+  * **Isosceles Trapezium:** 1 line of symmetry; rotational symmetry order 1.
+</Aside>
+
+<Aside type="caution" title="The Parallelogram Trap">
+  A common error is to draw lines of symmetry horizontally or vertically through a parallelogram. A standard parallelogram has **0 lines of symmetry**, but it does have **rotational symmetry of order 2**.
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 220" width="100%" maxWidth="550px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <rect x="50" y="50" width="140" height="100" fill="#e0f2fe" stroke="#0284c7" strokeWidth="2" />
+    <line x1="120" y1="30" x2="120" y2="170" stroke="#ef4444" strokeWidth="2" strokeDasharray="5 5" />
+    <line x1="30" y1="100" x2="210" y2="100" stroke="#ef4444" strokeWidth="2" strokeDasharray="5 5" />
+    <text x="120" y="185" fontSize="14" fill="#1e293b" text-anchor="middle" fontFamily="sans-serif">Rectangle: 2 Lines</text>
+
+    <polygon points="270,150 300,50 400,50 370,150" fill="#fef08a" stroke="#ca8a04" strokeWidth="2" />
+    <circle cx="335" cy="100" r="4" fill="#1e293b" />
+    <text x="335" y="185" fontSize="14" fill="#1e293b" text-anchor="middle" fontFamily="sans-serif">Parallelogram: Rotational Order 2</text>
+  </svg>
+</div>
+
+---
+
+## 2. Symmetry in Three Dimensions
+
+When we move from 2D to 3D, our concepts of symmetry upgrade from lines and points to planes and axes.
+
+### Planes of Symmetry
+
+A **plane of symmetry** is a flat, two-dimensional surface that cuts a solid into two identical halves that are mirror images of each other. Think of it like a perfectly straight blade slicing a cake into two symmetrical pieces.
+
+<Aside type="tip" title="Planes in a Cuboid vs Cube">
+  A standard cuboid (where all faces are distinct rectangles) has exactly 3 planes of symmetry. A perfect cube, however, has **9 planes of symmetry** (3 parallel to the faces, and 6 cutting across the diagonals).
+</Aside>
+
+Here are all 9 planes of symmetry for a perfect cube. Notice how 3 of the planes run parallel to the outer faces, while 6 slice directly through the diagonal edges.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 450 480" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <defs>
+      <g id="base-cube">
+        <line x1="0" y1="-40" x2="0" y2="0" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="3 3" />
+        <line x1="-35" y1="-20" x2="0" y2="-40" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="3 3" />
+        <line x1="35" y1="-20" x2="0" y2="-40" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="3 3" />
+        <polygon points="0,0 -35,-20 0,-40 35,-20" fill="#f8fafc" stroke="#64748b" strokeWidth="1.5" strokeLinejoin="round"/>
+        <polygon points="0,0 -35,-20 -35,20 0,40" fill="#f1f5f9" stroke="#64748b" strokeWidth="1.5" strokeLinejoin="round"/>
+        <polygon points="0,0 35,-20 35,20 0,40" fill="#e2e8f0" stroke="#64748b" strokeWidth="1.5" strokeLinejoin="round"/>
+      </g>
+    </defs>
+
+    {/* Row 1: The 3 Axial Planes */}
+    <g transform="translate(75, 80)">
+      <use href="#base-cube" />
+      <polygon points="-35,0 0,20 35,0 0,-20" fill="#ef4444" opacity="0.6" stroke="#b91c1c" strokeWidth="1" />
+      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Horizontal</text>
+    </g>
+    <g transform="translate(225, 80)">
+      <use href="#base-cube" />
+      <polygon points="-17.5,-30 17.5,-10 17.5,30 -17.5,10" fill="#3b82f6" opacity="0.6" stroke="#1d4ed8" strokeWidth="1" />
+      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Vertical (Front-Left)</text>
+    </g>
+    <g transform="translate(375, 80)">
+      <use href="#base-cube" />
+      <polygon points="17.5,-30 -17.5,-10 -17.5,30 17.5,10" fill="#10b981" opacity="0.6" stroke="#047857" strokeWidth="1" />
+      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Vertical (Front-Right)</text>
+    </g>
+
+    {/* Row 2: 3 Diagonal Planes */}
+    <g transform="translate(75, 230)">
+      <use href="#base-cube" />
+      <polygon points="-35,-20 35,-20 35,20 -35,20" fill="#8b5cf6" opacity="0.5" stroke="#6d28d9" strokeWidth="1" />
+      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Diagonal 1</text>
+    </g>
+    <g transform="translate(225, 230)">
+      <use href="#base-cube" />
+      <polygon points="-2,-40 2,-40 2,40 -2,40" fill="#f59e0b" opacity="0.7" stroke="#b45309" strokeWidth="1" />
+      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Diagonal 2 (Edge-on)</text>
+    </g>
+    <g transform="translate(375, 230)">
+      <use href="#base-cube" />
+      <polygon points="0,-40 -35,-20 0,40 35,20" fill="#ec4899" opacity="0.6" stroke="#be185d" strokeWidth="1" />
+      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Diagonal 3</text>
+    </g>
+
+    {/* Row 3: 3 Diagonal Planes */}
+    <g transform="translate(75, 380)">
+      <use href="#base-cube" />
+      <polygon points="0,-40 35,-20 0,40 -35,20" fill="#06b6d4" opacity="0.6" stroke="#0e7490" strokeWidth="1" />
+      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Diagonal 4</text>
+    </g>
+    <g transform="translate(225, 380)">
+      <use href="#base-cube" />
+      <polygon points="-35,-22 -35,-18 35,22 35,18" fill="#84cc16" opacity="0.7" stroke="#4d7c0f" strokeWidth="1" />
+      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Diagonal 5 (Edge-on)</text>
+    </g>
+    <g transform="translate(375, 380)">
+      <use href="#base-cube" />
+      <polygon points="35,-22 35,-18 -35,22 -35,18" fill="#f43f5e" opacity="0.7" stroke="#be123c" strokeWidth="1" />
+      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Diagonal 6 (Edge-on)</text>
+    </g>
+  </svg>
+</div>
+
+### Axes of Symmetry
+
+An **axis of symmetry** is a straight line passing through the centre of a 3D solid around which the solid can be rotated to map exactly onto its original position more than once during a full 360-degree turn.
+
+### Symmetries of Common Solids
+
+* **Cylinder:** Has an infinite number of vertical planes of symmetry passing through its central vertical axis, plus 1 horizontal plane of symmetry cutting it exactly in half. Its central axis has an infinite order of rotational symmetry.
+* **Cone:** Similar to a cylinder, a right circular cone has an infinite number of planes of symmetry passing through its apex and central axis. However, it does NOT have a horizontal plane of symmetry.
+* **Prism:** The symmetries of a prism depend entirely on its cross-section. An equilateral triangular prism has 4 planes of symmetry (3 cutting vertically through the rectangular faces and opposite vertices, and 1 cutting horizontally through the middle).
+* **Square-based Pyramid:** Has 4 planes of symmetry passing vertically through the apex (2 connecting opposite corners of the square base, and 2 connecting the midpoints of opposite sides of the base). The axis passing through the apex and the centre of the base has a rotational symmetry of order 4.
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: 2D Shapes (Core)">
+    State the number of lines of symmetry and the order of rotational symmetry for a regular octagon.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    A regular octagon has 8 equal sides and 8 equal angles.
+    Following the rule for regular polygons:
+    * **Lines of symmetry:** 8
+    * **Order of rotational symmetry:** 8
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 2: Plane Symmetry of Solids (Extended)">
+    A solid is formed by joining two identical square-based pyramids at their square bases. This shape is known as a regular octahedron.
+    Determine the total number of planes of symmetry for this solid.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    To find the planes of symmetry for a regular octahedron:
+    <Steps>
+    1. First, consider the horizontal plane where the two square bases meet. This gives **1 plane of symmetry**.
+    2. Next, look at the vertical planes that cut straight down through the opposite vertices. Since the cross-section is a square, there are **4 planes** here (2 parallel to the sides of the square, 2 across the diagonals of the square).
+    3. Since the octahedron is completely regular, you can re-orient the solid to stand on any pair of opposite vertices. There are 3 axes you can align it on.
+    4. By systematically rotating the shape, you'll find the octahedron shares the exact same symmetries as a cube. 
+    5. Therefore, there are **9 planes of symmetry** in total.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Finding lines of symmetry and order of rotational symmetry in 2D polygons" difficulty="IGCSE Core" client:load />
+
+<AIGenerator topic="Determining the planes and axes of symmetry for prisms, pyramids, and combined 3D solids" difficulty="IGCSE Extended" client:load />
