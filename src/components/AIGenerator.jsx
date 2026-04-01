@@ -12,6 +12,13 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
   const [error, setError] = useState(null);
   const [hasSaved, setHasSaved] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
+  
+  // NEW: Save Notification State
+  const [saveMsg, setSaveMsg] = useState('');
+  
+  // For the manual fallback box
+  const [showQuickPaste, setShowQuickPaste] = useState(false);
+  const [rawInput, setRawInput] = useState('');
 
   const statusMessages = [
     "Connecting to Math Engine...",
@@ -22,6 +29,7 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
     "Almost there..."
   ];
 
+  // 1. Loading Status Effect
   useEffect(() => {
     let interval;
     if (loading) {
@@ -34,34 +42,67 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
     return () => clearInterval(interval);
   }, [loading]);
 
+  // 2. Auto-Parsing Effect (Fallback for the manual text box)
+  useEffect(() => {
+    if (rawInput.includes("PROBLEM:") && rawInput.includes("SOLUTION:")) {
+      parseAndSave(rawInput);
+    }
+  }, [rawInput]);
+
   const saveToHistory = (problemText, solutionText) => {
     try {
       const existingHistory = JSON.parse(localStorage.getItem('igcse_ai_history') || '[]');
       const newRecord = {
         id: crypto.randomUUID(),
         date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
-        topic, 
-        difficulty, 
-        question: problemText, 
+        topic,
+        difficulty,
+        question: problemText,
         feedback: solutionText,
-        bookmarked: false 
+        bookmarked: false
       };
       localStorage.setItem('igcse_ai_history', JSON.stringify([newRecord, ...existingHistory]));
       setHasSaved(true);
-    } catch (err) { 
-      console.error("Failed to save to history:", err); 
+    } catch (err) {
+      console.error("Failed to save to history:", err);
     }
   };
 
+  // Centralized parsing logic
+  const parseAndSave = (textToParse) => {
+    const problemMatch = textToParse.match(/PROBLEM:([\s\S]*?)SOLUTION:/i);
+    const solutionMatch = textToParse.match(/SOLUTION:([\s\S]*)/i);
+
+    if (problemMatch && solutionMatch) {
+      const p = problemMatch[1].trim().replace(/^```markdown/i, '').replace(/```$/, '');
+      const s = solutionMatch[1].trim().replace(/^```markdown/i, '').replace(/```$/, '');
+
+      setProblem(p);
+      setSolution(s);
+      saveToHistory(p, s);
+
+      // Show the success notification
+      setSaveMsg('✅ Question saved to your revision!');
+      setTimeout(() => setSaveMsg(''), 3000); // Hides after 3 seconds
+
+      setShowQuickPaste(false);
+      setRawInput('');
+      setError(null);
+      return true; // Success
+    }
+    return false; // Failed to find markers
+  };
+
   const getPromptText = () => {
-    return `Act as an expert IGCSE Math teacher. Generate one unique ${difficulty} level practice problem about ${topic}. 
+    // UPDATED PROMPT: Notice rule #3 explicitly forbids LaTeX inside SVGs
+    return prompt = `Act as an expert IGCSE Math teacher. Generate one unique ${difficulty} level practice problem about ${topic}. 
 Use standard LaTeX enclosed in single $ for inline math and double $$ for block math. 
 If the question involves geometry, trigonometry, or statistics, generate a clean, responsive, inline <svg> diagram to illustrate the problem. 
 
 CRITICAL SVG SEQUENCE & RULES: 
 1. Output the opening <svg viewBox="..."> tag with generous padding.
 2. Draw all geometric shapes, lines, and paths.
-3. Write ALL <text> labels for the math variables.
+3. Write ALL <text> labels for the math variables. DO NOT use LaTeX inside the SVG. Use plain text and unicode symbols (e.g., x², θ, π).
 4. ONLY AFTER all text is written, output the closing </svg> tag. NEVER place a <text> tag after </svg>.
 5. Do not have any empty lines in between <svg viewBox> and </svg>, make sure each line in between has 2 spaces in the front. 
 
@@ -85,57 +126,61 @@ SOLUTION:
   const handleCopyPrompt = () => {
     navigator.clipboard.writeText(getPromptText());
     setIsCopied(true);
-    setTimeout(() => setIsCopied(false), 2000); 
+    window.open("https://gemini.google.com/app", "GeminiRevision");
+    setTimeout(() => setIsCopied(false), 2000);
+  };
+
+  const handleAutoPaste = async () => {
+    try {
+      const text = await navigator.clipboard.readText();
+      const success = parseAndSave(text);
+      if (!success) {
+        alert("We didn't detect 'PROBLEM:' and 'SOLUTION:' in your clipboard. Did you copy the full Gemini response?");
+        setShowQuickPaste(true); 
+      }
+    } catch (err) {
+      console.warn("Clipboard read failed (permission denied or unsupported):", err);
+      setShowQuickPaste(true);
+    }
   };
 
   const generateProblem = async (retryCount = 0) => {
     if (retryCount === 0) {
-      setLoading(true); 
-      setProblem(''); 
-      setSolution(''); 
-      setError(null); 
+      setLoading(true);
+      setProblem('');
+      setSolution('');
+      setError(null);
       setHasSaved(false);
+      setSaveMsg('');
     } else {
       setError('Network hiccup! Retrying automatically... 🔄');
     }
-    
+
     try {
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic, difficulty }),
       });
-      
+
       const data = await response.json();
       if (!response.ok) throw new Error(data.error);
-      
-      // Use regex to precisely extract only the Problem and Solution blocks, ignoring the metadata
-      const problemMatch = data.text.match(/PROBLEM:([\s\S]*?)SOLUTION:/i);
-      const solutionMatch = data.text.match(/SOLUTION:([\s\S]*)/i);
 
-      let generatedProblem = problemMatch ? problemMatch[1].trim() : 'Error: Could not find "PROBLEM:" section.';
-      let generatedSolution = solutionMatch ? solutionMatch[1].trim() : 'Solution unavailable.';
-      
-      // Clean up markdown code block ticks if the AI included them
-      generatedProblem = generatedProblem.replace(/^```markdown/i, '').replace(/```$/, '').trim();
-      generatedSolution = generatedSolution.replace(/^```markdown/i, '').replace(/```$/, '').trim();
-      
-      setProblem(generatedProblem);
-      setSolution(generatedSolution);
-      setError(null); 
-      
-      saveToHistory(generatedProblem, generatedSolution);
+      const success = parseAndSave(data.text);
+      if (!success) {
+         setError('API returned an invalid format.');
+      }
       setLoading(false);
 
-    } catch (err) { 
-      if (retryCount < 1) { 
+    } catch (err) {
+      if (retryCount < 1) {
         console.warn(`Attempt ${retryCount + 1} failed. Retrying...`);
-        await generateProblem(retryCount + 1); 
+        await generateProblem(retryCount + 1);
       } else {
-        setError('Connection timed out. Please try clicking "Practice Now" again.'); 
+        setError('Connection timed out. Please try clicking "Practice Now" again.');
         setLoading(false);
       }
-    } 
+    }
   };
 
   return (
@@ -301,17 +346,24 @@ SOLUTION:
           <div className="not-content">
             <div className="ai-button-group">
               <button className="ai-refresh-btn" onClick={() => generateProblem(0)} disabled={loading}>
-                {problem ? 'Try Another' : 'Practice Now'}
+                {problem ? 'Try Another (API)' : 'Practice Now'}
               </button>
-              
-              <button className="ai-export-btn" onClick={handleCopyPrompt} title="Copy exact prompt to paste in Gemini">
-                {isCopied ? '✓ Copied!' : '📋 Copy Prompt'}
+
+              <button
+                className="ai-export-btn"
+                onClick={handleCopyPrompt}
+              >
+                {isCopied ? '📋 Opening Gemini...' : '📋 Copy & Go →'}
               </button>
-              
-              {hasSaved && (
-                <span style={{ fontSize: '0.8rem', color: 'var(--sl-color-success-high)', fontWeight: '600', animation: 'slideIn 0.3s ease-out', marginLeft: '0.5rem' }}>
-                  ✓ Auto-saved
-                </span>
+
+              {!loading && (
+                <button
+                  className="ai-export-btn"
+                  onClick={handleAutoPaste}
+                  style={{ borderStyle: 'dashed', borderColor: 'var(--sl-color-accent-low)' }}
+                >
+                  {problem ? '📥 Paste Another' : '📥 Auto-Paste Result'}
+                </button>
               )}
             </div>
           </div>
@@ -323,7 +375,7 @@ SOLUTION:
             </div>
           )}
 
-          {!loading && !problem && (
+          {!loading && !problem && !showQuickPaste && (
             <span style={{ fontSize: '0.8rem', color: 'var(--sl-color-gray-4)' }}>
               Generate a unique exam-style question with diagrams
             </span>
@@ -333,9 +385,56 @@ SOLUTION:
         {error && (
           <div style={{ background: 'var(--sl-color-red-low)', color: 'var(--sl-color-red-high)', padding: '0.8rem', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold', marginBottom: '1rem', border: '1px solid var(--sl-color-red-high)' }}>
             {error}
-            <div style={{ fontSize: '0.75rem', fontWeight: 'normal', marginTop: '0.3rem', color: 'var(--sl-color-gray-2)' }}>
-              Hint: You can click "Copy Prompt" and paste it directly into Google Gemini!
-            </div>
+          </div>
+        )}
+
+        {/* The Success Notification Banner */}
+        {saveMsg && (
+          <div style={{ 
+            padding: '0.6rem 1rem', 
+            background: 'rgba(16, 185, 129, 0.1)', 
+            color: '#10b981', 
+            borderRadius: '6px', 
+            fontSize: '0.85rem', 
+            fontWeight: '600',
+            marginBottom: '1rem', 
+            border: '1px solid rgba(16, 185, 129, 0.3)', 
+            animation: 'slideIn 0.3s ease-out' 
+          }}>
+            {saveMsg}
+          </div>
+        )}
+
+        {showQuickPaste && (
+          <div style={{
+            marginTop: '1rem',
+            marginBottom: '1.5rem',
+            padding: '1rem',
+            background: 'var(--sl-color-gray-6)',
+            borderRadius: '12px',
+            border: '2px dashed var(--sl-color-accent)',
+            animation: 'slideIn 0.2s ease-out'
+          }}>
+            <textarea
+              style={{
+                width: '100%',
+                height: '80px',
+                background: 'var(--sl-color-bg-nav)',
+                color: 'var(--sl-color-accent-high)',
+                border: '1px solid var(--sl-color-gray-5)',
+                borderRadius: '6px',
+                padding: '0.8rem',
+                fontFamily: 'monospace',
+                fontSize: '0.85rem',
+                resize: 'none',
+                outline: 'none'
+              }}
+              placeholder="Browser blocked auto-paste. Please press Ctrl+V / Cmd+V to paste here manually..."
+              value={rawInput}
+              onChange={(e) => setRawInput(e.target.value)}
+              autoFocus
+            />
+            <button className="ai-export-btn" style={{marginTop: '0.5rem'}} onClick={() => setShowQuickPaste(false)}>Cancel Fallback</button>
           </div>
         )}
 
