@@ -265,7 +265,7 @@ export default function HistoryViewer() {
           </div>
 
           <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.4rem', color: 'var(--sl-color-gray-3)' }}>Paste entire AI response here (including TOPIC:, PROBLEM: and SOLUTION:)</label>
-          <textarea className="import-input" rows="6" placeholder="Paste the text from ChatGPT or Gemini here..." value={importText} onChange={(e) => setImportText(e.target.value)} style={{ resize: 'vertical' }}></textarea>
+          <textarea className="import-input" rows="6" placeholder="Paste the text Google Gemini here..." value={importText} onChange={(e) => setImportText(e.target.value)} style={{ resize: 'vertical' }}></textarea>
           
           {importError && <p style={{ color: 'var(--sl-color-red-high)', fontSize: '0.85rem', marginTop: 0, marginBottom: '1rem' }}>{importError}</p>}
 

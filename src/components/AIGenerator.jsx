@@ -334,7 +334,7 @@ SOLUTION:
           <div style={{ background: 'var(--sl-color-red-low)', color: 'var(--sl-color-red-high)', padding: '0.8rem', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold', marginBottom: '1rem', border: '1px solid var(--sl-color-red-high)' }}>
             {error}
             <div style={{ fontSize: '0.75rem', fontWeight: 'normal', marginTop: '0.3rem', color: 'var(--sl-color-gray-2)' }}>
-              Hint: You can click "Copy Prompt" and paste it directly into Gemini or ChatGPT!
+              Hint: You can click "Copy Prompt" and paste it directly into Google Gemini!
             </div>
           </div>
         )}
