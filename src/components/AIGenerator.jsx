@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
-import rehypeRaw from 'rehype-raw'; // <-- THIS ALLOWS SVGS TO RENDER
+import rehypeRaw from 'rehype-raw';
 
 export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
   const [problem, setProblem] = useState('');
@@ -10,7 +10,6 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
   const [loading, setLoading] = useState(false);
   const [statusIndex, setStatusIndex] = useState(0);
   const [error, setError] = useState(null);
-  const [hasSaved, setHasSaved] = useState(false);
 
   const statusMessages = [
     "Connecting to Math Engine...",
@@ -39,27 +38,49 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
       const newRecord = {
         id: crypto.randomUUID(),
         date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
-        topic, difficulty, question: problemText, feedback: solutionText,
+        topic, 
+        difficulty, 
+        question: problemText, 
+        feedback: solutionText,
+        bookmarked: false // Default to unbookmarked
       };
       localStorage.setItem('igcse_ai_history', JSON.stringify([newRecord, ...existingHistory]));
-    } catch (err) { console.error(err); }
+    } catch (err) { 
+      console.error("Failed to save to history:", err); 
+    }
   };
 
   const generateProblem = async () => {
-    setLoading(true); setProblem(''); setSolution(''); setError(null); setHasSaved(false);
+    setLoading(true); 
+    setProblem(''); 
+    setSolution(''); 
+    setError(null); 
+    
     try {
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic, difficulty }),
       });
+      
       const data = await response.json();
       if (!response.ok) throw new Error(data.error);
+      
       const parts = data.text.split('SOLUTION:');
-      setProblem(parts[0].replace('PROBLEM:', '').trim());
-      setSolution(parts[1] ? parts[1].trim() : 'Solution unavailable.');
-    } catch (err) { setError('Connection timed out. Retrying...'); } 
-    finally { setLoading(false); }
+      const generatedProblem = parts[0].replace('PROBLEM:', '').trim();
+      const generatedSolution = parts[1] ? parts[1].trim() : 'Solution unavailable.';
+      
+      setProblem(generatedProblem);
+      setSolution(generatedSolution);
+      
+      // AUTO-SAVE IMMEDIATELY ON SUCCESS!
+      saveToHistory(generatedProblem, generatedSolution);
+
+    } catch (err) { 
+      setError('Connection timed out. Retrying...'); 
+    } finally { 
+      setLoading(false); 
+    }
   };
 
   return (
@@ -101,6 +122,7 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
           align-items: center;
           margin-bottom: 1rem;
           gap: 1rem;
+          flex-wrap: wrap;
         }
 
         .ai-refresh-btn {
@@ -113,9 +135,11 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
           font-weight: 700;
           cursor: pointer;
           min-width: 140px;
+          transition: transform 0.1s, opacity 0.2s;
         }
-
-        .ai-refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        
+        .ai-refresh-btn:active { transform: scale(0.98); }
+        .ai-refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
         .ai-loader-container {
           flex-grow: 1;
@@ -152,17 +176,6 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
           to { opacity: 1; transform: translateY(0); }
         }
 
-        .ai-solution-summary {
-          cursor: pointer;
-          font-size: 0.85rem;
-          font-weight: 700;
-          color: var(--sl-color-success-high);
-          list-style: none;
-          margin-top: 1rem;
-          padding-top: 1rem;
-          border-top: 1px dashed var(--sl-color-gray-5);
-        }
-
         .math-renderer :global(p) { margin-bottom: 0.8rem; }
         
         /* MAGIC SVG STYLING */
@@ -171,11 +184,24 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
           height: auto;
           display: block;
           margin: 1.5rem auto;
-          /* White background is crucial so black SVG lines are visible in dark mode */
-          background-color: var(--sl-color-white); 
+          background-color: white; 
           border-radius: 8px;
           padding: 1rem;
           box-shadow: inset 0 0 0 1px var(--sl-color-gray-4);
+          overflow: visible;
+        }
+
+        /* FIX FOR HUGE/CLIPPING MATH */
+        .math-renderer :global(.katex-display) {
+          overflow-x: auto;
+          overflow-y: hidden;
+          max-width: 100%;
+          padding: 0.5rem 0;
+          font-size: 1.05em;
+        }
+        .math-renderer :global(.katex-display::-webkit-scrollbar) { height: 6px; }
+        .math-renderer :global(.katex-display::-webkit-scrollbar-thumb) {
+          background: var(--sl-color-gray-5); border-radius: 4px;
         }
       `}</style>
 
@@ -189,9 +215,18 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
 
       <div className="ai-card-body">
         <div className="ai-btn-row">
-          <button className="ai-refresh-btn" onClick={generateProblem} disabled={loading}>
-            {problem ? 'Try Another' : 'Practice Now'}
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <button className="ai-refresh-btn" onClick={generateProblem} disabled={loading}>
+              {problem ? 'Try Another' : 'Practice Now'}
+            </button>
+            
+            {/* Elegant Auto-Save Indicator */}
+            {!loading && problem && (
+              <span style={{ fontSize: '0.8rem', color: 'var(--sl-color-success-high)', fontWeight: '600', animation: 'slideIn 0.3s ease-out' }}>
+                ✓ Auto-saved to History
+              </span>
+            )}
+          </div>
 
           {loading && (
             <div className="ai-loader-container">
@@ -212,19 +247,17 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
         {problem && (
           <div className="ai-content-inner">
             <div className="math-renderer">
-              {/* Added rehypeRaw here so SVGs are rendered instead of deleted */}
               <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                 {problem}
               </ReactMarkdown>
             </div>
 
             {solution && (
-              <details onToggle={(e) => e.target.open && !hasSaved && (saveToHistory(problem, solution), setHasSaved(true))}>
-                <summary className="ai-solution-summary">
-                  {hasSaved ? '✓ Solution Saved to Dashboard' : '▶ Reveal Detailed Solution'}
+              <details style={{ marginTop: '1.5rem', borderTop: '1px dashed var(--sl-color-gray-5)', paddingTop: '1rem' }}>
+                <summary style={{ cursor: 'pointer', fontSize: '0.85rem', fontWeight: '700', color: 'var(--sl-color-accent-high)', listStyle: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  <span>▶</span> Reveal Detailed Solution
                 </summary>
-                <div className="math-renderer" style={{ marginTop: '1rem' }}>
-                  {/* Added rehypeRaw here too for diagram solutions */}
+                <div className="math-renderer" style={{ marginTop: '1rem', background: 'var(--sl-color-bg-nav)', padding: '1.25rem', borderRadius: '8px', borderLeft: '3px solid var(--sl-color-accent-high)' }}>
                   <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                     {solution}
                   </ReactMarkdown>
