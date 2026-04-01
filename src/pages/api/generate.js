@@ -15,8 +15,29 @@ export const POST = async ({ request }) => {
     const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
 
     const prompt = `Act as an expert IGCSE Math teacher. Generate one unique ${difficulty} level practice problem about ${topic}. 
-Use standard LaTeX enclosed in single $ for inline math and double $$ for block math. 
-If the question involves geometry, trigonometry, or statistics, generate a clean, responsive, inline <svg> diagram to illustrate the problem. 
+Use standard LaTeX enclosed ONLY in single $ for ALL math equations. DO NOT use double $$ under any circumstances. 
+
+CRITICAL MATH RULE: 
+NEVER put plain text, English words, or units inside the $ delimiters. Only use $ for pure mathematical variables, numbers, and operators. 
+- Correct: $r = 5$ cm
+- Incorrect: $r = 5 \\text{ cm}$ or $r = 5 cm$
+
+CRITICAL LINE BREAK RULE:
+Markdown will render consecutive math equations on the same single line unless you force a break. If you have multiple equations stacking vertically under a single numbered step, you MUST place a <br> tag at the very end of the line.
+- Correct:
+   $x + 5 = 10$<br>
+   $x = 5$
+- Incorrect (Do NOT do this):
+   $x + 5 = 10$
+   $x = 5$
+
+CRITICAL TABLE RULE:
+If the problem requires a data table (e.g., for statistics, frequencies, or coordinates), you MUST format it as a standard Markdown table. Keep the math inside single $. 
+Example format:
+| Time ($t$ mins) | Frequency |
+| :--- | :--- |
+| $0 < t \\le 10$ | 8 |
+| $10 < t \\le 20$ | 22 |
 
 CRITICAL SVG SEQUENCE & RULES: 
 1. Output the opening <svg viewBox="..."> tag with generous padding.
@@ -28,18 +49,24 @@ CRITICAL SVG SEQUENCE & RULES:
 CRITICAL FORMATTING RULE:
 You MUST wrap your ENTIRE response inside a single markdown code block (using \`\`\`markdown and closing with \`\`\`). Do not write any conversational text outside of this code block. 
 
-Inside the code block, format your response EXACTLY like this:
+Inside the code block, format your response EXACTLY like this (Notice the 3-space indentation to ensure they align properly):
 TOPIC: ${topic}
 DIFFICULTY: ${difficulty}
 
 PROBLEM: 
-[Write the question here, including any SVG diagrams]
+[Write the question here, including any SVG diagrams or Markdown tables]
 
 SOLUTION: 
-**Step 1:** [Explain the first logical step]
-**Step 2:** [Explain the next step]
-[...continue with as many steps as needed...]
-**Final Answer:** [State the final mathematical answer clearly]`;
+1. **[Brief description of the first step]:**<br>
+   $[Primary equation for this step]$<br>
+   $[Secondary equation for this step]$
+   
+2. **[Brief description of the next step]:**<br>
+   $[Next equation]$
+   
+[...continue numbering and stacking equations as needed...]
+
+**Final Answer:** [State the final mathematical answer clearly, keeping units outside the $]`;
 
     const result = await model.generateContent(prompt);
     let responseText = await result.response.text();

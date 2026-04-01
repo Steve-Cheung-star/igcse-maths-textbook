@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
+import remarkGfm from 'remark-gfm'; // <-- ADDED GFM IMPORT
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 
@@ -51,7 +52,6 @@ export default function HistoryViewer() {
     }
   };
 
-  // UPDATED: Now copies in the exact format the importer expects
   const handleCopy = (item) => {
     const textToCopy = `TOPIC: ${item.topic}\nDIFFICULTY: ${item.difficulty}\n\nPROBLEM:\n${item.question}\n\nSOLUTION:\n${item.feedback}`;
     navigator.clipboard.writeText(textToCopy).then(() => {
@@ -60,7 +60,6 @@ export default function HistoryViewer() {
     });
   };
 
-  // HYBRID IMPORT: Automates extraction, but falls back to manual inputs if needed
   const handleImport = () => {
     setImportError('');
     if (!importText.trim()) {
@@ -68,19 +67,15 @@ export default function HistoryViewer() {
       return;
     }
 
-    // 1. Try to extract Metadata using Regex
     const topicMatch = importText.match(/TOPIC:\s*(.+)/i);
     const diffMatch = importText.match(/DIFFICULTY:\s*(.+)/i);
     
-    // If regex finds it, use it. Otherwise, fallback to the manual inputs in the UI.
     const parsedTopic = topicMatch ? topicMatch[1].trim() : (importTopic.trim() || 'Imported Problem');
     const parsedDifficulty = diffMatch ? diffMatch[1].trim() : importDifficulty;
 
-    // 2. Try to extract Problem & Solution using Regex
     const problemMatch = importText.match(/PROBLEM:([\s\S]*?)SOLUTION:/i);
     const solutionMatch = importText.match(/SOLUTION:([\s\S]*)/i);
 
-    // If regex fails (e.g. they pasted random text without our tags), just use string splitting as a last resort
     let generatedProblem = 'Error: Could not find "PROBLEM:" section.';
     let generatedSolution = 'Solution unavailable (Did not find "SOLUTION:" marker).';
 
@@ -88,13 +83,11 @@ export default function HistoryViewer() {
       generatedProblem = problemMatch[1].trim();
       generatedSolution = solutionMatch[1].trim();
     } else {
-      // Fallback for non-standard pastes
       const parts = importText.split(/SOLUTION:/i);
       generatedProblem = parts[0].replace(/PROBLEM:/i, '').trim();
       if (parts[1]) generatedSolution = parts[1].trim();
     }
 
-    // Clean up markdown codeblock ticks just in case they accidentally copied them
     generatedProblem = generatedProblem.replace(/^```markdown/i, '').replace(/```$/, '').trim();
     generatedSolution = generatedSolution.replace(/^```markdown/i, '').replace(/```$/, '').trim();
 
@@ -112,13 +105,11 @@ export default function HistoryViewer() {
     setHistory(updatedHistory);
     localStorage.setItem('igcse_ai_history', JSON.stringify(updatedHistory));
     
-    // Reset states
     setImportTopic('');
     setImportText('');
     setShowImport(false);
   };
 
-  // Handlers to reset visible count when filtering or searching
   const handleFilterToggle = (isBookmarked) => {
     setFilterBookmarked(isBookmarked);
     setVisibleCount(10);
@@ -131,7 +122,6 @@ export default function HistoryViewer() {
 
   const cleanMarkdown = (text) => text ? text.replace(/^[ \t]+/gm, '') : '';
 
-  // 1. Filter the entire history array first based on bookmarks AND search terms
   const filteredHistory = history.filter(item => {
     if (filterBookmarked && !item.bookmarked) return false;
     
@@ -147,7 +137,6 @@ export default function HistoryViewer() {
     return true;
   });
 
-  // 2. Slice the filtered array to only show the allowed visible count
   const displayedHistory = filteredHistory.slice(0, visibleCount);
 
   if (!mounted) return <div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>;
@@ -209,6 +198,27 @@ export default function HistoryViewer() {
           height: auto !important;
           padding: 0.8rem;
           margin-bottom: 1rem !important;
+        }
+
+        /* ADDED TABLE CSS */
+        .math-renderer table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 1.5rem 0;
+          font-size: 0.9rem;
+        }
+
+        .math-renderer th {
+          background: var(--sl-color-gray-6);
+          font-weight: 600;
+          border-bottom: 2px solid var(--sl-color-gray-4);
+          padding: 0.75rem;
+          text-align: left;
+        }
+
+        .math-renderer td {
+          border-bottom: 1px solid var(--sl-color-gray-5);
+          padding: 0.75rem;
         }
       `}</style>
 
@@ -316,7 +326,8 @@ export default function HistoryViewer() {
 
             <div style={{ padding: '1.25rem' }}>
               <div className="math-renderer" style={{ marginBottom: '1.5rem' }}>
-                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
+                {/* ADDED remarkGfm HERE */}
+                <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                   {cleanMarkdown(item.question)}
                 </ReactMarkdown>
               </div>
@@ -326,7 +337,8 @@ export default function HistoryViewer() {
                 <span>▼</span> View Saved Solution
               </summary>
               <div className="math-renderer" style={{ marginTop: '1rem', background: '#064e3b', padding: '1.25rem', borderRadius: '8px', borderLeft: '4px solid #10b981', color: '#ecfdf5', boxShadow: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)' }}>
-                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
+                {/* ADDED remarkGfm HERE */}
+                <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                   {cleanMarkdown(item.feedback)}
                 </ReactMarkdown>
               </div>

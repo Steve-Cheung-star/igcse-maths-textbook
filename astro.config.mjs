@@ -9,7 +9,7 @@ import vercel from '@astrojs/vercel';
 import AutoImport from 'astro-auto-import';
 
 export default defineConfig({
-  output: 'server', 
+  output: 'server',
   adapter: vercel(),
 
   integrations: [
@@ -27,6 +27,13 @@ export default defineConfig({
     react(),
     starlight({
       title: 'Intl. Maths 0607',
+      // UPDATED LOGO BLOCK:
+      logo: {
+        light: './src/assets/logo-light.svg',
+        dark: './src/assets/logo-dark.svg',
+        replacesTitle: true,
+      },
+
       // INSERT CUSTOM CSS HERE:
       customCss: [
         './src/assets/custom.css',
