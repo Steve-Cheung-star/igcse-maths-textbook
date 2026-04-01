@@ -26,15 +26,24 @@
   19.5%, 39.5%, 59.5%, 79.5%, 99.5% { opacity: 0.05; }
 }
 
-/* --- TYPOGRAPHY & MATH --- */
+/* --- GLOBAL FIX FOR OVERFLOWING LATEX MATH --- */
 .katex-display {
-  font-size: 1.25em;
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  backdrop-filter: blur(10px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 0.5rem 0;
+  /* KaTeX sets display math to 1.21em by default, which is huge. 
+     This scales it back down closer to your normal text size. */
+  font-size: 1.05em !important; 
+}
+
+/* Make the horizontal scrollbar look clean */
+.katex-display::-webkit-scrollbar {
+  height: 6px;
+}
+.katex-display::-webkit-scrollbar-thumb {
+  background: var(--sl-color-gray-5);
+  border-radius: 4px;
 }
 
 .hero-math-icon {

@@ -26,8 +26,17 @@ export const POST = async ({ request }) => {
     4. Output the raw SVG code directly inside the Markdown text.
     
     Do not use introductory text. Format your response EXACTLY like this:
-    PROBLEM: [Write the question here]
-    SOLUTION: [Write the step-by-step solution here]`;
+    PROBLEM: 
+    [Write the question here, including any SVG diagrams]
+    
+    SOLUTION: 
+    **Step 1:** [Explain the first logical step]
+    
+    **Step 2:** [Explain the next step]
+    
+    [...continue with as many steps as needed...]
+    
+    **Final Answer:** [State the final mathematical answer clearly]`;
 
     const result = await model.generateContent(prompt);
     const response = await result.response;
