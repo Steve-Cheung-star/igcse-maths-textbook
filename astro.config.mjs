@@ -7,52 +7,71 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import vercel from '@astrojs/vercel';
 import AutoImport from 'astro-auto-import';
-import { visit } from 'unist-util-visit'; // Used to manipulate the HTML during build
+import { visit } from 'unist-util-visit';
 
-// --- THE SLEDGEHAMMER PLUGIN ---
-// This runs during the build to hide math code and SVG shapes from Pagefind
+// --- THE MDX-AWARE SLEDGEHAMMER PLUGIN ---
 function cleanSearchIndex() {
   return (tree) => {
-    visit(tree, 'element', (node) => {
-      if (!node.properties) return;
-
-      // 1. NUKE ALL MATH FROM SEARCH
-      if (node.properties.className) {
-        // Handle Astro's class arrays safely
-        const classes = Array.isArray(node.properties.className) 
-          ? node.properties.className 
-          : String(node.properties.className).split(' ');
+    // Visit all nodes to catch both KaTeX (HTML) and your inline SVGs (MDX JSX)
+    visit(tree, (node) => {
+      
+      // We only care about HTML elements or MDX JSX elements
+      if (['element', 'mdxJsxFlowElement', 'mdxJsxTextElement'].includes(node.type)) {
         
-        // If the element has any class containing 'katex' or 'math', blind the search engine to it
-        if (classes.some(c => String(c).includes('katex') || String(c).includes('math'))) {
-          node.properties['data-pagefind-ignore'] = 'true';
-        }
-      }
+        // --- 1. THE MATH SLEDGEHAMMER (KaTeX generates standard 'element' nodes) ---
+        if (node.type === 'element' && node.properties) {
+          let classStr = '';
+          if (Array.isArray(node.properties.className)) {
+            classStr = node.properties.className.join(' ');
+          } else if (node.properties.className) {
+            classStr = String(node.properties.className);
+          }
 
-      // 2. CLEAN UP SVGs
-      // Ignore the drawing instructions but leave <text> and <tspan> alone
-      const svgJunk = ['path', 'rect', 'circle', 'line', 'polygon', 'polyline', 'defs', 'style'];
-      if (svgJunk.includes(node.tagName)) {
-        node.properties['data-pagefind-ignore'] = 'true';
+          // If the class contains ANY KaTeX keywords, blind the search engine
+          if (classStr.match(/(katex|math|mord|base|strut|mrel|mspace|mbin|mopen|mclose|mpunct)/)) {
+            node.properties['data-pagefind-ignore'] = 'true';
+          }
+        }
+
+        // --- 2. THE SVG CLEANER (Your SVGs use MDX JSX nodes) ---
+        // standard HTML uses node.tagName, MDX uses node.name
+        const tagName = node.tagName || node.name; 
+        
+        // Target drawing shapes and grids, but deliberately leave out 'text' and 'svg'
+        const svgJunk = ['path', 'rect', 'circle', 'line', 'polygon', 'polyline', 'defs', 'style', 'pattern'];
+        
+        if (svgJunk.includes(tagName)) {
+          if (node.type === 'element') {
+            // Standard HTML attribute injection
+            node.properties = node.properties || {};
+            node.properties['data-pagefind-ignore'] = 'true';
+          } else {
+            // MDX JSX attribute injection
+            node.attributes = node.attributes || [];
+            node.attributes.push({
+              type: 'mdxJsxAttribute',
+              name: 'data-pagefind-ignore',
+              value: 'true'
+            });
+          }
+        }
       }
     });
   };
 }
-// -------------------------------
+// -----------------------------------------
 
 export default defineConfig({
-  // MUST be static for Starlight's Pagefind to crawl the files!
+  // MUST be static for Starlight's built-in Pagefind to crawl the files
   output: 'static', 
   adapter: vercel(),
 
   integrations: [
     AutoImport({
       imports: [
-        // Your custom components
         './src/components/AIGenerator.jsx',
         './src/components/SteveTip.astro',
         './src/components/MathPlot.jsx',
-        // Starlight built-ins
         {
           '@astrojs/starlight/components': ['Steps', 'Aside', 'Tabs', 'TabItem'],
         },
@@ -92,11 +111,10 @@ export default defineConfig({
       ],
     }), 
     mdx()
-    // Notice: astro-pagefind is removed because Starlight does it automatically!
   ],
   markdown: {
     remarkPlugins: [remarkMath],
-    // Add our custom cleaner right AFTER KaTeX processes the math
+    // Inject the Sledgehammer right after KaTeX processes the math
     rehypePlugins: [rehypeKatex, cleanSearchIndex],
   },
 });
