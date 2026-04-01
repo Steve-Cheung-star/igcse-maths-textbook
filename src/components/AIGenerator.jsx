@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -10,6 +10,7 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
   const [loading, setLoading] = useState(false);
   const [statusIndex, setStatusIndex] = useState(0);
   const [error, setError] = useState(null);
+  const [hasSaved, setHasSaved] = useState(false);
 
   const statusMessages = [
     "Connecting to Math Engine...",
@@ -42,19 +43,25 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
         difficulty, 
         question: problemText, 
         feedback: solutionText,
-        bookmarked: false // Default to unbookmarked
+        bookmarked: false 
       };
       localStorage.setItem('igcse_ai_history', JSON.stringify([newRecord, ...existingHistory]));
+      setHasSaved(true);
     } catch (err) { 
       console.error("Failed to save to history:", err); 
     }
   };
 
-  const generateProblem = async () => {
-    setLoading(true); 
-    setProblem(''); 
-    setSolution(''); 
-    setError(null); 
+  const generateProblem = async (retryCount = 0) => {
+    if (retryCount === 0) {
+      setLoading(true); 
+      setProblem(''); 
+      setSolution(''); 
+      setError(null); 
+      setHasSaved(false);
+    } else {
+      setError('Network hiccup! Retrying automatically... 🔄');
+    }
     
     try {
       const response = await fetch('/api/generate', {
@@ -72,15 +79,23 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
       
       setProblem(generatedProblem);
       setSolution(generatedSolution);
+      setError(null); 
       
-      // AUTO-SAVE IMMEDIATELY ON SUCCESS!
+      // Auto-save immediately on success
       saveToHistory(generatedProblem, generatedSolution);
 
+      // Only turn off loading if we succeed
+      setLoading(false);
+
     } catch (err) { 
-      setError('Connection timed out. Retrying...'); 
-    } finally { 
-      setLoading(false); 
-    }
+      if (retryCount < 1) { 
+        console.warn(`Attempt ${retryCount + 1} failed. Retrying...`);
+        await generateProblem(retryCount + 1); 
+      } else {
+        setError('Connection timed out. Please try clicking "Practice Now" again.'); 
+        setLoading(false);
+      }
+    } 
   };
 
   return (
@@ -216,12 +231,12 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
       <div className="ai-card-body">
         <div className="ai-btn-row">
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <button className="ai-refresh-btn" onClick={generateProblem} disabled={loading}>
+            <button className="ai-refresh-btn" onClick={() => generateProblem(0)} disabled={loading}>
               {problem ? 'Try Another' : 'Practice Now'}
             </button>
             
             {/* Elegant Auto-Save Indicator */}
-            {!loading && problem && (
+            {hasSaved && (
               <span style={{ fontSize: '0.8rem', color: 'var(--sl-color-success-high)', fontWeight: '600', animation: 'slideIn 0.3s ease-out' }}>
                 ✓ Auto-saved to History
               </span>
@@ -242,7 +257,7 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
           )}
         </div>
 
-        {error && <p style={{ color: 'var(--sl-color-error)', fontSize: '0.85rem' }}>{error}</p>}
+        {error && <p style={{ color: 'var(--sl-color-red-high)', fontSize: '0.85rem', fontWeight: 'bold' }}>{error}</p>}
 
         {problem && (
           <div className="ai-content-inner">

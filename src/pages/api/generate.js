@@ -1,3 +1,4 @@
+export const maxDuration = 60; // Allows the function to run for up to 60 seconds
 export const prerender = false;
 
 import { GoogleGenerativeAI } from '@google/generative-ai';
