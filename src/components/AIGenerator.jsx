@@ -293,20 +293,22 @@ SOLUTION:
 
       <div className="ai-card-body">
         <div className="ai-btn-row">
-          <div className="ai-button-group">
-            <button className="ai-refresh-btn" onClick={() => generateProblem(0)} disabled={loading}>
-              {problem ? 'Try Another' : 'Practice Now'}
-            </button>
-            
-            <button className="ai-export-btn" onClick={handleCopyPrompt} title="Copy exact prompt to paste in Gemini">
-              {isCopied ? '✓ Copied!' : '📋 Copy Prompt'}
-            </button>
-            
-            {hasSaved && (
-              <span style={{ fontSize: '0.8rem', color: 'var(--sl-color-success-high)', fontWeight: '600', animation: 'slideIn 0.3s ease-out', marginLeft: '0.5rem' }}>
-                ✓ Auto-saved
-              </span>
-            )}
+          <div className="not-content">
+            <div className="ai-button-group">
+              <button className="ai-refresh-btn" onClick={() => generateProblem(0)} disabled={loading}>
+                {problem ? 'Try Another' : 'Practice Now'}
+              </button>
+              
+              <button className="ai-export-btn" onClick={handleCopyPrompt} title="Copy exact prompt to paste in Gemini">
+                {isCopied ? '✓ Copied!' : '📋 Copy Prompt'}
+              </button>
+              
+              {hasSaved && (
+                <span style={{ fontSize: '0.8rem', color: 'var(--sl-color-success-high)', fontWeight: '600', animation: 'slideIn 0.3s ease-out', marginLeft: '0.5rem' }}>
+                  ✓ Auto-saved
+                </span>
+              )}
+            </div>
           </div>
 
           {loading && (

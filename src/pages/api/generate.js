@@ -24,6 +24,7 @@ export const POST = async ({ request }) => {
     2. Always use a generous 'viewBox' with plenty of padding (e.g., viewBox="0 0 400 300" for a 100x100 shape).
     3. Ensure ALL coordinates fit strictly inside this viewBox.
     4. Output the raw SVG code directly inside the Markdown text.
+    5. Generate the SVG code as a single-line string with no line breaks or indentation between tags (minified format).
     
     Do not use introductory text. Format your response EXACTLY like this:
     PROBLEM: 
@@ -41,11 +42,6 @@ export const POST = async ({ request }) => {
     const result = await model.generateContent(prompt);
     let responseText = await result.response.text();
     
-    // --- THE BULLETPROOF FIX ---
-    // This regex looks for </svg> followed by any <text> tags and swaps them,
-    // guaranteeing that </svg> is always the absolute last tag.
-    responseText = responseText.replace(/<\/svg>\s*((?:<text\b[^>]*>[\s\S]*?<\/text>\s*)+)/gi, '$1\n</svg>');
-
     return new Response(JSON.stringify({ text: responseText }), { 
       status: 200,
       headers: { 'Content-Type': 'application/json' }
