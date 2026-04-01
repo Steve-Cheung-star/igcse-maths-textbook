@@ -10,7 +10,9 @@ import AutoImport from 'astro-auto-import';
 
 export default defineConfig({
   output: 'server', 
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: { enabled: true },
+  }),
 
   integrations: [
     AutoImport({
