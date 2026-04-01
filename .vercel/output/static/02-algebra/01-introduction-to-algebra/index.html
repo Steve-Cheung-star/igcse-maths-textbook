@@ -1,0 +1,1078 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>2.1 Introduction to Algebra | Intl. Maths 0607</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v6.1.2"/><meta name="generator" content="Starlight v0.38.2"/><meta property="og:title" content="2.1 Introduction to Algebra"/><meta property="og:type" content="article"/><meta property="og:locale" content="en"/><meta property="og:description" content="Learn the basics of algebra, including algebraic notation, translating words into expressions, and substituting numbers into expressions and formulae."/><meta property="og:site_name" content="Intl. Maths 0607"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Learn the basics of algebra, including algebraic notation, translating words into expressions, and substituting numbers into expressions and formulae."/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/_astro/common.Bfm4rnjK.css">
+<link rel="stylesheet" href="/_astro/Code.DFv086Rb.css"><script type="module" src="/_astro/page.BNkAEeHD.js"></script><style>.steve-tip:where(.astro-ydjyf4wk){border-radius:var(--sl-border-radius-large);padding:1rem 1.25rem;margin:1.5rem 0;box-shadow:var(--sl-shadow-lg);background-color:var(--sl-color-bg-nav)}.steve-tip__header:where(.astro-ydjyf4wk){display:flex;align-items:center;gap:1rem}.steve-tip__icon-wrapper:where(.astro-ydjyf4wk){width:48px;height:48px;border-radius:50%;overflow:hidden;border:2px solid var(--sl-color-tip)}.steve-tip__author:where(.astro-ydjyf4wk){font-weight:700;color:var(--sl-color-tip);font-size:.8rem}.steve-tip__title:where(.astro-ydjyf4wk){font-weight:700;margin:0!important;color:var(--sl-color-white);font-size:1.2rem}
+</style></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">Skip to content</a> <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><div class="header astro-kmkmnagf"> <div class="title-wrapper sl-flex astro-kmkmnagf"> <a href="/" class="site-title sl-flex astro-m46x6ez3">  <span class="astro-m46x6ez3" translate="no"> Intl. Maths 0607 </span> </a> </div> <div class="sl-flex print:hidden astro-kmkmnagf"> <site-search class="astro-kmkmnagf astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;Search&#34;}"> <button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">Search</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="Search" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> Cancel </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.CYxDRxxQ.js"></script>  </div> <div class="sl-hidden md:sl-flex print:hidden right-group astro-kmkmnagf"> <div class="sl-flex social-icons astro-kmkmnagf">  <script>
+  // This runs in the browser, perfectly safe.
+  (function() {
+    const pageData = {
+      title: document.title.split('|')[0].trim(),
+      url: window.location.pathname,
+    };
+
+    if (pageData.url !== '/' && pageData.url !== '/my-revision/' && pageData.url !== '') {
+      localStorage.setItem('last_visited_page', JSON.stringify(pageData));
+    }
+  })();
+</script> </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">Dark</option><option value="light" class="astro-4yphtoen">Light</option><option value="auto" selected class="astro-4yphtoen">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label> </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script> <script type="module">const r="starlight-theme",o=e=>e==="auto"||e==="dark"||e==="light"?e:"auto",c=()=>o(typeof localStorage<"u"&&localStorage.getItem(r));function n(e){typeof localStorage<"u"&&localStorage.setItem(r,e==="light"||e==="dark"?e:"")}const l=()=>matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?l():e,n(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{c()==="auto"&&t("auto")});class s extends HTMLElement{constructor(){super(),t(c()),this.querySelector("select")?.addEventListener("change",a=>{a.currentTarget instanceof HTMLSelectElement&&t(o(a.currentTarget.value))})}}customElements.define("starlight-theme-select",s);</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div> </div></header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="Main"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>  <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="1u50ao5" class="astro-kku4brbg"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">1. Number</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/01-number/01-types-of-numbers/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.1 Types of Numbers</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/02-sets-and-venn-diagrams/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.2 Sets and Venn Diagrams</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/03-power-and-roots/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.3 Roots and Powers</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/04-fractions-decimals-and-percentages/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.4 Fractions, Decimals and Percentages</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/05-ordering-and-inequalities/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.5 Ordering and Inequalities</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/06-the-four-operations/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.6 The Four Operations</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/07-indices-i/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.7 Indices</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/08-standard-form/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.17 Radicals and Surds</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/09-estimation-and-rounding/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.9 Estimation</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/10-ratio-and-proportion/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.10 Ratio and Proportion</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/11-rates/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.11 Rates and Speed</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/12-percentages/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.12 Percentages</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/13-using-a-calculator/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.13 Using a Calculator</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/14-time/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.14 Time</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/15-money/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.15 Money</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/16-exponential-growth-and-decay/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.16 Exponential Growth and Decay</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/01-number/17-surds/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">1.17 Radicals and Surds</span>  </a> </li> </ul> </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">2. Algebra</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/02-algebra/01-introduction-to-algebra/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">2.1 Introduction to Algebra</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/02-algebra/02-algebraic-manipulation/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">2.2 Algebraic Manipulation</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/02-algebra/03-algebraic-fractions/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">2.3 Algebraic Fractions</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/02-algebra/04-indices-ii/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">2.4 Indices II</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/02-algebra/05-equations/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">2.5 Equations</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/02-algebra/06-inequalities/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">2.6 Inequalities</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/02-algebra/07-sequences/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">2.7 Sequences</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/02-algebra/08-proportion/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">2.8 Proportion</span>  </a> </li> </ul> </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">3. Functions</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/03-functions/01-graphs-of-functons/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">3.1 Graphs of Functions</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/03-functions/02-sketching-graphs-on-a-calculator/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">3.2 Using a Graphic Display Calculator (TI-Nspire)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/03-functions/03-functions/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">3.3 Functions</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/03-functions/04-finding-a-quadratic/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">3.4 Finding a Quadratic Function</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/03-functions/05-asymptotes/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">3.5 Asymptotes</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/03-functions/06-transforming-graphs-of-functions/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">3.6 Transforming Graphs of Functions</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/03-functions/07-logarithmic-function/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">3.7 The Logarithmic Function</span>  </a> </li> </ul> </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">4. Coordinate Geometry</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/04-coordinate-geometry/01-coordinates/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">4.1 Coordinates</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/04-coordinate-geometry/02-gradient-of-linear-graphs/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">4.2 Gradient of linear graphs</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/04-coordinate-geometry/03-length-and-midpoint/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">4.3 Length and midpoint</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/04-coordinate-geometry/04-equations-of-linear-graphs/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">4.4 Equations of linear graphs</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/04-coordinate-geometry/05-parallel-lines/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">4.5 Parallel lines</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/04-coordinate-geometry/06-perpendicular-lines/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">4.6 Perpendicular lines</span>  </a> </li> </ul> </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">5. Geometry</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="4"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/05-geometry/01-geometrical-terms/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">5.1 Geometrical terms</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/05-geometry/02-angle-measures-in-degrees/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">5.2 Angle Measurement in Degrees</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/05-geometry/03-similarity/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">5.3 Similarity</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/05-geometry/04-symmetry/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">5.4 Symmetry</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/05-geometry/05-angles/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">5.5 Angles</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/05-geometry/06-circle-theorems-i/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">5.6 Circle Theorems</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/05-geometry/07-circle-theorems-ii/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">5.7 Circle Theorems II</span>  </a> </li> </ul> </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">6. Mensuration</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="5"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/06-mensuration/01-units-of-measure/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">6.1 Units of Measure</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/06-mensuration/02-area-and-perimeter/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">6.2 Area and Perimeter</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/06-mensuration/03-circles-arcs-and-sectors/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">6.3 Circles, Arcs and Sectors</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/06-mensuration/04-surface-area-and-volume/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">6.4 Surface Area and Volume</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/06-mensuration/05-compound-shapes/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">6.5 Compound Shapes and Parts of Shapes</span>  </a> </li> </ul> </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">7. Trigonometry</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="6"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/07-trigonometry/01-pythagoras-theorem/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">7.1 Pythagoras&#39; Theorem</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/07-trigonometry/02-right-angle-trigonometry/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">7.2 Right-Angled Triangles (Trigonometry)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/07-trigonometry/03-exact-trig-ratios/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">7.3 Exact Trigonometric Values</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/07-trigonometry/04-trigonometric-functions/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">7.4 Trigonometric Functions</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/07-trigonometry/05-non-right-angle-trigonometry/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">7.5 Non-Right-Angled Triangles (Trigonometry)</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/07-trigonometry/06-3d-pythagoras-and-trig/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">7.6 Pythagoras&#39; Theorem and Trigonometry in 3D</span>  </a> </li> </ul> </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">8. Transformations &amp; Vectors</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="7"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/08-transformations-vectors/01-transformations/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">8.1 Transformations</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/08-transformations-vectors/02-vectors/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">8.2 Vectors in Two Dimensions</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/08-transformations-vectors/03-magnitude-of-a-vector/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">8.3 Magnitude of a Vector</span>  </a> </li> </ul> </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">9. Probability</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="8"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/09-probability/01-introduction-to-probability/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">9.1 Introduction to Probability</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/09-probability/02-relative-and-expected-frequencies/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">9.2 Relative and Expected Frequencies</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/09-probability/03-combined-events/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">9.3 Probability of Combined Events</span>  </a> </li> </ul> </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <summary class="astro-3ii7xxms"> <span class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">10. Statistics</span>  </span> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <sl-sidebar-restore data-index="9"></sl-sidebar-restore> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/10-statistics/01-classifying-data/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">10.1 Classifying Statistical Data</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/10-statistics/02-interpreting-data/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">10.2 Interpreting Statistical Data</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/10-statistics/03-discrete-and-continuous-data/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">10.3 Discrete and Continuous Data</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/10-statistics/04-averages-and-measures-of-spread/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">10.4 Averages and Measures of Spread</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/10-statistics/05-average-on-a-calculator/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">10.5 Averages on a Calculator</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/10-statistics/06-charts-and-diagrams/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">10.6 Statistical Charts and Diagrams</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/10-statistics/07-scatter-diagrams/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">10.7 Scatter Diagrams</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/10-statistics/08-cumulative-frequency-diagrams/" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">10.8 Cumulative Frequency Diagrams</span>  </a> </li> </ul> </details> </li><li class="astro-3ii7xxms"> <a href="/my-revision/" class="large astro-3ii7xxms"> <span class="astro-3ii7xxms">My Revision History</span>  </a> </li> </ul>  <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist> <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  <script>
+  // This runs in the browser, perfectly safe.
+  (function() {
+    const pageData = {
+      title: document.title.split('|')[0].trim(),
+      url: window.location.pathname,
+    };
+
+    if (pageData.url !== '/' && pageData.url !== '/my-revision/' && pageData.url !== '') {
+      localStorage.setItem('last_visited_page', JSON.stringify(pageData));
+    }
+  })();
+</script> </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">Dark</option><option value="light" class="astro-4yphtoen">Light</option><option value="auto" selected class="astro-4yphtoen">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label> </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script>   </div> </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.hwBsy0Mo.js"></script><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.FuRcXuRY.js"></script><div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><span class="toggle sl-flex astro-doynk5tl">On this page<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-gnoq344e" style="--depth: 0;"> <li class="astro-gnoq344e" style="--depth: 0;"> <a href="#_top" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#1-letters-as-generalised-numbers-variables" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">1. Letters as Generalised Numbers (Variables)</span> </a> <ul class="isMobile astro-gnoq344e" style="--depth: 1;"> <li class="astro-gnoq344e" style="--depth: 1;"> <a href="#the-invisible-maths-rules-algebraic-notation" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">The “Invisible” Maths Rules (Algebraic Notation)</span> </a>  </li> </ul> </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#2-writing-algebraic-expressions" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">2. Writing Algebraic Expressions</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#3-substitution" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">3. Substitution</span> </a> <ul class="isMobile astro-gnoq344e" style="--depth: 1;"> <li class="astro-gnoq344e" style="--depth: 1;"> <a href="#the-golden-rules-of-substitution" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">The Golden Rules of Substitution:</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 1;"> <a href="#example-a-basic-substitution" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Example A: Basic Substitution</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 1;"> <a href="#example-b-substituting-negative-numbers" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Example B: Substituting Negative Numbers</span> </a>  </li> </ul> </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#4-standard-practice-problems" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">4. Standard Practice Problems</span> </a>  </li> </ul></div></details></nav></mobile-starlight-toc></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-gnoq344e" style="--depth: 0;"> <li class="astro-gnoq344e" style="--depth: 0;"> <a href="#_top" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">Overview</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#1-letters-as-generalised-numbers-variables" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">1. Letters as Generalised Numbers (Variables)</span> </a> <ul class="astro-gnoq344e" style="--depth: 1;"> <li class="astro-gnoq344e" style="--depth: 1;"> <a href="#the-invisible-maths-rules-algebraic-notation" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">The “Invisible” Maths Rules (Algebraic Notation)</span> </a>  </li> </ul> </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#2-writing-algebraic-expressions" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">2. Writing Algebraic Expressions</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#3-substitution" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">3. Substitution</span> </a> <ul class="astro-gnoq344e" style="--depth: 1;"> <li class="astro-gnoq344e" style="--depth: 1;"> <a href="#the-golden-rules-of-substitution" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">The Golden Rules of Substitution:</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 1;"> <a href="#example-a-basic-substitution" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Example A: Basic Substitution</span> </a>  </li><li class="astro-gnoq344e" style="--depth: 1;"> <a href="#example-b-substituting-negative-numbers" class="astro-gnoq344e" style="--depth: 1;"> <span class="astro-gnoq344e" style="--depth: 1;">Example B: Substituting Negative Numbers</span> </a>  </li> </ul> </li><li class="astro-gnoq344e" style="--depth: 0;"> <a href="#4-standard-practice-problems" class="astro-gnoq344e" style="--depth: 0;"> <span class="astro-gnoq344e" style="--depth: 0;">4. Standard Practice Problems</span> </a>  </li> </ul></nav></starlight-toc></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="en" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">2.1 Introduction to Algebra</h1> </div> </div> <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="sl-heading-wrapper level-h2"><h2 id="1-letters-as-generalised-numbers-variables">1. Letters as Generalised Numbers (Variables)</h2><a class="sl-anchor-link" href="#1-letters-as-generalised-numbers-variables"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="true">Section titled “1. Letters as Generalised Numbers (Variables)”</span></a></div>
+<p>In arithmetic, we deal with specific, known numbers (like <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">5</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn></mrow><annotation encoding="application/x-tex">12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">12</span></span></span></span>, or <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">-3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">3</span></span></span></span>). In <strong>algebra</strong>, we use letters to represent numbers that are either unknown or can change. These letters are called <strong>variables</strong>.</p>
+<p>Using variables allows us to write general rules, formulae, and expressions that work for <em>any</em> number.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="the-invisible-maths-rules-algebraic-notation">The “Invisible” Maths Rules (Algebraic Notation)</h3><a class="sl-anchor-link" href="#the-invisible-maths-rules-algebraic-notation"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="true">Section titled “The “Invisible” Maths Rules (Algebraic Notation)”</span></a></div>
+<p>To make algebra cleaner and faster to read, mathematicians drop certain symbols. You must memorise these shorthand rules:</p>
+<ul>
+<li><strong>Multiplication is invisible:</strong> Instead of writing <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>×</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">3 \times a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">a</span></span></span></span>, we write <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi><mrow><mn mathvariant="bold">3</mn><mi mathvariant="bold-italic">a</mi></mrow></mi></mrow><annotation encoding="application/x-tex">\boldsymbol{3a}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord"><span class="mord"><span class="mord mathbf">3</span><span class="mord boldsymbol">a</span></span></span></span></span></span>. The number always goes <em>before</em> the letter.</li>
+<li><strong>Multiplying letters:</strong> Instead of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>×</mo><mi>b</mi></mrow><annotation encoding="application/x-tex">a \times b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">b</span></span></span></span>, we write <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi><mrow><mi mathvariant="bold-italic">a</mi><mi mathvariant="bold-italic">b</mi></mrow></mi></mrow><annotation encoding="application/x-tex">\boldsymbol{ab}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">ab</span></span></span></span></span></span>. Usually, letters are written in alphabetical order.</li>
+<li><strong>Division is a fraction:</strong> The <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>÷</mo></mrow><annotation encoding="application/x-tex">\div</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord">÷</span></span></span></span> symbol is rarely used in algebra. Instead of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>÷</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">x \div 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">÷</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">5</span></span></span></span>, we write <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi><mfrac><mi mathvariant="bold-italic">x</mi><mn mathvariant="bold">5</mn></mfrac></mi></mrow><annotation encoding="application/x-tex">\boldsymbol{\frac{x}{5}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0501em;vertical-align:-0.345em"></span><span class="mord"><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7051em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathbf mtight">5</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord boldsymbol mtight">x</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span>.</li>
+<li><strong>The invisible “1”:</strong> If you have just one <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span></span></span></span>, we write <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="bold-italic">x</mi></mrow><annotation encoding="application/x-tex">\boldsymbol{x}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4444em"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span></span></span></span></span></span>, not <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>x</mi></mrow><annotation encoding="application/x-tex">1x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">1</span><span class="mord mathnormal">x</span></span></span></span>. Similarly, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">-1y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">−</span><span class="mord">1</span><span class="mord mathnormal" style="margin-right:0.0359em">y</span></span></span></span> is written as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo lspace="0.22em" rspace="0.22em"><mrow><mo mathvariant="bold-italic">−</mo><mi mathvariant="bold-italic">y</mi></mrow></mo></mrow><annotation encoding="application/x-tex">\boldsymbol{-y}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8278em;vertical-align:-0.1944em"></span><span class="mord"><span class="mord"><span class="mord mathbf">−</span><span class="mord boldsymbol" style="margin-right:0.037em">y</span></span></span></span></span></span>.</li>
+<li><strong>Repeated multiplication:</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>×</mo><mi>x</mi></mrow><annotation encoding="application/x-tex">x \times x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span></span></span></span> is written using indices as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi><msup><mi mathvariant="bold-italic">x</mi><mn mathvariant="bold">2</mn></msup></mi></mrow><annotation encoding="application/x-tex">\boldsymbol{x^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em"></span><span class="mord"><span class="mord"><span class="mord"><span class="mord boldsymbol">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathbf mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span>.</li>
+</ul>
+<hr/>
+<div class="sl-heading-wrapper level-h2"><h2 id="2-writing-algebraic-expressions">2. Writing Algebraic Expressions</h2><a class="sl-anchor-link" href="#2-writing-algebraic-expressions"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="true">Section titled “2. Writing Algebraic Expressions”</span></a></div>
+<p>An <strong>expression</strong> is a mathematical phrase made up of numbers, variables, and operation symbols (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo></mrow><annotation encoding="application/x-tex">+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord">+</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo></mrow><annotation encoding="application/x-tex">-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord">−</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord">×</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>÷</mo></mrow><annotation encoding="application/x-tex">\div</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord">÷</span></span></span></span>). It does <em>not</em> contain an equals sign (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em"></span><span class="mrel">=</span></span></span></span>).</p>
+<p>You will often need to translate word problems into algebraic expressions. Look for keywords:</p>
+<ul>
+<li><strong>Addition (+):</strong> sum, more than, increased by, total. <em>(e.g., “5 more than <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span></span></span></span>” <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><mi>x</mi><mo>+</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">\rightarrow x + 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">5</span></span></span></span>)</em></li>
+<li><strong>Subtraction (-):</strong> difference, less than, decreased by. <em>(e.g., “3 less than <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span></span></span></span>” <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><mi>y</mi><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\rightarrow y - 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">3</span></span></span></span>)</em></li>
+<li><strong>Multiplication (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>×</mo></mrow><annotation encoding="application/x-tex">\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord">×</span></span></span></span>):</strong> product, times, double (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>×</mo></mrow><annotation encoding="application/x-tex">2\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">2</span><span class="mord">×</span></span></span></span>), triple (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo>×</mo></mrow><annotation encoding="application/x-tex">3\times</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">3</span><span class="mord">×</span></span></span></span>). <em>(e.g., “double <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">m</span></span></span></span>” <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><mn>2</mn><mi>m</mi></mrow><annotation encoding="application/x-tex">\rightarrow 2m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">2</span><span class="mord mathnormal">m</span></span></span></span>)</em></li>
+<li><strong>Division (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>÷</mo></mrow><annotation encoding="application/x-tex">\div</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord">÷</span></span></span></span>):</strong> quotient, half (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>÷</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\div 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">÷</span><span class="mord">2</span></span></span></span>), shared equally. <em>(e.g., “half of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal">p</span></span></span></span>” <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><mfrac><mi>p</mi><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">\rightarrow \frac{p}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.0925em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7475em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.4461em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>)</em></li>
+</ul>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>”<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span></span></span></span> multiplied by 4, then subtract 7” <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><mi><mrow><mn mathvariant="bold">4</mn><mi mathvariant="bold-italic">x</mi><mo mathvariant="bold-italic">−</mo><mn mathvariant="bold">7</mn></mrow></mi></mrow><annotation encoding="application/x-tex">\rightarrow \boldsymbol{4x - 7}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1333em"></span><span class="mord"><span class="mord"><span class="mord mathbf">4</span><span class="mord boldsymbol">x</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin mathbf">−</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord mathbf">7</span></span></span></span></span></span></li>
+<li>“The sum of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">a</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">b</span></span></span></span>, divided by 3” <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>→</mo><mi><mfrac><mrow><mi mathvariant="bold-italic">a</mi><mo mathvariant="bold-italic">+</mo><mi mathvariant="bold-italic">b</mi></mrow><mn mathvariant="bold">3</mn></mfrac></mi></mrow><annotation encoding="application/x-tex">\rightarrow \boldsymbol{\frac{a + b}{3}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.3669em"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.2344em;vertical-align:-0.345em"></span><span class="mord"><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8894em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathbf mtight">3</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.4033em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord boldsymbol mtight">a</span><span class="mbin mathbf mtight">+</span><span class="mord boldsymbol mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span></li>
+</ul>
+<hr/>
+<div class="sl-heading-wrapper level-h2"><h2 id="3-substitution">3. Substitution</h2><a class="sl-anchor-link" href="#3-substitution"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="true">Section titled “3. Substitution”</span></a></div>
+<p><strong>Substitution</strong> is the process of replacing variables (letters) in an expression or formula with specific numbers to calculate a final value.</p>
+<p>Think of an algebraic expression as a recipe, and substitution as plugging in the specific ingredients you have today.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="the-golden-rules-of-substitution">The Golden Rules of Substitution:</h3><a class="sl-anchor-link" href="#the-golden-rules-of-substitution"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="true">Section titled “The Golden Rules of Substitution:”</span></a></div>
+<ol>
+<li><strong>Always use brackets</strong> when replacing a letter with a number, <em>especially</em> if the number is negative or a fraction.</li>
+<li>Follow <strong>BIDMAS / BODMAS</strong> (Brackets, Indices, Division/Multiplication, Addition/Subtraction) when calculating the final answer.</li>
+</ol>
+<div class="sl-heading-wrapper level-h3"><h3 id="example-a-basic-substitution">Example A: Basic Substitution</h3><a class="sl-anchor-link" href="#example-a-basic-substitution"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="true">Section titled “Example A: Basic Substitution”</span></a></div>
+<p>Evaluate the expression <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mi>x</mi><mo>−</mo><mn>2</mn><mi>y</mi></mrow><annotation encoding="application/x-tex">5x - 2y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">5</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.0359em">y</span></span></span></span> when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">4</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">y = 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">3</span></span></span></span>.</p>
+<ol>
+<li>Substitute the numbers using brackets: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo><mo>−</mo><mn>2</mn><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">5(4) - 2(3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord">5</span><span class="mopen">(</span><span class="mord">4</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord">3</span><span class="mclose">)</span></span></span></span></li>
+<li>Multiply: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>20</mn><mo>−</mo><mn>6</mn></mrow><annotation encoding="application/x-tex">20 - 6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">20</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">6</span></span></span></span></li>
+<li>Subtract: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi><mn mathvariant="bold">14</mn></mi></mrow><annotation encoding="application/x-tex">\boldsymbol{14}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord"><span class="mord"><span class="mord mathbf">14</span></span></span></span></span></span></li>
+</ol>
+<div class="sl-heading-wrapper level-h3"><h3 id="example-b-substituting-negative-numbers">Example B: Substituting Negative Numbers</h3><a class="sl-anchor-link" href="#example-b-substituting-negative-numbers"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="true">Section titled “Example B: Substituting Negative Numbers”</span></a></div>
+<p>Evaluate <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mn>4</mn><mi>b</mi></mrow><annotation encoding="application/x-tex">a^2 - 4b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em"></span><span class="mord"><span class="mord mathnormal">a</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord">4</span><span class="mord mathnormal">b</span></span></span></span> when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">a = -3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">3</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">b = -2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">2</span></span></span></span>.</p>
+<ol>
+<li>Substitute using brackets: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo>−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mn>4</mn><mo stretchy="false">(</mo><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-3)^2 - 4(-2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">3</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord">4</span><span class="mopen">(</span><span class="mord">−</span><span class="mord">2</span><span class="mclose">)</span></span></span></span></li>
+<li>Evaluate indices: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo>−</mo><mn>3</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mo>−</mo><mn>3</mn><mo>×</mo><mo>−</mo><mn>3</mn><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">(-3)^2 = -3 \times -3 = 9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">3</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">9</span></span></span></span>. The expression becomes: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mo>−</mo><mn>4</mn><mo stretchy="false">(</mo><mo>−</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">9 - 4(-2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">9</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord">4</span><span class="mopen">(</span><span class="mord">−</span><span class="mord">2</span><span class="mclose">)</span></span></span></span></li>
+<li>Multiply: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>4</mn><mo>×</mo><mo>−</mo><mn>2</mn><mo>=</mo><mo>+</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">-4 \times -2 = +8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">4</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">+</span><span class="mord">8</span></span></span></span>. The expression becomes: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>9</mn><mo>+</mo><mn>8</mn></mrow><annotation encoding="application/x-tex">9 + 8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">9</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">8</span></span></span></span></li>
+<li>Add: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi><mn mathvariant="bold">17</mn></mi></mrow><annotation encoding="application/x-tex">\boldsymbol{17}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord"><span class="mord"><span class="mord mathbf">17</span></span></span></span></span></span></li>
+</ol>
+<aside class="starlight-aside starlight-aside--tip steve-tip astro-ydjyf4wk"> <div class="steve-tip__header astro-ydjyf4wk"> <div class="steve-tip__icon-wrapper astro-ydjyf4wk">  <img src="/_astro/steve-icon.CfKFLkmZ_ZWf78U.webp" alt="Steve Cheung" loading="lazy" decoding="async" width="400" height="400" class="astro-ydjyf4wk"> </div> <div class="steve-tip__title-area astro-ydjyf4wk"> <span class="steve-tip__author astro-ydjyf4wk">Steve's Exam Wisdom</span> <p class="steve-tip__title astro-ydjyf4wk">Exam Trick: The Calculator Bracket Trap</p> </div> </div> <div class="steve-tip__content astro-ydjyf4wk"> <p>Calculators are stupid if you don’t use brackets for certain numbers!</p><p><strong>1. Negative Numbers:</strong>
+If you type <code dir="auto">-3^2</code> into a calculator, it will calculate <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mo stretchy="false">(</mo><mn>3</mn><mo>×</mo><mn>3</mn><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">-(3 \times 3) = -9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord">−</span><span class="mopen">(</span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">9</span></span></span></span>.
+But mathematically, substituting <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">x = -3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">3</span></span></span></span> into <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> means <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo><mo>×</mo><mo stretchy="false">(</mo><mo>−</mo><mn>3</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(-3) \times (-3)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">3</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">3</span><span class="mclose">)</span></span></span></span>, which is <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>+</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">+9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">+</span><span class="mord">9</span></span></span></span></strong>.
+<em>Always type <code dir="auto">(-3)^2</code> into your calculator to get the correct positive answer.</em></p><p><strong>2. Fractions:</strong>
+Fractional bases must also be inside brackets! If you substitute <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mfrac><mn>2</mn><mn>3</mn></mfrac></mrow><annotation encoding="application/x-tex">x = \frac{2}{3}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">3</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span> into <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span> and type <code dir="auto">2/3^2</code> into your calculator, it only squares the <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">3</span></span></span></span>, giving you <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>2</mn><mn>9</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{2}{9}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">9</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span>.
+<em>Always type <code dir="auto">(2/3)^2</code> to correctly square the entire fraction and get <strong><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>4</mn><mn>9</mn></mfrac></mrow><annotation encoding="application/x-tex">\frac{4}{9}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">9</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">4</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></strong>.</em></p><p><em>(Note: Positive whole numbers and decimals are perfectly fine without brackets. Typing <code dir="auto">5^2</code> or <code dir="auto">2.5^2</code> will work exactly as expected!)</em></p> </div> </aside>
+<hr/>
+<div class="sl-heading-wrapper level-h2"><h2 id="4-standard-practice-problems">4. Standard Practice Problems</h2><a class="sl-anchor-link" href="#4-standard-practice-problems"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only" data-pagefind-ignore="true">Section titled “4. Standard Practice Problems”</span></a></div>
+<starlight-tabs class="astro-esqgolmp"> <div class="tablist-wrapper not-content astro-esqgolmp"> <ul role="tablist" class="astro-esqgolmp"> <li role="presentation" class="tab astro-esqgolmp"> <a role="tab" href="#tab-panel-232" id="tab-232" aria-selected="true" tabindex="0" class="astro-esqgolmp">  📝 Question 1 </a> </li><li role="presentation" class="tab astro-esqgolmp"> <a role="tab" href="#tab-panel-233" id="tab-233" aria-selected="false" tabindex="-1" class="astro-esqgolmp">  ✅ Solution 1 </a> </li> </ul> </div> <div id="tab-panel-232" aria-labelledby="tab-232" role="tabpanel" tabindex="0"> <p>Write an algebraic expression for: “Multiply <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal">p</span></span></span></span> by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">6</span></span></span></span>, then add <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">q</span></span></span></span>.”</p> </div><div id="tab-panel-233" aria-labelledby="tab-233" role="tabpanel" tabindex="0" hidden> <ol>
+<li>“Multiply <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi></mrow><annotation encoding="application/x-tex">p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal">p</span></span></span></span> by <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">6</span></span></span></span>” is written as <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mi>p</mi></mrow><annotation encoding="application/x-tex">6p</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord">6</span><span class="mord mathnormal">p</span></span></span></span>.</li>
+<li>“then add <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">q</span></span></span></span>” means we add <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi></mrow><annotation encoding="application/x-tex">q</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">q</span></span></span></span> to our previous result.</li>
+<li>Final Answer: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi><mrow><mn mathvariant="bold">6</mn><mi mathvariant="bold-italic">p</mi><mo mathvariant="bold-italic">+</mo><mi mathvariant="bold-italic">q</mi></mrow></mi></mrow><annotation encoding="application/x-tex">\boldsymbol{6p + q}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em"></span><span class="mord"><span class="mord"><span class="mord mathbf">6</span><span class="mord boldsymbol">p</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin mathbf">+</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mord boldsymbol" style="margin-right:0.037em">q</span></span></span></span></span></span>.</li>
+</ol> </div>  </starlight-tabs>  
+<style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).load=e;window.dispatchEvent(new Event("astro:load"));})();</script><script>(()=>{var A=Object.defineProperty;var g=(i,o,a)=>o in i?A(i,o,{enumerable:!0,configurable:!0,writable:!0,value:a}):i[o]=a;var d=(i,o,a)=>g(i,typeof o!="symbol"?o+"":o,a);{let i={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t),11:t=>Number.POSITIVE_INFINITY*t},o=t=>{let[l,e]=t;return l in i?i[l](e):void 0},a=t=>t.map(o),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([l,e])=>[l,o(e)]));class y extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var b;if(!this.hydrator||!this.isConnected)return;let e=(b=this.parentElement)==null?void 0:b.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let c=this.querySelectorAll("astro-slot"),n={},h=this.querySelectorAll("template[data-astro-template]");for(let r of h){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(let r of c){let s=r.closest(this.tagName);s!=null&&s.isSameNode(this)&&(n[r.getAttribute("name")||"default"]=r.innerHTML)}let p;try{p=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(r){let s=this.getAttribute("component-url")||"<unknown>",v=this.getAttribute("component-export");throw v&&(s+=` (export ${v})`),console.error(`[hydrate] Error parsing props for component ${s}`,this.getAttribute("props"),r),r}let u;await this.hydrator(this)(this.Component,p,n,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),c.disconnect(),this.childrenConnectedCallback()},c=new MutationObserver(()=>{var n;((n=this.lastChild)==null?void 0:n.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});c.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),c=this.getAttribute("client");if(Astro[c]===void 0){window.addEventListener(`astro:${c}`,()=>this.start(),{once:!0});return}try{await Astro[c](async()=>{let n=this.getAttribute("renderer-url"),[h,{default:p}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),u=this.getAttribute("component-export")||"default";if(!u.includes("."))this.Component=h[u];else{this.Component=h;for(let f of u.split("."))this.Component=this.Component[f]}return this.hydrator=p,this.hydrate},e,this)}catch(n){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,n)}}attributeChangedCallback(){this.hydrate()}}d(y,"observedAttributes",["props"]),customElements.get("astro-island")||customElements.define("astro-island",y)}})();</script><astro-island uid="Z1hoC8j" prefix="r6" component-url="/_astro/AIGenerator.Btow_siH.js" component-export="default" renderer-url="/_astro/client.DyczpTbx.js" props="{&quot;topic&quot;:[0,&quot;Translating words into basic algebraic expressions&quot;],&quot;difficulty&quot;:[0,&quot;IGCSE core&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AIGenerator&quot;,&quot;value&quot;:true}" await-children><div class="ai-container-card"><style>
+        .ai-container-card {
+          margin: 3rem 0;
+          border: 1px solid var(--sl-color-gray-5);
+          border-radius: 12px;
+          background-color: var(--sl-color-bg-nav);
+          overflow: hidden;
+          box-shadow: var(--sl-shadow-md);
+        }
+
+        .ai-card-header {
+          padding: 0.8rem 1.25rem;
+          background: var(--sl-color-gray-6);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid var(--sl-color-gray-5);
+        }
+
+        .ai-badge {
+          font-size: 0.65rem;
+          font-weight: 800;
+          padding: 0.2rem 0.5rem;
+          border-radius: 4px;
+          text-transform: uppercase;
+          color: var(--sl-color-accent-high);
+          border: 1px solid var(--sl-color-accent-low);
+        }
+
+        .ai-card-body { padding: 1.5rem; }
+
+        .ai-btn-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+        
+        .ai-button-group {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .ai-refresh-btn {
+          background: var(--sl-color-accent);
+          color: var(--sl-color-black);
+          border: none;
+          padding: 0.6rem 1.2rem;
+          border-radius: 6px;
+          font-size: 0.9rem;
+          font-weight: 700;
+          cursor: pointer;
+          min-width: 140px;
+          transition: transform 0.1s, opacity 0.2s;
+        }
+        
+        .ai-refresh-btn:active { transform: scale(0.98); }
+        .ai-refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+        .ai-export-btn {
+          background: transparent;
+          color: var(--sl-color-gray-2);
+          border: 1px solid var(--sl-color-gray-4);
+          padding: 0.6rem 1rem;
+          border-radius: 6px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+        
+        .ai-export-btn:hover {
+          background: var(--sl-color-gray-6);
+          border-color: var(--sl-color-gray-3);
+          color: var(--sl-color-white);
+        }
+        
+        .ai-export-btn:active { transform: scale(0.98); }
+
+        .ai-loader-container {
+          flex-grow: 1;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-size: 0.85rem;
+          color: var(--sl-color-gray-3);
+        }
+
+        .ai-pulse-dot {
+          width: 8px; height: 8px;
+          background-color: var(--sl-color-accent);
+          border-radius: 50%;
+          animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+          0% { transform: scale(0.9); opacity: 1; }
+          50% { transform: scale(1.3); opacity: 0.4; }
+          100% { transform: scale(0.9); opacity: 1; }
+        }
+
+        .ai-content-inner {
+          background: var(--sl-color-gray-6);
+          border-radius: 8px;
+          padding: 1.5rem;
+          border-left: 4px solid var(--sl-color-accent);
+          animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .math-renderer :global(p) { margin-bottom: 0.8rem; }
+        
+        .math-renderer :global(svg) {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 1.5rem auto;
+          background-color: white; 
+          border-radius: 8px;
+          padding: 1rem;
+          box-shadow: inset 0 0 0 1px var(--sl-color-gray-4);
+          overflow: visible;
+        }
+
+        .math-renderer :global(.katex-display) {
+          overflow-x: auto;
+          overflow-y: hidden;
+          max-width: 100%;
+          padding: 0.5rem 0;
+          font-size: 1.05em;
+        }
+        .math-renderer :global(.katex-display::-webkit-scrollbar) { height: 6px; }
+        .math-renderer :global(.katex-display::-webkit-scrollbar-thumb) {
+          background: var(--sl-color-gray-5); border-radius: 4px;
+        }
+      </style><div class="ai-card-header"><div style="display:flex;align-items:center;gap:0.6rem"><span>🤖</span><span style="font-weight:600;font-size:0.9rem">Translating words into basic algebraic expressions</span></div><span class="ai-badge">IGCSE core</span></div><div class="ai-card-body"><div class="ai-btn-row"><div class="not-content"><div class="ai-button-group"><button class="ai-refresh-btn">Practice Now</button><button class="ai-export-btn" title="Copy exact prompt to paste in Gemini">📋 Copy Prompt</button></div></div><span style="font-size:0.8rem;color:var(--sl-color-gray-4)">Generate a unique exam-style question with diagrams</span></div></div></div><!--astro:end--></astro-island>
+<starlight-tabs class="astro-esqgolmp"> <div class="tablist-wrapper not-content astro-esqgolmp"> <ul role="tablist" class="astro-esqgolmp"> <li role="presentation" class="tab astro-esqgolmp"> <a role="tab" href="#tab-panel-240" id="tab-240" aria-selected="true" tabindex="0" class="astro-esqgolmp">  📝 Question 2 </a> </li><li role="presentation" class="tab astro-esqgolmp"> <a role="tab" href="#tab-panel-241" id="tab-241" aria-selected="false" tabindex="-1" class="astro-esqgolmp">  ✅ Solution 2 </a> </li> </ul> </div> <div id="tab-panel-240" aria-labelledby="tab-240" role="tabpanel" tabindex="0"> <p>Write an algebraic expression for: “The square of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span></span></span></span>, divided by the difference between <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal" style="margin-right:0.044em">z</span></span></span></span>.”</p> </div><div id="tab-panel-241" aria-labelledby="tab-241" role="tabpanel" tabindex="0" hidden> <ol>
+<li>“The square of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span></span></span></span>” is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">x^2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141em"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span>.</li>
+<li>“Difference between <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>z</mi></mrow><annotation encoding="application/x-tex">z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal" style="margin-right:0.044em">z</span></span></span></span>” is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>−</mo><mi>z</mi></mrow><annotation encoding="application/x-tex">y - z</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal" style="margin-right:0.044em">z</span></span></span></span>.</li>
+<li>“Divided by” means setting it up as a fraction.</li>
+<li>Final Answer: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi><mfrac><msup><mi mathvariant="bold-italic">x</mi><mn mathvariant="bold">2</mn></msup><mrow><mi mathvariant="bold-italic">y</mi><mo mathvariant="bold-italic">−</mo><mi mathvariant="bold-italic">z</mi></mrow></mfrac></mi></mrow><annotation encoding="application/x-tex">\boldsymbol{\frac{x^2}{y - z}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.499em;vertical-align:-0.4811em"></span><span class="mord"><span class="mord"><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0179em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord boldsymbol mtight" style="margin-right:0.037em">y</span><span class="mbin mathbf mtight">−</span><span class="mord boldsymbol mtight" style="margin-right:0.0421em">z</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord boldsymbol mtight">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em"><span style="top:-2.931em;margin-right:0.0714em"><span class="pstrut" style="height:2.5em"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathbf mtight">2</span></span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4811em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></span>.</li>
+</ol> </div>  </starlight-tabs>  
+<astro-island uid="Z24Fv8d" prefix="r7" component-url="/_astro/AIGenerator.Btow_siH.js" component-export="default" renderer-url="/_astro/client.DyczpTbx.js" props="{&quot;topic&quot;:[0,&quot;Translating complex sentences into algebraic expressions&quot;],&quot;difficulty&quot;:[0,&quot;IGCSE core&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AIGenerator&quot;,&quot;value&quot;:true}" await-children><div class="ai-container-card"><style>
+        .ai-container-card {
+          margin: 3rem 0;
+          border: 1px solid var(--sl-color-gray-5);
+          border-radius: 12px;
+          background-color: var(--sl-color-bg-nav);
+          overflow: hidden;
+          box-shadow: var(--sl-shadow-md);
+        }
+
+        .ai-card-header {
+          padding: 0.8rem 1.25rem;
+          background: var(--sl-color-gray-6);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid var(--sl-color-gray-5);
+        }
+
+        .ai-badge {
+          font-size: 0.65rem;
+          font-weight: 800;
+          padding: 0.2rem 0.5rem;
+          border-radius: 4px;
+          text-transform: uppercase;
+          color: var(--sl-color-accent-high);
+          border: 1px solid var(--sl-color-accent-low);
+        }
+
+        .ai-card-body { padding: 1.5rem; }
+
+        .ai-btn-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+        
+        .ai-button-group {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .ai-refresh-btn {
+          background: var(--sl-color-accent);
+          color: var(--sl-color-black);
+          border: none;
+          padding: 0.6rem 1.2rem;
+          border-radius: 6px;
+          font-size: 0.9rem;
+          font-weight: 700;
+          cursor: pointer;
+          min-width: 140px;
+          transition: transform 0.1s, opacity 0.2s;
+        }
+        
+        .ai-refresh-btn:active { transform: scale(0.98); }
+        .ai-refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+        .ai-export-btn {
+          background: transparent;
+          color: var(--sl-color-gray-2);
+          border: 1px solid var(--sl-color-gray-4);
+          padding: 0.6rem 1rem;
+          border-radius: 6px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+        
+        .ai-export-btn:hover {
+          background: var(--sl-color-gray-6);
+          border-color: var(--sl-color-gray-3);
+          color: var(--sl-color-white);
+        }
+        
+        .ai-export-btn:active { transform: scale(0.98); }
+
+        .ai-loader-container {
+          flex-grow: 1;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-size: 0.85rem;
+          color: var(--sl-color-gray-3);
+        }
+
+        .ai-pulse-dot {
+          width: 8px; height: 8px;
+          background-color: var(--sl-color-accent);
+          border-radius: 50%;
+          animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+          0% { transform: scale(0.9); opacity: 1; }
+          50% { transform: scale(1.3); opacity: 0.4; }
+          100% { transform: scale(0.9); opacity: 1; }
+        }
+
+        .ai-content-inner {
+          background: var(--sl-color-gray-6);
+          border-radius: 8px;
+          padding: 1.5rem;
+          border-left: 4px solid var(--sl-color-accent);
+          animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .math-renderer :global(p) { margin-bottom: 0.8rem; }
+        
+        .math-renderer :global(svg) {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 1.5rem auto;
+          background-color: white; 
+          border-radius: 8px;
+          padding: 1rem;
+          box-shadow: inset 0 0 0 1px var(--sl-color-gray-4);
+          overflow: visible;
+        }
+
+        .math-renderer :global(.katex-display) {
+          overflow-x: auto;
+          overflow-y: hidden;
+          max-width: 100%;
+          padding: 0.5rem 0;
+          font-size: 1.05em;
+        }
+        .math-renderer :global(.katex-display::-webkit-scrollbar) { height: 6px; }
+        .math-renderer :global(.katex-display::-webkit-scrollbar-thumb) {
+          background: var(--sl-color-gray-5); border-radius: 4px;
+        }
+      </style><div class="ai-card-header"><div style="display:flex;align-items:center;gap:0.6rem"><span>🤖</span><span style="font-weight:600;font-size:0.9rem">Translating complex sentences into algebraic expressions</span></div><span class="ai-badge">IGCSE core</span></div><div class="ai-card-body"><div class="ai-btn-row"><div class="not-content"><div class="ai-button-group"><button class="ai-refresh-btn">Practice Now</button><button class="ai-export-btn" title="Copy exact prompt to paste in Gemini">📋 Copy Prompt</button></div></div><span style="font-size:0.8rem;color:var(--sl-color-gray-4)">Generate a unique exam-style question with diagrams</span></div></div></div><!--astro:end--></astro-island>
+<starlight-tabs class="astro-esqgolmp"> <div class="tablist-wrapper not-content astro-esqgolmp"> <ul role="tablist" class="astro-esqgolmp"> <li role="presentation" class="tab astro-esqgolmp"> <a role="tab" href="#tab-panel-230" id="tab-230" aria-selected="true" tabindex="0" class="astro-esqgolmp">  📝 Question 3 </a> </li><li role="presentation" class="tab astro-esqgolmp"> <a role="tab" href="#tab-panel-231" id="tab-231" aria-selected="false" tabindex="-1" class="astro-esqgolmp">  ✅ Solution 3 </a> </li> </ul> </div> <div id="tab-panel-230" aria-labelledby="tab-230" role="tabpanel" tabindex="0"> <p>Evaluate <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mi>m</mi><mo>+</mo><mn>5</mn><mi>n</mi></mrow><annotation encoding="application/x-tex">3m + 5n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">3</span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">5</span><span class="mord mathnormal">n</span></span></span></span> when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">m = 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">m</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">7</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n = 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">2</span></span></span></span>.</p> </div><div id="tab-panel-231" aria-labelledby="tab-231" role="tabpanel" tabindex="0" hidden> <ol>
+<li>Substitute the values using brackets: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo stretchy="false">(</mo><mn>7</mn><mo stretchy="false">)</mo><mo>+</mo><mn>5</mn><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">3(7) + 5(2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord">7</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord">5</span><span class="mopen">(</span><span class="mord">2</span><span class="mclose">)</span></span></span></span>.</li>
+<li>Perform the multiplications: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>21</mn><mo>+</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">21 + 10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">21</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">10</span></span></span></span>.</li>
+<li>Add the results together.</li>
+<li>Final Answer: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi><mn mathvariant="bold">31</mn></mi></mrow><annotation encoding="application/x-tex">\boldsymbol{31}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord"><span class="mord"><span class="mord mathbf">31</span></span></span></span></span></span>.</li>
+</ol> </div>  </starlight-tabs>  <script type="module">class r extends HTMLElement{static#e=new Map;#t;#n="starlight-synced-tabs__";constructor(){super();const t=this.querySelector('[role="tablist"]');if(this.tabs=[...t.querySelectorAll('[role="tab"]')],this.panels=[...this.querySelectorAll(':scope > [role="tabpanel"]')],this.#t=this.dataset.syncKey,this.#t){const i=r.#e.get(this.#t)??[];i.push(this),r.#e.set(this.#t,i)}this.tabs.forEach((i,c)=>{i.addEventListener("click",e=>{e.preventDefault();const n=t.querySelector('[aria-selected="true"]');e.currentTarget!==n&&this.switchTab(e.currentTarget,c)}),i.addEventListener("keydown",e=>{const n=this.tabs.indexOf(e.currentTarget),s=e.key==="ArrowLeft"?n-1:e.key==="ArrowRight"?n+1:e.key==="Home"?0:e.key==="End"?this.tabs.length-1:null;s!==null&&this.tabs[s]&&(e.preventDefault(),this.switchTab(this.tabs[s],s))})})}switchTab(t,i,c=!0){if(!t)return;const e=c?this.getBoundingClientRect().top:0;this.tabs.forEach(s=>{s.setAttribute("aria-selected","false"),s.setAttribute("tabindex","-1")}),this.panels.forEach(s=>{s.hidden=!0});const n=this.panels[i];n&&(n.hidden=!1),t.removeAttribute("tabindex"),t.setAttribute("aria-selected","true"),c&&(t.focus(),r.#r(this,t),window.scrollTo({top:window.scrollY+(this.getBoundingClientRect().top-e),behavior:"instant"}))}#i(t){!this.#t||typeof localStorage>"u"||localStorage.setItem(this.#n+this.#t,t)}static#r(t,i){const c=t.#t,e=r.#s(i);if(!c||!e)return;const n=r.#e.get(c);if(n){for(const s of n){if(s===t)continue;const a=s.tabs.findIndex(o=>r.#s(o)===e);a!==-1&&s.switchTab(s.tabs[a],a,!1)}t.#i(e)}}static#s(t){return t.textContent?.trim()}}customElements.define("starlight-tabs",r);</script>
+<astro-island uid="kYRaO" prefix="r8" component-url="/_astro/AIGenerator.Btow_siH.js" component-export="default" renderer-url="/_astro/client.DyczpTbx.js" props="{&quot;topic&quot;:[0,&quot;Substituting positive numbers into linear expressions&quot;],&quot;difficulty&quot;:[0,&quot;IGCSE core&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AIGenerator&quot;,&quot;value&quot;:true}" await-children><div class="ai-container-card"><style>
+        .ai-container-card {
+          margin: 3rem 0;
+          border: 1px solid var(--sl-color-gray-5);
+          border-radius: 12px;
+          background-color: var(--sl-color-bg-nav);
+          overflow: hidden;
+          box-shadow: var(--sl-shadow-md);
+        }
+
+        .ai-card-header {
+          padding: 0.8rem 1.25rem;
+          background: var(--sl-color-gray-6);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid var(--sl-color-gray-5);
+        }
+
+        .ai-badge {
+          font-size: 0.65rem;
+          font-weight: 800;
+          padding: 0.2rem 0.5rem;
+          border-radius: 4px;
+          text-transform: uppercase;
+          color: var(--sl-color-accent-high);
+          border: 1px solid var(--sl-color-accent-low);
+        }
+
+        .ai-card-body { padding: 1.5rem; }
+
+        .ai-btn-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+        
+        .ai-button-group {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .ai-refresh-btn {
+          background: var(--sl-color-accent);
+          color: var(--sl-color-black);
+          border: none;
+          padding: 0.6rem 1.2rem;
+          border-radius: 6px;
+          font-size: 0.9rem;
+          font-weight: 700;
+          cursor: pointer;
+          min-width: 140px;
+          transition: transform 0.1s, opacity 0.2s;
+        }
+        
+        .ai-refresh-btn:active { transform: scale(0.98); }
+        .ai-refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+        .ai-export-btn {
+          background: transparent;
+          color: var(--sl-color-gray-2);
+          border: 1px solid var(--sl-color-gray-4);
+          padding: 0.6rem 1rem;
+          border-radius: 6px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+        
+        .ai-export-btn:hover {
+          background: var(--sl-color-gray-6);
+          border-color: var(--sl-color-gray-3);
+          color: var(--sl-color-white);
+        }
+        
+        .ai-export-btn:active { transform: scale(0.98); }
+
+        .ai-loader-container {
+          flex-grow: 1;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-size: 0.85rem;
+          color: var(--sl-color-gray-3);
+        }
+
+        .ai-pulse-dot {
+          width: 8px; height: 8px;
+          background-color: var(--sl-color-accent);
+          border-radius: 50%;
+          animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+          0% { transform: scale(0.9); opacity: 1; }
+          50% { transform: scale(1.3); opacity: 0.4; }
+          100% { transform: scale(0.9); opacity: 1; }
+        }
+
+        .ai-content-inner {
+          background: var(--sl-color-gray-6);
+          border-radius: 8px;
+          padding: 1.5rem;
+          border-left: 4px solid var(--sl-color-accent);
+          animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .math-renderer :global(p) { margin-bottom: 0.8rem; }
+        
+        .math-renderer :global(svg) {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 1.5rem auto;
+          background-color: white; 
+          border-radius: 8px;
+          padding: 1rem;
+          box-shadow: inset 0 0 0 1px var(--sl-color-gray-4);
+          overflow: visible;
+        }
+
+        .math-renderer :global(.katex-display) {
+          overflow-x: auto;
+          overflow-y: hidden;
+          max-width: 100%;
+          padding: 0.5rem 0;
+          font-size: 1.05em;
+        }
+        .math-renderer :global(.katex-display::-webkit-scrollbar) { height: 6px; }
+        .math-renderer :global(.katex-display::-webkit-scrollbar-thumb) {
+          background: var(--sl-color-gray-5); border-radius: 4px;
+        }
+      </style><div class="ai-card-header"><div style="display:flex;align-items:center;gap:0.6rem"><span>🤖</span><span style="font-weight:600;font-size:0.9rem">Substituting positive numbers into linear expressions</span></div><span class="ai-badge">IGCSE core</span></div><div class="ai-card-body"><div class="ai-btn-row"><div class="not-content"><div class="ai-button-group"><button class="ai-refresh-btn">Practice Now</button><button class="ai-export-btn" title="Copy exact prompt to paste in Gemini">📋 Copy Prompt</button></div></div><span style="font-size:0.8rem;color:var(--sl-color-gray-4)">Generate a unique exam-style question with diagrams</span></div></div></div><!--astro:end--></astro-island>
+<starlight-tabs class="astro-esqgolmp"> <div class="tablist-wrapper not-content astro-esqgolmp"> <ul role="tablist" class="astro-esqgolmp"> <li role="presentation" class="tab astro-esqgolmp"> <a role="tab" href="#tab-panel-236" id="tab-236" aria-selected="true" tabindex="0" class="astro-esqgolmp">  📝 Question 4 </a> </li><li role="presentation" class="tab astro-esqgolmp"> <a role="tab" href="#tab-panel-237" id="tab-237" aria-selected="false" tabindex="-1" class="astro-esqgolmp">  ✅ Solution 4 </a> </li> </ul> </div> <div id="tab-panel-236" aria-labelledby="tab-236" role="tabpanel" tabindex="0"> <p>Evaluate <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">2x^2 - y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8974em;vertical-align:-0.0833em"></span><span class="mord">2</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span></span></span></span> when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><mo>−</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">x = -4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">4</span></span></span></span> and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>y</mi><mo>=</mo><mo>−</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">y = -5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.1944em"></span><span class="mord mathnormal" style="margin-right:0.0359em">y</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">5</span></span></span></span>.</p> </div><div id="tab-panel-237" aria-labelledby="tab-237" role="tabpanel" tabindex="0" hidden> <ol>
+<li>Substitute the values carefully using brackets: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo stretchy="false">(</mo><mo>−</mo><mn>4</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>−</mo><mo stretchy="false">(</mo><mo>−</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2(-4)^2 - (-5)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord">−</span><span class="mord">4</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">5</span><span class="mclose">)</span></span></span></span>.</li>
+<li>Handle the index first: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mo>−</mo><mn>4</mn><msup><mo stretchy="false">)</mo><mn>2</mn></msup><mo>=</mo><mn>16</mn></mrow><annotation encoding="application/x-tex">(-4)^2 = 16</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0641em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">4</span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141em"><span style="top:-3.063em;margin-right:0.05em"><span class="pstrut" style="height:2.7em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">16</span></span></span></span>. The expression is now <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo stretchy="false">(</mo><mn>16</mn><mo stretchy="false">)</mo><mo>−</mo><mo stretchy="false">(</mo><mo>−</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">2(16) - (-5)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord">16</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">5</span><span class="mclose">)</span></span></span></span>.</li>
+<li>Multiply: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo stretchy="false">(</mo><mn>16</mn><mo stretchy="false">)</mo><mo>=</mo><mn>32</mn></mrow><annotation encoding="application/x-tex">2(16) = 32</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord">16</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">32</span></span></span></span>. The expression is now <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>32</mn><mo>−</mo><mo stretchy="false">(</mo><mo>−</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">32 - (-5)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">32</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">5</span><span class="mclose">)</span></span></span></span>.</li>
+<li>Subtracting a negative is the same as adding a positive: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>32</mn><mo>+</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">32 + 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">32</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">5</span></span></span></span>.</li>
+<li>Final Answer: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi><mn mathvariant="bold">37</mn></mi></mrow><annotation encoding="application/x-tex">\boldsymbol{37}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord"><span class="mord"><span class="mord mathbf">37</span></span></span></span></span></span>.</li>
+</ol> </div>  </starlight-tabs>  
+<astro-island uid="hTYQX" prefix="r9" component-url="/_astro/AIGenerator.Btow_siH.js" component-export="default" renderer-url="/_astro/client.DyczpTbx.js" props="{&quot;topic&quot;:[0,&quot;Substituting negative numbers and dealing with powers&quot;],&quot;difficulty&quot;:[0,&quot;IGCSE core&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AIGenerator&quot;,&quot;value&quot;:true}" await-children><div class="ai-container-card"><style>
+        .ai-container-card {
+          margin: 3rem 0;
+          border: 1px solid var(--sl-color-gray-5);
+          border-radius: 12px;
+          background-color: var(--sl-color-bg-nav);
+          overflow: hidden;
+          box-shadow: var(--sl-shadow-md);
+        }
+
+        .ai-card-header {
+          padding: 0.8rem 1.25rem;
+          background: var(--sl-color-gray-6);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid var(--sl-color-gray-5);
+        }
+
+        .ai-badge {
+          font-size: 0.65rem;
+          font-weight: 800;
+          padding: 0.2rem 0.5rem;
+          border-radius: 4px;
+          text-transform: uppercase;
+          color: var(--sl-color-accent-high);
+          border: 1px solid var(--sl-color-accent-low);
+        }
+
+        .ai-card-body { padding: 1.5rem; }
+
+        .ai-btn-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+        
+        .ai-button-group {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .ai-refresh-btn {
+          background: var(--sl-color-accent);
+          color: var(--sl-color-black);
+          border: none;
+          padding: 0.6rem 1.2rem;
+          border-radius: 6px;
+          font-size: 0.9rem;
+          font-weight: 700;
+          cursor: pointer;
+          min-width: 140px;
+          transition: transform 0.1s, opacity 0.2s;
+        }
+        
+        .ai-refresh-btn:active { transform: scale(0.98); }
+        .ai-refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+        .ai-export-btn {
+          background: transparent;
+          color: var(--sl-color-gray-2);
+          border: 1px solid var(--sl-color-gray-4);
+          padding: 0.6rem 1rem;
+          border-radius: 6px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+        
+        .ai-export-btn:hover {
+          background: var(--sl-color-gray-6);
+          border-color: var(--sl-color-gray-3);
+          color: var(--sl-color-white);
+        }
+        
+        .ai-export-btn:active { transform: scale(0.98); }
+
+        .ai-loader-container {
+          flex-grow: 1;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-size: 0.85rem;
+          color: var(--sl-color-gray-3);
+        }
+
+        .ai-pulse-dot {
+          width: 8px; height: 8px;
+          background-color: var(--sl-color-accent);
+          border-radius: 50%;
+          animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+          0% { transform: scale(0.9); opacity: 1; }
+          50% { transform: scale(1.3); opacity: 0.4; }
+          100% { transform: scale(0.9); opacity: 1; }
+        }
+
+        .ai-content-inner {
+          background: var(--sl-color-gray-6);
+          border-radius: 8px;
+          padding: 1.5rem;
+          border-left: 4px solid var(--sl-color-accent);
+          animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .math-renderer :global(p) { margin-bottom: 0.8rem; }
+        
+        .math-renderer :global(svg) {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 1.5rem auto;
+          background-color: white; 
+          border-radius: 8px;
+          padding: 1rem;
+          box-shadow: inset 0 0 0 1px var(--sl-color-gray-4);
+          overflow: visible;
+        }
+
+        .math-renderer :global(.katex-display) {
+          overflow-x: auto;
+          overflow-y: hidden;
+          max-width: 100%;
+          padding: 0.5rem 0;
+          font-size: 1.05em;
+        }
+        .math-renderer :global(.katex-display::-webkit-scrollbar) { height: 6px; }
+        .math-renderer :global(.katex-display::-webkit-scrollbar-thumb) {
+          background: var(--sl-color-gray-5); border-radius: 4px;
+        }
+      </style><div class="ai-card-header"><div style="display:flex;align-items:center;gap:0.6rem"><span>🤖</span><span style="font-weight:600;font-size:0.9rem">Substituting negative numbers and dealing with powers</span></div><span class="ai-badge">IGCSE core</span></div><div class="ai-card-body"><div class="ai-btn-row"><div class="not-content"><div class="ai-button-group"><button class="ai-refresh-btn">Practice Now</button><button class="ai-export-btn" title="Copy exact prompt to paste in Gemini">📋 Copy Prompt</button></div></div><span style="font-size:0.8rem;color:var(--sl-color-gray-4)">Generate a unique exam-style question with diagrams</span></div></div></div><!--astro:end--></astro-island>
+<starlight-tabs class="astro-esqgolmp"> <div class="tablist-wrapper not-content astro-esqgolmp"> <ul role="tablist" class="astro-esqgolmp"> <li role="presentation" class="tab astro-esqgolmp"> <a role="tab" href="#tab-panel-238" id="tab-238" aria-selected="true" tabindex="0" class="astro-esqgolmp">  📝 Question 5 </a> </li><li role="presentation" class="tab astro-esqgolmp"> <a role="tab" href="#tab-panel-239" id="tab-239" aria-selected="false" tabindex="-1" class="astro-esqgolmp">  ✅ Solution 5 </a> </li> </ul> </div> <div id="tab-panel-238" aria-labelledby="tab-238" role="tabpanel" tabindex="0"> <p>The formula for the area of a trapezium is <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">(</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo stretchy="false">)</mo><mi>h</mi></mrow><annotation encoding="application/x-tex">A = \frac{1}{2}(a + b)h</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord mathnormal">b</span><span class="mclose">)</span><span class="mord mathnormal">h</span></span></span></span>.
+Find the area <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal">A</span></span></span></span> when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">a = 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">5</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>=</mo><mn>9</mn></mrow><annotation encoding="application/x-tex">b = 9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">b</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">9</span></span></span></span>, and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>h</mi><mo>=</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">h = 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em"></span><span class="mord mathnormal">h</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">4</span></span></span></span>.</p> </div><div id="tab-panel-239" aria-labelledby="tab-239" role="tabpanel" tabindex="0" hidden> <ol>
+<li>Substitute the given values into the formula: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">(</mo><mn>5</mn><mo>+</mo><mn>9</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A = \frac{1}{2}(5 + 9)(4)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord">9</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord">4</span><span class="mclose">)</span></span></span></span>.</li>
+<li>Follow BIDMAS and solve the brackets first: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false">(</mo><mn>5</mn><mo>+</mo><mn>9</mn><mo stretchy="false">)</mo><mo>=</mo><mn>14</mn></mrow><annotation encoding="application/x-tex">(5 + 9) = 14</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mord">9</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">14</span></span></span></span>.</li>
+<li>The expression is now <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">(</mo><mn>14</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">A = \frac{1}{2}(14)(4)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em"></span><span class="mord mathnormal">A</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mopen">(</span><span class="mord">14</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord">4</span><span class="mclose">)</span></span></span></span>.</li>
+<li>Multiply in any order: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>×</mo><mn>14</mn><mo>=</mo><mn>7</mn></mrow><annotation encoding="application/x-tex">\frac{1}{2} \times 14 = 7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.1901em;vertical-align:-0.345em"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8451em"><span style="top:-2.655em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.23em"><span class="pstrut" style="height:3em"></span><span class="frac-line" style="border-bottom-width:0.04em"></span></span><span style="top:-3.394em"><span class="pstrut" style="height:3em"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.345em"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">14</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">7</span></span></span></span>, and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>7</mn><mo>×</mo><mn>4</mn><mo>=</mo><mn>28</mn></mrow><annotation encoding="application/x-tex">7 \times 4 = 28</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">7</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">4</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">28</span></span></span></span>.</li>
+<li>Final Answer: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi><mrow><mi mathvariant="bold-italic">A</mi><mo>=</mo><mn mathvariant="bold">28</mn></mrow></mi></mrow><annotation encoding="application/x-tex">\boldsymbol{A = 28}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6861em"></span><span class="mord"><span class="mord"><span class="mord boldsymbol">A</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel mathbf">=</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mord mathbf">28</span></span></span></span></span></span>.</li>
+</ol> </div>  </starlight-tabs>  
+<astro-island uid="Z20Ldwt" prefix="r10" component-url="/_astro/AIGenerator.Btow_siH.js" component-export="default" renderer-url="/_astro/client.DyczpTbx.js" props="{&quot;topic&quot;:[0,&quot;Substituting values into geometry and physics formulae&quot;],&quot;difficulty&quot;:[0,&quot;IGCSE core&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AIGenerator&quot;,&quot;value&quot;:true}" await-children><div class="ai-container-card"><style>
+        .ai-container-card {
+          margin: 3rem 0;
+          border: 1px solid var(--sl-color-gray-5);
+          border-radius: 12px;
+          background-color: var(--sl-color-bg-nav);
+          overflow: hidden;
+          box-shadow: var(--sl-shadow-md);
+        }
+
+        .ai-card-header {
+          padding: 0.8rem 1.25rem;
+          background: var(--sl-color-gray-6);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid var(--sl-color-gray-5);
+        }
+
+        .ai-badge {
+          font-size: 0.65rem;
+          font-weight: 800;
+          padding: 0.2rem 0.5rem;
+          border-radius: 4px;
+          text-transform: uppercase;
+          color: var(--sl-color-accent-high);
+          border: 1px solid var(--sl-color-accent-low);
+        }
+
+        .ai-card-body { padding: 1.5rem; }
+
+        .ai-btn-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+        
+        .ai-button-group {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .ai-refresh-btn {
+          background: var(--sl-color-accent);
+          color: var(--sl-color-black);
+          border: none;
+          padding: 0.6rem 1.2rem;
+          border-radius: 6px;
+          font-size: 0.9rem;
+          font-weight: 700;
+          cursor: pointer;
+          min-width: 140px;
+          transition: transform 0.1s, opacity 0.2s;
+        }
+        
+        .ai-refresh-btn:active { transform: scale(0.98); }
+        .ai-refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+        .ai-export-btn {
+          background: transparent;
+          color: var(--sl-color-gray-2);
+          border: 1px solid var(--sl-color-gray-4);
+          padding: 0.6rem 1rem;
+          border-radius: 6px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+        
+        .ai-export-btn:hover {
+          background: var(--sl-color-gray-6);
+          border-color: var(--sl-color-gray-3);
+          color: var(--sl-color-white);
+        }
+        
+        .ai-export-btn:active { transform: scale(0.98); }
+
+        .ai-loader-container {
+          flex-grow: 1;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-size: 0.85rem;
+          color: var(--sl-color-gray-3);
+        }
+
+        .ai-pulse-dot {
+          width: 8px; height: 8px;
+          background-color: var(--sl-color-accent);
+          border-radius: 50%;
+          animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+          0% { transform: scale(0.9); opacity: 1; }
+          50% { transform: scale(1.3); opacity: 0.4; }
+          100% { transform: scale(0.9); opacity: 1; }
+        }
+
+        .ai-content-inner {
+          background: var(--sl-color-gray-6);
+          border-radius: 8px;
+          padding: 1.5rem;
+          border-left: 4px solid var(--sl-color-accent);
+          animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .math-renderer :global(p) { margin-bottom: 0.8rem; }
+        
+        .math-renderer :global(svg) {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 1.5rem auto;
+          background-color: white; 
+          border-radius: 8px;
+          padding: 1rem;
+          box-shadow: inset 0 0 0 1px var(--sl-color-gray-4);
+          overflow: visible;
+        }
+
+        .math-renderer :global(.katex-display) {
+          overflow-x: auto;
+          overflow-y: hidden;
+          max-width: 100%;
+          padding: 0.5rem 0;
+          font-size: 1.05em;
+        }
+        .math-renderer :global(.katex-display::-webkit-scrollbar) { height: 6px; }
+        .math-renderer :global(.katex-display::-webkit-scrollbar-thumb) {
+          background: var(--sl-color-gray-5); border-radius: 4px;
+        }
+      </style><div class="ai-card-header"><div style="display:flex;align-items:center;gap:0.6rem"><span>🤖</span><span style="font-weight:600;font-size:0.9rem">Substituting values into geometry and physics formulae</span></div><span class="ai-badge">IGCSE core</span></div><div class="ai-card-body"><div class="ai-btn-row"><div class="not-content"><div class="ai-button-group"><button class="ai-refresh-btn">Practice Now</button><button class="ai-export-btn" title="Copy exact prompt to paste in Gemini">📋 Copy Prompt</button></div></div><span style="font-size:0.8rem;color:var(--sl-color-gray-4)">Generate a unique exam-style question with diagrams</span></div></div></div><!--astro:end--></astro-island>
+<starlight-tabs class="astro-esqgolmp"> <div class="tablist-wrapper not-content astro-esqgolmp"> <ul role="tablist" class="astro-esqgolmp"> <li role="presentation" class="tab astro-esqgolmp"> <a role="tab" href="#tab-panel-234" id="tab-234" aria-selected="true" tabindex="0" class="astro-esqgolmp">  📝 Question 6 </a> </li><li role="presentation" class="tab astro-esqgolmp"> <a role="tab" href="#tab-panel-235" id="tab-235" aria-selected="false" tabindex="-1" class="astro-esqgolmp">  ✅ Solution 6 </a> </li> </ul> </div> <div id="tab-panel-234" aria-labelledby="tab-234" role="tabpanel" tabindex="0"> <p>Use the kinematics formula <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mi>u</mi><mo>+</mo><mi>a</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">v = u + at</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal" style="margin-right:0.0359em">v</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6667em;vertical-align:-0.0833em"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6151em"></span><span class="mord mathnormal">a</span><span class="mord mathnormal">t</span></span></span></span> to find the value of <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal" style="margin-right:0.0359em">v</span></span></span></span> when <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>u</mi><mo>=</mo><mn>12</mn></mrow><annotation encoding="application/x-tex">u = 12</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">u</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">12</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>=</mo><mo>−</mo><mn>9.8</mn></mrow><annotation encoding="application/x-tex">a = -9.8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">9.8</span></span></span></span>, and <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mo>=</mo><mn>5</mn></mrow><annotation encoding="application/x-tex">t = 5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6151em"></span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">5</span></span></span></span>.</p> </div><div id="tab-panel-235" aria-labelledby="tab-235" role="tabpanel" tabindex="0" hidden> <ol>
+<li>Substitute the values using brackets: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mo stretchy="false">(</mo><mn>12</mn><mo stretchy="false">)</mo><mo>+</mo><mo stretchy="false">(</mo><mo>−</mo><mn>9.8</mn><mo stretchy="false">)</mo><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v = (12) + (-9.8)(5)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal" style="margin-right:0.0359em">v</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">12</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">9.8</span><span class="mclose">)</span><span class="mopen">(</span><span class="mord">5</span><span class="mclose">)</span></span></span></span>.</li>
+<li>Perform the multiplication first: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>9.8</mn><mo>×</mo><mn>5</mn><mo>=</mo><mo>−</mo><mn>49</mn></mrow><annotation encoding="application/x-tex">-9.8 \times 5 = -49</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">9.8</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">5</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">−</span><span class="mord">49</span></span></span></span>.</li>
+<li>The equation is now <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi><mo>=</mo><mn>12</mn><mo>+</mo><mo stretchy="false">(</mo><mo>−</mo><mn>49</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">v = 12 + (-49)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em"></span><span class="mord mathnormal" style="margin-right:0.0359em">v</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em"></span></span><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em"></span><span class="mopen">(</span><span class="mord">−</span><span class="mord">49</span><span class="mclose">)</span></span></span></span>.</li>
+<li>Adding a negative is the same as subtraction: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>12</mn><mo>−</mo><mn>49</mn></mrow><annotation encoding="application/x-tex">12 - 49</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7278em;vertical-align:-0.0833em"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2222em"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em"></span></span><span class="base"><span class="strut" style="height:0.6444em"></span><span class="mord">49</span></span></span></span>.</li>
+<li>Final Answer: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi><mrow><mi mathvariant="bold-italic">v</mi><mo>=</mo><mo mathvariant="bold-italic">−</mo><mn mathvariant="bold">37</mn></mrow></mi></mrow><annotation encoding="application/x-tex">\boldsymbol{v = -37}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7778em;vertical-align:-0.1333em"></span><span class="mord"><span class="mord"><span class="mord boldsymbol" style="margin-right:0.037em">v</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mrel mathbf">=</span><span class="mspace" style="margin-right:0.2778em"></span><span class="mord mathbf">−</span><span class="mord mathbf">37</span></span></span></span></span></span>.</li>
+</ol> </div>  </starlight-tabs>  
+<astro-island uid="Z1JjNmN" prefix="r11" component-url="/_astro/AIGenerator.Btow_siH.js" component-export="default" renderer-url="/_astro/client.DyczpTbx.js" props="{&quot;topic&quot;:[0,&quot;Substituting decimals and negative numbers into linear formulae&quot;],&quot;difficulty&quot;:[0,&quot;IGCSE core&quot;]}" ssr client="load" opts="{&quot;name&quot;:&quot;AIGenerator&quot;,&quot;value&quot;:true}" await-children><div class="ai-container-card"><style>
+        .ai-container-card {
+          margin: 3rem 0;
+          border: 1px solid var(--sl-color-gray-5);
+          border-radius: 12px;
+          background-color: var(--sl-color-bg-nav);
+          overflow: hidden;
+          box-shadow: var(--sl-shadow-md);
+        }
+
+        .ai-card-header {
+          padding: 0.8rem 1.25rem;
+          background: var(--sl-color-gray-6);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid var(--sl-color-gray-5);
+        }
+
+        .ai-badge {
+          font-size: 0.65rem;
+          font-weight: 800;
+          padding: 0.2rem 0.5rem;
+          border-radius: 4px;
+          text-transform: uppercase;
+          color: var(--sl-color-accent-high);
+          border: 1px solid var(--sl-color-accent-low);
+        }
+
+        .ai-card-body { padding: 1.5rem; }
+
+        .ai-btn-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+        
+        .ai-button-group {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .ai-refresh-btn {
+          background: var(--sl-color-accent);
+          color: var(--sl-color-black);
+          border: none;
+          padding: 0.6rem 1.2rem;
+          border-radius: 6px;
+          font-size: 0.9rem;
+          font-weight: 700;
+          cursor: pointer;
+          min-width: 140px;
+          transition: transform 0.1s, opacity 0.2s;
+        }
+        
+        .ai-refresh-btn:active { transform: scale(0.98); }
+        .ai-refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+        .ai-export-btn {
+          background: transparent;
+          color: var(--sl-color-gray-2);
+          border: 1px solid var(--sl-color-gray-4);
+          padding: 0.6rem 1rem;
+          border-radius: 6px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+        
+        .ai-export-btn:hover {
+          background: var(--sl-color-gray-6);
+          border-color: var(--sl-color-gray-3);
+          color: var(--sl-color-white);
+        }
+        
+        .ai-export-btn:active { transform: scale(0.98); }
+
+        .ai-loader-container {
+          flex-grow: 1;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-size: 0.85rem;
+          color: var(--sl-color-gray-3);
+        }
+
+        .ai-pulse-dot {
+          width: 8px; height: 8px;
+          background-color: var(--sl-color-accent);
+          border-radius: 50%;
+          animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+          0% { transform: scale(0.9); opacity: 1; }
+          50% { transform: scale(1.3); opacity: 0.4; }
+          100% { transform: scale(0.9); opacity: 1; }
+        }
+
+        .ai-content-inner {
+          background: var(--sl-color-gray-6);
+          border-radius: 8px;
+          padding: 1.5rem;
+          border-left: 4px solid var(--sl-color-accent);
+          animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .math-renderer :global(p) { margin-bottom: 0.8rem; }
+        
+        .math-renderer :global(svg) {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 1.5rem auto;
+          background-color: white; 
+          border-radius: 8px;
+          padding: 1rem;
+          box-shadow: inset 0 0 0 1px var(--sl-color-gray-4);
+          overflow: visible;
+        }
+
+        .math-renderer :global(.katex-display) {
+          overflow-x: auto;
+          overflow-y: hidden;
+          max-width: 100%;
+          padding: 0.5rem 0;
+          font-size: 1.05em;
+        }
+        .math-renderer :global(.katex-display::-webkit-scrollbar) { height: 6px; }
+        .math-renderer :global(.katex-display::-webkit-scrollbar-thumb) {
+          background: var(--sl-color-gray-5); border-radius: 4px;
+        }
+      </style><div class="ai-card-header"><div style="display:flex;align-items:center;gap:0.6rem"><span>🤖</span><span style="font-weight:600;font-size:0.9rem">Substituting decimals and negative numbers into linear formulae</span></div><span class="ai-badge">IGCSE core</span></div><div class="ai-card-body"><div class="ai-btn-row"><div class="not-content"><div class="ai-button-group"><button class="ai-refresh-btn">Practice Now</button><button class="ai-export-btn" title="Copy exact prompt to paste in Gemini">📋 Copy Prompt</button></div></div><span style="font-size:0.8rem;color:var(--sl-color-gray-4)">Generate a unique exam-style question with diagrams</span></div></div></div><!--astro:end--></astro-island> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/01-number/17-surds/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">1.17 Radicals and Surds</span> </span> </a> <a href="/02-algebra/02-algebraic-manipulation/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> Next <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">2.2 Algebraic Manipulation</span> </span> </a> </div>  </footer> </div> </div>  </main> </div> </div> </div> </div> </body></html>
