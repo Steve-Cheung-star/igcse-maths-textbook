@@ -39,9 +39,14 @@ export const POST = async ({ request }) => {
     **Final Answer:** [State the final mathematical answer clearly]`;
 
     const result = await model.generateContent(prompt);
-    const response = await result.response;
+    let responseText = await result.response.text();
     
-    return new Response(JSON.stringify({ text: response.text() }), { 
+    // --- THE BULLETPROOF FIX ---
+    // This regex looks for </svg> followed by any <text> tags and swaps them,
+    // guaranteeing that </svg> is always the absolute last tag.
+    responseText = responseText.replace(/<\/svg>\s*((?:<text\b[^>]*>[\s\S]*?<\/text>\s*)+)/gi, '$1\n</svg>');
+
+    return new Response(JSON.stringify({ text: responseText }), { 
       status: 200,
       headers: { 'Content-Type': 'application/json' }
     });
