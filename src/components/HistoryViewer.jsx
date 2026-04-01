@@ -60,7 +60,7 @@ export default function HistoryViewer() {
     });
   };
 
-  // UPDATED: Now uses regex to automatically extract Topic, Difficulty, Problem, and Solution
+  // HYBRID IMPORT: Automates extraction, but falls back to manual inputs if needed
   const handleImport = () => {
     setImportError('');
     if (!importText.trim()) {
@@ -68,19 +68,35 @@ export default function HistoryViewer() {
       return;
     }
 
-    // 1. Extract Metadata using Regex
+    // 1. Try to extract Metadata using Regex
     const topicMatch = importText.match(/TOPIC:\s*(.+)/i);
     const diffMatch = importText.match(/DIFFICULTY:\s*(.+)/i);
     
+    // If regex finds it, use it. Otherwise, fallback to the manual inputs in the UI.
     const parsedTopic = topicMatch ? topicMatch[1].trim() : (importTopic.trim() || 'Imported Problem');
     const parsedDifficulty = diffMatch ? diffMatch[1].trim() : importDifficulty;
 
-    // 2. Extract Problem & Solution using Regex
+    // 2. Try to extract Problem & Solution using Regex
     const problemMatch = importText.match(/PROBLEM:([\s\S]*?)SOLUTION:/i);
     const solutionMatch = importText.match(/SOLUTION:([\s\S]*)/i);
 
-    const generatedProblem = problemMatch ? problemMatch[1].trim() : 'Error: Could not find "PROBLEM:" section.';
-    const generatedSolution = solutionMatch ? solutionMatch[1].trim() : 'Solution unavailable (Did not find "SOLUTION:" marker).';
+    // If regex fails (e.g. they pasted random text without our tags), just use string splitting as a last resort
+    let generatedProblem = 'Error: Could not find "PROBLEM:" section.';
+    let generatedSolution = 'Solution unavailable (Did not find "SOLUTION:" marker).';
+
+    if (problemMatch && solutionMatch) {
+      generatedProblem = problemMatch[1].trim();
+      generatedSolution = solutionMatch[1].trim();
+    } else {
+      // Fallback for non-standard pastes
+      const parts = importText.split(/SOLUTION:/i);
+      generatedProblem = parts[0].replace(/PROBLEM:/i, '').trim();
+      if (parts[1]) generatedSolution = parts[1].trim();
+    }
+
+    // Clean up markdown codeblock ticks just in case they accidentally copied them
+    generatedProblem = generatedProblem.replace(/^```markdown/i, '').replace(/```$/, '').trim();
+    generatedSolution = generatedSolution.replace(/^```markdown/i, '').replace(/```$/, '').trim();
 
     const newRecord = {
       id: crypto.randomUUID(),
@@ -96,6 +112,7 @@ export default function HistoryViewer() {
     setHistory(updatedHistory);
     localStorage.setItem('igcse_ai_history', JSON.stringify(updatedHistory));
     
+    // Reset states
     setImportTopic('');
     setImportText('');
     setShowImport(false);
@@ -233,12 +250,12 @@ export default function HistoryViewer() {
           
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '1rem', alignItems: 'flex-end' }}>
             <div style={{ flex: '1 1 200px' }}>
-              <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.4rem', color: 'var(--sl-color-gray-3)' }}>Topic Name (Optional)</label>
+              <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.4rem', color: 'var(--sl-color-gray-3)' }}>Topic Name (Optional Fallback)</label>
               <input type="text" className="import-input" placeholder="e.g. Algebra, Geometry..." value={importTopic} onChange={(e) => setImportTopic(e.target.value)} />
             </div>
             
             <div style={{ flex: '1 1 200px' }}>
-              <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.4rem', color: 'var(--sl-color-gray-3)' }}>Difficulty</label>
+              <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.4rem', color: 'var(--sl-color-gray-3)' }}>Difficulty (Fallback)</label>
               <select className="import-input" value={importDifficulty} onChange={(e) => setImportDifficulty(e.target.value)}>
                 <option>IGCSE Core</option>
                 <option>IGCSE Extended</option>
@@ -247,7 +264,7 @@ export default function HistoryViewer() {
             </div>
           </div>
 
-          <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.4rem', color: 'var(--sl-color-gray-3)' }}>Paste entire AI response here (including PROBLEM: and SOLUTION:)</label>
+          <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.4rem', color: 'var(--sl-color-gray-3)' }}>Paste entire AI response here (including TOPIC:, PROBLEM: and SOLUTION:)</label>
           <textarea className="import-input" rows="6" placeholder="Paste the text from ChatGPT or Gemini here..." value={importText} onChange={(e) => setImportText(e.target.value)} style={{ resize: 'vertical' }}></textarea>
           
           {importError && <p style={{ color: 'var(--sl-color-red-high)', fontSize: '0.85rem', marginTop: 0, marginBottom: '1rem' }}>{importError}</p>}

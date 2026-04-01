@@ -58,29 +58,27 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
 Use standard LaTeX enclosed in single $ for inline math and double $$ for block math. 
 If the question involves geometry, trigonometry, or statistics, generate a clean, responsive, inline <svg> diagram to illustrate the problem. 
 
-CRITICAL SVG SEQUENCE: 
-When generating an SVG, you MUST follow this exact order:
+CRITICAL SVG SEQUENCE & RULES: 
 1. Output the opening <svg viewBox="..."> tag with generous padding.
 2. Draw all geometric shapes, lines, and paths.
 3. Write ALL <text> labels for the math variables.
-4. ONLY AFTER all text is written, output the closing </svg> tag.
-NEVER place a <text> tag after </svg>.
+4. ONLY AFTER all text is written, output the closing </svg> tag. NEVER place a <text> tag after </svg>.
+5. Do not have any empty lines in between <svg viewBox> and </svg>, make sure each line in between has 2 spaces in the front. 
 
 CRITICAL FORMATTING RULE:
 You MUST wrap your ENTIRE response inside a single markdown code block (using \`\`\`markdown and closing with \`\`\`). Do not write any conversational text outside of this code block. 
 
 Inside the code block, format your response EXACTLY like this:
+TOPIC: ${topic}
+DIFFICULTY: ${difficulty}
 
 PROBLEM: 
 [Write the question here, including any SVG diagrams]
 
 SOLUTION: 
 **Step 1:** [Explain the first logical step]
-
 **Step 2:** [Explain the next step]
-
 [...continue with as many steps as needed...]
-
 **Final Answer:** [State the final mathematical answer clearly]`;
   };
 
@@ -111,9 +109,16 @@ SOLUTION:
       const data = await response.json();
       if (!response.ok) throw new Error(data.error);
       
-      const parts = data.text.split('SOLUTION:');
-      const generatedProblem = parts[0].replace('PROBLEM:', '').trim();
-      const generatedSolution = parts[1] ? parts[1].trim() : 'Solution unavailable.';
+      // Use regex to precisely extract only the Problem and Solution blocks, ignoring the metadata
+      const problemMatch = data.text.match(/PROBLEM:([\s\S]*?)SOLUTION:/i);
+      const solutionMatch = data.text.match(/SOLUTION:([\s\S]*)/i);
+
+      let generatedProblem = problemMatch ? problemMatch[1].trim() : 'Error: Could not find "PROBLEM:" section.';
+      let generatedSolution = solutionMatch ? solutionMatch[1].trim() : 'Solution unavailable.';
+      
+      // Clean up markdown code block ticks if the AI included them
+      generatedProblem = generatedProblem.replace(/^```markdown/i, '').replace(/```$/, '').trim();
+      generatedSolution = generatedSolution.replace(/^```markdown/i, '').replace(/```$/, '').trim();
       
       setProblem(generatedProblem);
       setSolution(generatedSolution);
