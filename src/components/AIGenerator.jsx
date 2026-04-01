@@ -1,196 +1,226 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
-export default function AIGenerator({ topic, difficulty = "IGCSE Core" }) {
+export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
   const [problem, setProblem] = useState('');
   const [solution, setSolution] = useState('');
   const [loading, setLoading] = useState(false);
+  const [statusIndex, setStatusIndex] = useState(0);
   const [error, setError] = useState(null);
-  
-  // New state to prevent saving the same question multiple times
   const [hasSaved, setHasSaved] = useState(false);
 
-  // Helper function to save to localStorage
+  // The "Feedback" messages to show during generation
+  const statusMessages = [
+    "Connecting to Math Engine...",
+    "Analyzing IGCSE Syllabus...",
+    "Generating random variables...",
+    "Hardening the difficulty...",
+    "Formatting LaTeX expressions...",
+    "Almost there..."
+  ];
+
+  // Cycle through messages while loading
+  useEffect(() => {
+    let interval;
+    if (loading) {
+      interval = setInterval(() => {
+        setStatusIndex((prev) => (prev + 1) % statusMessages.length);
+      }, 1500);
+    } else {
+      setStatusIndex(0);
+    }
+    return () => clearInterval(interval);
+  }, [loading]);
+
   const saveToHistory = (problemText, solutionText) => {
     try {
       const existingHistory = JSON.parse(localStorage.getItem('igcse_ai_history') || '[]');
       const newRecord = {
-        id: crypto.randomUUID(), // Creates a unique ID
+        id: crypto.randomUUID(),
         date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
-        topic: topic,
-        difficulty: difficulty,
-        question: problemText,
-        studentAnswer: "N/A (Self-graded)", // Since there is no input field yet
-        feedback: solutionText,
-        bookmarked: false
+        topic, difficulty, question: problemText, feedback: solutionText,
       };
-      
-      const updatedHistory = [newRecord, ...existingHistory];
-      localStorage.setItem('igcse_ai_history', JSON.stringify(updatedHistory));
-    } catch (err) {
-      console.error("Failed to save to history:", err);
-    }
+      localStorage.setItem('igcse_ai_history', JSON.stringify([newRecord, ...existingHistory]));
+    } catch (err) { console.error(err); }
   };
 
   const generateProblem = async () => {
-    setLoading(true);
-    setProblem('');
-    setSolution('');
-    setError(null);
-    setHasSaved(false); // Reset the save state for the new question
-    
+    setLoading(true); setProblem(''); setSolution(''); setError(null); setHasSaved(false);
     try {
-      // We call our internal API route instead of Google directly
       const response = await fetch('/api/generate', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ topic, difficulty }),
       });
-      
       const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.error || 'Failed to generate problem');
-      }
-
-      const text = data.text;
-
-      // Split the AI response and strip out accidental Markdown code block indentations
-      const parts = text.split('SOLUTION:');
-      const problemPart = parts[0].replace('PROBLEM:', '').replace(/^[ \t]+/gm, '').trim();
-      const solutionPart = parts[1] ? parts[1].replace(/^[ \t]+/gm, '').trim() : 'Solution not provided by AI.';
-
-      setProblem(problemPart);
-      setSolution(solutionPart);
-
-    } catch (err) {
-      console.error("Connection Error:", err);
-      setError('Error connecting to the math server. Make sure your server is running.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  // Triggers when the <details> tag is opened or closed
-  const handleReveal = (e) => {
-    // Only save if it is opening, and hasn't been saved yet
-    if (e.target.open && !hasSaved) {
-      saveToHistory(problem, solution);
-      setHasSaved(true);
-    }
+      if (!response.ok) throw new Error(data.error);
+      const parts = data.text.split('SOLUTION:');
+      setProblem(parts[0].replace('PROBLEM:', '').trim());
+      setSolution(parts[1] ? parts[1].trim() : 'Solution unavailable.');
+    } catch (err) { setError('Connection timed out. Retrying...'); } 
+    finally { setLoading(false); }
   };
 
   return (
-    <div style={{ 
-      border: '1px solid var(--sl-color-gray-5)', 
-      padding: '1.5rem', 
-      borderRadius: '8px', 
-      marginTop: '2rem',
-      backgroundColor: 'var(--sl-color-bg-nav)',
-      boxShadow: 'var(--sl-shadow-sm)'
-    }}>
-      {/* ADD THIS STYLE BLOCK TO FORCE TEXT WRAPPING */}
+    <div className="ai-container-card">
       <style>{`
-        .math-renderer pre {
-          white-space: pre-wrap !important;
-          word-break: break-word !important;
-          overflow-x: auto;
+        .ai-container-card {
+          margin: 3rem 0;
+          border: 1px solid var(--sl-color-gray-5);
+          border-radius: 12px;
+          background-color: var(--sl-color-bg-nav);
+          overflow: hidden;
+          box-shadow: var(--sl-shadow-md);
         }
+
+        .ai-card-header {
+          padding: 0.8rem 1.25rem;
+          background: var(--sl-color-gray-6);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid var(--sl-color-gray-5);
+        }
+
+        .ai-badge {
+          font-size: 0.65rem;
+          font-weight: 800;
+          padding: 0.2rem 0.5rem;
+          border-radius: 4px;
+          text-transform: uppercase;
+          color: var(--sl-color-accent-high);
+          border: 1px solid var(--sl-color-accent-low);
+        }
+
+        .ai-card-body { padding: 1.5rem; }
+
+        .ai-btn-row {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 1rem;
+          gap: 1rem;
+        }
+
+        .ai-refresh-btn {
+          background: var(--sl-color-accent);
+          color: var(--sl-color-black);
+          border: none;
+          padding: 0.6rem 1.2rem;
+          border-radius: 6px;
+          font-size: 0.9rem;
+          font-weight: 700;
+          cursor: pointer;
+          min-width: 140px;
+        }
+
+        .ai-refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+        /* THE FEEDBACK LOADER */
+        .ai-loader-container {
+          flex-grow: 1;
+          display: flex;
+          align-items: center;
+          gap: 0.8rem;
+          font-size: 0.85rem;
+          color: var(--sl-color-gray-3);
+        }
+
+        .ai-pulse-dot {
+          width: 8px; height: 8px;
+          background-color: var(--sl-color-accent);
+          border-radius: 50%;
+          animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+          0% { transform: scale(0.9); opacity: 1; }
+          50% { transform: scale(1.3); opacity: 0.4; }
+          100% { transform: scale(0.9); opacity: 1; }
+        }
+
+        .ai-content-inner {
+          background: var(--sl-color-gray-6);
+          border-radius: 8px;
+          padding: 1.5rem;
+          border-left: 4px solid var(--sl-color-accent);
+          animation: slideIn 0.4s ease-out;
+        }
+
+        @keyframes slideIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ai-solution-summary {
+          cursor: pointer;
+          font-size: 0.85rem;
+          font-weight: 700;
+          color: var(--sl-color-success-high);
+          list-style: none;
+          margin-top: 1rem;
+          padding-top: 1rem;
+          border-top: 1px dashed var(--sl-color-gray-5);
+        }
+
+        .math-renderer :global(p) { margin-bottom: 0.8rem; }
       `}</style>
-      
-      <h3 style={{ marginTop: 0, color: 'var(--sl-color-white)' }}>🤖 AI Practice Generator</h3>
-      <p style={{ color: 'var(--sl-color-gray-3)', fontSize: '0.9rem' }}>
-        Topic: <strong>{topic}</strong> | Level: <strong>{difficulty}</strong>
-      </p>
-      
-      <button 
-        onClick={generateProblem} 
-        disabled={loading}
-        style={{ 
-          padding: '0.6rem 1.2rem', 
-          cursor: loading ? 'wait' : 'pointer', 
-          backgroundColor: 'var(--sl-color-accent-high)', 
-          color: 'var(--sl-color-black)', 
-          border: 'none', 
-          borderRadius: '4px',
-          fontWeight: 'bold',
-          transition: 'opacity 0.2s',
-          opacity: loading ? 0.7 : 1
-        }}
-      >
-        {loading ? 'Crunching Numbers...' : 'Generate New Problem'}
-      </button>
 
-      {error && (
-        <p style={{ color: 'var(--sl-color-error)', marginTop: '1rem', fontSize: '0.9rem' }}>
-          {error}
-        </p>
-      )}
-
-      {problem && (
-        <div style={{ 
-          marginTop: '1.5rem', 
-          padding: '1rem', 
-          backgroundColor: 'var(--sl-color-gray-6)', 
-          borderRadius: '4px',
-          borderLeft: '4px solid var(--sl-color-accent)'
-        }}>
-          <strong style={{ color: 'var(--sl-color-white)', display: 'block', marginBottom: '0.5rem' }}>Question:</strong>
-          <div className="math-renderer">
-            <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-              {problem}
-            </ReactMarkdown>
-          </div>
+      <div className="ai-card-header">
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+          <span>🤖</span>
+          <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>{topic}</span>
         </div>
-      )}
+        <span className="ai-badge">{difficulty}</span>
+      </div>
 
-      {solution && (
-        <details 
-          onToggle={handleReveal}
-          style={{ 
-            marginTop: '1rem', 
-            padding: '1rem', 
-            backgroundColor: 'var(--sl-color-gray-6)', 
-            borderRadius: '4px',
-            borderLeft: '4px solid var(--sl-color-success)',
-            position: 'relative'
-          }}
-        >
-          <summary style={{ 
-            cursor: 'pointer', 
-            fontWeight: 'bold', 
-            color: 'var(--sl-color-success-high)' 
-          }}>
-            Show Step-by-Step Solution
-          </summary>
-          
-          {hasSaved && (
-            <span style={{
-              position: 'absolute',
-              top: '1rem',
-              right: '1rem',
-              fontSize: '0.75rem',
-              backgroundColor: 'var(--sl-color-success-low)',
-              color: 'var(--sl-color-success-high)',
-              padding: '0.2rem 0.5rem',
-              borderRadius: '999px',
-              fontWeight: 'bold'
-            }}>
-              ✓ Saved to History
-            </span>
+      <div className="ai-card-body">
+        <div className="ai-btn-row">
+          <button className="ai-refresh-btn" onClick={generateProblem} disabled={loading}>
+            {problem ? 'Try Another' : 'Practice Now'}
+          </button>
+
+          {loading && (
+            <div className="ai-loader-container">
+              <div className="ai-pulse-dot"></div>
+              <span>{statusMessages[statusIndex]}</span>
+            </div>
           )}
 
-          <div style={{ marginTop: '1rem' }} className="math-renderer">
-            <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-              {solution}
-            </ReactMarkdown>
+          {!loading && !problem && (
+            <span style={{ fontSize: '0.8rem', color: 'var(--sl-color-gray-4)' }}>
+              Generate a unique exam-style question
+            </span>
+          )}
+        </div>
+
+        {error && <p style={{ color: 'var(--sl-color-error)', fontSize: '0.85rem' }}>{error}</p>}
+
+        {problem && (
+          <div className="ai-content-inner">
+            <div className="math-renderer">
+              <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                {problem}
+              </ReactMarkdown>
+            </div>
+
+            {solution && (
+              <details onToggle={(e) => e.target.open && !hasSaved && (saveToHistory(problem, solution), setHasSaved(true))}>
+                <summary className="ai-solution-summary">
+                  {hasSaved ? '✓ Solution Saved to Dashboard' : '▶ Reveal Detailed Solution'}
+                </summary>
+                <div className="math-renderer" style={{ marginTop: '1rem' }}>
+                  <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                    {solution}
+                  </ReactMarkdown>
+                </div>
+              </details>
+            )}
           </div>
-        </details>
-      )}
+        )}
+      </div>
     </div>
   );
 }

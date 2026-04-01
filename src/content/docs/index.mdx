@@ -18,23 +18,34 @@ hero:
 ---
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
-import ResumeBanner from '../../components/ResumeBanner.jsx';
+import ResumeBanner from '../../components/ResumeBanner.astro';
 
 <style>{`
-  /* Turn off Starlight dark backgrounds specifically for this page */
+  /* 1. HIDE ONLY THE SEARCH BAR (Keep the header & toggle) */
+  site-search { display: none !important; }
+
+  /* 2. MAKE STARLIGHT'S LAYOUT TRANSPARENT */
   html, body, .page, .main-frame, .main-pane, .content-panel, .sl-container, main, article {
     background-color: transparent !important;
   }
-  html { background-color: #030712 !important; }
   .main-pane, .content-panel { isolation: auto !important; }
 
-  /* Build the custom background layer */
+  /* 3. BASE BACKGROUND (DARK MODE DEFAULT) */
   #hero-bg {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
     z-index: -100;
     pointer-events: none;
+    background-color: #030712;
+    transition: background-color 0.3s ease; /* Smooth fade when toggling */
   }
+
+  /* LIGHT MODE OVERRIDE FOR THE BACKGROUND */
+  html[data-theme="light"] #hero-bg {
+    background-color: #f8fafc; /* Clean, light gray/white background */
+  }
+
+  /* 4. BLUEPRINT GRID */
   #hero-bg::before {
     content: "";
     position: absolute;
@@ -44,6 +55,15 @@ import ResumeBanner from '../../components/ResumeBanner.jsx';
       linear-gradient(90deg, rgba(59, 130, 240, 0.08) 1.5px, transparent 1.5px);
     background-size: 80px 80px;
   }
+
+  /* Make grid lines slightly more visible in light mode */
+  html[data-theme="light"] #hero-bg::before {
+    background-image: 
+      linear-gradient(rgba(59, 130, 240, 0.15) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(59, 130, 240, 0.15) 1.5px, transparent 1.5px);
+  }
+
+  /* 5. SVG ANIMATION */
   #hero-bg::after {
     content: "";
     position: absolute;
@@ -54,12 +74,17 @@ import ResumeBanner from '../../components/ResumeBanner.jsx';
     background-repeat: no-repeat;
     animation: syllabusCycle 50s infinite ease-in-out;
   }
+
+  /* Soften the animations slightly in light mode so they aren't distracting */
+  html[data-theme="light"] #hero-bg::after {
+    opacity: 0.12;
+  }
 `}</style>
 
 <div id="hero-bg"></div>
 
 <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(12px); border-radius: 2rem; padding: 2rem; margin-bottom: 3rem;">
-  <ResumeBanner client:load />
+  <ResumeBanner />
 </div>
 
 ## Digital Learning Modules

@@ -1,0 +1,41 @@
+---
+/* src/components/ResumeBanner.astro */
+---
+
+<div id="resume-banner" style="display: none; margin: 2rem 0; padding: 1.5rem; background: linear-gradient(90deg, var(--sl-color-accent-low), var(--sl-color-bg-nav)); border: 1px solid var(--sl-color-accent); border-radius: 12px; justify-content: space-between; align-items: center; box-shadow: var(--sl-shadow-md);">
+  <div>
+    <p style="margin: 0; font-size: 0.9rem; color: var(--sl-color-accent-high); font-weight: bold;">
+      WELCOME BACK 👋
+    </p>
+    <h3 style="margin: 0.2rem 0; color: var(--sl-color-white);">
+      Ready to continue <strong id="resume-title"></strong>?
+    </h3>
+  </div>
+  
+  <a id="resume-link" href="#" style="padding: 0.8rem 1.5rem; background: var(--sl-color-accent-high); color: var(--sl-color-black); border-radius: 8px; text-decoration: none; font-weight: bold; transition: transform 0.2s;"
+  onmouseover="this.style.transform='scale(1.05)'"
+  onmouseout="this.style.transform='scale(1)'">
+    Resume Lesson →
+  </a>
+</div>
+
+<script>
+  // This standard script block runs purely on the client side, exactly like useEffect
+  document.addEventListener('DOMContentLoaded', () => {
+    const saved = localStorage.getItem('last_visited_page');
+    
+    if (saved) {
+      try {
+        const lastPage = JSON.parse(saved);
+        if (lastPage && lastPage.title && lastPage.url) {
+          // Inject the data and show the banner
+          document.getElementById('resume-title').textContent = lastPage.title;
+          document.getElementById('resume-link').href = lastPage.url;
+          document.getElementById('resume-banner').style.display = 'flex';
+        }
+      } catch (error) {
+        console.error("Could not parse saved page data:", error);
+      }
+    }
+  });
+</script>
