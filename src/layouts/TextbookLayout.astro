@@ -1,0 +1,25 @@
+---
+// src/layouts/TextbookLayout.astro
+const { frontmatter } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{frontmatter.title}</title>
+    <style>
+      /* Add your global textbook styles here */
+      body { font-family: sans-serif; line-height: 1.6; color: #333; }
+      main { max-width: 800px; margin: 0 auto; padding: 2rem; }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a>
+    </nav>
+
+    <main data-pagefind-body data-pagefind-filter={`subject:${frontmatter.subject || 'General'}`}>
+      <h1>{frontmatter.title}</h1>
+      <slot /> </main>
+
+  </body>
+</html>
