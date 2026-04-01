@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw'; // 1. Added for SVG support
 
 export default function HistoryViewer() {
   const [history, setHistory] = useState([]);
@@ -21,6 +22,15 @@ export default function HistoryViewer() {
     });
     setHistory(updatedHistory);
     localStorage.setItem('igcse_ai_history', JSON.stringify(updatedHistory));
+  };
+
+  // 2. Added individual delete function
+  const deleteEntry = (id) => {
+    if (window.confirm("Delete this specific entry?")) {
+      const updatedHistory = history.filter(item => item.id !== id);
+      setHistory(updatedHistory);
+      localStorage.setItem('igcse_ai_history', JSON.stringify(updatedHistory));
+    }
   };
 
   const clearHistory = () => {
@@ -43,8 +53,23 @@ export default function HistoryViewer() {
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" />
       <style>{`
         .math-renderer pre { white-space: pre-wrap !important; word-break: break-word !important; background: var(--sl-color-gray-6) !important; }
-        .bookmark-btn { background: none; border: none; cursor: pointer; font-size: 1.5rem; transition: transform 0.2s; padding: 0; line-height: 1; }
+        .bookmark-btn { background: none; border: none; cursor: pointer; font-size: 1.2rem; transition: transform 0.2s; padding: 0; line-height: 1; }
         .bookmark-btn:hover { transform: scale(1.2); }
+        
+        .delete-btn { background: none; border: none; cursor: pointer; font-size: 1rem; color: var(--sl-color-gray-4); opacity: 0.6; transition: all 0.2s; }
+        .delete-btn:hover { opacity: 1; color: var(--sl-color-red-high); }
+
+        /* SVG Styling for Textbook Look */
+        .math-renderer svg {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 1.5rem auto;
+          background-color: white; /* Important for dark mode visibility */
+          border-radius: 8px;
+          padding: 1rem;
+          box-shadow: inset 0 0 0 1px var(--sl-color-gray-5);
+        }
       `}</style>
 
       {/* Navigation & Controls */}
@@ -95,42 +120,49 @@ export default function HistoryViewer() {
                 <span style={{ margin: '0 0.5rem', color: 'var(--sl-color-gray-4)' }}>•</span>
                 <span style={{ fontSize: '0.75rem', color: 'var(--sl-color-gray-3)' }}>{item.date}</span>
               </div>
-              <button onClick={() => toggleBookmark(item.id)} className="bookmark-btn">
-                {item.bookmarked ? '⭐' : '☆'}
-              </button>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <button onClick={() => toggleBookmark(item.id)} className="bookmark-btn">
+                  {item.bookmarked ? '⭐' : '☆'}
+                </button>
+                <button onClick={() => deleteEntry(item.id)} className="delete-btn" title="Delete entry">
+                  🗑️
+                </button>
+              </div>
             </div>
 
             {/* Question Section */}
             <div style={{ padding: '1.25rem' }}>
               <div className="math-renderer" style={{ marginBottom: '1.5rem' }}>
-                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                {/* 3. Added rehypeRaw here */}
+                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                   {cleanMarkdown(item.question)}
                 </ReactMarkdown>
               </div>
 
-            {/* Updated Solution Section with Guaranteed Green Background */}
+            {/* Solution Section */}
             <details style={{ borderTop: '1px solid var(--sl-color-gray-5)', paddingTop: '1rem' }}>
               <summary style={{ 
                 cursor: 'pointer', 
-                color: '#10b981', // A bright, clear emerald green
+                color: '#10b981', 
                 fontWeight: 'bold',
-                listStyle: 'none' // Removes default arrow in some browsers
+                listStyle: 'none'
               }}>
-                ▼ Show Step-by-Step Solution
+                ▼ View Saved Solution
               </summary>
               <div 
                 className="math-renderer" 
                 style={{ 
                   marginTop: '1rem', 
-                  background: '#064e3b', // Deep forest green background
+                  background: '#064e3b', 
                   padding: '1.25rem', 
                   borderRadius: '8px', 
-                  borderLeft: '4px solid #10b981', // Bright green accent line
-                  color: '#ecfdf5', // Very light green text for high contrast
+                  borderLeft: '4px solid #10b981', 
+                  color: '#ecfdf5',
                   boxShadow: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)'
                 }}
               >
-                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                {/* 4. Added rehypeRaw here */}
+                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                   {cleanMarkdown(item.feedback)}
                 </ReactMarkdown>
               </div>
