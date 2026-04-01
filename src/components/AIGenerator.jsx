@@ -11,6 +11,7 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
   const [statusIndex, setStatusIndex] = useState(0);
   const [error, setError] = useState(null);
   const [hasSaved, setHasSaved] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
 
   const statusMessages = [
     "Connecting to Math Engine...",
@@ -52,6 +53,43 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
     }
   };
 
+  const getPromptText = () => {
+    return `Act as an expert IGCSE Math teacher. Generate one unique ${difficulty} level practice problem about ${topic}. 
+Use standard LaTeX enclosed in single $ for inline math and double $$ for block math. 
+If the question involves geometry, trigonometry, or statistics, generate a clean, responsive, inline <svg> diagram to illustrate the problem. 
+
+CRITICAL SVG SEQUENCE: 
+When generating an SVG, you MUST follow this exact order:
+1. Output the opening <svg viewBox="..."> tag with generous padding.
+2. Draw all geometric shapes, lines, and paths.
+3. Write ALL <text> labels for the math variables.
+4. ONLY AFTER all text is written, output the closing </svg> tag.
+NEVER place a <text> tag after </svg>.
+
+CRITICAL FORMATTING RULE:
+You MUST wrap your ENTIRE response inside a single markdown code block (using \`\`\`markdown and closing with \`\`\`). Do not write any conversational text outside of this code block. 
+
+Inside the code block, format your response EXACTLY like this:
+
+PROBLEM: 
+[Write the question here, including any SVG diagrams]
+
+SOLUTION: 
+**Step 1:** [Explain the first logical step]
+
+**Step 2:** [Explain the next step]
+
+[...continue with as many steps as needed...]
+
+**Final Answer:** [State the final mathematical answer clearly]`;
+  };
+
+  const handleCopyPrompt = () => {
+    navigator.clipboard.writeText(getPromptText());
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000); 
+  };
+
   const generateProblem = async (retryCount = 0) => {
     if (retryCount === 0) {
       setLoading(true); 
@@ -81,10 +119,7 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
       setSolution(generatedSolution);
       setError(null); 
       
-      // Auto-save immediately on success
       saveToHistory(generatedProblem, generatedSolution);
-
-      // Only turn off loading if we succeed
       setLoading(false);
 
     } catch (err) { 
@@ -139,6 +174,13 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
           gap: 1rem;
           flex-wrap: wrap;
         }
+        
+        .ai-button-group {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+          flex-wrap: wrap;
+        }
 
         .ai-refresh-btn {
           background: var(--sl-color-accent);
@@ -155,6 +197,29 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
         
         .ai-refresh-btn:active { transform: scale(0.98); }
         .ai-refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+        .ai-export-btn {
+          background: transparent;
+          color: var(--sl-color-gray-2);
+          border: 1px solid var(--sl-color-gray-4);
+          padding: 0.6rem 1rem;
+          border-radius: 6px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+        }
+        
+        .ai-export-btn:hover {
+          background: var(--sl-color-gray-6);
+          border-color: var(--sl-color-gray-3);
+          color: var(--sl-color-white);
+        }
+        
+        .ai-export-btn:active { transform: scale(0.98); }
 
         .ai-loader-container {
           flex-grow: 1;
@@ -193,7 +258,6 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
 
         .math-renderer :global(p) { margin-bottom: 0.8rem; }
         
-        /* MAGIC SVG STYLING */
         .math-renderer :global(svg) {
           max-width: 100%;
           height: auto;
@@ -206,7 +270,6 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
           overflow: visible;
         }
 
-        /* FIX FOR HUGE/CLIPPING MATH */
         .math-renderer :global(.katex-display) {
           overflow-x: auto;
           overflow-y: hidden;
@@ -230,15 +293,18 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
 
       <div className="ai-card-body">
         <div className="ai-btn-row">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div className="ai-button-group">
             <button className="ai-refresh-btn" onClick={() => generateProblem(0)} disabled={loading}>
               {problem ? 'Try Another' : 'Practice Now'}
             </button>
             
-            {/* Elegant Auto-Save Indicator */}
+            <button className="ai-export-btn" onClick={handleCopyPrompt} title="Copy exact prompt to paste in Gemini">
+              {isCopied ? '✓ Copied!' : '📋 Copy Prompt'}
+            </button>
+            
             {hasSaved && (
-              <span style={{ fontSize: '0.8rem', color: 'var(--sl-color-success-high)', fontWeight: '600', animation: 'slideIn 0.3s ease-out' }}>
-                ✓ Auto-saved to History
+              <span style={{ fontSize: '0.8rem', color: 'var(--sl-color-success-high)', fontWeight: '600', animation: 'slideIn 0.3s ease-out', marginLeft: '0.5rem' }}>
+                ✓ Auto-saved
               </span>
             )}
           </div>
@@ -257,7 +323,14 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
           )}
         </div>
 
-        {error && <p style={{ color: 'var(--sl-color-red-high)', fontSize: '0.85rem', fontWeight: 'bold' }}>{error}</p>}
+        {error && (
+          <div style={{ background: 'var(--sl-color-red-low)', color: 'var(--sl-color-red-high)', padding: '0.8rem', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold', marginBottom: '1rem', border: '1px solid var(--sl-color-red-high)' }}>
+            {error}
+            <div style={{ fontSize: '0.75rem', fontWeight: 'normal', marginTop: '0.3rem', color: 'var(--sl-color-gray-2)' }}>
+              Hint: You can click "Copy Prompt" and paste it directly into Gemini or ChatGPT!
+            </div>
+          </div>
+        )}
 
         {problem && (
           <div className="ai-content-inner">
