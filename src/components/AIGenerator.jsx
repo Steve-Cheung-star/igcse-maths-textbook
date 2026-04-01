@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw'; // <-- THIS ALLOWS SVGS TO RENDER
 
 export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
   const [problem, setProblem] = useState('');
@@ -11,17 +12,15 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
   const [error, setError] = useState(null);
   const [hasSaved, setHasSaved] = useState(false);
 
-  // The "Feedback" messages to show during generation
   const statusMessages = [
     "Connecting to Math Engine...",
     "Analyzing IGCSE Syllabus...",
-    "Generating random variables...",
+    "Drafting diagram SVGs...",
     "Hardening the difficulty...",
     "Formatting LaTeX expressions...",
     "Almost there..."
   ];
 
-  // Cycle through messages while loading
   useEffect(() => {
     let interval;
     if (loading) {
@@ -118,7 +117,6 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
 
         .ai-refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-        /* THE FEEDBACK LOADER */
         .ai-loader-container {
           flex-grow: 1;
           display: flex;
@@ -166,6 +164,19 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
         }
 
         .math-renderer :global(p) { margin-bottom: 0.8rem; }
+        
+        /* MAGIC SVG STYLING */
+        .math-renderer :global(svg) {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 1.5rem auto;
+          /* White background is crucial so black SVG lines are visible in dark mode */
+          background-color: var(--sl-color-white); 
+          border-radius: 8px;
+          padding: 1rem;
+          box-shadow: inset 0 0 0 1px var(--sl-color-gray-4);
+        }
       `}</style>
 
       <div className="ai-card-header">
@@ -191,7 +202,7 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
 
           {!loading && !problem && (
             <span style={{ fontSize: '0.8rem', color: 'var(--sl-color-gray-4)' }}>
-              Generate a unique exam-style question
+              Generate a unique exam-style question with diagrams
             </span>
           )}
         </div>
@@ -201,7 +212,8 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
         {problem && (
           <div className="ai-content-inner">
             <div className="math-renderer">
-              <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+              {/* Added rehypeRaw here so SVGs are rendered instead of deleted */}
+              <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                 {problem}
               </ReactMarkdown>
             </div>
@@ -212,7 +224,8 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
                   {hasSaved ? '✓ Solution Saved to Dashboard' : '▶ Reveal Detailed Solution'}
                 </summary>
                 <div className="math-renderer" style={{ marginTop: '1rem' }}>
-                  <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
+                  {/* Added rehypeRaw here too for diagram solutions */}
+                  <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                     {solution}
                   </ReactMarkdown>
                 </div>

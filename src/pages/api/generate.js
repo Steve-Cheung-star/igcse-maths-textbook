@@ -17,6 +17,7 @@ export const POST = async ({ request }) => {
 
     const prompt = `Act as an expert IGCSE Math teacher. Generate one unique ${difficulty} level practice problem about ${topic}. 
     Use standard LaTeX enclosed in single $ for inline math and double $$ for block math. 
+    If the question involves geometry, trigonometry, or statistics, generate a clean, responsive, inline <svg> diagram to illustrate the problem. Use viewBox for scaling, <text> for math labels, and black/grey strokes. Do the same for the solution if a visual aids understanding. Output the raw SVG code directly inside the Markdown text.
     Do not use introductory text. Format your response EXACTLY like this:
     PROBLEM: [Write the question here]
     SOLUTION: [Write the step-by-step solution here]`;
