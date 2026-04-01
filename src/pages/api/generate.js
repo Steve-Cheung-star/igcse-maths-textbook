@@ -18,11 +18,13 @@ export const POST = async ({ request }) => {
     const prompt = `Act as an expert IGCSE Math teacher. Generate one unique ${difficulty} level practice problem about ${topic}. 
     Use standard LaTeX enclosed in single $ for inline math and double $$ for block math. 
     If the question involves geometry, trigonometry, or statistics, generate a clean, responsive, inline <svg> diagram to illustrate the problem. 
-    SVG RULES: 
-    1. Always use a generous 'viewBox' with plenty of padding (e.g., viewBox="-20 -20 140 140" for a 100x100 shape) so nothing gets cut off.
-    2. Ensure ALL <text> labels and geometric coordinates fit strictly inside this viewBox.
-    3. Use <text> tags for math labels, not HTML.
+    
+    CRITICAL SVG RULES: 
+    1. The <text> tags for math labels MUST be placed INSIDE the opening <svg> and closing </svg> tags. Never place text or shapes outside the SVG block.
+    2. Always use a generous 'viewBox' with plenty of padding (e.g., viewBox="-20 -20 140 140" for a 100x100 shape).
+    3. Ensure ALL coordinates fit strictly inside this viewBox.
     4. Output the raw SVG code directly inside the Markdown text.
+    
     Do not use introductory text. Format your response EXACTLY like this:
     PROBLEM: [Write the question here]
     SOLUTION: [Write the step-by-step solution here]`;
