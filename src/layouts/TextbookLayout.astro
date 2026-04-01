@@ -1,8 +1,5 @@
 ---
-// Get metadata from the MDX file
 const { frontmatter, url } = Astro.props;
-
-// Auto-detect subject based on folder path (e.g., /pages/math/lesson.mdx)
 let subject = frontmatter.subject || "General";
 if (url?.includes('/math/')) subject = "Math";
 if (url?.includes('/physics/')) subject = "Physics";
@@ -12,57 +9,38 @@ if (url?.includes('/physics/')) subject = "Physics";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{frontmatter.title} | {subject} Textbook</title>
+    <title>{frontmatter.title}</title>
     <style>
-      /* Basic layout styling */
-      body { font-family: system-ui, sans-serif; display: flex; margin: 0; }
-      nav { width: 250px; border-right: 1px solid #eee; padding: 1rem; height: 100vh; position: sticky; top: 0; }
-      main { flex: 1; padding: 2rem; max-width: 900px; margin: 0 auto; }
+      /* This tells Pagefind: "If an element has this class, do NOT index it" */
+      .katex-mathml, .katex-html, annotation, mtext, .MathJax_Preview {
+        -pagefind-ignore: true; 
+      }
       
-      /* Visual fix for search results */
-      .pagefind-ui__result-excerpt mark { background: #ffea00; color: black; font-weight: bold; }
+      /* Explicitly tell Pagefind to ignore SVG paths but keep text */
+      svg path, svg circle, svg rect, svg line, svg polyline, svg polygon {
+        -pagefind-ignore: true;
+      }
+      
+      svg text, svg tspan {
+        -pagefind-ignore: false;
+      }
     </style>
   </head>
   <body>
 
     <nav data-pagefind-ignore>
-      <h3>{subject} Contents</h3>
-      <slot name="sidebar" /> <a href="/">Back to Home</a>
+       <a href="/">Home</a>
     </nav>
 
     <main data-pagefind-body data-pagefind-filter={`subject:${subject}`}>
       
       <h1 data-pagefind-weight="10">{frontmatter.title}</h1>
-      
-      <hr />
 
-      <slot />
+      <article>
+        <slot />
+      </article>
 
     </main>
-
-    <script is:inline>
-      function prepareForSearch() {
-        // A. Ignore LaTeX/Math "mumble jumble" (KaTeX/MathJax tags)
-        const mathJunk = document.querySelectorAll('.katex-mathml, .katex-html, annotation, mtext, .MathJax_Preview');
-        mathJunk.forEach(el => el.setAttribute('data-pagefind-ignore', ''));
-
-        // B. Make SVGs Search-Friendly
-        const svgs = document.querySelectorAll('svg');
-        svgs.forEach(svg => {
-          // Ignore the "drawing" instructions (paths, circles, etc.)
-          const drawingElements = svg.querySelectorAll('path, circle, rect, line, polyline, polygon, style, defs');
-          drawingElements.forEach(el => el.setAttribute('data-pagefind-ignore', ''));
-          
-          // Ensure <text> tags are NOT ignored (this makes them searchable)
-          const textElements = svg.querySelectorAll('text, tspan');
-          textElements.forEach(el => el.removeAttribute('data-pagefind-ignore'));
-        });
-      }
-
-      // Run immediately
-      prepareForSearch();
-    </script>
 
   </body>
 </html>
