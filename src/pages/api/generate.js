@@ -4,7 +4,6 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export const POST = async ({ request }) => {
   try {
-    // Safety check: Is there actually a body?
     if (!request.body) {
       return new Response(JSON.stringify({ error: "No data received" }), { status: 400 });
     }
@@ -24,23 +23,30 @@ export const POST = async ({ request }) => {
     2. Always use a generous 'viewBox' with plenty of padding (e.g., viewBox="0 0 400 300" for a 100x100 shape).
     3. Ensure ALL coordinates fit strictly inside this viewBox.
     4. Output the raw SVG code directly inside the Markdown text.
-    5. Generate the SVG code as a single-line string with no line breaks or indentation between tags (minified format).
+    5. Do not have any empty lines in between <svg viewBox> and </svg>, make sure each line in between has 2 spaces in the front. 
     
     Do not use introductory text. Format your response EXACTLY like this:
+    TOPIC: ${topic}
+    DIFFICULTY: ${difficulty}
+    
     PROBLEM: 
     [Write the question here, including any SVG diagrams]
     
     SOLUTION: 
     **Step 1:** [Explain the first logical step]
-    
     **Step 2:** [Explain the next step]
-    
     [...continue with as many steps as needed...]
-    
     **Final Answer:** [State the final mathematical answer clearly]`;
 
     const result = await model.generateContent(prompt);
     let responseText = await result.response.text();
+    
+    // --- POST-PROCESSING FAILSAFE ---
+    // Finds any <svg>...</svg> blocks and removes all line breaks/newlines inside them, 
+    // ensuring ReactMarkdown doesn't break from empty lines.
+    responseText = responseText.replace(/<svg[\s\S]*?<\/svg>/g, (svgBlock) => {
+      return svgBlock.replace(/\s*\n\s*/g, ' '); 
+    });
     
     return new Response(JSON.stringify({ text: responseText }), { 
       status: 200,

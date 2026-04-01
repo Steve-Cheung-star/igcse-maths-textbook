@@ -51,14 +51,16 @@ export default function HistoryViewer() {
     }
   };
 
+  // UPDATED: Now copies in the exact format the importer expects
   const handleCopy = (item) => {
-    const textToCopy = `**Topic:** ${item.topic} (${item.difficulty})\n\n**Problem:**\n${item.question}\n\n**Solution:**\n${item.feedback}`;
+    const textToCopy = `TOPIC: ${item.topic}\nDIFFICULTY: ${item.difficulty}\n\nPROBLEM:\n${item.question}\n\nSOLUTION:\n${item.feedback}`;
     navigator.clipboard.writeText(textToCopy).then(() => {
       setCopiedId(item.id);
       setTimeout(() => setCopiedId(null), 2000); 
     });
   };
 
+  // UPDATED: Now uses regex to automatically extract Topic, Difficulty, Problem, and Solution
   const handleImport = () => {
     setImportError('');
     if (!importText.trim()) {
@@ -66,15 +68,25 @@ export default function HistoryViewer() {
       return;
     }
 
-    const parts = importText.split(/SOLUTION:/i);
-    const generatedProblem = parts[0].replace(/PROBLEM:/i, '').trim();
-    const generatedSolution = parts[1] ? parts[1].trim() : 'Solution unavailable (Did not find "SOLUTION:" marker).';
+    // 1. Extract Metadata using Regex
+    const topicMatch = importText.match(/TOPIC:\s*(.+)/i);
+    const diffMatch = importText.match(/DIFFICULTY:\s*(.+)/i);
+    
+    const parsedTopic = topicMatch ? topicMatch[1].trim() : (importTopic.trim() || 'Imported Problem');
+    const parsedDifficulty = diffMatch ? diffMatch[1].trim() : importDifficulty;
+
+    // 2. Extract Problem & Solution using Regex
+    const problemMatch = importText.match(/PROBLEM:([\s\S]*?)SOLUTION:/i);
+    const solutionMatch = importText.match(/SOLUTION:([\s\S]*)/i);
+
+    const generatedProblem = problemMatch ? problemMatch[1].trim() : 'Error: Could not find "PROBLEM:" section.';
+    const generatedSolution = solutionMatch ? solutionMatch[1].trim() : 'Solution unavailable (Did not find "SOLUTION:" marker).';
 
     const newRecord = {
       id: crypto.randomUUID(),
       date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
-      topic: importTopic.trim() || 'Imported Problem', 
-      difficulty: importDifficulty, 
+      topic: parsedTopic, 
+      difficulty: parsedDifficulty, 
       question: generatedProblem, 
       feedback: generatedSolution,
       bookmarked: true 
