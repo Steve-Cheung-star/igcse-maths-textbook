@@ -7,64 +7,9 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import vercel from '@astrojs/vercel';
 import AutoImport from 'astro-auto-import';
-import { visit } from 'unist-util-visit';
-
-// --- THE NUCLEAR AST SLEDGEHAMMER ---
-function cleanSearchIndex() {
-  return (tree) => {
-    const nodesToRemove = [];
-
-    visit(tree, (node, index, parent) => {
-      // We only care about HTML elements or MDX JSX elements
-      if (['element', 'mdxJsxFlowElement', 'mdxJsxTextElement'].includes(node.type)) {
-        const tagName = node.tagName || node.name;
-
-        // 1. PHYSICAL AMPUTATION
-        // The <annotation> tag holds the raw "\text{ m }" string. We delete it entirely.
-        if (tagName === 'annotation') {
-          nodesToRemove.push({ parent, index });
-          return; // Stop processing this node
-        }
-
-        // 2. MATH NUKE (The "all" override)
-        if (node.type === 'element' && node.properties) {
-          const classStr = Array.isArray(node.properties.className)
-            ? node.properties.className.join(' ')
-            : String(node.properties.className || '');
-
-          if (classStr.match(/(katex|math|mord|base|strut|mrel|mspace|mbin|mopen|mclose|mpunct)/)) {
-            // "all" forces Pagefind to completely erase this from memory
-            node.properties['data-pagefind-ignore'] = 'all';
-          }
-        }
-
-        // 3. SVG NUKE
-        const svgJunk = ['path', 'rect', 'circle', 'line', 'polygon', 'polyline', 'defs', 'style', 'pattern'];
-        if (svgJunk.includes(tagName)) {
-          if (node.type === 'element') {
-            node.properties = node.properties || {};
-            node.properties['data-pagefind-ignore'] = 'all';
-          } else {
-            node.attributes = node.attributes || [];
-            node.attributes.push({ type: 'mdxJsxAttribute', name: 'data-pagefind-ignore', value: 'all' });
-          }
-        }
-      }
-    });
-
-    // Execute the deletions backwards so array indices don't shift
-    for (let i = nodesToRemove.length - 1; i >= 0; i--) {
-      const { parent, index } = nodesToRemove[i];
-      if (parent && parent.children) {
-        parent.children.splice(index, 1);
-      }
-    }
-  };
-}
-// ------------------------------------
 
 export default defineConfig({
-  output: 'static', 
+  output: 'server', 
   adapter: vercel(),
 
   integrations: [
@@ -77,11 +22,15 @@ export default defineConfig({
           '@astrojs/starlight/components': ['Steps', 'Aside', 'Tabs', 'TabItem'],
         },
       ],
-    }), 
-    mermaid(), 
-    react(), 
+    }),
+    mermaid(),
+    react(),
     starlight({
       title: 'Intl. Maths 0607',
+      // INSERT CUSTOM CSS HERE:
+      customCss: [
+        './src/assets/custom.css',
+      ],
       components: {
         SocialIcons: './src/components/Tracker.astro',
       },
@@ -110,11 +59,11 @@ export default defineConfig({
           link: '/my-revision/',
         },
       ],
-    }), 
-    mdx()
+    }),
+    mdx(),
   ],
   markdown: {
     remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex, cleanSearchIndex],
+    rehypePlugins: [rehypeKatex],
   },
 });

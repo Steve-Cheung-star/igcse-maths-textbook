@@ -1,0 +1,53 @@
+---
+/* src/components/Background.astro */
+---
+
+<div class="math-portal">
+  <div class="blueprint-grid"></div>
+  <div class="syllabus-animator"></div>
+</div>
+
+<style is:global>
+  /* Force the Starlight layout to be transparent */
+  :root, body, .page, .main-frame, [data-has-hero] .main-pane {
+    background-color: transparent !important;
+    background-image: none !important;
+  }
+
+  /* Kill the "Isolation" shield that blocks z-index */
+  .main-pane, .content-panel {
+    isolation: auto !important;
+  }
+
+  .math-portal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -100; /* Move it to the very back */
+    background-color: #030712;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  .blueprint-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(59, 130, 240, 0.08) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(59, 130, 240, 0.08) 1.5px, transparent 1.5px);
+    background-size: 80px 80px;
+  }
+
+  .syllabus-animator {
+    position: absolute;
+    inset: 0;
+    opacity: 0.22;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* This connects to your custom.css keyframes */
+    animation: syllabusCycle 50s infinite ease-in-out;
+  }
+</style>

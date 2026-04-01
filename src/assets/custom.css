@@ -1,21 +1,48 @@
-/* Make math formulas slightly larger and centered */
+/* src/styles/custom.css */
+
+:root {
+  /* Lesson 1: Functions (Full-Screen Parabola) */
+  --svg-functions: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='xMidYMid slice'%3E%3Cstyle%3E.l%7Bstroke:%233b82f6;stroke-width:12;fill:none;stroke-dasharray:4000;stroke-dashoffset:4000;animation:d 10s infinite;stroke-linecap:round;%7D@keyframes d%7B0%25%7Bstroke-dashoffset:4000%7D40%25,70%25%7Bstroke-dashoffset:0%7D100%25%7Bstroke-dashoffset:-4000%7D%7D%3C/style%3E%3Cpath class='l' d='M0 500 h1000 M500 0 v1000' /%3E%3Cpath class='l' style='stroke:%23ec4899;stroke-width:18;animation-delay:0.5s' d='M150 150 Q 500 1150 850 150' /%3E%3C/svg%3E");
+
+  /* Lesson 2: Statistics (Original Tall Cumulative Frequency) */
+  --svg-stats: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='xMidYMid slice'%3E%3Cstyle%3E.l%7Bstroke:%2310b981;stroke-width:12;fill:none;stroke-dasharray:4000;stroke-dashoffset:4000;animation:d 10s infinite;stroke-linecap:round;%7D@keyframes d%7B0%25%7Bstroke-dashoffset:4000%7D40%25,70%25%7Bstroke-dashoffset:0%7D100%25%7Bstroke-dashoffset:-4000%7D%7D%3C/style%3E%3Cpath class='l' d='M150 150 V850 h750' /%3E%3Cpath class='l' style='stroke:%2334d399;stroke-width:18;animation-delay:0.8s' d='M150 850 C 450 850, 550 150, 850 150' /%3E%3C/svg%3E");
+
+  /* Lesson 3: Trigonometry (Sine Wave Pulse) */
+  --svg-trig: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='xMidYMid slice'%3E%3Cstyle%3E.l%7Bstroke:%2306b6d4;stroke-width:12;fill:none;stroke-dasharray:4000;stroke-dashoffset:4000;animation:d 10s infinite;stroke-linecap:round;%7D@keyframes d%7B0%25%7Bstroke-dashoffset:4000%7D40%25,70%25%7Bstroke-dashoffset:0%7D100%25%7Bstroke-dashoffset:-4000%7D%7D%3C/style%3E%3Cpath class='l' d='M0 500 h1000' /%3E%3Cpath class='l' style='stroke:%2322d3ee;stroke-width:20;animation-delay:0.5s' d='M0 500 Q 125 150 250 500 T 500 500 T 750 500 T 1000 500' /%3E%3C/svg%3E");
+
+  /* Lesson 4: Geometry (Circle Theorem) */
+  --svg-geometry: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='xMidYMid slice'%3E%3Cstyle%3E.l%7Bstroke:%23f59e0b;stroke-width:12;fill:none;stroke-dasharray:4000;stroke-dashoffset:4000;animation:d 10s infinite;stroke-linecap:round;%7D@keyframes d%7B0%25%7Bstroke-dashoffset:4000%7D40%25,70%25%7Bstroke-dashoffset:0%7D100%25%7Bstroke-dashoffset:-4000%7D%7D%3C/style%3E%3Ccircle class='l' cx='500' cy='500' r='300' /%3E%3Cpath class='l' style='stroke:%23fbbf24;stroke-width:16;animation-delay:1s' d='M288 712 L500 500 L712 712 M288 712 L500 200 L712 712' /%3E%3C/svg%3E");
+
+  /* Lesson 5: Parallel & Perpendicular (Extended Paths for Tilt) */
+  --svg-lines: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='xMidYMid slice'%3E%3Cstyle%3E.l%7Bstroke:%238b5cf6;stroke-width:14;fill:none;stroke-dasharray:6000;stroke-dashoffset:6000;animation:d 10s infinite;stroke-linecap:round;%7D@keyframes d%7B0%25%7Bstroke-dashoffset:6000%7D40%25,70%25%7Bstroke-dashoffset:0%7D100%25%7Bstroke-dashoffset:-6000%7D%7D%3C/style%3E%3Cg transform='rotate(-30 500 500)'%3E%3Cpath class='l' d='M-500 400 h2000 M-500 550 h2000' /%3E%3Cpath class='l' style='stroke-width:8' d='M480 390 l20 10 l-20 10 M480 540 l20 10 l-20 10' /%3E%3Cpath class='l' style='stroke:%23f43f5e;animation-delay:1s' d='M500 -500 v2000' /%3E%3Cpath class='l' style='stroke:%23f43f5e;stroke-width:6;animation-delay:2s' d='M500 510 h40 v40' /%3E%3C/g%3E%3C/svg%3E");
+}
+
+@keyframes syllabusCycle {
+  0%, 19%       { background-image: var(--svg-functions); opacity: 0.22; }
+  20%, 39%      { background-image: var(--svg-stats); opacity: 0.22; }
+  40%, 59%      { background-image: var(--svg-trig); opacity: 0.22; }
+  60%, 79%      { background-image: var(--svg-geometry); opacity: 0.22; }
+  80%, 99%      { background-image: var(--svg-lines); opacity: 0.22; }
+  19.5%, 39.5%, 59.5%, 79.5%, 99.5% { opacity: 0.05; }
+}
+
+/* --- TYPOGRAPHY & MATH --- */
 .katex-display {
-  font-size: 1.2em;
-  margin: 1.5rem 0;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  font-size: 1.25em;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
 }
 
-/* Make axis labels and ticks easier to read */
-.function-plot .axis text {
-  font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  fill: #64748b;
+.hero-math-icon {
+  font-size: clamp(6rem, 18vw, 12rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #60a5fa, #a855f7, #f43f5e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.4));
+  line-height: 1;
 }
-
-.function-plot .axis path, 
-.function-plot .axis line {
-  stroke: #cbd5e1;
-}
-
