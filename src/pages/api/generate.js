@@ -21,7 +21,7 @@ export const POST = async ({ request }) => {
     
     CRITICAL SVG RULES: 
     1. The <text> tags for math labels MUST be placed INSIDE the opening <svg> and closing </svg> tags. Never place text or shapes outside the SVG block.
-    2. Always use a generous 'viewBox' with plenty of padding (e.g., viewBox="-20 -20 140 140" for a 100x100 shape).
+    2. Always use a generous 'viewBox' with plenty of padding (e.g., viewBox="0 0 400 300" for a 100x100 shape).
     3. Ensure ALL coordinates fit strictly inside this viewBox.
     4. Output the raw SVG code directly inside the Markdown text.
     
