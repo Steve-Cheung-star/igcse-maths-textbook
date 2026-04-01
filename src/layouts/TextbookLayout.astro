@@ -1,6 +1,7 @@
 ---
 const { frontmatter, url } = Astro.props;
-let subject = frontmatter.subject || "General";
+// Folder-based subject detection
+let subject = "General";
 if (url?.includes('/math/')) subject = "Math";
 if (url?.includes('/physics/')) subject = "Physics";
 ---
@@ -10,19 +11,28 @@ if (url?.includes('/physics/')) subject = "Physics";
   <head>
     <meta charset="UTF-8" />
     <title>{frontmatter.title}</title>
-    <style>
-      /* This tells Pagefind: "If an element has this class, do NOT index it" */
-      .katex-mathml, .katex-html, annotation, mtext, .MathJax_Preview {
-        -pagefind-ignore: true; 
+    
+    <style is:global>
+      /* Hide all LaTeX/Math internal structures from the search index */
+      .katex-mathml, 
+      .katex-html, 
+      .base, 
+      .strut, 
+      .mord, 
+      .mspace, 
+      .mrel,
+      annotation {
+        -pagefind-ignore: true !important;
       }
-      
-      /* Explicitly tell Pagefind to ignore SVG paths but keep text */
-      svg path, svg circle, svg rect, svg line, svg polyline, svg polygon {
-        -pagefind-ignore: true;
+
+      /* Clean up SVG indexing: Ignore the "lines" but keep the "labels" */
+      svg path, svg circle, svg rect, svg line, svg polyline, svg polygon, svg style, svg defs {
+        -pagefind-ignore: true !important;
       }
-      
+
+      /* Ensure SVG text IS searchable */
       svg text, svg tspan {
-        -pagefind-ignore: false;
+        -pagefind-ignore: false !important;
       }
     </style>
   </head>
