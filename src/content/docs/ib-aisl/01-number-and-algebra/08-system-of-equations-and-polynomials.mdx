@@ -1,0 +1,192 @@
+---
+title: 1.8 Systems of Equations and Polynomials
+description: Utilise your TI-Nspire to efficiently solve linear systems with up to three variables and find the roots of polynomial equations.
+---
+
+While simple algebra allows us to solve one equation with one unknown, real-world problems rarely operate in isolation. A business might need to track the sales of three different products simultaneously, or a physicist might need to calculate the currents flowing through multiple branches of an electrical circuit. 
+
+In this section, we move beyond manual algebraic manipulation. The focus of the IB Mathematics Applications and Interpretation course is on setting up the mathematical models correctly and then using technology—specifically your TI-Nspire—to do the heavy lifting.
+
+<Aside type="note" title="Theory of Knowledge: The Language of Mathematics">
+**What role does language play in the accumulation and sharing of knowledge in mathematics?** When mathematicians talk about "real" or "imaginary" solutions, or finding the "roots" of an equation, they are using precise technical terms that do not have the same meaning as their everyday counterparts. An "imaginary" number is not a figment of a mathematician's imagination; it is a very specific, defined mathematical concept. How does using everyday words for highly technical concepts both help and hinder our understanding of mathematics?
+</Aside>
+
+---
+
+## 1. Systems of Linear Equations
+
+A system of linear equations is a set of two or more linear equations that share the same variables. Your goal is to find the specific values for those variables that make *all* the equations true at the same time.
+
+In your examinations, **there will always be a unique solution** to the systems of equations you are asked to solve. This means the lines or planes intersect at exactly one single point.
+
+### Using the TI-Nspire for Linear Systems
+You are not required to use manual methods like substitution or elimination. Instead, use the built-in system solver.
+
+<Steps>
+1. Open a Calculator scratchpad or document.
+2. Press **Menu > 3: Algebra > 2: Solve System of Linear Equations**.
+3. A dialogue box will appear. Enter the **Number of Equations** (usually 2 or 3).
+4. Verify the **Variables** are listed correctly (e.g., $x, y$ or $x, y, z$). Press **OK**.
+5. Your calculator will paste `linSolve( {  ,  }, {x, y} )`. Fill in the empty boxes with your equations exactly as they are written.
+6. Press **Enter** to get your solution.
+</Steps>
+
+---
+
+## 2. Polynomial Equations
+
+A polynomial is an expression consisting of variables and coefficients, involving only operations of addition, subtraction, multiplication, and non-negative integer exponents. Familiar examples include quadratics (highest power of 2) and cubics (highest power of 3).
+
+### Crucial Terminology: Roots and Zeros
+The syllabus requires you to understand and use standard terminology:
+* **Zeros:** The values of $x$ that make the polynomial expression equal to zero.
+* **Roots:** The solutions to the equation when the polynomial is set to equal zero (e.g., $ax^2 + bx + c = 0$).
+* **x-intercepts:** The coordinates where the graph of the polynomial crosses the horizontal axis. 
+
+Mathematically, in the context of solving equations, these three terms refer to the exact same numbers.
+
+### Using the TI-Nspire for Polynomial Equations
+If you need to find the roots of a quadratic or cubic equation:
+
+<Steps>
+1. Open a Calculator scratchpad or document.
+2. Press **Menu > 3: Algebra > 3: Polynomial Tools > 1: Find Roots of Polynomial**.
+3. Enter the **Degree** (2 for quadratic, 3 for cubic). Select **Real** roots. Press **OK**.
+4. A box will appear asking for the coefficients ($a_2, a_1, a_0$ etc.). Enter them carefully. Note: If a term is missing from your equation, its coefficient is 0.
+5. Press **OK** and then **Enter** to calculate the roots.
+</Steps>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: 2-Variable System">
+    Madison and Zack are buying supplies for a school charity event. 
+    Madison buys 3 boxes of decorations and 5 bags of balloons for 135 HKD. 
+    Zack buys 4 boxes of decorations and 2 bags of balloons for 110 HKD.
+    
+    a) Write down a system of two linear equations to represent this information. Use $d$ for the cost of decorations and $b$ for the cost of balloons.  
+    b) Using your TI-Nspire, find the cost of one box of decorations and one bag of balloons.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a:** Translate the word problem into equations.
+    Madison: 
+    
+    $$
+    3d + 5b = 135
+    $$
+    
+    Zack: 
+    
+    $$
+    4d + 2b = 110
+    $$
+
+    **Part b:** Use the TI-Nspire `linSolve` tool.
+    * Press **Menu > 3 > 2**.
+    * Set number of equations to 2, and variables to $d, b$.
+    * Enter the equations exactly as written above.
+    
+    The calculator returns `{20, 15}`.
+    Therefore, one box of decorations costs 20 HKD and one bag of balloons costs 15 HKD.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Setting up and solving 2-variable linear systems using GDC" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: 3-Variable System (Kirchhoff's Laws context)">
+    Newton is studying electrical circuits in his physics class. He applies Kirchhoff’s laws to a circuit and generates the following system of three linear equations involving three unknown currents, $I_1$, $I_2$, and $I_3$ (measured in amperes):
+    
+    $$
+    I_1 - I_2 - I_3 = 0
+    $$
+    
+    $$
+    5I_1 + 10I_2 = 45
+    $$
+    
+    $$
+    10I_2 - 15I_3 = 10
+    $$
+    
+    Using your TI-Nspire, calculate the values of $I_1$, $I_2$, and $I_3$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    Use the TI-Nspire `linSolve` tool.
+    * Press **Menu > 3 > 2**.
+    * Set number of equations to 3, and variables to $x, y, z$ (you can use $x, y, z$ in the calculator instead of $I_1, I_2, I_3$ to save time, just remember which is which).
+    * Enter the three equations:
+      
+      $$
+      x - y - z = 0
+      $$
+      
+      $$
+      5x + 10y = 45
+      $$
+      
+      $$
+      10y - 15z = 10
+      $$
+      
+    Press **Enter**. The calculator returns `{5, 2, 3}`.
+    Therefore, $I_1 = 5\text{ A}$, $I_2 = 2\text{ A}$, and $I_3 = 3\text{ A}$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving 3-variable linear systems using TI-Nspire linSolve" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Finding Roots of a Quadratic">
+    Jake throws a baseball from the top of a hill. The height of the baseball above the ground, $h$ metres, after $t$ seconds is modelled by the quadratic equation:
+    
+    $$
+    h(t) = -4.9t^2 + 14.7t + 19.6
+    $$
+    
+    a) Find the roots of the equation $-4.9t^2 + 14.7t + 19.6 = 0$.  
+    b) Hence, state how many seconds it takes for the baseball to hit the ground.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part a:** Use the TI-Nspire `PolyRoots` tool.
+    * Press **Menu > 3 > 3 > 1**.
+    * Degree: 2.
+    * Enter the coefficients: $a_2 = -4.9$, $a_1 = 14.7$, $a_0 = 19.6$.
+    
+    The calculator evaluates `polyRoots(-4.9x^2 + 14.7x + 19.6, x)` and returns `{-1, 4}`.
+    The roots are $t = -1$ and $t = 4$.
+
+    **Part b:** In the context of the real-world model, time cannot be negative. Therefore, we discard $t = -1$.
+    The baseball hits the ground after 4 seconds.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding roots of quadratic models and applying real-world constraints" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Zeros of a Cubic Function">
+    Miss Fedoris is analysing the daily profit model for a new student-run café. The expected daily profit, $P$ in HKD, based on selling $x$ specialty coffees is given by the cubic polynomial:
+    
+    $$
+    P(x) = -0.5x^3 + 12x^2 - 40x - 150
+    $$
+    
+    a) Using your TI-Nspire, find the zeros of the function $P(x)$.  
+    b) Interpret what these zeros mean in the context of the café's daily profit.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **Part a:** Use the TI-Nspire `PolyRoots` tool.
+    * Press **Menu > 3 > 3 > 1**.
+    * Degree: 3.
+    * Enter the coefficients: $a_3 = -0.5$, $a_2 = 12$, $a_1 = -40$, $a_0 = -150$.
+    
+    The calculator returns `{ -2.316..., 5.485..., 20.83... }`.
+    Rounding to 3 significant figures, the zeros are $x = -2.32$, $x = 5.49$, and $x = 20.8$.
+
+    **Part b:** The zeros represent the exact number of specialty coffees the café needs to sell to break even (where the profit is exactly 0 HKD). Since you cannot sell a negative number of coffees, the café breaks even at approximately 5.5 and 20.8 coffees sold. 
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using GDC to find the zeros of cubic polynomials in a financial context" />

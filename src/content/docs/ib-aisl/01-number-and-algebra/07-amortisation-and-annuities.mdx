@@ -1,0 +1,244 @@
+---
+title: 1.7 Amortisation and Annuities
+description: Harness the power of your TI-Nspire's Finance Solver to solve complex real-world problems involving loans, credit card debt, and retirement savings.
+---
+
+While simple and compound interest formulas deal with a single lump-sum investment, most real-world financial situations are far more dynamic. We make regular deposits into savings accounts to prepare for retirement, or we pay off car loans with monthly instalments. 
+
+These scenarios involve a series of regular payments, and they are the foundation of **amortisation** (paying off debt) and **annuities** (building up savings). Because the algebra behind these concepts is complex, the IB AI SL syllabus focuses entirely on using technology—specifically the built-in Finance Solver on your TI-Nspire.
+
+*(Note: While the mathematical formula for annuities exists and involves exponential growth, knowledge of the formula itself will not be examined. You are expected to be fully proficient with your GDC instead.)*
+
+---
+
+## 1. The TI-Nspire Finance Solver
+
+To access the solver on your TI-Nspire, open a Calculator scratchpad or document and press **Menu > 8: Finance > 1: Finance Solver**. To use it successfully, you must understand the vocabulary it uses.
+
+| Variable | Meaning | Context |
+| :--- | :--- | :--- |
+| **N** | Number of Payments | Years $\times$ Payments per year |
+| **I(%)** | Annual Interest Rate | Entered as a percentage (e.g., enter **5**, not **0.05**) |
+| **PV** | Present Value | The starting amount (initial loan or initial savings) |
+| **Pmt** | Payment Amount | The regular, equal instalment made each period |
+| **FV** | Future Value | The final amount (usually **0** for a fully paid loan) |
+| **PpY** | Payments per Year | How often payments are made (e.g., **12** for monthly) |
+| **CpY** | Compounding per Year | How often interest is calculated (usually matches PpY) |
+| **PmtAt** | Payment Timing | END or BEGIN |
+
+### The Golden Rule: Sign Conventions
+The TI-Nspire uses positive and negative signs to track the flow of money. 
+* **Positive (+):** Cash inflow. Money coming *into* your pocket (e.g., receiving loan money from a bank).
+* **Negative (-):** Cash outflow. Money leaving your pocket (e.g., making a monthly payment, depositing money into a savings account).
+
+<Aside type="caution" title="Exam Rule">
+In all IB examinations, unless explicitly stated otherwise, payments are assumed to be made at the **end** of the payment period. Ensure your TI-Nspire's **PmtAt** setting is always set to **END**.
+</Aside>
+
+---
+
+## 2. Amortisation (The Mathematics of Debt)
+
+Amortisation is the process of gradually writing off the initial cost of an asset or a loan over a period of time. It applies to student loans, mortgages, and credit card debt. 
+
+When amortising a loan:
+* **PV** is positive (you receive the loan money).
+* **Pmt** is negative (you are giving money back to the bank).
+* **FV** is **0** (your goal is to clear the debt).
+
+---
+
+## 3. Annuities (The Mathematics of Savings)
+
+An annuity is a fixed sum of money paid to or by someone each year (or month). It is heavily used in retirement planning and evaluating the real value of an investment over time.
+
+When building an annuity:
+* **PV** is usually **0** (starting from scratch) or negative (an initial deposit you put away).
+* **Pmt** is negative (you are putting money away into the account).
+* **FV** is positive (the large sum you get back at the end of the term).
+
+<Aside type="note" title="Aim 8 & International-Mindedness">
+**Aim 8 (Ethics):** How can a lack of mathematical knowledge lead to exploitation? Short-term "payday loans" often advertise a seemingly small fixed fee rather than an annual interest rate. When converted, these short-term loans can have equivalent annual rates exceeding $400\%$. Understanding these calculations is a crucial tool for protecting oneself from financial extortion.
+
+**International-mindedness:** Do all societies view investment and interest in the same way? In Islamic finance (Sharia-compliant finance), the charging or receiving of interest (Riba) is strictly prohibited, as money itself should not be a commodity that generates more money. Instead, financing is based on profit-sharing, leasing, or joint venture models.
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding Pmt and Total Interest">
+    Dawa takes out a loan of $25000 \text{ BTN}$ to purchase new farming equipment.  
+    The bank charges an annual interest rate of $6.5\%$, compounded monthly.  
+    He plans to pay off the loan in $5 \text{ years}$ with regular monthly instalments.  
+    a) Write down the values he should enter into his TI-Nspire Finance Solver.  
+    b) Calculate his monthly payment amount.  
+    c) Calculate the total amount of interest he will pay over the $5 \text{ years}$.  
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a:** Set up the solver variables.  
+    * **N** = $5 \times 12 = 60$  
+    * **I(%)** = $6.5$  
+    * **PV** = $25000$ (positive, as he receives the loan)  
+    * **FV** = $0$ (the loan will be fully paid off)  
+    * **PpY** = $12$  
+    * **CpY** = $12$  
+    * **PmtAt** = END  
+
+    **Part b:** Solve for Pmt on the GDC.  
+    **Pmt** $\approx -489.15$  
+    His monthly payment is $489.15 \text{ BTN}$. *(The negative sign indicates cash outflow).* **Part c:** First, find the total amount paid over the $5 \text{ years}$.  
+    $\text{Total paid} = 489.15 \times 60 = 29349 \text{ BTN}$.  
+    The interest is the extra money paid beyond the original loan amount.  
+    $\text{Interest} = 29349 - 25000 = 4349 \text{ BTN}$.  
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using a TI-Nspire to find monthly loan instalments and total interest" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Finding Maximum Loan (PV)">
+    Aigul is looking to buy an apartment in Bishkek. After reviewing her budget, she determines she can afford to pay a maximum of $850 \text{ EUR}$ at the end of each month for a mortgage.  
+    The bank offers a $20\text{-year}$ mortgage with an annual interest rate of $5.2\%$, compounded monthly.  
+    Calculate the maximum loan amount (Present Value) Aigul can afford to borrow.  
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    Set up the Finance Solver to find PV.  
+    * **N** = $20 \times 12 = 240$  
+    * **I(%)** = $5.2$  
+    * **Pmt** = $-850$ (negative, as she is paying this out each month)  
+    * **FV** = $0$ (the mortgage will be cleared)  
+    * **PpY** = $12$  
+    * **CpY** = $12$  
+    
+    Solve for **PV**:  
+    **PV** $\approx 126650.05$  
+    
+    The maximum loan Aigul can afford is $126650.05 \text{ EUR}$.  
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for the present value of an amortised loan using affordability constraints" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Finding Nominal Interest Rate">
+    Kwame buys a professional camera system valued at $4200 \text{ GHS}$. He agrees to a store financing plan where he pays nothing upfront, but makes $36$ monthly instalments of $145 \text{ GHS}$ to own the camera.  
+    a) Calculate the total amount Kwame pays for the camera.  
+    b) Using the TI-Nspire Finance Solver, calculate the nominal annual interest rate charged by the store, compounded monthly.  
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part a:** Total amount paid $= 36 \times 145 = 5220 \text{ GHS}$.  
+
+    **Part b:** Set up the solver to find I(%).  
+    * **N** = $36$  
+    * **PV** = $4200$ (the initial value of the camera he received)  
+    * **Pmt** = $-145$ (his monthly cash outflow)  
+    * **FV** = $0$  
+    * **PpY** = $12$  
+    * **CpY** = $12$  
+    
+    Solve for **I(%)**:  
+    **I(%)** $\approx 14.53$  
+    
+    The nominal annual interest rate is $14.5\%$.  
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the implied nominal annual interest rate of a financing plan" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Finding Number of Payments and Hence Year">
+    Sunita opens an annuity account to save for a deposit on a house. Her goal is to save $60000 \text{ NPR}$.  
+    She deposits $800 \text{ NPR}$ at the end of every month into an account that pays a nominal annual interest rate of $4.8\%$, compounded monthly.  
+    a) Find the number of months it will take Sunita to reach her goal.  
+    b) Hence, if she makes her first deposit at the end of January $2025$, determine the year in which she will reach her goal.  
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **Part a:** Set up the solver to find N.  
+    * **I(%)** = $4.8$  
+    * **PV** = $0$ (she starts with an empty account)  
+    * **Pmt** = $-800$ (she is paying into the account)  
+    * **FV** = $60000$ (positive, as this is the cash she will eventually withdraw)  
+    * **PpY** = $12$  
+    * **CpY** = $12$  
+    
+    Solve for **N**:  
+    **N** $\approx 63.85$  
+    
+    Since she makes deposits at the end of the month, she will reach her goal after her $64\text{th}$ payment (i.e., $64 \text{ months}$).  
+
+    **Part b:** Convert $64 \text{ months}$ into years and months.  
+    $64 \div 12 = 5 \text{ years}$ and $4 \text{ months}$.  
+    If she starts in January $2025$, exactly $5 \text{ years}$ later is January $2030$. Adding $4 \text{ months}$ brings her to April $2030$.  
+    Therefore, she will reach her goal in the year $2030$.  
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the Finance Solver to find time periods and converting them into real calendar years" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Integrating Savings and Debt">
+    Tariq has a credit card debt of $5500 \text{ OMR}$ accruing interest at $18.5\%$ annually, compounded monthly.  
+    At the same time, he is depositing $200 \text{ OMR}$ per month into a savings account that earns $3.2\%$ annually, compounded monthly. He currently pays $150 \text{ OMR}$ per month towards his credit card.  
+    a) Calculate how many months it will take Tariq to pay off his credit card debt at his current payment rate.  
+    b) Suppose Tariq stops depositing into his savings account and instead uses that $200 \text{ OMR}$ to increase his credit card payment to $350 \text{ OMR}$ per month. Calculate the total interest he saves on his credit card debt by making this decision.  
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **Part a:** Find N for the original credit card plan.  
+    * **I(%)** = $18.5$  
+    * **PV** = $5500$  
+    * **Pmt** = $-150$  
+    * **FV** = $0$, **PpY** = $12$, **CpY** = $12$  
+    
+    Solve for **N**: **N** $\approx 54.34$ months.  
+    He will make $55$ payments.  
+    Total paid $= 54.34 \times 150 = 8151 \text{ OMR}$ (approx).  
+    Original Interest $= 8151 - 5500 = 2651 \text{ OMR}$. *(Note: we use the exact N for precision, though the final payment is smaller).* **Part b:** Find the new interest paid with the $350 \text{ OMR}$ payment.  
+    * Change **Pmt** to $-350$.  
+    
+    Solve for **N**: **N** $\approx 18.06$ months.  
+    Total paid $= 18.06 \times 350 = 6321 \text{ OMR}$.  
+    New Interest $= 6321 - 5500 = 821 \text{ OMR}$.  
+    
+    Interest saved $= \text{Original Interest} - \text{New Interest}$  
+    Interest saved $= 2651 - 821 = 1830 \text{ OMR}$.  
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing financial decisions by calculating and analysing total interest paid on amortised loans" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: The Great Flamingo Crisis (Amortisation)">
+    In a moment of sheer panic before the school's annual mathematics department pool party, Mr. Cheung uses his personal credit card to purchase $4500 \text{ HKD}$ worth of life-sized inflatable flamingos.  
+    His credit card charges a staggering nominal annual interest rate of $24.9\%$, compounded monthly.  
+    Hoping the school principal doesn't find out, Mr. Cheung quietly pays $150 \text{ HKD}$ at the end of each month to clear the debt.  
+    a) Calculate how many months it will take Mr. Cheung to financially recover from the flamingo incident.  
+    b) Calculate the total amount of interest he will pay to the bank for his impulsive aquatic purchase.  
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **Part a:** Set up the TI-Nspire Finance Solver to find N.  
+    * **I(%)** = $24.9$  
+    * **PV** = $4500$ (positive, as the bank effectively paid for the flamingos upfront)  
+    * **Pmt** = $-150$ (his monthly panic-payment)  
+    * **FV** = $0$  
+    * **PpY** = $12$  
+    * **CpY** = $12$  
+    * **PmtAt** = END  
+    
+    Solve for **N**:  
+    **N** $\approx 47.92$  
+    
+    Since payments are made at the end of the month, it will take Mr. Cheung $48 \text{ months}$ (or exactly $4 \text{ years}$) to fully pay off the flamingos.  
+
+    **Part b:** First, calculate the total amount he paid over those $48 \text{ months}$.  
+    $\text{Total paid} = 48 \times 150 = 7200 \text{ HKD}$.  
+    
+    Now, subtract the original cost of the flamingos to find the interest.  
+    $\text{Interest} = 7200 - 4500 = 2700 \text{ HKD}$.  
+    
+    *(Mr. Cheung paid an extra $2700 \text{ HKD}$ just in interest. The principal will definitely find out.)*
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating time periods and total interest for poorly planned, high-interest credit card purchases" />
