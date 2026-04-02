@@ -1,0 +1,265 @@
+---
+title: 1.3 Geometric Sequences and Series
+description: Understand the anatomy of geometric sequences, calculate the nth term and sum of series, and model real-world exponential growth in IB Maths AI SL.
+---
+
+In the previous section, we explored patterns that grow by adding a constant. However, many phenomena in the natural and financial worlds—such as the spread of a virus, the exponential growth of a population, or the steady percentage decrease of a car's value—follow a different rule. These are **geometric sequences**, where each term is found by multiplying the previous term by a fixed, non-zero number.
+
+---
+
+## 1. The Anatomy of a Geometric Sequence
+
+A geometric sequence is a pattern of numbers where the ratio between any two consecutive terms remains constant. This constant multiplier is known as the **common ratio**.
+
+<Aside type="note" title="The Hierarchy of Geometric Notation">
+To effectively model geometric patterns, you must use the following standard IB notation:
+* **$u_n$**: The value of the $n$th term in the sequence.
+* **$n$**: The position of the term (must be a positive integer: $1, 2, 3, \dots$).
+* **$u_1$**: The first term of the sequence.
+* **$r$**: The common ratio, calculated by dividing any term by the one immediately before it:
+
+$$
+r = \frac{u_{n+1}}{u_n}
+$$
+
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 160" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Base line */}
+    <line x1="50" y1="110" x2="550" y2="110" stroke="#cbd5e1" stroke-width="2" />
+    
+    {/* Points and Labels */}
+    <circle cx="100" cy="110" r="6" fill="#8b5cf6" />
+    <text x="100" y="140" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">u₁</text>
+    <text x="100" y="160" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">First Term</text>
+
+    <circle cx="233" cy="110" r="6" fill="#8b5cf6" />
+    <text x="233" y="140" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">u₂</text>
+
+    <circle cx="366" cy="110" r="6" fill="#8b5cf6" />
+    <text x="366" y="140" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">u₃</text>
+
+    <circle cx="500" cy="110" r="6" fill="#8b5cf6" />
+    <text x="500" y="140" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">u₄</text>
+
+    {/* Jumps (Common Ratio) */}
+    <path d="M 110 100 Q 166.5 50 223 100" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="6 4" />
+    <polygon points="223,100 215,93 213,102" fill="#10b981" />
+    <text x="166.5" y="45" font-size="16" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">×r</text>
+
+    <path d="M 243 100 Q 299.5 50 356 100" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="6 4" />
+    <polygon points="356,100 348,93 346,102" fill="#10b981" />
+    <text x="299.5" y="45" font-size="16" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">×r</text>
+
+    <path d="M 376 100 Q 433 50 489 100" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="6 4" />
+    <polygon points="489,100 481,93 479,102" fill="#10b981" />
+    <text x="433" y="45" font-size="16" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">×r</text>
+  </svg>
+</div>
+
+---
+
+## 2. The $n$th Term Formula
+
+To jump to any term in a geometric sequence, we start with our first term ($u_1$) and multiply it by the common ratio ($r$) multiple times. Because the first term requires zero multiplications, to reach the $n$th term, we must multiply by $r$ exactly $(n-1)$ times.
+
+<Aside type="tip" title="Theorem: The nth Term of a Geometric Sequence">
+The formula for the $n$th term is provided in your formula booklet as:
+
+$$
+u_n = u_1 \times r^{n-1}
+$$
+
+</Aside>
+
+<Aside type="caution" title="Common Misconception: Order of Operations">
+A very frequent mistake is multiplying $u_1$ and $r$ together before applying the exponent. 
+For example, if evaluating $5 \times 2^3$, you must calculate $2^3$ first (which is 8), and then multiply by 5 to get 40. **Do not** multiply $5 \times 2$ to get $10^3$. Always follow the order of operations (indices before multiplication)!
+</Aside>
+
+---
+
+## 3. Geometric Series and Sigma Notation
+
+When we add the terms of a geometric sequence together, we create a **geometric series**. We use the notation $S_n$ to represent the sum of the first $n$ terms. 
+
+### The Sum Formulae
+
+Your formula booklet provides two equivalent versions of the sum formula. They will both give you the same correct answer, but choosing the right one can make your calculations easier by avoiding negative numbers.
+
+**Use this version when $r > 1$ (Growth):**
+
+$$
+S_n = \frac{u_1(r^n - 1)}{r - 1}
+$$
+
+**Use this version when $r < 1$ (Decay):**
+
+$$
+S_n = \frac{u_1(1 - r^n)}{1 - r}
+$$
+
+### Sigma Notation ($\Sigma$)
+
+Just as with arithmetic sequences, geometric series are frequently presented using sigma notation. If you see an exponent containing the index variable (like $k$ or $n$), you are likely dealing with a geometric series.
+
+$$
+\sum_{k=1}^{n} (u_1 \times r^{k-1})
+$$
+
+To solve these, simply substitute $k=1$ and $k=2$ to identify your $u_1$ and $r$, respectively, and then use the appropriate $S_n$ formula.
+
+---
+
+## 4. Real-World Applications and Technology
+
+Geometric sequences are highly practical for modelling real-world scenarios. In your examinations, you will frequently see them applied to:
+* **Biology:** The spread of a disease or population growth.
+* **Economics:** Annual salary increases or depreciation of assets.
+* **Physics:** Radioactive decay and the discharging of capacitors.
+
+<SteveTip title="Method Marks and GDCs">
+Spreadsheets, GDCs, and graphing software are excellent tools for displaying sequences and solving for unknown variables like $n$. 
+However, **if technology is used in an examination, you are still expected to explicitly state the first term ($u_1$) and the common ratio ($r$) on your paper.** Always write down the equation you are trying to solve before typing it into your calculator's numeric solver to secure your method marks.
+</SteveTip>
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**How do mathematicians reconcile the fact that some conclusions seem to conflict with our intuitions?**
+Geometric series lead us to fascinating paradoxes. Consider the Koch snowflake: a fractal shape created by repeatedly adding smaller triangles to the sides of an initial triangle. Its perimeter grows geometrically toward infinity, yet the total area it encloses remains strictly finite. How can an infinite boundary enclose a finite space? Mathematics forces us to expand our intuition beyond what we can physically observe.
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding the nth Term">
+    A geometric sequence begins $4, 12, 36, \dots$
+    <Steps>
+    1. Write down the common ratio, $r$.
+    2. Find the value of the 8th term.
+    </Steps>
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Step 1:**
+    Divide the second term by the first term to find $r$:
+    
+    $$
+    r = \frac{12}{4} = 3
+    $$
+
+    **Step 2:**
+    Use the $n$th term formula with $u_1 = 4$, $r = 3$, and $n = 8$:
+    
+    $$
+    u_n = u_1 \times r^{n-1}
+    $$
+    
+    $$
+    u_8 = 4 \times 3^{8-1}
+    $$
+    
+    $$
+    u_8 = 4 \times 3^7
+    $$
+    
+    $$
+    u_8 = 4 \times 2187 = 8748
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the common ratio and the nth term of a geometric sequence" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Geometric Series and Sigma Notation">
+    Calculate the exact value of the following sum:
+    
+    $$
+    \sum_{k=1}^{10} 5(2)^{k-1}
+    $$
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    First, identify the sequence parameters by finding the first few terms.
+    When $k=1$: $u_1 = 5(2)^0 = 5(1) = 5$
+    When $k=2$: $u_2 = 5(2)^1 = 10$
+    
+    This is a geometric sequence where $u_1 = 5$ and $r = 2$.
+    We need the sum of the first 10 terms ($n=10$). Since $r > 1$, we use the first sum formula:
+    
+    $$
+    S_n = \frac{u_1(r^n - 1)}{r - 1}
+    $$
+    
+    $$
+    S_{10} = \frac{5(2^{10} - 1)}{2 - 1}
+    $$
+    
+    $$
+    S_{10} = \frac{5(1024 - 1)}{1}
+    $$
+    
+    $$
+    S_{10} = 5(1023) = 5115
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating geometric series using sum formulae and sigma notation" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Applications - Population Growth">
+    A particular strain of bacteria doubles its population every hour. If the initial population is $500$ bacteria, find the estimated population after $12$ hours.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    The population forms a geometric sequence. 
+    The initial population is our first term: $u_1 = 500$.
+    Because it doubles, the common ratio is $r = 2$.
+    
+    *Caution:* After 1 hour, the population is $u_2$. Therefore, after 12 hours, the population corresponds to the **13th term** ($u_{13}$).
+    
+    $$
+    u_{13} = 500 \times 2^{13-1}
+    $$
+    
+    $$
+    u_{13} = 500 \times 2^{12}
+    $$
+    
+    $$
+    u_{13} = 500 \times 4096 = 2,048,000 \text{ bacteria}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Modelling population growth and doubling times using geometric sequences" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Using Technology for Unknown 'n'">
+    An employee's starting salary is $£30,000$. Each year, their salary increases by $4\%$. 
+    Find the minimum number of full years it will take for their salary to exceed $£50,000$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    An increase of $4\%$ means the salary is multiplied by $1.04$ each year.
+    $u_1 = 30000$
+    $r = 1.04$
+    
+    We need to find the smallest integer $n$ such that $u_n > 50000$.
+    Write down the inequality for method marks:
+    
+    $$
+    30000 \times (1.04)^{n-1} > 50000
+    $$
+    
+    Using the Table or Graph function on a GDC for $f(x) = 30000(1.04)^{x-1}$:
+    * When $n = 13$, $u_{13} \approx 48030.98$
+    * When $n = 14$, $u_{14} \approx 49952.22$
+    * When $n = 15$, $u_{15} \approx 51950.31$
+    
+    The value first exceeds $50,000$ when $n = 15$.
+    Since $n=1$ represents the start (year 0), the 15th term happens after **14 full years** of increases.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving geometric sequence inequalities and finding the number of terms using a GDC" />
