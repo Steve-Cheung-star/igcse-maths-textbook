@@ -1,0 +1,347 @@
+---
+title: 6.3 Circles, Arcs and Sectors
+description: Master calculations for the circumference, area, arc lengths, and sector areas of circles for IGCSE 0607 Extended.
+---
+
+Circles are a massive part of the IGCSE geometry syllabus. In this section, you will extend your knowledge from basic whole circles to calculating fractions of a circle, known as arcs and sectors. 
+
+<Aside type="note" title="Circle Hierarchy & Anatomy">
+* **Circumference:** The perimeter (total distance around the outside) of the full circle.
+* **Arc:** A partial curve along the circumference. 
+* **Sector:** A 2D slice of the circle's area, bounded by two radii and an arc (like a slice of pizza).
+</Aside>
+
+
+
+---
+
+## 1. The Full Circle: Area and Circumference
+
+Even though the formulas for the area and circumference of a circle are often given in the exam's formula sheet, you should know them by heart to save time.
+
+* **Circumference:**
+  $$
+  C = \pi d \quad \text{or} \quad C = 2\pi r
+  $$
+* **Area:**
+  $$
+  A = \pi r^2
+  $$
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 200" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Circle 1: Circumference */}
+    <circle cx="100" cy="100" r="70" fill="#f1f5f9" stroke="#3b82f6" stroke-width="4" stroke-dasharray="6 6" />
+    <line x1="30" y1="100" x2="170" y2="100" stroke="#1e293b" stroke-width="2" />
+    <circle cx="100" cy="100" r="3" fill="#ef4444" />
+    <text x="100" y="90" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Diameter (d)</text>
+    <text x="100" y="195" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">C = πd</text>
+
+    {/* Circle 2: Area */}
+    <circle cx="250" cy="100" r="70" fill="#bfdbfe" stroke="#1e293b" stroke-width="2" />
+    <line x1="250" y1="100" x2="320" y2="100" stroke="#ef4444" stroke-width="3" />
+    <circle cx="250" cy="100" r="3" fill="#1e293b" />
+    <text x="285" y="90" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Radius (r)</text>
+    <text x="250" y="195" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">A = πr²</text>
+  </svg>
+</div>
+
+<SteveTip title="Leaving answers 'In terms of π'">
+If a question asks for the answer "in terms of $\pi$", **do not** use the $\pi$ button on your calculator. Treat $\pi$ exactly like an algebra variable (e.g., $x$). For example, if $r = 5$, the area is simply $25\pi$. Do not write $78.54$!
+</SteveTip>
+
+---
+
+## 2. Minor vs. Major Arcs and Sectors
+
+When you slice a circle using two radii, you don't just create one sector—you create two! 
+
+* **Minor Sector/Arc:** The smaller slice (subtended by an angle less than $180^\circ$).
+* **Major Sector/Arc:** The larger remaining slice (subtended by a reflex angle greater than $180^\circ$).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 470 300" width="100%" maxWidth="470px" style={{ background: '#080c14', borderRadius: '12px', border: '1px solid #1e293b' }}>
+    {/* Global Translation Group */}
+    <g transform="translate(30, 0)">
+      
+      {/* Main Circle Guide */}
+      <circle cx="200" cy="150" r="110" fill="none" stroke="#1e293b" stroke-width="1" stroke-dasharray="2 2" />
+
+      {/* Major Sector (Pac-Man) */}
+      <path 
+        d="M 200 150 L 277.8 72.2 A 110 110 0 1 0 277.8 227.8 Z" 
+        fill="#fbbf24" 
+        fill-opacity="0.35" 
+        stroke="#fbbf24" 
+        stroke-width="2.5" 
+      />
+      <circle cx="215" cy="105" r="7" fill="#000" />
+
+      {/* Minor Sector (Cherry Zone) */}
+      <path 
+        d="M 200 150 L 277.8 227.8 A 110 110 0 0 0 277.8 72.2 Z" 
+        fill="#f87171" 
+        fill-opacity="0.15" 
+        stroke="none"
+      />
+
+      {/* Distinct Red Dashed Minor Arc */}
+      <path 
+        d="M 277.8 227.8 A 110 110 0 0 0 277.8 72.2" 
+        fill="none" 
+        stroke="#ef4444" 
+        stroke-width="2.5" 
+        stroke-dasharray="6 3"
+      />
+
+      {/* Cherries */}
+      <g transform="translate(280, 145)">
+        <circle cx="0" cy="10" r="11" fill="#ef4444" fill-opacity="0.9"/>
+        <circle cx="16" cy="0" r="11" fill="#ef4444" fill-opacity="0.9"/>
+        <path d="M 0 0 Q 10 -22 26 -27" fill="none" stroke="#16a34a" stroke-width="2.5" />
+        <path d="M 16 -11 Q 19 -19 26 -27" fill="none" stroke="#16a34a" stroke-width="2.5" />
+      </g>
+
+      {/* Central Angle Arcs */}
+      <path d="M 221.2 171.2 A 30 30 0 0 0 221.2 128.8" fill="none" stroke="#dc2626" stroke-width="2" stroke-opacity="0.3" />
+      <path d="M 221.2 128.8 A 30 30 0 1 0 221.2 171.2" fill="none" stroke="#ca8a04" stroke-width="2" stroke-opacity="0.3" />
+
+      {/* Aligned Labels and Leader Lines */}
+      
+      {/* UPPER ROW: ARCS (Aligned at y=60) */}
+      <polyline points="100,100 85,60 75,60" fill="none" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3 3" />
+      <text x="70" y="60" font-size="12" fill="#fbbf24" text-anchor="end" font-family="sans-serif" font-weight="bold">
+          <tspan x="70" dy="0">Major Arc</tspan>
+      </text>
+
+      <polyline points="308,135 330,60 340,60" fill="none" stroke="#ef4444" stroke-width="1" stroke-dasharray="3 3" />
+      <text x="345" y="60" font-size="12" fill="#ef4444" text-anchor="start" font-family="sans-serif" font-weight="bold">
+          <tspan x="345" dy="0">Minor Arc</tspan>
+      </text>
+
+      {/* LOWER ROW: SECTORS (Aligned at y=240) */}
+      <polyline points="150,180 95,240 85,240" fill="none" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3 3" />
+      <text x="80" y="240" font-size="12" fill="#fbbf24" text-anchor="end" font-family="sans-serif" font-weight="bold">
+          <tspan x="80" dy="0">Major Sector</tspan>
+          <tspan x="80" dy="16" font-size="11" fill="#ca8a04" fill-opacity="0.7">(270°)</tspan>
+      </text>
+
+      <polyline points="240,180 315,240 325,240" fill="none" stroke="#f87171" stroke-width="1" stroke-dasharray="3 3" />
+      <text x="330" y="240" font-size="12" fill="#f87171" text-anchor="start" font-family="sans-serif" font-weight="bold">
+          <tspan x="330" dy="0">Minor Sector</tspan>
+          <tspan x="330" dy="16" font-size="11" fill="#dc2626" fill-opacity="0.7">(90°)</tspan>
+      </text>
+
+    </g>
+  </svg>
+</div>
+
+---
+
+## 3. Calculating Arc Length and Sector Area
+
+An arc is just a *fraction* of the full circumference. A sector is just a *fraction* of the full area. 
+Because a full circle is $360^\circ$, the fraction of the circle you are dealing with is always exactly $\frac{\theta}{360}$, where $\theta$ is the angle at the centre.
+
+<Aside type="tip" title="Arc Length and Sector Area Formulas">
+* **Arc Length:**
+  $$
+  \text{Arc Length} = \frac{\theta}{360} \times 2\pi r
+  $$
+* **Sector Area:**
+  $$
+  \text{Sector Area} = \frac{\theta}{360} \times \pi r^2
+  $$
+</Aside>
+
+### The Perimeter Trap
+<Aside type="caution" title="Common Misconception">
+**Arc Length is NOT the same as Sector Perimeter!**
+Arc length is only the curved edge. If an exam asks for the **perimeter of a sector**, you must calculate the arc length and then **add the two straight radii** that form the straight edges!
+$$
+\text{Perimeter of Sector} = \text{Arc Length} + 2r
+$$
+</Aside>
+
+### Example: Area and Perimeter of a Sector
+
+Let's see this in action. Consider a minor sector with a radius of $8 \text{ cm}$ and an angle of $45^\circ$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 300 200" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Sector shape */}
+    <path d="M 100 150 L 220 150 A 120 120 0 0 0 184.85 65.15 Z" fill="#eff6ff" stroke="#3b82f6" stroke-width="3" />
+    
+    {/* Angle Arc */}
+    <path d="M 130 150 A 30 30 0 0 0 121.21 128.79" fill="none" stroke="#ef4444" stroke-width="2" />
+    <text x="145" y="140" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">45°</text>
+    
+    {/* Radius Labels */}
+    <text x="160" y="170" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">8 cm</text>
+    <text x="130" y="95" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif" transform="rotate(-45 130,95)">8 cm</text>
+    
+    {/* Arc length label */}
+    <text x="215" y="105" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Arc length</text>
+  </svg>
+</div>
+
+<Steps>
+1. **Calculate the Area:**
+   $$
+   \text{Area} = \frac{45}{360} \times \pi \times 8^2
+   $$
+   $$
+   \text{Area} = \frac{1}{8} \times 64\pi = 8\pi \approx 25.1 \text{ cm}^2
+   $$
+2. **Calculate the Arc Length:**
+   $$
+   \text{Arc Length} = \frac{45}{360} \times 2 \times \pi \times 8
+   $$
+   $$
+   \text{Arc Length} = \frac{1}{8} \times 16\pi = 2\pi \approx 6.28 \text{ cm}
+   $$
+3. **Calculate the Total Perimeter:**
+   Add the arc length to the two straight radii.
+   $$
+   \text{Perimeter} = 6.28 + 8 + 8
+   $$
+   $$
+   \text{Perimeter} = 22.28 \text{ cm}
+   $$
+</Steps>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: In terms of π (Core)">
+    A circle has a radius of $8\text{ cm}$. 
+    1. Calculate the exact circumference, giving your answer in terms of $\pi$.
+    2. Calculate the exact area, giving your answer in terms of $\pi$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Circumference:**
+       $$
+       C = 2\pi r = 2 \times \pi \times 8
+       $$
+       $$
+       C = 16\pi \text{ cm}
+       $$
+    2. **Area:**
+       $$
+       A = \pi r^2 = \pi \times 8^2
+       $$
+       $$
+       A = 64\pi \text{ cm}^2
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating circle area and circumference leaving answers in terms of pi" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Arc Length and Area (Extended)">
+    A minor sector of a circle has a radius of $12\text{ cm}$ and an angle at the centre of $45^\circ$.
+    1. Calculate the length of the minor arc.
+    2. Calculate the area of the minor sector.
+    Give both answers correct to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Arc Length:** The fraction of the circle is $\frac{45}{360}$.
+       $$
+       \text{Arc Length} = \frac{45}{360} \times 2 \times \pi \times 12
+       $$
+       $$
+       \text{Arc Length} = 0.125 \times 24\pi = 3\pi = 9.42\text{ cm}
+       $$
+    2. **Sector Area:**
+       $$
+       \text{Sector Area} = \frac{45}{360} \times \pi \times 12^2
+       $$
+       $$
+       \text{Sector Area} = 0.125 \times 144\pi = 18\pi = 56.5\text{ cm}^2
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating arc length and sector area using fractional circle formulas" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Sector Perimeter (Extended)">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 250 250" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <path d="M 125 125 L 225 125 A 100 100 0 1 1 125 25 Z" fill="#f1f5f9" stroke="#1e293b" stroke-width="3" />
+        
+        {/* Major Angle Arc */}
+        <path d="M 145 125 A 20 20 0 1 1 125 105" fill="none" stroke="#10b981" stroke-width="3" />
+        
+        <text x="90" y="150" font-size="14" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">270°</text>
+        <text x="175" y="145" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">15 cm</text>
+      </svg>
+    </div>
+    Calculate the total perimeter of the major sector shown above. The radius is $15\text{ cm}$. Give your answer to 1 decimal place.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **Calculate the Major Arc Length:** The angle for the major sector is $270^\circ$.
+       $$
+       \text{Arc Length} = \frac{270}{360} \times 2 \times \pi \times 15
+       $$
+       $$
+       \text{Arc Length} = 0.75 \times 30\pi = 22.5\pi \approx 70.686\text{ cm}
+       $$
+    2. **Calculate the Total Perimeter:** Add the two straight radii to the arc length.
+       $$
+       \text{Perimeter} = \text{Arc Length} + 15 + 15
+       $$
+       $$
+       \text{Perimeter} = 70.686 + 30 = 100.686
+       $$
+    3. **Final Answer:** Round to 1 decimal place.
+       $$
+       \text{Perimeter} = 100.7\text{ cm}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating the total perimeter of major and minor sectors" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Working Backwards (Extended)">
+    A sector of a circle has a radius of $10\text{ cm}$ and an exact area of $20\pi\text{ cm}^2$. 
+    Calculate the angle at the centre of the sector, $\theta$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. Write out the sector area formula and substitute the known values:
+       $$
+       \text{Area} = \frac{\theta}{360} \times \pi r^2
+       $$
+       $$
+       20\pi = \frac{\theta}{360} \times \pi \times 10^2
+       $$
+    2. Simplify the equation by cancelling $\pi$ from both sides and squaring the 10:
+       $$
+       20 = \frac{\theta}{360} \times 100
+       $$
+    3. Rearrange to solve for $\theta$:
+       $$
+       \frac{20}{100} = \frac{\theta}{360}
+       $$
+       $$
+       0.2 = \frac{\theta}{360}
+       $$
+       $$
+       \theta = 0.2 \times 360 = 72^\circ
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Working backwards from sector area or arc length to find missing angles or radii" difficulty="IGCSE Extended" client:load />

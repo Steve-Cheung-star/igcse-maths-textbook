@@ -1,0 +1,26 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/SiteTitle.astro';
+
+// Check if the current URL path is inside the IB section
+const isIB = Astro.url.pathname.startsWith('/ib-aisl');
+---
+
+{isIB ? (
+  /* --- CUSTOM IB LOGO & LINK --- */
+  <a href="/ib-aisl/" style="display: flex; align-items: center; text-decoration: none; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;">
+    
+    {/* Option A: Text-based Logo (Matching your landing page theme) */}
+    <span style="background: linear-gradient(135deg, #10b981, #047857); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+      AI SL
+    </span>
+
+    {/* Option B: If you have an image, delete the span above and uncomment below! */}
+    {/* <img src="/src/assets/ib-logo-light.svg" alt="IB Logo" style="height: 2rem;" /> */}
+    
+  </a>
+) : (
+  /* --- DEFAULT IGCSE LOGO --- */
+  /* This pulls your default light/dark SVGs right from your astro.config.mjs */
+  <Default {...Astro.props} />
+)}

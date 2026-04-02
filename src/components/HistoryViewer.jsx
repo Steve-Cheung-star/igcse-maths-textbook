@@ -1,32 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
-import remarkGfm from 'remark-gfm'; // <-- ADDED GFM IMPORT
+import remarkGfm from 'remark-gfm'; 
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 
-export default function HistoryViewer() {
+// 1. ADDED storageKey PROP HERE
+export default function HistoryViewer({ storageKey = 'igcse_ai_history' }) {
   const [history, setHistory] = useState([]);
   const [mounted, setMounted] = useState(false);
   const [filterBookmarked, setFilterBookmarked] = useState(false);
   const [copiedId, setCopiedId] = useState(null); 
   
-  // New Pagination & Search States
   const [searchTerm, setSearchTerm] = useState('');
   const [visibleCount, setVisibleCount] = useState(10);
 
-  // Import Form States
   const [showImport, setShowImport] = useState(false);
   const [importTopic, setImportTopic] = useState('');
-  const [importDifficulty, setImportDifficulty] = useState('IGCSE Extended');
+  const [importDifficulty, setImportDifficulty] = useState('Extended');
   const [importText, setImportText] = useState('');
   const [importError, setImportError] = useState('');
 
+  // 2. UPDATED ALL LOCAL STORAGE CALLS TO USE storageKey
   useEffect(() => {
-    const savedData = JSON.parse(localStorage.getItem('igcse_ai_history') || '[]');
+    const savedData = JSON.parse(localStorage.getItem(storageKey) || '[]');
     setHistory(savedData);
     setMounted(true);
-  }, []);
+  }, [storageKey]);
 
   const toggleBookmark = (id) => {
     const updatedHistory = history.map(item => {
@@ -34,20 +34,20 @@ export default function HistoryViewer() {
       return item;
     });
     setHistory(updatedHistory);
-    localStorage.setItem('igcse_ai_history', JSON.stringify(updatedHistory));
+    localStorage.setItem(storageKey, JSON.stringify(updatedHistory));
   };
 
   const deleteEntry = (id) => {
     if (window.confirm("Delete this specific entry?")) {
       const updatedHistory = history.filter(item => item.id !== id);
       setHistory(updatedHistory);
-      localStorage.setItem('igcse_ai_history', JSON.stringify(updatedHistory));
+      localStorage.setItem(storageKey, JSON.stringify(updatedHistory));
     }
   };
 
   const clearHistory = () => {
     if (window.confirm("Delete all saved questions?")) {
-      localStorage.removeItem('igcse_ai_history');
+      localStorage.removeItem(storageKey);
       setHistory([]);
     }
   };
@@ -103,7 +103,7 @@ export default function HistoryViewer() {
 
     const updatedHistory = [newRecord, ...history];
     setHistory(updatedHistory);
-    localStorage.setItem('igcse_ai_history', JSON.stringify(updatedHistory));
+    localStorage.setItem(storageKey, JSON.stringify(updatedHistory));
     
     setImportTopic('');
     setImportText('');
@@ -200,7 +200,6 @@ export default function HistoryViewer() {
           margin-bottom: 1rem !important;
         }
 
-        /* ADDED TABLE CSS */
         .math-renderer table {
           width: 100%;
           border-collapse: collapse;
@@ -267,8 +266,10 @@ export default function HistoryViewer() {
             <div style={{ flex: '1 1 200px' }}>
               <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.4rem', color: 'var(--sl-color-gray-3)' }}>Difficulty (Fallback)</label>
               <select className="import-input" value={importDifficulty} onChange={(e) => setImportDifficulty(e.target.value)}>
+                {/* 3. UPDATED DROPDOWN OPTIONS */}
                 <option>IGCSE Core</option>
                 <option>IGCSE Extended</option>
+                <option>IB AI SL</option>
                 <option>Custom/Advanced</option>
               </select>
             </div>
@@ -326,7 +327,6 @@ export default function HistoryViewer() {
 
             <div style={{ padding: '1.25rem' }}>
               <div className="math-renderer" style={{ marginBottom: '1.5rem' }}>
-                {/* ADDED remarkGfm HERE */}
                 <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                   {cleanMarkdown(item.question)}
                 </ReactMarkdown>
@@ -337,7 +337,6 @@ export default function HistoryViewer() {
                 <span>▼</span> View Saved Solution
               </summary>
               <div className="math-renderer" style={{ marginTop: '1rem', background: '#064e3b', padding: '1.25rem', borderRadius: '8px', borderLeft: '4px solid #10b981', color: '#ecfdf5', boxShadow: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)' }}>
-                {/* ADDED remarkGfm HERE */}
                 <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                   {cleanMarkdown(item.feedback)}
                 </ReactMarkdown>
@@ -360,7 +359,7 @@ export default function HistoryViewer() {
         </div>
       )}
 
-      {/* Clear History Container - Kept separated to avoid accidental clicks next to Load More */}
+      {/* Clear History Container */}
       {history.length > 0 && (
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem', borderTop: '1px solid var(--sl-color-gray-5)', paddingTop: '1.5rem' }}>
           <button onClick={clearHistory} style={{ color: 'var(--sl-color-red-high)', background: 'var(--sl-color-gray-6)', border: '1px solid var(--sl-color-gray-5)', borderRadius: '6px', cursor: 'pointer', fontSize: '0.9rem', fontWeight: '600', padding: '0.6rem 1.5rem' }}>

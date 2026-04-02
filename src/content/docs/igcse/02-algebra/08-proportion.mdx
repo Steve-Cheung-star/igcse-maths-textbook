@@ -1,0 +1,553 @@
+---
+title: 2.8 Proportion
+description: Express direct and inverse proportion algebraically, find unknown quantities, and identify the best variation model for given data.
+---
+
+In mathematics, **proportion** (or variation) describes how one variable changes in relation to another. We use the proportional symbol **$\propto$** to show this relationship. 
+
+To solve proportion problems, we always replace the $\propto$ symbol with an equals sign ($=$) and a **constant of proportionality**, usually represented by the letter **$k$**.
+
+---
+
+## 1. Translating Proportionality Statements
+
+Exams will use specific phrasing to tell you exactly what power or root to use in your equation. You must memorize these translations before you can set up your algebra:
+
+| English Phrasing | Algebraic Translation | Proportionality Equation |
+| :--- | :--- | :--- |
+| "...is proportional to $x$" | $x$ | $y = kx$ |
+| "...the **square** of $x$" | $x^2$ | $y = kx^2$ |
+| "...the **cube** of $x$" | $x^3$ | $y = kx^3$ |
+| "...the **square root** of $x$" | $\sqrt{x}$ | $y = k\sqrt{x}$ |
+| "...the **cube root** of $x$" | $\sqrt[3]{x}$ | $y = k\sqrt[3]{x}$ |
+
+<SteveTip title="The Golden Rule of Proportion">
+Every standard proportion problem follows the exact same three steps:
+1. **Set it up:** Write the equation with $k$ using the correct translation from the table above.
+2. **Find $k$:** Substitute the known pair of values to calculate your constant $k$.
+3. **Solve:** Rewrite the full equation with your new $k$ value, then use it to find the final unknown quantity.
+</SteveTip>
+
+---
+
+## 2. Direct Proportion
+
+If two quantities are in **direct proportion**, as one increases, the other increases at the same relative rate. 
+
+### Algebraic Direct Proportion
+Variables aren't always proportional to just $x$. They can be proportional to powers or roots of $x$, as shown in the translation table.
+
+**Example:** $y$ is directly proportional to the square of $x$. When $x = 3$, $y = 36$. Find the value of $y$ when $x = 5$.
+
+**Step 1: Set it up**
+$$
+\begin{aligned}
+y &\propto x^2 \\
+y &= kx^2
+\end{aligned}
+$$
+
+**Step 2: Find $k$**
+Substitute $x = 3$ and $y = 36$:
+$$
+\begin{aligned}
+36 &= k(3)^2 \\
+36 &= 9k \\
+k &= 4
+\end{aligned}
+$$
+So, the exact formula connecting $x$ and $y$ is **$y = 4x^2$**.
+
+**Step 3: Solve for the unknown**
+Substitute $x = 5$ into your new formula:
+$$
+\begin{aligned}
+y &= 4(5)^2 \\
+y &= 4(25) \\
+y &= 100
+\end{aligned}
+$$
+
+### Direct Proportion in Word Problems
+Real-world scenarios often use direct proportion. Common examples include currency conversion (more USD = more EUR), or mass and volume (more volume of a liquid = more mass). 
+
+**Example:** The distance a heavy ball falls ($d$) is directly proportional to the square of the time ($t$) it has been falling. If it falls $20$ m in $2$ seconds, how far does it fall in $5$ seconds?
+
+**Step 1: Set up**
+$$
+\begin{aligned}
+d &\propto t^2 \\
+d &= kt^2
+\end{aligned}
+$$
+
+**Step 2: Find $k$**
+$$
+\begin{aligned}
+20 &= k(2)^2 \\
+20 &= 4k \\
+k &= 5
+\end{aligned}
+$$
+The equation is $d = 5t^2$.
+
+**Step 3: Solve**
+$$
+\begin{aligned}
+d &= 5(5)^2 \\
+d &= 5(25) \\
+d &= 125
+\end{aligned}
+$$
+The ball falls **$125$ m**.
+
+---
+
+## 3. Inverse Proportion
+
+If two quantities are in **inverse proportion**, as one increases, the other *decreases* at a proportional rate. We express this by making the variable a denominator (the reciprocal).
+
+* **Standard Inverse:** $y \propto \frac{1}{x}$ which becomes $y = \frac{k}{x}$
+* **Inverse Square:** $y \propto \frac{1}{x^2}$ which becomes $y = \frac{k}{x^2}$
+
+### Algebraic Inverse Proportion
+**Example:** $p$ is inversely proportional to the square root of $q$. When $q = 25$, $p = 4$. Find the value of $q$ when $p = 10$.
+
+**Step 1: Set it up**
+$$
+\begin{aligned}
+p &\propto \frac{1}{\sqrt{q}} \\
+p &= \frac{k}{\sqrt{q}}
+\end{aligned}
+$$
+
+**Step 2: Find $k$**
+Substitute $q = 25$ and $p = 4$:
+$$
+\begin{aligned}
+4 &= \frac{k}{\sqrt{25}} \\
+4 &= \frac{k}{5} \\
+k &= 20
+\end{aligned}
+$$
+The exact formula is **$p = \frac{20}{\sqrt{q}}$**.
+
+**Step 3: Solve for the unknown**
+Substitute $p = 10$:
+$$
+\begin{aligned}
+10 &= \frac{20}{\sqrt{q}} \\
+\sqrt{q} &= \frac{20}{10} \\
+\sqrt{q} &= 2
+\end{aligned}
+$$
+Square both sides to find $q$:
+$$
+\begin{aligned}
+q &= 2^2 \\
+q &= 4
+\end{aligned}
+$$
+
+### Inverse Proportion Word Problems (The "Man-Power" Rule)
+The most common real-world application of inverse proportion is "Work and Time" problems involving man-power or speed. 
+
+<SteveTip title="The More-is-Less Logic">
+Think logically about the scenario: If you have **more** workers on a job, it will take **less** time to finish it. If you drive at a **higher** speed, it will take **less** time to reach your destination. This "more is less" relationship is the definition of **inverse proportion**.
+</SteveTip>
+
+**Example:** A team of $5$ decorators can finish painting a house in $12$ days. Assuming they all work at the exact same rate, how many decorators are needed to finish the house in $4$ days?
+
+**Step 1: Set up**
+Time ($T$) is inversely proportional to Workers ($W$). 
+$$
+\begin{aligned}
+T &= \frac{k}{W}
+\end{aligned}
+$$
+
+**Step 2: Find $k$**
+Here, $k$ represents the total number of "man-days" required for the whole job.
+$$
+\begin{aligned}
+12 &= \frac{k}{5} \\
+k &= 60
+\end{aligned}
+$$
+The equation is $T = \frac{60}{W}$.
+
+**Step 3: Solve**
+We need the job done in $T = 4$ days. 
+$$
+\begin{aligned}
+4 &= \frac{60}{W} \\
+4W &= 60 \\
+W &= 15
+\end{aligned}
+$$
+You will need **$15$ decorators**.
+
+---
+
+## 4. Linking Multiple Proportionality Models
+
+In harder higher-tier questions, you may be given two separate proportionality relationships that share a common variable. You will need to find the equations for both separately, and then substitute them into a combined algebraic expression. 
+
+These questions heavily test your ability to simplify algebraic fractions, use the rules of indices, and manipulate surds.
+
+### Example: Combining and Simplifying
+**Question:** $x$ is directly proportional to the square of $w$. When $w = 2$, $x = 12$.
+$y$ is inversely proportional to the fourth power of $w$. When $w = 2$, $y = 3$.
+Find an expression for $\sqrt{xy}$ in its simplest form, in terms of $w$.
+
+**Step 1: Find the equation for $x$**
+$$
+\begin{aligned}
+x &= k_1 w^2 \\
+12 &= k_1 (2)^2 \\
+12 &= 4k_1 \\
+k_1 &= 3
+\end{aligned}
+$$
+**Equation 1:** $x = 3w^2$
+
+**Step 2: Find the equation for $y$**
+$$
+\begin{aligned}
+y &= \frac{k_2}{w^4} \\
+3 &= \frac{k_2}{2^4} \\
+3 &= \frac{k_2}{16} \\
+k_2 &= 48
+\end{aligned}
+$$
+**Equation 2:** $y = \frac{48}{w^4}$
+
+**Step 3: Substitute both into the required expression and simplify**
+We need to find $xy$. First, find $xy$:
+$$
+\begin{aligned}
+xy &= (3w^2) \times \left(\frac{48}{w^4}\right) \\[1ex]
+xy &= \frac{144w^2}{w^4} \\[1ex]
+xy &= \frac{144}{w^2}
+\end{aligned}
+$$
+
+Now, take the square root of the whole expression. Remember to square root both the numerator and the denominator:
+$$
+\begin{aligned}
+\sqrt{xy} &= \sqrt{\frac{144}{w^2}} \\[1ex]
+\sqrt{xy} &= \frac{12}{w}
+\end{aligned}
+$$
+
+---
+
+## 5. Identifying the Best Variation Model
+
+Sometimes, instead of being told the relationship, you are given a table of data and asked to find the model that fits. 
+
+To do this, you test different formulas to see which one produces a **constant value for $k$** across all pairs of data.
+
+* If $y = kx$, then **$k = \frac{y}{x}$** (Direct Linear)
+* If $y = kx^2$, then **$k = \frac{y}{x^2}$** (Direct Square)
+* If $y = \frac{k}{x}$, then **$k = yx$** (Inverse Linear)
+
+### Example: Finding the Model from Data
+Identify the correct variation model for the data below:
+
+| $x$ | 2 | 3 | 4 |
+| :--- | :--- | :--- | :--- |
+| $y$ | 12 | 27 | 48 |
+
+Let's test the data against different models to see which gives a constant $k$.
+
+**Test 1: Linear ($k = \frac{y}{x}$)**
+* $12 \div 2 = 6$
+* $27 \div 3 = 9$ 
+
+This is not constant. The relationship is NOT $y = kx$.
+
+**Test 2: Square ($k = \frac{y}{x^2}$)**
+* $12 \div 2^2 = 12 \div 4 = 3$
+* $27 \div 3^2 = 27 \div 9 = 3$
+* $48 \div 4^2 = 48 \div 16 = 3$
+
+Because $\frac{y}{x^2}$ always equals $3$, the constant of proportionality is $k = 3$. 
+The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
+
+---
+
+## 6. Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1 (Core)">
+
+The cost ($C$) of purchasing copper wire is directly proportional to its length ($L$). If 15 m of wire costs \$24, calculate the cost of 25 m of wire.
+
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+
+**1. Set up:**
+$$
+\begin{aligned}
+C &= kL
+\end{aligned}
+$$
+
+**2. Find $k$:**
+$$
+\begin{aligned}
+24 &= k(15) \\
+k &= 1.6
+\end{aligned}
+$$
+Equation: $C = 1.6L$
+
+**3. Solve:**
+$$
+\begin{aligned}
+C &= 1.6(25) \\
+C &= 40
+\end{aligned}
+$$
+The cost is **\$40**.
+
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Direct proportion word problems" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2 (Core)">
+
+It takes $6$ machines $15$ hours to manufacture a batch of parts. 
+Assuming all machines work at the same rate, how long would it take $9$ machines to manufacture the same batch of parts?
+
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+
+More machines mean less time, so this is **inverse proportion**.
+
+**1. Set up:**
+$$
+\begin{aligned}
+T &= \frac{k}{M}
+\end{aligned}
+$$
+
+**2. Find $k$:**
+$$
+\begin{aligned}
+15 &= \frac{k}{6} \\
+k &= 90
+\end{aligned}
+$$
+Equation: $T = \frac{90}{M}$
+
+**3. Solve:**
+$$
+\begin{aligned}
+T &= \frac{90}{9} \\
+T &= 10
+\end{aligned}
+$$
+It will take **$10$ hours**.
+
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Word problems involving inverse proportion and man-power" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3 (Extended)">
+
+$y$ is directly proportional to the cube root of $x$. 
+When $x = 8$, $y = 10$.
+Find the value of $y$ when $x = 64$.
+
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+
+**1. Set up:**
+$$
+\begin{aligned}
+y &= k\sqrt[3]{x}
+\end{aligned}
+$$
+
+**2. Find $k$:**
+$$
+\begin{aligned}
+10 &= k\sqrt[3]{8} \\
+10 &= k(2) \\
+k &= 5
+\end{aligned}
+$$
+Equation: $y = 5\sqrt[3]{x}$
+
+**3. Solve:**
+$$
+\begin{aligned}
+y &= 5\sqrt[3]{64} \\
+y &= 5(4) \\
+y &= 20
+\end{aligned}
+$$
+
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Direct proportion with powers and roots" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 4 (Extended)">
+
+The intensity of light ($I$) is inversely proportional to the square of the distance ($d$) from the light source. When the distance is $3$ m, the intensity is $40$ units. Find the intensity when the distance is $6$ m.
+
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+
+**1. Set up:**
+$$
+\begin{aligned}
+I &= \frac{k}{d^2}
+\end{aligned}
+$$
+
+**2. Find $k$:**
+$$
+\begin{aligned}
+40 &= \frac{k}{3^2} \\
+40 &= \frac{k}{9} \\
+k &= 360
+\end{aligned}
+$$
+Equation: $I = \frac{360}{d^2}$
+
+**3. Solve:**
+$$
+\begin{aligned}
+I &= \frac{360}{6^2} \\
+I &= \frac{360}{36} \\
+I &= 10
+\end{aligned}
+$$
+The intensity is **$10$ units**.
+
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Inverse square proportion in physical sciences" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 5 (Extended)">
+
+Determine the relationship between $x$ and $y$ from the following table, giving your answer in the form $y = f(x)$.
+
+| $x$ | 2 | 4 | 5 |
+| :--- | :--- | :--- | :--- |
+| $y$ | 10 | 5 | 4 |
+
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+
+Test for a constant $k$:
+
+* **Test $y \div x$ (Linear):** $10 \div 2 = 5$, $5 \div 4 = 1.25$ (Not constant)
+* **Test $xy$ (Inverse):** $2 \times 10 = 20$, $4 \times 5 = 20$, $5 \times 4 = 20$.
+
+Since $xy$ is a constant ($20$), this is an inverse relationship where $k = 20$.
+
+The relationship is **$y = \frac{20}{x}$**.
+
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Identifying variation models from tables of data" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 6 (Extended/Hard)">
+
+$a$ is directly proportional to the cube of $b$. When $b = 2$, $a = 24$.
+$c$ is inversely proportional to $b$. When $b = 3$, $c = 2$.
+Find an expression for $\frac{a}{c}$ in terms of $b$. Give your answer in its simplest form.
+
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+
+**Find equation for $a$:**
+$$
+\begin{aligned}
+a &= k_1 b^3 \\
+24 &= k_1(2)^3 \\
+24 &= 8k_1 \\
+k_1 &= 3
+\end{aligned}
+$$
+Equation 1: $a = 3b^3$
+
+**Find equation for $c$:**
+$$
+\begin{aligned}
+c &= \frac{k_2}{b} \\
+2 &= \frac{k_2}{3} \\
+k_2 &= 6
+\end{aligned}
+$$
+Equation 2: $c = \frac{6}{b}$
+
+**Combine and simplify:**
+$$
+\begin{aligned}
+\frac{a}{c} &= \frac{3b^3}{\frac{6}{b}} \\[1ex]
+\frac{a}{c} &= 3b^3 \times \frac{b}{6} \\[1ex]
+\frac{a}{c} &= \frac{3b^4}{6} \\[1ex]
+\frac{a}{c} &= \frac{b^4}{2}
+\end{aligned}
+$$
+
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Linking direct and inverse proportionality models and simplifying" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 7 (Hard)">
+
+$y$ is directly proportional to the square of $x$. 
+If the value of $x$ is increased by $20\%$, calculate the percentage increase in $y$.
+
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+
+**1. Set up the initial relationship:**
+Let the original values be $x_1$ and $y_1$.
+$$
+\begin{aligned}
+y_1 &= kx_1^2
+\end{aligned}
+$$
+
+**2. Determine the new value of $x$:**
+A $20\%$ increase means the multiplier is $1.2$.
+$$
+\begin{aligned}
+x_2 &= 1.2x_1
+\end{aligned}
+$$
+
+**3. Substitute the new $x$ into the formula:**
+$$
+\begin{aligned}
+y_2 &= k(1.2x_1)^2 \\
+y_2 &= k(1.44x_1^2) \\
+y_2 &= 1.44(kx_1^2)
+\end{aligned}
+$$
+
+**4. Compare and find the percentage change:**
+Since $kx_1^2 = y_1$, we can rewrite the equation:
+$$
+\begin{aligned}
+y_2 &= 1.44y_1
+\end{aligned}
+$$
+A multiplier of $1.44$ represents a **$44\%$ increase**.
+
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Percentage change in direct and inverse proportion" difficulty="IGCSE Extended" client:load />

@@ -1,0 +1,278 @@
+---
+title: 4.2 Gradient of linear graphs
+description: Learn how to find the gradient of a straight line from a graph and calculate it using the coordinates of two points for IGCSE 0607.
+---
+
+The **gradient** (often represented by the letter $m$) measures the steepness and direction of a straight line. 
+
+Before calculating any numbers, you should always look at the graph to determine what *kind* of gradient you are dealing with. We read graphs from left to right, just like reading a book.
+
+### The Four Types of Gradient
+
+<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', margin: '2rem 0' }}>
+  
+  {/* 1. Positive */}
+  <div style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem', textAlign: 'center' }}>
+    <h4 style={{ margin: '0 0 1rem 0', color: '#047857' }}>Positive (+)</h4>
+    <svg viewBox="0 0 200 150" style={{ width: '100%' }}>
+      <g stroke="#cbd5e1" stroke-width="1">
+        <line x1="0" y1="130" x2="200" y2="130" />
+        <line x1="20" y1="150" x2="20" y2="10" />
+      </g>
+      <line x1="20" y1="130" x2="180" y2="30" stroke="#3b82f6" stroke-width="3" />
+      <text x="100" y="145" font-size="12" fill="#64748b" font-family="sans-serif" text-anchor="middle">"Uphill"</text>
+    </svg>
+  </div>
+
+  {/* 2. Negative */}
+  <div style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem', textAlign: 'center' }}>
+    <h4 style={{ margin: '0 0 1rem 0', color: '#b91c1c' }}>Negative (-)</h4>
+    <svg viewBox="0 0 200 150" style={{ width: '100%' }}>
+      <g stroke="#cbd5e1" stroke-width="1">
+        <line x1="0" y1="130" x2="200" y2="130" />
+        <line x1="20" y1="150" x2="20" y2="10" />
+      </g>
+      <line x1="20" y1="30" x2="180" y2="130" stroke="#3b82f6" stroke-width="3" />
+      <text x="100" y="145" font-size="12" fill="#64748b" font-family="sans-serif" text-anchor="middle">"Downhill"</text>
+    </svg>
+  </div>
+
+  {/* 3. Zero */}
+  <div style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem', textAlign: 'center' }}>
+    <h4 style={{ margin: '0 0 1rem 0', color: '#64748b' }}>Zero (0)</h4>
+    <svg viewBox="0 0 200 150" style={{ width: '100%' }}>
+      <g stroke="#cbd5e1" stroke-width="1">
+        <line x1="0" y1="130" x2="200" y2="130" />
+        <line x1="20" y1="150" x2="20" y2="10" />
+      </g>
+      <line x1="10" y1="80" x2="190" y2="80" stroke="#3b82f6" stroke-width="3" />
+      <text x="100" y="145" font-size="12" fill="#64748b" font-family="sans-serif" text-anchor="middle">"Flat/Horizontal"</text>
+    </svg>
+  </div>
+
+  {/* 4. Undefined */}
+  <div style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem', textAlign: 'center' }}>
+    <h4 style={{ margin: '0 0 1rem 0', color: '#64748b' }}>Undefined</h4>
+    <svg viewBox="0 0 200 150" style={{ width: '100%' }}>
+      <g stroke="#cbd5e1" stroke-width="1">
+        <line x1="0" y1="130" x2="200" y2="130" />
+        <line x1="20" y1="150" x2="20" y2="10" />
+      </g>
+      <line x1="100" y1="140" x2="100" y2="20" stroke="#3b82f6" stroke-width="3" />
+      <text x="100" y="145" font-size="12" fill="#64748b" font-family="sans-serif" text-anchor="middle">"Vertical"</text>
+    </svg>
+  </div>
+
+</div>
+
+---
+
+## 1. Finding the Gradient from a Graph (Rise over Run)
+
+If you are given a graph of a straight line, you can find its gradient by drawing a right-angled triangle between two points on the line. We use the phrase **"Rise over Run"**:
+
+$$
+m = \frac{\text{Vertical Change (Rise)}}{\text{Horizontal Change (Run)}}
+$$
+
+### Visual Example: Positive Gradient
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 400" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid Lines */}
+    <g stroke="#e2e8f0" stroke-width="1">
+      {Array.from({ length: 11 }, (_, i) => (
+        <g key={i}>
+          <line x1="0" y1={i * 40} x2="400" y2={i * 40} />
+          <line x1={i * 40} y1="0" x2={i * 40} y2="400" />
+        </g>
+      ))}
+    </g>
+
+    {/* Axes */}
+    <g stroke="#94a3b8" stroke-width="2">
+      <line x1="0" y1="200" x2="400" y2="200" />
+      <polygon points="392,196 400,200 392,204" fill="#94a3b8" stroke-width="0" />
+      <line x1="200" y1="400" x2="200" y2="0" />
+      <polygon points="196,8 200,0 204,8" fill="#94a3b8" stroke-width="0" />
+    </g>
+
+    <text x="385" y="190" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+
+    {/* The Linear Graph */}
+    <line x1="0" y1="260" x2="400" y2="60" stroke="#3b82f6" stroke-width="3" />
+
+    {/* Right-Angled Triangle */}
+    <line x1="40" y1="240" x2="360" y2="240" stroke="#10b981" stroke-width="3" stroke-dasharray="6 6" />
+    <line x1="360" y1="240" x2="360" y2="80" stroke="#ef4444" stroke-width="3" stroke-dasharray="6 6" />
+    <polyline points="340,240 340,220 360,220" fill="none" stroke="#94a3b8" stroke-width="2" />
+
+    {/* Points */}
+    <circle cx="40" cy="240" r="5" fill="#1e3a8a" />
+    <text x="30" y="260" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">A (-4, -1)</text>
+
+    <circle cx="360" cy="80" r="5" fill="#1e3a8a" />
+    <text x="310" y="70" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">B (4, 3)</text>
+
+    <text x="180" y="260" font-size="16" font-weight="bold" fill="#047857" font-family="sans-serif">Run = 8</text>
+    <text x="310" y="165" font-size="16" font-weight="bold" fill="#b91c1c" font-family="sans-serif">Rise = 4</text>
+  </svg>
+</div>
+
+**How to calculate visually:**
+Pick two points where the line crosses grid corners perfectly ($A$ and $B$).
+1. Count the spaces horizontally for **Run** (move right $\rightarrow$ positive). $\text{Run} = 8$.
+2. Count the spaces vertically for **Rise** (move up $\rightarrow$ positive). $\text{Rise} = 4$.
+3. Calculate the gradient: $m = \frac{4}{8} = 0.5$.
+
+---
+
+## 2. Calculating the Gradient from Two Coordinates
+
+Often, you won't have a graph. You will just be given the coordinates of two points, such as $(x_1, y_1)$ and $(x_2, y_2)$. We calculate the "Rise over Run" using algebra.
+
+**The Gradient Formula:**
+$$
+m = \frac{y_2 - y_1}{x_2 - x_1}
+$$
+
+<Aside type="caution" title="Crucial Gradient Rules">
+* **Simplifying:** A gradient is just a fraction. Always simplify it! If you calculate $\frac{4}{2}$, write your final answer as $2$. If you get $\frac{3}{6}$, simplify it to $\frac{1}{2}$.
+* **The Floating Negative:** If your gradient is negative, it doesn't matter where the minus sign lives: $-\frac{3}{4} = \frac{-3}{4} = \frac{3}{-4}$. Usually, we place it neatly in front of the fraction.
+* **Working Backwards:** The formula works perfectly backwards too: $m = \frac{y_1 - y_2}{x_1 - x_2}$. Just **never mix the order**. If you start with point 1 on top, you MUST start with point 1 on the bottom!
+* **Subtracting Negatives:** Be incredibly careful when subtracting a negative coordinate. Remember that minus a minus becomes a plus: $5 - (-3) = 5 + 3 = 8$.
+</Aside>
+
+### Visualising Formula Application: Negative Gradient Example
+
+This visual example shows why the maths works for a negative (downhill) slope and how to carefully align your calculation to avoid errors. 
+
+Find the gradient of the line passing through $P(-3, 4)$ and $Q(2, -1)$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 400" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid Lines */}
+    <g stroke="#e2e8f0" stroke-width="1">
+      {Array.from({ length: 11 }, (_, i) => (
+        <g key={i}>
+          <line x1="0" y1={i * 40} x2="400" y2={i * 40} />
+          <line x1={i * 40} y1="0" x2={i * 40} y2="400" />
+        </g>
+      ))}
+    </g>
+
+    {/* Axes */}
+    <g stroke="#94a3b8" stroke-width="2">
+      <line x1="0" y1="200" x2="400" y2="200" />
+      <polygon points="392,196 400,200 392,204" fill="#94a3b8" stroke-width="0" />
+      <line x1="200" y1="400" x2="200" y2="0" />
+      <polygon points="196,8 200,0 204,8" fill="#94a3b8" stroke-width="0" />
+    </g>
+    <text x="385" y="190" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+
+    {/* Linear Graph extended to edges (X=30 to X=400) */}
+    <line x1="30" y1="0" x2="400" y2="370" stroke="#3b82f6" stroke-width="3" />
+
+    {/* Formula Triangle */}
+    <line x1="110" y1="80" x2="260" y2="80" stroke="#10b981" stroke-width="3" stroke-dasharray="6 6" /> 
+    <line x1="260" y1="80" x2="260" y2="230" stroke="#ef4444" stroke-width="3" stroke-dasharray="6 6" /> 
+    
+    {/* Points */}
+    <circle cx="110" cy="80" r="5" fill="#1e3a8a" />
+    <text x="30" y="70" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">P (-3, 4)</text>
+
+    <circle cx="260" cy="230" r="5" fill="#1e3a8a" />
+    <text x="270" y="240" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">Q (2, -1)</text>
+
+    {/* Vertical alignment for Run calculation */}
+    <text x="120" y="25" font-size="14" font-weight="bold" fill="#047857" font-family="sans-serif">Run</text>
+    <text x="155" y="25" font-size="14" font-weight="bold" fill="#047857" font-family="sans-serif">=</text>
+    <text x="170" y="25" font-size="14" fill="#047857" font-family="sans-serif">x₂ - x₁</text>
+
+    <text x="155" y="45" font-size="14" font-weight="bold" fill="#047857" font-family="sans-serif">=</text>
+    <text x="170" y="45" font-size="14" fill="#047857" font-family="sans-serif">2 - (-3)</text>
+
+    <text x="155" y="65" font-size="14" font-weight="bold" fill="#047857" font-family="sans-serif">=</text>
+    <text x="170" y="65" font-size="14" fill="#047857" font-family="sans-serif">5</text>
+
+    {/* Vertical alignment for Rise calculation */}
+    <text x="270" y="140" font-size="14" font-weight="bold" fill="#b91c1c" font-family="sans-serif">Rise</text>
+    <text x="305" y="140" font-size="14" font-weight="bold" fill="#b91c1c" font-family="sans-serif">=</text>
+    <text x="320" y="140" font-size="14" fill="#b91c1c" font-family="sans-serif">y₂ - y₁</text>
+
+    <text x="305" y="160" font-size="14" font-weight="bold" fill="#b91c1c" font-family="sans-serif">=</text>
+    <text x="320" y="160" font-size="14" fill="#b91c1c" font-family="sans-serif">-1 - 4</text>
+
+    <text x="305" y="180" font-size="14" font-weight="bold" fill="#b91c1c" font-family="sans-serif">=</text>
+    <text x="320" y="180" font-size="14" fill="#b91c1c" font-family="sans-serif">-5</text>
+  </svg>
+</div>
+
+**Calculation steps:**
+Let $(x_1, y_1) = (-3, 4)$ and $(x_2, y_2) = (2, -1)$.
+$$
+\begin{aligned}
+m &= \frac{-1 - 4}{2 - (-3)} \\
+m &= \frac{-5}{2 + 3} \\
+m &= \frac{-5}{5} \\
+\mathbf{m} &\mathbf{= -1}
+\end{aligned}
+$$
+
+---
+
+## 3. Practice Problems
+
+<Tabs>
+  <TabItem label="📝 Question 1: Visually Interpreting a Graph">
+    A straight line graph is shown. State its gradient.
+    [Graph showing point A(0, 1) and B(3, 10)]
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    Pick two points that cross grid corners perfectly.
+    Point $A(0, 1)$ is the y-intercept. Let's pick another clear corner, $B(3, 10)$.
+    
+    1. Count **Run** from $A$ to $B$ (move right 3): $\text{Run} = 3$.
+    2. Count **Rise** from $A$ to $B$ (move up from 1 to 10): $\text{Rise} = 9$.
+    
+    $$m = \frac{\text{Rise}}{\text{Run}} = \frac{9}{3} = 3$$
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating gradients, potentially including visual graph interpretation of Rise over Run with random labelled points" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Working with Negatives">
+    A straight line passes through $A(-5, -4)$ and $B(-1, 8)$. Find its gradient.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    Use the formula $m = \frac{y_2 - y_1}{x_2 - x_1}$:
+    $$
+    \begin{aligned}
+    m &= \frac{8 - (-4)}{-1 - (-5)} \\
+    m &= \frac{8 + 4}{-1 + 5} \\
+    m &= \frac{12}{4} \\
+    m &= 3
+    \end{aligned}
+    $$
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating gradients with negative coordinates and double negatives" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Fractional Gradients">
+    Find the gradient of the line passing through the origin and the point $(7, 5)$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    Remember that the "origin" means the point $(0, 0)$.
+    
+    $$m = \frac{5 - 0}{7 - 0} = \frac{5}{7}$$
+    
+    Leave your answer as an exact fraction rather than a messy decimal.
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating exact fractional gradients from coordinate points" difficulty="IGCSE Core" client:load />

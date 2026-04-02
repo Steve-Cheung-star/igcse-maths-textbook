@@ -1,0 +1,359 @@
+---
+title: 6.5 Compound Shapes and Parts of Shapes
+description: Learn how to calculate the perimeter, area, surface area, and volume of combined shapes and truncated solids like frustums for IGCSE 0607.
+---
+
+In the real world, objects are rarely perfect, isolated spheres or basic cylinders. They are usually combinations of multiple shapes (compound shapes) or shapes that have had pieces removed (parts of shapes). 
+
+<SteveTip title="The Golden Rules of Compound Shapes">
+1. **Area and Volume are additive/subtractive:** You can simply add the areas/volumes of the individual parts together, or subtract the missing piece from the whole.
+2. **Perimeter and Surface Area are tricky:** You **cannot** just add the perimeters or surface areas together. You must only calculate the exposed outer boundaries. Internal faces where shapes join are hidden and must be ignored!
+</SteveTip>
+
+---
+
+## 1. 2D Compound Shapes and Parts of Shapes
+
+A 2D compound shape is made by joining basic shapes (rectangles, triangles, semi-circles) together, or by cutting one out of another.
+
+### Perimeter
+The perimeter is the total distance around the **outside** edge of the shape. If two shapes are joined, the shared internal line is no longer on the outside, so do not include it.
+
+### Area
+To find the area, either:
+* **Add:** Split the compound shape into simpler shapes, find their individual areas, and add them up.
+* **Subtract:** Find the area of the overall bounding shape and subtract the area of the missing "cut-out" section.
+
+### Example 1: A Shape with a Cut-out
+A rectangular metal plate measures **10 cm** by **8 cm**. A semi-circle with a diameter of **6 cm** is cut out from one of the longer sides. Calculate the exact area and perimeter of the remaining plate.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 300 200" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Base Shape with opaque fill - Arc sweep flag set to 1 so it cuts INWARD */}
+    <path d="M 50 160 L 250 160 L 250 40 L 190 40 A 40 40 0 0 1 110 40 L 50 40 Z" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+    
+    {/* Dashed line for the original straight edge of the cut-out */}
+    <line x1="110" y1="40" x2="190" y2="40" stroke="#ef4444" stroke-dasharray="6 4" stroke-width="2" />
+    
+    {/* Labels */}
+    <text x="150" y="185" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">10 cm</text>
+    <text x="35" y="105" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle" transform="rotate(-90 35 105)">8 cm</text>
+    <text x="150" y="30" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="middle">6 cm</text>
+  </svg>
+</div>
+
+<Steps>
+1. **Area Calculation (Subtract):**
+   $$
+   \begin{aligned}
+   \text{Area of full rectangle} &= 10 \times 8 \\
+   &= 80 \text{ cm}^2 \\
+   \text{Area of full circle } (r=3) &= \pi \times 3^2 \\
+   &= 9\pi \\
+   \text{Area of semi-circle cut-out} &= \frac{1}{2} \times 9\pi \\
+   &= 4.5\pi \text{ cm}^2 \\
+   \text{Total Area} &= (80 - 4.5\pi) \text{ cm}^2
+   \end{aligned}
+   $$
+
+2. **Perimeter Calculation (Add the outside edges):**
+   The semi-circle ate into the **10 cm** side. The diameter is **6 cm**, leaving **4 cm** of straight edge on that top side (i.e., **2 cm** on each side of the gap). Three full straight edges remain: **8 cm**, **10 cm**, and **8 cm**.
+   $$
+   \begin{aligned}
+   \text{Curved edge (arc)} &= \frac{1}{2} \times \pi \times 6 \\
+   &= 3\pi \text{ cm} \\
+   \text{Sum of straight edges} &= 8 + 10 + 8 + 4 \\
+   &= 30 \text{ cm} \\
+   \text{Total Perimeter} &= (30 + 3\pi) \text{ cm}
+   \end{aligned}
+   $$
+</Steps>
+
+---
+
+## 2. 3D Compound Solids and Parts of Solids
+
+When dealing with 3D compound solids, the same principles apply, but surface area requires careful visualization.
+
+<Aside type="caution" title="Hidden Faces in Surface Area">
+If a cone is sitting on top of a cylinder, the flat circular base of the cone and the top circular face of the cylinder are touching. They are now **inside** the new solid. When calculating Total Surface Area, you must exclude these hidden faces and only calculate the exposed outer faces!
+</Aside>
+
+### Example 2: Compound Solid Surface Area
+A solid is made by attaching a hemisphere of radius **5 cm** to one end of a cylinder of radius **5 cm** and height **12 cm**. Calculate the exact total surface area.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 250 320" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* CYLINDER PART (Outlines only) */}
+    <path d="M 50 250 A 75 25 0 0 0 200 250" fill="none" stroke="#2563eb" stroke-width="2" />
+    <path d="M 200 250 A 75 25 0 0 0 50 250" fill="none" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+    <line x1="50" y1="100" x2="50" y2="250" stroke="#2563eb" stroke-width="2" />
+    <line x1="200" y1="100" x2="200" y2="250" stroke="#2563eb" stroke-width="2" />
+    
+    {/* THE HIDDEN JOIN (Shaded) */}
+    <ellipse cx="125" cy="100" rx="75" ry="25" fill="#fca5a5" stroke="#ef4444" stroke-width="2" />
+    
+    {/* HEMISPHERE PART (Outlines only) */}
+    <path d="M 50 100 A 75 75 0 0 1 200 100" fill="none" stroke="#7e22ce" stroke-width="3" />
+
+    {/* Labels */}
+    <text x="125" y="113" font-family="sans-serif" font-weight="bold" fill="#b91c1c" text-anchor="middle">Hidden Face</text>
+    <text x="35" y="175" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle" transform="rotate(-90 35 175)">12 cm</text>
+    <line x1="125" y1="100" x2="200" y2="100" stroke="#b91c1c" stroke-dasharray="2 2" stroke-width="1.5" />
+    <circle cx="125" cy="100" r="3" fill="#b91c1c" />
+    <text x="162.5" y="90" font-family="sans-serif" font-weight="bold" fill="#b91c1c" text-anchor="middle">5 cm</text>
+  </svg>
+</div>
+
+<Steps>
+1. **Identify the exposed faces:** The solid has three exposed parts: the curved surface of the hemisphere, the curved surface of the cylinder, and the flat circular bottom of the cylinder. 
+
+2. **Calculate individual exposed areas:**
+   $$
+   \begin{aligned}
+   \text{Curved area of hemisphere} &= \frac{1}{2} \times 4\pi (5)^2 \\
+   &= 50\pi \text{ cm}^2 \\
+   \text{Curved area of cylinder} &= 2\pi (5)(12) \\
+   &= 120\pi \text{ cm}^2 \\
+   \text{Flat bottom base} &= \pi (5)^2 \\
+   &= 25\pi \text{ cm}^2 \\
+   \text{Total Surface Area} &= 50\pi + 120\pi + 25\pi \\
+   &= 195\pi \text{ cm}^2
+   \end{aligned}
+   $$
+</Steps>
+
+---
+
+## 3. The Frustum (Truncated Solids)
+
+A **frustum** is what remains when you slice the top off a cone or a pyramid with a cut parallel to the base. It looks like a bucket or a lampshade. 
+
+To find the volume or surface area of a frustum, treat it as a large cone with a smaller cone chopped off the top.
+
+$$
+\begin{aligned}
+V_{\text{frustum}} &= V_{\text{large cone}} - V_{\text{small cone}}
+\end{aligned}
+$$
+
+Often, the exam question will not give you the height of the small removed cone. You must use **similar triangles** (scale factors) to find it.
+
+### Example 3: Volume of a Frustum
+A large cone has a base radius of **8 cm** and a total height of **20 cm**. A smaller cone is cut from the top parallel to the base, at a height of **10 cm** from the bottom. Find the exact volume of the resulting frustum.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 300" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Large Cone Outline (Dashed top) */}
+    <path d="M 50 250 L 175 30 L 300 250" fill="none" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+    
+    {/* Solid Frustum Body */}
+    <path d="M 50 250 L 112.5 140 L 237.5 140 L 300 250 Z" fill="#6ee7b7" stroke="none" />
+    
+    {/* Front half of the bottom base (solid) */}
+    <path d="M 50 250 A 125 30 0 0 0 300 250" fill="#6ee7b7" stroke="#059669" stroke-width="3" />
+    
+    {/* Top base (solid ellipse) */}
+    <ellipse cx="175" cy="140" rx="62.5" ry="15" fill="#34d399" stroke="#059669" stroke-width="3" />
+
+    {/* Back half of the bottom base (Drawn LAST so it overlays the solid fill) */}
+    <path d="M 50 250 A 125 30 0 0 1 300 250" fill="none" stroke="#059669" stroke-dasharray="4 4" stroke-width="2" />
+
+    {/* Frustum Side Edges */}
+    <line x1="50" y1="250" x2="112.5" y2="140" stroke="#059669" stroke-width="3" />
+    <line x1="300" y1="250" x2="237.5" y2="140" stroke="#059669" stroke-width="3" />
+
+    {/* Center lines & Labels */}
+    <line x1="175" y1="30" x2="175" y2="250" stroke="#1e293b" stroke-dasharray="4 4" />
+    <circle cx="175" cy="250" r="3" fill="#1e293b" />
+    <circle cx="175" cy="140" r="3" fill="#1e293b" />
+    
+    <line x1="175" y1="250" x2="300" y2="250" stroke="#1e293b" stroke-width="1.5" />
+    <text x="230" y="240" font-family="sans-serif" font-weight="bold" fill="#1e293b">8 cm</text>
+    
+    <line x1="175" y1="140" x2="237.5" y2="140" stroke="#1e293b" stroke-width="1.5" />
+    <text x="195" y="130" font-family="sans-serif" font-weight="bold" fill="#1e293b">r = ?</text>
+    
+    {/* Height brackets/lines */}
+    <line x1="312" y1="250" x2="332" y2="250" stroke="#94a3b8" />
+    <line x1="312" y1="30" x2="332" y2="30" stroke="#94a3b8" />
+    <line x1="322" y1="30" x2="322" y2="250" stroke="#94a3b8" />
+    <text x="319" y="145" font-family="sans-serif" font-weight="bold" fill="#64748b" transform="rotate(-90 319 145)">20 cm</text>
+
+    <line x1="30" y1="250" x2="50" y2="250" stroke="#94a3b8" />
+    <line x1="30" y1="140" x2="50" y2="140" stroke="#94a3b8" />
+    <line x1="40" y1="140" x2="40" y2="250" stroke="#94a3b8" />
+    <text x="30" y="205" font-family="sans-serif" font-weight="bold" fill="#64748b" transform="rotate(-90 30 205)">10 cm</text>
+  </svg>
+</div>
+
+<Steps>
+1. **Find the dimensions of the small (removed) cone:**
+   $$
+   \begin{aligned}
+   \text{Height of small cone} &= 20 - 10 \\
+   &= 10 \text{ cm}
+   \end{aligned}
+   $$
+
+2. **Use similar triangles to find the small cone's radius ($r$):**
+   $$
+   \begin{aligned}
+   \text{Ratio of heights} &= \frac{10}{20} \\
+   &= \frac{1}{2} \\
+   \text{Radius of small cone } (r) &= 8 \times \frac{1}{2} \\
+   &= 4 \text{ cm}
+   \end{aligned}
+   $$
+
+3. **Calculate the Volumes:**
+   $$
+   \begin{aligned}
+   V_{\text{large}} &= \frac{1}{3}\pi R^2 H \\
+   &= \frac{1}{3}\pi (8^2)(20) \\
+   &= \frac{1280\pi}{3} \\
+   V_{\text{small}} &= \frac{1}{3}\pi r^2 h \\
+   &= \frac{1}{3}\pi (4^2)(10) \\
+   &= \frac{160\pi}{3} \\
+   V_{\text{frustum}} &= \frac{1280\pi}{3} - \frac{160\pi}{3} \\
+   &= \frac{1120\pi}{3} \text{ cm}^3
+   \end{aligned}
+   $$
+</Steps>
+
+---
+
+## Practice Questions
+
+### Section A: 2D Compound Shapes
+
+<Tabs>
+  <TabItem label="📝 Question 1: Compound Perimeter and Area (Core/Extended)">
+    A shape is formed by attaching an equilateral triangle of side length **6 cm** to the top of a square of side length **6 cm**. 
+    a) Calculate the exact perimeter of the shape.
+    b) Calculate the area of the shape. Give your answer to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Part a - Perimeter:**
+       The shared line where the triangle meets the square is hidden inside. Exposed outer edges are 3 sides of the square and 2 sides of the triangle.
+       $$
+       \begin{aligned}
+       \text{Perimeter} &= (3 \times 6) + (2 \times 6) \\
+       &= 18 + 12 \\
+       &= 30 \text{ cm}
+       \end{aligned}
+       $$
+
+    2. **Part b - Area:**
+       $$
+       \begin{aligned}
+       \text{Area of square} &= 6 \times 6 \\
+       &= 36 \text{ cm}^2 \\
+       \text{Height of triangle } (h) &= \sqrt{6^2 - 3^2} \\
+       &= \sqrt{27} \\
+       \text{Area of triangle} &= \frac{1}{2} \times 6 \times \sqrt{27} \\
+       &= 3\sqrt{27} \\
+       &\approx 15.588 \text{ cm}^2 \\
+       \text{Total Area} &= 36 + 15.588 \\
+       &= 51.588... \\
+       &\implies 51.6 \text{ cm}^2 \text{ (to 3 s.f.)}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating the perimeter and area of 2D compound shapes and parts of shapes" difficulty="IGCSE Extended" client:load />
+
+### Section B: 3D Compound Solids & Frustums
+
+<Tabs>
+  <TabItem label="📝 Question 2: Volume of a Frustum (Extended)">
+    A solid cone has a base radius of **9 cm** and a height of **15 cm**. The top of the cone is removed by making a cut parallel to the base, leaving a frustum. The removed top cone has a height of **5 cm**. 
+    Calculate the exact volume of the frustum in terms of $\pi$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Find the radius of the removed small cone:**
+       $$
+       \begin{aligned}
+       \text{Height scale factor} &= \frac{5}{15} \\
+       &= \frac{1}{3} \\
+       \text{Radius of small cone} &= \frac{1}{3} \times 9 \\
+       &= 3 \text{ cm}
+       \end{aligned}
+       $$
+
+    2. **Calculate Volumes:**
+       $$
+       \begin{aligned}
+       V_{\text{large}} &= \frac{1}{3}\pi (9^2)(15) \\
+       &= 405\pi \\
+       V_{\text{small}} &= \frac{1}{3}\pi (3^2)(5) \\
+       &= 15\pi \\
+       V_{\text{frustum}} &= 405\pi - 15\pi \\
+       &= 390\pi \text{ cm}^3
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Using similar triangles and subtraction to find the volume of a geometric frustum" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Drilling Holes - Parts of a Solid (Extended)">
+    A solid wooden cylinder has a radius of **4 cm** and a length of **10 cm**. A cylindrical hole of radius **2 cm** is drilled completely through the center of the wood, parallel to its length. 
+    Calculate the exact total surface area of the resulting object in terms of $\pi$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 250" width="100%" maxWidth="280px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* Top surface (Annulus) */}
+        <ellipse cx="150" cy="60" rx="90" ry="30" fill="#fcd34d" fill-opacity="0.5" stroke="#d97706" stroke-width="3" />
+        <ellipse cx="150" cy="60" rx="40" ry="13" fill="#f8fafc" stroke="#d97706" stroke-width="2" />
+        
+        {/* Outer walls */}
+        <rect x="60" y="60" width="180" height="120" fill="#fcd34d" fill-opacity="0.2" />
+        <line x1="60" y1="60" x2="60" y2="180" stroke="#d97706" stroke-width="2" />
+        <line x1="240" y1="60" x2="240" y2="180" stroke="#d97706" stroke-width="2" />
+        
+        {/* Bottom outer edge */}
+        <path d="M 60 180 A 90 30 0 0 0 240 180" fill="none" stroke="#d97706" stroke-width="2" />
+        <path d="M 240 180 A 90 30 0 0 0 60 180" fill="none" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+        
+        {/* Inner walls (drilled hole) */}
+        <line x1="110" y1="60" x2="110" y2="180" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+        <line x1="190" y1="60" x2="190" y2="180" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+        <path d="M 110 180 A 40 13 0 0 0 190 180" fill="none" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+      </svg>
+    </div>
+
+    <Steps>
+    1. **Identify the exposed surfaces:**
+       * The outer curved surface of the large cylinder.
+       * The inner curved surface of the drilled hole (this is a newly exposed surface!).
+       * The two flat ends (which are now rings/annuli, not solid circles).
+
+    2. **Calculate individual exposed areas:**
+       $$
+       \begin{aligned}
+       \text{Outer Curved Area } &= 2\pi(4)(10) \\
+       &= 80\pi \text{ cm}^2 \\
+       \text{Inner Curved Area } &= 2\pi(2)(10) \\
+       &= 40\pi \text{ cm}^2 \\
+       \text{Area of one ring } &= \pi(4^2) - \pi(2^2) \\
+       &= 16\pi - 4\pi \\
+       &= 12\pi \text{ cm}^2 \\
+       \text{Area of both rings } &= 2 \times 12\pi \\
+       &= 24\pi \text{ cm}^2 \\
+       \text{Total Surface Area } &= 80\pi + 40\pi + 24\pi \\
+       &= 144\pi \text{ cm}^2
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating the total surface area of complex compound 3D solids including hollow parts and drilling" difficulty="IGCSE Advanced" client:load />

@@ -1,0 +1,454 @@
+---
+title: 4.3 Length and midpoint
+description: Learn how to calculate the length of a line segment, find its exact midpoint, and divide it by a given ratio for IGCSE 0607.
+---
+
+When we look at a straight line drawn between two points on a coordinate grid, we are looking at a **line segment**. Because it has a definite start and end, we can measure exactly how long it is, find the exact coordinate of its middle, and even split it algebraically into specific fractional ratios.
+
+---
+
+## 1. Calculating the Length of a Line Segment
+
+To find the distance between two points, we don't need a ruler—we need **Pythagoras' theorem**. 
+
+If you draw a right-angled triangle between your two points, the horizontal distance is your "run", the vertical distance is your "rise", and the line segment itself is the **hypotenuse**.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid Lines */}
+    <g stroke="#e2e8f0" stroke-width="1">
+      {Array.from({ length: 9 }, (_, i) => (
+        <g key={i}>
+          <line x1="0" y1={i * 40 + 10} x2="400" y2={i * 40 + 10} />
+          <line x1={i * 40 + 20} y1="0" x2={i * 40 + 20} y2="350" />
+        </g>
+      ))}
+    </g>
+
+    {/* Axes (Origin at 60, 290) */}
+    <g stroke="#94a3b8" stroke-width="2">
+      <line x1="20" y1="290" x2="380" y2="290" />
+      <polygon points="372,286 380,290 372,294" fill="#94a3b8" stroke-width="0" />
+      <line x1="60" y1="330" x2="60" y2="30" />
+      <polygon points="56,38 60,30 64,38" fill="#94a3b8" stroke-width="0" />
+    </g>
+    <text x="375" y="280" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="70" y="40" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+    <text x="45" y="305" font-size="12" fill="#64748b" font-family="sans-serif">0</text>
+
+    {/* The Line Segment: A(1, 2) to B(7, 5) */}
+    
+    {/* Pythagoras Triangle */}
+    <line x1="100" y1="210" x2="340" y2="210" stroke="#10b981" stroke-width="3" stroke-dasharray="6 6" /> {/* Horizontal */}
+    <line x1="340" y1="210" x2="340" y2="90" stroke="#ef4444" stroke-width="3" stroke-dasharray="6 6" /> {/* Vertical */}
+    <polyline points="320,210 320,190 340,190" fill="none" stroke="#94a3b8" stroke-width="2" />
+    
+    <line x1="100" y1="210" x2="340" y2="90" stroke="#8b5cf6" stroke-width="4" /> {/* Hypotenuse */}
+
+    {/* Points */}
+    <circle cx="100" cy="210" r="5" fill="#1e3a8a" />
+    <text x="60" y="200" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">A(1, 2)</text>
+
+    <circle cx="340" cy="90" r="5" fill="#1e3a8a" />
+    <text x="330" y="75" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">B(7, 5)</text>
+
+    {/* Labels (using Delta) */}
+    <text x="195" y="235" font-size="16" font-weight="bold" fill="#047857" font-family="sans-serif">Δx = 6</text>
+    <text x="350" y="155" font-size="16" font-weight="bold" fill="#b91c1c" font-family="sans-serif">Δy = 3</text>
+    
+    {/* Hypotenuse Label */}
+    <text x="170" y="130" font-size="16" font-weight="bold" fill="#6d28d9" font-family="sans-serif" transform="rotate(-26, 170, 130)">Length (d) = ?</text>
+  </svg>
+</div>
+
+### The Distance Formula
+
+In mathematics, the Greek letter delta ($\Delta$) is used to represent the "change in" or "difference". Therefore, $\Delta x$ is the horizontal distance ($x_2 - x_1$) and $\Delta y$ is the vertical distance ($y_2 - y_1$).
+
+By applying Pythagoras ($a^2 + b^2 = c^2$) directly to the coordinates, we get the official distance formula:
+
+$$
+d = \sqrt{(\Delta x)^2 + (\Delta y)^2} = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+$$
+
+**Standard Example Walkthrough:**
+Calculate the length of the line joining $A(1, 2)$ and $B(7, 5)$.
+
+1. Find the change in $x$: $\Delta x = 7 - 1 = 6$
+2. Find the change in $y$: $\Delta y = 5 - 2 = 3$
+3. Apply the distance formula:
+$$
+\begin{aligned}
+d^2 &= 6^2 + 3^2 \\
+d^2 &= 36 + 9 \\
+d^2 &= 45 \\
+d &= \sqrt{45} \approx 6.71 \text{ (to 3 sig figs)}
+\end{aligned}
+$$
+
+### 1.1 Harder Problems: Missing Coordinates & Quadratics
+
+In higher-tier exams, you might be given the length of the line and asked to find an unknown coordinate. This usually requires forming and solving a quadratic equation.
+
+**Example Walkthrough:**
+The distance between the points $P(2, 5)$ and $Q(x, 1)$ is exactly $5$ units. Find the possible values of $x$.
+
+1. Substitute what you know into the distance formula:
+$$
+\begin{aligned}
+5^2 &= (x - 2)^2 + (1 - 5)^2 \\
+25 &= (x - 2)^2 + (-4)^2 \\
+25 &= (x - 2)^2 + 16
+\end{aligned}
+$$
+2. Isolate the bracket by subtracting 16 from both sides:
+$$
+\begin{aligned}
+9 &= (x - 2)^2
+\end{aligned}
+$$
+3. Square root both sides. *Crucial step: Remember that a square root has both a positive and negative answer!*
+$$
+\begin{aligned}
+\pm 3 &= x - 2
+\end{aligned}
+$$
+4. Solve for the two possible values of $x$:
+$$
+\begin{aligned}
+x &= 2 + 3 \quad \text{or} \quad x = 2 - 3 \\
+\boldsymbol{x} &\boldsymbol{= 5} \quad \text{or} \quad \boldsymbol{x = -1}
+\end{aligned}
+$$
+*(Why two answers? Because from point P, a line of length 5 could stretch downwards to the right, landing at $x=5$, or downwards to the left, landing at $x=-1$.)*
+
+---
+
+## 2. Finding the Midpoint of a Line Segment
+
+The **midpoint** is the exact centre of a line segment. To find it, you simply need to find the **average** of the $x$-coordinates and the **average** of the $y$-coordinates.
+
+### The Midpoint Formula
+
+$$
+M = \left( \frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2} \right)
+$$
+
+**Standard Example Walkthrough:**
+Find the midpoint of the line connecting $(-4, 2)$ and $(6, -4)$.
+
+$$
+\begin{aligned}
+x\text{-midpoint} &= \frac{-4 + 6}{2} = \frac{2}{2} = 1 \\
+y\text{-midpoint} &= \frac{2 + (-4)}{2} = \frac{-2}{2} = -1
+\end{aligned}
+$$
+**Answer:** $\boldsymbol{M(1, -1)}$.
+
+### 2.1 Harder Problems: Solving Linear Equations
+
+Sometimes the coordinates themselves contain unknown letters (algebraic terms), and you are given the final midpoint. You must split the problem into two separate linear equations.
+
+**Example Walkthrough:**
+The midpoint of the line segment joining $A(2a, 5)$ and $B(10, 3b)$ is the point $M(8, 1)$. Find the values of $a$ and $b$.
+
+**Step 1: Equate the x-components**
+$$
+\begin{aligned}
+\frac{2a + 10}{2} &= 8 \\
+2a + 10 &= 16 \\
+2a &= 6 \\
+\boldsymbol{a} &\boldsymbol{= 3}
+\end{aligned}
+$$
+
+**Step 2: Equate the y-components**
+$$
+\begin{aligned}
+\frac{5 + 3b}{2} &= 1 \\
+5 + 3b &= 2 \\
+3b &= -3 \\
+\boldsymbol{b} &\boldsymbol{= -1}
+\end{aligned}
+$$
+
+---
+
+## 3. Finding a Missing Endpoint
+
+A common exam question gives you one endpoint and the midpoint, and asks you to deduce the *other* endpoint. You can solve this algebraically, or visually using "vectors" (the stepping method).
+
+**Question:** The midpoint of a segment $AB$ is $M(4, 3)$. If $A$ is $(1, 7)$, find the coordinates of $B$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Clean schematic background without full grid for clarity of vectors */}
+    <rect width="400" height="300" fill="#f8fafc" />
+    
+    {/* The Line Segment */}
+    <line x1="80" y1="50" x2="320" y2="250" stroke="#3b82f6" stroke-width="4" />
+    
+    {/* Jumps A to M */}
+    <path d="M 80 50 L 200 50 L 200 150" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arrow)" />
+    {/* Jumps M to B */}
+    <path d="M 200 150 L 320 150 L 320 250" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#arrow)" />
+
+    {/* SVG Defs for arrowheads */}
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L0,6 L9,3 z" fill="#64748b" />
+      </marker>
+    </defs>
+
+    {/* Points */}
+    <circle cx="80" cy="50" r="6" fill="#1e3a8a" />
+    <text x="60" y="35" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">A(1, 7)</text>
+
+    <circle cx="200" cy="150" r="7" fill="#6d28d9" />
+    <text x="215" y="145" font-size="14" font-weight="bold" fill="#5b21b6" font-family="sans-serif">M(4, 3)</text>
+
+    <circle cx="320" cy="250" r="6" fill="#1e3a8a" />
+    <text x="310" y="275" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">B(x, y)</text>
+
+    {/* Vector Labels (using Delta) */}
+    <text x="120" y="40" font-size="14" font-weight="bold" fill="#047857" font-family="sans-serif">Δx: +3</text>
+    <text x="210" y="100" font-size="14" font-weight="bold" fill="#047857" font-family="sans-serif">Δy: -4</text>
+
+    <text x="240" y="140" font-size="14" font-weight="bold" fill="#d97706" font-family="sans-serif">Δx: +3</text>
+    <text x="330" y="200" font-size="14" font-weight="bold" fill="#d97706" font-family="sans-serif">Δy: -4</text>
+  </svg>
+</div>
+
+### Method 1: The "Vector / Jump" Method (Recommended)
+Because the midpoint is exactly halfway, whatever journey you take from $A$ to get to $M$, you must repeat exactly to get from $M$ to $B$.
+
+1. **Find the jump from A to M:**
+   * $\Delta x$: From $1$ to $4$ is a jump of **$+3$**.
+   * $\Delta y$: From $7$ to $3$ is a jump of **$-4$**.
+2. **Apply the exact same jump from M to B:**
+   * $x$-coordinate: $4 + 3 = \mathbf{7}$
+   * $y$-coordinate: $3 - 4 = \mathbf{-1}$
+3. **Answer:** $\boldsymbol{B(7, -1)}$.
+
+### Method 2: The Algebraic Method
+If you prefer formulas, set up the midpoint formula with point $B$ as unknown $(x, y)$.
+
+$$
+\begin{aligned}
+\frac{1 + x}{2} &= 4 \quad \Rightarrow \quad 1 + x = 8 \quad \Rightarrow \quad \boldsymbol{x = 7} \\
+\frac{7 + y}{2} &= 3 \quad \Rightarrow \quad 7 + y = 6 \quad \Rightarrow \quad \boldsymbol{y = -1}
+\end{aligned}
+$$
+
+---
+
+## 4. Dividing a Line Segment in a Given Ratio ($m:n$)
+
+Sometimes you need to find a specific point $P$ that divides a line segment $AB$ into a specific ratio, like $2:3$, rather than just splitting it exactly in half ($1:1$). 
+
+There are two main ways to solve these problems: using logic and fractional steps, or using the formal Section Formula (often called the "Criss-Cross" method).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 200" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Base line A to B */}
+    <line x1="50" y1="150" x2="350" y2="50" stroke="#94a3b8" stroke-width="4" />
+    
+    {/* Highlighted sections based on ratio 2:3 */}
+    <line x1="50" y1="150" x2="170" y2="110" stroke="#ef4444" stroke-width="4" /> {/* 2 parts */}
+    <line x1="170" y1="110" x2="350" y2="50" stroke="#3b82f6" stroke-width="4" /> {/* 3 parts */}
+
+    {/* Points */}
+    <circle cx="50" cy="150" r="5" fill="#1e3a8a" />
+    <text x="35" y="170" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">A</text>
+
+    <circle cx="350" cy="50" r="5" fill="#1e3a8a" />
+    <text x="355" y="45" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">B</text>
+
+    <circle cx="170" cy="110" r="6" fill="#10b981" />
+    <text x="165" y="90" font-size="14" font-weight="bold" fill="#047857" font-family="sans-serif">P</text>
+
+    {/* Ratio Labels */}
+    <text x="100" y="145" font-size="14" font-weight="bold" fill="#b91c1c" font-family="sans-serif" transform="rotate(-18, 100, 145)">m parts</text>
+    <text x="250" y="95" font-size="14" font-weight="bold" fill="#1d4ed8" font-family="sans-serif" transform="rotate(-18, 250, 95)">n parts</text>
+  </svg>
+</div>
+
+### Method 1: The Fractional Steps Method
+
+This method builds on the visual vector jumps we used for finding endpoints.
+
+**Example Walkthrough:**
+Find the coordinates of the point $P$ which divides the line segment joining $A(2, 1)$ and $B(12, 16)$ in the ratio $2:3$.
+
+1. **Find the total number of parts:**
+   $2 + 3 = \mathbf{5 \text{ parts total}}$.
+   This means point $P$ is exactly $\frac{2}{5}$ of the way along the line from $A$ to $B$.
+
+2. **Find the total distance ($\Delta x$ and $\Delta y$) from A to B:**
+   $\Delta x = 12 - 2 = 10$
+   $\Delta y = 16 - 1 = 15$
+
+3. **Calculate the fraction of that distance:**
+   $x\text{-move} = \frac{2}{5} \times 10 = 4$
+   $y\text{-move} = \frac{2}{5} \times 15 = 6$
+
+4. **Add these moves onto the starting point $A(2, 1)$:**
+   $x\text{-coordinate}: 2 + 4 = \mathbf{6}$
+   $y\text{-coordinate}: 1 + 6 = \mathbf{7}$
+
+**Answer:** The point $P$ is $\boldsymbol{(6, 7)}$.
+
+### Method 2: The Section Formula (Criss-Cross Method)
+
+If you prefer pure algebra, you can use the formula below. It is often called the "Criss-Cross" method because the *first* part of the ratio ($m$) multiplies the coordinates of the *second* point ($B$), and the *second* part of the ratio ($n$) multiplies the coordinates of the *first* point ($A$).
+
+$$
+P = \left( \frac{mx_2 + nx_1}{m+n}, \frac{my_2 + ny_1}{m+n} \right)
+$$
+
+**Using the exact same example ($A(2, 1)$, $B(12, 16)$, ratio $2:3$):**
+
+1. Identify variables: $(x_1, y_1)=(2, 1)$, $(x_2, y_2)=(12, 16)$, $m=2$, $n=3$.
+2. Set up the $x$ and $y$ calculations:
+    $$
+    \begin{aligned}
+    x_P &= \frac{m x_2 + n x_1}{m+n} = \frac{2(12) + 3(2)}{2+3} = \frac{24 + 6}{5} = \frac{30}{5} = \boldsymbol{6} \\
+    y_P &= \frac{m y_2 + n y_1}{m+n} = \frac{2(16) + 3(1)}{2+3} = \frac{32 + 3}{5} = \frac{35}{5} = \boldsymbol{7}
+    \end{aligned}
+    $$
+
+**Answer:** The point $P$ is $\boldsymbol{(6, 7)}$.
+
+---
+
+## 5. Practice Problems
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding Distance">
+    Calculate the exact length of the line segment joining the points $P(-3, -1)$ and $Q(5, 5)$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    Change in $x$: $\Delta x = 5 - (-3) = 8$
+    Change in $y$: $\Delta y = 5 - (-1) = 6$
+    
+    $$
+    \begin{aligned}
+    d^2 &= 8^2 + 6^2 \\
+    d^2 &= 64 + 36 \\
+    d^2 &= 100 \\
+    d &= \sqrt{100} \\
+    \boldsymbol{d} &\boldsymbol{= 10}
+    \end{aligned}
+    $$
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating the length of a line segment using Pythagoras or the distance formula" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Distance with Quadratics">
+    The point $A$ has coordinates $(0, 4)$ and point $B$ has coordinates $(k, 0)$. 
+    The distance $AB$ is $\sqrt{41}$. Find the two possible values of $k$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    $$
+    \begin{aligned}
+    (\sqrt{41})^2 &= (k - 0)^2 + (0 - 4)^2 \\
+    41 &= k^2 + (-4)^2 \\
+    41 &= k^2 + 16 \\
+    25 &= k^2 \\
+    k &= \pm 5
+    \end{aligned}
+    $$
+    **Answer:** $\boldsymbol{k = 5}$ or $\boldsymbol{k = -5}$.
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Finding an unknown coordinate given the length of a line segment using quadratic equations" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Finding Midpoint">
+    Find the coordinates of the midpoint of the line segment connecting $A(-2, 7)$ and $B(6, -3)$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    x-midpoint: $$\frac{-2 + 6}{2} = \frac{4}{2} = 2$$
+    
+    y-midpoint: $$\frac{7 + (-3)}{2} = \frac{4}{2} = 2$$
+    
+    **Answer:** The midpoint is $\boldsymbol{(2, 2)}$.
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating the midpoint of a line segment given two coordinate points" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Midpoint with Linear Equations">
+    The midpoint of $P(4c, 6)$ and $Q(8, 2d)$ is $M(-4, 9)$. Find $c$ and $d$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    Set up the x-equation:
+    $$
+    \begin{aligned}
+    \frac{4c + 8}{2} &= -4 \\
+    4c + 8 &= -8 \\
+    4c &= -16 \\
+    \boldsymbol{c} &\boldsymbol{= -4}
+    \end{aligned}
+    $$
+    
+    Set up the y-equation:
+    $$
+    \begin{aligned}
+    \frac{6 + 2d}{2} &= 9 \\
+    6 + 2d &= 18 \\
+    2d &= 12 \\
+    \boldsymbol{d} &\boldsymbol{= 6}
+    \end{aligned}
+    $$
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Finding unknown variables in coordinates given the midpoint using linear equations" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Finding a Missing Endpoint">
+    The midpoint of line $XY$ is $M(-2, 5)$. If $X$ is at $(3, 1)$, find the coordinates of $Y$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **Using the jump method:**
+    To get from $X(3, 1)$ to $M(-2, 5)$:
+    * x jumps from 3 to -2 ($\Delta x = -5$)
+    * y jumps from 1 to 5 ($\Delta y = +4$)
+    
+    Apply jumps from $M(-2, 5)$ to reach $Y$:
+    * x: $-2 - 5 = \boldsymbol{-7}$
+    * y: $5 + 4 = \boldsymbol{9}$
+    
+    **Answer:** $\boldsymbol{Y(-7, 9)}$.
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Finding the missing endpoint of a line segment given one endpoint and the midpoint" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Dividing in a Ratio">
+    The line segment joining $C(-3, -2)$ and $D(5, 14)$ is divided by the point $R$ in the ratio $1:3$. Find the coordinates of $R$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **Method 1: Fractional Steps**
+    Point $R$ is $\frac{1}{4}$ of the way along the line from $C$ to $D$.
+    $\Delta x = 5 - (-3) = 8 \Rightarrow \text{move } = \frac{1}{4}(8) = 2$
+    $\Delta y = 14 - (-2) = 16 \Rightarrow \text{move } = \frac{1}{4}(16) = 4$
+    Add to $C(-3, -2)$: $x = -3 + 2 = \boldsymbol{-1}$, $y = -2 + 4 = \boldsymbol{2}$
+    
+    **Method 2: Criss-Cross Formula**
+    $(x_1, y_1)=(-3, -2)$, $(x_2, y_2)=(5, 14)$, $m=1$, $n=3$.
+    $$
+    x_R = \frac{1(5) + 3(-3)}{1+3} = \frac{-4}{4} = \boldsymbol{-1} \quad \text{and} \quad y_R = \frac{1(14) + 3(-2)}{1+3} = \frac{8}{4} = \boldsymbol{2}
+    $$
+    
+    **Answer:** $\boldsymbol{R(-1, 2)}$.
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Dividing a line segment in a given ratio m:n" difficulty="IGCSE Extended" client:load />

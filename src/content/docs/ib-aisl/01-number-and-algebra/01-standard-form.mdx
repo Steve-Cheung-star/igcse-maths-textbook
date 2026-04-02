@@ -1,0 +1,241 @@
+---
+title: 1.1 Standard Form
+description: Master the use of standard form for operations with very large or very small numbers, and understand proper exam notation for IB Maths AI SL.
+---
+
+In mathematics and science, we frequently encounter numbers that are either astronomically large or microscopically small. **Standard Form** (also known as scientific notation) provides an efficient, standardised way to write these numbers and perform calculations without getting lost in a sea of zeros.
+
+From global financial figures to the microscopic measurements of biology, standard form is the universal language of scale. You will see it across your other IB subjects:
+* **Chemistry:** Avogadro's number ($6.02 \times 10^{23}$) for counting particles.
+* **Physics:** Expressing orders of magnitude for sub-atomic particles and distances between galaxies.
+* **Sciences:** Handling the uncertainty and precision of measurements.
+
+---
+
+## 1. The Anatomy of Standard Form
+
+<Aside type="note" title="The Hierarchy of Standard Form">
+Every number written in standard form is composed of three essential parts:
+1. **The Mantissa ($a$):** A number greater than or equal to 1, but strictly less than 10.
+2. **The Base:** This is always the number 10.
+3. **The Exponent ($k$):** An integer (a positive or negative whole number) that indicates the power of 10.
+</Aside>
+
+This is formally written as:
+
+$$
+a \times 10^k
+$$
+
+Where $1 \le a < 10$ and $k \in \mathbb{Z}$.
+
+<Aside type="tip" title="Theorem of Exponent Scale">
+* When $k$ is **positive**, the original number is greater than or equal to 10.
+* When $k$ is **negative**, the original number is a decimal between 0 and 1.
+* When $k = 0$, the original number is strictly between 1 and 10, because $10^0 = 1$.
+</Aside>
+
+---
+
+## 2. Converting Numbers
+
+To convert an ordinary number into standard form, you must adjust the decimal point to create a valid mantissa ($a$) and then multiply by the appropriate power of 10 to maintain the original value.
+
+### Converting Large Numbers
+<Steps>
+1. Place the decimal point after the very first non-zero digit to establish your mantissa ($a$).
+2. Count the number of places the decimal point has shifted from its original position (the end of the number).
+3. This count becomes your positive integer exponent ($k$).
+4. Write the final answer in the form $a \times 10^k$.
+</Steps>
+
+### Converting Small Numbers
+<Steps>
+1. Identify the first non-zero digit and place the decimal point immediately after it to form $a$.
+2. Count how many places the decimal point has shifted to the right.
+3. This count becomes your negative integer exponent ($-k$).
+4. Write the final answer in the form $a \times 10^{-k}$.
+</Steps>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 160" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Large Number Example */}
+    <text x="80" y="40" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="monospace">7</text>
+    <text x="100" y="40" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="monospace">3</text>
+    <text x="120" y="40" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="monospace">0</text>
+    <text x="140" y="40" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="monospace">0</text>
+    <text x="160" y="40" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="monospace">0</text>
+    <text x="170" y="40" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="monospace">.</text>
+    
+    <path d="M 170 45 Q 160 70 150 45 Q 140 70 130 45 Q 120 70 110 45 Q 100 70 90 45" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 4" />
+    <polygon points="95,40 85,45 95,50" fill="#3b82f6" />
+    
+    <text x="125" y="100" font-size="14" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Shift 4 places left</text>
+    <text x="125" y="130" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">7.3 × 10⁴</text>
+    
+    {/* Divider */}
+    <line x1="300" y1="20" x2="300" y2="140" stroke="#cbd5e1" stroke-width="1" />
+
+    {/* Small Number Example */}
+    <text x="370" y="40" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="monospace">0</text>
+    <text x="380" y="40" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="monospace">.</text>
+    <text x="390" y="40" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="monospace">0</text>
+    <text x="410" y="40" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="monospace">0</text>
+    <text x="430" y="40" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="monospace">7</text>
+    <text x="450" y="40" font-size="20" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="monospace">3</text>
+
+    <path d="M 380 45 Q 390 70 400 45 Q 410 70 420 45 Q 430 70 440 45" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <polygon points="435,40 445,45 435,50" fill="#ef4444" />
+    
+    <text x="410" y="100" font-size="14" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Shift 3 places right</text>
+    <text x="410" y="130" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">7.3 × 10⁻³</text>
+  </svg>
+</div>
+
+<Aside type="note" title="International-Mindedness: The Evolution of Number">
+The way we write and understand numbers has evolved significantly over millennia. The earliest recorded numbering systems date back to the ancient Sumerians, who used a base-60 (sexagesimal) system. Our modern, highly efficient standard form relies heavily on the base-10 Hindu-Arabic numeral system, which introduced the revolutionary concept of zero as a placeholder.
+</Aside>
+
+---
+
+## 3. Operations with Standard Form
+
+You are required to fluently multiply, divide, add, and subtract numbers given in standard form.
+
+### Multiplication and Division
+When multiplying or dividing, handle the mantissa ($a$) and the powers of 10 separately using the laws of indices.
+
+**Multiplication:**
+
+$$
+(A \times 10^m) \times (B \times 10^n) = (A \times B) \times 10^{m+n}
+$$
+
+**Division:**
+
+$$
+(A \times 10^m) \div (B \times 10^n) = (A \div B) \times 10^{m-n}
+$$
+
+<Aside type="caution" title="Adjusting the Mantissa">
+After completing a multiplication or division, your new value for $a$ might no longer sit between 1 and 10. Always adjust it back into proper standard form! For example, $12 \times 10^4$ must be rewritten as $1.2 \times 10^5$.
+</Aside>
+
+### Addition and Subtraction
+To add or subtract numbers in standard form without a calculator, you must first manipulate the terms so that they share the exact **same power of 10**. 
+
+<Steps>
+1. Identify the term with the smaller power of 10.
+2. Rewrite it so its exponent matches the larger power of 10 (this will temporarily make its mantissa a decimal less than 1).
+3. Add or subtract the mantissas.
+4. Keep the shared power of 10 unchanged.
+5. Ensure the final answer is in correct standard form.
+</Steps>
+
+---
+
+## 4. Proper Exam Notation
+
+<SteveTip title="The Calculator Notation Trap">
+When performing calculations, your GDC (Graphics Display Calculator) might output an answer like `5.2E30` or `5.2 x 10^30` depending on its settings. **Calculator or computer notation is completely unacceptable in the IB exam.** If you write `5.2E30` on your exam paper, you will not receive the mark. You must translate this into proper mathematical notation:
+
+$$
+5.2 \times 10^{30}
+$$
+
+</SteveTip>
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Do the names that we give things impact how we understand them?** Consider the fact that some exceptionally large numbers have been given specific, evocative names—such as the *googol* ($10^{100}$) and the *googolplex* ($10^{\text{googol}}$). Does assigning a noun to a number make it feel more tangible or easier to conceptualise than simply representing it in standard form as a pure abstraction?
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Basic Conversion">
+    Write the following numbers in standard form:
+    1. $453,000,000$
+    2. $0.00000819$
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    1. The decimal point moves 8 places to the left:
+    
+    $$
+    4.53 \times 10^8
+    $$
+    
+    2. The decimal point moves 6 places to the right:
+    
+    $$
+    8.19 \times 10^{-6}
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Converting ordinary numbers to standard form and vice versa" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Correcting Notation">
+    A student uses a calculator to find the mass of a planet and writes down their answer as `6.42E23` kg. 
+    State why this is unacceptable and write the correct notation.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    The 'E' notation is computer/calculator syntax and is not recognised mathematical standard form.
+    The correct notation is:
+    
+    $$
+    6.42 \times 10^{23} \text{ kg}
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Correcting invalid computer notation (E notation) into proper standard form" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Multiplication with Adjustment">
+    Calculate $(4 \times 10^6) \times (3 \times 10^5)$. Give your answer in standard form.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    First, multiply the mantissas and add the indices:
+    
+    $$
+    (4 \times 3) \times 10^{6+5} = 12 \times 10^{11}
+    $$
+    
+    The mantissa $12$ is not between 1 and 10, so it must be adjusted. 
+    $12 = 1.2 \times 10^1$, so:
+    
+    $$
+    (1.2 \times 10^1) \times 10^{11} = 1.2 \times 10^{12}
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Multiplying and dividing numbers in standard form, requiring mantissa adjustments" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Addition">
+    Calculate $(3.5 \times 10^4) + (2.1 \times 10^3)$. Give your answer in standard form.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    Rewrite the term with the smaller exponent ($10^3$) to match the larger exponent ($10^4$):
+    
+    $$
+    2.1 \times 10^3 = 0.21 \times 10^4
+    $$
+    
+    Now add the mantissas:
+    
+    $$
+    (3.5 + 0.21) \times 10^4 = 3.71 \times 10^4
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Adding and subtracting numbers in standard form" />

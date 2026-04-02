@@ -1,0 +1,206 @@
+---
+title: 4.1 Coordinates
+description: Understand and use the Cartesian coordinate system in two dimensions to identify and plot points accurately for IGCSE 0607.
+---
+
+The **Cartesian coordinate system** is a brilliant way of identifying the exact location of any point on a flat surface (a plane) using two numbers. These numbers represent distances from a fixed starting point called the **origin**.
+
+<Aside type="note" title="A Neat Piece of Maths History">
+**The Fly on the Ceiling** In the 17th century, a French mathematician and philosopher named René Descartes was lying in bed, watching a fly crawl across his ceiling. He realised that he could describe the fly's exact position at any moment by measuring its distance from two adjacent walls. 
+
+By turning those "walls" into intersecting number lines, he invented the Cartesian coordinate system, forever bridging the gap between algebra (equations) and geometry (shapes)!
+</Aside>
+
+---
+
+## 1. The Anatomy of the Coordinate Plane
+
+A 2D coordinate system is built using two perpendicular number lines that intersect at zero.
+
+* **The x-axis:** The horizontal number line. Positive numbers are to the right; negative numbers are to the left.
+* **The y-axis:** The vertical number line. Positive numbers are up; negative numbers are down.
+* **The Origin:** The point (0, 0) where the axes cross.
+
+### The Four Quadrants
+The two intersecting axes divide the grid into four distinct regions called **quadrants**. They are numbered anti-clockwise using Roman numerals, starting from the top right.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 400" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid Lines */}
+    <g stroke="#e2e8f0" stroke-width="1">
+      {Array.from({ length: 11 }, (_, i) => (
+        <g key={i}>
+          <line x1="0" y1={i * 40} x2="400" y2={i * 40} />
+          <line x1={i * 40} y1="0" x2={i * 40} y2="400" />
+        </g>
+      ))}
+    </g>
+
+    {/* Axes */}
+    <g stroke="#94a3b8" stroke-width="2">
+      {/* X-axis */}
+      <line x1="0" y1="200" x2="400" y2="200" />
+      <polygon points="392,196 400,200 392,204" fill="#94a3b8" stroke-width="0" />
+      {/* Y-axis */}
+      <line x1="200" y1="400" x2="200" y2="0" />
+      <polygon points="196,8 200,0 204,8" fill="#94a3b8" stroke-width="0" />
+    </g>
+
+    {/* Labels */}
+    <text x="385" y="190" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+    <text x="185" y="215" font-size="12" fill="#64748b" font-family="sans-serif">0</text>
+
+    {/* Quadrant Labels */}
+    <text x="300" y="100" font-size="20" font-weight="bold" fill="#cbd5e1" font-family="sans-serif" text-anchor="middle">Quadrant I</text>
+    <text x="300" y="125" font-size="14" fill="#94a3b8" font-family="sans-serif" text-anchor="middle">(+, +)</text>
+
+    <text x="100" y="100" font-size="20" font-weight="bold" fill="#cbd5e1" font-family="sans-serif" text-anchor="middle">Quadrant II</text>
+    <text x="100" y="125" font-size="14" fill="#94a3b8" font-family="sans-serif" text-anchor="middle">(-, +)</text>
+
+    <text x="100" y="300" font-size="20" font-weight="bold" fill="#cbd5e1" font-family="sans-serif" text-anchor="middle">Quadrant III</text>
+    <text x="100" y="325" font-size="14" fill="#94a3b8" font-family="sans-serif" text-anchor="middle">(-, -)</text>
+
+    <text x="300" y="300" font-size="20" font-weight="bold" fill="#cbd5e1" font-family="sans-serif" text-anchor="middle">Quadrant IV</text>
+    <text x="300" y="325" font-size="14" fill="#94a3b8" font-family="sans-serif" text-anchor="middle">(+, -)</text>
+
+    {/* Points */}
+    <circle cx="320" cy="80" r="5" fill="#3b82f6" />
+    <text x="330" y="75" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">A (3, 3)</text>
+
+    <circle cx="80" cy="120" r="5" fill="#ef4444" />
+    <text x="30" y="115" font-size="14" font-weight="bold" fill="#b91c1c" font-family="sans-serif">B (-3, 2)</text>
+  </svg>
+</div>
+
+---
+
+## 2. Reading and Writing Coordinates
+
+Coordinates are always written as an **ordered pair** in brackets: $(x, y)$.
+
+1.  **The first number ($x$):** Tells you how far to move horizontally (left or right) from the origin.
+2.  **The second number ($y$):** Tells you how far to move vertically (up or down) from the origin.
+
+<SteveTip title="The Alphabet Rule">
+If you forget which number comes first, just remember the alphabet: **X** comes before **Y**. 
+You must walk *across* the floor ($x$) before you can climb *up* the ladder ($y$)!
+</SteveTip>
+
+### Special Case: Points on the Axes
+If a point lies directly on one of the lines, one of its coordinates must be **zero**.
+* **On the x-axis:** The point hasn't moved up or down. The $y$-coordinate is always 0. Example: $(5, 0)$.
+* **On the y-axis:** The point hasn't moved left or right. The $x$-coordinate is always 0. Example: $(0, -4)$.
+
+---
+
+## 3. Using Coordinates with Shapes
+
+A very common exam question involves giving you three corners (vertices) of a shape, like a rectangle or square, and asking you to deduce the coordinates of the missing corner without physically drawing it.
+
+**Example Walkthrough:**
+Three vertices of a rectangle are $A(1, 1)$, $B(6, 1)$, and $C(6, 4)$. Find the coordinates of the fourth vertex, $D$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 350 250" width="100%" maxWidth="400px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid Lines */}
+    <g stroke="#f1f5f9" stroke-width="1">
+      {Array.from({ length: 9 }, (_, i) => (
+        <g key={i}>
+          <line x1="0" y1={i * 40 + 10} x2="350" y2={i * 40 + 10} />
+          <line x1={i * 40 + 30} y1="0" x2={i * 40 + 30} y2="250" />
+        </g>
+      ))}
+    </g>
+
+    {/* Axes */}
+    <g stroke="#94a3b8" stroke-width="2">
+      <line x1="10" y1="210" x2="340" y2="210" />
+      <polygon points="332,206 340,210 332,214" fill="#94a3b8" stroke-width="0" />
+      <line x1="30" y1="230" x2="30" y2="10" />
+      <polygon points="26,18 30,10 34,18" fill="#94a3b8" stroke-width="0" />
+    </g>
+    
+    <text x="15" y="225" font-size="12" fill="#64748b" font-family="sans-serif">0</text>
+    <text x="330" y="200" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="40" y="20" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+
+    {/* Rectangle Lines */}
+    <line x1="70" y1="170" x2="270" y2="170" stroke="#3b82f6" stroke-width="3" /> {/* A to B */}
+    <line x1="270" y1="170" x2="270" y2="50" stroke="#3b82f6" stroke-width="3" /> {/* B to C */}
+    
+    {/* Dashed Lines for finding D */}
+    <line x1="270" y1="50" x2="70" y2="50" stroke="#10b981" stroke-width="3" stroke-dasharray="6 6" /> {/* C to D */}
+    <line x1="70" y1="50" x2="70" y2="170" stroke="#10b981" stroke-width="3" stroke-dasharray="6 6" /> {/* D to A */}
+
+    {/* Vertices */}
+    <circle cx="70" cy="170" r="5" fill="#1e3a8a" />
+    <text x="60" y="190" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">A(1, 1)</text>
+
+    <circle cx="270" cy="170" r="5" fill="#1e3a8a" />
+    <text x="260" y="190" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">B(6, 1)</text>
+
+    <circle cx="270" cy="50" r="5" fill="#1e3a8a" />
+    <text x="280" y="45" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">C(6, 4)</text>
+
+    <circle cx="70" cy="50" r="6" fill="#047857" />
+    <text x="20" y="45" font-size="14" font-weight="bold" fill="#047857" font-family="sans-serif">D(?, ?)</text>
+  </svg>
+</div>
+
+**How to solve it logically:**
+1. Rectangles have straight vertical and horizontal sides.
+2. The side from $A$ to $D$ must be perfectly vertical. This means $D$ must have the exact same $x$-coordinate as $A$. Therefore, the $x$-coordinate is **1**.
+3. The side from $C$ to $D$ must be perfectly horizontal. This means $D$ must have the exact same $y$-coordinate as $C$. Therefore, the $y$-coordinate is **4**.
+4. **Answer:** The missing vertex is $D(1, 4)$.
+
+---
+
+## 4. Practice Problems
+
+<Tabs>
+  <TabItem label="📝 Question 1: Quadrants">
+    Without plotting them, state which quadrant the following points are in:
+    a) $(-4, 7)$
+    b) $(2, -9)$
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    a) $x$ is negative (left), $y$ is positive (up). This puts it in the top-left quadrant.
+    **Answer:** Quadrant II.
+
+    b) $x$ is positive (right), $y$ is negative (down). This puts it in the bottom-right quadrant.
+    **Answer:** Quadrant IV.
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Identifying Cartesian quadrants based on coordinate signs" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Missing Vertex">
+    Three corners of a square are located at $(-2, -2)$, $(3, -2)$, and $(3, 3)$. 
+    What are the coordinates of the fourth corner?
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    The given points form the bottom edge (from $x = -2$ to $x = 3$) and the right edge (from $y = -2$ to $y = 3$).
+    To complete the square, the top-left corner must align vertically with $(-2, -2)$ and horizontally with $(3, 3)$.
+    Therefore, it takes the $x$-value of the left side ($-2$) and the $y$-value of the top side ($3$).
+    
+    **Answer:** $(-2, 3)$.
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Finding the missing vertex of a square or rectangle on a coordinate grid" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Points on Axes">
+    A point $P$ lies on the x-axis and is 7 units to the left of the origin. Write down the coordinates of $P$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    Because it lies on the x-axis, its $y$-coordinate must be 0.
+    Because it is 7 units to the *left* of the origin, its $x$-coordinate must be $-7$.
+    
+    **Answer:** $(-7, 0)$.
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Identifying coordinates of points lying directly on the x or y axes" difficulty="IGCSE Core" client:load />

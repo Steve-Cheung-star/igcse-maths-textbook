@@ -1,0 +1,260 @@
+---
+title: 3.2 Using a Graphic Display Calculator (TI-Nspire)
+description: Master your TI-Nspire Graphic Display Calculator (GDC) to sketch graphs, produce tables, and find key features like zeros, extrema, and intersections for IGCSE 0607.
+---
+
+The Graphic Display Calculator (GDC) is the defining tool of the IGCSE 0607 Extended syllabus. Exams will frequently present you with unfamiliar, complex equations and expect you to find their exact features. You are not expected to use algebra for these; you are expected to use your TI-Nspire efficiently.
+
+---
+
+## 1. Setting Up Your TI-Nspire for Exams
+
+Before you sketch a single graph, you must ensure your calculator is correctly set up. A misconfigured GDC will give you wildly incorrect answers, especially in trigonometry.
+
+<Aside type="caution" title="The Degree vs. Radian Trap">
+By default, or after a reset, the TI-Nspire often switches to **Radian** mode. The IGCSE 0607 course uses **Degrees**. 
+Look at the top right of your screen. If it says **RAD**, you must change it immediately!
+Go to `Doc` > `7: Settings & Status` > `2: Document Settings` and change the Angle to **Degree**. Make sure to select "Make Default".
+</Aside>
+
+### Resetting and Clearing
+Before a real exam, it is best practice to start with a completely clean slate so previous variables don't mess up your current calculations.
+* **To clear all documents:** Press `Home` (On button) > `2: My Documents` > Press `Menu` > `C: Clear My Documents`. 
+* **To close a current document quickly:** Press `Ctrl` + `W` and select "No" when asked to save. This gives you a fresh start.
+
+### Deleting Graphs
+If your graph screen is getting cluttered, you have two ways to clean it up:
+1. **Delete a single graph:** Press `Tab` to open the entry line, press the up arrow (`↑`) to highlight the function you want to remove (e.g., $f1(x)$), and press the `Del` key.
+2. **Delete everything on the graph:** Press `Menu` > `1: Actions` > `6: Delete All`.
+
+---
+
+## 2. Sketching, Tables, and Windows
+
+### Sketching a Graph
+When you enter a function into a new Graphs document, the curve might not appear on the screen. This means the graph exists outside your current **Viewing Window**. 
+Always check the domain given in the question (e.g., $-5 \leq x \leq 5$) and set your window to match:
+* Press `Menu` > `4: Window / Zoom` > `1: Window Settings` and adjust your $XMin$, $XMax$, $YMin$, and $YMax$.
+
+### Producing a Table of Values
+If an exam asks you to plot points on a grid, do not calculate them manually! 
+1. Enter the function and draw the graph.
+2. Press `Ctrl` + `T` to bring up the split-screen table.
+3. To change what the table counts by, press `Menu` > `2: Table` > `5: Edit Table Settings`. Change the "Table Step".
+4. Press `Ctrl` + `T` again to hide the table when you are done.
+
+---
+
+## 3. Finding Zeros, Maxima, and Minima
+
+You must be able to instruct your TI-Nspire to locate specific coordinates on a curve using the **Analyze Graph** menu.
+
+* **Zeros (Roots or x-intercepts):** The points where the graph crosses the horizontal x-axis ($y = 0$).
+* **Local Maximum:** A "peak" or hilltop on the graph.
+* **Local Minimum:** A "trough" or valley on the graph.
+
+Let's look at the graph of the cubic function $f(x) = x^3 - 3x + 1$:
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="0" y1="125" x2="400" y2="125" />
+      <polygon points="392,121 400,125 392,129" fill="#cbd5e1" stroke-width="0" />
+      <line x1="200" y1="250" x2="200" y2="0" />
+      <polygon points="196,8 200,0 204,8" fill="#cbd5e1" stroke-width="0" />
+    </g>
+    <text x="385" y="115" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+    <text x="185" y="140" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
+
+    {/* Cubic Curve: mathX from -4 to 4. Scale: 1 unit = 40px X, 30px Y. Origin at (200, 125) */}
+    <polyline fill="none" stroke="#3b82f6" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 40;
+      const mathY = Math.pow(mathX, 3) - 3 * mathX + 1;
+      return `${x},${125 - mathY * 30}`;
+    }).join(' ')} />
+
+    {/* Local Maximum at (-1, 3) -> Pixel (160, 35) */}
+    <circle cx="160" cy="35" r="4" fill="#ef4444" />
+    <line x1="153" y1="35" x2="110" y2="35" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3 3" />
+    <text x="20" y="39" font-size="11" fill="#ef4444" font-family="sans-serif" font-weight="bold">Local Maximum</text>
+
+    {/* Local Minimum at (1, -1) -> Pixel (240, 155) */}
+    <circle cx="240" cy="155" r="4" fill="#10b981" />
+    <line x1="247" y1="155" x2="280" y2="155" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3 3" />
+    <text x="285" y="159" font-size="11" fill="#10b981" font-family="sans-serif" font-weight="bold">Local Minimum</text>
+
+    {/* Zeros at y=0. Appx x = -1.879, 0.347, 1.532 -> Pixels: (125, 125), (214, 125), (261, 125) */}
+    <circle cx="125" cy="125" r="4" fill="#f59e0b" />
+    <circle cx="214" cy="125" r="4" fill="#f59e0b" />
+    <circle cx="261" cy="125" r="4" fill="#f59e0b" />
+    
+    {/* Clean branching lines pointing from the label to all three roots */}
+    <line x1="125" y1="132" x2="190" y2="200" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 3" />
+    <line x1="214" y1="132" x2="200" y2="200" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 3" />
+    <line x1="261" y1="132" x2="210" y2="200" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 3" />
+    
+    <text x="200" y="215" text-anchor="middle" font-size="12" fill="#f59e0b" font-family="sans-serif" font-weight="bold">Zeros (Roots)</text>
+  </svg>
+</div>
+
+<SteveTip title="The Lower Bound / Upper Bound Swipe">
+When you select `Menu` > `6: Analyze Graph` > `1: Zero` (or Minimum/Maximum), the Nspire will ask for a **Lower Bound**. Click your trackpad *to the left* of the point you want. It then asks for an **Upper Bound**. Swipe and click *to the right* of the point. A shaded region will appear, and the calculator will find the exact point inside that region.
+</SteveTip>
+
+---
+
+## 4. Finding Intersections of Functions
+
+To solve simultaneous equations graphically, or to find where two lines meet, graph both functions and use the intersection tool.
+
+Let's look at the intersection between the quadratic $f(x) = -x^2 + 4$ and the linear graph $g(x) = x + 2$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="0" y1="180" x2="400" y2="180" />
+      <polygon points="392,176 400,180 392,184" fill="#cbd5e1" stroke-width="0" />
+      <line x1="200" y1="250" x2="200" y2="0" />
+      <polygon points="196,8 200,0 204,8" fill="#cbd5e1" stroke-width="0" />
+    </g>
+    <text x="385" y="170" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+    <text x="185" y="195" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
+
+    {/* Math Scale: 1 unit = 25px. Origin at (200, 180) */}
+    {/* Quadratic: y = -x^2 + 4 */}
+    <polyline fill="none" stroke="#ef4444" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 25;
+      const mathY = -(mathX * mathX) + 4;
+      return `${x},${180 - mathY * 25}`;
+    }).join(' ')} />
+
+    {/* Linear: y = x + 2 */}
+    <polyline fill="none" stroke="#8b5cf6" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 25;
+      const mathY = mathX + 2;
+      return `${x},${180 - mathY * 25}`;
+    }).join(' ')} />
+
+    {/* Intersection 1 at (-2, 0) -> Pixel (150, 180) */}
+    <circle cx="150" cy="180" r="5" fill="#1e293b" />
+    <line x1="145" y1="175" x2="110" y2="140" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="3 3" />
+    <text x="30" y="130" font-size="11" fill="#1e293b" font-family="sans-serif" font-weight="bold">Intersection</text>
+    <text x="30" y="145" font-size="11" fill="#1e293b" font-family="sans-serif">(-2, 0)</text>
+
+    {/* Intersection 2 at (1, 3) -> Pixel (225, 105) */}
+    <circle cx="225" cy="105" r="5" fill="#1e293b" />
+    <line x1="232" y1="105" x2="270" y2="105" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="3 3" />
+    <text x="275" y="101" font-size="11" fill="#1e293b" font-family="sans-serif" font-weight="bold">Intersection</text>
+    <text x="275" y="116" font-size="11" fill="#1e293b" font-family="sans-serif">(1, 3)</text>
+  </svg>
+</div>
+
+<Aside type="note" title="Finding Multiple Intersections">
+Go to `Menu` > `6: Analyze Graph` > `4: Intersection`. 
+You can only find **one intersection at a time**. You must do the "Lower Bound / Upper Bound" swipe around the first intersection point to get its coordinates, and then completely repeat the process (`Menu` > `6` > `4`) for the second intersection.
+</Aside>
+
+---
+
+## 5. Finding the Vertex of a Quadratic
+
+The **vertex** of a quadratic is simply its turning point. You do not need a special "vertex" button. Just use the `Minimum` function if the quadratic is positive (a 'U' shape), or the `Maximum` function if the quadratic is negative (an 'n' shape).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="0" y1="100" x2="400" y2="100" />
+      <polygon points="392,96 400,100 392,104" fill="#cbd5e1" stroke-width="0" />
+      <line x1="200" y1="250" x2="200" y2="0" />
+      <polygon points="196,8 200,0 204,8" fill="#cbd5e1" stroke-width="0" />
+    </g>
+    <text x="385" y="90" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+    <text x="185" y="115" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
+
+    {/* Math Scale: 1 unit = 25px. Origin at (200, 100) */}
+    {/* Quadratic: y = x^2 - 4x + 1. Vertex at (2, -3) */}
+    <polyline fill="none" stroke="#d946ef" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 25;
+      const mathY = (mathX * mathX) - 4 * mathX + 1;
+      return `${x},${100 - mathY * 25}`;
+    }).join(' ')} />
+
+    {/* Vertex at (2, -3) -> Pixel (250, 175) */}
+    <circle cx="250" cy="175" r="5" fill="#d946ef" />
+    <line x1="257" y1="175" x2="295" y2="175" stroke="#d946ef" stroke-width="1.5" stroke-dasharray="3 3" />
+    <text x="300" y="171" font-size="12" fill="#d946ef" font-family="sans-serif" font-weight="bold">Vertex</text>
+    <text x="300" y="186" font-size="11" fill="#d946ef" font-family="sans-serif">(2, -3)</text>
+    
+    {/* Line of Symmetry at x = 2 -> Pixel 250 */}
+    <line x1="250" y1="0" x2="250" y2="250" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5 5" />
+    <text x="255" y="240" font-size="10" fill="#94a3b8" font-family="sans-serif">Line of symmetry</text>
+  </svg>
+</div>
+
+<Aside type="note" title="Vertex and Symmetry">
+The x-coordinate of the vertex also gives you the equation for the vertical **line of symmetry** of the quadratic graph. In the example above, the line of symmetry is exactly $x = 2$.
+</Aside>
+
+---
+
+## 6. Practice Problems
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding Extrema">
+    A function is given by $f(x) = x^3 - 5x^2 + 2x + 8$.
+    Using a graphic display calculator, find the coordinates of the local maximum and the local minimum. Round your answers to 2 decimal places.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    1. Open a new Graphs document and enter $f1(x) = x^3 - 5x^2 + 2x + 8$.
+    2. Adjust your Window Settings (`Menu` > `4` > `1`) if you cannot see the distinct peaks and troughs.
+    3. Press `Menu` > `6: Analyze Graph` > `3: Maximum`. Select your lower and upper bounds around the peak. The calculator will output $x = 0.2137...$ and $y = 8.211...$
+    4. Press `Menu` > `6: Analyze Graph` > `2: Minimum`. Select bounds around the trough. The calculator will output $x = 3.1196...$ and $y = -4.063...$
+    
+    **Answers:** Local Maximum: $(0.21, 8.21)$
+    Local Minimum: $(3.12, -4.06)$
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Using a TI-Nspire to find local maxima and minima of cubic and unfamiliar functions to 2 decimal places" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Finding Intersections">
+    Find the coordinates of the points where the graphs of $f(x) = 2^x$ and $g(x) = 3 - x^2$ intersect. Give your answers correct to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    1. Enter $f1(x) = 2^x$. Press `Tab` to open the entry line again and enter $f2(x) = 3 - x^2$.
+    2. Press `Menu` > `6: Analyze Graph` > `4: Intersection`. 
+    3. Select the bounds for the first intersection on the left: $x = -1.688...$, $y = 0.149...$
+    4. Repeat the entire process (`Menu` > `6` > `4`) and select bounds for the second intersection on the right: $x = 1.056...$, $y = 1.884...$
+    
+    **Answers (to 3 s.f.):**
+    $(-1.69, 0.149)$ and $(1.06, 1.88)$
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Finding the intersection points of a non-linear graph (e.g., exponential) and a quadratic using a TI-Nspire" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Finding Zeros">
+    Find the zeros of the function $f(x) = \frac{1}{x} + x - 3$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    1. Enter $f1(x) = 1/x + x - 3$. (Use `Ctrl` + `÷` to create a proper fraction!).
+    2. You should see two branches with a vertical asymptote at the y-axis.
+    3. Press `Menu` > `6: Analyze Graph` > `1: Zero`.
+    4. Select bounds around the first root: $x = 0.3819...$
+    5. Repeat the process for the second root: $x = 2.618...$
+    
+    **Answers (to 3 s.f.):**
+    $x = 0.382$ and $x = 2.62$
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Using a TI-Nspire to find the zeros (x-intercepts) of unfamiliar rational functions" difficulty="IGCSE Extended" client:load />

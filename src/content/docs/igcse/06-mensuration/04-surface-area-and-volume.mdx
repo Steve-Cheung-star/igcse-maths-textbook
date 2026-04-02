@@ -1,0 +1,511 @@
+---
+title: 6.4 Surface Area and Volume
+description: Master calculations for the surface area and volume of cuboids, prisms, cylinders, spheres, pyramids, and cones for IGCSE 0607.
+---
+
+Moving from 2D to 3D introduces two distinct measurements: **Volume** (the amount of 3D space inside an object) and **Surface Area** (the total 2D area of all the exposed outer surfaces). 
+
+<SteveTip title="The Formula Sheet is Your Friend">
+In the IGCSE Extended exam, you are **given** the formulas for the curved surface area of cylinders and cones, the surface area of spheres, and the volumes of prisms, pyramids, cylinders, cones, and spheres. You do not need to memorise them all, but you **must** know how to apply them and how to piece them together for compound shapes!
+</SteveTip>
+
+---
+
+## 1. Prisms and Cylinders (The "Extruded" Shapes)
+
+A **prism** is any 3D solid that has a perfectly uniform (constant) cross-section running all the way through its length. If you slice it like a loaf of bread, every slice looks exactly the same. 
+
+A **cylinder** is simply a prism with a circular cross-section. 
+
+<Aside type="tip" title="General Prism Formulas">
+* **Volume:**
+  $$
+  \text{Volume} = \text{Area of cross-section} \times \text{length}
+  $$
+* **Surface Area:**
+  Calculate the area of the two identical ends, and add the areas of all the rectangular sides connecting them.
+  $$
+  \text{Total SA} = 2 \times (\text{Area of cross-section}) + (\text{Perimeter of cross-section} \times \text{length})
+  $$
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', margin: '2rem 0' }}>
+  <svg viewBox="0 0 300 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* 1. FILLS (Bottommost layer) */}
+    <polygon points="50,160 150,160 230,120 130,120" fill="#bfdbfe" fill-opacity="0.15" />
+    <polygon points="50,160 90,60 170,20 130,120" fill="#bfdbfe" fill-opacity="0.15" />
+    <polygon points="150,160 90,60 170,20 230,120" fill="#bfdbfe" fill-opacity="0.15" />
+    <polygon points="50,160 150,160 90,60" fill="#3b82f6" fill-opacity="0.15" />
+
+    {/* 2. INVISIBLE/DASHED LINES */}
+    <line x1="50" y1="160" x2="130" y2="120" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="130" y1="120" x2="230" y2="120" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="130" y1="120" x2="170" y2="20" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+
+    {/* 3. VISIBLE/SOLID LINES */}
+    <polygon points="50,160 150,160 90,60" fill="none" stroke="#2563eb" stroke-width="3" />
+    <line x1="150" y1="160" x2="230" y2="120" stroke="#1e293b" stroke-width="2" />
+    <line x1="90" y1="60" x2="170" y2="20" stroke="#1e293b" stroke-width="2" />
+    <line x1="230" y1="120" x2="170" y2="20" stroke="#1e293b" stroke-width="2" />
+
+    {/* 4. LABELS & MARKERS */}
+    <text x="100" y="115" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif" text-anchor="middle">Cross-section</text>
+    <text x="150" y="190" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Triangular Prism</text>
+  </svg>
+
+  <svg viewBox="0 0 250 200" width="100%" maxWidth="200px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* 1. FILLS (Bottommost layer) */}
+    <path d="M 50 150 A 75 20 0 0 0 200 150" fill="#bfdbfe" fill-opacity="0.15" />
+    <path d="M 50 50 L 50 150 A 75 20 0 0 0 200 150 L 200 50 Z" fill="#bfdbfe" fill-opacity="0.15" />
+    <ellipse cx="125" cy="50" rx="75" ry="20" fill="#3b82f6" fill-opacity="0.15" />
+
+    {/* 2. INVISIBLE/DASHED LINES */}
+    <path d="M 200 150 A 75 20 0 0 0 50 150" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="125" y1="150" x2="200" y2="150" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+
+    {/* 3. VISIBLE/SOLID LINES */}
+    <path d="M 50 150 A 75 20 0 0 0 200 150" fill="none" stroke="#1e293b" stroke-width="2" />
+    <line x1="50" y1="50" x2="50" y2="150" stroke="#1e293b" stroke-width="2" />
+    <line x1="200" y1="50" x2="200" y2="150" stroke="#1e293b" stroke-width="2" />
+    <ellipse cx="125" cy="50" rx="75" ry="20" fill="none" stroke="#2563eb" stroke-width="3" />
+
+    {/* 4. LABELS & MARKERS */}
+    <circle cx="125" cy="150" r="3" fill="#1e293b" />
+    <text x="160" y="145" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">r</text>
+    
+    <line x1="225" y1="50" x2="225" y2="150" stroke="#ef4444" stroke-width="2" />
+    <polygon points="225,50 220,58 230,58" fill="#ef4444" />
+    <polygon points="225,150 220,142 230,142" fill="#ef4444" />
+    <text x="235" y="105" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">h</text>
+    
+    <text x="125" y="190" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Cylinder</text>
+  </svg>
+</div>
+
+<Aside type="note" title="Cylinder-Specific Formulas">
+While a cylinder follows the general rules of a prism, its circular nature gives it specific algebraic formulas that you should be comfortable with:
+* **Base Area (Cross-section):** $\pi r^2$
+* **Curved Surface Area (CSA):** $2\pi r h$
+* **Total Surface Area (TSA):** $2\pi r^2 + 2\pi r h$
+* **Volume:** $\pi r^2 h$
+</Aside>
+
+### Example: Volume of a Cylinder
+Calculate the exact volume of a cylinder with a radius of $6\text{ cm}$ and a height of $10\text{ cm}$. Give your answer in terms of $\pi$.
+<Steps>
+1. Identify the area of the base (a circle):
+   $$
+   \text{Base Area} = \pi r^2 = \pi \times 6^2 = 36\pi\text{ cm}^2
+   $$
+2. Multiply by the height to find the volume:
+   $$
+   \text{Volume} = 36\pi \times 10 = 360\pi\text{ cm}^3
+   $$
+</Steps>
+
+---
+
+## 2. Pyramids and Cones (The "Pointy" Shapes)
+
+Any 3D shape that tapers from a flat base to a single point (an apex) has exactly **one-third** the volume of a prism with the same base and height. A cone is simply a pyramid with a circular base.
+
+<Aside type="tip" title="General Pyramid & Cone Volume">
+* **Volume:**
+  $$
+  \text{Volume} = \frac{1}{3} \times \text{Base Area} \times \text{Perpendicular Height}
+  $$
+</Aside>
+
+### The Square Pyramid
+A square pyramid has a square base. Its volume is $\frac{1}{3} \times (x \times x) \times h$, where $x$ is the side length of the square base.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* 1. FILLS (Bottommost layer) */}
+    <polygon points="60,180 200,180 260,130 120,130" fill="#10b981" fill-opacity="0.15" />
+    <polygon points="160,30 60,180 200,180" fill="#10b981" fill-opacity="0.15" />
+    <polygon points="160,30 200,180 260,130" fill="#10b981" fill-opacity="0.15" />
+
+    {/* 2. INVISIBLE/DASHED LINES */}
+    <line x1="60" y1="180" x2="120" y2="130" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="120" y1="130" x2="260" y2="130" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="160" y1="30" x2="120" y2="130" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="60" y1="180" x2="260" y2="130" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2 2" />
+    <line x1="200" y1="180" x2="120" y2="130" stroke="#94a3b8" stroke-width="1" stroke-dasharray="2 2" />
+    <line x1="160" y1="30" x2="160" y2="155" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+
+    {/* 3. VISIBLE/SOLID LINES */}
+    <polygon points="160,30 60,180 200,180" fill="none" stroke="#1e293b" stroke-width="2" />
+    <polygon points="160,30 200,180 260,130" fill="none" stroke="#1e293b" stroke-width="2" />
+    <line x1="60" y1="180" x2="200" y2="180" stroke="#059669" stroke-width="2" />
+    <line x1="200" y1="180" x2="260" y2="130" stroke="#059669" stroke-width="2" />
+
+    {/* 4. LABELS & MARKERS */}
+    <circle cx="160" cy="155" r="3" fill="#1e293b" />
+    <text x="145" y="105" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">h</text>
+    <text x="130" y="200" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Base (x)</text>
+    <text x="160" y="230" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Square Pyramid</text>
+  </svg>
+</div>
+
+### Cones and the Pythagoras Trap
+The surface area of a cone is made of two parts: the flat circular base and the curved surface wrapped around the side.
+
+<Aside type="caution" title="Height vs. Slant Height">
+For the **volume**, you must use the perpendicular height ($h$). 
+For the **curved surface area**, you must use the slanted height ($l$). 
+Examiners will often give you one, and force you to calculate the other using Pythagoras' Theorem:
+$$
+l^2 = r^2 + h^2
+$$
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* 1. FILLS (Bottommost layer) */}
+    <path d="M 50 180 A 100 30 0 0 0 250 180" fill="#3b82f6" fill-opacity="0.15" />
+    <path d="M 250 180 A 100 30 0 0 0 50 180" fill="#3b82f6" fill-opacity="0.15" />
+    <path d="M 150 30 L 50 180 A 100 30 0 0 0 250 180 Z" fill="#3b82f6" fill-opacity="0.15" />
+
+    {/* 2. INVISIBLE/DASHED LINES */}
+    <path d="M 250 180 A 100 30 0 0 0 50 180" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="150" y1="30" x2="150" y2="180" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="150" y1="180" x2="250" y2="180" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+
+    {/* 3. VISIBLE/SOLID LINES */}
+    <path d="M 50 180 A 100 30 0 0 0 250 180" fill="none" stroke="#2563eb" stroke-width="2" />
+    <line x1="150" y1="30" x2="50" y2="180" stroke="#1e293b" stroke-width="2" />
+    <line x1="150" y1="30" x2="250" y2="180" stroke="#10b981" stroke-width="3" />
+    
+    {/* 4. LABELS & MARKERS */}
+    <circle cx="150" cy="180" r="3" fill="#1e293b" />
+    <polygon points="150,180 150,170 160,170 160,180" fill="none" stroke="#1e293b" stroke-width="1.5" />
+    <text x="135" y="115" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">h</text>
+    <text x="200" y="175" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">r</text>
+    <text x="215" y="105" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">l (slant)</text>
+    <text x="150" y="230" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">l² = r² + h²</text>
+  </svg>
+</div>
+
+<Aside type="note" title="Cone-Specific Formulas">
+Just like the cylinder, the circular properties of a cone mean it has precise formulas you need to use:
+* **Base Area:** $\pi r^2$
+* **Curved Surface Area (CSA):** $\pi r l$ (where $l$ is the slant height)
+* **Total Surface Area (TSA):** $\pi r^2 + \pi r l$
+* **Volume:** $\frac{1}{3}\pi r^2 h$
+</Aside>
+
+---
+
+## 3. Spheres and Hemispheres
+
+Spheres are perfectly symmetrical 3D objects. 
+
+* **Volume of a Sphere:**
+  $$
+  V = \frac{4}{3} \pi r^3
+  $$
+* **Surface Area of a Sphere:**
+  $$
+  SA = 4 \pi r^2
+  $$
+
+<div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', margin: '2rem 0' }}>
+  <svg viewBox="0 0 250 250" width="100%" maxWidth="200px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* SPHERE */}
+    {/* 1. FILLS (Bottommost layer) */}
+    <circle cx="125" cy="125" r="100" fill="#a855f7" fill-opacity="0.15" />
+
+    {/* 2. INVISIBLE/DASHED LINES */}
+    <path d="M 225 125 A 100 30 0 0 0 25 125" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="125" y1="125" x2="225" y2="125" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+
+    {/* 3. VISIBLE/SOLID LINES */}
+    <circle cx="125" cy="125" r="100" fill="none" stroke="#7e22ce" stroke-width="2" />
+    <path d="M 25 125 A 100 30 0 0 0 225 125" fill="none" stroke="#7e22ce" stroke-width="2" />
+
+    {/* 4. LABELS & MARKERS */}
+    <circle cx="125" cy="125" r="3" fill="#1e293b" />
+    <text x="175" y="115" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">r</text>
+    <text x="125" y="240" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Sphere</text>
+  </svg>
+
+  <svg viewBox="0 0 250 250" width="100%" maxWidth="200px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* HEMISPHERE */}
+    {/* 1. FILLS (Bottommost layer) */}
+    <path d="M 25 150 A 100 100 0 0 1 225 150 Z" fill="#a855f7" fill-opacity="0.15" />
+    <ellipse cx="125" cy="150" rx="100" ry="30" fill="#a855f7" fill-opacity="0.15" />
+
+    {/* 2. INVISIBLE/DASHED LINES */}
+    <path d="M 225 150 A 100 30 0 0 0 25 150" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="125" y1="150" x2="225" y2="150" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+
+    {/* 3. VISIBLE/SOLID LINES */}
+    <path d="M 25 150 A 100 100 0 0 1 225 150" fill="none" stroke="#7e22ce" stroke-width="2" />
+    <path d="M 25 150 A 100 30 0 0 0 225 150" fill="none" stroke="#ef4444" stroke-width="2" />
+
+    {/* 4. LABELS & MARKERS */}
+    <circle cx="125" cy="150" r="3" fill="#1e293b" />
+    <text x="175" y="140" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">r</text>
+    <text x="125" y="240" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Hemisphere</text>
+  </svg>
+</div>
+
+### The Hemisphere Surface Area Trap
+A hemisphere is exactly half of a sphere. 
+* The **volume** is simply half the volume of a sphere: $\frac{2}{3} \pi r^3$.
+* The **surface area**, however, is a classic exam trap! When you cut a sphere in half, you expose a brand new flat circular base.
+
+<Aside type="caution" title="Hemisphere Total Surface Area">
+Total SA of a solid hemisphere = Curved SA + Flat Base Area
+$$
+\text{Total SA} = (2\pi r^2) + (\pi r^2) = 3\pi r^2
+$$
+Always read the question carefully to check if the hemisphere is "solid" (needs the base area added) or "open/hollow" like a bowl (curved area only).
+</Aside>
+
+---
+
+## 4. Advanced Concepts: Working Backwards & Melting Shapes
+
+Examiners love to test your algebraic skills alongside your geometric knowledge. They will frequently give you the volume or surface area and ask you to **work backwards** to find a missing dimension (like the radius).
+
+Another common scenario is **conservation of volume**, where one shape is melted down to form another. The key here is setting up an equation where $\text{Volume}_{\text{old}} = \text{Volume}_{\text{new}}$.
+
+### Example: Working Backwards
+The surface area of a sphere is $144\pi\text{ cm}^2$. Calculate its radius.
+<Steps>
+1. Write down the surface area formula:
+   $$
+   SA = 4\pi r^2
+   $$
+2. Substitute the known value:
+   $$
+   144\pi = 4\pi r^2
+   $$
+3. Cancel $\pi$ from both sides:
+   $$
+   144 = 4r^2
+   $$
+4. Divide by 4 and square root:
+   $$
+   36 = r^2 \implies r = 6\text{ cm}
+   $$
+</Steps>
+
+### Example: Melting Shapes
+Three identical solid metal spheres, each with a radius of $2\text{ cm}$, are melted down to form a single solid cone with a base radius of $4\text{ cm}$. Calculate the perpendicular height of the cone.
+<Steps>
+1. Calculate the total volume of the 3 spheres:
+   $$
+   \text{Vol}_{\text{spheres}} = 3 \times \left( \frac{4}{3} \pi r^3 \right) = 3 \times \left( \frac{4}{3} \pi \times 2^3 \right) = 4 \pi \times 8 = 32\pi\text{ cm}^3
+   $$
+2. Set this equal to the volume formula of the cone:
+   $$
+   \text{Vol}_{\text{cone}} = \frac{1}{3} \pi r^2 h
+   $$
+   $$
+   32\pi = \frac{1}{3} \pi (4)^2 h
+   $$
+3. Solve for $h$: Cancel $\pi$ and simplify:
+   $$
+   32 = \frac{1}{3} \times 16 \times h
+   $$
+   $$
+   32 = \frac{16h}{3}
+   $$
+   $$
+   96 = 16h \implies h = 6\text{ cm}
+   $$
+</Steps>
+
+---
+
+## 5. Formula Summary Reference
+
+Here is a quick cheat sheet compiling all the essential formulas you need to know for this topic. 
+
+| Shape | Base / Cross-Section Area | Curved Surface Area (CSA) | Total Surface Area (TSA) | Volume |
+| :--- | :--- | :--- | :--- | :--- |
+| **Prism** | Area = $A$ | $\text{Perimeter} \times \text{length}$ | $2A + (\text{Perimeter} \times \text{length})$ | $A \times \text{length}$ |
+| **Cylinder** | $\pi r^2$ | $2\pi r h$ | $2\pi r^2 + 2\pi r h$ | $\pi r^2 h$ |
+| **Pyramid** | Base Area | Sum of slanted faces | Base Area + Sum of slanted faces | $\frac{1}{3} \times \text{Base Area} \times h$ |
+| **Cone** | $\pi r^2$ | $\pi r l$ | $\pi r^2 + \pi r l$ | $\frac{1}{3}\pi r^2 h$ |
+| **Sphere** | N/A | $4\pi r^2$ | $4\pi r^2$ | $\frac{4}{3}\pi r^3$ |
+| **Solid Hemisphere**| $\pi r^2$ | $2\pi r^2$ | $3\pi r^2$ | $\frac{2}{3}\pi r^3$ |
+
+*(Note: $h$ always denotes perpendicular height, and $l$ denotes slant height for cones.)*
+
+---
+
+## Practice Questions
+
+### Section A: Core Skills (Direct Formula Application)
+
+<Tabs>
+  <TabItem label="📝 Question 1: Basic Cylinder (Core)">
+    A solid cylinder has a radius of $5\text{ cm}$ and a height of $12\text{ cm}$. 
+    Calculate:
+    a) Its exact volume.
+    b) Its total surface area (to 1 decimal place).
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Part a - Volume:**
+       $$
+       V = \pi r^2 h = \pi \times 5^2 \times 12 = \pi \times 25 \times 12 = 300\pi\text{ cm}^3
+       $$
+    2. **Part b - Total Surface Area:**
+       $$
+       \text{TSA} = 2\pi r^2 + 2\pi r h
+       $$
+       $$
+       \text{TSA} = 2\pi(5)^2 + 2\pi(5)(12) = 50\pi + 120\pi = 170\pi
+       $$
+       $$
+       170\pi \approx 534.1\text{ cm}^2
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating exact volume and total surface area of cylinders" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Cone & Pythagoras (Core/Extended)">
+    A cone has a base radius of $6\text{ cm}$ and a perpendicular height of $8\text{ cm}$. 
+    Calculate its curved surface area. Give your answer in terms of $\pi$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Identify the missing variable:** The CSA formula is $\pi r l$. We need the slant height ($l$), but we only have perpendicular height ($h$).
+    2. **Use Pythagoras to find $l$:**
+       $$
+       l^2 = r^2 + h^2 = 6^2 + 8^2 = 36 + 64 = 100
+       $$
+       $$
+       l = \sqrt{100} = 10\text{ cm}
+       $$
+    3. **Calculate CSA:**
+       $$
+       \text{CSA} = \pi \times 6 \times 10 = 60\pi\text{ cm}^2
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Using Pythagoras to find slant height and calculating curved surface area of cones" difficulty="IGCSE Extended" client:load />
+
+### Section B: Extended & Advanced Concepts
+
+<Tabs>
+  <TabItem label="📝 Question 3: The Hemisphere Trap (Extended)">
+    A wooden paperweight is made in the shape of a solid hemisphere with a diameter of $14\text{ cm}$. 
+    Calculate the total surface area of the paperweight. Give your answer to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **Find the radius:** Diameter is $14\text{ cm}$, so $r = 7\text{ cm}$.
+    2. **Recall the solid hemisphere formula:** Because it is solid, we must include the flat circular base.
+       $$
+       \text{Total SA} = 3\pi r^2
+       $$
+    3. **Calculate:**
+       $$
+       \text{Total SA} = 3 \times \pi \times 7^2 = 3 \times 49 \times \pi = 147\pi
+       $$
+       $$
+       147\pi \approx 461.814... \implies 462\text{ cm}^2 \text{ (to 3 s.f.)}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating the total surface area of solid hemispheres" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Compound Shapes (Extended)">
+    A silo is made of a cylinder with a hemisphere on top. The overall total height of the silo is $20\text{ m}$ and the base radius is $4\text{ m}$.
+    Calculate the total volume of the silo.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Analyze the dimensions:** The radius of the hemisphere is $4\text{ m}$, which means it takes up $4\text{ m}$ of the total height.
+    2. **Find the cylinder's height:**
+       $$
+       h_{\text{cylinder}} = \text{Total Height} - \text{Hemisphere Radius} = 20 - 4 = 16\text{ m}
+       $$
+    3. **Calculate the Volume of the Cylinder:**
+       $$
+       V_{\text{cylinder}} = \pi r^2 h = \pi \times 4^2 \times 16 = 256\pi\text{ m}^3
+       $$
+    4. **Calculate the Volume of the Hemisphere:**
+       $$
+       V_{\text{hemisphere}} = \frac{2}{3} \pi r^3 = \frac{2}{3} \pi \times 4^3 = \frac{128\pi}{3}\text{ m}^3
+       $$
+    5. **Total Volume:** Add them together.
+       $$
+       \text{Total } V = 256\pi + \frac{128\pi}{3} = \frac{768\pi}{3} + \frac{128\pi}{3} = \frac{896\pi}{3} \approx 938\text{ m}^3 \text{ (to 3 s.f.)}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating the volume of compound 3D shapes" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Working Backwards (Extended)">
+    The volume of a right circular cone is $100\pi\text{ cm}^3$. Its perpendicular height is $12\text{ cm}$.
+    Calculate the base radius of the cone.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+    1. **Set up the volume equation:**
+       $$
+       V = \frac{1}{3} \pi r^2 h
+       $$
+       $$
+       100\pi = \frac{1}{3} \pi r^2 (12)
+       $$
+    2. **Cancel $\pi$ and simplify the right side:**
+       $$
+       100 = \frac{12}{3} r^2 \implies 100 = 4r^2
+       $$
+    3. **Solve for $r$:**
+       $$
+       r^2 = \frac{100}{4} = 25
+       $$
+       $$
+       r = \sqrt{25} = 5\text{ cm}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Working backwards from volume to find missing dimensions of cones" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Melting Shapes (Advanced)">
+    A solid metal cylinder with radius $6\text{ cm}$ and height $15\text{ cm}$ is melted down and recast into identical solid spheres. Each sphere has a radius of $3\text{ cm}$. 
+    How many complete spheres can be made?
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+    1. **Calculate the Volume of the Cylinder:**
+       $$
+       V_{\text{cylinder}} = \pi r^2 h = \pi \times 6^2 \times 15 = 36\pi \times 15 = 540\pi\text{ cm}^3
+       $$
+    2. **Calculate the Volume of ONE Sphere:**
+       $$
+       V_{\text{sphere}} = \frac{4}{3} \pi r^3 = \frac{4}{3} \pi \times 3^3 = \frac{4}{3} \pi \times 27 = 36\pi\text{ cm}^3
+       $$
+    3. **Find the number of spheres:** Divide total volume by the volume of one sphere.
+       $$
+       \text{Number of spheres} = \frac{540\pi}{36\pi} = \frac{540}{36} = 15
+       $$
+       Exactly 15 complete spheres can be made.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Conservation of volume when melting solids into new shapes" difficulty="IGCSE Extended" client:load />

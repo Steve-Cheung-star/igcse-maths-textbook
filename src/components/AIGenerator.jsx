@@ -5,7 +5,13 @@ import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 
-export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
+// 1. ADDED course AND storageKey PROPS HERE
+export default function AIGenerator({ 
+  topic, 
+  difficulty = "Extended", 
+  course = "IGCSE", 
+  storageKey = "igcse_ai_history" 
+}) {
   const [problem, setProblem] = useState('');
   const [solution, setSolution] = useState('');
   const [loading, setLoading] = useState(false);
@@ -14,23 +20,20 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
   const [hasSaved, setHasSaved] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
   
-  // Save Notification State
   const [saveMsg, setSaveMsg] = useState('');
   
-  // For the manual fallback box
   const [showQuickPaste, setShowQuickPaste] = useState(false);
   const [rawInput, setRawInput] = useState('');
 
   const statusMessages = [
     "Connecting to Math Engine...",
-    "Analyzing IGCSE Syllabus...",
+    `Analyzing ${course} Syllabus...`, // Dynamic message
     "Drafting diagram SVGs...",
     "Hardening the difficulty...",
     "Formatting LaTeX expressions...",
     "Almost there..."
   ];
 
-  // 1. Loading Status Effect
   useEffect(() => {
     let interval;
     if (loading) {
@@ -43,7 +46,6 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
     return () => clearInterval(interval);
   }, [loading]);
 
-  // 2. Auto-Parsing Effect (Fallback for the manual text box)
   useEffect(() => {
     if (rawInput.includes("PROBLEM:") && rawInput.includes("SOLUTION:")) {
       parseAndSave(rawInput);
@@ -52,7 +54,8 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
 
   const saveToHistory = (problemText, solutionText) => {
     try {
-      const existingHistory = JSON.parse(localStorage.getItem('igcse_ai_history') || '[]');
+      // 2. UPDATED TO USE storageKey PROP
+      const existingHistory = JSON.parse(localStorage.getItem(storageKey) || '[]');
       const newRecord = {
         id: crypto.randomUUID(),
         date: new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }),
@@ -62,14 +65,13 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
         feedback: solutionText,
         bookmarked: false
       };
-      localStorage.setItem('igcse_ai_history', JSON.stringify([newRecord, ...existingHistory]));
+      localStorage.setItem(storageKey, JSON.stringify([newRecord, ...existingHistory]));
       setHasSaved(true);
     } catch (err) {
       console.error("Failed to save to history:", err);
     }
   };
 
-  // Centralized parsing logic
   const parseAndSave = (textToParse) => {
     const problemMatch = textToParse.match(/PROBLEM:([\s\S]*?)SOLUTION:/i);
     const solutionMatch = textToParse.match(/SOLUTION:([\s\S]*)/i);
@@ -82,20 +84,25 @@ export default function AIGenerator({ topic, difficulty = "IGCSE Extended" }) {
       setSolution(s);
       saveToHistory(p, s);
 
-      // Show the success notification
       setSaveMsg('✅ Question saved to your revision!');
-      setTimeout(() => setSaveMsg(''), 3000); // Hides after 3 seconds
+      setTimeout(() => setSaveMsg(''), 3000); 
 
       setShowQuickPaste(false);
       setRawInput('');
       setError(null);
-      return true; // Success
+      return true; 
     }
-    return false; // Failed to find markers
+    return false; 
   };
 
   const getPromptText = () => {
-    const prompt = `Act as an expert IGCSE Math teacher. Generate one unique ${difficulty} level practice problem about ${topic}. 
+    // 3. ADDED DYNAMIC COURSE LOGIC
+    const isIB = course === 'IB-AISL';
+    const syllabusContext = isIB 
+      ? "Act as an expert IB Mathematics Applications and Interpretation (AI) SL teacher. Focus on real-world contexts, financial maths, and statistical models. Assume the student has a Graphic Display Calculator (GDC). For IB-AISL, if the solution requires a calculation, provide the final answer to 3 significant figures unless specified otherwise."
+      : "Act as an expert IGCSE International Maths (0607) teacher. Focus on algebraic manipulation and geometric reasoning.";
+
+    const prompt = `${syllabusContext} Generate one unique ${difficulty} level practice problem about ${topic}. 
 Use standard LaTeX enclosed ONLY in single $ for ALL math equations. DO NOT use double $$ under any circumstances. 
 
 CRITICAL MATH RULE: 
@@ -121,8 +128,8 @@ Example format:
 | $10 < t \\le 20$ | 22 |
 
 CRITICAL SVG SEQUENCE & RULES: 
-1. Output the opening <svg viewBox="..."> tag with generous padding.
-2. Draw all geometric shapes, lines, and paths.
+1. The very first element inside the <svg> MUST be a white background rectangle: <rect width="100%" height="100%" fill="white" />
+2. Draw all geometric shapes, lines, and paths with generous padding.
 3. Write ALL <text> labels for the math variables. DO NOT use LaTeX inside the SVG. Use plain text and unicode symbols (e.g., x², θ, π).
 4. ONLY AFTER all text is written, output the closing </svg> tag. NEVER place a <text> tag after </svg>.
 5. Do not have any empty lines in between <svg viewBox> and </svg>, make sure each line in between has 2 spaces in the front. 
@@ -189,7 +196,8 @@ SOLUTION:
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ topic, difficulty }),
+        // 4. ALSO PASS THE COURSE TO THE API JUST IN CASE IT NEEDS IT
+        body: JSON.stringify({ topic, difficulty, course }), 
       });
 
       const data = await response.json();
@@ -342,7 +350,7 @@ SOLUTION:
           height: auto;
           display: block;
           margin: 1.5rem auto;
-          background-color: white; 
+          background-color: white !important; 
           border-radius: 8px;
           padding: 1rem;
           box-shadow: inset 0 0 0 1px var(--sl-color-gray-4);
@@ -361,7 +369,6 @@ SOLUTION:
           background: var(--sl-color-gray-5); border-radius: 4px;
         }
 
-        /* NEW TABLE CSS */
         .math-renderer :global(table) {
           width: 100%;
           border-collapse: collapse;
@@ -388,7 +395,7 @@ SOLUTION:
           <span>🤖</span>
           <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>{topic}</span>
         </div>
-        <span className="ai-badge">{difficulty}</span>
+        <span className="ai-badge">{course} | {difficulty}</span>
       </div>
 
       <div className="ai-card-body">
@@ -438,7 +445,6 @@ SOLUTION:
           </div>
         )}
 
-        {/* The Success Notification Banner */}
         {saveMsg && (
           <div style={{ 
             padding: '0.6rem 1rem', 
@@ -491,7 +497,6 @@ SOLUTION:
         {problem && (
           <div className="ai-content-inner">
             <div className="math-renderer">
-              {/* Note: remarkGfm is added here */}
               <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                 {problem}
               </ReactMarkdown>
@@ -503,7 +508,6 @@ SOLUTION:
                   <span>▶</span> Reveal Detailed Solution
                 </summary>
                 <div className="math-renderer" style={{ marginTop: '1rem', background: 'var(--sl-color-bg-nav)', padding: '1.25rem', borderRadius: '8px', borderLeft: '3px solid var(--sl-color-accent-high)' }}>
-                  {/* Note: remarkGfm is added here too */}
                   <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                     {solution}
                   </ReactMarkdown>

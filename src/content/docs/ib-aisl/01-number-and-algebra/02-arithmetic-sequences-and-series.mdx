@@ -1,0 +1,422 @@
+---
+title: 1.2 Arithmetic Sequences and Series
+description: Understand the anatomy of arithmetic sequences, calculate the nth term and sum of series, and apply these models to real-world scenarios in IB Maths AI SL.
+---
+
+Mathematics is often described as the science of patterns. When a pattern of numbers increases or decreases by a constant amount each time, we call it an **arithmetic sequence**. Understanding these sequences allows us to model everything from simple interest in a bank account to the steady depreciation of a car's value.
+
+---
+
+## 1. The Anatomy of an Arithmetic Sequence
+
+An arithmetic sequence is an ordered list of numbers where the difference between any two consecutive terms is always exactly the same.
+
+<Aside type="note" title="The Hierarchy of Sequence Notation">
+To master arithmetic sequences, you must be fluent in the specific notation used in IB Mathematics:
+* **$u_n$**: The value of the $n$th term in the sequence.
+* **$n$**: The position of the term in the sequence (where $n$ is a positive integer: $1, 2, 3, \dots$).
+* **$u_1$**: The first term of the sequence.
+* **$d$**: The common difference between consecutive terms ($d = u_{n+1} - u_n$).
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 160" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Base line */}
+    <line x1="50" y1="110" x2="550" y2="110" stroke="#cbd5e1" stroke-width="2" />
+    
+    {/* Points and Labels */}
+    <circle cx="100" cy="110" r="6" fill="#3b82f6" />
+    <text x="100" y="140" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">u₁</text>
+    <text x="100" y="160" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">First Term</text>
+
+    <circle cx="233" cy="110" r="6" fill="#3b82f6" />
+    <text x="233" y="140" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">u₂</text>
+
+    <circle cx="366" cy="110" r="6" fill="#3b82f6" />
+    <text x="366" y="140" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">u₃</text>
+
+    <circle cx="500" cy="110" r="6" fill="#3b82f6" />
+    <text x="500" y="140" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">u₄</text>
+
+    {/* Jumps (Common Difference) */}
+    <path d="M 110 100 Q 166.5 50 223 100" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="6 4" />
+    <polygon points="223,100 215,93 213,102" fill="#ef4444" />
+    <text x="166.5" y="45" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">+d</text>
+
+    <path d="M 243 100 Q 299.5 50 356 100" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="6 4" />
+    <polygon points="356,100 348,93 346,102" fill="#ef4444" />
+    <text x="299.5" y="45" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">+d</text>
+
+    <path d="M 376 100 Q 433 50 489 100" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="6 4" />
+    <polygon points="489,100 481,93 479,102" fill="#ef4444" />
+    <text x="433" y="45" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">+d</text>
+  </svg>
+</div>
+
+---
+
+## 2. The $n$th Term Formula
+
+To find any term in an arithmetic sequence without listing out all the previous numbers, we use the $n$th term formula. Since you start at $u_1$ and add $d$ for every step you take, reaching the $n$th term requires $(n-1)$ steps.
+
+<Aside type="tip" title="Theorem: The nth Term of an Arithmetic Sequence">
+The formula for the $n$th term is given in your formula booklet as:
+
+$$
+u_n = u_1 + (n-1)d
+$$
+
+</Aside>
+
+<Aside type="caution" title="Common Misconception">
+Students often incorrectly substitute the term value into $n$. Remember, $n$ is always the **position** (e.g., 5th, 10th), while $u_n$ is the actual **value** of the number at that position. $n$ must always be a positive integer!
+</Aside>
+
+---
+
+## 3. Arithmetic Series and Sigma Notation
+
+While a **sequence** is a list of numbers separated by commas, a **series** is the sum of those numbers. If you add up the terms of an arithmetic sequence, you get an arithmetic series.
+
+### The Sum Formulae
+There are two formulae for the sum of the first $n$ terms, denoted as $S_n$. Both are provided in your formula booklet.
+
+**Formula 1 (Use when you know the first term and the common difference):**
+
+$$
+S_n = \frac{n}{2}(2u_1 + (n-1)d)
+$$
+
+**Formula 2 (Use when you know the first and the last term, $u_n$):**
+
+$$
+S_n = \frac{n}{2}(u_1 + u_n)
+$$
+
+### Sigma Notation ($\Sigma$)
+Mathematicians use the uppercase Greek letter Sigma ($\Sigma$) as shorthand to represent a sum. 
+
+<Aside type="note" title="International-Mindedness: Mathematical Alphabets">
+Mathematics is a truly global language, heavily borrowing from the Greek alphabet (like $\Sigma$ for sum, or $\pi$, $\theta$). Historically, the study of sequences and algebra spans cultures. Aryabhatta (born 476 CE in India) is sometimes considered the "father of algebra", although this title is also frequently attributed to the Persian mathematician al-Khawarizmi, whose text *Al-Jabr* gave algebra its modern name.
+</Aside>
+
+When you see sigma notation, it reads as "the sum of":
+
+$$
+\sum_{k=1}^{n} (ak + b)
+$$
+
+<Steps>
+1. **The bottom limit ($k=1$)** tells you the first value to substitute into the expression.
+2. **The top limit ($n$)** tells you the final value to substitute.
+3. You evaluate the expression for every integer from the bottom limit to the top limit, and then add all the results together.
+</Steps>
+
+---
+
+## 4. Working Backwards with Technology
+
+Often in IB exams, you will be given the sum or a specific term and asked to work backwards to find $n$, $u_1$, or $d$. While algebraic manipulation is important, your Graphic Display Calculator (GDC) is a highly efficient tool for these questions.
+
+<SteveTip title="The Danger of nSolve with Quadratics">
+The `nSolve` function on your GDC is fantastic for linear equations, but it **only returns a single solution**. 
+
+When you use the arithmetic sum formula ($S_n$), you are often forming a quadratic equation for $n$. Quadratics can have two valid solutions! If you rely purely on `nSolve`, you might miss a second correct answer. 
+
+For quadratics, it is much safer to rearrange your equation to equal zero and graph it to find all the $x$-intercepts (zeros), or use the built-in Polynomial Root Finder.
+</SteveTip>
+
+---
+
+## 5. Real-World Applications and Approximations
+
+In examinations, arithmetic sequences are frequently applied to real-life contexts. 
+
+### Simple Interest
+Simple interest is a perfect real-world example of an arithmetic sequence. Because the interest is calculated only on the original principal amount, the total amount of money grows by a constant value each year (the common difference, $d$).
+
+### Approximating Real Data
+In reality, data rarely perfectly follows a mathematical model. When given a table of values that roughly increase by a constant amount, you may be asked to model it as an arithmetic sequence.
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Is all knowledge concerned with identification and use of patterns?** Arithmetic sequences are highly predictable linear patterns. But look at Fibonacci numbers ($1, 1, 2, 3, 5, 8...$), found everywhere from the arrangement of leaves to the spirals of galaxies. As humans, we are wired to seek patterns to make sense of the universe. If a pattern (like the golden ratio) appears repeatedly in nature, is the mathematics inventing the pattern, or merely discovering what is already there?
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding the nth Term">
+    An arithmetic sequence has a first term $u_1 = 7$ and a common difference $d = 4$.
+    1. Find the 15th term of the sequence.
+    2. Determine which term in the sequence has a value of 115.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part 1:**
+    Use the $n$th term formula:
+    
+    $$
+    u_n = u_1 + (n-1)d
+    $$
+    
+    Substitute $n=15$, $u_1=7$, and $d=4$:
+    
+    $$
+    u_{15} = 7 + (15-1)4
+    $$
+    
+    $$
+    u_{15} = 7 + (14)(4) = 7 + 56 = 63
+    $$
+
+    **Part 2:**
+    We know $u_n = 115$, and we need to find $n$.
+    
+    $$
+    115 = 7 + (n-1)4
+    $$
+    
+    $$
+    108 = 4(n-1)
+    $$
+    
+    $$
+    27 = n - 1
+    $$
+    
+    $$
+    n = 28
+    $$
+    
+    So, 115 is the 28th term.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the nth term and the position of a term in an arithmetic sequence" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Series and Sigma Notation">
+    Calculate the following sum:
+    
+    $$
+    \sum_{n=1}^{20} (3n + 2)
+    $$
+    
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    First, let's find the first few terms to confirm it is an arithmetic sequence.
+    When $n=1$: $u_1 = 3(1) + 2 = 5$
+    When $n=2$: $u_2 = 3(2) + 2 = 8$
+    When $n=3$: $u_3 = 3(3) + 2 = 11$
+    
+    This is an arithmetic sequence with $u_1 = 5$ and $d = 3$.
+    We need the sum of the first 20 terms ($n=20$). Let's use the sum formula:
+    
+    $$
+    S_{20} = \frac{20}{2} (2(5) + (20-1)3)
+    $$
+    
+    $$
+    S_{20} = 10 (10 + (19)3)
+    $$
+    
+    $$
+    S_{20} = 10 (10 + 57) = 10(67) = 670
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating arithmetic series using sum formulae and sigma notation" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Approximating a Real-World Model">
+    A runner tracks the total distance they run each week. 
+    Week 1: 10 km
+    Week 2: 12.5 km
+    Week 3: 15.2 km
+    Week 4: 17.4 km
+    
+    1. By finding the average difference between consecutive weeks, approximate a common difference $d$ for this sequence.
+    2. Using your rounded $d$ to 1 decimal place, model this as an arithmetic sequence and predict the running distance in Week 10.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part 1:** Find the differences between consecutive terms.
+    $12.5 - 10 = 2.5$
+    $15.2 - 12.5 = 2.7$
+    $17.4 - 15.2 = 2.2$
+    
+    Calculate the average difference:
+    
+    $$
+    \text{Average } d = \frac{2.5 + 2.7 + 2.2}{3} = 2.466...
+    $$
+    
+    Approximate $d \approx 2.5$ km.
+
+    **Part 2:** Model as an arithmetic sequence with $u_1 = 10$ and $d = 2.5$.
+    Find $u_{10}$:
+    
+    $$
+    u_{10} = 10 + (10-1)2.5
+    $$
+    
+    $$
+    u_{10} = 10 + 9(2.5) = 10 + 22.5 = 32.5 \text{ km}
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Modelling real-life data using arithmetic sequences and approximating the common difference" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Working Backwards for a Variable">
+    An arithmetic series has a sum of $770$ for the first $20$ terms. If the common difference is $3$, find the first term $u_1$. 
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **Method 1: Algebraic Solution**
+    Set up the sum formula with the known values ($S_{20} = 770$, $n = 20$, $d = 3$):
+    
+    $$
+    770 = \frac{20}{2} (2u_1 + (20-1)3)
+    $$
+    
+    $$
+    770 = 10 (2u_1 + 57)
+    $$
+    
+    Divide by 10:
+    
+    $$
+    77 = 2u_1 + 57
+    $$
+    
+    $$
+    20 = 2u_1
+    $$
+    
+    $$
+    u_1 = 10
+    $$
+
+    **Method 2: Using TI-Nspire**
+    In a calculator paper, you can jump straight to the answer using nSolve (because this equation is linear with respect to $u_1$):
+    `nSolve(770 = (20/2)*(2*x + 19*3), x)`
+    Result: `10`
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the first term or common difference given the sum of an arithmetic sequence" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Using Technology to find 'n'">
+    An arithmetic sequence begins $14, 18, 22, \dots$ 
+    The sum of the first $n$ terms of this sequence is $1520$. Use technology to find the value of $n$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    First, identify the parameters:
+    $u_1 = 14$
+    $d = 18 - 14 = 4$
+    $S_n = 1520$
+
+    Set up the sum equation:
+    
+    $$
+    1520 = \frac{n}{2}(2(14) + (n-1)4)
+    $$
+    
+    This equation is a quadratic with respect to $n$.
+    
+    **Safe Method:**
+    Set the equation to 0: $0 = \frac{n}{2}(28 + 4n - 4) - 1520$.
+    Graph $f(x) = \frac{x}{2}(4x + 24) - 1520$ and find the positive zero (x-intercept). 
+    
+    **Answer:**
+    $$
+    n = 26
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using GDC to solve quadratic sum equations for the number of terms n" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Given Two Arbitrary Terms">
+    The 4th term of an arithmetic sequence is $17$, and the 10th term is $35$. 
+    Find the first term $u_1$ and the common difference $d$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    We can set up a system of simultaneous equations using the $n$th term formula:
+    
+    $$
+    u_4 = u_1 + 3d = 17
+    $$
+    
+    $$
+    u_{10} = u_1 + 9d = 35
+    $$
+    
+    Subtract the first equation from the second equation:
+    
+    $$
+    (u_1 + 9d) - (u_1 + 3d) = 35 - 17
+    $$
+    
+    $$
+    6d = 18
+    $$
+    
+    $$
+    d = 3
+    $$
+    
+    Substitute $d = 3$ back into the first equation:
+    
+    $$
+    u_1 + 3(3) = 17
+    $$
+    
+    $$
+    u_1 + 9 = 17
+    $$
+    
+    $$
+    u_1 = 8
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the first term and common difference given two arbitrary terms" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Exceeding a Boundary (Using Tables)">
+    An arithmetic sequence is given by $u_n = 3n + 5$.
+    Find the smallest value of $k$ such that $u_k > 100$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **Step 1: Write the inequality statement (Method Mark)**
+    To earn your method marks in the exam, always explicitly write the mathematical statement you are solving:
+    
+    $$
+    3k + 5 > 100
+    $$
+
+    **Step 2: Solve using GDC Table**
+    You can solve this algebraically, but using the Table of Values on your GDC is an excellent strategy. Enter $f(x) = 3x + 5$ and look at the table.
+    
+    To properly justify your answer using a table, you must write down the values *just before* and *just after* the boundary:
+    * When $k = 31$, $u_{31} = 98$
+    * When $k = 32$, $u_{32} = 101$
+
+    **Conclusion:**
+    Since $101$ is the first value strictly greater than $100$, the smallest value is:
+    
+    $$
+    k = 32
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the smallest value of n for which a sequence exceeds a given boundary" />

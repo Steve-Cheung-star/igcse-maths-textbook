@@ -1,0 +1,43 @@
+---
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/Sidebar.astro';
+
+// 1. Check if the current URL is inside the IB section
+const isIB = Astro.url.pathname.includes('/ib-aisl');
+
+// 2. VIP PASS: Check if the teacher mode environment variable is turned on
+// (Astro uses import.meta.env to read variables from your .env file)
+const isTeacher = import.meta.env.PUBLIC_TEACHER_MODE === 'true';
+
+// 3. Grab the sidebar from the MODERN Starlight location (or fallback to props)
+const currentSidebar = Astro.locals.starlightRoute?.sidebar || Astro.props.sidebar || [];
+
+// 4. Filter the sidebar based on your exact config labels
+const filteredSidebar = currentSidebar.filter(item => {
+  // TEACHER MODE: Immediately return true to keep every single folder
+  if (isTeacher) return true;
+  
+  // STUDENT MODE: Filter based on the current URL
+  const folderName = item.label || '';
+  
+  if (isIB) {
+    return folderName.includes('IB Mathematics AI SL');
+  } else {
+    return folderName.includes('IGCSE Mathematics');
+  }
+});
+
+// 5. CRUCIAL STEP for modern Starlight: Overwrite the global locals object directly!
+if (Astro.locals.starlightRoute) {
+  Astro.locals.starlightRoute.sidebar = filteredSidebar;
+}
+
+// 6. Package props for older versions (just in case)
+const newProps = {
+  ...Astro.props,
+  sidebar: filteredSidebar
+};
+---
+
+{/* Render the default sidebar - it will now read the filtered data from locals! */}
+<Default {...newProps} />

@@ -1,0 +1,278 @@
+---
+title: 3.5 Asymptotes
+description: Understand the concept of asymptotes, identify simple examples, and master rational, exponential, and trigonometric boundary lines for IGCSE 0607.
+---
+
+When drawing certain mathematical graphs, you will notice that the curve seems to flatten out and approach an invisible boundary line, getting closer and closer to it but never quite touching it. This invisible boundary line is called an **asymptote**.
+
+In the IGCSE 0607 Extended syllabus, you are not expected to use complex algebra to derive these. Instead, you must understand the concept, identify them visually from a graph or your Graphic Display Calculator (GDC), and know the basic rules for simple functions.
+
+---
+
+## 1. What is an Asymptote?
+
+An asymptote is a straight line that a curve approaches as it heads towards infinity. We always draw asymptotes on a graph using **dashed lines**.
+
+There are two main types you need to identify:
+1. **Vertical Asymptotes:** Lines parallel to the y-axis. They have the equation $x = k$. These usually occur when a function attempts to divide by zero.
+2. **Horizontal Asymptotes:** Lines parallel to the x-axis. They have the equation $y = c$. These describe the "end behaviour" of a graph as $x$ gets extremely large or extremely small.
+
+<SteveTip title="Naming the Lines">
+A very common exam mistake is confusing the equations for horizontal and vertical lines. 
+* A **vertical** line crosses the x-axis, so its equation is always **$x = \text{number}$**. 
+* A **horizontal** line crosses the y-axis, so its equation is always **$y = \text{number}$**.
+</SteveTip>
+
+<SteveTip title="Sketching Asymptotes in Exams">
+Always draw your dashed asymptotes **before** you sketch the rest of the curve, and always use a pencil! A very common way to lose marks is drawing your curve so carelessly that it accidentally crosses over the asymptote, or curls back on itself. Approach the line, but do not touch or cross it!
+</SteveTip>
+
+---
+
+## 2. Rational Functions
+
+Rational functions (fractions with algebra in them) are the most common graphs to feature both horizontal and vertical asymptotes. 
+
+### Vertical Asymptotes (The Denominator Rule)
+A vertical asymptote occurs where a function is undefined. Since you cannot divide by zero in mathematics, simply **set the denominator equal to zero and solve for $x$**.
+
+For the function $f(x) = \frac{1}{x - 2} + 1$:
+* The denominator is $x - 2$.
+* Set it to zero: $x - 2 = 0 \implies x = 2$.
+* The vertical asymptote is the line **$x = 2$**.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="550px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="0" y1="150" x2="400" y2="150" />
+      <polygon points="392,146 400,150 392,154" fill="#cbd5e1" stroke-width="0" />
+      <line x1="100" y1="250" x2="100" y2="0" />
+      <polygon points="96,8 100,0 104,8" fill="#cbd5e1" stroke-width="0" />
+    </g>
+    <text x="385" y="140" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="110" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+    <text x="85" y="165" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
+
+    {/* Math Scale: 1 unit = 30px. Origin at (100, 150) */}
+    {/* Asymptotes at x=2 (pixel 160) and y=1 (pixel 120) */}
+    <line x1="160" y1="0" x2="160" y2="250" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5" />
+    <text x="120" y="25" font-size="12" fill="#f59e0b" font-family="sans-serif" font-weight="bold">x = 2</text>
+    
+    <line x1="0" y1="120" x2="400" y2="120" stroke="#ef4444" stroke-width="2" stroke-dasharray="5 5" />
+    <text x="15" y="112" font-size="12" fill="#ef4444" font-family="sans-serif" font-weight="bold">y = 1</text>
+
+    {/* Left Branch (x from 0 to 158) */}
+    <polyline fill="none" stroke="#3b82f6" stroke-width="3" points={Array.from({ length: 159 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 100) / 30;
+      let mathY = 1 / (mathX - 2) + 1;
+      let pixelY = 150 - mathY * 30;
+      pixelY = Math.max(-50, Math.min(300, pixelY)); // Clamp rendering
+      return `${x},${pixelY}`;
+    }).join(' ')} />
+
+    {/* Right Branch (x from 162 to 400) */}
+    <polyline fill="none" stroke="#3b82f6" stroke-width="3" points={Array.from({ length: 239 }, (_, i) => {
+      const x = i + 162;
+      const mathX = (x - 100) / 30;
+      let mathY = 1 / (mathX - 2) + 1;
+      let pixelY = 150 - mathY * 30;
+      pixelY = Math.max(-50, Math.min(300, pixelY)); // Clamp rendering
+      return `${x},${pixelY}`;
+    }).join(' ')} />
+  </svg>
+</div>
+
+**Functions with Multiple Vertical Asymptotes:**
+If the denominator is a quadratic expression, the function might have *two* vertical asymptotes!
+For example, $g(x) = \frac{5}{x^2 - 9}$. 
+Set $x^2 - 9 = 0$. This gives $x^2 = 9$, which means $x = 3$ or $x = -3$. This graph has two vertical breaks.
+
+### Horizontal Asymptotes (The Ratio Shortcut)
+Horizontal asymptotes look at what happens when $x$ becomes incredibly large (e.g., $1,000,000$). 
+If you have a rational function in the form **$y = \frac{ax + b}{cx + d}$**, as $x$ gets huge, the constants $+b$ and $+d$ become completely insignificant. 
+
+The function behaves like $y = \frac{ax}{cx}$, and the $x$'s cancel out, leaving just the ratio of the coefficients: **$y = \frac{a}{c}$**.
+
+<Aside type="caution" title="The Negative Coefficient Trap">
+Examiners love to scramble the order of the terms. 
+If asked for the horizontal asymptote of $h(x) = \frac{1 - 3x}{x - 2}$, rewrite the numerator so the $x$ is first: $h(x) = \frac{-3x + 1}{x - 2}$. 
+The coefficients are $-3$ and $1$. The horizontal asymptote is $y = \frac{-3}{1}$, which is **$y = -3$**.
+</Aside>
+
+---
+
+## 3. Exponential Asymptotes
+
+Graphs of the form $f(x) = a^x$ (such as $y = 2^x$ or $y = e^x$) do not have vertical asymptotes, but they do have **horizontal asymptotes**.
+
+The basic $y = a^x$ curve approaches the x-axis but never quite touches it, because no power of a positive base will ever truly equal zero. Therefore, a standard exponential function has a horizontal asymptote at **$y = 0$**.
+
+If the graph is vertically translated, the asymptote moves with it. 
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="550px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="0" y1="150" x2="400" y2="150" />
+      <polygon points="392,146 400,150 392,154" fill="#cbd5e1" stroke-width="0" />
+      <line x1="200" y1="250" x2="200" y2="0" />
+      <polygon points="196,8 200,0 204,8" fill="#cbd5e1" stroke-width="0" />
+    </g>
+    <text x="385" y="140" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+    <text x="185" y="165" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
+
+    {/* Math Scale: 1 unit = 20px. Origin at (200, 150) */}
+    {/* Exponential: y = 2^x - 3. Asymptote at y = -3 (Pixel Y = 150 - (-3*20) = 210) */}
+    
+    <line x1="0" y1="210" x2="400" y2="210" stroke="#ef4444" stroke-width="2" stroke-dasharray="5 5" />
+    <text x="15" y="202" font-size="12" fill="#ef4444" font-family="sans-serif" font-weight="bold">y = -3</text>
+
+    {/* Exponential Curve */}
+    <polyline fill="none" stroke="#10b981" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 20;
+      let mathY = Math.pow(2, mathX) - 3;
+      let pixelY = 150 - mathY * 20;
+      pixelY = Math.max(-50, Math.min(300, pixelY)); // Clamp rendering
+      return `${x},${pixelY}`;
+    }).join(' ')} />
+    
+    <text x="260" y="90" font-size="14" font-weight="bold" fill="#047857" font-family="sans-serif">f(x) = 2^x - 3</text>
+  </svg>
+</div>
+
+As seen above, the function $f(x) = 2^x - 3$ has been shifted down by 3 units, so its horizontal asymptote is exactly **$y = -3$**.
+
+---
+
+## 4. Trigonometric Asymptotes
+
+While the sine and cosine graphs are continuous waves, the tangent graph ($f(x) = \tan x$) is very different. Because $\tan x = \frac{\sin x}{\cos x}$, whenever $\cos x = 0$, the tangent function is attempting to divide by zero, creating a recurring pattern of vertical asymptotes.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 420 200" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="0" y1="100" x2="420" y2="100" />
+      <polygon points="412,96 420,100 412,104" fill="#cbd5e1" stroke-width="0" />
+      <line x1="40" y1="200" x2="40" y2="0" />
+      <polygon points="36,8 40,0 44,8" fill="#cbd5e1" stroke-width="0" />
+    </g>
+    <text x="405" y="90" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="48" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+    <text x="25" y="115" font-size="10" fill="#64748b" font-family="sans-serif">0°</text>
+
+    {/* Math Scale: 1 pixel = 1 degree. Origin at (40, 100). y-scale: 30px = 1 unit */}
+    {/* Asymptotes at 90 and 270 (pixels 130 and 310) */}
+    <line x1="130" y1="0" x2="130" y2="200" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="135" y="20" font-size="11" fill="#f59e0b" font-family="sans-serif" font-weight="bold">x = 90°</text>
+    
+    <line x1="310" y1="0" x2="310" y2="200" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="315" y="20" font-size="11" fill="#f59e0b" font-family="sans-serif" font-weight="bold">x = 270°</text>
+
+    {/* Tangent branches */}
+    <polyline fill="none" stroke="#ec4899" stroke-width="3" points={Array.from({ length: 86 }, (_, i) => {
+      const x = i + 40;
+      return `${x},${100 - Math.tan(i * Math.PI / 180) * 30}`;
+    }).join(' ')} />
+    <polyline fill="none" stroke="#ec4899" stroke-width="3" points={Array.from({ length: 171 }, (_, i) => {
+      const x = i + 135;
+      return `${x},${100 - Math.tan((i + 95) * Math.PI / 180) * 30}`;
+    }).join(' ')} />
+    <polyline fill="none" stroke="#ec4899" stroke-width="3" points={Array.from({ length: 86 }, (_, i) => {
+      const x = i + 315;
+      return `${x},${100 - Math.tan((i + 275) * Math.PI / 180) * 30}`;
+    }).join(' ')} />
+  </svg>
+</div>
+
+The $f(x) = \tan x$ graph repeats endlessly. Therefore, its vertical asymptotes exist at **$x = 90^\circ$**, **$x = 270^\circ$**, **$x = 450^\circ$**, and so on.
+
+---
+
+## 5. Checking Asymptotes with your GDC
+
+If you are unsure whether a value is truly a vertical asymptote, you can verify it instantly on your TI-Nspire:
+1. Graph the function.
+2. Press **Menu $\rightarrow$ Trace $\rightarrow$ Graph Trace**.
+3. Type the $x$-value you suspect is the asymptote (e.g., type `2` and press Enter).
+4. If the bottom-right coordinate displays **`undef`** (undefined), you have successfully confirmed your vertical asymptote! 
+*(You can also press **Ctrl + T** to bring up the table and look for `undef` errors next to your $x$-values).*
+
+---
+
+## 6. Practice Problems
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding Horizontal Asymptotes (Shortcut)">
+    State the equation of the horizontal asymptote for the function $f(x) = \frac{6x + 5}{2x - 1}$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    Use the ratio shortcut for rational functions of the form $y = \frac{ax + b}{cx + d}$.
+    The ratio of the $x$ coefficients is $\frac{6}{2}$.
+    $$
+    \begin{aligned}
+    y &= \frac{6}{2} \\
+    y &= 3
+    \end{aligned}
+    $$
+    
+    **Answer:** The horizontal asymptote is the line **$y = 3$**.
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Finding the horizontal asymptote of rational functions using the ratio shortcut" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Two Vertical Asymptotes">
+    Find the equations of the two vertical asymptotes for the graph of $y = \frac{2x}{x^2 - 16}$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    Vertical asymptotes occur where the denominator equals zero.
+    Set the quadratic denominator to zero and solve:
+    $$
+    \begin{aligned}
+    x^2 - 16 &= 0 \\
+    x^2 &= 16 \\
+    x &= \pm 4
+    \end{aligned}
+    $$
+    
+    **Answer:** The vertical asymptotes are **$x = 4$** and **$x = -4$**.
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Finding multiple vertical asymptotes by solving quadratic denominators" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 3: The Coefficient Trap">
+    Write down the equations of both the vertical and horizontal asymptotes for $g(x) = \frac{8 - 5x}{x + 2}$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Vertical Asymptote:** Set denominator to zero.
+    $$x + 2 = 0 \implies x = -2$$
+    
+    **Horizontal Asymptote:** Rewrite the numerator to put the $x$ term first: $\frac{-5x + 8}{x + 2}$.
+    Take the ratio of the coefficients: $y = \frac{-5}{1}$.
+    
+    **Answer:** Vertical: **$x = -2$**, Horizontal: **$y = -5$**.
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Identifying both horizontal and vertical asymptotes of rational functions with scrambled terms" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Exponential Translations">
+    The function $h(x) = 10^x - 4$ is graphed on a calculator. 
+    State the equation of the horizontal asymptote.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    The base exponential function $y = 10^x$ has a horizontal asymptote at $y = 0$.
+    The $- 4$ means the entire graph is translated downwards by 4 units.
+    Therefore, the asymptote is also shifted down by 4 units.
+    
+    **Answer:** The horizontal asymptote is **$y = -4$**.
+  </TabItem>
+</Tabs>
+
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Identifying the horizontal asymptote of exponential functions with vertical translations" difficulty="IGCSE Extended" client:load />

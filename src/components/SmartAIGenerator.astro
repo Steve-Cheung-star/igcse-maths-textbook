@@ -1,0 +1,38 @@
+---
+// Change this line at the very top of SmartAIGenerator.astro
+import AIGenerator from './AIGenerator.jsx';
+
+// 1. Grab the current URL
+const path = Astro.url.pathname;
+
+// 2. Set up our default fallback variables
+let currentCourse = 'General';
+let currentStorageKey = 'general_history';
+let defaultDifficulty = 'General';
+
+// 3. The "Traffic Cop" logic - just add new blocks here as you write new books!
+if (path.includes('/ib-aisl/')) {
+  currentCourse = 'IB Mathematics AI SL';
+  currentStorageKey = 'ib_aisl_math_history';
+  defaultDifficulty = 'IB AI SL';
+} 
+else if (path.includes('/igcse/')) {
+  currentCourse = 'IGCSE';
+  currentStorageKey = 'igcse_math_history';
+  defaultDifficulty = 'IGCSE Extended';
+}
+
+// 4. Grab the unique props passed from the MDX file (like the specific topic)
+// We also allow 'difficulty' to be overwritten manually if a specific question needs it
+const { topic, difficulty = defaultDifficulty, ...rest } = Astro.props;
+---
+
+{/* 5. Render your original component, passing in the automated props! */}
+<AIGenerator 
+  course={currentCourse} 
+  storageKey={currentStorageKey} 
+  topic={topic} 
+  difficulty={difficulty} 
+  client:load 
+  {...rest} 
+/>

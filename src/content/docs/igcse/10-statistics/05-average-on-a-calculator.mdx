@@ -1,0 +1,292 @@
+---
+title: 10.5 Averages on a Calculator
+description: Learn how to efficiently use your Graphic Display Calculator (GDC) to find the mean, median, and quartiles for raw lists of data, discrete frequency tables, and grouped data in IGCSE 0607.
+---
+
+In Cambridge IGCSE 0607, your Graphic Display Calculator (GDC) is your most powerful tool for Paper 4 and Paper 6. When dealing with large sets of data or frequency tables, manually calculating averages is a massive waste of exam time and highly prone to arithmetic errors. You are expected to use your calculator's statistical functions.
+
+<Aside type="note" title="What Your Calculator Can Do">
+By entering your data into the calculator's spreadsheet, it will instantly generate:
+* **The Mean ($\bar{x}$)**
+* **The Total Sum ($\sum x$)**
+* **The Number of Values ($n$)**
+* **The Minimum, Lower Quartile ($Q_1$), Median, Upper Quartile ($Q_3$), and Maximum.**
+</Aside>
+
+---
+
+## 1. Entering Data into the GDC
+
+We will use the **TI-Nspire** as our primary example, as it is the most commonly used GDC for this syllabus. The process relies on the **Lists & Spreadsheet** application.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 250" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+    {/* Calculator Screen Outline */}
+    <rect x="10" y="10" width="480" height="230" fill="white" stroke="#94a3b8" stroke-width="2" rx="4" />
+    
+    {/* Spreadsheet Header Row */}
+    <rect x="10" y="10" width="480" height="30" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1" rx="4" />
+    <text x="30" y="30" font-size="14" font-weight="bold" fill="#1e293b">A</text>
+    <text x="130" y="30" font-size="14" font-weight="bold" fill="#1e293b">B</text>
+    <text x="230" y="30" font-size="14" font-weight="bold" fill="#1e293b">C</text>
+    <text x="380" y="30" font-size="14" font-weight="bold" fill="#1e293b">D</text>
+    
+    {/* Vertical Grid Lines */}
+    <line x1="100" y1="10" x2="100" y2="240" stroke="#cbd5e1" stroke-width="1" />
+    <line x1="200" y1="10" x2="200" y2="240" stroke="#cbd5e1" stroke-width="1" />
+    <line x1="320" y1="10" x2="320" y2="240" stroke="#cbd5e1" stroke-width="1" />
+
+    {/* Naming Row */}
+    <rect x="10" y="40" width="480" height="25" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" />
+    <text x="20" y="57" font-size="12" fill="#0284c7" font-weight="bold">score</text>
+    <text x="120" y="57" font-size="12" fill="#0284c7" font-weight="bold">freq</text>
+
+    {/* Data Rows */}
+    <line x1="10" y1="65" x2="490" y2="65" stroke="#cbd5e1" stroke-width="1" />
+    <text x="20" y="82" font-size="12" fill="#334155">1</text>
+    <text x="120" y="82" font-size="12" fill="#334155">5</text>
+    <text x="210" y="82" font-size="12" fill="#334155">Title</text>
+    <text x="330" y="82" font-size="12" fill="#334155">One-Var</text>
+
+    <line x1="10" y1="90" x2="490" y2="90" stroke="#cbd5e1" stroke-width="1" />
+    <text x="20" y="107" font-size="12" fill="#334155">2</text>
+    <text x="120" y="107" font-size="12" fill="#334155">8</text>
+    <text x="210" y="107" font-size="12" fill="#334155" font-weight="bold">x̄</text>
+    <text x="330" y="107" font-size="12" fill="#334155">2.35</text>
+
+    <line x1="10" y1="115" x2="490" y2="115" stroke="#cbd5e1" stroke-width="1" />
+    <text x="20" y="132" font-size="12" fill="#334155">3</text>
+    <text x="120" y="132" font-size="12" fill="#334155">4</text>
+    <text x="210" y="132" font-size="12" fill="#334155">Σx</text>
+    <text x="330" y="132" font-size="12" fill="#334155">47</text>
+
+    <line x1="10" y1="140" x2="490" y2="140" stroke="#cbd5e1" stroke-width="1" />
+    <text x="20" y="157" font-size="12" fill="#334155">4</text>
+    <text x="120" y="157" font-size="12" fill="#334155">3</text>
+    <text x="210" y="157" font-size="12" fill="#334155">n</text>
+    <text x="330" y="157" font-size="12" fill="#334155">20</text>
+    
+    <line x1="10" y1="165" x2="490" y2="165" stroke="#cbd5e1" stroke-width="1" />
+    <text x="210" y="182" font-size="12" fill="#334155" font-weight="bold">MedianX</text>
+    <text x="330" y="182" font-size="12" fill="#334155">2</text>
+
+    <line x1="10" y1="190" x2="490" y2="190" stroke="#cbd5e1" stroke-width="1" />
+    <text x="210" y="207" font-size="12" fill="#334155" font-weight="bold">Q₃X</text>
+    <text x="330" y="207" font-size="12" fill="#334155">3</text>
+    
+    {/* Highlight Box showing calculation output area */}
+    <rect x="202" y="92" width="285" height="145" fill="none" stroke="#10b981" stroke-width="3" stroke-dasharray="6 4" rx="4" />
+  </svg>
+</div>
+
+### Step-by-Step for a Raw List of Data
+
+The simplest scenario is a raw, unorganised list of numbers. For example, the test scores of 7 students: $12, 15, 8, 14, 15, 9, 20$.
+
+<Steps>
+  1. Open a new **Lists & Spreadsheet** document.
+  2. Go to the very top row (above row 1) and name column A `scores`.
+  3. Enter the 7 numbers straight down column A.
+  4. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **1: One-Variable Statistics**.
+  5. The calculator asks for "Num of Lists". Keep this as **1**.
+  6. A menu will pop up:
+     * **X1 List:** Choose `scores` from the dropdown.
+     * **Frequency List:** Leave this as **1**. (This tells the calculator that each number in your list occurs exactly once).
+  7. Press **OK**. The statistical results will appear in the next empty columns.
+</Steps>
+
+### Step-by-Step for Discrete Data (with a Frequency Table)
+
+Often, data is collected in a frequency table to save space. Imagine a table showing the number of goals scored in 20 football matches.
+
+| Goals ($x$) | Frequency ($f$) |
+| :--- | :--- |
+| $0$ | $3$ |
+| $1$ | $8$ |
+| $2$ | $6$ |
+| $3$ | $3$ |
+
+<Steps>
+  1. Open a new **Lists & Spreadsheet** document.
+  2. Go to the very top row and name column A `goals` and column B `freq`.
+  3. Enter the data: type $0, 1, 2, 3$ down column A, and $3, 8, 6, 3$ down column B.
+  4. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **1: One-Variable Statistics**.
+  5. Keep "Num of Lists" as **1** (we still only have one main variable, which is goals).
+  6. A menu will pop up:
+     * **X1 List:** Choose `goals` (click the arrow and select it from the dropdown).
+     * **Frequency List:** Choose `freq` (this is crucial!).
+  7. Press **OK**. 
+</Steps>
+
+<Aside type="caution" title="The 'Frequency List' Trap">
+If you leave the Frequency List as '1' instead of changing it to your frequency column, the calculator will assume every goal amount only happened exactly once! Your mean will be completely wrong. Always double-check this setting depending on whether you are using a raw list or a frequency table.
+</Aside>
+
+### Reading the Output
+
+Scroll down the results column. You need to recognise the calculator's specific shorthand notation:
+
+* **$\bar{x}$ (x-bar):** This is the **Mean**. 
+* **$n$:** The total frequency ($\sum f$). Use this to check you haven't missed any data!
+* **MedianX:** The **Median**. 
+* **$Q_1X$:** The **Lower Quartile**. 
+* **$Q_3X$:** The **Upper Quartile**. 
+
+<SteveTip title="Finding the IQR">
+The calculator does not explicitly give you the Interquartile Range (IQR). However, it gives you $Q_1$ and $Q_3$. You must manually calculate the IQR by doing: 
+
+$$
+\text{IQR} = Q_3X - Q_1X
+$$
+
+</SteveTip>
+
+---
+
+## 2. Estimating the Mean for Grouped Data
+
+When data is grouped into classes (like $10 < h \le 20$), you **cannot** type "$10 - 20$" into the calculator spreadsheet. The calculator only understands single numerical values. 
+
+To bypass this, you must calculate the **midpoint** of each class and type the midpoints into Column A.
+
+<Aside type="note" title="Terminology: Midpoint vs. Mid-interval">
+In many IGCSE exam questions or textbooks, the "midpoint" is also referred to as the **mid-interval value**. They mean exactly the same thing: the precise middle of a given class width. For example, the mid-interval value of $10 < h \le 20$ is $15$.
+</Aside>
+
+### Step-by-Step for Grouped Continuous Data
+
+A botanist measures the heights ($h$ cm) of 40 plants.
+
+| Height ($h$ cm) | Frequency ($f$) | Midpoint ($x$) |
+| :--- | :--- | :--- |
+| $0 < h \le 10$ | $8$ | **$5$** |
+| $10 < h \le 20$ | $20$ | **$15$** |
+| $20 < h \le 30$ | $12$ | **$25$** |
+
+<Steps>
+  1. Open a new **Lists & Spreadsheet** document.
+  2. Name column A `midpoint` and column B `freq`.
+  3. Enter the midpoints ($5, 15, 25$) down column A.
+  4. Enter the frequencies ($8, 20, 12$) down column B.
+  5. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **1: One-Variable Statistics**.
+  6. Set **X1 List** to `midpoint`.
+  7. Set **Frequency List** to `freq`.
+  8. Press **OK**. 
+</Steps>
+
+Look at the **$\bar{x}$** value. 
+The calculator gives $\bar{x} = 16$. 
+Therefore, the **estimated mean** is $16\text{ cm}$.
+
+<Aside type="tip" title="Why is it an Estimate?">
+Remember from earlier sections: whenever you use grouped data, the mean is only an *estimate*. The calculator is doing the exact same $\frac{\sum fx}{\sum f}$ formula you learned to do manually, using the midpoints as assumptions for the exact values.
+</Aside>
+
+---
+
+## Practice Questions
+
+*Note: For these questions, you must use your Graphic Display Calculator. Do not calculate these manually.*
+
+<Tabs>
+  <TabItem label="📝 Q1: Raw Data List">
+    A runner's sprint times (in seconds) are: 
+    $11.2, 12.0, 10.9, 11.5, 12.1, 11.8, 11.5$
+    
+    Use your GDC to find:
+    a) The mean time
+    b) The median time
+    c) The interquartile range (IQR)
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+      1. Enter the 7 numbers straight down column A (name it `times`).
+      2. Run 1-Var Stats. Set X1 List = `times` and **leave Frequency List as 1**.
+      3. **Mean ($\bar{x}$):** $11.57$ seconds (to 2 d.p.).
+      4. **Median (MedianX):** $11.5$ seconds.
+      5. **Quartiles:** $Q_1X = 11.2$, $Q_3X = 12.0$.
+      6. **IQR:** $12.0 - 11.2 = 0.8$ seconds.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Using a GDC to find statistical measures from a raw data list" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q2: Discrete Data with GDC">
+    A teacher records the scores out of 10 for a spelling test taken by 35 students.
+    
+    | Score | Frequency |
+    | :--- | :--- |
+    | $5$ | $2$ |
+    | $6$ | $5$ |
+    | $7$ | $11$ |
+    | $8$ | $9$ |
+    | $9$ | $6$ |
+    | $10$ | $2$ |
+
+    Use your GDC to find:
+    a) The mean score
+    b) The median score
+    c) The lower and upper quartiles
+    d) The interquartile range
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+      1. Enter the scores in column A (`score`) and frequencies in column B (`freq`).
+      2. Run 1-Var Stats with X1 List = `score` and Frequency List = `freq`.
+      3. **Mean ($\bar{x}$):** $7.54$ (to 3 sig figs).
+      4. **Median (MedianX):** $8$.
+      5. **Lower Quartile ($Q_1X$):** $7$.
+      6. **Upper Quartile ($Q_3X$):** $8$.
+      7. **Interquartile Range:** $Q_3 - Q_1 = 8 - 7 = 1$.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Using a GDC to find mean, median, and quartiles from a discrete frequency table" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q3: Grouped Data with GDC">
+    The times taken ($t$ seconds) for 60 athletes to run a race are recorded below.
+    
+    | Time ($t$ seconds) | Frequency |
+    | :--- | :--- |
+    | $10 \le t < 12$ | $5$ |
+    | $12 \le t < 14$ | $18$ |
+    | $14 \le t < 16$ | $24$ |
+    | $16 \le t < 18$ | $10$ |
+    | $18 \le t < 20$ | $3$ |
+
+    Use your GDC to calculate an estimate for the mean time.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+      1. Find the midpoints (mid-interval values) for each class: $11, 13, 15, 17, 19$.
+      2. Enter the midpoints into column A (`mid`) and frequencies into column B (`f`).
+      3. Run 1-Var Stats with X1 List = `mid` and Frequency List = `f`.
+      4. Look at the $\bar{x}$ output.
+      5. **Estimated Mean ($\bar{x}$):** $14.6$ seconds.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Using a GDC with midpoints to estimate the mean of grouped continuous data" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q4: Large Raw Data List (Extended)">
+    The daily temperatures (in $^\circ\text{C}$) over two weeks are recorded:
+    $22.4, 23.1, 24.0, 21.8, 22.9, 23.5, 25.1, 24.8, 26.0, 25.5, 24.2, 23.8, 22.7, 21.5$
+    
+    Use your GDC to find the mean, median, and interquartile range.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+      1. This is a raw list, so you do not need a frequency column.
+      2. Enter the 14 numbers straight down column A (`temp`).
+      3. Run 1-Var Stats. **Crucial:** Keep the "Frequency List" set to **1** this time!
+      4. **Mean ($\bar{x}$):** $23.66^\circ\text{C}$ (to 4 sig figs).
+      5. **Median (MedianX):** $23.65^\circ\text{C}$.
+      6. **Quartiles:** $Q_1X = 22.7$, $Q_3X = 24.8$.
+      7. **IQR:** $24.8 - 22.7 = 2.1^\circ\text{C}$.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Using a GDC to find statistical measures from a large raw data list" difficulty="IGCSE Extended" client:load />

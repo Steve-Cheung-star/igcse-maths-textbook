@@ -1,0 +1,668 @@
+---
+title: 10.4 Averages and Measures of Spread
+description: Master the calculation of the mean, median, mode, quartiles, and range for individual data, and learn to calculate averages for grouped discrete and continuous data in IGCSE 0607.
+---
+
+When analysing data, we usually want to find two things: a single value that represents the "centre" of the data (an **average**), and a value that tells us how stretched out or consistent the data is (a **measure of spread**).
+
+<Aside type="note" title="The Three Averages">
+* **Mode:** The most frequent value.
+* **Median:** The middle value when the data is in order.
+* **Mean:** The sum of all values divided by the total number of values.
+</Aside>
+
+<SteveTip title="How to Remember Which is Which">
+It is incredibly common to mix these up in an exam! Use these tricks to remember:
+* m**O**de is the m**O**st frequent (both have the letter 'o').
+* med**I**an is the m**I**ddle value (both have the letter 'i').
+* The **Mean** is just plain mean 😈 because I make you do the most arithmetic!
+</SteveTip>
+
+---
+
+## 1. Averages for Individual Data
+
+Let's look at a raw list of data: $4, 7, 2, 7, 9, 10, 3$.
+
+Before doing anything with median or quartiles, **always sort the data into ascending order:**
+$2, 3, 4, 7, 7, 9, 10$
+
+### The Mode
+The **mode** is the number that appears most often. 
+In our list, the number $7$ appears twice, while all others appear once. 
+* **Mode = 7**
+
+### The Median
+The **median** is the exact middle value. Cross off numbers from both ends until you reach the centre.
+$2, 3, 4, \mathbf{7}, 7, 9, 10$
+* **Median = 7**
+
+*(If there are two middle numbers, add them together and divide by 2).*
+
+### The Mean
+To find the **mean** (often represented by $\bar{x}$), add up all the numbers and divide by how many numbers there are.
+
+$$
+\text{Mean} = \frac{2 + 3 + 4 + 7 + 7 + 9 + 10}{7} = \frac{42}{7} = 6
+$$
+
+---
+
+## 2. Measures of Spread: Range and Quartiles
+
+Averages tell you about the centre, but they don't tell you how spread out the numbers are. For that, we use the **range** and the **interquartile range (IQR)**.
+
+<Aside type="tip" title="Range vs. IQR">
+* **Range:** The difference between the largest and smallest values. It is heavily affected by extreme outliers.
+* **Interquartile Range (IQR):** The spread of the middle 50% of the data. It ignores extreme outliers, making it a more reliable measure of consistency.
+</Aside>
+
+### Calculating Quartiles
+Quartiles split the data into four equal parts.
+
+<Steps>
+  1. **Lower Quartile ($Q_1$):** The median of the lower half of the data.
+  2. **Median ($Q_2$):** The middle of the whole data set.
+  3. **Upper Quartile ($Q_3$):** The median of the upper half of the data.
+</Steps>
+
+Using our previous sorted list: $\mathbf{2}, 3, \mathbf{4}, 7, \mathbf{7}, 9, \mathbf{10}$
+* **Minimum** = $2$
+* **$Q_1$ (Lower Quartile)** = $3$ (middle of $2, 3, 4$)
+* **Median** = $7$
+* **$Q_3$ (Upper Quartile)** = $9$ (middle of $7, 9, 10$)
+* **Maximum** = $10$
+
+$$
+\text{Range} = \text{Maximum} - \text{Minimum} = 10 - 2 = 8
+$$
+
+$$
+\text{Interquartile} \ \text{Range} \ \text{(IQR)} = Q_3 - Q_1 = 9 - 3 = 6
+$$
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 200" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Number Line */}
+    <line x1="50" y1="140" x2="550" y2="140" stroke="#64748b" stroke-width="2" />
+    <text x="50" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">2</text>
+    <text x="133" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">4</text>
+    <text x="216" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">6</text>
+    <text x="300" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">8</text>
+    <text x="383" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">10</text>
+    <text x="466" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">12</text>
+
+    {/* Box Plot Elements */}
+    {/* Whiskers */}
+    <line x1="50" y1="90" x2="91" y2="90" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 4" />
+    <line x1="341" y1="90" x2="383" y2="90" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 4" />
+    
+    {/* Whiskers end caps */}
+    <line x1="50" y1="75" x2="50" y2="105" stroke="#0284c7" stroke-width="3" />
+    <line x1="383" y1="75" x2="383" y2="105" stroke="#0284c7" stroke-width="3" />
+
+    {/* The Box (Q1 to Q3) */}
+    <rect x="91" y="60" width="250" height="60" fill="#bae6fd" stroke="#0284c7" stroke-width="3" />
+    
+    {/* Median Line */}
+    <line x1="258" y1="60" x2="258" y2="120" stroke="#0369a1" stroke-width="4" />
+
+    {/* Labels */}
+    <text x="50" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Min</text>
+    <text x="91" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Q1 (3)</text>
+    <text x="258" y="45" font-size="14" font-weight="bold" fill="#0369a1" text-anchor="middle" font-family="sans-serif">Median (7)</text>
+    <text x="341" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Q3 (9)</text>
+    <text x="383" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Max</text>
+    
+    {/* IQR Indicator */}
+    <path d="M 91 180 L 91 190 L 341 190 L 341 180" fill="none" stroke="#ef4444" stroke-width="2" />
+    <text x="216" y="185" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif" background="white">IQR = 6</text>
+  </svg>
+</div>
+
+---
+
+## 3. Using the TI-Nspire Calculator
+
+For IGCSE 0607, you are expected to use your Graphic Display Calculator (GDC) to quickly find these statistics without doing manual arithmetic, especially for large data sets.
+
+<Steps>
+  1. Open a new **Lists & Spreadsheet** document.
+  2. Label the top of column A (e.g., type `data`).
+  3. Enter your numbers down column A.
+  4. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **1: One-Variable Statistics**.
+  5. Set "Num of Lists" to $1$. 
+  6. Choose your `X1 List` as `data` and press OK.
+</Steps>
+
+Your calculator will output a list of variables. The most important ones for this syllabus are:
+* **$\bar{x}$**: The Mean
+* **$n$**: The total number of data values
+* **MinX**: The minimum value
+* **$Q_1X$**: The lower quartile
+* **MedianX**: The median
+* **$Q_3X$**: The upper quartile
+* **MaxX**: The maximum value
+
+---
+
+## 4. Grouped Discrete Data
+
+When discrete data is collected in large amounts, it is often grouped into a frequency table. The data values ($x$) are exact numbers, and the frequency ($f$) tells us how many times that exact number occurs.
+
+### The Mode
+To find the mode from a frequency table, simply look for the row with the highest frequency. 
+
+### Calculating the Mean
+To find the mean, you must multiply each data value by its frequency ($f \times x$) to find the total for that row. Then, sum all the $fx$ values and divide by the total frequency ($\sum f$).
+
+$$
+\text{Mean} = \frac{\sum fx}{\sum f}
+$$
+
+**Example:** The number of pets per household in a street.
+
+| Number of Pets ($x$) | Frequency ($f$) | $f \times x$ |
+| :--- | :--- | :--- |
+| $0$ | $5$ | $0 \times 5 = 0$ |
+| $1$ | $8$ | $1 \times 8 = 8$ |
+| $2$ | $4$ | $2 \times 4 = 8$ |
+| $3$ | $3$ | $3 \times 3 = 9$ |
+| **Totals:** | **$\sum f = 20$** | **$\sum fx = 25$** |
+
+* **Mode:** $1$ pet (it has the highest frequency of $8$).
+* **Mean:**
+
+$$
+\text{Mean} = \frac{25}{20} = 1.25 \ \text{pets}
+$$
+
+<Aside type="caution" title="Common Misconception">
+When dividing to find the mean of a frequency table, always divide by the **Total Frequency** ($\sum f$). A very common mistake is dividing by the number of rows in the table!
+</Aside>
+
+---
+
+## 5. Grouped Continuous Data
+
+Continuous data is grouped into classes or intervals (e.g., $10 < h \le 20$). Because we do not know the exact values inside each interval, we can only calculate an **estimate** of the mean.
+
+### The Modal Class
+We cannot find a single mode. Instead, we find the **modal class** (or modal group)—the interval with the highest frequency.
+
+### Estimating the Mean
+Because the exact values are unknown, we use the **midpoint** ($x$) of each class as a representative value for that entire group.
+
+**Example:** The heights of 40 plants are recorded.
+
+| Height, $h$ (cm) | Frequency ($f$) | Midpoint ($x$) | $f \times x$ |
+| :--- | :--- | :--- | :--- |
+| $0 < h \le 10$ | $8$ | $5$ | $8 \times 5 = 40$ |
+| $10 < h \le 20$ | $20$ | $15$ | $20 \times 15 = 300$ |
+| $20 < h \le 30$ | $12$ | $25$ | $12 \times 25 = 300$ |
+| **Totals:** | **$\sum f = 40$** | | **$\sum fx = 640$** |
+
+* **Modal Class:** $10 < h \le 20$ (it has the highest frequency of $20$).
+* **Estimated Mean:**
+
+$$
+\text{Estimated} \ \text{Mean} = \frac{640}{40} = 16 \ \text{cm}
+$$
+
+---
+
+## 6. Working Backwards (Adding & Removing Data)
+
+These questions test a deeper understanding of averages. They usually involve adding or removing data, or finding an unknown frequency.
+
+### Adding Data to the Mean
+The golden rule is to **always calculate the TOTAL sum of the data first**.
+
+<Aside type="tip" title="The Mean Formula Rearranged">
+
+$$
+\text{Total} \ \text{Sum} = \text{Mean} \times \text{Number} \ \text{of} \ \text{Values}
+$$
+
+</Aside>
+
+**Example: Adding a Value**
+A student's mean score across $4$ tests is $75$. What must they score on their $5$th test to raise their mean to $80$?
+
+<Steps>
+  1. Find the total sum of the first 4 tests:  
+     
+     $$
+     4 \times 75 = 300
+     $$
+     
+  2. Find the total sum needed for 5 tests to have a mean of 80:  
+     
+     $$
+     5 \times 80 = 400
+     $$
+     
+  3. The 5th test must make up the difference:  
+     
+     $$
+     400 - 300 = 100
+     $$
+     
+     *They must score $100$ on their 5th test.*
+</Steps>
+
+### Removing Data from the Mean
+The same logic applies when data is removed. Find the original total, subtract the removed value, and divide by the *new* number of values.
+
+**Example: Removing a Value**
+A group of $6$ friends has a mean height of $160 \text{ cm}$. One friend, who is $180 \text{ cm}$ tall, leaves the group. Calculate the new mean height of the remaining $5$ friends.
+
+<Steps>
+  1. Original total height of 6 friends:  
+     
+     $$
+     6 \times 160 = 960 \text{ cm}
+     $$
+     
+  2. Subtract the friend who left:  
+     
+     $$
+     960 - 180 = 780 \text{ cm}
+     $$
+     
+  3. Divide by the new number of friends (5):  
+     
+     $$
+     \text{New Mean} = \frac{780}{5} = 156 \text{ cm}
+     $$
+     
+</Steps>
+
+### Changing the Median and Mode
+Adding or removing extreme values often drastically shifts the mean, but its effect on the median and mode can be different.
+
+**Example:**
+Consider the data: $2, 4, 4, 5, 8$.
+* **Mode** = $4$
+* **Median** = $4$
+
+If we add two new data points, $8$ and $8$, the new list is: $2, 4, 4, 5, 8, 8, 8$.
+* The **New Mode** is $8$ (it now appears three times).
+* The **New Median** is $5$ (the new middle value).
+
+### Finding a Missing Frequency
+If you are *given* the mean but a frequency is missing from a grouped table, set up a simple linear equation to solve for the missing frequency.
+
+**Example:**
+The table shows the time taken to solve a puzzle. The estimated mean time is $14$ minutes. Find the missing frequency, $y$.
+
+| Time, $t$ (mins) | Frequency ($f$) | Midpoint ($x$) | $f \times x$ |
+| :--- | :--- | :--- | :--- |
+| $0 < t \le 10$ | $5$ | $5$ | $25$ |
+| $10 < t \le 20$ | $y$ | $15$ | $15y$ |
+| $20 < t \le 30$ | $3$ | $25$ | $75$ |
+
+<Steps>
+  1. **Express total frequency ($\sum f$) algebraically:** 
+     $$
+     \sum f = 5 + y + 3 = 8 + y
+     $$
+     
+  2. **Express total $fx$ ($\sum fx$) algebraically:**
+     $$
+     \sum fx = 25 + 15y + 75 = 100 + 15y
+     $$
+     
+  3. **Set up the mean equation and solve for $y$:**
+     $$
+     \frac{100 + 15y}{8 + y} = 14
+     $$
+     
+     Multiply both sides by $(8 + y)$:  
+     
+     $$
+     100 + 15y = 14(8 + y)
+     $$
+     
+     $$
+     100 + 15y = 112 + 14y
+     $$
+     
+     Subtract $14y$ and subtract $100$ from both sides:  
+     
+     $$
+     y = 12
+     $$
+     
+</Steps>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Individual Data Basics">
+    The goals scored by a team in 7 matches are: $1, 0, 3, 2, 2, 0, 2$.
+    
+    Calculate:
+    a) The mode
+    b) The median
+    c) The mean
+    d) The range
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+      1. **Sort the data:** $0, 0, 1, 2, 2, 2, 3$
+      2. **Mode:** $2$ (appears three times).
+      3. **Median:** The middle value is the 4th number. Median = $2$.
+      4. **Mean:** Sum = $0+0+1+2+2+2+3 = 10$.  
+         Mean = $10 \div 7 = 1.43$ (to 2 d.p.).
+      5. **Range:** Max - Min = $3 - 0 = 3$.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating mean, median, mode, and range from a raw list of data" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q2: Finding Quartiles and IQR">
+    A runner's sprint times (in seconds) are: $11.2, 12.0, 10.9, 11.5, 12.1, 11.8, 11.5$.
+    Find the lower quartile, upper quartile, and interquartile range (IQR).
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+      1. **Sort data:** $10.9, 11.2, 11.5, 11.5, 11.8, 12.0, 12.1$
+      2. **Median ($Q_2$):** $11.5$ (the middle number).
+      3. **Lower Quartile ($Q_1$):** Median of the lower half ($10.9, 11.2, 11.5$) = $11.2$.
+      4. **Upper Quartile ($Q_3$):** Median of the upper half ($11.8, 12.0, 12.1$) = $12.0$.
+      5. **IQR:** $Q_3 - Q_1 = 12.0 - 11.2 = 0.8$ seconds.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Finding quartiles and IQR from a small data set" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q3: Grouped Discrete Data">
+    A survey of 40 families asked how many cars they own.
+    
+    | Cars | Frequency |
+    | :--- | :--- |
+    | $0$ | $5$ |
+    | $1$ | $18$ |
+    | $2$ | $12$ |
+    | $3$ | $5$ |
+
+    a) State the mode.
+    b) Calculate the mean number of cars.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+      1. **Mode:** The highest frequency is $18$, corresponding to **$1$ car**.
+      2. **Find $\sum fx$:** * $0 \times 5 = 0$  
+         * $1 \times 18 = 18$  
+         * $2 \times 12 = 24$  
+         * $3 \times 5 = 15$  
+         * $\sum fx = 0 + 18 + 24 + 15 = 57$
+      3. **Calculate Mean:**
+         $$
+         \text{Mean} = \frac{57}{40} = 1.425 \ \text{cars}
+         $$
+         
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating the mean and identifying the mode from a grouped discrete frequency table" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q4: Grouped Continuous Data">
+    The weights ($w$ kg) of 30 suitcases are recorded.
+
+    | Weight ($w$ kg) | Frequency |
+    | :--- | :--- |
+    | $10 < w \le 15$ | $6$ |
+    | $15 < w \le 20$ | $14$ |
+    | $20 < w \le 25$ | $10$ |
+
+    a) Write down the modal class.
+    b) Calculate an estimate for the mean weight.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+      1. **Modal class:** Highest frequency is $14$, so the modal class is **$15 < w \le 20$**.
+      2. **Find midpoints ($x$):** $12.5, 17.5, 22.5$.
+      3. **Calculate $fx$:** * $6 \times 12.5 = 75$  
+         * $14 \times 17.5 = 245$  
+         * $10 \times 22.5 = 225$  
+         * $\sum fx = 75 + 245 + 225 = 545$
+      4. **Estimated Mean:**
+         $$
+         \text{Mean} = \frac{545}{30} = 18.17 \text{ kg (2 d.p.)}
+         $$
+         
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Estimating the mean and identifying the modal class from continuous frequency tables" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q5: Adding Data to Mean">
+    A batsman has a mean score of $42$ runs across $5$ innings. 
+    In his 6th innings, he scores $78$ runs. 
+    Calculate his new mean score.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+      1. Calculate original total runs:  
+         
+         $$
+         5 \times 42 = 210
+         $$
+         
+      2. Add the 6th innings score to find the new total:  
+         
+         $$
+         210 + 78 = 288
+         $$
+         
+      3. Divide by the new number of innings ($6$):  
+         
+         $$
+         \text{New Mean} = \frac{288}{6} = 48 \text{ runs}
+         $$
+         
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating the new mean when additional data is added" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q6: Removing Data from Mean">
+    The mean weight of $8$ boxes is $15 \text{ kg}$. 
+    One box weighing $29 \text{ kg}$ is removed. 
+    Calculate the new mean weight of the remaining $7$ boxes.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+      1. Calculate original total weight:  
+         
+         $$
+         8 \times 15 = 120 \text{ kg}
+         $$
+         
+      2. Subtract the removed box:  
+         
+         $$
+         120 - 29 = 91 \text{ kg}
+         $$
+         
+      3. Divide by the remaining number of boxes ($7$):  
+         
+         $$
+         \text{New Mean} = \frac{91}{7} = 13 \text{ kg}
+         $$
+         
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating the new mean when data is removed" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q7: Changing Median and Mode">
+    A set of data is: $3, 3, 5, 7, 9$.
+    Two new numbers, $9$ and $9$, are added to the data set.
+    State the new median and the new mode.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+      1. The original set is $3, 3, 5, 7, 9$. (Median = $5$, Mode = $3$).
+      2. Add the two new numbers and sort: $3, 3, 5, 7, 9, 9, 9$.
+      3. **New Mode:** The number $9$ now appears three times, making it the most frequent. Mode = **$9$**.
+      4. **New Median:** With 7 numbers, the 4th number is the middle. Median = **$7$**.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Analyzing changes to median and mode when specific data points are added" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q8: Missing Target (Individual Data)">
+    A student's scores on $3$ math tests are $65$, $70$, and $82$. 
+    What must she score on her $4$th test to achieve a mean score of $75$ overall?
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    <Steps>
+      1. Calculate the target total for 4 tests:  
+         
+         $$
+         4 \times 75 = 300
+         $$
+         
+      2. Calculate the sum of the 3 tests already taken:  
+         
+         $$
+         65 + 70 + 82 = 217
+         $$
+         
+      3. Subtract to find the required 4th score:  
+         
+         $$
+         300 - 217 = 83
+         $$
+         
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Working backwards to find a specific data value needed to reach a target mean" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q9: Combining Two Means (Extended)">
+    Class A has $20$ students with a mean test score of $60\%$.
+    Class B has $30$ students with a mean test score of $70\%$.
+    Calculate the overall mean test score for all $50$ students.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    <Steps>
+      1. Find the total marks for Class A:  
+         
+         $$
+         20 \times 60 = 1200
+         $$
+         
+      2. Find the total marks for Class B:  
+         
+         $$
+         30 \times 70 = 2100
+         $$
+         
+      3. Add to find the grand total of marks:  
+         
+         $$
+         1200 + 2100 = 3300
+         $$
+         
+      4. Divide by the total number of students ($50$):  
+         
+         $$
+         \text{Overall Mean} = \frac{3300}{50} = 66\%
+         $$
+         
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Calculating a combined mean from two different groups" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q10: Missing Frequency Equation (Extended)">
+    The table shows the lengths, $L$ cm, of some fish.
+
+    | Length ($L$ cm) | Frequency |
+    | :--- | :--- |
+    | $0 < L \le 10$ | $8$ |
+    | $10 < L \le 20$ | $k$ |
+    | $20 < L \le 30$ | $4$ |
+
+    The estimated mean length is $13 \text{ cm}$. Find the exact value of $k$.
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    <Steps>
+      1. **Midpoints ($x$):** $5, 15, 25$.
+      2. **Calculate $fx$:** * $8 \times 5 = 40$
+         * $k \times 15 = 15k$
+         * $4 \times 25 = 100$
+      3. **Algebraic totals:** * $\sum f = 12 + k$
+         * $\sum fx = 140 + 15k$
+      4. **Set up equation:**
+         $$
+         \frac{140 + 15k}{12 + k} = 13
+         $$
+         
+      5. **Solve for $k$:**
+         $$
+         140 + 15k = 13(12 + k)
+         $$
+         
+         $$
+         140 + 15k = 156 + 13k
+         $$
+         
+         $$
+         2k = 16
+         $$
+         
+         $$
+         k = 8
+         $$
+         
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Setting up and solving algebraic equations for missing frequencies in a grouped mean table" difficulty="IGCSE Extended" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q11: Understanding Spread (Concepts)">
+    Two machines fill bags of sugar. 
+    Machine A produces bags with a mean of $1000\text{g}$ and an IQR of $15\text{g}$.
+    Machine B produces bags with a mean of $1000\text{g}$ and an IQR of $4\text{g}$.
+    Which machine is more reliable? Give a reason.
+  </TabItem>
+  <TabItem label="✅ Solution 11">
+    <Steps>
+      1. **Answer:** Machine B is more reliable.
+      2. **Reason:** Although both have the same mean, Machine B has a much smaller Interquartile Range ($4\text{g}$ compared to $15\text{g}$). A smaller spread indicates that the data is more consistent and clustered tightly around the mean.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Comparing and interpreting measures of spread like Range and IQR" difficulty="IGCSE Core" client:load />
+
+<Tabs>
+  <TabItem label="📝 Q12: Choosing the Best Average">
+    A small company pays 6 employees $20,000 a year, and the CEO is paid $250,000 a year.
+    The CEO claims the "average salary" is very high. 
+    Explain why the median would be a better average to use than the mean in this scenario.
+  </TabItem>
+  <TabItem label="✅ Solution 12">
+    <Steps>
+      1. The CEO is using the **mean**. Because his salary ($250,000) is an extreme outlier, it drags the mean upwards dramatically, making it unrepresentative of what the standard employee actually earns.
+      2. The **median** is a better average because it is not distorted by extreme outliers. It would correctly point to $20,000, which accurately represents the centre of the typical employees' salaries.
+    </Steps>
+  </TabItem>
+</Tabs>
+<AIGenerator course="IGCSE" storageKey="igcse_math_history" topic="Justifying the choice between mean, median, and mode for different real-world scenarios" difficulty="IGCSE Core" client:load />

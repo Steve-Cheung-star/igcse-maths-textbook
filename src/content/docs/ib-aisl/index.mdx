@@ -1,0 +1,73 @@
+---
+title: "IB Math Applications & Interpretation SL"
+description: "Master the IB Math AI SL Syllabus with curated content by Steve Cheung."
+template: splash
+hero:
+  tagline: "Interactive modelling, GDC strategies, and AI-powered practice for IB."
+  image:
+    html: '<div class="hero-math-icon" style="background: linear-gradient(135deg, #10b981, #047857); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border-color: #10b981;">AI SL</div>'
+  actions:
+    - text: Start Learning IB
+      link: /ib-aisl/01-number-and-algebra/01-standard-form/
+      icon: right-arrow
+      variant: primary
+    - text: AI SL Revision
+      link: /ib-aisl/my-revision/
+      icon: rocket
+      variant: minimal
+    - text: Back to IGCSE
+      link: /
+      icon: left-arrow
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import ResumeBanner from '../../../components/ResumeBanner.astro';
+
+<style>{`
+  site-search { display: none !important; }
+  html, body, .page, .main-frame, .main-pane, .content-panel, .sl-container, main, article {
+    background-color: transparent !important;
+  }
+  .main-pane, .content-panel { isolation: auto !important; }
+
+  #ib-hero-bg {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -100; pointer-events: none;
+    background-color: #022c22; /* A dark green theme for IB */
+    transition: background-color 0.3s ease; 
+  }
+  html[data-theme="light"] #ib-hero-bg { background-color: #ecfdf5; }
+
+  #ib-hero-bg::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(rgba(16, 185, 129, 0.08) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(16, 185, 129, 0.08) 1.5px, transparent 1.5px);
+    background-size: 80px 80px;
+  }
+  html[data-theme="light"] #ib-hero-bg::before {
+    background-image: 
+      linear-gradient(rgba(16, 185, 129, 0.15) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(16, 185, 129, 0.15) 1.5px, transparent 1.5px);
+  }
+`}</style>
+
+<div id="ib-hero-bg"></div>
+
+## The IB Learning Experience
+
+<CardGrid stagger>
+    <Card title="Curational Excellence" icon="approve-check">
+        Authoritative content specifically developed for the **IB Math AI SL** curriculum by Steve Cheung.
+    </Card>
+    <Card title="GDC Integration" icon="laptop">
+        Heavy focus on Graphic Display Calculator strategies for statistical analysis and financial modelling.
+    </Card>
+    <Card title="Internal Assessment Prep" icon="document">
+        Develop skills to model real-world data, perfect for brainstorming and structuring your Math IA.
+    </Card>
+    <Card title="Infinite AI Practice" icon="rocket">
+        Utilise our bespoke prompt engine to generate standard-setting Paper 1 and Paper 2 style questions.
+    </Card>
+</CardGrid>
