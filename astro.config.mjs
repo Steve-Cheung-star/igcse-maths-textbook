@@ -19,6 +19,7 @@ export default defineConfig({
         './src/components/SteveTip.astro',
         './src/components/MathPlot.jsx',
         './src/components/SmartAIGenerator.astro',
+        './src/components/FormulaBox.astro',
         {
           '@astrojs/starlight/components': ['Steps', 'Aside', 'Tabs', 'TabItem'],
         },
@@ -40,6 +41,7 @@ export default defineConfig({
         SocialIcons: './src/components/Tracker.astro',
         SiteTitle: './src/components/SiteTitle.astro',
         Sidebar: './src/components/Sidebar.astro',
+        PageTitle: './src/components/PageHeader.astro',
       },
       head: [
         {

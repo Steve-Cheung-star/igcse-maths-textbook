@@ -1,0 +1,26 @@
+---
+import Default from '@astrojs/starlight/components/PageTitle.astro';
+import FormulaBox from './FormulaBox.astro';
+
+const { entry } = Astro.locals.starlightRoute;
+const formula = entry?.data?.formula;
+---
+
+{/* Render the normal Starlight Title first */}
+<Default><slot /></Default>
+
+{/* Add the formula box immediately after the title */}
+{formula && (
+  <div class="header-formula">
+    <FormulaBox title="Key Formula">
+      {formula}
+    </FormulaBox>
+  </div>
+)}
+
+<style>
+  .header-formula {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+</style>

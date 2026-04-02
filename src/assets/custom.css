@@ -55,3 +55,45 @@
   filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.4));
   line-height: 1;
 }
+
+
+/* 1. The Global Reset for Diagrams ONLY */
+/* --- THE STEPS-SAFE TRANSPARENCY FIX --- */
+
+/* We target SVGs inside the content and tabs, but we 
+   DO NOT force 'display: block' or 'margin: auto'.
+   This prevents the <Steps> component from "losing" its list.
+*/
+.sl-markdown-content svg, 
+.math-renderer svg,
+.starlight-tabs__panel svg {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  box-shadow: none !important;
+  max-width: 100% !important;
+  height: auto !important;
+  /* We use vertical padding instead of margins to avoid breaking MDX lists */
+  padding: 0.5rem 0 !important; 
+}
+
+/* --- DARK MODE INVERSION --- */
+[data-theme='dark'] .sl-markdown-content svg,
+[data-theme='dark'] .math-renderer svg,
+[data-theme='dark'] .starlight-tabs__panel svg {
+  filter: invert(1) hue-rotate(180deg) brightness(1.2) !important;
+}
+
+/* --- THE ICON SHIELD (Fixes the disappearing Aside icons) --- */
+.starlight-aside__icon svg,
+.starlight-tabs__nav svg,
+aside svg,
+footer svg {
+  filter: none !important; 
+  display: inline-block !important; 
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+  background: transparent !important;
+  margin: 0 !important;
+}

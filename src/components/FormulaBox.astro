@@ -1,0 +1,77 @@
+---
+interface Props {
+  title?: string;
+  formula?: string; // Optional: if you want to pass the formula as a prop
+}
+
+const { title = "Key Formula", formula } = Astro.props;
+---
+
+<div class="formula-container">
+  <div class="formula-header">
+    <span class="formula-icon">∑</span>
+    <span class="formula-title">{title}</span>
+  </div>
+  <div class="formula-content">
+    {formula ? (
+      <div class="formula-math">
+        $${formula}$$
+      </div>
+    ) : (
+      <slot />
+    )}
+  </div>
+</div>
+
+<style>
+  .formula-container {
+    margin: 2rem 0;
+    border: 2px solid #1e293b;
+    border-left: 6px solid #1e293b;
+    border-radius: 8px;
+    background: #ffffff;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+  }
+
+  .formula-header {
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+  }
+
+  .formula-icon {
+    font-size: 1.25rem;
+    color: #38bdf8; /* Accent colour for math symbol */
+  }
+
+  .formula-content {
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem; /* Slightly larger for "Key" visibility */
+    /* THE PRINTED INK LOOK: */
+    color: #000000 !important; 
+    font-weight: 500;
+  }
+
+  /* Force KaTeX (LaTeX) math to be pure black too */
+  .formula-content :global(.katex) {
+    color: #000000 !important;
+    text-shadow: 0.2px 0 0 #000000; /* Subtle "ink bleed" to make it look printed */
+  }
+
+  /* If you use any normal text labels inside the formula box */
+  .formula-content :global(strong), 
+  .formula-content :global(em) {
+    color: #000000 !important;
+  }
+</style>
