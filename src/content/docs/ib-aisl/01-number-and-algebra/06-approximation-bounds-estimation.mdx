@@ -1,0 +1,233 @@
+---
+title: 1.6 Approximation, Bounds, and Estimation
+description: Understand how to round numbers using decimal places and significant figures, determine the upper and lower bounds of measurements, and calculate percentage errors.
+---
+
+In pure mathematics, an exact answer like $\frac{\pi}{3}$ or $\sqrt{2}$ is often preferred. However, Mathematics: Applications and Interpretation is deeply rooted in the real world. In reality, measurements are never perfectly precise, and it is rarely practical to use infinitely long decimals. 
+
+Whether you are exchanging currency, measuring the dimensions of a building, or estimating the population of a city, you must know how to approximate numbers and, crucially, understand the margin of error introduced by those approximations.
+
+---
+
+## 1. Decimal Places and Significant Figures
+
+When a calculator gives you a long string of digits, you must choose an appropriate degree of accuracy based on the context.
+
+* **Decimal Places (d.p.):** Counting starts from the decimal point. We look at the digit immediately after our desired cut-off to decide whether to round up or keep the digit the same.
+    * *Example:* $3.14159$ rounded to 2 d.p. is $3.14$.
+* **Significant Figures (s.f.):** Counting starts from the first non-zero digit, moving left to right. This method is exceptionally useful because it scales with the size of the number (order of magnitude), which is essential in scientific contexts.
+    * *Example:* $0.00456$ rounded to 2 s.f. is $0.0046$.
+    * *Example:* $12345$ rounded to 3 s.f. is $12300$.
+
+<Aside type="note" title="Real-World Contexts">
+**Currency:** Different currencies have different standard approximations. For example, US Dollars, Euros, and British Pounds are typically rounded to 2 decimal places (the nearest cent or penny). Conversely, the Japanese Yen or Chilean Peso are often rounded to the nearest whole number because their base units have a much smaller relative value.
+</Aside>
+
+---
+
+## 2. Upper and Lower Bounds
+
+Every measurement tool has a limit to its precision. If you use a ruler to measure a line as $4.1 \text{ cm}$ (to one decimal place), the true length could be slightly longer or slightly shorter. 
+
+The true value, $x$, lies within a range defined by an **upper bound** and a **lower bound**. The boundary is halfway between the given degree of accuracy.
+
+### Calculating Bounds
+If a value is rounded to the nearest unit (e.g., 1 d.p., nearest 10, nearest whole number), the bounds are found by adding and subtracting **half of that unit**.
+
+$$
+\text{Lower Bound} \leq \text{True Value} < \text{Upper Bound}
+$$
+
+**Example:** If $x = 4.1$ (rounded to 1 decimal place, meaning the unit is $0.1$):
+* Half the unit is $0.1 \div 2 = 0.05$
+* Lower bound: $4.1 - 0.05 = 4.05$
+* Upper bound: $4.1 + 0.05 = 4.15$
+* Inequality: $4.05 \leq x < 4.15$
+
+---
+
+## 3. Percentage Error and Estimation
+
+When working with scientific measurements or approximations, it is vital to know how inaccurate your data might be. The **percentage error** quantifies how far an approximate (or measured) value is from the exact (or theoretical) value, as a percentage of the exact value.
+
+<FormulaBox title="Percentage Error Formula">
+
+$$
+\varepsilon = \left| \frac{v_A - v_E}{v_E} \right| \times 100\%
+$$
+
+</FormulaBox>
+
+Where $v_E$ is the exact value and $v_A$ is the approximate value of $v$.
+*(Note: The vertical bars $| ... |$ represent the absolute value, meaning your percentage error will always be positive.)*
+
+### Estimation and Reasonableness
+Before you blindly accept an answer from your Graphic Display Calculator (GDC), you should always ask: *"Does this make sense?"*
+* **Physical limitations:** Lengths, areas, and times cannot be negative.
+* **Discrete limits:** You cannot have $4.3$ people or $-2$ cars.
+* **Orders of magnitude:** If you are calculating the distance from London to Paris and your answer is $4000000 \text{ km}$, your calculations are wrong—that is closer to the distance to the moon!
+
+<Aside type="note" title="Theory of Knowledge (TOK) & Aim 8">
+**Is mathematical reasoning different from scientific reasoning?** In pure math, $1 + 1 = 2$ exactly. In science, $1.0\text{ kg} + 1.0\text{ kg} = 2.0\text{ kg} \pm \text{uncertainty}$. Mathematics creates perfect idealizations, but science must grapple with the physical limitations of the real world. 
+
+**Ethical implications of approximation (Aim 8):** Does rounding matter? If an engineer rounds down the load-bearing capacity of a bridge support, it adds a safety margin. If a pharmaceutical company rounds down the side-effect rates of a new drug, it could cost lives. Who decides what degree of accuracy is "acceptable" when public safety is on the line?
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Currency Rounding">
+    Thabo goes to a bank to exchange South African Rand (ZAR) for Japanese Yen (JPY). The bank teller calculates his exchange to be $45678.923 \text{ JPY}$.  
+    a) Round this value to the nearest whole number, as is standard for Japanese Yen.  
+    b) Round the original value to 3 significant figures.  
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a:** Look at the first decimal place ($9$). Since it is $5$ or greater, round up the ones column.  
+    Answer: $45679 \text{ JPY}$  
+
+    **Part b:** The first three significant figures are $4$, $5$, and $6$. The next digit is $7$, so we round the $6$ up to a $7$ and replace the remaining whole numbers with zeros.  
+    Answer: $45700 \text{ JPY}$  
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Rounding numbers to specific decimal places and significant figures in context" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Finding Bounds">
+    A runner's time for a 100m sprint is recorded as $11.4 \text{ seconds}$, rounded to 1 decimal place.  
+    Write down the upper and lower bounds of the runner's true time, $t$, in the form $a \leq t < b$.  
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    The value is rounded to the nearest $0.1 \text{ seconds}$.  
+    Half of this unit is $0.1 \div 2 = 0.05 \text{ seconds}$.  
+    
+    * **Lower Bound:** $11.4 - 0.05 = 11.35$  
+    * **Upper Bound:** $11.4 + 0.05 = 11.45$  
+    
+    The inequality is:  
+    $$
+    11.35 \leq t < 11.45
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Determining upper and lower bounds of rounded measurements" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Maximum Percentage Error">
+    Zola measures the radius of a circle to be $2.5 \text{ cm}$, rounded to 1 decimal place. She uses this measurement to calculate the area of the circle.  
+    a) Calculate the expected area based on her measurement.  
+    b) Find the upper bound of the radius.  
+    c) Calculate the maximum percentage error in the calculated area due to this measurement limitation.  
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part a:** The expected area uses the measured radius $v_A = 2.5$.  
+    $$
+    \text{Area} = \pi \times 2.5^2 = 6.25\pi \approx 19.635 \text{ cm}^2
+    $$  
+
+    **Part b:** The radius is rounded to 1 d.p. (nearest $0.1$). Half of this is $0.05$.  
+    The upper bound of the radius is $2.5 + 0.05 = 2.55 \text{ cm}$.  
+    *(Note: The lower bound is $2.45 \text{ cm}$).* **Part c:** To find the maximum percentage error, we must see which bound creates the largest difference from the expected area.  
+    
+    Max possible area using upper bound:   
+    $$\text{Area}_{\text{max}} = \pi \times 2.55^2 = 6.5025\pi \approx 20.428 \text{ cm}^2$$  
+    
+    Min possible area using lower bound:  
+    $$\text{Area}_{\text{min}} = \pi \times 2.45^2 = 6.0025\pi \approx 18.857 \text{ cm}^2$$  
+
+    Difference using max area: $|20.428 - 19.635| = 0.793$  
+    Difference using min area: $|18.857 - 19.635| = 0.778$  
+    
+    The maximum absolute error occurs at the upper bound. Now apply the percentage error formula, treating the "expected" area as $v_E$ and the "max" area as $v_A$:  
+    
+    $$
+    \varepsilon = \left| \frac{20.428 - 19.635}{19.635} \right| \times 100\%
+    $$  
+    
+    $$
+    \varepsilon \approx 4.04\%
+    $$  
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating percentage errors and measurement limitations using bounds" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Estimation and Reasonableness">
+    Kofi is solving a physics problem to find the total time it takes for a ball thrown off a cliff to hit the ground. His algebraic calculation results in a quadratic equation, and his calculator gives two answers for time, $t$:  
+    $t = -2.4 \text{ seconds}$ and $t = 8.1 \text{ seconds}$.  
+    Explain which answer is reasonable and why the other must be rejected.  
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    The answer $t = 8.1 \text{ seconds}$ is reasonable.   
+    The answer $t = -2.4 \text{ seconds}$ must be rejected because time cannot be a negative value in this physical context. While the mathematical equation produces two valid algebraic roots, the real-world constraints of the situation limit the domain of the answer to $t \geq 0$.  
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating the reasonableness of mathematical answers based on physical constraints" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Integrating Bounds and Area Error">
+    Narantuya is laying new flooring in her rectangular living room. She measures the length as $5.2 \text{ m}$ and the width as $3.8 \text{ m}$, with both measurements rounded to 1 decimal place.  
+    a) Calculate her estimated area of the room.  
+    b) Write down the lower and upper bounds for both the length and the width.  
+    c) Calculate the maximum possible percentage error in her area calculation.  
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **Part a:** Use the measured values directly.  
+    $$\text{Area} = 5.2 \times 3.8 = 19.76 \text{ m}^2$$  
+
+    **Part b:** Both are rounded to the nearest $0.1 \text{ m}$. The margin is $\pm 0.05 \text{ m}$.  
+    * Length bounds: $5.15 \leq L < 5.25$  
+    * Width bounds: $3.75 \leq W < 3.85$  
+
+    **Part c:** Find the extreme possible areas.  
+    Max Area $= 5.25 \times 3.85 = 20.2125 \text{ m}^2$  
+    Min Area $= 5.15 \times 3.75 = 19.3125 \text{ m}^2$  
+
+    Check which yields the largest absolute difference from the expected $19.76 \text{ m}^2$:  
+    Upper difference $= |20.2125 - 19.76| = 0.4525$  
+    Lower difference $= |19.3125 - 19.76| = 0.4475$  
+
+    The maximum error occurs with the upper bound area. Apply the percentage error formula:  
+    $$
+    \varepsilon = \left| \frac{20.2125 - 19.76}{19.76} \right| \times 100\%
+    $$  
+    
+    $$
+    \varepsilon \approx 2.29\%
+    $$  
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying upper and lower bounds to calculate maximum percentage error in 2D shapes" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Integrating Estimation, Models, and Error">
+    Tenzin models the population growth of an endangered insect colony using the equation $P = 1200 \times 1.4^t$, where $t$ is the time in weeks. He wishes to estimate the population at $t = 3.5 \text{ weeks}$.  
+    a) Calculate the estimated population at $t = 3.5 \text{ weeks}$, rounding your answer to the nearest whole number because population is discrete.  
+    b) A team of biologists conducts an exact field count at $3.5 \text{ weeks}$ and finds the true population is $4050$. Calculate the percentage error of Tenzin's estimation.  
+    c) Tenzin solves his equation for when the population was $500$ and gets $t \approx -2.6 \text{ weeks}$. Is this a mathematically reasonable result? Briefly explain why.  
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **Part a:** Substitute $t = 3.5$ into the model.  
+    $$P = 1200 \times 1.4^{3.5} \approx 3896.76$$  
+    Rounded to the nearest whole number: $3897$ insects.  
+
+    **Part b:** Here, $v_A = 3897$ and the exact value $v_E = 4050$.  
+    $$
+    \varepsilon = \left| \frac{3897 - 4050}{4050} \right| \times 100\%
+    $$  
+    
+    $$
+    \varepsilon = \left| \frac{-153}{4050} \right| \times 100\% \approx 3.78\%
+    $$  
+
+    **Part c:** Yes, $t = -2.6$ is reasonable. A negative time value simply represents a point in time $2.6 \text{ weeks}$ *before* the start of the current model ($t=0$). Unlike a problem asking for "time taken" (which must be positive), a timeline model can extend backwards into the past.  
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Integrating population modeling, discrete estimation, and percentage error calculation" />

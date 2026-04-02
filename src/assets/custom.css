@@ -57,43 +57,49 @@
 }
 
 
-/* 1. The Global Reset for Diagrams ONLY */
-/* --- THE STEPS-SAFE TRANSPARENCY FIX --- */
-
-/* We target SVGs inside the content and tabs, but we 
-   DO NOT force 'display: block' or 'margin: auto'.
-   This prevents the <Steps> component from "losing" its list.
-*/
-.sl-markdown-content svg, 
-.math-renderer svg,
+/* --- 1. THE CONTENT DIAGRAMS (Parabolas, etc.) --- */
+/* We target the diagrams but AVOID the 'svg' tag alone to stay safe */
+.sl-markdown-content > svg, 
+.sl-markdown-content > div > svg,
 .starlight-tabs__panel svg {
   background: transparent !important;
-  background-color: transparent !important;
   border: none !important;
-  backdrop-filter: none !important;
-  box-shadow: none !important;
-  max-width: 100% !important;
-  height: auto !important;
-  /* We use vertical padding instead of margins to avoid breaking MDX lists */
-  padding: 0.5rem 0 !important; 
+  max-width: 100%;
+  height: auto;
+  /* Use padding instead of margin to avoid breaking <Steps> */
+  padding: 1rem 0;
 }
 
-/* --- DARK MODE INVERSION --- */
-[data-theme='dark'] .sl-markdown-content svg,
-[data-theme='dark'] .math-renderer svg,
+/* Apply inversion ONLY to these specific content-level diagrams */
+[data-theme='dark'] .sl-markdown-content > svg,
+[data-theme='dark'] .sl-markdown-content > div > svg,
 [data-theme='dark'] .starlight-tabs__panel svg {
   filter: invert(1) hue-rotate(180deg) brightness(1.2) !important;
 }
 
-/* --- THE ICON SHIELD (Fixes the disappearing Aside icons) --- */
-.starlight-aside__icon svg,
-.starlight-tabs__nav svg,
+/* --- 2. THE SQUARE ROOT & MATH FIX --- */
+/* This stops KaTeX/MathJax from being hit by the inversion 'ghost' */
+.katex, .math, .math-display, .katex-display {
+  filter: none !important;
+  color: currentColor !important;
+}
+
+/* Specifically protect the SVG paths used for square roots */
+.katex svg, .math svg, .katex-display svg {
+  filter: none !important;
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  width: auto !important; /* Prevents the symbol from collapsing */
+  display: inline-block !important;
+}
+
+/* --- 3. THE UI ICON SHIELD (Aside Icons) --- */
+.starlight-aside__icon svg, 
 aside svg,
-footer svg {
-  filter: none !important; 
-  display: inline-block !important; 
-  width: 1.25rem !important;
-  height: 1.25rem !important;
-  background: transparent !important;
-  margin: 0 !important;
+.starlight-tabs__nav svg {
+  filter: none !important;
+  fill: currentColor !important;
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  display: inline-block !important;
 }

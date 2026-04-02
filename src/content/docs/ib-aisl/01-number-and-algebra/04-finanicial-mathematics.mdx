@@ -1,0 +1,486 @@
+---
+title: 1.4 Financial Mathematics
+description: Explore the financial applications of geometric sequences, including compound interest, depreciation, regular annuities, loan amortisation, and the effects of inflation on investments.
+---
+
+In previous sections, we saw how simple interest acts as an arithmetic sequence, adding a constant amount of money to an investment each year. However, in the real world, most financial systems operate on **compound interest**, where you earn interest on your initial investment *and* on the interest you have already accumulated. This creates a snowball effect, modelling a **geometric sequence**.
+
+Understanding these mathematical models is not just for passing examinations; it is the foundation of personal financial literacy, from saving for retirement to taking out a mortgage.
+
+<Aside type="note" title="International-Mindedness: Perspectives on Interest">
+Do all societies view investment and interest in the same way? While Western financial systems are heavily built around earning and paying interest, Islamic finance principles strictly prohibit the charging or receiving of interest (*riba*), viewing it as exploitative. Instead, Islamic banking operates on profit-and-loss sharing models. Mathematics gives us the tools to model different systems, but cultural and ethical values determine how those systems are applied.
+</Aside>
+
+---
+
+## 1. Compound Interest
+
+When interest is compounded, the value of the investment is multiplied by a constant percentage increase. If interest is paid once a year, it is a straightforward geometric sequence. However, banks often compound interest multiple times a year (half-yearly, quarterly, or monthly). 
+
+<FormulaBox title="The Compound Interest Formula">
+
+$$
+FV = PV \times \left(1 + \frac{r}{100k}\right)^{kn}
+$$
+
+</FormulaBox>
+
+<Aside type="note" title="The Anatomy of the Finance Formula">
+You must know what each variable represents in your formula booklet:
+* **$FV$**: Future Value (the final amount of money).
+* **$PV$**: Present Value (the initial investment or principal).
+* **$r$**: The nominal annual interest rate (as a percentage, e.g., use 5 for $5\%$, not $0.05$, because the formula divides by 100).
+* **$n$**: The number of years the money is invested.
+* **$k$**: The number of compounding periods per year (Yearly $k=1$, Half-yearly $k=2$, Quarterly $k=4$, Monthly $k=12$).
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid lines */}
+    <line x1="50" y1="200" x2="550" y2="200" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="50" y1="50" x2="50" y2="200" stroke="#cbd5e1" stroke-width="2" />
+    
+    {/* Labels */}
+    <text x="300" y="235" font-size="14" font-weight="bold" fill="#64748b" text-anchor="middle" font-family="sans-serif">Time (Years)</text>
+    <text x="20" y="125" font-size="14" font-weight="bold" fill="#64748b" text-anchor="middle" font-family="sans-serif" transform="rotate(-90 20,125)">Value</text>
+    
+    {/* Simple Interest (Linear) */}
+    <path d="M 50 180 L 150 160 L 250 140 L 350 120 L 450 100 L 550 80" fill="none" stroke="#3b82f6" stroke-width="3" stroke-dasharray="6 4" />
+    <text x="500" y="65" font-size="12" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Simple (Arithmetic)</text>
+
+    {/* Compound Interest (Exponential/Geometric) */}
+    <path d="M 50 180 Q 250 170 350 140 T 550 40" fill="none" stroke="#10b981" stroke-width="3" />
+    <text x="450" y="30" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Compound (Geometric)</text>
+
+    {/* Points for Compound */}
+    <circle cx="50" cy="180" r="5" fill="#10b981" />
+    <circle cx="150" cy="173" r="5" fill="#10b981" />
+    <circle cx="250" cy="162" r="5" fill="#10b981" />
+    <circle cx="350" cy="140" r="5" fill="#10b981" />
+    <circle cx="450" cy="100" r="5" fill="#10b981" />
+    <circle cx="550" cy="40" r="5" fill="#10b981" />
+  </svg>
+</div>
+
+---
+
+## 2. Annual Depreciation
+
+Assets like cars, computers, and factory machinery lose value over time. This loss of value is called **depreciation**. It behaves exactly like compound interest, but instead of growing, the value decays by a constant percentage each year.
+
+<FormulaBox title="Annual Depreciation">
+
+$$
+FV = PV \times \left(1 - \frac{r}{100}\right)^n
+$$
+
+</FormulaBox>
+
+Notice that the plus sign has simply become a minus sign. The multiplier will be a decimal between $0$ and $1$, representing the percentage of value that the asset *retains* each year.
+
+---
+
+## 3. Real Value and Inflation
+
+When you invest money, the numerical amount in your bank account grows. However, the cost of living (goods, services, groceries) also usually increases over time. This is known as **inflation**. 
+
+If your bank account grows by $3\%$ a year, but inflation is $5\%$ a year, your money is actually losing **purchasing power**. The **real value** of an investment takes both the interest rate and the inflation rate into account.
+
+<Steps>
+1. Calculate the Future Value ($FV$) of the investment using the standard compound interest formula or your TVM solver.
+2. Treat the inflation rate as a form of depreciation on the purchasing power of that money.
+3. Multiply the $FV$ by $(1 - \frac{\text{inflation rate}}{100})^n$ to find the "real value" of the money in today's terms.
+</Steps>
+
+---
+
+## 4. Technology: The Financial Solver
+
+While you must understand the algebraic formulas, IB examinations heavily encourage the use of the Financial Packages (TVM Solver - Time Value of Money) built into your Graphics Display Calculator (GDC). This is absolutely essential when dealing with annuities (regular payments) or loan amortisation, where doing the calculations by hand is excessively complex.
+
+Crucially, **you can also use the TVM solver for simple lump-sum investments or depreciation (non-payment scenarios)** by simply setting the payment (`PMT`) parameter to zero.
+
+<SteveTip title="GDC Financial App Variables & Sign Conventions">
+When using the Finance Solver on your TI-Nspire or Casio, you must explicitly write down the values you are inputting onto your exam paper to receive method marks. 
+
+**CRITICAL: The Sign Convention (+/-)**
+Your GDC treats money as cash flows. 
+* **Outflow (Negative):** Money leaving your pocket (e.g., depositing a lump sum into a bank, making a loan payment).
+* **Inflow (Positive):** Money entering your pocket (e.g., receiving a loan from the bank, withdrawing a final balance).
+
+**The Parameters:**
+* **N**: Total number of compounding periods (Years $\times$ $k$).
+* **I%**: Annual interest rate (enter as a regular number, e.g., 5. For depreciation, enter as a negative rate, e.g., -15).
+* **PV**: Present Value (usually negative for investments, positive for loans).
+* **PMT**: Payment. **Set this to $0$ for single lump-sum non-payment scenarios**. Use negative values for regular loan repayments or regular savings.
+* **FV**: Future Value.
+* **P/Y** & **C/Y**: Payments per year and Compounding periods per year (usually set to $k$).
+</SteveTip>
+
+### Annuities (Regular Savings)
+An annuity is a series of equal payments made at regular intervals. Instead of investing a single lump sum, you might deposit a set amount every month. You use the **PMT** parameter in your TVM solver to model this.
+
+### Loans and Amortisation
+When you take out a loan (a positive **PV** because the bank gives you money), you must make regular repayments (a negative **PMT** because you are giving money back). Over time, the outstanding balance decreases. This process of paying off a debt over time in regular instalments is called **amortisation**.
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Comparing Compounding Periods (Non-Payment)">
+    Priya has 5000 ZAR (South African Rand) to invest for 4 years. She is considering two different banking options:
+    * **Option A:** $3.5\%$ nominal annual interest, compounded yearly.
+    * **Option B:** $3.4\%$ nominal annual interest, compounded monthly.
+    
+    a) Calculate the future value of the investment under Option A.  
+    b) Calculate the future value of the investment under Option B.  
+    c) Determine which option yields a higher return and state the difference.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a: Option A (Yearly)**
+    
+    *Method 1: Algebraic Formula*
+    
+    $$
+    FV_A = 5000 \times \left(1 + \frac{3.5}{100}\right)^4 \approx 5737.62 \text{ ZAR}
+    $$
+    
+    *Method 2: TVM Solver* (Lump sum, so PMT = 0)
+    * **N** = $4$
+    * **I%** = $3.5$
+    * **PV** = $-5000$
+    * **PMT** = $0$
+    * **FV** = ? *(Solving gives $5737.62$)*
+    * **P/Y** = $1$
+    * **C/Y** = $1$
+
+    **Part b: Option B (Monthly)**
+    
+    *Method 1: Algebraic Formula*
+    
+    $$
+    FV_B = 5000 \times \left(1 + \frac{3.4}{100 \times 12}\right)^{12 \times 4}
+    $$
+    
+    $$
+    FV_B = 5000 \times \left(1 + \frac{3.4}{1200}\right)^{48} \approx 5726.85 \text{ ZAR}
+    $$
+    
+    *Method 2: TVM Solver*
+    * **N** = $48$
+    * **I%** = $3.4$
+    * **PV** = $-5000$
+    * **PMT** = $0$
+    * **FV** = ? *(Solving gives $5726.85$)*
+    * **P/Y** = $12$
+    * **C/Y** = $12$
+
+    **Part c:** Option A yields a higher return.
+    Difference $= 5737.62 - 5726.85 = 10.77 \text{ ZAR}$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing compound interest investments using both formulas and TVM solver" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Moving a Lump Sum (Non-Payment)">
+    Mateo invests 1,500,000 JPY (Japanese Yen) into an account paying $4\%$ nominal annual interest, compounded quarterly. 
+    After 3 years, he withdraws the entire amount and reinvests it into a new high-yield bond that pays $4.5\%$ nominal annual interest, compounded monthly, for a further 2 years.
+    
+    a) Calculate the value of the investment at the end of the first 3 years.  
+    b) Calculate the final value of Mateo's investment at the end of the entire 5-year period.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **Part a:** Calculate the Future Value after the first 3 years.
+    
+    *Method 1: Formula*
+    
+    $$
+    FV_1 = 1500000 \times \left(1 + \frac{4}{400}\right)^{12} \approx 1690237.40 \text{ JPY}
+    $$
+    
+    *Method 2: TVM Solver*
+    * **N** = $12$
+    * **I%** = $4$
+    * **PV** = $-1500000$
+    * **PMT** = $0$
+    * **FV** = ? *(Solving gives $1690237.40$)*
+    * **P/Y** = $4$
+    * **C/Y** = $4$
+
+    **Part b:** The Future Value from Part a becomes the *new* Present Value for the next 2 years.
+    
+    *Method 1: Formula*
+    
+    $$
+    FV_2 = 1690237.40 \times \left(1 + \frac{4.5}{1200}\right)^{24} \approx 1849204.60 \text{ JPY}
+    $$
+    
+    *Method 2: TVM Solver*
+    * **N** = $24$
+    * **I%** = $4.5$
+    * **PV** = $-1690237.40$
+    * **PMT** = $0$
+    * **FV** = ? *(Solving gives $1849204.60$)*
+    * **P/Y** = $12$
+    * **C/Y** = $12$
+    
+    The final value is 1,849,204.60 JPY.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating compound interest across different terms using formulas and TVM solver" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Inflation and Purchasing Power">
+    Yuki invests 15000 EUR (Euros) in a fixed-term bond that pays an annual compound interest rate of $5\%$ for 8 years. During this 8-year period, the average annual rate of inflation is projected to be $2.5\%$.
+    
+    a) Calculate the future value of the investment at the end of the 8 years.  
+    b) Calculate the real value of the investment, taking inflation into account.  
+    c) Calculate the actual percentage increase in Yuki's purchasing power over the 8 years.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part a:** Find the nominal future value using TVM solver:
+    * **N** = $8$
+    * **I%** = $5$
+    * **PV** = $-15000$
+    * **PMT** = $0$
+    * **FV** = ? *(Solving gives $22161.83$)*
+    * **P/Y** = $1$
+    * **C/Y** = $1$
+
+    The value is 22,161.83 EUR.
+
+    **Part b:** To find the real value, depreciate the future value by the inflation rate ($2.5\%$). 
+    
+    *Method 1: Formula*
+    
+    $$
+    \text{Real Value} = 22161.83 \times \left(1 - \frac{2.5}{100}\right)^{8} \approx 18098.71 \text{ EUR}
+    $$
+    
+    *Method 2: TVM Solver (Treat inflation as a negative interest rate)*
+    * **N** = $8$
+    * **I%** = $-2.5$
+    * **PV** = $-22161.83$
+    * **PMT** = $0$
+    * **FV** = ? *(Solving gives $18098.71$)*
+    * **P/Y** = $1$
+    * **C/Y** = $1$
+
+    **Part c:** Compare the real value to the original 15000 EUR to find the percentage increase:
+    
+    $$
+    \text{Percentage Increase} = \frac{18098.71 - 15000}{15000} \times 100 \approx 20.7\%
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the real value of an investment adjusting for inflation via formula and TVM solver" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Depreciation of Hardware">
+    A technology start-up purchases a cutting-edge server rack for 80,000 AED (UAE Dirham). Hardware depreciates at a rapid rate of $18\%$ per year.
+    
+    a) Calculate the value of the server rack after 4 years.  
+    b) Using your GDC, find the minimum number of full years it will take for the server rack's value to drop below 20,000 AED.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **Part a:** *Method 1: Formula*
+    
+    $$
+    FV = 80000 \times \left(1 - \frac{18}{100}\right)^4 = 80000 \times (0.82)^4 \approx 36169.73 \text{ AED}
+    $$
+    
+    *Method 2: TVM Solver*
+    * **N** = $4$
+    * **I%** = $-18$ (Negative for depreciation)
+    * **PV** = $-80000$ (Initial cost)
+    * **PMT** = $0$
+    * **FV** = ? *(Solving gives $36169.73$)*
+    * **P/Y** = $1$
+    * **C/Y** = $1$
+
+    **Part b:** *Method 1: Inequality & Table*
+    
+    $$
+    80000 \times (0.82)^n < 20000
+    $$
+    
+    Graphing $y = 80000 \times 0.82^x$, at $n=6, y \approx 24320$ and at $n=7, y \approx 19943$.
+    
+    *Method 2: TVM Solver*
+    * **N** = ? *(Solving gives $6.98$)*
+    * **I%** = $-18$
+    * **PV** = $-80000$
+    * **PMT** = $0$
+    * **FV** = $20000$
+    * **P/Y** = $1$
+    * **C/Y** = $1$
+    
+    It will take 7 full years for the value to definitively drop below 20,000 AED.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating annual depreciation using geometric formula and TVM solver" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Finding Unknown Interest Rate (I%)">
+    Lars invests 20,000 SEK (Swedish Krona) into a long-term savings account. He wants his investment to grow to exactly 30,000 SEK in 6 years. The bank compounds interest monthly.
+    
+    a) Write down the parameters required in a GDC Financial Solver to find the interest rate.  
+    b) Calculate the nominal annual interest rate required for Lars to reach his goal, giving your answer to two decimal places.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **Part a & b:** We use the TVM solver to find the unknown interest rate ($I\%$). Lars makes a single initial deposit (outflow), so PV is negative, and PMT is zero.
+    * **N** = $72$ (6 years $\times$ 12 months)
+    * **I%** = ? *(Solving gives $6.7725...$)*
+    * **PV** = $-20000$ 
+    * **PMT** = $0$ (Non-payment scenario)
+    * **FV** = $30000$ (Positive, as it is returned to him)
+    * **P/Y** = $12$
+    * **C/Y** = $12$
+    
+    The required nominal annual interest rate is $6.77\%$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the TVM solver to calculate the required nominal annual interest rate for an investment" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Loan Repayment & Teacher Despair">
+    Mr. Cheung takes out a loan of 25,000 AUD (Australian Dollars) to buy a life-sized, motorised model of the solar system for his classroom, hoping it will finally help his student, Kieran Green, discover gravity 2.0. The bank charges a nominal annual interest rate of $6.5\%$, compounded monthly. Mr. Cheung agrees to repay the loan over 5 years with equal monthly instalments.
+    
+    a) Use a GDC Financial Solver to calculate Mr. Cheung's monthly repayment amount.  
+    b) Calculate the total amount of money he will pay to the bank over the 5 years.  
+    c) Calculate the total amount of interest Mr. Cheung will pay on this loan.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **Part a:** Using the TVM Solver. The loan is money given *to* Mr. Cheung initially, so it is a positive PV. He is paying it back regularly, so PMT will be negative.
+    * **N** = $60$ (5 years $\times$ 12 months)
+    * **I%** = $6.5$
+    * **PV** = $25000$ (Inflow)
+    * **PMT** = ? *(Solving gives $-489.154...$)*
+    * **FV** = $0$ (The goal is to pay the loan down to zero)
+    * **P/Y** = $12$
+    * **C/Y** = $12$
+    
+    The monthly repayment is 489.15 AUD.
+
+    **Part b:** Total amount paid over 5 years:
+    
+    $$
+    \text{Total Paid} = 489.15 \times 60 = 29349.00 \text{ AUD}
+    $$
+
+    **Part c:** The interest is the extra money paid on top of the original loan amount:
+    
+    $$
+    \text{Interest} = 29349.00 - 25000 = 4349.00 \text{ AUD}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the TVM solver to calculate regular loan repayments and total interest paid" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Complex Loans & Refinancing">
+    The Silva family takes out a 300,000 NZD (New Zealand Dollars) mortgage to buy a home. The mortgage is modelled over 25 years at a nominal annual rate of $5.2\%$, compounded monthly.
+    
+    a) Calculate the regular monthly repayment required.  
+    b) After exactly 10 years of regular payments, calculate the outstanding balance remaining on the mortgage.  
+    c) At this 10-year mark, the family decides to refinance the remaining balance. They secure a new lower nominal annual rate of $4.1\%$, compounded monthly, for the remaining 15 years. Calculate their new monthly repayment.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **Part a:** Use the TVM Solver for the original mortgage.
+    * **N** = $300$ (25 years $\times$ 12)
+    * **I%** = $5.2$
+    * **PV** = $300000$
+    * **PMT** = ? *(Solving gives $-1788.825...$)*
+    * **FV** = $0$
+    * **P/Y** = $12$
+    * **C/Y** = $12$
+    
+    The monthly payment is 1,788.83 NZD.
+
+    **Part b:** To find the outstanding balance after 10 years, we find the Future Value of the loan at month 120. Keep the exact PMT from part (a) in your calculator.
+    * **N** = $120$
+    * **I%** = $5.2$
+    * **PV** = $300000$
+    * **PMT** = $-1788.83$ 
+    * **FV** = ? *(Solving gives $-223298.53...$)*
+    * **P/Y** = $12$
+    * **C/Y** = $12$
+    
+    The negative sign indicates the amount still owed. The outstanding balance is 223,298.53 NZD.
+
+    **Part c:** We now set up a brand new loan scenario for the remaining 15 years, using the outstanding balance as the new PV.
+    * **N** = $180$ (15 years $\times$ 12)
+    * **I%** = $4.1$
+    * **PV** = $223298.53$
+    * **PMT** = ? *(Solving gives $-1663.267...$)*
+    * **FV** = $0$ (Paying it off)
+    * **P/Y** = $12$
+    * **C/Y** = $12$
+    
+    Their new monthly repayment drops to 1,663.27 NZD.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating outstanding loan balances and refinancing mortgages with new interest rates using TVM" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Establishing a Goal Fund (Unknown PMT)">
+    Mei decides to start a fund to save up for a vintage motorcycle. She deposits money at the end of every month into an account paying $3.8\%$ nominal annual interest, compounded monthly. She wants to have exactly 6,000 CHF (Swiss Francs) at the end of 3 years.
+    
+    a) Write down the parameters required for the GDC Financial Solver.  
+    b) Calculate the required monthly deposit Mei must make to reach this goal.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **Part a & b:** We set the FV to the desired target and solve for the required regular payment (PMT).
+    * **N** = $36$ (3 years $\times$ 12)
+    * **I%** = $3.8$
+    * **PV** = $0$ (Starting from zero)
+    * **PMT** = ? *(Solving gives $-157.733...$)*
+    * **FV** = $6000$ (Positive, as it's the cash she will withdraw)
+    * **P/Y** = $12$
+    * **C/Y** = $12$
+    
+    The negative value indicates a cash outflow. Mei must deposit 157.73 CHF each month.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating required monthly deposits to reach a specific financial goal using TVM" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Annuities (Finding Unknown Time)">
+    Aarav deposits 5,000 INR (Indian Rupee) at the end of each month into a retirement fund. The fund pays a nominal annual interest rate of $7.5\%$, compounded monthly. Aarav wishes to accumulate exactly 1,000,000 INR.
+    
+    a) Use a GDC Financial Solver to find the minimum number of full months required to reach his goal.  
+    b) State how many full years and months this corresponds to.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **Part a:** Use the TVM Solver, noting that the monthly deposits are outflows (negative) and the final desired amount is an inflow (positive).
+    * **N** = ? *(Solving gives $130.134...$)*
+    * **I%** = $7.5$
+    * **PV** = $0$ 
+    * **PMT** = $-5000$ 
+    * **FV** = $1000000$ 
+    * **P/Y** = $12$
+    * **C/Y** = $12$
+    
+    Since Aarav only makes deposits at the end of full months, $130$ months will not be quite enough to reach 1,000,000 INR. He must wait for the $131^{\text{st}}$ month. 
+    The minimum number of full months is $131$.
+
+    **Part b:** Convert $131$ months into years and months:
+    
+    $$
+    131 \div 12 = 10 \text{ years with a remainder of } 11
+    $$
+    
+    This corresponds to 10 years and 11 months.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using TVM to find the unknown number of time periods for regular annuity savings" />

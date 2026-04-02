@@ -57,16 +57,15 @@ To master arithmetic sequences, you must be fluent in the specific notation used
 
 ## 2. The $n$th Term Formula
 
-To find any term in an arithmetic sequence without listing out all the previous numbers, we use the $n$th term formula. Since you start at $u_1$ and add $d$ for every step you take, reaching the $n$th term requires $(n-1)$ steps.
+To find any term in an arithmetic sequence without listing out all the previous numbers, we use the $n$th term formula. Since you start at $u_1$ and add $d$ for every step you take, reaching the $n$th term requires $(n-1)$ steps. The formula for the $n$th term is given in your formula booklet.
 
-<Aside type="tip" title="Theorem: The nth Term of an Arithmetic Sequence">
-The formula for the $n$th term is given in your formula booklet as:
+<FormulaBox title="The nth Term of an Arithmetic Sequence">
 
 $$
 u_n = u_1 + (n-1)d
 $$
 
-</Aside>
+</FormulaBox>
 
 <Aside type="caution" title="Common Misconception">
 Students often incorrectly substitute the term value into $n$. Remember, $n$ is always the **position** (e.g., 5th, 10th), while $u_n$ is the actual **value** of the number at that position. $n$ must always be a positive integer!
@@ -78,20 +77,23 @@ Students often incorrectly substitute the term value into $n$. Remember, $n$ is 
 
 While a **sequence** is a list of numbers separated by commas, a **series** is the sum of those numbers. If you add up the terms of an arithmetic sequence, you get an arithmetic series.
 
-### The Sum Formulae
 There are two formulae for the sum of the first $n$ terms, denoted as $S_n$. Both are provided in your formula booklet.
 
-**Formula 1 (Use when you know the first term and the common difference):**
+<FormulaBox title="The Sum of an Arithmetic Series (Using Common Difference)">
 
 $$
 S_n = \frac{n}{2}(2u_1 + (n-1)d)
 $$
 
-**Formula 2 (Use when you know the first and the last term, $u_n$):**
+</FormulaBox>
+
+<FormulaBox title="The Sum of an Arithmetic Series (Using Last Term)">
 
 $$
 S_n = \frac{n}{2}(u_1 + u_n)
 $$
+
+</FormulaBox>
 
 ### Sigma Notation ($\Sigma$)
 Mathematicians use the uppercase Greek letter Sigma ($\Sigma$) as shorthand to represent a sum. 
@@ -149,11 +151,12 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
 <Tabs>
   <TabItem label="📝 Question 1: Finding the nth Term">
     An arithmetic sequence has a first term $u_1 = 7$ and a common difference $d = 4$.
-    1. Find the 15th term of the sequence.
-    2. Determine which term in the sequence has a value of 115.
+    
+    a) Find the 15th term of the sequence.  
+    b) Determine which term in the sequence has a value of $115$.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    **Part 1:**
+    **Part a:**
     Use the $n$th term formula:
     
     $$
@@ -170,8 +173,8 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
     u_{15} = 7 + (14)(4) = 7 + 56 = 63
     $$
 
-    **Part 2:**
-    We know $u_n = 115$, and we need to find $n$.
+    **Part b:**
+    We know $u_n = 115$, and we need to find the position $n$.
     
     $$
     115 = 7 + (n-1)4
@@ -189,7 +192,7 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
     n = 28
     $$
     
-    So, 115 is the 28th term.
+    So, $115$ is the 28th term.
   </TabItem>
 </Tabs>
 
@@ -197,20 +200,25 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
 
 <Tabs>
   <TabItem label="📝 Question 2: Series and Sigma Notation">
-    Calculate the following sum:
+    Consider the following series:
     
     $$
     \sum_{n=1}^{20} (3n + 2)
     $$
     
+    a) Find the first term, $u_1$, and the common difference, $d$.  
+    b) Calculate the sum of the series.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    First, let's find the first few terms to confirm it is an arithmetic sequence.
-    When $n=1$: $u_1 = 3(1) + 2 = 5$
-    When $n=2$: $u_2 = 3(2) + 2 = 8$
-    When $n=3$: $u_3 = 3(3) + 2 = 11$
+    **Part a:**
+    First, find the first few terms by substituting $n$:
+    * When $n=1$: $u_1 = 3(1) + 2 = 5$
+    * When $n=2$: $u_2 = 3(2) + 2 = 8$
+    * When $n=3$: $u_3 = 3(3) + 2 = 11$
     
-    This is an arithmetic sequence with $u_1 = 5$ and $d = 3$.
+    This shows an arithmetic sequence with $u_1 = 5$ and a common difference $d = 3$.
+
+    **Part b:**
     We need the sum of the first 20 terms ($n=20$). Let's use the sum formula:
     
     $$
@@ -224,7 +232,6 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
     $$
     S_{20} = 10 (10 + 57) = 10(67) = 670
     $$
-    
   </TabItem>
 </Tabs>
 
@@ -232,31 +239,32 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
 
 <Tabs>
   <TabItem label="📝 Question 3: Approximating a Real-World Model">
-    A runner tracks the total distance they run each week. 
-    Week 1: 10 km
-    Week 2: 12.5 km
-    Week 3: 15.2 km
-    Week 4: 17.4 km
+    A runner tracks the total distance they run each week:
+    * Week 1: 10 km
+    * Week 2: 12.5 km
+    * Week 3: 15.2 km
+    * Week 4: 17.4 km
     
-    1. By finding the average difference between consecutive weeks, approximate a common difference $d$ for this sequence.
-    2. Using your rounded $d$ to 1 decimal place, model this as an arithmetic sequence and predict the running distance in Week 10.
+    a) Calculate the differences between the running distances of consecutive weeks.  
+    b) By finding the average difference, approximate a common difference $d$ for this sequence, rounding to 1 decimal place.  
+    c) Model this as an arithmetic sequence using your rounded $d$ to predict the running distance in Week 10.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    **Part 1:** Find the differences between consecutive terms.
-    $12.5 - 10 = 2.5$
-    $15.2 - 12.5 = 2.7$
-    $17.4 - 15.2 = 2.2$
-    
+    **Part a:** Find the differences between consecutive terms:
+    * $12.5 - 10 = 2.5$
+    * $15.2 - 12.5 = 2.7$
+    * $17.4 - 15.2 = 2.2$
+
+    **Part b:**
     Calculate the average difference:
     
     $$
     \text{Average } d = \frac{2.5 + 2.7 + 2.2}{3} = 2.466...
     $$
     
-    Approximate $d \approx 2.5$ km.
+    Rounding to 1 decimal place, $d \approx 2.5$ km.
 
-    **Part 2:** Model as an arithmetic sequence with $u_1 = 10$ and $d = 2.5$.
-    Find $u_{10}$:
+    **Part c:** Model as an arithmetic sequence with $u_1 = 10$ and $d = 2.5$. Find $u_{10}$:
     
     $$
     u_{10} = 10 + (10-1)2.5
@@ -265,7 +273,6 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
     $$
     u_{10} = 10 + 9(2.5) = 10 + 22.5 = 32.5 \text{ km}
     $$
-    
   </TabItem>
 </Tabs>
 
@@ -273,15 +280,21 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
 
 <Tabs>
   <TabItem label="📝 Question 4: Working Backwards for a Variable">
-    An arithmetic series has a sum of $770$ for the first $20$ terms. If the common difference is $3$, find the first term $u_1$. 
+    An arithmetic series has a sum of $770$ for the first $20$ terms. The common difference is $3$.
+    
+    a) Formulate an equation for the sum of the first 20 terms in terms of the first term, $u_1$.  
+    b) Hence, find the value of $u_1$.
   </TabItem>
   <TabItem label="✅ Solution 4">
-    **Method 1: Algebraic Solution**
+    **Part a:**
     Set up the sum formula with the known values ($S_{20} = 770$, $n = 20$, $d = 3$):
     
     $$
     770 = \frac{20}{2} (2u_1 + (20-1)3)
     $$
+
+    **Part b:**
+    Solve algebraically for $u_1$:
     
     $$
     770 = 10 (2u_1 + 57)
@@ -300,11 +313,8 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
     $$
     u_1 = 10
     $$
-
-    **Method 2: Using TI-Nspire**
-    In a calculator paper, you can jump straight to the answer using nSolve (because this equation is linear with respect to $u_1$):
-    `nSolve(770 = (20/2)*(2*x + 19*3), x)`
-    Result: `10`
+    
+    *Exam Tip: In a calculator paper, you can use the numerical solve function on your GDC (e.g., `nSolve`) for linear equations like this to save time.*
   </TabItem>
 </Tabs>
 
@@ -313,27 +323,29 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
 <Tabs>
   <TabItem label="📝 Question 5: Using Technology to find 'n'">
     An arithmetic sequence begins $14, 18, 22, \dots$ 
-    The sum of the first $n$ terms of this sequence is $1520$. Use technology to find the value of $n$.
+    The sum of the first $n$ terms of this sequence is $1520$. 
+    
+    a) Write down the common difference, $d$.  
+    b) Formulate an equation for the sum of the first $n$ terms equal to $1520$.  
+    c) Use technology to find the value of $n$.
   </TabItem>
   <TabItem label="✅ Solution 5">
-    First, identify the parameters:
-    $u_1 = 14$
-    $d = 18 - 14 = 4$
-    $S_n = 1520$
+    **Part a:**
+    $d = 18 - 14 = 4$. We also have $u_1 = 14$ and $S_n = 1520$.
 
-    Set up the sum equation:
+    **Part b:**
+    Set up the sum equation substituting the known parameters:
     
     $$
     1520 = \frac{n}{2}(2(14) + (n-1)4)
     $$
     
     This equation is a quadratic with respect to $n$.
+
+    **Part c:**
+    **Safe GDC Method:** Set the equation to 0: $0 = \frac{n}{2}(28 + 4n - 4) - 1520$.
+    Graph $f(x) = \frac{x}{2}(4x + 24) - 1520$ and find the positive zero (x-intercept), or use the Polynomial Root Finder.
     
-    **Safe Method:**
-    Set the equation to 0: $0 = \frac{n}{2}(28 + 4n - 4) - 1520$.
-    Graph $f(x) = \frac{x}{2}(4x + 24) - 1520$ and find the positive zero (x-intercept). 
-    
-    **Answer:**
     $$
     n = 26
     $$
@@ -344,11 +356,15 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
 
 <Tabs>
   <TabItem label="📝 Question 6: Given Two Arbitrary Terms">
-    The 4th term of an arithmetic sequence is $17$, and the 10th term is $35$. 
-    Find the first term $u_1$ and the common difference $d$.
+    The 4th term of an arithmetic sequence is $17$, and the 10th term is $35$.
+    
+    a) Write down two simultaneous equations relating $u_1$ and $d$.  
+    b) Solve these equations to find the value of $d$ and the value of $u_1$.  
+    c) Calculate the sum of the first 15 terms.
   </TabItem>
   <TabItem label="✅ Solution 6">
-    We can set up a system of simultaneous equations using the $n$th term formula:
+    **Part a:**
+    We set up a system of simultaneous equations using the $n$th term formula ($u_n = u_1 + (n-1)d$):
     
     $$
     u_4 = u_1 + 3d = 17
@@ -357,8 +373,9 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
     $$
     u_{10} = u_1 + 9d = 35
     $$
-    
-    Subtract the first equation from the second equation:
+
+    **Part b:**
+    Subtract the first equation from the second equation to eliminate $u_1$:
     
     $$
     (u_1 + 9d) - (u_1 + 3d) = 35 - 17
@@ -385,32 +402,48 @@ In reality, data rarely perfectly follows a mathematical model. When given a tab
     $$
     u_1 = 8
     $$
+
+    **Part c:**
+    Now find $S_{15}$ with $u_1 = 8$ and $d = 3$:
+    
+    $$
+    S_{15} = \frac{15}{2}(2(8) + (15-1)3)
+    $$
+    
+    $$
+    S_{15} = 7.5(16 + 14 \times 3)
+    $$
+    
+    $$
+    S_{15} = 7.5(16 + 42) = 7.5(58) = 435
+    $$
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Finding the first term and common difference given two arbitrary terms" />
 
 <Tabs>
-  <TabItem label="📝 Question 7: Exceeding a Boundary (Using Tables)">
+  <TabItem label="📝 Question 7: Exceeding a Boundary">
     An arithmetic sequence is given by $u_n = 3n + 5$.
-    Find the smallest value of $k$ such that $u_k > 100$.
+    
+    a) Write down an inequality representing $u_k > 100$.  
+    b) By evaluating the sequence, state the values of $u_{31}$ and $u_{32}$.  
+    c) Hence, state the smallest value of $k$ such that $u_k > 100$.
   </TabItem>
   <TabItem label="✅ Solution 7">
-    **Step 1: Write the inequality statement (Method Mark)**
-    To earn your method marks in the exam, always explicitly write the mathematical statement you are solving:
+    **Part a:**
+    Substitute the $u_n$ rule into the inequality to earn method marks:
     
     $$
     3k + 5 > 100
     $$
 
-    **Step 2: Solve using GDC Table**
-    You can solve this algebraically, but using the Table of Values on your GDC is an excellent strategy. Enter $f(x) = 3x + 5$ and look at the table.
-    
-    To properly justify your answer using a table, you must write down the values *just before* and *just after* the boundary:
-    * When $k = 31$, $u_{31} = 98$
-    * When $k = 32$, $u_{32} = 101$
+    **Part b:**
+    You can solve this algebraically, but evaluating or using the Table of Values on your GDC is an excellent strategy. Enter $f(x) = 3x + 5$ and look at the table to find the boundary values:
+    * When $k = 31$, $u_{31} = 3(31) + 5 = 98$
+    * When $k = 32$, $u_{32} = 3(32) + 5 = 101$
 
-    **Conclusion:**
+    **Part c:**
     Since $101$ is the first value strictly greater than $100$, the smallest value is:
     
     $$

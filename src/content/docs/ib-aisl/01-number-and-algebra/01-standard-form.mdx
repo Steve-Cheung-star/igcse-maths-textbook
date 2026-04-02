@@ -154,88 +154,340 @@ $$
 ## Practice Questions
 
 <Tabs>
-  <TabItem label="📝 Question 1: Basic Conversion">
-    Write the following numbers in standard form:
-    1. $453,000,000$
-    2. $0.00000819$
+  <TabItem label="📝 Question 1: Basic Conversions & Adjustments">
+    a) Write $453,000,000$ in standard form.  
+    b) Write $0.00000819$ in standard form.  
+    c) A student evaluated an expression and wrote their final answer as $73.4 \times 10^5$. Correct this into proper standard form.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. The decimal point moves 8 places to the left:
+    **Part a:**
+    The decimal point moves 8 places to the left:
     
     $$
     4.53 \times 10^8
     $$
     
-    2. The decimal point moves 6 places to the right:
+    **Part b:**
+    The decimal point moves 6 places to the right:
     
     $$
     8.19 \times 10^{-6}
     $$
     
+    **Part c:**
+    The mantissa $73.4$ is greater than $10$. We must divide it by $10$ (shifting the decimal one place left to make it $7.34$) and multiply the power of $10$ by an extra $10$ (adding $1$ to the exponent):
+    
+    $$
+    7.34 \times 10^6
+    $$
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Converting ordinary numbers to standard form and vice versa" />
+<SmartAIGenerator topic="Converting ordinary numbers to standard form and adjusting invalid mantissas" />
 
 <Tabs>
-  <TabItem label="📝 Question 2: Correcting Notation">
-    A student uses a calculator to find the mass of a planet and writes down their answer as `6.42E23` kg. 
-    State why this is unacceptable and write the correct notation.
+  <TabItem label="📝 Question 2: Correcting GDC Notation">
+    A student uses a calculator to find the mass of a newly discovered planet and copies down the display as `6.42E23` kg. 
+    
+    a) State why this notation would lose marks in an IB examination.  
+    b) Write down the correctly formatted mathematical notation for the planet's mass.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    The 'E' notation is computer/calculator syntax and is not recognised mathematical standard form.
+    **Part a:**
+    The 'E' notation is computer/calculator syntax and is not a mathematically recognised way of writing standard form in written exams.
+
+    **Part b:**
     The correct notation is:
     
     $$
     6.42 \times 10^{23} \text{ kg}
     $$
-    
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Correcting invalid computer notation (E notation) into proper standard form" />
 
 <Tabs>
-  <TabItem label="📝 Question 3: Multiplication with Adjustment">
-    Calculate $(4 \times 10^6) \times (3 \times 10^5)$. Give your answer in standard form.
+  <TabItem label="📝 Question 3: Multiplication and Division">
+    Calculate the following, giving your final answers in standard form:
+    
+    a) $(4 \times 10^6) \times (3 \times 10^5)$  
+    b) $(1.5 \times 10^{-3}) \div (5 \times 10^4)$
   </TabItem>
   <TabItem label="✅ Solution 3">
+    **Part a:**
     First, multiply the mantissas and add the indices:
     
     $$
     (4 \times 3) \times 10^{6+5} = 12 \times 10^{11}
     $$
     
-    The mantissa $12$ is not between 1 and 10, so it must be adjusted. 
-    $12 = 1.2 \times 10^1$, so:
+    The mantissa $12$ is not between $1$ and $10$, so it must be adjusted ($12 = 1.2 \times 10^1$):
     
     $$
     (1.2 \times 10^1) \times 10^{11} = 1.2 \times 10^{12}
     $$
+
+    **Part b:**
+    Divide the mantissas and subtract the indices:
     
+    $$
+    (1.5 \div 5) \times 10^{-3-4} = 0.3 \times 10^{-7}
+    $$
+    
+    The mantissa $0.3$ is less than $1$. Multiply it by $10$ (to get $3$) and subtract $1$ from the exponent to balance it:
+    
+    $$
+    3 \times 10^{-8}
+    $$
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Multiplying and dividing numbers in standard form, requiring mantissa adjustments" />
 
 <Tabs>
-  <TabItem label="📝 Question 4: Addition">
-    Calculate $(3.5 \times 10^4) + (2.1 \times 10^3)$. Give your answer in standard form.
+  <TabItem label="📝 Question 4: Addition and Subtraction">
+    Calculate the following without using a calculator. Give your answers in standard form:
+    
+    a) $(3.5 \times 10^4) + (2.1 \times 10^3)$  
+    b) $(6.8 \times 10^{-2}) - (4 \times 10^{-3})$
   </TabItem>
   <TabItem label="✅ Solution 4">
+    **Part a:**
     Rewrite the term with the smaller exponent ($10^3$) to match the larger exponent ($10^4$):
     
     $$
     2.1 \times 10^3 = 0.21 \times 10^4
     $$
     
-    Now add the mantissas:
+    Now add the mantissas together:
     
     $$
     (3.5 + 0.21) \times 10^4 = 3.71 \times 10^4
     $$
+
+    **Part b:**
+    Rewrite the term with the smaller exponent ($10^{-3}$) to match the larger exponent ($10^{-2}$):
     
+    $$
+    4 \times 10^{-3} = 0.4 \times 10^{-2}
+    $$
+    
+    Now subtract the mantissas:
+    
+    $$
+    (6.8 - 0.4) \times 10^{-2} = 6.4 \times 10^{-2}
+    $$
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Adding and subtracting numbers in standard form" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Physics Application (Distance, Speed, Time)">
+    The speed of light in a vacuum is approximately $3.00 \times 10^8 \text{ m s}^{-1}$. The average distance from the Earth to the Sun is $1.50 \times 10^{11} \text{ m}$.
+    
+    a) Calculate the time, in seconds, it takes for light from the Sun to reach the Earth. Give your answer in standard form.  
+    b) Convert your answer into minutes, giving your answer as an exact decimal.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **Part a:**
+    Using the formula $\text{Time} = \frac{\text{Distance}}{\text{Speed}}$:
+    
+    $$
+    \text{Time} = \frac{1.50 \times 10^{11}}{3.00 \times 10^8}
+    $$
+    
+    $$
+    \text{Time} = (1.50 \div 3.00) \times 10^{11 - 8}
+    $$
+    
+    $$
+    \text{Time} = 0.5 \times 10^3 \text{ seconds}
+    $$
+    
+    Adjust to proper standard form:
+    
+    $$
+    5.00 \times 10^2 \text{ seconds}
+    $$
+
+    **Part b:**
+    We know $5 \times 10^2 = 500$ seconds. Divide by $60$ to find minutes:
+    
+    $$
+    \frac{500}{60} = \frac{50}{6} = 8.333...
+    $$
+    
+    The exact decimal is $8.\dot{3}$ minutes.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying standard form division to physical distance and speed formulae" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Biology Application (Scale)">
+    The average diameter of a human red blood cell is $7.5 \times 10^{-6}$ metres.
+    
+    a) Convert this diameter into millimetres, giving your answer in standard form. *(Hint: $1 \text{ m} = 10^3 \text{ mm}$)*.  
+    b) If $10,000$ red blood cells were lined up end-to-end, calculate the total length of the line in metres. Give your answer in standard form.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **Part a:**
+    To convert metres to millimetres, multiply by $10^3$:
+    
+    $$
+    (7.5 \times 10^{-6}) \times 10^3 = 7.5 \times 10^{-3} \text{ mm}
+    $$
+
+    **Part b:**
+    Multiply the diameter in metres by $10,000$ (which is $10^4$):
+    
+    $$
+    (7.5 \times 10^{-6}) \times 10^4 = 7.5 \times 10^{-2} \text{ m}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using standard form for biological scaling and unit conversions" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Macroeconomics Application">
+    A country has a Gross Domestic Product (GDP) of $£2.4 \times 10^{12}$ and a total population of $6.8 \times 10^7$.
+    
+    a) Calculate the GDP per capita (the GDP divided by the population). Give your answer in standard form to 3 significant figures.  
+    b) If the GDP grows by $5\%$ the following year, find the new GDP in standard form.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **Part a:**
+    Calculate GDP $\div$ population:
+    
+    $$
+    \frac{2.4 \times 10^{12}}{6.8 \times 10^7} = (2.4 \div 6.8) \times 10^{12-7}
+    $$
+    
+    $$
+    \approx 0.35294... \times 10^5
+    $$
+    
+    Adjust to standard form and round to 3 significant figures:
+    
+    $$
+    = 3.53 \times 10^4 \text{ (£)}
+    $$
+
+    **Part b:**
+    A $5\%$ growth means multiplying the original GDP by a multiplier of $1.05$:
+    
+    $$
+    (2.4 \times 10^{12}) \times 1.05
+    $$
+    
+    $$
+    = (2.4 \times 1.05) \times 10^{12}
+    $$
+    
+    $$
+    = 2.52 \times 10^{12} \text{ (£)}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using standard form in macroeconomic population and percentage growth calculations" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Sub-atomic Ratios (Show That)">
+    The mass of a proton is $1.67 \times 10^{-27}$ kg. The mass of an electron is $9.11 \times 10^{-31}$ kg.
+    
+    a) Calculate the total combined mass of one proton and one electron. Give your answer in standard form.  
+    b) Show that a proton is approximately $1830$ times heavier than an electron.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **Part a:**
+    We must add the two values:
+    
+    $$
+    (1.67 \times 10^{-27}) + (9.11 \times 10^{-31})
+    $$
+    
+    Adjust the electron's mass to have the same exponent ($-27$) by shifting the decimal four places left:
+    
+    $$
+    9.11 \times 10^{-31} = 0.000911 \times 10^{-27}
+    $$
+    
+    Add the mantissas:
+    
+    $$
+    (1.67 + 0.000911) \times 10^{-27} = 1.670911 \times 10^{-27} \text{ kg}
+    $$
+
+    **Part b:**
+    Divide the mass of the proton by the mass of the electron to find the ratio:
+    
+    $$
+    \frac{1.67 \times 10^{-27}}{9.11 \times 10^{-31}}
+    $$
+    
+    $$
+    = \left( \frac{1.67}{9.11} \right) \times 10^{-27 - (-31)}
+    $$
+    
+    $$
+    = 0.183315... \times 10^4
+    $$
+    
+    Adjusting to standard form gives $1.833... \times 10^3$, which is $1833.15...$ as an ordinary number. 
+    Therefore, it is shown that the proton is approximately $1830$ times heavier.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing sub-atomic particles by adding and dividing numbers in standard form" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Algebraic Standard Form">
+    Let $x = 5 \times 10^a$ and $y = 8 \times 10^b$, where $a$ and $b$ are integers.
+    
+    a) Find an expression for $x \times y$ in standard form.  
+    b) Show that $\frac{y}{x} = 1.6 \times 10^{b-a}$.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **Part a:**
+    Multiply the terms together:
+    
+    $$
+    (5 \times 10^a) \times (8 \times 10^b)
+    $$
+    
+    $$
+    = (5 \times 8) \times 10^{a+b} = 40 \times 10^{a+b}
+    $$
+    
+    The mantissa $40$ is not in standard form. We divide it by $10$ to get $4$, and add $1$ to the exponent to balance the expression:
+    
+    $$
+    4 \times 10^{a+b+1}
+    $$
+
+    **Part b:**
+    Set up the division fraction:
+    
+    $$
+    \frac{8 \times 10^b}{5 \times 10^a}
+    $$
+    
+    Divide the mantissas and subtract the exponents:
+    
+    $$
+    \left(\frac{8}{5}\right) \times 10^{b-a}
+    $$
+    
+    Since $8 \div 5 = 1.6$, and $1.6$ is already between $1$ and $10$, the expression is directly in standard form:
+    
+    $$
+    = 1.6 \times 10^{b-a}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving algebraic expressions with standard form and showing exponent manipulation" />

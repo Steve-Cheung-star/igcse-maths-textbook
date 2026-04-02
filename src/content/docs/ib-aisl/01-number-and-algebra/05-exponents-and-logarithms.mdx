@@ -1,0 +1,343 @@
+---
+title: 1.5 Exponents and Logarithms
+description: Master the laws of exponents, discover the power of logarithms for solving exponential equations, and explore real-world logarithmic scales like pH and decibels.
+---
+
+In the previous sections, we used exponents to model compound interest and geometric sequences. However, what happens when the *exponent itself* is the unknown variable? If you know an investment grows by $5\%$ every year, how do you find exactly how long it will take to double? 
+
+To solve these types of problems, we must first master the algebraic laws of exponents, and then introduce their mathematical inverse: **logarithms**.
+
+---
+
+## 1. The Laws of Exponents
+
+Exponents (also called indices or powers) represent repeated multiplication. The IB AI SL syllabus requires you to fluently manipulate algebraic expressions using integer exponents. 
+
+| Law | Algebraic Rule | Description |
+| :--- | :---: | :--- |
+| **Multiplication** | $a^m \times a^n = a^{m+n}$ | When multiplying terms with the same base, add the exponents. |
+| **Division** | $\frac{a^m}{a^n} = a^{m-n}$ | When dividing terms with the same base, subtract the exponents. |
+| **Power of a Power** | $(a^m)^n = a^{mn}$ | When raising a power to another power, multiply the exponents. |
+| **Power of a Product** | $(ab)^n = a^n b^n$ | The exponent applies to every factor inside the bracket. |
+| **Negative Exponents** | $a^{-n} = \frac{1}{a^n}$ | A negative exponent indicates a reciprocal. |
+
+<Aside type="caution" title="Common Misconception">
+Students frequently make errors when applying powers to coefficients. 
+* **Correct:** $(2x)^4 = 2^4 \times x^4 = 16x^4$
+* **Incorrect:** $(2x)^4 = 2x^4$ (The $2$ must also be raised to the power of $4$!)
+
+Similarly, negative exponents only apply to the base they are directly attached to. 
+* **Correct:** $2x^{-3} = 2 \times \frac{1}{x^3} = \frac{2}{x^3}$
+* **Incorrect:** $2x^{-3} = \frac{1}{2x^3}$
+</Aside>
+
+---
+
+## 2. Introduction to Logarithms
+
+If $2^3 = 8$, how do we mathematically express the question: *"2 to what power equals 8?"*
+The answer is a **logarithm**. A logarithm simply asks for the exponent required to produce a specific number.
+
+<FormulaBox title="Logarithmic Equivalence">
+
+$$
+a^x = b \iff x = \log_a b \text{, where } a > 0, b > 0, a \neq 1
+$$
+
+</FormulaBox>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 180" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Exponential Form */}
+    <text x="150" y="90" font-size="32" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">2</text>
+    <text x="175" y="70" font-size="24" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">3</text>
+    <text x="210" y="90" font-size="32" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">=</text>
+    <text x="250" y="90" font-size="32" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">8</text>
+    <text x="200" y="130" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">Exponential Form</text>
+
+    {/* Double Arrow */}
+    <text x="300" y="95" font-size="32" font-weight="bold" fill="#cbd5e1" text-anchor="middle" font-family="sans-serif">⟺</text>
+
+    {/* Logarithmic Form */}
+    <text x="360" y="90" font-size="32" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">log</text>
+    <text x="410" y="105" font-size="20" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">2</text>
+    <text x="440" y="90" font-size="32" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">8</text>
+    <text x="480" y="90" font-size="32" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">=</text>
+    <text x="510" y="90" font-size="32" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">3</text>
+    <text x="435" y="130" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">Logarithmic Form</text>
+
+    {/* Color Key */}
+    <rect x="150" y="155" width="12" height="12" fill="#3b82f6" />
+    <text x="170" y="165" font-size="12" fill="#1e293b" text-anchor="start" font-family="sans-serif">Base</text>
+    
+    <rect x="250" y="155" width="12" height="12" fill="#ef4444" />
+    <text x="270" y="165" font-size="12" fill="#1e293b" text-anchor="start" font-family="sans-serif">Exponent / Answer</text>
+    
+    <rect x="400" y="155" width="12" height="12" fill="#10b981" />
+    <text x="420" y="165" font-size="12" fill="#1e293b" text-anchor="start" font-family="sans-serif">Argument / Result</text>
+  </svg>
+</div>
+
+### Special Bases: Base 10 and Base $e$
+While a logarithm can have any positive base, two bases are so common that they have special notations on your Graphic Display Calculator (GDC):
+
+1. **Common Logarithm (Base 10):** Often used in scientific scales. If a base is not written, it is assumed to be 10.  
+   $$ \log x \quad \text{means} \quad \log_{10} x $$
+2. **Natural Logarithm (Base $e$):** Euler's number ($e \approx 2.718...$) appears constantly in natural growth and continuous compound interest.  
+   $$ \ln x \quad \text{means} \quad \log_{e} x $$
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Is mathematics invented or discovered?** Consider the number $e$ (Euler's number) or the concept of logarithms. John Napier published his work on logarithms in 1614 to simplify astronomical calculations, long before $e$ was formally defined. Did Napier *invent* logarithms as a computational tool, or did he *discover* an underlying structural truth of the universe that was already there waiting to be found? 
+</Aside>
+
+---
+
+## 3. Real-World Contexts
+
+Because logarithms find the *exponent*, they are incredibly useful for compressing astronomically large ranges of numbers into manageable, linear scales. 
+
+* **The Richter Scale:** Measures earthquake magnitude. An earthquake of magnitude 6.0 is $10$ times more powerful than a 5.0, and $100$ times more powerful than a 4.0.
+* **The Decibel Scale (dB):** Measures sound intensity. 
+* **pH Scale (Chemistry):** Measures the acidity or alkalinity of a solution based on the concentration of hydrogen ions, $H^+$. The formula is $\text{pH} = -\log_{10}[H^+]$.
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Simplifying Exponents">
+    Simplify the following expressions using the laws of exponents. Give your answers without negative indices.
+    
+    a) $5^3 \times 5^{-6}$  
+    b) $\frac{6^4}{6^3}$  
+    c) $(2x)^4 \times 3x^{-2}$
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a:** Add the exponents:
+    
+    $$
+    5^{3 + (-6)} = 5^{-3}
+    $$
+    
+    To remove the negative index, take the reciprocal:
+    
+    $$
+    = \frac{1}{5^3} = \frac{1}{125}
+    $$
+
+    **Part b:** Subtract the exponents:
+    
+    $$
+    6^{4 - 3} = 6^1 = 6
+    $$
+
+    **Part c:** Apply the power of $4$ to both the $2$ and the $x$, then multiply the coefficients and add the exponents of $x$:
+    
+    $$
+    (16x^4) \times (3x^{-2})
+    $$
+    
+    $$
+    = (16 \times 3) \times x^{4 + (-2)}
+    $$
+    
+    $$
+    = 48x^2
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Simplifying algebraic expressions using the laws of integer exponents" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Converting Between Forms">
+    a) Write $10^4 = 10,000$ in logarithmic form.  
+    b) Write $\ln(y) = 5$ in exponential form.  
+    c) Using your GDC, evaluate $\log_{10}(450)$ to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **Part a:** The base is $10$, the exponent is $4$, and the argument is $10000$.
+    
+    $$
+    \log_{10}(10000) = 4
+    $$
+
+    **Part b:** Remember that $\ln$ means $\log_e$. The base is $e$, the exponent is $5$, and the argument is $y$.
+    
+    $$
+    e^5 = y
+    $$
+
+    **Part c:** Using the calculator's LOG button:
+    
+    $$
+    \log_{10}(450) \approx 2.65
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Converting equations between exponential and logarithmic forms and numerical evaluation" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Scientific Application (pH Scale)">
+    Maya, a chemistry student, is analysing a buffer solution. The pH of a solution is calculated using the formula:
+    
+    $$
+    \text{pH} = -\log_{10}[H^+]
+    $$
+    
+    Where $[H^+]$ is the concentration of hydrogen ions in moles per litre.
+    
+    a) Calculate the pH of a solution where the hydrogen ion concentration is $4.5 \times 10^{-4} \text{ mol L}^{-1}$.  
+    b) If a different solution has a pH of $6.2$, calculate its hydrogen ion concentration, giving your answer in standard form.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part a:** Substitute the concentration into the formula and use your GDC.
+    
+    $$
+    \text{pH} = -\log_{10}(4.5 \times 10^{-4})
+    $$
+    
+    $$
+    \text{pH} = -(-3.346...) \approx 3.35
+    $$
+
+    **Part b:** Substitute the pH into the formula and solve for $[H^+]$ by converting to exponential form.
+    
+    $$
+    6.2 = -\log_{10}[H^+]
+    $$
+    
+    Multiply by $-1$:
+    
+    $$
+    -6.2 = \log_{10}[H^+]
+    $$
+    
+    Convert to exponential form (base is $10$, exponent is $-6.2$):
+    
+    $$
+    [H^+] = 10^{-6.2}
+    $$
+    
+    Using a GDC to find the value in standard form:
+    
+    $$
+    [H^+] \approx 6.31 \times 10^{-7} \text{ mol L}^{-1}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying base 10 logarithms to real-world scientific scales like pH" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Logarithmic Modelling (Decibels)">
+    Leo is studying sound intensity for a physics project. The sound level $L$, in decibels (dB), is modelled by the formula:
+    
+    $$
+    L = 10 \log_{10} \left( \frac{I}{I_0} \right)
+    $$
+    
+    Where $I$ is the sound intensity in $\text{W m}^{-2}$, and $I_0 = 10^{-12} \text{ W m}^{-2}$ is the standard threshold of human hearing.
+    
+    a) Calculate the sound level $L$ of a normal conversation, which has a sound intensity of $3.2 \times 10^{-6} \text{ W m}^{-2}$.  
+    b) A live rock concert has a recorded sound level of $115 \text{ dB}$. Calculate the exact sound intensity $I$ of the concert, giving your answer in standard form.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **Part a:** Substitute $I$ and $I_0$ into the formula:
+    
+    $$
+    L = 10 \log_{10} \left( \frac{3.2 \times 10^{-6}}{10^{-12}} \right)
+    $$
+    
+    $$
+    L = 10 \log_{10} (3.2 \times 10^6)
+    $$
+    
+    $$
+    L = 10 \times (6.505...) \approx 65.1 \text{ dB}
+    $$
+
+    **Part b:** Substitute $L = 115$ and solve for $I$:
+    
+    $$
+    115 = 10 \log_{10} \left( \frac{I}{10^{-12}} \right)
+    $$
+    
+    Divide by 10:
+    
+    $$
+    11.5 = \log_{10} \left( \frac{I}{10^{-12}} \right)
+    $$
+    
+    Convert to exponential form (the base is 10):
+    
+    $$
+    10^{11.5} = \frac{I}{10^{-12}}
+    $$
+    
+    Multiply both sides by $10^{-12}$:
+    
+    $$
+    I = 10^{11.5} \times 10^{-12}
+    $$
+    
+    $$
+    I = 10^{-0.5} \approx 3.16 \times 10^{-1} \text{ W m}^{-2}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for unknown variables using logarithmic scale models like decibels" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Continuous Growth (Base e)">
+    A biologist, Elias, models the continuous growth of a bacteria population using the formula:
+    
+    $$
+    P(t) = 450 \times e^{0.12t}
+    $$
+    
+    Where $P$ is the population size and $t$ is the time in hours.
+    Find the time it takes for the bacteria population to reach $2000$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    Substitute $P(t) = 2000$ into the equation:
+    
+    $$
+    2000 = 450 \times e^{0.12t}
+    $$
+    
+    Divide both sides by $450$:
+    
+    $$
+    \frac{2000}{450} = e^{0.12t}
+    $$
+    
+    $$
+    \frac{40}{9} = e^{0.12t}
+    $$
+    
+    Convert the exponential equation into logarithmic form. Because the base is $e$, we use the natural logarithm ($\ln$):
+    
+    $$
+    \ln\left(\frac{40}{9}\right) = 0.12t
+    $$
+    
+    Divide by $0.12$ to isolate $t$:
+    
+    $$
+    t = \frac{\ln(40/9)}{0.12}
+    $$
+    
+    Using a GDC:
+    
+    $$
+    t \approx \frac{1.49165...}{0.12} \approx 12.43
+    $$
+    
+    It will take approximately $12.4$ hours for the population to reach $2000$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving exponential growth models involving base e using natural logarithms" />
