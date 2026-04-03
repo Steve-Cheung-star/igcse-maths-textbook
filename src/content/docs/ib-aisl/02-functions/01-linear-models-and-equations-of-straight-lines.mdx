@@ -1,0 +1,389 @@
+---
+title: 2.1 Linear Models and Equations of Straight Lines
+description: Understand the anatomy of straight lines, master the different forms of linear equations, and apply gradients to parallel lines, perpendicular lines, and real-world models.
+---
+
+Linear models are the foundation of mathematical modelling. From the gradients of mountain roads and safety regulations for wheelchair access ramps, to economics, where they describe demand and supply curves or price elasticity, linear equations help us make sense of constant rates of change. In experimental sciences, drawing a line of best fit allows us to perform graphical analysis and extract meaningful relationships from data.
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Mathematical Representation:** The 17th-century philosopher and mathematician René Descartes showed that geometric problems could be solved algebraically, and algebraic problems could be visualised geometrically. What does this profound translation between shape and number tell us about the nature of mathematical representation and knowledge?
+</Aside>
+
+---
+
+## 1. The Anatomy of a Straight Line
+
+Every straight line graphed on a Cartesian plane is defined by two fundamental properties: how steep it is, and where it crosses the axes.
+
+<Aside type="note" title="The Hierarchy of Linear Features">
+To master linear equations, you must understand these core components:
+1. **The Gradient ($m$):** A measure of the steepness and direction of the line. Also known as the rate of change.
+2. **The $y$-intercept ($c$):** The exact coordinate where the line crosses the vertical $y$-axis (where $x = 0$).
+3. **The $x$-intercept:** The exact coordinate where the line crosses the horizontal $x$-axis (where $y = 0$).
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Axes */}
+    <line x1="50" y1="200" x2="550" y2="200" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="150" y1="20" x2="150" y2="230" stroke="#cbd5e1" stroke-width="2" />
+    <text x="540" y="220" font-size="14" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="130" y="30" font-size="14" fill="#64748b" font-family="sans-serif">y</text>
+
+    {/* Line */}
+    <line x1="50" y1="225" x2="500" y2="45" stroke="#3b82f6" stroke-width="3" />
+
+    {/* Intercepts */}
+    <circle cx="150" cy="185" r="5" fill="#ef4444" />
+    <text x="110" y="180" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">y-intercept</text>
+    
+    <circle cx="112.5" cy="200" r="5" fill="#10b981" />
+    <text x="90" y="220" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">x-intercept</text>
+
+    {/* Gradient Triangle */}
+    <line x1="250" y1="145" x2="400" y2="145" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5" />
+    <line x1="400" y1="145" x2="400" y2="85" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5" />
+    
+    <text x="325" y="165" font-size="14" font-weight="bold" fill="#f59e0b" text-anchor="middle" font-family="sans-serif">Run (Change in x)</text>
+    <text x="410" y="120" font-size="14" font-weight="bold" fill="#f59e0b" font-family="sans-serif">Rise (Change in y)</text>
+  </svg>
+</div>
+
+---
+
+## 2. Calculating the Gradient
+
+The gradient is calculated by taking the ratio of the vertical change (rise) to the horizontal change (run) between any two distinct points on the line.
+
+<FormulaBox title="The Gradient Formula">
+$$
+m = \frac{y_2 - y_1}{x_2 - x_1}
+$$
+</FormulaBox>
+
+<Aside type="tip" title="Analysing Inclines">
+* A **positive gradient** means the line goes upwards from left to right (e.g., an uphill mountain road).
+* A **negative gradient** means the line goes downwards from left to right (e.g., a descending access ramp or pool slope).
+* A gradient of **zero** represents a perfectly horizontal line.
+* A **vertical line** has an undefined gradient, as the run (denominator) is zero.
+</Aside>
+
+---
+
+## 3. Different Forms of a Linear Equation
+
+There is more than one way to write the equation of a straight line. Depending on the information you are given, or the format the exam question requests, you must be fluent in converting between them.
+
+### Form 1: Gradient-Intercept Form
+This is the most common and intuitive form, perfect for quickly identifying the steepness and starting point of a line.
+
+<FormulaBox title="Gradient-Intercept Form">
+$$
+y = mx + c
+$$
+</FormulaBox>
+Where $m$ is the gradient and $c$ is the $y$-intercept.
+
+### Form 2: Point-Gradient Form
+When you are given the gradient $m$ and any coordinate $(x_1, y_1)$ on the line, this is the most efficient formula to use. It saves you from having to solve for $c$ first.
+
+<FormulaBox title="Point-Gradient Form">
+$$
+y - y_1 = m(x - x_1)
+$$
+</FormulaBox>
+
+### Form 3: General Form
+In coordinate geometry, lines are often written in a standardised format where all terms are collected on one side of the equation.
+
+<FormulaBox title="General Form">
+$$
+ax + by + d = 0
+$$
+</FormulaBox>
+
+<SteveTip title="Integers in General Form">
+When the IB exam asks for your final answer in the form $ax + by + d = 0$, there is a strict expectation: **$a$, $b$, and $d$ must be integers** (whole numbers). If your working leaves you with fractions, you must multiply the entire equation by a common denominator to remove them!
+</SteveTip>
+
+<Aside type="caution" title="Common Misconception">
+A frequent error is assuming that the coefficient of $x$ is *always* the gradient. This is only true in the $y = mx + c$ form! If the equation is in the general form $2x + 3y - 6 = 0$, the gradient is NOT $2$. You must rearrange it to make $y$ the subject first.
+</Aside>
+
+---
+
+## 4. Parallel and Perpendicular Lines
+
+By comparing the gradients of two different lines, we can determine how they interact geometrically.
+
+<Aside type="tip" title="Theorems of Parallel and Perpendicular Gradients">
+Let Line 1 have gradient $m_1$ and Line 2 have gradient $m_2$.
+
+**Parallel Lines:**
+Lines that never intersect have exactly the same steepness.
+$$
+m_1 = m_2
+$$
+
+**Perpendicular Lines:**
+Lines that intersect at exactly $90^\circ$ (a right angle) have gradients that multiply together to give $-1$.
+$$
+m_1 \times m_2 = -1
+$$
+</Aside>
+
+To quickly find a perpendicular gradient, take the **negative reciprocal** of the original gradient. 
+* If $m_1 = 3$, then $m_2 = -\frac{1}{3}$.
+* If $m_1 = -\frac{2}{5}$, then $m_2 = \frac{5}{2}$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Axes */}
+    <line x1="50" y1="200" x2="550" y2="200" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="300" y1="20" x2="300" y2="230" stroke="#cbd5e1" stroke-width="2" />
+
+    {/* Parallel Lines (Slope = -1) */}
+    <line x1="100" y1="200" x2="250" y2="50" stroke="#3b82f6" stroke-width="3" />
+    <line x1="150" y1="200" x2="300" y2="50" stroke="#3b82f6" stroke-width="3" />
+    <text x="140" y="40" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">Parallel (m₁ = m₂)</text>
+
+    {/* Perpendicular Line (Slope = +1, True 90 degrees) */}
+    <line x1="80" y1="30" x2="280" y2="230" stroke="#ef4444" stroke-width="3" />
+    <text x="60" y="25" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">Perpendicular</text>
+    
+    {/* Right Angle Marker at intersection (175, 125) */}
+    <polyline points="185,115 195,125 185,135" fill="none" stroke="#1e293b" stroke-width="2" />
+  </svg>
+</div>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Gradients from General Form">
+    A line $L_1$ has the equation $3x - 4y + 12 = 0$.
+    
+    a) Find the gradient of $L_1$.  
+    b) Find the $y$-intercept of $L_1$.  
+    c) Find the $x$-intercept of $L_1$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** Rearrange the equation into $y = mx + c$ form to find the gradient.
+    
+    $$
+    3x + 12 = 4y
+    $$
+    
+    $$
+    y = \frac{3}{4}x + 3
+    $$
+    
+    The gradient is $m = \frac{3}{4}$.
+
+    **b)** From our rearranged equation, the constant term $c$ is $3$.
+    The $y$-intercept is $(0, 3)$.
+
+    **c)** To find the $x$-intercept, set $y = 0$ in the original equation:
+    
+    $$
+    3x - 4(0) + 12 = 0
+    $$
+    
+    $$
+    3x = -12
+    $$
+    
+    $$
+    x = -4
+    $$
+    
+    The $x$-intercept is $(-4, 0)$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Rearranging general linear equations to find gradients and intercepts" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Point-Gradient Form">
+    A straight line passes through the points $A(-2, 5)$ and $B(4, -7)$. 
+    
+    a) Calculate the gradient of the line passing through $A$ and $B$.  
+    b) Hence, find the equation of the line, giving your answer in the form $ax + by + d = 0$, where $a, b, d \in \mathbb{Z}$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** Use the gradient formula:
+    
+    $$
+    m = \frac{-7 - 5}{4 - (-2)}
+    $$
+    
+    $$
+    m = \frac{-12}{6} = -2
+    $$
+    
+    **b)** Use the point-gradient form with either point. Let's use $A(-2, 5)$:
+    
+    $$
+    y - 5 = -2(x - (-2))
+    $$
+    
+    $$
+    y - 5 = -2(x + 2)
+    $$
+    
+    Expand and rearrange into $ax + by + d = 0$:
+    
+    $$
+    y - 5 = -2x - 4
+    $$
+    
+    $$
+    2x + y - 1 = 0
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the equation of a line given two points and converting to general form" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Parallel Lines">
+    A line $L_1$ has the equation $2x - 3y = 6$. A second line, $L_2$, is parallel to $L_1$ and passes through the point $(-3, 4)$.
+    
+    a) Find the gradient of $L_1$.  
+    b) Find the equation of $L_2$, giving your answer in the form $y = mx + c$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Rearrange $L_1$ into $y = mx + c$ form:
+    
+    $$
+    2x - 6 = 3y
+    $$
+    
+    $$
+    y = \frac{2}{3}x - 2
+    $$
+    
+    The gradient of $L_1$ is $\frac{2}{3}$.
+
+    **b)** Because $L_2$ is parallel to $L_1$, it shares the exact same gradient. So, $m_2 = \frac{2}{3}$.
+    Use the point-gradient form with the point $(-3, 4)$:
+    
+    $$
+    y - 4 = \frac{2}{3}(x - (-3))
+    $$
+    
+    $$
+    y - 4 = \frac{2}{3}(x + 3)
+    $$
+    
+    $$
+    y - 4 = \frac{2}{3}x + 2
+    $$
+    
+    $$
+    y = \frac{2}{3}x + 6
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the equation of a parallel line given the original line's equation and a point" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Perpendicular Lines">
+    A line $L_1$ has the equation $y = \frac{2}{3}x - 5$.
+    A second line, $L_2$, is perpendicular to $L_1$ and passes through the point $(6, 2)$.
+    
+    a) State the gradient of $L_2$.  
+    b) Find the equation of $L_2$ in the form $y = mx + c$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** The gradient of $L_1$ is $m_1 = \frac{2}{3}$.
+    Since $L_2$ is perpendicular, its gradient $m_2$ is the negative reciprocal:
+    
+    $$
+    m_2 = -\frac{3}{2}
+    $$
+    
+    **b)** Use the point-gradient form with the point $(6, 2)$ and $m_2 = -\frac{3}{2}$:
+    
+    $$
+    y - 2 = -\frac{3}{2}(x - 6)
+    $$
+    
+    Expand the brackets:
+    
+    $$
+    y - 2 = -\frac{3}{2}x + 9
+    $$
+    
+    Make $y$ the subject:
+    
+    $$
+    y = -\frac{3}{2}x + 11
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding equations of perpendicular lines using negative reciprocal gradients" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Modelling a Wheelchair Ramp">
+    To meet building safety regulations, a wheelchair access ramp must not have a gradient steeper than $\frac{1}{12}$. An architect has proposed a new ramp that rises by $0.4\text{ m}$ over a horizontal distance of $3.5\text{ m}$.
+    
+    a) Calculate the gradient of the proposed ramp to 3 significant figures.  
+    b) Determine, with mathematical justification, whether the proposed ramp meets the safety regulations.  
+    c) Assuming the ramp starts at ground level $(0,0)$, write down a linear equation to model the height of the ramp, $h$, against the horizontal distance $x$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** The starting point is $(0, 0)$ and the ending point is $(3.5, 0.4)$.
+    
+    $$
+    m = \frac{\text{Rise}}{\text{Run}} = \frac{0.4}{3.5}
+    $$
+    
+    $$
+    m \approx 0.114 \text{ (to 3 s.f.)}
+    $$
+
+    **b)** Convert the safety regulation maximum gradient to a decimal to compare:
+    
+    $$
+    \frac{1}{12} \approx 0.0833
+    $$
+    
+    Since $0.114 > 0.0833$, the proposed ramp is too steep. It **does not** meet the safety regulations.
+
+    **c)** Using the exact gradient $m = \frac{0.4}{3.5} = \frac{4}{35}$ and a $y$-intercept of $0$:
+    
+    $$
+    h = \frac{4}{35}x
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using gradients to model real-world inclines and evaluate safety specifications" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Modelling a Mountain Road">
+    A straight section of a mountain road descends at a constant rate. At a horizontal distance of $100\text{ m}$ from a checkpoint, the road has an altitude of $850\text{ m}$. At a horizontal distance of $500\text{ m}$, the altitude is $750\text{ m}$.
+    
+    a) Calculate the gradient of this section of the road.  
+    b) Interpret the meaning of this gradient in the context of the question.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** Use the coordinates $(100, 850)$ and $(500, 750)$:
+    
+    $$
+    m = \frac{750 - 850}{500 - 100}
+    $$
+    
+    $$
+    m = \frac{-100}{400} = -0.25
+    $$
+    
+    **b)** The negative gradient indicates a descent. In this context, it means that for every $1\text{ m}$ travelled horizontally, the altitude of the mountain road decreases by $0.25\text{ m}$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating and interpreting negative gradients in descending real-world models" />

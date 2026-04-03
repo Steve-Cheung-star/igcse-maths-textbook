@@ -57,49 +57,27 @@
 }
 
 
-/* --- 1. THE CONTENT DIAGRAMS (Parabolas, etc.) --- */
-/* We target the diagrams but AVOID the 'svg' tag alone to stay safe */
-.sl-markdown-content > svg, 
-.sl-markdown-content > div > svg,
-.starlight-tabs__panel svg {
-  background: transparent !important;
-  border: none !important;
-  max-width: 100%;
-  height: auto;
-  /* Use padding instead of margin to avoid breaking <Steps> */
-  padding: 1rem 0;
-}
-
-/* Apply inversion ONLY to these specific content-level diagrams */
+/* --- 1. TARGET ONLY TOP-LEVEL CONTENT DIAGRAMS --- */
+/* We only invert SVGs that are direct children of the markdown or a div.
+   This naturally ignores all math SVGs because they are nested deep 
+   inside <span> tags. */
 [data-theme='dark'] .sl-markdown-content > svg,
 [data-theme='dark'] .sl-markdown-content > div > svg,
-[data-theme='dark'] .starlight-tabs__panel svg {
+[data-theme='dark'] .starlight-tabs__panel > svg {
   filter: invert(1) hue-rotate(180deg) brightness(1.2) !important;
+  display: block;
+  margin: 2rem auto;
+  max-width: 100%;
+  height: auto;
 }
 
-/* --- 2. THE SQUARE ROOT & MATH FIX --- */
-/* This stops KaTeX/MathJax from being hit by the inversion 'ghost' */
-.katex, .math, .math-display, .katex-display {
+/* --- 2. LEAVE EVERYTHING ELSE ALONE --- */
+/* We reset the KaTeX container to ensure no inherited filters 
+   from parent elements (like an aside) touch the math. */
+.katex, .katex * {
   filter: none !important;
-  color: currentColor !important;
-}
-
-/* Specifically protect the SVG paths used for square roots */
-.katex svg, .math svg, .katex-display svg {
-  filter: none !important;
-  fill: currentColor !important;
-  stroke: currentColor !important;
-  width: auto !important; /* Prevents the symbol from collapsing */
-  display: inline-block !important;
-}
-
-/* --- 3. THE UI ICON SHIELD (Aside Icons) --- */
-.starlight-aside__icon svg, 
-aside svg,
-.starlight-tabs__nav svg {
-  filter: none !important;
-  fill: currentColor !important;
-  width: 1.5rem !important;
-  height: 1.5rem !important;
-  display: inline-block !important;
+  color: inherit !important;
+  /* This prevents the square root from vanishing/shifting */
+  width: auto;
+  height: auto;
 }

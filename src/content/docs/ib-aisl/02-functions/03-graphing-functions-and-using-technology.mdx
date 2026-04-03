@@ -1,0 +1,539 @@
+---
+title: 2.3 Graphing Functions and Using Technology
+description: Learn how to effectively translate mathematical models into graphs, understand the difference between drawing and sketching, and utilise your TI-Nspire Graphics Display Calculator (GDC) to analyse complex functions.
+---
+
+A mathematical function is essentially a story about how variables interact. While algebraic equations tell this story using symbols and numbers, graphs tell it visually. Graphing is an essential tool across many disciplines: interpreting climate data in geography, tracking price elasticities in economics, or finding lines of best fit in the experimental sciences. 
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Rigour vs. Intuition:** Does studying the graph of a function contain the same level of mathematical rigour as studying the function algebraically? Algebraic methods often yield exact, universally provable solutions, whereas graphical methods rely on visual estimation and scaling. What are the advantages and disadvantages of having different forms and symbolic language in mathematics?
+</Aside>
+
+---
+
+## 1. The Command Terms: "Draw" vs. "Sketch"
+
+In IB Mathematics, exam questions will explicitly use the words **draw** or **sketch**. Misunderstanding these command terms is a common way students lose marks.
+
+<Aside type="tip" title="Definitions: Draw and Sketch">
+* **Draw:** Represent by means of a labelled, accurate diagram or graph, using a pencil. A ruler should be used for straight lines. Graphs should be drawn to scale on graph paper, and plotted points must be exact.
+* **Sketch:** Represent by means of a diagram or graph (labelled as appropriate). The sketch should give a general idea of the required shape or relationship, and should include important features. It does not need to be perfectly to scale, but relative positions must be correct.
+</Aside>
+
+If an exam asks you to *sketch* a curve, you do not need to plot every single coordinate. However, your curve must pass through the correct quadrants, show the correct general shape, and clearly identify key mathematical features.
+
+---
+
+## 2. Key Features of a Graph
+
+When transferring a graph from your TI-Nspire screen to your exam paper, you must explicitly label the "anatomy" of the curve.
+
+<Aside type="note" title="The Hierarchy of Graphing Features">
+Whenever you sketch a graph, ensure the following features are calculated and labelled if they exist:
+1. **Axes:** Label the horizontal and vertical axes (e.g., $x$ and $y$, or $t$ and $h$).
+2. **Intercepts:** The $y$-intercept (where $x=0$) and all $x$-intercepts (also known as roots or zeros, where $y=0$).
+3. **Turning Points:** The local maximum and minimum coordinates (vertices).
+4. **Asymptotes:** Lines that the graph approaches but never touches (draw these as dashed lines).
+5. **Endpoints:** If a specific domain is given (e.g., $0 \le x \le 10$), explicitly mark the coordinates at the start and end of the curve.
+</Aside>
+
+### Identifying Turning Points and Intercepts
+
+The graph below demonstrates a perfectly smooth continuous function, marking exactly where the key intercepts and turning points lie.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 350" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid / Axes */}
+    <line x1="50" y1="175" x2="550" y2="175" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="200" y1="20" x2="200" y2="330" stroke="#cbd5e1" stroke-width="2" />
+    <text x="540" y="165" font-size="14" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="180" y="30" font-size="14" fill="#64748b" font-family="sans-serif">y</text>
+
+    {/* Mathematically precise curve using quadratic beziers */}
+    {/* Max at (125,100), Min at (275, 250), Max at (425, 100) */}
+    <path d="M 50 175 Q 125 25 200 175 Q 275 325 350 175 Q 425 25 500 175" fill="none" stroke="#3b82f6" stroke-width="3" />
+
+    {/* x-intercepts */}
+    <circle cx="50" cy="175" r="5" fill="#ef4444" />
+    <text x="60" y="195" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">x-intercept</text>
+    
+    <circle cx="200" cy="175" r="5" fill="#ef4444" />
+    <text x="210" y="195" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">Origin (y-int & x-int)</text>
+    
+    <circle cx="350" cy="175" r="5" fill="#ef4444" />
+    <text x="350" y="160" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">x-intercept</text>
+
+    <circle cx="500" cy="175" r="5" fill="#ef4444" />
+
+    {/* Maximum / Minimum */}
+    <circle cx="125" cy="100" r="5" fill="#10b981" />
+    <text x="125" y="85" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Local Maximum</text>
+
+    <circle cx="275" cy="250" r="5" fill="#10b981" />
+    <text x="275" y="270" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Local Minimum</text>
+
+    <circle cx="425" cy="100" r="5" fill="#10b981" />
+    <text x="425" y="85" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Local Maximum</text>
+    
+    {/* Dotted lines for Max/Min coordinates */}
+    <line x1="125" y1="100" x2="125" y2="175" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" />
+    <line x1="275" y1="250" x2="275" y2="175" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" />
+    <line x1="425" y1="100" x2="425" y2="175" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" />
+  </svg>
+</div>
+
+### Identifying Asymptotes
+
+Certain functions, notably rational and exponential functions, feature **asymptotes**. An asymptote is a line that the graph of a function approaches infinitely closely, but mathematically never reaches or crosses.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 350" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid / Axes */}
+    <line x1="50" y1="175" x2="550" y2="175" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="300" y1="20" x2="300" y2="330" stroke="#cbd5e1" stroke-width="2" />
+    <text x="540" y="165" font-size="14" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="280" y="30" font-size="14" fill="#64748b" font-family="sans-serif">y</text>
+
+    {/* Asymptotes */}
+    <line x1="400" y1="20" x2="400" y2="330" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 6" />
+    <text x="410" y="320" font-size="12" font-weight="bold" fill="#d97706" font-family="sans-serif">Vertical Asymptote (e.g. x = c)</text>
+
+    <line x1="50" y1="100" x2="550" y2="100" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 6" />
+    <text x="60" y="90" font-size="12" font-weight="bold" fill="#d97706" font-family="sans-serif">Horizontal Asymptote (e.g. y = d)</text>
+
+    {/* The Curves */}
+    <path d="M 410 20 Q 420 90 550 95" fill="none" stroke="#3b82f6" stroke-width="3" />
+    <path d="M 390 330 Q 380 110 50 105" fill="none" stroke="#3b82f6" stroke-width="3" />
+  </svg>
+</div>
+
+---
+
+## 3. Transferring from Screen to Paper using TI-Nspire
+
+Your TI-Nspire is an incredibly powerful tool for visualising functions, especially those not explicitly mentioned in the core syllabus (like complex rational functions or combinations of exponential and trigonometric curves).
+
+<SteveTip title="The TI-Nspire Window Strategy">
+If you type a function into `f1(x)` and see a blank screen, **do not panic**. Your calculator is likely looking at the wrong part of the graph.
+1. Read the question carefully to see if a domain is given (e.g., $0 \le t \le 50$). 
+2. Press **Menu > 4: Window / Zoom > 1: Window Settings** and manually set your `XMin` and `XMax` to these values.
+3. Then press **Menu > 4: Window / Zoom > A: Zoom - Fit**. This tells the TI-Nspire to automatically adjust the $y$-axis to perfectly fit the curve for the $x$-values you just entered!
+</SteveTip>
+
+When copying a graph from your TI-Nspire to your exam paper:
+<Steps>
+1. Draw and label your axes using a ruler.
+2. Use **Menu > 6: Analyze Graph** to find exact features:
+   * **Zero** for $x$-intercepts.
+   * **Maximum / Minimum** for turning points.
+   * **Intersection** if multiple curves are graphed.
+3. To find the $y$-intercept, press **Menu > 5: Trace > 1: Graph Trace** and type `0` then press `enter`.
+4. Plot these specific coordinates accurately on your paper with small crosses.
+5. Finally, sketch a smooth, continuous curve connecting your plotted points, ensuring the overall shape matches the screen.
+</Steps>
+
+<Aside type="caution" title="Common Misconception">
+Students often try to sketch the curve *before* plotting the key coordinates, resulting in turning points that land in the wrong place. Always calculate and plot your critical points first, then use them as "anchors" to guide your pencil.
+</Aside>
+
+---
+
+## 4. Graphing Sums and Differences of Functions
+
+In mathematical modelling, we often combine two distinct functions to create a new one. This can be done algebraically, but it can also be understood visually on a graph by adding or subtracting the $y$-coordinates of the functions at each $x$-value.
+
+* **Sum:** $h(x) = f(x) + g(x)$
+* **Difference:** $h(x) = f(x) - g(x)$
+
+A classic economics example is Profit. If Revenue is modelled by $R(x)$ and Costs are modelled by $C(x)$, then the Profit function is the difference between them: $P(x) = R(x) - C(x)$.
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Profit as a Difference of Functions">
+    A company manufactures $x$ thousands of electronic components. The revenue, in thousands of $\text{GBP}$, is modelled by $R(x) = 15x$. The cost of production, in thousands of $\text{GBP}$, is modelled by $C(x) = 2x^2 + 10$.
+    
+    a) Write down an expression for the profit function, $P(x)$.  
+    b) Using your GDC, sketch the graph of $y = P(x)$ for the domain $0 \le x \le 8$. Label the axes and any maximum/minimum points with their coordinates.  
+    c) Find the "break-even" points, where Profit is zero.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** Profit is Revenue minus Cost:
+    
+    $$
+    P(x) = R(x) - C(x)
+    $$
+    
+    $$
+    P(x) = 15x - (2x^2 + 10)
+    $$
+    
+    $$
+    P(x) = -2x^2 + 15x - 10
+    $$
+
+    **b)** In a Graphs page on your TI-Nspire, enter `f1(x) = -2x^2 + 15x - 10`. 
+    Press **Menu > 4 > 1** and set $XMin = 0$ and $XMax = 8$. Then press **Menu > 4 > A** (Zoom-Fit).
+    Press **Menu > 6 > 3** (Maximum) to find the peak: $(3.75, 18.125)$.
+    Plot the endpoints using Graph Trace: At $x=0$, $P(0) = -10$. At $x=8$, $P(8) = -18$.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 300" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        {/* Axes */}
+        <line x1="30" y1="180" x2="320" y2="180" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="280" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="170" font-size="12" fill="#64748b" font-family="sans-serif">x</text>
+        <text x="10" y="30" font-size="12" fill="#64748b" font-family="sans-serif">P(x)</text>
+
+        {/* Exact Parabola: split into two connected quadratic beziers to perfectly map the turning point */}
+        <path d="M 50 230 Q 106.25 89.4 162.5 89.4 Q 226.25 89.4 290 270" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Maximum Point */}
+        <circle cx="162.5" cy="89.4" r="4" fill="#10b981" />
+        <text x="162.5" y="80" font-size="11" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Max (3.75, 18.1)</text>
+        
+        {/* x-intercepts */}
+        <circle cx="72.9" cy="180" r="4" fill="#ef4444" />
+        <text x="75" y="172" font-size="10" fill="#ef4444" font-family="sans-serif">0.764</text>
+        
+        <circle cx="252.1" cy="180" r="4" fill="#ef4444" />
+        <text x="255" y="172" font-size="10" fill="#ef4444" font-family="sans-serif">6.74</text>
+
+        {/* y-intercept */}
+        <circle cx="50" cy="230" r="4" fill="#3b82f6" />
+        <text x="60" y="240" font-size="10" fill="#3b82f6" font-family="sans-serif">(0, -10)</text>
+      </svg>
+    </div>
+
+    **c)** The break-even points are the $x$-intercepts (where $P(x) = 0$). Press **Menu > 6 > 1** (Zero):
+    
+    $$
+    x \approx 0.764 \text{ and } x \approx 6.74 \text{ (to 3 s.f.)}
+    $$
+    
+    Since $x$ is in thousands, they break even at roughly $764$ and $6740$ components.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Creating and sketching a difference function from revenue and cost models" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Analysing an Unfamiliar Function">
+    Consider the function $f(x) = \frac{20x}{x^2 + 4}$ for the domain $-10 \le x \le 10$.
+    
+    a) Use your GDC to sketch the graph of $f(x)$. Label the coordinates of the local maximum and local minimum points.  
+    b) Write down the $x$-intercept of the graph.  
+    c) State the range of $f(x)$ for this domain.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** Enter `f1(x) = 20x / (x^2 + 4)` into your TI-Nspire. 
+    Set the Window Settings from $XMin = -10$ to $XMax = 10$. Use Zoom-Fit.
+    Use **Menu > 6: Analyze Graph** to find the turning points.
+    * Local Maximum: $(2, 5)$
+    * Local Minimum: $(-2, -5)$
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        {/* Axes */}
+        <line x1="30" y1="125" x2="320" y2="125" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="175" y1="20" x2="175" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="115" font-size="12" fill="#64748b" font-family="sans-serif">x</text>
+        <text x="185" y="30" font-size="12" fill="#64748b" font-family="sans-serif">f(x)</text>
+
+        {/* Rational Curve */}
+        <path d="M 50 148 C 110 148, 125 185, 150 185 C 165 185, 185 65, 200 65 C 225 65, 240 102, 300 102" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Points of Interest */}
+        <circle cx="200" cy="65" r="4" fill="#10b981" />
+        <text x="200" y="55" font-size="11" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Max (2, 5)</text>
+        
+        <circle cx="150" cy="185" r="4" fill="#10b981" />
+        <text x="150" y="200" font-size="11" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Min (-2, -5)</text>
+
+        <circle cx="175" cy="125" r="4" fill="#ef4444" />
+      </svg>
+    </div>
+
+    **b)** Looking at the graph, the curve crosses the $x$-axis exactly at the origin.
+    $x$-intercept: $(0, 0)$.
+
+    **c)** The range is determined by the lowest and highest $y$-values on the graph.
+    The minimum $y$-value is $-5$ and the maximum is $5$.
+    Range: $-5 \le f(x) \le 5$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Transferring complex unfamiliar functions from GDC to paper and extracting key features" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Graphical Addition of Functions">
+    Two functions are given: $f(x) = x$ and $g(x) = \frac{4}{x}$ for $x > 0$.
+    Let $h(x) = f(x) + g(x)$.
+    
+    a) Find the exact value of $h(2)$.  
+    b) By considering the individual graphs, explain why $h(x)$ will always be greater than $f(x)$ for all $x > 0$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+    $$
+    h(2) = f(2) + g(2)
+    $$
+    
+    $$
+    h(2) = 2 + \frac{4}{2} = 2 + 2 = 4
+    $$
+
+    **b)** Because $g(x) = \frac{4}{x}$, for any strictly positive value of $x$, $g(x)$ will be a positive number.
+    Since $h(x)$ is calculated by adding $g(x)$ to $f(x)$, we are always adding a positive quantity to $f(x)$. Therefore, the graph of $h(x)$ will always sit vertically above the graph of $f(x)$ in this domain.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        {/* Axes */}
+        <line x1="30" y1="220" x2="320" y2="220" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="240" stroke="#cbd5e1" stroke-width="2" />
+        
+        {/* f(x) = x */}
+        <line x1="50" y1="220" x2="320" y2="53.4" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="295" y="45" font-size="12" fill="#64748b" font-family="sans-serif">f(x) = x</text>
+
+        {/* g(x) = 4/x */}
+        <polyline points="63.5,86.7 77,153.4 90.5,175.5 104,186.7 117.5,193.3 131,197.8 158,203.3 185,206.7 212,208.9 266,211.7 320,213.3" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="280" y="205" font-size="12" fill="#64748b" font-family="sans-serif">g(x)</text>
+
+        {/* h(x) = x + 4/x */}
+        <polyline points="63.5,78.4 77,136.7 90.5,150.5 104,153.4 117.5,151.7 131,147.9 158,136.7 185,123.4 212,108.9 266,78.4 320,46.7" fill="none" stroke="#3b82f6" stroke-width="3" />
+        <text x="120" y="110" font-size="12" font-weight="bold" fill="#3b82f6" font-family="sans-serif">h(x) = f(x) + g(x)</text>
+        
+        {/* Specific point h(2) */}
+        <circle cx="104" cy="153.4" r="4" fill="#ef4444" />
+        <text x="104" y="172" font-size="11" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">(2, 4)</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Understanding and calculating the sum of two functions graphically and algebraically" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Sketching a Quadratic Model">
+    The height of a thrown ball, $h$ metres, relative to horizontal distance $x$ metres, is modelled by $h(x) = -0.1x^2 + 1.2x + 1.5$.
+    
+    a) Find the initial height of the ball.  
+    b) Use your GDC to find the maximum height the ball reaches.  
+    c) Sketch the graph of $h(x)$ against $x$. Clearly label the axes, the $y$-intercept, the maximum point, and the $x$-intercept.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** Initial height is when distance $x = 0$:
+    
+    $$
+    h(0) = -0.1(0)^2 + 1.2(0) + 1.5 = 1.5\text{ m}
+    $$
+
+    **b)** Enter the equation into `f1(x)` and use **Menu > 6 > 3** (Maximum).
+    The vertex occurs at $(6, 5.1)$.
+    The maximum height is $5.1\text{ m}$.
+
+    **c)** Using **Menu > 6 > 1** (Zero) on the TI-Nspire, the positive $x$-intercept is $x \approx 13.1\text{ m}$.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="200" x2="320" y2="200" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="220" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="190" font-size="12" fill="#64748b" font-family="sans-serif">x (m)</text>
+        <text x="10" y="30" font-size="12" fill="#64748b" font-family="sans-serif">h (m)</text>
+
+        <path d="M 50 155 Q 110 47 170 47 Q 241 47 312 200" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        <circle cx="170" cy="47" r="4" fill="#10b981" />
+        <text x="170" y="35" font-size="11" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Max (6, 5.1)</text>
+        
+        <circle cx="50" cy="155" r="4" fill="#3b82f6" />
+        <text x="60" y="165" font-size="10" fill="#3b82f6" font-family="sans-serif">(0, 1.5)</text>
+
+        <circle cx="312" cy="200" r="4" fill="#ef4444" />
+        <text x="312" y="215" font-size="10" fill="#ef4444" text-anchor="middle" font-family="sans-serif">(13.1, 0)</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Sketching quadratic models from context and identifying key real-world coordinates" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Interpreting Asymptotes on a Sketch">
+    The concentration of a drug in a patient's bloodstream $t$ hours after injection is modelled by $C(t) = \frac{15t}{t^2 + 2}$ for $t \ge 0$.
+    
+    a) Sketch the graph of $C(t)$ using your GDC. Ensure you choose an appropriate viewing window that shows the long-term behaviour of the drug.  
+    b) State the equation of the horizontal asymptote.  
+    c) Explain what the horizontal asymptote represents in the context of the medical model.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** In your Window Settings, setting $XMin = 0$ to $XMax = 24$ (a full day) is a sensible start. 
+    The curve starts at $(0,0)$, rises quickly to a peak, and then slowly tapers downwards, flattening out as it moves to the right.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 200" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="170" x2="320" y2="170" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="190" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="160" font-size="12" fill="#64748b" font-family="sans-serif">t</text>
+        <text x="20" y="30" font-size="12" fill="#64748b" font-family="sans-serif">C(t)</text>
+
+        <line x1="50" y1="170" x2="320" y2="170" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="250" y="190" font-size="10" fill="#d97706" font-family="sans-serif">y = 0 (Asymptote)</text>
+
+        <path d="M 50 170 Q 64 37.5 100 80 T 300 160" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        <circle cx="50" cy="170" r="4" fill="#3b82f6" />
+        <text x="55" y="160" font-size="10" fill="#3b82f6" font-family="sans-serif">(0,0)</text>
+      </svg>
+    </div>
+
+    **b)** As $t$ becomes very large, the $t^2$ in the denominator dominates the $15t$ in the numerator, pulling the fraction towards zero.
+    The horizontal asymptote is $C = 0$ (or the $t$-axis).
+
+    **c)** In context, the horizontal asymptote represents the drug gradually leaving the patient's system over time. As hours pass, the concentration approaches $0$, meaning the drug is completely metabolised.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying asymptotes in rational functions and interpreting their real-world meaning" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Intersections of Two Models">
+    The population of foxes in a reserve is modelled by $F(t) = 50 + 10t$.
+    The population of rabbits in the same reserve is modelled by $R(t) = 200 - 2t^2$, where $t$ is the number of years from now.
+    
+    a) Sketch both functions on the same set of axes for $0 \le t \le 10$.  
+    b) Find the coordinate of the point of intersection.  
+    c) Interpret the meaning of this intersection in context.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** On your TI-Nspire, graph `f1(x) = 50 + 10x` and `f2(x) = 200 - 2x^2`. 
+    Set the window to $X: [0, 10]$ and use Zoom-Fit.
+    * $F(t)$ is a straight line starting at $(0, 50)$ sloping upwards.
+    * $R(t)$ is a parabola starting at $(0, 200)$ curving downwards.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="220" x2="320" y2="220" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="240" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="210" font-size="12" fill="#64748b" font-family="sans-serif">t</text>
+        <text x="10" y="30" font-size="12" fill="#64748b" font-family="sans-serif">Pop.</text>
+
+        <path d="M 50 60 Q 175 60 300 220" fill="none" stroke="#ef4444" stroke-width="2" />
+        <text x="280" y="210" font-size="11" fill="#ef4444" font-family="sans-serif">R(t)</text>
+        
+        <line x1="50" y1="180" x2="300" y2="100" stroke="#3b82f6" stroke-width="2" />
+        <text x="280" y="90" font-size="11" fill="#3b82f6" font-family="sans-serif">F(t)</text>
+
+        <circle cx="213.8" cy="127.8" r="4" fill="#10b981" />
+        <text x="213.8" y="115" font-size="10" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">(6.55, 116)</text>
+      </svg>
+    </div>
+
+    **b)** Press **Menu > 6: Analyze Graph > 4: Intersection** to find where the two curves cross.
+    
+    $$
+    t \approx 6.55 \text{ years}
+    $$
+    
+    At this time, $y \approx 116$ animals.
+    Intersection coordinate: $(6.55, 116)$.
+
+    **c)** The intersection point represents the exact time (approximately $6.55$ years from now) when the population of foxes is exactly equal to the population of rabbits (both have $116$ animals).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using a GDC to find and interpret the intersection of two different functions" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Draw vs Sketch">
+    A student is asked in an exam to "Draw the graph of $y = 2x - 3$ for $-2 \le x \le 4$".
+    The student quickly draws a line in pen without a ruler, marks $-3$ on the $y$-axis, and roughly estimates the $x$-intercept.
+    
+    a) State two reasons why the student will lose marks based on the IB command term used.  
+    b) Calculate the exact coordinates of the endpoints that the student should have plotted.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** The command term is **Draw**, which requires strict precision. 
+    1. The student did not use a ruler (lines must be straight).
+    2. The student sketched roughly instead of plotting points accurately to scale on graph paper. (Also, drawings should generally be done in pencil).
+
+    **b)** The endpoints are found by substituting the domain limits into the equation:
+    When $x = -2$:
+    
+    $$
+    y = 2(-2) - 3 = -7
+    $$
+    
+    Endpoint 1: $(-2, -7)$
+    
+    When $x = 4$:
+    
+    $$
+    y = 2(4) - 3 = 5
+    $$
+    
+    Endpoint 2: $(4, 5)$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying exact coordinate calculations and understanding the command term Draw" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Finding Specific Function Values from a Graph">
+    The temperature of a chemical reaction, $T$ in degrees Celsius, is recorded $m$ minutes after the reaction begins. The relationship is graphed on a GDC. 
+    The graph has a local maximum at $(5, 85)$ and a local minimum at $(12, 40)$. It passes through the origin $(0,0)$.
+    
+    a) Based on the given coordinates, what is the maximum temperature reached by the reaction?  
+    b) The scientists want to stop the experiment the first time the temperature drops to $50^\circ\text{C}$. Describe the steps you would take on your TI-Nspire to find this exact time $m$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)** The maximum temperature corresponds to the highest $y$-value (or $T$-value) given by the local maximum coordinate.
+    The maximum temperature is $85^\circ\text{C}$.
+
+    **b)** To find when the temperature drops to $50^\circ\text{C}$:
+    
+    <Steps>
+    1. Keep the original temperature function graphed in `f1(x)`.
+    2. Press `tab` and enter a second equation: `f2(x) = 50` (this draws a horizontal line at $50^\circ\text{C}$).
+    3. Press **Menu > 6: Analyze Graph > 4: Intersection** to find where `f1(x)` and `f2(x)` cross.
+    4. Since the graph peaks at $m=5$ and drops to a minimum at $m=12$, look for the intersection point that occurs between $x=5$ and $x=12$. The $x$-coordinate of this intersection will give the exact time $m$.
+    </Steps>
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="220" x2="320" y2="220" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="240" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="210" font-size="12" fill="#64748b" font-family="sans-serif">m</text>
+        <text x="10" y="30" font-size="12" fill="#64748b" font-family="sans-serif">T</text>
+
+        {/* Reaction Curve: precisely passes (50, 220) to (134.4, 50) and then (252.5, 140) with exact horizontal tangents */}
+        <path d="M 50 220 C 70 80, 100 50, 134.4 50 C 180 50, 200 140, 252.5 140 C 280 140, 300 100, 320 80" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Horizontal Line at 50 degrees */}
+        <line x1="50" y1="120" x2="300" y2="120" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="305" y="125" font-size="10" fill="#ef4444" font-family="sans-serif">T = 50</text>
+
+        {/* Origin */}
+        <circle cx="50" cy="220" r="3" fill="#64748b" />
+        <text x="58" y="215" font-size="10" fill="#64748b" font-family="sans-serif">(0,0)</text>
+
+        {/* Maximum Point */}
+        <circle cx="134.4" cy="50" r="4" fill="#10b981" />
+        <text x="134.4" y="40" font-size="10" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Max (5, 85)</text>
+
+        {/* Minimum Point */}
+        <circle cx="252.5" cy="140" r="4" fill="#10b981" />
+        <text x="252.5" y="155" font-size="10" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Min (12, 40)</text>
+
+        {/* Target Intersection point */}
+        <circle cx="212" cy="120" r="4" fill="#f59e0b" />
+        <text x="212" y="110" font-size="10" font-weight="bold" fill="#d97706" text-anchor="middle" font-family="sans-serif">Target m</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting coordinate meaning and using horizontal line intersections to solve equations graphically" />
