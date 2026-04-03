@@ -20,7 +20,7 @@ export default function CircleSimulator() {
         
         const THEOREMS = [
             { id: 'semicircle', title: 'Angle in a Semicircle' },
-            { id: 'tangent', title: 'Tangent Properties' },
+            { id: 'tangent', title: 'Tangent ⟂ Radius' },
             { id: 'centre', title: 'Central Angle Theorem' },
             { id: 'segment', title: 'Angles in Same Segment' },
             { id: 'cyclic', title: 'Cyclic Quadrilateral' },

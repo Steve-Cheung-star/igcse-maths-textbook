@@ -80,6 +80,7 @@ export default defineConfig({
             { label: '1. Number & Algebra', autogenerate: { directory: 'ib-aisl/01-number-and-algebra' } }, // Updated path
             { label: '2. Functions', autogenerate: { directory: 'ib-aisl/02-functions' } }, // Updated path
             { label: '3. 3D Geometry & Trigonometry', autogenerate: { directory: 'ib-aisl/03-geometry-and-trigonometry' } }, // Updated path
+            { label: '4. Statistics & Probability', autogenerate: { directory: 'ib-aisl/04-statistics-and-probability' } }, // Updated path
             // Add more IB directories as you create them
             { label: '⭐ AI SL History', link: '/ib-aisl/my-revision/' }, // Updated label & path
           ],
