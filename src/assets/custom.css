@@ -69,6 +69,10 @@
   margin: 2rem auto;
   max-width: 100%;
   height: auto;
+
+  /* ADD THESE TWO LINES */
+  background-color: transparent !important;
+  fill: none;
 }
 
 /* --- 2. LEAVE EVERYTHING ELSE ALONE --- */
