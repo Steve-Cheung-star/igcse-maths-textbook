@@ -168,8 +168,8 @@ export default function ExamTimer() {
               {showControls && (
                 <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0 }} className="controls-section">
                   <div className="grid-presets">
-                    {[1, 5, 10, 20].map(m => ( <button key={m} onClick={() => startTimer(m)}>{m}m</button> ))}
-                    <button onClick={() => startTimer(0.083)} style={{opacity: 0.3}}>5s</button>
+                    {[1, 2, 5, 10, 20].map(m => ( <button key={m} onClick={() => startTimer(m)}>{m}m</button> ))}
+                    {/* <button onClick={() => startTimer(0.083)} style={{opacity: 0.3}}>5s</button>*/}
                   </div>
                   <div className="action-btns">
                     <button className="add-1" onClick={addOneMinute}>+1m</button>

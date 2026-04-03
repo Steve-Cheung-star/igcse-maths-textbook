@@ -20,7 +20,7 @@ export default function CircleSimulator() {
         
         const THEOREMS = [
             { id: 'semicircle', title: 'Angle in a Semicircle' },
-            { id: 'tangent', title: 'Radius ⟂ Tangent' },
+            { id: 'tangent', title: 'Tangent Properties' },
             { id: 'centre', title: 'Central Angle Theorem' },
             { id: 'segment', title: 'Angles in Same Segment' },
             { id: 'cyclic', title: 'Cyclic Quadrilateral' },
@@ -92,7 +92,6 @@ export default function CircleSimulator() {
             container.querySelectorAll('.sim-tab-btn').forEach(b => b.classList.remove('active'));
             container.querySelector(`#tab-${id}`).classList.add('active');
             
-            // Hide the switch button for BOTH Semicircle and Tangent
             switchBtn.style.display = (id === 'semicircle' || id === 'tangent') ? 'none' : 'block';
             updateSwitchText();
             resetPoints();
@@ -103,11 +102,13 @@ export default function CircleSimulator() {
                 const cases = ['Arrowhead', 'Aligned', 'Crossed', 'Reflex'];
                 switchBtn.textContent = `Case: ${cases[activeVariant]} ⟳`;
             } else if (currentTheorem === 'cyclic') {
-                switchBtn.textContent = `Pair: ${activeVariant === 0 ? 'A & C' : 'B & D'} ⟳`;
+                // Changed from static A&C to dynamic Pairs
+                switchBtn.textContent = `Pair: ${activeVariant === 0 ? '1' : '2'} ⟳`;
             } else if (currentTheorem === 'alt') {
                 switchBtn.textContent = `Chord: ${activeVariant === 0 ? 'PB' : 'PA'} ⟳`;
             } else if (currentTheorem === 'segment') {
-                switchBtn.textContent = `Pair: ${activeVariant === 0 ? 'C & D' : 'A & B'} ⟳`;
+                // Changed from static C&D to dynamic Pairs
+                switchBtn.textContent = `Pair: ${activeVariant === 0 ? '1' : '2'} ⟳`;
             }
         }
 
@@ -120,16 +121,10 @@ export default function CircleSimulator() {
 
         function randomize() {
             const rad = radius;
-            if (currentTheorem === 'cyclic') {
-                let angs = [Math.random() * 6, Math.random() * 6, Math.random() * 6, Math.random() * 6].sort((a,b)=>a-b);
+            if (currentTheorem === 'cyclic' || currentTheorem === 'segment') {
+                // Simplified randomize since the dynamic sorting handles the roles now
+                let angs = [Math.random() * 6, Math.random() * 6, Math.random() * 6, Math.random() * 6];
                 points.forEach((p, i) => { p.x = centreX + Math.cos(angs[i])*rad; p.y = centreY + Math.sin(angs[i])*rad; });
-            } else if (currentTheorem === 'segment') {
-                let a = Math.random() * 6, b = a + 1.5 + Math.random() * 1.5; 
-                let c = b + 0.5 + Math.random(), d = b + 0.5 + Math.random();
-                points[0].x = centreX + Math.cos(a)*rad; points[0].y = centreY + Math.sin(a)*rad;
-                points[1].x = centreX + Math.cos(b)*rad; points[1].y = centreY + Math.sin(b)*rad;
-                points[2].x = centreX + Math.cos(c)*rad; points[2].y = centreY + Math.sin(c)*rad;
-                points[3].x = centreX + Math.cos(d)*rad; points[3].y = centreY + Math.sin(d)*rad;
             } else {
                 points.forEach(p => {
                     if (p.type === 'circle' || p.type === 'tangent-point') {
@@ -150,7 +145,6 @@ export default function CircleSimulator() {
                     { x: centreX, y: centreY - rad, type: 'circle', label: 'C' }
                 ];
             } else if (currentTheorem === 'tangent') {
-                // Only one point needed on the circumference
                 points = [{ x: centreX, y: centreY + rad, type: 'circle', label: 'P' }];
             } else if (currentTheorem === 'centre') {
                 let angs = activeVariant === 0 ? [0.8, 2.3, 4.7] : 
@@ -187,9 +181,16 @@ export default function CircleSimulator() {
             if (!draggingPoint) return;
             const rect = canvas.getBoundingClientRect();
             const mx = e.clientX - rect.left, my = e.clientY - rect.top;
-            const angle = Math.atan2(my - centreY, mx - centreX);
-            draggingPoint.x = centreX + Math.cos(angle) * radius;
-            draggingPoint.y = centreY + Math.sin(angle) * radius;
+            
+            if (draggingPoint.type === 'free') {
+                draggingPoint.x = mx;
+                draggingPoint.y = my;
+            } else {
+                // Free movement around the circle! (Anti-twist code removed)
+                const angle = Math.atan2(my - centreY, mx - centreX);
+                draggingPoint.x = centreX + Math.cos(angle) * radius;
+                draggingPoint.y = centreY + Math.sin(angle) * radius;
+            }
         }
         
         function endDrag() { draggingPoint = null; }
@@ -265,7 +266,6 @@ export default function CircleSimulator() {
                 const t2 = { x: P.x + Math.sin(angP)*180, y: P.y - Math.cos(angP)*180 };
                 ctx.strokeStyle = theme.accent1; ctx.beginPath(); ctx.moveTo(t1.x, t1.y); ctx.lineTo(t2.x, t2.y); ctx.stroke();
                 
-                // Manual Right Angle Square
                 const size = 18;
                 const vRadius = {x: -Math.cos(angP), y: -Math.sin(angP)};
                 const vTangent = {x: Math.sin(angP), y: -Math.cos(angP)};
@@ -299,42 +299,48 @@ export default function CircleSimulator() {
                 mathOutput.innerHTML = `Center (${cleanCenter}°) = 2 × Circumference (${cleanCircum.toFixed(1)}°)`;
 
             } else if (currentTheorem === 'segment') {
-                const [A, B, C, D] = points;
+                // DYNAMIC REMAPPING: Sort points angularly to guarantee a bowtie shape
+                const sorted = [...points].sort((a, b) => Math.atan2(a.y - centreY, a.x - centreX) - Math.atan2(b.y - centreY, b.x - centreX));
+                const [P0, P1, P2, P3] = sorted;
+
                 if (activeVariant === 0) {
-                    ctx.strokeStyle = theme.accent1; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(C.x, C.y); ctx.lineTo(B.x, B.y); ctx.stroke();
-                    ctx.strokeStyle = theme.accent2; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(D.x, D.y); ctx.lineTo(B.x, B.y); ctx.stroke();
+                    ctx.strokeStyle = theme.accent1; ctx.beginPath(); ctx.moveTo(P0.x, P0.y); ctx.lineTo(P2.x, P2.y); ctx.lineTo(P1.x, P1.y); ctx.stroke();
+                    ctx.strokeStyle = theme.accent2; ctx.beginPath(); ctx.moveTo(P0.x, P0.y); ctx.lineTo(P3.x, P3.y); ctx.lineTo(P1.x, P1.y); ctx.stroke();
                     
-                    const a1 = drawInteriorArc(C, A, B, theme.accent1, 40, false, theme); 
+                    const a1 = drawInteriorArc(P2, P1, P0, theme.accent1, 40, false, theme); 
                     const cleanAngle = a1.toFixed(1);
-                    drawInteriorArc(D, A, B, theme.accent2, 40, false, theme, `${cleanAngle}°`);
-                    mathOutput.innerHTML = `∠C = ∠D = ${cleanAngle}°`;
+                    drawInteriorArc(P3, P1, P0, theme.accent2, 40, false, theme, `${cleanAngle}°`);
+                    mathOutput.innerHTML = `∠${P2.label} = ∠${P3.label} = ${cleanAngle}°`;
                 } else {
-                    ctx.strokeStyle = theme.accent1; ctx.beginPath(); ctx.moveTo(C.x, C.y); ctx.lineTo(A.x, A.y); ctx.lineTo(D.x, D.y); ctx.stroke();
-                    ctx.strokeStyle = theme.accent2; ctx.beginPath(); ctx.moveTo(C.x, C.y); ctx.lineTo(B.x, B.y); ctx.lineTo(D.x, D.y); ctx.stroke();
+                    ctx.strokeStyle = theme.accent1; ctx.beginPath(); ctx.moveTo(P1.x, P1.y); ctx.lineTo(P3.x, P3.y); ctx.lineTo(P2.x, P2.y); ctx.stroke();
+                    ctx.strokeStyle = theme.accent2; ctx.beginPath(); ctx.moveTo(P1.x, P1.y); ctx.lineTo(P0.x, P0.y); ctx.lineTo(P2.x, P2.y); ctx.stroke();
                     
-                    const a1 = drawInteriorArc(A, C, D, theme.accent1, 40, false, theme); 
+                    const a1 = drawInteriorArc(P3, P2, P1, theme.accent1, 40, false, theme); 
                     const cleanAngle = a1.toFixed(1);
-                    drawInteriorArc(B, C, D, theme.accent2, 40, false, theme, `${cleanAngle}°`);
-                    mathOutput.innerHTML = `∠A = ∠B = ${cleanAngle}°`;
+                    drawInteriorArc(P0, P2, P1, theme.accent2, 40, false, theme, `${cleanAngle}°`);
+                    mathOutput.innerHTML = `∠${P3.label} = ∠${P0.label} = ${cleanAngle}°`;
                 }
 
             } else if (currentTheorem === 'cyclic') {
-                const [A, B, C, D] = points;
+                // DYNAMIC REMAPPING: Sort points angularly to guarantee a convex quadrilateral
+                const sorted = [...points].sort((a, b) => Math.atan2(a.y - centreY, a.x - centreX) - Math.atan2(b.y - centreY, b.x - centreX));
+                const [P0, P1, P2, P3] = sorted;
+
                 ctx.strokeStyle = theme.muted; ctx.beginPath(); 
-                ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.lineTo(C.x, C.y); ctx.lineTo(D.x, D.y); ctx.closePath(); ctx.stroke();
+                ctx.moveTo(P0.x, P0.y); ctx.lineTo(P1.x, P1.y); ctx.lineTo(P2.x, P2.y); ctx.lineTo(P3.x, P3.y); ctx.closePath(); ctx.stroke();
                 
                 if (activeVariant === 0) {
-                    const a = drawInteriorArc(A, B, D, theme.accent1, 40, false, theme); 
+                    const a = drawInteriorArc(P0, P1, P3, theme.accent1, 40, false, theme); 
                     const cleanA = parseFloat(a.toFixed(1));
                     const cleanC = (180 - cleanA).toFixed(1);
-                    drawInteriorArc(C, D, B, theme.accent1, 40, false, theme, `${cleanC}°`);
-                    mathOutput.innerHTML = `∠A + ∠C = ${cleanA.toFixed(1)}° + ${cleanC}° = 180°`;
+                    drawInteriorArc(P2, P3, P1, theme.accent1, 40, false, theme, `${cleanC}°`);
+                    mathOutput.innerHTML = `∠${P0.label} + ∠${P2.label} = ${cleanA.toFixed(1)}° + ${cleanC}° = 180°`;
                 } else {
-                    const b = drawInteriorArc(B, C, A, theme.accent2, 40, false, theme); 
+                    const b = drawInteriorArc(P1, P2, P0, theme.accent2, 40, false, theme); 
                     const cleanB = parseFloat(b.toFixed(1));
                     const cleanD = (180 - cleanB).toFixed(1);
-                    drawInteriorArc(D, A, C, theme.accent2, 40, false, theme, `${cleanD}°`);
-                    mathOutput.innerHTML = `∠B + ∠D = ${cleanB.toFixed(1)}° + ${cleanD}° = 180°`;
+                    drawInteriorArc(P3, P0, P2, theme.accent2, 40, false, theme, `${cleanD}°`);
+                    mathOutput.innerHTML = `∠${P1.label} + ∠${P3.label} = ${cleanB.toFixed(1)}° + ${cleanD}° = 180°`;
                 }
 
             } else if (currentTheorem === 'alt') {
