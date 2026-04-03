@@ -1,8 +1,33 @@
 ---
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/Sidebar.astro';
-// 1. IMPORT THE TIMER HERE
 import ExamTimer from './ExamTimer.jsx'; 
+
+const greetings = [
+  "Not another maths page...",
+  "Calculations & Egg Tarts",
+  "The Variable Graveyard",
+  "𝜋: Tasty, but Infinite",
+  "Solve for Why?",
+  "Keep Calm and Carry One",
+  "Warning: High Logic Zone",
+  "𝑥 is missing. Call the polce.",
+  "Square Roots & Salty Tears",
+  "Fancy a bit of Algebra?",
+  "Please mind the gap.",
+  "Humidity: 99%. Brain: 1%."
+];
+
+const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+const hour = new Date().getHours();
+let finalGreeting = randomGreeting;
+
+// Time-based Overrides (HK is a city that never sleeps, but you should)
+if (hour >= 23 || hour < 4) {
+  finalGreeting = "🌙 Off to bed. Maths can wait.";
+} else if (hour < 7) {
+  finalGreeting = "☕ Why are you awake? Even the cha chaan tengs aren't open.";
+}
 
 // 2. TEACHER/STUDENT FILTER LOGIC
 const isIB = Astro.url.pathname.includes('/ib-aisl');
@@ -36,7 +61,11 @@ const newProps = {
 <ExamTimer client:only="react" />
 
 <div class="sidebar-container">
-  {/* 6. THE NAVIGATION LINKS */}
+  {/* The Dynamic Title Overlay */}
+  <div class="sidebar-header-hint">
+    {finalGreeting} 
+  </div>
+
   <div class="sidebar-content">
     <Default {...newProps}><slot /></Default>
   </div>
@@ -49,10 +78,56 @@ const newProps = {
     flex-direction: column;
   }
 
-  /* Removed the timer-section styles because the timer is now a floating 
-    fixed-position element. This keeps your sidebar links looking clean.
-  */
+  .sidebar-header-hint {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    font-weight: bold;
+    
+    /* This is the magic variable: */
+    color: var(--sl-color-gray-3); 
+    
+    padding: 0.8rem 1rem;
+    opacity: 0.8;
+    border-bottom: 1px solid var(--sl-color-hairline);
+    font-family: var(--__sl-font-mono);
+  }
+
   .sidebar-content {
     padding-top: 0.5rem;
   }
+
+  /* Automation Trick: Make the sidebar background 
+     slightly shift color if it's late at night */
+  :global([data-theme='dark']) .sidebar-container {
+    background: linear-gradient(
+      to bottom, 
+      transparent, 
+      rgba(var(--sl-color-accent-low-rgb), 0.05)
+    );
+  }
 </style>
+
+<script is:inline>
+  // Automation: The "Wandering Variable" Easter Egg
+  // Every 5 minutes, a small 'x' will briefly float across the sidebar
+  setInterval(() => {
+    const x = document.createElement('div');
+    x.innerText = 'x';
+    x.style.position = 'absolute';
+    x.style.left = '-20px';
+    x.style.top = Math.random() * 80 + '%';
+    x.style.transition = 'all 10s linear';
+    x.style.opacity = '0.3';
+    x.style.pointerEvents = 'none';
+    x.style.color = 'var(--sl-color-accent)';
+    
+    document.querySelector('.sidebar-container').appendChild(x);
+    
+    setTimeout(() => {
+      x.style.left = '110%';
+    }, 100);
+
+    setTimeout(() => x.remove(), 10500);
+  }, 300000); // Happens every 5 mins
+</script>

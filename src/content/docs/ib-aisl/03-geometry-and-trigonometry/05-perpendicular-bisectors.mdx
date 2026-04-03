@@ -1,0 +1,193 @@
+---
+title: 3.5 Perpendicular Bisectors
+description: Learn how to determine the equation of a perpendicular bisector given two points or a line segment and its midpoint.
+---
+
+In geometry, a **perpendicular bisector** is a line that cuts a line segment into two equal halves at a $90^\circ$ angle. This concept is vital in Voronoi diagrams (which you will study in Chapter 3.6), urban planning, and coordinate geometry.
+
+To find the equation of a perpendicular bisector, you must combine your knowledge of **midpoints**, **gradients**, and **linear equations**.
+
+---
+
+## 1. The Anatomy of a Perpendicular Bisector
+
+A perpendicular bisector must satisfy two strict geometric conditions:
+1. **It must be Perpendicular:** The gradient of the bisector ($m_{\perp}$) must be the negative reciprocal of the gradient of the original line segment ($m$).
+2. **It must Bisect:** The line must pass through the **midpoint** of the original line segment.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Line Segment AB */}
+    <line x1="80" y1="220" x2="320" y2="80" stroke="#94a3b8" stroke-width="3" />
+    <circle cx="80" cy="220" r="4" fill="#1e293b" />
+    <circle cx="320" cy="80" r="4" fill="#1e293b" />
+    <text x="60" y="235" font-family="sans-serif" font-size="14" font-weight="bold">A</text>
+    <text x="330" y="75" font-family="sans-serif" font-size="14" font-weight="bold">B</text>
+
+    {/* Midpoint M */}
+    <circle cx="200" cy="150" r="4" fill="#ef4444" />
+    <text x="210" y="145" font-family="sans-serif" font-size="14" fill="#ef4444" font-weight="bold">M (Midpoint)</text>
+
+    {/* Perpendicular Bisector */}
+    {/* m = (80-220)/(320-80) = -140/240 = -7/12. Perp m = 12/7 approx 1.71 */}
+    <line x1="141.5" y1="50" x2="258.5" y2="250" stroke="#3b82f6" stroke-width="3" />
+    
+    {/* Right Angle Symbol */}
+    <path d="M 191.5 135.5 L 177 144 L 185.5 158.5" fill="none" stroke="#3b82f6" stroke-width="2" />
+    
+    {/* Congruent markers */}
+    <line x1="135" y1="180" x2="145" y2="190" stroke="#1e293b" stroke-width="2" />
+    <line x1="255" y1="110" x2="265" y2="120" stroke="#1e293b" stroke-width="2" />
+    
+    <text x="230" y="270" font-family="sans-serif" font-size="14" fill="#3b82f6" font-weight="bold">Perpendicular Bisector</text>
+  </svg>
+</div>
+
+---
+
+## 2. The Three-Step Process
+
+To find the equation of the perpendicular bisector between two points $A(x_1, y_1)$ and $B(x_2, y_2)$, follow these steps:
+
+<Steps>
+1. **Find the Midpoint ($M$):**
+   Use the midpoint formula to find the point the bisector passes through.
+   $$M = \left( \frac{x_1 + x_2}{2}, \frac{y_1 + y_2}{2} \right)$$
+
+2. **Find the Perpendicular Gradient ($m_{\perp}$):**
+   * First, find the gradient of the segment $AB$: $m = \frac{y_2 - y_1}{x_2 - x_1}$
+   * Then, find the perpendicular gradient: $m_{\perp} = -\frac{1}{m}$
+
+3. **Construct the Equation:**
+   Use the point-gradient form $y - y_1 = m(x - x_1)$ with the midpoint $M$ and the perpendicular gradient $m_{\perp}$.
+</Steps>
+
+<Aside type="caution" title="Parallel and Perpendicular Gradients">
+Recall from Section 2.1: 
+* If two lines are parallel, $m_1 = m_2$.
+* If two lines are perpendicular, $m_1 \times m_2 = -1$.
+</Aside>
+
+---
+
+## 3. Theory of Knowledge (TOK)
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Does personal experience play a role in the formation of knowledge claims in mathematics?** When we construct a perpendicular bisector using a compass and a straightedge, we are using physical experience to verify a geometric truth. However, in coordinate geometry, we use algebra to prove the same truth. Is the "knowledge" gained through the physical construction different from the "knowledge" gained through the algebraic proof? One relies on our senses and the accuracy of our tools, while the other relies on the internal consistency of logic.
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Given Two Points">
+    Points $A$ and $B$ have coordinates $(2, 5)$ and $(8, -3)$ respectively.
+    Find the equation of the perpendicular bisector of the line segment $AB$. Give your answer in the form $ax + by + d = 0$ where $a, b, d \in \mathbb{Z}$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Find the Midpoint ($M$)**
+       $$M = \left( \frac{2 + 8}{2}, \frac{5 + (-3)}{2} \right) = (5, 1)$$
+
+    2. **Find the Gradient of $AB$ ($m$)**
+       $$m = \frac{-3 - 5}{8 - 2} = \frac{-8}{6} = -\frac{4}{3}$$
+
+    3. **Find the Perpendicular Gradient ($m_{\perp}$)**
+       $$m_{\perp} = \frac{3}{4}$$
+
+    4. **Form the Equation**
+       Using $y - y_1 = m(x - x_1)$ with $(5, 1)$:
+       $$y - 1 = \frac{3}{4}(x - 5)$$
+       $$4(y - 1) = 3(x - 5)$$
+       $$4y - 4 = 3x - 15$$
+       $$3x - 4y - 11 = 0$$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the equation of a perpendicular bisector given two coordinate points" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Given Midpoint and Gradient">
+    A line segment $PQ$ has a midpoint $M(4, 2)$. The line segment itself has the equation $y = 2x - 6$.
+    Find the equation of the perpendicular bisector of $PQ$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Identify the Gradient ($m$)**
+       From $y = 2x - 6$, the gradient $m = 2$.
+
+    2. **Find the Perpendicular Gradient ($m_{\perp}$)**
+       $$m_{\perp} = -\frac{1}{2}$$
+
+    3. **Form the Equation**
+       We already have the midpoint $(4, 2)$ and the perpendicular gradient $-\frac{1}{2}$:
+       $$y - 2 = -\frac{1}{2}(x - 4)$$
+       $$y - 2 = -0.5x + 2$$
+       $$y = -0.5x + 4$$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the perpendicular bisector when provided with a midpoint and an original line equation" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Real-world Context">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#ffffff', border: '1px solid #e2e8f0' }}>
+        {/* Grid lines */}
+        <path d="M 50 0 V 300 M 100 0 V 300 M 150 0 V 300 M 200 0 V 300 M 250 0 V 300 M 300 0 V 300 M 350 0 V 300" stroke="#f1f5f9" stroke-width="1" />
+        <path d="M 0 50 H 400 M 0 100 H 400 M 0 150 H 400 M 0 200 H 400 M 0 250 H 400" stroke="#f1f5f9" stroke-width="1" />
+        
+        {/* Axes */}
+        <line x1="50" y1="250" x2="350" y2="250" stroke="#94a3b8" stroke-width="2" />
+        <line x1="50" y1="50" x2="50" y2="250" stroke="#94a3b8" stroke-width="2" />
+        
+        {/* Tower 1 (0,0) -> mapped to (50, 250) */}
+        <g transform="translate(40, 220) scale(0.4)">
+           <path d="M 25 0 L 0 70 H 50 Z" fill="#475569" />
+           <rect x="22" y="10" width="6" height="40" fill="#94a3b8" />
+           <circle cx="25" cy="5" r="5" fill="#ef4444" />
+        </g>
+        <text x="35" y="270" font-family="sans-serif" font-size="12">T1 (0,0)</text>
+
+        {/* Tower 2 (6,4) -> mapped to (50 + 6*40, 250 - 4*40) = (290, 90) */}
+        <g transform="translate(280, 60) scale(0.4)">
+           <path d="M 25 0 L 0 70 H 50 Z" fill="#475569" />
+           <rect x="22" y="10" width="6" height="40" fill="#94a3b8" />
+           <circle cx="25" cy="5" r="5" fill="#ef4444" />
+        </g>
+        <text x="300" y="85" font-family="sans-serif" font-size="12">T2 (6,4)</text>
+
+        {/* Perpendicular Bisector Boundary */}
+        <line x1="50" y1="70" x2="216" y2="250" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4" />
+        <text x="180" y="230" font-family="sans-serif" font-size="12" fill="#3b82f6" transform="rotate(-47 180 230)">Boundary Line</text>
+      </svg>
+    </div>
+    Two cell towers are located at $T_1(0, 0)$ and $T_2(6, 4)$ on a coordinate map where units are in kilometres. A boundary line is to be drawn such that any point on the line is equidistant from both towers.
+    
+    a) Find the equation of this boundary line.
+    
+    b) A road follows the line $y = x + 1$. Find the coordinates of the point on the road that is equidistant from both towers.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part a)**
+    The line equidistant from two points is their perpendicular bisector.
+    * **Midpoint:** $\left(\frac{0+6}{2}, \frac{0+4}{2}\right) = (3, 2)$
+    * **Gradient of $T_1T_2$:** $\frac{4-0}{6-0} = \frac{2}{3}$
+    * **Perpendicular Gradient:** $-\frac{3}{2}$
+    * **Equation:** $y - 2 = -\frac{3}{2}(x - 3) \Rightarrow y = -1.5x + 6.5$
+
+    **Part b)**
+    We find the intersection of the road ($y = x + 1$) and the boundary ($y = -1.5x + 6.5$):
+    $$x + 1 = -1.5x + 6.5$$
+    $$2.5x = 5.5$$
+    $$x = 2.2$$
+    Substitute $x$ into $y = x + 1$:
+    $$y = 2.2 + 1 = 3.2$$
+    The point is $(2.2, 3.2)$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying perpendicular bisectors to find equidistant boundaries and intersection points" />

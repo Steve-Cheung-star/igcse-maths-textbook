@@ -1,0 +1,365 @@
+---
+title: 2.6 Mathematical Modelling
+description: Learn the process of mathematical modelling, how to fit theoretical models using simultaneous equations, and how to evaluate their appropriateness in real-world contexts.
+---
+
+Mathematics is not just about abstract numbers; it is a powerful tool for making sense of the world around us. **Mathematical modelling** is the process of translating a real-world problem into a mathematical format, solving it, and then translating the results back into the real-world context to make predictions or decisions.
+
+In Topic 2.5, we explored various theoretical models (linear, quadratic, exponential, and sinusoidal). Now, we will apply these functions to real data, finding their parameters and evaluating their reliability.
+
+---
+
+## 1. The Modelling Cycle
+
+When tasked with modelling a scenario, you are generally expected to follow a structured cycle:
+
+1. **Develop and Fit the Model:** * **Choose an appropriate model:** Look at the shape of the data (does it curve upwards? does it oscillate?) and consider the context (does it have a natural maximum? does it decay to zero?).
+   * **Determine a reasonable domain:** Decide the range of $x$-values for which the model physically makes sense. (e.g., Time usually cannot be negative; populations cannot be negative).
+   * **Find the parameters:** Use initial conditions, substitute points into the function, or set up simultaneous equations.
+2. **Test and Reflect:**
+   * Evaluate the model's appropriateness. Does the model output reasonable values?
+   * Justify your choice of model based on mathematical properties and the context of the situation.
+3. **Use the Model:**
+   * Interpret the parameters in context (e.g., the $y$-intercept represents the starting temperature).
+   * Make predictions by evaluating the function or finding intersections using your GDC.
+
+---
+
+## 2. Fitting Models via Simultaneous Equations
+
+While Topic 4 will teach you how to fit models using statistical regression, in this section, you are expected to find parameters exactly by substituting known data points to create a system of equations. 
+
+At the SL level, you are **not** expected to perform non-linear regressions by hand. However, you **are** expected to set up and solve up to **three linear equations in three variables** using the technological tools on your GDC. This is particularly common when finding the parameters of a quadratic model $f(x) = ax^2 + bx + c$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 320" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid Lines */}
+    <line x1="50" y1="250" x2="450" y2="250" stroke="#e2e8f0" stroke-width="1" />
+    <line x1="50" y1="200" x2="450" y2="200" stroke="#e2e8f0" stroke-width="1" />
+    <line x1="50" y1="150" x2="450" y2="150" stroke="#e2e8f0" stroke-width="1" />
+    <line x1="50" y1="100" x2="450" y2="100" stroke="#e2e8f0" stroke-width="1" />
+    
+    {/* Axes */}
+    <line x1="50" y1="300" x2="450" y2="300" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="50" y1="20" x2="50" y2="300" stroke="#cbd5e1" stroke-width="2" />
+    <text x="440" y="290" font-size="12" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="60" y="30" font-size="12" fill="#64748b" font-family="sans-serif">y</text>
+
+    {/* High-resolution Polyline for exact mathematical fit of y = 2x^2 - x + 4 */}
+    {/* Mapped where x_svg = 50 + 100*x, y_svg = 300 - 10*y */}
+    <polyline points="100,260 125,256.25 150,250 175,241.25 200,230 225,216.25 250,200 275,181.25 300,160 325,136.25 350,110 375,81.25 400,50" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linejoin="round" />
+
+    {/* Exact Data Points mapped mathematically to the curve */}
+    <circle cx="150" cy="250" r="5" fill="#ef4444" />
+    <text x="160" y="260" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">(1, 5)</text>
+
+    <circle cx="250" cy="200" r="5" fill="#ef4444" />
+    <text x="260" y="210" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">(2, 10)</text>
+
+    <circle cx="350" cy="110" r="5" fill="#ef4444" />
+    <text x="360" y="120" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">(3, 19)</text>
+
+    <text x="80" y="80" font-size="16" font-weight="bold" fill="#3b82f6" font-family="sans-serif">f(x) = ax² + bx + c</text>
+  </svg>
+</div>
+
+<SteveTip title="GDC Mastery: Solving 3x3 Systems">
+**CRITICAL EXAM TIP:** Do not waste time solving three-variable equations by hand! Your GDC has a built-in tool for this.
+* **TI-Nspire:** Press **[Menu] > 3: Algebra > 7: Solve System of Equations > 1: Solve System of Linear Equations**. Enter `3` for the number of equations, and set variables to `a, b, c`. Type in your three equations and hit enter!
+</SteveTip>
+
+---
+
+## 3. Interpolation vs. Extrapolation
+
+Once a model is built, you will often use it to estimate values. The reliability of your estimation depends heavily on where the predicted value lies in relation to your original data.
+
+* **Interpolation:** Making predictions *within* the domain of your known data points. These estimates are generally considered reliable.
+* **Extrapolation:** Making predictions *outside* the domain of your known data points. These estimates are fundamentally unreliable because we cannot guarantee the model's pattern continues indefinitely.
+
+<Aside type="note" title="TOK Connection">
+*What is it about models in mathematics that makes them effective? Is simplicity a desirable characteristic in models?* A simple model might ignore complex real-world variables, but it is often easier to use and understand. A highly complex model might fit historical data perfectly but fail catastrophically when extrapolating due to "overfitting". In modelling, there is always a tension between accuracy and simplicity.
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Fitting a Quadratic Model">
+    A biologist is studying the growth of a bacterial culture. The area, $A$, in cm$^2$, covered by the bacteria on a Petri dish $t$ hours after observation begins is recorded. 
+    
+    The biologist decides to model the growth using the quadratic function $A(t) = at^2 + bt + c$.
+    
+    She notes the following three data points:
+    * At $t = 1$ hour, $A = 5 \text{ cm}^2$
+    * At $t = 2$ hours, $A = 10 \text{ cm}^2$
+    * At $t = 3$ hours, $A = 19 \text{ cm}^2$
+    
+    a) Set up a system of three linear equations in terms of $a$, $b$, and $c$.  
+    b) Use your GDC to solve the system and find the values of $a$, $b$, and $c$.  
+    c) Write down the final model for $A(t)$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** Substitute each $(t, A)$ coordinate pair into the model $A = at^2 + bt + c$:
+    
+    For $(1, 5)$:
+    $$a(1)^2 + b(1) + c = 5 \implies a + b + c = 5$$
+    
+    For $(2, 10)$:
+    $$a(2)^2 + b(2) + c = 10 \implies 4a + 2b + c = 10$$
+    
+    For $(3, 19)$:
+    $$a(3)^2 + b(3) + c = 19 \implies 9a + 3b + c = 19$$
+
+    **b)** Enter this system into your GDC (using the *Solve System of Linear Equations* tool):
+    
+    * $a = 2$
+    * $b = -1$
+    * $c = 4$
+
+    **c)** Substitute the parameters back into the general equation:
+    
+    $$A(t) = 2t^2 - t + 4$$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Setting up and solving 3x3 simultaneous equations for quadratic modelling" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Model Evaluation & Extrapolation">
+    Using the biological model from Question 1, $A(t) = 2t^2 - t + 4$:
+    
+    a) Predict the area covered by the bacteria at $t = 2.5$ hours. State whether this is an example of interpolation or extrapolation.  
+    b) The Petri dish has a total surface area of $150 \text{ cm}^2$. The biologist uses the model to predict the area covered after $t = 24$ hours. Calculate this prediction.  
+    c) Comment on the reasonableness of the prediction in part (b) and suggest a limitation of the chosen quadratic model.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** Substitute $t = 2.5$ into the model:
+    
+    $$A(2.5) = 2(2.5)^2 - 2.5 + 4 = 2(6.25) - 2.5 + 4 = 14 \text{ cm}^2$$
+    
+    Because $t=2.5$ falls *inside* the bounds of our original recorded data ($t=1$ to $t=3$), this is an example of **interpolation**.
+
+    **b)** Substitute $t = 24$:
+    
+    $$A(24) = 2(24)^2 - 24 + 4 = 2(576) - 20 = 1152 - 20 = 1132 \text{ cm}^2$$
+
+    **c)** The prediction of $1132 \text{ cm}^2$ is **unreasonable**. 
+    
+    **Limitation/Justification:** This prediction is a severe extrapolation. The physical constraint of the environment is that the Petri dish only has an area of $150 \text{ cm}^2$. The bacterial area cannot exceed the total area of the dish. A quadratic model is inappropriate for long-term growth because it assumes the area will increase towards infinity without any natural boundaries. A logistic model (which levels off) would be far more appropriate for this context.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating model appropriateness and distinguishing between interpolation and extrapolation" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Inverse Modelling (Worker Efficiency)">
+    A construction company is analysing the time it takes to build a standard modular house. The project manager proposes that the number of days required, $D$, is inversely related to the number of workers, $w$, assigned to the site. 
+    
+    The manager uses the inverse model:
+    
+    $$
+    D(w) = \frac{k}{w} + c
+    $$
+    
+    where $k$ and $c$ are constants.
+    
+    Historical data from two recent builds shows:
+    * A team of **5 workers** completed the house in **24 days**.
+    * A team of **10 workers** completed the identical house in **14 days**.
+    
+    a) Set up a system of two linear equations in terms of $k$ and $c$. *(Hint: Substitute the data points and multiply by $w$ to remove the fraction!)* b) Solve the system to find the exact values of $k$ and $c$.  
+    c) Write down the final model for $D(w)$ and interpret the real-world meaning of the parameter $c$.  
+    d) Use the model to predict how long it would take if a massive team of **1000 workers** were assigned to the build. Comment on whether this prediction and the model itself are realistic at this extreme.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Substitute the $(w, D)$ coordinates into the model $D = \frac{k}{w} + c$:
+    
+    * For $w=5, D=24$:  
+      $$24 = \frac{k}{5} + c \implies 120 = k + 5c$$
+    * For $w=10, D=14$:  
+      $$14 = \frac{k}{10} + c \implies 140 = k + 10c$$
+
+    **b)** We now have a standard system of two linear equations:
+    1) $k + 5c = 120$
+    2) $k + 10c = 140$
+    
+    Subtracting equation (1) from equation (2):
+    $$5c = 20 \implies c = 4$$
+    
+    Substitute $c = 4$ back into equation (1):
+    $$k + 5(4) = 120 \implies k + 20 = 120 \implies k = 100$$
+
+    **c)** The complete model is:
+    $$D(w) = \frac{100}{w} + 4$$
+    
+    **Interpretation:** The parameter $c = 4$ represents the horizontal asymptote of the graph. In the real world, this means that no matter how many workers you add, there is a baseline minimum of **4 days** required to build the house (perhaps due to concrete needing to set, paint drying, or mandatory safety inspections that cannot be sped up by adding more hands).
+
+    **d)** Substitute $w = 1000$ into the model:
+    $$D(1000) = \frac{100}{1000} + 4 = 0.1 + 4 = 4.1 \text{ days}$$
+    
+    **Evaluation:** While the maths gives us 4.1 days, this prediction is **highly unrealistic**. This is a severe extrapolation. In reality, fitting 1000 workers into a single house build would cause extreme overcrowding, logistical chaos, and likely slow the project down rather than speed it up. The inverse model breaks down at extremely large values of $w$.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 360 250" width="100%" maxWidth="360px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        {/* Axes */}
+        <line x1="30" y1="210" x2="320" y2="210" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="200" font-size="12" fill="#64748b" font-family="sans-serif">w</text>
+        <text x="15" y="30" font-size="12" fill="#64748b" font-family="sans-serif">D</text>
+
+        {/* Horizontal Asymptote c = 4 (Mapped mathematically to y = 190) */}
+        <line x1="50" y1="190" x2="320" y2="190" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="325" y="195" font-size="10" fill="#059669" font-family="sans-serif">c = 4</text>
+
+        {/* High-Resolution Mathematically Accurate Smooth Inverse Polyline: D = 100/w + 4 */}
+        {/* Exact mapping: x = 50 + 10w, y = 210 - 5D. */}
+        <polyline points="80,23.3 85,47.1 90,65.0 95,78.9 100,90.0 105,99.1 110,106.7 120,118.6 130,127.5 140,134.4 150,140.0 160,144.5 180,151.5 200,156.7 220,160.6 240,163.7 260,166.2 280,168.3 290,169.2 300,170.0 320,171.5" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linejoin="round" />
+        
+        {/* Recorded Data Points (Perfectly aligned with nodes) */}
+        <circle cx="100" cy="90" r="4" fill="#ef4444" />
+        <text x="110" y="85" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="start" font-family="sans-serif">(5, 24)</text>
+        
+        <circle cx="150" cy="140" r="4" fill="#ef4444" />
+        <text x="160" y="135" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="start" font-family="sans-serif">(10, 14)</text>
+
+        {/* Extrapolation point indicated mathematically where curve is close to asymptote */}
+        <circle cx="290" cy="169.2" r="4" fill="#f59e0b" />
+        <text x="290" y="155" font-size="10" font-weight="bold" fill="#d97706" text-anchor="middle" font-family="sans-serif">Extreme w</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Setting up and solving simultaneous equations to fit inverse models, and interpreting asymptotes in context" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Choosing a Model & Extrapolation">
+    A new electric car is purchased for **$£35,000$**. After 3 years, its value has dropped to **$£20,000$**. 
+    An insurance company wants to model the car's depreciation, $V$, over time $t$ in years. They consider the simple exponential model:
+    
+    $$
+    V(t) = ka^t
+    $$
+    
+    a) Use the initial purchase price to find the value of $k$.  
+    b) Use the value at year 3 to set up an equation and use your GDC to find the value of $a$ (to 4 decimal places).  
+    c) The insurance company uses this model to predict the car's value after 25 years. Calculate this predicted value.  
+    d) Critically evaluate the reasonableness of the model used in part (c). Suggest a modification to the model $V(t) = ka^t$ that would make it more realistic for long-term depreciation.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** At $t = 0$, $V = 35000$.
+    $$35000 = ka^0 \implies 35000 = k(1) \implies k = 35000$$
+
+    **b)** Our model is $V(t) = 35000a^t$. We know at $t = 3$, $V = 20000$.
+    $$20000 = 35000a^3$$
+    Use `nSolve(20000 = 35000 * a^3, a)` on your GDC.
+    $$a = 0.8298$$ (This means the car retains roughly 83% of its value each year).
+
+    **c)** The model is $V(t) = 35000(0.8298)^t$. Substitute $t = 25$:
+    $$V(25) = 35000(0.8298)^{25} = 35000(0.00940...) = 329.13$$
+    The predicted value is **$£329.13$**.
+
+    **d)** **Evaluation:** Predicting 25 years into the future is a severe extrapolation. A value of $£329$ is likely unreasonable because almost all cars have a baseline "scrap metal" or parts value that they will not drop below, regardless of age. 
+    
+    **Suggested Modification:** The current model has a horizontal asymptote at $V = 0$. A more realistic model would be $V(t) = ka^t + c$, where $c$ represents the constant scrap value (the horizontal asymptote) that the car's value will level out at over time.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Fitting exponential depreciation models and evaluating extrapolation boundaries" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Sinusoidal Modelling & Reasonableness">
+    The number of daylight hours, $D$, in a specific Northern Hemisphere city is modelled by the sinusoidal function:
+    
+    $$
+    D(m) = a\cos(30m) + d
+    $$
+    
+    where $m$ is the number of months after the summer solstice ($m = 0$ is June 21st).
+    The longest day of the year has **16 hours** of daylight. The shortest day of the year, exactly 6 months later ($m = 6$), has **8 hours** of daylight.
+    
+    a) Determine the values of $a$ and $d$.  
+    b) Calculate the predicted number of daylight hours 2 months after the summer solstice ($m = 2$).  
+    c) A student claims that because this model uses extrapolation for $m = 24$ (two years later), the prediction will be unreliable. Explain why the student is incorrect in the context of sinusoidal models.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** We are given the Maximum (16) and Minimum (8).
+    
+    The principal axis $d$ is the average:
+    $$d = \frac{16 + 8}{2} = \frac{24}{2} = 12$$
+    
+    The amplitude $a$ is the distance from the average to the peak:
+    $$a = \frac{16 - 8}{2} = \frac{8}{2} = 4$$
+    
+    So, $a = 4$ and $d = 12$. The model is $D(m) = 4\cos(30m) + 12$.
+
+    **b)** Substitute $m = 2$:
+    *(Ensure your GDC is in Degree mode!)*
+    $$D(2) = 4\cos(30 \times 2) + 12$$
+    $$D(2) = 4\cos(60^\circ) + 12$$
+    $$D(2) = 4(0.5) + 12 = 2 + 12 = 14$$
+    There are **14 hours** of daylight.
+
+    **c)** The student is incorrect because astronomical phenomena (like Earth's orbit around the sun) are strictly **periodic**. Unlike a population growth model or stock market trend which might change behaviour unexpectedly over time, a sinusoidal model is specifically designed to repeat infinitely. Therefore, predicting $m = 24$ is not a dangerous extrapolation; it will accurately reflect the same summer solstice conditions as $m=0$ and $m=12$.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="210" x2="320" y2="210" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="200" font-size="12" fill="#64748b" font-family="sans-serif">m (months)</text>
+        <text x="15" y="30" font-size="12" fill="#64748b" font-family="sans-serif">D (hrs)</text>
+
+        {/* Principal Axis */}
+        <line x1="50" y1="120" x2="300" y2="120" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="305" y="125" font-size="10" fill="#059669" font-family="sans-serif">12 hrs</text>
+
+        {/* Cosine Curve mapping exactly */}
+        <path d="M 50 40 C 90 40, 110 200, 150 200 C 190 200, 210 40, 250 40 C 290 40, 310 200, 320 180" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Key Points */}
+        <circle cx="50" cy="40" r="4" fill="#ef4444" />
+        <text x="50" y="30" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Max (0, 16)</text>
+
+        <circle cx="150" cy="200" r="4" fill="#ef4444" />
+        <text x="150" y="215" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Min (6, 8)</text>
+
+        <circle cx="83.3" cy="80" r="4" fill="#9333ea" />
+        <text x="93.3" y="75" font-size="10" font-weight="bold" fill="#9333ea" text-anchor="start" font-family="sans-serif">(2, 14)</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating the validity of periodic models and extracting parameters from physical contexts" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Identifying Models from Context">
+    A software company launches a new app. They consider three different theoretical models to predict the total number of downloads, $D$, over $t$ weeks:
+    
+    * **Model A:** $D(t) = mt + c$
+    * **Model B:** $D(t) = a\sin(bt) + d$
+    * **Model C:** $D(t) = \frac{k}{t}$
+    * **Model D:** $D(t) = c - ka^{-t}$ (Exponential growth to a ceiling)
+    
+    The marketing director states: *"The app will initially see a massive, rapid spike in downloads due to our ad campaign. However, because there is a limited number of smartphone users in our target demographic, the total download count will eventually level off and stop growing."*
+    
+    a) Match the marketing director's description to the most appropriate theoretical model from the list above. Justify why the other three models are inappropriate.  
+    b) If the absolute maximum number of target users is $2,000,000$, state the value of the parameter $c$ in Model D.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a) The correct model is Model D ($D(t) = c - ka^{-t}$).**
+    
+    *Justifications for rejecting the others:*
+    * **Model A (Linear):** Incorrect because a linear model assumes a constant, steady rate of downloads forever. It does not account for an initial rapid spike, nor does it ever level off.
+    * **Model B (Sinusoidal):** Incorrect because a sinusoidal model dictates that the total downloads would go up and then *go back down* periodically. Total downloads cannot decrease over time.
+    * **Model C (Inverse):** Incorrect because an inverse model dictates that as time increases, the total number of downloads approaches zero. The total sum of downloads should be growing, not shrinking.
+    
+    Model D is correct because it grows rapidly at first (exponentially) but the negative exponent creates a horizontal asymptote (a "ceiling"), matching the physical limit of the target demographic.
+
+    **b)** In the model $D(t) = c - ka^{-t}$, the parameter $c$ represents the horizontal asymptote. Since the downloads level off at the maximum demographic limit, **$c = 2,000,000$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Selecting appropriate theoretical models based on real-world constraints and limits" />

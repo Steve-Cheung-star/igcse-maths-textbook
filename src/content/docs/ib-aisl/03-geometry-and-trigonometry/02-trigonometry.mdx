@@ -1,0 +1,488 @@
+---
+title: 3.2 Trigonometry
+description: Master the use of trigonometric ratios, the sine and cosine rules, and the area formula for triangles to solve geometric problems in IB Maths AI SL.
+---
+
+Trigonometry is the study of triangles, specifically the relationships between their side lengths and angles. Its applications stretch far beyond the mathematics classroom: from map-making and triangulation in geography to calculating vectors in physics. In this chapter, you will build upon basic right-angled trigonometry to solve problems involving any type of triangle.
+
+---
+
+## 1. Right-Angled Trigonometry
+
+When dealing with a right-angled triangle, the fundamental trigonometric ratios describe the relationship between the angles and the ratios of the side lengths. 
+
+<Aside type="caution" title="Important Notice">
+These foundational ratios are **not** included in the IB Mathematics AI SL formula booklet. You are expected to have them memorised. The common mnemonic to remember them is **SOH CAH TOA**.
+</Aside>
+
+### The Trigonometric Ratios (SOH CAH TOA)
+
+$$
+\sin(\theta) = \frac{\text{Opposite}}{\text{Hypotenuse}}
+$$
+
+$$
+\cos(\theta) = \frac{\text{Adjacent}}{\text{Hypotenuse}}
+$$
+
+$$
+\tan(\theta) = \frac{\text{Opposite}}{\text{Adjacent}}
+$$
+
+<Aside type="note" title="The Anatomy of a Right-Angled Triangle">
+To use SOH CAH TOA correctly, you must be able to accurately label the three sides of a right-angled triangle relative to the reference angle $\theta$:
+* **Hypotenuse:** The longest side, always directly opposite the right angle.
+* **Opposite:** The side directly across from your reference angle $\theta$.
+* **Adjacent:** The side next to the reference angle $\theta$ (that is not the hypotenuse).
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Triangle */}
+    <polygon points="100,200 300,200 300,50" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="2" />
+    {/* Right Angle Marker */}
+    <polyline points="280,200 280,180 300,180" fill="none" stroke="#ef4444" stroke-width="2" />
+    {/* Theta Arc */}
+    <path d="M 140 200 A 40 40 0 0 0 132 176" fill="none" stroke="#1e293b" stroke-width="2" />
+    <text x="150" y="190" font-family="sans-serif" font-size="16" fill="#1e293b">θ</text>
+    {/* Labels */}
+    <text x="310" y="130" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ef4444">Opposite</text>
+    <text x="165" y="225" font-family="sans-serif" font-size="14" font-weight="bold" fill="#3b82f6">Adjacent</text>
+    <text x="160" y="110" font-family="sans-serif" font-size="14" font-weight="bold" fill="#64748b" transform="rotate(-36 160,110)">Hypotenuse</text>
+  </svg>
+</div>
+
+<SteveTip title="TI-Nspire: Degree Mode and nSolve">
+Before starting any trigonometry exam paper, check the top right corner of your TI-Nspire screen to ensure your calculator is set to **Degree Mode (DEG)**, not Radians (RAD). When solving for missing sides, you can use `nSolve`, but always write down the full equation (e.g., $\cos(40^\circ) = \frac{x}{15}$) on your exam paper first to secure method marks.
+</SteveTip>
+
+<Aside type="tip" title="Link to Inverse Functions (SL 2.2)">
+When you know the sides of a right-angled triangle and need to find a missing angle, you must use the **inverse trigonometric functions** ($\sin^{-1}$, $\cos^{-1}$, or $\tan^{-1}$). This is a direct application of inverse functions undoing the original operation to return the input (the angle).
+</Aside>
+
+---
+
+## 2. Non-Right-Angled Trigonometry
+
+When a triangle does not contain a right angle, SOH CAH TOA and Pythagoras' theorem no longer apply. Instead, we use the Sine Rule and the Cosine Rule. 
+
+<Aside type="note" title="Labelling Convention">
+In trigonometry, we use a standard naming convention for triangles:
+* **Angles** are labelled with capital letters (e.g., $A, B, C$).
+* **Sides** are labelled with lowercase letters, such that side $a$ is directly opposite angle $A$, side $b$ is opposite angle $B$, and side $c$ is opposite angle $C$.
+</Aside>
+
+### The Sine Rule
+
+The Sine Rule establishes a direct proportional relationship between the sides of a triangle and the sines of their opposite angles.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 200" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <polygon points="50,150 350,150 250,50" fill="none" stroke="#cbd5e1" stroke-width="2" />
+    
+    {/* Matching pair 1: Angle A and side a */}
+    <path d="M 80 150 A 30 30 0 0 0 77 136" fill="none" stroke="#3b82f6" stroke-width="2" />
+    <text x="90" y="140" font-family="sans-serif" font-weight="bold" fill="#3b82f6">A</text>
+    <line x1="250" y1="50" x2="350" y2="150" stroke="#3b82f6" stroke-width="4" />
+    <text x="315" y="90" font-family="sans-serif" font-weight="bold" fill="#3b82f6">a</text>
+    
+    {/* Matching pair 2: Angle B and side b */}
+    <path d="M 320 150 A 30 30 0 0 1 328 128" fill="none" stroke="#ef4444" stroke-width="2" />
+    <text x="300" y="140" font-family="sans-serif" font-weight="bold" fill="#ef4444">B</text>
+    <line x1="50" y1="150" x2="250" y2="50" stroke="#ef4444" stroke-width="4" />
+    <text x="135" y="90" font-family="sans-serif" font-weight="bold" fill="#ef4444">b</text>
+  </svg>
+</div>
+
+<FormulaBox title="The Sine Rule">
+$$
+\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}
+$$
+</FormulaBox>
+
+**When to use the Sine Rule:**
+Use the sine rule when you are dealing with two sides and two angles, specifically when you know a "matching pair" (a side and its opposite angle) and one other piece of information. *(Note: The ambiguous case of the sine rule is not examined in the SL syllabus).*
+
+### The Cosine Rule
+
+The Cosine Rule is an extension of Pythagoras' theorem for non-right-angled triangles.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 220" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Left: SAS */}
+    <g transform="translate(0,10)">
+      <text x="150" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">SAS (Side-Angle-Side)</text>
+      <text x="150" y="40" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#64748b">Used to find a missing opposite side</text>
+      <polygon points="50,180 250,180 180,80" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+      <line x1="50" y1="180" x2="180" y2="80" stroke="#3b82f6" stroke-width="4" />
+      <line x1="50" y1="180" x2="250" y2="180" stroke="#3b82f6" stroke-width="4" />
+      <path d="M 80 180 A 30 30 0 0 0 74 162" fill="none" stroke="#3b82f6" stroke-width="2" />
+      <text x="95" y="170" font-family="sans-serif" font-weight="bold" fill="#3b82f6">θ</text>
+      <text x="95" y="120" font-family="sans-serif" font-weight="bold" fill="#3b82f6">Side</text>
+      <text x="135" y="200" font-family="sans-serif" font-weight="bold" fill="#3b82f6">Side</text>
+      <line x1="180" y1="80" x2="250" y2="180" stroke="#ef4444" stroke-width="4" stroke-dasharray="4 4" />
+      <text x="230" y="125" font-family="sans-serif" font-weight="bold" fill="#ef4444">Find</text>
+    </g>
+    
+    {/* Right: SSS */}
+    <g transform="translate(300,10)">
+      <text x="150" y="20" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">SSS (Side-Side-Side)</text>
+      <text x="150" y="40" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#64748b">Used to find a missing angle</text>
+      <polygon points="50,180 250,180 180,80" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" />
+      <line x1="50" y1="180" x2="180" y2="80" stroke="#10b981" stroke-width="4" />
+      <line x1="50" y1="180" x2="250" y2="180" stroke="#10b981" stroke-width="4" />
+      <line x1="180" y1="80" x2="250" y2="180" stroke="#10b981" stroke-width="4" />
+      <text x="95" y="120" font-family="sans-serif" font-weight="bold" fill="#10b981">Side</text>
+      <text x="135" y="200" font-family="sans-serif" font-weight="bold" fill="#10b981">Side</text>
+      <text x="230" y="125" font-family="sans-serif" font-weight="bold" fill="#10b981">Side</text>
+      <path d="M 80 180 A 30 30 0 0 0 74 162" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+      <text x="95" y="170" font-family="sans-serif" font-weight="bold" fill="#ef4444">Find θ</text>
+    </g>
+  </svg>
+</div>
+
+<FormulaBox title="The Cosine Rule">
+To find a missing side:
+$$
+c^2 = a^2 + b^2 - 2ab\cos C
+$$
+
+To find a missing angle (rearranged):
+$$
+\cos C = \frac{a^2 + b^2 - c^2}{2ab}
+$$
+</FormulaBox>
+
+---
+
+## 3. Area of a Triangle
+
+<FormulaBox title="Area of a Triangle">
+$$
+\text{Area} = \frac{1}{2}ab\sin C
+$$
+</FormulaBox>
+
+You no longer need to rely on $\frac{1}{2} \times \text{base} \times \text{perpendicular height}$. As long as you have two sides ($a$ and $b$) and the included angle ($C$) strictly between them (the SAS scenario), you can find the area of any triangle.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 200" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <polygon points="80,160 320,160 240,50" fill="rgba(34, 197, 94, 0.1)" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="80" y1="160" x2="320" y2="160" stroke="#10b981" stroke-width="4" />
+    <line x1="80" y1="160" x2="240" y2="50" stroke="#10b981" stroke-width="4" />
+    <path d="M 120 160 A 40 40 0 0 0 113 137" fill="none" stroke="#10b981" stroke-width="2" />
+    <text x="135" y="152" font-family="sans-serif" font-weight="bold" fill="#10b981">C</text>
+    <text x="135" y="100" font-family="sans-serif" font-weight="bold" fill="#10b981">b</text>
+    <text x="200" y="180" font-family="sans-serif" font-weight="bold" fill="#10b981">a</text>
+    <text x="220" y="120" font-family="sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Area</text>
+  </svg>
+</div>
+
+<SteveTip title="Drawing Your Own Diagrams">
+In all areas of this topic, if an examination question does not provide a diagram, **draw one immediately**. Sketching and accurately labelling a triangle helps you decide whether you need SOH CAH TOA, the Sine Rule, or the Cosine Rule.
+</SteveTip>
+
+---
+
+## 4. International-Mindedness & Theory of Knowledge (TOK)
+
+<Aside type="tip" title="International-Mindedness">
+While the theorem linking the sides of a right-angled triangle bears Pythagoras' name, diagrams demonstrating this mathematical truth occur in much earlier Chinese and Indian manuscripts. Furthermore, the earliest references to formal trigonometry originate in classical Indian mathematics. In the 18th century, the techniques of trigonometry and triangulation were used to measure the curvature of the Earth, settling a fierce scientific dispute between England and France over Isaac Newton's theory of gravity!
+</Aside>
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Is it ethical that Pythagoras gave his name to a theorem that may not have been his own creation?** History is written by the victors, and mathematical history often attributes discoveries to the civilisation or figure who formalised or popularised them in the Western canon. What criteria might we use to judge who "owns" a mathematical concept? Is mathematics discovered, or is it invented?
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding a Side (Right-Angled)">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 200" width="100%" maxWidth="250px" style={{ background: '#ffffff' }}>
+        <polygon points="50,150 250,150 250,50" fill="none" stroke="#1e293b" stroke-width="2" />
+        <polyline points="230,150 230,130 250,130" fill="none" stroke="#ef4444" stroke-width="2" />
+        <path d="M 90 150 A 40 40 0 0 0 85 132" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="95" y="145" font-family="sans-serif" font-size="14" fill="#3b82f6">32°</text>
+        <text x="260" y="105" font-family="sans-serif" font-size="14" fill="#1e293b">x</text>
+        <text x="130" y="90" font-family="sans-serif" font-size="14" fill="#1e293b">18 m</text>
+      </svg>
+    </div>
+    Find the length of side $x$ in the right-angled triangle shown. Give your answer to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Label the sides relative to the given angle ($32^\circ$)**
+       * The side $x$ is opposite the angle.
+       * The longest side ($18 \text{ m}$) is the hypotenuse.
+    2. **Choose the correct ratio**
+       We have Opposite and Hypotenuse, so we use Sine (SOH):
+       $$
+       \sin(32^\circ) = \frac{x}{18}
+       $$
+    3. **Solve for $x$**
+       Multiply both sides by 18:
+       $$
+       x = 18 \times \sin(32^\circ)
+       $$
+       $$
+       x \approx 9.54 \text{ m}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using sine, cosine and tangent ratios to find missing sides in right-angled triangles" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Finding an Angle (Inverse Functions)">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 200" width="100%" maxWidth="250px" style={{ background: '#ffffff' }}>
+        <polygon points="50,150 200,150 50,50" fill="none" stroke="#1e293b" stroke-width="2" />
+        <polyline points="50,130 70,130 70,150" fill="none" stroke="#ef4444" stroke-width="2" />
+        <path d="M 170 150 A 30 30 0 0 1 175 133" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="160" y="140" font-family="sans-serif" font-size="14" fill="#3b82f6">θ</text>
+        <text x="15" y="105" font-family="sans-serif" font-size="14" fill="#1e293b">7 cm</text>
+        <text x="110" y="170" font-family="sans-serif" font-size="14" fill="#1e293b">12 cm</text>
+      </svg>
+    </div>
+    Find the size of the angle $\theta$. Give your answer in degrees to 1 decimal place.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Label the sides relative to $\theta$**
+       * The side measuring $7 \text{ cm}$ is the Opposite.
+       * The side measuring $12 \text{ cm}$ is the Adjacent.
+    2. **Choose the correct ratio**
+       We have Opposite and Adjacent, so we use Tangent (TOA):
+       $$
+       \tan(\theta) = \frac{7}{12}
+       $$
+    3. **Use the inverse function to find the angle**
+       $$
+       \theta = \tan^{-1}\left(\frac{7}{12}\right)
+       $$
+       $$
+       \theta \approx 30.3^\circ
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using inverse trigonometric functions to find missing angles in right-angled triangles" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: The Sine Rule (Finding a Side)">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 200" width="100%" maxWidth="250px" style={{ background: '#ffffff' }}>
+        <polygon points="50,150 250,150 180,50" fill="none" stroke="#1e293b" stroke-width="2" />
+        <path d="M 80 150 A 30 30 0 0 0 74 132" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="85" y="145" font-family="sans-serif" font-size="12" fill="#3b82f6">45°</text>
+        <path d="M 220 150 A 30 30 0 0 1 233 125" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="195" y="145" font-family="sans-serif" font-size="12" fill="#3b82f6">60°</text>
+        <text x="225" y="95" font-family="sans-serif" font-size="14" fill="#1e293b">x</text>
+        <text x="87" y="95" font-family="sans-serif" font-size="14" fill="#1e293b">10 cm</text>
+      </svg>
+    </div>
+    Find the value of $x$. Give your answer to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    We have two angles and want to find a side, knowing the matching pairs. We use the Sine Rule:
+    
+    $$
+    \frac{a}{\sin A} = \frac{b}{\sin B}
+    $$
+    
+    Substitute the matching pairs (side $x$ is opposite $45^\circ$, side $10 \text{ cm}$ is opposite $60^\circ$):
+    
+    $$
+    \frac{x}{\sin(45^\circ)} = \frac{10}{\sin(60^\circ)}
+    $$
+    
+    Multiply both sides by $\sin(45^\circ)$:
+    
+    $$
+    x = \frac{10 \times \sin(45^\circ)}{\sin(60^\circ)}
+    $$
+    
+    $$
+    x \approx 8.16 \text{ cm}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the sine rule to calculate a missing side length" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: The Cosine Rule (Finding a Side)">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 200" width="100%" maxWidth="250px" style={{ background: '#ffffff' }}>
+        <polygon points="50,150 250,150 120,60" fill="none" stroke="#1e293b" stroke-width="2" />
+        <path d="M 108 76 A 20 20 0 0 0 136 71" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="115" y="100" font-family="sans-serif" font-size="12" fill="#3b82f6">110°</text>
+        <text x="62" y="105" font-family="sans-serif" font-size="14" fill="#1e293b">8 m</text>
+        <text x="200" y="100" font-family="sans-serif" font-size="14" fill="#1e293b">14 m</text>
+        <text x="150" y="170" font-family="sans-serif" font-size="14" fill="#ef4444">c</text>
+      </svg>
+    </div>
+    Calculate the length of side $c$. Give your answer to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    We have two sides and the included angle (SAS), so we use the Cosine Rule:
+    
+    $$
+    c^2 = a^2 + b^2 - 2ab\cos C
+    $$
+    
+    Substitute the known values ($a = 8$, $b = 14$, $C = 110^\circ$):
+    
+    $$
+    c^2 = 8^2 + 14^2 - 2(8)(14)\cos(110^\circ)
+    $$
+    
+    $$
+    c^2 = 64 + 196 - 224\cos(110^\circ)
+    $$
+    
+    $$
+    c^2 = 260 - (-76.61...) \approx 336.61
+    $$
+    
+    Square root to find $c$:
+    
+    $$
+    c = \sqrt{336.61...} \approx 18.3 \text{ m}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the cosine rule to calculate a missing side given two sides and the included angle" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: The Cosine Rule (Finding an Angle)">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 200" width="100%" maxWidth="250px" style={{ background: '#ffffff' }}>
+        <polygon points="50,150 220,150 150,50" fill="none" stroke="#1e293b" stroke-width="2" />
+        <path d="M 80 150 A 30 30 0 0 0 71 129" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="85" y="145" font-family="sans-serif" font-size="14" fill="#3b82f6">θ</text>
+        <text x="77" y="100" font-family="sans-serif" font-size="14" fill="#1e293b">5 km</text>
+        <text x="195" y="100" font-family="sans-serif" font-size="14" fill="#1e293b">6 km</text>
+        <text x="135" y="170" font-family="sans-serif" font-size="14" fill="#1e293b">8 km</text>
+      </svg>
+    </div>
+    A triangle has side lengths of $5 \text{ km}$, $6 \text{ km}$, and $8 \text{ km}$. Calculate the size of the angle $\theta$, which is opposite the $6 \text{ km}$ side. Give your answer to 1 decimal place.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    We are given all three sides (SSS) and need to find an angle. We use the rearranged Cosine Rule.
+    Let $C = \theta$. Therefore, the side opposite it is $c = 6$. The other two sides are $a = 5$ and $b = 8$.
+    
+    $$
+    \cos C = \frac{a^2 + b^2 - c^2}{2ab}
+    $$
+    
+    $$
+    \cos(\theta) = \frac{5^2 + 8^2 - 6^2}{2(5)(8)}
+    $$
+    
+    $$
+    \cos(\theta) = \frac{25 + 64 - 36}{80}
+    $$
+    
+    $$
+    \cos(\theta) = \frac{53}{80} = 0.6625
+    $$
+    
+    Use the inverse cosine function:
+    
+    $$
+    \theta = \cos^{-1}(0.6625) \approx 48.5^\circ
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the rearranged cosine rule to find an angle when all three sides are known" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Area of a Triangle">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 200" width="100%" maxWidth="250px" style={{ background: '#ffffff' }}>
+        <polygon points="40,160 260,160 180,60" fill="rgba(34, 197, 94, 0.1)" stroke="#1e293b" stroke-width="2" />
+        <path d="M 164 72 A 20 20 0 0 0 192 76" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="174" y="95" font-family="sans-serif" font-size="12" fill="#3b82f6">105°</text>
+        <text x="90" y="105" font-family="sans-serif" font-size="14" fill="#1e293b">12 cm</text>
+        <text x="230" y="110" font-family="sans-serif" font-size="14" fill="#1e293b">9 cm</text>
+      </svg>
+    </div>
+    Find the area of the triangle shown. Give your answer to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    We have two sides and the included angle ($SAS$), so we use the sine area formula:
+    
+    $$
+    \text{Area} = \frac{1}{2}ab\sin C
+    $$
+    
+    Substitute the values ($a = 12$, $b = 9$, $C = 105^\circ$):
+    
+    $$
+    \text{Area} = \frac{1}{2}(12)(9)\sin(105^\circ)
+    $$
+    
+    $$
+    \text{Area} = 54 \times \sin(105^\circ)
+    $$
+    
+    $$
+    \text{Area} \approx 52.2 \text{ cm}^2
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the area of a non-right-angled triangle using the sine area formula" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Map-Making Context">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 250" width="100%" maxWidth="250px" style={{ background: '#ffffff' }}>
+        <polygon points="50,200 200,200 183,52" fill="none" stroke="#1e293b" stroke-width="2" />
+        <path d="M 80 200 A 30 30 0 0 0 70 177" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="85" y="190" font-family="sans-serif" font-size="14" fill="#3b82f6">A</text>
+        <text x="205" y="210" font-family="sans-serif" font-size="14" fill="#1e293b">B</text>
+        <text x="180" y="45" font-family="sans-serif" font-size="14" fill="#1e293b">C</text>
+        <text x="125" y="220" font-family="sans-serif" font-size="14" fill="#1e293b">450 m</text>
+        <text x="90" y="115" font-family="sans-serif" font-size="14" fill="#1e293b">600 m</text>
+        <text x="120" y="150" font-family="sans-serif" font-size="12" font-weight="bold" fill="#10b981">Area = 100,000 m²</text>
+      </svg>
+    </div>
+    A surveyor is mapping a triangular plot of land $ABC$. She measures the distance from point $A$ to point $B$ as $450 \text{ m}$, and the distance from $A$ to $C$ as $600 \text{ m}$. She calculates the area of the triangular plot to be $100,000 \text{ m}^2$.
+    
+    Calculate the acute angle at $A$. Give your answer to 1 decimal place.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+    1. **Set up the area formula**
+       We know the area, two sides ($b = 600$, $c = 450$), and we need to find the included angle $A$.
+       $$
+       \text{Area} = \frac{1}{2}bc\sin A
+       $$
+       $$
+       100000 = \frac{1}{2}(600)(450)\sin A
+       $$
+    2. **Simplify and isolate $\sin A$**
+       $$
+       100000 = 135000\sin A
+       $$
+       $$
+       \sin A = \frac{100000}{135000} = \frac{20}{27}
+       $$
+    3. **Find the angle**
+       $$
+       A = \sin^{-1}\left(\frac{20}{27}\right) \approx 47.8^\circ
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Working backwards from the area of a triangle to find an included angle" />

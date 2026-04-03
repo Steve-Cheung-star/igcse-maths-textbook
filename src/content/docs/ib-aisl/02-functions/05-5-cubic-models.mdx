@@ -1,0 +1,438 @@
+---
+title: 2.5.5 Cubic Models
+description: Discover how to model complex real-world scenarios with multiple turning points, such as packaging optimisation and wind turbine power generation, using cubic functions.
+---
+
+While linear models maintain a constant rate, and quadratic models have a single turning point, **cubic models** introduce even more flexibility. A cubic curve can have up to *two* turning points (a peak and a trough) and up to *three* $x$-intercepts. 
+
+This characteristic "S-shape" (or "N-shape") makes cubic functions excellent for modelling phenomena that rise, fall, and rise again, or for 3D geometric models where three dimensions are multiplied together.
+
+**Real-World Connections:**
+* **Engineering:** The power produced by a wind turbine is directly proportional to the cube of the wind speed.
+* **Packaging & Manufacturing:** Calculating the volume of a box with a fixed surface area to minimise cardboard waste, or calculating the amount of wasted empty space in a cylindrical can of tennis balls.
+* **Economics:** Cost and profit functions that factor in varying scales of production efficiency.
+
+---
+
+## 1. The Anatomy of a Cubic Model
+
+<FormulaBox title="Cubic Function">
+
+$$
+f(x) = ax^3 + bx^2 + cx + d \quad (a \neq 0)
+$$
+
+</FormulaBox>
+
+<Aside type="note" title="The Anatomy of the Curve">
+The defining parameters of a cubic model are its leading coefficient ($a$) and its constant ($d$):
+* **The Leading Coefficient ($a$):** Determines the "end behaviour" of the model.
+  * **If $a > 0$ (Positive):** The graph starts low on the left and ends high on the right ($\nearrow$).
+  * **If $a < 0$ (Negative):** The graph starts high on the left and ends low on the right ($\searrow$).
+* **The $y$-intercept ($0, d$):** The starting value of the model when $x = 0$.
+</Aside>
+
+When interpreting a cubic model in the exam, you will use your GDC to identify the key features. Because cubic equations are very difficult to solve algebraically, you are **expected** to rely heavily on technology:
+
+<Steps>
+1. **The Roots ($x$-intercepts):** The points where $f(x) = 0$. A cubic model will have 1, 2, or 3 real roots.
+2. **The Local Maximum:** The "peak" of a turning point. Used for finding the greatest possible volume or maximum profit over a specific domain.
+3. **The Local Minimum:** The "trough" of a turning point. Used for finding minimum costs or lowest values.
+</Steps>
+
+<div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 350" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Axes */}
+    <line x1="40" y1="200" x2="460" y2="200" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="250" y1="20" x2="250" y2="330" stroke="#cbd5e1" stroke-width="2" />
+    <text x="450" y="190" font-size="14" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="260" y="30" font-size="14" fill="#64748b" font-family="sans-serif">y</text>
+
+    {/* Mathematically precise Cubic Curve (Positive 'a') */}
+    <path d="M 100 300 Q 150 50, 250 200 T 400 100" fill="none" stroke="#3b82f6" stroke-width="3" />
+    
+    <text x="110" y="310" font-size="12" font-weight="bold" fill="#3b82f6" font-family="sans-serif">Positive a (ends high)</text>
+
+    {/* Key Points strictly snapped to mathematical coordinates of the Bezier curve */}
+    {/* Local Max */}
+    <circle cx="182.03" cy="143.75" r="5" fill="#10b981" />
+    <text x="182" y="130" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Local Maximum</text>
+
+    {/* Local Min */}
+    <circle cx="317.97" cy="256.25" r="5" fill="#10b981" />
+    <text x="318" y="275" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Local Minimum</text>
+
+    {/* Roots */}
+    <circle cx="128.13" cy="200" r="5" fill="#f59e0b" />
+    <circle cx="250" cy="200" r="5" fill="#f59e0b" />
+    <circle cx="371.88" cy="200" r="5" fill="#f59e0b" />
+    <text x="120" y="218" font-size="10" fill="#d97706" text-anchor="middle" font-family="sans-serif">Root 1</text>
+    <text x="250" y="188" font-size="10" fill="#d97706" text-anchor="middle" font-family="sans-serif">Root 2 / y-int</text>
+    <text x="380" y="218" font-size="10" fill="#d97706" text-anchor="middle" font-family="sans-serif">Root 3</text>
+  </svg>
+
+  <svg viewBox="0 0 500 350" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Axes */}
+    <line x1="40" y1="200" x2="460" y2="200" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="250" y1="20" x2="250" y2="330" stroke="#cbd5e1" stroke-width="2" />
+    <text x="450" y="190" font-size="14" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="260" y="30" font-size="14" fill="#64748b" font-family="sans-serif">y</text>
+
+    {/* Mathematically precise Cubic Curve (Negative 'a' perfectly mirrored) */}
+    <path d="M 100 100 Q 150 350, 250 200 T 400 300" fill="none" stroke="#ef4444" stroke-width="3" />
+    
+    <text x="110" y="40" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">Negative a (ends low)</text>
+
+    {/* Key Points strictly snapped to mathematical coordinates of the Bezier curve */}
+    {/* Local Min */}
+    <circle cx="182.03" cy="256.25" r="5" fill="#10b981" />
+    <text x="182" y="275" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Local Minimum</text>
+
+    {/* Local Max */}
+    <circle cx="317.97" cy="143.75" r="5" fill="#10b981" />
+    <text x="318" y="130" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Local Maximum</text>
+
+    {/* Roots */}
+    <circle cx="128.13" cy="200" r="5" fill="#f59e0b" />
+    <circle cx="250" cy="200" r="5" fill="#f59e0b" />
+    <circle cx="371.88" cy="200" r="5" fill="#f59e0b" />
+    <text x="120" y="188" font-size="10" fill="#d97706" text-anchor="middle" font-family="sans-serif">Root 1</text>
+    <text x="250" y="218" font-size="10" fill="#d97706" text-anchor="middle" font-family="sans-serif">Root 2 / y-int</text>
+    <text x="380" y="188" font-size="10" fill="#d97706" text-anchor="middle" font-family="sans-serif">Root 3</text>
+  </svg>
+</div>
+
+<SteveTip title="GDC Mastery: Hunting for Turning Points">
+Never attempt to find the turning points of a cubic function by hand in AI SL. Once you graph your function $f_1(x)$, you can instantly find these crucial points:
+* To find the peak: Press **[Menu] > 6: Analyze Graph > 3: Maximum**.
+* To find the trough: Press **[Menu] > 6: Analyze Graph > 2: Minimum**.
+* To find the $x$-intercepts: Press **[Menu] > 6: Analyze Graph > 1: Zero**.
+</SteveTip>
+
+<Aside type="caution" title="Common Misconception: Local vs. Global">
+Notice we call them *local* maximums and minimums. The peak on a cubic graph is not the highest point on the entire line (because the line eventually shoots up to infinity). It is only the highest point *in its local area*. However, within the practical domain of a real-world question (e.g., cardboard size limits), the local maximum is exactly what you are looking for!
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Cubic Direct Variation (Wind Turbines)">
+    In environmental engineering, the electrical power, $P$, generated by a specific wind turbine in kilowatts (kW) is directly proportional to the cube of the wind speed, $w$, in metres per second (m/s).
+    
+    This relationship is modelled by:
+    
+    $$
+    P(w) = kw^3
+    $$
+    
+    When the wind speed is **$10 \text{ m/s}$**, the turbine produces **$500 \text{ kW}$** of power.
+    
+    a) Find the exact value of the constant $k$.  
+    b) Calculate the power generated when the wind speed increases to **$15 \text{ m/s}$**.  
+    c) To power a small village, the turbine must generate at least **$1200 \text{ kW}$**. Use your GDC to find the minimum wind speed required.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** Substitute $w = 10$ and $P = 500$ into the model:
+    
+    $$
+    500 = k(10)^3
+    $$
+    
+    $$
+    500 = 1000k
+    $$
+    
+    Divide both sides by 1000:
+    
+    $$
+    k = \frac{500}{1000} = 0.5
+    $$
+
+    **b)** The full model is $P(w) = 0.5w^3$. Substitute $w = 15$:
+    
+    $$
+    P(15) = 0.5(15)^3
+    $$
+    
+    $$
+    P(15) = 0.5(3375) = 1687.5
+    $$
+    
+    The power generated is **$1687.5 \text{ kW}$**.
+    *(Notice the immense power of a cubic model: increasing the wind speed by just 50% more than tripled the power output!)*
+
+    **c)** We need to find $w$ when $P = 1200$.
+    
+    $$
+    1200 = 0.5w^3
+    $$
+    
+    Press **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)** and enter `nSolve(1200 = 0.5 * w^3, w)`.
+    
+    $$
+    w = 13.388...
+    $$
+    
+    The minimum wind speed required is **$13.4 \text{ m/s}$** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving direct cubic variation models for wind turbine power calculations" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Optimising a Box Volume (Geometry)">
+    A packaging company is creating open-topped boxes from square pieces of cardboard that measure **$20 \text{ cm}$ by $20 \text{ cm}$**. To make the box, they cut a small square of side length $x \text{ cm}$ from each of the four corners, and then fold up the sides.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 300 300" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        {/* Main Cardboard Square */}
+        <rect x="50" y="50" width="200" height="200" fill="#cbd5e1" stroke="#64748b" stroke-width="2" />
+        
+        {/* Cutout Corners */}
+        <rect x="50" y="50" width="40" height="40" fill="#f8fafc" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+        <rect x="210" y="50" width="40" height="40" fill="#f8fafc" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+        <rect x="50" y="210" width="40" height="40" fill="#f8fafc" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+        <rect x="210" y="210" width="40" height="40" fill="#f8fafc" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+        
+        {/* Fold Lines */}
+        <line x1="90" y1="50" x2="90" y2="250" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6 4" />
+        <line x1="210" y1="50" x2="210" y2="250" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6 4" />
+        <line x1="50" y1="90" x2="250" y2="90" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6 4" />
+        <line x1="50" y1="210" x2="250" y2="210" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6 4" />
+
+        {/* Labels */}
+        <text x="70" y="80" font-size="12" fill="#ef4444" font-family="sans-serif">x</text>
+        <text x="150" y="40" font-size="14" font-weight="bold" fill="#475569" text-anchor="middle" font-family="sans-serif">20 cm</text>
+        <line x1="50" y1="30" x2="250" y2="30" stroke="#475569" stroke-width="1" />
+      </svg>
+    </div>
+
+    a) **Show that** the volume, $V$, of the box can be modelled by $V(x) = 4x^3 - 80x^2 + 400x$.  
+    b) State the practical domain for $x$.  
+    c) Using your GDC, find the value of $x$ that maximises the volume of the box, and state this maximum volume.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** When the sides are folded up, the dimensions of the box become:
+    * **Height:** $x$
+    * **Length:** The original $20 \text{ cm}$, minus the two corners of size $x$ removed from each end $\implies 20 - 2x$.
+    * **Width:** Also $20 - 2x$.
+    
+    The volume of a cuboid is $\text{Length} \times \text{Width} \times \text{Height}$:
+    
+    $$
+    V(x) = (20 - 2x)(20 - 2x)(x)
+    $$
+    
+    Expand the brackets carefully:
+    
+    $$
+    V(x) = (400 - 40x - 40x + 4x^2)(x)
+    $$
+    
+    $$
+    V(x) = (400 - 80x + 4x^2)(x)
+    $$
+    
+    Multiply the $x$ through:
+    
+    $$
+    V(x) = 400x - 80x^2 + 4x^3
+    $$
+    
+    Rearranging gives $V(x) = 4x^3 - 80x^2 + 400x$. (This satisfies the "show that" requirement).
+
+    **b)** For a box to exist, $x$ must be greater than $0$. However, you only have $20 \text{ cm}$ of cardboard. If you cut an $x$ of $10 \text{ cm}$ from each side, the cuts will meet in the middle and there will be no base left ($20 - 2(10) = 0$). 
+    Therefore, the practical domain is **$0 < x < 10$**.
+
+    **c)** Graph the function $f_1(x) = 4x^3 - 80x^2 + 400x$ on your GDC. 
+    Ensure your window settings are wide enough (e.g., $x$ from $0$ to $10$, $y$ from $0$ to $800$).
+    Press **[Menu] > 6: Analyze Graph > 3: Maximum**.
+    
+    The GDC shows the local maximum at the coordinate $(3.333..., 592.59...)$.
+    * The cut size should be **$x = 3.33 \text{ cm}$** (to 3 s.f.).
+    * The maximum volume achieved is **$593 \text{ cm}^3$** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Constructing and optimising cubic volume models for packaging" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Profit Margins & Turning Points">
+    A manufacturer of electric scooters determines that their monthly profit, $P$, in thousands of dollars, from selling $x$ hundreds of scooters is modelled by the cubic function:
+    
+    $$
+    P(x) = -0.5x^3 + 6.3x^2 - 12x - 10
+    $$
+    
+    a) Find the company's profit or loss if they sell $0$ scooters.  
+    b) The company breaks even when $P(x) = 0$. Use your GDC to find the minimum number of scooters they must sell to break even.  
+    c) Using your GDC, find the number of scooters they should manufacture to achieve the absolute maximum profit, and state what that profit is.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Substitute $x = 0$ into the model:
+    
+    $$
+    P(0) = -0.5(0)^3 + 6.3(0)^2 - 12(0) - 10 = -10
+    $$
+    
+    Since $P$ is in thousands of dollars, a value of $-10$ means a **loss of $10,000**. (This represents fixed factory costs when producing nothing).
+
+    **b)** We need to find the roots (where the graph crosses the $x$-axis).
+    Graph $f_1(x) = -0.5x^3 + 6.3x^2 - 12x - 10$.
+    Press **[Menu] > 6: Analyze Graph > 1: Zero**.
+    
+    The graph has roots at $x = -0.669$ (ignore, as you can't sell negative scooters), $x = 2.45$, and $x = 10.8$.
+    The minimum positive value is $x = 2.449...$
+    Since $x$ is in *hundreds* of scooters, they must sell $2.449 \times 100 = 244.9$.
+    They must sell **245 scooters** to cross into profit.
+
+    **c)** We need to find the local maximum.
+    Press **[Menu] > 6: Analyze Graph > 3: Maximum**.
+    The peak occurs at the coordinate $(7.320..., 21.05...)$.
+    
+    * $x$-value (in hundreds): $7.320 \times 100 = 732$ scooters.
+    * $y$-value (in thousands): \$21.05 \times 1000 = \$21,050$.
+    
+    They should manufacture **732 scooters** for a maximum profit of **$21,050**.
+    *(If they produce any more than 732, the cubic model dictates that their profits will plunge, perhaps due to warehouse capacity or overtime costs!)*
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="180" x2="320" y2="180" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="170" font-size="12" fill="#64748b" font-family="sans-serif">x (100s)</text>
+        <text x="15" y="30" font-size="12" fill="#64748b" font-family="sans-serif">P ($1000s)</text>
+
+        {/* Mathematically precise Bezier path for the Profit Cubic */}
+        <path d="M 50 200 Q 150 20, 220 50 T 300 250" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Loss at origin (t=0) snapped perfectly */}
+        <circle cx="50" cy="200" r="4" fill="#ef4444" />
+        <text x="40" y="215" font-size="10" fill="#ef4444" font-family="sans-serif">(0, -10)</text>
+
+        {/* Break Even root strictly snapped to bezier coordinates */}
+        <circle cx="61.4" cy="180" r="4" fill="#f59e0b" />
+        <text x="61.4" y="165" font-size="10" fill="#d97706" text-anchor="middle" font-family="sans-serif">x = 2.45</text>
+
+        {/* Local Maximum snapped to mathematical maximum of the SVG curve */}
+        <circle cx="199.4" cy="45.7" r="4" fill="#10b981" />
+        <text x="199.4" y="35" font-size="10" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Max (7.32, 21.05)</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating cubic profit models, interpreting turning points, and finding roots with a GDC" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Wasted Space (Cubic Geometry)">
+    A standard tennis ball has a radius of $r \text{ cm}$. A cylindrical tennis ball can is designed to hold exactly 3 balls perfectly stacked on top of one another.
+    
+    a) Express the height and the radius of the cylindrical can in terms of $r$.  
+    b) Show that the volume of the wasted space inside the can (the air surrounding the balls) is a cubic model given by $V(r) = 2\pi r^3$.  
+    c) If the total wasted space in a particular brand's can is measured at **$135 \text{ cm}^3$**, use your GDC to find the radius of their tennis balls.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** * The width of the can fits one ball perfectly, so the radius of the can is the same as the ball: **$r$**.
+    * The can holds 3 balls. Each ball has a height (diameter) of $2r$. Therefore, the total height of the can is $3 \times 2r = \mathbf{6r}$.
+
+    **b)** The volume of empty space is the volume of the cylinder minus the volume of the 3 spheres.
+    
+    * Volume of the Cylinder: $V_c = \pi r^2 h$. Substitute $h = 6r$:
+      $$V_c = \pi r^2(6r) = 6\pi r^3$$
+      
+    * Volume of ONE Sphere: $V_s = \frac{4}{3}\pi r^3$.
+    * Volume of THREE Spheres: $3 \times (\frac{4}{3}\pi r^3) = 4\pi r^3$.
+    
+    Subtract the volumes to find the wasted space:
+    
+    $$
+    V(r) = 6\pi r^3 - 4\pi r^3
+    $$
+    
+    $$
+    V(r) = 2\pi r^3
+    $$
+    
+    *(This is a direct cubic variation model!)*
+
+    **c)** We are given $V(r) = 135$.
+    
+    $$
+    135 = 2\pi r^3
+    $$
+    
+    Press **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)** and enter `nSolve(135 = 2 * \pi * r^3, r)`.
+    
+    $$
+    r = 2.779...
+    $$
+    
+    The radius of the tennis balls is **$2.78 \text{ cm}$** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Deriving and solving cubic geometry models for volume optimization" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Intersection of Two Models">
+    The amount of a chemical produced in a reaction over time $t$ (in hours) is modelled by the cubic function:
+    
+    $$
+    C(t) = 0.5t^3 - 4t^2 + 10t
+    $$
+    
+    At the same time, the chemical is being drained away at a constant linear rate modelled by:
+    
+    $$
+    D(t) = 3t
+    $$
+    
+    Use your GDC to find all the exact times where the amount of chemical produced is equal to the amount drained.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    We need to find the intersection points where $C(t) = D(t)$.
+    
+    $$
+    0.5t^3 - 4t^2 + 10t = 3t
+    $$
+    
+    Graph both functions on your GDC:
+    * $f_1(x) = 0.5x^3 - 4x^2 + 10x$
+    * $f_2(x) = 3x$
+    
+    Ensure your window is set to positive $x$-values (time cannot be negative).
+    Press **[Menu] > 6: Analyze Graph > 4: Intersection**. You will need to repeat this step for each point where the lines cross!
+    
+    The GDC reveals three intersection points at the $x$-coordinates:
+    * $t = 0 \text{ hours}$ (at the very beginning)
+    * $t = 3.17 \text{ hours}$ (to 3 s.f.)
+    * $t = 4.83 \text{ hours}$ (to 3 s.f.)
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="210" x2="320" y2="210" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="200" font-size="12" fill="#64748b" font-family="sans-serif">t (hrs)</text>
+        <text x="15" y="30" font-size="12" fill="#64748b" font-family="sans-serif">Amount</text>
+
+        {/* Linear Model (Drain) */}
+        <line x1="50" y1="210" x2="300" y2="30" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+        
+        {/* Cubic Model (Production) */}
+        <path d="M 50 210 C 100 0, 180 200, 270 30" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Intersections analytically mapped to the SVG path crossing */}
+        <circle cx="50" cy="210" r="4" fill="#ef4444" />
+        <circle cx="200" cy="102" r="4" fill="#ef4444" />
+        <text x="190" y="115" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">t = 3.17</text>
+        <circle cx="243" cy="71" r="4" fill="#ef4444" />
+        <text x="255" y="60" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">t = 4.83</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding multiple intersections between a cubic model and a linear model using a GDC" />

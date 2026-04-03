@@ -28,7 +28,7 @@ export default defineConfig({
     mermaid(),
     react(),
     starlight({
-      title: 'Math Hub', 
+      title: '∴ 6<7',
       logo: {
         light: './src/assets/logo-light.svg',
         dark: './src/assets/logo-dark.svg',
@@ -56,7 +56,7 @@ export default defineConfig({
         // --- IGCSE SECTION ---
         {
           label: 'IGCSE Mathematics (0607)',
-          collapsed: true, 
+          collapsed: true,
           items: [
             { label: '1. Number', autogenerate: { directory: 'igcse/01-number' } },
             { label: '2. Algebra', autogenerate: { directory: 'igcse/02-algebra' } },
@@ -79,6 +79,7 @@ export default defineConfig({
           items: [
             { label: '1. Number & Algebra', autogenerate: { directory: 'ib-aisl/01-number-and-algebra' } }, // Updated path
             { label: '2. Functions', autogenerate: { directory: 'ib-aisl/02-functions' } }, // Updated path
+            { label: '3. 3D Geometry & Trigonometry', autogenerate: { directory: 'ib-aisl/03-geometry-and-trigonometry' } }, // Updated path
             // Add more IB directories as you create them
             { label: '⭐ AI SL History', link: '/ib-aisl/my-revision/' }, // Updated label & path
           ],

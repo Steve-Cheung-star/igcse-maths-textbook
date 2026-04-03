@@ -1,0 +1,367 @@
+---
+title: 2.5.6 Sinusoidal Models
+description: Learn how to model periodic phenomena such as tides, Ferris wheels, and seasonal temperatures using sine and cosine functions.
+---
+
+While linear, quadratic, and exponential models describe values that continuously grow or decay, many real-world phenomena repeat themselves in a predictable, cyclic pattern. We call these **periodic phenomena**.
+
+To model these repeating patterns, we use **sinusoidal models** based on the trigonometric functions sine ($\sin$) and cosine ($\cos$). You will see these models used anywhere a cycle rises and falls consistently over time.
+
+**Real-World Connections:**
+* **Nature:** The rise and fall of ocean tides, daylight hours changing throughout the seasons, and annual temperature cycles.
+* **Physics & Engineering:** The motion of Ferris wheels, bicycle wheels, simple harmonic motion (like a weight on a spring), and alternating current (AC) electricity.
+
+---
+
+## 1. The Anatomy of a Sinusoidal Model
+
+<FormulaBox title="Sinusoidal Functions">
+
+$$
+f(x) = a\sin(bx) + d
+$$
+
+$$
+f(x) = a\cos(bx) + d
+$$
+
+</FormulaBox>
+
+<Aside type="note" title="The Parameters of a Sinusoidal Model">
+In IB Maths AI SL, you are only required to predict or find three specific features of these models:
+
+* **The Principal Axis ($d$):** The horizontal line that runs exactly through the middle of the wave. Its equation is $y = d$. It represents the average value of the model.
+  * *Formula:* $d = \frac{\text{Maximum} + \text{Minimum}}{2}$
+
+* **The Amplitude ($a$):** The distance from the principal axis to the maximum peak (or down to the minimum trough). It represents the maximum fluctuation from the average.
+  * *Formula:* $a = \frac{\text{Maximum} - \text{Minimum}}{2}$
+
+* **The Period:** The length of time (or horizontal distance) it takes for the model to complete one full cycle before repeating. The parameter $b$ controls this.
+  * *Formula:* $\text{Period} = \frac{360^\circ}{b} \quad \text{or} \quad b = \frac{360^\circ}{\text{Period}}$
+</Aside>
+
+<Aside type="tip" title="Sine vs. Cosine">
+You are **not** expected to translate between $\sin(x)$ and $\cos(x)$ in this course. Both functions create the exact same wave shape! The only difference is where they start:
+* A standard **sine** model starts *on* the principal axis.
+* A standard **cosine** model starts *at* a maximum peak (if $a > 0$).
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 350" width="100%" maxWidth="700px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Axes */}
+    <line x1="40" y1="280" x2="560" y2="280" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="60" y1="20" x2="60" y2="300" stroke="#cbd5e1" stroke-width="2" />
+    <text x="550" y="270" font-size="14" fill="#64748b" font-family="sans-serif">x (time)</text>
+    <text x="70" y="30" font-size="14" fill="#64748b" font-family="sans-serif">y</text>
+
+    {/* Principal Axis (y = 160) */}
+    <line x1="40" y1="160" x2="560" y2="160" stroke="#10b981" stroke-width="2" stroke-dasharray="6 6" />
+    <text x="460" y="150" font-size="12" font-weight="bold" fill="#059669" font-family="sans-serif">Principal Axis (y = d)</text>
+
+    {/* Mathematically precise smooth Sinusoidal Wave using continuous Quadratic Beziers */}
+    <path d="M 60 160 Q 100 60 140 60 T 220 160 T 300 260 T 380 160 T 460 60 T 540 160" fill="none" stroke="#3b82f6" stroke-width="3" />
+
+    {/* Amplitude Annotations exactly aligned to Mathematical Peaks and Troughs */}
+    <line x1="140" y1="160" x2="140" y2="62" stroke="#ef4444" stroke-width="2" />
+    <polygon points="135,70 140,60 145,70" fill="#ef4444" />
+    <text x="150" y="115" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">Amplitude (a)</text>
+
+    <line x1="300" y1="160" x2="300" y2="258" stroke="#ef4444" stroke-width="2" />
+    <polygon points="295,250 300,260 305,250" fill="#ef4444" />
+    <text x="310" y="215" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">Amplitude (a)</text>
+
+    {/* Period Annotations (Peak to Peak) exactly aligned */}
+    <line x1="140" y1="50" x2="140" y2="30" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4" />
+    <line x1="460" y1="50" x2="460" y2="30" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4" />
+    
+    <line x1="140" y1="40" x2="460" y2="40" stroke="#8b5cf6" stroke-width="2" />
+    <polygon points="150,35 140,40 150,45" fill="#8b5cf6" />
+    <polygon points="450,35 460,40 450,45" fill="#8b5cf6" />
+    <text x="300" y="30" font-size="12" font-weight="bold" fill="#8b5cf6" text-anchor="middle" font-family="sans-serif">Period (360° / b)</text>
+
+    {/* Max / Min Dots snapped absolutely perfectly to curve geometry */}
+    <circle cx="140" cy="60" r="5" fill="#3b82f6" />
+    <circle cx="460" cy="60" r="5" fill="#3b82f6" />
+    <circle cx="300" cy="260" r="5" fill="#3b82f6" />
+  </svg>
+</div>
+
+<SteveTip title="GDC Mastery: The Degree Mode Trap!">
+**CRITICAL EXAM TIP:** In IB Maths AI SL, the parameter $b$ inside the trigonometric function will almost always be designed to be evaluated in **DEGREES**. 
+Before you graph a sinusoidal model or use `nSolve`, check the top right of your TI-Nspire screen. If it says `RAD`, your answers will be entirely wrong! 
+Press **[Doc] > 7: Settings & Status > 2: Document Settings** and change the Angle setting to **Degree**.
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Ferris Wheel (Interpreting the Formula)">
+    The height, $h$, in metres above the ground of a passenger carriage on a Ferris wheel is modelled by the function:
+    
+    $$
+    h(t) = 15\sin(12t) + 18
+    $$
+    
+    where $t$ is the time in minutes since the ride started.
+    
+    a) Write down the equation of the principal axis.  
+    b) Find the amplitude of the model.  
+    c) Calculate the maximum height reached by the carriage.  
+    d) Find the period of the model and explain what it means in context.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** The principal axis is the constant term added at the end ($d$). 
+    The equation is **$h = 18$**. (This represents the height of the centre of the Ferris wheel!).
+
+    **b)** The amplitude is the multiplier in front of the sine function ($a$).
+    The amplitude is **$15 \text{ m}$**. (This represents the radius of the Ferris wheel).
+
+    **c)** The maximum height occurs when the sine function reaches its absolute peak (which is $1$).
+    
+    $$
+    \text{Maximum} = d + a = 18 + 15 = 33 \text{ m}
+    $$
+    
+    The maximum height is **$33 \text{ m}$**.
+
+    **d)** We use the formula $\text{Period} = \frac{360^\circ}{b}$. Here, $b = 12$.
+    
+    $$
+    \text{Period} = \frac{360}{12} = 30
+    $$
+    
+    The period is **$30 \text{ minutes}$**. In context, this means it takes exactly 30 minutes for the Ferris wheel to complete one full rotation.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Extracting parameters (amplitude, period, principal axis) from a given sinusoidal formula" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Ocean Tides (GDC Intersections)">
+    The depth of water, $D$, in metres, at a port is modelled by the function:
+    
+    $$
+    D(t) = 3.5\cos(30t) + 8.5
+    $$
+    
+    where $t$ is the time in hours after midnight ($t=0$ is 00:00).
+    
+    a) Find the depth of the water at exactly 04:00.  
+    b) A large cargo ship requires the water depth to be at least **$10 \text{ m}$** to safely enter the port. Use your GDC to find the first time after midnight that the ship can enter. Give your answer in hours and minutes.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    *(Make sure your GDC is in Degree mode!)*
+    
+    **a)** Substitute $t = 4$ into the model:
+    
+    $$
+    D(4) = 3.5\cos(30 \times 4) + 8.5
+    $$
+    
+    $$
+    D(4) = 3.5\cos(120^\circ) + 8.5
+    $$
+    
+    Type this into the standard scratchpad on your GDC:
+    
+    $$
+    D(4) = 3.5(-0.5) + 8.5 = -1.75 + 8.5 = 6.75
+    $$
+    
+    The depth of the water is **$6.75 \text{ m}$**.
+
+    **b)** We need to find when $D(t) = 10$.
+    Graph $f_1(x) = 3.5\cos(30x) + 8.5$ and $f_2(x) = 10$.
+    Adjust your window to see the first few hours (e.g., $x$ from 0 to 12).
+    Press **[Menu] > 6: Analyze Graph > 4: Intersection**.
+    
+    The first intersection occurs at $x = 2.1539...$
+    This is $2$ hours and $0.1539...$ of an hour. 
+    Convert the decimal to minutes: $0.1539 \times 60 \approx 9.2$ minutes.
+    
+    The ship can first enter at approximately **02:09**.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="210" x2="320" y2="210" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="200" font-size="12" fill="#64748b" font-family="sans-serif">t (hrs)</text>
+        <text x="15" y="30" font-size="12" fill="#64748b" font-family="sans-serif">D (m)</text>
+
+        {/* Target 10m line exactly at y=90 */}
+        <line x1="50" y1="90" x2="300" y2="90" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="305" y="95" font-size="10" fill="#059669" font-family="sans-serif">10 m</text>
+
+        {/* High-resolution Polyline for perfectly smooth, accurate curve */}
+        <polyline points="50,50 60,52.4 70,59.4 80,70.5 90,85 93.1,90 100,101.9 110,120 120,138.1 130,155 140,169.5 150,180.6 160,187.6 170,190 180,187.6 190,180.6 200,169.5 210,155 220,138.1 230,120 240,101.9 250,85 260,70.5 270,59.4 280,52.4 290,50" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linejoin="round" />
+        
+        {/* First Intersection Point snapped completely mathematically to path and target line */}
+        <circle cx="93.1" cy="90" r="4" fill="#ef4444" />
+        <text x="93.1" y="80" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">t = 2.15</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating sinusoidal models and finding intersections with a GDC" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Constructing a Model (Spring Mass)">
+    A weight attached to a spring is pulled down and released. The height of the weight, $h$, in centimetres relative to a desk, oscillates periodically. 
+    
+    The maximum height reached by the weight is **$28 \text{ cm}$**, and the minimum height is **$12 \text{ cm}$**. It takes exactly **$4 \text{ seconds}$** for the weight to complete one full bounce (from max, down to min, and back to max).
+    
+    The height can be modelled by $h(t) = a\cos(bt) + d$, where $a > 0$ and $b > 0$.
+    
+    a) Find the value of $d$.  
+    b) Find the value of $a$.  
+    c) Find the value of $b$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** $d$ is the principal axis (the average height).
+    
+    $$
+    d = \frac{\text{Maximum} + \text{Minimum}}{2}
+    $$
+    
+    $$
+    d = \frac{28 + 12}{2} = \frac{40}{2} = 20
+    $$
+
+    **b)** $a$ is the amplitude.
+    
+    $$
+    a = \frac{\text{Maximum} - \text{Minimum}}{2}
+    $$
+    
+    $$
+    a = \frac{28 - 12}{2} = \frac{16}{2} = 8
+    $$
+
+    **c)** The period is the time for one full bounce, which is $4 \text{ seconds}$.
+    We know that $b = \frac{360}{\text{Period}}$.
+    
+    $$
+    b = \frac{360}{4} = 90
+    $$
+    
+    The final model is $h(t) = 8\cos(90t) + 20$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating parameters a, b, and d from real-world maximum, minimum, and period data" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Weather & Climate">
+    The average monthly temperature, $T$, in degrees Celsius ($^\circ\text{C}$), in a city over a 12-month period is modelled by the function:
+    
+    $$
+    T(m) = 14\sin(30m) + 11
+    $$
+    
+    where $m$ is the month of the year ($m = 1$ is January, $m = 2$ is February, etc.).
+    
+    a) State the maximum and minimum average temperatures experienced in this city.  
+    b) Use your GDC to find the two months during which the average temperature is exactly **$18^\circ\text{C}$**.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** The principal axis is $d = 11$, and the amplitude is $a = 14$.
+    
+    * Maximum Temperature = $d + a = 11 + 14 = \mathbf{25^\circ\text{C}}$
+    * Minimum Temperature = $d - a = 11 - 14 = \mathbf{-3^\circ\text{C}}$
+
+    **b)** We need to solve $14\sin(30m) + 11 = 18$.
+    Graph $f_1(x) = 14\sin(30x) + 11$ and $f_2(x) = 18$.
+    Adjust your window to view the 12 months (e.g., $x$ from 0 to 12).
+    Press **[Menu] > 6: Analyze Graph > 4: Intersection**.
+    
+    There are two intersections within the first 12 months:
+    * $x = 1.0$
+    * $x = 5.0$
+    
+    Since $m=1$ corresponds to January, the temperature is exactly $18^\circ\text{C}$ in **January** and **May**.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="210" x2="320" y2="210" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="200" font-size="12" fill="#64748b" font-family="sans-serif">m (Month)</text>
+        <text x="15" y="30" font-size="12" fill="#64748b" font-family="sans-serif">T (°C)</text>
+
+        {/* Principal Axis (11°C) exactly at y=120 */}
+        <line x1="50" y1="120" x2="300" y2="120" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+        
+        {/* Target Line (18°C) exactly at y=85 */}
+        <line x1="50" y1="85" x2="300" y2="85" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="305" y="88" font-size="10" fill="#d97706" font-family="sans-serif">18°C</text>
+
+        {/* High-resolution Polyline for perfectly smooth, accurate curve */}
+        <polyline points="50,120 60,101.9 70,85 80,70.5 90,59.4 100,52.4 110,50 120,52.4 130,59.4 140,70.5 150,85 160,101.9 170,120 180,138.1 190,155 200,169.5 210,180.6 220,187.6 230,190 240,187.6 250,180.6 260,169.5 270,155 280,138.1 290,120" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linejoin="round" />
+        
+        {/* Intersections snapped completely mathematically to path and target line */}
+        <circle cx="70" cy="85" r="4" fill="#ef4444" />
+        <text x="70" y="75" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">m = 1</text>
+        
+        <circle cx="150" cy="85" r="4" fill="#ef4444" />
+        <text x="150" y="75" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">m = 5</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting maximum and minimum boundaries from amplitude and principal axis" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Negative Cosine Model">
+    The height of a pedal on a bicycle above the ground, $h$, in cm, as the bike is ridden is modelled by:
+    
+    $$
+    h(t) = -14\cos(720t) + 30
+    $$
+    
+    where $t$ is time in seconds.
+    
+    a) Find the initial height of the pedal at $t = 0$.  
+    b) Find the period of the pedal's rotation.  
+    c) A rider requires the pedal to be at a height of exactly **$23 \text{ cm}$** to generate optimal torque. Use **nSolve** on your GDC to find the first time this happens.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** Substitute $t = 0$:
+    
+    $$
+    h(0) = -14\cos(720 \times 0) + 30 = -14\cos(0^\circ) + 30
+    $$
+    
+    Since $\cos(0^\circ) = 1$:
+    
+    $$
+    h(0) = -14(1) + 30 = 16 \text{ cm}
+    $$
+    
+    *(Notice that a negative cosine graph starts at its lowest minimum point!)*
+
+    **b)** The period is calculated using $b = 720$.
+    
+    $$
+    \text{Period} = \frac{360}{720} = 0.5 \text{ seconds}
+    $$
+    
+    The pedal completes a full rotation every half a second.
+
+    **c)** We need to solve $-14\cos(720t) + 30 = 23$.
+    
+    Press **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)** and enter:
+    `nSolve(-14*cos(720t) + 30 = 23, t)`
+    *(Again, ensure your GDC is in Degree mode!)*
+    
+    $$
+    t = 0.08333...
+    $$
+    
+    The first time the pedal reaches this height is at **$0.0833 \text{ seconds}$** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating negative sinusoidal models and interpreting extremely short periods" />

@@ -1,0 +1,497 @@
+---
+title: 2.5.3 Exponential Growth and Decay Models
+description: Understand how to model rapid change using exponential functions, exploring real-world applications like population growth, radioactive decay, and compound interest.
+---
+
+While linear models change by a fixed *amount* each time, and quadratic models have a single turning point, **exponential models** change by a fixed *percentage* or *ratio*. In an exponential model, the rate of change is proportional to the current value, leading to incredibly rapid growth or decay over time.
+
+These functions are arguably the most powerful mathematical tools for modelling the modern world, popping up across numerous disciplines:
+* **Biology:** Population growth, the spread of a virus.
+* **Physics:** Radioactive decay and half-life, X-ray attenuation, and the cooling of a liquid (Newton's Law of Cooling).
+* **Business & Economics:** Compound interest, depreciation of assets, and amortisation.
+* **Chemistry:** The equilibrium law and rates of reaction.
+
+<Aside type="note" title="Aim 8: Is 'Exponential Growth' Misleading?">
+In popular media, you will often hear phrases like "the company experienced exponential growth!" simply to mean "it grew very fast." As a mathematician, you know this is a misuse of the term. A linear function $y = 1000000x$ grows extremely fast, but it is *not* exponential. Exponential growth specifically requires a constant *multiplier*, where the growth gets faster and faster as the value increases!
+</Aside>
+
+---
+
+## 1. The Anatomy of an Exponential Model
+
+<FormulaBox title="Exponential Models">
+
+$$
+f(x) = ka^x + c \quad (a > 0)
+$$
+
+$$
+f(x) = ka^{-x} + c \quad (a > 0)
+$$
+
+$$
+f(x) = ke^{rx} + c
+$$
+
+</FormulaBox>
+
+<Aside type="note" title="Deconstructing the Parameters">
+Whether you use the standard base $a$ or the continuous base $e$ (Euler's number, $e \approx 2.718$), the structure dictates the behaviour:
+* **$c$**: The vertical shift, which establishes the **horizontal asymptote** (the boundary line $y = c$).
+* **The Exponent ($x$, $-x$, or $rx$)**: 
+  * If the exponent is positive (e.g., $a^x$ where $a>1$, or $e^{rx}$ where $r>0$), the model represents **exponential growth**.
+  * If the exponent is negative (e.g., $a^{-x}$ or $e^{-rx}$), the model represents **exponential decay**.
+* **$k$**: A multiplier related to the initial value. 
+  * If $k$ is positive, the curve sits *above* the asymptote.
+  * If $k$ is negative (e.g., $f(x) = c - ka^{-x}$), the curve sits *below* the asymptote and grows upwards towards it. This creates a **"ceiling effect"** often used to model things like terminal velocity or an object heating up to room temperature.
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 350" width="100%" maxWidth="700px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Axes */}
+    <line x1="40" y1="300" x2="560" y2="300" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="60" y1="20" x2="60" y2="320" stroke="#cbd5e1" stroke-width="2" />
+    <text x="550" y="290" font-size="14" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="70" y="30" font-size="14" fill="#64748b" font-family="sans-serif">y</text>
+
+    {/* Horizontal Asymptote (y = c) */}
+    <line x1="40" y1="160" x2="560" y2="160" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 6" />
+    <text x="480" y="150" font-size="12" font-weight="bold" fill="#64748b" font-family="sans-serif">Asymptote: y = c</text>
+
+    {/* Standard Decay (Above asymptote) */}
+    <path d="M 60 40 Q 150 150 560 158" fill="none" stroke="#3b82f6" stroke-width="3" />
+    <text x="180" y="80" font-size="12" font-weight="bold" fill="#3b82f6" font-family="sans-serif">Decay to a floor: f(x) = ka^(-x) + c</text>
+
+    {/* Growth to a ceiling (Below asymptote) */}
+    <path d="M 60 280 Q 150 170 560 162" fill="none" stroke="#f59e0b" stroke-width="3" />
+    <text x="180" y="240" font-size="12" font-weight="bold" fill="#d97706" font-family="sans-serif">Growth to a ceiling: f(x) = c - ka^(-x)</text>
+
+    {/* Exponential Growth */}
+    <path d="M 380 290 Q 480 280 540 40" fill="none" stroke="#ef4444" stroke-width="3" />
+    <text x="420" y="90" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">Growth: f(x) = ka^x</text>
+  </svg>
+</div>
+
+<SteveTip title="GDC Mastery: Finding Asymptotes and Intersections">
+**Finding Specific Targets:** Do not solve complex exponential equations by hand! To find when a cooling liquid reaches $30^\circ\text{C}$, graph your model as $f_1(x)$, graph $f_2(x) = 30$, and press **[Menu] > 6: Analyze Graph > 4: Intersection**.
+
+**Spotting the Asymptote:** If you are unsure what the horizontal asymptote is, press **[Menu] > 7: Table > 1: Split-screen Table**. Scroll down to very large values of $x$ (e.g., $x = 100$) and see what number the $y$-values are levelling out at!
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Approaching a Ceiling (Terminal Velocity)">
+    A skydiver jumps from a helicopter. The downward velocity of the skydiver, $v$, in metres per second (m/s), $t$ seconds after jumping is modelled by the function:
+    
+    $$
+    v(t) = 55 - 55e^{-0.18t}
+    $$
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="210" x2="320" y2="210" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="200" font-size="12" fill="#64748b" font-family="sans-serif">t (s)</text>
+        <text x="15" y="30" font-size="12" fill="#64748b" font-family="sans-serif">v (m/s)</text>
+
+        {/* Scaled Exact Path for ceiling growth (asymptote line removed) */}
+        <path d="M 50 210 Q 120 60 320 52" fill="none" stroke="#3b82f6" stroke-width="2" />
+      </svg>
+    </div>
+
+    a) **Show that** the initial velocity of the skydiver is **0 m/s**.  
+    b) Find the skydiver's velocity after **4 seconds**.  
+    c) Write down the equation of the horizontal asymptote and explain what it represents in the context of this scenario.  
+    d) Discuss the feasibility of this model if the skydiver deploys a parachute at $t = 30$ seconds.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** To "show that", we must substitute $t = 0$ and state every step clearly without skipping straight to the answer:
+    
+    $$
+    v(0) = 55 - 55e^{-0.18(0)}
+    $$
+    
+    $$
+    v(0) = 55 - 55e^0
+    $$
+    
+    $$
+    v(0) = 55 - 55(1) = 0 \text{ m/s}
+    $$
+
+    **b)** Substitute $t = 4$:
+    
+    $$
+    v(4) = 55 - 55e^{-0.18(4)} = 55 - 55e^{-0.72} = 55 - 26.77... = 28.2
+    $$
+    
+    The velocity is **28.2 m/s** (to 3 s.f.).
+
+    **c)** As $t$ gets very large, $e^{-0.18t}$ approaches $0$. The model becomes $55 - 0$. Therefore, the horizontal asymptote is **$v = 55$**. 
+    In context, this represents the skydiver's **terminal velocity**—the absolute maximum falling speed they will reach due to air resistance.
+
+    **d)** The model is feasible for free-fall, but **not feasible after $t = 30$**. When a parachute is deployed, air resistance massively increases, causing a sudden and dramatic drop in velocity. This model does not account for that change and would incorrectly predict the velocity staying near 55 m/s forever.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating feasibility and contextual meaning of asymptotes in exponential ceiling models" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Constructing a Model from a Graph">
+    A cup of hot tea is placed in a cool room. The temperature of the tea, $T$ in $^\circ\text{C}$, after $m$ minutes is modelled by the function:
+    
+    $$
+    T(m) = ka^{-m} + c \quad (a > 0)
+    $$
+    
+    The graph of the model has a horizontal asymptote at $T = 20$. The tea initially has a temperature of **$85^\circ\text{C}$**. After **10 minutes**, the temperature drops to **$50^\circ\text{C}$**.
+    
+    a) Write down the value of $c$.  
+    b) **Show that** the value of $k$ is **65**.  
+    c) Use the GDC to find the value of $a$.  
+    d) Find the time it takes for the tea to reach **$30^\circ\text{C}$**.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** The horizontal asymptote corresponds to the constant term at the end of the exponential function. Therefore, $c = 20$.
+
+    **b)** The initial temperature is $85^\circ\text{C}$, so when $m = 0$, $T(0) = 85$. Substitute $c = 20$ and $m = 0$ into the model:
+    
+    $$
+    85 = ka^{-0} + 20
+    $$
+    
+    Since $a^0 = 1$:
+    
+    $$
+    85 = k(1) + 20
+    $$
+    
+    $$
+    k = 85 - 20 = 65
+    $$
+    
+    *(This is exactly the step-by-step working required for a "show that" question!)*
+
+    **c)** We now know the model is $T(m) = 65a^{-m} + 20$. We are given the coordinate $(10, 50)$. Substitute these values in:
+    
+    $$
+    50 = 65a^{-10} + 20
+    $$
+    
+    $$
+    30 = 65a^{-10}
+    $$
+    
+    Using your GDC, press **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)** and enter `nSolve(30 = 65a^(-10), a)`. 
+    Because we are told $a > 0$, we find $a = 1.0803...$
+    So, $a = \textbf{1.08}$ (to 3 s.f.).
+
+    **d)** The complete model is $T(m) = 65(1.0803)^{-m} + 20$. We need to solve $T(m) = 30$.
+    Graph $f_1(x) = 65(1.0803)^{-x} + 20$ and $f_2(x) = 30$. 
+    Press **[Menu] > 6: Analyze Graph > 4: Intersection**. The intersection occurs at $x = 24.22...$
+    It takes **24.2 minutes**.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="210" x2="320" y2="210" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="200" font-size="12" fill="#64748b" font-family="sans-serif">m (min)</text>
+        <text x="15" y="30" font-size="12" fill="#64748b" font-family="sans-serif">T (°C)</text>
+
+        {/* Asymptote 20 */}
+        <line x1="50" y1="175" x2="300" y2="175" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="305" y="180" font-size="10" fill="#059669" font-family="sans-serif">y = 20</text>
+
+        {/* Target 30 */}
+        <line x1="50" y1="157" x2="300" y2="157" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="305" y="162" font-size="10" fill="#d97706" font-family="sans-serif">T = 30</text>
+
+        {/* Scaled Exact Path for Cooling */}
+        <path d="M 50 40 Q 120 160 300 168" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Initial Point perfectly aligned to curve */}
+        <circle cx="50" cy="40" r="4" fill="#1e3a8a" />
+        <text x="60" y="45" font-size="10" font-weight="bold" fill="#1e3a8a" font-family="sans-serif">(0, 85)</text>
+
+        {/* Given Point perfectly aligned to curve */}
+        <circle cx="123.6" cy="118.1" r="4" fill="#9333ea" />
+        <text x="133" y="113" font-size="10" fill="#9333ea" font-family="sans-serif">(10, 50)</text>
+        
+        {/* Intersection perfectly aligned to curve */}
+        <circle cx="217" cy="157" r="4" fill="#ef4444" />
+        <text x="217" y="147" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">m = 24.2</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for unknown parameters (k, a, c) in an exponential model using coordinates and asymptotes" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Biology, Population Growth & Limits">
+    A new invasive species of frog is introduced to a large lake. The population, $P$, is modelled by the function:
+    
+    $$
+    P(t) = 150(1.35)^t
+    $$
+    
+    where $t$ is the time in years since the frogs were first introduced.
+    
+    a) Find the initial population of frogs.  
+    b) Find the population after **4 years**.  
+    c) A local ecologist warns that if the population reaches **10,000**, the lake's ecosystem will collapse. According to the model, in what exact year will this happen?  
+    d) State one biological reason why this exponential model may **not** be reliable for predicting the population after 50 years.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Initial population occurs at $t = 0$:
+    
+    $$
+    P(0) = 150(1.35)^0 = 150(1) = 150 \text{ frogs}
+    $$
+
+    **b)** Substitute $t = 4$:
+    
+    $$
+    P(4) = 150(1.35)^4 = 150(3.3215...) = 498.22...
+    $$
+    
+    The population is **498 frogs** (always round living things to the nearest whole number).
+
+    **c)** We need to solve $150(1.35)^t = 10000$.
+    Graph $f_1(x) = 150(1.35)^x$ and $f_2(x) = 10000$. 
+    Press **[Menu] > 6: Analyze Graph > 4: Intersection**. The intersection is at $x = 13.99...$
+    Since it hits 10,000 just before $t=14$, the ecosystem will collapse during the **13th year** (after 13 full years have passed, but before the 14th is complete).
+
+    **d)** Exponential models assume infinite resources. Over 50 years, the model is unreliable because the lake has a limited **carrying capacity**. The frogs would eventually run out of space, food, or oxygen, or be affected by predators/disease, causing the growth rate to slow down and eventually plateau.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Predicting population thresholds using GDC intersection and evaluating long-term feasibility of models" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Percentage Depreciation (Finance)">
+    A printing company buys an industrial 3D printer for **£45,000**. The value of the printer depreciates by **15% each year**.
+    
+    a) Write down an exponential model $V(t)$ for the value of the printer after $t$ years.  
+    b) Calculate the value of the printer after **5 years**.  
+    c) The company plans to sell the printer once its value drops below **£10,000**. Using your GDC, find the minimum number of full years they must wait before selling it.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** Depreciation means the value is decreasing. A 15% decrease leaves 85% of the value each year. Therefore, the common multiplier is $1 - 0.15 = 0.85$.
+    
+    $$
+    V(t) = 45000(0.85)^t
+    $$
+
+    **b)** Substitute $t = 5$:
+    
+    $$
+    V(5) = 45000(0.85)^5 = 45000(0.4437...) = 19966.73...
+    $$
+    
+    The value is **£19,966.73** (always round money to 2 decimal places).
+
+    **c)** We must solve the inequality $45000(0.85)^t < 10000$.
+    Graph $f_1(x) = 45000(0.85)^x$ and $f_2(x) = 10000$.
+    Press **[Menu] > 6: Analyze Graph > 4: Intersection**. The intersection occurs at $t = 9.25...$
+    
+    Since the value continues to drop, they must wait until $t = 9.25$ years have passed. The minimum number of *full* years to wait is **10 years**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Formulating depreciation models and solving for time using a GDC" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Radioactive Decay & Half-Life">
+    A 250 gram sample of the radioactive isotope Iodine-131 decays according to the model:
+    
+    $$
+    M(t) = 250e^{-0.0866t}
+    $$
+    
+    where $M$ is the mass remaining in grams, and $t$ is the time in days.
+    
+    a) Find the mass remaining after **14 days**.  
+    b) The "half-life" of a substance is the time it takes for exactly half of its initial mass to decay. Find the half-life of Iodine-131.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** Substitute $t = 14$:
+    
+    $$
+    M(14) = 250e^{-0.0866(14)} = 250e^{-1.2124} = 250(0.2974...) = 74.37...
+    $$
+    
+    The remaining mass is **74.4 grams** (to 3 s.f.).
+
+    **b)** The initial mass is 250 grams. Half of this mass is $250 \div 2 = 125$ grams.
+    We need to solve for $t$ when $M(t) = 125$:
+    
+    $$
+    125 = 250e^{-0.0866t}
+    $$
+    
+    Using your GDC, press **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)** and enter `nSolve(125 = 250*e^(-0.0866t), t)`.
+    
+    $$
+    t = 8.004...
+    $$
+    
+    The half-life of Iodine-131 is approximately **8.00 days**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating continuous exponential decay models and calculating half-life" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Compound Interest as an Exponential Model">
+    An investor deposits **£8,000** into a savings account that pays an annual interest rate of **4.2% compounded annually**. The value of the investment, $A$, after $t$ years is modelled by $A(t) = P(1 + r)^t$.
+    
+    a) Write down the specific function $A(t)$ for this investment.  
+    b) Determine the value of the investment after **7 years**.  
+    c) Find the number of years required for the investment to double in value.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** The initial principal $P = 8000$. The interest rate as a decimal is $r = 0.042$.
+    The growth multiplier is $1 + 0.042 = 1.042$.
+    
+    $$
+    A(t) = 8000(1.042)^t
+    $$
+
+    **b)** Substitute $t = 7$:
+    
+    $$
+    A(7) = 8000(1.042)^7 = 8000(1.3337...) = 10669.76...
+    $$
+    
+    The value is **£10,669.76**.
+
+    **c)** We want the investment to double, meaning the final amount is $8000 \times 2 = 16000$.
+    
+    $$
+    16000 = 8000(1.042)^t
+    $$
+    
+    Graph $f_1(x) = 8000(1.042)^x$ and $f_2(x) = 16000$.
+    Press **[Menu] > 6: Analyze Graph > 4: Intersection**. The intersection is at $t = 16.84...$
+    
+    It takes **16.8 years** for the investment to double.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying exponential growth models to calculate compound interest and doubling time" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Comparing Two Exponential Models">
+    Two neighbouring towns, Alpha and Beta, have populations modelled by the following functions, where $t$ is the number of years after the year 2020:
+    
+    $$
+    P_{\text{Alpha}}(t) = 12000(1.03)^t
+    $$
+    
+    $$
+    P_{\text{Beta}}(t) = 16000(0.98)^t
+    $$
+    
+    a) State which town's population is growing and which is declining. Justify your answer.  
+    b) Use your GDC to find the exact year in which the population of Town Alpha first exceeds the population of Town Beta.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** **Town Alpha is growing** because its multiplier ($1.03$) is greater than 1. **Town Beta is declining** because its multiplier ($0.98$) is less than 1.
+
+    **b)** We need to find the intersection point where $P_{\text{Alpha}}(t) = P_{\text{Beta}}(t)$.
+    
+    $$
+    12000(1.03)^t = 16000(0.98)^t
+    $$
+    
+    Graph both functions: $f_1(x) = 12000(1.03)^x$ and $f_2(x) = 16000(0.98)^x$.
+    Press **[Menu] > 6: Analyze Graph > 4: Intersection**.
+    The GDC shows the graphs intersect at $t = 5.77...$ and Population $= 14232...$
+    
+    This means the populations are equal 5.77 years after 2020. Therefore, Town Alpha will officially exceed Town Beta during the **year 2025**.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="210" x2="320" y2="210" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="200" font-size="12" fill="#64748b" font-family="sans-serif">t (years)</text>
+        <text x="15" y="30" font-size="12" fill="#64748b" font-family="sans-serif">Pop.</text>
+
+        {/* Town Beta (Decay) path */}
+        <path d="M 50 60 Q 150 100 300 150" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="60" y="55" font-size="10" fill="#3b82f6" font-family="sans-serif">Beta (16,000)</text>
+
+        {/* Town Alpha (Growth) path */}
+        <path d="M 50 140 Q 150 110 300 40" fill="none" stroke="#ef4444" stroke-width="2" />
+        <text x="60" y="155" font-size="10" fill="#ef4444" font-family="sans-serif">Alpha (12,000)</text>
+        
+        {/* Intersection mathematically snapped to curves */}
+        <circle cx="159.2" cy="101.3" r="4" fill="#10b981" />
+        <text x="159.2" y="90" font-size="10" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">t = 5.77</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing exponential growth and decay models using graphical intersections on a GDC" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Finding 'k' Using nSolve (Heating to a Ceiling)">
+    A cold piece of metal is placed inside an industrial oven set to **$400^\circ\text{C}$**. The temperature of the metal, $T$, after $m$ minutes is modelled by the function:
+    
+    $$
+    T(m) = 400 - 380e^{-km}
+    $$
+    
+    After **15 minutes**, the temperature of the metal is recorded as **$250^\circ\text{C}$**.
+    
+    a) Find the initial temperature of the metal.  
+    b) Use your GDC to find the value of $k$.  
+    c) Calculate how long it will take for the metal to reach **$390^\circ\text{C}$**.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)** Substitute $m = 0$:
+    
+    $$
+    T(0) = 400 - 380e^{-k(0)} = 400 - 380(1) = 20
+    $$
+    
+    The initial temperature of the metal was **$20^\circ\text{C}$**.
+
+    **b)** We are given the coordinate $(15, 250)$. Substitute these values into the model:
+    
+    $$
+    250 = 400 - 380e^{-15k}
+    $$
+    
+    Press **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)** and enter:
+    `nSolve(250 = 400 - 380*e^(-15k), k)`
+    
+    $$
+    k = 0.06198...
+    $$
+    
+    So, **$k = 0.0620$** (to 3 s.f.).
+
+    **c)** We now use the complete model: $T(m) = 400 - 380e^{-0.06198m}$.
+    We need to find $m$ when $T(m) = 390$.
+    
+    $$
+    390 = 400 - 380e^{-0.06198m}
+    $$
+    
+    Use `nSolve(390 = 400 - 380*e^(-0.06198m), m)` or find the intersection of $f_1(x) = 400 - 380e^{-0.06198x}$ and $f_2(x) = 390$.
+    
+    $$
+    m = 58.68...
+    $$
+    
+    It will take **58.7 minutes** for the metal to heat up to $390^\circ\text{C}$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for an unknown exponent rate constant in an exponential ceiling model using nSolve" />

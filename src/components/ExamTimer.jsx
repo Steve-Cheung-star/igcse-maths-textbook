@@ -32,9 +32,11 @@ export default function ExamTimer() {
     }
   }, []);
 
+  // We keep the title update so you can still check the tab if you REALLY need to, 
+  // but it's removed from the UI to prevent constant staring.
   useEffect(() => {
     if (isActive && seconds > 0) {
-      document.title = `(${formatTime(seconds)}) ${originalTitle.current}`;
+      document.title = `(${Math.ceil(seconds/60)}m) ${originalTitle.current}`;
     } else {
       document.title = originalTitle.current;
     }
@@ -122,12 +124,6 @@ export default function ExamTimer() {
     localStorage.removeItem('exam_timer_total');
   };
 
-  function formatTime(s) {
-    const mins = Math.floor(s / 60);
-    const secs = s % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-  }
-
   const progressPercent = totalTime > 0 ? (seconds / totalTime) * 100 : 0;
 
   const getStatusColor = () => {
@@ -163,7 +159,7 @@ export default function ExamTimer() {
                <button className="min-btn" onClick={(e) => { e.stopPropagation(); setIsMinimized(true); }}>—</button>
                <motion.div className="time-display-wrapper" onTap={() => { setShowControls(!showControls); setIsAlarming(false); }}>
                   <span className="big-time-text" style={{ color: getStatusColor() }}>
-                    {formatTime(seconds)}
+                    {isAlarming ? "TIME'S UP" : seconds > 0 ? "FOCUSING" : "READY"}
                   </span>
                </motion.div>
             </div>
@@ -213,23 +209,12 @@ export default function ExamTimer() {
         .is-expanded { width: 220px; border-radius: 8px; }
         
         .mini-icon-trigger { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; }
-        
-        .mini-txt { 
-            font-weight: 800; 
-            font-size: 0.9rem; 
-            display: flex; 
-            flex-direction: column;
-            align-items: center; 
-            justify-content: center; 
-            width: 100%; 
-            height: 100%;
-            line-height: 1;
-            text-align: center;
-        }
+        .mini-txt { font-weight: 800; font-size: 0.9rem; display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; line-height: 1; }
         
         .timer-header-area { position: relative; padding: 15px 10px 5px 10px; }
         .min-btn { position: absolute; top: 8px; right: 12px; background: none; border: none; color: var(--sl-color-gray-3); cursor: pointer; font-size: 1.2rem; z-index: 20; }
-        .big-time-text { font-size: 3.5rem; font-weight: 800; line-height: 1; display: block; text-align: center; font-variant-numeric: tabular-nums; pointer-events: none; }
+        .time-display-wrapper { cursor: pointer; padding: 10px 0; }
+        .big-time-text { font-size: 1.2rem; font-weight: 800; letter-spacing: 0.1em; display: block; text-align: center; pointer-events: none; }
         
         .controls-section { padding: 5px 12px 15px 12px; display: flex; flex-direction: column; gap: 8px; }
         .grid-presets { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
@@ -240,7 +225,7 @@ export default function ExamTimer() {
         .add-1 { background: var(--sl-color-accent-low) !important; color: var(--sl-color-accent-high) !important; border: 1px solid var(--sl-color-accent) !important; }
         .reset-clr { background: rgba(var(--sl-color-orange-rgb), 0.15) !important; color: var(--sl-color-orange) !important; border: 1px solid var(--sl-color-orange) !important; }
         
-        .bottom-progress-container { height: 6px; background: rgba(var(--sl-color-gray-5-rgb), 0.2); width: 100%; position: relative; overflow: hidden; }
+        .bottom-progress-container { height: 8px; background: rgba(var(--sl-color-gray-5-rgb), 0.2); width: 100%; position: relative; overflow: hidden; }
         .progress-fill { height: 100%; width: 0%; }
         .tick { position: absolute; top: 0; width: 1px; height: 100%; background: rgba(255,255,255,0.15); z-index: 1; }
         .t-25 { left: 25%; } .t-50 { left: 50%; } .t-75 { left: 75%; }

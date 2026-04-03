@@ -1,0 +1,602 @@
+---
+title: 2.5.4 Direct and Inverse Variation Models
+description: Learn how to model proportional relationships, exploring both direct variation and inverse variation with real-world applications in physics, economics, and the life sciences.
+---
+
+Not all relationships between variables involve constant addition or percentage multipliers. Frequently, two quantities are connected by a proportional relationship where one variable scales in direct response to another. 
+
+When you study science or economics, these variation models are everywhere:
+* **Physics:** Boyle's Law states that the pressure of a gas is inversely proportional to its volume. Charles's Law states that volume is directly proportional to temperature.
+* **Economics:** The laws of supply and demand often rely on inverse variation (as price goes up, demand goes down).
+* **Life Sciences & Medicine:** The mass of an animal is proportional to the cube of its length, while blood flow through an artery is directly proportional to the fourth power of its radius!
+
+---
+
+## 1. The Anatomy of a Variation Model
+
+<FormulaBox title="Direct and Inverse Variation">
+
+$$
+f(x) = ax^n \quad (n \in \mathbb{Z})
+$$
+
+</FormulaBox>
+
+<Aside type="note" title="Direct vs. Inverse Variation">
+The value of the integer power $n$ completely changes the behaviour of the model. In all cases, $a$ is known as the **constant of variation**.
+
+* **Direct Variation ($n > 0$):** If $n = 1, 2, 3 \dots$, the variables grow together. As $x$ increases, $f(x)$ increases. The graph will always pass exactly through the origin $(0,0)$. 
+  *Example: $y = 5x^2$ (Directly proportional to the square of $x$)*
+
+* **Inverse Variation ($n < 0$):**
+  If $n = -1, -2 \dots$, the variables move in opposite directions. As $x$ increases, $f(x)$ decreases. We can also write this using positive indices in the denominator, for example: $f(x) = \frac{a}{x^2}$.
+</Aside>
+
+<Aside type="caution" title="The Vertical Asymptote Trap">
+When $n < 0$, you are dealing with **inverse variation** (e.g., $f(x) = ax^{-1} = \frac{a}{x}$). 
+Because you **cannot divide by zero**, $x$ can never equal $0$. 
+This creates a **vertical asymptote at the y-axis** (the line $x = 0$). The curve will shoot upwards towards infinity as it gets closer to the y-axis, but it will never touch it.
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 280" width="100%" maxWidth="700px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Left Panel: Direct Variation */}
+    <line x1="30" y1="230" x2="280" y2="230" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="50" y1="30" x2="50" y2="250" stroke="#cbd5e1" stroke-width="2" />
+    <text x="100" y="25" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">Direct Variation (n &gt; 0)</text>
+    <text x="270" y="220" font-size="12" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="35" y="40" font-size="12" fill="#64748b" font-family="sans-serif">y</text>
+    
+    {/* Curve for Direct (e.g., y = ax^2) */}
+    <path d="M 50 230 Q 150 230 250 60" fill="none" stroke="#3b82f6" stroke-width="3" />
+    <circle cx="50" cy="230" r="4" fill="#3b82f6" />
+    <text x="60" y="220" font-size="10" fill="#3b82f6" font-family="sans-serif">Passes through origin</text>
+
+    {/* Right Panel: Inverse Variation */}
+    <line x1="320" y1="230" x2="570" y2="230" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="350" y1="30" x2="350" y2="250" stroke="#cbd5e1" stroke-width="2" />
+    <text x="380" y="25" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">Inverse Variation (n &lt; 0)</text>
+    <text x="560" y="220" font-size="12" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="335" y="40" font-size="12" fill="#64748b" font-family="sans-serif">y</text>
+
+    {/* Vertical Asymptote Marker for Inverse */}
+    <line x1="350" y1="30" x2="350" y2="230" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="360" y="80" font-size="10" fill="#d97706" font-family="sans-serif">Vertical Asymptote</text>
+    <text x="360" y="95" font-size="10" font-weight="bold" fill="#d97706" font-family="sans-serif">(y-axis)</text>
+
+    {/* Curve for Inverse (e.g., y = a/x) */}
+    <path d="M 370 40 Q 380 210 550 220" fill="none" stroke="#ef4444" stroke-width="3" />
+  </svg>
+</div>
+
+<SteveTip title="GDC Mastery: Finding the Constant 'a'">
+In the exam, you will almost always be given one set of coordinates and asked to find the constant of variation $a$. 
+You can do this algebraically, but you can also use your GDC! 
+Press **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)**. 
+For example, if you know that $y=12$ when $x=2$ for the model $y = a/x^2$, just type `nSolve(12 = a / 2^2, a)` to instantly find the constant.
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Boyle's Law (Inverse Variation)">
+    The pressure, $P$, of a fixed mass of gas in a sealed syringe varies inversely with its volume, $V$. This can be modelled by the function:
+    
+    $$
+    P(V) = aV^{-1} \quad \text{or} \quad P(V) = \frac{a}{V}
+    $$
+    
+    When the volume is **$2.5 \text{ cm}^3$**, the pressure is recorded as **$120 \text{ kPa}$**.
+    
+    a) **Show that** the constant of variation $a$ is $300$.  
+    b) Find the pressure of the gas when the syringe is pulled back to a volume of **$8 \text{ cm}^3$**.  
+    c) A student claims that if the syringe is pushed all the way in so that $V = 0$, the pressure will reach a maximum limit of $1000 \text{ kPa}$. Mathematically justify why this claim is incorrect using the concept of asymptotes.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** "Show that" questions require full algebraic working. We are given the coordinate $V = 2.5$ and $P = 120$. 
+    Substitute these values into the model:
+    
+    $$
+    120 = a(2.5)^{-1}
+    $$
+    
+    Recall that a negative exponent means division:
+    
+    $$
+    120 = \frac{a}{2.5}
+    $$
+    
+    Multiply both sides by $2.5$:
+    
+    $$
+    a = 120 \times 2.5 = 300
+    $$
+
+    **b)** Our full model is now $P(V) = \frac{300}{V}$. Substitute $V = 8$:
+    
+    $$
+    P(8) = \frac{300}{8} = 37.5
+    $$
+    
+    The pressure is **$37.5 \text{ kPa}$**.
+
+    **c)** The model is $P(V) = \frac{300}{V}$. As $V$ approaches $0$, the denominator gets infinitely small, which makes the pressure $P$ grow infinitely large. 
+    Because we cannot divide by zero, there is a **vertical asymptote at the y-axis** ($V = 0$). Therefore, the pressure does not stop at a limit of $1000 \text{ kPa}$; mathematically, it approaches infinity. (In reality, the syringe would explode!).
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="40" y1="210" x2="320" y2="210" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="200" font-size="12" fill="#64748b" font-family="sans-serif">V (cm³)</text>
+        <text x="15" y="30" font-size="12" fill="#64748b" font-family="sans-serif">P (kPa)</text>
+
+        {/* Smooth Inverse Curve Path */}
+        <path d="M 60 30 Q 80 180 300 195" fill="none" stroke="#ef4444" stroke-width="2" />
+        
+        {/* Point 1 accurately positioned exactly on the bezier curve (t=0.2) */}
+        <circle cx="76" cy="84.6" r="4" fill="#991b1b" />
+        <text x="86" y="80" font-size="10" fill="#991b1b" font-family="sans-serif">(2.5, 120)</text>
+
+        {/* Point 2 accurately positioned exactly on the bezier curve (t=0.6) */}
+        <circle cx="156" cy="161.4" r="4" fill="#9333ea" />
+        <text x="166" y="156" font-size="10" font-weight="bold" fill="#9333ea" font-family="sans-serif">(8, 37.5)</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for the constant of variation in inverse models and explaining asymptotes" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Direct Variation with a Square (Air Resistance)">
+    The air resistance, $R$, measured in Newtons (N), experienced by a car is directly proportional to the square of its velocity, $v$, in m/s. 
+    This is modelled by:
+    
+    $$
+    R(v) = av^2
+    $$
+    
+    When the car is travelling at **$15 \text{ m/s}$**, it experiences an air resistance of **$180 \text{ N}$**.
+    
+    a) Find the value of $a$.  
+    b) Calculate the air resistance when the car is travelling at **$30 \text{ m/s}$**.  
+    c) The maximum air resistance the car's engine can overcome is **$1200 \text{ N}$**. Using your GDC, find the absolute maximum velocity the car can reach.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** Substitute $v = 15$ and $R = 180$ into the model:
+    
+    $$
+    180 = a(15)^2
+    $$
+    
+    $$
+    180 = 225a
+    $$
+    
+    $$
+    a = \frac{180}{225} = 0.8
+    $$
+
+    **b)** Our full model is $R(v) = 0.8v^2$. Substitute $v = 30$:
+    
+    $$
+    R(30) = 0.8(30)^2 = 0.8(900) = 720
+    $$
+    
+    The air resistance is **$720 \text{ N}$**. 
+    *(Notice how doubling the speed from 15 to 30 caused the resistance to multiply by $2^2 = 4$, going from 180 to 720!)*
+
+    **c)** We need to find $v$ when $R(v) = 1200$.
+    
+    $$
+    1200 = 0.8v^2
+    $$
+    
+    Use your GDC. Graph $f_1(x) = 0.8x^2$ and $f_2(x) = 1200$.
+    Press **[Menu] > 6: Analyze Graph > 4: Intersection**. 
+    Alternatively, press **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)** and type `nSolve(1200 = 0.8v^2, v)`.
+    
+    $$
+    v = 38.7298...
+    $$
+    
+    The maximum velocity is **$38.7 \text{ m/s}$** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the constant of variation in direct models and solving quadratic proportional relationships" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: The Inverse Square Law (Light Intensity)">
+    The intensity of light, $I$, from a stage lamp is inversely proportional to the square of the distance, $d$, from the lamp. This is given by the function:
+    
+    $$
+    I(d) = kd^{-2} \quad \text{or} \quad I(d) = \frac{k}{d^2}
+    $$
+    
+    At a distance of **$4 \text{ metres}$**, the light intensity is measured at **$15 \text{ units}$**.
+    
+    a) Write down the value of $k$.  
+    b) Find the distance at which the light intensity drops to **$5 \text{ units}$**.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Substitute $d = 4$ and $I = 15$ into the model:
+    
+    $$
+    15 = \frac{k}{4^2}
+    $$
+    
+    $$
+    15 = \frac{k}{16}
+    $$
+    
+    Multiply both sides by 16:
+    
+    $$
+    k = 15 \times 16 = 240
+    $$
+
+    **b)** Our full model is $I(d) = \frac{240}{d^2}$. We need to find $d$ when $I = 5$:
+    
+    $$
+    5 = \frac{240}{d^2}
+    $$
+    
+    Press **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)** on your GDC and enter `nSolve(5 = 240 / d^2, d)`. Because distance must be positive, we take the positive root.
+    
+    $$
+    d = 6.9282...
+    $$
+    
+    The distance is **$6.93 \text{ metres}$** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving inverse square relationships and finding specific targets using a GDC" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Economics (Supply and Demand)">
+    The daily demand, $D$, for a new brand of luxury sunglasses varies inversely with the selling price, $p$, in USD. The relationship is modelled by:
+    
+    $$
+    D(p) = \frac{k}{p}
+    $$
+    
+    When the sunglasses are priced at **$150**, the company sells exactly **40 pairs** a day.
+    
+    a) Find the value of $k$.  
+    b) The company wants to increase their daily sales to **60 pairs**. Calculate the new price they must set for the sunglasses.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** Substitute $p = 150$ and $D = 40$ into the model:
+    
+    $$
+    40 = \frac{k}{150}
+    $$
+    
+    Multiply by 150:
+    
+    $$
+    k = 40 \times 150 = 6000
+    $$
+
+    **b)** The full model is $D(p) = \frac{6000}{p}$. We want to find the price $p$ when $D = 60$.
+    
+    $$
+    60 = \frac{6000}{p}
+    $$
+    
+    You can solve this algebraically by cross-multiplying ($60p = 6000$), or by pressing **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)** and entering `nSolve(60 = 6000 / p, p)`.
+    
+    $$
+    p = 100
+    $$
+    
+    They must drop the price to **$100** to sell 60 pairs a day.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying inverse variation to economic supply and demand models" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Distinguishing Direct Models from Data">
+    A scientist records the following data relating variables $x$ and $y$:
+    
+    | $x$ | 2 | 4 | 8 |
+    |---|---|---|---|
+    | $y$ | 12 | 48 | 192 |
+    
+    The scientist knows the relationship is either a direct linear model $y = ax$ or a direct square variation model $y = ax^2$.
+    
+    a) By testing the coordinates, determine which model correctly represents the data.  
+    b) State the exact equation of the model.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** To find the correct model, test a coordinate to find $a$, and then see if that $a$ value works for the other coordinates.
+    
+    *Let's test $y = ax^2$ using the first point (2, 12):*
+    
+    $$
+    12 = a(2)^2 \implies 12 = 4a \implies a = 3
+    $$
+    
+    If the model is $y = 3x^2$, let's check the second point $(x=4)$:
+    
+    $$
+    y = 3(4)^2 = 3(16) = 48
+    $$
+    
+    This matches the table perfectly! Let's check the third point $(x=8)$:
+    
+    $$
+    y = 3(8)^2 = 3(64) = 192
+    $$
+    
+    This also matches. Therefore, the relationship is a square direct variation.
+    
+    *(For completeness, if we had tested $y=ax$: $12 = a(2) \implies a = 6$. The model $y=6x$ would give $y = 6(4) = 24$ for the second point, which does not match our table).*
+
+    **b)** Because the square model worked consistently, the exact equation is:
+    
+    $$
+    y = 3x^2
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Testing coordinates to distinguish between different polynomial direct variation models" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Life Sciences (Cubic Direct Variation)">
+    In marine biology, the mass, $M$, in grams, of a certain species of fish is directly proportional to the cube of its length, $L$, in centimetres. This is modelled by:
+    
+    $$
+    M(L) = aL^3
+    $$
+    
+    A marine biologist measures a fish that is **$20 \text{ cm}$** long and has a mass of **$120 \text{ g}$**.
+    
+    a) Find the constant of variation, $a$.  
+    b) Calculate the expected mass of a fish that is **$35 \text{ cm}$** long.  
+    c) A local fishery considers a fish to be "market-sized" if its mass exceeds **$2 \text{ kg}$** (2000 g). Using your GDC, find the minimum length a fish must reach to be market-sized.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** Substitute $L = 20$ and $M = 120$ into the model:
+    
+    $$
+    120 = a(20)^3
+    $$
+    
+    $$
+    120 = 8000a
+    $$
+    
+    $$
+    a = \frac{120}{8000} = 0.015
+    $$
+
+    **b)** The full model is $M(L) = 0.015L^3$. Substitute $L = 35$:
+    
+    $$
+    M(35) = 0.015(35)^3 = 0.015(42875) = 643.125
+    $$
+    
+    The mass is **$643 \text{ g}$** (to 3 s.f.).
+
+    **c)** We need to find $L$ when the mass reaches 2000 g:
+    
+    $$
+    2000 = 0.015L^3
+    $$
+    
+    Press **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)** and enter `nSolve(2000 = 0.015 * L^3, L)`.
+    
+    $$
+    L = 51.087...
+    $$
+    
+    The fish must be at least **$51.1 \text{ cm}$** long.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying cubic direct variation models to biological measurements" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Medical Physics (Fourth Power Direct Variation)">
+    According to Poiseuille's Law, the rate of blood flow, $F$, in millilitres per minute (ml/min) through a coronary artery is directly proportional to the **fourth power** of the artery's radius, $r$, in millimetres (mm).
+    
+    $$
+    F(r) = kr^4
+    $$
+    
+    A healthy artery with a radius of **$2 \text{ mm}$** has a blood flow rate of **$80 \text{ ml/min}$**.
+    
+    a) Find the exact value of the constant $k$.  
+    b) Due to cholesterol plaque buildup, the radius of the artery decreases to **$1.5 \text{ mm}$**. Calculate the new blood flow rate.  
+    c) Discuss what this mathematical result implies about the danger of even slightly narrowed arteries.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** Substitute $r = 2$ and $F = 80$ into the model:
+    
+    $$
+    80 = k(2)^4
+    $$
+    
+    $$
+    80 = 16k
+    $$
+    
+    $$
+    k = \frac{80}{16} = 5
+    $$
+
+    **b)** We use the full model $F(r) = 5r^4$. Substitute the new radius $r = 1.5$:
+    
+    $$
+    F(1.5) = 5(1.5)^4
+    $$
+    
+    $$
+    F(1.5) = 5(5.0625) = 25.3125
+    $$
+    
+    The new blood flow rate is **$25.3 \text{ ml/min}$** (to 3 s.f.).
+
+    **c)** Even though the radius only decreased by $25\%$ (from 2 mm to 1.5 mm), the blood flow plummeted by nearly $68\%$ (from 80 down to 25.3). Because the variation depends on the *fourth power* ($r^4$), even a tiny reduction in the radius of an artery causes a massive and dangerous drop in blood flow to the heart!
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving high-integer direct variation models in medical physics" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Engineering (Inverse Square Variation)">
+    The electrical resistance, $R$, measured in Ohms ($\Omega$), of a specific type of copper wire is inversely proportional to the square of its diameter, $d$, in millimetres.
+    
+    $$
+    R(d) = \frac{a}{d^2}
+    $$
+    
+    A wire with a diameter of **$2 \text{ mm}$** has an electrical resistance of **$15 \ \Omega$**.
+    
+    a) Find the value of $a$.  
+    b) Find the electrical resistance of a thicker wire that has a diameter of **$5 \text{ mm}$**.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)** Substitute $d = 2$ and $R = 15$ into the model:
+    
+    $$
+    15 = \frac{a}{2^2}
+    $$
+    
+    $$
+    15 = \frac{a}{4}
+    $$
+    
+    Multiply by 4:
+    
+    $$
+    a = 15 \times 4 = 60
+    $$
+
+    **b)** The full model is $R(d) = \frac{60}{d^2}$. We need to find $R$ when $d = 5$:
+    
+    $$
+    R(5) = \frac{60}{5^2} = \frac{60}{25} = 2.4
+    $$
+    
+    The electrical resistance of the thicker wire is **$2.4 \ \Omega$**. 
+    *(Notice that increasing the diameter greatly reduces the resistance, allowing electricity to flow more easily).*
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying inverse square variation to electrical engineering models" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Hooke's Law (Linear Direct Variation)">
+    In physiotherapy, resistance bands are often used. According to Hooke's Law, the extension, $e$, in centimetres, of a specific elastic band is directly proportional to the force, $F$, in Newtons, applied to it.
+    
+    $$
+    e(F) = kF \quad (n = 1)
+    $$
+    
+    When a force of **$20 \text{ N}$** is applied, the band extends by **$5 \text{ cm}$**.
+    
+    a) **Show that** the constant of variation $k$ is $0.25$.  
+    b) Calculate the force required to stretch the band by **$12 \text{ cm}$**.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)** Substitute $F = 20$ and $e = 5$ into the linear model:
+    
+    $$
+    5 = k(20)
+    $$
+    
+    Divide both sides by 20:
+    
+    $$
+    k = \frac{5}{20} = 0.25
+    $$
+    
+    *(Full working must be shown to earn the marks for a "show that" question).*
+
+    **b)** Our model is $e(F) = 0.25F$. We need to find $F$ when $e = 12$:
+    
+    $$
+    12 = 0.25F
+    $$
+    
+    Divide by 0.25 (which is the same as multiplying by 4):
+    
+    $$
+    F = \frac{12}{0.25} = 48
+    $$
+    
+    The required force is **$48 \text{ N}$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving direct linear variation models in physics and physiotherapy" />
+
+<Tabs>
+  <TabItem label="📝 Question 10: Distinguishing Inverse Models from Data">
+    An engineer tests the magnetic force of attraction, $F$ in Newtons, between two magnets at various distances, $x$ in centimetres. They record the following data:
+    
+    | $x$ | 2 | 4 | 5 |
+    |---|---|---|---|
+    | $F$ | 50 | 12.5 | 8 |
+    
+    The engineer knows the relationship is either a simple inverse model $F = \frac{a}{x}$ or an inverse square model $F = \frac{a}{x^2}$.
+    
+    a) By testing the coordinates, determine which model correctly represents the magnetic force.  
+    b) Find the exact force of attraction when the magnets are **$10 \text{ cm}$** apart.
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    **a)** We must test a coordinate to find $a$, then check the other points.
+    
+    *Let's test the simple inverse model $F = \frac{a}{x}$ using the first point (2, 50):*
+    
+    $$
+    50 = \frac{a}{2} \implies a = 100
+    $$
+    
+    If the model is $F = \frac{100}{x}$, let's check the second point $(x=4)$:
+    
+    $$
+    F = \frac{100}{4} = 25
+    $$
+    
+    But the table says $F = 12.5$. The simple inverse model is **incorrect**.
+    
+    *Now let's test the inverse square model $F = \frac{a}{x^2}$ using (2, 50):*
+    
+    $$
+    50 = \frac{a}{2^2} \implies 50 = \frac{a}{4} \implies a = 200
+    $$
+    
+    If the model is $F = \frac{200}{x^2}$, let's check the second point $(x=4)$:
+    
+    $$
+    F = \frac{200}{4^2} = \frac{200}{16} = 12.5
+    $$
+    
+    This matches perfectly! Let's verify with the third point $(x=5)$:
+    
+    $$
+    F = \frac{200}{5^2} = \frac{200}{25} = 8
+    $$
+    
+    This also matches. Therefore, the relationship is an **inverse square model**.
+
+    **b)** The exact equation is $F(x) = \frac{200}{x^2}$. Substitute $x = 10$:
+    
+    $$
+    F(10) = \frac{200}{10^2} = \frac{200}{100} = 2
+    $$
+    
+    The force of attraction is **$2 \text{ N}$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Testing coordinates to distinguish between different inverse variation models" />
