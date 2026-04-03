@@ -1,0 +1,318 @@
+---
+title: 2.5.2 Quadratic Models
+description: Learn how to model real-world scenarios with a single turning point, such as projectile motion and profit maximization, using quadratic functions.
+---
+
+While linear models change at a constant rate, quadratic models are all about acceleration and turning points. When you graph a quadratic model, it forms a symmetrical, U-shaped curve called a **parabola**. 
+
+Quadratic models are essential for finding the "best" or "worst" case scenarios—known mathematically as **optimization**—as well as tracking trajectories and finding specific target values.
+
+**Real-World Connections:**
+* **Physics:** Projectile motion and kinematics (e.g., throwing a ball, the trajectory of a flare).
+* **Architecture & Engineering:** The shape of satellite dishes and clearance under arches.
+* **Business:** Cost functions and maximizing revenue or profit.
+
+---
+
+## 1. The Anatomy of a Quadratic Model
+
+<FormulaBox title="Quadratic Function">
+$$
+f(x) = ax^2 + bx + c \quad (a \neq 0)
+$$
+</FormulaBox>
+
+The parameter $a$ determines the shape of the parabola:
+* **If $a > 0$ (Positive):** The parabola opens upwards ($\cup$), creating a **minimum** point (e.g., minimizing costs or materials).
+* **If $a < 0$ (Negative):** The parabola opens downwards ($\cap$), creating a **maximum** point (e.g., projectile motion, maximizing revenue).
+
+When interpreting a quadratic model in an exam, you will usually be asked to find one of the key features, or to solve for a specific point in time/space:
+
+1. **The $y$-intercept $(0, c)$:** The starting value of the model.
+2. **The Vertex:** The absolute peak (maximum) or lowest trough (minimum) of the model. 
+3. **The Roots / Zeros ($x$-intercepts):** The points where $f(x) = 0$.
+4. **Specific Target Points:** Finding $x$ when given a specific $y$-value (e.g., "when does the object reach **30 m**?"), or evaluating $f(x)$ for a specific $x$-value.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Axes */}
+    <line x1="30" y1="230" x2="370" y2="230" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="100" y1="20" x2="100" y2="280" stroke="#cbd5e1" stroke-width="2" />
+    <text x="360" y="220" font-size="14" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="110" y="30" font-size="14" fill="#64748b" font-family="sans-serif">y</text>
+
+    {/* Axis of Symmetry */}
+    <line x1="220" y1="20" x2="220" y2="280" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 6" />
+    <text x="225" y="40" font-size="11" fill="#64748b" font-family="sans-serif">Axis of Symmetry</text>
+
+    {/* Mathematically precise Parabola */}
+    <path d="M 40 287.5 Q 220 -207.5 400 287.5" fill="none" stroke="#3b82f6" stroke-width="3" />
+    
+    {/* Intersections and Target Points */}
+    <line x1="30" y1="120" x2="370" y2="120" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="35" y="115" font-size="11" fill="#8b5cf6" font-family="sans-serif">Target y-value</text>
+    <circle cx="116.5" cy="120" r="5" fill="#8b5cf6" />
+    <circle cx="323.5" cy="120" r="5" fill="#8b5cf6" />
+
+    {/* Roots */}
+    <circle cx="62.3" cy="230" r="5" fill="#ef4444" />
+    <text x="60" y="250" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Root 1</text>
+    <circle cx="377.7" cy="230" r="5" fill="#ef4444" />
+    <text x="375" y="250" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Root 2</text>
+
+    {/* y-intercept */}
+    <circle cx="100" cy="150" r="5" fill="#f59e0b" />
+    <text x="90" y="145" font-size="12" font-weight="bold" fill="#d97706" text-anchor="end" font-family="sans-serif">y-int (0, c)</text>
+
+    {/* Vertex */}
+    <circle cx="220" cy="40" r="6" fill="#10b981" />
+    <text x="220" y="25" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Vertex (Max)</text>
+  </svg>
+</div>
+
+<SteveTip title="GDC Mastery: Intersecting Targets!">
+When asked "How long does it take for the object to reach **20 m**?", do not do manual algebra! Graph your main function as $f1(x)$, then graph a horizontal line $f2(x) = 20$. Use the **Analyze Graph > Intersection** tool to instantly find the points where the model hits that target.
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Projectile Target Points">
+    A distress flare is fired upwards from the deck of a ship. The height of the flare above sea level, $h$, in metres, after $t$ seconds is modelled by the quadratic function:
+    
+    $$
+    h(t) = -4.9t^2 + 25t + 12
+    $$
+    
+    a) Find the value of $h(2)$ and explain what it means in the context of the problem.  
+    b) A rescue helicopter is hovering at a steady altitude of **40 m** above sea level. Using your GDC, find the total amount of time the flare is visible *above* the helicopter.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** Substitute $t = 2$ into the model:
+    $$h(2) = -4.9(2)^2 + 25(2) + 12 = 42.4$$
+    In context, this means that exactly **2 seconds** after being fired, the flare is **42.4 m** above sea level.
+
+    **b)** We need to find when the flare is at **40 m**. 
+    Set the equation to 40: $-4.9t^2 + 25t + 12 = 40$
+    Graph $f1(x) = -4.9x^2 + 25x + 12$ and $f2(x) = 40$ on your GDC. 
+    Using the **Intersection** tool, the flare crosses **40 m** on the way up at $t = 1.52$ seconds, and on the way down at $t = 3.58$ seconds.
+    The time spent above the helicopter is the difference between these two times:
+    $3.58 - 1.52 = \mathbf{2.06 \text{ seconds}}$.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="210" x2="320" y2="210" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="60" y1="20" x2="60" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="200" font-size="12" fill="#64748b" font-family="sans-serif">t (s)</text>
+        <text x="20" y="30" font-size="12" fill="#64748b" font-family="sans-serif">h (m)</text>
+
+        {/* Scaled Exact Path */}
+        <path d="M 60 162 Q 111 34.4 162 34.4 Q 221.8 34.4 281.6 210" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Helicopter Line (40m) */}
+        <line x1="60" y1="50" x2="280" y2="50" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="285" y="53" font-size="10" fill="#d97706" font-family="sans-serif">h = 40</text>
+        
+        {/* Intersections */}
+        <circle cx="120.8" cy="50" r="4" fill="#ef4444" />
+        <text x="120.8" y="40" font-size="10" fill="#ef4444" text-anchor="middle" font-family="sans-serif">t=1.52</text>
+        <circle cx="203.2" cy="50" r="4" fill="#ef4444" />
+        <text x="203.2" y="40" font-size="10" fill="#ef4444" text-anchor="middle" font-family="sans-serif">t=3.58</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 2: Profit Constraints">
+    A technology company manufactures wireless earbuds. The daily profit, $P$, in USD, from selling $x$ pairs of earbuds is modelled by the function:
+    
+    $$
+    P(x) = -0.5x^2 + 180x - 6000
+    $$
+    
+    a) Find the "break-even" points (where profit is exactly $0$).  
+    b) The company has a target profit of **8000 USD** for the day. Find the number of earbuds they need to sell to hit this exact target.  
+    c) The mathematical model shows that $P(200) < P(180)$. State one real-world reason why producing *more* earbuds might result in *less* profit.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** The break-even points are the roots of the quadratic. 
+    Graphing the function and using the **Zero** tool on the GDC, the $x$-intercepts are at $x = 37.2$ and $x = 323$ (to 3 s.f.). 
+    The company breaks even if they sell **37** or **323** pairs.
+
+    **b)** Set $P(x) = 8000$. Using the intersection tool on the GDC with $f2(x) = 8000$, we find intersections at $x = 100$ and $x = 260$.
+    They can sell either **100 pairs** or **260 pairs** to hit the **8000 USD** target.
+
+    **c)** If they produce too many units (like 200 instead of the optimal 180), they might have to pay workers expensive overtime wages, their machines might suffer wear and tear, or they may have to drop the sale price to convince people to buy the excess stock. Any of these would decrease overall profit.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="180" x2="320" y2="180" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="170" font-size="12" fill="#64748b" font-family="sans-serif">x</text>
+        <text x="20" y="30" font-size="12" fill="#64748b" font-family="sans-serif">P(x)</text>
+
+        {/* Scaled Exact Path */}
+        <path d="M 50 240 Q 122 78 194 78 Q 266 78 338 240" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Target 8000 line */}
+        <line x1="50" y1="98.4" x2="300" y2="98.4" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="305" y="102" font-size="10" fill="#059669" font-family="sans-serif">Target = 8000</text>
+        
+        {/* Intersections */}
+        <circle cx="130" cy="98.4" r="4" fill="#f59e0b" />
+        <text x="130" y="88" font-size="10" fill="#d97706" text-anchor="middle" font-family="sans-serif">x=100</text>
+        <circle cx="258" cy="98.4" r="4" fill="#f59e0b" />
+        <text x="258" y="88" font-size="10" fill="#d97706" text-anchor="middle" font-family="sans-serif">x=260</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Geometric Domains">
+    A farmer wants to build a rectangular enclosure for his sheep. He has **100 m** of fencing available. He decides to use an existing straight stone wall for one side of the enclosure, so he only needs to fence the other three sides. Let the width of the enclosure be $x$ metres.
+    
+    a) Show that the area, $A$, of the enclosure can be modelled by $A(x) = 100x - 2x^2$.  
+    b) Find the maximum possible area of the enclosure.  
+    c) State the practical domain for $x$ in this context.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** The three fenced sides consist of two widths ($x$) and one length ($L$). The total fencing is **100 m**, so:
+    $2x + L = 100 \implies L = 100 - 2x$
+    The area is $\text{Width} \times \text{Length}$:
+    $A(x) = x(100 - 2x) = 100x - 2x^2$. This matches the required model.
+
+    **b)** To maximize the area, find the vertex of $A(x) = -2x^2 + 100x$. 
+    Using the GDC's **Maximum** tool, the vertex is at $(25, 1250)$. 
+    The maximum area is **1250 m²**.
+
+    **c)** The "practical domain" asks: what $x$ values actually make sense in reality? A width cannot be negative ($x \ge 0$). Furthermore, if $x$ was 50, you would use all **100 m** of fence on the two widths, leaving 0 for the length, making an area of 0. 
+    Therefore, the practical domain is **$0 \le x \le 50$**.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="200" x2="320" y2="200" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="220" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="190" font-size="12" fill="#64748b" font-family="sans-serif">x (m)</text>
+        <text x="20" y="30" font-size="12" fill="#64748b" font-family="sans-serif">A(x)</text>
+
+        {/* Valid Domain Highlight */}
+        <rect x="50" y="20" width="200" height="180" fill="#dbeafe" opacity="0.5" />
+        <text x="150" y="190" font-size="10" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Practical Domain: 0 to 50</text>
+
+        {/* Scaled Exact Path */}
+        <path d="M 50 200 Q 100 75 150 75 Q 200 75 250 200" fill="none" stroke="#3b82f6" stroke-width="2" />
+
+        {/* Vertex */}
+        <circle cx="150" cy="75" r="4" fill="#10b981" />
+        <text x="150" y="60" font-size="10" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Max Area (25, 1250)</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 4: Collisions & Clearances">
+    A footbridge is supported by a parabolic arch. The height of the arch above the water level, $h$, in metres, at a horizontal distance $x$ metres from the left support pillar, is modelled by:
+    
+    $$
+    h(x) = -0.1x^2 + 2x
+    $$
+    
+    a) Calculate the horizontal distance between the two points where the arch meets the water level.  
+    b) A flat-topped tourist boat approaches the bridge. The boat is **12 m** wide and its roof is **8 m** above the water level. The captain attempts to drive the boat exactly through the middle of the arch. Will the boat fit safely, or will it crash into the bridge? Justify your answer mathematically.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** The arch meets the water when $h(x) = 0$. Using the GDC, the roots are $x = 0$ and $x = 20$. 
+    The distance between the supports is **20 m**.
+
+    **b)** The middle of the bridge is halfway between 0 and 20, which is at $x = 10$. 
+    If the boat is exactly in the middle and is **12 m** wide, it extends 6 m to the left and 6 m to the right of the center.
+    This means the boat occupies the space from $x = 4$ to $x = 16$.
+    We must calculate the height of the arch at these edges:
+    $$h(4) = -0.1(4)^2 + 2(4) = -1.6 + 8 = 6.4 \text{ m}$$
+    Because the arch is symmetrical, $h(16)$ is also **6.4 m**.
+    The arch only provides **6.4 m** of clearance at the edges of the boat, but the boat is **8 m** tall. 
+    **The boat will crash into the arch.**
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="210" x2="320" y2="210" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="200" font-size="12" fill="#64748b" font-family="sans-serif">x (m)</text>
+        <text x="15" y="30" font-size="12" fill="#64748b" font-family="sans-serif">h(x)</text>
+
+        {/* Scaled Exact Path */}
+        <path d="M 50 210 Q 100 110 150 110 Q 200 110 250 210" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* The Boat */}
+        <rect x="90" y="130" width="120" height="80" fill="rgba(239, 68, 68, 0.2)" stroke="#ef4444" stroke-dasharray="4 4" stroke-width="2" />
+        <text x="150" y="170" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">CRASH!</text>
+
+        {/* Clearance height point */}
+        <circle cx="90" cy="146" r="4" fill="#f59e0b" />
+        <text x="80" y="142" font-size="10" fill="#d97706" text-anchor="end" font-family="sans-serif">Arch: 6.4m</text>
+        <circle cx="90" cy="130" r="4" fill="#ef4444" />
+        <text x="80" y="125" font-size="10" fill="#ef4444" text-anchor="end" font-family="sans-serif">Boat: 8m</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Breaking Distances">
+    The stopping distance of a car, $d$, in metres, when travelling at a speed of $v$ metres per second (m/s), is modelled by the quadratic function:
+    
+    $$
+    d(v) = 0.05v^2 + 0.8v
+    $$
+    
+    a) A driver is travelling at **25 m/s** when they see a fallen tree blocking the road exactly **40 m** ahead. Will the car stop in time?  
+    b) Find the maximum speed a driver can travel at to ensure they can stop exactly at the tree.  
+    c) Evaluate $d(-10)$ and discuss whether this calculation has any valid meaning in the real world.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** Substitute $v = 25$ directly into the model:
+    $$d(25) = 0.05(25)^2 + 0.8(25)$$
+    $$d(25) = 0.05(625) + 20 = 31.25 + 20 = 51.25$$
+    The stopping distance is **51.25 m**. Since the tree is only 40 m away, **no, the car will not stop in time** and will hit the tree.
+
+    **b)** We need to find $v$ when the stopping distance is exactly 40:
+    $40 = 0.05v^2 + 0.8v$
+    Rearrange: $0 = 0.05v^2 + 0.8v - 40$
+    Graph the function and find the positive root. The car must be travelling at a maximum of **21.4 m/s** to stop right at the tree.
+
+    **c)** Mathematically, $d(-10) = 0.05(-10)^2 + 0.8(-10) = 5 - 8 = -3$. 
+    In the real world, a speed of "-10 m/s" might imply reversing. However, a "negative stopping distance" of -3 m does not make physical sense in this model, highlighting that this formula is only strictly valid for the domain $v \ge 0$.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="30" y1="210" x2="320" y2="210" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="310" y="200" font-size="12" fill="#64748b" font-family="sans-serif">v (m/s)</text>
+        <text x="15" y="30" font-size="12" fill="#64748b" font-family="sans-serif">d (m)</text>
+
+        {/* Scaled Exact Path */}
+        <path d="M 50 210 Q 150 150 250 40" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Origin */}
+        <circle cx="50" cy="210" r="4" fill="#3b82f6" />
+
+        {/* Tree Line (40m) */}
+        <line x1="50" y1="85" x2="250" y2="85" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="60" y="80" font-size="10" fill="#059669" font-family="sans-serif">Tree Distance = 40m</text>
+
+        {/* Collision Point */}
+        <circle cx="250" cy="40" r="4" fill="#ef4444" />
+        <text x="250" y="30" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Crash! (25, 51.25)</text>
+
+        {/* Safe Speed Point */}
+        <circle cx="218" cy="85" r="4" fill="#f59e0b" />
+        <text x="235" y="100" font-size="10" font-weight="bold" fill="#d97706" text-anchor="middle" font-family="sans-serif">v = 21.4</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>

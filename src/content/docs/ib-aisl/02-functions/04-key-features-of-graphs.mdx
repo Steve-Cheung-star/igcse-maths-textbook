@@ -1,0 +1,448 @@
+---
+title: 2.4 Determining Key Features of Graphs and Intersections
+description: Utilise graphing technology to extract vital features from mathematical models, including turning points, roots, and asymptotes, and apply these skills to find intersections in real-world contexts like market equilibrium.
+---
+
+In the modern world, mathematics is often experienced through a screen. While the algebraic manipulation of equations is vital, the ability to interpret and manipulate a visual representation of data is just as important. 
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Analytical vs. Visual Approaches:** In the 20th century, a secretive group of French mathematicians writing under the pseudonym *Nicolas Bourbaki* championed a strictly analytical, rigorous approach to mathematics, stripping away visual diagrams entirely. Conversely, the Polish-born mathematician *Benoît Mandelbrot* pioneered fractal geometry, relying heavily on computer-generated visuals to understand mathematical behaviour. Today, IB Mathematics balances both: requiring the analytical rigour of algebra alongside the intuitive power of graphing technology.
+</Aside>
+
+Whether you are analysing a production possibilities curve in economics or predicting the maximum altitude of a weather balloon in the sciences, mastering the key features of graphs using technology is an essential skill.
+
+---
+
+## 1. Key Features of Graphs
+
+Every mathematical function possesses a unique "fingerprint" made up of its key graphical features. Your Graphics Display Calculator (GDC) is designed to find these exact points with absolute precision.
+
+<Aside type="note" title="The Hierarchy of Graph Features">
+When evaluating a model on your GDC, always look for these critical components:
+1. **Zeros / Roots ($x$-intercepts):** The points where the curve crosses the horizontal axis (where $f(x) = 0$).
+2. **$y$-intercept:** The single point where the curve crosses the vertical axis (where $x = 0$).
+3. **Vertex (Turning Points):** The local maximum (highest peak) or local minimum (lowest valley) of the curve.
+4. **Line of Symmetry:** A vertical line (often passing through the vertex) that perfectly mirrors the left and right sides of the graph.
+5. **Asymptotes:** Horizontal or vertical lines that the graph approaches infinitely closely but never reaches.
+</Aside>
+
+### Identifying Turning Points and Intercepts
+
+The mathematically precise graph below visually demonstrates a continuous function ($y = x^2 - 6x + 5$), highlighting exactly where the key intercepts and turning points lie along the axes.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 300" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+    {/* Grid / Axes */}
+    <line x1="30" y1="166.66" x2="470" y2="166.66" stroke="#94a3b8" strokeWidth="2" />
+    <line x1="130" y1="30" x2="130" y2="270" stroke="#94a3b8" strokeWidth="2" />
+    <text x="460" y="155" fontSize="14" fill="#64748b" fontStyle="italic">x</text>
+    <text x="110" y="45" fontSize="14" fill="#64748b" fontStyle="italic">y</text>
+
+    {/* Perfectly aligned Quadratic Curve: y = x^2 - 6x + 5 */}
+    <path d="M 130 83.33 Q 250 383.33 370 83.33" fill="none" stroke="#3b82f6" strokeWidth="3" />
+
+    {/* Features */}
+    <circle cx="130" cy="83.33" r="5" fill="#f59e0b" />
+    <text x="145" y="80" fontSize="12" fontWeight="bold" fill="#d97706">y-intercept (0, 5)</text>
+
+    <circle cx="170" cy="166.66" r="5" fill="#ef4444" />
+    <text x="170" y="185" fontSize="12" fontWeight="bold" fill="#ef4444" textAnchor="middle">Root (1, 0)</text>
+
+    <circle cx="330" cy="166.66" r="5" fill="#ef4444" />
+    <text x="330" y="185" fontSize="12" fontWeight="bold" fill="#ef4444" textAnchor="middle">Root (5, 0)</text>
+
+    <circle cx="250" cy="233.33" r="5" fill="#10b981" />
+    <text x="250" y="250" fontSize="12" fontWeight="bold" fill="#10b981" textAnchor="middle">Vertex / Local Min (3, -4)</text>
+
+    {/* Line of Symmetry */}
+    <line x1="250" y1="30" x2="250" y2="270" stroke="#10b981" strokeWidth="1.5" strokeDasharray="4 4" />
+    <text x="260" y="45" fontSize="12" fill="#10b981">Line of Symmetry (x = 3)</text>
+  </svg>
+</div>
+
+### Identifying Asymptotes
+
+Certain functions, notably rational and exponential functions, feature **asymptotes**. An asymptote is a line that the graph of a function approaches infinitely closely, but mathematically never reaches or crosses.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 300" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+    {/* Axes */}
+    <line x1="30" y1="200" x2="470" y2="200" stroke="#94a3b8" strokeWidth="2" />
+    <line x1="100" y1="30" x2="100" y2="270" stroke="#94a3b8" strokeWidth="2" />
+    
+    {/* Asymptotes */}
+    <line x1="250" y1="30" x2="250" y2="270" stroke="#f59e0b" strokeWidth="2" strokeDasharray="6 6" />
+    <text x="260" y="260" fontSize="12" fontWeight="bold" fill="#d97706">Vertical Asymptote (e.g. x = 2)</text>
+
+    <line x1="30" y1="150" x2="470" y2="150" stroke="#f59e0b" strokeWidth="2" strokeDasharray="6 6" />
+    <text x="40" y="140" fontSize="12" fontWeight="bold" fill="#d97706">Horizontal Asymptote (e.g. y = 1)</text>
+
+    {/* Aligned Curves for y = 1/(x-2) + 1 */}
+    <path d="M 260 30 Q 260 140 450 140" fill="none" stroke="#3b82f6" strokeWidth="3" />
+    <path d="M 240 270 Q 240 160 50 160" fill="none" stroke="#3b82f6" strokeWidth="3" />
+  </svg>
+</div>
+
+---
+
+## 2. Step-by-Step TI-Nspire Instructions
+
+To master the IB AI SL course, you must be able to quickly extract these features using your Graphic Display Calculator. 
+
+<Aside type="caution" title="American Spellings on the GDC">
+Note that the TI-Nspire operating system uses American English spellings, so you must select the menu option **Analyze Graph** rather than "Analyse".
+</Aside>
+
+<Steps>
+1. **Finding Roots ($x$-intercepts):**
+   * Press **Menu > 6: Analyze Graph > 1: Zero**.
+   * The GDC will prompt you for a **Lower Bound**. Use the touchpad to move the vertical dashed line slightly to the *left* of the root you are looking for, and click.
+   * It will then prompt for an **Upper Bound**. Move the line to the *right* of the root and click again. The exact coordinate will appear.
+2. **Finding the $y$-intercept:**
+   * Press **Menu > 5: Trace > 1: Graph Trace**.
+   * Simply press the number `0` on your keypad and hit `enter`. The cursor will jump exactly to the $y$-intercept.
+3. **Finding Turning Points (Vertices):**
+   * Determine visually if the peak is a mountain (maximum) or a valley (minimum).
+   * Press **Menu > 6: Analyze Graph > 2: Minimum** (or **3: Maximum**).
+   * Just like finding roots, set the Lower Bound to the left of the turning point and the Upper Bound to the right. 
+4. **Finding Vertical Asymptotes:**
+   * Unlike turning points, there is no direct button for asymptotes. Instead, press **Ctrl + T** to open the Table of Values alongside your graph.
+   * Scroll through the $x$-values to find where the graph breaks. Look for the $y$-value that displays `#UNDEF` (undefined). This $x$-value is your vertical asymptote.
+   * Press **Ctrl + T** again to close the table.
+5. **Finding Horizontal Asymptotes:**
+   * Horizontal asymptotes describe the end behaviour of a graph for massive values of $x$. 
+   * The easiest way to find this numerically is to open a Calculator page (or Scratchpad). If your function is graphed in `f1(x)`, simply type `f1(10000)` and press `enter`.
+   * The calculator will output a value very close to the horizontal asymptote. If it outputs $12.0005$, your horizontal asymptote is $y = 12$.
+</Steps>
+
+### Dynamic Graphing: The Power of Parameters
+
+Mathematical models are often written with **parameters**—letters that represent constants which can be changed to alter the shape or position of the graph (e.g., $a$, $b$, and $c$ in $y = ax^2 + bx + c$).
+
+<SteveTip title="Using Sliders for Parameters">
+To quickly understand how a model behaves, type an equation with a parameter directly into the `f1(x)` bar, like `f1(x) = a * x^2 + 5` (ensure you put a multiplication sign between the letter and $x$). The TI-Nspire will ask if you want to create a slider for `a`. Select **Yes**! You can then click and drag the slider to visually determine the effects of altering that parameter in real-time.
+</SteveTip>
+
+---
+
+## 3. Dealing with Fractional and Decimal Asymptotes
+
+When using the Table of Values (`Ctrl + T`) on your TI-Nspire to find a vertical asymptote, you might scroll through the $x$-values and fail to see `#UNDEF`. This happens because the GDC table defaults to stepping by whole numbers (integers like 1, 2, 3). If your asymptote is at a decimal value, such as $x = 1.5$, the table will skip right over it!
+
+When this happens, you are not out of options. You can either adjust your technology or use a quick algebraic trick.
+
+<Aside type="tip" title="The Algebraic Method (Highly Recommended)">
+The most reliable way to find a vertical asymptote for any rational function is to look at the denominator. A vertical asymptote occurs exactly where the function requires you to divide by zero (which is mathematically impossible).
+
+Simply set the denominator of the fraction equal to $0$ and solve for $x$. This works perfectly for any fraction or decimal!
+</Aside>
+
+### Method 1: The Algebraic Approach
+
+Consider the function:
+
+$$
+f(x) = \frac{10}{2x - 5} + 3
+$$
+
+To find the vertical asymptote, ignore the rest of the function and just set the denominator equal to zero:
+
+$$
+2x - 5 = 0
+$$
+
+$$
+2x = 5
+$$
+
+$$
+x = 2.5
+$$
+
+The vertical asymptote is the vertical line $x = 2.5$. 
+
+### Method 2: Adjusting the GDC Table
+
+If you prefer to verify this on your calculator, you simply need to tell the TI-Nspire to count in smaller steps.
+
+<Steps>
+1. Graph your function in `f1(x)` and press **Ctrl + T** to open the table.
+2. With the table selected, press **Menu > 2: Table > 5: Edit Table Settings**.
+3. Look for the box labelled **Table Step**. Change this from `1` to a smaller decimal, such as `0.5` or `0.1`.
+4. Press **OK**. Now, as you scroll, you will see the $x$-values increasing by your new step.
+5. Scroll to $x = 2.5$, and you will clearly see `#UNDEF` in the $y$-column, confirming your vertical asymptote!
+</Steps>
+
+<SteveTip title="Graphing the Denominator">
+If your denominator is a complex quadratic equation and you don't want to solve it algebraically or mess with table steps, there is a "hack". Graph the denominator entirely on its own as `f2(x)`. Use the **Menu > 6 > 1: Zero** tool to find where this new graph crosses the $x$-axis. Those $x$-intercepts are exactly the same values as the vertical asymptotes of your original function!
+</SteveTip>
+
+---
+
+## 4. Finding the Intersection of Curves
+
+Often, we need to know when two different mathematical models are exactly equal. Graphically, this is the specific coordinate where their curves intersect.
+
+A prime example is **Market Equilibrium** in economics:
+* The **Demand Curve** models consumer behaviour (usually downward sloping).
+* The **Supply Curve** models producer behaviour (usually upward sloping).
+* The **Market Equilibrium** is the exact intersection point where the quantity supplied perfectly matches the quantity demanded.
+
+**TI-Nspire Steps for Intersections:**
+<Steps>
+1. Graph your first model in `f1(x)` and your second model in `f2(x)`.
+2. Press **Menu > 6: Analyze Graph > 4: Intersection**.
+3. Use the touchpad to set a Lower Bound to the left of the crossing point, and an Upper Bound to the right. The exact coordinates of the intersection will be revealed.
+</Steps>
+
+---
+
+## 5. Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Market Equilibrium">
+    In a local market, the weekly demand for organic honey is modelled by the function $D(p) = 120 - 4p$, where $p$ is the price in $\text{GBP}$ and $D$ is the quantity of jars demanded. The supply is modelled by $S(p) = 2p + 30$.
+    
+    a) Sketch both the supply and demand curves on the same axes for $0 \le p \le 30$.  
+    b) Find the coordinate of the point of intersection using your GDC.  
+    c) Interpret the meaning of this intersection in the context of the market.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** Enter `f1(x) = 120 - 4x` and `f2(x) = 2x + 30` into your GDC. Set the Window to $XMin = 0$, $XMax = 30$, and use Zoom-Fit. 
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 450 300" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        {/* Axes */}
+        <line x1="50" y1="250" x2="400" y2="250" stroke="#94a3b8" strokeWidth="2" />
+        <line x1="50" y1="30" x2="50" y2="250" stroke="#94a3b8" strokeWidth="2" />
+        <text x="390" y="240" fontSize="12" fill="#64748b">Price (p)</text>
+        <text x="45" y="20" fontSize="12" fill="#64748b" textAnchor="end">Quantity</text>
+
+        {/* Demand Line: (0, 120) to (30, 0). Mapped to (50, 65.4) to (350, 250) */}
+        <line x1="50" y1="65.4" x2="350" y2="250" stroke="#ef4444" strokeWidth="3" />
+        <text x="360" y="245" fontSize="12" fontWeight="bold" fill="#ef4444">Demand</text>
+
+        {/* Supply Line: (0, 30) to (30, 90). Mapped to (50, 203.9) to (350, 111.6) */}
+        <line x1="50" y1="203.9" x2="350" y2="111.6" stroke="#3b82f6" strokeWidth="3" />
+        <text x="360" y="115" fontSize="12" fontWeight="bold" fill="#3b82f6">Supply</text>
+
+        {/* Intersection: (15, 60). Mapped to (200, 157.7) */}
+        <line x1="50" y1="157.7" x2="200" y2="157.7" stroke="#10b981" strokeWidth="1.5" strokeDasharray="4 4" />
+        <line x1="200" y1="250" x2="200" y2="157.7" stroke="#10b981" strokeWidth="1.5" strokeDasharray="4 4" />
+        
+        <circle cx="200" cy="157.7" r="5" fill="#10b981" />
+        <text x="200" y="145" fontSize="12" fontWeight="bold" fill="#10b981" textAnchor="middle">Equilibrium (15, 60)</text>
+        <text x="200" y="265" fontSize="11" fill="#64748b" textAnchor="middle">15</text>
+        <text x="40" y="162" fontSize="11" fill="#64748b" textAnchor="end">60</text>
+      </svg>
+    </div>
+
+    **b)** Use **Menu > 6 > 4: Intersection**. The exact intersection is $(15, 60)$.
+
+    **c)** At a price of $15\text{ GBP}$, the market reaches equilibrium. Exactly $60$ jars of honey will be supplied by producers, and exactly $60$ jars will be demanded by consumers, meaning there is no shortage or surplus.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using GDC to find and interpret the intersection of linear supply and demand models" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Analysing a Quadratic Model">
+    A company's daily profit, $P$ in thousands of $\text{GBP}$, is modelled by the function $P(x) = -0.5x^2 + 8x - 14$, where $x$ is the number of units sold (in thousands).
+    
+    a) Use your GDC to find the zeros of the function.  
+    b) Find the vertex of the graph.  
+    c) State the equation of the line of symmetry.  
+    d) Explain the real-world meaning of the zeros and the vertex in this context.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** Enter `f1(x) = -0.5x^2 + 8x - 14` into the GDC. Use **Menu > 6 > 1: Zero**.
+    The zeros are $x = 2$ and $x = 14$.
+
+    **b)** Since the parabola opens downwards (negative leading coefficient), use **Menu > 6 > 3: Maximum**.
+    The vertex is $(8, 18)$.
+
+    **c)** The line of symmetry is the vertical line passing exactly through the $x$-coordinate of the vertex.
+    
+    $$
+    x = 8
+    $$
+
+    **d)** * **Zeros:** These are the "break-even" points. The company makes zero profit when they sell $2000$ units or $14000$ units.
+    * **Vertex:** This represents the maximum possible profit. Selling exactly $8000$ units yields a maximum daily profit of $18000\text{ GBP}$.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 450 300" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <line x1="30" y1="150" x2="400" y2="150" stroke="#94a3b8" strokeWidth="2" />
+        <line x1="50" y1="30" x2="50" y2="250" stroke="#94a3b8" strokeWidth="2" />
+        <text x="390" y="140" fontSize="12" fill="#64748b">Units (x)</text>
+        <text x="45" y="20" fontSize="12" fill="#64748b" textAnchor="end">Profit (P)</text>
+
+        {/* Precisely mapped Quadratic: M 50 222 Q 200 -86 350 222 */}
+        <path d="M 50 222 Q 200 -86 350 222" fill="none" stroke="#3b82f6" strokeWidth="3" />
+        
+        <circle cx="200" cy="68" r="5" fill="#10b981" />
+        <text x="200" y="55" fontSize="11" fontWeight="bold" fill="#10b981" textAnchor="middle">Vertex / Max Profit (8, 18)</text>
+
+        <circle cx="87.5" cy="150" r="5" fill="#ef4444" />
+        <text x="87.5" y="165" fontSize="11" fontWeight="bold" fill="#ef4444" textAnchor="middle">Root (2, 0)</text>
+
+        <circle cx="312.5" cy="150" r="5" fill="#ef4444" />
+        <text x="312.5" y="165" fontSize="11" fontWeight="bold" fill="#ef4444" textAnchor="middle">Root (14, 0)</text>
+        
+        <circle cx="50" cy="222" r="5" fill="#f59e0b" />
+        <text x="60" y="235" fontSize="11" fontWeight="bold" fill="#d97706">y-intercept (0, -14)</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Extracting roots, vertices, and symmetry lines from quadratic models using technology" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Rational Functions and Asymptotes">
+    The average cost to produce a batch of circuit boards, $C(n)$ in $\text{EUR}$, is given by the function $C(n) = \frac{500}{n} + 12$, where $n$ is the number of circuit boards produced.
+    
+    a) Sketch the graph of $C(n)$ for $1 \le n \le 100$.  
+    b) Write down the equation of the horizontal asymptote.  
+    c) Interpret the meaning of the horizontal asymptote in the context of production costs.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Enter `f1(x) = 500/x + 12` in the GDC. Set the window to $X: [1, 100]$. The curve starts very high (at $n=1$, the cost is $512$) and rapidly flattens out as it moves right.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 450 300" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <line x1="50" y1="250" x2="400" y2="250" stroke="#94a3b8" strokeWidth="2" />
+        <line x1="50" y1="30" x2="50" y2="250" stroke="#94a3b8" strokeWidth="2" />
+        
+        {/* Horizontal Asymptote */}
+        <line x1="50" y1="200" x2="400" y2="200" stroke="#ef4444" strokeWidth="2" strokeDasharray="5,5" />
+        <text x="220" y="190" fontSize="12" fontWeight="bold" fill="#ef4444">Horizontal Asymptote (y = 12)</text>
+        
+        {/* Curve bounded appropriately */}
+        <path d="M 60 50 Q 65 185 400 185" fill="none" stroke="#3b82f6" strokeWidth="3" />
+        
+        <text x="390" y="265" fontSize="12" fill="#94a3b8">Boards (n)</text>
+        <text x="45" y="20" fontSize="12" fill="#94a3b8" textAnchor="end">Cost (C)</text>
+      </svg>
+    </div>
+
+    **b)** As $n$ becomes very large, the fraction $\frac{500}{n}$ gets mathematically closer and closer to $0$. 
+    Therefore, the horizontal asymptote is the remaining constant:
+    
+    $$
+    y = 12
+    $$
+
+    **c)** The horizontal asymptote represents the absolute minimum baseline cost per circuit board. No matter how many boards the company produces to spread out the initial expenses, the average cost will slowly approach $12\text{ EUR}$, but it can never drop below this value (likely due to the fixed cost of raw materials per board).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying vertical and horizontal asymptotes of rational functions and interpreting their bounds" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Production Possibilities Curve">
+    A factory produces two goods: laptops and tablets. The production possibilities curve is modelled by the equation $y = 100 - 0.25x^2$, where $x$ is the number of laptops produced and $y$ is the number of tablets produced per day.
+    
+    a) Find the $x$-intercept and $y$-intercept of this graph.  
+    b) Interpret what the $y$-intercept means in the context of the factory's production.  
+    c) If the factory receives an order for $15$ laptops, what is the maximum number of tablets they can produce on that same day?
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** **y-intercept:** Found by pressing `0` in Graph Trace, or manually setting $x = 0$.
+    
+    $$
+    y = 100 - 0.25(0)^2 = 100
+    $$
+    
+    The $y$-intercept is $(0, 100)$.
+
+    **x-intercept:** Found using **Menu > 6 > 1: Zero**, or manually setting $y = 0$.
+    
+    $$
+    0 = 100 - 0.25x^2
+    $$
+    
+    $$
+    0.25x^2 = 100
+    $$
+    
+    $$
+    x^2 = 400 \implies x = 20 \text{ (since } x \ge 0)
+    $$
+    
+    The $x$-intercept is $(20, 0)$.
+
+    **b)** The $y$-intercept $(0, 100)$ represents the scenario where the factory dedicates all its resources exclusively to producing tablets. If they produce $0$ laptops, they can produce a maximum of $100$ tablets.
+
+    **c)** Substitute $x = 15$ into the model:
+    
+    $$
+    y = 100 - 0.25(15)^2
+    $$
+    
+    $$
+    y = 100 - 0.25(225)
+    $$
+    
+    $$
+    y = 100 - 56.25 = 43.75
+    $$
+    
+    Since they cannot produce a fraction of a tablet, the maximum full number of tablets they can produce is $43$.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <line x1="50" y1="250" x2="350" y2="250" stroke="#94a3b8" strokeWidth="2" />
+        <line x1="50" y1="50" x2="50" y2="250" stroke="#94a3b8" strokeWidth="2" />
+        <text x="340" y="265" fontSize="12" fill="#64748b">Laptops (x)</text>
+        <text x="45" y="40" fontSize="12" fill="#64748b" textAnchor="end">Tablets (y)</text>
+
+        {/* Precisely mapped quarter parabola */}
+        <path d="M 50 50 Q 250 50 250 250" fill="none" stroke="#3b82f6" strokeWidth="3" />
+        
+        <circle cx="50" cy="50" r="5" fill="#10b981" />
+        <text x="60" y="60" fontSize="11" fontWeight="bold" fill="#10b981">y-intercept (0, 100)</text>
+
+        <circle cx="250" cy="250" r="5" fill="#ef4444" />
+        <text x="250" y="265" fontSize="11" fontWeight="bold" fill="#ef4444" textAnchor="middle">x-intercept (20, 0)</text>
+
+        {/* Point at x=15, mapped to x=200, y=162.5 */}
+        <line x1="50" y1="162.5" x2="200" y2="162.5" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4 4" />
+        <line x1="200" y1="250" x2="200" y2="162.5" stroke="#f59e0b" strokeWidth="1.5" strokeDasharray="4 4" />
+        <circle cx="200" cy="162.5" r="5" fill="#f59e0b" />
+        <text x="210" y="155" fontSize="11" fontWeight="bold" fill="#d97706">Target (15, 43.75)</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using intercepts of models to evaluate production possibilities and resource limits" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Finding a Decimal Asymptote">
+    The concentration of a chemical in a reaction vessel after $t$ minutes is modelled by the function $C(t) = \frac{45}{3t - 2}$ for $t > 0.67$.
+    
+    Find the exact equation of the vertical asymptote and explain why the domain is restricted to $t > 0.67$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    To find the vertical asymptote, set the denominator equal to zero:
+    
+    $$
+    3t - 2 = 0
+    $$
+    
+    $$
+    3t = 2
+    $$
+    
+    $$
+    t = \frac{2}{3}
+    $$
+    
+    The vertical asymptote is $t = \frac{2}{3}$ (or $t \approx 0.667$).
+
+    **Explanation:** The domain is restricted to $t > 0.67$ because the vertical asymptote occurs at $t = \frac{2}{3}$. At this exact time, the concentration function is undefined (division by zero). In the context of a chemical reaction, time $t$ moves forward, so the model only makes sense for times strictly *after* this undefined initial mixing moment.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding exact vertical asymptotes using the algebraic denominator method" />

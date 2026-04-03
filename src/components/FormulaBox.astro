@@ -1,4 +1,5 @@
 ---
+/* src/components/FormulaBox.astro */
 interface Props {
   title?: string;
   formula?: string; // Optional: if you want to pass the formula as a prop
@@ -18,6 +19,7 @@ const { title = "Key Formula", formula } = Astro.props;
         $${formula}$$
       </div>
     ) : (
+      /* This slot captures everything you put between the <FormulaBox> tags */
       <slot />
     )}
   </div>
@@ -30,48 +32,61 @@ const { title = "Key Formula", formula } = Astro.props;
     border-left: 6px solid #1e293b;
     border-radius: 8px;
     background: #ffffff;
-    overflow: hidden;
+    /* Prevents the header background from bleeding out of the rounded corners */
+    overflow: hidden; 
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   }
 
   .formula-header {
     background: #1e293b;
     color: #f8fafc;
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1.2rem;
     display: flex;
     align-items: center;
     gap: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    font-size: 0.875rem;
+    font-size: 0.85rem;
   }
 
   .formula-icon {
     font-size: 1.25rem;
-    color: #38bdf8; /* Accent colour for math symbol */
+    color: #38bdf8;
   }
 
   .formula-content {
-    padding: 1.5rem;
+    padding: 1.75rem;
+    /* FIX FOR LINE BREAKS: */
     display: flex;
+    flex-direction: column; /* Stacks children vertically */
     justify-content: center;
-    align-items: center;
-    font-size: 1.3rem; /* Slightly larger for "Key" visibility */
-    /* THE PRINTED INK LOOK: */
+    align-items: center;    /* Centers them horizontally */
+    gap: 1.2rem;            /* Space between multiple lines of math */
+    
+    font-size: 1.3rem;
     color: #000000 !important; 
     font-weight: 500;
+    text-align: center;
   }
 
-  /* Force KaTeX (LaTeX) math to be pure black too */
+  /* Force KaTeX (LaTeX) math to be pure black for the "printed" look */
   .formula-content :global(.katex) {
     color: #000000 !important;
-    text-shadow: 0.2px 0 0 #000000; /* Subtle "ink bleed" to make it look printed */
+    /* Subtle weight boost to make it look like real ink */
+    text-shadow: 0.15px 0 0 #000000; 
   }
 
-  /* If you use any normal text labels inside the formula box */
-  .formula-content :global(strong), 
-  .formula-content :global(em) {
+  /* Ensure display math blocks don't add weird extra margins */
+  .formula-content :global(.katex-display) {
+    margin: 0.2rem 0 !important;
+    width: 100%;
+  }
+
+  /* Target any standard text inside the box */
+  .formula-content :global(p),
+  .formula-content :global(strong) {
     color: #000000 !important;
+    margin: 0;
   }
 </style>

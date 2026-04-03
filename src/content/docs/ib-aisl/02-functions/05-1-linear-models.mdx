@@ -1,0 +1,378 @@
+---
+title: 2.5.1 Linear and Piecewise Models
+description: Understand how to model constant rates of change using linear functions, and explore piecewise models for scenarios that shift behaviours across different domains.
+---
+
+The simplest and most common mathematical models in everyday life are linear. A linear model describes a scenario where a quantity changes at a strictly **constant rate**. If you graph a linear model, it will always form a perfectly straight line.
+
+While the real world is rarely perfectly straight, linear models provide excellent approximations for many situations, from converting currencies to calculating the total cost of renting equipment.
+
+---
+
+## 1. The Linear Model
+
+In IB Applications and Interpretation, linear models are typically written in gradient-intercept form.
+
+<FormulaBox title="Linear Function">
+$$
+f(x) = mx + c
+$$
+</FormulaBox>
+
+When interpreting a linear model in a real-world context, the mathematical parameters $m$ and $c$ take on specific, tangible meanings:
+
+* **$m$ (The Gradient):** This represents the **rate of change**. It tells you how much the dependent variable ($y$) changes for every single unit increase in the independent variable ($x$). For example, a wage of $15\text{ EUR}$ per hour, or a temperature drop of $2^\circ\text{C}$ per thousand metres of altitude.
+* **$c$ (The $y$-intercept):** This represents the **initial value**. It is the starting point of your model when $x = 0$. For example, a flat booking fee for a taxi, or the initial amount of water in a tank before a pump is turned on.
+
+<Aside type="note" title="Connection to Sequences">
+Linear models are the continuous equivalent of **Arithmetic Sequences** (Section 1.2). While an arithmetic sequence jumps in discrete steps (like $n = 1, 2, 3$), a linear model $f(x) = mx + c$ flows continuously for all real decimal values of $x$. The gradient $m$ is exactly the same concept as the common difference $d$.
+</Aside>
+
+---
+
+## 2. Piecewise Linear Models
+
+Often, a single linear equation is not enough. Many real-world systems change their "rules" depending on the situation. 
+
+A **piecewise model** is a function made up of multiple different mathematical rules (pieces), where each rule only applies to a specific interval (domain) of $x$-values.
+
+**Common Real-World Examples:**
+* **Income Tax:** You pay $0\%$ tax on your first $12000\text{ GBP}$, $20\%$ on earnings between $12000$ and $50000\text{ GBP}$, and $40\%$ on anything above.
+* **Mobile Phone Data:** You pay a flat rate of $20\text{ USD}$ for the first $5\text{ GB}$ of data, but then you are charged $5\text{ USD}$ for every additional gigabyte.
+* **Swimming Pool Depth:** A shallow end with a constant depth of $1\text{ m}$ for the first $5\text{ m}$ of length, a linear slope downwards for the next $10\text{ m}$, and a constant deep end of $2.5\text{ m}$ for the remainder.
+
+### Mathematical Notation
+
+Piecewise functions use a large curly brace to group the different rules alongside their specific domains:
+
+$$
+f(x) = 
+\begin{cases} 
+2x + 10 & \text{for } 0 \le x \le 5 \\
+-3x + 35 & \text{for } x > 5 
+\end{cases}
+$$
+
+<SteveTip title="Graphing Piecewise Domains on the TI-Nspire">
+To graph a function with a restricted domain on your GDC, use the "given that" vertical bar symbol `|` (found by pressing `Ctrl` + `=`). 
+
+For example, to graph $f(x) = 2x + 10$ but only for values between $0$ and $5$, type the following exactly into the `f1(x)` entry line:
+`f1(x) = 2x + 10 | 0 <= x <= 5`
+The calculator will instantly cut off the line outside of that region!
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Simple Linear Model">
+    A car rental company charges a fixed deposit plus a daily rate. The total cost, $C$, in $\text{EUR}$, to rent a car for $d$ days is modelled by the function:
+    
+    $$
+    C(d) = 45d + 150
+    $$
+    
+    a) Write down the value of the $y$-intercept and explain its meaning in this context.  
+    b) Write down the gradient of the line and explain its meaning in this context.  
+    c) Calculate the total cost of renting the car for a two-week holiday.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** The $y$-intercept is the constant term: $150$. 
+    In context, this represents the fixed initial deposit ($150\text{ EUR}$) required to rent the car, regardless of how many days it is rented for (when $d = 0$).
+
+    **b)** The gradient is the coefficient of $d$: $45$.
+    In context, this represents the daily rental rate. The cost increases by exactly $45\text{ EUR}$ for every additional day the car is rented.
+
+    **c)** A two-week holiday is $14$ days. Substitute $d = 14$ into the model:
+    
+    $$
+    C(14) = 45(14) + 150
+    $$
+    
+    $$
+    C(14) = 630 + 150 = 780
+    $$
+    
+    The total cost for the two weeks is $780\text{ EUR}$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting gradients and intercepts of linear models in real-world financial contexts" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Evaluating a Piecewise Model">
+    A city parking garage charges for parking based on a piecewise linear model. The total charge, $P$, in $\text{AUD}$, for parking a car for $h$ hours is given by:
+    
+    $$
+    P(h) = 
+    \begin{cases} 
+    5 & \text{for } 0 < h \le 2 \\
+    5 + 3(h - 2) & \text{for } 2 < h \le 10 \\
+    29 & \text{for } h > 10
+    \end{cases}
+    $$
+    
+    a) Find the cost of parking for $1.5$ hours.  
+    b) Find the cost of parking for $6$ hours.  
+    c) Describe the parking garage's pricing strategy in words based on this mathematical model.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** For $h = 1.5$, we look at the domains. $1.5$ falls into the first interval ($0 < h \le 2$). 
+    The rule for this interval is just a constant $5$. 
+    Therefore, the cost is $5\text{ AUD}$.
+
+    **b)** For $h = 6$, the value falls into the second interval ($2 < h \le 10$). We use the middle rule:
+    
+    $$
+    P(6) = 5 + 3(6 - 2)
+    $$
+    
+    $$
+    P(6) = 5 + 3(4)
+    $$
+    
+    $$
+    P(6) = 5 + 12 = 17
+    $$
+    
+    The cost is $17\text{ AUD}$.
+
+    **c)** * For the first $2$ hours, there is a flat fee of $5\text{ AUD}$. 
+    * After $2$ hours, they charge the initial $5\text{ AUD}$ plus an additional hourly rate of $3\text{ AUD}$ for every hour beyond the first two. 
+    * Once a car is parked for more than $10$ hours, the cost is capped at a maximum daily flat rate of $29\text{ AUD}$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating and interpreting piecewise linear functions with restricted domains" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Temperature and Altitude">
+    A meteorologist uses a linear model to estimate the outside air temperature, $T$, in degrees Celsius ($^\circ\text{C}$), at a given altitude $h$, in metres above sea level. The model is given by the equation:
+    
+    $$
+    T(h) = 22 - 0.0065h
+    $$
+    
+    a) Calculate the estimated air temperature at an altitude of $3000\text{ m}$.  
+    b) Write down the temperature at sea level according to this model.  
+    c) Interpret the meaning of the gradient ($-0.0065$) in the context of this scenario.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Substitute $h = 3000$ into the model:
+    
+    $$
+    T(3000) = 22 - 0.0065(3000)
+    $$
+    
+    $$
+    T(3000) = 22 - 19.5 = 2.5
+    $$
+    
+    The estimated temperature is $2.5^\circ\text{C}$.
+
+    **b)** Sea level corresponds to an altitude of $0$, so $h = 0$. This is the $y$-intercept of the model.
+    The temperature at sea level is $22^\circ\text{C}$.
+
+    **c)** The gradient is the rate of change. In this context, the temperature decreases by $0.0065^\circ\text{C}$ for every $1\text{ m}$ increase in altitude (or, more practically, drops by $6.5^\circ\text{C}$ for every $1000\text{ m}$ of elevation gained).
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 4: Constructing a Depreciation Model">
+    A small business purchases a new commercial coffee machine for $12000\text{ GBP}$. For accounting purposes, the value of the machine, $V$, depreciates (loses value) at a constant linear rate. After $4$ years, its value is estimated to be $4800\text{ GBP}$.
+    
+    a) Calculate the annual rate of depreciation.  
+    b) Write down a linear model for $V(t)$, the value of the machine after $t$ years.  
+    c) Calculate the number of years it will take for the machine's value to reach exactly $0\text{ GBP}$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** The machine goes from $12000$ to $4800$ over $4$ years. First, find the total loss:
+    
+    $$
+    12000 - 4800 = 7200\text{ GBP}
+    $$
+    
+    Now divide by the number of years to find the annual rate:
+    
+    $$
+    \frac{7200}{4} = 1800
+    $$
+    
+    The annual rate of depreciation is $1800\text{ GBP}$ per year.
+
+    **b)** The initial value (the $y$-intercept, $c$) is $12000$. The gradient ($m$) is $-1800$ because the value is *decreasing*. 
+    
+    $$
+    V(t) = -1800t + 12000
+    $$
+
+    **c)** Set $V(t)$ to $0$ and solve for $t$:
+    
+    $$
+    0 = -1800t + 12000
+    $$
+    
+    $$
+    1800t = 12000
+    $$
+    
+    $$
+    t = \frac{12000}{1800} = \frac{120}{18} = \frac{20}{3} \approx 6.67
+    $$
+    
+    It will take approximately $6.67$ years (or $6$ years and $8$ months).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Constructing linear models from two data points and calculating gradients" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Comparing Two Linear Models">
+    Sarah is deciding between two mobile phone plans that charge based on the number of international minutes, $m$, used each month.
+    * **Plan A** charges a fixed monthly fee of $15\text{ USD}$ plus $0.05\text{ USD}$ per minute.
+    * **Plan B** has no fixed monthly fee but charges $0.12\text{ USD}$ per minute.
+    
+    a) Write down a linear model for the monthly cost of Plan A, $C_A(m)$, and Plan B, $C_B(m)$.  
+    b) Find the exact number of international minutes for which both plans cost exactly the same.  
+    c) If Sarah expects to use $300$ international minutes next month, which plan should she choose? Justify your answer.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** Plan A: $C_A(m) = 0.05m + 15$  
+    Plan B: $C_B(m) = 0.12m$
+
+    **b)** Set the two models equal to each other (or use the Intersection tool on your GDC):
+    
+    $$
+    0.05m + 15 = 0.12m
+    $$
+    
+    $$
+    15 = 0.07m
+    $$
+    
+    $$
+    m = \frac{15}{0.07} \approx 214.28
+    $$
+    
+    The plans cost the same at approximately $214.3$ minutes.
+
+    **c)** Substitute $m = 300$ into both models:
+    
+    $$
+    C_A(300) = 0.05(300) + 15 = 15 + 15 = 30\text{ USD}
+    $$
+    
+    $$
+    C_B(300) = 0.12(300) = 36\text{ USD}
+    $$
+    
+    Sarah should choose **Plan A** because it will be $6\text{ USD}$ cheaper ($30\text{ USD}$ compared to $36\text{ USD}$).
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: Working Backward with Piecewise Functions">
+    An online courier service charges a shipping fee, $F$, in $\text{EUR}$, based on the weight of the parcel, $w$, in kilograms, according to the following piecewise model:
+    
+    $$
+    F(w) = 
+    \begin{cases} 
+    8.50 & \text{for } 0 < w \le 3 \\
+    8.50 + 2.20(w - 3) & \text{for } w > 3 
+    \end{cases}
+    $$
+    
+    a) Calculate the shipping fee for a parcel weighing $7.5\text{ kg}$.  
+    b) A customer paid a shipping fee of $23.90\text{ EUR}$. Determine the exact weight of their parcel.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** Since $7.5 > 3$, we must use the second part of the piecewise function:
+    
+    $$
+    F(7.5) = 8.50 + 2.20(7.5 - 3)
+    $$
+    
+    $$
+    F(7.5) = 8.50 + 2.20(4.5)
+    $$
+    
+    $$
+    F(7.5) = 8.50 + 9.90 = 18.40
+    $$
+    
+    The shipping fee is $18.40\text{ EUR}$.
+
+    **b)** Because the fee is $23.90\text{ EUR}$ (which is greater than the flat rate of $8.50$), the parcel must weigh more than $3\text{ kg}$. We set the second equation equal to $23.90$ and solve for $w$:
+    
+    $$
+    23.90 = 8.50 + 2.20(w - 3)
+    $$
+    
+    $$
+    15.40 = 2.20(w - 3)
+    $$
+    
+    $$
+    \frac{15.40}{2.20} = w - 3
+    $$
+    
+    $$
+    7 = w - 3
+    $$
+    
+    $$
+    w = 10
+    $$
+    
+    The parcel weighed exactly $10\text{ kg}$.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Domain Restrictions and Intercepts">
+    A $2000\text{ L}$ water tank is being drained for maintenance. The volume of water remaining in the tank, $V$, in litres, after $t$ minutes is modelled by the linear function:
+    
+    $$
+    V(t) = 2000 - 40t
+    $$
+    
+    a) Find the $t$-intercept (where $V(t) = 0$).  
+    b) Hence, state the practical domain for this mathematical model.  
+    c) Explain why it does not make sense to evaluate $V(60)$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** Set $V(t)$ to zero and solve:
+    
+    $$
+    0 = 2000 - 40t
+    $$
+    
+    $$
+    40t = 2000
+    $$
+    
+    $$
+    t = 50
+    $$
+    
+    The $t$-intercept is $50$.
+
+    **b)** The practical domain refers to the real-world limits of the $x$-values (in this case, $t$). Time cannot be negative, so $t \ge 0$. Furthermore, the tank is completely empty at $t = 50$ minutes, meaning the model stops making sense after that. 
+    Therefore, the practical domain is:
+    
+    $$
+    0 \le t \le 50
+    $$
+
+    **c)** If we evaluate $V(60)$, we get:
+    
+    $$
+    V(60) = 2000 - 40(60) = 2000 - 2400 = -400\text{ L}
+    $$
+    
+    It is physically impossible for a water tank to hold a negative volume of water. The model is invalid at $t = 60$ because the tank is already empty.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving equations using piecewise linear models and restricting practical domains" />

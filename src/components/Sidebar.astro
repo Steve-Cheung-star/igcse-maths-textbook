@@ -1,23 +1,18 @@
 ---
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/Sidebar.astro';
+// 1. IMPORT THE TIMER HERE
+import ExamTimer from './ExamTimer.jsx'; 
 
-// 1. Check if the current URL is inside the IB section
+// 2. TEACHER/STUDENT FILTER LOGIC
 const isIB = Astro.url.pathname.includes('/ib-aisl');
-
-// 2. VIP PASS: Check if the teacher mode environment variable is turned on
-// (Astro uses import.meta.env to read variables from your .env file)
 const isTeacher = import.meta.env.PUBLIC_TEACHER_MODE === 'true';
 
-// 3. Grab the sidebar from the MODERN Starlight location (or fallback to props)
+// 3. GET AND FILTER THE SIDEBAR
 const currentSidebar = Astro.locals.starlightRoute?.sidebar || Astro.props.sidebar || [];
 
-// 4. Filter the sidebar based on your exact config labels
 const filteredSidebar = currentSidebar.filter(item => {
-  // TEACHER MODE: Immediately return true to keep every single folder
   if (isTeacher) return true;
-  
-  // STUDENT MODE: Filter based on the current URL
   const folderName = item.label || '';
   
   if (isIB) {
@@ -27,17 +22,37 @@ const filteredSidebar = currentSidebar.filter(item => {
   }
 });
 
-// 5. CRUCIAL STEP for modern Starlight: Overwrite the global locals object directly!
+// 4. SYNC FILTERED SIDEBAR WITH STARLIGHT
 if (Astro.locals.starlightRoute) {
   Astro.locals.starlightRoute.sidebar = filteredSidebar;
 }
 
-// 6. Package props for older versions (just in case)
 const newProps = {
   ...Astro.props,
   sidebar: filteredSidebar
 };
 ---
 
-{/* Render the default sidebar - it will now read the filtered data from locals! */}
-<Default {...newProps} />
+<ExamTimer client:only="react" />
+
+<div class="sidebar-container">
+  {/* 6. THE NAVIGATION LINKS */}
+  <div class="sidebar-content">
+    <Default {...newProps}><slot /></Default>
+  </div>
+</div>
+
+<style>
+  .sidebar-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Removed the timer-section styles because the timer is now a floating 
+    fixed-position element. This keeps your sidebar links looking clean.
+  */
+  .sidebar-content {
+    padding-top: 0.5rem;
+  }
+</style>
