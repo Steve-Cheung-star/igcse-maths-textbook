@@ -1,0 +1,93 @@
+/* src/components/CircleSimulator.css */
+.sim-root {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  font-family: var(--__sl-font-sans, system-ui, sans-serif);
+}
+
+.sim-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--sl-color-hairline);
+  padding-bottom: 1rem;
+}
+
+/* Shared styling for Tabs AND Action Buttons */
+.sim-tab-btn, .sim-action-btn {
+  background: transparent;
+  border: 1px solid var(--sl-color-gray-5);
+  color: var(--sl-color-text);
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.sim-tab-btn:hover, .sim-action-btn:hover {
+  background: var(--sl-color-gray-6);
+}
+
+.sim-tab-btn.active {
+  background: var(--sl-color-text-accent);
+  color: var(--sl-color-bg);
+  border-color: var(--sl-color-text-accent);
+}
+
+.sim-action-btn {
+  background: var(--sl-color-gray-6);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.sim-canvas-container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  touch-action: none;
+}
+
+.sim-canvas {
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+/* Floating overlay for math and controls */
+.sim-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  pointer-events: none;
+}
+
+.sim-math-readout {
+  background: var(--sl-color-bg);
+  opacity: 0.95;
+  backdrop-filter: blur(8px);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--sl-color-hairline);
+  font-family: var(--__sl-font-mono, monospace);
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--sl-color-text);
+  pointer-events: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.sim-controls {
+  pointer-events: auto;
+  display: flex;
+  gap: 0.5rem;
+}

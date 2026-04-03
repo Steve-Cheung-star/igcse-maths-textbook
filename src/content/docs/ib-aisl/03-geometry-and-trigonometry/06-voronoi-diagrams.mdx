@@ -1,0 +1,600 @@
+---
+title: 3.6 Voronoi Diagrams
+description: Explore the spatial analysis tool used to model regions of proximity, covering sites, cells, boundaries, and the toxic waste dump problem.
+---
+
+Have you ever wondered how your smartphone knows which cell tower to connect to, or how epidemiologists trace the source of a disease outbreak? The answer often lies in **Voronoi diagrams**. A Voronoi diagram partitions a plane into distinct regions based on distance to a specific set of points.
+
+Building directly on your knowledge of **perpendicular bisectors** from Section 3.5, this topic bridges coordinate geometry with real-world spatial analysis in geography, ecology, meteorology, and urban planning.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Cells Background */}
+    <path d="M0,0 L200,0 L200,140 L80,300 L0,300 Z" fill="#eff6ff" />
+    <path d="M200,0 L400,0 L400,300 L320,300 L200,140 Z" fill="#f0fdf4" />
+    <path d="M80,300 L200,140 L320,300 L80,300 Z" fill="#fef2f2" />
+    
+    {/* Edges */}
+    <line x1="200" y1="0" x2="200" y2="140" stroke="#3b82f6" stroke-width="3" />
+    <line x1="200" y1="140" x2="80" y2="300" stroke="#3b82f6" stroke-width="3" />
+    <line x1="200" y1="140" x2="320" y2="300" stroke="#3b82f6" stroke-width="3" />
+    
+    {/* Vertex */}
+    <circle cx="200" cy="140" r="6" fill="#9333ea" />
+    
+    {/* Sites */}
+    <circle cx="100" cy="80" r="5" fill="#1e293b" />
+    <circle cx="300" cy="80" r="5" fill="#1e293b" />
+    <circle cx="200" cy="240" r="5" fill="#1e293b" />
+
+    {/* Labels with lines */}
+    <line x1="100" y1="80" x2="70" y2="50" stroke="#64748b" stroke-width="1" />
+    <text x="30" y="45" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e293b">Site</text>
+    
+    <line x1="300" y1="200" x2="340" y2="200" stroke="#64748b" stroke-width="1" />
+    <text x="345" y="205" font-family="sans-serif" font-size="14" font-weight="bold" fill="#15803d">Cell (Region)</text>
+    
+    <line x1="200" y1="60" x2="230" y2="30" stroke="#64748b" stroke-width="1" />
+    <text x="235" y="25" font-family="sans-serif" font-size="14" font-weight="bold" fill="#3b82f6">Edge (Boundary)</text>
+
+    <line x1="200" y1="140" x2="250" y2="150" stroke="#64748b" stroke-width="1" />
+    <text x="255" y="155" font-family="sans-serif" font-size="14" font-weight="bold" fill="#9333ea">Vertex</text>
+  </svg>
+</div>
+
+---
+
+## 1. The Anatomy of a Voronoi Diagram
+
+To navigate Voronoi diagrams, you need to be familiar with four key terms:
+
+* **Sites:** The fixed target points of interest (e.g., hospitals, cell towers, or pizza restaurants).
+* **Cells (Regions):** The area surrounding a site. Any coordinate within a specific cell is closer to that cell's site than to any other site on the map.
+* **Edges (Boundaries):** The line segments separating two cells. An edge is always a portion of the **perpendicular bisector** of the line segment connecting the two adjacent sites. Any point on an edge is exactly equidistant from those two sites.
+* **Vertices:** The points where three (or more) edges intersect. A vertex is exactly equidistant from the three sites whose cells meet at that point.
+
+<Aside type="note" title="Exam Scope">
+In your examinations, you will **not** be required to construct complex Voronoi diagrams from scratch using a compass and straightedge. Instead, you will be given coordinates of sites and asked to calculate perpendicular bisectors, find the equations of boundaries, identify the closest site to a given point, or calculate the area of a specific polygonal cell.
+</Aside>
+
+---
+
+## 2. Nearest Neighbour Interpolation
+
+One of the most powerful applications of Voronoi diagrams is **nearest neighbour interpolation**. This is a method for estimating the value of an unknown point based on the value of the nearest known point.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 200" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Cells Background */}
+    <path d="M0,0 L180,0 L140,200 L0,200 Z" fill="#dbeafe" />
+    <path d="M180,0 L400,0 L400,200 L140,200 Z" fill="#fef3c7" />
+    
+    {/* Edge */}
+    <line x1="180" y1="0" x2="140" y2="200" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,4" />
+    
+    {/* Sites with Data */}
+    <circle cx="80" cy="100" r="6" fill="#2563eb" />
+    <text x="60" y="85" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e3a8a">Stn A: 15 mm</text>
+    
+    <circle cx="280" cy="100" r="6" fill="#d97706" />
+    <text x="260" y="85" font-family="sans-serif" font-size="14" font-weight="bold" fill="#92400e">Stn B: 8 mm</text>
+
+    {/* Interpolation Point */}
+    <circle cx="50" cy="160" r="4" fill="#ef4444" />
+    <text x="60" y="165" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444">Farm: Est. 15 mm</text>
+    <line x1="80" y1="100" x2="50" y2="160" stroke="#ef4444" stroke-width="1" stroke-dasharray="2,2" />
+  </svg>
+</div>
+
+**How it works:** We assume that all points within a specific Voronoi cell share the exact same characteristic as the site itself. 
+* **Example (Meteorology):** If a weather station (the site) records $15\text{ mm}$ of rainfall, we estimate that *every* location within that station's Voronoi cell also received $15\text{ mm}$ of rainfall.
+* **Example (Resource Management):** In agriculture, soil nutrient levels tested at specific sites are assumed to be uniform across their respective Voronoi cells.
+
+---
+
+## 3. The "Toxic Waste Dump" Problem
+
+A classic application of Voronoi diagrams is the "toxic waste dump" problem. The objective is to find a location that is as *far away as possible* from all existing sites (such as towns or schools). 
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Circumcircle indicating equidistance */}
+    <circle cx="200" cy="150" r="100" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,5" />
+    
+    {/* Voronoi Edges radiating from circumcenter (vertex) */}
+    <line x1="200" y1="150" x2="200" y2="0" stroke="#3b82f6" stroke-width="3" />
+    <line x1="200" y1="150" x2="70" y2="225" stroke="#3b82f6" stroke-width="3" />
+    <line x1="200" y1="150" x2="330" y2="225" stroke="#3b82f6" stroke-width="3" />
+
+    {/* Distances from Vertex to Towns (Radii) */}
+    <line x1="200" y1="150" x2="100" y2="150" stroke="#10b981" stroke-width="2" />
+    <line x1="200" y1="150" x2="250" y2="63.4" stroke="#10b981" stroke-width="2" />
+    <line x1="200" y1="150" x2="250" y2="236.6" stroke="#10b981" stroke-width="2" />
+
+    {/* Towns (Sites) on the circle edge */}
+    <circle cx="100" cy="150" r="6" fill="#1e293b" />
+    <text x="50" y="155" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e293b">Town A</text>
+
+    <circle cx="250" cy="63.4" r="6" fill="#1e293b" />
+    <text x="260" y="60" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e293b">Town B</text>
+
+    <circle cx="250" cy="236.6" r="6" fill="#1e293b" />
+    <text x="260" y="245" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e293b">Town C</text>
+
+    {/* Vertex / Dump Location */}
+    <circle cx="200" cy="150" r="8" fill="#ef4444" />
+    <text x="215" y="165" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ef4444">Dump (Max Distance)</text>
+  </svg>
+</div>
+
+Because vertices are the points furthest away from the sites that surround them, the optimal location to place a toxic waste dump (or a competing business wanting to maximise distance from rivals) is at a **Voronoi vertex**.
+
+<SteveTip title="The Vertex Rule">
+In your examinations, the solution to the "toxic waste dump" problem will **always** be located at a vertex where exactly **three edges intersect**. You can find this coordinate by solving a system of simultaneous equations using the equations of any two of those intersecting edges.
+</SteveTip>
+
+---
+
+## 4. Using your TI-Nspire CX II
+
+When analysing Voronoi diagrams, your graphical display calculator (GDC) is your best friend, particularly for finding vertices.
+
+<Steps>
+1. **Finding Intersections (Vertices):** If you have the equations of two edges (e.g., $y = 2x - 3$ and $y = -0.5x + 7$), you can use the TI-Nspire's linear solver. Go to **Menu** $\rightarrow$ **Algebra** $\rightarrow$ **Solve System of Linear Equations** (`linSolve`). 
+2. **Graphical Method:** Alternatively, graph both edge equations in a **Graphs** page, press **Menu** $\rightarrow$ **Analyse Graph** $\rightarrow$ **Intersection**, and swipe across the vertex to reveal its coordinates.
+3. **Area Calculations:** If a question asks for the area of a cell, use the vertex coordinates you found. You can use the **Geometry** tools on your TI-Nspire to plot a polygon and measure its area, or apply standard formulas like the area of a triangle or trapezium.
+</Steps>
+
+---
+
+## 5. Adding a New Site
+
+When a new site is added to an existing Voronoi diagram, the diagram dynamically shifts. The new site will "steal" territory from the adjacent cells because some areas that previously belonged to other sites are now closer to the new site. The new boundaries formed will be the perpendicular bisectors between the new site and its immediate neighbours.
+
+---
+
+## 6. Theory of Knowledge (TOK) & Enrichment
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Is the division of knowledge into disciplines artificial?** Voronoi diagrams heavily connect geography, biology, urban planning, computer science, and economics. If a single mathematical concept can seamlessly describe the spread of a virus, the territories of animals, and the optimal placement of a supermarket, does the strict categorisation of school subjects limit our understanding of a highly interconnected reality?
+</Aside>
+
+**Enrichment Connections:**
+* **Delaunay Triangulations:** If you draw a line connecting every pair of sites that share a Voronoi edge, you create a network of triangles called a Delaunay triangulation. This is the "dual graph" of a Voronoi diagram and is heavily used in 3D computer graphics and self-driving car navigation algorithms.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Voronoi Edges (Solid Blue) */}
+    <line x1="200" y1="0" x2="200" y2="150" stroke="#3b82f6" stroke-width="2" />
+    <line x1="200" y1="150" x2="80" y2="300" stroke="#3b82f6" stroke-width="2" />
+    <line x1="200" y1="150" x2="320" y2="300" stroke="#3b82f6" stroke-width="2" />
+    
+    {/* Delaunay Triangulation (Dashed Slate) */}
+    <polygon points="100,100 300,100 200,240" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="8,4" />
+    
+    {/* Sites */}
+    <circle cx="100" cy="100" r="5" fill="#1e293b" />
+    <circle cx="300" cy="100" r="5" fill="#1e293b" />
+    <circle cx="200" cy="240" r="5" fill="#1e293b" />
+
+    <text x="210" y="170" font-family="sans-serif" font-size="12" font-weight="bold" fill="#3b82f6">Voronoi Vertex</text>
+    <text x="160" y="85" font-family="sans-serif" font-size="12" font-weight="bold" fill="#64748b">Delaunay Triangle</text>
+  </svg>
+</div>
+
+* **The Manhattan Metric:** Standard Voronoi diagrams use "Euclidean" (straight-line) distance. In computer science and urban planning, we sometimes use "taxicab" or "Manhattan" geometry, where distance is measured strictly along a grid (like navigating city blocks).
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding a Boundary">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
+        {/* Background Grid Lines (1 unit = 30px) */}
+        <path d="M 40 0 V 300 M 70 0 V 300 M 100 0 V 300 M 130 0 V 300 M 160 0 V 300 M 190 0 V 300 M 220 0 V 300 M 250 0 V 300 M 280 0 V 300 M 310 0 V 300 M 340 0 V 300 M 370 0 V 300" stroke="#f1f5f9" stroke-width="1" />
+        <path d="M 0 20 H 400 M 0 50 H 400 M 0 80 H 400 M 0 110 H 400 M 0 140 H 400 M 0 170 H 400 M 0 200 H 400 M 0 230 H 400 M 0 260 H 400 M 0 290 H 400" stroke="#f1f5f9" stroke-width="1" />
+        
+        {/* Axes */}
+        <line x1="40" y1="260" x2="380" y2="260" stroke="#94a3b8" stroke-width="2" />
+        <line x1="40" y1="20" x2="40" y2="280" stroke="#94a3b8" stroke-width="2" />
+        <text x="385" y="255" font-family="sans-serif" font-size="12" fill="#64748b">x</text>
+        <text x="25" y="15" font-family="sans-serif" font-size="12" fill="#64748b">y</text>
+
+        {/* Sites A(2,4) and B(8,0) */}
+        <circle cx="100" cy="140" r="5" fill="#1e293b" />
+        <text x="110" y="135" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b">A (2,4)</text>
+
+        <circle cx="280" cy="260" r="5" fill="#1e293b" />
+        <text x="290" y="255" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b">B (8,0)</text>
+      </svg>
+    </div>
+    Two competing supermarkets are located at sites $A(2, 4)$ and $B(8, 0)$ on a town map where units are in kilometres. 
+    Find the equation of the Voronoi edge that separates the cells for supermarket $A$ and supermarket $B$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
+        <path d="M 40 0 V 300 M 70 0 V 300 M 100 0 V 300 M 130 0 V 300 M 160 0 V 300 M 190 0 V 300 M 220 0 V 300 M 250 0 V 300 M 280 0 V 300 M 310 0 V 300 M 340 0 V 300 M 370 0 V 300" stroke="#f1f5f9" stroke-width="1" />
+        <path d="M 0 20 H 400 M 0 50 H 400 M 0 80 H 400 M 0 110 H 400 M 0 140 H 400 M 0 170 H 400 M 0 200 H 400 M 0 230 H 400 M 0 260 H 400 M 0 290 H 400" stroke="#f1f5f9" stroke-width="1" />
+        
+        <line x1="40" y1="260" x2="380" y2="260" stroke="#94a3b8" stroke-width="2" />
+        <line x1="40" y1="20" x2="40" y2="280" stroke="#94a3b8" stroke-width="2" />
+        
+        {/* Connecting line AB */}
+        <line x1="100" y1="140" x2="280" y2="260" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+
+        {/* Boundary: y = 1.5x - 5.5 */}
+        {/* x=3 -> (130, 290), x=7.5 -> (265, 87.5) */}
+        <line x1="110" y1="320" x2="270" y2="80" stroke="#3b82f6" stroke-width="3" />
+        <text x="210" y="80" font-family="sans-serif" font-size="12" font-weight="bold" fill="#3b82f6" transform="rotate(-56 210 80)">y = 1.5x - 5.5</text>
+
+        {/* Sites and Midpoint */}
+        <circle cx="100" cy="140" r="5" fill="#1e293b" />
+        <circle cx="280" cy="260" r="5" fill="#1e293b" />
+        
+        <circle cx="190" cy="200" r="5" fill="#ef4444" />
+        <text x="180" y="190" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444">M(5,2)</text>
+      </svg>
+    </div>
+    <Steps>
+    1. **Find the Midpoint:**
+       $$M = \left( \frac{2 + 8}{2}, \frac{4 + 0}{2} \right) = (5, 2)$$
+    2. **Find the Gradient of $AB$:**
+       $$m = \frac{0 - 4}{8 - 2} = \frac{-4}{6} = -\frac{2}{3}$$
+    3. **Find the Perpendicular Gradient:**
+       $$m_{\perp} = \frac{3}{2} = 1.5$$
+    4. **Form the Equation:**
+       Using $y - y_1 = m(x - x_1)$ with the midpoint $(5, 2)$:
+       $$y - 2 = 1.5(x - 5)$$
+       $$y = 1.5x - 7.5 + 2$$
+       $$y = 1.5x - 5.5$$
+       *This is the boundary line separating the two supermarket delivery zones.*
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 2: The Toxic Waste Dump">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
+        <path d="M 40 0 V 300 M 70 0 V 300 M 100 0 V 300 M 130 0 V 300 M 160 0 V 300 M 190 0 V 300 M 220 0 V 300 M 250 0 V 300 M 280 0 V 300 M 310 0 V 300 M 340 0 V 300 M 370 0 V 300" stroke="#f1f5f9" stroke-width="1" />
+        <path d="M 0 20 H 400 M 0 50 H 400 M 0 80 H 400 M 0 110 H 400 M 0 140 H 400 M 0 170 H 400 M 0 200 H 400 M 0 230 H 400 M 0 260 H 400 M 0 290 H 400" stroke="#f1f5f9" stroke-width="1" />
+        
+        <line x1="40" y1="260" x2="380" y2="260" stroke="#94a3b8" stroke-width="2" />
+        <line x1="40" y1="20" x2="40" y2="280" stroke="#94a3b8" stroke-width="2" />
+        
+        {/* L1: y = 2x + 1 */}
+        {/* x=0 -> y=1 (40, 230). x=3 -> y=7 (130, 50) */}
+        <line x1="40" y1="230" x2="145" y2="20" stroke="#3b82f6" stroke-width="2" />
+        <text x="140" y="40" font-family="sans-serif" font-size="12" font-weight="bold" fill="#3b82f6">L1</text>
+
+        {/* L2: x + 2y = 12 -> y = -0.5x + 6 */}
+        {/* x=0 -> y=6 (40, 80). x=8 -> y=2 (280, 200) */}
+        <line x1="20" y1="70" x2="320" y2="220" stroke="#d97706" stroke-width="2" />
+        <text x="290" y="225" font-family="sans-serif" font-size="12" font-weight="bold" fill="#d97706">L2</text>
+      </svg>
+    </div>
+    A council needs to build a new waste facility. It must be located as far away as possible from three nearby towns, located at sites $A$, $B$, and $C$. 
+    The perpendicular bisector between town $A$ and $B$ is $L_1: y = 2x + 1$. 
+    The perpendicular bisector between town $B$ and $C$ is $L_2: x + 2y = 12$. 
+    
+    Find the exact coordinates where the waste facility should be built.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
+        <path d="M 40 0 V 300 M 70 0 V 300 M 100 0 V 300 M 130 0 V 300 M 160 0 V 300 M 190 0 V 300 M 220 0 V 300 M 250 0 V 300 M 280 0 V 300 M 310 0 V 300 M 340 0 V 300 M 370 0 V 300" stroke="#f1f5f9" stroke-width="1" />
+        <path d="M 0 20 H 400 M 0 50 H 400 M 0 80 H 400 M 0 110 H 400 M 0 140 H 400 M 0 170 H 400 M 0 200 H 400 M 0 230 H 400 M 0 260 H 400 M 0 290 H 400" stroke="#f1f5f9" stroke-width="1" />
+        
+        <line x1="40" y1="260" x2="380" y2="260" stroke="#94a3b8" stroke-width="2" />
+        <line x1="40" y1="20" x2="40" y2="280" stroke="#94a3b8" stroke-width="2" />
+        
+        <line x1="40" y1="230" x2="145" y2="20" stroke="#3b82f6" stroke-width="2" />
+        <line x1="20" y1="70" x2="320" y2="220" stroke="#d97706" stroke-width="2" />
+
+        {/* Intersection at (2,5) -> (100, 110) */}
+        <circle cx="100" cy="110" r="6" fill="#ef4444" />
+        <text x="115" y="105" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444">Dump Location (2,5)</text>
+      </svg>
+    </div>
+
+    The facility must be built at the Voronoi vertex, which is the intersection of the edges (the perpendicular bisectors). We need to solve the simultaneous equations for $L_1$ and $L_2$.
+
+    <Steps>
+    1. **Substitute $L_1$ into $L_2$:**
+       $$x + 2(2x + 1) = 12$$
+    2. **Expand and solve for $x$:**
+       $$x + 4x + 2 = 12$$
+       $$5x = 10$$
+       $$x = 2$$
+    3. **Substitute $x$ back into $L_1$ to find $y$:**
+       $$y = 2(2) + 1 = 5$$
+    </Steps>
+    
+    The waste facility should be built at the coordinate $(2, 5)$. *(Tip: You can verify this using the `linSolve` function on your TI-Nspire).*
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Nearest Neighbour & Area">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 300" width="100%" maxWidth="350px" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
+        {/* Background Grid Lines (1 unit = 60px) */}
+        <path d="M 40 0 V 300 M 100 0 V 300 M 160 0 V 300 M 220 0 V 300 M 280 0 V 300 M 340 0 V 300" stroke="#f1f5f9" stroke-width="1" />
+        <path d="M 0 20 H 350 M 0 80 H 350 M 0 140 H 350 M 0 200 H 350 M 0 260 H 350" stroke="#f1f5f9" stroke-width="1" />
+        
+        <line x1="40" y1="260" x2="320" y2="260" stroke="#94a3b8" stroke-width="2" />
+        <line x1="40" y1="20" x2="40" y2="280" stroke="#94a3b8" stroke-width="2" />
+        <text x="325" y="255" font-family="sans-serif" font-size="12" fill="#64748b">x</text>
+        <text x="25" y="15" font-family="sans-serif" font-size="12" fill="#64748b">y</text>
+
+        {/* Rectangle Boundaries (0,0 to 4,3) -> (40,260) to (280,80) */}
+        <rect x="40" y="80" width="240" height="180" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,4" />
+
+        {/* Station P(2,2) */}
+        <circle cx="160" cy="140" r="5" fill="#1e293b" />
+        <text x="170" y="135" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b">P (2,2)</text>
+
+        {/* Farm(3,1) */}
+        <circle cx="220" cy="200" r="5" fill="#ef4444" />
+        <text x="230" y="215" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444">Farm (3,1)</text>
+      </svg>
+    </div>
+    A meteorologist is tracking rainfall. A Voronoi cell for station $P(2, 2)$ forms a rectangle enclosed by the vertices $(0, 0), (4, 0), (4, 3)$, and $(0, 3)$. 
+    
+    a) A farm is located at coordinates $(3, 1)$. Station $P$ recorded $22\text{ mm}$ of rain. Estimate the rainfall at the farm.
+    
+    b) Calculate the total area of the region in square units that is estimated to have received exactly $22\text{ mm}$ of rain.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 300" width="100%" maxWidth="350px" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
+        <path d="M 40 0 V 300 M 100 0 V 300 M 160 0 V 300 M 220 0 V 300 M 280 0 V 300 M 340 0 V 300" stroke="#f1f5f9" stroke-width="1" />
+        <path d="M 0 20 H 350 M 0 80 H 350 M 0 140 H 350 M 0 200 H 350 M 0 260 H 350" stroke="#f1f5f9" stroke-width="1" />
+        
+        {/* Shaded Region */}
+        <rect x="40" y="80" width="240" height="180" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" />
+        <text x="60" y="110" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1d4ed8">22 mm Rain Zone</text>
+        <text x="60" y="130" font-family="sans-serif" font-size="12" fill="#1d4ed8">Area = 12 sq units</text>
+
+        <line x1="40" y1="260" x2="320" y2="260" stroke="#94a3b8" stroke-width="2" />
+        <line x1="40" y1="20" x2="40" y2="280" stroke="#94a3b8" stroke-width="2" />
+
+        <circle cx="160" cy="140" r="5" fill="#1e293b" />
+        <text x="170" y="135" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b">P (2,2)</text>
+
+        <circle cx="220" cy="200" r="5" fill="#ef4444" />
+        <text x="230" y="215" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444">Farm (3,1)</text>
+      </svg>
+    </div>
+
+    **Part a)**
+    The farm at $(3, 1)$ lies within the rectangular boundaries $(0 \le x \le 4$ and $0 \le y \le 3)$. Because it falls inside the cell for Station $P$, we use nearest neighbour interpolation.
+    The estimated rainfall at the farm is **$22\text{ mm}$**.
+
+    **Part b)**
+    The region receiving this rainfall is the entire area of the Voronoi cell. The cell is a rectangle.
+    * **Width:** $4 - 0 = 4$ units
+    * **Height:** $3 - 0 = 3$ units
+    * **Area:** $4 \times 3 = 12\text{ square units}$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 4: The Pizza Delivery Zones">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
+        {/* Grid and Axes */}
+        <path d="M 40 0 V 300 M 80 0 V 300 M 120 0 V 300 M 160 0 V 300 M 200 0 V 300 M 240 0 V 300 M 280 0 V 300 M 320 0 V 300 M 360 0 V 300" stroke="#f1f5f9" stroke-width="1" />
+        <path d="M 0 20 H 400 M 0 60 H 400 M 0 100 H 400 M 0 140 H 400 M 0 180 H 400 M 0 220 H 400 M 0 260 H 400" stroke="#f1f5f9" stroke-width="1" />
+        <line x1="40" y1="260" x2="380" y2="260" stroke="#94a3b8" stroke-width="2" />
+        <line x1="40" y1="20" x2="40" y2="280" stroke="#94a3b8" stroke-width="2" />
+        <text x="385" y="255" font-family="sans-serif" font-size="12" fill="#64748b">x</text>
+        <text x="25" y="15" font-family="sans-serif" font-size="12" fill="#64748b">y</text>
+
+        {/* Sites */}
+        <circle cx="120" cy="100" r="5" fill="#1e293b" />
+        <text x="110" y="90" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b">A (2,4)</text>
+
+        <circle cx="280" cy="100" r="5" fill="#1e293b" />
+        <text x="290" y="90" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b">B (6,4)</text>
+        
+        <circle cx="200" cy="260" r="5" fill="#1e293b" />
+        <text x="210" y="275" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b">C (4,0)</text>
+      </svg>
+    </div>
+    
+    Two competing pizza delivery restaurants are located at $A(2, 4)$ and $B(6, 4)$ on a town map (units in km). The town council uses a Voronoi diagram to regulate their delivery zones.
+
+    **a)** Write down the coordinates of the midpoint of the line segment connecting $A$ and $B$.
+    
+    **b)** Hence, write down the equation of the Voronoi boundary separating the delivery zones of restaurant $A$ and restaurant $B$.
+    
+    A third pizza restaurant opens at site $C(4, 0)$. This requires the Voronoi diagram to be updated with new boundaries.
+    
+    **c)** Find the equation of the perpendicular bisector between restaurant $A$ and restaurant $C$.
+    
+    **d)** Calculate the coordinates of the Voronoi vertex where the delivery zones of all three restaurants meet.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#ffffff', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
+        <path d="M 40 0 V 300 M 80 0 V 300 M 120 0 V 300 M 160 0 V 300 M 200 0 V 300 M 240 0 V 300 M 280 0 V 300 M 320 0 V 300 M 360 0 V 300" stroke="#f1f5f9" stroke-width="1" />
+        <path d="M 0 20 H 400 M 0 60 H 400 M 0 100 H 400 M 0 140 H 400 M 0 180 H 400 M 0 220 H 400 M 0 260 H 400" stroke="#f1f5f9" stroke-width="1" />
+        <line x1="40" y1="260" x2="380" y2="260" stroke="#94a3b8" stroke-width="2" />
+        <line x1="40" y1="20" x2="40" y2="280" stroke="#94a3b8" stroke-width="2" />
+
+        {/* Boundary AB: x = 4 */}
+        <line x1="200" y1="20" x2="200" y2="160" stroke="#3b82f6" stroke-width="3" />
+        
+        {/* Boundary AC: y = 0.5x + 0.5 -> x=0,y=0.5(40,240). x=8,y=4.5(360,80) */}
+        <line x1="40" y1="240" x2="200" y2="160" stroke="#d97706" stroke-width="3" />
+
+        {/* Boundary BC (implied): y = -0.5x + 4.5 */}
+        <line x1="360" y1="240" x2="200" y2="160" stroke="#10b981" stroke-width="3" />
+
+        {/* Sites */}
+        <circle cx="120" cy="100" r="5" fill="#1e293b" />
+        <circle cx="280" cy="100" r="5" fill="#1e293b" />
+        <circle cx="200" cy="260" r="5" fill="#1e293b" />
+
+        {/* Vertex */}
+        <circle cx="200" cy="160" r="6" fill="#ef4444" />
+        <text x="215" y="155" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444">Vertex (4, 2.5)</text>
+      </svg>
+    </div>
+
+    **Part a) Midpoint of AB**
+    <Steps>
+    1. Both sites have a $y$-coordinate of 4, so the segment is perfectly horizontal.
+    2. The $x$-coordinate midpoint is $\frac{2 + 6}{2} = 4$.
+    3. The midpoint is **$(4, 4)$**.
+    </Steps>
+
+    **Part b) Boundary of AB**
+    <Steps>
+    1. The perpendicular bisector of a horizontal line is a vertical line. 
+    2. A vertical line passing through the midpoint $(4, 4)$ has the equation **$x = 4$**.
+    </Steps>
+
+    **Part c) Boundary of AC**
+    <Steps>
+    1. Find the midpoint of $A(2, 4)$ and $C(4, 0)$: 
+       $$M_{AC} = \left( \frac{2 + 4}{2}, \frac{4 + 0}{2} \right) = (3, 2)$$
+    2. Find the gradient of $AC$:
+       $$m = \frac{0 - 4}{4 - 2} = \frac{-4}{2} = -2$$
+    3. Find the perpendicular gradient:
+       $$m_{\perp} = \frac{1}{2} = 0.5$$
+    4. Form the equation using $M_{AC}(3, 2)$:
+       $$y - 2 = 0.5(x - 3)$$
+       $$y = 0.5x - 1.5 + 2$$
+       **$y = 0.5x + 0.5$**
+    </Steps>
+
+    **Part d) Voronoi Vertex**
+    <Steps>
+    1. The vertex is the intersection of the boundaries $x = 4$ and $y = 0.5x + 0.5$.
+    2. Substitute $x = 4$ into the second equation:
+       $$y = 0.5(4) + 0.5$$
+       $$y = 2 + 0.5 = 2.5$$
+    3. The delivery zones meet at the coordinate **$(4, 2.5)$**.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Multi-step Voronoi diagram construction and vertex calculation" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Working Backwards & Context">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#fafaf9', border: '1px solid #e7e5e4', borderRadius: '8px', boxShadow: 'inset 0 0 20px rgba(0,0,0,0.05)' }}>
+        {/* Defining patterns and filters for the damaged effect */}
+        <defs>
+          <filter id="roughen">
+            <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" stitchTiles="stitch"/>
+            <feDisplacementMap in="SourceGraphic" scale="3" />
+          </filter>
+          <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+            <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#e7e5e4" stroke-width="1"/>
+          </pattern>
+        </defs>
+        
+        {/* Background base layer */}
+        <rect width="100%" height="100%" fill="url(#grid)" />
+
+        {/* Axes */}
+        <g stroke="#a8a29e" stroke-width="2" >
+          <line x1="40" y1="260" x2="380" y2="260" />
+          <line x1="40" y1="20" x2="40" y2="280" />
+        </g>
+        <text x="385" y="255" font-family="sans-serif" font-size="12" fill="#78716c">x</text>
+        <text x="25" y="15" font-family="sans-serif" font-size="12" fill="#78716c">y</text>
+
+        {/* Visible Boundary: y = -x + 6 */}
+        {/* x=0,y=6 (40, 80). x=6,y=0 (220, 260) */}
+        <line x1="40" y1="80" x2="250" y2="290" stroke="#3b82f6" stroke-width="3" filter="url(#roughen)" />
+        <text x="180" y="210" font-family="sans-serif" font-size="12" font-weight="bold" fill="#3b82f6" transform="rotate(45 180 210)">Boundary Zone</text>
+
+        {/* Mast P (1,2) -> (70, 200) */}
+        <g transform="translate(70, 200)">
+          <path d="M -8 0 L -2 -45 L 2 -45 L 8 0 Z" fill="#78716c" />
+          <circle cx="0" cy="-35" r="4" fill="#ef4444" opacity="0.8"/>
+          <circle cx="0" cy="0" r="3" fill="#1e293b" />
+        </g>
+        <text x="85" y="195" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b">Mast P (1,2)</text>
+
+        {/* User House (4,4) -> (160, 140) */}
+        <rect x="150" y="130" width="20" height="20" fill="#a855f7" rx="2" stroke="#ffffff" stroke-width="2" />
+        <text x="175" y="145" font-family="sans-serif" font-size="12" font-weight="bold" fill="#7e22ce">User House (4,4)</text>
+
+        {/* THE DAMAGE LAYER */}
+        {/* Large ink stain/tear hiding top right */}
+        <path d="M 280,0 C 300,50 250,100 280,150 S 350,180 400,160 V 0 Z" fill="#78716c" opacity="0.9" filter="url(#roughen)"/>
+        <path d="M 320,0 C 330,30 300,60 320,90 S 360,110 400,100 V 0 Z" fill="#1c1917" filter="url(#roughen)"/>
+        
+        {/* Water damage/crumple texture across bottom right */}
+        <ellipse cx="320" cy="240" rx="60" ry="40" fill="#e7e5e4" opacity="0.5" filter="url(#roughen)"/>
+        
+        {/* Text label indicating missing data */}
+        <rect x="290" y="50" width="100" height="40" fill="#ffffff" rx="4" filter="url(#roughen)"/>
+        <text x="340" y="70" font-family="serif" font-style="italic" font-size="14" fill="#ef4444" text-anchor="middle">
+          <tspan x="340" dy="0">DATA</tspan>
+          <tspan x="340" dy="16">MISSING</tspan>
+        </text>
+        
+        {/* Arrow pointing to missing area */}
+        <path d="M 330,110 L 300,140 M 330,110 L 325,120 M 330,110 L 320,115" stroke="#ef4444" stroke-width="2" fill="none"/>
+        <text x="320" y="130" font-family="serif" font-style="italic" font-size="12" fill="#ef4444">Mast Q?</text>
+      </svg>
+    </div>
+
+    A Voronoi diagram is used to model the signal coverage of two mobile phone masts. Mast $P$ is located at $(1, 2)$. The map has been damaged, and the coordinates for Mast $Q$ are missing. However, the boundary line separating their coverage zones is clearly visible and has the equation $y = -x + 6$.
+    
+    **a)** Find the equation of the line that passes through both Mast $P$ and Mast $Q$.
+    
+    **b)** Calculate the exact coordinates of Mast $Q$.
+    
+    **c)** A user's house is located at coordinate $(4, 4)$. Using nearest neighbour interpolation, state mathematically which mast the house connects to.
+    
+    **d)** State one real-world geographical or physical factor that might cause the phone to connect to the other mast instead, despite the mathematical model.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **Part a) Equation of Line PQ**
+    <Steps>
+    1. The boundary has a gradient of $m = -1$.
+    2. The line connecting the sites (line $PQ$) must be perpendicular to the boundary, so its gradient is $m_{\perp} = 1$.
+    3. Line $PQ$ passes through Mast $P(1, 2)$. Using the point-gradient formula:
+       $$y - 2 = 1(x - 1)$$
+       **$y = x + 1$**
+    </Steps>
+
+    **Part b) Coordinates of Mast Q**
+    <Steps>
+    1. First, find the intersection of the boundary and line $PQ$ to find their midpoint ($M$):
+       $$-x + 6 = x + 1$$
+       $$2x = 5 \Rightarrow x = 2.5$$
+       $$y = 2.5 + 1 = 3.5$$
+       The midpoint is $M(2.5, 3.5)$.
+    2. Next, use the midpoint formula with $P(1, 2)$ to find $Q(x_2, y_2)$:
+       $$\frac{1 + x_2}{2} = 2.5 \Rightarrow 1 + x_2 = 5 \Rightarrow x_2 = 4$$
+       $$\frac{2 + y_2}{2} = 3.5 \Rightarrow 2 + y_2 = 7 \Rightarrow y_2 = 5$$
+       Mast $Q$ is located at **$(4, 5)$**.
+    </Steps>
+
+    **Part c) Nearest Neighbour Interpolation**
+    <Steps>
+    1. Calculate the distance from the house $(4, 4)$ to Mast $P(1, 2)$:
+       $$d_P = \sqrt{(4 - 1)^2 + (4 - 2)^2} = \sqrt{3^2 + 2^2} = \sqrt{13} \approx 3.61$$
+    2. Calculate the distance from the house $(4, 4)$ to Mast $Q(4, 5)$:
+       $$d_Q = \sqrt{(4 - 4)^2 + (4 - 5)^2} = \sqrt{0^2 + (-1)^2} = \sqrt{1} = 1$$
+    3. Because 1 is less than 3.61, the house is mathematically closer to Mast $Q$. It connects to **Mast $Q$**.
+    </Steps>
+
+    **Part d) Real-World Limitations**
+    <Steps>
+    1. While mathematically closer to $Q$, the signal might be blocked by physical barriers (e.g., a large hill, dense forest, or a tall concrete building) between the house and Mast $Q$. Alternatively, Mast $Q$ might be at maximum network capacity, forcing the phone to connect to Mast $P$. *(Any logical physical or technical barrier is an acceptable answer).*
+    </Steps>
+  </TabItem>
+</Tabs>
