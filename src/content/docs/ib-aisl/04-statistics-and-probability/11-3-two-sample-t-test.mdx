@@ -1,0 +1,295 @@
+---
+title: 4.11.3 The Two-Sample t-Test
+description: Learn how to compare the means of two independent populations using the pooled two-sample t-test from raw data, formulate hypotheses in context, and interpret p-values for IB Maths AI SL.
+---
+
+While the Chi-Square test determines if there is an association between categorical variables, the **Two-Sample t-Test** is used to determine if there is a statistically significant difference between the **means** of two distinct, independent groups. 
+
+For example, you might use a two-sample t-test to compare the average battery life of two different brands of smartphones, or the mean examination scores of two different classes taught using different methods. 
+
+Because students taking standard level are not expected to manually calculate the pooled variance using complex algebraic formulas, this test relies entirely on processing raw data lists through your Graphic Display Calculator (GDC).
+
+<Steps>
+1. Formulate the null and alternative hypotheses in the context of the question.
+2. Verify the underlying assumptions of the test.
+3. Enter the raw data into your GDC to find the test statistic ($t$) and p-value.
+4. Compare your p-value to the significance level to make a concluding statement.
+</Steps>
+
+---
+
+## 1. Formulating Hypotheses in Context
+
+In the Two-Sample t-Test, hypotheses must directly reference the **mean** of the two populations being compared. It is critical that you write these hypotheses in words that clearly describe the context, rather than just writing a mathematical $\mu$ statement.
+
+<Aside type="note" title="The Anatomy of t-Test Hypotheses">
+* **The Null Hypothesis ($H_0$):** This always states that there is **no difference** between the two population means. 
+  *(e.g., "$H_0$: The mean battery life of Brand A is equal to the mean battery life of Brand B.")*
+* **The Alternative Hypothesis ($H_1$):** This states what you are trying to prove. Depending on the question, it will be one of three options:
+  * **Two-Tailed ($\neq$):** The means are simply different from one another.
+  * **One-Tailed (&gt;):** The mean of the first group is strictly greater than the mean of the second group.
+  * **One-Tailed (&lt;):** The mean of the first group is strictly less than the mean of the second group.
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 900 240" width="100%" maxWidth="900px" style={{ background: '#ffffff', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+    <defs>
+      {/* Masks for perfect tail shading inside the curve */}
+      <mask id="mask-left-2tail">
+        <rect x="30" y="0" width="60" height="180" fill="white" />
+      </mask>
+      <mask id="mask-right-2tail">
+        <rect x="210" y="0" width="60" height="180" fill="white" />
+      </mask>
+      <mask id="mask-right-1tail">
+        <rect x="510" y="0" width="60" height="180" fill="white" />
+      </mask>
+      <mask id="mask-left-1tail">
+        <rect x="630" y="0" width="60" height="180" fill="white" />
+      </mask>
+    </defs>
+
+    {/* Two-Tailed Curve */}
+    <line x1="20" y1="180" x2="280" y2="180" stroke="#cbd5e1" stroke-width="2" />
+    <path d="M 30 180 C 80 180, 100 40, 150 40 C 200 40, 220 180, 270 180 L 270 180 L 30 180 Z" fill="#f8fafc" />
+    <path d="M 30 180 C 80 180, 100 40, 150 40 C 200 40, 220 180, 270 180 L 270 180 L 30 180 Z" fill="#fcb5b5" mask="url(#mask-left-2tail)" />
+    <path d="M 30 180 C 80 180, 100 40, 150 40 C 200 40, 220 180, 270 180 L 270 180 L 30 180 Z" fill="#fcb5b5" mask="url(#mask-right-2tail)" />
+    <path d="M 30 180 C 80 180, 100 40, 150 40 C 200 40, 220 180, 270 180" fill="none" stroke="#b32323" stroke-width="3" />
+    <line x1="150" y1="40" x2="150" y2="180" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="150" y="25" fill="#1e293b" font-size="16" font-family="sans-serif" font-weight="bold" text-anchor="middle">Two-Tailed (≠)</text>
+
+    {/* One-Tailed Curve (Greater Than) */}
+    <line x1="320" y1="180" x2="580" y2="180" stroke="#cbd5e1" stroke-width="2" />
+    <path d="M 330 180 C 380 180, 400 40, 450 40 C 500 40, 520 180, 570 180 L 570 180 L 330 180 Z" fill="#f8fafc" />
+    <path d="M 330 180 C 380 180, 400 40, 450 40 C 500 40, 520 180, 570 180 L 570 180 L 330 180 Z" fill="#bfdbfe" mask="url(#mask-right-1tail)" />
+    <path d="M 330 180 C 380 180, 400 40, 450 40 C 500 40, 520 180, 570 180" fill="none" stroke="#3b82f6" stroke-width="3" />
+    <line x1="450" y1="40" x2="450" y2="180" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="450" y="25" fill="#1e293b" font-size="16" font-family="sans-serif" font-weight="bold" text-anchor="middle">One-Tailed (&gt;)</text>
+    
+    {/* One-Tailed Curve (Less Than) */}
+    <line x1="620" y1="180" x2="880" y2="180" stroke="#cbd5e1" stroke-width="2" />
+    <path d="M 630 180 C 680 180, 700 40, 750 40 C 800 40, 820 180, 870 180 L 870 180 L 630 180 Z" fill="#f8fafc" />
+    <path d="M 630 180 C 680 180, 700 40, 750 40 C 800 40, 820 180, 870 180 L 870 180 L 630 180 Z" fill="#bbf7d0" mask="url(#mask-left-1tail)" />
+    <path d="M 630 180 C 680 180, 700 40, 750 40 C 800 40, 820 180, 870 180" fill="none" stroke="#22c55e" stroke-width="3" />
+    <line x1="750" y1="40" x2="750" y2="180" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="750" y="25" fill="#1e293b" font-size="16" font-family="sans-serif" font-weight="bold" text-anchor="middle">One-Tailed (&lt;)</text>
+  </svg>
+</div>
+
+---
+
+## 2. Assumptions of the Test
+
+For a two-sample t-test to be mathematically valid, certain assumptions must be met. In IB Maths AI SL, you must know these constraints:
+1. **Normal Distribution:** The underlying populations from which the samples are drawn must be normally distributed. 
+2. **Independent Samples:** The two groups must be completely separate (unpaired). You cannot have the same subject or person in both Group 1 and Group 2.
+3. **Equal Variances:** The population variance ($\sigma^2$) is always assumed to be unknown, but we assume the variance of both groups is equal. Therefore, you must **always use the POOLED two-sample t-test**.
+
+<Aside type="caution" title="Common Misconception: Pooling">
+When setting up the test on your calculator, you will be asked "Pooled: Yes or No?". In AI SL examinations, because we assume equal variances, the answer is **always YES**. Selecting "No" will result in a slightly different p-value and cost you accuracy marks!
+</Aside>
+
+<Aside type="tip" title="Beyond the Syllabus: The Mann-Whitney U Test">
+**Cross-Curricular Connection (Psychology):** The two-sample t-test strictly requires data to be normally distributed and continuous. However, in fields like Psychology, fieldwork often involves ordinal data (like ranking scales) or highly skewed distributions. 
+
+In these cases, the **Mann-Whitney U Test** is used instead. It is a "non-parametric" test that compares the medians rather than the means, making it a much more reliable choice when the assumption of a normal distribution fails.
+</Aside>
+
+---
+
+## 3. Technology Integration (TI-Nspire)
+
+Because you do not use the raw algebraic formula for the pooled standard deviation, you must be perfectly fluent in typing raw data into your GDC to execute the test.
+
+### Running the Test on the TI-Nspire
+
+<Steps>
+1. **Enter the Data:** Open a Lists & Spreadsheet page. Name column A `group1` and column B `group2`. Enter your raw data into these lists. 
+2. **Open the Test Menu:** Go to **Menu** > **Statistics** > **Stat Tests** > **2-Sample t-Test...**
+3. **Select Input Method:** Choose **Data** (since you have typed in raw lists).
+4. **Configure the Test:** * Select `group1` for List 1 and `group2` for List 2.
+   * Leave the Frequencies as 1.
+   * Choose your Alternate Hypothesis correctly matching the context (`H1: μ1 ≠ μ2`, `μ1 > μ2`, or `μ1 < μ2`).
+   * **CRITICAL:** Set **Pooled** to **Yes**.
+5. **Execute:** Press OK. The calculator will output `stat.t` (the test statistic) and `stat.PVal` (the p-value).
+</Steps>
+
+<Aside type="note" title="TOK Connection: The Controversy of P-Values">
+In theory, p-values help us decide whether to reject a null hypothesis objectively. But is saying a result is "statistically significant" the same as saying it is *true*? 
+
+In reality, a p-value of $0.049$ yields a "significant" publication, while a p-value of $0.051$ is rejected, even though the practical difference is microscopic. Because of this artificial threshold, some major research journals have "banned" p-values entirely, arguing they encourage researchers to manipulate their data (p-hacking) just to cross the magic 5% line. How is the term “significant” used differently in mathematics compared to everyday language?
+</Aside>
+
+---
+
+## 4. IA Enrichment: The Paired t-Test (Before & After)
+
+<SteveTip title="IA Guide: Dependent vs Independent Samples">
+Many students want to do a "Before and After" Internal Assessment (e.g., measuring students' resting heart rates, making them perform an exercise, and measuring their heart rates again).
+
+**You CANNOT use the 2-Sample t-Test for this!** The 2-Sample test assumes the groups are independent, but these are the exact same students measured twice (dependent/paired samples).
+
+**How to do a Paired t-Test on the TI-Nspire:**
+1. Put your "Before" data in list A and "After" data in list B.
+2. In list C, calculate the difference by typing `= B - A` in the grey formula cell.
+3. Instead of the 2-Sample test, go to **Menu > Statistics > Stat Tests > t-Test...** (This is the standard 1-Sample t-test).
+4. Run the test on List C, testing against a null hypothesis mean of $\mu_0 = 0$. If the p-value is significant, it proves the "Before" and "After" data are significantly different!
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: The Classic Full Run-Through">
+    A researcher wants to know if there is a difference in the mean examination scores between two different teaching methods. She randomly assigns students to Method A and Method B and records their final scores out of 100.
+    
+    **Method A:** 72, 75, 81, 68, 74, 88, 70, 76
+    **Method B:** 85, 82, 89, 78, 91, 84, 86
+    
+    Assume the scores are normally distributed and population variances are equal. The researcher conducts a pooled two-sample t-test at the **5%** significance level.
+    
+    **a)** State the null and alternative hypotheses in context.
+    
+    **b)** Using your GDC, find the p-value for this test.
+    
+    **c)** State the conclusion of the test, giving a reason for your answer.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **State hypotheses in context:** $H_0$: The mean examination score for Method A is equal to the mean examination score for Method B.
+       $H_1$: The mean examination score for Method A is not equal to the mean examination score for Method B.
+    2. **Find p-value:** Enter the raw data into two lists on the GDC. Run a 2-Sample t-Test using 'Data', Alternative Hypothesis $\mu_1 \neq \mu_2$, and Pooled: Yes.
+       p-value = 0.00330 (to 3 s.f.)
+    3. **State conclusion:** Compare the p-value to the significance level (**5%** or 0.05). Since $0.00330 < 0.05$, we **reject $H_0$**. There is sufficient evidence at the 5% level to suggest a significant difference in the mean examination scores between the two methods.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Performing pooled two-sample t-tests from raw data arrays" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: The Logic Trap (< vs >)">
+    An agricultural scientist is testing whether a new brand of fertiliser (Brand B) produces taller tomato plants than the standard fertiliser (Brand A). The heights of the fully grown plants, in centimetres, are recorded below:
+    
+    | Brand A (Group 1) | 45 | 48 | 51 | 42 | 47 | 49 | 43 | 44 |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Brand B (Group 2)** | 52 | 55 | 50 | 58 | 53 | 51 | 56 | 54 |
+    
+    The scientist conducts a one-tailed pooled two-sample t-test at the **1%** significance level to test his claim.
+    
+    **a)** State the alternative hypothesis in context.
+    
+    **b)** Based on the table provided, state the correct mathematical inequality ($\mu_1 \dots \mu_2$) that must be entered into the GDC's Alternative Hypothesis menu to correctly reflect the scientist's claim. 
+    
+    **c)** Run the test using your GDC and state the p-value.
+    
+    **d)** State whether the scientist's claim is supported. Justify your answer.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **State alternative hypothesis:** $H_1$: The mean height of plants grown with Fertiliser B is greater than the mean height of plants grown with Fertiliser A.
+    2. **Determine GDC input:** This is the logic trap! The claim is that Brand B (Group 2) is taller/greater than Brand A (Group 1). This means Group 1 must be LESS THAN Group 2. Therefore, the GDC input must be set to **$\mu_1 < \mu_2$**.
+    3. **Find p-value:** Enter the raw data into two lists. Run the 2-Sample t-Test using 'Data', Alternative Hypothesis $\mu_1 < \mu_2$, and Pooled: Yes.
+       p-value = 0.000108 (to 3 s.f.)
+    4. **State conclusion:** Since the p-value ($0.000108$) is less than the 1% significance level ($0.01$), we **reject $H_0$**. There is strong evidence to support the scientist's claim that Brand B produces taller plants than Brand A.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying the correct one-tailed inequality for t-tests based on context" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Standard Form Data">
+    An environmentalist is measuring the mass of microplastic particles found in two different river systems. Because the masses are minuscule, they are recorded in standard form (grams). 
+    
+    **River Alpha:** $1.4 \times 10^{-5}$, $2.1 \times 10^{-5}$, $1.8 \times 10^{-5}$, $1.5 \times 10^{-5}$, $2.0 \times 10^{-5}$
+    **River Beta:** $2.8 \times 10^{-5}$, $3.1 \times 10^{-5}$, $2.5 \times 10^{-5}$, $2.9 \times 10^{-5}$, $3.0 \times 10^{-5}$, $2.7 \times 10^{-5}$
+    
+    The environmentalist wishes to test if there is a significant difference between the mean mass of microplastics in River Alpha and River Beta at the **5%** level.
+    
+    **a)** State the null hypothesis in context.
+    
+    **b)** Enter the standard form data into your GDC and calculate the $t$ test statistic and the p-value.
+    
+    **c)** Conclude the test.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **State null hypothesis:** $H_0$: The mean mass of microplastics in River Alpha is equal to the mean mass of microplastics in River Beta.
+    2. **Find test statistics:** Enter the raw data directly into your GDC lists. You can use your calculator's exponent key (e.g., `1.4E-5`).
+       Run a 2-Sample t-Test using 'Data', Alternative Hypothesis $\mu_1 \neq \mu_2$, and Pooled: Yes.
+       $t = -6.44$ (to 3 s.f.)
+       p-value = $0.000103$ (to 3 s.f.)
+    3. **State conclusion:** Since the p-value ($0.000103$) is less than $0.05$, we **reject $H_0$**. There is sufficient evidence to conclude that the mean mass of microplastics differs significantly between the two rivers.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Performing pooled two-sample t-tests using data expressed in standard form" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Synthesising Arithmetic Sequences and t-Tests">
+    A botanist tracks the daily growth (in millimetres) of a specific type of bamboo under two different lighting conditions over 6 days.
+    
+    The growth under **Condition X** perfectly follows an arithmetic sequence. The growth on the 1st day ($u_1$) is 15 mm, and the common difference ($d$) is 3 mm.
+    
+    The growth under **Condition Y** for 6 days is recorded as follows:
+    14, 18, 22, 25, 29, 30
+    
+    The botanist wants to test if the mean daily growth under Condition X is greater than the mean daily growth under Condition Y at a **10%** significance level.
+    
+    **a)** List the raw data values for the 6 days of growth under Condition X.
+    
+    **b)** State the alternative hypothesis in context.
+    
+    **c)** Conduct a pooled two-sample t-test using your GDC to find the p-value.
+    
+    **d)** State whether the botanist's hypothesis is supported.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Generate raw data:** Use the arithmetic sequence formula $u_n = u_1 + (n-1)d$ to find the 6 terms.
+       $u_1 = 15$
+       $u_2 = 15 + 3 = 18$
+       $u_3 = 18 + 3 = 21$
+       $u_4 = 21 + 3 = 24$
+       $u_5 = 24 + 3 = 27$
+       $u_6 = 27 + 3 = 30$
+       Condition X Data: 15, 18, 21, 24, 27, 30.
+    2. **State alternative hypothesis:** $H_1$: The mean daily growth under Condition X is greater than the mean daily growth under Condition Y.
+    3. **Find p-value:** Enter Condition X as Group 1 and Condition Y as Group 2.
+       Set the test to `Data`, Alternative Hypothesis $\mu_1 > \mu_2$, and Pooled: Yes.
+       p-value = $0.575$ (to 3 s.f.)
+    4. **State conclusion:** Since the p-value ($0.575$) is much greater than the 10% significance level ($0.10$), we **fail to reject $H_0$**. There is no significant evidence to support the claim that Condition X produces greater mean daily growth than Condition Y.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Generating raw data from arithmetic sequences to perform independent t-tests" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: IA Focus – Dependent vs Independent Samples">
+    An athlete wants to know if a new pre-workout energy drink improves his 100m sprint times. He records his sprint times for 8 days while drinking water. The following month, he records his sprint times for 8 days while taking the energy drink. 
+    
+    **Water Times (s):** 11.2, 11.4, 11.1, 11.5, 11.3, 11.6, 11.2, 11.4
+    **Drink Times (s):** 10.9, 11.1, 10.8, 11.0, 11.2, 11.1, 10.9, 11.0
+    
+    He intends to use a Two-Sample t-Test.
+    
+    **a)** State whether these two samples are independent or dependent.
+    
+    **b)** Explain why the Two-Sample t-Test is mathematically inappropriate for his study.
+    
+    **c)** State the specific type of t-test he should perform instead to correctly analyse his data on the GDC.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+    1. **Identify sample relationship:** The samples are **dependent** (paired) because the exact same athlete is generating both sets of sprint times.
+    2. **Explain the violation:** A Two-Sample t-Test requires the two groups to be completely independent. Because the same person is used, individual biological factors are shared across both lists, violating the assumption of independence.
+    3. **State the correct test:** He should calculate the difference between each pair of sprint times and perform a **Paired t-Test** (which is done using the standard 1-Sample t-Test function on the differences in the GDC).
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Distinguishing between dependent (paired) and independent two-sample t-tests" />

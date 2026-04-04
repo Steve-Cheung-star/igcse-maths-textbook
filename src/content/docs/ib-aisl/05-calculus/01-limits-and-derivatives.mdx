@@ -1,0 +1,427 @@
+---
+title: 5.1 Introduction to Limits and Derivatives
+description: Explore the intuitive concept of limits, estimate values from tables and graphs, and understand the derivative as a gradient function and rate of change for IB Maths AI SL.
+---
+
+Calculus is the mathematics of continuous change. While algebra and geometry give us the tools to find the average gradient of a straight line, calculus provides the machinery to find the exact gradient of a curving line at any precise mathematical instant. 
+
+To bridge the gap between "average" change and "instantaneous" change, we must first understand the foundational concept of a **limit**. 
+
+<Steps>
+1. Understand the concept of a limit graphically and numerically.
+2. Estimate the value of a limit using tables and graphs on your GDC.
+3. Link the limit to the gradient of a curve to define the derivative.
+4. Interpret derivative notation in real-world contexts like economics and kinematics.
+</Steps>
+
+---
+
+## 1. The Intuitive Concept of a Limit
+
+In simple terms, a **limit** is the value that a function or sequence "approaches" as the input gets closer and closer to a certain value. We are not necessarily asking what happens *at* that exact point, but rather what is happening *infinitely close* to it.
+
+The notation for a limit is:
+$$
+\lim_{x \to a} f(x) = L
+$$
+This is read as: *"The limit of $f(x)$ as $x$ approaches $a$ is equal to $L$."*
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 300" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+    {/* Grid and Axes */}
+    <line x1="50" y1="250" x2="550" y2="250" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="100" y1="50" x2="100" y2="280" stroke="#cbd5e1" stroke-width="2" />
+    <text x="540" y="270" fill="#64748b" font-size="14" font-style="italic">x</text>
+    <text x="80" y="60" fill="#64748b" font-size="14" font-style="italic">y</text>
+
+    {/* The Curve */}
+    <path d="M 100 200 Q 250 200, 300 120 T 500 50" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" />
+    
+    {/* The "Hole" at the limit point */}
+    <circle cx="300" cy="120" r="6" fill="#f8fafc" stroke="#3b82f6" stroke-width="3" />
+
+    {/* Limit target lines */}
+    <line x1="300" y1="250" x2="300" y2="126" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="100" y1="120" x2="294" y2="120" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+
+    {/* Approaching Arrows on x-axis */}
+    <path d="M 230 250 L 270 250 L 260 240 M 270 250 L 260 260" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    <path d="M 370 250 L 330 250 L 340 240 M 330 250 L 340 260" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+    
+    {/* Labels */}
+    <text x="295" y="275" fill="#ef4444" font-size="16" font-weight="bold">a</text>
+    <text x="75" y="125" fill="#ef4444" font-size="16" font-weight="bold">L</text>
+    <text x="320" y="100" fill="#3b82f6" font-size="16" font-weight="bold">f(x)</text>
+    <text x="180" y="280" fill="#10b981" font-size="14">x approaches a</text>
+    <text x="340" y="280" fill="#10b981" font-size="14">from both sides</text>
+  </svg>
+</div>
+
+<Aside type="note" title="Syllabus Constraint: No Formal Algebra!">
+In the AI SL course, you are **not** expected to use complex algebraic factorisation or formal analytic methods (like L'Hôpital's rule) to calculate limits. You only need to estimate them by looking at the trend of the numbers in a table or the shape of a graph.
+</Aside>
+
+---
+
+## 2. Estimating Limits using Technology (TI-Nspire)
+
+Since we are estimating limits numerically, the Table function on your Graphic Display Calculator is your best tool. 
+
+If we want to estimate the limit of $f(x) = \frac{x^2 - 9}{x - 3}$ as $x \to 3$:
+
+<Steps>
+1. **Define the Function:** Open a Calculator or Graph page and define your function. 
+2. **Open the Table:** Press **ctrl** + **T** to bring up the function table.
+3. **Edit Table Settings:** Go to **Menu** > **Table** > **Edit Table Settings...** Change the "Independent" setting from *Auto* to *Ask*.
+4. **Input Approaching Values:** Type in values that get infinitely closer to 3 from the left (e.g., 2.9, 2.99, 2.999) and from the right (e.g., 3.1, 3.01, 3.001).
+5. **Observe the Trend:** You will see the $f(x)$ values converging on **6**. 
+</Steps>
+
+*Note: If you type exactly `3` into the calculator, it will read `undef` (undefined) because you cannot divide by zero. The limit exists at 6, even if the function itself breaks down at exactly $x=3$.*
+
+<Aside type="note" title="History & International-Mindedness">
+**The Division by Zero Problem:** For centuries, dividing by zero baffled mathematicians. Indian mathematicians (between 500–1000 CE), such as Brahmagupta and Bhaskara II, made early attempts to formalise rules for dividing by zero. While their algebraic rules weren't perfect by modern standards, these early struggles paved the way for the development of limits and calculus centuries later!
+</Aside>
+
+---
+
+## 3. The Derivative: Gradient as a Limit
+
+In coordinate geometry, the gradient $m$ of a straight line between two points $(x_1, y_1)$ and $(x_2, y_2)$ is $m = \frac{\Delta y}{\Delta x}$. 
+
+But curves don't have a constant gradient. To find the gradient of a curve at exactly one point (the tangent), we imagine a secant line cutting through two points on the curve. As we move the second point closer and closer to the first point, the horizontal distance between them ($\Delta x$) approaches zero. 
+
+The **derivative** is simply the limit of this average gradient as the distance between the points shrinks to zero. 
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 700 380" width="100%" maxWidth="700px" style={{ background: '#fcfcfc', borderRadius: '12px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981" />
+      </marker>
+    </defs>
+
+    {/* Background Grid for mathematical clarity */}
+    <g stroke="#e2e8f0" stroke-width="1">
+      <line x1="100" y1="20" x2="100" y2="300" />
+      <line x1="200" y1="20" x2="200" y2="300" />
+      <line x1="300" y1="20" x2="300" y2="300" />
+      <line x1="400" y1="20" x2="400" y2="300" />
+      <line x1="500" y1="20" x2="500" y2="300" />
+      <line x1="600" y1="20" x2="600" y2="300" />
+      
+      <line x1="80" y1="50" x2="650" y2="50" />
+      <line x1="80" y1="100" x2="650" y2="100" />
+      <line x1="80" y1="150" x2="650" y2="150" />
+      <line x1="80" y1="200" x2="650" y2="200" />
+      <line x1="80" y1="250" x2="650" y2="250" />
+    </g>
+
+    {/* Axes */}
+    <line x1="50" y1="300" x2="650" y2="300" stroke="#94a3b8" stroke-width="2" />
+    <line x1="100" y1="20" x2="100" y2="320" stroke="#94a3b8" stroke-width="2" />
+    
+    <text x="630" y="325" fill="#64748b" font-size="14" font-style="italic">x</text>
+    <text x="75" y="35" fill="#64748b" font-size="14" font-style="italic">y</text>
+
+    {/* Exponential/Parabolic Curve */}
+    <path d="M 100 300 Q 275 300, 440 11" fill="none" stroke="#64748b" stroke-width="4" stroke-linecap="round" />
+
+    {/* Tangent Line (Limit) */}
+    <line x1="100" y1="325" x2="580" y2="85" stroke="#ef4444" stroke-width="3" />
+    
+    {/* Secant 1 (Far) */}
+    <line x1="180" y1="295" x2="440" y2="35" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6 6" />
+
+    {/* Secant 2 (Closer) */}
+    <line x1="160" y1="305" x2="500" y2="50" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="6 6" />
+
+    {/* Dropdown lines to X-axis mapping the coordinates */}
+    <line x1="200" y1="275" x2="200" y2="300" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 3" />
+    <line x1="300" y1="200" x2="300" y2="300" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 3" />
+    <line x1="400" y1="75" x2="400" y2="300" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 3" />
+
+    {/* Distance Brackets (Delta X) */}
+    <path d="M 200 330 L 200 335 L 400 335 L 400 330" fill="none" stroke="#3b82f6" stroke-width="1.5" />
+    <text x="300" y="355" fill="#3b82f6" font-size="14" font-weight="bold" text-anchor="middle">Large Δx</text>
+    
+    <path d="M 200 310 L 200 315 L 300 315 L 300 310" fill="none" stroke="#8b5cf6" stroke-width="1.5" />
+    <text x="250" y="305" fill="#8b5cf6" font-size="12" font-weight="bold" text-anchor="middle">Small Δx</text>
+
+    {/* Coordinate Points */}
+    <circle cx="200" cy="275" r="6" fill="#ef4444" />
+    <circle cx="400" cy="75" r="5" fill="#3b82f6" />
+    <circle cx="300" cy="200" r="5" fill="#8b5cf6" />
+
+    <text x="175" y="265" fill="#ef4444" font-size="18" font-weight="bold" font-family="sans-serif">P</text>
+    <text x="415" y="70" fill="#3b82f6" font-size="16" font-weight="bold" font-family="sans-serif">Q₁</text>
+    <text x="315" y="195" fill="#8b5cf6" font-size="16" font-weight="bold" font-family="sans-serif">Q₂</text>
+    
+    {/* Line Labels */}
+    <text x="450" y="35" fill="#3b82f6" font-size="15" font-weight="bold" font-family="sans-serif">Secant 1 (Q₁)</text>
+    <text x="510" y="65" fill="#8b5cf6" font-size="15" font-weight="bold" font-family="sans-serif">Secant 2 (Q₂)</text>
+    <text x="585" y="105" fill="#ef4444" font-size="16" font-weight="bold" font-family="sans-serif">Tangent (Limit)</text>
+
+    {/* Approach arrows down the curve */}
+    <path d="M 385 85 Q 355 125, 315 185" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrow)" />
+    <path d="M 285 210 Q 255 240, 215 265" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrow)" />
+    
+    {/* Concept Explanation Box */}
+    <rect x="420" y="160" width="260" height="90" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1" opacity="0.95"/>
+    <text x="435" y="185" fill="#10b981" font-size="16" font-weight="bold">As Δx → 0 :</text>
+    <text x="435" y="210" fill="#475569" font-size="14">Point Q slides along the curve.</text>
+    <text x="435" y="235" fill="#475569" font-size="14">Secants converge into the Tangent.</text>
+  </svg>
+</div>
+
+### Understanding the Notation
+
+When we find the derivative of a function, we are finding its **gradient function**—a formula that will tell us the gradient of the curve at any value of $x$. You must be comfortable with several forms of notation:
+
+* **$f'(x)$ (Prime Notation):** If the original function is $f(x)$, the derivative is $f'(x)$. This was popularised by Lagrange.
+* **$\frac{dy}{dx}$ (Leibniz Notation):** If the equation is given as $y = \dots$, the derivative is $\frac{dy}{dx}$. This physically represents an infinitely small change in $y$ divided by an infinitely small change in $x$.
+
+<SteveTip title="Exam Tip: Match the Question's Notation">
+In IB examinations, you must mirror the notation provided in the prompt. If the question gives the volume of a sphere as $V = \frac{4}{3}\pi r^3$ and asks for the derivative, you **must** write $\frac{dV}{dr}$. Writing $\frac{dy}{dx}$ when there are no $y$ or $x$ variables in the equation can result in a loss of communication marks!
+</SteveTip>
+
+<Aside type="note" title="Aim 8: The Great Calculus Controversy">
+The discovery of calculus is one of the most famous disputes in mathematical history. Both Sir Isaac Newton and Gottfried Wilhelm Leibniz developed the foundational concepts of calculus independently around the same time. While Newton focused heavily on kinematics and rates of change (using "fluxions"), Leibniz developed the highly effective $\frac{dy}{dx}$ notation we still use today. 
+
+Furthermore, the ancient Greeks’ distrust of the concept of "zero" and "nothingness" prevented brilliant minds like Archimedes from fully developing calculus centuries earlier, despite him working on very similar ideas regarding the areas under curves!
+</Aside>
+
+---
+
+## 4. Derivative as a Rate of Change
+
+The gradient doesn't just tell us how "steep" a line is; in the real world, the gradient represents the **instantaneous rate of change**. The derivative tells us how fast one variable is changing with respect to another at a specific instant.
+
+This is why the syllabus introduces context-specific notation:
+* **$\frac{dV}{dr}$:** The rate of change of Volume ($V$) with respect to the radius ($r$). E.g., How fast a balloon's volume is increasing as its radius expands.
+* **$\frac{ds}{dt}$:** The rate of change of displacement ($s$) with respect to time ($t$). In physics (kinematics), this is the exact definition of **velocity**.
+
+<Aside type="note" title="Cross-Curricular Connection: Economics">
+If you study IB Economics, you already use calculus! In economics, the word **"Marginal"** means derivative. 
+* **Marginal Cost ($MC$):** The derivative of the Cost function, $C'(x)$. It is the cost of producing *one more* unit.
+* **Marginal Revenue ($MR$):** The derivative of the Revenue function, $R'(x)$. 
+Profit is maximised when $MC = MR$. Calculus proves this perfectly!
+</Aside>
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+Calculus relies heavily on the concept of "infinitesimals"—numbers that are infinitely small but not quite zero. But is infinitesimal behaviour applicable to real life? Can time or space be divided infinitely, or is there a smallest possible pixel of reality (like the Planck length in physics)? If the foundation of calculus relies on a concept that might not exist in the physical universe, what value does the knowledge of limits have?
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Estimating Limits from a Table">
+    Let $f(x) = \frac{x^3 - 8}{x - 2}$. 
+    
+    A student wants to find the limit of $f(x)$ as $x$ approaches 2. They use a GDC to create the following table of values:
+
+    | $x$ | $f(x)$ |
+    | :--- | :--- |
+    | 1.9 | 11.410 |
+    | 1.99 | 11.940 |
+    | 1.999 | 11.994 |
+    | **2.0** | **Undefined** |
+    | 2.001 | 12.006 |
+    | 2.01 | 12.060 |
+    | 2.1 | 12.610 |
+
+    **a)** State the value of $f(2)$.
+    
+    **b)** Based on the table, estimate the value of $\lim_{x \to 2} f(x)$. 
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Part a:** Look directly at the $x = 2$ row. The function evaluates to undefined because dividing by $2-2$ results in division by zero.
+       **Answer:** Undefined (or it does not exist).
+    2. **Part b:** Look at the $f(x)$ values as $x$ gets closer to 2 from below (11.994) and from above (12.006). Both sides are converging towards the integer 12.
+       **Answer:** $\lim_{x \to 2} f(x) = 12$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Estimating limits numerically using data tables" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Contextual Notation (Kinematics)">
+    The displacement, $s$, in metres, of a remote-controlled car from a fixed point over time $t$, in seconds, is modelled by the function $s(t)$.
+    
+    **a)** State the mathematical notation for the derivative of the displacement function with respect to time using Leibniz notation.
+    
+    **b)** State the physical meaning of this derivative in the context of the car's movement.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Part a:** Leibniz notation uses the infinitesimals $d$. We are finding the change in $s$ over the change in $t$.
+       **Answer:** $\frac{ds}{dt}$
+    2. **Part b:** The rate of change of displacement with respect to time is the definition of velocity. It tells us how fast the car is travelling at a specific instant in time.
+       **Answer:** The instantaneous velocity of the car.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting Leibniz notation and derivatives in physical contexts" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Contextual Notation (Economics)">
+    A factory produces $x$ luxury chairs per week. The total cost, $C$, in euros, of producing these chairs is given by the function $C(x)$.
+    
+    The factory manager is analysing the value of $C'(100) = 45$.
+    
+    Interpret the meaning of this equation in the context of the question.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **Identify the components:** $C'(x)$ is the prime notation for the derivative. It represents the rate of change of Cost with respect to the number of chairs produced.
+    2. **Apply the economics context:** In economics, this is the "Marginal Cost". 
+    3. **Interpret the values:** The $100$ is the $x$-value (current production level). The $45$ is the rate of change. 
+       **Answer:** When the factory is currently producing exactly 100 chairs, the instantaneous rate of change of the cost is 45 euros per chair. (In simpler economic terms: the estimated cost of producing the 101st chair is 45 euros).
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting prime derivative notation in economic contexts" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Estimating Limits from a Graph">
+    The graph of a continuous function $g(x)$ is plotted on a GDC. A student traces the graph and notices that as $x$ approaches 5 from the left, the $y$-value approaches 8. As $x$ approaches 5 from the right, the $y$-value also approaches 8. However, there is a distinct "hole" plotted exactly at the coordinate $(5, 8)$.
+    
+    **a)** Is $g(5)$ defined?
+    
+    **b)** State the value of $\lim_{x \to 5} g(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Part a:** Because there is a "hole" at exactly $x = 5$ and no other solid point plotted for that $x$-value, the function itself has no output there. 
+       **Answer:** No, $g(5)$ is undefined.
+    2. **Part b:** The limit only cares about what the function is *approaching* as it gets infinitely close to $x = 5$, not what happens at exactly $x = 5$. Since both the left and right sides converge on a $y$-value of 8, the limit exists.
+       **Answer:** $\lim_{x \to 5} g(x) = 8$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting limits and undefined points from graphical descriptions" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Average vs. Instantaneous Rate of Change">
+    The temperature of an oven, $T$, in degrees Celsius, $m$ minutes after it is turned on, is modelled by a function $T(m)$. 
+    
+    A chef calculates that $\frac{T(10) - T(2)}{10 - 2} = 15$. 
+    
+    She later calculates the derivative and finds that $T'(10) = 4$.
+    
+    Explain the difference between the physical meanings of the values **15** and **4** in the context of the oven's temperature.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+    1. **Analyse the first expression:** $\frac{T(10) - T(2)}{10 - 2}$ is the standard gradient formula $m = \frac{y_2 - y_1}{x_2 - x_1}$ for a secant line. This calculates an average.
+       **Interpretation:** The value **15** means that between the 2nd and 10th minute, the oven's temperature increased at an *average rate* of $15^\circ\text{C}$ per minute.
+    2. **Analyse the second expression:** $T'(10)$ is the derivative, which represents instantaneous change.
+       **Interpretation:** The value **4** means that at the exact instant of the 10th minute, the oven's temperature was increasing at a rate of $4^\circ\text{C}$ per minute.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing average rate of change with instantaneous derivative values" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Translating Graphs to Derivatives">
+    A tangent line is drawn on the curve $y = f(x)$ at the point where $x = -2$. The tangent line passes through the coordinates $(-2, 5)$ and $(0, 11)$.
+    
+    Calculate the exact value of $f'(-2)$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+    1. **Understand the connection:** The derivative at a specific point, $f'(-2)$, is exactly equal to the gradient of the tangent line at that point.
+    2. **Calculate the tangent's gradient:** Use the two coordinate points provided for the tangent line: $(-2, 5)$ and $(0, 11)$.
+       $$
+       m = \frac{y_2 - y_1}{x_2 - x_1}
+       $$
+       $$
+       m = \frac{11 - 5}{0 - (-2)}
+       $$
+       $$
+       m = \frac{6}{2} = 3
+       $$
+    3. **State the final answer:** Since the gradient of the tangent is 3, the value of the derivative function at that point is also 3.
+       **Answer:** $f'(-2) = 3$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding derivative values from the gradient of tangent lines" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Rate of Change & Percentage Error">
+    A perfectly spherical balloon is being inflated. The volume $V$, in $\text{cm}^3$, of the balloon is a function of its radius $r$, in cm. 
+    
+    The derivative of the volume function is given as $4\pi r^2$.
+    
+    **a)** State the correct Leibniz notation for this derivative.
+    
+    **b)** Calculate the exact rate of change of the volume when the radius is $5 \text{ cm}$.
+    
+    **c)** A student estimates this instantaneous rate of change to be $300 \text{ cm}^3\text{/cm}$. Calculate the percentage error in the student's estimate. Give your answer to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+    1. **Part a:** The rate of change of Volume ($V$) with respect to radius ($r$).
+       **Answer:** $\frac{dV}{dr}$
+    2. **Part b:** Substitute $r = 5$ into the given derivative formula.
+       $$
+       \frac{dV}{dr} = 4\pi (5)^2 = 4\pi(25)
+       $$
+       **Answer:** $100\pi \text{ cm}^3\text{/cm}$
+    3. **Part c:** Recall the percentage error formula from Topic 1: $\epsilon = \left|\frac{v_A - v_E}{v_E}\right| \times 100\%$, where $v_A$ is the approximate value and $v_E$ is the exact value.
+       $$
+       \epsilon = \left| \frac{300 - 100\pi}{100\pi} \right| \times 100
+       $$
+       $$
+       \epsilon = \left| \frac{300 - 314.159...}{314.159...} \right| \times 100 \approx 4.507...
+       $$
+       **Answer:** The percentage error is $4.51\%$ (to 3 s.f.).
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating rates of change with geometry and percentage error" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Interpreting Secants vs Tangents">
+    A tech startup models its daily profit $P$, in thousands of euros, based on its daily advertising expenditure $x$, also in thousands of euros. This is modelled by the function $P(x)$.
+    
+    It is known that $P(10) = 50$ and $P'(10) = 2$.
+    
+    **a)** Explain the meaning of $P(10) = 50$ in context.
+    
+    **b)** State the Leibniz notation for the derivative $P'(x)$.
+    
+    **c)** Explain the meaning of $P'(10) = 2$ in context.
+    
+    **d)** The startup decides to increase its daily advertising expenditure to $x = 15$. It is known that $P(15) = 58$. Calculate the average rate of change in profit between $x = 10$ and $x = 15$, and state whether this value represents the gradient of a secant or a tangent.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    <Steps>
+    1. **Part a:** Interpret the original function coordinates. The input is advertising, the output is profit.
+       **Answer:** When the startup spends 10,000 euros on advertising, its daily profit is 50,000 euros.
+    2. **Part b:** The function is $P$ with respect to the variable $x$.
+       **Answer:** $\frac{dP}{dx}$
+    3. **Part c:** This is the marginal profit (rate of change) at exactly $x=10$.
+       **Answer:** When exactly 10,000 euros is spent on advertising, the profit is increasing at an instantaneous rate of 2,000 euros for every additional 1,000 euros spent.
+    4. **Part d:** Use the average rate of change formula $m = \frac{y_2 - y_1}{x_2 - x_1}$ with the points $(10, 50)$ and $(15, 58)$.
+       $$
+       m = \frac{58 - 50}{15 - 10} = \frac{8}{5} = 1.6
+       $$
+       Because this is calculated over an interval between two distinct points on the curve, it represents a secant line.
+       **Answer:** The average rate of change is 1.6 (or 1,600 euros per 1,000 euros spent). This is the gradient of a secant.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Contrasting average rates of change with instantaneous derivatives" />

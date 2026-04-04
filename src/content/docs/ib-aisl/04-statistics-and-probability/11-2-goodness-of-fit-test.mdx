@@ -1,0 +1,392 @@
+---
+title: 4.11.2 The Chi-Square Goodness of Fit Test
+description: Learn how to perform the Chi-square goodness of fit test, formulate hypotheses, calculate expected frequencies using theoretical probabilities, and interpret p-values for IB Maths AI SL.
+---
+
+While the test for independence looks at the relationship between *two* variables, the **$\chi^2$ Goodness of Fit (GOF) test** focuses on a *single* categorical variable. It is used to determine whether a set of observed data matches a specific theoretical distribution or claimed model.
+
+For example, you might use a goodness of fit test to check if a six-sided die is fair (a uniform distribution) or if a bag of sweets truly contains the colour ratios advertised by the manufacturer.
+
+<Aside type="note" title="Cross-Curricular Connections">
+The Goodness of Fit test is incredibly useful across various IB subjects:
+* **Biology:** You can test if the observed breeding phenotypes of plants or animals match the theoretical Mendelian genetic ratios (such as 3:1 or 9:3:3:1).
+* **Geography & ESS:** You might test if plant species or populations are uniformly distributed across a specific habitat or geographical region.
+</Aside>
+
+The overall procedure is very similar to the test for independence, but the way we calculate expected frequencies and degrees of freedom differs.
+
+<Steps>
+1. Formulate the null and alternative hypotheses in context.
+2. Determine the expected frequencies using the theoretical probabilities of the model.
+3. Determine the degrees of freedom.
+4. Use a Graphic Display Calculator (GDC) to find the test statistic and p-value.
+5. Compare your results to the significance level to make a concluding statement.
+</Steps>
+
+---
+
+## 1. Formulating Hypotheses ($H_0$ and $H_1$)
+
+The hypotheses for a goodness of fit test are always stated **in words** and must directly reference the context and the specific model being tested.
+
+<Aside type="note" title="The Anatomy of GOF Hypotheses">
+* **The Null Hypothesis ($H_0$):** This is the assumption that the data perfectly follows the proposed model. It states that the data **fits** the specified distribution.
+* **The Alternative Hypothesis ($H_1$):** This states that the data **does not fit** the specified distribution.
+</Aside>
+
+<SteveTip title="Exam Tip: Hypothesis Phrasing">
+Be explicitly clear about the model in your hypotheses. 
+Instead of writing "$H_0$: The data fits the model", write: "$H_0$: The number of absences is uniformly distributed across the days of the week." or "$H_0$: The distribution of car colours matches the manufacturer's claim."
+</SteveTip>
+
+---
+
+## 2. Expected Frequencies & Theoretical Probability
+
+In a GOF test, the observed frequencies ($f_o$) are collected from an experiment or sample. The expected frequencies ($f_e$) are calculated based on what we *would* expect if $H_0$ were perfectly true.
+
+To find the expected frequency for any category, you must multiply the **total sample size ($N$)** by the **theoretical probability ($P$)** of that specific category occurring.
+
+**Expected Frequency Formula:**
+
+$$
+f_e = N \times P(\text{category})
+$$
+
+### Two Common Scenarios at SL
+
+**1. Uniform Distribution (Equal Probability)**
+If the claim is that all outcomes are equally likely (e.g. rolling a fair die, or customers arriving equally on all weekdays), the probability for each category is $\frac{1}{k}$, where $k$ is the number of categories.
+
+$$
+f_e = \frac{\text{Total Sample Size}}{\text{Number of Categories}}
+$$
+
+**2. Given Ratios or Percentages**
+If a manufacturer claims that 20% of their sweets are red, the theoretical probability is $0.20$. You simply multiply the total number of sweets in your sample by $0.20$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 650 300" width="100%" maxWidth="650px" style={{ background: '#ffffff', borderRadius: '12px', border: '1px solid #e2e8f0', overflow: 'hidden', fontFamily: 'sans-serif' }}>
+    <defs>
+      <marker id="arrowGoF" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8" />
+      </marker>
+    </defs>
+
+    <text x="325" y="30" fill="#1e293b" font-size="18" font-weight="bold" text-anchor="middle">Calculating Expected Frequencies (Goodness of Fit)</text>
+
+    {/* Total Sample */}
+    <rect x="225" y="50" width="200" height="50" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6,4" />
+    <text x="325" y="80" fill="#334155" font-size="16" font-weight="bold" text-anchor="middle">Total Sample Size (N)</text>
+
+    {/* Arrows to Categories */}
+    <path d="M 325 100 L 150 140" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrowGoF)" />
+    <path d="M 325 100 L 325 140" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arrowGoF)" />
+    <path d="M 325 100 L 500 140" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrowGoF)" />
+
+    {/* Probabilities */}
+    <rect x="75" y="145" width="150" height="40" rx="8" fill="#e0e7ff" stroke="#a5b4fc" stroke-width="2" />
+    <text x="150" y="170" fill="#3730a3" font-size="14" font-weight="bold" text-anchor="middle">× P(Category 1)</text>
+
+    <rect x="250" y="145" width="150" height="40" rx="8" fill="#dcfce7" stroke="#86efac" stroke-width="2" />
+    <text x="325" y="170" fill="#166534" font-size="14" font-weight="bold" text-anchor="middle">× P(Category 2)</text>
+
+    <rect x="425" y="145" width="150" height="40" rx="8" fill="#ffedd5" stroke="#fdba74" stroke-width="2" />
+    <text x="500" y="170" fill="#9a3412" font-size="14" font-weight="bold" text-anchor="middle">× P(Category 3)</text>
+
+    {/* Arrows to Expected */}
+    <path d="M 150 185 L 150 220" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrowGoF)" />
+    <path d="M 325 185 L 325 220" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" fill="none" marker-end="url(#arrowGoF)" />
+    <path d="M 500 185 L 500 220" stroke="#94a3b8" stroke-width="2" fill="none" marker-end="url(#arrowGoF)" />
+
+    {/* Expected Frequencies */}
+    <rect x="75" y="225" width="150" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+    <text x="150" y="250" fill="#1e293b" font-size="14" font-weight="bold" text-anchor="middle">Expected Freq 1</text>
+
+    <rect x="250" y="225" width="150" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+    <text x="325" y="250" fill="#1e293b" font-size="14" font-weight="bold" text-anchor="middle">Expected Freq 2</text>
+
+    <rect x="425" y="225" width="150" height="40" rx="8" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" />
+    <text x="500" y="250" fill="#1e293b" font-size="14" font-weight="bold" text-anchor="middle">Expected Freq 3</text>
+  </svg>
+</div>
+
+<SteveTip title="Exam Tip: 'Show That' Questions">
+Just like the test for independence, if an examination asks you to "Show that the expected frequency is $X$", you must explicitly write out the multiplication of the total sample size by the theoretical probability (or percentage) to earn your method marks.
+</SteveTip>
+
+<Aside type="caution" title="Syllabus Constraint: The Rule of 5">
+Just as with the test for independence, a $\chi^2$ goodness of fit test is only mathematically valid if **all expected frequencies are strictly greater than 5**. In written examinations, the data will be provided so this condition is met.
+</Aside>
+
+---
+
+## 3. Degrees of Freedom ($df$)
+
+For a goodness of fit test in IB Maths AI SL, the degrees of freedom calculation is straightforward. Because you are testing a single variable against a known theoretical distribution, the formula is:
+
+**Degrees of Freedom (Goodness of Fit):**
+
+$$
+df = k - 1
+$$
+
+*(Where $k$ is the total number of categories/classes).*
+
+---
+
+## 4. The Test Statistic, P-Value, and Technology (TI-Nspire)
+
+Unlike the test for independence (which uses a matrix), the Goodness of Fit test uses **lists** in your GDC. 
+
+### Running the GOF Test on the TI-Nspire
+
+To find the test statistic and p-value correctly, follow these exact steps:
+
+<Steps>
+1. **Open Lists & Spreadsheet:** Start a new Lists & Spreadsheet page.
+2. **Name Your Columns:** Go to the very top row. Name column A `obs` (for observed) and column B `exp` (for expected).
+3. **Enter the Data:** Type your observed frequencies into column A, and your calculated expected frequencies into column B. *(Note: The sum of both columns must be exactly equal).*
+4. **Run the Test:** Go to **Menu** > **Statistics** > **Stat Tests** > **$\chi^2$ GOF Test...**
+5. **Select Your Lists:** In the dialog box, set the Observed List to `obs` and the Expected List to `exp`.
+6. **Enter Degrees of Freedom:** You must manually input the $df$ for this test ($k - 1$).
+7. **Execute:** Press OK. The calculator will output `stat.X` ($\chi^2_{calc}$) and `stat.PVal` (the p-value).
+</Steps>
+
+<Aside type="tip" title="Use of Technology: Data Simulations">
+**Internal Assessment Idea:** If you are investigating a theoretical probability model (like the fairness of dice, coins, or lottery draws), you can use your GDC's random number generator feature to run massive simulations. This allows you to instantly generate thousands of "Observed" frequencies to test against your expected probability model without manually rolling a die 10,000 times!
+</Aside>
+
+---
+
+## 5. Making a Conclusion
+
+You will conclude the exact same way as the test for independence.
+
+* If **p-value < significance level**: Reject $H_0$. (The data does not fit the model).
+* If **$\chi^2_{calc} > \chi^2_{crit}$**: Reject $H_0$. (The data does not fit the model).
+
+---
+
+## 6. IA Enrichment: Yates' Continuity Correction
+
+<Aside type="tip" title="For your Internal Assessment (IA)">
+If you are conducting a Goodness of Fit test with exactly **two categories** (meaning $df = 1$, such as testing a coin for Heads vs Tails or success vs failure), the discrete nature of the data can underestimate the p-value. 
+
+Applying **Yates' Continuity Correction** solves this by subtracting 0.5 from the absolute difference between the observed and expected frequency *before* squaring it. Just like in the test for independence, it is not required for written examinations but adds excellent mathematical rigour to an IA!
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Uniform Distribution & Fair Dice">
+    A casino wants to test if a new six-sided die is fair. The manager rolls the die 120 times and records the following frequencies:
+    
+    | Number Rolled | 1 | 2 | 3 | 4 | 5 | 6 |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Observed Frequency** | 15 | 24 | 18 | 22 | 26 | 15 |
+    
+    A $\chi^2$ goodness of fit test is conducted at the **5%** significance level.
+    
+    **a)** State the null and alternative hypotheses.
+    
+    **b)** Using the theoretical probability of rolling a fair die, show that the expected frequency of rolling a '4' is 20.
+    
+    **c)** State the degrees of freedom for this test.
+    
+    **d)** Using your GDC, find the p-value for this test.
+    
+    **e)** State the conclusion of the test, giving a reason for your answer.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **State hypotheses:** $H_0$: The die is fair (the outcomes are uniformly distributed).
+       $H_1$: The die is not fair (the outcomes are not uniformly distributed).
+    2. **Show expected frequency:** If the die is fair, the probability of rolling a '4' is $\frac{1}{6}$. Total rolls = 120.
+       $$
+       f_e = 120 \times \left( \frac{1}{6} \right) = 20
+       $$
+    3. **State degrees of freedom:** There are 6 categories (the numbers 1 to 6).
+       $$
+       df = 6 - 1 = 5
+       $$
+    4. **Find p-value:** Enter the observed list `{15, 24, 18, 22, 26, 15}` and the expected list `{20, 20, 20, 20, 20, 20}` into the Lists & Spreadsheet app. Run the $\chi^2$ GOF Test with $df = 5$. 
+       p-value = 0.380 (to 3 s.f.)
+    5. **State conclusion:** Compare the p-value to the significance level (**5%** or 0.05). Since 0.380 > 0.05, we **do not reject $H_0$**. There is insufficient evidence to suggest the die is unfair.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Performing goodness of fit tests for uniform distributions and fair dice" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Given Percentages & Company Claims">
+    A clothing retailer claims that the t-shirts they sell have the following popularity distribution regarding colour: 40% Black, 30% White, 20% Blue, and 10% Red.
+    
+    A store manager tracks the next 250 t-shirt sales to test this claim. He observes the following sales:
+    * Black: 90
+    * White: 85
+    * Blue: 55
+    * Red: 20
+    
+    The manager conducts a $\chi^2$ goodness of fit test at the **10%** significance level.
+    
+    **a)** Show that the expected number of Blue t-shirts sold is 50.
+    
+    **b)** Calculate the expected number of Black t-shirts sold.
+    
+    **c)** Determine the calculated $\chi^2$ test statistic and the p-value.
+    
+    **d)** The critical value for this test is 6.251. By comparing your calculated $\chi^2$ statistic to the critical value, state your conclusion in context.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Show expected frequency (Blue):** The claimed probability for Blue is 20% (0.20). Total sales = 250.
+       $$
+       f_e = 250 \times 0.20 = 50
+       $$
+    2. **Calculate expected frequency (Black):** The claimed probability for Black is 40% (0.40).
+       $$
+       f_e = 250 \times 0.40 = 100
+       $$
+    3. **Find test statistic and p-value:** Expected list: Black (100), White ($250 \times 0.3 = 75$), Blue (50), Red ($250 \times 0.1 = 25$).
+       Observed list: `{90, 85, 55, 20}`. Expected list: `{100, 75, 50, 25}`.
+       $df = 4 - 1 = 3$. Run the test on the GDC.
+       $\chi^2_{calc} = 3.83$ (to 3 s.f.)
+       p-value = 0.280 (to 3 s.f.)
+    4. **State conclusion via critical value:** $H_0$ states the sales follow the retailer's claimed colour distribution.
+       Since the calculated test statistic ($3.83$) is less than the critical value ($6.251$), we **do not reject $H_0$**. There is insufficient evidence to reject the retailer's claim regarding the popularity distribution of t-shirt colours.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating expected frequencies from percentages and comparing test statistics to critical values" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Identifying GDC Input Errors">
+    A student is conducting a $\chi^2$ goodness of fit test to check if the distribution of blood types (A, B, AB, O) in a local hospital matches the national average. He successfully calculates his observed and expected lists and inputs them into his GDC.
+    
+    When prompted for the degrees of freedom ($df$) in the test menu, the student looks at his sample size of 200 patients and enters `199` (calculating $n - 1$).
+    
+    **a)** State the correct formula for finding the degrees of freedom in a goodness of fit test.
+    
+    **b)** Calculate the correct degrees of freedom the student should have entered into his GDC.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **State correct formula:** The degrees of freedom for a GOF test is determined by the number of categories, not the sample size. The formula is $df = k - 1$.
+    2. **Calculate correct $df$:** There are 4 blood type categories (A, B, AB, O).
+       $$
+       df = 4 - 1 = 3
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying correct degrees of freedom for goodness of fit tests" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: IA Focus – The Rule of 5 in GOF">
+    A student is doing her Internal Assessment on the frequency of specific letters appearing in an old English manuscript. She selects 5 letters (A, E, Z, Q, X) and counts a total of 100 occurrences across a passage. She wants to test if her observed data fits the known national frequency of letters in the English language.
+    
+    The national frequency dictates that 'Z' accounts for 0.07% (0.0007) of letters.
+    
+    **a)** Show that the expected frequency of the letter 'Z' in her sample is 0.07.
+    
+    **b)** Explain why a $\chi^2$ goodness of fit test is not mathematically appropriate for her dataset as it currently stands.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Show expected frequency:** Total letters = 100. Probability of 'Z' = 0.0007.
+       $$
+       f_e = 100 \times 0.0007 = 0.07
+       $$
+    2. **Explain reliability issue:** For any $\chi^2$ test to be valid, **all expected frequencies must be strictly greater than 5**. Because the expected frequency for 'Z' is 0.07, the test will not yield reliable results. She would need a vastly larger sample size (or to group letters together) to perform a valid test.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying the rule of 5 to goodness of fit tests and evaluating sample sizes" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Combining Arithmetic Sequences and GOF">
+    A breakfast cereal manufacturer claims that the probability of finding a collectible toy from Tier 1, Tier 2, Tier 3, and Tier 4 in their cereal boxes forms an arithmetic sequence, $u_n$, where $n$ is the tier number. 
+    
+    The common difference is given as $d = 0.1$, and the probabilities for all four tiers sum to $1$.
+    
+    **a)** Using the sum of an arithmetic sequence, show that the probability of finding a Tier 1 toy ($u_1$) is $0.1$.
+    
+    **b)** A quality control inspector opens a sample of 300 boxes and records the following observed frequencies:
+    * Tier 1: 25
+    * Tier 2: 55
+    * Tier 3: 85
+    * Tier 4: 135
+    
+    Calculate the expected frequency of finding a Tier 3 toy.
+    
+    **c)** A $\chi^2$ Goodness of Fit test is performed on this sample. Find the degrees of freedom and state the calculated $\chi^2$ test statistic and p-value.
+    
+    **d)** State whether the manufacturer's claim should be rejected at the **5%** significance level.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+    1. **Show $u_1 = 0.1$:** We know the sum of the first 4 terms is 1. Using the arithmetic series formula $S_n = \frac{n}{2}(2u_1 + (n-1)d)$:
+       $$
+       1 = \frac{4}{2}(2u_1 + (4-1)(0.1))
+       $$
+       $$
+       1 = 2(2u_1 + 0.3)
+       $$
+       $$
+       1 = 4u_1 + 0.6 \implies 0.4 = 4u_1 \implies u_1 = 0.1
+       $$
+    2. **Calculate Expected Frequency:** The probability of a Tier 3 toy is $u_3 = 0.1 + 2(0.1) = 0.3$. 
+       Multiply by the sample size (300):
+       $$
+       f_e = 300 \times 0.3 = 90
+       $$
+    3. **Find Statistics:** Expected frequencies are $300 \times \{0.1, 0.2, 0.3, 0.4\} = \{30, 60, 90, 120\}$.
+       Degrees of freedom: $df = 4 - 1 = 3$.
+       Using the GDC with observed list `{25, 55, 85, 135}` and expected list `{30, 60, 90, 120}`:
+       $\chi^2_{calc} \approx 3.40$ (to 3 s.f.)
+       p-value $\approx 0.334$ (to 3 s.f.)
+    4. **State Conclusion:** Compare the p-value (0.334) to the 5% significance level (0.05). Since $0.334 > 0.05$, we **do not reject $H_0$**. There is insufficient evidence to reject the manufacturer's claim that the distribution follows the specified arithmetic sequence.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Integrating arithmetic sequences with Chi-square expected probabilities" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Large Samples and Standard Form">
+    A microbiologist proposes that a particular genetic mutation occurs uniformly across 4 distinct regions of a bacterial chromosome. To verify this, she sequences a massive genomic dataset containing a total of $3.2 \times 10^5$ mutations.
+    
+    **a)** Calculate the expected frequency of mutations occurring in Region 1. Give your answer in standard form ($a \times 10^k$, where $1 \le a < 10$).
+    
+    **b)** The observed frequency for Region 1 is $8.15 \times 10^4$. Calculate the difference between the observed and expected frequency for Region 1, giving your answer as an ordinary integer.
+    
+    **c)** The microbiologist runs a $\chi^2$ Goodness of Fit test using computer software. The test yields a p-value of $0.0021$. Conclude the test at the **1%** significance level.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+    1. **Calculate Expected Frequency in Standard Form:** Since the mutations are claimed to be uniform across 4 regions, the probability for any region is $\frac{1}{4}$ (or $0.25$).
+       $$
+       f_e = \frac{3.2 \times 10^5}{4} = 0.8 \times 10^5
+       $$
+       Adjusting to proper standard form:
+       $$
+       f_e = 8.0 \times 10^4
+       $$
+    2. **Calculate the Integer Difference:** Difference = $(8.15 \times 10^4) - (8.0 \times 10^4)$
+       $$
+       = 0.15 \times 10^4 = 1500
+       $$
+    3. **State Conclusion:** The significance level is 1% ($0.01$). 
+       Since the p-value ($0.0021$) is less than $0.01$, we **reject $H_0$**. There is strong evidence that the genetic mutations are not uniformly distributed across the 4 chromosomal regions.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying standard form notation to expected frequency calculations in large samples" />

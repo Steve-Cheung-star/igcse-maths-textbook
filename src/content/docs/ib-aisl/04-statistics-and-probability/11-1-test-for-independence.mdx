@@ -1,0 +1,380 @@
+---
+title: 4.11.1 The Chi-Square Test for Independence
+description: Learn how to perform the Chi-square test for independence, formulate hypotheses in context, calculate expected frequencies, and interpret p-values for IB Maths AI SL.
+---
+
+Hypothesis testing is a statistical method used to make decisions about data. The **$\chi^2$ (Chi-square) test for independence** is specifically used to determine whether there is a significant association between two *categorical* variables (e.g. gender and favourite subject, or age group and preferred voting party).
+
+When conducting any hypothesis test in IB Maths, you must follow a strict, structured process. Let's break down the general procedure:
+
+<Steps>
+1. Formulate the null and alternative hypotheses in context.
+2. Collect observed frequencies and establish a contingency table.
+3. Calculate the expected frequencies using the product of probabilities and degrees of freedom.
+4. Use a Graphic Display Calculator (GDC) to find the test statistic and p-value.
+5. Compare your results to the significance level to make a concluding statement.
+</Steps>
+
+---
+
+## 1. Formulating Hypotheses ($H_0$ and $H_1$)
+
+Every statistical test begins by stating two opposing hypotheses. For the $\chi^2$ test for independence, these are always stated **in words** and must refer to the **specific context** of the question.
+
+<Aside type="note" title="The Anatomy of Chi-Square Hypotheses">
+* **The Null Hypothesis ($H_0$):** This is the "status quo" or the assumption of no effect. It always states that the two variables are **independent** (not associated).
+* **The Alternative Hypothesis ($H_1$):** This states that the two variables are **not independent** (they are associated or dependent).
+</Aside>
+
+<SteveTip title="Exam Tip: Always Use Context">
+Never just write "$H_0$: The variables are independent." You will lose the mark!
+Instead, write: "$H_0$: A student's favourite subject is independent of their gender."
+</SteveTip>
+
+---
+
+## 2. Expected Frequencies & The Product of Probabilities
+
+Data for this test is organised in a **contingency table** (a two-way table). The IB syllabus states that the maximum size for these tables in your examinations will be **4 by 4** (excluding the "Totals" rows/columns).
+
+### The Probability Connection
+
+The expected frequency ($f_e$) is what we *would* expect to see in each cell if the null hypothesis ($H_0$) were perfectly true. Remember, $H_0$ assumes the two variables are completely **independent**. 
+
+From the laws of probability, if two events $A$ and $B$ are independent, the probability of both occurring is the product of their individual probabilities:
+
+$$
+P(A \cap B) = P(A) \times P(B)
+$$
+
+In the context of our contingency table:
+* The probability of a data point belonging to a specific row is $\frac{\text{Row Total}}{\text{Grand Total}}$
+* The probability of a data point belonging to a specific column is $\frac{\text{Column Total}}{\text{Grand Total}}$
+
+Therefore, the expected number of occurrences (frequency) in a specific intersecting cell is the Grand Total multiplied by both independent probabilities:
+
+$$
+f_e = \text{Grand Total} \times \left( \frac{\text{Row Total}}{\text{Grand Total}} \right) \times \left( \frac{\text{Column Total}}{\text{Grand Total}} \right)
+$$
+
+By cancelling out one "Grand Total" from the numerator and denominator, this simplifies to the standard expected frequency formula:
+
+$$
+f_e = \frac{\text{Row Total} \times \text{Column Total}}{\text{Grand Total}}
+$$
+
+<SteveTip title="Exam Tip: 'Show That' Questions">
+In IB examinations, you will frequently be asked to "Show that the expected frequency is $X$". Because the answer is already given, you **must** show the full substitution of the values. Examiners are specifically checking if you understand that this value originates from multiplying the independent probabilities by the total sample size. Write out the fraction multiplication to guarantee your method marks!
+</SteveTip>
+
+<Aside type="caution" title="Syllabus Constraint: The Rule of 5">
+For a $\chi^2$ test to be mathematically valid, **all expected frequencies must be greater than 5**. If you are doing your Internal Assessment (IA) and an expected value is $\leq 5$, you must be aware of the test's limitations or combine rows/columns to increase the values. In written examinations, the data will always be structured so that $f_e > 5$.
+</Aside>
+
+---
+
+## 3. Degrees of Freedom ($df$)
+
+The degrees of freedom determine the shape of the $\chi^2$ distribution curve. 
+
+**Degrees of Freedom for a Contingency Table:**
+
+$$
+df = (\text{number of rows} - 1) \times (\text{number of columns} - 1)
+$$
+
+*Note: Do not count the "Totals" rows or columns when finding $df$. The syllabus guarantees that $df$ will always be greater than 1.*
+
+---
+
+## 4. The Test Statistic, P-Value, and Technology (TI-Nspire)
+
+Once you have your data, you will use your Graphic Display Calculator (GDC) to run a $\chi^2$ 2-Way Test. 
+
+### Running the Test on the TI-Nspire
+
+To find the test statistic and p-value quickly during an examination, follow these exact steps:
+
+<Steps>
+1. **Create the Matrix:** Open a Calculator page. Press the matrix template button (next to the book icon) and select the custom matrix template. Enter the number of rows and columns corresponding to your observed frequencies **(Do not include the "Totals" rows or columns!)**.
+2. **Enter the Data:** Type your observed data directly into the matrix cells.
+3. **Store the Matrix:** Press the right arrow to step outside the matrix brackets. Press `ctrl` + `var` (which types `STO->`). Type a simple name for your matrix (e.g. `obs`) and press `enter`.
+4. **Run the Test:** Go to **Menu** > **Statistics** > **Stat Tests** > **$\chi^2$ 2-way Test...**
+5. **Select the Matrix:** In the dialog box, select your saved matrix (`obs`) from the dropdown list and press OK.
+</Steps>
+
+Your calculator will output several vital numbers:
+* **`stat.X` ($\chi^2_{calc}$):** The test statistic, measuring how far your observed frequencies deviate from the expected frequencies.
+* **`stat.PVal` (p-value):** The probability of obtaining these results assuming $H_0$ is true.
+* **`stat.df` (degrees of freedom):** The $df$ for your data.
+
+<SteveTip title="GDC Hack: Calling the Expected Matrix">
+While "show that" questions require you to write out the probability multiplication manually, other parts of the examination might just ask you to state the expected matrix. 
+
+After running the $\chi^2$ 2-way test, simply press the **var** key and select `stat.expmatrix`, or directly type `stat.expmatrix` and press `enter`. The GDC will instantly print the fully calculated expected frequency matrix, saving you massive amounts of time!
+</SteveTip>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 300" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0', overflow: 'hidden', fontFamily: 'sans-serif' }}>
+    <line x1="50" y1="230" x2="550" y2="230" stroke="#cbd5e1" strokeWidth="1" />
+    
+    <path d="M 380 230 C 430 240, 480 248, 530 248 L 530 250 L 380 250 Z" fill="#fca5a5" opacity="0.6" />
+    
+    <path d="M 50 250 C 60 80, 100 80, 140 80 C 200 80, 280 210, 380 230 C 430 240, 480 248, 530 248" fill="none" stroke="#3b82f6" strokeWidth="4" strokeLinecap="round" />
+    
+    <line x1="50" y1="250" x2="550" y2="250" stroke="#334155" strokeWidth="3" />
+    <line x1="50" y1="250" x2="50" y2="30" stroke="#334155" strokeWidth="3" />
+    
+    <line x1="380" y1="150" x2="380" y2="250" stroke="#ef4444" strokeWidth="3" strokeDasharray="6" />
+    
+    <text x="380" y="275" fill="#ef4444" fontSize="16" fontWeight="bold" text-anchor="middle">Critical Value</text>
+    <text x="460" y="180" fill="#ef4444" fontSize="16" fontWeight="bold" text-anchor="middle">Rejection</text>
+    <text x="460" y="200" fill="#ef4444" fontSize="16" fontWeight="bold" text-anchor="middle">Region</text>
+    
+    <text x="210" y="140" fill="#3b82f6" fontSize="18" fontWeight="bold">Do Not Reject H₀</text>
+    
+    <text x="280" y="295" fill="#334155" fontSize="18" fontWeight="bold" text-anchor="middle">Chi-Square Statistic (χ²)</text>
+  </svg>
+</div>
+
+---
+
+## 5. Making a Conclusion
+
+You must explicitly state whether you **reject $H_0$** or **do not reject $H_0$**, and then provide a concluding sentence in the context of the question. You can justify your choice using one of two methods:
+
+### Method A: Using the p-value (The easiest method)
+Compare the p-value from your GDC to the significance level ($\alpha$, usually **0.05** for **5%**).
+* If **p-value < $\alpha$**: Reject $H_0$. (There is strong evidence the variables are associated).
+* If **p-value $\geq$ $\alpha$**: Do not reject $H_0$. (Insufficient evidence of an association).
+
+### Method B: Using Critical Values
+Compare your calculated $\chi^2$ statistic ($\chi^2_{calc}$) to a given critical value ($\chi^2_{crit}$) provided in the examination.
+* If **$\chi^2_{calc} > \chi^2_{crit}$**: Reject $H_0$.
+* If **$\chi^2_{calc} \leq \chi^2_{crit}$**: Do not reject $H_0$.
+
+---
+
+## 6. IA Enrichment: Yates' Continuity Correction
+
+<Aside type="tip" title="For your Internal Assessment (IA)">
+While the standard $\chi^2$ test works beautifully for large samples, if you are analysing a **2 by 2 contingency table** with small frequencies in your IA, the discrete nature of the data can underestimate the p-value, making it overly easy to reject $H_0$.
+
+**Yates' Continuity Correction** solves this by subtracting 0.5 from the absolute difference between each observed and expected frequency *before* squaring it. 
+
+* **Is it required for the IB written examination?** No. 
+* **Is it useful for the IA?** Yes! Applying it correctly shows a deep understanding of statistical limitations and rigour when dealing with small datasets.
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: The Classic Full Run-Through & Sampling Bias">
+    A researcher wants to know if there is an association between a person's age group and their preferred type of exercise. She stands outside a local gym on a Monday morning and surveys the first 200 people she sees. The observed frequencies are below:
+    
+    | Age / Exercise | Running | Swimming | Gym |
+    | :--- | :--- | :--- | :--- |
+    | **Under 30** | 30 | 15 | 35 |
+    | **30 to 50** | 20 | 25 | 25 |
+    | **Over 50** | 10 | 30 | 10 |
+    
+    The researcher conducts a $\chi^2$ test for independence at a **5%** significance level. The critical value for this test is 9.488.
+    
+    **a)** Identify the sampling method used and state one reason why her sample might be biased.
+    
+    **b)** State the null hypothesis ($H_0$) and alternative hypothesis ($H_1$).
+    
+    **c)** Calculate the degrees of freedom.
+    
+    **d)** Show that the expected frequency of an 'Under 30' person preferring 'Swimming' is 28. Use the product of independent probabilities to justify your answer.
+    
+    **e)** Using your GDC, find the $\chi^2$ test statistic and the p-value.
+    
+    **f)** State the conclusion of the test, giving a reason using the p-value.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Identify the sampling method:** She used **convenience sampling**. The sample is likely biased because surveying people outside a gym over-represents individuals who prefer 'Gym' workouts and might not accurately represent the general population's exercise habits.
+    2. **State the hypotheses:**
+       $H_0$: Preferred type of exercise is independent of age group.
+       $H_1$: Preferred type of exercise is not independent of age group (they are associated).
+    3. **Calculate degrees of freedom:** Identify the dimensions of the table (excluding totals): 3 rows by 3 columns.
+       $$
+       df = (3 - 1)(3 - 1) = 4
+       $$
+    4. **Show expected frequency using probability:** Find the totals first. Row Total ('Under 30') = 80. Column Total ('Swimming') = 70. Grand Total = 200.
+       To "show that", we use the assumption of independence $P(A \cap B) = P(A) \times P(B)$:
+       $$
+       f_e = 200 \times \left( \frac{80}{200} \right) \times \left( \frac{70}{200} \right)
+       $$
+       $$
+       f_e = \frac{80 \times 70}{200} = 28
+       $$
+    5. **Find test statistic and p-value:** Enter the 3 by 3 matrix of observed frequencies into your GDC. Run the $\chi^2$ 2-way test: 
+       $\chi^2_{calc} = 17.0$ (to 3 s.f.)
+       p-value = 0.00194 (to 3 s.f.)
+    6. **State the conclusion:** Compare the p-value to the significance level (**5%** or 0.05). Since 0.00194 < 0.05, we **reject $H_0$**. There is sufficient evidence at the 5% level to suggest that preferred type of exercise and age group are associated.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Performing Chi-Square tests and deriving expected frequencies from probabilities" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Finding Missing Values & Outliers">
+    A veterinarian clinic surveys 150 clients about their gender and their primary pet type. During data collection, one respondent claimed to own 47 cats. The veterinarian decided this number was a severe anomaly that would skew his analysis and removed it from the dataset before creating the contingency table. Some of the remaining data was lost, leaving the following table:
+    
+    | Gender / Pet | Dog | Cat | Bird |
+    | :--- | :--- | :--- | :--- |
+    | **Male** | 20 | 15 | $x$ |
+    | **Female** | 30 | 45 | 10 |
+    
+    **a)** State the statistical term for the removed data point of 47 cats.
+    
+    **b)** Calculate the value of $x$.
+    
+    **c)** By first determining the independent probabilities of a client being 'Female' and preferring a 'Dog', calculate the expected frequency for this combination.
+    
+    **d)** A $\chi^2$ test is performed, yielding a p-value of 0.082. State, with a reason, whether the null hypothesis should be rejected at the **5%** significance level.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Identify statistical term:** The removed data point is an **outlier**.
+    2. **Calculate $x$:** The sum of all observed values must equal the grand total of 150. Set up the equation:
+       $$
+       20 + 15 + x + 30 + 45 + 10 = 150
+       $$
+       $$
+       120 + x = 150
+       $$
+       $$
+       x = 30
+       $$
+    3. **Calculate expected frequency via probability:** Row Total ('Female') = 85. Column Total ('Dog') = 50. Grand Total = 150.
+       Probability of being Female: $P(\text{Female}) = \frac{85}{150}$
+       Probability of preferring a Dog: $P(\text{Dog}) = \frac{50}{150}$
+       Assuming independence ($H_0$), multiply the probabilities by the Grand Total:
+       $$
+       f_e = 150 \times \left( \frac{85}{150} \right) \times \left( \frac{50}{150} \right) = \frac{85 \times 50}{150} = 28.3 \text{ (to 3 s.f.)}
+       $$
+    4. **State conclusion:** Compare the p-value to the significance level (**5%** or 0.05). Since 0.082 > 0.05, we **do not reject $H_0$**. There is insufficient evidence to suggest gender and pet preference are associated.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating expected frequencies using probability rules and defining outliers" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Differing Significance Levels & Stratified Sampling">
+    A sociologist investigates whether there is an association between a person's diet type (Vegan, Vegetarian, Omnivore) and their blood pressure category (Low, Normal, High). She knows that in her city, 5% of people are Vegan, 15% are Vegetarian, and 80% are Omnivores. She wants a total sample of 400 people and ensures her sample exactly matches these city-wide percentages.
+    
+    **a)** Name the sampling technique the sociologist is using.
+    
+    **b)** Calculate how many Vegans she needs to survey for her sample.
+    
+    **c)** After running the $\chi^2$ test through her GDC, she obtains a p-value of 0.034. State the conclusion of the test at a **10%** significance level. Justify your answer.
+    
+    **d)** State the conclusion of the test at a **1%** significance level. Justify your answer.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **Name the sampling technique:** She is using **stratified sampling**, because she is maintaining proportional representation of sub-groups (strata).
+    2. **Calculate sample portion:** Calculate 5% of 400 people:
+       $$
+       0.05 \times 400 = 20 \text{ Vegans}
+       $$
+    3. **Conclude at 10%:** Compare the p-value at a 10% level ($\alpha = 0.10$). Since 0.034 < 0.10, we **reject $H_0$**. We conclude there is an association between diet and blood pressure.
+    4. **Conclude at 1%:** Compare the p-value at a 1% level ($\alpha = 0.01$). Since 0.034 > 0.01, we **do not reject $H_0$**. At this stricter level, there is insufficient evidence to claim an association.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting p-values at different significance levels and identifying stratified sampling" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Data Types & Critical Values">
+    A market researcher wants to look at the relationship between a person's exact annual income (in USD) and their Preferred Social Media Platform (TikTok, Instagram, X, LinkedIn). 
+    
+    **a)** Explain why the researcher cannot use the exact annual income data to run a $\chi^2$ test for independence, and state what she must do to the data first.
+    
+    **b)** After grouping the income data into 4 distinct brackets, she runs the test. Calculate the degrees of freedom for this new 4 by 4 test.
+    
+    **c)** The calculated $\chi^2$ test statistic is 24.1. The critical value at the **1%** significance level is 21.666. State the conclusion of the test, in context, and give a reason for your answer.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Explain the data issue:** Exact annual income is **continuous data**, but the $\chi^2$ test requires **categorical data**. She must group the incomes into defined categories or "brackets" (e.g. USD 0–30k, USD 30k–60k) to create a contingency table.
+    2. **Calculate degrees of freedom:** Identify the dimensions of the grouped table: 4 rows by 4 columns.
+       $$
+       df = (4 - 1)(4 - 1) = 9
+       $$
+    3. **State conclusion:** $H_0$ would state that Income Bracket and Social Media Platform are independent. Since the test statistic (24.1) is greater than the critical value (21.666), we **reject $H_0$**. There is strong evidence at the 1% level to suggest that preferred social media platform is dependent on income level.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Distinguishing continuous from categorical data and comparing test statistics to critical values" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: GDC Data Entry Error & Impact on Conclusion">
+    A student is investigating whether a person's favourite music genre (Pop, Rock, Hip-Hop) is independent of their age group (Teens, Adults). She collects her data and creates a 3 by 2 contingency table, calculating an additional "Totals" row and column to check her work. 
+    
+    When entering the matrix into her GDC to perform the $\chi^2$ test, she mistakenly highlights and includes the "Totals" row and column, inputting a 4 by 3 matrix instead of the correct 3 by 2 matrix containing only the observed frequencies.
+    
+    **a)** Calculate the correct degrees of freedom for her actual data.
+    
+    **b)** State the degrees of freedom the GDC will incorrectly use based on her matrix entry mistake.
+    
+    **c)** The student's incorrect GDC output gives a p-value of 0.082, while the true p-value for the proper dataset is 0.034. At the **5%** significance level, explain how the student's mistake changes her final conclusion regarding the variables.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+    1. **Calculate correct degrees of freedom:** Identify the dimensions of the correct data table (excluding totals): 3 rows (Music Genres) by 2 columns (Age Groups).
+       $$
+       df = (3 - 1)(2 - 1) = 2 \times 1 = 2
+       $$
+    2. **State incorrect degrees of freedom:** Identify the dimensions of the incorrect matrix entered: 4 rows by 3 columns.
+       $$
+       df = (4 - 1)(3 - 1) = 3 \times 2 = 6
+       $$
+    3. **Explain the impact:** Using the true p-value of 0.034 (< 0.05), she should **reject $H_0$** and conclude there is an association between music genre and age group. Using her incorrect p-value of 0.082 (> 0.05), she will incorrectly **fail to reject $H_0$**. Her data entry error leads her to completely miss the association and state the variables are independent, reversing the true outcome of the study.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying GDC data entry errors and their impact on hypothesis test conclusions" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: IA Focus – Probability & The Rule of 5">
+    A teacher wants to test if passing a difficult maths examination is independent of whether a student is in Year 1 or Year 2. He surveys his small class of 40 students.
+    
+    | Year / Result | Pass | Fail | **Total** |
+    | :--- | :--- | :--- | :--- |
+    | **Year 1** | 13 | 2 | **15** |
+    | **Year 2** | 23 | 2 | **25** |
+    | **Total** | **36** | **4** | **40** |
+    
+    **a)** Using the product of independent probabilities, show that the expected frequency of a Year 1 student failing the examination is 1.5.
+    
+    **b)** Referring to your answer in part a, explain why the $\chi^2$ test for independence might not be mathematically reliable for this specific dataset.
+    
+    **c)** Suggest one way the teacher could modify his study to make the test reliable.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+    1. **Show expected frequency:** Identify the necessary probabilities from the totals.
+       Probability of being in Year 1: $P(\text{Year 1}) = \frac{15}{40}$
+       Probability of failing: $P(\text{Fail}) = \frac{4}{40}$
+       Multiply the independent probabilities by the grand total to show the expected value:
+       $$
+       f_e = 40 \times \left( \frac{15}{40} \right) \times \left( \frac{4}{40} \right) = \frac{15 \times 4}{40} = 1.5
+       $$
+    2. **Explain reliability issue:** For a $\chi^2$ test to be valid, **all expected frequencies must be strictly greater than 5**. Because the expected frequency for Year 1/Fail is 1.5 (which is $\leq 5$), the resulting test statistic and p-value will not be mathematically reliable.
+    3. **Suggest a modification:** The teacher should collect a larger sample size (survey more students) to increase the overall totals, ensuring all expected frequencies push past the threshold of 5.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying the product of probability for expected frequencies and evaluating test validity with the rule of 5" />
