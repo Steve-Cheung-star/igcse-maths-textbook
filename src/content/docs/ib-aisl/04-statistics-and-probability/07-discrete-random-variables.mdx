@@ -1,0 +1,243 @@
+---
+title: 4.7 Discrete Random Variables and Expected Value
+description: Understand discrete random variables, their probability distributions, calculate expected values, and model fair games for IB Maths AI SL.
+---
+
+While our previous studies in probability dealt with isolated events or sequences, we often want to model the numerical outcomes of an entire experiment at once. Whether evaluating the long-term profitability of a casino game or analysing risk in insurance, we use **random variables** to link outcomes to probabilities.
+
+---
+
+## 1. Discrete Random Variables and Distributions
+
+A **random variable** (usually denoted by a capital letter like $X$) is a quantity whose value depends on chance. It is **discrete** if it can only take specific, separate values (often integers), such as the number of heads when flipping three coins, or the winning payout of a lottery ticket.
+
+We use a lowercase letter ($x$) to represent the specific values that $X$ can take. Therefore, $P(X = x)$ reads as "the probability that the random variable $X$ takes the value $x$".
+
+A **probability distribution** completely describes a random variable by listing all its possible values and their corresponding probabilities. The IB syllabus presents these in two main ways:
+
+### Method A: Probability Tables
+This is a simple list of outcomes and probabilities. The defining rule for *any* valid probability distribution is that the sum of all probabilities must equal exactly 1.
+
+| $x$ | $1$ | $2$ | $3$ | $4$ | $5$ |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| $P(X=x)$ | $0.1$ | $0.2$ | $0.15$ | $0.05$ | $0.5$ |
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 250" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Axes */}
+    <line x1="50" y1="200" x2="450" y2="200" stroke="#64748b" stroke-width="2" />
+    <line x1="50" y1="200" x2="50" y2="30" stroke="#64748b" stroke-width="2" />
+    
+    {/* Y-axis Labels */}
+    <text x="40" y="205" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">0</text>
+    <text x="40" y="140" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">0.25</text>
+    <text x="40" y="75" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">0.5</text>
+    
+    {/* Y-axis Gridlines */}
+    <line x1="50" y1="135" x2="450" y2="135" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+    <line x1="50" y1="70" x2="450" y2="70" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+
+    {/* Bars */}
+    <rect x="90" y="174" width="40" height="26" fill="#3b82f6" opacity="0.8" />
+    <text x="110" y="165" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">0.1</text>
+    <text x="110" y="220" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">1</text>
+
+    <rect x="160" y="148" width="40" height="52" fill="#3b82f6" opacity="0.8" />
+    <text x="180" y="139" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">0.2</text>
+    <text x="180" y="220" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">2</text>
+
+    <rect x="230" y="161" width="40" height="39" fill="#3b82f6" opacity="0.8" />
+    <text x="250" y="152" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">0.15</text>
+    <text x="250" y="220" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">3</text>
+
+    <rect x="300" y="187" width="40" height="13" fill="#3b82f6" opacity="0.8" />
+    <text x="320" y="178" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">0.05</text>
+    <text x="320" y="220" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">4</text>
+
+    <rect x="370" y="70" width="40" height="130" fill="#3b82f6" opacity="0.8" />
+    <text x="390" y="61" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">0.5</text>
+    <text x="390" y="220" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">5</text>
+    
+    {/* Axis Titles */}
+    <text x="250" y="245" font-size="14" font-weight="bold" fill="#64748b" text-anchor="middle" font-family="sans-serif">x</text>
+    <text x="20" y="115" font-size="14" font-weight="bold" fill="#64748b" text-anchor="middle" transform="rotate(-90 20 115)" font-family="sans-serif">P(X = x)</text>
+  </svg>
+</div>
+
+### Method B: Probability Functions
+Sometimes the distribution is given as an algebraic rule. You must substitute the allowed values of $x$ into the function to generate the probabilities.
+
+For example, $P(X=x) = \frac{1}{18}(4+x)$ for $x \in \{1,2,3\}$.
+* $P(X=1) = \frac{1}{18}(4+1) = \frac{5}{18}$
+* $P(X=2) = \frac{1}{18}(4+2) = \frac{6}{18}$
+* $P(X=3) = \frac{1}{18}(4+3) = \frac{7}{18}$
+
+*(Notice that $\frac{5}{18} + \frac{6}{18} + \frac{7}{18} = \frac{18}{18} = 1$, confirming it is a valid distribution).*
+
+---
+
+## 2. Expected Value $E(X)$
+
+The **expected value**, denoted as $E(X)$, is the theoretical mean (average) of the random variable. It tells you what you would expect the average outcome to be if you ran the experiment an infinite number of times.
+
+<FormulaBox title="Expected value of a discrete random variable X">
+$$
+E(X) = \sum_{i=1}^k x_i P(X = x_i)
+$$
+</FormulaBox>
+
+To calculate it manually, you multiply each outcome ($x$) by its probability ($P(X=x)$) and add all the results together.
+
+<SteveTip title="Using your TI-Nspire for Expected Value">
+You do not need to calculate $E(X)$ manually if it is a Calculator paper! 
+1. Open a **Lists & Spreadsheet** page.
+2. Label column A as `x` and column B as `prob`.
+3. Enter your outcomes in column A and their probabilities in column B.
+4. Press `Menu > 4: Statistics > 1: Stat Calculations > 1: One-Variable Statistics`.
+5. Set **X1 List** to `x` and **Frequency List** to `prob`.
+6. The value given as **$\bar{x}$** is your Expected Value, $E(X)$.
+</SteveTip>
+
+---
+
+## 3. Applications: Games of Chance and Fairness
+
+A classic application of expected value is analysing games of chance. In mathematics, the definition of a "fair" game is very strict.
+
+<Aside type="note" title="What is a Fair Game?">
+A game is considered **fair** if the expected gain of a player is exactly zero. 
+$$E(X) = 0$$
+where $X$ represents the **financial gain** (Total Prize Winnings $-$ Cost to Play). If $E(X) < 0$, the game favours the organiser (like a casino). If $E(X) > 0$, the game favours the player.
+</Aside>
+
+<Aside type="note" title="Theory of Knowledge (TOK) & Aim 8">
+**Is it fair that casinos should make a profit?** Mathematical "fairness" implies $E(X)=0$, but casinos are businesses with overheads and employees. They rely on an $E(X)$ that is slightly negative for the player (the "house edge") to guarantee long-term profit. What do we mean by a "fair" game in a societal context versus a mathematical one? 
+
+Furthermore, **why has it been argued that theories based on the calculable probabilities found in casinos are pernicious when applied to everyday life?** Casinos operate in closed systems with known, fixed probabilities. Real-world economics and human behaviour are infinitely more complex and unpredictable. Applying rigid, casino-style probability models to financial markets can create a dangerous illusion of certainty, sometimes contributing to severe economic crises.
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding an Unknown Probability">
+    A discrete random variable $X$ has the following probability distribution:
+    
+    | $x$ | $10$ | $20$ | $30$ | $40$ |
+    | :--- | :--- | :--- | :--- | :--- |
+    | $P(X=x)$ | $0.3$ | $k$ | $2k$ | $0.1$ |
+    
+    **a)** Find the value of $k$.
+    
+    **b)** Calculate $P(X \ge 20)$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** The sum of all probabilities in a valid distribution must equal 1.
+    
+    $$
+    0.3 + k + 2k + 0.1 = 1
+    $$
+    
+    $$
+    0.4 + 3k = 1
+    $$
+    
+    $$
+    3k = 0.6
+    $$
+    
+    $$
+    k = 0.2
+    $$
+    
+    **b)** To find $P(X \ge 20)$, add the probabilities for $x = 20$, $30$, and $40$.
+    Substitute $k = 0.2$ back into the table:
+    * $P(X=20) = 0.2$
+    * $P(X=30) = 2(0.2) = 0.4$
+    * $P(X=40) = 0.1$
+    
+    $$
+    P(X \ge 20) = 0.2 + 0.4 + 0.1 = 0.7
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for unknown constants in probability distribution tables" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Expected Value from a Function">
+    A random variable $X$ has a probability distribution given by the function:
+    
+    $$
+    P(X=x) = \frac{x^2}{14} \text{ for } x \in \{1, 2, 3\}
+    $$
+    
+    Calculate the expected value, $E(X)$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    First, generate the probability for each outcome by substituting the values of $x$.
+    * $P(X=1) = \frac{1^2}{14} = \frac{1}{14}$
+    * $P(X=2) = \frac{2^2}{14} = \frac{4}{14}$
+    * $P(X=3) = \frac{3^2}{14} = \frac{9}{14}$
+    
+    Now, apply the expected value formula: $E(X) = \sum x_i P(X=x_i)$.
+    
+    $$
+    E(X) = \left(1 \times \frac{1}{14}\right) + \left(2 \times \frac{4}{14}\right) + \left(3 \times \frac{9}{14}\right)
+    $$
+    
+    $$
+    E(X) = \frac{1}{14} + \frac{8}{14} + \frac{27}{14}
+    $$
+    
+    $$
+    E(X) = \frac{36}{14} = \frac{18}{7} \approx 2.57 \text{ (to 3 s.f.)}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating expected value E(X) from a probability function" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Modelling a Fair Game">
+    A local charity runs a game where players spin a biased wheel. It costs $\$5$ to play.
+    * The probability of winning $\$15$ is $0.2$.
+    * The probability of winning $\$5$ is $0.3$.
+    * The probability of winning nothing ($\$0$) is $0.5$.
+    
+    Let $X$ represent the player's **financial gain** from one game.
+    
+    **a)** Construct a probability distribution table for $X$.
+    
+    **b)** Determine whether the game is mathematically fair.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** We must calculate the *gain* (Prize Winnings - Cost to Play) for each outcome.
+    * Win $\$15$: Gain = $\$15 - \$5 = \$10$
+    * Win $\$5$: Gain = $\$5 - \$5 = \$0$
+    * Win $\$0$: Gain = $\$0 - \$5 = -\$5$
+    
+    | $x$ (Gain) | $10$ | $0$ | $-5$ |
+    | :--- | :--- | :--- | :--- |
+    | $P(X=x)$ | $0.2$ | $0.3$ | $0.5$ |
+    
+    **b)** Calculate the expected value, $E(X)$, of the gain.
+    
+    $$
+    E(X) = (10 \times 0.2) + (0 \times 0.3) + (-5 \times 0.5)
+    $$
+    
+    $$
+    E(X) = 2 + 0 - 2.5
+    $$
+    
+    $$
+    E(X) = -0.5
+    $$
+    
+    Because $E(X) = -0.5$ (which is not equal to 0), **the game is not fair**. On average, a player expects to lose $\$0.50$ per game, meaning the game favours the charity.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Constructing gain distribution tables and testing for fair games where E(X) = 0" />

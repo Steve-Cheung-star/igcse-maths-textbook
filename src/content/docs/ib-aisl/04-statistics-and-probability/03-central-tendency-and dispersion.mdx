@@ -1,0 +1,609 @@
+---
+title: 4.3 Measures of Central Tendency and Dispersion
+description: Learn how to calculate and interpret the mean, median, mode, standard deviation, and variance, including the effects of constant changes on data for IB Maths AI SL.
+---
+
+Once data is organised, we need ways to mathematically summarise it. We generally look for two things: the "typical" or middle value (central tendency) and how spread out the data is (dispersion). 
+
+Understanding both is crucial. For example, knowing the average depth of a river is 1 metre is useful, but knowing the spread is large (meaning there are parts that are 5 metres deep) could save your life if you try to wade across it!
+
+---
+
+## 1. Measures of Central Tendency
+
+Central tendency describes the centre of a data set. The three main measures are:
+
+* **Mean ($\bar{x}$):** The arithmetic average. Found by adding all values and dividing by the total number of values. It uses all data points but is highly affected by outliers.
+* **Median ($Q_2$):** The middle value when data is ordered by size. It is unaffected by extreme outliers.
+* **Mode:** The most frequent value. For grouped continuous data with equal class intervals, we refer to the **modal class** (the interval with the highest frequency).
+
+<FormulaBox title="Mean of a set of data">
+$$
+\bar{x} = \frac{\sum_{i=1}^{k} f_i x_i}{n} \text{, where } n = \sum_{i=1}^{k} f_i
+$$
+</FormulaBox>
+
+### Estimating the Mean from Grouped Data
+
+When data is grouped into intervals (e.g., $10 \le x < 20$), we lose the original individual data points. To estimate the mean, we must assume that all data points in a class are evenly spread out, meaning they average out to the exact middle of the interval.
+
+<Aside type="note" title="Using Mid-Interval Values">
+To estimate the mean of grouped data:
+1. Find the **mid-interval value** for each class by averaging the upper and lower boundaries (e.g., for $10 \le x < 20$, the mid-interval is $15$).
+2. Multiply each mid-interval value by its frequency ($f_i x_i$).
+3. Sum these products and divide by the total frequency ($n$).
+</Aside>
+
+---
+
+## 2. Measures of Dispersion
+
+While central tendency tells us about the middle, dispersion tells us about consistency and spread. We have already looked at the Range and Interquartile Range (IQR). The most important measures of dispersion for continuous data are the Standard Deviation and Variance.
+
+<Aside type="tip" title="Standard Deviation and Variance">
+* **Standard Deviation ($\sigma$ or $s$):** A measure of the average distance of each data point from the mean. A small standard deviation means the data is highly consistent and clustered close to the mean. A large standard deviation means the data is widely spread out.
+* **Variance ($\sigma^2$ or $s^2$):** Simply the square of the standard deviation.
+
+**Note:** The relationship between variance and standard deviation is NOT in your formula booklet, but you must memorise it:
+
+$$
+\text{Variance} = \sigma^2
+$$
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 250" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Common Base Line */}
+    <line x1="50" y1="200" x2="550" y2="200" stroke="#1e293b" stroke-width="2" />
+    <line x1="300" y1="200" x2="300" y2="40" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="300" y="220" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Mean (x̄)</text>
+
+    {/* Low Standard Deviation Curve (Blue) */}
+    <path d="M 150 200 C 250 200, 270 50, 300 50 C 330 50, 350 200, 450 200" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="3" />
+    <text x="300" y="30" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Low Standard Deviation (Consistent)</text>
+
+    {/* High Standard Deviation Curve (Red) */}
+    <path d="M 50 200 C 150 200, 200 120, 300 120 C 400 120, 450 200, 550 200" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="6 6" />
+    <text x="150" y="110" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">High Standard</text>
+    <text x="150" y="130" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Deviation (Spread)</text>
+  </svg>
+</div>
+
+<SteveTip title="GDC: Never Calculate Standard Deviation by Hand!">
+The IB syllabus explicitly states that you should use technology to calculate the standard deviation and variance of a sample. **Do not waste time doing it manually.**
+1. Enter your data into a `Lists & Spreadsheet` page.
+2. Press `Menu > Statistics > Stat Calculations > 1-Variable Statistics`.
+3. Read the mean as $\bar{x}$ and the standard deviation as $\sigma x$ (population). To find variance, simply square that number!
+</SteveTip>
+
+<Aside type="caution" title="Common Misconception">
+Students often forget that variance is not provided directly by the `1-Variable Statistics` menu on the GDC for a dataset. You must identify the standard deviation first ($\sigma x$) and then square it yourself.
+</Aside>
+
+---
+
+## 3. The Effect of Constant Changes on Data
+
+A highly tested concept in Paper 1 is understanding what happens to the mean and standard deviation when you apply a mathematical rule to every single piece of data in a set. 
+
+### Adding or Subtracting a Constant
+If you add $k$ to every data point, the entire distribution simply shifts up or down the number line. 
+* The **mean** changes (it increases or decreases by $k$).
+* The **standard deviation, variance, and IQR** remain exactly the **same**. The data hasn't stretched or squashed; the relative distance between points is perfectly preserved.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 200" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <text x="300" y="30" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Adding a Constant (+20)</text>
+    <line x1="50" y1="150" x2="550" y2="150" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Ticks & Labels */}
+    <g fill="#64748b" font-family="sans-serif" font-size="12" text-anchor="middle">
+      <text x="100" y="170">0</text><line x1="100" y1="145" x2="100" y2="155" stroke="#cbd5e1" />
+      <text x="200" y="170">10</text><line x1="200" y1="145" x2="200" y2="155" stroke="#cbd5e1" />
+      <text x="300" y="170">20</text><line x1="300" y1="145" x2="300" y2="155" stroke="#cbd5e1" />
+      <text x="400" y="170">30</text><line x1="400" y1="145" x2="400" y2="155" stroke="#cbd5e1" />
+      <text x="500" y="170">40</text><line x1="500" y1="145" x2="500" y2="155" stroke="#cbd5e1" />
+    </g>
+
+    {/* Original Distribution */}
+    <path d="M 100 150 C 150 150, 180 50, 200 50 C 220 50, 250 150, 300 150" fill="rgba(100, 116, 139, 0.2)" stroke="#64748b" stroke-width="2" />
+    <line x1="200" y1="150" x2="200" y2="50" stroke="#64748b" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="200" y="40" font-size="12" font-weight="bold" fill="#64748b" text-anchor="middle" font-family="sans-serif">Original (x̄ = 10)</text>
+
+    {/* Shifted Distribution */}
+    <path d="M 300 150 C 350 150, 380 50, 400 50 C 420 50, 450 150, 500 150" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="2" />
+    <line x1="400" y1="150" x2="400" y2="50" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="400" y="40" font-size="12" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Shifted (x̄ = 30)</text>
+
+    {/* Transform Arrow */}
+    <path d="M 220 100 L 380 100" fill="none" stroke="#3b82f6" stroke-width="2" />
+    <polygon points="380,100 370,95 370,105" fill="#3b82f6" />
+    <text x="300" y="90" font-size="12" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Mean shifts, spread stays equal</text>
+  </svg>
+</div>
+
+### Multiplying or Dividing by a Constant
+If you multiply every data point by $k$, the data physically stretches outwards (or compresses if dividing).
+* The **mean** is multiplied by $k$.
+* The **standard deviation** is multiplied by $k$.
+* The **variance** is multiplied by **$k^2$** (because variance is standard deviation squared).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 200" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <text x="300" y="30" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Multiplying by a Constant (×3)</text>
+    <line x1="50" y1="150" x2="550" y2="150" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Ticks & Labels */}
+    <g fill="#64748b" font-family="sans-serif" font-size="12" text-anchor="middle">
+      <text x="50" y="170">0</text><line x1="50" y1="145" x2="50" y2="155" stroke="#cbd5e1" />
+      <text x="130" y="170">10</text><line x1="130" y1="145" x2="130" y2="155" stroke="#cbd5e1" />
+      <text x="210" y="170">20</text><line x1="210" y1="145" x2="210" y2="155" stroke="#cbd5e1" />
+      <text x="290" y="170">30</text><line x1="290" y1="145" x2="290" y2="155" stroke="#cbd5e1" />
+      <text x="370" y="170">40</text><line x1="370" y1="145" x2="370" y2="155" stroke="#cbd5e1" />
+      <text x="450" y="170">50</text><line x1="450" y1="145" x2="450" y2="155" stroke="#cbd5e1" />
+      <text x="530" y="170">60</text><line x1="530" y1="145" x2="530" y2="155" stroke="#cbd5e1" />
+    </g>
+
+    {/* Original Distribution (Tight) */}
+    <path d="M 90 150 C 110 150, 120 50, 130 50 C 140 50, 150 150, 170 150" fill="rgba(100, 116, 139, 0.2)" stroke="#64748b" stroke-width="2" />
+    <line x1="130" y1="150" x2="130" y2="50" stroke="#64748b" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="130" y="40" font-size="12" font-weight="bold" fill="#64748b" text-anchor="middle" font-family="sans-serif">Original (x̄=10)</text>
+
+    {/* Multiplied Distribution (Wide) */}
+    <path d="M 170 150 C 230 150, 260 100, 290 100 C 320 100, 350 150, 410 150" fill="rgba(239, 68, 68, 0.1)" stroke="#ef4444" stroke-width="2" />
+    <line x1="290" y1="150" x2="290" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="290" y="85" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Multiplied ×3 (x̄=30)</text>
+
+    {/* Transform Arrow */}
+    <path d="M 150 70 L 260 110" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <polygon points="260,110 250,105 255,115" fill="#ef4444" />
+    <text x="200" y="75" font-size="12" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Mean scales, spread stretches</text>
+  </svg>
+</div>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Estimating Mean from Grouped Data">
+    A researcher records the time ($t$, in minutes) it takes 40 participants to solve a puzzle. They create the following grouped frequency table.
+    
+    | Time ($t$ mins) | Frequency ($f$) |
+    | :--- | :--- |
+    | $12 \le t < 14$ | 8 |
+    | $14 \le t < 16$ | 15 |
+    | $16 \le t < 18$ | 12 |
+    | $18 \le t < 20$ | 5 |
+
+    **a)** State the modal class.
+    
+    **b)** Explain why the exact mean cannot be calculated from this table.
+    
+    **c)** Estimate the mean time taken to solve the puzzle.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** The modal class is the interval with the highest frequency. This is **$14 \le t < 16$**.
+    
+    **b)** Because the data is grouped, the exact original times of the participants are lost. We can only *estimate* the mean by assuming every time is exactly the mid-interval value.
+    
+    **c)**
+      <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+        <svg viewBox="0 0 500 120" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+          <rect x="50" y="20" width="400" height="30" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="1" />
+          <text x="250" y="40" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Mid-interval: x = (Lower + Upper) / 2</text>
+          <text x="100" y="80" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">12 to 14 → x=13</text>
+          <text x="200" y="80" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">14 to 16 → x=15</text>
+          <text x="300" y="80" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">16 to 18 → x=17</text>
+          <text x="400" y="80" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">18 to 20 → x=19</text>
+        </svg>
+      </div>
+
+      <Steps>
+        1. Find the mid-interval value ($x$) for each class (as shown above).
+        2. Multiply each mid-interval by its frequency ($f_i x_i$):
+           * $8 \times 13 = 104$
+           * $15 \times 15 = 225$
+           * $12 \times 17 = 204$
+           * $5 \times 19 = 95$
+           
+        3. Sum the products and divide by total frequency (40):
+           
+           $$
+           \bar{x} = \frac{104 + 225 + 204 + 95}{40}
+           $$
+           
+           $$
+           \bar{x} = \frac{628}{40} = 15.7 \text{ minutes}
+           $$
+           
+      </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Estimating the mean from grouped frequency tables using mid-interval values" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Working Backwards from the Mean">
+    A dataset of 5 numbers has a mean of 64. Four of the numbers are:
+    $50, 60, 70, 75$
+    
+    Calculate the exact value of the fifth number.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+      1. Use the mean formula to set up an equation. Let the missing score be $x$.
+         
+         $$
+         \bar{x} = \frac{\sum x}{n}
+         $$
+         
+         $$
+         64 = \frac{50 + 60 + 70 + 75 + x}{5}
+         $$
+         
+      2. Multiply by 5 to find the total sum of all marks:
+         
+         $$
+         64 \times 5 = 320
+         $$
+         
+      3. Sum the known marks:
+         
+         $$
+         50 + 60 + 70 + 75 = 255
+         $$
+         
+      4. Subtract the known sum from the total to find the missing score:
+         
+         $$
+         x = 320 - 255 = 65
+         $$
+         
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Working backwards to find a missing data point given the mean" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: The Midnight Strawberry Heist (Adding a Constant)">
+    Mr. Cheung has a severe obsession with strawberries. He meticulously tracks his daily consumption in a spreadsheet and calculates that over the past month, his mean consumption was 24 strawberries per day with a standard deviation of 4.
+    
+    However, his wife points out a glaring error: Mr. Cheung has been sleepwalking to the fridge at exactly 2:00 AM every single night and eating exactly 6 additional strawberries, totally unaware.
+    
+    **a)** State his true mean daily strawberry consumption.
+    
+    **b)** State the true standard deviation of his consumption.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Adding a constant (+6) to every single data point increases the mean by that exact constant. 
+    
+    $$
+    \text{True Mean} = 24 + 6 = 30 \text{ strawberries}
+    $$
+    
+    **b)** Adding a constant leaves the spread (dispersion) of the data completely unchanged. The distance between his low-eating days and high-eating days remains the same.
+    
+    $$
+    \text{True Standard Deviation} = 4 \text{ strawberries}
+    $$
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 500 150" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <line x1="30" y1="100" x2="470" y2="100" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Ticks */}
+        <g fill="#64748b" font-family="sans-serif" font-size="12" text-anchor="middle">
+          <text x="100" y="120">16</text><line x1="100" y1="95" x2="100" y2="105" stroke="#cbd5e1" />
+          <text x="150" y="120">20</text><line x1="150" y1="95" x2="150" y2="105" stroke="#cbd5e1" />
+          <text x="200" y="120">24</text><line x1="200" y1="95" x2="200" y2="105" stroke="#cbd5e1" />
+          <text x="250" y="120">28</text><line x1="250" y1="95" x2="250" y2="105" stroke="#cbd5e1" />
+          <text x="300" y="120">32</text><line x1="300" y1="95" x2="300" y2="105" stroke="#cbd5e1" />
+          <text x="350" y="120">36</text><line x1="350" y1="95" x2="350" y2="105" stroke="#cbd5e1" />
+        </g>
+
+        {/* Original Curve (Mean 24, SD 4) */}
+        <path d="M 100 100 C 150 100, 180 30, 200 30 C 220 30, 250 100, 300 100" fill="rgba(100, 116, 139, 0.2)" stroke="#64748b" stroke-width="2" />
+        <line x1="200" y1="100" x2="200" y2="30" stroke="#64748b" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="200" y="20" font-size="12" font-weight="bold" fill="#64748b" text-anchor="middle" font-family="sans-serif">Awake (x̄ = 24)</text>
+
+        {/* Shifted Curve (Mean 30, SD 4) */}
+        <path d="M 175 100 C 225 100, 255 30, 275 30 C 295 30, 325 100, 375 100" fill="rgba(239, 68, 68, 0.2)" stroke="#ef4444" stroke-width="2" />
+        <line x1="275" y1="100" x2="275" y2="30" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="275" y="20" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">True (x̄ = 30)</text>
+
+        {/* Arrow */}
+        <path d="M 210 60 L 260 60" fill="none" stroke="#ef4444" stroke-width="2" />
+        <polygon points="260,60 255,55 255,65" fill="#ef4444" />
+        <text x="235" y="55" font-size="10" fill="#ef4444" text-anchor="middle" font-family="sans-serif">+6 midnight</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Effects of adding or subtracting a constant on mean and standard deviation" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Multiplication and Unit Conversion">
+    A factory measures the length of produced metal rods in inches. A sample dataset has a mean of $15$ inches and a standard deviation of $4$ inches. 
+    
+    The measurements must be converted to centimetres. To do this, every value is multiplied by $2.54$.
+    
+    **a)** Calculate the new mean in cm.
+    
+    **b)** Calculate the new standard deviation in cm.
+    
+    **c)** Calculate the new variance in $\text{cm}^2$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** Multiplying data by a constant $k$ multiplies the mean by $k$.
+    
+    $$
+    \text{New Mean} = 15 \times 2.54 = 38.1 \text{ cm}
+    $$
+    
+    **b)** Multiplying data by a constant $k$ multiplies the standard deviation by $k$.
+    
+    $$
+    \text{New Standard Deviation} = 4 \times 2.54 = 10.16 \text{ cm}
+    $$
+    
+    **c)**
+      <Steps>
+        1. Variance is standard deviation squared. 
+           
+           $$
+           \text{New Variance} = (\text{New SD})^2 = 10.16^2 = 103.2256
+           $$
+           
+        2. *Alternative method:* Multiply the original variance ($4^2 = 16$) by $k^2$ ($2.54^2 = 6.4516$). 
+           
+           $$
+           16 \times 6.4516 = 103.2256
+           $$
+           
+      </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Effects of multiplying data by a constant on mean, standard deviation, and variance" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Interpreting Dispersion in Context">
+    Two different investment funds are comparing their monthly returns over a 5-year period. They calculate the following statistics:
+    
+    | Investment Fund | Mean Return (\$) | Standard Deviation (\$) |
+    | :--- | :--- | :--- |
+    | Alpha Returns | 5000 | 250 |
+    | Beta Growth | 5000 | 1850 |
+
+    Both funds have the exact same mean monthly return. 
+    Explain, with reference to the standard deviation, which fund represents a safer, lower-risk financial investment.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **Alpha Returns** is the safer investment. 
+    
+    While both funds average the same return, Alpha Returns has a much lower standard deviation (\$250 compared to \$1850). This means its monthly returns are highly **consistent** and cluster tightly around the mean. Beta Growth has highly volatile returns, making it a much riskier investment.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 600 220" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <line x1="50" y1="180" x2="550" y2="180" stroke="#1e293b" stroke-width="2" />
+        <line x1="300" y1="180" x2="300" y2="30" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="300" y="200" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Mean = $5000</text>
+
+        {/* Alpha Returns (Consistent) */}
+        <path d="M 200 180 C 270 180, 280 40, 300 40 C 320 40, 330 180, 400 180" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="3" />
+        <text x="380" y="70" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="start" font-family="sans-serif">Alpha Returns (Safe)</text>
+        <text x="380" y="85" font-size="12" fill="#3b82f6" text-anchor="start" font-family="sans-serif">Low standard deviation</text>
+
+        {/* Beta Growth (Volatile) */}
+        <path d="M 60 180 C 180 180, 220 130, 300 130 C 380 130, 420 180, 540 180" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="6 6" />
+        <text x="180" y="110" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="end" font-family="sans-serif">Beta Growth (Risky)</text>
+        <text x="180" y="125" font-size="12" fill="#ef4444" text-anchor="end" font-family="sans-serif">High standard deviation</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting the real-world meaning of standard deviation as a measure of consistency or risk" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Finding a Missing Frequency">
+    A dataset has the following frequency distribution:
+    
+    | Value ($x$) | 2 | 4 | 6 | 8 |
+    | :--- | :--- | :--- | :--- | :--- |
+    | Frequency ($f$) | 3 | 5 | $k$ | 2 |
+
+    Given that the mean of the dataset is 5, find the value of $k$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+      1. Write an expression for the total frequency ($n$):
+         
+         $$
+         n = 3 + 5 + k + 2 = 10 + k
+         $$
+         
+      2. Write an expression for the sum of all values ($\sum f x$):
+         
+         $$
+         \sum f x = (2 \times 3) + (4 \times 5) + (6 \times k) + (8 \times 2)
+         $$
+         
+         $$
+         \sum f x = 6 + 20 + 6k + 16 = 42 + 6k
+         $$
+         
+      3. Substitute into the mean formula and solve for $k$:
+         
+         $$
+         5 = \frac{42 + 6k}{10 + k}
+         $$
+         
+         $$
+         5(10 + k) = 42 + 6k
+         $$
+         
+         $$
+         50 + 5k = 42 + 6k
+         $$
+         
+         $$
+         8 = k
+         $$
+         
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding a missing frequency given the mean of grouped or discrete data" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: GDC use for Standard Deviation">
+    Miss Fedoris surveys 10 students on how many hours they spent studying for their final exams. The raw data is:
+    $5, 7, 8, 8, 9, 12, 14, 14, 15, 20$
+    
+    **a)** Using your GDC, find the mean number of hours studied.
+    
+    **b)** Using your GDC, find the standard deviation.
+    
+    **c)** Calculate the variance of the study hours.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** Enter the list into your GDC (`Lists & Spreadsheet`), name the column `hours`, and run `1-Variable Statistics`.
+    The mean ($\bar{x}$) is **$11.2$ hours**.
+    
+    **b)** From the GDC output, look for $\sigma x$. 
+    The standard deviation is **$4.44$ hours** (to 3 s.f.).
+    
+    **c)**
+      <Steps>
+        1. The variance is the square of the standard deviation. Use the unrounded standard deviation value from your GDC to maintain accuracy:
+           
+           $$
+           \text{Variance} = (4.44522...)^2 = 19.76
+           $$
+           
+        2. The variance is **$19.8$** (to 3 s.f.).
+      </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using GDC to find standard deviation and calculating variance" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Discrete Data and Variance">
+    Jake has a serious tea habit. Over 30 days, he tracks how many cups of tea he drinks per day.
+    
+    | Cups of Tea ($c$) | Frequency ($f$) |
+    | :--- | :--- |
+    | 1 | 2 |
+    | 2 | 5 |
+    | 3 | 12 |
+    | 4 | 8 |
+    | 5 | 3 |
+
+    **a)** State the mode.
+    
+    **b)** Calculate the mean number of cups per day.
+    
+    **c)** Jake suggests that if he strictly commits to drinking exactly 2 fewer cups of tea every single day next month, his variance will drop significantly. State whether he is mathematically correct, giving a reason.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)** The mode is the value with the highest frequency. The highest frequency is 12, which corresponds to **3 cups**.
+    
+    **b)**
+      <Steps>
+        1. Calculate the total sum of cups:
+           
+           $$
+           (1 \times 2) + (2 \times 5) + (3 \times 12) + (4 \times 8) + (5 \times 3)
+           $$
+           
+           $$
+           2 + 10 + 36 + 32 + 15 = 95
+           $$
+           
+        2. Divide by the total frequency (30 days):
+           
+           $$
+           \bar{x} = \frac{95}{30} = 3.17 \text{ cups (to 3 s.f.)}
+           $$
+           
+      </Steps>
+      
+    **c)** Jake is **incorrect**. 
+    Subtracting a constant (2) from every data point will change the mean, but it will **not change the variance or standard deviation**. The spread of his tea consumption relative to his new mean will remain completely identical.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating statistics from discrete frequency tables and understanding variance constants" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Linear Transformations ($y = ax + b$)">
+    A set of temperature readings in Celsius ($C$) has a mean of $20^\circ\text{C}$ and a standard deviation of $3^\circ\text{C}$.
+    The temperatures are converted to Fahrenheit ($F$) using the formula:
+    
+    $$
+    F = 1.8C + 32
+    $$
+    
+    **a)** Calculate the mean temperature in Fahrenheit.
+    
+    **b)** Calculate the standard deviation of the temperatures in Fahrenheit.
+    
+    **c)** Calculate the variance of the temperatures in Fahrenheit.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)** The mean is affected by both multiplication and addition.
+    
+    $$
+    \text{Mean}_F = 1.8(20) + 32 = 36 + 32 = 68^\circ\text{F}
+    $$
+    
+    **b)** The standard deviation is affected by multiplication, but **not** by addition.
+    
+    $$
+    \text{SD}_F = 1.8(3) = 5.4^\circ\text{F}
+    $$
+    
+    **c)** The variance is the square of the new standard deviation.
+    
+    $$
+    \text{Variance}_F = (5.4)^2 = 29.16
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying linear transformations to mean and standard deviation" />
+
+<Tabs>
+  <TabItem label="📝 Question 10: Conceptual Understanding of Outliers">
+    Selina is analysing a dataset of 15 integers. It has the following summary statistics:
+    * Mean = 40
+    * Median = 38
+    * Interquartile Range (IQR) = 12
+    * Standard Deviation = 5
+    
+    A new data point of **100** is accidentally added to the dataset. 
+    State whether each of the following statistics will *increase significantly*, *decrease significantly*, or *remain largely resistant*, giving a brief reason.
+    
+    **a)** The Mean
+
+    **b)** The Median
+    
+    **c)** The Standard Deviation
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    **a) The Mean:** Will **increase significantly**. The mean uses every single value in its calculation and is pulled heavily towards extreme outliers.
+    
+    **b) The Median:** Will **remain largely resistant** (it may shift slightly depending on the exact middle values, but it will not jump drastically). The median is only concerned with position, not the magnitude of extreme values.
+    
+    **c) The Standard Deviation:** Will **increase significantly**. Standard deviation measures distance from the mean; an extreme outlier of 100 introduces a massive deviation, greatly inflating the overall spread.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Understanding how extreme outliers affect different statistical measures" />

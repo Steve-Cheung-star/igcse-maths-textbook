@@ -1,0 +1,598 @@
+---
+title: 4.6 Combined Events and Diagrams
+description: Master probability rules including combined events, conditional probability, and independence, and visualise them using Venn diagrams and tree diagrams for IB Maths AI SL.
+---
+
+Probability is the mathematical language of uncertainty. Whether you are predicting the weather, analysing risk in finance, or modelling the outcomes of a medical trial, understanding how different events interact is essential. In this chapter, we will formalise the rules of probability and explore powerful visual tools to solve complex problems without getting lost in abstract algebra.
+
+---
+
+## 1. Visualising Probability
+
+Before relying entirely on formulae, it is often much easier to solve probability problems using visual representations of the sample space (the set of all possible outcomes). The IB strongly encourages solving problems with the aid of diagrams.
+
+<Aside type="note" title="The Hierarchy of Probability Diagrams">
+* **Venn Diagrams:** Ideal for showing overlapping events (combined events, intersections, and mutually exclusive events) and calculating conditional probability.
+* **Tree Diagrams:** The best tool for sequential events, especially when dealing with probabilities "with and without replacement".
+* **Sample Space Diagrams & Tables:** Useful for displaying all equally likely combinations of two simple events (e.g., rolling two dice or flipping a coin and spinning a spinner).
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 260" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <rect x="50" y="30" width="500" height="200" fill="#ffffff" stroke="#64748b" stroke-width="2" />
+    <text x="65" y="55" font-size="16" font-weight="bold" fill="#1e293b" font-family="sans-serif">U</text>
+
+    <circle cx="250" cy="125" r="80" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="2" />
+    <text x="190" y="100" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Event A</text>
+
+    <circle cx="350" cy="125" r="80" fill="rgba(239, 68, 68, 0.2)" stroke="#ef4444" stroke-width="2" />
+    <text x="410" y="100" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Event B</text>
+
+    <text x="300" y="130" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">A ∩ B</text>
+    
+    <text x="300" y="220" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">The overlapping region represents both A and B occurring together.</text>
+  </svg>
+</div>
+
+---
+
+## 2. Combined Events and the Addition Rule
+
+When we want to find the probability of Event A **or** Event B occurring, we are looking at **combined events** (the union, denoted as $A \cup B$).
+
+<Aside type="caution" title="The Non-exclusivity of 'Or'">
+In everyday language, "or" sometimes means "one or the other, but not both" (e.g., "Would you like tea or coffee?"). In mathematics, "or" is **inclusive**. $P(A \cup B)$ means Event A occurs, Event B occurs, **or both occur**. 
+</Aside>
+
+If we simply add the probability of A to the probability of B, we accidentally count the overlapping intersection ($A \cap B$) twice. Therefore, we must subtract the intersection once.
+
+<FormulaBox title="Combined events">
+$$
+P(A \cup B) = P(A) + P(B) - P(A \cap B)
+$$
+</FormulaBox>
+
+---
+
+## 3. Mutually Exclusive Events
+
+If two events cannot possibly happen at the same time, they are called **mutually exclusive**. For example, rolling a standard die and getting a '2' and a '5' on the same roll is impossible. 
+
+Because they cannot happen simultaneously, their intersection is zero ($P(A \cap B) = 0$). This simplifies the combined events formula.
+
+<FormulaBox title="Mutually exclusive events">
+$$
+P(A \cup B) = P(A) + P(B)
+$$
+</FormulaBox>
+
+---
+
+## 4. Conditional Probability & Restricted Domains
+
+Often, the probability of an event changes if you know that another event has already happened. This is called **conditional probability**. The notation $P(A|B)$ is read as "the probability of A, given that B has occurred".
+
+<Aside type="tip" title="The Restricted Sample Space">
+When calculating $P(A|B)$, you are essentially ignoring the entire universe $U$ and **restricting your sample space solely to Event B**. The "new total" is $P(B)$, and the "successful outcomes" are the parts of A that live entirely within B (which is $A \cap B$).
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 270" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <rect x="50" y="30" width="500" height="210" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
+    <text x="65" y="55" font-size="16" font-weight="bold" fill="#94a3b8" font-family="sans-serif">U (Ignored)</text>
+
+    <circle cx="250" cy="125" r="80" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="2" />
+    <text x="190" y="100" font-size="16" font-weight="bold" fill="#94a3b8" text-anchor="middle" font-family="sans-serif">Not B</text>
+
+    <circle cx="350" cy="125" r="80" fill="#ffffff" stroke="#ef4444" stroke-width="3" />
+    
+    <path d="M 300 62.5 A 80 80 0 0 0 300 187.5 A 80 80 0 0 0 300 62.5" fill="rgba(59, 130, 246, 0.4)" />
+    
+    <text x="410" y="100" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">New Total (B)</text>
+    <text x="315" y="130" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">A ∩ B</text>
+    
+    <text x="300" y="230" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">P(A|B) = Target Area (A ∩ B) ÷ New Total Area (B)</text>
+  </svg>
+</div>
+
+<FormulaBox title="Conditional probability">
+$$
+P(A|B) = \frac{P(A \cap B)}{P(B)}
+$$
+</FormulaBox>
+
+<SteveTip title="Rearranging the Formula">
+The formula booklet provides the standard conditional probability formula above, but it can be extremely useful to rearrange it using algebraic multiplication to find intersections:
+
+$$
+P(A \cap B) = P(B) \times P(A|B)
+$$
+
+This rearranged form is essentially the logic you use when moving along the branches of a tree diagram!
+</SteveTip>
+
+---
+
+## 5. Independent Events
+
+Two events are **independent** if the occurrence of one has zero effect on the probability of the other occurring. For example, flipping a coin and rolling a die are independent events. Getting a "Heads" does not change the probability of rolling a "6".
+
+If events A and B are independent, then $P(A|B) = P(A)$. Substituting this into our rearranged conditional probability formula yields the test for independence:
+
+<FormulaBox title="Independent events">
+$$
+P(A \cap B) = P(A) \times P(B)
+$$
+</FormulaBox>
+
+### With and Without Replacement
+
+When drawing multiple items (like cards from a deck or marbles from a bag), you must pay close attention to whether the items are replaced. This fundamentally changes the denominators in your probabilities.
+
+* **With Replacement:** The sample space resets. Events are **independent**. The denominator stays the same.
+* **Without Replacement:** The sample space shrinks for each subsequent draw. Events are **dependent**, and you must adjust your fractions accordingly.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 320" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Left Side: With Replacement */}
+    <text x="150" y="30" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">WITH Replacement</text>
+    <text x="150" y="50" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">Denominator stays constant</text>
+    
+    {/* Transparent/Dimmed Tree Elements (With Replacement) */}
+    <g opacity="0.15">
+      <line x1="30" y1="170" x2="100" y2="230" stroke="#64748b" stroke-width="2" />
+      <text x="110" y="235" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">B</text>
+      <text x="60" y="220" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">3/8</text>
+      
+      <line x1="130" y1="110" x2="200" y2="150" stroke="#64748b" stroke-width="2" />
+      <text x="210" y="155" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">B</text>
+      <text x="165" y="145" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">3/8</text>
+
+      <line x1="130" y1="230" x2="200" y2="190" stroke="#64748b" stroke-width="2" />
+      <text x="210" y="195" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">R</text>
+      <text x="165" y="200" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">5/8</text>
+
+      <line x1="130" y1="230" x2="200" y2="270" stroke="#64748b" stroke-width="2" />
+      <text x="210" y="275" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">B</text>
+      <text x="165" y="265" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">3/8</text>
+    </g>
+
+    {/* Highlighted Tree Elements (With Replacement) */}
+    <line x1="30" y1="170" x2="100" y2="110" stroke="#64748b" stroke-width="2" />
+    <text x="110" y="115" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">R</text>
+    <text x="60" y="130" font-size="14" fill="#1e293b" font-family="sans-serif" text-anchor="middle">5/8</text>
+
+    <line x1="130" y1="110" x2="200" y2="70" stroke="#64748b" stroke-width="2" />
+    <text x="210" y="75" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">R</text>
+    <text x="165" y="80" font-size="14" fill="#1e293b" font-family="sans-serif" text-anchor="middle">5/8</text>
+    
+    {/* Highlight circle and text positioned bottom right */}
+    <circle cx="165" cy="75" r="18" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 4" />
+    <path d="M 178 88 L 190 98" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="2 2" />
+    <text x="195" y="105" font-size="12" font-weight="bold" fill="#3b82f6" text-anchor="start" font-family="sans-serif">Stays 8</text>
+
+    {/* Center Divider */}
+    <line x1="300" y1="20" x2="300" y2="300" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="6 6" />
+
+    {/* Right Side: Without Replacement */}
+    <text x="450" y="30" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">WITHOUT Replacement</text>
+    <text x="450" y="50" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">Numerator and Denominator drop</text>
+    
+    {/* Transparent/Dimmed Tree Elements (Without Replacement) */}
+    <g opacity="0.15">
+      <line x1="330" y1="170" x2="400" y2="230" stroke="#64748b" stroke-width="2" />
+      <text x="410" y="235" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">B</text>
+      <text x="360" y="220" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">3/8</text>
+      
+      <line x1="430" y1="110" x2="500" y2="150" stroke="#64748b" stroke-width="2" />
+      <text x="510" y="155" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">B</text>
+      <text x="465" y="145" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">3/7</text>
+
+      <line x1="430" y1="230" x2="500" y2="190" stroke="#64748b" stroke-width="2" />
+      <text x="510" y="195" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">R</text>
+      <text x="465" y="200" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">5/7</text>
+
+      <line x1="430" y1="230" x2="500" y2="270" stroke="#64748b" stroke-width="2" />
+      <text x="510" y="275" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">B</text>
+      <text x="465" y="265" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">2/7</text>
+    </g>
+
+    {/* Highlighted Tree Elements (Without Replacement) */}
+    <line x1="330" y1="170" x2="400" y2="110" stroke="#64748b" stroke-width="2" />
+    <text x="410" y="115" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">R</text>
+    <text x="360" y="130" font-size="14" fill="#1e293b" font-family="sans-serif" text-anchor="middle">5/8</text>
+
+    <line x1="430" y1="110" x2="500" y2="70" stroke="#64748b" stroke-width="2" />
+    <text x="510" y="75" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">R</text>
+    <text x="465" y="80" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif" text-anchor="middle">4/7</text>
+
+    {/* Highlight circle and text positioned bottom right */}
+    <circle cx="465" cy="75" r="18" fill="rgba(239, 68, 68, 0.1)" stroke="#ef4444" stroke-width="2" />
+    <path d="M 478 88 L 490 98" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="2 2" />
+    <text x="495" y="105" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="start" font-family="sans-serif">Drops to 7</text>
+  </svg>
+</div>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Combined Events Formula">
+    In a group of 50 students, the probability that a student studies History ($H$) is $0.6$, the probability they study Geography ($G$) is $0.5$, and the probability they study both is $0.3$. 
+    
+    Calculate the probability that a randomly chosen student studies History or Geography.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    We need to find the probability of the union, $P(H \cup G)$.
+    Using the formula for combined events:
+    
+    $$
+    P(H \cup G) = P(H) + P(G) - P(H \cap G)
+    $$
+    
+    Substitute the given values:
+    
+    $$
+    P(H \cup G) = 0.6 + 0.5 - 0.3
+    $$
+    
+    $$
+    P(H \cup G) = 0.8
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating probabilities using the combined events addition rule" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Testing for Independence">
+    Events $A$ and $B$ are such that $P(A) = 0.4$, $P(B) = 0.25$, and $P(A \cup B) = 0.55$.
+    
+    **a)** Find $P(A \cap B)$.
+    
+    **b)** Determine, with mathematical reasoning, whether events $A$ and $B$ are independent.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** Rearrange the combined events formula to find the intersection.
+    
+    $$
+    P(A \cup B) = P(A) + P(B) - P(A \cap B)
+    $$
+    
+    $$
+    0.55 = 0.4 + 0.25 - P(A \cap B)
+    $$
+    
+    $$
+    0.55 = 0.65 - P(A \cap B)
+    $$
+    
+    $$
+    P(A \cap B) = 0.1
+    $$
+    
+    **b)** Use the independent events rule to test for independence. If independent, $P(A \cap B)$ must equal $P(A) \times P(B)$.
+    
+    $$
+    P(A) \times P(B) = 0.4 \times 0.25 = 0.1
+    $$
+    
+    Since $P(A \cap B) = P(A) \times P(B)$ ($0.1 = 0.1$), we conclude that events $A$ and $B$ **are independent**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the addition rule to find intersections and testing for independent events" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Venn Diagrams and Linear Equations">
+    In a survey of 100 tourists in London, 65 visited the British Museum ($M$) and 40 visited the Tower of London ($T$). 12 tourists visited neither. Let $x$ be the number of tourists who visited both.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 200" width="100%" maxWidth="400px" style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
+        <rect x="10" y="10" width="380" height="180" fill="none" stroke="#64748b" stroke-width="2" />
+        <circle cx="160" cy="100" r="60" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="2" />
+        <circle cx="240" cy="100" r="60" fill="rgba(239, 68, 68, 0.1)" stroke="#ef4444" stroke-width="2" />
+        
+        <text x="125" y="105" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">65 - x</text>
+        <text x="200" y="105" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">x</text>
+        <text x="275" y="105" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">40 - x</text>
+        <text x="35" y="180" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">12</text>
+        
+        <text x="120" y="30" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">M</text>
+        <text x="280" y="30" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">T</text>
+      </svg>
+    </div>
+    
+    **a)** Form an equation in terms of $x$ and solve it to find the number of tourists who visited both.
+    
+    **b)** Find $P(M | T)$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Set up the equation for the universal set. The sum of all regions must equal 100.
+    
+    $$
+    (65 - x) + x + (40 - x) + 12 = 100
+    $$
+    
+    Simplify the equation:
+    
+    $$
+    117 - x = 100
+    $$
+    
+    $$
+    x = 17
+    $$
+    
+    <SteveTip title="Use nSolve on your GDC!">
+    For IB Exams, once you write down the unsimplified equation $(65 - x) + x + (40 - x) + 12 = 100$, you earn the method mark. You can then immediately type `nSolve(65-x+x+40-x+12=100, x)` into your TI-Nspire to get the answer without manual algebra errors.
+    </SteveTip>
+
+    **b)** Calculate the conditional probability $P(M | T)$. 
+    Our restricted domain is all tourists who visited the Tower of London (40).
+    The intersection $M \cap T$ is $x = 17$.
+    
+    $$
+    P(M | T) = \frac{17}{40} = 0.425
+    $$
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 400 200" width="100%" maxWidth="400px" style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
+        <rect x="10" y="10" width="380" height="180" fill="none" stroke="#64748b" stroke-width="2" />
+        <circle cx="160" cy="100" r="60" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <circle cx="240" cy="100" r="60" fill="none" stroke="#ef4444" stroke-width="2" />
+        
+        <text x="125" y="105" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">48</text>
+        <text x="200" y="105" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">17</text>
+        <text x="275" y="105" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">23</text>
+        <text x="35" y="180" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">12</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for intersections in Venn diagrams using linear equations" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Tree Diagrams Without Replacement">
+    A bag contains 5 red marbles and 3 blue marbles. Two marbles are drawn from the bag consecutively *without replacement*.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 450 220" width="100%" maxWidth="450px" style={{ background: '#ffffff' }}>
+        {/* First Draw */}
+        <line x1="50" y1="110" x2="120" y2="50" stroke="#64748b" stroke-width="2" />
+        <line x1="50" y1="110" x2="120" y2="170" stroke="#64748b" stroke-width="2" />
+        <text x="130" y="55" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">Red</text>
+        <text x="130" y="175" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">Blue</text>
+        <text x="80" y="70" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">5/8</text>
+        <text x="80" y="160" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">3/8</text>
+        
+        {/* Second Draw from Red */}
+        <line x1="165" y1="50" x2="235" y2="20" stroke="#64748b" stroke-width="2" />
+        <line x1="165" y1="50" x2="235" y2="80" stroke="#64748b" stroke-width="2" />
+        <text x="245" y="25" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">Red</text>
+        <text x="245" y="85" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">Blue</text>
+        <text x="195" y="25" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">4/7</text>
+        <text x="195" y="85" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">3/7</text>
+        
+        {/* Second Draw from Blue */}
+        <line x1="165" y1="170" x2="235" y2="140" stroke="#64748b" stroke-width="2" />
+        <line x1="165" y1="170" x2="235" y2="200" stroke="#64748b" stroke-width="2" />
+        <text x="245" y="145" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">Red</text>
+        <text x="245" y="205" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">Blue</text>
+        <text x="195" y="145" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">5/7</text>
+        <text x="195" y="205" font-size="12" fill="#1e293b" font-family="sans-serif" text-anchor="middle">2/7</text>
+      </svg>
+    </div>
+    
+    **a)** Find the probability that both marbles are the same colour.
+    
+    **b)** Given that both marbles are the same colour, find the probability that they are both red.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** Following the paths for dependent probabilities along the tree branches:
+    * $P(\text{Red then Red}) = \frac{5}{8} \times \frac{4}{7} = \frac{20}{56}$
+    * $P(\text{Blue then Blue}) = \frac{3}{8} \times \frac{2}{7} = \frac{6}{56}$
+    
+    The probability of the same colour is the sum of these mutually exclusive paths:
+    
+    $$
+    P(\text{Same}) = \frac{20}{56} + \frac{6}{56} = \frac{26}{56} = \frac{13}{28}
+    $$
+    
+    **b)** This is a conditional probability problem: $P(\text{Both Red} | \text{Same Colour})$.
+    The restricted domain is $P(\text{Same}) = \frac{26}{56}$.
+    The successful outcome is $P(\text{Both Red}) = \frac{20}{56}$.
+    
+    $$
+    P(\text{Both Red} | \text{Same}) = \frac{\frac{20}{56}}{\frac{26}{56}}
+    $$
+    
+    $$
+    P(\text{Both Red} | \text{Same}) = \frac{20}{26} = \frac{10}{13} \approx 0.769
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating conditional probability from tree diagrams without replacement" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Mutually Exclusive vs Independent">
+    For two events $A$ and $B$, $P(A) = 0.35$, $P(B) = k$, and $P(A \cup B) = 0.61$.
+    
+    **a)** If $A$ and $B$ are mutually exclusive, find the value of $k$.
+    
+    **b)** If $A$ and $B$ are independent, write down an equation in terms of $k$ and hence find its value.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** If mutually exclusive, $P(A \cap B) = 0$.
+    
+    $$
+    P(A \cup B) = P(A) + P(B)
+    $$
+    
+    $$
+    0.61 = 0.35 + k
+    $$
+    
+    $$
+    k = 0.26
+    $$
+    
+    **b)** If independent, $P(A \cap B) = P(A) \times P(B) = 0.35k$.
+    Substitute this into the combined events formula:
+    
+    $$
+    P(A \cup B) = P(A) + P(B) - P(A \cap B)
+    $$
+    
+    $$
+    0.61 = 0.35 + k - 0.35k
+    $$
+    
+    Now, simplify and solve for $k$ (or use `nSolve(0.61 = 0.35 + k - 0.35k, k)`):
+    
+    $$
+    0.26 = 0.65k
+    $$
+    
+    $$
+    k = \frac{0.26}{0.65} = 0.4
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for unknown probabilities using rules for mutually exclusive and independent events" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Missing Variables in Tables">
+    A local sports club recorded the preferred training days of its members. 
+    
+    | | Weekdays | Weekends | Total |
+    | :--- | :--- | :--- | :--- |
+    | **Juniors** | 15 | $y$ | $15 + y$ |
+    | **Seniors** | 22 | 18 | 40 |
+    | **Total** | 37 | $y + 18$ | $y + 55$ |
+    
+    The probability that a randomly chosen member prefers Weekends, given that they are a Junior, is $0.6$.
+    
+    **a)** Write down an equation for $y$.
+    
+    **b)** Find the total number of members in the club.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** We are given a conditional probability: $P(\text{Weekends} | \text{Juniors}) = 0.6$.
+    The restricted domain is the total number of Juniors ($15 + y$).
+    The number of Juniors who prefer Weekends is $y$.
+    
+    $$
+    \frac{y}{15 + y} = 0.6
+    $$
+    
+    **b)** Solve the linear equation for $y$.
+    
+    $$
+    y = 0.6(15 + y)
+    $$
+    
+    $$
+    y = 9 + 0.6y
+    $$
+    
+    $$
+    0.4y = 9
+    $$
+    
+    $$
+    y = 22.5
+    $$
+    
+    To find the total number of members, substitute $y = 22.5$ into the expression for the grand total:
+    
+    $$
+    \text{Total} = 22.5 + 55 = 77.5
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using conditional probability statements to solve for unknown variables in two-way tables" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Complex Conditional Probability">
+    A factory uses two machines to produce bolts. Machine A produces 70% of the bolts, and Machine B produces 30%. 
+    It is known that 4% of the bolts from Machine A are defective, and 6% of the bolts from Machine B are defective.
+    
+    **a)** Draw a tree diagram to represent this information.
+    
+    **b)** Find the probability that a randomly selected bolt is defective.
+    
+    **c)** Given that a bolt is defective, find the probability it was produced by Machine A.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** Draw the tree diagram with Machine (A or B) as the first branch, and Defective (D) or Not Defective (D') as the second.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 500 250" width="100%" maxWidth="500px" style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
+        {/* First Branch */}
+        <line x1="50" y1="125" x2="150" y2="60" stroke="#64748b" stroke-width="2" />
+        <line x1="50" y1="125" x2="150" y2="190" stroke="#64748b" stroke-width="2" />
+        
+        <text x="160" y="65" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">Machine A</text>
+        <text x="160" y="195" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">Machine B</text>
+        
+        <text x="95" y="80" font-size="12" fill="#3b82f6" font-family="sans-serif" text-anchor="middle">0.7</text>
+        <text x="95" y="180" font-size="12" fill="#3b82f6" font-family="sans-serif" text-anchor="middle">0.3</text>
+        
+        {/* Second Branch from A */}
+        <line x1="240" y1="60" x2="340" y2="30" stroke="#64748b" stroke-width="2" />
+        <line x1="240" y1="60" x2="340" y2="90" stroke="#64748b" stroke-width="2" />
+        
+        <text x="350" y="35" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">D (Defect)</text>
+        <text x="350" y="95" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">D' (Okay)</text>
+        
+        <text x="290" y="35" font-size="12" fill="#ef4444" font-family="sans-serif" text-anchor="middle">0.04</text>
+        <text x="290" y="95" font-size="12" fill="#10b981" font-family="sans-serif" text-anchor="middle">0.96</text>
+
+        {/* Second Branch from B */}
+        <line x1="240" y1="190" x2="340" y2="160" stroke="#64748b" stroke-width="2" />
+        <line x1="240" y1="190" x2="340" y2="220" stroke="#64748b" stroke-width="2" />
+        
+        <text x="350" y="165" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">D (Defect)</text>
+        <text x="350" y="225" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">D' (Okay)</text>
+        
+        <text x="290" y="165" font-size="12" fill="#ef4444" font-family="sans-serif" text-anchor="middle">0.06</text>
+        <text x="290" y="225" font-size="12" fill="#10b981" font-family="sans-serif" text-anchor="middle">0.94</text>
+      </svg>
+    </div>
+    
+    **b)** We want the total probability of a defective bolt. There are two paths that lead to a defect:
+    (Machine A AND Defective) OR (Machine B AND Defective)
+    
+    $$
+    P(D) = P(A \cap D) + P(B \cap D)
+    $$
+    
+    $$
+    P(D) = (0.7 \times 0.04) + (0.3 \times 0.06)
+    $$
+    
+    $$
+    P(D) = 0.028 + 0.018 = 0.046
+    $$
+    
+    **c)** We need $P(A | D)$. We use the conditional probability formula.
+    Our new restricted total is the probability of a defect: $P(D) = 0.046$.
+    Our target outcome is the intersection: $P(A \cap D) = 0.028$.
+    
+    $$
+    P(A | D) = \frac{P(A \cap D)}{P(D)}
+    $$
+    
+    $$
+    P(A | D) = \frac{0.028}{0.046} \approx 0.609 \text{ (to 3 s.f.)}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Reversing tree diagrams to find prior probabilities using conditional probability" />

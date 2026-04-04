@@ -1,0 +1,635 @@
+---
+title: 4.2 Presentation of Data - Histograms, Cumulative Frequency, and Box Plots
+description: Learn how to construct and interpret frequency distributions, cumulative frequency graphs, histograms, and box and whisker diagrams in IB Maths AI SL.
+---
+
+Once raw data has been collected, it is often a chaotic list of numbers. To make sense of this information, we must organise and present it visually. The way we present data depends on whether it is discrete or continuous, and what specific characteristics (like the median, spread, or shape) we want to highlight.
+
+This section covers the standard methods for visually summarising continuous data, reading percentiles from graphs, and comparing different data sets.
+
+---
+
+## 1. Frequency Distributions and Histograms
+
+When dealing with large amounts of continuous data (or discrete data with a wide range), we group the data into **class intervals** to create a grouped frequency table. 
+
+<Aside type="note" title="Class Intervals and Inequalities">
+In IB Mathematics, class intervals for continuous data are given as inequalities **without gaps**. 
+For example, if we are measuring the time ($t$ in minutes) students take to complete a test:
+* $0 \le t < 10$
+* $10 \le t < 20$
+* $20 \le t < 30$
+
+A student taking exactly 10 minutes falls into the second interval, not the first, because of the strict less-than sign ($<$) on the upper boundary of the first interval.
+</Aside>
+
+### Histograms
+
+A histogram is the standard visual representation for grouped continuous data. Unlike a bar chart (which is used for categorical data and has gaps between the bars), a histogram has no gaps, representing the continuous flow of the number line.
+
+**Crucial Rule for AI SL:** You are only required to work with frequency histograms that have **equal class intervals**. You do not need to calculate frequency density. The height of the bar directly represents the frequency.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 300" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Axes */}
+    <line x1="50" y1="250" x2="550" y2="250" stroke="#1e293b" stroke-width="2" />
+    <line x1="50" y1="250" x2="50" y2="30" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Y-axis labels & gridlines */}
+    {[0, 5, 10, 15, 20].map((val, i) => (
+      <g key={i}>
+        <line x1="45" y1={250 - i * 50} x2="50" y2={250 - i * 50} stroke="#1e293b" stroke-width="2" />
+        <line x1="50" y1={250 - i * 50} x2="550" y2={250 - i * 50} stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+        <text x="35" y={250 - i * 50 + 5} font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">{val}</text>
+      </g>
+    ))}
+    <text x="20" y="140" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" transform="rotate(-90 20 140)" font-family="sans-serif">Frequency</text>
+
+    {/* X-axis labels */}
+    {[0, 10, 20, 30, 40, 50].map((val, i) => (
+      <g key={i}>
+        <line x1={50 + i * 100} y1="250" x2={50 + i * 100} y2="255" stroke="#1e293b" stroke-width="2" />
+        <text x={50 + i * 100} y="270" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">{val}</text>
+      </g>
+    ))}
+    <text x="300" y="295" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Time (minutes)</text>
+
+    {/* Histogram Bars */}
+    <rect x="50" y="200" width="100" height="50" fill="rgba(59, 130, 246, 0.4)" stroke="#3b82f6" stroke-width="2" />
+    <rect x="150" y="100" width="100" height="150" fill="rgba(59, 130, 246, 0.4)" stroke="#3b82f6" stroke-width="2" />
+    <rect x="250" y="70" width="100" height="180" fill="rgba(59, 130, 246, 0.4)" stroke="#3b82f6" stroke-width="2" />
+    <rect x="350" y="150" width="100" height="100" fill="rgba(59, 130, 246, 0.4)" stroke="#3b82f6" stroke-width="2" />
+    <rect x="450" y="220" width="100" height="30" fill="rgba(59, 130, 246, 0.4)" stroke="#3b82f6" stroke-width="2" />
+  </svg>
+</div>
+
+---
+
+## 2. Cumulative Frequency
+
+Cumulative frequency is a running total of the frequencies. It tells us how many data points are *less than or equal to* a certain value. 
+
+To plot a cumulative frequency graph:
+1. Calculate the running total of frequencies.
+2. Plot points using the **upper boundary** of each class interval on the x-axis, and the cumulative frequency on the y-axis.
+3. Connect the points with a smooth curve (this often forms a characteristic elongated 'S' shape called an ogive).
+
+<Aside type="tip" title="Using the Graph to Find Key Statistics">
+The cumulative frequency graph is powerful because it allows you to estimate percentiles and quartiles without complex formulas. Simply find the target value on the y-axis (total frequency), draw a horizontal line to the curve, and drop a vertical line to read the estimate on the x-axis.
+* **Median ($Q_2$):** Find $50\%$ of the total frequency.
+* **Lower Quartile ($Q_1$):** Find $25\%$ of the total frequency.
+* **Upper Quartile ($Q_3$):** Find $75\%$ of the total frequency.
+* **$k$th Percentile:** Find $k\%$ of the total frequency.
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 320" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Axes */}
+    <line x1="50" y1="280" x2="550" y2="280" stroke="#1e293b" stroke-width="2" />
+    <line x1="50" y1="280" x2="50" y2="20" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Cumulative Freq Y-axis labels (Max 120) */}
+    {[0, 30, 60, 90, 120].map((val, i) => (
+      <g key={i}>
+        <line x1="45" y1={280 - i * 60} x2="50" y2={280 - i * 60} stroke="#1e293b" stroke-width="2" />
+        <text x="35" y={280 - i * 60 + 5} font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">{val}</text>
+      </g>
+    ))}
+    <text x="15" y="150" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" transform="rotate(-90 15 150)" font-family="sans-serif">Cumulative Freq.</text>
+
+    {/* X-axis labels */}
+    <text x="300" y="315" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Data Value (x)</text>
+
+    {/* S-Curve Path */}
+    <path d="M 50 280 C 150 280, 200 220, 250 160 C 300 100, 350 40, 550 40" fill="none" stroke="#3b82f6" stroke-width="3" />
+
+    {/* Quartile Lines & Labels */}
+    {/* Q1 (y = 30) */}
+    <line x1="50" y1="220" x2="195" y2="220" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="195" y1="220" x2="195" y2="280" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <polygon points="195,280 190,270 200,270" fill="#ef4444" />
+    <text x="195" y="295" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Q1</text>
+
+    {/* Q2 / Median (y = 60) */}
+    <line x1="50" y1="160" x2="250" y2="160" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="250" y1="160" x2="250" y2="280" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+    <polygon points="250,280 245,270 255,270" fill="#10b981" />
+    <text x="250" y="295" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Median</text>
+
+    {/* Q3 (y = 90) */}
+    <line x1="50" y1="100" x2="300" y2="100" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="300" y1="100" x2="300" y2="280" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+    <polygon points="300,280 295,270 305,270" fill="#f59e0b" />
+    <text x="300" y="295" font-size="12" font-weight="bold" fill="#f59e0b" text-anchor="middle" font-family="sans-serif">Q3</text>
+  </svg>
+</div>
+
+The interquartile range measures the spread of the middle 50% of the data, making it resistant to extreme outliers. The range measures the total spread of the data set.
+
+<FormulaBox title="Interquartile Range (IQR)">
+$$
+\text{IQR} = Q_3 - Q_1
+$$
+</FormulaBox>
+
+$$
+\text{Range} = \text{Maximum Value} - \text{Minimum Value}
+$$
+
+---
+
+## 3. Box and Whisker Diagrams
+
+A box and whisker diagram (often simply called a box plot) is a standardised way of displaying the distribution of data based on a five-number summary: **Minimum, Lower Quartile ($Q_1$), Median ($Q_2$), Upper Quartile ($Q_3$), and Maximum.**
+
+<Aside type="caution" title="Marking Outliers">
+In the IB, any data point mathematically identified as an outlier (greater than $Q_3 + 1.5 \times \text{IQR}$ or less than $Q_1 - 1.5 \times \text{IQR}$) **must be indicated with a cross ($\times$)**. 
+The "whisker" then only extends to the lowest/highest data value that is *not* an outlier.
+</Aside>
+
+### Comparing Distributions and Determining Normalcy
+
+Box plots are exceptionally useful for comparing two different datasets on the same scale. You can immediately compare their centres (using the median) and their spread (using the IQR or range).
+
+Furthermore, you can evaluate the symmetry of the box plot to determine if the underlying data might be normally distributed:
+* **Symmetrical:** The median is exactly in the centre of the box, and the whiskers are of equal length. This suggests the data *may be normally distributed*.
+* **Positively Skewed (Right Skewed):** The right whisker is noticeably longer, and the median is closer to the left of the box. The data "tails off" to the right.
+* **Negatively Skewed (Left Skewed):** The left whisker is noticeably longer, and the median is closer to the right of the box. The data "tails off" to the left.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 330" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Scale line */}
+    <line x1="50" y1="300" x2="550" y2="300" stroke="#1e293b" stroke-width="2" />
+    {[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map((val, i) => (
+      <g key={i}>
+        <line x1={50 + i * 50} y1="300" x2={50 + i * 50} y2="305" stroke="#1e293b" stroke-width="1" />
+        <text x={50 + i * 50} y="320" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">{val}</text>
+      </g>
+    ))}
+
+    {/* Dataset A: Symmetrical (Normal) */}
+    <text x="50" y="30" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="start" font-family="sans-serif">Dataset A: Symmetrical (Likely Normal)</text>
+    <line x1="150" y1="60" x2="250" y2="60" stroke="#3b82f6" stroke-width="2" />
+    <line x1="350" y1="60" x2="450" y2="60" stroke="#3b82f6" stroke-width="2" />
+    <line x1="150" y1="50" x2="150" y2="70" stroke="#3b82f6" stroke-width="2" />
+    <line x1="450" y1="50" x2="450" y2="70" stroke="#3b82f6" stroke-width="2" />
+    <rect x="250" y="40" width="100" height="40" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="2" />
+    <line x1="300" y1="40" x2="300" y2="80" stroke="#3b82f6" stroke-width="3" />
+
+    {/* Dataset B: Positively Skewed with Outlier */}
+    <text x="50" y="120" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="start" font-family="sans-serif">Dataset B: Positively Skewed</text>
+    <line x1="100" y1="150" x2="150" y2="150" stroke="#ef4444" stroke-width="2" />
+    <line x1="250" y1="150" x2="400" y2="150" stroke="#ef4444" stroke-width="2" />
+    <line x1="100" y1="140" x2="100" y2="160" stroke="#ef4444" stroke-width="2" />
+    <line x1="400" y1="140" x2="400" y2="160" stroke="#ef4444" stroke-width="2" />
+    <rect x="150" y="130" width="100" height="40" fill="rgba(239, 68, 68, 0.2)" stroke="#ef4444" stroke-width="2" />
+    <line x1="180" y1="130" x2="180" y2="170" stroke="#ef4444" stroke-width="3" />
+    {/* Outlier */}
+    <path d="M 525 145 L 535 155 M 525 155 L 535 145" stroke="#ef4444" stroke-width="2" />
+    <text x="530" y="135" font-size="12" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Outlier</text>
+
+    {/* Dataset C: Negatively Skewed with Outlier */}
+    <text x="50" y="210" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="start" font-family="sans-serif">Dataset C: Negatively Skewed</text>
+    <line x1="200" y1="240" x2="375" y2="240" stroke="#10b981" stroke-width="2" />
+    <line x1="475" y1="240" x2="525" y2="240" stroke="#10b981" stroke-width="2" />
+    <line x1="200" y1="230" x2="200" y2="250" stroke="#10b981" stroke-width="2" />
+    <line x1="525" y1="230" x2="525" y2="250" stroke="#10b981" stroke-width="2" />
+    <rect x="375" y="220" width="100" height="40" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="2" />
+    <line x1="450" y1="220" x2="450" y2="260" stroke="#10b981" stroke-width="3" />
+    {/* Outlier */}
+    <path d="M 95 235 L 105 245 M 95 245 L 105 235" stroke="#10b981" stroke-width="2" />
+    <text x="100" y="225" font-size="12" fill="#10b981" text-anchor="middle" font-family="sans-serif">Outlier</text>
+  </svg>
+</div>
+
+<SteveTip title="TI-Nspire: Plotting Box Plots">
+You do not need to draw complex box plots by hand in Paper 2. Enter your data into a `Lists & Spreadsheet` page. Open a new `Data & Statistics` page, click to add your variable on the x-axis (it will default to a dot plot), then press `Menu > Plot Type > Box Plot`. 
+The TI-Nspire will automatically calculate $1.5 \times \text{IQR}$ and mark any outliers as separate crosses for you!
+</SteveTip>
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**What is the difference between information and data?** Raw data is just a collection of numbers without context. It only becomes "information" when we process it, calculate statistics like the median, or display it in a histogram. Does "data" mean the same thing in mathematics as it does in history or the arts?
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Histograms and Class Intervals">
+    Haile records the time ($t$, in minutes) it takes 50 students to complete a logic puzzle. She creates a grouped frequency table.
+    
+    | Time ($t$ mins) | Frequency |
+    | :--- | :--- |
+    | $0 \le t < 10$ | 5 |
+    | $10 \le t < 20$ | 15 |
+    | $20 \le t < 30$ | 20 |
+    | $30 \le t < 40$ | 10 |
+
+    **a)** State whether the data is discrete or continuous.
+    
+    **b)** Newton suggests drawing a bar chart to display this data. Explain why a histogram is the correct mathematical choice instead.
+    
+    **c)** State the modal class (the class interval with the highest frequency).
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** **Continuous**. Time is measured and can take any value, not just whole numbers.
+    
+    **b)** A bar chart is used for discrete or categorical data and has gaps between the bars. Because time is continuous, a histogram must be used to show that the classes run directly into each other without gaps.
+    
+    **c)** The modal class is the interval with the highest frequency (20). Therefore, the modal class is **$20 \le t < 30$**.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 250" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <line x1="40" y1="200" x2="360" y2="200" stroke="#1e293b" stroke-width="2" />
+        <line x1="40" y1="200" x2="40" y2="20" stroke="#1e293b" stroke-width="2" />
+        {[5, 10, 15, 20].map((val, i) => (
+          <g key={`y-${i}`}>
+            <line x1="35" y1={200 - val * 8} x2="40" y2={200 - val * 8} stroke="#1e293b" stroke-width="2" />
+            <text x="30" y={200 - val * 8 + 4} font-size="10" fill="#64748b" text-anchor="end" font-family="sans-serif">{val}</text>
+          </g>
+        ))}
+        <text x="15" y="110" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle" transform="rotate(-90 15 110)" font-family="sans-serif">Frequency</text>
+        {[0, 10, 20, 30, 40].map((val, i) => (
+          <g key={`x-${i}`}>
+            <line x1={40 + i * 80} y1="200" x2={40 + i * 80} y2="205" stroke="#1e293b" stroke-width="2" />
+            <text x={40 + i * 80} y="220" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">{val}</text>
+          </g>
+        ))}
+        <rect x="40" y="160" width="80" height="40" fill="rgba(59, 130, 246, 0.4)" stroke="#3b82f6" stroke-width="2" />
+        <rect x="120" y="80" width="80" height="120" fill="rgba(59, 130, 246, 0.4)" stroke="#3b82f6" stroke-width="2" />
+        <rect x="200" y="40" width="80" height="160" fill="rgba(59, 130, 246, 0.4)" stroke="#3b82f6" stroke-width="2" />
+        <rect x="280" y="120" width="80" height="80" fill="rgba(59, 130, 246, 0.4)" stroke="#3b82f6" stroke-width="2" />
+        <text x="200" y="240" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Time (t)</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting grouped continuous frequency tables and justifying the use of histograms" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Cumulative Frequency Estimates">
+    Selina is analysing the test scores of 120 students using a cumulative frequency graph. The graph is an S-curve that finishes at a cumulative frequency of 120.
+    
+    Using the graph, Selina drops a vertical line from the curve to the x-axis to find the following readings:
+    * From a cumulative frequency of 30, she reads a score of 45.
+    * From a cumulative frequency of 60, she reads a score of 62.
+    * From a cumulative frequency of 90, she reads a score of 75.
+    
+    **a)** Estimate the median score for the students.
+    
+    **b)** Calculate the interquartile range (IQR).
+    
+    **c)** Maxime wants to find the 90th percentile score. Calculate the cumulative frequency value Maxime should look up on the y-axis before drawing a line to the curve.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** The median is the 50th percentile. Since there are 120 students, the median occurs at a cumulative frequency of $120 \div 2 = 60$. 
+    Looking at Selina's readings, a cumulative frequency of 60 corresponds to a score of **62**.
+    
+    **b)**
+      <Steps>
+        1. Find the Lower Quartile ($Q_1$): $25\%$ of $120 = 30$. The score at cumulative frequency 30 is 45.
+        
+        2. Find the Upper Quartile ($Q_3$): $75\%$ of $120 = 90$. The score at cumulative frequency 90 is 75.
+        
+        3. Calculate IQR: 
+           
+           $$
+           \text{IQR} = Q_3 - Q_1 = 75 - 45 = 30
+           $$
+           
+      </Steps>
+    
+    **c)** The 90th percentile corresponds to $90\%$ of the total frequency.
+    
+      <Steps>
+        1. Multiply the percentage by the total frequency:
+           
+           $$
+           0.90 \times 120 = 108
+           $$
+           
+        2. Maxime should draw a horizontal line from **108** on the y-axis.
+      </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Estimating medians, quartiles, and percentiles from cumulative frequency data" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Comparing Box and Whisker Diagrams">
+    Bethany and Daniel are investigating the heights of plants grown with two different fertilisers. They create a box and whisker diagram for each.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 500 200" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <line x1="50" y1="160" x2="450" y2="160" stroke="#1e293b" stroke-width="2" />
+        {[0, 10, 20, 30, 40, 50].map((val, i) => (
+          <g key={i}>
+            <line x1={50 + i * 80} y1="160" x2={50 + i * 80} y2="165" stroke="#1e293b" stroke-width="1" />
+            <text x={50 + i * 80} y="180" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">{val}</text>
+          </g>
+        ))}
+        {/* Fert X */}
+        <text x="10" y="60" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">Fert. X</text>
+        <line x1="146" y1="55" x2="170" y2="55" stroke="#3b82f6" stroke-width="2" />
+        <line x1="218" y1="55" x2="242" y2="55" stroke="#3b82f6" stroke-width="2" />
+        <rect x="170" y="40" width="48" height="30" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="2" />
+        <line x1="194" y1="40" x2="194" y2="70" stroke="#3b82f6" stroke-width="3" />
+        
+        {/* Fert Y */}
+        <text x="10" y="120" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">Fert. Y</text>
+        <line x1="114" y1="115" x2="162" y2="115" stroke="#ef4444" stroke-width="2" />
+        <line x1="250" y1="115" x2="274" y2="115" stroke="#ef4444" stroke-width="2" />
+        <rect x="162" y="100" width="88" height="30" fill="rgba(239, 68, 68, 0.2)" stroke="#ef4444" stroke-width="2" />
+        <line x1="226" y1="100" x2="226" y2="130" stroke="#ef4444" stroke-width="3" />
+        <path d="M 405 110 L 415 120 M 405 120 L 415 110" stroke="#ef4444" stroke-width="2" />
+      </svg>
+    </div>
+
+    * **Fertiliser X:** $Minimum = 12$, $Q_1 = 15$, $Median = 18$, $Q_3 = 21$, $Maximum = 24$.
+    * **Fertiliser Y:** $Minimum = 8$, $Q_1 = 14$, $Median = 22$, $Q_3 = 25$, $Maximum = 45$. The maximum value of 45 is marked with an 'x'.
+    
+    **a)** State the median height for Fertiliser X.
+    
+    **b)** Bethany notes that the box plot for Fertiliser X is perfectly symmetrical. What does this suggest about the distribution of plant heights for Fertiliser X?
+    
+    **c)** Daniel states that Fertiliser Y produces more consistent plant heights than Fertiliser X. By comparing the IQR of both datasets, prove whether Daniel is correct.
+    
+    **d)** State what the 'x' at the value of 45 on Fertiliser Y's graph mathematically represents.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** The median height for Fertiliser X is **18**.
+    
+    **b)** Symmetrical box and whisker diagrams indicate that the data is not skewed and **may be normally distributed**.
+    
+    **c)**
+      <Steps>
+        1. Calculate IQR for Fertiliser X:
+           
+           $$
+           \text{IQR}_X = 21 - 15 = 6
+           $$
+           
+        2. Calculate IQR for Fertiliser Y:
+           
+           $$
+           \text{IQR}_Y = 25 - 14 = 11
+           $$
+           
+        3. Conclusion: Daniel is **incorrect**. A lower IQR means the data is less spread out. Because Fertiliser X has a smaller IQR ($6 < 11$), Fertiliser X produces more consistent heights.
+      </Steps>
+    
+    **d)** The 'x' represents an **outlier**. Mathematically, it is a data point that is strictly greater than $Q_3 + 1.5 \times \text{IQR}$ (for Fertiliser Y, the boundary is $25 + 1.5(11) = 41.5$. Since $45 > 41.5$, it is an outlier).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing two distributions using box plot symmetry, median, and interquartile range" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Miss Fedoris's Homework Excuses">
+    Miss Fedoris is tired of students forgetting their homework. She decides to measure the duration (in seconds) of the excuses given by two of her IB Maths classes over a term. She generates two box plots to compare the distributions.
+    
+    * **Class 1 (Morning):** Median excuse time = 45 seconds, IQR = 15 seconds, range = 50 seconds.
+    * **Class 2 (Afternoon):** Median excuse time = 80 seconds, IQR = 40 seconds, range = 120 seconds. There is a single outlier marked at 240 seconds belonging to Kieran, who claimed a badger stole his GDC.
+    
+    **a)** Based on the median, which class generally gives longer excuses?
+    
+    **b)** Based on the IQR, which class has more variability in the length of their excuses?
+    
+    **c)** Describe the likely skew of Class 2's distribution given the massive range and extreme upper outlier.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** **Class 2**. Their median excuse time of 80 seconds is significantly higher than Class 1's median of 45 seconds.
+    
+    **b)** **Class 2**. Their IQR of 40 seconds is larger than Class 1's IQR of 15 seconds, indicating greater spread and variability in the middle 50% of the data.
+    
+    **c)** Because Class 2 has a very large range pulled up by a massive upper outlier (Kieran's 240-second badger story), the distribution is likely **positively skewed (or right-skewed)**. The "whisker" to the right of the median will be significantly longer than the left.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing box plot statistics in context and interpreting skewness" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Finding the Median Class">
+    Kingston counts the number of words written by 80 students in their English essays. He constructs the following frequency table:
+    
+    | Words ($w$) | Frequency |
+    | :--- | :--- |
+    | $200 \le w < 400$ | 12 |
+    | $400 \le w < 600$ | 28 |
+    | $600 \le w < 800$ | 25 |
+    | $800 \le w < 1000$ | 15 |
+
+    Austin needs to find the class interval that contains the median number of words. 
+    
+    **a)** Calculate the cumulative frequency for each class.
+    
+    **b)** Identify the class interval that contains the median.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+      <Steps>
+        1. First class: $12$
+        2. Second class: $12 + 28 = 40$
+        3. Third class: $40 + 25 = 65$
+        4. Fourth class: $65 + 15 = 80$
+      </Steps>
+
+    | Words ($w$) | Frequency | Cumulative Freq. |
+    | :--- | :--- | :--- |
+    | $200 \le w < 400$ | 12 | 12 |
+    | $400 \le w < 600$ | 28 | 40 |
+    | $600 \le w < 800$ | 25 | 65 |
+    | $800 \le w < 1000$ | 15 | 80 |
+
+    **b)**
+      <Steps>
+        1. The median is the 50th percentile. For 80 students, the median occurs at:
+           
+           $$
+           80 \div 2 = 40\text{th position}
+           $$
+           
+        2. Looking at the cumulative frequency column, the 40th student is exactly the last person in the $400 \le w < 600$ interval.
+        3. Therefore, the median class is **$400 \le w < 600$**.
+      </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating cumulative frequency and identifying the median class interval" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Percentiles and Ogives">
+    Nina plots a cumulative frequency graph (ogive) showing the reaction times (in milliseconds) of 200 participants in a psychology experiment.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 500 250" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <line x1="50" y1="200" x2="450" y2="200" stroke="#1e293b" stroke-width="2" />
+        <line x1="50" y1="200" x2="50" y2="20" stroke="#1e293b" stroke-width="2" />
+        {[0, 50, 100, 150, 200].map((val, i) => (
+          <text key={i} x="35" y={200 - i * 45 + 5} font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">{val}</text>
+        ))}
+        <path d="M 50 200 C 150 200, 200 110, 250 110 S 350 20, 450 20" fill="none" stroke="#3b82f6" stroke-width="3" />
+        <text x="250" y="235" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Reaction Time (ms)</text>
+      </svg>
+    </div>
+
+    Zach wants to find the 80th percentile for reaction time. 
+    
+    **a)** Calculate the cumulative frequency value Zach should use to find the 80th percentile.
+    
+    **b)** Explain the process Zach must follow on the graph to find the corresponding reaction time once he has the value from part (a).
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+      <Steps>
+        1. The 80th percentile represents 80% of the total frequency.
+           
+           $$
+           0.80 \times 200 = 160
+           $$
+           
+      </Steps>
+
+    **b)** Zach should locate **160** on the y-axis (Cumulative Frequency). He should draw a straight horizontal line to the right until it intersects the blue cumulative frequency curve. From that intersection point, he must draw a straight vertical line down to the x-axis to read off the corresponding reaction time in milliseconds.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating percentile frequencies and reading cumulative frequency graphs" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Constructing Box Plots">
+    Hari is given a five-number summary representing the daily temperature in degrees Celsius over a month:
+    
+    Minimum = 14, $Q_1$ = 18, Median = 25, $Q_3$ = 28, Maximum = 30.
+    
+    **a)** Calculate the Interquartile Range (IQR).
+    
+    **b)** Based on the differences between the quartiles and the median, determine whether the temperature data is symmetrical, positively skewed, or negatively skewed.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+      <Steps>
+        1. Use the IQR formula:
+           
+           $$
+           \text{IQR} = Q_3 - Q_1 = 28 - 18 = 10
+           $$
+           
+      </Steps>
+
+    **b)**
+      <Steps>
+        1. Find the distance from $Q_1$ to the Median:
+           
+           $$
+           25 - 18 = 7
+           $$
+           
+        2. Find the distance from the Median to $Q_3$:
+           
+           $$
+           28 - 25 = 3
+           $$
+           
+        3. Because the distance on the left side of the median ($7$) is much larger than the distance on the right side ($3$), the left side of the box is stretched out. The data is **negatively skewed (left-skewed)**.
+      </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating IQR and determining skewness from a five-number summary" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Outliers and Fences">
+    Mr. Cheung administers a challenging calculus test to his class. The results are analysed and plotted on a box and whisker diagram. 
+    The lower quartile ($Q_1$) is 40 marks and the upper quartile ($Q_3$) is 70 marks.
+    
+    Haile scores 116 marks on the test.
+    
+    **a)** Calculate the upper boundary (fence) used to identify outliers.
+    
+    **b)** Determine mathematically whether Haile's score is an outlier.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+      <Steps>
+        1. Calculate the IQR:
+           
+           $$
+           \text{IQR} = 70 - 40 = 30
+           $$
+           
+        2. Calculate the upper fence:
+           
+           $$
+           \text{Upper Fence} = Q_3 + 1.5 \times \text{IQR}
+           $$
+           
+           $$
+           \text{Upper Fence} = 70 + 1.5(30) = 70 + 45 = 115
+           $$
+           
+      </Steps>
+
+    **b)**
+      <Steps>
+        1. Compare Haile's score to the upper fence:
+           Since $116 > 115$, Haile's score is mathematically an **outlier**.
+      </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating upper outlier boundaries using quartiles and IQR" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Visualising Skewness">
+    Chloe and Jake are comparing the properties of a negatively skewed distribution.
+    
+    **a)** Describe the relative position of the median inside the "box" of a negatively skewed box plot.
+    
+    **b)** Describe the relative length of the whiskers in a negatively skewed box plot.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)** In a negatively skewed distribution, the median is pulled closer to the **right side** (the upper quartile, $Q_3$) of the box.
+    
+    **b)** The **left whisker** (extending down to the minimum) will be noticeably longer than the right whisker.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Describing the visual characteristics of a negatively skewed box plot" />
+
+<Tabs>
+  <TabItem label="📝 Question 10: Extracting Data from Histograms">
+    Maxime looks at a frequency histogram showing the mass (in kg) of parcels at a post office. The histogram has equal class intervals of $2\text{ kg}$, starting from $0\text{ kg}$. 
+    
+    The heights of the first four bars are 12, 18, 30, and 10.
+    
+    **a)** State the total number of parcels represented in these four bars.
+    
+    **b)** Write down the interval for the modal class.
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    **a)**
+      <Steps>
+        1. Because the intervals are equal, the frequency is simply the height of each bar. Add them together:
+           
+           $$
+           12 + 18 + 30 + 10 = 70 \text{ parcels}
+           $$
+           
+      </Steps>
+
+    **b)**
+      <Steps>
+        1. The modal class is the interval with the tallest bar (frequency of 30).
+        2. This is the third bar. The intervals are width 2, starting at 0:
+           * 1st bar: $0 \le m < 2$
+           * 2nd bar: $2 \le m < 4$
+           * 3rd bar: $4 \le m < 6$
+        3. The modal class interval is **$4 \le m < 6$**.
+      </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Extracting total frequency and defining class intervals from a histogram" />

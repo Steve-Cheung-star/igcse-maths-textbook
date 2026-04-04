@@ -1,0 +1,414 @@
+---
+title: 4.5 Introduction to Probability
+description: Master the fundamental concepts of probability, including sample spaces, complementary events, experimental versus theoretical probability, and expected occurrences in IB Maths AI SL.
+---
+
+Probability is the mathematical language of uncertainty. Whether predicting the weather, assessing financial risks, or determining the fairness of a game, probability allows us to quantify how likely an event is to happen. 
+
+In this section, we build the foundational vocabulary and mathematical rules required to model chance, and explore how these models influence everything from government planning to the insurance premiums we pay.
+
+---
+
+## 1. The Language of Probability
+
+To study probability, we must first standardise our terminology.
+
+* **Trial:** A single step of an experiment (e.g., rolling a die once, flipping a coin).
+* **Outcome:** A possible result of a trial (e.g., rolling a 4).
+* **Equally Likely Outcomes:** When every possible result has the exact same chance of occurring (e.g., a fair coin has equally likely outcomes of Heads or Tails).
+* **Sample Space ($U$):** The complete set of *all* possible outcomes of a trial.
+* **Event ($A$):** A specific outcome or a set of outcomes that we are interested in (e.g., the event of rolling an even number).
+
+Sample spaces can be represented as lists, grids, or tables. For example, if we flip two fair coins, the sample space ($U$) can be written as a list: $\{HH, HT, TH, TT\}$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 200" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <text x="200" y="30" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Sample Space: Flipping Two Coins</text>
+    
+    {/* Table Grid */}
+    <line x1="100" y1="50" x2="300" y2="50" stroke="#1e293b" stroke-width="2" />
+    <line x1="100" y1="100" x2="300" y2="100" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="100" y1="150" x2="300" y2="150" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="100" y1="200" x2="300" y2="200" stroke="#1e293b" stroke-width="2" />
+    
+    <line x1="100" y1="50" x2="100" y2="200" stroke="#1e293b" stroke-width="2" />
+    <line x1="166" y1="50" x2="166" y2="200" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="233" y1="50" x2="233" y2="200" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="300" y1="50" x2="300" y2="200" stroke="#1e293b" stroke-width="2" />
+
+    {/* Headers */}
+    <text x="133" y="80" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif"> </text>
+    <text x="200" y="80" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Heads (H)</text>
+    <text x="266" y="80" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Tails (T)</text>
+
+    <text x="133" y="130" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Heads (H)</text>
+    <text x="133" y="180" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Tails (T)</text>
+
+    {/* Outcomes */}
+    <text x="200" y="130" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">H, H</text>
+    <text x="266" y="130" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">H, T</text>
+    <text x="200" y="180" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">T, H</text>
+    <text x="266" y="180" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">T, T</text>
+  </svg>
+</div>
+
+<Aside type="note" title="Cross-Curricular Links">
+Sample space grids appear frequently in other subjects! In Biology, Punnett squares use exact probability grids to determine theoretical genetics and the inheritance of traits. In Physics, probabilistic models define the expected position of a particle at the quantum level.
+</Aside>
+
+<SteveTip title="Exam Tip: Earning Method Marks">
+If an exam question asks you to find the probability of a combined event (like rolling two dice), drawing a sample space table or a tree diagram is an excellent way to guarantee method marks, even if you make a small counting error later on!
+</SteveTip>
+
+---
+
+## 2. Theoretical Probability
+
+When all outcomes in a sample space are equally likely, we calculate the **theoretical probability** of an event $A$ occurring by dividing the number of ways $A$ can happen by the total number of possible outcomes. This formula is provided in your formula booklet.
+
+<FormulaBox title="Probability of an Event">
+$$
+\text{P}(A) = \frac{n(A)}{n(U)}
+$$
+</FormulaBox>
+
+Where:
+* $\text{P}(A)$ is the probability that event $A$ occurs.
+* $n(A)$ is the number of outcomes where event $A$ happens.
+* $n(U)$ is the total number of possible outcomes in the sample space.
+
+Probability is always expressed as a number between $0$ and $1$ (inclusive). It can be written as a fraction, a decimal, or a percentage.
+* $\text{P}(A) = 0$ means the event is **impossible**.
+* $\text{P}(A) = 1$ means the event is **certain**.
+
+<SteveTip title="Exam Tip: Exact Values in Probability">
+In the IB exam, it is usually best to give probability answers as exact fractions or decimals rather than percentages. Furthermore, never round a probability to 3 significant figures if it can be easily expressed as a simple exact fraction (e.g., leave it as $1/3$, do not write $0.333$).
+</SteveTip>
+
+---
+
+## 3. Complementary Events
+
+Sometimes it is easier to calculate the probability of an event *not* happening. The complement of event $A$ is denoted as $A'$ (read as "A prime"), and it represents all outcomes in the sample space that are not in $A$.
+
+Because it is certain that an event will either happen or not happen, their probabilities must add up to $1$. This is also in your formula booklet.
+
+<FormulaBox title="Complementary Events">
+$$
+\text{P}(A) + \text{P}(A') = 1
+$$
+</FormulaBox>
+
+Which can be rearranged algebraically as:
+
+$$
+\text{P}(A') = 1 - \text{P}(A)
+$$
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 120" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <rect x="50" y="40" width="400" height="40" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" rx="4" />
+    
+    {/* P(A) section */}
+    <rect x="50" y="40" width="120" height="40" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="2" rx="4" />
+    <text x="110" y="65" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">P(A)</text>
+    
+    {/* P(A') section */}
+    <rect x="170" y="40" width="280" height="40" fill="rgba(239, 68, 68, 0.2)" stroke="#ef4444" stroke-width="2" rx="4" />
+    <text x="310" y="65" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">P(A') = 1 - P(A)</text>
+    
+    {/* Total bracket */}
+    <path d="M 50 90 L 50 100 L 450 100 L 450 90" fill="none" stroke="#1e293b" stroke-width="2" />
+    <text x="250" y="115" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Total Probability = 1</text>
+  </svg>
+</div>
+
+---
+
+## 4. Experimental vs. Theoretical Probability
+
+There is a distinct difference between what we *expect* to happen mathematically and what *actually* happens when we run an experiment.
+
+* **Theoretical Probability:** Calculated using logic and known sample spaces before an experiment is run. (e.g., The theoretical probability of flipping a coin and getting Heads is $0.5$).
+* **Experimental Probability (Relative Frequency):** Calculated using actual data from trials. 
+
+Unlike the theoretical rules above, relative frequency is simply defined as:
+
+$$
+\text{Relative Frequency} = \frac{\text{Number of successful trials}}{\text{Total number of trials run}}
+$$
+
+If a coin is flipped $10$ times, it might land on Heads $7$ times. The relative frequency is $0.7$, which is quite different from the theoretical $0.5$. However, as the number of trials increases, the experimental probability will slowly converge closer to the theoretical probability. 
+
+**Technology & Monte Carlo Methods:** Computer simulations are incredibly useful for enhancing our understanding of probability. Using algorithms known as Monte Carlo methods, computers can simulate millions of coin flips or complex financial scenarios in seconds, bridging the gap between experimental data and theoretical models.
+
+<Aside type="note" title="Theory of Knowledge (TOK): Risk and Emotion">
+**To what extent are theoretical and experimental probabilities linked?** While mathematics provides us with a clear theoretical probability, our human perception of risk is often clouded by emotion. For example, the theoretical probability of being involved in a plane crash is microscopically small, yet many people fear flying much more than driving (which carries a far higher statistical risk). Consider how emotion influences decision-making in business, medicine, and travel safety.
+</Aside>
+
+---
+
+## 5. Expected Number of Occurrences
+
+If we know the probability of an event, we can predict how many times we expect it to happen over a large number of trials. To find the expected occurrences, multiply the total number of trials by the probability of the event:
+
+$$
+\text{Expected Number} = n \times \text{P}(A)
+$$
+
+Where $n$ is the total number of trials.
+
+For example, if there are $128$ students in a class and the probability of any single student being absent is $0.1$, the expected number of absent students is:
+
+$$
+128 \times 0.1 = 12.8 \text{ students}
+$$
+
+<Aside type="tip" title="Real World Connections: Actuarial Science">
+Calculating expected values is the foundation of **Actuarial Studies** (fun fact: Actuarial Science is actually Mr. Cheung's university major!). Actuaries use the probabilities of human life spans to calculate insurance premiums, ensuring companies can pay out claims while remaining profitable. Governments also rely heavily on projected expected figures for urban planning and healthcare funding.
+</Aside>
+
+<SteveTip title="Exam Tip: Do Not Round Expected Values!">
+A very common mistake in exams is rounding expected values to the nearest whole number because "you can't have half a person". You do **not** need to round the expected number to an integer unless the question explicitly asks you to. An expected value of $12.8$ students is perfectly acceptable as a mathematical average over many days.
+</SteveTip>
+
+---
+
+## 6. Ethics and International Perspectives
+
+Probability is deeply intertwined with human behaviour, gambling, and history.
+
+<Aside type="danger" title="Aim 8: The Ethics of Gambling">
+Casinos and lotteries are built entirely on the mathematics of probability and expected values. Because the "house always wins" in the long term, we must consider the ethical implications of gambling industries that rely on mathematical illiteracy to generate profit from vulnerable populations. 
+</Aside>
+
+**International-Mindedness:** Probability theory has been shaped by thinkers across the globe. 
+* **The St Petersburg Paradox:** Introduced by Nicolaus Bernoulli, this paradox investigates a game with an infinite expected mathematical value, yet people will only pay a small amount to play it, challenging how we define "rational" decision-making.
+* **Russian Contributions:** Mathematicians like Chebyshev and Pavlovsky made massive advancements in probability theory, creating inequalities and laws of large numbers that form the backbone of modern statistics.
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Basic Probability & Sample Spaces">
+    A standard fair six-sided die is rolled. 
+    Event $A$ is defined as "rolling a prime number".
+    
+    **a)** List the sample space ($U$) for rolling the die.
+    
+    **b)** List the outcomes that make up event $A$.
+    
+    **c)** Find the probability of event $A$ occurring, $\text{P}(A)$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** The sample space contains all possible outcomes:
+    
+    $$
+    U = \{1, 2, 3, 4, 5, 6\}
+    $$
+    
+    **b)** A prime number is a number greater than 1 that only has two factors (1 and itself). 
+    
+    $$
+    A = \{2, 3, 5\}
+    $$
+    
+    **c)**
+    <Steps>
+      1. Find the number of outcomes in $A$: $n(A) = 3$
+      2. Find the total number of outcomes: $n(U) = 6$
+      3. Apply the probability formula:
+         
+         $$
+         \text{P}(A) = \frac{3}{6} = \frac{1}{2} = 0.5
+         $$
+         
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating basic theoretical probability and identifying sample spaces" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Complementary Events & Expectations">
+    The probability that it rains in London on any given day in November is $\frac{4}{7}$.
+    
+    **a)** Find the probability that it does **not** rain on a given day in November.
+    
+    **b)** There are 30 days in November. Calculate the expected number of rainy days in the month.
+    
+    **c)** Explain why the actual number of rainy days recorded might differ from your answer in part b.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** Let $R$ be the event that it rains. We want to find the complementary event, $\text{P}(R')$.
+    
+    <Steps>
+      1. Use the complementary probability formula:
+         
+         $$
+         \text{P}(R') = 1 - \text{P}(R)
+         $$
+         
+      2. Substitute the given probability:
+         
+         $$
+         \text{P}(R') = 1 - \frac{4}{7} = \frac{3}{7}
+         $$
+         
+    </Steps>
+
+    **b)** Multiply the total number of trials by the probability.
+    
+    $$
+    \text{Expected rainy days} = 30 \times \frac{4}{7} = 17.142... \approx 17.1 \text{ days}
+    $$
+    
+    **c)** Theoretical probability gives a mathematical average over a very long period. In any single month, short-term natural variability (randomness) means the experimental outcome will likely fluctuate from the theoretical expectation.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the complementary probability formula and calculating expected occurrences" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Matcha Spills (Expected Occurrences)">
+    A local café tracks its spillages. Based on past data, the probability that a barista spills a matcha latte during any given 1-hour shift is $0.15$.
+    
+    **a)** Find the probability that they do **not** spill a matcha during a shift.
+    
+    **b)** If the café schedules $140$ shifts this month, calculate the expected number of shifts in which a matcha tea will be spilled.
+    
+    **c)** Each spilled matcha costs the café $4.50 \text{ USD}$ in lost ingredients. Calculate the total expected financial loss from spills over the $140$ shifts.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Using complementary events:
+    
+    $$
+    \text{P}(\text{No Spill}) = 1 - 0.15 = 0.85
+    $$
+    
+    **b)**
+    <Steps>
+      1. Identify the number of trials ($n = 140$).
+      2. Identify the probability of the event ($\text{P}(\text{Spill}) = 0.15$).
+      3. Multiply them together:
+         
+         $$
+         \text{Expected Spills} = 140 \times 0.15 = 21 \text{ shifts}
+         $$
+         
+    </Steps>
+    
+    **c)** Multiply the expected number of spills by the cost per spill.
+    
+    $$
+    21 \times 4.50 = 94.50 \text{ USD}
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating expected occurrences and applying them to financial contexts" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Experimental vs Theoretical">
+    A coin suspected of being biased is being tested to see if it behaves fairly. A researcher flips the coin $50$ times and records $32$ Heads.
+    
+    **a)** Calculate the experimental probability of flipping Heads based on these trials.
+    
+    **b)** State the theoretical probability of flipping Heads on a perfectly fair coin.
+    
+    **c)** The researcher concludes the coin is definitively rigged. State how the experiment could be improved to confirm this conclusion mathematically.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** Experimental probability (relative frequency) is successful trials divided by total trials.
+    
+    $$
+    \text{P}(\text{Heads})_{\text{exp}} = \frac{32}{50} = 0.64
+    $$
+    
+    **b)** The theoretical probability of a fair coin is exactly half.
+    
+    $$
+    \text{P}(\text{Heads})_{\text{theo}} = \frac{1}{2} = 0.5
+    $$
+    
+    **c)** While $0.64$ is noticeably higher than $0.5$, $50$ flips is a relatively small sample size. To confirm the conclusion and eliminate short-term randomness, the researcher should **increase the number of trials significantly** (e.g., perform $10,000$ flips). If the relative frequency remains around $0.64$, the coin is highly likely rigged.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing experimental relative frequency with theoretical probability" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Sample Space Grids">
+    Two fair four-sided dice (numbered 1 to 4) are rolled simultaneously. The score is determined by adding the two numbers facing downwards together.
+    
+    **a)** Construct a sample space grid to show all possible scores.
+    
+    **b)** Find the probability of obtaining a total score of $6$.
+    
+    **c)** Find the probability of obtaining a total score strictly greater than $4$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** A clean sample space grid shows all possible sums:
+
+    | $+$ | **1** | **2** | **3** | **4** |
+    | :---: | :---: | :---: | :---: | :---: |
+    | **1** | 2 | 3 | 4 | 5 |
+    | **2** | 3 | 4 | 5 | 6 |
+    | **3** | 4 | 5 | 6 | 7 |
+    | **4** | 5 | 6 | 7 | 8 |
+
+    **b)**
+    <Steps>
+      1. The total number of outcomes is $n(U) = 4 \times 4 = 16$.
+      2. The score of 6 appears $3$ times in the grid.
+      3. $\text{P}(6) = \frac{3}{16}$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. We need outcomes strictly greater than 4 (i.e., 5, 6, 7, 8).
+      2. Counting these from the grid: there are 10 such outcomes.
+      3. $\text{P}(>4) = \frac{10}{16} = \frac{5}{8}$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Constructing and using 2D sample space grids to calculate probabilities of combined events" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: The Rhinoceros Beetle Study">
+    Kingston is observing a population of rhinoceros beetles in a tropical rainforest. Based on his initial survey data, the experimental probability of a male rhinoceros beetle having a horn length greater than $5\text{ cm}$ is $0.28$.
+    
+    **a)** State the probability of a male rhinoceros beetle having a horn length less than or equal to $5\text{ cm}$.
+    
+    **b)** If Kingston captures and measures $250$ male rhinoceros beetles this season, calculate the expected number of beetles that will have a horn length greater than $5\text{ cm}$.
+    
+    **c)** Kingston measures a small batch of $20$ beetles and finds $15$ have horns greater than $5\text{ cm}$. Suggest one mathematical reason why this experimental relative frequency differs so much from the theoretical probability of $0.28$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** This is the complementary event:
+    
+    $$
+    1 - 0.28 = 0.72
+    $$
+    
+    **b)** We use the expected value formula, multiplying the probability by the number of trials.
+    
+    <Steps>
+      1. Identify the number of trials: $n = 250$.
+      2. Identify the probability: $\text{P}(\text{Horn} > 5\text{cm}) = 0.28$.
+      3. Calculate the expected number:
+         
+         $$
+         \text{Expected Beetles} = 250 \times 0.28 = 70 \text{ beetles}
+         $$
+         
+    </Steps>
+    
+    **c)** $20$ beetles is a very small sample size. Short-term experimental probability often fluctuates widely from theoretical probability due to natural randomness.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying expected occurrences to biological and environmental contexts" />

@@ -1,0 +1,495 @@
+---
+title: 4.4 Linear Correlation and Regression
+description: Understand how to analyse bivariate data, calculate Pearson's correlation coefficient, find the regression line using a TI-Nspire, and make reliable predictions in IB Maths AI SL.
+---
+
+In previous chapters, we looked at single variables (like the heights of a group of students) in isolation. But the real power of statistics comes from exploring relationships between *two* variables. Does an increase in hours spent studying lead to higher exam scores? Does a country's GDP affect its life expectancy? 
+
+When we measure two variables for each individual in a dataset, we call it **bivariate data**.
+
+---
+
+## 1. Scatter Diagrams and Correlation
+
+The first step in analysing bivariate data is always to plot it on a **scatter diagram**. This allows us to visually inspect the relationship between the independent variable ($x$, plotted on the horizontal axis) and the dependent variable ($y$, plotted on the vertical axis).
+
+We describe the relationship (or **correlation**) in terms of:
+1. **Direction:** Positive (as $x$ increases, $y$ increases) or Negative (as $x$ increases, $y$ decreases).
+2. **Strength:** Strong (points tightly clustered around a line), Weak (points loosely scattered but showing a trend), or No Correlation (random cloud of points).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 220" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Panel 1: Positive Strong */}
+    <g transform="translate(20, 20)">
+      <line x1="20" y1="150" x2="160" y2="150" stroke="#1e293b" stroke-width="2" />
+      <line x1="20" y1="150" x2="20" y2="10" stroke="#1e293b" stroke-width="2" />
+      <text x="90" y="180" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Strong Positive</text>
+      <circle cx="40" cy="130" r="3" fill="#3b82f6" />
+      <circle cx="55" cy="110" r="3" fill="#3b82f6" />
+      <circle cx="70" cy="100" r="3" fill="#3b82f6" />
+      <circle cx="85" cy="80" r="3" fill="#3b82f6" />
+      <circle cx="100" cy="70" r="3" fill="#3b82f6" />
+      <circle cx="115" cy="50" r="3" fill="#3b82f6" />
+      <circle cx="130" cy="40" r="3" fill="#3b82f6" />
+      <circle cx="145" cy="20" r="3" fill="#3b82f6" />
+    </g>
+
+    {/* Panel 2: Weak Negative */}
+    <g transform="translate(210, 20)">
+      <line x1="20" y1="150" x2="160" y2="150" stroke="#1e293b" stroke-width="2" />
+      <line x1="20" y1="150" x2="20" y2="10" stroke="#1e293b" stroke-width="2" />
+      <text x="90" y="180" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Weak Negative</text>
+      <circle cx="35" cy="40" r="3" fill="#ef4444" />
+      <circle cx="50" cy="80" r="3" fill="#ef4444" />
+      <circle cx="65" cy="50" r="3" fill="#ef4444" />
+      <circle cx="80" cy="110" r="3" fill="#ef4444" />
+      <circle cx="95" cy="70" r="3" fill="#ef4444" />
+      <circle cx="110" cy="130" r="3" fill="#ef4444" />
+      <circle cx="125" cy="100" r="3" fill="#ef4444" />
+      <circle cx="140" cy="140" r="3" fill="#ef4444" />
+    </g>
+
+    {/* Panel 3: No Correlation */}
+    <g transform="translate(400, 20)">
+      <line x1="20" y1="150" x2="160" y2="150" stroke="#1e293b" stroke-width="2" />
+      <line x1="20" y1="150" x2="20" y2="10" stroke="#1e293b" stroke-width="2" />
+      <text x="90" y="180" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">No Correlation</text>
+      <circle cx="40" cy="60" r="3" fill="#64748b" />
+      <circle cx="50" cy="120" r="3" fill="#64748b" />
+      <circle cx="70" cy="40" r="3" fill="#64748b" />
+      <circle cx="80" cy="90" r="3" fill="#64748b" />
+      <circle cx="100" cy="140" r="3" fill="#64748b" />
+      <circle cx="110" cy="70" r="3" fill="#64748b" />
+      <circle cx="130" cy="110" r="3" fill="#64748b" />
+      <circle cx="140" cy="30" r="3" fill="#64748b" />
+    </g>
+  </svg>
+</div>
+
+---
+
+## 2. Pearson's Product-Moment Correlation Coefficient ($r$)
+
+While describing a scatter graph by eye is useful, we need a mathematical way to measure the exact strength of the linear relationship. We use **Pearson's Product-Moment Correlation Coefficient ($r$)**. 
+
+The value of $r$ always falls within a specific range:
+
+$$
+-1 \le r \le 1
+$$
+
+<Aside type="tip" title="Interpreting r values">
+* **$r = 1$**: Perfect positive linear correlation.
+* **$0.75 \le r < 1$**: Strong positive correlation.
+* **$0.5 \le r < 0.75$**: Moderate positive correlation.
+* **$0 \le r < 0.5$**: Weak positive correlation.
+* **$r = 0$**: No linear correlation.
+* **Negative values** follow the exact same strength bands, just indicating a negative direction (downwards).
+</Aside>
+
+<SteveTip title="TI-Nspire: Calculating r">
+Never calculate $r$ by hand in the exam.
+1. Enter your $x$ and $y$ data into a `Lists & Spreadsheet` page. Name the columns.
+2. Press `Menu > Statistics > Stat Calculations > Linear Regression (mx+b)`.
+3. The value for `r` will be displayed in the output. (If you don't see $r$, you may need to turn on Stat Diagnostics in your calculator settings).
+</SteveTip>
+
+<Aside type="caution" title="Common Misconception: Non-Linear Data">
+Pearson’s $r$ ONLY measures the strength of a **linear** (straight-line) relationship. If your data forms a perfect U-shape (a parabola), the $r$ value will be very close to $0$. This does not mean there is no relationship; it just means there is no *linear* relationship. Always look at the scatter diagram first!
+</Aside>
+
+---
+
+## 3. Correlation vs. Causation
+
+<Aside type="note" title="Theory of Knowledge: Discovering Causes">
+**Aim 8:** The correlation between smoking and lung cancer was initially “discovered” using mathematics and statistics. However, showing that two variables move together does not prove that one causes the other. Science had to step in with biological evidence to justify the physical cause.
+</Aside>
+
+In statistics, **correlation does not imply causation**. Just because two variables have a high $r$ value does not mean changes in $x$ cause changes in $y$. There could be a coincidence, or a third **lurking variable** causing both to change (e.g., ice cream sales and shark attacks are highly correlated, but only because both are caused by the lurking variable: hot summer weather).
+
+---
+
+## 4. The Line of Best Fit and Mean Point
+
+A line of best fit can be drawn "by eye" to model the trend of the data. However, to earn marks for a by-eye line, it **must** pass exactly through the **mean point**.
+
+<Steps>
+1. Calculate the mean of the $x$-values ($\bar{x}$).
+2. Calculate the mean of the $y$-values ($\bar{y}$).
+3. Plot the coordinate $(\bar{x}, \bar{y})$ on your scatter diagram.
+4. Draw a straight line using a ruler that balances the points on either side, ensuring it passes directly through the mean point.
+</Steps>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 280" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid / Axes */}
+    <line x1="50" y1="230" x2="550" y2="230" stroke="#1e293b" stroke-width="2" />
+    <line x1="50" y1="230" x2="50" y2="30" stroke="#1e293b" stroke-width="2" />
+    <text x="300" y="260" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Independent Variable (x)</text>
+    <text x="30" y="130" font-size="14" fill="#1e293b" text-anchor="middle" transform="rotate(-90 30,130)" font-family="sans-serif">Dependent Variable (y)</text>
+
+    {/* Scatter Points */}
+    <circle cx="100" cy="200" r="4" fill="#64748b" />
+    <circle cx="150" cy="180" r="4" fill="#64748b" />
+    <circle cx="180" cy="140" r="4" fill="#64748b" />
+    <circle cx="220" cy="160" r="4" fill="#64748b" />
+    <circle cx="280" cy="110" r="4" fill="#64748b" />
+    <circle cx="350" cy="120" r="4" fill="#64748b" />
+    <circle cx="400" cy="80" r="4" fill="#64748b" />
+    <circle cx="450" cy="90" r="4" fill="#64748b" />
+    <circle cx="500" cy="50" r="4" fill="#64748b" />
+
+    {/* The Mean Point (x̄, ȳ) = (292, 125.5) approx */}
+    <circle cx="292" cy="125" r="6" fill="#ef4444" />
+    <path d="M 285 118 L 299 132 M 285 132 L 299 118" stroke="#ffffff" stroke-width="2" />
+    
+    {/* Guidelines to axes */}
+    <line x1="292" y1="125" x2="292" y2="230" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="292" y1="125" x2="50" y2="125" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="292" y="245" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">x̄</text>
+    <text x="35" y="129" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">ȳ</text>
+    
+    <text x="292" y="105" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Mean Point (x̄, ȳ)</text>
+
+    {/* Line of best fit */}
+    <line x1="60" y1="205" x2="520" y2="47" stroke="#3b82f6" stroke-width="3" />
+    <text x="470" y="35" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Line of Best Fit</text>
+  </svg>
+</div>
+
+---
+
+## 5. Linear Regression ($y$ on $x$)
+
+To make predictions, we need the exact equation of the line of best fit, known as the **linear regression line of $y$ on $x$**.
+
+The equation is written in the form:
+
+$$
+y = ax + b
+$$
+
+The parameters $a$ and $b$ have critical real-world interpretations:
+* **$a$ (Gradient):** The rate of change. It represents the predicted change in $y$ for every $1$ unit increase in $x$.
+* **$b$ ($y$-intercept):** The predicted value of $y$ when $x = 0$.
+
+<SteveTip title="Interpreting 'a' and 'b' in the Exam">
+When asked to "interpret the meaning of parameter $a$", do not just write "it is the gradient". You must use the context of the question. 
+*Example:* If $y$ is crop yield (kg) and $x$ is fertiliser (grams), and $a = 2.5$, write: "For every additional gram of fertiliser, the predicted crop yield increases by 2.5 kg."
+</SteveTip>
+
+---
+
+## 6. Prediction and Extrapolation
+
+We use the regression equation to predict a $y$-value for a given $x$-value. 
+
+* **Interpolation:** Predicting a $y$-value for an $x$-value that falls **within** the original range of data. This is generally reliable.
+* **Extrapolation:** Predicting a $y$-value for an $x$-value that falls **outside** the original range of data. 
+
+<Aside type="caution" title="The Dangers of Extrapolation">
+Extrapolating is highly dangerous because we have no evidence that the linear trend continues outside our measured data. A plant might grow linearly with temperature for a while, but eventually, if it gets too hot, it will wilt and the model breaks down. Always state that extrapolations are **unreliable**.
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 220" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Zones */}
+    <rect x="50" y="20" width="150" height="160" fill="rgba(239, 68, 68, 0.1)" />
+    <rect x="200" y="20" width="200" height="160" fill="rgba(16, 185, 129, 0.1)" />
+    <rect x="400" y="20" width="150" height="160" fill="rgba(239, 68, 68, 0.1)" />
+    
+    {/* Axes */}
+    <line x1="50" y1="180" x2="550" y2="180" stroke="#1e293b" stroke-width="2" />
+    <line x1="50" y1="180" x2="50" y2="20" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Data Points (between x=200 and x=400 approx) */}
+    <circle cx="220" cy="140" r="4" fill="#1e293b" />
+    <circle cx="260" cy="120" r="4" fill="#1e293b" />
+    <circle cx="290" cy="110" r="4" fill="#1e293b" />
+    <circle cx="340" cy="80" r="4" fill="#1e293b" />
+    <circle cx="380" cy="60" r="4" fill="#1e293b" />
+
+    {/* Regression Line */}
+    <line x1="50" y1="216" x2="550" y2="-10" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="200" y1="149" x2="400" y2="58" stroke="#3b82f6" stroke-width="3" />
+
+    {/* Labels */}
+    <text x="300" y="15" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">INTERPOLATION (Reliable)</text>
+    <text x="125" y="15" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">EXTRAPOLATION</text>
+    <text x="475" y="15" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">EXTRAPOLATION</text>
+    
+    {/* Arrows showing range */}
+    <path d="M 200 195 L 400 195" fill="none" stroke="#64748b" stroke-width="2" />
+    <line x1="200" y1="190" x2="200" y2="200" stroke="#64748b" stroke-width="2" />
+    <line x1="400" y1="190" x2="400" y2="200" stroke="#64748b" stroke-width="2" />
+    <text x="300" y="210" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">Range of measured data</text>
+  </svg>
+</div>
+
+<SteveTip title="The Golden Rule of Prediction">
+You can plug an $x$-value into the $y = ax + b$ line to predict $y$. **However, you cannot rearrange this equation to reliably predict $x$ from $y$.** The IB syllabus explicitly states you cannot reliably make a prediction of $x$ from a value of $y$ using a $y$ on $x$ line (because mathematical distance is minimised vertically, not horizontally). If a question asks you to do this, write down that the estimate is unreliable.
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Scatter Diagrams & Pearson's r">
+    A researcher records the number of rainy days ($x$) and the number of umbrellas sold ($y$) at a local shop over 8 months. She calculates Pearson's correlation coefficient to be $r = 0.87$.
+    
+    **a)** Describe the correlation between the number of rainy days and umbrella sales.
+    
+    **b)** The shop owner concludes that buying more umbrellas forces it to rain more often. Explain why this conclusion is statistically invalid.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** Because $r = 0.87$, there is a **strong, positive linear correlation** between the number of rainy days and the number of umbrellas sold.
+    
+    **b)** The shop owner is confusing correlation with causation. While the two variables are strongly linked, selling umbrellas does not *cause* the weather to change. A more logical explanation is the reverse: rainy weather causes people to buy umbrellas.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting Pearson's correlation coefficient and understanding causation vs correlation" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Matching r-values to Scatter Plots">
+    Match each of the following Pearson correlation coefficients to the correct scatter diagram below:
+    **$r = 0.95$**, **$r = -0.80$**, **$r = 0.05$**, **$r = -1.00$**
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 600 150" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px' }}>
+        {/* Plot A */}
+        <g transform="translate(10, 10)">
+          <rect x="0" y="0" width="130" height="130" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" />
+          <text x="15" y="20" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">Plot A</text>
+          <circle cx="20" cy="110" r="3" fill="#64748b" /><circle cx="35" cy="100" r="3" fill="#64748b" />
+          <circle cx="50" cy="80" r="3" fill="#64748b" /><circle cx="65" cy="70" r="3" fill="#64748b" />
+          <circle cx="80" cy="50" r="3" fill="#64748b" /><circle cx="95" cy="40" r="3" fill="#64748b" />
+          <circle cx="110" cy="20" r="3" fill="#64748b" />
+        </g>
+        
+        {/* Plot B */}
+        <g transform="translate(160, 10)">
+          <rect x="0" y="0" width="130" height="130" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" />
+          <text x="15" y="20" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">Plot B</text>
+          <circle cx="20" cy="20" r="3" fill="#64748b" /><circle cx="35" cy="35" r="3" fill="#64748b" />
+          <circle cx="50" cy="50" r="3" fill="#64748b" /><circle cx="65" cy="65" r="3" fill="#64748b" />
+          <circle cx="80" cy="80" r="3" fill="#64748b" /><circle cx="95" cy="95" r="3" fill="#64748b" />
+          <circle cx="110" cy="110" r="3" fill="#64748b" />
+        </g>
+
+        {/* Plot C */}
+        <g transform="translate(310, 10)">
+          <rect x="0" y="0" width="130" height="130" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" />
+          <text x="15" y="20" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">Plot C</text>
+          <circle cx="30" cy="40" r="3" fill="#64748b" /><circle cx="45" cy="110" r="3" fill="#64748b" />
+          <circle cx="60" cy="70" r="3" fill="#64748b" /><circle cx="85" cy="30" r="3" fill="#64748b" />
+          <circle cx="95" cy="90" r="3" fill="#64748b" /><circle cx="110" cy="60" r="3" fill="#64748b" />
+          <circle cx="50" cy="50" r="3" fill="#64748b" />
+        </g>
+
+        {/* Plot D */}
+        <g transform="translate(460, 10)">
+          <rect x="0" y="0" width="130" height="130" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1" />
+          <text x="15" y="20" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">Plot D</text>
+          <circle cx="20" cy="40" r="3" fill="#64748b" /><circle cx="35" cy="25" r="3" fill="#64748b" />
+          <circle cx="50" cy="60" r="3" fill="#64748b" /><circle cx="70" cy="80" r="3" fill="#64748b" />
+          <circle cx="85" cy="70" r="3" fill="#64748b" /><circle cx="100" cy="100" r="3" fill="#64748b" />
+          <circle cx="115" cy="115" r="3" fill="#64748b" />
+        </g>
+      </svg>
+    </div>
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    * **Plot A:** The points go upwards tightly, so it is a strong positive correlation. **$r = 0.95$**.
+    * **Plot B:** The points go downwards in a perfectly straight mathematical line. **$r = -1.00$**.
+    * **Plot C:** The points are scattered randomly with no discernible trend. **$r = 0.05$**.
+    * **Plot D:** The points go downwards loosely but with a clear trend. **$r = -0.80$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Visually estimating and matching Pearson's correlation coefficients to scatter plots" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: The Strawberry Dilemma (GDC Regression)">
+    Mr. Cheung has a bizarre theory that his daily strawberry intake ($y$) is entirely dependent on how many hours of sleep he gets the night before ($x$). He records his data for a week:
+    
+    | Sleep, $x$ (hours) | 5 | 6 | 6.5 | 7 | 8 | 8.5 | 9 |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | Strawberries, $y$ | 12 | 15 | 18 | 22 | 26 | 30 | 32 |
+
+    **a)** Use your TI-Nspire GDC to find the equation of the linear regression line $y = ax + b$.
+    
+    **b)** Write down the value of Pearson's correlation coefficient, $r$.
+    
+    **c)** Mr. Cheung plans to sleep for 7.5 hours tonight. Predict how many strawberries he will eat tomorrow.
+    
+    **d)** Mr. Cheung undergoes an extreme marathon and sleeps for 18 hours. He uses the model to predict his strawberry intake. State, with a reason, whether this prediction is reliable.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Enter the data into a `Lists & Spreadsheet` page. Run `Linear Regression (mx+b)` with $x$ as Sleep and $y$ as Strawberries.
+    
+    $$
+    y = 5.25x - 15.5 \text{ (coefficients to 3 s.f.)}
+    $$
+    
+    **b)** From the same GDC output screen:
+    
+    $$
+    r = 0.991 \text{ (to 3 s.f.)}
+    $$
+    
+    **c)** Substitute $x = 7.5$ into the regression equation.
+    
+    $$
+    y = 5.25(7.5) - 15.5 = 23.875
+    $$
+    
+    He is predicted to eat approximately **24 strawberries**.
+    
+    **d)** The prediction is **unreliable**. $18$ hours is far outside the original data range ($5$ to $9$ hours). This is an **extrapolation**, and the linear trend is highly unlikely to continue indefinitely (his stomach has limited capacity!).
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 150" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <line x1="40" y1="120" x2="380" y2="120" stroke="#1e293b" stroke-width="2" />
+        <line x1="40" y1="120" x2="40" y2="20" stroke="#1e293b" stroke-width="2" />
+        <text x="210" y="145" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Sleep (hours)</text>
+        <text x="20" y="70" font-size="12" fill="#1e293b" text-anchor="middle" transform="rotate(-90 20,70)" font-family="sans-serif">Strawberries</text>
+        
+        {/* Regression Line */}
+        <line x1="40" y1="110" x2="160" y2="20" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Highlight 18 hours Extrapolation */}
+        <line x1="160" y1="20" x2="350" y2="-120" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+        <circle cx="350" cy="120" r="4" fill="#ef4444" />
+        <text x="350" y="140" font-size="10" fill="#ef4444" text-anchor="middle" font-family="sans-serif">x = 18</text>
+        <text x="300" y="50" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Unreliable Extrapolation</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding linear regression equation using GDC and making predictions with interpolation vs extrapolation" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: The Mean Point">
+    A dataset of $x$ and $y$ values is plotted on a scatter diagram. 
+    The sum of the 10 $x$-values is $45$, and the sum of the 10 $y$-values is $82$.
+    
+    **a)** Calculate the coordinates of the mean point $(\bar{x}, \bar{y})$.
+    
+    **b)** A student draws a line of best fit by eye. State the exact coordinate point that their line must pass through to be considered mathematically correct.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+    <Steps>
+      1. Calculate the mean of $x$: $\bar{x} = \frac{45}{10} = 4.5$
+      2. Calculate the mean of $y$: $\bar{y} = \frac{82}{10} = 8.2$
+      3. The mean point is **$(4.5, 8.2)$**.
+    </Steps>
+    
+    **b)** The line of best fit by eye must pass precisely through the mean point, **$(4.5, 8.2)$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the mean point of a bivariate dataset for a line of best fit" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Interpreting Parameters">
+    Haile runs a small bakery. She tracks the daily temperature ($x^\circ\text{C}$) and the number of iced coffees sold ($y$). 
+    The regression line for her data is calculated as:
+    
+    $$
+    y = 4.2x - 12
+    $$
+    
+    **a)** Interpret the meaning of the parameter $4.2$ in the context of this problem.
+    
+    **b)** Explain why the $y$-intercept of this model does not make logical sense in the real world.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** $4.2$ is the gradient ($a$). In context: **For every $1^\circ\text{C}$ increase in temperature, the bakery is predicted to sell 4.2 more iced coffees.**
+    
+    **b)** The $y$-intercept ($b$) is $-12$. This implies that if the temperature is $0^\circ\text{C}$, the bakery will sell $-12$ iced coffees. It is physically impossible to sell a negative amount of coffees, which shows the limitations of the linear model at extremes.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting the gradient and y-intercept of a regression line in real-world contexts" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Spurious Correlation (Mr. Cheung's Matcha Habit)">
+    Mr. Cheung notices a very strange trend while marking a difficult set of exams. He records the number of empty matcha cups left on his desk at the end of the day ($x$) and the number of marking errors he makes on the students' tests ($y$). He admits he may have finally met his *matcha* with these papers!
+    
+    He calculates a strong positive correlation of $r = 0.85$.
+    He concludes: *"Having empty matcha cups on my desk directly causes me to make marking errors. I must throw them away immediately to improve my marking accuracy."*
+    
+    Explain why his conclusion is statistically flawed, and suggest a lurking variable that might explain the correlation.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    His conclusion is flawed because **correlation does not imply causation**. The physical presence of empty matcha cups does not force his brain to make mathematical errors.
+    
+    A highly likely **lurking variable** is his level of fatigue or lack of sleep. When he is exhausted, he drinks more matcha for an energy boost (leaving more cups on the desk), and because he is tired, he simultaneously makes more marking errors.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying spurious correlations and suggesting lurking variables" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Non-Linear Traps">
+    Selina kicks a football. A motion tracking camera records the horizontal distance the ball travels ($x$, in metres) and its height off the ground ($y$, in metres).
+    
+    She enters the data into her GDC and finds that Pearson's correlation coefficient is $r = 0.05$.
+    Selina concludes that there is absolutely no relationship between the horizontal distance and the height of the football.
+    
+    Explain why Selina's conclusion is likely incorrect.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    Pearson's correlation coefficient ($r$) only measures the strength of a **linear** relationship. The path of a kicked football forms a curve (a parabola). Because the relationship is non-linear, the $r$ value will be very close to zero, even though a perfectly strong quadratic relationship exists between distance and height. 
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Understanding the limitations of Pearson's r with non-linear data" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Interpolation vs Extrapolation Boundaries">
+    A fitness coach records the number of weeks a client has been training ($x$) and their maximum deadlift weight ($y$, in kg). The data is recorded from week 2 to week 12.
+    The regression line equation is $y = 2.5x + 40$.
+    
+    The coach uses the equation to make two predictions:
+    * **Prediction A:** Client's deadlift at week 8.
+    * **Prediction B:** Client's deadlift at week 52 (one year later).
+    
+    Classify each prediction as interpolation or extrapolation, and state which is more mathematically reliable.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    * **Prediction A (Week 8):** This is **interpolation** because 8 falls within the measured data range of 2 to 12 weeks.
+    * **Prediction B (Week 52):** This is **extrapolation** because 52 is far outside the measured data range.
+    
+    **Prediction A is much more mathematically reliable.** A person's strength cannot increase linearly forever; they will eventually hit a biological plateau, rendering Prediction B invalid.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Distinguishing between interpolation and extrapolation and evaluating reliability" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Invalid Predictions (Predicting x from y)">
+    A botanist measures the amount of daily sunlight ($x$ hours) and the height of a specific plant species ($y$ cm) after one month. 
+    The regression line of $y$ on $x$ is:
+    
+    $$
+    y = 3.5x + 10
+    $$
+    
+    A student finds a plant of this species that is $38\text{ cm}$ tall and uses the equation to estimate how much sunlight it received by solving $38 = 3.5x + 10$.
+    
+    State whether this method provides a reliable estimate, giving a reason.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    This method provides an **unreliable estimate**. 
+    
+    The equation given is a regression line of **$y$ on $x$**, which is specifically mathematically optimised to predict $y$ from known values of $x$. The IB syllabus states that you cannot reliably rearrange a $y$ on $x$ line to make a prediction of $x$ from a given value of $y$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Recognising the unreliability of predicting x from y using a y on x regression line" />
