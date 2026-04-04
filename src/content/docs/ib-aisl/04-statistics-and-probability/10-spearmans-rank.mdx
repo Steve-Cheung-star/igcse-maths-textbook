@@ -1,0 +1,270 @@
+---
+title: 4.10 Spearman's Rank Correlation Coefficient
+description: Understand Spearman's rank correlation coefficient, handle tied ranks, compare it with Pearson's correlation, and analyse monotonic relationships for IB Maths AI SL.
+---
+
+When investigating the relationship between two variables, you are likely already familiar with Pearson's product-moment correlation coefficient ($r$), which measures how well data fits a straight line. However, not all relationships in nature, economics, or human behaviour are perfectly linear. 
+
+Sometimes, as one variable increases, the other strictly increases (or decreases), but it might do so on a curve. To measure these relationships, we use **Spearman’s rank correlation coefficient ($r_s$)**.
+
+---
+
+## 1. Monotonic Relationships
+
+Spearman's correlation coefficient evaluates how well the relationship between two variables can be described by a **monotonic** function. 
+
+<Aside type="note" title="What is a Monotonic Relationship?">
+A monotonic relationship is one that consistently moves in one direction but does not have to be a straight line. 
+* **Monotonic Increasing:** As $x$ increases, $y$ always increases (or stays flat), but never decreases.
+* **Monotonic Decreasing:** As $x$ increases, $y$ always decreases (or stays flat), but never increases.
+</Aside>
+
+
+
+If data is strongly monotonic but curved (like exponential decay), Pearson's $r$ might mistakenly suggest a weaker correlation because it is strictly looking for a straight line. Spearman's $r_s$, however, will recognise the perfect underlying pattern and output a value close to $1$ or $-1$.
+
+---
+
+## 2. Pearson's vs. Spearman's
+
+You must be able to identify the appropriateness and limitations of both correlation coefficients.
+
+| Feature | Pearson's ($r$) | Spearman's ($r_s$) |
+| :--- | :--- | :--- |
+| **Measures** | Linearity (straight lines). | Monotonicity (consistent direction). |
+| **Data Used** | Raw, actual data values. | The *ranks* of the data values. |
+| **Outliers** | Highly sensitive. A single extreme outlier can drastically pull the line of best fit and ruin the $r$ value. | Less sensitive (robust). Because it only looks at order (ranks), an extreme numerical distance is ignored. |
+
+---
+
+## 3. The Ranking Process and Tied Ranks
+
+To calculate Spearman's correlation, we throw away the actual data values and instead assign them **ranks** (1st, 2nd, 3rd, etc.).
+
+<SteveTip title="Exam Tip: Ranking Direction">
+In IB exams, pay close attention to how the question asks you to rank data!
+* **Standard Mathematical Ranking:** By default, the smallest value is usually **Rank 1** (ascending order).
+* **Contextual Ranking:** For things like a 'Best Seller' list, 'Race Results', or 'Highest Test Scores', the "best" or "fastest" value is often given **Rank 1** (even if it's the largest number).
+* **The Golden Rule:** Always look for the pattern specified in the prompt. If the question doesn't specify, you can choose, but you **must** be consistent for both variables (e.g., both must be ranked best-to-worst).
+</SteveTip>
+
+### Dealing with Tied Ranks
+If two or more data items are identical, we cannot arbitrarily say one is "3rd" and the other is "4th". **If data items are equal, their ranks must be averaged.**
+
+**Example:** Rank the following list of numbers: `[12, 15, 15, 18, 20]`
+1. **12** is the lowest $\rightarrow$ **Rank 1**
+2. The two **15s** are competing for Rank 2 and Rank 3. We average the ranks: $\frac{2 + 3}{2} = 2.5$. Both **15s** get **Rank 2.5**.
+3. **18** is the next number. Since ranks 1, 2, and 3 are "used up", 18 gets **Rank 4**.
+4. **20** is the highest $\rightarrow$ **Rank 5**.
+
+---
+
+## 4. Calculating Spearman's on the GDC
+
+<SteveTip title="GDC Function: Spearman's Rank Correlation">
+The IB syllabus explicitly states: *"In examinations, Spearman’s rank correlation coefficient ($r_s$) should be found using technology."* You are not required to memorise or prove the formula.
+
+**How to do it on a TI-Nspire or similar GDC:**
+1. Put your $x$-data into List 1 and your $y$-data into List 2.
+2. Manually determine the ranks for the $x$-data and enter them into List 3.
+3. Manually determine the ranks for the $y$-data and enter them into List 4.
+4. Run a standard **Linear Regression (LinReg $mx+b$)** using **List 3 and List 4** (the ranked lists).
+5. The $r$ value your calculator spits out for the ranked lists is exactly your Spearman's $r_s$!
+</SteveTip>
+
+---
+
+## 5. Theory of Knowledge & Aim 8: Extrapolation
+
+### Aim 8: The Danger of Extrapolation
+The physicist Frank Oppenheimer famously wrote: *"Prediction is dependent only on the assumption that observed patterns will be repeated."* This highlights the extreme danger of **extrapolation**—using a line of best fit to predict values outside the range of your actual data. Even if Spearman's $r_s = 1$, assuming a pattern will continue infinitely has historically led to disastrous failures in modelling share prices, the spread of diseases, and climate change.
+
+### Theory of Knowledge (TOK)
+<Aside type="caution" title="Does correlation imply causation?">
+If a town's ice cream sales and swimming pool drownings are highly correlated, does eating ice cream cause drowning? No. Both are driven by a third, hidden variable: hot summer weather. Mathematics can tell us two things move together perfectly, but it cannot tell us *why*. 
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Choosing the Right Coefficient">
+    A botanist measures the time a specific species of plant takes to grow to a height of $50 \text{ cm}$ at various controlled room temperatures. When plotting the data, she notices a clear trend: as the temperature increases, the growth time consistently decreases. However, the drop is rapid at first and then heavily levels out.
+    
+    **a)** State, with a reason, whether Pearson's product-moment correlation coefficient or Spearman's rank correlation coefficient would be more appropriate to analyse this data.
+    
+    **b)** Explain why predicting the growth time at $50^\circ\text{C}$ (when her data only goes up to $30^\circ\text{C}$) might be unreliable.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** **Spearman's rank correlation coefficient ($r_s$)** would be more appropriate.
+    **Reason:** The relationship described is consistently decreasing (monotonic) but it is not a straight line. Pearson's $r$ only tests for linearity, whereas Spearman's $r_s$ accurately measures any monotonic relationship.
+    
+    **b)** Predicting outside the range of the given data is called **extrapolation**. It is unreliable because we do not know if the observed mathematical pattern will continue at extreme temperatures.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing appropriate use cases for Pearson vs Spearman correlation coefficients and defining extrapolation" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Two-Value Tiebreaker & Sampling">
+    A sports scientist investigates the relationship between the resting heart rate ($x$ bpm) and the $100\text{m}$ sprint time ($y$ seconds) of 6 athletes at a local track club. She chose the first 6 people who arrived for training that day.
+    
+    | Athlete | A | B | C | D | E | F |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Heart Rate ($x$)** | 62 | 58 | 65 | 60 | 65 | 70 |
+    | **Sprint Time ($y$)** | 11.5 | 10.9 | 12.0 | 11.2 | 12.2 | 12.8 |
+    
+    **a)** State the sampling method used by the scientist.
+    
+    **b)** Copy and complete the ranking table below. Assign Rank 1 to the *lowest* value for both variables.
+    
+    | Athlete | A | B | C | D | E | F |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Rank $x$** | | 1 | | | | |
+    | **Rank $y$** | 3 | 1 | 4 | 2 | 5 | 6 |
+    
+    **c)** Use your GDC to calculate Spearman's rank correlation coefficient, $r_s$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** **Convenience Sampling**, as she selected those readily available.
+    
+    **b)** Ranks for $x$: $58$ is Rank 1. $60$ is Rank 2. $62$ is Rank 3. The two $65$s tie for Ranks 4 and 5. Average them: $\frac{4 + 5}{2} = 4.5$. Finally, $70$ takes Rank 6.
+    
+    | Athlete | A | B | C | D | E | F |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Rank $x$** | **3** | 1 | **4.5** | **2** | **4.5** | **6** |
+    | **Rank $y$** | 3 | 1 | 4 | 2 | 5 | 6 |
+    
+    **c)** Entering the two rows of *ranks* into the GDC lists yields:
+    $$r_s = 0.943 \text{ (to 3 s.f.)}$$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Assigning tied ranks for two values and identifying convenience sampling" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Three-Value Tiebreaker">
+    Seven students are graded on a poetry assignment out of 50. The teacher also records how many hours each student spent writing their poem.
+    
+    | Hours Spent ($x$) | 2 | 3 | 3 | 4 | 5 | 5 | 5 |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Poetry Grade ($y$)** | 22 | 30 | 38 | 35 | 40 | 45 | 48 |
+    
+    **a)** Determine the ranks for the *Hours Spent* variable, starting with Rank 1 for the lowest time.
+    
+    **b)** Determine the ranks for the *Poetry Grade* variable, starting with Rank 1 for the lowest grade.
+    
+    **c)** Calculate $r_s$ and interpret its meaning in this context.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Ranking Hours Spent ($x$): 
+    * $2$ is Rank 1. 
+    * The two $3$s tie for Ranks 2 and 3. Average: $\frac{2 + 3}{2} = 2.5$. 
+    * $4$ takes Rank 4. 
+    * The three $5$s tie for Ranks 5, 6, and 7. Average: $\frac{5 + 6 + 7}{3} = 6$.
+    **Ranks for $x$:** `1, 2.5, 2.5, 4, 6, 6, 6`
+    
+    **b)** Ranking Grades ($y$): Order from lowest to highest with no ties.
+    **Ranks for $y$:** `1, 2, 4, 3, 5, 6, 7` (Careful to match back to the original table!)
+    
+    **c)** Running linear regression on the ranked lists gives:
+    $$r_s = 0.932 \text{ (to 3 s.f.)}$$
+    **Interpretation:** There is a **strong, positive monotonic correlation**. As hours spent writing increase, the poetry grade generally increases.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Averaging tied ranks across three identical data values" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Weak PMCC, Strong Spearman's">
+    An environmentalist records the concentration of a pollutant in the soil ($y$) against the distance from an industrial factory ($x$). After processing the data through her GDC, she finds that Pearson's product-moment correlation coefficient is $r = -0.42$, while Spearman's rank correlation coefficient is $r_s = -0.98$.
+    
+    **a)** Interpret what the value $r = -0.42$ suggests about the scatter plot of the raw data.
+    
+    **b)** Interpret what the value $r_s = -0.98$ suggests about the relationship.
+    
+    **c)** Explain how it is mathematically possible for these two coefficients to differ so significantly for the exact same dataset.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** A PMCC of $-0.42$ indicates a **weak, negative linear** correlation. The data points do not fit closely to a straight line.
+    
+    **b)** A Spearman's rank of $-0.98$ indicates a **very strong, negative monotonic** correlation. As distance increases, the pollutant concentration almost perfectly and consistently decreases.
+    
+    **c)** This happens when the relationship is highly non-linear but strictly follows a direction. For example, the pollutant might drop off exponentially. Pearson's $r$ strictly looks for a straight line (and is heavily penalised by the curve), whereas Spearman's $r_s$ only cares about the ranked order, correctly identifying the strong downward trend.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Contrasting the mathematical interpretations of Pearson's r and Spearman's rank for non-linear data" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Contextual Ranking (Best Sellers)">
+    A student investigates whether cheaper books are more popular. They select 6 books from a local bookstore's "Top 100 Best Sellers" display. 
+    
+    | Book | A | B | C | D | E | F |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Price (£)** | 8.99 | 12.50 | 7.99 | 15.00 | 8.99 | 9.50 |
+    | **Best Seller Rank** | 1st | 2nd | 3rd | 4th | 5th | 6th |
+    
+    **a)** State the rank you would assign to Book A for the "Best Seller Rank" variable.
+    
+    **b)** Complete the ranking for the "Price" variable, assigning Rank 1 to the cheapest book.
+    
+    **c)** Calculate Spearman's rank correlation coefficient for this data.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** **Rank 1**. (The data is *already* contextually ranked! Book A is the #1 best seller).
+    
+    **b)** Ranking prices from lowest to highest:
+    * £7.99 is Rank 1
+    * The two £8.99 books tie for Ranks 2 & 3. Average: $\frac{2+3}{2} = 2.5$.
+    * £9.50 is Rank 4
+    * £12.50 is Rank 5
+    * £15.00 is Rank 6
+    **Ranks for Price:** `2.5, 5, 1, 6, 2.5, 4`
+    
+    **c)** Inputting the price ranks against the best seller ranks (`1, 2, 3, 4, 5, 6`) yields:
+    $$r_s \approx 0.157 \text{ (to 3 s.f.)}$$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Handling contextual pre-ranked data and calculating Spearman's coefficient" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Mixing Linear Regression and Spearman's">
+    A school surveys students on their hours of sleep ($x$) and their latest test score out of 100 ($y$). To ensure all ages are represented fairly, the administration divides the school into Year groups and randomly selects **10%** of students from each Year.
+    
+    | Sleep Hours ($x$) | 6 | 7 | 7 | 8 | 9 | 10 |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Test Score ($y$)** | 55 | 60 | 65 | 75 | 80 | 80 |
+    
+    **a)** Identify the sampling method used by the administration.
+    
+    **b)** Calculate Pearson's product-moment correlation coefficient, $r$.
+    
+    **c)** Find the equation of the regression line $y$ on $x$, in the form $y = mx + c$.
+    
+    **d)** Use your equation to estimate the test score of a student who sleeps **7.5** hours.
+    
+    **e)** Calculate Spearman's rank correlation coefficient, $r_s$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** **Stratified sampling**, as the population was divided into proportional sub-groups (strata).
+    
+    **b)** Input the raw data into Lists 1 & 2. 
+    $$r = 0.964 \text{ (to 3 s.f.)}$$
+    
+    **c)** Using the GDC's linear regression output on the raw data: 
+    $$y = 6.90x + 15.1 \text{ (to 3 s.f.)}$$
+    
+    **d)** Substitute $x = 7.5$ into the equation: 
+    $$y = 6.90(7.5) + 15.1 = 66.85$$ 
+    (Score is approximately **67**).
+    
+    **e)** First, rank the data. 
+    * $x$ Ranks: `1, 2.5, 2.5, 4, 5, 6`
+    * $y$ Ranks: `1, 2, 3, 4, 5.5, 5.5`
+    Run linear regression on these ranked lists: 
+    $$r_s = 0.971 \text{ (to 3 s.f.)}$$
+  </TabItem>
+</Tabs>

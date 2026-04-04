@@ -1,0 +1,520 @@
+---
+title: 4.8 Binomial Distribution
+description: Master the binomial distribution, understand when it is an appropriate model, calculate probabilities using technology, and find the mean and variance for IB Maths AI SL.
+---
+
+While discrete random variables can have wildly different and unique probability distributions, many real-world scenarios follow a very specific, predictable pattern. When an experiment consists of a fixed number of repeated, independent trials, and each trial has only two possible outcomes (success or failure), we can model it using the **binomial distribution**. 
+
+From quality control in manufacturing (is the product defective or not?) to medical testing (does the patient have the antibody or not?), the binomial distribution is one of the most powerful and frequently used tools in applied mathematics.
+
+---
+
+## 1. Situations Appropriate for a Binomial Model
+
+Before calculating any probabilities, you must verify that the scenario actually fits the binomial model. You can memorise the four strict criteria using the acronym **B.I.N.S.**
+
+<Aside type="note" title="The Anatomy of a Binomial Model (B.I.N.S.)">
+An experiment can be modelled using a binomial distribution if and only if it satisfies all four of these conditions:
+* **B - Binary Outcomes:** There are only two possible outcomes for each trial, usually categorised as "Success" and "Failure".
+* **I - Independent Trials:** The outcome of one trial has zero effect on the outcome of any other trial.
+* **N - Number of Trials is Fixed:** The experiment is repeated a set, predetermined number of times (denoted as $n$).
+* **S - Same Probability:** The probability of a "Success" (denoted as $p$) remains constant for every single trial.
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 120" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* B Box */}
+    <rect x="20" y="20" width="125" height="80" rx="8" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="2" />
+    <text x="82.5" y="55" font-size="24" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">B</text>
+    <text x="82.5" y="75" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Binary</text>
+    <text x="82.5" y="90" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">Success/Fail</text>
+
+    {/* I Box */}
+    <rect x="165" y="20" width="125" height="80" rx="8" fill="rgba(16, 185, 129, 0.1)" stroke="#10b981" stroke-width="2" />
+    <text x="227.5" y="55" font-size="24" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">I</text>
+    <text x="227.5" y="75" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Independent</text>
+    <text x="227.5" y="90" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">No influence</text>
+
+    {/* N Box */}
+    <rect x="310" y="20" width="125" height="80" rx="8" fill="rgba(245, 158, 11, 0.1)" stroke="#f59e0b" stroke-width="2" />
+    <text x="372.5" y="55" font-size="24" font-weight="bold" fill="#f59e0b" text-anchor="middle" font-family="sans-serif">N</text>
+    <text x="372.5" y="75" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Number (n)</text>
+    <text x="372.5" y="90" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">Fixed trials</text>
+
+    {/* S Box */}
+    <rect x="455" y="20" width="125" height="80" rx="8" fill="rgba(239, 68, 68, 0.1)" stroke="#ef4444" stroke-width="2" />
+    <text x="517.5" y="55" font-size="24" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">S</text>
+    <text x="517.5" y="75" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Same (p)</text>
+    <text x="517.5" y="90" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">Constant prob</text>
+  </svg>
+</div>
+
+If a random variable $X$ follows a binomial distribution, we write this mathematically as:
+
+$$
+X \sim \text{B}(n, p)
+$$
+
+Where $n$ is the number of trials and $p$ is the probability of success in a single trial. The probability of failure is often denoted as $q$, where $q = 1 - p$.
+
+---
+
+## 2. Calculating Probabilities with Technology
+
+In the IB Mathematics AI SL course, you are **not required** to use the complex binomial algebraic formula (or formal proofs) to calculate probabilities. Instead, you are expected to efficiently use your Graphics Display Calculator (GDC). 
+
+<Aside type="caution" title="The Inequality Trap">
+Because the binomial distribution is **discrete** (you cannot have 3.5 successes), inequalities must be handled very carefully before typing them into your GDC. Your calculator needs inclusive lower and upper bounds.
+
+* $P(X < 4)$ means $0, 1, 2, 3$. Your bounds are lower = $0$, upper = $3$.
+* $P(X > 4)$ means $5, 6, 7 \dots n$. Your bounds are lower = $5$, upper = $n$.
+* $P(X \le 4)$ means $0, 1, 2, 3, 4$. Your bounds are lower = $0$, upper = $4$.
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 150" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <text x="300" y="30" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Translating P(X > 4) for a Discrete Variable</text>
+    
+    {/* Number line */}
+    <line x1="50" y1="80" x2="550" y2="80" stroke="#64748b" stroke-width="2" />
+    
+    {/* Ticks and numbers */}
+    {[0, 1, 2, 3, 4, 5, 6, 7].map((num, i) => (
+      <g key={num}>
+        <line x1={80 + i*60} y1="75" x2={80 + i*60} y2="85" stroke="#64748b" stroke-width="2" />
+        <text x={80 + i*60} y="110" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">{num}</text>
+      </g>
+    ))}
+    <text x="540" y="110" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">... n</text>
+    
+    {/* Not included markers (Red crosses) */}
+    {[0, 1, 2, 3, 4].map((num, i) => (
+      <g key={`cross-${num}`}>
+        <circle cx={80 + i*60} cy="80" r="10" fill="#ffffff" stroke="#ef4444" stroke-width="2" />
+        <line x1={73 + i*60} y1="73" x2={87 + i*60} y2="87" stroke="#ef4444" stroke-width="2" />
+        <line x1={73 + i*60} y1="87" x2={87 + i*60} y2="73" stroke="#ef4444" stroke-width="2" />
+      </g>
+    ))}
+
+    {/* Included markers (Green circles) */}
+    {[5, 6, 7].map((num, i) => (
+      <circle key={`circle-${num}`} cx={80 + (num)*60} cy="80" r="10" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="2" />
+    ))}
+    
+    {/* Highlight box for included range */}
+    <rect x="360" y="55" width="200" height="50" rx="8" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="460" y="140" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">GDC Input: lower = 5, upper = n</text>
+  </svg>
+</div>
+
+<SteveTip title="TI-Nspire: binomPdf vs binomCdf">
+You must know the difference between the two binomial functions on your calculator (`Menu > 5: Probability > 5: Distributions`):
+* **`binomPdf(n, p, x)`**: Probability Density Function. Use this when you need an **exact** number of successes. 
+    * *Example:* "Find the probability of getting *exactly* 4 heads." $\implies P(X=4)$
+* **`binomCdf(n, p, lower, upper)`**: Cumulative Distribution Function. Use this for **inequalities** or a range of successes.
+    * *Example:* "Find the probability of getting *between* 2 and 5 successes." $\implies P(2 \le X \le 5)$
+</SteveTip>
+
+---
+
+## 3. Mean and Variance of the Binomial Distribution
+
+Because the binomial distribution is perfectly structured and predictable, we do not need to construct a massive table to find its expected value (mean) or its variance. We can calculate them directly from the parameters $n$ and $p$.
+
+<FormulaBox title="Mean and Variance of a Binomial Distribution">
+For a random variable $X \sim \text{B}(n, p)$:
+
+**Mean (Expected Value):**
+$$
+\text{E}(X) = np
+$$
+
+**Variance:**
+$$
+\text{Var}(X) = np(1-p)
+$$
+</FormulaBox>
+
+<Aside type="tip" title="Expected Number of Occurrences">
+The expected value $\text{E}(X) = np$ tells you how many "successes" you should expect to see on average. For example, if a machine produces defective parts 5% of the time ($p=0.05$), and you check 200 parts ($n=200$), you expect $\text{E}(X) = 200 \times 0.05 = 10$ defective parts. This links directly to your prior knowledge of expected occurrences from SL 4.5!
+</Aside>
+
+---
+
+## 4. Theory of Knowledge & International-Mindedness
+
+<Aside type="note" title="Who really invented Pascal's Triangle?">
+The coefficients used in the algebraic expansion of binomials (which form the foundation of binomial probability proofs) are famously arranged in a pattern known globally as **Pascal's Triangle**, named after the 17th-century French mathematician Blaise Pascal.
+
+However, this mathematical discovery is heavily misattributed (Aim 8). The exact same triangle of numbers was documented by the Chinese mathematician **Yang Hui** nearly 400 years earlier in the 13th century, and by the Persian mathematician **Omar Khayyam** even earlier than that. This highlights how Eurocentric history has often shaped the naming conventions in modern mathematics, reminding us of the importance of International-Mindedness in acknowledging global contributions to human knowledge.
+</Aside>
+
+<Aside type="caution" title="Evaluating Mathematical Models (TOK)">
+**What criteria can we use to decide between different models?** A binomial distribution assumes probabilities remain perfectly constant and trials are completely independent. When modelling a penalty shootout in football using the binomial model, we ignore the psychological pressure on a player after a missed shot (meaning trials are *not* truly independent). A mathematical model is only ever an approximation of reality. As statisticians, we must critically decide whether a model simplifies reality usefully, or distorts it dangerously.
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Basic Binomial Calculations">
+    A biased coin is flipped 15 times. The probability of obtaining a Head on any single flip is $0.65$. Let $X$ be the number of Heads obtained.
+
+    **a)** State the distribution of $X$, specifying its parameters.
+    
+    **b)** Find the probability of obtaining exactly 10 Heads.
+    
+    **c)** Find the probability of obtaining at most 8 Heads.
+    
+    **d)** Find the probability of obtaining more than 11 Heads.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** The random variable follows a binomial distribution. $n = 15$ and $p = 0.65$.
+    
+    $$
+    X \sim \text{B}(15, 0.65)
+    $$
+    
+    **b)** We need exactly 10 successes. Using the GDC (`binomPdf`):
+    
+    $$
+    P(X = 10) = \text{binomPdf}(15, 0.65, 10) \approx 0.212 \text{ (to 3 s.f.)}
+    $$
+    
+    **c)** "At most 8" means $X \le 8$. Using the GDC (`binomCdf` with lower = 0, upper = 8):
+    
+    $$
+    P(X \le 8) = \text{binomCdf}(15, 0.65, 0, 8) \approx 0.164 \text{ (to 3 s.f.)}
+    $$
+    
+    **d)** "More than 11" means $X > 11$. Because it is discrete, this means $12, 13, 14, 15$. 
+    Use `binomCdf` with lower = 12, upper = 15:
+    
+    $$
+    P(X \ge 12) = \text{binomCdf}(15, 0.65, 12, 15) \approx 0.173 \text{ (to 3 s.f.)}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating exact and cumulative binomial probabilities using technology" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Mean, Variance and Context">
+    A seed company guarantees that 85% of their tomato seeds will germinate. A gardener plants a packet of 40 seeds. Assume that the germination of each seed is independent. Let $X$ be the number of seeds that germinate.
+
+    **a)** Calculate the expected number of seeds that germinate.
+    
+    **b)** Calculate the variance of the number of germinated seeds.
+    
+    **c)** Find the probability that exactly the expected number of seeds germinate.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    The situation satisfies the binomial conditions: $X \sim \text{B}(40, 0.85)$.
+    
+    **a)** Use the expected value formula $\text{E}(X) = np$:
+    
+    $$
+    \text{E}(X) = 40 \times 0.85 = 34
+    $$
+    
+    The expected number of seeds is 34.
+    
+    **b)** Use the variance formula $\text{Var}(X) = np(1-p)$:
+    
+    $$
+    \text{Var}(X) = 40 \times 0.85 \times (1 - 0.85)
+    $$
+    
+    $$
+    \text{Var}(X) = 34 \times 0.15 = 5.1
+    $$
+    
+    **c)** We need the probability of getting exactly 34 germinations.
+    
+    $$
+    P(X = 34) = \text{binomPdf}(40, 0.85, 34) \approx 0.160 \text{ (to 3 s.f.)}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the mean and variance of a binomial distribution and applying probabilities" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Working Backwards from Mean and Variance">
+    A random variable $X$ is binomially distributed such that $X \sim \text{B}(n, p)$.
+    It is given that the mean is $4.8$ and the variance is $1.92$.
+
+    **a)** Find the probability of success, $p$.
+    
+    **b)** Find the number of trials, $n$.
+    
+    **c)** Hence, calculate $P(X \ge 3)$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** We are given a system of equations from the formulae:
+    1) $np = 4.8$
+    2) $np(1-p) = 1.92$
+    
+    Substitute the value of $np$ from equation (1) into equation (2):
+    
+    $$
+    4.8(1 - p) = 1.92
+    $$
+    
+    $$
+    1 - p = \frac{1.92}{4.8}
+    $$
+    
+    $$
+    1 - p = 0.4
+    $$
+    
+    $$
+    p = 0.6
+    $$
+    
+    **b)** Now substitute $p = 0.6$ back into equation (1):
+    
+    $$
+    n(0.6) = 4.8
+    $$
+    
+    $$
+    n = \frac{4.8}{0.6}
+    $$
+    
+    $$
+    n = 8
+    $$
+    
+    **c)** The distribution is $X \sim \text{B}(8, 0.6)$. We need $P(X \ge 3)$.
+    Using the GDC (`binomCdf` with lower = 3, upper = 8):
+    
+    $$
+    P(X \ge 3) = \text{binomCdf}(8, 0.6, 3, 8) \approx 0.950 \text{ (to 3 s.f.)}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving simultaneous equations to find missing binomial parameters n and p" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: The 'At Least One' Strategy (Finding n)">
+    A student plays a mobile game where the probability of winning a rare item in a single attempt is $0.05$. The attempts are independent.
+
+    **a)** Write down an expression for the probability that the student does not win a rare item in $n$ attempts.
+    
+    **b)** Determine the minimum number of attempts required so that the probability of winning *at least one* rare item is greater than $0.99$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** If $P(\text{Win}) = 0.05$, then $P(\text{Lose}) = 1 - 0.05 = 0.95$.
+    The probability of losing $n$ times in a row is simply the loss probability raised to the power of $n$:
+    
+    $$
+    P(X = 0) = (0.95)^n
+    $$
+    
+    **b)** "At least one" is the complement of "none". 
+    
+    $$
+    P(X \ge 1) = 1 - P(X = 0)
+    $$
+    
+    We want this probability to be greater than $0.99$:
+    
+    $$
+    1 - (0.95)^n > 0.99
+    $$
+    
+    Rearrange the inequality:
+    
+    $$
+    0.01 > (0.95)^n
+    $$
+    
+    <SteveTip title="Solving Exponential Inequalities">
+    For IB AI SL, you can solve $0.95^n = 0.01$ using `nSolve(0.95^n = 0.01, n)` on your GDC. Alternatively, type the function $f(x) = 0.95^x$ into the graphing screen and use the table feature to see when the value drops below $0.01$.
+    </SteveTip>
+    
+    Solving the equation yields:
+    
+    $$
+    n \approx 89.78
+    $$
+    
+    Since $n$ must be an integer, the minimum number of attempts required is $n = 90$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the minimum number of trials for an 'at least one' binomial probability condition" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Determining the Unknown Probability">
+    In a large shipment of batteries, it is known that $X \sim \text{B}(50, p)$, where $X$ is the number of defective batteries in a sample of 50. 
+    
+    If the expected number of defective batteries in the sample is 2, find:
+    
+    **a)** The probability $p$ that a single battery is defective.
+    
+    **b)** The probability that exactly 1 battery is defective in the sample.
+    
+    **c)** The probability that fewer than 3 batteries are defective.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** We know $n = 50$ and $\text{E}(X) = 2$. Using the expected value formula:
+    
+    $$
+    \text{E}(X) = np
+    $$
+    
+    $$
+    2 = 50p
+    $$
+    
+    $$
+    p = \frac{2}{50} = 0.04
+    $$
+    
+    **b)** Now we have $X \sim \text{B}(50, 0.04)$. We need $P(X = 1)$.
+    
+    $$
+    P(X = 1) = \text{binomPdf}(50, 0.04, 1) \approx 0.271 \text{ (to 3 s.f.)}
+    $$
+    
+    **c)** "Fewer than 3" means $P(X < 3)$. For a discrete variable, this is $P(X \le 2)$.
+    Use the GDC (`binomCdf` with lower = 0, upper = 2):
+    
+    $$
+    P(X \le 2) = \text{binomCdf}(50, 0.04, 0, 2) \approx 0.677 \text{ (to 3 s.f.)}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for p using the expected value and calculating subsequent binomial probabilities" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Nested Binomial Distributions">
+    A machine produces components with a 4% defect rate. The components are packed into boxes of 25. 
+    A box is considered "acceptable" if it contains at most 1 defective component.
+    
+    **a)** Find the probability that a single randomly selected box is acceptable.
+    
+    A company orders a shipment of 40 boxes.
+    
+    **b)** Find the expected number of acceptable boxes in the shipment.
+    
+    **c)** Find the probability that exactly 35 boxes in the shipment are acceptable.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** First, let $X$ be the number of defective components in a single box. 
+    $X \sim \text{B}(25, 0.04)$.
+    "At most 1" defective component means $X \le 1$.
+    
+    $$
+    P(X \le 1) = \text{binomCdf}(25, 0.04, 0, 1) \approx 0.736 \text{ (to 3 s.f.)}
+    $$
+    
+    **b)** We now have a *new* binomial distribution modelling the boxes in the shipment. 
+    Let $Y$ be the number of acceptable boxes. $Y \sim \text{B}(40, 0.7357...)$.
+    Using the expected value formula:
+    
+    $$
+    \text{E}(Y) = n \times p = 40 \times 0.7357... = 29.4 \text{ boxes}
+    $$
+    
+    **c)** We need $P(Y = 35)$ using our new distribution for the boxes.
+    
+    $$
+    P(Y = 35) = \text{binomPdf}(40, 0.7357..., 35) \approx 0.0243 \text{ (to 3 s.f.)}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving nested binomial distribution problems with sequential probabilities" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Conditional Binomial Probability">
+    A fair coin is flipped 10 times. Let $X$ be the number of Heads obtained.
+    
+    **a)** Find the probability of obtaining at least 4 Heads.
+    
+    **b)** Given that at least 4 Heads were flipped, find the probability that exactly 6 Heads were flipped.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** The coin is fair, so $X \sim \text{B}(10, 0.5)$. We need $P(X \ge 4)$.
+    
+    $$
+    P(X \ge 4) = \text{binomCdf}(10, 0.5, 4, 10) \approx 0.828 \text{ (to 3 s.f.)}
+    $$
+    
+    **b)** This is a conditional probability problem: $P(X=6 \mid X \ge 4)$.
+    Using the conditional probability formula $P(A \mid B) = \frac{P(A \cap B)}{P(B)}$:
+    
+    The intersection of "getting exactly 6 Heads" and "getting at least 4 Heads" is simply "getting exactly 6 Heads".
+    
+    $$
+    P(X=6 \mid X \ge 4) = \frac{P(X=6)}{P(X \ge 4)}
+    $$
+    
+    Calculate the numerator $P(X=6)$:
+    
+    $$
+    P(X=6) = \text{binomPdf}(10, 0.5, 6) = 0.205078...
+    $$
+    
+    Now divide by the unrounded denominator from part a) ($0.828125$):
+    
+    $$
+    P(X=6 \mid X \ge 4) = \frac{0.205078...}{0.828125} \approx 0.248 \text{ (to 3 s.f.)}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating conditional probabilities within a binomial distribution model" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Finding an Unknown Probability from an Equation">
+    A random variable $Y \sim \text{B}(12, p)$. 
+    It is given that the probability of zero successes is $0.05$.
+    
+    **a)** Write down an algebraic equation for $p$.
+    
+    **b)** Hence, solve for $p$.
+    
+    **c)** Calculate $\text{Var}(Y)$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)** The probability of zero successes is the equivalent of getting 12 consecutive failures. Since the probability of failure is $(1-p)$, we can write:
+    
+    $$
+    (1 - p)^{12} = 0.05
+    $$
+    
+    **b)** To solve for $p$, take the 12th root of both sides (or use `nSolve` on your GDC):
+    
+    $$
+    1 - p = \sqrt[12]{0.05}
+    $$
+    
+    $$
+    1 - p \approx 0.779
+    $$
+    
+    $$
+    p \approx 0.221 \text{ (to 3 s.f.)}
+    $$
+    
+    **c)** Use the variance formula $\text{Var}(Y) = np(1-p)$ with the unrounded value of $p$:
+    
+    $$
+    \text{Var}(Y) = 12 \times 0.221 \times (1 - 0.221)
+    $$
+    
+    $$
+    \text{Var}(Y) \approx 2.07 \text{ (to 3 s.f.)}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the probability of zero successes to algebraically solve for the probability of success" />

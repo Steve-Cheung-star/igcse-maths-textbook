@@ -1,0 +1,652 @@
+---
+title: 4.9 Normal Distribution
+description: Understand the properties of the normal distribution curve, apply the 68-95-99.7 rule, and perform probability and inverse normal calculations using technology for IB Maths AI SL.
+---
+
+While the binomial distribution models discrete successes and failures, many variables in the real world are **continuous**. Heights, weights, exam scores, blood pressures, and measurement errors do not fall into neat, separated categories. Instead, they naturally form a continuous spread. 
+
+When you collect a large amount of continuous data from nature, it almost always forms a symmetrical, bell-shaped curve where most values cluster around the average, and extreme values become increasingly rare. This is known as the **normal distribution**.
+
+---
+
+## 1. Properties of the Normal Curve
+
+If a continuous random variable $X$ follows a normal distribution, we define it using two parameters: the mean ($\mu$) and the variance ($\sigma^2$).
+
+$$
+X \sim \text{N}(\mu, \sigma^2)
+$$
+
+<Aside type="note" title="Key Properties of the Normal Distribution">
+* **Bell-shaped and Symmetrical:** The curve is perfectly symmetrical around its centre.
+* **Central Measures are Equal:** The mean, median, and mode are all located at the exact highest point of the curve.
+* **Asymptotic:** The tails of the curve get closer and closer to the x-axis but never touch it (meaning theoretically, there is a tiny probability of an infinitely large or small result).
+* **Total Area = 1:** Like all probability distributions, the total area under the curve is exactly $1$ (or $100\%$).
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <defs>
+      <clipPath id="clip-prop-curve">
+        <path d="M 20 198 C 150 198, 200 40, 300 40 C 400 40, 450 198, 580 198 L 580 250 L 20 250 Z" />
+      </clipPath>
+    </defs>
+    <line x1="20" y1="200" x2="580" y2="200" stroke="#64748b" stroke-width="2" />
+    <path d="M 20 198 C 150 198, 200 40, 300 40 C 400 40, 450 198, 580 198 L 580 200 L 20 200 Z" fill="rgba(59, 130, 246, 0.15)" />
+    
+    <g clipPath="url(#clip-prop-curve)">
+      <line x1="300" y1="0" x2="300" y2="200" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6 6" />
+    </g>
+
+    <path d="M 20 198 C 150 198, 200 40, 300 40 C 400 40, 450 198, 580 198" fill="none" stroke="#3b82f6" stroke-width="3" />
+    
+    <text x="300" y="225" font-size="18" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">μ</text>
+    <text x="300" y="120" font-size="14" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Total Area = 1</text>
+    <text x="160" y="100" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">50% of data</text>
+    <text x="440" y="100" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">50% of data</text>
+  </svg>
+</div>
+
+---
+
+## 2. The 68-95-99.7 Rule (Empirical Rule)
+
+The standard deviation ($\sigma$) measures the spread of the data. Because the normal curve is perfectly mathematical, we know exactly what percentage of data falls within certain standard deviations from the mean.
+
+Students are expected to know these approximate benchmarks by heart:
+
+<Aside type="tip" title="The 68-95-99.7 Rule">
+* Approximately **68%** of the data lies within **one** standard deviation of the mean ($\mu \pm \sigma$).
+* Approximately **95%** of the data lies within **two** standard deviations of the mean ($\mu \pm 2\sigma$).
+* Approximately **99.7%** of the data lies within **three** standard deviations of the mean ($\mu \pm 3\sigma$).
+</Aside>
+
+Because the curve is symmetrical, we can split these percentages in half to find the area of specific "slices". For example, the area between $\mu$ and $\mu + \sigma$ is strictly $34\%$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 360" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <defs>
+      <clipPath id="clip-emp-rule">
+        <path d="M 20 198 C 150 198, 200 40, 300 40 C 400 40, 450 198, 580 198 L 580 360 L 20 360 Z" />
+      </clipPath>
+    </defs>
+    <line x1="20" y1="200" x2="580" y2="200" stroke="#1e293b" stroke-width="2" />
+    
+    <g clipPath="url(#clip-emp-rule)">
+      <line x1="300" y1="0" x2="300" y2="200" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+      <line x1="225" y1="0" x2="225" y2="200" stroke="#cbd5e1" stroke-width="2" />
+      <line x1="375" y1="0" x2="375" y2="200" stroke="#cbd5e1" stroke-width="2" />
+      <line x1="150" y1="0" x2="150" y2="200" stroke="#cbd5e1" stroke-width="2" />
+      <line x1="450" y1="0" x2="450" y2="200" stroke="#cbd5e1" stroke-width="2" />
+      <line x1="75" y1="0" x2="75" y2="200" stroke="#cbd5e1" stroke-width="2" />
+      <line x1="525" y1="0" x2="525" y2="200" stroke="#cbd5e1" stroke-width="2" />
+    </g>
+
+    <path d="M 20 198 C 150 198, 200 40, 300 40 C 400 40, 450 198, 580 198" fill="none" stroke="#3b82f6" stroke-width="3" />
+
+    <text x="300" y="225" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">μ</text>
+    <text x="225" y="225" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">μ-1σ</text>
+    <text x="375" y="225" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">μ+1σ</text>
+    <text x="150" y="225" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">μ-2σ</text>
+    <text x="450" y="225" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">μ+2σ</text>
+    <text x="75" y="225" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">μ-3σ</text>
+    <text x="525" y="225" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">μ+3σ</text>
+
+    <text x="262.5" y="160" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">34%</text>
+    <text x="337.5" y="160" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">34%</text>
+    
+    <text x="187.5" y="175" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">13.5%</text>
+    <text x="412.5" y="175" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">13.5%</text>
+    
+    <text x="112.5" y="185" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">2.35%</text>
+    <text x="487.5" y="185" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">2.35%</text>
+    
+    <text x="40" y="190" font-size="9" fill="#1e293b" text-anchor="middle" font-family="sans-serif">0.15%</text>
+    <text x="560" y="190" font-size="9" fill="#1e293b" text-anchor="middle" font-family="sans-serif">0.15%</text>
+
+    {/* Brackets for 68% */}
+    <line x1="225" y1="240" x2="225" y2="245" stroke="#3b82f6" stroke-width="2" />
+    <line x1="375" y1="240" x2="375" y2="245" stroke="#3b82f6" stroke-width="2" />
+    <line x1="225" y1="245" x2="375" y2="245" stroke="#3b82f6" stroke-width="2" />
+    <text x="300" y="260" font-size="12" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">68%</text>
+
+    {/* Brackets for 95% */}
+    <line x1="150" y1="270" x2="150" y2="275" stroke="#10b981" stroke-width="2" />
+    <line x1="450" y1="270" x2="450" y2="275" stroke="#10b981" stroke-width="2" />
+    <line x1="150" y1="275" x2="450" y2="275" stroke="#10b981" stroke-width="2" />
+    <text x="300" y="290" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">95%</text>
+
+    {/* Brackets for 99.7% */}
+    <line x1="75" y1="300" x2="75" y2="305" stroke="#ef4444" stroke-width="2" />
+    <line x1="525" y1="300" x2="525" y2="305" stroke="#ef4444" stroke-width="2" />
+    <line x1="75" y1="305" x2="525" y2="305" stroke="#ef4444" stroke-width="2" />
+    <text x="300" y="320" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">99.7%</text>
+  </svg>
+</div>
+
+---
+
+## 3. Normal Probability Calculations
+
+While the empirical rule is useful for exact standard deviations, we need technology to find probabilities for any other value. In the IB AI SL course, you are **not required** to standardise values to the $Z$-distribution formula ($z = \frac{x - \mu}{\sigma}$). You will find all probabilities directly using your GDC.
+
+<Aside type="caution" title="Never Use normPdf!">
+In the IB AI SL course, we deal with continuous normal variables. The probability of getting exactly one specific value on a continuous curve (like exactly $50.00000... \text{ kg}$) is technically $0$. We are only ever interested in the **area** between two values (ranges). 
+
+Therefore, **you will NEVER use `normPdf`**. Always use `normCdf`!
+</Aside>
+
+<SteveTip title="GDC Function: normCdf">
+To find the probability (area) between two values, use the Cumulative Distribution Function (`normCdf`).
+* **Menu > 5: Probability > 5: Distributions > 2: Normal Cdf**
+* **Lower Bound:** The smallest value. If asking for "less than $x$", use a massive negative number like `-9E99`.
+* **Upper Bound:** The largest value. If asking for "greater than $x$", use a massive positive number like `9E99`.
+* **$\mu$:** The mean.
+* **$\sigma$:** The standard deviation.
+
+*Caution:* The notation is $X \sim \text{N}(\mu, \sigma^2)$, which gives the **variance**. Your calculator asks for the **standard deviation** ($\sigma$). You may need to square root the given variance first!
+</SteveTip>
+
+---
+
+## 4. Inverse Normal Calculations
+
+Sometimes, a question will give you the probability (the area under the curve) and ask you to work backwards to find the boundary value ($x$) that corresponds to it.
+
+<SteveTip title="GDC Function: invNorm">
+Use the Inverse Normal function for backward calculations.
+* **Menu > 5: Probability > 5: Distributions > 3: Inverse Normal**
+* **Area:** The probability *to the left* of the unknown value $x$. 
+* **$\mu$:** The mean.
+* **$\sigma$:** The standard deviation.
+
+*Important:* If a question says "the top 10% of students", the area *to the left* is 90%, so you must input `Area = 0.90`.
+</SteveTip>
+
+---
+
+## 5. Linearity of Mean and Variance
+
+Occasionally, you might need to adjust your normal distribution due to a change in units (e.g., converting Celsius to Fahrenheit) or adding a constant amount.
+
+* **Adding a Constant ($+b$):** Shifts the mean by $b$, but the spread (variance/standard deviation) stays exactly the same.
+* **Multiplying by a Constant ($\times a$):** Multiplies the mean by $a$. It multiplies the standard deviation by $a$, and the variance by $a^2$.
+
+---
+
+## 6. Theory of Knowledge & International-Mindedness
+
+The normal distribution is remarkably powerful, but it relies on philosophical assumptions about how the universe works.
+
+<Aside type="note" title="International-Mindedness: L'homme moyen">
+The normal distribution's mathematical foundations were largely derived by the French mathematician Abraham de Moivre in 1733. Later, the Belgian astronomer and sociologist Adolphe Quetelet applied it to human characteristics (like height and chest size), introducing the concept of *l'homme moyen* (the "average man"). He believed the "average" was nature's ideal, and deviations were literal "errors" or imperfections.
+</Aside>
+
+<Aside type="caution" title="Aim 8: Misuse of the Normal Curve">
+**Why might the misuse of the normal distribution lead to dangerous inferences?** If we assume human intelligence or behaviour perfectly follows a normal distribution, we might improperly label people at the edges of the curve as "abnormal" or "defective" (as Quetelet originally implied). Furthermore, forcing data that is actually skewed (like global wealth distribution) into a normal model creates dangerous, inaccurate economic policies that underestimate severe poverty. **To what extent can we trust mathematical models?** A model is a simplification of reality; we must critically examine whether the continuous, symmetrical assumptions of a normal curve truly apply to the complex data we are studying.
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: The Empirical Rule">
+    The weights of pumpkins in a farm are normally distributed with a mean of $4.5 \text{ kg}$ and a standard deviation of $0.5 \text{ kg}$. 
+    
+    **a)** Sketch a normal curve to represent this distribution. On the horizontal axis, clearly label the mean and the values that are 1, 2, and 3 standard deviations above and below the mean.
+    
+    **b)** Shade the region on your sketch representing the middle 95% of the pumpkin weights.
+    
+    Using the 68-95-99.7 rule (without using your GDC's distribution functions), find the percentage of pumpkins that weigh:
+    
+    **c)** Between $4.0 \text{ kg}$ and $5.0 \text{ kg}$.
+    
+    **d)** Greater than $5.0 \text{ kg}$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a & b)** The mean $\mu = 4.5$ is in the centre. The standard deviation $\sigma = 0.5$, so we add/subtract $0.5$ for each step. The middle 95% corresponds to the area within exactly two standard deviations from the mean (between $3.5 \text{ kg}$ and $5.5 \text{ kg}$).
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 400 220" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <defs>
+          <clipPath id="shade-q1">
+            <rect x="80" y="0" width="240" height="200" />
+          </clipPath>
+          <clipPath id="clip-q1-curve">
+            <path d="M 20 178 C 100 178, 150 40, 200 40 C 250 40, 300 178, 380 178 L 380 220 L 20 220 Z" />
+          </clipPath>
+        </defs>
+        <line x1="10" y1="180" x2="390" y2="180" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Shaded Area for Middle 95% (2 SDs) */}
+        <path d="M 20 178 C 100 178, 150 40, 200 40 C 250 40, 300 178, 380 178 L 380 180 L 20 180 Z" fill="rgba(16, 185, 129, 0.25)" clipPath="url(#shade-q1)" />
+        
+        {/* Bounds clipped exactly to curve */}
+        <g clipPath="url(#clip-q1-curve)">
+          <line x1="20" y1="0" x2="20" y2="185" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3" />
+          <line x1="80" y1="0" x2="80" y2="185" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" />
+          <line x1="140" y1="0" x2="140" y2="185" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3" />
+          <line x1="200" y1="0" x2="200" y2="185" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="4 4" />
+          <line x1="260" y1="0" x2="260" y2="185" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3" />
+          <line x1="320" y1="0" x2="320" y2="185" stroke="#10b981" stroke-width="2" stroke-dasharray="3 3" />
+          <line x1="380" y1="0" x2="380" y2="185" stroke="#64748b" stroke-width="1.5" stroke-dasharray="3 3" />
+        </g>
+
+        <path d="M 20 178 C 100 178, 150 40, 200 40 C 250 40, 300 178, 380 178" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Labels */}
+        <text x="20" y="200" font-size="11" fill="#64748b" text-anchor="middle" font-family="sans-serif">3.0</text>
+        <text x="80" y="200" font-size="11" fill="#10b981" font-weight="bold" text-anchor="middle" font-family="sans-serif">3.5</text>
+        <text x="140" y="200" font-size="11" fill="#64748b" text-anchor="middle" font-family="sans-serif">4.0</text>
+        <text x="200" y="200" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">4.5</text>
+        <text x="260" y="200" font-size="11" fill="#64748b" text-anchor="middle" font-family="sans-serif">5.0</text>
+        <text x="320" y="200" font-size="11" fill="#10b981" font-weight="bold" text-anchor="middle" font-family="sans-serif">5.5</text>
+        <text x="380" y="200" font-size="11" fill="#64748b" text-anchor="middle" font-family="sans-serif">6.0</text>
+      </svg>
+    </div>
+    
+    **c)** $4.0 \text{ kg}$ is exactly one standard deviation below the mean ($4.5 - 0.5$). 
+    $5.0 \text{ kg}$ is exactly one standard deviation above the mean ($4.5 + 0.5$).
+    According to the rule, the area between $\mu - \sigma$ and $\mu + \sigma$ is **68%**.
+    
+    **d)** The curve is symmetrical. The total area is 100%. 
+    The area between $4.0$ and $5.0$ is 68%. Therefore, the remaining area in both tails combined is $100\% - 68\% = 32\%$.
+    Because the tails are equal, the area greater than $5.0 \text{ kg}$ (the upper tail) is half of 32%.
+    
+    $$
+    32\% \div 2 = 16\%
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the 68-95-99.7 empirical rule to find exact percentages without technology" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Basic Normal Probabilities">
+    The lifespan of a certain brand of lightbulb is modelled by a normal distribution with a mean of $850 \text{ hours}$ and a standard deviation of $45 \text{ hours}$.
+    
+    Let $X$ be the lifespan of a randomly selected lightbulb. Find:
+    
+    **a)** $P(X < 800)$
+    
+    **b)** $P(X > 900)$
+    
+    **c)** $P(820 < X < 880)$
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    Use your GDC's `normCdf` function with $\mu = 850$ and $\sigma = 45$.
+    
+    **a)** For $P(X < 800)$, the lower bound is $-\infty$ (use `-9E99`) and the upper bound is 800.
+    
+    $$
+    P(X < 800) = \text{normCdf}(-9E99, 800, 850, 45) \approx 0.133
+    $$
+    
+    (to 3 s.f.)
+    
+    **b)** For $P(X > 900)$, the lower bound is 900 and the upper bound is $\infty$ (use `9E99`).
+    
+    $$
+    P(X > 900) = \text{normCdf}(900, 9E99, 850, 45) \approx 0.133
+    $$
+    
+    (to 3 s.f.)
+    
+    **c)** For $P(820 < X < 880)$, the lower bound is 820 and the upper bound is 880.
+    
+    $$
+    P(820 < X < 880) = \text{normCdf}(820, 880, 850, 45) \approx 0.495
+    $$
+    
+    (to 3 s.f.)
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating exact normal probabilities using the normCdf function on the GDC" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Sketching the Curve">
+    The scores on a mathematics exam are normally distributed, $X \sim \text{N}(65, 8^2)$.
+    
+    **a)** Copy the blank normal curve below. On your sketch, draw a vertical line representing the mean and label it. 
+    
+    **b)** Shade the region representing $P(X > 75)$.
+    
+    **c)** Calculate $P(X > 75)$.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 400 200" width="100%" maxWidth="400px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <line x1="20" y1="180" x2="380" y2="180" stroke="#1e293b" stroke-width="2" />
+        <path d="M 20 178 C 100 178, 150 40, 200 40 C 250 40, 300 178, 380 178" fill="none" stroke="#1e293b" stroke-width="2" />
+      </svg>
+    </div>
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a & b)** The mean $\mu = 65$ sits exactly in the centre. Since $75 > 65$, the vertical line for 75 is to the right. The region $X > 75$ represents the shaded area extending to the right tail.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 400 200" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <defs>
+          <clipPath id="shade-q3">
+            <rect x="250" y="0" width="130" height="200" />
+          </clipPath>
+          <clipPath id="clip-q3-curve">
+            <path d="M 20 178 C 100 178, 150 40, 200 40 C 250 40, 300 178, 380 178 L 380 220 L 20 220 Z" />
+          </clipPath>
+        </defs>
+        <line x1="20" y1="180" x2="380" y2="180" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Shaded Area for X > 75 */}
+        <path d="M 20 178 C 100 178, 150 40, 200 40 C 250 40, 300 178, 380 178 L 380 180 L 20 180 Z" fill="rgba(59, 130, 246, 0.4)" clipPath="url(#shade-q3)" />
+        
+        <g clipPath="url(#clip-q3-curve)">
+          <line x1="200" y1="0" x2="200" y2="180" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 4" />
+          <line x1="250" y1="0" x2="250" y2="180" stroke="#3b82f6" stroke-width="2" />
+        </g>
+
+        <path d="M 20 178 C 100 178, 150 40, 200 40 C 250 40, 300 178, 380 178" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        <text x="200" y="195" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">65</text>
+        <text x="250" y="195" font-size="12" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">75</text>
+      </svg>
+    </div>
+    
+    **c)** Using the GDC (`normCdf` with lower = 75, upper = `9E99`, $\mu=65$, $\sigma=8$):
+    
+    $$
+    P(X > 75) = \text{normCdf}(75, 9E99, 65, 8) \approx 0.106
+    $$
+    
+    (to 3 s.f.)
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Sketching normally distributed regions and finding probabilities" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Inverse Normal (Finding a Value)">
+    The volume of water in bottles filled by a machine is normally distributed with a mean of $502 \text{ ml}$ and a standard deviation of $3 \text{ ml}$.
+    
+    **a)** Find the volume of water exceeded by only the top 5% of bottles.
+    
+    **b)** The manufacturer rejects any bottle in the bottom 2% of volumes. Find the minimum acceptable volume for a bottle.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    We need to find boundary values given probabilities, so we use `invNorm`.
+    
+    **a)** The "top 5%" means the area strictly to the *right* of our boundary is 0.05. 
+    Because `invNorm` requires the area to the *left*, we input $1 - 0.05 = 0.95$.
+    
+    $$
+    x = \text{invNorm}(0.95, 502, 3) \approx 506.93
+    $$
+    
+    The volume exceeded by the top 5% is $507 \text{ ml}$ (to 3 s.f.).
+    
+    **b)** The "bottom 2%" means the area to the *left* is exactly 0.02.
+    
+    $$
+    x = \text{invNorm}(0.02, 502, 3) \approx 495.84
+    $$
+    
+    The minimum acceptable volume is $496 \text{ ml}$ (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the invNorm function to find boundary values given tail probabilities" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Expected Value Context">
+    The times taken for athletes to complete a 5 km race are normally distributed with a mean of $24 \text{ minutes}$ and a standard deviation of $2.5 \text{ minutes}$.
+    
+    There are 800 athletes participating in the race. 
+    
+    **a)** Find the probability that an athlete finishes the race in less than 20 minutes.
+    
+    **b)** Calculate the expected number of athletes who will finish the race in less than 20 minutes.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** Let $T \sim \text{N}(24, 2.5^2)$. We need $P(T < 20)$.
+    
+    $$
+    P(T < 20) = \text{normCdf}(-9E99, 20, 24, 2.5) \approx 0.0548
+    $$
+    
+    (to 3 s.f.)
+    
+    **b)** The expected number of occurrences is the total population ($n$) multiplied by the probability of the event ($p$).
+    
+    $$
+    \text{Expected value} = 800 \times 0.054799... \approx 43.839...
+    $$
+    
+    We expect approximately 44 athletes to finish in under 20 minutes.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Multiplying normal probabilities by population size to find expected frequencies" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Central Intervals and Symmetry">
+    A machine cuts metal rods to a length $L$, where $L \sim \text{N}(150, 4^2)$. All measurements are in millimetres.
+    
+    A central, symmetrical interval of the data contains 60% of the rods. 
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 200" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <defs>
+          <clipPath id="shade-q6">
+            <rect x="155" y="0" width="90" height="200" />
+          </clipPath>
+          <clipPath id="clip-q6-curve">
+            <path d="M 20 158 C 100 158, 150 40, 200 40 C 250 40, 300 158, 380 158 L 380 200 L 20 200 Z" />
+          </clipPath>
+        </defs>
+        <line x1="20" y1="160" x2="380" y2="160" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Shaded Area */}
+        <path d="M 20 158 C 100 158, 150 40, 200 40 C 250 40, 300 158, 380 158 L 380 160 L 20 160 Z" fill="rgba(59, 130, 246, 0.3)" clipPath="url(#shade-q6)" />
+        
+        <g clipPath="url(#clip-q6-curve)">
+          <line x1="200" y1="0" x2="200" y2="160" stroke="#1e293b" stroke-width="1" stroke-dasharray="4 4" />
+          <line x1="155" y1="0" x2="155" y2="160" stroke="#1e293b" stroke-width="2" />
+          <line x1="245" y1="0" x2="245" y2="160" stroke="#1e293b" stroke-width="2" />
+        </g>
+
+        <path d="M 20 158 C 100 158, 150 40, 200 40 C 250 40, 300 158, 380 158" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        <text x="200" y="100" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">60%</text>
+        <text x="200" y="180" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">150</text>
+        <text x="155" y="180" font-size="12" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">a</text>
+        <text x="245" y="180" font-size="12" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">b</text>
+      </svg>
+    </div>
+    
+    **a)** Explain why the area to the left of $a$ is 20%.
+    
+    **b)** Find the value of $a$ and the value of $b$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** The total area under the normal curve is 100%. The middle shaded section is 60%. Because the curve is symmetrical, the remaining 40% of the area is split perfectly equally between the two unshaded tails. 
+    Therefore, the area in the left tail (to the left of $a$) is $40\% \div 2 = 20\%$.
+    
+    **b)** To find $a$, we use `invNorm` with the area to its left. Area = 0.20, $\mu = 150$, $\sigma = 4$ (Note: $4^2$ was the variance, so $\sigma = 4$).
+    
+    $$
+    a = \text{invNorm}(0.20, 150, 4) \approx 146.63... \approx 147 \text{ mm}
+    $$
+    
+    To find $b$, we need the total area to its left. This is the 20% from the left tail plus the 60% from the middle section. Area = $0.20 + 0.60 = 0.80$.
+    
+    $$
+    b = \text{invNorm}(0.80, 150, 4) \approx 153.36... \approx 153 \text{ mm}
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using symmetry to find boundaries of a central normally distributed region" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Conditional Normal Probability">
+    The scores on a university entrance exam are normally distributed, $X \sim \text{N}(55, 12^2)$.
+    
+    **a)** Find the probability that a student scores greater than 60.
+    
+    **b)** Given that a student scores greater than 60, find the probability that they score greater than 70.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** We need $P(X > 60)$. 
+    
+    $$
+    P(X > 60) = \text{normCdf}(60, 9E99, 55, 12) \approx 0.338
+    $$
+    
+    **b)** This is a conditional probability statement. We are finding the probability of scoring greater than 70, *given* that the score is already greater than 60.
+    Using the conditional probability formula:
+    
+    $$
+    P(X > 70 \mid X > 60) = \frac{P(X > 70 \cap X > 60)}{P(X > 60)}
+    $$
+    
+    The intersection of "scoring greater than 70" AND "scoring greater than 60" is simply "scoring greater than 70".
+    
+    $$
+    P(X > 70 \mid X > 60) = \frac{P(X > 70)}{P(X > 60)}
+    $$
+    
+    First, find the numerator $P(X > 70)$:
+    
+    $$
+    P(X > 70) = \text{normCdf}(70, 9E99, 55, 12) \approx 0.10564...
+    $$
+    
+    Now divide by the unrounded denominator from part a:
+    
+    $$
+    P(X > 70 \mid X > 60) = \frac{0.10564}{0.33846} \approx 0.312 \text{ (to 3 s.f.)}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying conditional probability logic to continuous normal distributions" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Linearity of Mean and Variance">
+    The daily temperature $C$ in a city, measured in Celsius, is normally distributed with a mean of $22^\circ\text{C}$ and a variance of $9$. 
+    
+    The temperature $F$ in Fahrenheit is calculated using the formula $F = 1.8C + 32$.
+    
+    **a)** Find the expected value (mean) of the temperature in Fahrenheit, $\text{E}(F)$.
+    
+    **b)** Find the variance of the temperature in Fahrenheit, $\text{Var}(F)$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)** For expected value (mean), you apply the exact same transformation to the mean.
+    
+    $$
+    \text{E}(F) = 1.8 \times \text{E}(C) + 32
+    $$
+    
+    $$
+    \text{E}(F) = 1.8(22) + 32 = 39.6 + 32 = 71.6^\circ\text{F}
+    $$
+    
+    **b)** Adding a constant (+32) does *not* change the spread or variance. However, multiplying by a constant (1.8) scales the variance by the square of that constant.
+    
+    $$
+    \text{Var}(F) = (1.8)^2 \times \text{Var}(C)
+    $$
+    
+    $$
+    \text{Var}(F) = 3.24 \times 9 = 29.16
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying linear transformations to the mean and variance of a normal distribution" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Working Backwards with a Parameter">
+    The daily calorie intake of adult male penguins is normally distributed. The standard deviation is known to be $300 \text{ kcal}$. 
+    
+    It is observed that exactly 15% of the penguins consume more than $2500 \text{ kcal}$ a day.
+    
+    Find the mean daily calorie intake ($\mu$) of the penguins.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    We are given $\sigma = 300$, $x = 2500$, and an upper tail probability of $0.15$. We need to find $\mu$.
+    
+    We can set this up as an equation based on the probability distribution:
+    
+    $$
+    P(X > 2500) = 0.15
+    $$
+    
+    This corresponds to the calculator command:
+    
+    $$
+    \text{normCdf}(2500, 9E99, \mu, 300) = 0.15
+    $$
+    
+    <SteveTip title="Using nSolve for Unknown Parameters">
+    In the AI SL course, you do not need to standardise to $Z$-scores to find a missing mean or standard deviation. You can type the entire `normCdf` expression into `nSolve` on your GDC!
+    
+    `nSolve(normCdf(2500, 9E99, x, 300) = 0.15, x)`
+    </SteveTip>
+    
+    Solving this equation on the calculator gives:
+    
+    $$
+    \mu \approx 2189.07...
+    $$
+    
+    The mean daily calorie intake is approximately $2190 \text{ kcal}$ (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using numerical solvers to find a missing mean or standard deviation in a normal distribution" />
+
+<Tabs>
+  <TabItem label="📝 Question 10: Tying Normal to Binomial Probability">
+    The weights of apples in an orchard are normally distributed with a mean of $150 \text{ g}$ and a standard deviation of $15 \text{ g}$.
+    An apple is classified as "Premium" if it weighs more than $170 \text{ g}$.
+    
+    **a)** Find the probability that a randomly chosen apple is Premium.
+    
+    A grocer randomly selects a sample of 12 apples from the orchard.
+    
+    **b)** Find the probability that exactly 3 of these 12 apples are Premium.
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    **a)** Let $W \sim \text{N}(150, 15^2)$ be the weight of an apple.
+    
+    $$
+    P(W > 170) = \text{normCdf}(170, 9E99, 150, 15) \approx 0.09121...
+    $$
+    
+    The probability is approximately $0.0912$ (to 3 s.f.).
+    
+    **b)** We are now dealing with a fixed number of independent trials (12 apples), each having a success/fail outcome (Premium or not). This is a **binomial distribution**.
+    
+    Let $Y$ be the number of Premium apples in the sample of 12. 
+    $n = 12$, and $p = 0.09121...$ (use the unrounded answer from part a).
+    
+    $$
+    Y \sim \text{B}(12, 0.09121...)
+    $$
+    
+    We need exactly 3 successes: $P(Y = 3)$.
+    
+    $$
+    P(Y = 3) = \text{binomPdf}(12, 0.09121..., 3) \approx 0.0716
+    $$
+    
+    (to 3 s.f.)
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Linking continuous normal probabilities to discrete binomial models" />
