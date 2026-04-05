@@ -11,11 +11,74 @@ Collecting and organising data is only the first step. The real power of statist
 
 When given a table, bar chart, pie chart, or scatter graph, you need to go beyond just reading the numbers. You need to draw **inferences** (logical conclusions based on the evidence).
 
-* **Read the axes carefully:** Look at the scales. Does the y-axis start at $0$, or has it been truncated to exaggerate a difference?
+* **Read the axes carefully:** Look at the scales. Does the $y$-axis start at $0$, or has it been truncated to exaggerate a difference?
 * **Look for the mode:** What is the most common outcome? 
 * **Spot the outliers:** Are there any data points that don't fit the general trend? Why might that be?
 
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 700 300" width="100%" maxWidth="700px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Left Graph: Misleading Truncated Y-Axis */}
+    <g transform="translate(50, 40)">
+      <text x="120" y="-15" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Misleading (Truncated Axis)</text>
+      
+      {/* Grid & Axes */}
+      <line x1="0" y1="200" x2="240" y2="200" stroke="#94a3b8" stroke-width="2" />
+      <line x1="0" y1="0" x2="0" y2="200" stroke="#94a3b8" stroke-width="2" />
+      <line x1="-5" y1="50" x2="240" y2="50" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="-5" y1="100" x2="240" y2="100" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="-5" y1="150" x2="240" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      
+      {/* Y-axis labels (Starts at 50 to exaggerate) */}
+      <text x="-15" y="205" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">50</text>
+      <text x="-15" y="155" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">52</text>
+      <text x="-15" y="105" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">54</text>
+      <text x="-15" y="55" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">56</text>
+      <text x="-15" y="5" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">58</text>
 
+      {/* Bars */}
+      <rect x="40" y="175" width="60" height="25" fill="rgba(239, 68, 68, 0.2)" stroke="#ef4444" stroke-width="2" />
+      <text x="70" y="220" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Brand A</text>
+      
+      <rect x="140" y="25" width="60" height="175" fill="rgba(239, 68, 68, 0.6)" stroke="#ef4444" stroke-width="2" />
+      <text x="170" y="220" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Brand B</text>
+
+      {/* Observation Note */}
+      <text x="120" y="250" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle" font-family="sans-serif">Looks like a 7x difference!</text>
+    </g>
+
+    {/* Right Graph: Accurate Y-Axis */}
+    <g transform="translate(420, 40)">
+      <text x="120" y="-15" font-size="14" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Accurate (Starts at 0)</text>
+
+      {/* Grid & Axes */}
+      <line x1="0" y1="200" x2="240" y2="200" stroke="#94a3b8" stroke-width="2" />
+      <line x1="0" y1="0" x2="0" y2="200" stroke="#94a3b8" stroke-width="2" />
+      <line x1="-5" y1="50" x2="240" y2="50" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="-5" y1="100" x2="240" y2="100" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="-5" y1="150" x2="240" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      
+      {/* Y-axis labels (Starts at 0) */}
+      <text x="-15" y="205" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">0</text>
+      <text x="-15" y="155" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">15</text>
+      <text x="-15" y="105" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">30</text>
+      <text x="-15" y="55" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">45</text>
+      <text x="-15" y="5" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">60</text>
+
+      {/* Bars (Values are actually 51 and 58, mapped to a scale where 200px = 60 units, so scale is 200/60 = 3.33px per unit) */}
+      <rect x="40" y="30" width="60" height="170" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="2" />
+      <text x="70" y="220" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Brand A</text>
+      
+      <rect x="140" y="7" width="60" height="193" fill="rgba(16, 185, 129, 0.6)" stroke="#10b981" stroke-width="2" />
+      <text x="170" y="220" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Brand B</text>
+
+      {/* Observation Note */}
+      <text x="120" y="250" font-size="12" font-style="italic" fill="#64748b" text-anchor="middle" font-family="sans-serif">The actual difference is very small.</text>
+    </g>
+    
+    {/* Separator line */}
+    <line x1="350" y1="20" x2="350" y2="280" stroke="#e2e8f0" stroke-width="2" />
+  </svg>
+</div>
 
 ---
 
@@ -40,11 +103,41 @@ Here are the summary statistics for a maths test taken by two different classes 
 | **Median Score** | $66$ | $74$ |
 | **Range** | $40$ | $15$ |
 
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Base Axis (10 pixels = 1 Mark) */}
+    <line x1="50" y1="180" x2="550" y2="180" stroke="#94a3b8" stroke-width="2" />
+    <path d="M 540 175 L 550 180 L 540 185 Z" fill="#94a3b8" />
+    <text x="300" y="215" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">Test Scores (Marks)</text>
+    
+    {/* Ticks and Labels */}
+    <g font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">
+      <line x1="100" y1="180" x2="100" y2="185" stroke="#94a3b8" /> <text x="100" y="200">40</text>
+      <line x1="200" y1="180" x2="200" y2="185" stroke="#94a3b8" /> <text x="200" y="200">50</text>
+      <line x1="300" y1="180" x2="300" y2="185" stroke="#94a3b8" /> <text x="300" y="200">60</text>
+      <line x1="400" y1="180" x2="400" y2="185" stroke="#94a3b8" /> <text x="400" y="200">70</text>
+      <line x1="500" y1="180" x2="500" y2="185" stroke="#94a3b8" /> <text x="500" y="200">80</text>
+    </g>
+
+    {/* Class X Distribution (Wide spread: Range 40 -> 400px wide. Min 46, Max 86) */}
+    <path d="M 160 180 Q 360 20 560 180" fill="rgba(59, 130, 246, 0.15)" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="360" y1="180" x2="360" y2="90" stroke="#3b82f6" stroke-width="2" />
+    <text x="360" y="80" font-size="12" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Class X Median (66)</text>
+    <path d="M 160 230 L 160 235 L 560 235 L 560 230" fill="none" stroke="#3b82f6" stroke-width="1.5" />
+    <text x="360" y="248" font-size="12" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Wide Range = 40 (Less Consistent)</text>
+
+    {/* Class Y Distribution (Narrow spread: Range 15 -> 150px wide. Min 66.5, Max 81.5) */}
+    <path d="M 365 180 Q 440 -60 515 180" fill="rgba(16, 185, 129, 0.3)" stroke="#10b981" stroke-width="2" />
+    <line x1="440" y1="180" x2="440" y2="50" stroke="#10b981" stroke-width="2" />
+    <text x="440" y="40" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Class Y Median (74)</text>
+    <path d="M 365 160 L 365 155 L 515 155 L 515 160" fill="none" stroke="#10b981" stroke-width="1.5" />
+    <text x="440" y="145" font-size="12" fill="#10b981" text-anchor="middle" font-family="sans-serif">Small Range = 15 (Consistent)</text>
+  </svg>
+</div>
+
 **How to write the comparison:**
 1. **Average:** "On average, Class Y performed better on the test because their median score was $74$, which is higher than Class X's median of $66$."
 2. **Spread:** "Class Y's scores were also much more consistent than Class X's, because Class Y had a smaller range of $15$ compared to Class X's range of $40$."
-
-
 
 <SteveTip title="Range = Consistency">
 Remember that a **smaller range** or **smaller IQR** means the data is clustered closer together. In real-world terms, this usually translates to the data being more **consistent** or **reliable**.
@@ -60,7 +153,64 @@ Here are the most common restrictions and flaws to look out for:
 
 * **Sample Size is Too Small:** Surveying 5 people is not enough to draw a conclusion about an entire school of 1000 students.
 * **Biased Sample:** If you want to find out the most popular hobby in a town, you shouldn't only survey people walking out of a gym. The sample does not represent the general population.
-* **Correlation Does Not Imply Causation:** Just because two things increase at the same time does not mean one caused the other. (e.g., Ice cream sales and shark attacks both increase in the summer. Ice cream does not cause shark attacks; the warmer weather is a hidden third variable).
+* **Correlation Does Not Imply Causation:** Just because two things increase at the same time does not mean one caused the other. Look out for "hidden" third variables.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Hidden Variable (The Sun/Summer) */}
+    <g transform="translate(300, 50)">
+      <circle cx="0" cy="0" r="30" fill="rgba(245, 158, 11, 0.2)" stroke="#f59e0b" stroke-width="2" />
+      
+      {/* Eight Wavy Sunrays (Microwaves/Heat waves) */}
+      <g stroke="#f59e0b" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M 0 34 Q 4 38 0 42 T 0 50" /> {/* South */}
+        <path d="M 0 34 Q 4 38 0 42 T 0 50" transform="rotate(45)" /> {/* South West */}
+        <path d="M 0 34 Q 4 38 0 42 T 0 50" transform="rotate(90)" /> {/* West */}
+        <path d="M 0 34 Q 4 38 0 42 T 0 50" transform="rotate(135)" /> {/* North West */}
+        <path d="M 0 34 Q 4 38 0 42 T 0 50" transform="rotate(180)" /> {/* North */}
+        <path d="M 0 34 Q 4 38 0 42 T 0 50" transform="rotate(225)" /> {/* North East */}
+        <path d="M 0 34 Q 4 38 0 42 T 0 50" transform="rotate(270)" /> {/* East */}
+        <path d="M 0 34 Q 4 38 0 42 T 0 50" transform="rotate(315)" /> {/* South East */}
+      </g>
+
+      {/* Text moved to the end of waves, broken into two lines, and lowered to avoid overlap */}
+      <text x="0" y="66" font-size="12" font-weight="bold" fill="#b45309" text-anchor="middle" font-family="sans-serif">
+        <tspan x="0" dy="0">Summer</tspan>
+        <tspan x="0" dy="14">Heat</tspan>
+      </text>
+      
+      <text x="0" y="-55" font-size="12" font-weight="bold" fill="#b45309" text-anchor="middle" font-family="sans-serif">Hidden 3rd Variable</text>
+    </g>
+
+    {/* Ice Cream Box */}
+    <rect x="50" y="140" width="160" height="60" rx="8" fill="#ffffff" stroke="#3b82f6" stroke-width="2" />
+    <text x="130" y="165" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Ice Cream Sales</text>
+    <text x="130" y="185" font-size="12" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Increase ↑</text>
+
+    {/* Shark Attack Box */}
+    <rect x="390" y="140" width="160" height="60" rx="8" fill="#ffffff" stroke="#ef4444" stroke-width="2" />
+    <text x="470" y="165" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Shark Attacks</text>
+    <text x="470" y="185" font-size="12" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Increase ↑</text>
+
+    {/* Causal Arrows from Sun */}
+    <path d="M 270 70 Q 130 90 130 130" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="4 4" />
+    <polygon points="125,130 135,130 130,140" fill="#f59e0b" />
+    <path d="M 330 70 Q 470 90 470 130" fill="none" stroke="#f59e0b" stroke-width="3" stroke-dasharray="4 4" />
+    <polygon points="465,130 475,130 470,140" fill="#f59e0b" />
+
+    {/* False Correlation Arrow */}
+    <line x1="220" y1="170" x2="380" y2="170" stroke="#64748b" stroke-width="4" stroke-linecap="round" />
+    <polygon points="375,165 375,175 385,170" fill="#64748b" />
+    <polygon points="225,165 225,175 215,170" fill="#64748b" />
+    <text x="300" y="195" font-size="12" font-weight="bold" fill="#64748b" text-anchor="middle" font-family="sans-serif">Strong Correlation</text>
+    
+    {/* Big Red Cross over False Correlation */}
+    <line x1="285" y1="155" x2="315" y2="185" stroke="#ef4444" stroke-width="4" stroke-linecap="round" />
+    <line x1="315" y1="155" x2="285" y2="185" stroke="#ef4444" stroke-width="4" stroke-linecap="round" />
+    <text x="300" y="215" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Not Causation!</text>
+  </svg>
+</div>
+
 * **Misleading Graphs:** Graphs where the vertical axis doesn't start at zero, or 3D pie charts that distort the sizes of the slices, can trick the viewer into making false inferences.
 
 ---
@@ -78,10 +228,10 @@ Here are the most common restrictions and flaws to look out for:
   </TabItem>
   <TabItem label="✅ Solution 1">
     <Steps>
-      1. First, compare the averages (mean). Remember that for racing, a *lower* time is better.
-      2. **Statement 1 (Average):** On average, David is the faster runner because his mean time is $11.5\text{s}$, which is lower than Sarah's mean of $12.1\text{s}$.
-      3. Next, compare the spread (range). A smaller range means the runner gets roughly the same time every race.
-      4. **Statement 2 (Spread):** However, Sarah is a much more consistent runner than David because her range is only $0.4\text{s}$, compared to David's highly varied range of $1.8\text{s}$.
+    1. First, compare the averages (mean). Remember that for racing, a *lower* time is better.
+    2. **Statement 1 (Average):** On average, David is the faster runner because his mean time is $11.5\text{s}$, which is lower than Sarah's mean of $12.1\text{s}$.
+    3. Next, compare the spread (range). A smaller range means the runner gets roughly the same time every race.
+    4. **Statement 2 (Spread):** However, Sarah is a much more consistent runner than David because her range is only $0.4\text{s}$, compared to David's highly varied range of $1.8\text{s}$.
     </Steps>
   </TabItem>
 </Tabs>
@@ -98,12 +248,141 @@ Here are the most common restrictions and flaws to look out for:
   </TabItem>
   <TabItem label="✅ Solution 2">
     <Steps>
-      1. Analyse the sample size. Is it large enough?
-      2. **Reason 1:** The sample size is far too small. Surveying only $20$ people is not enough to accurately represent the views of an entire town.
-      3. Analyse the location and time (bias). Who is being asked? Who is being left out?
-      4. **Reason 2:** The sample is heavily biased. The reporter is asking people who are already at a shopping mall, meaning they likely enjoy shopping more than the average resident. Also, by asking on a Tuesday morning, they are missing anyone who works standard weekday hours or is at school.
+    1. Analyse the sample size. Is it large enough?
+    2. **Reason 1:** The sample size is far too small. Surveying only $20$ people is not enough to accurately represent the views of an entire town.
+    3. Analyse the location and time (bias). Who is being asked? Who is being left out?
+    4. **Reason 2:** The sample is heavily biased. The reporter is asking people who are already at a shopping mall, meaning they likely enjoy shopping more than the average resident. Also, by asking on a Tuesday morning, they are missing anyone who works standard weekday hours or is at school.
     </Steps>
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Identifying bias, small sample sizes, and logical flaws in statistical claims" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Correlation vs Causation">
+    A beachside shop records the number of ice creams sold and the number of sunglasses sold over several days. The results are plotted on the scatter graph below.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 500 350" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        {/* Axes */}
+        <line x1="60" y1="280" x2="460" y2="280" stroke="#94a3b8" stroke-width="2" />
+        <line x1="60" y1="280" x2="60" y2="40" stroke="#94a3b8" stroke-width="2" />
+        
+        {/* Axis Labels */}
+        <text x="260" y="330" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Ice Creams Sold</text>
+        <text x="30" y="160" font-size="14" fill="#1e293b" text-anchor="middle" transform="rotate(-90 30 160)" font-family="sans-serif">Sunglasses Sold</text>
+
+        {/* Scatter Points (Positive Correlation) */}
+        <circle cx="100" cy="240" r="4" fill="#3b82f6" />
+        <circle cx="120" cy="260" r="4" fill="#3b82f6" />
+        <circle cx="140" cy="210" r="4" fill="#3b82f6" />
+        <circle cx="170" cy="190" r="4" fill="#3b82f6" />
+        <circle cx="200" cy="220" r="4" fill="#3b82f6" />
+        <circle cx="230" cy="160" r="4" fill="#3b82f6" />
+        <circle cx="250" cy="140" r="4" fill="#3b82f6" />
+        <circle cx="280" cy="150" r="4" fill="#3b82f6" />
+        <circle cx="310" cy="110" r="4" fill="#3b82f6" />
+        <circle cx="330" cy="120" r="4" fill="#3b82f6" />
+        <circle cx="360" cy="80" r="4" fill="#3b82f6" />
+        <circle cx="390" cy="100" r="4" fill="#3b82f6" />
+        <circle cx="420" cy="60" r="4" fill="#3b82f6" />
+      </svg>
+    </div>
+
+    a) Describe the type of correlation shown in the scatter graph.
+
+    b) The shop owner concludes: *"Eating ice cream causes people's eyes to become sensitive, which makes them buy sunglasses."* Explain why this conclusion is logically flawed.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **Part (a):** As the number of ice creams sold increases, the number of sunglasses sold also increases.
+    2. **Answer a:** The graph shows a **strong positive correlation**.
+    3. **Part (b):** The owner is confusing correlation with causation.
+    4. **Answer b:** Correlation does not imply causation. It is highly unlikely that ice cream physically causes eye sensitivity. Instead, there is a **hidden third variable** (the hot, sunny weather). Sunny weather causes *both* ice cream sales and sunglass sales to increase at the same time.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Distinguishing between correlation and causation on scatter graphs" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Misleading Graphs">
+    A marketing firm publishes a bar chart comparing their client's social media followers in 2023 versus 2024.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 450 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        {/* Title */}
+        <text x="225" y="30" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Follower Growth (2023 - 2024)</text>
+
+        {/* Axes */}
+        <line x1="80" y1="280" x2="380" y2="280" stroke="#94a3b8" stroke-width="2" />
+        <line x1="80" y1="280" x2="80" y2="60" stroke="#94a3b8" stroke-width="2" />
+        
+        {/* Y-axis labels (Misleading scale starting at 90,000) */}
+        <text x="70" y="285" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">90,000</text>
+        <text x="70" y="235" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">92,000</text>
+        <text x="70" y="185" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">94,000</text>
+        <text x="70" y="135" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">96,000</text>
+        <text x="70" y="85" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">98,000</text>
+
+        {/* Grid lines */}
+        <line x1="80" y1="230" x2="380" y2="230" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+        <line x1="80" y1="180" x2="380" y2="180" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+        <line x1="80" y1="130" x2="380" y2="130" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+        <line x1="80" y1="80" x2="380" y2="80" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+
+        {/* 2023 Bar (91,000) - 25px tall */}
+        <rect x="130" y="255" width="60" height="25" fill="#94a3b8" stroke="#64748b" stroke-width="2" />
+        <text x="160" y="310" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">2023</text>
+        
+        {/* 2024 Bar (99,000) - 225px tall */}
+        <rect x="250" y="55" width="60" height="225" fill="#ef4444" stroke="#b91c1c" stroke-width="2" />
+        <text x="280" y="310" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">2024</text>
+      </svg>
+    </div>
+
+    a) Estimate the number of followers the client had in 2023 and in 2024.
+
+    b) State one mathematical reason why this bar chart is misleading to a viewer.
+
+    c) Although the 2024 bar is mathematically $9$ times taller than the 2023 bar on this graph, calculate the *actual* percentage increase in followers.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Part (a):** Read the heights against the $y$-axis.
+    2. **Answer a:** In 2023, they had approximately **$91,000$** followers. In 2024, they had approximately **$99,000$** followers.
+    3. **Part (b):** Look at where the $y$-axis begins.
+    4. **Answer b:** The $y$-axis does not start at zero (it has been truncated at $90,000$). This artificially exaggerates the visual difference between the two bars, making a small increase look massive.
+    5. **Part (c):** Calculate percentage change: $\frac{\text{Change}}{\text{Original}} \times 100$.
+    6. **Answer c:** Change $= 99,000 - 91,000 = 8,000$. 
+       Percentage increase $= \frac{8,000}{91,000} \times 100 \approx 8.79\%$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying misleading axes on graphs and calculating true percentage changes" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Consistency and Choice">
+    A farmer wants to buy a new type of fertiliser to improve crop yields. He tests two different brands, Brand A and Brand B, over several identical plots of land. He records the crop yield (in kg) per plot and summarises his findings:
+    
+    | | Brand A | Brand B |
+    | :--- | :--- | :--- |
+    | **Median Yield** | $145 \text{ kg}$ | $148 \text{ kg}$ |
+    | **Range of Yield** | $12 \text{ kg}$ | $45 \text{ kg}$ |
+    
+    a) Based strictly on the averages, which fertiliser produced a better crop yield?
+
+    b) The farmer decides to buy Brand A. Using the statistical data, give a valid reason why he might have chosen Brand A over Brand B.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+    1. **Part (a):** Averages describe the typical amount. Look at the medians.
+    2. **Answer a:** **Brand B** produced a better typical yield because its median ($148\text{ kg}$) is higher than Brand A's median ($145\text{ kg}$).
+    3. **Part (b):** Look at the spread. Why would someone prefer the fertiliser with the slightly lower average?
+    4. **Answer b:** The farmer likely chose Brand A because its yield is much more **consistent** (or reliable). We know this because Brand A has a significantly smaller range ($12\text{ kg}$) compared to the highly unpredictable range of Brand B ($45\text{ kg}$).
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using range and consistency to justify real-world statistical choices" />

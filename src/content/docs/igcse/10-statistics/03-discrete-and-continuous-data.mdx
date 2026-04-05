@@ -21,71 +21,100 @@ In statistics, quantitative (numerical) data is split into two very distinct cat
 * The number of goals scored in a football match ($0$, $1$, $2$, $3$).
 * Shoe sizes ($6$, $6.5$, $7$, $7.5$ — notice these include decimals, but you still cannot have a shoe size of $6.234$).
 
-<div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', margin: '2rem 0', flexWrap: 'wrap' }}>
+<div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', margin: '3rem 0', flexWrap: 'wrap' }}>
   {/* Bar Chart for Discrete Data */}
-  <div style={{ textAlign: 'center' }}>
-    <h4 style={{ marginBottom: '1rem', color: '#1e293b' }}>Discrete Data (Bar Chart)</h4>
-    <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+  <div style={{ textAlign: 'center', background: '#ffffff', padding: '1.5rem', borderRadius: '16px', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)', border: '1px solid #e2e8f0' }}>
+    <h4 style={{ marginBottom: '1.5rem', color: '#1e293b', fontWeight: '600' }}>Discrete Data (Bar Chart)</h4>
+    <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ fontfamily: "Inter, sans-serif" }}>
+      <defs>
+        <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#60a5fa" />
+          <stop offset="100%" stopColor="#3b82f6" />
+        </linearGradient>
+        <filter id="shadow">
+          <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#cbd5e1" floodOpacity="0.5"/>
+        </filter>
+      </defs>
+
       {/* Grid lines */}
-      <line x1="40" y1="50" x2="280" y2="50" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
-      <line x1="40" y1="100" x2="280" y2="100" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
-      <line x1="40" y1="150" x2="280" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      <g stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4">
+        <line x1="40" y1="50" x2="280" y2="50" />
+        <line x1="40" y1="100" x2="280" y2="100" />
+        <line x1="40" y1="150" x2="280" y2="150" />
+      </g>
       
       {/* Axes */}
-      <path d="M 40 20 L 40 210 L 280 210" fill="none" stroke="#334155" stroke-width="2" />
+      <path d="M 40 20 L 40 210 L 280 210" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
       
-      {/* Bars (with gaps) */}
-      <rect x="60" y="100" width="30" height="110" fill="#3b82f6" stroke="#2563eb" stroke-width="2" />
-      <rect x="110" y="50" width="30" height="160" fill="#3b82f6" stroke="#2563eb" stroke-width="2" />
-      <rect x="160" y="150" width="30" height="60" fill="#3b82f6" stroke="#2563eb" stroke-width="2" />
-      <rect x="210" y="80" width="30" height="130" fill="#3b82f6" stroke="#2563eb" stroke-width="2" />
+      {/* Bars (with gaps and rounded tops) */}
+      <g filter="url(#shadow)">
+        <rect x="62" y="100" width="26" height="110" rx="4" fill="url(#barGradient)" />
+        <rect x="112" y="50" width="26" height="160" rx="4" fill="url(#barGradient)" />
+        <rect x="162" y="150" width="26" height="60" rx="4" fill="url(#barGradient)" />
+        <rect x="212" y="80" width="26" height="130" rx="4" fill="url(#barGradient)" />
+      </g>
 
-      {/* Y-axis labels */}
-      <text x="30" y="55" font-size="12" fill="#475569" text-anchor="end" font-family="sans-serif">15</text>
-      <text x="30" y="105" font-size="12" fill="#475569" text-anchor="end" font-family="sans-serif">10</text>
-      <text x="30" y="155" font-size="12" fill="#475569" text-anchor="end" font-family="sans-serif">5</text>
-      <text x="30" y="210" font-size="12" fill="#475569" text-anchor="end" font-family="sans-serif">0</text>
+      {/* Axis Labels and Titles */}
+      <g font-size="12" fill="#64748b" font-family="inherit">
+        <text x="30" y="55" text-anchor="end">15</text>
+        <text x="30" y="105" text-anchor="end">10</text>
+        <text x="30" y="155" text-anchor="end">5</text>
+        <text x="30" y="210" text-anchor="end">0</text>
 
-      {/* X-axis labels */}
-      <text x="75" y="230" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">0</text>
-      <text x="125" y="230" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">1</text>
-      <text x="175" y="230" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">2</text>
-      <text x="225" y="230" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">3</text>
-      <text x="160" y="245" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" font-family="sans-serif">Goals Scored</text>
+        <text x="75" y="230" text-anchor="middle">0</text>
+        <text x="125" y="230" text-anchor="middle">1</text>
+        <text x="175" y="230" text-anchor="middle">2</text>
+        <text x="225" y="230" text-anchor="middle">3</text>
+      </g>
+      
+      <text x="160" y="248" font-size="13" font-weight="600" fill="#1e293b" text-anchor="middle" font-family="inherit">Goals Scored</text>
     </svg>
   </div>
 
   {/* Histogram for Continuous Data */}
-  <div style={{ textAlign: 'center' }}>
-    <h4 style={{ marginBottom: '1rem', color: '#1e293b' }}>Continuous Data (Histogram)</h4>
-    <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+  <div style={{ textAlign: 'center', background: '#ffffff', padding: '1.5rem', borderRadius: '16px', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)', border: '1px solid #e2e8f0' }}>
+    <h4 style={{ marginBottom: '1.5rem', color: '#1e293b', fontWeight: '600' }}>Continuous Data (Histogram)</h4>
+    <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ fontfamily: "Inter, sans-serif" }}>
+      <defs>
+        <linearGradient id="histoGradient" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#34d399" />
+          <stop offset="100%" stopColor="#10b981" />
+        </linearGradient>
+      </defs>
+
       {/* Grid lines */}
-      <line x1="40" y1="50" x2="280" y2="50" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
-      <line x1="40" y1="100" x2="280" y2="100" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
-      <line x1="40" y1="150" x2="280" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
+      <g stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4">
+        <line x1="40" y1="50" x2="280" y2="50" />
+        <line x1="40" y1="100" x2="280" y2="100" />
+        <line x1="40" y1="150" x2="280" y2="150" />
+      </g>
       
-      {/* Axes */}
-      <path d="M 40 20 L 40 210 L 280 210" fill="none" stroke="#334155" stroke-width="2" />
+      {/* Bars (touching, slightly rounded top corners) */}
+      <g fill="url(#histoGradient)" stroke="#ffffff" stroke-width="1">
+        <path d="M 40 210 V 104 a 4 4 0 0 1 4 -4 h 52 a 4 4 0 0 1 4 4 V 210 Z" />
+        <path d="M 100 210 V 54 a 4 4 0 0 1 4 -4 h 52 a 4 4 0 0 1 4 4 V 210 Z" />
+        <path d="M 160 210 V 84 a 4 4 0 0 1 4 -4 h 52 a 4 4 0 0 1 4 4 V 210 Z" />
+        <path d="M 220 210 V 154 a 4 4 0 0 1 4 -4 h 52 a 4 4 0 0 1 4 4 V 210 Z" />
+      </g>
       
-      {/* Bars (touching) */}
-      <rect x="40" y="100" width="60" height="110" fill="#10b981" stroke="#059669" stroke-width="2" />
-      <rect x="100" y="50" width="60" height="160" fill="#10b981" stroke="#059669" stroke-width="2" />
-      <rect x="160" y="80" width="60" height="130" fill="#10b981" stroke="#059669" stroke-width="2" />
-      <rect x="220" y="150" width="60" height="60" fill="#10b981" stroke="#059669" stroke-width="2" />
+      {/* Axes (drawn over bars for cleanliness) */}
+      <path d="M 40 20 L 40 210 L 280 210" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
 
-      {/* Y-axis labels */}
-      <text x="30" y="55" font-size="12" fill="#475569" text-anchor="end" font-family="sans-serif">15</text>
-      <text x="30" y="105" font-size="12" fill="#475569" text-anchor="end" font-family="sans-serif">10</text>
-      <text x="30" y="155" font-size="12" fill="#475569" text-anchor="end" font-family="sans-serif">5</text>
-      <text x="30" y="210" font-size="12" fill="#475569" text-anchor="end" font-family="sans-serif">0</text>
+      {/* Axis Labels and Titles */}
+      <g font-size="12" fill="#64748b" font-family="inherit">
+        <text x="30" y="55" text-anchor="end">15</text>
+        <text x="30" y="105" text-anchor="end">10</text>
+        <text x="30" y="155" text-anchor="end">5</text>
+        <text x="30" y="210" text-anchor="end">0</text>
 
-      {/* X-axis labels (at the boundaries) */}
-      <text x="40" y="230" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">0</text>
-      <text x="100" y="230" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">10</text>
-      <text x="160" y="230" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">20</text>
-      <text x="220" y="230" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">30</text>
-      <text x="280" y="230" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">40</text>
-      <text x="160" y="245" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" font-family="sans-serif">Height (cm)</text>
+        <text x="40" y="230" text-anchor="middle">0</text>
+        <text x="100" y="230" text-anchor="middle">10</text>
+        <text x="160" y="230" text-anchor="middle">20</text>
+        <text x="220" y="230" text-anchor="middle">30</text>
+        <text x="280" y="230" text-anchor="middle">40</text>
+      </g>
+      
+      <text x="160" y="248" font-size="13" font-weight="600" fill="#1e293b" text-anchor="middle" font-family="inherit">Height (cm)</text>
     </svg>
   </div>
 </div>
@@ -153,12 +182,12 @@ Later in the syllabus, you will learn to graph these. Remember this pairing:
   </TabItem>
   <TabItem label="✅ Solution 1">
     <Steps>
-      1. **Number of cars:** Discrete (you count cars; you cannot have half a car).
-      2. **Volume of water:** Continuous (you measure volume; it can be $2000.5$ litres).
-      3. **Number of pages:** Discrete (you count pages).
-      4. **Distance travelled:** Continuous (you measure distance; it can be $14.56\text{km}$).
-      5. **Number of teeth:** Discrete (you count teeth).
-      6. **Speed:** Continuous (you measure speed; it can be $12.3\text{m/s}$).
+      1.  **Number of cars:** Discrete (you count cars; you cannot have half a car).
+      2.  **Volume of water:** Continuous (you measure volume; it can be $2000.5$ litres).
+      3.  **Number of pages:** Discrete (you count pages).
+      4.  **Distance travelled:** Continuous (you measure distance; it can be $14.56\text{km}$).
+      5.  **Number of teeth:** Discrete (you count teeth).
+      6.  **Speed:** Continuous (you measure speed; it can be $12.3\text{m/s}$).
     </Steps>
   </TabItem>
 </Tabs>
@@ -178,10 +207,10 @@ Later in the syllabus, you will learn to graph these. Remember this pairing:
   </TabItem>
   <TabItem label="✅ Solution 2">
     <Steps>
-      1. Look at the $30\text{mm}$ leaf. The boundary $30$ appears in both Class B and Class C.
-      2. Class B uses $\le 30$, which means "less than or **equal to** $30$". Therefore, the $30\text{mm}$ leaf goes into **Class B**.
-      3. Look at the $30.5\text{mm}$ leaf. 
-      4. $30.5$ is strictly greater than $30$. Class C uses $30 < L$, which means "$L$ is strictly greater than $30$". Therefore, the $30.5\text{mm}$ leaf goes into **Class C**.
+      1.  Look at the $30\text{mm}$ leaf. The boundary $30$ appears in both Class B and Class C.
+      2.  Class B uses $\le 30$, which means "less than or **equal to** $30$". Therefore, the $30\text{mm}$ leaf goes into **Class B**.
+      3.  Look at the $30.5\text{mm}$ leaf. 
+      4.  $30.5$ is strictly greater than $30$. Class C uses $30 < L$, which means "$L$ is strictly greater than $30$". Therefore, the $30.5\text{mm}$ leaf goes into **Class C**.
     </Steps>
   </TabItem>
 </Tabs>

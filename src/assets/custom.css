@@ -56,7 +56,6 @@
   line-height: 1;
 }
 
-
 /* --- 1. TARGET ONLY TOP-LEVEL CONTENT DIAGRAMS --- */
 /* We only invert SVGs that are direct children of the markdown or a div.
    This naturally ignores all math SVGs because they are nested deep 
@@ -66,13 +65,19 @@
 [data-theme='dark'] .starlight-tabs__panel > svg {
   filter: invert(1) hue-rotate(180deg) brightness(1.2) !important;
   display: block;
-  margin: 2rem auto;
+  margin: 0 auto; /* FIX: Prevents the 2rem margin from stacking and pushing the SVG down */
   max-width: 100%;
   height: auto;
-
-  /* ADD THESE TWO LINES */
   background-color: transparent !important;
   fill: none;
+}
+
+/* --- 1.5 BULLETPROOF MDX MARGIN FIX --- */
+/* Stops the MDX parser from injecting random margins if it wraps your SVGs in <p> tags */
+.sl-markdown-content p:has(> svg),
+.sl-markdown-content p:has(> div > svg) {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
 
 /* --- 2. LEAVE EVERYTHING ELSE ALONE --- */

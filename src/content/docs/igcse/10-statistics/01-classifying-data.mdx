@@ -68,25 +68,165 @@ In the exam, you will frequently be given a partially completed two-way table an
 ## Practice Questions
 
 <Tabs>
-  <TabItem label="📝 Question 1: Completing a Two-Way Table">
+  <TabItem label="📝 Question 1: Classifying Data">
+    Classify each of the following variables as either **Qualitative**, **Quantitative Discrete**, or **Quantitative Continuous**.
+    
+    a) The time it takes a student to cycle to school.
+
+    b) The shoe sizes of players in a basketball team.
+
+    c) The colours of the cars parked in a car park.
+
+    d) The number of pages in a textbook.
+
+    e) The weight of apples harvested from an orchard.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    a) **Quantitative Continuous:** Time is measured and can take any decimal value within a range.
+
+    b) **Quantitative Discrete:** Shoe sizes take specific values (e.g., $7, 7.5, 8$) and you cannot have a shoe size of $7.342$.
+
+    c) **Qualitative:** Colours are descriptive categories, not numbers.
+
+    d) **Quantitative Discrete:** You count the number of pages; it must be a whole integer.
+
+    e) **Quantitative Continuous:** Weight is measured and can take any value depending on the precision of the scales.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Classifying statistical data as qualitative, discrete, or continuous" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Tally Charts">
+    A café owner tracks the types of hot drinks ordered over a 30-minute period. The raw data is recorded below:
+    
+    `Tea, Coffee, Coffee, Hot Chocolate, Tea, Coffee, Coffee, Coffee, Tea, Hot Chocolate, Coffee, Tea, Coffee, Coffee, Hot Chocolate`
+    
+    Copy and complete the tally and frequency table below.
+    
+    | Drink Type | Tally | Frequency |
+    | :--- | :--- | :--- |
+    | Tea | | |
+    | Coffee | | |
+    | Hot Chocolate | | |
+    | **Total** | | |
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    Count each type of drink systematically. Remember to use the five-bar gate (卌) for tallies of five!
+    
+    | Drink Type | Tally | Frequency |
+    | :--- | :--- | :--- |
+    | Tea | IIII | $4$ |
+    | Coffee | 卌 III | $8$ |
+    | Hot Chocolate | III | $3$ |
+    | **Total** | | **15** |
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Constructing tally charts and frequency tables from raw categorical data" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Frequency from a Tally">
+    A teacher asks her class how many siblings they have. She records the results in the tally chart below.
+    
+    | Number of Siblings | Tally | Frequency |
+    | :--- | :--- | :--- |
+    | $0$ | 卌 | |
+    | $1$ | 卌 卌 II | |
+    | $2$ | 卌 I | |
+    | $3$ | III | |
+    | $4$ or more | I | |
+    | **Total** | | |
+    
+    a) Complete the frequency column and find the total number of students surveyed.
+
+    b) What is the most common number of siblings (the mode)?
+
+    c) How many students have strictly *more* than $1$ sibling?
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Convert the tallies to numerical frequencies:
+    * $0$ siblings: $5$
+    * $1$ sibling: $12$
+    * $2$ siblings: $6$
+    * $3$ siblings: $3$
+    * $4$ or more: $1$
+    * **Total:** $5 + 12 + 6 + 3 + 1 = 27$ students.
+    
+    **b)** The most common number of siblings is the one with the highest frequency. This is **$1$ sibling** (with a frequency of $12$).
+    
+    **c)** "More than 1" means $2, 3$, or $4+$ siblings. 
+    
+    $$
+    6 + 3 + 1 = 10 \text{ students}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting tally charts and extracting frequencies" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Designing a Frequency Table">
+    A dice is rolled $25$ times. The scores are recorded as follows:
+    
+    `3, 6, 1, 2, 4, 3, 5, 6, 2, 1, 3, 3, 4, 5, 2, 1, 6, 3, 4, 2, 5, 3, 1, 6, 3`
+    
+    a) Construct a frequency table for this data (you may include a tally column if it helps you count).
+
+    b) How many times did an even number appear?
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** Set up a table with the possible dice scores ($1$ to $6$).
+    
+    | Score | Tally | Frequency |
+    | :--- | :--- | :--- |
+    | $1$ | IIII | $4$ |
+    | $2$ | IIII | $4$ |
+    | $3$ | 卌 II | $7$ |
+    | $4$ | III | $3$ |
+    | $5$ | III | $3$ |
+    | $6$ | IIII | $4$ |
+    | **Total** | | **25** |
+    
+    **b)** The even numbers on a standard dice are $2, 4$, and $6$. We add their frequencies together:
+    * Score of $2$: $4$ times
+    * Score of $4$: $3$ times
+    * Score of $6$: $4$ times
+    
+    $$
+    4 + 3 + 4 = 11 \text{ times}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Creating frequency tables from raw discrete data" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Two-Way Tables and Probabilities">
     A sports club has $100$ members. They play either Tennis, Badminton, or Squash.
     * There are $45$ male members in total.
     * $12$ females play Squash.
     * $25$ members play Badminton, of which $15$ are male.
     * $38$ members play Tennis in total.
     
-    Construct and complete a two-way table to show this information.
+    a) Construct and complete a two-way table to show this information.
+
+    b) If a member is chosen at random, what is the probability that they are a male who plays Tennis?
+
+    c) If a **female** member is chosen at random, what is the probability that she plays Badminton?
   </TabItem>
-  <TabItem label="✅ Solution 1">
+  <TabItem label="✅ Solution 5">
+    **a) Completing the Table:**
+
     <Steps>
-      1. First, set up a blank table with Gender as the rows and Sport as the columns (don't forget the Total row and column).
-      2. Fill in the absolute facts given in the text: Total members = $100$. Total males = $45$. Female Squash = $12$. Total Badminton = $25$. Male Badminton = $15$. Total Tennis = $38$.
-      3. Calculate total females: $100 - 45 = 55$.
-      4. Calculate female Badminton: $25 - 15 = 10$.
-      5. Calculate total Squash: $100 - (38 + 25) = 100 - 63 = 37$.
-      6. Calculate male Squash: Total Squash ($37$) - Female Squash ($12$) = $25$.
-      7. Calculate male Tennis: Total males ($45$) - Male Badminton ($15$) - Male Squash ($25$) = $5$.
-      8. Calculate female Tennis: Total Tennis ($38$) - Male Tennis ($5$) = $33$.
+    1. First, set up a blank table with Gender as the rows and Sport as the columns (don't forget the Total row and column).
+    2. Fill in the absolute facts given in the text: Total members = $100$. Total males = $45$. Female Squash = $12$. Total Badminton = $25$. Male Badminton = $15$. Total Tennis = $38$.
+    3. Calculate total females: $100 - 45 = 55$.
+    4. Calculate female Badminton: $25 - 15 = 10$.
+    5. Calculate total Squash: $100 - (38 + 25) = 100 - 63 = 37$.
+    6. Calculate male Squash: Total Squash ($37$) - Female Squash ($12$) = $25$.
+    7. Calculate male Tennis: Total males ($45$) - Male Badminton ($15$) - Male Squash ($25$) = $5$.
+    8. Calculate female Tennis: Total Tennis ($38$) - Male Tennis ($5$) = $33$.
     </Steps>
 
     **Final Completed Table:**
@@ -96,34 +236,25 @@ In the exam, you will frequently be given a partially completed two-way table an
     | **Male** | $5$ | $15$ | $25$ | **45** |
     | **Female** | $33$ | $10$ | $12$ | **55** |
     | **Total** | **38** | **25** | **37** | **100** |
-  </TabItem>
-</Tabs>
 
-<SmartAIGenerator topic="Completing partially filled two-way tables using deduction" />
-
-<Tabs>
-  <TabItem label="📝 Question 2: Probability from a Two-Way Table">
-    Using the completed table from Question 1:
+    **b) Probability of Male and Tennis:**
+    Look for the specific intersection cell for Male and Tennis. The number is $5$. The total number of members is $100$.
     
-    1. If a member is chosen at random, what is the probability that they are a male who plays Tennis?
-    2. If a **female** member is chosen at random, what is the probability that she plays Badminton?
-  </TabItem>
-  <TabItem label="✅ Solution 2">
-    <Steps>
-      1. **Male who plays Tennis:** Look for the specific intersection cell for Male and Tennis. The number is $5$. The total number of members is $100$.
-         $$
-         \begin{aligned}
-         P(\text{Male and Tennis}) &= \frac{5}{100} = \frac{1}{20}
-         \end{aligned}
-         $$
-      2. **Given a female member is chosen:** This is a conditional probability. The denominator is no longer the grand total ($100$); it is only the total number of females ($55$). Out of those $55$ females, the number who play Badminton is $10$.
-         $$
-         \begin{aligned}
-         P(\text{Badminton given Female}) &= \frac{10}{55} = \frac{2}{11}
-         \end{aligned}
-         $$
-    </Steps>
+    $$
+    \begin{aligned}
+    P(\text{Male and Tennis}) &= \frac{5}{100} = \frac{1}{20}
+    \end{aligned}
+    $$
+    
+    **c) Conditional Probability (Given Female):**
+    Because we are told a female member is chosen, the denominator is no longer the grand total ($100$); it is only the total number of females ($55$). Out of those $55$ females, the number who play Badminton is $10$.
+    
+    $$
+    \begin{aligned}
+    P(\text{Badminton given Female}) &= \frac{10}{55} = \frac{2}{11}
+    \end{aligned}
+    $$
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Extracting probabilities and conditional probabilities from two-way tables" />
+<SmartAIGenerator topic="Completing two-way tables and extracting basic and conditional probabilities" />
