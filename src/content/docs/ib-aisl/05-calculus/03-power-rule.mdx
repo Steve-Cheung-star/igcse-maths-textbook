@@ -1,0 +1,379 @@
+---
+title: 5.3 The Power Rule for Differentiation
+description: Learn how to differentiate power functions and polynomials using the power rule, and apply it to find gradients in IB Maths AI SL.
+---
+
+Calculus is the mathematics of change. While finding the gradient of a straight line is straightforward using $m = \frac{y_2 - y_1}{x_2 - x_1}$, curves present a challenge because their gradient is constantly changing. Differentiation is the algebraic process we use to find the exact gradient of a curve at any given point. 
+
+The function that gives us the gradient of a curve is called the **derivative function**, denoted as $f'(x)$ or $\frac{dy}{dx}$.
+
+---
+
+## 1. The Power Rule
+
+The foundation of algebraic differentiation is a shortcut known as the power rule. Instead of calculating limits from first principles, we can use this rule to instantly find the derivative of any term.
+
+<FormulaBox title="Derivative of a Power Function">
+$$
+f(x) = ax^n \implies f'(x) = anx^{n-1}
+$$
+</FormulaBox>
+
+When dealing with a coefficient (a constant number in front of the variable), the coefficient remains and multiplies with the power that is brought down.
+
+To apply the power rule, follow these simple steps:
+
+<Steps>
+1. **Bring the power down:** Multiply the coefficient by the current exponent.
+2. **Keep the variable:** Write down the variable exactly as it is.
+3. **Reduce the power:** Subtract exactly $1$ from the original exponent to find your new power.
+</Steps>
+
+<Aside type="note" title="Theory of Knowledge (TOK): Modelling Reality">
+The seemingly abstract concept of calculus allows us to create mathematical models that permit incredible human feats—such as calculating orbital mechanics to get astronauts to the Moon. What does this tell us about the links between mathematical models and reality? Is mathematics a human invention developed to describe the universe, or is it an inherent property of the universe that we are merely discovering?
+</Aside>
+
+---
+
+## 2. Differentiating Polynomials and Notation
+
+A polynomial is an expression consisting of variables and coefficients. When differentiating a function of the form $f(x) = ax^n + bx^{n-1} + \dots$, you simply apply the power rule to **each term individually**.
+
+You must also be comfortable with different mathematical notations for derivatives:
+* If the function is $y$, the derivative is $\frac{dy}{dx}$ (the rate of change of $y$ with respect to $x$).
+* If the function is $A$ (Area) with respect to $r$ (radius), the derivative is $\frac{dA}{dr}$.
+* If the function is $s$ (displacement) with respect to $t$ (time), the derivative is $s'(t)$ or $\frac{ds}{dt}$.
+
+<Aside type="caution" title="Common Misconception: Constants and Linear Terms">
+Students often make mistakes with terms that do not visibly have an exponent.
+* **Linear terms:** The derivative of $kx$ is simply $k$. For example, if $y = 7x$, then $\frac{dy}{dx} = 7$.
+* **Constant terms:** The derivative of any constant number is always **zero**. A constant value does not change, so its rate of change is $0$. If $f(x) = 12$, then $f'(x) = 0$.
+</Aside>
+
+---
+
+## 3. Dealing with Negative Exponents
+
+The syllabus explicitly states that the power rule works for all integers, $n \in \mathbb{Z}$. This means you can use it for negative exponents as well. 
+
+Often, functions will be given with $x$ in the denominator of a fraction. **You cannot differentiate a term while $x$ is trapped in a denominator.** You must rewrite the term using negative indices first.
+
+<Aside type="tip" title="Index Law Reminder">
+Recall from your prior algebra studies that:
+
+$$
+\frac{1}{x^n} = x^{-n}
+$$
+
+and 
+
+$$
+\frac{a}{bx^n} = \frac{a}{b}x^{-n}
+$$
+
+</Aside>
+
+---
+
+## 4. Technology: Finding Derivatives on the GDC
+
+<Aside type="tip" title="The Numerical Derivative Function">
+While you must know how to find the derivative algebraically, your TI-Nspire can find the numerical value of a derivative at a specific point. This is excellent for checking your answers or finding gradients directly from complex functions!
+
+<Steps>
+1. Open a Calculator page.
+2. Press `menu` $\rightarrow$ `4: Calculus` $\rightarrow$ `1: Numerical Derivative at a Point`.
+3. Enter your variable (`x`) and the value at which you want the gradient.
+4. Type your function into the brackets and press `enter`.
+</Steps>
+</Aside>
+
+<SteveTip title="Visual Verification: Graphing your Derivatives">
+A fantastic way to check if your algebraic differentiation is entirely correct is to use the graphing features of your GDC to look for an overlap!
+
+<Steps>
+1. Open a Graphs page.
+2. In $f_1(x)$, use the derivative template `d/dx` and type in your **original** function.
+3. In $f_2(x)$, type in your **derived** algebraic derivative.
+4. Hit enter. If your differentiation is correct, the graph of $f_2(x)$ will perfectly overlap $f_1(x)$! You can press `ctrl` + `T` to bring up the table and verify that the output values are identical across all values of $x$.
+</Steps>
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Basic Polynomials">
+    Find the derivative, $f'(x)$, for the following functions:
+    1. $f(x) = x^5$
+    2. $f(x) = 4x^3 - 2x^2 + 8x - 10$
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part 1:**
+    Apply the power rule directly:
+    
+    $$
+    f'(x) = 5x^{5-1} = 5x^4
+    $$
+
+    **Part 2:**
+    Differentiate term by term:
+    * Derivative of $4x^3$ is $12x^2$
+    * Derivative of $-2x^2$ is $-4x$
+    * Derivative of $8x$ is $8$
+    * Derivative of $-10$ is $0$
+    
+    $$
+    f'(x) = 12x^2 - 4x + 8
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Differentiating basic power functions and polynomials term-by-term" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Negative Indices">
+    Find the derivative of the function:
+    
+    $$
+    y = 5x^2 - \frac{3}{x^4} + 2
+    $$
+    
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **Step 1: Rewrite the function using negative indices.**
+    
+    $$
+    y = 5x^2 - 3x^{-4} + 2
+    $$
+    
+    **Step 2: Differentiate term by term using the power rule.**
+    
+    $$
+    \frac{dy}{dx} = 10x - (-4 \times 3)x^{-4 - 1} + 0
+    $$
+    
+    $$
+    \frac{dy}{dx} = 10x + 12x^{-5}
+    $$
+    
+    **Step 3: Convert back to fraction form (optional but recommended).**
+    
+    $$
+    \frac{dy}{dx} = 10x + \frac{12}{x^5}
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Differentiating functions involving fractions by converting to negative exponents" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Gradient at a Specific Point">
+    Consider the curve $f(x) = \frac{1}{2}x^4 - 3x^2 + 7$.
+    
+    Find the gradient of the curve at the point where $x = -2$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Step 1: Find the derivative function, $f'(x)$.**
+    
+    $$
+    f'(x) = 4\left(\frac{1}{2}\right)x^3 - 2(3)x^1 + 0
+    $$
+    
+    $$
+    f'(x) = 2x^3 - 6x
+    $$
+    
+    **Step 2: Substitute $x = -2$ into the derivative function.**
+    
+    $$
+    f'(-2) = 2(-2)^3 - 6(-2)
+    $$
+    
+    $$
+    f'(-2) = 2(-8) + 12
+    $$
+    
+    $$
+    f'(-2) = -16 + 12 = -4
+    $$
+    
+    The gradient of the curve at $x = -2$ is **$-4$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the exact numerical gradient of a curve at a specific point" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Different Variables">
+    The volume of a sphere is given by the formula $V = \frac{4}{3}\pi r^3$. 
+    
+    Find $\frac{dV}{dr}$, the rate of change of the volume with respect to its radius.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    Here, $\pi$ is just a constant number, not a variable. We differentiate with respect to $r$.
+    
+    $$
+    \frac{dV}{dr} = 3 \times \left(\frac{4}{3}\pi\right) r^{3-1}
+    $$
+    
+    $$
+    \frac{dV}{dr} = 4\pi r^2
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Differentiating formulas with different variable notations such as V and r" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Splitting Fractions">
+    Find $\frac{dy}{dx}$ for the function:
+    
+    $$
+    y = \frac{6x^4 - 2x^2}{x^3}
+    $$
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    You cannot differentiate the numerator and denominator separately. First, split the fraction and simplify using index laws.
+    
+    $$
+    y = \frac{6x^4}{x^3} - \frac{2x^2}{x^3}
+    $$
+    
+    $$
+    y = 6x - 2x^{-1}
+    $$
+    
+    Now differentiate using the power rule:
+    
+    $$
+    \frac{dy}{dx} = 6 - (-1 \times 2)x^{-1-1}
+    $$
+    
+    $$
+    \frac{dy}{dx} = 6 + 2x^{-2}
+    $$
+    
+    Or, equivalently: 
+    
+    $$
+    \frac{dy}{dx} = 6 + \frac{2}{x^2}
+    $$
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Simplifying algebraic fractions before applying the power rule" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Points of Zero Gradient">
+    Find the coordinates of the point on the curve $f(x) = x^2 - 8x + 15$ where the gradient is $0$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **Step 1: Find the derivative to represent the gradient.**
+    
+    $$
+    f'(x) = 2x - 8
+    $$
+    
+    **Step 2: Set the derivative to $0$ and solve for $x$.**
+    
+    $$
+    0 = 2x - 8
+    $$
+    
+    $$
+    8 = 2x
+    $$
+    
+    $$
+    x = 4
+    $$
+    
+    **Step 3: Find the corresponding $y$-coordinate.**
+    Substitute $x = 4$ back into the *original* function $f(x)$.
+    
+    $$
+    f(4) = (4)^2 - 8(4) + 15
+    $$
+    
+    $$
+    f(4) = 16 - 32 + 15 = -1
+    $$
+    
+    The coordinates of the point with zero gradient are **$(4, -1)$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the coordinates of turning points where the derivative equals zero" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Increasing and Decreasing Functions (Linking to 5.2)">
+    Consider the function $f(x) = \frac{1}{3}x^3 - 2x^2 - 12x + 5$.
+    
+    Find the range of values for $x$ for which the function is decreasing.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    A function is decreasing when its gradient is strictly negative (i.e., $f'(x) < 0$).
+    
+    **Step 1: Find the derivative function.**
+    
+    $$
+    f'(x) = x^2 - 4x - 12
+    $$
+    
+    **Step 2: Determine where the derivative is less than zero.**
+    We need to solve the inequality:
+    
+    $$
+    x^2 - 4x - 12 < 0
+    $$
+    
+    **Step 3: Find the roots and test the intervals.**
+    Factorise the quadratic to find where the gradient equals zero:
+    
+    $$
+    (x - 6)(x + 2) = 0
+    $$
+    
+    The roots are $x = 6$ and $x = -2$. Since the derivative $y = x^2 - 4x - 12$ is a "positive/upwards" parabola, it dips below zero *between* its roots.
+    
+    The function is therefore decreasing for: **$-2 < x < 6$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the derivative to determine intervals where a function is increasing or decreasing" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Instantaneous Rate of Change (Linking to 5.1)">
+    The displacement of a particle, $s$ metres, after $t$ seconds is modelled by the function $s(t) = 3t^2 - 5t + 2$. 
+    
+    Find the exact instantaneous rate of change (velocity) of the particle at $t = 4$ seconds.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    The instantaneous rate of change is the derivative evaluated at that specific point in time.
+    
+    **Step 1: Find the derivative $s'(t)$.**
+    
+    $$
+    s'(t) = 6t - 5
+    $$
+    
+    **Step 2: Substitute $t = 4$.**
+    
+    $$
+    s'(4) = 6(4) - 5
+    $$
+    
+    $$
+    s'(4) = 24 - 5 = 19
+    $$
+    
+    The rate of change is **$19 \text{ m s}^{-1}$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying the derivative to find instantaneous rates of change in kinematics models" />

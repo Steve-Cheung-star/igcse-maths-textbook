@@ -1,0 +1,377 @@
+---
+title: 5.2 Increasing and Decreasing Functions
+description: Master the graphical interpretation of derivatives to identify where functions are increasing or decreasing in IB Maths AI SL.
+---
+
+In calculus, the derivative $f'(x)$ is more than just a formula for gradients; it is a visual tool that describes the "behaviour" of a function. By analysing the sign of the derivative (whether it is positive, negative, or zero), we can determine exactly where a function graph is climbing upwards or sliding downwards.
+
+---
+
+## 1. The Anatomy of Function Behaviour
+
+A function's behaviour is defined by how its output ($y$) changes as its input ($x$) increases (moving from left to right across the graph).
+
+<Aside type="note" title="The Hierarchy of Function Direction">
+* **Increasing Functions:** As $x$ increases, $y$ also increases. The graph moves **upwards** from left to right.
+* **Decreasing Functions:** As $x$ increases, $y$ decreases. The graph moves **downwards** from left to right.
+* **Stationary Points:** Points where the function is momentarily neither increasing nor decreasing (the graph has a horizontal peak or valley).
+</Aside>
+
+---
+
+## 2. Graphical Interpretation of $f'(x)$
+
+The derivative $f'(x)$ represents the gradient of the tangent to the curve at any point. The IB syllabus heavily emphasises interpreting this visually:
+
+<Aside type="tip" title="Theorem: Derivative Sign Test">
+For a function $f(x)$ over an interval:
+* If **$f'(x) > 0$**, the function is **increasing** (the tangent slopes upwards).
+* If **$f'(x) < 0$**, the function is **decreasing** (the tangent slopes downwards).
+* If **$f'(x) = 0$**, the function has a **stationary point** (the tangent is perfectly horizontal).
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Axes */}
+    <line x1="40" y1="210" x2="560" y2="210" stroke="#64748b" stroke-width="2" />
+    <text x="545" y="200" font-size="14" fill="#64748b" font-family="sans-serif">x</text>
+    
+    <line x1="60" y1="230" x2="60" y2="20" stroke="#64748b" stroke-width="2" />
+    <text x="45" y="35" font-size="14" fill="#64748b" font-family="sans-serif">y</text>
+    
+    {/* Transparent/Faded Asymmetric Cubic Curve to make tangents pop */}
+    <path d="M 40 180 Q 70 150 100 120 C 130 90, 160 50, 200 50 C 240 50, 270 90, 300 120 C 330 150, 360 190, 400 190 C 440 190, 500 130, 550 50" fill="none" stroke="#94a3b8" stroke-width="4" opacity="0.4" />
+
+    {/* Increasing Tangent (Blue) - Exact tangent at x=100, y=120, slope=-1 */}
+    <line x1="60" y1="160" x2="140" y2="80" stroke="#3b82f6" stroke-width="3" stroke-dasharray="4 2" />
+    <circle cx="100" cy="120" r="5" fill="#3b82f6" />
+    <text x="100" y="70" font-size="14" fill="#3b82f6" text-anchor="middle" font-family="sans-serif" font-weight="bold">f'(x) > 0</text>
+    <text x="100" y="235" font-size="12" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Increasing</text>
+
+    {/* Stationary Point (Green) - Exact tangent at x=200, y=50, slope=0 */}
+    <line x1="150" y1="50" x2="250" y2="50" stroke="#10b981" stroke-width="3" stroke-dasharray="4 2" />
+    <circle cx="200" cy="50" r="6" fill="#10b981" />
+    <text x="200" y="35" font-size="14" fill="#10b981" text-anchor="middle" font-family="sans-serif" font-weight="bold">f'(x) = 0</text>
+    <text x="200" y="235" font-size="12" fill="#10b981" text-anchor="middle" font-family="sans-serif">Stationary</text>
+
+    {/* Decreasing Tangent (Red) - Exact tangent at x=300, y=120, slope=1 */}
+    <line x1="260" y1="80" x2="340" y2="160" stroke="#ef4444" stroke-width="3" stroke-dasharray="4 2" />
+    <circle cx="300" cy="120" r="5" fill="#ef4444" />
+    <text x="300" y="175" font-size="14" fill="#ef4444" text-anchor="middle" font-family="sans-serif" font-weight="bold">f'(x) < 0</text>
+    <text x="300" y="235" font-size="12" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Decreasing</text>
+    
+    {/* Dotted lines pointing down to the labels */}
+    <line x1="100" y1="120" x2="100" y2="210" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="200" y1="50" x2="200" y2="210" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 3" />
+    <line x1="300" y1="120" x2="300" y2="210" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="3 3" />
+  </svg>
+</div>
+
+---
+
+## 3. Identifying Intervals from Graphs
+
+In the exam, you may not be given an equation. You will often be presented with a graph of either $f(x)$ or its derivative $f'(x)$ and asked to determine the intervals of increase or decrease.
+
+<Steps>
+1. **If given the graph of $f(x)$:** Look at the physical direction of the curve. Where is it pointing up ($f'(x) > 0$)? Where is it pointing down ($f'(x) < 0$)? The turning points dictate the boundaries.
+2. **If given the graph of $f'(x)$:** Look at the $y$-values of the derivative graph. Where is the line *above* the x-axis ($f'(x) > 0$)? Where is it *below* the x-axis ($f'(x) < 0$)? The x-intercepts dictate the boundaries.
+3. **Write the interval** using inequalities (e.g., $1 < x < 5$ or $x > 3$).
+</Steps>
+
+<Aside type="caution" title="The Most Common Mistake">
+When given a graph of the **derivative** $y = f'(x)$, students often mistakenly look for where the graph is pointing upwards. **Do not do this!** For a derivative graph, you only care if the line is vertically **above or below** the $x$-axis. The actual "slope" of the derivative graph itself represents the second derivative, not the first.
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Reading f(x)">
+    The graph of a function $y = f(x)$ is shown below. The coordinates of the local maximum and local minimum are marked perfectly on the grid.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 250" width="100%" maxWidth="400px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #cbd5e1' }}>
+        <line x1="20" y1="125" x2="380" y2="125" stroke="#94a3b8" stroke-width="2" />
+        <line x1="200" y1="20" x2="200" y2="230" stroke="#94a3b8" stroke-width="2" />
+        
+        <path d="M 40 180 C 80 50, 100 50, 120 50 C 160 50, 240 200, 280 200 C 320 200, 340 100, 360 50" fill="none" stroke="#3b82f6" stroke-width="3" />
+        
+        <circle cx="120" cy="50" r="5" fill="#0f172a" />
+        <text x="120" y="35" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle">(-3, 8)</text>
+        
+        <circle cx="280" cy="200" r="5" fill="#0f172a" />
+        <text x="280" y="220" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle">(2, -5)</text>
+      </svg>
+    </div>
+
+    **a)** State the $x$-values where $f'(x) = 0$.
+    
+    **b)** Identify the interval(s) where $f'(x) > 0$.
+    
+    **c)** Identify the interval(s) where $f'(x) < 0$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a)**
+    $f'(x) = 0$ occurs at the stationary points (the peaks and valleys). The turning points happen at:
+    $x = -3$ and $x = 2$.
+
+    **Part b)**
+    $f'(x) > 0$ means the function is **increasing** (moving upwards). This happens on the far left side, and the far right side.
+    The intervals are:
+    $x < -3$ **and** $x > 2$.
+
+    **Part c)**
+    $f'(x) < 0$ means the function is **decreasing** (moving downwards). This happens between the two stationary points.
+    The interval is:
+    $-3 < x < 2$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying intervals of increase and decrease from the graph of the original function" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Reading f'(x)">
+    The graph below shows the **derivative function**, $y = f'(x)$. The graph intersects the $x$-axis exactly at $x = 1$ and $x = 5$.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 250" width="100%" maxWidth="400px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #cbd5e1' }}>
+        <line x1="20" y1="100" x2="380" y2="100" stroke="#94a3b8" stroke-width="2" />
+        <text x="370" y="90" font-size="14" fill="#64748b" font-family="sans-serif">x</text>
+        <line x1="50" y1="20" x2="50" y2="230" stroke="#94a3b8" stroke-width="2" />
+        <text x="65" y="35" font-size="14" fill="#ef4444" font-weight="bold" font-family="sans-serif">y = f'(x)</text>
+
+        <path d="M 60 20 Q 200 300 340 20" fill="none" stroke="#ef4444" stroke-width="3" />
+        
+        <circle cx="108.35" cy="100" r="5" fill="#0f172a" />
+        <text x="108.35" y="85" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle">1</text>
+        
+        <circle cx="291.65" cy="100" r="5" fill="#0f172a" />
+        <text x="291.65" y="85" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle">5</text>
+      </svg>
+    </div>
+
+    **a)** Find the $x$-values where the original function $f(x)$ has stationary points.
+    
+    **b)** State the interval where the original function $f(x)$ is decreasing.
+    
+    **c)** Explain what is happening to the gradient of $f(x)$ at $x = 3$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **Part a)**
+    Stationary points occur when the derivative equals zero ($f'(x) = 0$). On a graph of $f'(x)$, this corresponds to the $x$-intercepts.
+    Therefore, the stationary points are at $x = 1$ and $x = 5$.
+
+    **Part b)**
+    The original function is decreasing when $f'(x) < 0$. We look for where the red line is visually **below** the $x$-axis. 
+    This occurs between the two roots. 
+    The interval is:
+    $1 < x < 5$.
+
+    **Part c)**
+    At $x = 3$ (which is between 1 and 5), the value of the derivative graph is negative. Because $f'(3) < 0$, the gradient of the original function $f(x)$ is negative, meaning $f(x)$ is decreasing at that exact moment.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Matching Concept">
+    The graph below shows a function $y = f(x)$. It is an upward-opening parabola with a vertex (minimum point) at $x = 4$.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 600 320" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #cbd5e1' }}>
+        <text x="300" y="25" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle" fill="#0f172a">Graph of the Original Function: y = f(x)</text>
+        <line x1="100" y1="120" x2="500" y2="120" stroke="#94a3b8" stroke-width="2" /> 
+        <line x1="300" y1="140" x2="300" y2="40" stroke="#94a3b8" stroke-width="2" />
+        <path d="M 220 40 Q 300 200 380 40" fill="none" stroke="#3b82f6" stroke-width="3" />
+        <line x1="300" y1="120" x2="300" y2="140" stroke="#0f172a" stroke-width="2" stroke-dasharray="2 2" />
+        <circle cx="300" cy="120" r="4" fill="#0f172a" />
+        <text x="300" y="105" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle">4</text>
+
+        <text x="300" y="180" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle" fill="#0f172a">Which of the following could be its derivative, y = f'(x)?</text>
+        
+        <text x="150" y="210" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle" fill="#ef4444">Graph A</text>
+        <line x1="100" y1="260" x2="200" y2="260" stroke="#94a3b8" stroke-width="1" /> 
+        <path d="M 120 290 L 180 230" fill="none" stroke="#ef4444" stroke-width="2" />
+        <text x="150" y="275" font-size="10" font-family="sans-serif" font-weight="bold" text-anchor="middle">4</text>
+
+        <text x="300" y="210" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle" fill="#10b981">Graph B</text>
+        <line x1="250" y1="260" x2="350" y2="260" stroke="#94a3b8" stroke-width="1" /> 
+        <path d="M 270 230 L 330 290" fill="none" stroke="#10b981" stroke-width="2" />
+        <text x="300" y="275" font-size="10" font-family="sans-serif" font-weight="bold" text-anchor="middle">4</text>
+
+        <text x="450" y="210" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle" fill="#f59e0b">Graph C</text>
+        <line x1="400" y1="260" x2="500" y2="260" stroke="#94a3b8" stroke-width="1" /> 
+        <path d="M 410 230 Q 450 300 490 230" fill="none" stroke="#f59e0b" stroke-width="2" />
+        <text x="450" y="275" font-size="10" font-family="sans-serif" font-weight="bold" text-anchor="middle">4</text>
+      </svg>
+    </div>
+
+    **a)** State the required value of $f'(x)$ when $x = 4$.
+    
+    **b)** Identify the required sign (positive or negative) of $f'(x)$ when $x < 4$.
+    
+    **c)** Deduce which graph (A, B, or C) correctly represents $f'(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part a)**
+    The original function has a minimum (stationary point) at $x = 4$. Therefore, the derivative must be zero. 
+    $f'(4) = 0$. (This means the correct derivative graph must cross the $x$-axis at 4).
+
+    **Part b)**
+    Before $x = 4$, the original function is moving downwards. Because it is decreasing, the derivative must be negative. 
+    Therefore, $f'(x) < 0$ when $x < 4$.
+
+    **Part c)**
+    We need a derivative graph that:
+    1. Crosses the axis at 4.
+    2. Is negative (below the axis) before 4.
+    3. Is positive (above the axis) after 4.
+
+    * Graph B is positive before 4 and negative after. (Incorrect)
+    * Graph C is entirely positive. (Incorrect)
+    * Graph A starts below the axis, crosses at 4, and goes above the axis. 
+
+    The correct answer is **Graph A**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 4: Interval Matching">
+    A mystery function $g(x)$ is known to have the following properties regarding its derivative:
+    * $g'(x) < 0$ for $x < -2$ and $x > 2$.
+    * $g'(x) > 0$ for $-2 < x < 2$.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 600 200" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #cbd5e1' }}>
+        <text x="300" y="25" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle" fill="#0f172a">Which of the following could be the graph of g(x)?</text>
+        
+        {/* Graph A */}
+        <text x="100" y="55" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle" fill="#3b82f6">Graph A</text>
+        <line x1="20" y1="120" x2="180" y2="120" stroke="#94a3b8" stroke-width="1" /> 
+        <line x1="100" y1="60" x2="100" y2="180" stroke="#94a3b8" stroke-width="1" /> 
+        {/* A: Increases, decreases, increases */}
+        <path d="M 20 180 C 60 40, 60 40, 100 120 C 140 200, 140 200, 180 60" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="60" y="115" font-size="10" font-family="sans-serif" text-anchor="middle">-2</text>
+        <text x="140" y="115" font-size="10" font-family="sans-serif" text-anchor="middle">2</text>
+
+        {/* Graph B */}
+        <text x="300" y="55" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle" fill="#10b981">Graph B</text>
+        <line x1="220" y1="120" x2="380" y2="120" stroke="#94a3b8" stroke-width="1" /> 
+        <line x1="300" y1="60" x2="300" y2="180" stroke="#94a3b8" stroke-width="1" /> 
+        {/* B: Decreases, increases, decreases */}
+        <path d="M 220 60 C 260 200, 260 200, 300 120 C 340 40, 340 40, 380 180" fill="none" stroke="#10b981" stroke-width="2" />
+        <text x="260" y="115" font-size="10" font-family="sans-serif" text-anchor="middle">-2</text>
+        <text x="340" y="115" font-size="10" font-family="sans-serif" text-anchor="middle">2</text>
+
+        {/* Graph C */}
+        <text x="500" y="55" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle" fill="#f59e0b">Graph C</text>
+        <line x1="420" y1="120" x2="580" y2="120" stroke="#94a3b8" stroke-width="1" /> 
+        <line x1="500" y1="60" x2="500" y2="180" stroke="#94a3b8" stroke-width="1" /> 
+        {/* C: Decreases constantly */}
+        <path d="M 420 60 Q 500 120 580 180" fill="none" stroke="#f59e0b" stroke-width="2" />
+      </svg>
+    </div>
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    Translate the derivative inequalities back into the behaviour of the original graph:
+    * $g'(x) < 0$ means the graph is **decreasing** (moving down).
+    * $g'(x) > 0$ means the graph is **increasing** (moving up).
+
+    According to the properties:
+    1. Before $-2$, the graph is decreasing.
+    2. Between $-2$ and $2$, the graph is increasing.
+    3. After $2$, the graph is decreasing again.
+    
+    Therefore, the shape of the graph must be "Down, Up, Down". It must have a minimum at $x = -2$ and a maximum at $x = 2$.
+    
+    * Graph A goes "Up, Down, Up".
+    * Graph C just goes "Down".
+    * Graph B goes "Down, Up, Down".
+
+    The correct answer is **Graph B**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Inverted Derivative Curve">
+    The graph below shows the derivative function $y = h'(x)$. 
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 250" width="100%" maxWidth="400px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #cbd5e1' }}>
+        <line x1="20" y1="150" x2="380" y2="150" stroke="#94a3b8" stroke-width="2" />
+        <line x1="100" y1="20" x2="100" y2="230" stroke="#94a3b8" stroke-width="2" />
+        
+        {/* Derivative curve: inverted parabola crossing at x=0 (100 in SVG) and x=6 (280 in SVG) */}
+        <path d="M 40 250 Q 190 -50 340 250" fill="none" stroke="#ef4444" stroke-width="3" />
+        
+        <circle cx="100" cy="150" r="5" fill="#0f172a" />
+        <text x="85" y="165" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle">0</text>
+        
+        <circle cx="280" cy="150" r="5" fill="#0f172a" />
+        <text x="280" y="170" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle">6</text>
+      </svg>
+    </div>
+
+    **a)** Identify the interval(s) where $h'(x) > 0$.
+    
+    **b)** Hence, state the interval(s) where the original function $h(x)$ is increasing.
+    
+    **c)** Determine whether the original function $h(x)$ has a local maximum or local minimum at $x = 6$. Justify your answer.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **Part a)**
+    $h'(x) > 0$ wherever the red curve is physically **above** the horizontal $x$-axis. This occurs between the two roots.
+    Interval: $0 < x < 6$.
+
+    **Part b)**
+    A function is increasing exactly where its derivative is positive. 
+    Therefore, $h(x)$ is increasing for $0 < x < 6$.
+
+    **Part c)**
+    At $x = 6$, the derivative crosses the $x$-axis from positive (above) to negative (below).
+    Because $h'(x)$ goes from positive to negative, the original function $h(x)$ goes from increasing (going up) to decreasing (going down). 
+    A shape that goes up and then down forms a peak.
+    Therefore, there is a **local maximum** at $x = 6$.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: The 'Touch' Point">
+    The graph below shows the derivative function $y = k'(x)$. Notice that the curve touches the $x$-axis at $x = 3$, but does not cross it.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 250" width="100%" maxWidth="400px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #cbd5e1' }}>
+        <line x1="20" y1="200" x2="380" y2="200" stroke="#94a3b8" stroke-width="2" />
+        <line x1="100" y1="20" x2="100" y2="230" stroke="#94a3b8" stroke-width="2" />
+        
+        {/* Parabola touching at x=3 (220 in SVG) */}
+        <path d="M 60 50 Q 220 350 380 50" fill="none" stroke="#ef4444" stroke-width="3" />
+        
+        <circle cx="220" cy="200" r="5" fill="#0f172a" />
+        <text x="220" y="220" font-size="14" font-family="sans-serif" font-weight="bold" text-anchor="middle">3</text>
+      </svg>
+    </div>
+
+    **a)** State the value of $k'(3)$.
+    
+    **b)** State the sign of $k'(x)$ before and after $x = 3$.
+    
+    **c)** Describe the behaviour of the original function $k(x)$ at $x = 3$. Is it a maximum, a minimum, or something else?
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **Part a)**
+    Because the graph touches the $x$-axis at $x = 3$, the value is zero.
+    $k'(3) = 0$.
+
+    **Part b)**
+    Both before and after $x = 3$, the red curve is physically **above** the $x$-axis.
+    Therefore, the sign of $k'(x)$ is **positive** on both sides.
+
+    **Part c)**
+    Because $k'(x)$ is positive before $x = 3$, the original function is increasing. 
+    Because $k'(x)$ is positive after $x = 3$, the original function continues increasing.
+    Because $k'(3) = 0$, the function flattens out perfectly horizontally for just a moment before continuing to rise. 
+    This creates neither a maximum nor a minimum. This is known as a **stationary point of inflection**.
+  </TabItem>
+</Tabs>
