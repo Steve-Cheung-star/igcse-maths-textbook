@@ -1,0 +1,373 @@
+---
+title: 5.4 Tangents and Normals
+description: Learn how to find the equations of tangent and normal lines to a curve using both analytical methods and GDC technology in IB Maths AI SL.
+---
+
+When we study curves, we are often interested in the behaviour of the curve at a specific point. Calculus provides us with the tools to find two very important straight lines associated with any point on a curve: the **tangent** and the **normal**.
+
+These lines have significant real-world applications. In physics, the tangent to a displacement-time graph gives instantaneous velocity, while normals are crucial in optics to determine how light reflects off curved mirrors and lenses. In economics, tangent lines help calculate price elasticity at specific price points.
+
+---
+
+## 1. The Anatomy of Tangents and Normals
+
+<Aside type="note" title="Definitions">
+* **The Tangent Line:** A straight line that "just touches" the curve at a single given point without crossing it locally. It has the exact same gradient as the curve at that specific point.
+* **The Normal Line:** A straight line that passes through the exact same point on the curve, but is completely perpendicular (at a right angle, $90^\circ$) to the tangent line.
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 350" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid/Axes */}
+    <line x1="50" y1="300" x2="550" y2="300" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="100" y1="50" x2="100" y2="330" stroke="#cbd5e1" stroke-width="2" />
+    
+    {/* y = f(x) curve - parabola vertex at (350, 100) */}
+    <path d="M 150 300 Q 350 -100 550 300" fill="none" stroke="#64748b" stroke-width="3" />
+    
+    {/* Tangent at x=250, y=150. Gradient dy/dx is roughly -1 */}
+    <line x1="100" y1="300" x2="350" y2="50" stroke="#ef4444" stroke-width="2" />
+    
+    {/* Normal at x=250, y=150. Perpendicular gradient is roughly +1 */}
+    <line x1="150" y1="50" x2="400" y2="300" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6 4" />
+    
+    {/* Right Angle Marker */}
+    <polyline points="265,135 280,150 265,165" fill="none" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Points and Labels */}
+    <circle cx="250" cy="150" r="6" fill="#1e293b" />
+    <text x="250" y="130" font-size="16" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">Point of Contact P(a, f(a))</text>
+    
+    <text x="120" y="270" font-size="16" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="start">Tangent</text>
+    <text x="360" y="280" font-size="16" font-family="sans-serif" font-weight="bold" fill="#3b82f6" text-anchor="start">Normal</text>
+    <text x="450" y="160" font-size="16" font-family="sans-serif" font-weight="bold" fill="#64748b" text-anchor="start">y = f(x)</text>
+
+    {/* Labels for axes */}
+    <text x="540" y="320" font-size="14" font-family="sans-serif" fill="#64748b" text-anchor="middle">x</text>
+    <text x="80" y="60" font-size="14" font-family="sans-serif" fill="#64748b" text-anchor="middle">y</text>
+  </svg>
+</div>
+
+---
+
+## 2. Equations of Tangents and Normals
+
+To find the equation of *any* straight line, you only ever need two pieces of information:
+1. **A specific coordinate $(x_1, y_1)$** that the line passes through.
+2. **The gradient ($m$)** of the line.
+
+Once you have these, you can use the point-gradient formula from coordinate geometry.
+
+<FormulaBox title="Tangents, Normals, and Perpendicular Gradients">
+**Equation of a Straight Line:**
+
+$$
+y - y_1 = m(x - x_1)
+$$
+
+**Gradient of a Tangent ($m_T$):**
+
+$$
+m_T = f'(a)
+$$
+
+**Gradient of a Normal ($m_N$):**
+
+$$
+m_N = -\frac{1}{m_T}
+$$
+
+</FormulaBox>
+
+The rule for perpendicular lines states that if two lines are perpendicular, their gradients multiply to give $-1$ (i.e., $m_1 \times m_2 = -1$). To find the normal gradient, simply flip the fraction of the tangent's gradient and change the sign (the negative reciprocal).
+
+<Aside type="caution" title="Common Misconception">
+A widespread error in exams is forgetting to find the $y$-coordinate. The question often only gives you the $x$-coordinate, such as "Find the normal at $x = 3$". Before doing any calculus, you must substitute $x = 3$ back into the **original** function $f(x)$ to find your $y_1$ value. Only substitute into the **derivative** $f'(x)$ when you are looking for the gradient.
+</Aside>
+
+### The Analytic Approach
+
+To find the equation algebraically, follow this reliable method:
+
+<Steps>
+1. **Find the y-coordinate:** Substitute the given $x$-value into the original equation $y = f(x)$. This gives you your point $(x_1, y_1)$.
+2. **Find the derivative:** Differentiate the function to find $f'(x)$.
+3. **Find the gradient ($m$):** Substitute the given $x$-value into $f'(x)$. 
+   * If finding a tangent, use this value directly as $m_T$.
+   * If finding a normal, take the negative reciprocal to find $m_N$.
+4. **Form the equation:** Substitute your coordinate $(x_1, y_1)$ and your gradient ($m$) into $y - y_1 = m(x - x_1)$ and rearrange as required.
+</Steps>
+
+---
+
+## 3. The Technological Approach
+
+While the analytic method guarantees method marks, IB Maths AI SL strongly encourages the use of technology to arrange and interact with this mathematical knowledge. 
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+In what ways has technology impacted how knowledge is produced and shared in mathematics? When your calculator generates the equation of a tangent line instantly, does the technology simply allow us to arrange existing analytical knowledge in a faster way, or should the ability to digitally generate and manipulate these models be considered a distinct form of new mathematical knowledge?
+</Aside>
+
+<SteveTip title="GDC Shortcut: Tangent Line">
+Your TI-Nspire can instantly find the equation of a tangent line. This is incredibly useful for verifying your analytic work or for handling complex functions in Paper 2!
+
+<Steps>
+1. Open a Calculator page.
+2. Press `menu` $\rightarrow$ `4: Calculus` $\rightarrow$ `9: Tangent Line`.
+3. The format requires three inputs separated by commas: `tangentLine(function, variable, point)`.
+4. For example, to find the tangent to $y = x^2$ at $x = 3$, type: `tangentLine(x^2, x, 3)` and hit enter. 
+</Steps>
+
+The calculator will output the equation of the tangent line in the form $y = mx + c$.
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Equation of a Tangent">
+    Consider the curve $f(x) = x^2 - 4x + 5$.
+    
+    Find the equation of the tangent to the curve at the point where $x = 3$. Give your answer in the form $y = mx + c$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Step 1: Find the $y$-coordinate.**
+    Substitute $x = 3$ into the original function.
+    
+    $$
+    y = (3)^2 - 4(3) + 5
+    $$
+    
+    $$
+    y = 9 - 12 + 5 = 2
+    $$
+    
+    The point is $(3, 2)$.
+
+    **Step 2: Find the derivative to get the gradient formula.**
+    
+    $$
+    f'(x) = 2x - 4
+    $$
+    
+    **Step 3: Find the tangent gradient ($m_T$) at $x = 3$.**
+    
+    $$
+    m_T = 2(3) - 4 = 6 - 4 = 2
+    $$
+    
+    **Step 4: Use the point-gradient formula.**
+    Using $(x_1, y_1) = (3, 2)$ and $m = 2$:
+    
+    $$
+    y - 2 = 2(x - 3)
+    $$
+    
+    $$
+    y - 2 = 2x - 6
+    $$
+    
+    $$
+    y = 2x - 4
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the equation of a tangent line algebraically given an x-coordinate" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Equation of a Normal">
+    Let $g(x) = x^3 - 2x^2 + x - 1$.
+    
+    Find the equation of the normal to the curve at the point $(2, 1)$. Give your answer in the form $ax + by + c = 0$, where $a, b, c \in \mathbb{Z}$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **Step 1: The point is already given.**
+    We know $(x_1, y_1) = (2, 1)$.
+
+    **Step 2: Find the derivative to get the gradient formula.**
+    
+    $$
+    g'(x) = 3x^2 - 4x + 1
+    $$
+    
+    **Step 3: Find the tangent gradient ($m_T$) at $x = 2$.**
+    
+    $$
+    m_T = 3(2)^2 - 4(2) + 1
+    $$
+    
+    $$
+    m_T = 12 - 8 + 1 = 5
+    $$
+    
+    **Step 4: Find the normal gradient ($m_N$).**
+    The normal is perpendicular to the tangent, so we take the negative reciprocal.
+    
+    $$
+    m_N = -\frac{1}{5}
+    $$
+    
+    **Step 5: Use the point-gradient formula and rearrange.**
+    
+    $$
+    y - 1 = -\frac{1}{5}(x - 2)
+    $$
+    
+    Multiply the entire equation by $5$ to clear the fraction:
+    
+    $$
+    5(y - 1) = -1(x - 2)
+    $$
+    
+    $$
+    5y - 5 = -x + 2
+    $$
+    
+    Rearrange into $ax + by + c = 0$:
+    
+    $$
+    x + 5y - 7 = 0
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the equation of a normal line to a curve and formatting as ax+by+c=0" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Parallel Tangents">
+    The curve $C$ has equation $y = 2x^3 - 3x^2 - 12x + 8$.
+    
+    Find the coordinates of the two points on the curve where the tangent is completely horizontal (parallel to the $x$-axis).
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    A horizontal tangent has a gradient of $0$. Therefore, we need to find where $\frac{dy}{dx} = 0$.
+    
+    **Step 1: Find the derivative.**
+    
+    $$
+    \frac{dy}{dx} = 6x^2 - 6x - 12
+    $$
+    
+    **Step 2: Set the derivative equal to $0$ and solve for $x$.**
+    
+    $$
+    6x^2 - 6x - 12 = 0
+    $$
+    
+    Divide by $6$:
+    
+    $$
+    x^2 - x - 2 = 0
+    $$
+    
+    Factorise:
+    
+    $$
+    (x - 2)(x + 1) = 0
+    $$
+    
+    So, $x = 2$ or $x = -1$.
+    
+    **Step 3: Find the corresponding $y$-coordinates.**
+    Substitute both $x$-values back into the **original** equation for curve $C$.
+    
+    For $x = 2$:
+    
+    $$
+    y = 2(2)^3 - 3(2)^2 - 12(2) + 8 = 16 - 12 - 24 + 8 = -12
+    $$
+    
+    For $x = -1$:
+    
+    $$
+    y = 2(-1)^3 - 3(-1)^2 - 12(-1) + 8 = -2 - 3 + 12 + 8 = 15
+    $$
+    
+    The coordinates are **$(2, -12)$** and **$(-1, 15)$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding coordinates where the tangent is horizontal or parallel to a given line" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Applications in Optics">
+    The cross-section of a parabolic satellite dish is modelled by the function $h(x) = 0.05x^2$, where $h$ and $x$ are measured in metres.
+    
+    A laser beam strikes the dish at the point where $x = 4$. To find the angle of reflection, the engineers must find the equation of the normal to the dish at this exact point. 
+    
+    Find the equation of this normal.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **Step 1: Find the coordinate at $x=4$.**
+    
+    $$
+    h(4) = 0.05(4)^2 = 0.05(16) = 0.8
+    $$
+    
+    The point is $(4, 0.8)$.
+    
+    **Step 2: Find the derivative and evaluate the tangent gradient.**
+    
+    $$
+    h'(x) = 0.1x
+    $$
+    
+    $$
+    m_T = h'(4) = 0.1(4) = 0.4
+    $$
+    
+    **Step 3: Find the normal gradient.**
+    Convert $0.4$ to a fraction ($\frac{2}{5}$) to easily find the negative reciprocal.
+    
+    $$
+    m_N = -\frac{5}{2} = -2.5
+    $$
+    
+    **Step 4: Form the equation.**
+    
+    $$
+    y - 0.8 = -2.5(x - 4)
+    $$
+    
+    $$
+    y - 0.8 = -2.5x + 10
+    $$
+    
+    $$
+    y = -2.5x + 10.8
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying normal lines to real-world geometric models" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Technology Enabled (GDC)">
+    Consider the function $f(x) = \frac{x^3}{4} - \frac{3}{x} + 2$.
+    
+    Using your Graphic Display Calculator, find the equation of the tangent line at $x = 2$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    This question tests your ability to efficiently use technology as outlined in the syllabus.
+    
+    **Step 1:** Open a calculator page on your TI-Nspire.
+    **Step 2:** Use the Tangent Line command: `menu` $\rightarrow$ `Calculus` $\rightarrow$ `Tangent Line`.
+    **Step 3:** Enter the parameters correctly:
+    
+    `tangentLine(x^3/4 - 3/x + 2, x, 2)`
+    
+    **Step 4:** Press enter. The calculator reads the derivative, evaluates it, and formats the output automatically.
+    
+    The GDC outputs: 
+    
+    $$
+    y = 3.75x - 5
+    $$
+    
+    *(Note: You could also write this as $y = \frac{15}{4}x - 5$)*
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using GDC to rapidly find the equation of a tangent line" />
