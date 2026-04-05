@@ -11,29 +11,20 @@ const greetings = [
   "Solve for Why?",
   "Keep Calm and Carry One",
   "Warning: High Logic Zone",
-  "𝑥 is missing. Call the polce.",
+  "𝑥 is missing. Call the police.",
   "Square Roots & Salty Tears",
   "Fancy a bit of Algebra?",
   "Please mind the gap.",
   "Humidity: 99%. Brain: 1%."
 ];
 
+// Server-side: Pick a random fallback greeting
 const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
-const hour = new Date().getHours();
-let finalGreeting = randomGreeting;
 
-// Time-based Overrides (HK is a city that never sleeps, but you should)
-if (hour >= 23 || hour < 4) {
-  finalGreeting = "🌙 Off to bed. Maths can wait.";
-} else if (hour < 7) {
-  finalGreeting = "☕ Why are you awake? Even the cha chaan tengs aren't open.";
-}
-
-// 2. TEACHER/STUDENT FILTER LOGIC
+// 2. TEACHER/STUDENT FILTER LOGIC (Server-side)
 const isIB = Astro.url.pathname.includes('/ib-aisl');
 const isTeacher = import.meta.env.PUBLIC_TEACHER_MODE === 'true';
 
-// 3. GET AND FILTER THE SIDEBAR
 const currentSidebar = Astro.locals.starlightRoute?.sidebar || Astro.props.sidebar || [];
 
 const filteredSidebar = currentSidebar.filter(item => {
@@ -47,7 +38,6 @@ const filteredSidebar = currentSidebar.filter(item => {
   }
 });
 
-// 4. SYNC FILTERED SIDEBAR WITH STARLIGHT
 if (Astro.locals.starlightRoute) {
   Astro.locals.starlightRoute.sidebar = filteredSidebar;
 }
@@ -61,9 +51,9 @@ const newProps = {
 <ExamTimer client:only="react" />
 
 <div class="sidebar-container">
-  {/* The Dynamic Title Overlay */}
-  <div class="sidebar-header-hint">
-    {finalGreeting} 
+  {/* We add an ID here so the Client-side script can update the time */}
+  <div id="dynamic-greeting" class="sidebar-header-hint">
+    {randomGreeting} 
   </div>
 
   <div class="sidebar-content">
@@ -83,10 +73,7 @@ const newProps = {
     text-transform: uppercase;
     letter-spacing: 0.05rem;
     font-weight: bold;
-    
-    /* This is the magic variable: */
     color: var(--sl-color-gray-3); 
-    
     padding: 0.8rem 1rem;
     opacity: 0.8;
     border-bottom: 1px solid var(--sl-color-hairline);
@@ -97,8 +84,6 @@ const newProps = {
     padding-top: 0.5rem;
   }
 
-  /* Automation Trick: Make the sidebar background 
-     slightly shift color if it's late at night */
   :global([data-theme='dark']) .sidebar-container {
     background: linear-gradient(
       to bottom, 
@@ -109,9 +94,35 @@ const newProps = {
 </style>
 
 <script is:inline>
-  // Automation: The "Wandering Variable" Easter Egg
-  // Every 5 minutes, a small 'x' will briefly float across the sidebar
+  /**
+   * CLIENT-SIDE LOGIC
+   * This runs on the user's device, ensuring the time is ALWAYS local to them.
+   */
+  function applyDeviceContext() {
+    const greetingEl = document.getElementById('dynamic-greeting');
+    if (!greetingEl) return;
+
+    const hour = new Date().getHours(); 
+    
+    // Time-based Overrides based on DEVICE clock
+    if (hour >= 23 || hour < 4) {
+      greetingEl.innerText = "🌙 Off to bed. Maths can wait.";
+    } else if (hour < 7) {
+      greetingEl.innerText = "☕ Why are you awake? Even the cha chaan tengs aren't open.";
+    }
+  }
+
+  // Run immediately on page load
+  applyDeviceContext();
+
+  // Re-run after Starlight/Astro view transitions
+  document.addEventListener('astro:after-swap', applyDeviceContext);
+
+  // --- THE WANDERING VARIABLE EASTER EGG ---
   setInterval(() => {
+    const container = document.querySelector('.sidebar-container');
+    if (!container) return;
+
     const x = document.createElement('div');
     x.innerText = 'x';
     x.style.position = 'absolute';
@@ -122,12 +133,12 @@ const newProps = {
     x.style.pointerEvents = 'none';
     x.style.color = 'var(--sl-color-accent)';
     
-    document.querySelector('.sidebar-container').appendChild(x);
+    container.appendChild(x);
     
     setTimeout(() => {
       x.style.left = '110%';
     }, 100);
 
     setTimeout(() => x.remove(), 10500);
-  }, 300000); // Happens every 5 mins
+  }, 300000); 
 </script>

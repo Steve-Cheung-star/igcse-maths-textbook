@@ -1,0 +1,743 @@
+---
+title: 5.7 Optimisation Problems in Context
+description: Apply calculus to real-world scenarios to maximise profit, minimise cost, and optimise the geometry of packaging in IB Maths AI SL.
+---
+
+Calculus is not just an abstract mathematical concept; it is the engine behind efficiency. Every time a manufacturer decides on the dimensions of a soda can, or a business sets the price of a new product, they are trying to find the "best" possible outcome. In mathematics, this process of finding the maximum or minimum value in a practical situation is called **optimisation**.
+
+In this section, we take the skills developed in finding turning points (where the derivative equals zero) and apply them to real-world contexts such as business economics, agricultural yield, and material packaging. 
+
+*Note: While optimisation is heavily used in physics for kinematics (velocity and acceleration), the IB Maths AI SL syllabus specifically excludes kinematics from examinations in this topic.*
+
+---
+
+## 1. The Optimisation Process
+
+Tackling a contextual word problem can feel overwhelming. However, every optimisation problem can be solved using the same systematic approach.
+
+<Steps>
+1. **Identify the Goal:** Read the question carefully to determine what needs to be maximised (e.g., profit, volume, area) or minimised (e.g., cost, surface area, materials). 
+2. **Formulate the Equation:** Write an equation for the quantity you are trying to optimise. Often, this requires using a secondary constraint given in the question to ensure your equation only has *one* independent variable (usually $x$).
+3. **Differentiate:** Find the derivative of your formulated function.
+4. **Set to Zero and Solve:** Set the derivative equal to zero to locate the turning point, and solve for the variable.
+5. **Answer the Specific Question:** Read the final sentence of the question again. Does it ask for the $x$-value, or does it ask for the *maximum profit* itself? Substitute your $x$-value back into the original equations as necessary.
+</Steps>
+
+<SteveTip title="Technology Strategy: TI-Nspire nSolve">
+Once you have formulated your derivative and set it to zero, you must write down the mathematical equation (e.g., $C'(x) = 0$) on your exam paper to secure the method mark. After doing so, you can use the `nSolve` function on your TI-Nspire to find the value of $x$ quickly. Keep in mind that `nSolve` will only return one solution, so graphing the derivative or providing an initial guess is good practice if there might be multiple turning points.
+</SteveTip>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 320" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Dual Graph Setup */}
+    
+    {/* Graph 1: Minimising Cost (Left) */}
+    <line x1="40" y1="280" x2="280" y2="280" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="60" y1="40" x2="60" y2="300" stroke="#cbd5e1" stroke-width="2" />
+    
+    {/* Quadratic Curve defined precisely via Bezier. Vertex will be at x=170, y=220 */}
+    <path d="M 70 80 Q 170 360 270 80" fill="none" stroke="#ef4444" stroke-width="3" />
+    
+    {/* Vertex Node */}
+    <circle cx="170" cy="220" r="5" fill="#1e293b" />
+    <line x1="60" y1="220" x2="170" y2="220" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <line x1="170" y1="280" x2="170" y2="220" stroke="#94a3b8" stroke-dasharray="4 4" />
+    
+    <text x="170" y="300" font-size="12" font-family="sans-serif" fill="#64748b" text-anchor="middle">Units Produced (x)</text>
+    <text x="50" y="30" font-size="12" font-family="sans-serif" fill="#ef4444" text-anchor="middle">Cost, C(x)</text>
+    <text x="170" y="205" font-size="12" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="middle">Min Cost: C'(x) = 0</text>
+
+    {/* Graph 2: Maximising Profit (Right) */}
+    <line x1="320" y1="280" x2="560" y2="280" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="340" y1="40" x2="340" y2="300" stroke="#cbd5e1" stroke-width="2" />
+    
+    {/* Quadratic Curve defined precisely via Bezier. Vertex will be at x=450, y=100 */}
+    <path d="M 350 240 Q 450 -40 550 240" fill="none" stroke="#10b981" stroke-width="3" />
+    
+    {/* Vertex Node */}
+    <circle cx="450" cy="100" r="5" fill="#1e293b" />
+    <line x1="340" y1="100" x2="450" y2="100" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <line x1="450" y1="280" x2="450" y2="100" stroke="#94a3b8" stroke-dasharray="4 4" />
+    
+    <text x="450" y="300" font-size="12" font-family="sans-serif" fill="#64748b" text-anchor="middle">Price / Units (x)</text>
+    <text x="340" y="30" font-size="12" font-family="sans-serif" fill="#10b981" text-anchor="middle">Profit, P(x)</text>
+    <text x="450" y="85" font-size="12" font-family="sans-serif" font-weight="bold" fill="#10b981" text-anchor="middle">Max Profit: P'(x) = 0</text>
+  </svg>
+</div>
+
+---
+
+## 2. Business and Economics: Profit and Cost
+
+A large portion of contextual optimisation in AI SL focuses on business applications. You must be comfortable with the following relationships:
+
+* **Revenue ($R$):** The total money brought in by a business. (Revenue = Price per item $\times$ Quantity sold).
+* **Cost ($C$):** The total expense to manufacture the items.
+* **Profit ($P$):** The money a business actually keeps. 
+
+The relationship between these is defined as: Profit = Revenue - Cost
+
+<FormulaBox title="Profit Function">
+$$
+P(x) = R(x) - C(x)
+$$
+</FormulaBox>
+
+To maximise profit, a business wants to find the exact production level $x$ where the derivative $P'(x) = 0$. Similarly, to minimise manufacturing expenses, they look for where $C'(x) = 0$.
+
+---
+
+## 3. Geometric Packaging: Area and Volume
+
+Another classic optimisation scenario involves packaging. Companies want to **maximise the volume** (capacity) of a container while **minimising the surface area** (the material used to build it) to keep costs down.
+
+These problems almost always require a two-step algebraic setup before you can differentiate:
+1. You will be given a fixed constraint (e.g., "The surface area is exactly $600$ cm$^2$").
+2. You must rearrange this constraint equation to isolate one variable (like height, $h$), and substitute it into the formula you want to optimise (like Volume).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 350" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Mathematically precise 3D Isometric Box */}
+    
+    {/* Back hidden edges */}
+    <line x1="220" y1="180" x2="300" y2="140" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4" />
+    <line x1="380" y1="180" x2="300" y2="140" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4" />
+    <line x1="300" y1="40" x2="300" y2="140" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4" />
+    
+    {/* Bottom face (translucent base) */}
+    <polygon points="300,140 380,180 300,220 220,180" fill="rgba(148, 163, 184, 0.2)" />
+    
+    {/* Left face */}
+    <polygon points="220,180 300,220 300,120 220,80" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="2" />
+    
+    {/* Right face */}
+    <polygon points="300,220 380,180 380,80 300,120" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="2" />
+    
+    {/* Top face */}
+    <polygon points="300,40 380,80 300,120 220,80" fill="rgba(59, 130, 246, 0.3)" stroke="#3b82f6" stroke-width="2" />
+
+    {/* Dimension Labels */}
+    <text x="250" y="215" font-size="16" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">x</text>
+    <text x="350" y="215" font-size="16" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">x</text>
+    <text x="195" y="135" font-size="16" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">h</text>
+    
+    {/* Explanation Text */}
+    <text x="300" y="280" font-size="14" font-family="sans-serif" fill="#64748b" text-anchor="middle">Square-based cuboid: Constraint links base x and height h</text>
+  </svg>
+</div>
+
+<Aside type="note" title="Theory of Knowledge (TOK): Economics and the Environment">
+Governments worldwide are increasingly implementing taxes on single-use plastics and packaging (like plastic bag charges or bottle taxes). **How can this rise in tax be justified using mathematical optimisation?** When a company optimises packaging without a tax, they look strictly at manufacturing costs. By imposing a tax based on the surface area or weight of plastic used, governments mathematically force the company's "Cost Function" to change. The new optimum point (where $C'(x) = 0$) mathematically pushes the manufacturer toward using less material, achieving allocative efficiency and reducing environmental impact. Does mathematics merely describe economic reality, or can it be used as a legislative tool to engineer societal behaviour?
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Maximising Profit">
+    A technology company produces wireless earbuds. The daily profit, $P$ in EUR, made from selling $x$ pairs of earbuds is modelled by the function:
+    
+    $$
+    P(x) = -0.2x^2 + 160x - 4500
+    $$
+    
+    a) Find the marginal profit function, $P'(x)$.  
+    b) Show that the number of pairs of earbuds the company must sell to maximise their daily profit is $400$.  
+    c) Calculate the maximum possible daily profit.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a)**
+    Differentiate the profit function using the power rule:
+    
+    $$
+    P'(x) = -0.4x + 160
+    $$
+    
+    **Part b)**
+    Maximum profit occurs at the turning point, where the derivative equals zero.
+    
+    $$
+    -0.4x + 160 = 0
+    $$
+    
+    $$
+    0.4x = 160
+    $$
+    
+    $$
+    x = \frac{160}{0.4} = 400
+    $$
+    
+    The company must sell $400$ pairs of earbuds (Shown).
+
+    **Part c)**
+    Substitute $x = 400$ back into the *original* profit function.
+    
+    $$
+    P(400) = -0.2(400)^2 + 160(400) - 4500
+    $$
+    
+    $$
+    P(400) = -0.2(160000) + 64000 - 4500
+    $$
+    
+    $$
+    P(400) = -32000 + 64000 - 4500 = 27500
+    $$
+    
+    The maximum daily profit is $27500$ EUR.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using derivatives to maximise a quadratic profit function" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Minimising Average Cost">
+    A furniture manufacturer finds that the average cost, $C$ in USD, of producing $x$ bespoke chairs per week is given by:
+    
+    $$
+    C(x) = 0.5x + 15 + \frac{800}{x}, \quad x > 0
+    $$
+    
+    a) Find $C'(x)$.  
+    b) Determine the number of chairs that should be produced each week to minimise the average cost.  
+    c) Hence, find the minimum average cost per chair.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **Part a)**
+    First, rewrite the function using negative indices:
+    
+    $$
+    C(x) = 0.5x + 15 + 800x^{-1}
+    $$
+    
+    Now differentiate:
+    
+    $$
+    C'(x) = 0.5 - 800x^{-2} = 0.5 - \frac{800}{x^2}
+    $$
+    
+    **Part b)**
+    Set the derivative to zero to find the minimum point.
+    
+    $$
+    0.5 - \frac{800}{x^2} = 0 \implies 0.5 = \frac{800}{x^2}
+    $$
+    
+    Multiply both sides by $x^2$:
+    
+    $$
+    0.5x^2 = 800 \implies x^2 = 1600
+    $$
+    
+    $$
+    x = 40 \quad \text{(We reject negative } 40 \text{ as } x > 0 \text{)}
+    $$
+    
+    They should produce $40$ chairs.
+
+    **Part c)**
+    Substitute $x = 40$ into the original average cost function.
+    
+    $$
+    C(40) = 0.5(40) + 15 + \frac{800}{40} = 20 + 15 + 20 = 55
+    $$
+    
+    The minimum average cost is $55$ USD per chair.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Minimising an average cost function involving algebraic fractions" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Geometric Packaging (Constrained Volume)">
+    A closed rectangular cardboard box is designed to have a square base with side length $x$ cm and a height of $h$ cm.
+    The total surface area of the cardboard used to make the box is exactly $600$ cm$^2$.
+    
+    a) Show that the height $h$ can be expressed as $h = \frac{150}{x} - 0.5x$.  
+    b) Show that the volume $V$ of the box is given by $V(x) = 150x - 0.5x^3$.  
+    c) Use calculus to find the value of $x$ that maximises the volume of the box.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part a)**
+    The box is closed, so it has 2 square bases (top and bottom) and 4 rectangular sides.
+    Surface Area = Area of bases + Area of sides
+    
+    $$
+    SA = 2x^2 + 4xh
+    $$
+    
+    We are given $SA = 600$:
+    
+    $$
+    2x^2 + 4xh = 600
+    $$
+    
+    Rearrange to isolate $h$ by subtracting $2x^2$ from both sides:
+    
+    $$
+    4xh = 600 - 2x^2
+    $$
+    
+    Divide the entire equation by $4x$:
+    
+    $$
+    h = \frac{600 - 2x^2}{4x}
+    $$
+    
+    Split the fraction to simplify:
+    
+    $$
+    h = \frac{600}{4x} - \frac{2x^2}{4x}
+    $$
+    
+    $$
+    h = \frac{150}{x} - 0.5x \quad \text{(Shown)}
+    $$
+    
+    **Part b)**
+    The volume of a cuboid is $V = \text{length} \times \text{width} \times \text{height}$.
+    
+    $$
+    V = x \times x \times h = x^2h
+    $$
+    
+    Substitute the expression for $h$ from part a:
+    
+    $$
+    V = x^2\left(\frac{150}{x} - 0.5x\right)
+    $$
+    
+    Expand the brackets:
+    
+    $$
+    V(x) = 150x - 0.5x^3 \quad \text{(Shown)}
+    $$
+    
+    **Part c)**
+    To maximise volume, find $\frac{dV}{dx}$ and set it to zero.
+    
+    $$
+    \frac{dV}{dx} = 150 - 1.5x^2 = 0
+    $$
+    
+    $$
+    1.5x^2 = 150 \implies x^2 = 100 \implies x = 10 \quad \text{(Reject negative)}
+    $$
+    
+    The side length that maximises the volume is $x = 10$ cm.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Maximising the volume of a square-based cuboid given a surface area constraint" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Fencing Area Optimisation">
+    A farmer wants to construct two identical rectangular enclosures side-by-side against an existing brick wall. He has $120$ m of fencing available. 
+    Let $x$ be the width of the enclosures extending from the wall, and $y$ be the total length parallel to the wall. The dividing fence is also made of the same fencing material and has length $x$. The brick wall serves as one long boundary, requiring no fence.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 600 300" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', overflow: 'hidden' }}>
+        {/* Brick Wall */}
+        <rect x="50" y="50" width="500" height="30" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2" />
+        <text x="300" y="70" font-size="14" font-family="sans-serif" font-weight="bold" fill="#64748b" text-anchor="middle">Existing Brick Wall</text>
+        
+        {/* Fences */}
+        <line x1="150" y1="80" x2="150" y2="220" stroke="#3b82f6" stroke-width="3" />
+        <line x1="300" y1="80" x2="300" y2="220" stroke="#3b82f6" stroke-width="3" stroke-dasharray="4 4" />
+        <line x1="450" y1="80" x2="450" y2="220" stroke="#3b82f6" stroke-width="3" />
+        <line x1="150" y1="220" x2="450" y2="220" stroke="#3b82f6" stroke-width="3" />
+        
+        {/* Labels */}
+        <text x="135" y="155" font-size="16" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">x</text>
+        <text x="315" y="155" font-size="16" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">x</text>
+        <text x="465" y="155" font-size="16" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">x</text>
+        <text x="300" y="245" font-size="16" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">y</text>
+      </svg>
+    </div>
+
+    a) Write down an equation linking $x$ and $y$ using the perimeter constraint.  
+    b) Show that the total enclosed area, $A$, can be written as $A(x) = 120x - 3x^2$.  
+    c) Find the dimensions $x$ and $y$ that will maximise the total enclosed area.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **Part a)**
+    The fencing consists of 3 perpendicular sections of length $x$ (the two outer widths and the middle divider) and 1 horizontal section of total length $y$ (the wall covers the other horizontal side).
+    
+    $$
+    3x + y = 120
+    $$
+    
+    **Part b)**
+    We need to express Area ($A = xy$) entirely in terms of $x$. First, rearrange the constraint equation to isolate $y$:
+    
+    $$
+    y = 120 - 3x
+    $$
+    
+    Now substitute this expression for $y$ into the area formula:
+    
+    $$
+    A = x(120 - 3x)
+    $$
+    
+    Expand the brackets:
+    
+    $$
+    A(x) = 120x - 3x^2 \quad \text{(Shown)}
+    $$
+    
+    **Part c)**
+    To maximise Area, find $A'(x)$ and set it to zero.
+    
+    $$
+    A'(x) = 120 - 6x = 0 \implies 6x = 120 \implies x = 20
+    $$
+    
+    Now, find the corresponding total length $y$:
+    
+    $$
+    y = 120 - 3(20) = 120 - 60 = 60
+    $$
+    
+    The optimal dimensions are $x = 20$ m and $y = 60$ m.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Optimising the area of multiple enclosures given a fencing constraint" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Ticket Pricing and Revenue">
+    An airline runs a daily flight. Currently, when they charge $50$ USD per ticket, they sell $200$ tickets. Market research shows that for every $5$ USD increase in the ticket price, $10$ fewer people will buy a ticket. 
+    Let $x$ be the number of $5$ USD price increases.
+    
+    a) Write down expressions for the Ticket Price, and the Quantity Sold, in terms of $x$.  
+    b) Show that the Revenue, $R$, can be modelled by $R(x) = 10000 + 500x - 50x^2$.  
+    c) Find the ticket price the airline should charge to maximise their revenue.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **Part a)**
+    Ticket Price starts at $50$ and increases by $5$ for every $x$: 
+    $$
+    \text{Price} = 50 + 5x
+    $$
+    Quantity Sold starts at $200$ and decreases by $10$ for every $x$: 
+    $$
+    \text{Quantity} = 200 - 10x
+    $$
+    
+    **Part b)**
+    Revenue is Price multiplied by Quantity.
+    
+    $$
+    R(x) = (50 + 5x)(200 - 10x)
+    $$
+    
+    Expand the brackets using FOIL:
+    
+    $$
+    R(x) = 10000 - 500x + 1000x - 50x^2
+    $$
+    
+    Collect like terms:
+    
+    $$
+    R(x) = 10000 + 500x - 50x^2 \quad \text{(Shown)}
+    $$
+    
+    **Part c)**
+    To find the maximum revenue, set $R'(x) = 0$.
+    
+    $$
+    R'(x) = 500 - 100x = 0 \implies 100x = 500 \implies x = 5
+    $$
+    
+    The optimal number of price increases is $5$. Substitute $x = 5$ back into the *Ticket Price* expression (not the revenue expression!):
+    
+    $$
+    \text{Optimal Ticket Price} = 50 + 5(5) = 50 + 25 = 75
+    $$
+    
+    The airline should charge $75$ USD.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Maximising revenue by modelling sliding ticket prices and demand" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Fitting Shapes (Rectangle in a Parabola)">
+    An engineer is designing a rectangular transport crate to fit exactly inside a parabolic tunnel. The cross-section of the tunnel is modelled by the equation $y = 12 - 0.5x^2$. 
+    The rectangular crate sits horizontally on the $x$-axis, with its top two corners touching the inner walls of the parabola. Let the total width of the crate be $2x$ and its height be $y$.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 600 300" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', overflow: 'hidden' }}>
+        {/* Axes */}
+        <line x1="50" y1="250" x2="550" y2="250" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="300" y1="20" x2="300" y2="280" stroke="#cbd5e1" stroke-width="2" />
+        
+        {/* Parabola: vertex at (300, 70), passes through (150, 250) and (450, 250) roughly */}
+        <path d="M 100 250 Q 300 -110 500 250" fill="none" stroke="#64748b" stroke-width="3" />
+        
+        {/* Inscribed Rectangle */}
+        <rect x="200" y="130" width="200" height="120" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Labels */}
+        <text x="200" y="270" font-size="14" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">-x</text>
+        <text x="400" y="270" font-size="14" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">x</text>
+        <text x="290" y="270" font-size="14" font-family="sans-serif" fill="#64748b" text-anchor="middle">0</text>
+        <text x="410" y="180" font-size="14" font-family="sans-serif" font-weight="bold" fill="#3b82f6" text-anchor="start">Height = y</text>
+        <text x="350" y="50" font-size="14" font-family="sans-serif" font-weight="bold" fill="#64748b" text-anchor="start">y = 12 - 0.5x^2</text>
+      </svg>
+    </div>
+
+    a) Show that the cross-sectional area, $A$, of the crate is $A(x) = 24x - x^3$.  
+    b) Find $\frac{dA}{dx}$.  
+    c) Calculate the maximum possible cross-sectional area of the crate.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **Part a)**
+    The Area of a rectangle is total width $\times$ height.
+    
+    $$
+    A = 2x \times y
+    $$
+    
+    Substitute the equation for the parabola $y = 12 - 0.5x^2$ into the height:
+    
+    $$
+    A(x) = 2x(12 - 0.5x^2)
+    $$
+    
+    Expand the brackets:
+    
+    $$
+    A(x) = 24x - x^3 \quad \text{(Shown)}
+    $$
+    
+    **Part b)**
+    
+    $$
+    \frac{dA}{dx} = 24 - 3x^2
+    $$
+    
+    **Part c)**
+    Set the derivative equal to zero to maximise the area.
+    
+    $$
+    24 - 3x^2 = 0 \implies 3x^2 = 24 \implies x^2 = 8
+    $$
+    
+    $$
+    x = \sqrt{8} \approx 2.828
+    $$
+    
+    Substitute this $x$-value back into the Area equation:
+    
+    $$
+    A(\sqrt{8}) = 24(\sqrt{8}) - (\sqrt{8})^3
+    $$
+    
+    $$
+    A = 24(2.828) - 22.627 \approx 67.88 - 22.63 = 45.25
+    $$
+    
+    The maximum cross-sectional area is approximately $45.3$ square units.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Optimising the dimensions of a rectangle inscribed within a parabolic curve" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Environmental Tax and Surface Area">
+    A manufacturer creates open-topped plastic storage boxes with a square base of side length $x$ cm and height $h$ cm. The required volume of each box is $4000$ cm$^3$.
+    To reduce plastic waste, the local government imposes a tax of $0.02$ USD per cm$^2$ of plastic used.
+    
+    a) Write down an expression for the height $h$ in terms of $x$.  
+    b) Show that the total Surface Area of the plastic, $S$, is $S(x) = x^2 + 16000x^{-1}$.  
+    c) Find the dimensions that will minimise the plastic tax, and calculate this minimum tax in USD.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **Part a)**
+    Volume = base area $\times$ height.
+    
+    $$
+    x^2h = 4000 \implies h = \frac{4000}{x^2} = 4000x^{-2}
+    $$
+    
+    **Part b)**
+    The box is open-topped, so it only has 1 base and 4 sides.
+    
+    $$
+    S = x^2 + 4xh
+    $$
+    
+    Substitute $h$ using the expression from part a:
+    
+    $$
+    S(x) = x^2 + 4x(4000x^{-2})
+    $$
+    
+    $$
+    S(x) = x^2 + 16000x^{-1} \quad \text{(Shown)}
+    $$
+    
+    **Part c)**
+    Minimising the surface area will directly minimise the tax. Find $S'(x)$ and set to zero.
+    
+    $$
+    S'(x) = 2x - 16000x^{-2} = 0
+    $$
+    
+    $$
+    2x = \frac{16000}{x^2} \implies 2x^3 = 16000 \implies x^3 = 8000
+    $$
+    
+    $$
+    x = 20
+    $$
+    
+    The optimal base is $x = 20$ cm. The height is $h = 4000 / (20)^2 = 4000 / 400 = 10$ cm.
+    Dimensions: $20$ cm by $20$ cm by $10$ cm.
+
+    Calculate the minimum Surface Area:
+    $$
+    S(20) = (20)^2 + \frac{16000}{20} = 400 + 800 = 1200
+    $$
+    
+    The surface area is $1200$ cm$^2$. Calculate the tax: $1200 \times 0.02 = 24$.
+    The minimum tax per box is $24$ USD.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Minimising surface area using negative exponents to reduce environmental tax" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Agricultural Yield">
+    An apple orchard currently has $30$ trees planted per acre, and each tree yields an average of $400$ apples per season. The farmer considers planting more trees. However, for every additional tree planted per acre, the yield per tree drops by $10$ apples due to overcrowding.
+    Let $x$ be the number of additional trees planted per acre.
+    
+    a) Write down an expression for the total number of trees, and the yield per tree, in terms of $x$.  
+    b) Show that the total yield $Y$ can be modelled by $Y(x) = 12000 + 100x - 10x^2$.  
+    c) Find the value of $x$ that maximises the total apple yield per acre, and state the total number of trees the farmer should have per acre.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **Part a)**
+    Total trees per acre = $30 + x$
+    Yield per tree = $400 - 10x$
+    
+    **Part b)**
+    Total Yield $Y$ = (Total trees) $\times$ (Yield per tree)
+    
+    $$
+    Y(x) = (30 + x)(400 - 10x)
+    $$
+    
+    Expand the brackets:
+    
+    $$
+    Y(x) = 12000 - 300x + 400x - 10x^2
+    $$
+    
+    $$
+    Y(x) = 12000 + 100x - 10x^2 \quad \text{(Shown)}
+    $$
+    
+    **Part c)**
+    Set the derivative to zero:
+    
+    $$
+    Y'(x) = 100 - 20x = 0 \implies 20x = 100 \implies x = 5
+    $$
+    
+    The farmer should plant $x = 5$ additional trees.
+    The total number of trees per acre should be $30 + 5 =$ $35$ trees.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Maximising agricultural yield by balancing quantity against diminishing returns" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Cylindrical Packaging">
+    A beverage company is designing a new cylindrical aluminium soda can that must hold exactly $330$ cm$^3$ of liquid.
+    The surface area of a cylinder is $S = 2\pi r^2 + 2\pi rh$, and its volume is $V = \pi r^2 h$.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 300 300" width="100%" maxWidth="300px" style={{ background: '#ffffff', borderRadius: '8px', overflow: 'hidden' }}>
+        {/* Top ellipse */}
+        <ellipse cx="150" cy="80" rx="60" ry="20" fill="rgba(59, 130, 246, 0.3)" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Bottom ellipse (back dashed, front solid) */}
+        <ellipse cx="150" cy="220" rx="60" ry="20" fill="rgba(148, 163, 184, 0.2)" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+        <path d="M 90 220 A 60 20 0 0 0 210 220" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Sides */}
+        <line x1="90" y1="80" x2="90" y2="220" stroke="#3b82f6" stroke-width="2" />
+        <line x1="210" y1="80" x2="210" y2="220" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Labels */}
+        <line x1="150" y1="80" x2="210" y2="80" stroke="#1e293b" stroke-dasharray="2 2" stroke-width="2" />
+        <text x="175" y="72" font-size="16" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">r</text>
+        
+        <line x1="230" y1="80" x2="230" y2="220" stroke="#1e293b" stroke-width="2" />
+        <text x="245" y="155" font-size="16" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">h</text>
+      </svg>
+    </div>
+
+    a) Show that the surface area can be written as $S(r) = 2\pi r^2 + 660r^{-1}$.  
+    b) Find $\frac{dS}{dr}$.  
+    c) Calculate the radius, $r$, that minimises the amount of aluminium required.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **Part a)**
+    First, use the volume constraint to isolate $h$:
+    
+    $$
+    \pi r^2 h = 330 \implies h = \frac{330}{\pi r^2}
+    $$
+    
+    Substitute this into the Surface Area formula:
+    
+    $$
+    S = 2\pi r^2 + 2\pi r\left(\frac{330}{\pi r^2}\right)
+    $$
+    
+    Simplify the second term (the $\pi$ cancels, and $r / r^2$ becomes $r^{-1}$):
+    
+    $$
+    S = 2\pi r^2 + \frac{660}{r}
+    $$
+    
+    $$
+    S(r) = 2\pi r^2 + 660r^{-1} \quad \text{(Shown)}
+    $$
+    
+    **Part b)**
+    Remember that $\pi$ is just a constant multiplier.
+    
+    $$
+    \frac{dS}{dr} = 4\pi r - 660r^{-2}
+    $$
+    
+    **Part c)**
+    Set the derivative to zero to find the minimum.
+    
+    $$
+    4\pi r - \frac{660}{r^2} = 0 \implies 4\pi r = \frac{660}{r^2}
+    $$
+    
+    Multiply by $r^2$:
+    
+    $$
+    4\pi r^3 = 660 \implies r^3 = \frac{660}{4\pi} = \frac{165}{\pi}
+    $$
+    
+    $$
+    r = \sqrt[3]{\frac{165}{\pi}} \approx \sqrt[3]{52.52} \approx 3.74
+    $$
+    
+    The radius that minimises the aluminium used is approximately $3.74$ cm.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Minimising the surface area of a cylinder given a fixed volume constraint" />
