@@ -17,17 +17,6 @@
   --svg-lines: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 1000' preserveAspectRatio='xMidYMid slice'%3E%3Cstyle%3E.l%7Bstroke:%238b5cf6;stroke-width:14;fill:none;stroke-dasharray:6000;stroke-dashoffset:6000;animation:d 10s infinite;stroke-linecap:round;%7D@keyframes d%7B0%25%7Bstroke-dashoffset:6000%7D40%25,70%25%7Bstroke-dashoffset:0%7D100%25%7Bstroke-dashoffset:-6000%7D%7D%3C/style%3E%3Cg transform='rotate(-30 500 500)'%3E%3Cpath class='l' d='M-500 400 h2000 M-500 550 h2000' /%3E%3Cpath class='l' style='stroke-width:8' d='M480 390 l20 10 l-20 10 M480 540 l20 10 l-20 10' /%3E%3Cpath class='l' style='stroke:%23f43f5e;animation-delay:1s' d='M500 -500 v2000' /%3E%3Cpath class='l' style='stroke:%23f43f5e;stroke-width:6;animation-delay:2s' d='M500 510 h40 v40' /%3E%3C/g%3E%3C/svg%3E");
 }
 
-/* --- THEME FADE ENGINE --- */
-/* Target the top-level containers to catch the theme variable swap */
-:root,
-body,
-header,
-.main-frame,
-.sidebar-pane,
-.card {
-  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
-}
-
 @keyframes syllabusCycle {
   0%, 19%       { background-image: var(--svg-functions); opacity: 0.22; }
   20%, 39%      { background-image: var(--svg-stats); opacity: 0.22; }
@@ -43,10 +32,15 @@ header,
   overflow-y: hidden;
   max-width: 100%;
   padding: 0.5rem 0;
+  /* KaTeX sets display math to 1.21em by default, which is huge. 
+     This scales it back down closer to your normal text size. */
   font-size: 1.05em !important; 
 }
 
-.katex-display::-webkit-scrollbar { height: 6px; }
+/* Make the horizontal scrollbar look clean */
+.katex-display::-webkit-scrollbar {
+  height: 6px;
+}
 .katex-display::-webkit-scrollbar-thumb {
   background: var(--sl-color-gray-5);
   border-radius: 4px;
@@ -62,32 +56,32 @@ header,
   line-height: 1;
 }
 
-/* --- 1. TARGET ONLY TOP-LEVEL CONTENT DIAGRAMS --- */
-.sl-markdown-content > svg,
-.sl-markdown-content > div > svg,
-.starlight-tabs__panel > svg {
-  display: block;
-  margin: 2rem auto;
-  max-width: 100%;
-  height: auto;
-  /* Transitions the filter change (inversion) smoothly */
-  transition: filter 0.4s ease;
-}
 
+/* --- 1. TARGET ONLY TOP-LEVEL CONTENT DIAGRAMS --- */
+/* We only invert SVGs that are direct children of the markdown or a div.
+   This naturally ignores all math SVGs because they are nested deep 
+   inside <span> tags. */
 [data-theme='dark'] .sl-markdown-content > svg,
 [data-theme='dark'] .sl-markdown-content > div > svg,
 [data-theme='dark'] .starlight-tabs__panel > svg {
   filter: invert(1) hue-rotate(180deg) brightness(1.2) !important;
+  display: block;
+  margin: 2rem auto;
+  max-width: 100%;
+  height: auto;
+
+  /* ADD THESE TWO LINES */
   background-color: transparent !important;
   fill: none;
 }
 
 /* --- 2. LEAVE EVERYTHING ELSE ALONE --- */
+/* We reset the KaTeX container to ensure no inherited filters 
+   from parent elements (like an aside) touch the math. */
 .katex, .katex * {
   filter: none !important;
   color: inherit !important;
+  /* This prevents the square root from vanishing/shifting */
   width: auto;
   height: auto;
-  /* Prevent math from "jittering" or blurring during transitions */
-  transition: none !important;
 }

@@ -1,0 +1,365 @@
+---
+title: 5.6 Local Maximum and Minimum Points
+description: Learn how to find the local maximum and minimum points of a curve by solving f'(x) = 0, and understand the difference between local and global extremes in a given domain for IB Maths AI SL.
+---
+
+When analysing mathematical models, we are often most interested in the "peaks and valleys" of a curve. Calculus provides a precise, algebraic method to locate these points of interest without relying on guesswork. 
+
+In this section, we apply our knowledge of the derivative function to find the exact coordinates where a curve reaches a maximum or minimum, and explore how a restricted domain affects the greatest or least value a function can take.
+
+---
+
+## 1. Turning Points: Where the Gradient is Zero
+
+Imagine throwing a ball straight up into the air. As it travels upwards, its velocity is positive. At the exact moment it reaches its maximum height, it momentarily stops before falling back down. At that absolute peak, its velocity is exactly zero.
+
+This same logic applies to mathematical curves. A **turning point** (a local maximum or local minimum) occurs when the curve switches from going upwards (positive gradient) to going downwards (negative gradient), or vice versa. At the exact turning point, the tangent to the curve is perfectly horizontal.
+
+Since a horizontal line has a gradient of $0$, and $f'(x)$ represents the gradient, we can locate all turning points by setting the derivative to zero.
+
+<Aside type="tip" title="Finding Turning Points">
+To find the $x$-coordinate of any local maximum or local minimum point on a curve $y = f(x)$:
+
+<Steps>
+1. Find the derivative $f'(x)$.
+2. Set the derivative equal to zero: **$f'(x) = 0$**.
+3. Solve this equation for $x$.
+4. Substitute the $x$-value back into the *original* equation $f(x)$ to find the corresponding $y$-coordinate.
+</Steps>
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 350" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid/Axes */}
+    <line x1="50" y1="300" x2="550" y2="300" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="100" y1="20" x2="100" y2="330" stroke="#cbd5e1" stroke-width="2" />
+    
+    {/* Curve mathematically guaranteed to have max at (200, 100) and min at (400, 250) using Bezier control points */}
+    <path d="M 50 250 C 100 100, 150 100, 200 100 C 250 100, 350 250, 400 250 C 450 250, 500 150, 550 50" fill="none" stroke="#64748b" stroke-width="3" />
+    
+    {/* Local Maximum at (200, 100) */}
+    <line x1="120" y1="100" x2="280" y2="100" stroke="#ef4444" stroke-width="2" />
+    <circle cx="200" cy="100" r="6" fill="#1e293b" />
+    <text x="200" y="80" font-size="14" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="middle">Local Maximum</text>
+    <text x="200" y="120" font-size="12" font-family="sans-serif" fill="#1e293b" text-anchor="middle">f'(x) = 0</text>
+
+    {/* Local Minimum at (400, 250) */}
+    <line x1="320" y1="250" x2="480" y2="250" stroke="#3b82f6" stroke-width="2" />
+    <circle cx="400" cy="250" r="6" fill="#1e293b" />
+    <text x="400" y="275" font-size="14" font-family="sans-serif" font-weight="bold" fill="#3b82f6" text-anchor="middle">Local Minimum</text>
+    <text x="400" y="235" font-size="12" font-family="sans-serif" fill="#1e293b" text-anchor="middle">f'(x) = 0</text>
+
+    {/* Labels for axes */}
+    <text x="540" y="290" font-size="14" font-family="sans-serif" fill="#64748b" text-anchor="middle">x</text>
+    <text x="80" y="40" font-size="14" font-family="sans-serif" fill="#64748b" text-anchor="middle">y</text>
+  </svg>
+</div>
+
+---
+
+## 2. Local vs. Global (Greatest and Least Values)
+
+A critical concept in the IB syllabus is understanding the difference between a *local* maximum and a *global* (or absolute) maximum within a specified domain.
+
+* **Local Maximum/Minimum:** A turning point that is higher or lower than the points immediately surrounding it. It is where $f'(x) = 0$.
+* **Greatest/Least Value (Global):** The absolute highest or lowest $y$-value the function reaches within the entire given domain.
+
+If a function has a restricted domain (for example, we only evaluate $x$ values between $a$ and $b$), the greatest value might not be at a turning point. Instead, the curve might simply keep rising and reach its highest point exactly at the edge (the boundary) of the domain! 
+
+<Aside type="caution" title="Important Exam Technique">
+When asked to find the **greatest or least value** of a function in a given domain, you must calculate the $y$-values for:
+1. All turning points inside the domain (where $f'(x) = 0$)
+2. Both endpoints of the domain (the boundaries).
+
+Compare these $y$-values to see which is truly the greatest or least.
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 350" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Restricted Domain Shading from x=100 to x=500 */}
+    <rect x="100" y="20" width="400" height="280" fill="rgba(148, 163, 184, 0.08)" />
+    
+    {/* Grid/Axes */}
+    <line x1="50" y1="300" x2="550" y2="300" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="80" y1="20" x2="80" y2="330" stroke="#cbd5e1" stroke-width="2" />
+    
+    {/* Curve restricted between x=100 and x=500 */}
+    <path d="M 100 220 C 150 100, 200 100, 250 100 C 300 100, 350 260, 400 260 C 450 260, 480 180, 500 60" fill="none" stroke="#64748b" stroke-width="3" />
+    
+    {/* Domain Boundaries */}
+    <line x1="100" y1="300" x2="100" y2="20" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <line x1="500" y1="300" x2="500" y2="20" stroke="#94a3b8" stroke-dasharray="4 4" />
+    <text x="100" y="320" font-size="14" font-family="sans-serif" font-weight="bold" fill="#64748b" text-anchor="middle">a</text>
+    <text x="500" y="320" font-size="14" font-family="sans-serif" font-weight="bold" fill="#64748b" text-anchor="middle">b</text>
+
+    {/* Points of Interest */}
+    {/* Left Endpoint */}
+    <circle cx="100" cy="220" r="5" fill="#1e293b" />
+    
+    {/* Local Max */}
+    <circle cx="250" cy="100" r="6" fill="#ef4444" />
+    <text x="250" y="80" font-size="14" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="middle">Local Max</text>
+    
+    {/* Local Min / Global Min */}
+    <circle cx="400" cy="260" r="6" fill="#3b82f6" />
+    <text x="400" y="285" font-size="14" font-family="sans-serif" font-weight="bold" fill="#3b82f6" text-anchor="middle">Least Value (Global Min)</text>
+    
+    {/* Right Endpoint / Global Max */}
+    <circle cx="500" cy="60" r="6" fill="#ef4444" />
+    <text x="490" y="45" font-size="14" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="end">Greatest Value (Endpoint!)</text>
+  </svg>
+</div>
+
+---
+
+## 3. Technology and Solutions
+
+While you must know how to solve $f'(x) = 0$ algebraically, your GDC is a powerful tool to quickly identify these points, especially for complex polynomial functions.
+
+<SteveTip title="GDC Strategies for Turning Points">
+You have multiple ways to find these values on a TI-Nspire:
+
+<Steps>
+1. **Graph the original function:** Graph $y = f(x)$. Press `menu` $\rightarrow$ `6: Analyze Graph` $\rightarrow$ `2: Minimum` or `3: Maximum`. Click to the left and right of the turning point to find its exact coordinates.
+2. **Graph the derivative:** Graph $y = f'(x)$ using the `d/dx` template. The turning points of the original curve occur exactly where the derivative graph crosses the $x$-axis. Use `menu` $\rightarrow$ `6: Analyze Graph` $\rightarrow$ `1: Zero` to find these $x$-intercepts.
+3. **Use nSolve:** On a calculator page, use `nSolve(d/dx(f(x)) = 0, x)` to find the values of $x$ algebraically without graphing.
+</Steps>
+</SteveTip>
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Is it possible for an area of knowledge to describe the world without transforming it?** When physicists and mathematicians use calculus to pinpoint the exact moment an object stops or reaches a boundary, they are translating continuous reality into a series of static mathematical values. Does this transformation enhance our understanding of reality, or does it restrict it by forcing a dynamic world into strict algebraic rules?
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Basic Algebraic Turning Points">
+    Consider the quadratic curve $f(x) = x^2 - 8x + 12$.
+    
+    a) Find the derivative $f'(x)$.  
+    b) By solving $f'(x) = 0$, find the $x$-coordinate of the turning point.  
+    c) Hence, find the exact coordinates of this local minimum point.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a)**
+    Use the power rule to differentiate.
+    
+    $$
+    f'(x) = 2x - 8
+    $$
+    
+    **Part b)**
+    Set the derivative equal to zero to find where the gradient is flat.
+    
+    $$
+    2x - 8 = 0
+    $$
+    
+    $$
+    2x = 8 \implies x = 4
+    $$
+    
+    **Part c)**
+    Substitute $x = 4$ back into the *original* function to find the $y$-coordinate.
+    
+    $$
+    f(4) = (4)^2 - 8(4) + 12
+    $$
+    
+    $$
+    f(4) = 16 - 32 + 12 = -4
+    $$
+    
+    The coordinates of the local minimum are **$(4, -4)$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the coordinates of a turning point for a quadratic function algebraically" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Cubic Functions">
+    A curve is defined by the equation $y = 2x^3 - 3x^2 - 36x + 5$.
+    
+    a) Find $\frac{dy}{dx}$.  
+    b) Find the two values of $x$ for which the curve has a turning point.  
+    c) Determine the $y$-coordinates for both points.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **Part a)**
+    
+    $$
+    \frac{dy}{dx} = 6x^2 - 6x - 36
+    $$
+    
+    **Part b)**
+    Set the derivative to zero and solve the resulting quadratic equation.
+    
+    $$
+    6x^2 - 6x - 36 = 0
+    $$
+    
+    Divide the entire equation by 6 to simplify:
+    
+    $$
+    x^2 - x - 6 = 0
+    $$
+    
+    Factorise:
+    
+    $$
+    (x - 3)(x + 2) = 0
+    $$
+    
+    The $x$-values are **$x = 3$** and **$x = -2$**.
+
+    **Part c)**
+    Substitute these $x$-values into the original curve equation $y$:
+    
+    For $x = 3$:
+    
+    $$
+    y = 2(3)^3 - 3(3)^2 - 36(3) + 5 = 54 - 27 - 108 + 5 = -76
+    $$
+    
+    For $x = -2$:
+    
+    $$
+    y = 2(-2)^3 - 3(-2)^2 - 36(-2) + 5 = -16 - 12 + 72 + 5 = 49
+    $$
+    
+    The turning points are located at **$(3, -76)$** and **$(-2, 49)$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding multiple turning points by factoring a quadratic derivative" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Local vs. Global Extrema">
+    A mathematical model is defined as $f(x) = x^3 - 3x^2$ for the domain $-2 \le x \le 4$.
+    
+    a) Find the coordinates of the local minimum and local maximum points within this domain.  
+    b) Find the greatest value (global maximum) of $f(x)$ in this restricted domain.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part a)**
+    Find turning points by setting $f'(x) = 0$.
+    
+    $$
+    f'(x) = 3x^2 - 6x = 0
+    $$
+    
+    $$
+    3x(x - 2) = 0 \implies x = 0 \text{ or } x = 2
+    $$
+    
+    Substitute into $f(x)$ to get the coordinates:
+    $f(0) = (0)^3 - 3(0)^2 = 0 \implies (0, 0)$ is the local maximum.
+    $f(2) = (2)^3 - 3(2)^2 = 8 - 12 = -4 \implies (2, -4)$ is the local minimum.
+
+    **Part b)**
+    To find the greatest value overall, we must check the local maximum $y$-value AND the $y$-values at the edges of the domain ($x = -2$ and $x = 4$).
+    
+    * Local Max value: $y = 0$
+    * Evaluate left boundary $x = -2$: 
+      $f(-2) = (-2)^3 - 3(-2)^2 = -8 - 12 = -20$
+    * Evaluate right boundary $x = 4$: 
+      $f(4) = (4)^3 - 3(4)^2 = 64 - 48 = 16$
+      
+    Comparing the possible highest values ($0$ at the turning point vs $16$ at the boundary), the curve reaches much higher at the edge of the domain.
+    
+    The greatest value is **$16$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing turning points with domain endpoints to find global maximums" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Kinematics (Physics Link)">
+    The displacement $s$ (in metres) of a particle from an origin after $t$ seconds is modelled by the function:
+    
+    $$
+    s(t) = 2t^3 - 9t^2 + 12t, \quad t \ge 0
+    $$
+    
+    a) Find the velocity function, $v(t)$.  
+    b) Find the times when the particle is momentarily at rest.  
+    c) Find the maximum displacement of the particle from the origin before it changes direction for the first time.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **Part a)**
+    Velocity is the derivative of displacement.
+    
+    $$
+    v(t) = s'(t) = 6t^2 - 18t + 12
+    $$
+    
+    **Part b)**
+    A particle is at rest when its velocity is zero (which mathematically aligns with a turning point on the displacement graph).
+    
+    $$
+    6t^2 - 18t + 12 = 0
+    $$
+    
+    Divide by 6:
+    
+    $$
+    t^2 - 3t + 2 = 0
+    $$
+    
+    $$
+    (t - 1)(t - 2) = 0
+    $$
+    
+    The particle is momentarily at rest at **$t = 1\text{ s}$** and **$t = 2\text{ s}$**.
+
+    **Part c)**
+    The maximum displacement before returning occurs at the first turning point, $t = 1$. Substitute this into the displacement function $s(t)$:
+    
+    $$
+    s(1) = 2(1)^3 - 9(1)^2 + 12(1)
+    $$
+    
+    $$
+    s(1) = 2 - 9 + 12 = 5
+    $$
+    
+    The maximum displacement before changing direction is **$5\text{ m}$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying turning points to kinematics to find momentary rest and maximum displacement" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Technology Allowed">
+    Consider the complex polynomial $h(x) = 0.2x^4 - 1.5x^3 + x^2 + 4$.
+    
+    Use your Graphic Display Calculator to find the $x$-coordinates of all local maximum and minimum points. Give your answers to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    This question tests your ability to efficiently generate $f'(x) = 0$ solutions using technology, as algebra for a degree 4 polynomial can be tedious.
+    
+    **Method 1 (Graphing $h(x)$):**
+    Graph the function. Use `Analyze Graph -> Minimum/Maximum` to find the turning points directly on the curve.
+    
+    **Method 2 (Using derivative roots):**
+    Use the solver tool: `nSolve(d/dx(0.2x^4 - 1.5x^3 + x^2 + 4) = 0, x)`.
+    Or find the roots of the derivative $0.8x^3 - 4.5x^2 + 2x = 0$.
+    
+    Factoring out $x$:
+    $x(0.8x^2 - 4.5x + 2) = 0$
+    
+    So one turning point is exactly $x = 0$.
+    Using the GDC Poly Root Finder on $0.8x^2 - 4.5x + 2 = 0$ gives:
+    
+    $$
+    x = 0.5 \quad \text{and} \quad x = 5.125 \text{ (exact)}
+    $$
+    
+    The $x$-coordinates of the turning points (to 3 s.f. where needed) are:
+    **$x = 0$**, **$x = 0.500$**, and **$x = 5.13$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the GDC to rapidly locate local maximum and minimum points for complex polynomials" />
