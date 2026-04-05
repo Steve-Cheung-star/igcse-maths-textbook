@@ -3,6 +3,8 @@ title: 8.1 Transformations
 description: Recognise, describe, and draw reflections, rotations, enlargements, and translations, including combined and inverse transformations for IGCSE 0607.
 ---
 
+import TransformationLab from '../../../../components/TransformationLab.jsx';
+
 A transformation changes the position, size, or orientation of a shape. The original shape is called the **Object**, and the new shape is called the **Image** (often denoted with a prime symbol, e.g., $A'$). 
 
 <Aside type="note" title="Transformation Anatomy">
@@ -25,6 +27,10 @@ Always use a straight edge or ruler to draw the edges of your shapes, projection
 
 A reflection is a "flip" of a shape across a straight line, acting as a mirror. Questions can feature horizontal lines ($y = c$), vertical lines ($x = c$), or diagonal lines ($y = x$ or $y = -x$).
 
+<div class="not-content">
+  <TransformationLab category="reflection" client:only="react" />
+</div>
+
 <Aside type="tip" title="Properties & Inverse of Reflection">
 * **To describe fully:** You must state the word "Reflection" and the equation of the mirror line (e.g., $x = 0$, $y = 2$, $y = -x$).
 * **Key Fact:** Every point on the image is the exact same perpendicular distance from the mirror line as the corresponding point on the object.
@@ -36,6 +42,10 @@ A reflection is a "flip" of a shape across a straight line, acting as a mirror. 
 ## 2. Rotation
 
 A rotation turns a shape around a fixed pivot point. This point does not have to be the origin $(0,0)$; it can be anywhere on the grid!
+
+<div class="not-content">
+  <TransformationLab category="rotation" client:only="react" />
+</div>
 
 <Aside type="tip" title="Properties & Inverse of Rotation">
 * **To describe fully, you must state 3 things:**
@@ -54,6 +64,10 @@ A common misconception is thinking you must provide a direction for a $180^\circ
 ## 3. Enlargement
 
 An enlargement changes the size of the shape, altering the side lengths. The centre of enlargement acts as a "projector" lens from which the shape grows or shrinks.
+
+<div class="not-content">
+  <TransformationLab category="enlargement" client:only="react" />
+</div>
 
 <Aside type="tip" title="Properties & Inverse of Enlargement">
 * **To describe fully, you must state 3 things:**
@@ -83,6 +97,10 @@ $$
   * **Bottom number ($y$):** Movement Up/Down (positive = up, negative = down).
 * **The Inverse:** Simply **invert the signs** of the vector. The inverse of $\begin{pmatrix} -4 \\ 3 \end{pmatrix}$ is $\begin{pmatrix} 4 \\ -3 \end{pmatrix}$. 
 </Aside>
+
+<div class="not-content">
+  <TransformationLab category="translation" client:only="react" />
+</div>
 
 ---
 

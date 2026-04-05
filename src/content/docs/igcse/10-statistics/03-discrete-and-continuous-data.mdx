@@ -5,7 +5,7 @@ description: Learn how to clearly distinguish between discrete and continuous qu
 
 In statistics, quantitative (numerical) data is split into two very distinct categories: **discrete** and **continuous**. Knowing which type of data you are working with is crucial, as it entirely changes how the data is grouped in tables and which types of graphs you are allowed to draw.
 
-<Aside type="note" title="The Golden Rule">
+<Aside type="tip" title="The Golden Rule">
 * If you **count** it, it is **discrete**.
 * If you **measure** it, it is **continuous**.
 </Aside>
@@ -21,102 +21,25 @@ In statistics, quantitative (numerical) data is split into two very distinct cat
 * The number of goals scored in a football match ($0$, $1$, $2$, $3$).
 * Shoe sizes ($6$, $6.5$, $7$, $7.5$ — notice these include decimals, but you still cannot have a shoe size of $6.234$).
 
-<div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', margin: '3rem 0', flexWrap: 'wrap' }}>
-  {/* Bar Chart for Discrete Data */}
-  <div style={{ textAlign: 'center', background: '#ffffff', padding: '1.5rem', borderRadius: '16px', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)', border: '1px solid #e2e8f0' }}>
-    <h4 style={{ marginBottom: '1.5rem', color: '#1e293b', fontWeight: '600' }}>Discrete Data (Bar Chart)</h4>
-    <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ fontfamily: "Inter, sans-serif" }}>
-      <defs>
-        <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#60a5fa" />
-          <stop offset="100%" stopColor="#3b82f6" />
-        </linearGradient>
-        <filter id="shadow">
-          <feDropShadow dx="0" dy="2" stdDeviation="2" floodColor="#cbd5e1" floodOpacity="0.5"/>
-        </filter>
-      </defs>
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 150" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <line x1="50" y1="100" x2="550" y2="100" stroke="#94a3b8" stroke-width="2" />
+    
+    <circle cx="150" cy="100" r="6" fill="#3b82f6" />
+    <text x="150" y="130" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">1 goal</text>
+    
+    <circle cx="300" cy="100" r="6" fill="#3b82f6" />
+    <text x="300" y="130" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">2 goals</text>
+    
+    <circle cx="450" cy="100" r="6" fill="#3b82f6" />
+    <text x="450" y="130" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">3 goals</text>
 
-      {/* Grid lines */}
-      <g stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4">
-        <line x1="40" y1="50" x2="280" y2="50" />
-        <line x1="40" y1="100" x2="280" y2="100" />
-        <line x1="40" y1="150" x2="280" y2="150" />
-      </g>
-      
-      {/* Axes */}
-      <path d="M 40 20 L 40 210 L 280 210" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
-      
-      {/* Bars (with gaps and rounded tops) */}
-      <g filter="url(#shadow)">
-        <rect x="62" y="100" width="26" height="110" rx="4" fill="url(#barGradient)" />
-        <rect x="112" y="50" width="26" height="160" rx="4" fill="url(#barGradient)" />
-        <rect x="162" y="150" width="26" height="60" rx="4" fill="url(#barGradient)" />
-        <rect x="212" y="80" width="26" height="130" rx="4" fill="url(#barGradient)" />
-      </g>
+    {/* Dashed line to show impossibility in between */}
+    <line x1="150" y1="100" x2="300" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="225" y="85" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#ef4444">1.5 is impossible!</text>
 
-      {/* Axis Labels and Titles */}
-      <g font-size="12" fill="#64748b" font-family="inherit">
-        <text x="30" y="55" text-anchor="end">15</text>
-        <text x="30" y="105" text-anchor="end">10</text>
-        <text x="30" y="155" text-anchor="end">5</text>
-        <text x="30" y="210" text-anchor="end">0</text>
-
-        <text x="75" y="230" text-anchor="middle">0</text>
-        <text x="125" y="230" text-anchor="middle">1</text>
-        <text x="175" y="230" text-anchor="middle">2</text>
-        <text x="225" y="230" text-anchor="middle">3</text>
-      </g>
-      
-      <text x="160" y="248" font-size="13" font-weight="600" fill="#1e293b" text-anchor="middle" font-family="inherit">Goals Scored</text>
-    </svg>
-  </div>
-
-  {/* Histogram for Continuous Data */}
-  <div style={{ textAlign: 'center', background: '#ffffff', padding: '1.5rem', borderRadius: '16px', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)', border: '1px solid #e2e8f0' }}>
-    <h4 style={{ marginBottom: '1.5rem', color: '#1e293b', fontWeight: '600' }}>Continuous Data (Histogram)</h4>
-    <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ fontfamily: "Inter, sans-serif" }}>
-      <defs>
-        <linearGradient id="histoGradient" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#34d399" />
-          <stop offset="100%" stopColor="#10b981" />
-        </linearGradient>
-      </defs>
-
-      {/* Grid lines */}
-      <g stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4 4">
-        <line x1="40" y1="50" x2="280" y2="50" />
-        <line x1="40" y1="100" x2="280" y2="100" />
-        <line x1="40" y1="150" x2="280" y2="150" />
-      </g>
-      
-      {/* Bars (touching, slightly rounded top corners) */}
-      <g fill="url(#histoGradient)" stroke="#ffffff" stroke-width="1">
-        <path d="M 40 210 V 104 a 4 4 0 0 1 4 -4 h 52 a 4 4 0 0 1 4 4 V 210 Z" />
-        <path d="M 100 210 V 54 a 4 4 0 0 1 4 -4 h 52 a 4 4 0 0 1 4 4 V 210 Z" />
-        <path d="M 160 210 V 84 a 4 4 0 0 1 4 -4 h 52 a 4 4 0 0 1 4 4 V 210 Z" />
-        <path d="M 220 210 V 154 a 4 4 0 0 1 4 -4 h 52 a 4 4 0 0 1 4 4 V 210 Z" />
-      </g>
-      
-      {/* Axes (drawn over bars for cleanliness) */}
-      <path d="M 40 20 L 40 210 L 280 210" fill="none" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
-
-      {/* Axis Labels and Titles */}
-      <g font-size="12" fill="#64748b" font-family="inherit">
-        <text x="30" y="55" text-anchor="end">15</text>
-        <text x="30" y="105" text-anchor="end">10</text>
-        <text x="30" y="155" text-anchor="end">5</text>
-        <text x="30" y="210" text-anchor="end">0</text>
-
-        <text x="40" y="230" text-anchor="middle">0</text>
-        <text x="100" y="230" text-anchor="middle">10</text>
-        <text x="160" y="230" text-anchor="middle">20</text>
-        <text x="220" y="230" text-anchor="middle">30</text>
-        <text x="280" y="230" text-anchor="middle">40</text>
-      </g>
-      
-      <text x="160" y="248" font-size="13" font-weight="600" fill="#1e293b" text-anchor="middle" font-family="inherit">Height (cm)</text>
-    </svg>
-  </div>
+    <text x="300" y="40" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Discrete Data: Exact Points</text>
+  </svg>
 </div>
 
 ## 2. Continuous Data
@@ -128,6 +51,31 @@ In statistics, quantitative (numerical) data is split into two very distinct cat
 * **Weight/Mass:** A bag of sugar weighing $1\text{kg}$ might actually be $1.002\text{kg}$.
 * **Time:** The time it takes to run a race ($10.45$ seconds).
 * **Temperature:** The temperature outside ($22.4^\circ\text{C}$).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 150" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <line x1="50" y1="100" x2="550" y2="100" stroke="#94a3b8" stroke-width="2" />
+    
+    {/* Continuous range shaded */}
+    <rect x="150" y="96" width="300" height="8" fill="#10b981" opacity="0.6" />
+    
+    <line x1="150" y1="90" x2="150" y2="110" stroke="#1e293b" stroke-width="2" />
+    <text x="150" y="130" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">10 cm</text>
+    
+    <line x1="450" y1="90" x2="450" y2="110" stroke="#1e293b" stroke-width="2" />
+    <text x="450" y="130" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">20 cm</text>
+
+    {/* Example point inside */}
+    <circle cx="280" cy="100" r="4" fill="#059669" />
+    <text x="280" y="80" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="#059669">14.332... cm</text>
+
+    <text x="300" y="40" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="#1e293b">Continuous Data: Any Value Exists</text>
+  </svg>
+</div>
+
+<Aside type="caution" title="Is Money Discrete or Continuous?">
+This is a very common trap! Because physical coins and notes have set values (e.g., $1$ pence, $5$ pence), you cannot have half a penny. Technically, money is **discrete**. However, in statistics and IGCSE questions, large ranges of money (like salaries or profits) are usually treated as **continuous data** when grouped in tables or graphs.
+</Aside>
 
 ---
 
@@ -160,10 +108,30 @@ Therefore, for continuous data, we **must** use inequality symbols ($\le$ and $<
 *Notice how $10$ is the boundary for both rows. The inequality signs tell us exactly where a plant measuring exactly $10\text{cm}$ goes. Because of the $\le$ sign, it goes into the **first** row. A plant that is $10.1\text{cm}$ goes into the **second** row.*
 
 <SteveTip title="Graphing the Data">
-Later in the syllabus, you will learn to graph these. Remember this pairing: 
+Later in the syllabus, you will learn to graph these. Remember this strict pairing: 
 **Discrete data** is usually graphed using a **Bar Chart** (with gaps between the bars). 
-**Continuous data** is graphed using a **Histogram** (where the bars touch, because the data is continuous).
+**Continuous data** is graphed using a **Histogram** (where the bars touch, because the data is seamlessly continuous).
 </SteveTip>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Left: Bar Chart */}
+    <text x="150" y="30" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">Bar Chart (Discrete)</text>
+    <line x1="40" y1="200" x2="260" y2="200" stroke="#333" stroke-width="2" />
+    <line x1="40" y1="50" x2="40" y2="200" stroke="#333" stroke-width="2" />
+    <rect x="60" y="100" width="40" height="100" fill="#3b82f6" />
+    <rect x="120" y="60" width="40" height="140" fill="#3b82f6" />
+    <rect x="180" y="130" width="40" height="70" fill="#3b82f6" />
+    
+    {/* Right: Histogram */}
+    <text x="450" y="30" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">Histogram (Continuous)</text>
+    <line x1="340" y1="200" x2="560" y2="200" stroke="#333" stroke-width="2" />
+    <line x1="340" y1="50" x2="340" y2="200" stroke="#333" stroke-width="2" />
+    <rect x="360" y="100" width="40" height="100" fill="#10b981" stroke="#f8fafc" stroke-width="1" />
+    <rect x="400" y="60" width="40" height="140" fill="#10b981" stroke="#f8fafc" stroke-width="1" />
+    <rect x="440" y="130" width="60" height="70" fill="#10b981" stroke="#f8fafc" stroke-width="1" />
+  </svg>
+</div>
 
 ---
 
@@ -182,17 +150,17 @@ Later in the syllabus, you will learn to graph these. Remember this pairing:
   </TabItem>
   <TabItem label="✅ Solution 1">
     <Steps>
-      1.  **Number of cars:** Discrete (you count cars; you cannot have half a car).
-      2.  **Volume of water:** Continuous (you measure volume; it can be $2000.5$ litres).
-      3.  **Number of pages:** Discrete (you count pages).
-      4.  **Distance travelled:** Continuous (you measure distance; it can be $14.56\text{km}$).
-      5.  **Number of teeth:** Discrete (you count teeth).
-      6.  **Speed:** Continuous (you measure speed; it can be $12.3\text{m/s}$).
+      1. **Number of cars:** Discrete (you count cars; you cannot have half a car).
+      2. **Volume of water:** Continuous (you measure volume; it can be $2000.5$ litres).
+      3. **Number of pages:** Discrete (you count pages).
+      4. **Distance travelled:** Continuous (you measure distance; it can be $14.56\text{km}$).
+      5. **Number of teeth:** Discrete (you count teeth).
+      6. **Speed:** Continuous (you measure speed; it can be $12.3\text{m/s}$).
     </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Classifying real-world variables as discrete or continuous" />
+<AIGenerator topic="Classifying real-world variables as discrete or continuous" difficulty="IGCSE Core" client:load />
 
 <Tabs>
   <TabItem label="📝 Question 2: Grouping Continuous Data">
@@ -201,18 +169,18 @@ Later in the syllabus, you will learn to graph these. Remember this pairing:
     
     Which of the following classes does each leaf belong to?
     
-    **Class A:** $10 < L \le 20$
-    **Class B:** $20 < L \le 30$
+    **Class A:** $10 < L \le 20$  
+    **Class B:** $20 < L \le 30$  
     **Class C:** $30 < L \le 40$
   </TabItem>
   <TabItem label="✅ Solution 2">
     <Steps>
-      1.  Look at the $30\text{mm}$ leaf. The boundary $30$ appears in both Class B and Class C.
-      2.  Class B uses $\le 30$, which means "less than or **equal to** $30$". Therefore, the $30\text{mm}$ leaf goes into **Class B**.
-      3.  Look at the $30.5\text{mm}$ leaf. 
-      4.  $30.5$ is strictly greater than $30$. Class C uses $30 < L$, which means "$L$ is strictly greater than $30$". Therefore, the $30.5\text{mm}$ leaf goes into **Class C**.
+      1. Look at the $30\text{mm}$ leaf. The boundary $30$ appears in both Class B and Class C.
+      2. Class B uses $\le 30$, which means "less than or **equal to** $30$". Therefore, the $30\text{mm}$ leaf goes into **Class B**.
+      3. Look at the $30.5\text{mm}$ leaf. 
+      4. $30.5$ is strictly greater than $30$. Class C uses $30 < L$, which means "$L$ is strictly greater than $30$". Therefore, the $30.5\text{mm}$ leaf goes into **Class C**.
     </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Placing continuous data values into correct inequality groups" />
+<AIGenerator topic="Placing continuous data values into correct inequality groups" difficulty="IGCSE Extended" client:load />

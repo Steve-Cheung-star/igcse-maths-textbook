@@ -19,6 +19,58 @@ Make sure you can identify these key types of numbers:
 </Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 300" width="100%" maxWidth="600px" xmlns="http://www.w3.org/2000/svg" style={{ fontFamily: 'sans-serif' }}>
+    {/* Real Numbers Box */}
+    <rect x="10" y="10" width="580" height="280" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" rx="8" />
+    <text x="25" y="35" font-weight="bold" fill="#334155" font-size="16">Real Numbers</text>
+    
+    {/* Irrational Numbers */}
+    <rect x="420" y="50" width="150" height="220" fill="#fee2e2" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4" rx="8" />
+    <text x="495" y="80" text-anchor="middle" font-weight="bold" fill="#b91c1c" font-size="14">Irrational</text>
+    <text x="495" y="110" text-anchor="middle" fill="#7f1d1d" font-size="14">π</text>
+    
+    {/* Square root of 2 */}
+    <g transform="translate(495, 140)">
+      <path d="M -12,-2 L -8,-2 L -2,6 L 5,-10 L 18,-10" fill="none" stroke="#7f1d1d" stroke-width="1.5" stroke-linejoin="round" />
+      <text x="11" y="6" text-anchor="middle" fill="#7f1d1d" font-size="15">2</text>
+    </g>
+
+    {/* Square root of 3 */}
+    <g transform="translate(495, 175)">
+      <path d="M -12,-2 L -8,-2 L -2,6 L 5,-10 L 18,-10" fill="none" stroke="#7f1d1d" stroke-width="1.5" stroke-linejoin="round" />
+      <text x="11" y="6" text-anchor="middle" fill="#7f1d1d" font-size="15">3</text>
+    </g>
+
+    <text x="495" y="215" text-anchor="middle" fill="#7f1d1d" font-size="14">e</text>
+    
+    {/* Rational Numbers */}
+    <rect x="30" y="50" width="370" height="220" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" rx="8" />
+    <text x="45" y="80" font-weight="bold" fill="#1d4ed8" font-size="14">Rational Numbers</text>
+    
+    {/* Rational Examples */}
+    <g transform="translate(320, 75)">
+      {/* Fake Fraction 1/2 */}
+      <text x="-40" y="-5" text-anchor="middle" fill="#1e3a8a" font-size="14">1</text>
+      <line x1="-48" y1="0" x2="-32" y2="0" stroke="#1e3a8a" stroke-width="1.5" />
+      <text x="-40" y="14" text-anchor="middle" fill="#1e3a8a" font-size="14">2</text>
+      
+      {/* -0.75 */}
+      <text x="4" y="5" text-anchor="middle" fill="#1e3a8a" font-size="14">, -0.75, 4.2</text>
+    </g>
+    
+    {/* Integers */}
+    <rect x="50" y="105" width="330" height="150" fill="#bbf7d0" stroke="#22c55e" stroke-width="2" rx="8" />
+    <text x="65" y="135" font-weight="bold" fill="#15803d" font-size="14">Integers</text>
+    <text x="280" y="135" text-anchor="middle" fill="#14532d" font-size="14">-3, -2, -1</text>
+    
+    {/* Natural Numbers */}
+    <rect x="70" y="160" width="290" height="80" fill="#fef08a" stroke="#eab308" stroke-width="2" rx="8" />
+    <text x="85" y="190" font-weight="bold" fill="#a16207" font-size="14">Natural Numbers</text>
+    <text x="215" y="215" text-anchor="middle" fill="#713f12" font-size="16" font-weight="bold">0, 1, 2, 3...</text>
+  </svg>
+</div>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 600 100" width="100%" maxWidth="600px" xmlns="http://www.w3.org/2000/svg">
     <line x1="50" y1="50" x2="550" y2="50" stroke="#333" stroke-width="2" stroke-dasharray="5,5" />
     <line x1="100" y1="40" x2="100" y2="60" stroke="#333" stroke-width="2" />
@@ -46,27 +98,109 @@ Visualising these numbers makes them much easier to remember:
 
 * **Prime numbers:** Numbers greater than 1 with exactly two factors: 1 and themselves (2, 3, 5, 7, 11...).
 * **Square numbers:** The result of multiplying an integer by itself (1, 4, 9, 16, 25...). They can be arranged in a perfect square grid.
-  
-$$ 
-\begin{array}{ccc} 
-  \bullet & 
-  \begin{matrix} \bullet & \bullet \\ \bullet & \bullet \end{matrix} & 
-  \begin{matrix} \bullet & \bullet & \bullet \\ \bullet & \bullet & \bullet \\ \bullet & \bullet & \bullet \end{matrix} \\ 
-  1 & 4 & 9 
-\end{array} 
-$$
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 160" width="100%" maxWidth="500px" xmlns="http://www.w3.org/2000/svg" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* 1x1 */}
+    <g transform="translate(75, 0)">
+      <circle cx="0" cy="120" r="4" fill="#3b82f6" />
+      <text x="0" y="145" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">1</text>
+    </g>
+    
+    {/* 2x2 */}
+    <g transform="translate(125, 0)">
+      <circle cx="0" cy="120" r="4" fill="#3b82f6" /><circle cx="15" cy="120" r="4" fill="#3b82f6" />
+      <circle cx="0" cy="105" r="4" fill="#3b82f6" /><circle cx="15" cy="105" r="4" fill="#3b82f6" />
+      <text x="7.5" y="145" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">4</text>
+    </g>
+
+    {/* 3x3 */}
+    <g transform="translate(185, 0)">
+      <circle cx="0" cy="120" r="4" fill="#3b82f6" /><circle cx="15" cy="120" r="4" fill="#3b82f6" /><circle cx="30" cy="120" r="4" fill="#3b82f6" />
+      <circle cx="0" cy="105" r="4" fill="#3b82f6" /><circle cx="15" cy="105" r="4" fill="#3b82f6" />
+      <circle cx="30" cy="105" r="4" fill="#3b82f6" />
+      <circle cx="0" cy="90" r="4" fill="#3b82f6" /><circle cx="15" cy="90" r="4" fill="#3b82f6" />
+      <circle cx="30" cy="90" r="4" fill="#3b82f6" />
+      <text x="15" y="145" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">9</text>
+    </g>
+
+    {/* 4x4 */}
+    <g transform="translate(265, 0)">
+      <circle cx="0" cy="120" r="4" fill="#3b82f6" /><circle cx="15" cy="120" r="4" fill="#3b82f6" />
+      <circle cx="30" cy="120" r="4" fill="#3b82f6" /><circle cx="45" cy="120" r="4" fill="#3b82f6" />
+      <circle cx="0" cy="105" r="4" fill="#3b82f6" /><circle cx="15" cy="105" r="4" fill="#3b82f6" />
+      <circle cx="30" cy="105" r="4" fill="#3b82f6" /><circle cx="45" cy="105" r="4" fill="#3b82f6" />
+      <circle cx="0" cy="90" r="4" fill="#3b82f6" /><circle cx="15" cy="90" r="4" fill="#3b82f6" />
+      <circle cx="30" cy="90" r="4" fill="#3b82f6" /><circle cx="45" cy="90" r="4" fill="#3b82f6" />
+      <circle cx="0" cy="75" r="4" fill="#3b82f6" /><circle cx="15" cy="75" r="4" fill="#3b82f6" />
+      <circle cx="30" cy="75" r="4" fill="#3b82f6" /><circle cx="45" cy="75" r="4" fill="#3b82f6" />
+      <text x="22.5" y="145" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">16</text>
+    </g>
+
+    {/* 5x5 */}
+    <g transform="translate(365, 0)">
+      <circle cx="0" cy="120" r="4" fill="#3b82f6" /><circle cx="15" cy="120" r="4" fill="#3b82f6" />
+      <circle cx="30" cy="120" r="4" fill="#3b82f6" /><circle cx="45" cy="120" r="4" fill="#3b82f6" /><circle cx="60" cy="120" r="4" fill="#3b82f6" />
+      <circle cx="0" cy="105" r="4" fill="#3b82f6" /><circle cx="15" cy="105" r="4" fill="#3b82f6" />
+      <circle cx="30" cy="105" r="4" fill="#3b82f6" /><circle cx="45" cy="105" r="4" fill="#3b82f6" /><circle cx="60" cy="105" r="4" fill="#3b82f6" />
+      <circle cx="0" cy="90" r="4" fill="#3b82f6" /><circle cx="15" cy="90" r="4" fill="#3b82f6" />
+      <circle cx="30" cy="90" r="4" fill="#3b82f6" /><circle cx="45" cy="90" r="4" fill="#3b82f6" /><circle cx="60" cy="90" r="4" fill="#3b82f6" />
+      <circle cx="0" cy="75" r="4" fill="#3b82f6" /><circle cx="15" cy="75" r="4" fill="#3b82f6" />
+      <circle cx="30" cy="75" r="4" fill="#3b82f6" /><circle cx="45" cy="75" r="4" fill="#3b82f6" /><circle cx="60" cy="75" r="4" fill="#3b82f6" />
+      <circle cx="0" cy="60" r="4" fill="#3b82f6" /><circle cx="15" cy="60" r="4" fill="#3b82f6" />
+      <circle cx="30" cy="60" r="4" fill="#3b82f6" /><circle cx="45" cy="60" r="4" fill="#3b82f6" /><circle cx="60" cy="60" r="4" fill="#3b82f6" />
+      <text x="30" y="145" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">25</text>
+    </g>
+  </svg>
+</div>
 
 * **Cube numbers:** The result of multiplying an integer by itself twice (1, 8, 27, 64...). These form 3D cubes.
 * **Triangle numbers:** Numbers that can form a triangle pattern (1, 3, 6, 10, 15...).
 
-$$ 
-\begin{array}{ccc} 
-  \begin{matrix} \\ \bullet \end{matrix} & 
-  \begin{matrix} \\ \bullet \\ \bullet \quad \bullet \end{matrix} & 
-  \begin{matrix} \bullet \\ \bullet \quad \bullet \\ \bullet \quad \bullet \quad \bullet \end{matrix} \\ 
-  1 & 3 & 6 
-\end{array} 
-$$
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 160" width="100%" maxWidth="500px" xmlns="http://www.w3.org/2000/svg" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* n=1 */}
+    <g transform="translate(75, 0)">
+      <circle cx="0" cy="120" r="4" fill="#10b981" />
+      <text x="0" y="145" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">1</text>
+    </g>
+    
+    {/* n=2 */}
+    <g transform="translate(125, 0)">
+      <circle cx="0" cy="120" r="4" fill="#10b981" /><circle cx="15" cy="120" r="4" fill="#10b981" />
+      <circle cx="7.5" cy="107" r="4" fill="#10b981" />
+      <text x="7.5" y="145" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">3</text>
+    </g>
+
+    {/* n=3 */}
+    <g transform="translate(185, 0)">
+      <circle cx="0" cy="120" r="4" fill="#10b981" /><circle cx="15" cy="120" r="4" fill="#10b981" /><circle cx="30" cy="120" r="4" fill="#10b981" />
+      <circle cx="7.5" cy="107" r="4" fill="#10b981" /><circle cx="22.5" cy="107" r="4" fill="#10b981" />
+      <circle cx="15" cy="94" r="4" fill="#10b981" />
+      <text x="15" y="145" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">6</text>
+    </g>
+
+    {/* n=4 */}
+    <g transform="translate(265, 0)">
+      <circle cx="0" cy="120" r="4" fill="#10b981" /><circle cx="15" cy="120" r="4" fill="#10b981" /><circle cx="30" cy="120" r="4" fill="#10b981" /><circle cx="45" cy="120" r="4" fill="#10b981" />
+      <circle cx="7.5" cy="107" r="4" fill="#10b981" /><circle cx="22.5" cy="107" r="4" fill="#10b981" />
+      <circle cx="37.5" cy="107" r="4" fill="#10b981" />
+      <circle cx="15" cy="94" r="4" fill="#10b981" /><circle cx="30" cy="94" r="4" fill="#10b981" />
+      <circle cx="22.5" cy="81" r="4" fill="#10b981" />
+      <text x="22.5" y="145" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">10</text>
+    </g>
+
+    {/* n=5 */}
+    <g transform="translate(365, 0)">
+      <circle cx="0" cy="120" r="4" fill="#10b981" /><circle cx="15" cy="120" r="4" fill="#10b981" /><circle cx="30" cy="120" r="4" fill="#10b981" /><circle cx="45" cy="120" r="4" fill="#10b981" /><circle cx="60" cy="120" r="4" fill="#10b981" />
+      <circle cx="7.5" cy="107" r="4" fill="#10b981" /><circle cx="22.5" cy="107" r="4" fill="#10b981" /><circle cx="37.5" cy="107" r="4" fill="#10b981" /><circle cx="52.5" cy="107" r="4" fill="#10b981" />
+      <circle cx="15" cy="94" r="4" fill="#10b981" /><circle cx="30" cy="94" r="4" fill="#10b981" /><circle cx="45" cy="94" r="4" fill="#10b981" />
+      <circle cx="22.5" cy="81" r="4" fill="#10b981" /><circle cx="37.5" cy="81" r="4" fill="#10b981" />
+      <circle cx="30" cy="68" r="4" fill="#10b981" />
+      <text x="30" y="145" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">15</text>
+    </g>
+  </svg>
+</div>
 
 * **Reciprocals:** What you multiply a number by to get 1. For example, the reciprocal of 5 is $\frac{1}{5}$.
 
@@ -80,8 +214,44 @@ A very common misconception is thinking that 1 is a prime number. **1 is NOT pri
 
 You must be able to translate fluently between large numbers in digits and words. Remember your place values!
 
-* **6 000 000 000** is written as **six billion**.
+* **3 456 789** is written as **three million, four hundred and fifty-six thousand, seven hundred and eighty-nine**.
 * **10 007** is written as **ten thousand and seven**.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 120" width="100%" maxWidth="600px" xmlns="http://www.w3.org/2000/svg" style={{ fontFamily: 'sans-serif', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid Lines */}
+    <line x1="0" y1="40" x2="600" y2="40" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="0" y1="80" x2="600" y2="80" stroke="#cbd5e1" stroke-width="2" />
+    
+    <line x1="85" y1="0" x2="85" y2="120" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="170" y1="0" x2="170" y2="120" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="255" y1="0" x2="255" y2="120" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="340" y1="0" x2="340" y2="120" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="425" y1="0" x2="425" y2="120" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="510" y1="0" x2="510" y2="120" stroke="#cbd5e1" stroke-width="2" />
+
+    {/* Headers */}
+    <text x="42.5" y="27" text-anchor="middle" font-weight="bold" fill="#64748b">Millions</text>
+    <text x="127.5" y="27" text-anchor="middle" font-weight="bold" fill="#64748b">H Th</text>
+    <text x="212.5" y="27" text-anchor="middle" font-weight="bold" fill="#64748b">T Th</text>
+    <text x="297.5" y="27" text-anchor="middle" font-weight="bold" fill="#64748b">Th</text>
+    <text x="382.5" y="27" text-anchor="middle" font-weight="bold" fill="#64748b">Hundreds</text>
+    <text x="467.5" y="27" text-anchor="middle" font-weight="bold" fill="#64748b">Tens</text>
+    <text x="555" y="27" text-anchor="middle" font-weight="bold" fill="#64748b">Units</text>
+
+    {/* Values: "Three million, four hundred and fifty-six thousand, seven hundred and eighty-nine" */}
+    <text x="42.5" y="67" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">3</text>
+    <text x="127.5" y="67" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">4</text>
+    <text x="212.5" y="67" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">5</text>
+    <text x="297.5" y="67" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">6</text>
+    <text x="382.5" y="67" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">7</text>
+    <text x="467.5" y="67" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">8</text>
+    <text x="555" y="67" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">9</text>
+
+    {/* Reading Helper */}
+    <text x="300" y="105" text-anchor="middle" font-size="14" fill="#3b82f6" font-style="italic">Three million, four hundred and fifty-six thousand, seven hundred and eighty-nine</text>
+  </svg>
+</div>
 
 ---
 
@@ -169,11 +339,11 @@ $$
 $$
 
 <Steps>
-1.  **Divide 72 by the smallest prime (2): 72 ÷ 2 = 36
-2.  **Divide 36 by 2: 36 ÷ 2 = 18
-3.  **Divide 18 by 2: 18 ÷ 2 = 9
-4.  **9 doesn't divide by 2, so try the next prime (3): 9 ÷ 3 = 3
-5.  **Divide 3 by 3 to get 1.
+  1. Divide 72 by the smallest prime (2): $72 \div 2 = 36$
+  2. Divide 36 by 2: $36 \div 2 = 18$
+  3. Divide 18 by 2: $18 \div 2 = 9$
+  4. 9 doesn't divide by 2, so try the next prime (3): $9 \div 3 = 3$
+  5. Divide 3 by 3 to get 1.
 </Steps>
 
 Using either method, you gather all the circled primes or the bolded numbers on the outside of your ladder. Write it out in index form (using powers):
@@ -198,6 +368,35 @@ First, write out their prime factors:
 * **HCF:** Multiply the prime factors they have in **common**.
 * **LCM:** Multiply the HCF by all the **leftover** factors.
 </Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 350" width="100%" maxWidth="600px" xmlns="http://www.w3.org/2000/svg" style={{ fontFamily: 'sans-serif', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Venn Diagram Circles */}
+    <circle cx="240" cy="150" r="100" fill="#3b82f6" fill-opacity="0.1" stroke="#3b82f6" stroke-width="3" />
+    <circle cx="360" cy="150" r="100" fill="#10b981" fill-opacity="0.1" stroke="#10b981" stroke-width="3" />
+    
+    {/* Labels */}
+    <text x="180" y="35" text-anchor="middle" font-weight="bold" font-size="16" fill="#1e3a8a">Prime Factors</text>
+    <text x="180" y="55" text-anchor="middle" font-weight="bold" font-size="16" fill="#1e3a8a">of 24</text>
+    <text x="420" y="35" text-anchor="middle" font-weight="bold" font-size="16" fill="#064e3b">Prime Factors</text>
+    <text x="420" y="55" text-anchor="middle" font-weight="bold" font-size="16" fill="#064e3b">of 60</text>
+    
+    {/* Intersection (HCF) Elements */}
+    <text x="300" y="115" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">2</text>
+    <text x="300" y="155" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">2</text>
+    <text x="300" y="195" text-anchor="middle" font-size="20" font-weight="bold" fill="#0f172a">3</text>
+    
+    {/* Left Only (24) */}
+    <text x="180" y="155" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e3a8a">2</text>
+    
+    {/* Right Only (60) */}
+    <text x="420" y="155" text-anchor="middle" font-size="20" font-weight="bold" fill="#064e3b">5</text>
+    
+    {/* Explanatory Annotations */}
+    <text x="300" y="300" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">Intersection = HCF: 2 × 2 × 3 = 12</text>
+    <text x="300" y="325" text-anchor="middle" font-size="14" font-weight="bold" fill="#0f172a">Everything = LCM: 2 × (2 × 2 × 3) × 5 = 120</text>
+  </svg>
+</div>
 
 **Finding the HCF:**
 They share two 2s and one 3.
@@ -236,14 +435,15 @@ In IGCSE Extended, you are often given numbers already in index form. You do **n
     4. Two integers
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. **Prime number:** 11
-    2. **Irrational number:** $\sqrt{5}$
-    3. **Square number:** 36 (since 6 × 6 = 36)
-    4. **Two integers:** Choose any two from -7, 0, 11, or 36. ($\frac{3}{4}$ is rational, $\sqrt{5}$ is irrational).
+    <Steps>
+      1. **Prime number:** 11
+      2. **Irrational number:** $\sqrt{5}$
+      3. **Square number:** 36 (since 6 × 6 = 36)
+      4. **Two integers:** Choose any two from -7, 0, 11, or 36. ($\frac{3}{4}$ is rational, $\sqrt{5}$ is irrational).
+    </Steps>
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Identifying number types: natural, integer, rational, irrational, prime, square" />
+<AIGenerator topic="Identifying number types: natural, integer, rational, irrational, prime, square" difficulty="IGCSE Core" client:load />
 
 <Tabs>
   <TabItem label="📝 Question 2: Words to Digits">
@@ -259,8 +459,7 @@ In IGCSE Extended, you are often given numbers already in index form. You do **n
     **Answer:** 3 420 012
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Converting large numbers from words to digits and place value" />
+<AIGenerator topic="Converting large numbers from words to digits and place value" difficulty="IGCSE Core" client:load />
 
 <Tabs>
   <TabItem label="📝 Question 3: Prime Factors">
@@ -269,19 +468,18 @@ In IGCSE Extended, you are often given numbers already in index form. You do **n
   <TabItem label="✅ Solution 3">
     Divide by primes: 300 → 150 → 75 → 25 → 5 → 1
     
-$$
-300 = 2 \times 2 \times 3 \times 5 \times 5
-$$
+    $$
+    300 = 2 \times 2 \times 3 \times 5 \times 5
+    $$
     
-**Answer:**
+    **Answer:**
     
-$$
-300 = 2^2 \times 3 \times 5^2
-$$
+    $$
+    300 = 2^2 \times 3 \times 5^2
+    $$
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Expressing a number as a product of its prime factors in index form" />
+<AIGenerator topic="Expressing a number as a product of its prime factors in index form" difficulty="IGCSE Core" client:load />
 
 <Tabs>
   <TabItem label="📝 Question 4: HCF & LCM (Basic)">
@@ -294,19 +492,18 @@ $$
 
     **HCF:** They share a 2 and a 3.
     
-$$
-\text{HCF} = 2 \times 3 = 6
-$$
+    $$
+    \text{HCF} = 2 \times 3 = 6
+    $$
 
     **LCM:** Take the HCF (6) and multiply by the leftover factors (a 3 from the 18, and a 5 from the 30).
     
-$$
-\text{LCM} = 6 \times 3 \times 5 = 90
-$$
+    $$
+    \text{LCM} = 6 \times 3 \times 5 = 90
+    $$
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Finding the HCF and LCM of two basic 2-digit numbers" />
+<AIGenerator topic="Finding the HCF and LCM of two basic 2-digit numbers" difficulty="IGCSE Core" client:load />
 
 <Tabs>
   <TabItem label="📝 Question 5: HCF & LCM (Challenge)">
@@ -319,19 +516,18 @@ $$
 
     **HCF:** They share two 2s and one 3.
     
-$$
-\text{HCF} = 2 \times 2 \times 3 = 12
-$$
+    $$
+    \text{HCF} = 2 \times 2 \times 3 = 12
+    $$
 
     **LCM:** Take the HCF (12) and multiply by the leftover factors (a 3 from the 36, and a 7 from the 84).
     
-$$
-\text{LCM} = 12 \times 3 \times 7 = 252
-$$
+    $$
+    \text{LCM} = 12 \times 3 \times 7 = 252
+    $$
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Finding the HCF and LCM of larger 2-digit numbers using prime factorisation" />
+<AIGenerator topic="Finding the HCF and LCM of larger 2-digit numbers using prime factorisation" difficulty="IGCSE Extended" client:load />
 
 <Tabs>
   <TabItem label="📝 Question 6: HCF & LCM in Index Form (Extended)">
@@ -344,34 +540,33 @@ $$
     * Lowest power of 2 is $2^1$ (from $B$)
     * Lowest power of 7 is $7^1$ (from $A$)
     
-$$
-\text{HCF} = 2 \times 7
-$$
+    $$
+    \text{HCF} = 2 \times 7
+    $$
 
     **For the LCM:** Take the **highest** power of *every* prime factor that appears in either number.
     * Highest power of 2 is $2^3$
     * Highest power of 5 is $5^2$
     * Highest power of 7 is $7^3$
     
-$$
-\text{LCM} = 2^3 \times 5^2 \times 7^3
-$$
+    $$
+    \text{LCM} = 2^3 \times 5^2 \times 7^3
+    $$
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Finding the HCF and LCM of numbers given in prime factor index form" />
+<AIGenerator topic="Finding the HCF and LCM of numbers given in prime factor index form" difficulty="IGCSE Extended" client:load />
 
 <Tabs>
   <TabItem label="📝 Question 7: Finding Missing Exponents (Extended)">
     Two numbers, $X$ and $Y$, are written as a product of their prime factors:
     
-$$
-X = 2^a \times 3^4 \times 5
-$$
+    $$
+    X = 2^a \times 3^4 \times 5
+    $$
 
-$$
-Y = 2^3 \times 3^b \times 7
-$$
+    $$
+    Y = 2^3 \times 3^b \times 7
+    $$
 
     The Highest Common Factor (HCF) of $X$ and $Y$ is $2^2 \times 3^2$.  
     The Lowest Common Multiple (LCM) of $X$ and $Y$ is $2^3 \times 3^4 \times 5 \times 7$.  
@@ -394,5 +589,4 @@ $$
     *(We can verify this with the LCM: The highest power of 2 is $2^3$, and the highest power of 3 is $3^4$, which matches our LCM!)*
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Finding missing exponents in prime factorisation when given the HCF and LCM" />
+<AIGenerator topic="Finding missing exponents in prime factorisation when given the HCF and LCM" difficulty="IGCSE Extended" client:load />
