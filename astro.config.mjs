@@ -20,6 +20,7 @@ export default defineConfig({
         './src/components/MathPlot.jsx',
         './src/components/SmartAIGenerator.astro',
         './src/components/FormulaBox.astro',
+        './src/components/StudentName.astro',
         {
           '@astrojs/starlight/components': ['Steps', 'Aside', 'Tabs', 'TabItem'],
         },

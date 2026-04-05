@@ -18,19 +18,15 @@ const greetings = [
   "Humidity: 99%. Brain: 1%."
 ];
 
-// Server-side: Pick a random fallback greeting
 const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
 
-// 2. TEACHER/STUDENT FILTER LOGIC (Server-side)
 const isIB = Astro.url.pathname.includes('/ib-aisl');
 const isTeacher = import.meta.env.PUBLIC_TEACHER_MODE === 'true';
-
 const currentSidebar = Astro.locals.starlightRoute?.sidebar || Astro.props.sidebar || [];
 
 const filteredSidebar = currentSidebar.filter(item => {
   if (isTeacher) return true;
   const folderName = item.label || '';
-  
   if (isIB) {
     return folderName.includes('IB Mathematics AI SL');
   } else {
@@ -42,18 +38,17 @@ if (Astro.locals.starlightRoute) {
   Astro.locals.starlightRoute.sidebar = filteredSidebar;
 }
 
-const newProps = {
-  ...Astro.props,
-  sidebar: filteredSidebar
-};
+const newProps = { ...Astro.props, sidebar: filteredSidebar };
 ---
 
 <ExamTimer client:only="react" />
 
 <div class="sidebar-container">
-  {/* We add an ID here so the Client-side script can update the time */}
-  <div id="dynamic-greeting" class="sidebar-header-hint">
-    {randomGreeting} 
+  {/* Sticky Header with Fixed Height */}
+  <div class="sidebar-sticky-wrapper">
+    <div id="dynamic-greeting" class="sidebar-header-hint">
+      {randomGreeting} 
+    </div>
   </div>
 
   <div class="sidebar-content">
@@ -66,6 +61,19 @@ const newProps = {
     height: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
+  }
+
+  /* FIXED HEIGHT WRAPPER: Prevents content from jumping */
+  .sidebar-sticky-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--sl-color-bg-sidebar, var(--sl-color-bg));
+    height: 3rem; /* Locked height */
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--sl-color-hairline);
   }
 
   .sidebar-header-hint {
@@ -74,14 +82,18 @@ const newProps = {
     letter-spacing: 0.05rem;
     font-weight: bold;
     color: var(--sl-color-gray-3); 
-    padding: 0.8rem 1rem;
+    padding: 0 1rem;
     opacity: 0.8;
-    border-bottom: 1px solid var(--sl-color-hairline);
     font-family: var(--__sl-font-mono);
+    /* Prevent text wrapping from changing the height */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .sidebar-content {
-    padding-top: 0.5rem;
+    flex: 1;
+    /* This ensures the scroll stays within the content area */
   }
 
   :global([data-theme='dark']) .sidebar-container {
@@ -94,35 +106,24 @@ const newProps = {
 </style>
 
 <script is:inline>
-  /**
-   * CLIENT-SIDE LOGIC
-   * This runs on the user's device, ensuring the time is ALWAYS local to them.
-   */
   function applyDeviceContext() {
     const greetingEl = document.getElementById('dynamic-greeting');
     if (!greetingEl) return;
 
     const hour = new Date().getHours(); 
-    
-    // Time-based Overrides based on DEVICE clock
     if (hour >= 23 || hour < 4) {
       greetingEl.innerText = "🌙 Off to bed. Maths can wait.";
     } else if (hour < 7) {
-      greetingEl.innerText = "☕ Why are you awake? Even the cha chaan tengs aren't open.";
+      greetingEl.innerText = "☕ Why are you awake?";
     }
   }
 
-  // Run immediately on page load
   applyDeviceContext();
-
-  // Re-run after Starlight/Astro view transitions
   document.addEventListener('astro:after-swap', applyDeviceContext);
 
-  // --- THE WANDERING VARIABLE EASTER EGG ---
   setInterval(() => {
     const container = document.querySelector('.sidebar-container');
     if (!container) return;
-
     const x = document.createElement('div');
     x.innerText = 'x';
     x.style.position = 'absolute';
@@ -132,13 +133,8 @@ const newProps = {
     x.style.opacity = '0.3';
     x.style.pointerEvents = 'none';
     x.style.color = 'var(--sl-color-accent)';
-    
     container.appendChild(x);
-    
-    setTimeout(() => {
-      x.style.left = '110%';
-    }, 100);
-
+    setTimeout(() => { x.style.left = '110%'; }, 100);
     setTimeout(() => x.remove(), 10500);
   }, 300000); 
 </script>

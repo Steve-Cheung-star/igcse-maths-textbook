@@ -29,10 +29,12 @@ A sequence is **linear** (or arithmetic) if it increases or decreases by a **con
 
 ### Finding the $n$th Term
 The $n$th term of a linear sequence always takes the form:
-$$T_n = dn + c$$
+$$
+T_n = dn + c
+$$
 Where **$d$** is the constant difference, and **$c$** is the "zeroth term" (the value that would come just before the 1st term).
 
-**Example 1: Increasing Sequence**
+#### Example 1: Increasing Sequence
 Find the $n$th term of the sequence: $7, 10, 13, 16, 19, \dots$
 
 <div className="overflow-x-auto my-4">
@@ -58,12 +60,16 @@ Find the $n$th term of the sequence: $7, 10, 13, 16, 19, \dots$
   </table>
 </div>
 
+<Steps>
 1.  **Find $d$:** The sequence goes up by $\color{#3b82f6}{3}$ each time, so the formula starts with $3n$.
 2.  **Find $c$:** To find the "0th term", work backwards from the 1st term ($7$). 
-    $$7 - 3 = 4$$
+    $$
+    7 - 3 = 4
+    $$
 3.  **Combine:** The $n$th term is **$T_n = 3n + 4$**.
+</Steps>
 
-**Example 2: Decreasing Sequence**
+#### Example 2: Decreasing Sequence
 Find the $n$th term of the sequence: $15, 11, 7, 3, -1, \dots$
 
 <div className="overflow-x-auto my-4">
@@ -89,9 +95,11 @@ Find the $n$th term of the sequence: $15, 11, 7, 3, -1, \dots$
   </table>
 </div>
 
+<Steps>
 1.  **Find $d$:** The sequence goes *down* by $\color{#3b82f6}{4}$ each time. The difference is $\color{#3b82f6}{-4}$, so the formula starts with $-4n$.
 2.  **Find $c$:** To find the "0th term", do the opposite of the rule backwards: $15 + 4 = 19$.
 3.  **Combine:** The $n$th term is $T_n = -4n + 19$. 
+</Steps>
 
 <Aside type="tip" title="Equivalent Expressions">
 It is very common (and often preferred because it looks neater) to write expressions starting with a positive number. 
@@ -104,12 +112,15 @@ It is very common (and often preferred because it looks neater) to write express
 
 A sequence is **quadratic** if the *first difference* changes, but the **second difference** is constant. 
 The general formula is:
-$$T_n = an^2 + bn + c$$
+$$
+T_n = an^2 + bn + c
+$$
 
 ### The Algebraic Method
 We can find $a$, $b$, and $c$ by memorising a system of three simple equations. We set these equations equal to the **first number of each row** in our differences table.
 
-**Example:** Find the $n$th term for $4, 11, 22, 37, 56, \dots$
+#### Example:
+Find the $n$th term for $4, 11, 22, 37, 56, \dots$
 
 <div className="overflow-x-auto my-4">
   <table className="min-w-full text-center text-lg">
@@ -154,35 +165,36 @@ $$
 
 Now, substitute your findings vertically to solve for the letters one by one:
 
-**Step 1: Solve for $a$**
-$$
-\begin{aligned}
-\color{#ef4444} 2a &= 4 \\
-a &= 2
-\end{aligned}
-$$
-
-**Step 2: Substitute $a$ to solve for $b$**
-$$
-\begin{aligned}
-\color{#3b82f6} 3(2) + b &= 7 \\
-6 + b &= 7 \\
-b &= 1
-\end{aligned}
-$$
-
-**Step 3: Substitute $a$ and $b$ to solve for $c$**
-$$
-\begin{aligned}
-2 + 1 + c &= 4 \\
-3 + c &= 4 \\
-c &= 1
-\end{aligned}
-$$
-
-**Step 4: Write the final formula**
-Substitute your values for $a$, $b$, and $c$ back into $an^2 + bn + c$:
-$$T_n = 2n^2 + n + 1$$
+<Steps>
+1.  **Solve for $a$**
+    $$
+    \begin{aligned}
+    \color{#ef4444} 2a &= 4 \\
+    a &= 2
+    \end{aligned}
+    $$
+2.  **Substitute $a$ to solve for $b$**
+    $$
+    \begin{aligned}
+    \color{#3b82f6} 3(2) + b &= 7 \\
+    6 + b &= 7 \\
+    b &= 1
+    \end{aligned}
+    $$
+3.  **Substitute $a$ and $b$ to solve for $c$**
+    $$
+    \begin{aligned}
+    2 + 1 + c &= 4 \\
+    3 + c &= 4 \\
+    c &= 1
+    \end{aligned}
+    $$
+4.  **Write the final formula**
+    Substitute your values for $a$, $b$, and $c$ back into $an^2 + bn + c$:
+    $$
+    T_n = 2n^2 + n + 1
+    $$
+</Steps>
 
 ---
 
@@ -190,11 +202,15 @@ $$T_n = 2n^2 + n + 1$$
 
 A sequence is **cubic** if the **third difference** is constant. 
 The general formula involves $n^3$:
-$$T_n = an^3 + bn^2 + cn + d$$
+$$
+T_n = an^3 + bn^2 + cn + d
+$$
 
 We use the same algebraic method as quadratics, but with four equations to match the four rows!
 
-**Example:** Find the $n$th term for $3, 10, 29, 66, \dots$
+#### Example:
+
+Find the $n$th term for $3, 10, 29, 66, \dots$
 
 <div className="overflow-x-auto my-4">
   <table className="min-w-full text-center text-lg">
@@ -243,45 +259,47 @@ $$
 
 Substitute vertically to find $a, b, c$, and $d$:
 
-**Step 1: Solve for $a$**
-$$
-\begin{aligned}
-\color{#a855f7} 6a &= 6 \\
-a &= 1
-\end{aligned}
-$$
-
-**Step 2: Substitute $a$ to solve for $b$**
-$$
-\begin{aligned}
-\color{#ef4444} 12(1) + 2b &= 12 \\
-12 + 2b &= 12 \\
-2b &= 0 \\
-b &= 0
-\end{aligned}
-$$
-
-**Step 3: Substitute $a$ and $b$ to solve for $c$**
-$$
-\begin{aligned}
-\color{#3b82f6} 7(1) + 3(0) + c &= 7 \\
-7 + 0 + c &= 7 \\
-c &= 0
-\end{aligned}
-$$
-
-**Step 4: Substitute $a$, $b$, and $c$ to solve for $d$**
-$$
-\begin{aligned}
-1 + 0 + 0 + d &= 3 \\
-1 + d &= 3 \\
-d &= 2
-\end{aligned}
-$$
-
-**Step 5: Write the final formula**
-$$T_n = 1n^3 + 0n^2 + 0n + 2$$
-$$T_n = n^3 + 2$$
+<Steps>
+1.  **Solve for $a$**
+    $$
+    \begin{aligned}
+    \color{#a855f7} 6a &= 6 \\
+    a &= 1
+    \end{aligned}
+    $$
+2.  **Substitute $a$ to solve for $b$**
+    $$
+    \begin{aligned}
+    \color{#ef4444} 12(1) + 2b &= 12 \\
+    12 + 2b &= 12 \\
+    2b &= 0 \\
+    b &= 0
+    \end{aligned}
+    $$
+3.  **Substitute $a$ and $b$ to solve for $c$**
+    $$
+    \begin{aligned}
+    \color{#3b82f6} 7(1) + 3(0) + c &= 7 \\
+    7 + 0 + c &= 7 \\
+    c &= 0
+    \end{aligned}
+    $$
+4.  **Substitute $a$, $b$, and $c$ to solve for $d$**
+    $$
+    \begin{aligned}
+    1 + 0 + 0 + d &= 3 \\
+    1 + d &= 3 \\
+    d &= 2
+    \end{aligned}
+    $$
+5.  **Write the final formula**
+    $$
+    T_n = 1n^3 + 0n^2 + 0n + 2
+    $$
+    $$
+    T_n = n^3 + 2
+    $$
+</Steps>
 
 ---
 
@@ -290,7 +308,7 @@ $$T_n = n^3 + 2$$
 Sometimes you will be given a rational sequence (a sequence of fractions). 
 The trick here is **not to divide them**, but to **completely separate the numerators (tops) and the denominators (bottoms)**. Treat them as two entirely independent sequences, figure out their formulas separately, and finally stack them back into a single fraction.
 
-### Example 1: Standard Rational Sequence
+#### Example 1: Standard Rational Sequence
 Find the $n$th term of the sequence: $\frac{3}{2}, \frac{5}{6}, \frac{7}{12}, \frac{9}{20}, \dots$
 
 **Step 1: The Numerators (Tops)**
@@ -304,16 +322,40 @@ The bottom numbers are: $2, 6, 12, 20, \dots$
 * 2nd diff: $+2$ (It's a quadratic sequence!)
 
 Using our equations:
-* $\color{#ef4444} 2a = 2 \implies a = 1$
-* $\color{#3b82f6} 3a + b = 4 \implies 3(1) + b = 4 \implies b = 1$
-* $a + b + c = 2 \implies 1 + 1 + c = 2 \implies c = 0$
+<Steps>
+1.  **Find $a$:**
+    $$
+    \begin{aligned}
+    \color{#ef4444} 2a &= 2 \\
+    a &= 1
+    \end{aligned}
+    $$
+2.  **Find $b$:**
+    $$
+    \begin{aligned}
+    \color{#3b82f6} 3(1) + b &= 4 \\
+    3 + b &= 4 \\
+    b &= 1
+    \end{aligned}
+    $$
+3.  **Find $c$:**
+    $$
+    \begin{aligned}
+    1 + 1 + c &= 2 \\
+    2 + c &= 2 \\
+    c &= 0
+    \end{aligned}
+    $$
+</Steps>
 *Bottom Formula:* $1n^2 + 1n + 0$, which simplifies to $n^2 + n$.
 
 **Step 3: Recombine**
 Stack your two formulas back into a fraction.
-$$T_n = \frac{2n + 1}{n^2 + n}$$
+$$
+T_n = \frac{2n + 1}{n^2 + n}
+$$
 
-### Example 2: Disguised (Simplified) Fractions
+#### Example 2: Disguised (Simplified) Fractions
 Sometimes, fractions are simplified by the examiner to hide the true underlying pattern. If a sequence of fractions seems to have a broken pattern—or contains random whole numbers—try **"un-simplifying"** them to reveal consistent differences.
 
 Find the $n$th term of the sequence: $\frac{2}{3}, 1, \frac{6}{5}, \frac{4}{3}, \frac{10}{7}, \dots$
@@ -333,7 +375,9 @@ The hidden patterns are now incredibly obvious!
 * **Denominators:** $3, 4, 5, 6, 7 \dots$ (Linear, going up by $1$. Formula: **$n + 2$**)
 
 **Final Recombined Formula:**
-$$T_n = \frac{2n}{n + 2}$$
+$$
+T_n = \frac{2n}{n + 2}
+$$
 
 ---
 
@@ -342,26 +386,28 @@ $$T_n = \frac{2n}{n + 2}$$
 In an exponential sequence, instead of adding or subtracting, you **multiply or divide** by a constant factor to get to the next term. This factor is called the **common ratio ($r$)**.
 
 The formula for the $n$th term is usually written as:
-$$T_n = a \times r^{n-1}$$
+$$
+T_n = a \times r^{n-1}
+$$
 *(Where $a$ is the 1st term, and $r$ is the common ratio).*
 
 <Aside type="note" title="Why to the power of (n-1)?">
 To get to the 5th term, you don't multiply by the ratio five times. You start at the 1st term and multiply by it **four** times. That's why the power is $n-1$.
 </Aside>
 
-**Example 1: Standard Growth**
+#### Example 1: Standard Growth
 $3, 6, 12, 24, 48, \dots$
 * 1st term ($a$) = $3$
 * Multiplier ($r$) = $\textcolor{#ea580c}{\times 2}$
 * $n$th term: **$T_n = 3 \times \textcolor{#ea580c}{2}^{n-1}$**
 
-**Example 2: Fractional Ratios (Decay)**
+#### Example 2: Fractional Ratios (Decay)
 $80, 40, 20, 10, \dots$
 * 1st term ($a$) = $80$
 * Multiplier ($r$) = $\textcolor{#ea580c}{\times \frac{1}{2}}$ (or $\textcolor{#ea580c}{0.5}$)
 * $n$th term: **$T_n = 80 \times \left(\textcolor{#ea580c}{\frac{1}{2}}\right)^{n-1}$**
 
-**Example 3: Negative Ratios (Alternating Signs)**
+#### Example 3: Negative Ratios (Alternating Signs)
 $2, -6, 18, -54, \dots$
 Notice how the signs flip-flop from positive to negative. This means you are multiplying by a negative number!
 * 1st term ($a$) = $2$
@@ -377,7 +423,9 @@ For example, look at the sequence: $5, 25, 125, 625, \dots$
 * The standard formula is: **$T_n = 5 \times \textcolor{#ea580c}{5}^{n-1}$**
 
 Since $5$ is the same as $5^1$, we are multiplying bases that are the same. We add the powers:
-$$5^1 \times 5^{n-1} = 5^{1 + n - 1} = 5^n$$
+$$
+5^1 \times 5^{n-1} = 5^{1 + n - 1} = 5^n
+$$
 So, a much cleaner answer is simply **$T_n = 5^n$**.
 </SteveTip>
 
@@ -553,7 +601,9 @@ When tackling this, build a table to separate out the sequences:
 <SteveTip title="Self-Checking in Investigations">
 Notice how the math perfectly aligns! If you add the pieces together, you get the whole:
 **Filled Tiles + Outline Tiles = Total Tiles**
-$$n^2 + (4n + 4) = n^2 + 4n + 4$$
+$$
+n^2 + (4n + 4) = n^2 + 4n + 4
+$$
 And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each other!
 </SteveTip>
 
@@ -568,143 +618,341 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
     a) $-2, 3, 8, 13, 18, \dots$
     
     b) $22, 16, 10, 4, -2, \dots$
+
+    c) $4.5, 6.0, 7.5, 9.0, 10.5, \dots$
   </TabItem>
   <TabItem label="✅ Solution">
-    **a)** 1. Find the constant difference: The sequence goes up by $5$. So, $5n$.
-    2. Find the 0th term: Work backwards one step: $-2 - 5 = -7$.
-    3. Combine: **$T_n = 5n - 7$**
+    **a)**
+    <Steps>
+    1. **Find $d$:** The sequence goes up by $5$. So, $5n$.
+    2. **Find $c$:** The 0th term: Work backwards one step: $-2 - 5 = -7$.
+    3. **Combine:** **$T_n = 5n - 7$**
+    </Steps>
     
     **b)**
-    1. The sequence goes down by $6$. So, $-6n$.
-    2. The 0th term is $22 + 6 = 28$.
-    3. Combine: **$T_n = -6n + 28$** (or **$T_n = 28 - 6n$**)
+    <Steps>
+    1. **Find $d$:** The sequence goes down by $6$. So, $-6n$.
+    2. **Find $c$:** The 0th term is $22 + 6 = 28$.
+    3. **Combine:** **$T_n = -6n + 28$** (or **$T_n = 28 - 6n$**)
+    </Steps>
+
+    **c)**
+    <Steps>
+    1. **Find $d$:** The sequence goes up by a constant difference of $1.5$. So, $1.5n$.
+    2. **Find $c$:** The 0th term is $4.5 - 1.5 = 3$.
+    3. **Combine:** **$T_n = 1.5n + 3$**
+    </Steps>
   </TabItem>
 </Tabs>
 <SmartAIGenerator topic="Finding the nth term of a linear sequence" />
 
 <Tabs>
   <TabItem label="📝 Quadratic Practice">
-    Find an expression for the $n$th term of the quadratic sequence: 
+    Find an expression for the $n$th term of the following quadratic sequences: 
     
-    $5, 14, 27, 44, \dots$
+    a) $5, 14, 27, 44, \dots$
+
+    b) $2, 9, 20, 35, \dots$
+
+    c) $-3, 0, 7, 18, \dots$
   </TabItem>
   <TabItem label="✅ Solution">
-    **1. Check differences:**
+    **a)**
     * Sequence: $\boldsymbol{5}, 14, 27, 44$
     * 1st diff: $\color{#3b82f6}{\boldsymbol{+9}}, +13, +17$
     * 2nd diff: $\color{#ef4444}{\boldsymbol{+4}}, +4$
     
-    **2. Use the algebraic equations:**
-    $$
-    \begin{aligned}
-    \color{#ef4444} 2a &= \color{#ef4444} 4 \\
-    a &= 2
-    \end{aligned}
-    $$
-    
-    $$
-    \begin{aligned}
-    \color{#3b82f6} 3a + b &= \color{#3b82f6} 9 \\
-    3(2) + b &= 9 \\
-    b &= 3
-    \end{aligned}
-    $$
-    
-    $$
-    \begin{aligned}
-    a + b + c &= 5 \\
-    2 + 3 + c &= 5 \\
-    c &= 0
-    \end{aligned}
-    $$
-    
-    **3. Write the final formula:**
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       2a &= 4 \\
+       a &= 2
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       3(2) + b &= 9 \\
+       6 + b &= 9 \\
+       b &= 3
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       2 + 3 + c &= 5 \\
+       5 + c &= 5 \\
+       c &= 0
+       \end{aligned}
+       $$
+    </Steps>
     $$\boldsymbol{T_n = 2n^2 + 3n}$$
+
+    **b)**
+    * Sequence: $\boldsymbol{2}, 9, 20, 35$
+    * 1st diff: $\color{#3b82f6}{\boldsymbol{+7}}, +11, +15$
+    * 2nd diff: $\color{#ef4444}{\boldsymbol{+4}}, +4$
+    
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       2a &= 4 \\
+       a &= 2
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       3(2) + b &= 7 \\
+       6 + b &= 7 \\
+       b &= 1
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       2 + 1 + c &= 2 \\
+       3 + c &= 2 \\
+       c &= -1
+       \end{aligned}
+       $$
+    </Steps>
+    $$\boldsymbol{T_n = 2n^2 + n - 1}$$
+
+    **c)**
+    * Sequence: $\boldsymbol{-3}, 0, 7, 18$
+    * 1st diff: $\color{#3b82f6}{\boldsymbol{+3}}, +7, +11$
+    * 2nd diff: $\color{#ef4444}{\boldsymbol{+4}}, +4$
+    
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       2a &= 4 \\
+       a &= 2
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       3(2) + b &= 3 \\
+       6 + b &= 3 \\
+       b &= -3
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       2 - 3 + c &= -3 \\
+       -1 + c &= -3 \\
+       c &= -2
+       \end{aligned}
+       $$
+    </Steps>
+    $$\boldsymbol{T_n = 2n^2 - 3n - 2}$$
   </TabItem>
 </Tabs>
 <SmartAIGenerator topic="Finding the nth term of a quadratic sequence" />
 
 <Tabs>
   <TabItem label="📝 Cubic Practice">
-    Find an expression for the $n$th term of the cubic sequence: 
+    Find an expression for the $n$th term of the following cubic sequences: 
     
-    $1, 14, 51, 124, \dots$
+    a) $1, 14, 51, 124, \dots$
+
+    b) $0, 7, 26, 63, 124, \dots$
+
+    c) $2, 11, 32, 71, \dots$
   </TabItem>
   <TabItem label="✅ Solution">
-    **1. Check differences:**
+    **a)**
     * Sequence: $\boldsymbol{1}, 14, 51, 124$
     * 1st diff: $\color{#3b82f6}{\boldsymbol{+13}}, +37, +73$
     * 2nd diff: $\color{#ef4444}{\boldsymbol{+24}}, +36$
     * 3rd diff: $\color{#a855f7}{\boldsymbol{+12}}$
     
-    **2. Use the algebraic equations vertically:**
-    
-    $$
-    \begin{aligned}
-    \color{#a855f7} 6a &= \color{#a855f7} 12 \\
-    a &= 2
-    \end{aligned}
-    $$
-    
-    $$
-    \begin{aligned}
-    \color{#ef4444} 12a + 2b &= \color{#ef4444} 24 \\
-    12(2) + 2b &= 24 \\
-    24 + 2b &= 24 \\
-    b &= 0
-    \end{aligned}
-    $$
-    
-    $$
-    \begin{aligned}
-    \color{#3b82f6} 7a + 3b + c &= \color{#3b82f6} 13 \\
-    7(2) + 3(0) + c &= 13 \\
-    14 + c &= 13 \\
-    c &= -1
-    \end{aligned}
-    $$
-    
-    $$
-    \begin{aligned}
-    a + b + c + d &= 1 \\
-    2 + 0 - 1 + d &= 1 \\
-    1 + d &= 1 \\
-    d &= 0
-    \end{aligned}
-    $$
-    
-    **3. Write the final formula:**
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       6a &= 12 \\
+       a &= 2
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       12(2) + 2b &= 24 \\
+       24 + 2b &= 24 \\
+       2b &= 0 \\
+       b &= 0
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       7(2) + 3(0) + c &= 13 \\
+       14 + c &= 13 \\
+       c &= -1
+       \end{aligned}
+       $$
+    4. **Find $d$:**
+       $$
+       \begin{aligned}
+       2 + 0 - 1 + d &= 1 \\
+       1 + d &= 1 \\
+       d &= 0
+       \end{aligned}
+       $$
+    </Steps>
     $$\boldsymbol{T_n = 2n^3 - n}$$
+
+    **b)**
+    * Sequence: $\boldsymbol{0}, 7, 26, 63$
+    * 1st diff: $\color{#3b82f6}{\boldsymbol{+7}}, +19, +37$
+    * 2nd diff: $\color{#ef4444}{\boldsymbol{+12}}, +18$
+    * 3rd diff: $\color{#a855f7}{\boldsymbol{+6}}$
+    
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       6a &= 6 \\
+       a &= 1
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       12(1) + 2b &= 12 \\
+       12 + 2b &= 12 \\
+       2b &= 0 \\
+       b &= 0
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       7(1) + 3(0) + c &= 7 \\
+       7 + c &= 7 \\
+       c &= 0
+       \end{aligned}
+       $$
+    4. **Find $d$:**
+       $$
+       \begin{aligned}
+       1 + 0 + 0 + d &= 0 \\
+       1 + d &= 0 \\
+       d &= -1
+       \end{aligned}
+       $$
+    </Steps>
+    $$\boldsymbol{T_n = n^3 - 1}$$
+
+    **c)**
+    * Sequence: $\boldsymbol{2}, 11, 32, 71$
+    * 1st diff: $\color{#3b82f6}{\boldsymbol{+9}}, +21, +39$
+    * 2nd diff: $\color{#ef4444}{\boldsymbol{+12}}, +18$
+    * 3rd diff: $\color{#a855f7}{\boldsymbol{+6}}$
+    
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       6a &= 6 \\
+       a &= 1
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       12(1) + 2b &= 12 \\
+       12 + 2b &= 12 \\
+       2b &= 0 \\
+       b &= 0
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       7(1) + 3(0) + c &= 9 \\
+       7 + c &= 9 \\
+       c &= 2
+       \end{aligned}
+       $$
+    4. **Find $d$:**
+       $$
+       \begin{aligned}
+       1 + 0 + 2 + d &= 2 \\
+       3 + d &= 2 \\
+       d &= -1
+       \end{aligned}
+       $$
+    </Steps>
+    $$\boldsymbol{T_n = n^3 + 2n - 1}$$
   </TabItem>
 </Tabs>
 <SmartAIGenerator topic="Finding the nth term of a cubic sequence" />
 
 <Tabs>
   <TabItem label="📝 Rational Practice">
-    Find the $n$th term of the sequence: 
+    Find the $n$th term of the following sequences of fractions. Look out for disguised sequences!
     
-    $\frac{2}{5}, \frac{4}{12}, \frac{6}{23}, \frac{8}{38}, \dots$
+    a) $\frac{2}{5}, \frac{4}{12}, \frac{6}{23}, \frac{8}{38}, \dots$
+
+    b) $\frac{1}{2}, \frac{4}{5}, \frac{9}{10}, \frac{16}{17}, \dots$
+
+    c) $\frac{3}{4}, \frac{6}{5}, \frac{3}{2}, \frac{12}{7}, \dots$
   </TabItem>
   <TabItem label="✅ Solution">
-    **1. Numerators (Tops):**
-    Sequence is $2, 4, 6, 8, \dots$
-    This is a simple linear sequence going up by $2$.
-    *Top Formula:* $2n$
-    
-    **2. Denominators (Bottoms):**
-    Sequence is $\boldsymbol{5}, 12, 23, 38, \dots$
-    * 1st diff: $\color{#3b82f6}{\boldsymbol{+7}}, +11, +15$
-    * 2nd diff: $\color{#ef4444}{\boldsymbol{+4}}, +4$
-    
-    Using quadratic equations:
-    * $\color{#ef4444} 2a = 4 \implies a = 2$
-    * $\color{#3b82f6} 3a + b = 7 \implies 6 + b = 7 \implies b = 1$
-    * $a + b + c = 5 \implies 2 + 1 + c = 5 \implies c = 2$
-    
-    *Bottom Formula:* $2n^2 + n + 2$
-    
-    **3. Combine them:**
+    **a)**
+    * **Tops:** $2, 4, 6, 8 \dots \implies 2n$
+    * **Bottoms:** $5, 12, 23, 38 \dots$
+      * 1st diff: $+7, +11, +15$
+      * 2nd diff: $+4$
+      
+      <Steps>
+      1. **Find $a$:**
+         $$
+         \begin{aligned}
+         2a &= 4 \\
+         a &= 2
+         \end{aligned}
+         $$
+      2. **Find $b$:**
+         $$
+         \begin{aligned}
+         3(2) + b &= 7 \\
+         6 + b &= 7 \\
+         b &= 1
+         \end{aligned}
+         $$
+      3. **Find $c$:**
+         $$
+         \begin{aligned}
+         2 + 1 + c &= 5 \\
+         3 + c &= 5 \\
+         c &= 2
+         \end{aligned}
+         $$
+      </Steps>
+      *Bottom formula:* $2n^2 + n + 2$
+      
     $$\boldsymbol{T_n = \frac{2n}{2n^2 + n + 2}}$$
+
+    **b)**
+    * **Tops:** $1, 4, 9, 16 \dots$ These are perfect square numbers $\implies n^2$
+    * **Bottoms:** $2, 5, 10, 17 \dots$ Notice these are exactly one more than the top numbers! $\implies n^2 + 1$
+    $$\boldsymbol{T_n = \frac{n^2}{n^2 + 1}}$$
+
+    **c)**
+    This is a disguised sequence. Let's un-simplify the third term to find the hidden pattern. Let's rewrite $\frac{3}{2}$ by multiplying the top and bottom by $3$ to get $\frac{9}{6}$.
+    New sequence: $\frac{3}{4}, \frac{6}{5}, \frac{9}{6}, \frac{12}{7}, \dots$
+    * **Tops:** $3, 6, 9, 12 \dots \implies 3n$
+    * **Bottoms:** $4, 5, 6, 7 \dots \implies n + 3$
+    $$\boldsymbol{T_n = \frac{3n}{n + 3}}$$
   </TabItem>
 </Tabs>
 <SmartAIGenerator topic="Finding the nth term of a rational sequence with fractions" />
@@ -716,21 +964,92 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
     a) $2, 10, 50, 250, \dots$
     
     b) $7, -14, 28, -56, \dots$
+
+    c) $162, 54, 18, 6, \dots$
   </TabItem>
   <TabItem label="✅ Solution">
     **a)**
     1. Check the 1st term ($a$): $2$
     2. Find the common multiplier ($r$): $10 \div 2 = \textcolor{#ea580c}{5}$. Each term is multiplied by $5$.
-    
-    Use the formula $a \times r^{n-1}$:
     $$\boldsymbol{T_n = 2 \times \textcolor{#ea580c}{5}^{n-1}}$$
     
     **b)**
     1. Check the 1st term ($a$): $7$
     2. Find the common multiplier ($r$): $-14 \div 7 = \textcolor{#ea580c}{-2}$. The signs alternate, so the multiplier is negative!
-    
-    Use the formula $a \times r^{n-1}$:
     $$\boldsymbol{T_n = 7 \times (\textcolor{#ea580c}{-2})^{n-1}}$$
+
+    **c)**
+    1. Check the 1st term ($a$): $162$
+    2. Find the common multiplier ($r$): $54 \div 162 = \textcolor{#ea580c}{\frac{1}{3}}$. The sequence is decaying.
+    $$\boldsymbol{T_n = 162 \times \left(\textcolor{#ea580c}{\frac{1}{3}}\right)^{n-1}}$$
   </TabItem>
 </Tabs>
 <SmartAIGenerator topic="Finding the nth term of exponential sequences" />
+
+<Tabs>
+  <TabItem label="📝 Contextual Practice: The 'Literally' Count">
+    Kanna and Abi are playfully keeping track of how many times their teacher, Mr. Cheung, says the word "literally" during a sequence of maths lessons. 
+    * In Lesson 1, he says it $5$ times.
+    * In Lesson 2, he says it $8$ times.
+    * In Lesson 3, he says it $13$ times.
+    * In Lesson 4, he says it $20$ times.
+    
+    Abi notices the numbers follow a specific mathematical sequence. 
+
+    a) Find the $n$th term formula for the number of times Mr. Cheung says "literally" in the $n$th lesson.
+    
+    b) Kanna bets Abi that in Lesson 10, Mr. Cheung will say "literally" over 100 times. Prove whether Kanna wins her bet.
+  </TabItem>
+  <TabItem label="✅ Solution">
+    **a) Find the $n$th term:**
+    First, establish the sequence and find the differences:
+    * Sequence: $\boldsymbol{5}, 8, 13, 20$
+    * 1st diff: $\color{#3b82f6}{\boldsymbol{+3}}, +5, +7$
+    * 2nd diff: $\color{#ef4444}{\boldsymbol{+2}}, +2$
+    
+    Because the second difference is constant, it is a quadratic sequence. Use the algebraic equations:
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       2a &= 2 \\
+       a &= 1
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       3(1) + b &= 3 \\
+       3 + b &= 3 \\
+       b &= 0
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       1 + 0 + c &= 5 \\
+       1 + c &= 5 \\
+       c &= 4
+       \end{aligned}
+       $$
+    </Steps>
+    
+    The $n$th term formula is:
+    $$
+    T_n = n^2 + 4
+    $$
+
+    **b) Does Kanna win the bet?**
+    Substitute $n = 10$ into the formula to find the number of times he says "literally" in the 10th lesson:
+    $$
+    \begin{aligned}
+    T_{10} &= 10^2 + 4 \\
+    T_{10} &= 100 + 4 \\
+    T_{10} &= 104
+    \end{aligned}
+    $$
+    
+    Since $104 > 100$, **yes, Kanna wins the bet!** Mr. Cheung will say "literally" 104 times in Lesson 10.
+  </TabItem>
+</Tabs>
+<SmartAIGenerator topic="Applying quadratic sequences to real-world word problems and making predictions" />

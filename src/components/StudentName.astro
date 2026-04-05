@@ -1,0 +1,10 @@
+---
+import students from '../data/students.json';
+
+// Pick a random index, or default to Steve if the array is missing/empty
+const randomName = students && students.length > 0 
+  ? students[Math.floor(Math.random() * students.length)] 
+  : "Steve";
+---
+
+<span>{randomName}</span>
