@@ -15,9 +15,47 @@ Before you calculate anything, you must know the correct terminology for the dif
 * **Denominator:** The bottom number (how many parts make up a whole).
 
 ### Types of Fractions
+
 1. **Proper Fractions:** The numerator is smaller than the denominator (e.g., $\frac{3}{4}$, $\frac{1}{2}$). Its value is always less than 1.
-2. **Improper Fractions ("Top-Heavy"):** The numerator is larger than or equal to the denominator (e.g., $\frac{7}{5}$, $\frac{10}{3}$). Its value is 1 or greater.
-3. **Mixed Numbers:** A whole number combined with a proper fraction (e.g., $1\frac{2}{5}$, $3\frac{1}{3}$).
+2. **Improper Fractions ("Top-Heavy"):** The numerator is larger than or equal to the denominator (e.g., $\frac{5}{4}$, $\frac{10}{3}$). Its value is 1 or greater.
+3. **Mixed Numbers:** A whole number combined with a proper fraction (e.g., $1\frac{1}{4}$, $3\frac{1}{3}$).
+
+<svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+    <text x="100" y="30" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#005f73">Proper: 3/4</text>
+    <g transform="translate(60, 50)">
+        <rect x="0" y="0" width="40" height="40" fill="#0a9396" stroke="#333" stroke-width="2"/>
+        <rect x="40" y="0" width="40" height="40" fill="#0a9396" stroke="#333" stroke-width="2"/>
+        <rect x="0" y="40" width="40" height="40" fill="#0a9396" stroke="#333" stroke-width="2"/>
+        <rect x="40" y="40" width="40" height="40" fill="#eee" stroke="#333" stroke-width="2"/>
+    </g>
+
+    <text x="300" y="30" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#ae2012">Improper: 5/4</text>
+    <g transform="translate(215, 50)">
+        <rect x="0" y="0" width="40" height="40" fill="#ee9b00" stroke="#333" stroke-width="2"/>
+        <rect x="40" y="0" width="40" height="40" fill="#ee9b00" stroke="#333" stroke-width="2"/>
+        <rect x="0" y="40" width="40" height="40" fill="#ee9b00" stroke="#333" stroke-width="2"/>
+        <rect x="40" y="40" width="40" height="40" fill="#ee9b00" stroke="#333" stroke-width="2"/>
+    </g>
+    <g transform="translate(305, 50)">
+        <rect x="0" y="0" width="40" height="40" fill="#ee9b00" stroke="#333" stroke-width="2"/>
+        <rect x="40" y="0" width="40" height="40" fill="#eee" stroke="#333" stroke-width="2"/>
+        <rect x="0" y="40" width="40" height="40" fill="#eee" stroke="#333" stroke-width="2"/>
+        <rect x="40" y="40" width="40" height="40" fill="#eee" stroke="#333" stroke-width="2"/>
+    </g>
+
+    <text x="500" y="30" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#9b2226">Mixed: 1 1/4</text>
+    <g transform="translate(415, 50)">
+        <rect x="0" y="0" width="80" height="80" fill="#ca6702" stroke="#333" stroke-width="2"/>
+    </g>
+    <g transform="translate(505, 50)">
+        <rect x="0" y="0" width="40" height="40" fill="#ca6702" stroke="#333" stroke-width="2"/>
+        <rect x="40" y="0" width="40" height="40" fill="#eee" stroke="#333" stroke-width="2"/>
+        <rect x="0" y="40" width="40" height="40" fill="#eee" stroke="#333" stroke-width="2"/>
+        <rect x="40" y="40" width="40" height="40" fill="#eee" stroke="#333" stroke-width="2"/>
+    </g>
+    
+    <text x="300" y="170" font-family="sans-serif" font-size="14" font-style="italic" text-anchor="middle" fill="#555">Notice that the improper fraction and the mixed number represent the exact same quantity!</text>
+</svg>
 
 ### Simplest Form (Cancelling Down)
 Whenever you write a fraction in an exam, it **must** be in its simplest form unless the question tells you otherwise. To simplify a fraction, divide both the numerator and the denominator by their Highest Common Factor (HCF).
@@ -39,13 +77,45 @@ Decimals use the base-10 place value system to show fractions of a whole. The fi
 
 ### Percentages
 The word *percent* literally translates from Latin as **"out of 100"**. 
-* $45\%$ simply means $45$ out of $100$, or $\frac{45}{100}$.
+* 45% simply means 45 out of 100, or $\frac{45}{100}$.
 
 ---
 
 ## 3. Conversions (The Translation Guide)
 
-You must be able to convert freely between any of the three forms.
+You must be able to convert freely between any of the three forms. Use the visual guide below to memorise the pathways.
+
+<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+        </marker>
+    </defs>
+
+    <rect x="220" y="30" width="160" height="50" rx="10" fill="#e9d8a6" stroke="#333" stroke-width="2" />
+    <text x="300" y="61" font-family="sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Fraction</text>
+
+    <rect x="50" y="200" width="160" height="50" rx="10" fill="#94d2bd" stroke="#333" stroke-width="2" />
+    <text x="130" y="231" font-family="sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Decimal</text>
+
+    <rect x="390" y="200" width="160" height="50" rx="10" fill="#ee9b00" stroke="#333" stroke-width="2" />
+    <text x="470" y="231" font-family="sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#333">Percentage</text>
+
+    <path d="M 260 80 L 150 190" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)" />
+    <text x="190" y="125" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#005f73" transform="rotate(-45 190 125)">Top ÷ Bottom</text>
+
+    <path d="M 220 215 L 380 215" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)" />
+    <text x="300" y="205" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#ae2012">× 100</text>
+
+    <path d="M 380 235 L 220 235" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)" />
+    <text x="300" y="255" font-family="sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#ae2012">÷ 100</text>
+
+    <path d="M 450 200 L 340 90" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)" />
+    <text font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#005f73" transform="rotate(45 420 140)">
+        <tspan x="420" y="132">Put over 100</tspan>
+        <tspan x="420" y="150">&amp; simplify</tspan>
+    </text>
+</svg>
 
 <Aside type="tip" title="The Conversion Cheat Sheet">
 * **Fraction to Decimal:** Divide the top by the bottom ($3 \div 4 = 0.75$).
@@ -58,14 +128,18 @@ You must be able to convert freely between any of the three forms.
 You will frequently need to switch between these two forms, especially before multiplying or dividing fractions (which we cover in the next section).
 
 **Mixed to Improper:**
+<Steps>
 1. Multiply the whole number by the denominator.
 2. Add the numerator.
 3. Put that result over the original denominator.
+</Steps>
 * *Example:* $2\frac{3}{5} \rightarrow (2 \times 5) + 3 = 13 \rightarrow \frac{13}{5}$
 
 **Improper to Mixed:**
+<Steps>
 1. Divide the top by the bottom to get the whole number.
 2. The remainder becomes the new numerator.
+</Steps>
 * *Example:* $\frac{17}{3} \rightarrow 17 \div 3 = 5$ with a remainder of $2 \rightarrow 5\frac{2}{3}$
 
 ---
@@ -73,52 +147,112 @@ You will frequently need to switch between these two forms, especially before mu
 ## 4. Practice Problems
 
 <Tabs>
-  <TabItem label="📝 Question 1: Mixed to Improper">
-    Convert $4\frac{2}{7}$ into an improper fraction.
+  <TabItem label="📝 Question 1: Mixed & Improper">
+    Convert between mixed numbers and improper fractions as required.
+    
+    **Core:**
+    * **a)** Convert $3\frac{1}{4}$ to an improper fraction.
+    * **b)** Convert $\frac{15}{4}$ to a mixed number.
+    * **c)** Convert $5\frac{2}{3}$ to an improper fraction.
+    
+    **Extended:**
+    * **d)** Convert $\frac{45}{7}$ to a mixed number.
+    * **e)** Convert $12\frac{7}{8}$ to an improper fraction.
+    * **f)** Convert $\frac{134}{11}$ to a mixed number.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. Multiply the whole number by the denominator: $4 \times 7 = 28$
-    2. Add the numerator: $28 + 2 = 30$
-    3. Place over the original denominator:
+    **Core:**
+    * **a)** $(3 \times 4) + 1 = 13$ $\rightarrow$ **$\frac{13}{4}$**
+    * **b)** $15 \div 4 = 3$ remainder $3$ $\rightarrow$ **$3\frac{3}{4}$**
+    * **c)** $(5 \times 3) + 2 = 17$ $\rightarrow$ **$\frac{17}{3}$**
     
-    **Answer:** $\frac{30}{7}$
+    **Extended:**
+    * **d)** $45 \div 7 = 6$ remainder $3$ $\rightarrow$ **$6\frac{3}{7}$**
+    * **e)** $(12 \times 8) + 7 = 103$ $\rightarrow$ **$\frac{103}{8}$**
+    * **f)** $134 \div 11 = 12$ remainder $2$ $\rightarrow$ **$12\frac{2}{11}$**
   </TabItem>
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 2: Percentage to Fraction">
-    Write $64\%$ as a fraction in its simplest form.
+  <TabItem label="📝 Question 2: Percentages to Fractions & Decimals">
+    Convert the following percentages. Ensure all fractions are given in their simplest form.
+    
+    **Core:**
+    * **a)** Write 25% as a fraction.
+    * **b)** Write 70% as a decimal.
+    * **c)** Write 8% as a fraction.
+    
+    **Extended:**
+    * **d)** Write 12.5% as a decimal.
+    * **e)** Write 175% as a mixed number.
+    * **f)** Write 0.4% as a fraction.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    1. Percent means "out of 100": $\frac{64}{100}$
-    2. Simplify (divide top and bottom by 4):
+    **Core:**
+    * **a)** $\frac{25}{100}$ (divide top & bottom by 25) $\rightarrow$ **$\frac{1}{4}$**
+    * **b)** $70 \div 100$ (move decimal left twice) $\rightarrow$ **0.7**
+    * **c)** $\frac{8}{100}$ (divide top & bottom by 4) $\rightarrow$ **$\frac{2}{25}$**
     
-    **Answer:** $\frac{16}{25}$
+    **Extended:**
+    * **d)** $12.5 \div 100$ $\rightarrow$ **0.125**
+    * **e)** $\frac{175}{100} = 1\frac{75}{100}$ (simplify the fraction by dividing by 25) $\rightarrow$ **$1\frac{3}{4}$**
+    * **f)** $\frac{0.4}{100}$ (multiply by 10 to clear decimal) $= \frac{4}{1000}$ (divide by 4) $\rightarrow$ **$\frac{1}{250}$**
   </TabItem>
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 3: Decimal to Fraction">
-    Write $0.05$ as a fraction in its simplest form.
+  <TabItem label="📝 Question 3: Decimals to Fractions & Percentages">
+    Convert the following decimals. Ensure all fractions are given in their simplest form.
+    
+    **Core:**
+    * **a)** Write 0.3 as a fraction.
+    * **b)** Write 0.85 as a percentage.
+    * **c)** Write 0.04 as a fraction.
+    
+    **Extended:**
+    * **d)** Write 2.5 as a percentage.
+    * **e)** Write 0.005 as a fraction.
+    * **f)** Write 3.14 as a mixed number.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    1. The 5 is in the "hundredths" column, so write it over 100: $\frac{5}{100}$
-    2. Simplify (divide top and bottom by 5):
+    **Core:**
+    * **a)** The 3 is in the tenths column $\rightarrow$ **$\frac{3}{10}$**
+    * **b)** $0.85 \times 100$ $\rightarrow$ **85%**
+    * **c)** The 4 is in the hundredths column, so $\frac{4}{100}$ (divide by 4) $\rightarrow$ **$\frac{1}{25}$**
     
-    **Answer:** $\frac{1}{20}$
+    **Extended:**
+    * **d)** $2.5 \times 100$ $\rightarrow$ **250%**
+    * **e)** The 5 is in the thousandths column, so $\frac{5}{1000}$ (divide by 5) $\rightarrow$ **$\frac{1}{200}$**
+    * **f)** The whole number is 3. The decimal is $\frac{14}{100}$. Simplify to get $\frac{7}{50}$ $\rightarrow$ **$3\frac{7}{50}$**
   </TabItem>
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 4: Fraction to Percentage">
-    Write $\frac{3}{8}$ as a percentage.
+  <TabItem label="📝 Question 4: Fractions to Decimals & Percentages">
+    Convert the following fractions.
+    
+    **Core:**
+    * **a)** Write $\frac{1}{2}$ as a percentage.
+    * **b)** Write $\frac{3}{5}$ as a decimal.
+    * **c)** Write $\frac{7}{20}$ as a percentage.
+    
+    **Extended:**
+    * **d)** Write $\frac{5}{8}$ as a decimal.
+    * **e)** Write $\frac{4}{3}$ as a percentage (to 1 decimal place).
+    * **f)** Write $\frac{11}{40}$ as a percentage.
   </TabItem>
   <TabItem label="✅ Solution 4">
-    1. Convert to a decimal first by dividing: $3 \div 8 = 0.375$
-    2. Multiply by 100 to get the percentage: $0.375 \times 100 = 37.5$
+    **Core:**
+    * **a)** $1 \div 2 = 0.5$, then multiply by 100 $\rightarrow$ **50%**
+    * **b)** $3 \div 5$ $\rightarrow$ **0.6**
+    * **c)** Make denominator 100 (multiply top and bottom by 5) $\rightarrow \frac{35}{100} \rightarrow$ **35%**
     
-    **Answer:** $37.5\%$
+    **Extended:**
+    * **d)** $5 \div 8$ (you may need to use short division here: $8 \text{ into } 5.000$) $\rightarrow$ **0.625**
+    * **e)** $4 \div 3 = 1.333...$ Multiply by 100 $= 133.33...\%$ $\rightarrow$ **133.3%**
+    * **f)** $11 \div 40 = 0.275$, then multiply by 100 $\rightarrow$ **27.5%**
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Converting between fractions, decimals, percentages, mixed numbers, and improper fractions" />
+<SmartAIGenerator topic="Converting between proper fractions, decimals, and basic percentages" difficulty="Core" />
+<SmartAIGenerator topic="Converting between mixed numbers, improper fractions, recurring decimals, and percentages greater than 100" difficulty="Extended" />

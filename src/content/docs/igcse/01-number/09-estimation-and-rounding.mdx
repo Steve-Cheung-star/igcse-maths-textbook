@@ -15,13 +15,46 @@ To round correctly, you must know the name of the "target" column. Think of the 
 * **Whole Numbers (Red Side):** These end in **-s** (Tens, Hundreds, Thousands, Millions).
 * **Decimal Parts (Blue Side):** These end in **-ths** (Tenths, Hundredths, Thousandths).
 
-<Aside type="note" title="The Place Value Map">
-| <span style="color:red">Millions</span> | <span style="color:red">Thousands</span> | <span style="color:red">Hundreds</span> | <span style="color:red">Tens</span> | <span style="color:red">Units</span> | . | <span style="color:blue">Tenths</span> | <span style="color:blue">Hundredths</span> | <span style="color:blue">Thousandths</span> |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| <span style="color:red">1,000,000</span> | <span style="color:red">1,000</span> | <span style="color:red">100</span> | <span style="color:red">10</span> | <span style="color:red">1</span> | **.** | <span style="color:blue">0.1</span> | <span style="color:blue">0.01</span> | <span style="color:blue">0.001</span> |
+<svg viewBox="0 0 650 200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#f8f9fa" rx="15"/>
+    <defs>
+        <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ae2012" /></marker>
+        <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0077b6" /></marker>
+    </defs>
 
+    <line x1="325" y1="30" x2="325" y2="170" stroke="#adb5bd" stroke-width="3" stroke-dasharray="6,6"/>
+    
+    <rect x="300" y="95" width="50" height="30" fill="#f8f9fa" />
+    <rect x="285" y="130" width="80" height="40" fill="#f8f9fa" />
+    
+    <circle cx="325" cy="110" r="7" fill="#111" />
+    <text x="325" y="145" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">DECIMAL</text>
+    <text x="325" y="160" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">POINT</text>
 
-</Aside>
+    <text x="160" y="50" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ae2012" text-anchor="middle">← GETTING 10x LARGER</text>
+    <path d="M 270 65 L 50 65" fill="none" stroke="#ae2012" stroke-width="3" marker-end="url(#arrow-red)"/>
+    
+    <text x="270" y="100" font-family="sans-serif" font-size="18" font-weight="bold" fill="#ae2012" text-anchor="middle">Tens</text>
+    <text x="270" y="120" font-family="monospace" font-size="16" fill="#ae2012" text-anchor="middle">10</text>
+    
+    <text x="180" y="100" font-family="sans-serif" font-size="18" font-weight="bold" fill="#ae2012" text-anchor="middle">Hundreds</text>
+    <text x="180" y="120" font-family="monospace" font-size="16" fill="#ae2012" text-anchor="middle">100</text>
+
+    <text x="80" y="100" font-family="sans-serif" font-size="18" font-weight="bold" fill="#ae2012" text-anchor="middle">Thousands</text>
+    <text x="80" y="120" font-family="monospace" font-size="16" fill="#ae2012" text-anchor="middle">1000</text>
+
+    <text x="490" y="50" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0077b6" text-anchor="middle">GETTING 10x SMALLER →</text>
+    <path d="M 380 65 L 600 65" fill="none" stroke="#0077b6" stroke-width="3" marker-end="url(#arrow-blue)"/>
+
+    <text x="380" y="100" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0077b6" text-anchor="middle">Tenths</text>
+    <text x="380" y="120" font-family="monospace" font-size="16" fill="#0077b6" text-anchor="middle">0.1</text>
+    
+    <text x="480" y="100" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0077b6" text-anchor="middle">Hundredths</text>
+    <text x="480" y="120" font-family="monospace" font-size="16" fill="#0077b6" text-anchor="middle">0.01</text>
+
+    <text x="590" y="100" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0077b6" text-anchor="middle">Thousandths</text>
+    <text x="590" y="120" font-family="monospace" font-size="16" fill="#0077b6" text-anchor="middle">0.001</text>
+</svg>
 
 ---
 
@@ -35,15 +68,29 @@ Rounding is the process of making a number "simpler" while keeping its value clo
    * If it is **0, 1, 2, 3, or 4**, keep the target digit **THE SAME**.
 4. **Fill the gaps:** For whole numbers, fill any remaining columns before the decimal with **placeholder zeros**.
 
+<svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#ffffff" rx="10"/>
+    
+    <rect x="20" y="10" width="270" height="100" rx="10" fill="#eaf4f4" stroke="#0a9396" stroke-width="3"/>
+    <text x="155" y="45" font-family="sans-serif" font-size="28" font-weight="bold" fill="#0a9396" text-anchor="middle" letter-spacing="8">0 1 2 3 4</text>
+    <rect x="95" y="65" width="120" height="30" rx="15" fill="#0a9396"/>
+    <text x="155" y="86" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">STAY THE SAME</text>
+
+    <rect x="310" y="10" width="270" height="100" rx="10" fill="#fdf0ef" stroke="#ae2012" stroke-width="3"/>
+    <text x="445" y="45" font-family="sans-serif" font-size="28" font-weight="bold" fill="#ae2012" text-anchor="middle" letter-spacing="8">5 6 7 8 9</text>
+    <rect x="385" y="65" width="120" height="30" rx="15" fill="#ae2012"/>
+    <text x="445" y="86" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">ROUND UP (+1)</text>
+</svg>
+
 ### The "Chain Reaction" (Rounding 9s)
-When you round a $9$ up, it becomes a $10$. You put down the $0$ and "carry" the $1$ to the next column on the left.
-* **Example:** Round $0.096$ to **2 decimal places**.
-* The 2nd d.p. is $9$. Next door is $6$ (round up).
-* $9$ becomes $10$. The $1$ carries to the first d.p.
-* **Answer:** $0.10$
+When you round a 9 up, it becomes a 10. You put down the 0 and "carry" the 1 to the next column on the left.
+* **Example:** Round 0.096 to **2 decimal places**.
+* The 2nd d.p. is 9. Next door is 6 (round up).
+* 9 becomes 10. The 1 carries to the first d.p.
+* **Answer:** 0.10
 
 <SteveTip title="The Essential Zero">
-If a question asks for **hundredths** (2 d.p.) and your answer is $4.5$, you **must** write **$4.50$**. In science and maths, $4.5$ means "somewhere between 4.45 and 4.55," but $4.50$ means "exactly 4.50." The zero proves your level of accuracy.
+If a question asks for **hundredths** (2 d.p.) and your answer is 4.5, you **must** write **4.50**. In science and maths, 4.5 means "somewhere between 4.45 and 4.55," but 4.50 means "exactly 4.50." The zero proves your level of accuracy.
 </SteveTip>
 
 ---
@@ -52,14 +99,42 @@ If a question asks for **hundredths** (2 d.p.) and your answer is $4.5$, you **m
 
 Significant figures (s.f.) are used to show the precision of a measurement. Unlike decimal places, they don't care where the decimal point is—they care about the **digits themselves**.
 
+<svg viewBox="0 0 650 200" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#f8f9fa" rx="15"/>
 
+    <text y="90" font-family="monospace" font-size="45" font-weight="bold" fill="#333" text-anchor="middle">
+        <tspan x="180">0</tspan>
+        <tspan x="205">.</tspan>
+        <tspan x="230">0</tspan>
+        <tspan x="260">0</tspan>
+        <tspan x="295" fill="#2a9d8f">4</tspan>
+        <tspan x="330" fill="#0077b6">0</tspan>
+        <tspan x="365" fill="#2a9d8f">5</tspan>
+        <tspan x="400" fill="#f4a261">0</tspan>
+    </text>
+
+    <path d="M 165 100 Q 165 110 175 110 L 210 110 Q 220 110 220 120 Q 220 110 230 110 L 265 110 Q 275 110 275 100" fill="none" stroke="#ae2012" stroke-width="2"/>
+    <path d="M 220 120 L 220 135 L 140 135" fill="none" stroke="#ae2012" stroke-width="2"/>
+    <text x="130" y="140" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ae2012" text-anchor="end">LEADING ZEROS</text>
+    <text x="130" y="160" font-family="sans-serif" font-size="12" fill="#555" text-anchor="end">NEVER significant</text>
+
+    <path d="M 330 150 L 330 95" fill="none" stroke="#0077b6" stroke-width="2"/>
+    <polygon points="325,102 335,102 330,92" fill="#0077b6"/>
+    <text x="330" y="165" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0077b6" text-anchor="middle">TRAPPED ZEROS</text>
+    <text x="330" y="185" font-family="sans-serif" font-size="12" fill="#555" text-anchor="middle">ALWAYS significant</text>
+
+    <path d="M 470 120 L 400 120 L 400 95" fill="none" stroke="#e76f51" stroke-width="2"/>
+    <polygon points="395,102 405,102 400,92" fill="#e76f51"/>
+    <text x="480" y="125" font-family="sans-serif" font-size="14" font-weight="bold" fill="#e76f51" text-anchor="start">TRAILING ZEROS</text>
+    <text x="480" y="145" font-family="sans-serif" font-size="12" fill="#555" text-anchor="start">Significant in decimals</text>
+</svg>
 
 ### The Three Types of Zeros
-1.  **Leading Zeros (The Placeholders):** $0.0004$
+1.  **Leading Zeros (The Placeholders):** `0.0004`
     * These are **NEVER** significant. They just tell you how small the number is.
-2.  **Trapped Zeros (The Sandwiches):** $4005$
+2.  **Trapped Zeros (The Sandwiches):** `4005`
     * These are **ALWAYS** significant. They are part of the actual measurement.
-3.  **Trailing Zeros (The Precision-Makers):** $5.200$
+3.  **Trailing Zeros (The Precision-Makers):** `5.200`
     * In a decimal, these **ARE** significant because they show exactly how precisely you measured the number.
 
 ---
@@ -69,15 +144,15 @@ Significant figures (s.f.) are used to show the precision of a measurement. Unli
 In the IGCSE, "Estimate" is code for: **Round everything to 1 significant figure first.**
 
 <SteveTip title="The 1 s.f. Method Mark">
-If you calculate $\frac{19.2}{4.1}$ on your calculator ($4.68...$) and then round it to $5$, you get **0 marks**. 
+If you calculate $\frac{19.2}{4.1}$ on your calculator (4.68...) and then round it to 5, you get **0 marks**. 
 You **must** show the rounded values first: $\frac{20}{4} = 5$. The examiner is testing your ability to simplify the problem, not your ability to use a calculator.
 </SteveTip>
 
 ### Advanced Estimation Tricks
 * **Roots:** Don't round $\sqrt{35}$ to $\sqrt{40}$ (1 s.f.) if you can't solve it. Round it to the nearest **square number** ($\sqrt{36} = 6$).
-* **Division by Decimals:** * Dividing by $0.5$ is the same as **doubling** ($\times 2$).
-  * Dividing by $0.2$ is the same as **multiplying by 5**.
-  * Dividing by $0.1$ is the same as **multiplying by 10**.
+* **Division by Decimals:** * Dividing by 0.5 is the same as **doubling** ($\times 2$).
+  * Dividing by 0.2 is the same as **multiplying by 5**.
+  * Dividing by 0.1 is the same as **multiplying by 10**.
 
 ---
 
@@ -86,27 +161,30 @@ You **must** show the rounded values first: $\frac{20}{4} = 5$. The examiner is 
 ### Part A: Place Value & Decimal Places
 
 <Tabs>
-  <TabItem label="📝 Question 1: Nearest Thousand">
-    Write $5764$ correct to the nearest thousand.
+  <TabItem label="📝 Question 1: Place Value Rounding">
+    Write 5764 correct to the nearest:
+    * **a)** thousand
+    * **b)** hundred
+    * **c)** ten
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. The thousands digit is 5.
-    2. The digit "next door" is 7.
-    3. Since 7 is "5 or more," round the 5 up to 6.
-    4. Fill the remaining columns with placeholder zeros.
-    **Answer:** $6000$
+    * **a)** The thousand digit is 5, next door is 7 (round up). Answer: **6000**
+    * **b)** The hundred digit is 7, next door is 6 (round up). Answer: **5800**
+    * **c)** The ten digit is 6, next door is 4 (stay). Answer: **5760**
   </TabItem>
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 2: Hundredths">
-    Write $0.0765$ correct to **2 decimal places**.
+  <TabItem label="📝 Question 2: Decimal Places">
+    Round the following to the specified decimal places:
+    * **a)** 0.0765 to **2 d.p.**
+    * **b)** 3.14159 to **3 d.p.**
+    * **c)** 19.996 to **2 d.p.**
   </TabItem>
   <TabItem label="✅ Solution 2">
-    1. The 2nd d.p. is 7.
-    2. The digit "next door" is 6.
-    3. Round the 7 up to 8.
-    **Answer:** $0.08$
+    * **a)** The 2nd d.p. is 7, next door is 6 (round up). Answer: **0.08**
+    * **b)** The 3rd d.p. is 1, next door is 5 (round up). Answer: **3.142**
+    * **c)** The 2nd d.p. is 9, next door is 6 (round up). 9 becomes 10, carrying the 1. Answer: **20.00** *(The zeros are essential!)*
   </TabItem>
 </Tabs>
 
@@ -115,26 +193,30 @@ You **must** show the rounded values first: $\frac{20}{4} = 5$. The examiner is 
 ### Part B: Significant Figures
 
 <Tabs>
-  <TabItem label="📝 Question 3: Leading Zeros">
-    Write $0.004096$ correct to **2 significant figures**.
+  <TabItem label="📝 Question 3: Leading & Trapped Zeros">
+    Round the following to the specified significant figures:
+    * **a)** 0.004096 to **2 s.f.**
+    * **b)** 0.0503 to **1 s.f.**
+    * **c)** 0.00008002 to **3 s.f.**
   </TabItem>
   <TabItem label="✅ Solution 3">
-    1. Skip the leading zeros. The 1st s.f. is 4.
-    2. The 2nd s.f. is 0 (trapped zeros count).
-    3. The digit "next door" is 9. Round the 0 up to 1.
-    **Answer:** $0.0041$
+    * **a)** Skip leading zeros. 1st s.f. is 4, 2nd is 0. Next door is 9 (round up). Answer: **0.0041**
+    * **b)** Skip leading zeros. 1st s.f. is 5. Next door is 0 (stay). Answer: **0.05**
+    * **c)** Skip leading zeros. 1st s.f. is 8, 2nd is 0, 3rd is 0. Next door is 2 (stay). Answer: **0.0000800**
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 4: Trailing Zeros">
-    Round $8.002$ correct to **3 significant figures**.
+    Round the following correct to **3 significant figures**:
+    * **a)** 8.002
+    * **b)** 45.09
+    * **c)** 12.00
   </TabItem>
   <TabItem label="✅ Solution 4">
-    1. The first three digits are 8, 0, and 0.
-    2. The digit "next door" is 2.
-    3. Keep the digits as they are. You **must** keep the zeros to show the 3 s.f. accuracy.
-    **Answer:** $8.00$
+    * **a)** Digits are 8, 0, 0. Next door is 2 (stay). Keep zeros to show accuracy. Answer: **8.00**
+    * **b)** Digits are 4, 5, 0. Next door is 9 (round up). Answer: **45.1**
+    * **c)** Digits are 1, 2, 0. Next door is 0 (stay). Answer: **12.0**
   </TabItem>
 </Tabs>
 
@@ -145,39 +227,51 @@ You **must** show the rounded values first: $\frac{20}{4} = 5$. The examiner is 
 <Tabs>
   <TabItem label="📝 Question 5: Fraction Estimation">
     By writing each number correct to **1 significant figure**, estimate the value of:
-    $$ \frac{41.3}{9.79 \times 0.765} $$
+    * **a)** $$ \frac{41.3}{9.79 \times 0.765} $$
+    * **b)** $$ \frac{8.12 \times 3.92}{0.18} $$
+    * **c)** $$ \frac{102.3}{5.1 \times 4.8} $$
   </TabItem>
   <TabItem label="✅ Solution 5">
-    1. Round $41.3 \rightarrow 40$ (1 s.f.)
-    2. Round $9.79 \rightarrow 10$ (1 s.f.)
-    3. Round $0.765 \rightarrow 0.8$ (1 s.f. - leading zeros don't count!)
-    4. Substitute: $\frac{40}{10 \times 0.8} = \frac{40}{8}$
-    **Answer:** $5$
+    * **a)** $41.3 \rightarrow 40$, $9.79 \rightarrow 10$, $0.765 \rightarrow 0.8$.
+       Calculation: $\frac{40}{10 \times 0.8} = \frac{40}{8} = \mathbf{5}$
+    * **b)** $8.12 \rightarrow 8$, $3.92 \rightarrow 4$, $0.18 \rightarrow 0.2$.
+       Calculation: $\frac{8 \times 4}{0.2} = \frac{32}{0.2} = \mathbf{160}$
+    * **c)** $102.3 \rightarrow 100$, $5.1 \rightarrow 5$, $4.8 \rightarrow 5$.
+       Calculation: $\frac{100}{5 \times 5} = \frac{100}{25} = \mathbf{4}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 6: Root Estimation">
-    Estimate the value of $\sqrt{98.2} \times 4.9$.
+    Estimate the value of:
+    * **a)** $$ \sqrt{98.2} \times 4.9 $$
+    * **b)** $$ \sqrt{38} + 5.1^2 $$
+    * **c)** $$ \frac{\sqrt{82}}{2.9} $$
   </TabItem>
   <TabItem label="✅ Solution 6">
-    1. Round $98.2 \rightarrow 100$ (This is 1 s.f. AND a square number).
-    2. Round $4.9 \rightarrow 5$.
-    3. Calculate: $\sqrt{100} \times 5 = 10 \times 5$
-    **Answer:** $50$
+    * **a)** Round 98.2 to nearest square (100) and 4.9 to 5. 
+       Calculation: $\sqrt{100} \times 5 = 10 \times 5 = \mathbf{50}$
+    * **b)** Round 38 to nearest square (36) and 5.1 to 5. 
+       Calculation: $\sqrt{36} + 5^2 = 6 + 25 = \mathbf{31}$
+    * **c)** Round 82 to nearest square (81) and 2.9 to 3. 
+       Calculation: $\frac{\sqrt{81}}{3} = \frac{9}{3} = \mathbf{3}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 7: The Division Trap">
     Estimate the value of:
-    $$ \frac{19.8 \times 3.04}{0.485} $$
+    * **a)** $$ \frac{19.8 \times 3.04}{0.485} $$
+    * **b)** $$ \frac{4.2 \times 9.8}{0.11} $$
+    * **c)** $$ \frac{7.9}{0.19 \times 0.52} $$
   </TabItem>
   <TabItem label="✅ Solution 7">
-    1. Round to 1 s.f.: $20$, $3$, and $0.5$.
-    2. Calculation: $\frac{20 \times 3}{0.5} = \frac{60}{0.5}$
-    3. Use the division trick: $60 \times 2 = 120$.
-    **Answer:** $120$
+    * **a)** Round to 1 s.f.: 20, 3, and 0.5. 
+       Calculation: $\frac{20 \times 3}{0.5} = \frac{60}{0.5}$. Using the doubling trick: $60 \times 2 = \mathbf{120}$
+    * **b)** Round to 1 s.f.: 4, 10, and 0.1. 
+       Calculation: $\frac{4 \times 10}{0.1} = \frac{40}{0.1}$. Dividing by 0.1 is multiplying by 10: $40 \times 10 = \mathbf{400}$
+    * **c)** Round to 1 s.f.: 8, 0.2, and 0.5. 
+       Calculation: $\frac{8}{0.2 \times 0.5} = \frac{8}{0.1} = \mathbf{80}$
   </TabItem>
 </Tabs>
 

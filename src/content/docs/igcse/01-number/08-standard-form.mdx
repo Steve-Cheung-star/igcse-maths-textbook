@@ -12,6 +12,26 @@ Scientists and mathematicians use standard form (sometimes called scientific not
 For a number to be in *true* standard form, it must look exactly like this:
 $$A \times 10^n$$
 
+<svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#f8f9fa" rx="15"/>
+    <defs>
+        <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0077b6" /></marker>
+        <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ae2012" /></marker>
+    </defs>
+
+    <text x="300" y="120" font-family="Times New Roman" font-size="60" font-style="italic" fill="#333" text-anchor="middle">A<tspan font-family="sans-serif" font-style="normal" font-size="40"> × </tspan>10<tspan dy="-30" font-size="40" font-style="italic" fill="#ae2012">n</tspan></text>
+
+    <path d="M 230 135 L 230 175 L 170 175" fill="none" stroke="#0077b6" stroke-width="2" marker-end="url(#arrow-blue)"/>
+    <rect x="20" y="160" width="140" height="30" rx="5" fill="#eaf4f4" stroke="#0077b6" stroke-width="2"/>
+    <text x="90" y="180" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0077b6" text-anchor="middle">1 ≤ A &lt; 10</text>
+    <text x="90" y="205" font-family="sans-serif" font-size="12" fill="#555" text-anchor="middle">(Front number)</text>
+
+    <path d="M 375 70 L 375 40 L 430 40" fill="none" stroke="#ae2012" stroke-width="2" marker-end="url(#arrow-red)"/>
+    <rect x="440" y="25" width="140" height="30" rx="5" fill="#fdf0ef" stroke="#ae2012" stroke-width="2"/>
+    <text x="510" y="45" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ae2012" text-anchor="middle">INTEGER</text>
+    <text x="510" y="70" font-family="sans-serif" font-size="12" fill="#555" text-anchor="middle">(Positive or Negative)</text>
+</svg>
+
 <Aside type="note" title="The Anatomy of Standard Form">
 * **$A$ (The Front Number):** Must be a number between 1 and 10. It can be exactly 1, but it **cannot** be 10 or bigger ($1 \leq A < 10$).
 * **$n$ (The Power/Index):** Must be an integer (a positive or negative whole number).
@@ -25,10 +45,38 @@ $$A \times 10^n$$
 
 The easiest way to think about standard form is counting how many "jumps" the decimal point has to make to get from its original position to its new spot right after the first non-zero digit.
 
+<svg viewBox="0 0 650 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#f8f9fa" rx="15"/>
+    <defs>
+        <marker id="jump-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0a9396" /></marker>
+        <marker id="jump-arrow-red" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ae2012" /></marker>
+    </defs>
+    
+    <g transform="translate(30, 20)">
+        <text x="130" y="30" font-family="sans-serif" font-weight="bold" font-size="16" fill="#333" text-anchor="middle">Large Numbers</text>
+        <text y="90" font-family="monospace" font-size="32" fill="#333" text-anchor="middle"><tspan x="50">4</tspan><tspan x="80">5</tspan><tspan x="110">0</tspan><tspan x="140">0</tspan><tspan x="170">0</tspan><tspan x="185">.</tspan></text>
+        <path d="M 185 95 Q 170 125 155 95 Q 140 125 125 95 Q 110 125 95 95 Q 80 125 65 95" fill="none" stroke="#0a9396" stroke-width="2" stroke-dasharray="4" marker-end="url(#jump-arrow)"/>
+        <text x="130" y="145" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0a9396" text-anchor="middle">4 jumps left = 10⁴</text>
+        <rect x="60" y="160" width="140" height="30" rx="5" fill="#eaf4f4" stroke="#0a9396" stroke-width="2"/>
+        <text x="130" y="180" font-family="monospace" font-size="16" font-weight="bold" fill="#0a9396" text-anchor="middle">4.5 × 10⁴</text>
+    </g>
+
+    <line x1="325" y1="20" x2="325" y2="200" stroke="#ccc" stroke-width="2" stroke-dasharray="5"/>
+
+    <g transform="translate(350, 20)">
+        <text x="130" y="30" font-family="sans-serif" font-weight="bold" font-size="16" fill="#333" text-anchor="middle">Small Decimals</text>
+        <text y="90" font-family="monospace" font-size="32" fill="#333" text-anchor="middle"><tspan x="50">0</tspan><tspan x="65">.</tspan><tspan x="80">0</tspan><tspan x="110">0</tspan><tspan x="140">0</tspan><tspan x="170">3</tspan><tspan x="200">2</tspan></text>
+        <path d="M 65 95 Q 80 125 95 95 Q 110 125 125 95 Q 140 125 155 95 Q 170 125 185 95" fill="none" stroke="#ae2012" stroke-width="2" stroke-dasharray="4" marker-end="url(#jump-arrow-red)"/>
+        <text x="130" y="145" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ae2012" text-anchor="middle">4 jumps right = 10⁻⁴</text>
+        <rect x="60" y="160" width="140" height="30" rx="5" fill="#fdf0ef" stroke="#ae2012" stroke-width="2"/>
+        <text x="130" y="180" font-family="monospace" font-size="16" font-weight="bold" fill="#ae2012" text-anchor="middle">3.2 × 10⁻⁴</text>
+    </g>
+</svg>
+
 ### Ordinary Number to Standard Form
-* **Large Numbers:** Put the decimal point after the first digit. Count how many places it moved. This is your positive power.
+* **Large Numbers:** Put the decimal point after the first digit. Count how many places it moved left. This is your positive power.
   $$45,000 \rightarrow 4.5 \times 10^4$$
-* **Small Decimals:** Put the decimal point after the first non-zero digit. Count how many places it moved. This is your negative power.
+* **Small Decimals:** Put the decimal point after the first non-zero digit. Count how many places it moved right. This is your negative power.
   $$0.00032 \rightarrow 3.2 \times 10^{-4}$$
 
 ### Standard Form to Ordinary Number
@@ -79,54 +127,57 @@ The safest and most reliable method for adding and subtracting standard form in 
 
 <Tabs>
   <TabItem label="📝 Question 1: Converting to Standard Form">
-    Write $3,400,000$ in standard form.
+    Write the following ordinary numbers in standard form:
+    * **a)** $3,400,000$
+    * **b)** $52,000$
+    * **c)** $8,000,000,000$
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. Place the decimal after the first digit: $3.4$
-    2. Count the jumps from the end of $3,400,000$ to between the 3 and the 4. It is 6 jumps.
-    
-    **Answer:** $3.4 \times 10^6$
+    * **a)** The decimal moves 6 places left: $\mathbf{3.4 \times 10^6}$
+    * **b)** The decimal moves 4 places left: $\mathbf{5.2 \times 10^4}$
+    * **c)** The decimal moves 9 places left: $\mathbf{8 \times 10^9}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 2: Converting Small Numbers">
-    Write $0.000057$ in standard form.
+    Write the following decimals in standard form:
+    * **a)** $0.000057$
+    * **b)** $0.003$
+    * **c)** $0.00000091$
   </TabItem>
   <TabItem label="✅ Solution 2">
-    1. Place the decimal after the first non-zero digit: $5.7$
-    2. Count the jumps from its original spot to between the 5 and 7. It moved 5 places right.
-    3. Because it was a small decimal, the power is negative.
-    
-    **Answer:** $5.7 \times 10^{-5}$
+    * **a)** The decimal moves 5 places right: $\mathbf{5.7 \times 10^{-5}}$
+    * **b)** The decimal moves 3 places right: $\mathbf{3 \times 10^{-3}}$
+    * **c)** The decimal moves 7 places right: $\mathbf{9.1 \times 10^{-7}}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 3: Multiplication with Adjustment (Extended)">
-    Calculate $(6 \times 10^5) \times (3 \times 10^2)$. Give your answer in standard form.
+    Calculate the following. Give your final answers in standard form.
+    * **a)** $(6 \times 10^5) \times (3 \times 10^2)$
+    * **b)** $(5 \times 10^4) \times (4 \times 10^3)$
+    * **c)** $(8 \times 10^{-3}) \times (7 \times 10^6)$
   </TabItem>
   <TabItem label="✅ Solution 3">
-    1. Multiply the front numbers: $6 \times 3 = 18$
-    2. Add the powers: $10^5 \times 10^2 = 10^7$
-    3. Put them together: $18 \times 10^7$
-    4. **Adjust!** $18$ is too big. Make it $1.8$ (divide by 10) and increase the power by 1.
-    
-    **Answer:** $1.8 \times 10^8$
+    * **a)** $6 \times 3 = 18$ and $10^5 \times 10^2 = 10^7$. We get $18 \times 10^7$. Adjust by making 18 smaller (1.8) and power bigger: $\mathbf{1.8 \times 10^8}$
+    * **b)** $5 \times 4 = 20$ and $10^4 \times 10^3 = 10^7$. We get $20 \times 10^7$. Adjust: $\mathbf{2 \times 10^8}$
+    * **c)** $8 \times 7 = 56$ and $10^{-3} \times 10^6 = 10^3$. We get $56 \times 10^3$. Adjust: $\mathbf{5.6 \times 10^4}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 4: Division (Extended)">
-    Calculate $(8 \times 10^6) \div (2 \times 10^{-2})$. Give your answer in standard form.
+    Calculate the following. Give your final answers in standard form.
+    * **a)** $(8 \times 10^6) \div (2 \times 10^{-2})$
+    * **b)** $(9 \times 10^5) \div (3 \times 10^8)$
+    * **c)** $(4 \times 10^{-4}) \div (8 \times 10^{-2})$
   </TabItem>
   <TabItem label="✅ Solution 4">
-    1. Divide the front numbers: $8 \div 2 = 4$
-    2. Subtract the powers. Be very careful with the double negative! 
-       $6 - (-2) = 6 + 2 = 8$
-    3. Combine:
-    
-    **Answer:** $4 \times 10^8$
+    * **a)** $8 \div 2 = 4$. Subtract powers: $6 - (-2) = 8$. Answer: $\mathbf{4 \times 10^8}$
+    * **b)** $9 \div 3 = 3$. Subtract powers: $5 - 8 = -3$. Answer: $\mathbf{3 \times 10^{-3}}$
+    * **c)** $4 \div 8 = 0.5$. Subtract powers: $-4 - (-2) = -2$. We get $0.5 \times 10^{-2}$. Adjust by making 0.5 bigger (5) and power smaller: $\mathbf{5 \times 10^{-3}}$
   </TabItem>
 </Tabs>
 

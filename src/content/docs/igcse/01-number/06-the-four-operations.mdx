@@ -11,12 +11,52 @@ In IGCSE Maths, you are expected to fluently add, subtract, multiply, and divide
 
 When a calculation involves multiple operations, you cannot simply read it from left to right like a book. You must follow the strict mathematical hierarchy known as **BIDMAS** (or BEDMAS).
 
-<Aside type="note" title="The BIDMAS Hierarchy">
-1. **B**rackets: Calculate anything inside brackets first.
-2. **I**ndices: Evaluate powers and roots. For Extended students, this includes resolving any **negative and fractional indices** immediately!
-3. **D**ivision & **M**ultiplication: Do these from left to right. They have the *same* priority.
-4. **A**ddition & **S**ubtraction: Do these from left to right. They have the *same* priority.
-</Aside>
+<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow-up" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#ae2012" />
+        </marker>
+    </defs>
+
+    <g transform="translate(180, 40)">
+        <path d="M -120 200 L 0 0 L 120 200 Z" fill="#e9d8a6" stroke="#333" stroke-width="3"/>
+        
+        <line x1="-30" y1="50" x2="30" y2="50" stroke="#333" stroke-width="2"/>
+        <line x1="-60" y1="100" x2="60" y2="100" stroke="#333" stroke-width="2"/>
+        <line x1="-90" y1="150" x2="90" y2="150" stroke="#333" stroke-width="2"/>
+        
+        <line x1="0" y1="100" x2="0" y2="200" stroke="#333" stroke-width="2"/>
+
+        <text x="0" y="38" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="24" fill="#ae2012">B</text>
+        <text x="0" y="88" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="24" fill="#0a9396">I</text>
+        
+        <text x="-30" y="138" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="24" fill="#333">D</text>
+        <text x="30" y="138" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="24" fill="#333">M</text>
+        
+        <text x="-45" y="188" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="24" fill="#333">A</text>
+        <text x="45" y="188" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="24" fill="#333">S</text>
+    </g>
+
+    <path d="M 50 240 L 50 40" fill="none" stroke="#ae2012" stroke-width="3" marker-end="url(#arrow-up)"/>
+    <text x="35" y="145" text-anchor="middle" font-family="sans-serif" font-weight="bold" font-size="14" fill="#ae2012" transform="rotate(-90 35 145)">Highest Priority</text>
+
+    <text x="330" y="75" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ae2012">1. Brackets</text>
+    <text x="330" y="95" font-family="sans-serif" font-size="12" fill="#333">Calculate innermost brackets first.</text>
+
+    <text x="330" y="125" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0a9396">2. Indices</text>
+    <text x="330" y="145" font-family="sans-serif" font-size="12" fill="#333">Evaluate powers and roots immediately.</text>
+
+    <text x="330" y="175" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333">3. Div / Mult (Left to Right)</text>
+    <text x="330" y="195" font-family="sans-serif" font-size="12" fill="#333">These hold equal priority. Do not skip division!</text>
+
+    <text x="330" y="225" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333">4. Add / Sub (Left to Right)</text>
+    <text x="330" y="245" font-family="sans-serif" font-size="12" fill="#333">These hold equal priority. Do them last.</text>
+    
+    <line x1="210" y1="70" x2="315" y2="70" stroke="#ae2012" stroke-width="2" stroke-dasharray="4"/>
+    <line x1="240" y1="120" x2="315" y2="120" stroke="#0a9396" stroke-width="2" stroke-dasharray="4"/>
+    <line x1="270" y1="170" x2="315" y2="170" stroke="#333" stroke-width="2" stroke-dasharray="4"/>
+    <line x1="300" y1="220" x2="315" y2="220" stroke="#333" stroke-width="2" stroke-dasharray="4"/>
+</svg>
 
 *Example:* Calculate $25 - 2 \times (10 - 6)$
 1. Brackets first: $10 - 6 = 4$
@@ -40,7 +80,8 @@ Think of adding and subtracting like moving up and down a thermometer.
 When two negative signs are right next to each other (with no number in between), they merge into a positive. 
 $$12 - - 4 \rightarrow 12 + 4 = 16$$
 However, if they are separated by a number, they do NOT make a positive! 
-$$-5 - 3 = -8$$ (You are at -5 degrees, and the temperature drops by another 3 degrees).
+$$-5 - 3 = -8$$
+(You are at -5 degrees, and the temperature drops by another 3 degrees).
 </SteveTip>
 
 ### Multiplying and Dividing
@@ -68,7 +109,7 @@ $$15.00 - 4.23 = 10.77$$
 
 ### Multiplication
 **Rule:** Ignore the decimals, multiply the whole numbers, then put the decimal point back.
-1. $0.3 \times 0.04$
+1. Evaluate $0.3 \times 0.04$
 2. Ignore decimals: $3 \times 4 = 12$
 3. Count total decimal places in the question: 1 place in $0.3$ + 2 places in $0.04$ = 3 total places.
 4. Answer must have 3 decimal places: $0.012$
@@ -84,7 +125,7 @@ $$15.00 - 4.23 = 10.77$$
 
 ### Addition and Subtraction
 You **must** find a common denominator before you can add or subtract.
-$$ \frac{1}{3} + \frac{2}{5} \rightarrow \frac{5}{15} + \frac{6}{15} = \frac{11}{15} $$
+$$\frac{1}{3} + \frac{2}{5} \rightarrow \frac{5}{15} + \frac{6}{15} = \frac{11}{15}$$
 
 ### Multiplication
 Multiply the top by the top (numerator) and the bottom by the bottom (denominator). 
@@ -92,12 +133,50 @@ Multiply the top by the top (numerator) and the bottom by the bottom (denominato
 
 <Aside type="tip" title="Cross-Cancelling">
 To avoid dealing with massive numbers, simplify *before* you multiply by looking for common factors diagonally.
-$$ \frac{4}{9} \times \frac{3}{8} \rightarrow \frac{1}{3} \times \frac{1}{2} = \frac{1}{6} $$
+$$\frac{4}{9} \times \frac{3}{8} \rightarrow \frac{1}{3} \times \frac{1}{2} = \frac{1}{6}$$
 </Aside>
 
 ### Division
-Use the "Keep, Change, Flip" (KCF) rule. Keep the first fraction, change $\div$ to $\times$, and flip the second fraction upside down.
-$$ \frac{2}{7} \div \frac{3}{5} \rightarrow \frac{2}{7} \times \frac{5}{3} = \frac{10}{21} $$
+Use the "**Keep, Change, Flip**" (KCF) rule. 
+
+<svg viewBox="0 0 680 160" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+        </marker>
+    </defs>
+
+    <text x="80" y="80" font-size="28" font-family="Times New Roman" fill="#333" text-anchor="middle">2</text>
+    <line x1="60" y1="90" x2="100" y2="90" stroke="#333" stroke-width="2"/>
+    <text x="80" y="115" font-size="28" font-family="Times New Roman" fill="#333" text-anchor="middle">7</text>
+    
+    <text x="180" y="100" font-size="32" font-family="sans-serif" font-weight="bold" fill="#ae2012" text-anchor="middle">÷</text>
+
+    <text x="280" y="80" font-size="28" font-family="Times New Roman" fill="#333" text-anchor="middle">3</text>
+    <line x1="260" y1="90" x2="300" y2="90" stroke="#333" stroke-width="2"/>
+    <text x="280" y="115" font-size="28" font-family="Times New Roman" fill="#333" text-anchor="middle">5</text>
+
+    <path d="M 340 95 L 390 95" fill="none" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <text x="450" y="80" font-size="28" font-family="Times New Roman" fill="#0a9396" text-anchor="middle">2</text>
+    <line x1="430" y1="90" x2="470" y2="90" stroke="#0a9396" stroke-width="2"/>
+    <text x="450" y="115" font-size="28" font-family="Times New Roman" fill="#0a9396" text-anchor="middle">7</text>
+    
+    <text x="530" y="100" font-size="32" font-family="sans-serif" font-weight="bold" fill="#0a9396" text-anchor="middle">×</text>
+
+    <text x="610" y="80" font-size="28" font-family="Times New Roman" fill="#0a9396" text-anchor="middle">5</text>
+    <line x1="590" y1="90" x2="630" y2="90" stroke="#0a9396" stroke-width="2"/>
+    <text x="610" y="115" font-size="28" font-family="Times New Roman" fill="#0a9396" text-anchor="middle">3</text>
+
+    <text x="80" y="35" font-size="16" font-family="sans-serif" font-weight="bold" fill="#333" text-anchor="middle">KEEP</text>
+    <text x="180" y="35" font-size="16" font-family="sans-serif" font-weight="bold" fill="#ae2012" text-anchor="middle">CHANGE</text>
+    <text x="280" y="35" font-size="16" font-family="sans-serif" font-weight="bold" fill="#333" text-anchor="middle">FLIP</text>
+
+    <path d="M 80 45 L 80 55" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 180 45 L 180 55" fill="none" stroke="#ae2012" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 280 45 L 280 55" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+</svg>
+
 *If dividing by a whole integer, flip it to a fraction with 1 on top.* ($\frac{3}{4} \div 2 \rightarrow \frac{3}{4} \times \frac{1}{2} = \frac{3}{8}$).
 
 <SteveTip title="The Mixed Number Disaster">
@@ -118,36 +197,40 @@ Many students try to multiply the whole numbers and fractions separately ($2 \ti
 
 <Tabs>
   <TabItem label="📝 Question 1: Practical Temperature">
-    The temperature in Moscow is $-12^\circ\text{C}$. The temperature in London is $15^\circ\text{C}$ warmer. 
-    What is the temperature in London?
+    * **a)** The temperature in Moscow is $-12^\circ\text{C}$. The temperature in London is $15^\circ\text{C}$ warmer. What is the temperature in London?
+    * **b)** At midnight, the temperature is $5^\circ\text{C}$. By 4 AM, it has dropped by $9^\circ\text{C}$. What is the new temperature?
+    * **c)** What is the difference in temperature between $-8^\circ\text{C}$ and $14^\circ\text{C}$?
   </TabItem>
   <TabItem label="✅ Solution 1">
-    "Warmer" means we add the difference to the starting temperature.
-    $$-12 + 15 = 3$$
-    **Answer:** $3^\circ\text{C}$
+    * **a)** "Warmer" means add: $-12 + 15 = \mathbf{3^\circ\text{C}}$
+    * **b)** "Dropped" means subtract: $5 - 9 = \mathbf{-4^\circ\text{C}}$
+    * **c)** Difference is largest minus smallest: $14 - (-8) = 14 + 8 = \mathbf{22^\circ\text{C}}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 2: Negative Arithmetic">
-    Work out the value of $-6 - (-4) + (-3)$.
+    * **a)** Work out $-6 - (-4) + (-3)$
+    * **b)** Work out $5 + (-8) - (-2)$
+    * **c)** Work out $-12 - 5 + (-1)$
   </TabItem>
   <TabItem label="✅ Solution 2">
-    1. Resolve the double negative: $-6 + 4 + (-3)$
-    2. Adding a negative is subtraction: $-6 + 4 - 3$
-    3. Work left to right: $-2 - 3 = -5$
-    **Answer:** $-5$
+    * **a)** $-6 + 4 - 3 \rightarrow -2 - 3 = \mathbf{-5}$
+    * **b)** $5 - 8 + 2 \rightarrow -3 + 2 = \mathbf{-1}$
+    * **c)** $-17 - 1 = \mathbf{-18}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 3: Chain Multiplication">
-    Calculate $(-3) \times (-5) \times (-2)$.
+    * **a)** Calculate $(-3) \times (-5) \times (-2)$
+    * **b)** Calculate $(-2) \times 4 \times (-5)$
+    * **c)** Calculate $(-1)^5 \times 6$
   </TabItem>
   <TabItem label="✅ Solution 3">
-    1. Count the negatives: There are three (an odd number), so the answer will be negative.
-    2. Multiply the integers: $3 \times 5 \times 2 = 30$.
-    **Answer:** $-30$
+    * **a)** Three negatives (odd) = negative answer. $3 \times 5 \times 2 = \mathbf{-30}$
+    * **b)** Two negatives (even) = positive answer. $2 \times 4 \times 5 = \mathbf{40}$
+    * **c)** $(-1)^5 = -1$. Then $-1 \times 6 = \mathbf{-6}$
   </TabItem>
 </Tabs>
 
@@ -156,38 +239,41 @@ Many students try to multiply the whole numbers and fractions separately ($2 \ti
 ### Part B: Decimals
 
 <Tabs>
-  <TabItem label="📝 Question 4: Whole Number Edge Case">
-    Calculate $20 - 3.45$.
+  <TabItem label="📝 Question 4: Addition and Subtraction">
+    * **a)** Calculate $20 - 3.45$
+    * **b)** Calculate $15 - 8.02$
+    * **c)** Calculate $100 - 45.6$
   </TabItem>
   <TabItem label="✅ Solution 4">
-    1. Line up the decimals by adding placeholder zeroes to the 20: 
-       $$20.00 - 3.45$$
-    2. Borrow and subtract column by column.
-    **Answer:** $16.55$
+    * **a)** Line up decimals: $20.00 - 3.45 = \mathbf{16.55}$
+    * **b)** Line up decimals: $15.00 - 8.02 = \mathbf{6.98}$
+    * **c)** Line up decimals: $100.0 - 45.6 = \mathbf{54.4}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 5: Decimal Multiplication">
-    Calculate $0.07 \times 0.6$.
+    * **a)** Calculate $0.07 \times 0.6$
+    * **b)** Calculate $1.2 \times 0.04$
+    * **c)** Calculate $0.05 \times 0.08$
   </TabItem>
   <TabItem label="✅ Solution 5">
-    1. Ignore decimals and multiply integers: $7 \times 6 = 42$
-    2. Count decimal places in the question: 2 places in $0.07$ + 1 place in $0.6$ = 3 places total.
-    3. Make 42 have 3 decimal places: $0.042$
-    **Answer:** $0.042$
+    * **a)** $7 \times 6 = 42$. Three decimal places needed $\rightarrow \mathbf{0.042}$
+    * **b)** $12 \times 4 = 48$. Three decimal places needed $\rightarrow \mathbf{0.048}$
+    * **c)** $5 \times 8 = 40$. Four decimal places needed $\rightarrow \mathbf{0.004}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 6: Decimal Division">
-    Work out $0.56 \div 0.08$.
+    * **a)** Work out $0.56 \div 0.08$
+    * **b)** Work out $1.44 \div 1.2$
+    * **c)** Work out $0.025 \div 0.5$
   </TabItem>
   <TabItem label="✅ Solution 6">
-    1. The divisor is $0.08$. Multiply it by $100$ to make it a whole number ($8$).
-    2. You must also multiply the first number by $100$: $0.56 \times 100 = 56$.
-    3. The new calculation is $56 \div 8$.
-    **Answer:** $7$
+    * **a)** Multiply both by 100: $56 \div 8 = \mathbf{7}$
+    * **b)** Multiply both by 10: $14.4 \div 12 = \mathbf{1.2}$
+    * **c)** Multiply both by 10: $0.25 \div 5 = \mathbf{0.05}$
   </TabItem>
 </Tabs>
 
@@ -196,55 +282,54 @@ Many students try to multiply the whole numbers and fractions separately ($2 \ti
 ### Part C: Fractions & Mixed Numbers
 
 <Tabs>
-  <TabItem label="📝 Question 7: Adding Fractions">
-    Calculate $\frac{3}{8} + \frac{1}{6}$. Give your answer in its simplest form.
+  <TabItem label="📝 Question 7: Adding & Subtracting Fractions">
+    * **a)** Calculate $\frac{3}{8} + \frac{1}{6}$
+    * **b)** Calculate $\frac{2}{5} + \frac{1}{4}$
+    * **c)** Calculate $\frac{5}{9} - \frac{1}{6}$
   </TabItem>
   <TabItem label="✅ Solution 7">
-    1. Find the Lowest Common Multiple (LCM) of 8 and 6, which is 24.
-    2. Convert both fractions: $\frac{3 \times 3}{8 \times 3} = \frac{9}{24}$ and $\frac{1 \times 4}{6 \times 4} = \frac{4}{24}$
-    3. Add numerators: $\frac{9 + 4}{24} = \frac{13}{24}$
-    **Answer:** $\frac{13}{24}$
+    * **a)** LCM is 24: $\frac{9}{24} + \frac{4}{24} = \mathbf{\frac{13}{24}}$
+    * **b)** LCM is 20: $\frac{8}{20} + \frac{5}{20} = \mathbf{\frac{13}{20}}$
+    * **c)** LCM is 18: $\frac{10}{18} - \frac{3}{18} = \mathbf{\frac{7}{18}}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 8: Fraction by an Integer">
-    Calculate $\frac{5}{12} \times 4$. Give your answer in its simplest form.
+    * **a)** Calculate $\frac{5}{12} \times 4$
+    * **b)** Calculate $\frac{3}{10} \times 5$
+    * **c)** Calculate $\frac{7}{8} \times 12$
   </TabItem>
   <TabItem label="✅ Solution 8">
-    1. Put the integer over 1: $\frac{5}{12} \times \frac{4}{1}$
-    2. Cross-cancel the 4 and the 12 (divide both by 4): $\frac{5}{3} \times \frac{1}{1}$
-    3. Multiply across: $\frac{5}{3}$
-    4. Convert to a mixed number: $1\frac{2}{3}$
-    **Answer:** $1\frac{2}{3}$
+    * **a)** $\frac{5}{12} \times \frac{4}{1} = \frac{5}{3} = \mathbf{1\frac{2}{3}}$
+    * **b)** $\frac{3}{10} \times \frac{5}{1} = \frac{3}{2} = \mathbf{1\frac{1}{2}}$
+    * **c)** $\frac{7}{8} \times \frac{12}{1} = \frac{21}{2} = \mathbf{10\frac{1}{2}}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 9: Mixed Number Division">
-    Calculate $2\frac{1}{4} \div \frac{3}{8}$.
+    * **a)** Calculate $2\frac{1}{4} \div \frac{3}{8}$
+    * **b)** Calculate $1\frac{1}{2} \div 1\frac{3}{4}$
+    * **c)** Calculate $3\frac{1}{3} \div 5$
   </TabItem>
   <TabItem label="✅ Solution 9">
-    1. Convert mixed to improper: $\frac{9}{4} \div \frac{3}{8}$
-    2. Keep, Change, Flip (KCF): $\frac{9}{4} \times \frac{8}{3}$
-    3. Cross cancel: (3 goes into 9 three times, 4 goes into 8 two times).
-       $$\frac{3}{1} \times \frac{2}{1} = 6$$
-    **Answer:** $6$
+    * **a)** $\frac{9}{4} \times \frac{8}{3} \rightarrow$ Cross cancel $\rightarrow 3 \times 2 = \mathbf{6}$
+    * **b)** $\frac{3}{2} \div \frac{7}{4} \rightarrow \frac{3}{2} \times \frac{4}{7} = \frac{12}{14} = \mathbf{\frac{6}{7}}$
+    * **c)** $\frac{10}{3} \div \frac{5}{1} \rightarrow \frac{10}{3} \times \frac{1}{5} = \frac{10}{15} = \mathbf{\frac{2}{3}}$
   </TabItem>
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 10: Mixed Number Subtraction (Extended)">
-    Calculate $3\frac{1}{5} - 1\frac{3}{4}$. Give your answer as a mixed number in its simplest form.
+  <TabItem label="📝 Question 10: Mixed Number Subtraction">
+    * **a)** Calculate $3\frac{1}{5} - 1\frac{3}{4}$
+    * **b)** Calculate $4\frac{1}{3} - 2\frac{1}{2}$
+    * **c)** Calculate $5\frac{1}{4} - 3\frac{5}{6}$
   </TabItem>
   <TabItem label="✅ Solution 10">
-    1. Convert to improper fractions: 
-       $3\frac{1}{5} = \frac{16}{5}$ and $1\frac{3}{4} = \frac{7}{4}$
-    2. Find a common denominator (20):
-       $\frac{16 \times 4}{5 \times 4} = \frac{64}{20}$ and $\frac{7 \times 5}{4 \times 5} = \frac{35}{20}$
-    3. Subtract: $\frac{64}{20} - \frac{35}{20} = \frac{29}{20}$
-    4. Convert back: $29 \div 20 = 1$ with a remainder of $9$.
-    **Answer:** $1\frac{9}{20}$
+    * **a)** $\frac{16}{5} - \frac{7}{4} \rightarrow \frac{64}{20} - \frac{35}{20} = \frac{29}{20} = \mathbf{1\frac{9}{20}}$
+    * **b)** $\frac{13}{3} - \frac{5}{2} \rightarrow \frac{26}{6} - \frac{15}{6} = \frac{11}{6} = \mathbf{1\frac{5}{6}}$
+    * **c)** $\frac{21}{4} - \frac{23}{6} \rightarrow \frac{63}{12} - \frac{46}{12} = \frac{17}{12} = \mathbf{1\frac{5}{12}}$
   </TabItem>
 </Tabs>
 
@@ -254,30 +339,27 @@ Many students try to multiply the whole numbers and fractions separately ($2 \ti
 
 <Tabs>
   <TabItem label="📝 Question 11: BIDMAS with Negatives">
-    Calculate the value of $10 - (-2)^3 \div 4$.
+    * **a)** Calculate $10 - (-2)^3 \div 4$
+    * **b)** Calculate $-5 + 3 \times (-4)$
+    * **c)** Calculate $(-4)^2 - 5 \times 3$
   </TabItem>
   <TabItem label="✅ Solution 11">
-    1. **Indices:** $(-2)^3 = -8$
-    2. The equation is now: $10 - (-8) \div 4$
-    3. **Division:** $(-8) \div 4 = -2$
-    4. The equation is now: $10 - (-2)$
-    5. **Subtraction:** $10 + 2 = 12$
-    **Answer:** $12$
+    * **a)** Indices first: $10 - (-8) \div 4$. Division next: $10 - (-2) = \mathbf{12}$
+    * **b)** Multiplication first: $-5 + (-12) = \mathbf{-17}$
+    * **c)** Indices and Multiplication: $16 - 15 = \mathbf{1}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 12: Advanced BIDMAS (Extended)">
-    Calculate $16^{\frac{1}{2}} - (-3)^2 \times 2$.
+    * **a)** Calculate $16^{\frac{1}{2}} - (-3)^2 \times 2$
+    * **b)** Calculate $27^{\frac{1}{3}} + 4 \times 2^{-2}$
+    * **c)** Calculate $100^{\frac{1}{2}} - (2^3 - 10)^2$
   </TabItem>
   <TabItem label="✅ Solution 12">
-    1. **Indices first:** $16^{\frac{1}{2}}$ is the square root of 16, which is $4$.
-       $(-3)^2$ is $-3 \times -3$, which is $9$.
-    2. The equation is now: $4 - 9 \times 2$
-    3. **Multiplication next:** $9 \times 2 = 18$
-    4. The equation is now: $4 - 18$
-    5. **Subtraction last:** $4 - 18 = -14$
-    **Answer:** $-14$
+    * **a)** Roots/Powers first: $4 - 9 \times 2 \rightarrow 4 - 18 = \mathbf{-14}$
+    * **b)** Roots/Powers first: $3 + 4 \times \frac{1}{4} \rightarrow 3 + 1 = \mathbf{4}$
+    * **c)** Bracket first: $(8 - 10) = -2$. Then Root/Powers: $10 - (-2)^2 \rightarrow 10 - 4 = \mathbf{6}$
   </TabItem>
 </Tabs>
 

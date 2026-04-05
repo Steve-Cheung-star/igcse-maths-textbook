@@ -11,15 +11,44 @@ We have already looked at basic powers and roots. Now it is time to look at the 
 
 When multiplying or dividing numbers that have the **same base** (the big number at the bottom), you can use these shortcuts to combine their indices (the little powers at the top).
 
+<svg viewBox="0 0 750 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#f8f9fa" rx="15"/>
+    
+    <g transform="translate(20, 20)">
+        <rect width="220" height="180" fill="#fff" rx="10" stroke="#0a9396" stroke-width="3"/>
+        <text x="110" y="40" font-family="sans-serif" font-weight="bold" font-size="16" fill="#0a9396" text-anchor="middle">1. MULTIPLICATION</text>
+        <text x="110" y="65" font-family="sans-serif" font-size="14" fill="#555" text-anchor="middle">Add the powers</text>
+        
+        <text x="110" y="115" font-family="Times New Roman" font-size="28" font-style="italic" fill="#333" text-anchor="middle">a<tspan dy="-15" font-size="20" fill="#ae2012">m</tspan><tspan dy="15" font-style="normal"> × </tspan><tspan font-style="italic">a</tspan><tspan dy="-15" font-size="20" fill="#0a9396">n</tspan><tspan dy="15" font-style="normal"> = </tspan><tspan font-style="italic">a</tspan><tspan dy="-15" font-size="20" fill="#e9c46a">m+n</tspan></text>
+        <line x1="40" y1="140" x2="180" y2="140" stroke="#eee" stroke-width="2"/>
+        <text x="110" y="165" font-family="monospace" font-size="14" fill="#555" text-anchor="middle">2³ × 2⁴ = 2⁷</text>
+    </g>
+
+    <g transform="translate(265, 20)">
+        <rect width="220" height="180" fill="#fff" rx="10" stroke="#ae2012" stroke-width="3"/>
+        <text x="110" y="40" font-family="sans-serif" font-weight="bold" font-size="16" fill="#ae2012" text-anchor="middle">2. DIVISION</text>
+        <text x="110" y="65" font-family="sans-serif" font-size="14" fill="#555" text-anchor="middle">Subtract the powers</text>
+        
+        <text x="110" y="115" font-family="Times New Roman" font-size="28" font-style="italic" fill="#333" text-anchor="middle">a<tspan dy="-15" font-size="20" fill="#ae2012">m</tspan><tspan dy="15" font-style="normal"> ÷ </tspan><tspan font-style="italic">a</tspan><tspan dy="-15" font-size="20" fill="#0a9396">n</tspan><tspan dy="15" font-style="normal"> = </tspan><tspan font-style="italic">a</tspan><tspan dy="-15" font-size="20" fill="#e9c46a">m-n</tspan></text>
+        <line x1="40" y1="140" x2="180" y2="140" stroke="#eee" stroke-width="2"/>
+        <text x="110" y="165" font-family="monospace" font-size="14" fill="#555" text-anchor="middle">2⁶ ÷ 2⁴ = 2²</text>
+    </g>
+
+    <g transform="translate(510, 20)">
+        <rect width="220" height="180" fill="#fff" rx="10" stroke="#e9c46a" stroke-width="3"/>
+        <text x="110" y="40" font-family="sans-serif" font-weight="bold" font-size="16" fill="#e9c46a" text-anchor="middle">3. POWER OF POWER</text>
+        <text x="110" y="65" font-family="sans-serif" font-size="14" fill="#555" text-anchor="middle">Multiply the powers</text>
+        
+        <text x="110" y="115" font-family="Times New Roman" font-size="28" font-style="normal" fill="#333" text-anchor="middle">(<tspan font-style="italic">a</tspan><tspan dy="-15" font-size="20" fill="#ae2012">m</tspan><tspan dy="15">)</tspan><tspan dy="-15" font-size="20" fill="#0a9396">n</tspan><tspan dy="15"> = </tspan><tspan font-style="italic">a</tspan><tspan dy="-15" font-size="20" fill="#e9c46a">m×n</tspan></text>
+        <line x1="40" y1="140" x2="180" y2="140" stroke="#eee" stroke-width="2"/>
+        <text x="110" y="165" font-family="monospace" font-size="14" fill="#555" text-anchor="middle">(2³)² = 2⁶</text>
+    </g>
+</svg>
+
 <Aside type="tip" title="The Index Laws">
 1. **Multiplication (Add the powers):** $$a^m \times a^n = a^{m+n}$$
-   *Example:* $2^3 \times 2^4 = 2^{3+4} = 2^7$
-
 2. **Division (Subtract the powers):** $$a^m \div a^n = a^{m-n}$$
-   *Example:* $2^6 \div 2^4 = 2^{6-4} = 2^2$
-
 3. **Power of a Power (Multiply the powers):** $$(a^m)^n = a^{m \times n}$$
-   *Example:* $(2^3)^2 = 2^{3 \times 2} = 2^6$
 </Aside>
 
 ---
@@ -50,15 +79,50 @@ A negative power means the **reciprocal** of the positive power. It "flips" the 
 
 When an index is a fraction, it represents a root. 
 
+<svg viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+        </marker>
+        <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#ae2012" />
+        </marker>
+        <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#0077b6" />
+        </marker>
+        <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#2a9d8f" />
+        </marker>
+    </defs>
+
+    <text x="250" y="160" font-family="Times New Roman" font-size="80" font-style="italic" fill="#333">x</text>
+    <text x="310" y="100" font-family="sans-serif" font-weight="bold" font-size="40" fill="#ae2012">-</text>
+    
+    <text x="340" y="80" font-family="Times New Roman" font-size="35" font-style="italic" fill="#0077b6">m</text>
+    <line x1="335" y1="95" x2="375" y2="95" stroke="#333" stroke-width="3"/>
+    <text x="340" y="130" font-family="Times New Roman" font-size="35" font-style="italic" fill="#2a9d8f">n</text>
+
+    <path d="M 220 220 L 260 170" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <rect x="120" y="220" width="120" height="30" rx="5" fill="#f8f9fa" stroke="#333" stroke-width="2"/>
+    <text x="180" y="240" font-family="sans-serif" font-weight="bold" font-size="14" fill="#333" text-anchor="middle">THE BASE</text>
+
+    <path d="M 200 60 L 295 90" fill="none" stroke="#ae2012" stroke-width="2" marker-end="url(#arrow-red)"/>
+    <rect x="20" y="45" width="170" height="30" rx="5" fill="#fdf0ef" stroke="#ae2012" stroke-width="2"/>
+    <text x="105" y="65" font-family="sans-serif" font-weight="bold" font-size="14" fill="#ae2012" text-anchor="middle">RECIPROCAL (FLIP)</text>
+
+    <path d="M 450 60 L 385 65" fill="none" stroke="#0077b6" stroke-width="2" marker-end="url(#arrow-blue)"/>
+    <rect x="460" y="45" width="120" height="30" rx="5" fill="#eaf4f4" stroke="#0077b6" stroke-width="2"/>
+    <text x="520" y="65" font-family="sans-serif" font-weight="bold" font-size="14" fill="#0077b6" text-anchor="middle">POWER (TOP)</text>
+
+    <path d="M 450 160 L 385 130" fill="none" stroke="#2a9d8f" stroke-width="2" marker-end="url(#arrow-green)"/>
+    <rect x="460" y="145" width="130" height="30" rx="5" fill="#e9f5f5" stroke="#2a9d8f" stroke-width="2"/>
+    <text x="525" y="165" font-family="sans-serif" font-weight="bold" font-size="14" fill="#2a9d8f" text-anchor="middle">ROOT (BOTTOM)</text>
+</svg>
+
 <Aside type="note" title="Anatomy of a Complex Index">
 $$ 
-x^{\scriptstyle -\frac{\color{crimson}{m}}{\color{forestgreen}{n}}} \implies \frac{1}{(\sqrt[\color{forestgreen}{n}]{x})^{\color{crimson}{m}}} 
+x^{\scriptstyle -\frac{\color{blue}{m}}{\color{green}{n}}} \implies \frac{1}{(\sqrt[\color{green}{n}]{x})^{\color{blue}{m}}} 
 $$
-
-* **The Base ($x$):** The number being modified.
-* **The Negative Sign ($-$):** The 'reciprocal' instruction. It "flips" the base to the bottom of a fraction.
-* **The Numerator ($\color{crimson}{m}$):** The actual 'power'. It multiplies the base.
-* **The Denominator ($\color{forestgreen}{n}$):** The 'root'. It takes the nth root of the base.
 </Aside>
 
 * A power of $\frac{1}{2}$ is a **square root**: $16^{\scriptstyle \frac{1}{2}} = \sqrt{16} = 4$
@@ -91,39 +155,43 @@ The hardest questions will mix negative and fractional indices together. Just ta
 
 <Tabs>
   <TabItem label="📝 Question 1: Multiplication Rule">
-    Evaluate $2^{-3} \times 2^4$. Leave your answer as an integer.
+    Evaluate the following. Leave your answer as an integer.
+    * **a)** $2^{-3} \times 2^4$
+    * **b)** $5^6 \times 5^{-4}$
+    * **c)** $3^{-2} \times 3^5$
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. The bases are the same (2), and we are multiplying, so we **add** the powers.
-    2. $-3 + 4 = 1$
-    3. The expression simplifies to $2^1$.
-    **Answer:** $2$
+    * **a)** Add the powers: $-3 + 4 = 1 \implies 2^1 = \mathbf{2}$
+    * **b)** Add the powers: $6 + (-4) = 2 \implies 5^2 = \mathbf{25}$
+    * **c)** Add the powers: $-2 + 5 = 3 \implies 3^3 = \mathbf{27}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 2: Power of a Power">
-    Simplify $(2^3)^2$. Give your answer as a single power of 2, and then evaluate it.
+    Simplify and evaluate the following:
+    * **a)** $(2^3)^2$
+    * **b)** $(10^2)^3$
+    * **c)** $(3^{-1})^{-3}$
   </TabItem>
   <TabItem label="✅ Solution 2">
-    1. We have a power raised to another power, so we **multiply** the indices.
-    2. $3 \times 2 = 6$
-    3. The simplified form is $2^6$.
-    4. Evaluating $2^6 = 2 \times 2 \times 2 \times 2 \times 2 \times 2 = 64$.
-    **Answer:** $2^6$ or $64$
+    * **a)** Multiply the indices: $3 \times 2 = 6 \implies 2^6 = \mathbf{64}$
+    * **b)** Multiply the indices: $2 \times 3 = 6 \implies 10^6 = \mathbf{1,000,000}$
+    * **c)** Multiply the indices: $-1 \times -3 = 3 \implies 3^3 = \mathbf{27}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 3: Division Rule">
-    Evaluate $2^3 \div 2^4$. Give your answer as a fraction.
+    Evaluate the following. Give your answer as a fraction or integer.
+    * **a)** $2^3 \div 2^4$
+    * **b)** $5^2 \div 5^4$
+    * **c)** $4^5 \div 4^2$
   </TabItem>
   <TabItem label="✅ Solution 3">
-    1. We are dividing, so we **subtract** the powers.
-    2. $3 - 4 = -1$
-    3. The expression becomes $2^{-1}$.
-    4. A negative power means the reciprocal.
-    **Answer:** $\frac{1}{2}$
+    * **a)** Subtract powers: $3 - 4 = -1 \implies 2^{-1} = \mathbf{\frac{1}{2}}$
+    * **b)** Subtract powers: $2 - 4 = -2 \implies 5^{-2} = \frac{1}{5^2} = \mathbf{\frac{1}{25}}$
+    * **c)** Subtract powers: $5 - 2 = 3 \implies 4^3 = \mathbf{64}$
   </TabItem>
 </Tabs>
 
@@ -133,49 +201,57 @@ The hardest questions will mix negative and fractional indices together. Just ta
 
 <Tabs>
   <TabItem label="📝 Question 4: Negative Indices">
-    Find the exact value of $7^{-2}$.
+    Find the exact value of:
+    * **a)** $7^{-2}$
+    * **b)** $4^{-3}$
+    * **c)** $2^{-5}$
   </TabItem>
   <TabItem label="✅ Solution 4">
-    1. The negative index flips the base underneath a 1: $\frac{1}{7^2}$
-    2. Square the 7.
-    **Answer:** $\frac{1}{49}$
+    * **a)** Flip and square: $\frac{1}{7^2} = \mathbf{\frac{1}{49}}$
+    * **b)** Flip and cube: $\frac{1}{4^3} = \mathbf{\frac{1}{64}}$
+    * **c)** Flip and apply power: $\frac{1}{2^5} = \mathbf{\frac{1}{32}}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 5: Simple Fractional Indices">
-    Find the exact value of $64^{\scriptstyle \frac{1}{2}}$.
+    Find the exact value of:
+    * **a)** $64^{\scriptstyle \frac{1}{2}}$
+    * **b)** $125^{\scriptstyle \frac{1}{3}}$
+    * **c)** $32^{\scriptstyle \frac{1}{5}}$
   </TabItem>
   <TabItem label="✅ Solution 5">
-    1. A power of $\frac{1}{2}$ means square root.
-    2. $\sqrt{64} = 8$.
-    **Answer:** $8$
+    * **a)** The power of $\frac{1}{2}$ is a square root: $\sqrt{64} = \mathbf{8}$
+    * **b)** The power of $\frac{1}{3}$ is a cube root: $\sqrt[3]{125} = \mathbf{5}$
+    * **c)** The power of $\frac{1}{5}$ is a fifth root: $\sqrt[5]{32} = \mathbf{2}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 6: Advanced Fractional Indices (Extended)">
-    Find the exact value of $81^{\scriptstyle \frac{3}{4}}$.
+    Find the exact value of:
+    * **a)** $81^{\scriptstyle \frac{3}{4}}$
+    * **b)** $27^{\scriptstyle \frac{2}{3}}$
+    * **c)** $32^{\scriptstyle \frac{4}{5}}$
   </TabItem>
   <TabItem label="✅ Solution 6">
-    1. "Root the bottom": The denominator is 4, so find the fourth root of 81.
-       $\sqrt[4]{81} = 3$ *(Because $3 \times 3 \times 3 \times 3 = 81$)*.
-    2. "Power the top": The numerator is 3, so cube your result.
-       $3^3 = 27$.
-    **Answer:** $27$
+    * **a)** Root bottom, power top: $(\sqrt[4]{81})^3 = 3^3 = \mathbf{27}$
+    * **b)** Root bottom, power top: $(\sqrt[3]{27})^2 = 3^2 = \mathbf{9}$
+    * **c)** Root bottom, power top: $(\sqrt[5]{32})^4 = 2^4 = \mathbf{16}$
   </TabItem>
 </Tabs>
 
 <Tabs>
   <TabItem label="📝 Question 7: Combined Negative and Fractional (Extended)">
-    Evaluate $8^{\scriptstyle -\frac{2}{3}}$.
+    Evaluate the following:
+    * **a)** $8^{\scriptstyle -\frac{2}{3}}$
+    * **b)** $16^{\scriptstyle -\frac{3}{4}}$
+    * **c)** $125^{\scriptstyle -\frac{2}{3}}$
   </TabItem>
   <TabItem label="✅ Solution 7">
-    1. The negative flips it: $\frac{1}{8^{\scriptstyle \frac{2}{3}}}$
-    2. Root the bottom (Cube root of 8): $\sqrt[3]{8} = 2$
-    3. Power the top (Square the 2): $2^2 = 4$
-    4. Write it under the 1.
-    **Answer:** $\frac{1}{4}$
+    * **a)** Flip, then root bottom, power top: $\frac{1}{(\sqrt[3]{8})^2} = \frac{1}{2^2} = \mathbf{\frac{1}{4}}$
+    * **b)** Flip, then root bottom, power top: $\frac{1}{(\sqrt[4]{16})^3} = \frac{1}{2^3} = \mathbf{\frac{1}{8}}$
+    * **c)** Flip, then root bottom, power top: $\frac{1}{(\sqrt[3]{125})^2} = \frac{1}{5^2} = \mathbf{\frac{1}{25}}$
   </TabItem>
 </Tabs>
 
