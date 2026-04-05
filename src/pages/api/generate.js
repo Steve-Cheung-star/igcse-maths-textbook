@@ -1,6 +1,6 @@
 export const prerender = false;
 
-// You no longer need the @google/generative-ai import!
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 export const POST = async ({ request }) => {
   try {
@@ -10,6 +10,9 @@ export const POST = async ({ request }) => {
 
     const data = await request.json();
     const { topic, difficulty } = data;
+
+    const genAI = new GoogleGenerativeAI(import.meta.env.GEMINI_API_KEY);
+    const model = genAI.getGenerativeModel({ model: "gemini-3.1-flash-lite-preview" });
 
     const prompt = `Act as an expert IGCSE Math teacher. Generate one unique ${difficulty} level practice problem about ${topic}. 
 Use standard LaTeX enclosed ONLY in single $ for ALL math equations. DO NOT use double $$ under any circumstances. 
@@ -65,32 +68,8 @@ SOLUTION:
 
 **Final Answer:** [State the final mathematical answer clearly, keeping units outside the $]`;
 
-    // --- OPENROUTER API CALL ---
-    const openRouterResponse = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${import.meta.env.OPENROUTER_API_KEY}`,
-        "Content-Type": "application/json",
-        // Optional but recommended by OpenRouter for analytics/ranking:
-        // "HTTP-Referer": "https://your-site-url.com", 
-        // "X-Title": "Your App Name"
-      },
-      body: JSON.stringify({
-        // Replace with whichever model you want to route to
-        model: "google/gemma-3-27b-it:free", 
-        messages: [
-          { role: "user", content: prompt }
-        ]
-      })
-    });
-
-    if (!openRouterResponse.ok) {
-      const errorData = await openRouterResponse.text();
-      throw new Error(`OpenRouter Error: ${openRouterResponse.status} - ${errorData}`);
-    }
-
-    const openRouterData = await openRouterResponse.json();
-    let responseText = openRouterData.choices[0].message.content;
+    const result = await model.generateContent(prompt);
+    let responseText = await result.response.text();
 
     // --- POST-PROCESSING FAILSAFE ---
     // Finds any <svg>...</svg> blocks and removes all line breaks/newlines inside them, 
