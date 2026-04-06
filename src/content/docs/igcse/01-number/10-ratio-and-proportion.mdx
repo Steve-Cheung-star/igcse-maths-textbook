@@ -28,10 +28,10 @@ Before you can simplify a ratio, the units **must** be the same. You cannot simp
 
 Sometimes you are given two separate ratios that share one common item, and you need to find the relationship between the other two. To do this efficiently, lay out the full relationship alphabetically in a grid. This makes identifying the **Lowest Common Multiple (LCM)** simpler.
 
-**Example: Given a : b = 2 : 3$ and a : c = 5 : 4, find the ratio b : c.**
+**Example: Given a : b = 2 : 3 and a : c = 5 : 4, find the ratio b : c.**
 
 <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
-    <rect width="100%" height="100%" fill="#f8f9fa" rx="10"/>
+    <rect width="100%" height="100%" fill="transparent" rx="10"/>
     
     <rect x="100" y="20" width="100" height="180" fill="#fff3cd" rx="10"/>
     <text x="150" y="45" font-family="sans-serif" font-size="12" font-weight="bold" fill="#856404" text-anchor="middle">THE BRIDGE</text>
@@ -80,7 +80,7 @@ Sometimes you are given two separate ratios that share one common item, and you 
 In structured questions, you will often be given a fraction and asked for a ratio, or vice versa. The secret is the **Total Number of Parts**.
 
 <svg viewBox="0 0 600 160" xmlns="http://www.w3.org/2000/svg">
-    <rect width="100%" height="100%" fill="#ffffff" rx="10"/>
+    <rect width="100%" height="100%" fill="transparent" rx="10"/>
     <text x="300" y="30" font-family="sans-serif" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">"3/8 of the cake is chocolate."</text>
     
     <g transform="translate(100, 50)">
@@ -123,7 +123,7 @@ The correct ratio is 2 : 3. Always check: do your ratio parts add up to the frac
 This involves sharing a total amount into unequal parts. Remember the three-step mantra: **Add, Divide, Multiply.**
 
 <svg viewBox="0 0 600 120" xmlns="http://www.w3.org/2000/svg">
-    <rect width="100%" height="100%" fill="#eaf4f4" rx="10"/>
+    <rect width="100%" height="100%" fill="transparent" rx="10"/>
     
     <rect x="20" y="20" width="160" height="80" rx="10" fill="#ffffff" stroke="#0a9396" stroke-width="3"/>
     <text x="100" y="45" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0a9396" text-anchor="middle">1. ADD</text>
@@ -186,41 +186,55 @@ Compare the cost of the **same amount** (e.g., price per 100g or per 1kg).
 ### Part A: Conversions & Continuous Ratios
 
 <Tabs>
-  <TabItem label="📝 Question 1: Continuous Ratios">
-    Given that x : y = 3 : 4 and y : z = 2 : 5, find the ratio x : y : z in its simplest form.
+  <TabItem label="📝 Question 1: Simplifying & Units">
+    Simplify the following ratios into their simplest form:
+    * **a)** $12 : 28 : 40$
+    * **b)** $1.5\text{kg} : 500\text{g}$
+    * **c)** $45\text{ minutes} : 2\text{ hours}$
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. The common letter is y.
-    2. Set up the alphabetical grid: x : y : z.
-    3. Fill the given ratios: Top row x:y is 3:4. Bottom row y:z is 2:5.
-    4. The LCM of the middle column (4 and 2) is 4. 
-    5. The top ratio stays the same (it already uses 4 parts).
-    6. Multiply the bottom ratio by 2 to bridge y: (2 × 2) : (5 × 2) = 4 : 10.
-    **Answer:** 3 : 4 : 10
+    * **a)** HCF is 4. Divide all parts by 4: **$3 : 7 : 10$**
+    * **b)** Convert to grams: $1500\text{g} : 500\text{g}$. Divide by 500: **$3 : 1$**
+    * **c)** Convert to minutes: $45 : 120$. Divide by 15: **$3 : 8$**
   </TabItem>
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 2: The Fraction Bridge">
-    In a school, 5/8 of the students are girls. Find the ratio of **Girls : Boys**.
+  <TabItem label="📝 Question 2: The Alphabetical Bridge">
+    Find the combined ratio $a : b : c$ for the following:
+    * **a)** $a : b = 2 : 3$ and $b : c = 4 : 5$
+    * **b)** $a : c = 1 : 3$ and $b : c = 2 : 5$
+    * **c)** $a : b = 10 : 3$ and $a : c = 4 : 7$
   </TabItem>
   <TabItem label="✅ Solution 2">
-    1. Total parts = 8.
-    2. Girls = 5 parts.
-    3. Boys = 8 - 5 = 3 parts.
-    **Answer:** 5 : 3
+    * **a)** $b$ is the bridge. LCM of 3 and 4 is 12. Row 1 (×4), Row 2 (×3). **$8 : 12 : 15$**
+    * **b)** $c$ is the bridge. LCM of 3 and 5 is 15. Row 1 (×5), Row 2 (×3). **$5 : 6 : 15$**
+    * **c)** $a$ is the bridge. LCM of 10 and 4 is 20. Row 1 (×2), Row 2 (×5). **$20 : 6 : 35$**
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Continuous ratios, converting fractions to ratios, and simplifying with units" />
+<Tabs>
+  <TabItem label="📝 Question 3: The Fraction-Ratio Link">
+    * **a)** In a bag of sweets, $\frac{3}{10}$ are lemon. What is the ratio of **Lemon : Other**?
+    * **b)** The ratio of blue to red pens is $4 : 5$. What **fraction** of the pens are red?
+    * **c)** $\frac{2}{9}$ of a group are adults. What is the ratio of **Adults : Children**?
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    * **a)** Total is 10 parts. Lemon is 3, so Others = $10 - 3 = 7$. **$3 : 7$**
+    * **b)** Total parts = $4 + 5 = 9$. Red is 5 parts. **$5/9$**
+    * **c)** Total is 9 parts. Adults is 2, so Children = $9 - 2 = 7$. **$2 : 7$**
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Multi-part ratio simplification, complex continuous ratios, and fraction-to-ratio conversions" />
 
 ### Part B: Dividing & The "Given One Part" Trick
 
 <Tabs>
-  <TabItem label="📝 Question 3: Sharing a Total">
+  <TabItem label="📝 Question 4: Sharing a Total">
     Share £450 in the ratio 2 : 3 : 4. Find the difference between the largest and smallest shares.
   </TabItem>
-  <TabItem label="✅ Solution 3">
+  <TabItem label="✅ Solution 4">
     1. Total parts: 2 + 3 + 4 = 9.
     2. One part: £450 ÷ 9 = £50.
     3. Smallest: 2 × 50 = £100. Largest: 4 × 50 = £200.
@@ -230,10 +244,10 @@ Compare the cost of the **same amount** (e.g., price per 100g or per 1kg).
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 4: The 'Given One Part' Trap">
+  <TabItem label="📝 Question 5: The 'Given One Part' Trap">
     The ratio of red marbles to blue marbles in a bag is 4 : 7. If there are 28 red marbles, how many marbles are there in **total**?
   </TabItem>
-  <TabItem label="✅ Solution 4">
+  <TabItem label="✅ Solution 5">
     1. We know the 4 "red" parts are equal to 28 marbles.
     2. Find the value of 1 part: 28 ÷ 4 = 7 marbles.
     3. Find the total number of parts: 4 + 7 = 11 parts.
@@ -247,10 +261,10 @@ Compare the cost of the **same amount** (e.g., price per 100g or per 1kg).
 ### Part C: Proportional Reasoning in Context
 
 <Tabs>
-  <TabItem label="📝 Question 5: Map Scale Inverse">
+  <TabItem label="📝 Question 6: Map Scale Inverse">
     A map scale is 1 : 200,000. A forest is represented by a line 4.5cm long on the map. Find the actual length of the forest in kilometres.
   </TabItem>
-  <TabItem label="✅ Solution 5">
+  <TabItem label="✅ Solution 6">
     1. 4.5cm × 200,000 = 900,000cm.
     2. Convert to m: 900,000 ÷ 100 = 9,000m.
     3. Convert to km: 9,000 ÷ 1000 = 9km.
@@ -259,10 +273,10 @@ Compare the cost of the **same amount** (e.g., price per 100g or per 1kg).
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 6: Adapting Recipes">
+  <TabItem label="📝 Question 7: Adapting Recipes">
     A recipe for 6 cupcakes requires 150g of sugar. How much sugar is needed to make 15 cupcakes?
   </TabItem>
-  <TabItem label="✅ Solution 6">
+  <TabItem label="✅ Solution 7">
     1. Use the Unitary Method. Find the sugar for 1 cupcake: 150g ÷ 6 = 25g.
     2. Multiply by the new amount: 25g × 15 = 375g.
     **Answer:** 375g
@@ -270,13 +284,13 @@ Compare the cost of the **same amount** (e.g., price per 100g or per 1kg).
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 7: Best Value">
+  <TabItem label="📝 Question 8: Best Value">
     Coffee is sold in two sizes:
     * **Regular:** 200g for £4.50
     * **Large:** 350g for £7.70
     Which size is the better value for money? You must show your working.
   </TabItem>
-  <TabItem label="✅ Solution 7">
+  <TabItem label="✅ Solution 8">
     1. Find the cost per 100g for both to compare fairly.
     2. **Regular:** £4.50 ÷ 2 = £2.25 per 100g.
     3. **Large:** £7.70 ÷ 3.5 = £2.20 per 100g.

@@ -9,8 +9,8 @@ In mathematics, a **radical** is any expression that uses a root symbol (like a 
 
 A **surd** is a specific classification of a radical: it is a root that *cannot* be simplified into a rational number (a whole number or a clean fraction). In other words, a surd evaluates to an **irrational number** (a non-repeating, never-ending decimal). 
 
-In North America (Je suis Canadien 🇨🇦), we generally refer to all of these simply as **radicals**, but it is important to know the distinction:
-* $\sqrt{25}$ is a **radical**, but it evaluates to exactly $5$. Therefore, it is a rational number, *not* a surd.
+In North America, we generally refer to all of these simply as **radicals**, but it is important to know the distinction:
+* $\sqrt{25}$ is a **radical**, but it evaluates to exactly 5. Therefore, it is a rational number, *not* a surd.
 * $\sqrt{20}$ is a **radical**, but it evaluates to $\approx 4.472...$. Because it cannot be written as a clean fraction, it is an **irrational radical**, which is known as a **surd**.
 
 <Aside type="note" title="The Number Hierarchy">
@@ -26,9 +26,35 @@ In North America (Je suis Canadien 🇨🇦), we generally refer to all of these
 
 Every radical expression is made up of three main components. For an expression like $a\sqrt[n]{x}$:
 
+<svg viewBox="0 0 500 160" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+    <text x="210" y="100" font-family="serif" font-style="italic" font-weight="bold" font-size="48" fill="#333" text-anchor="middle">a</text>
+    <text x="240" y="70" font-family="serif" font-style="italic" font-weight="bold" font-size="24" fill="#333" text-anchor="middle">n</text>
+    <path d="M 250 85 L 260 105 L 275 50 L 330 50" fill="none" stroke="#333" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="300" y="95" font-family="serif" font-style="italic" font-weight="bold" font-size="48" fill="#333" text-anchor="middle">x</text>
+
+    <text x="90" y="40" font-family="sans-serif" font-weight="bold" font-size="14" fill="#e63946">Coefficient (a)</text>
+    <path d="M 140 45 L 180 75" fill="none" stroke="#e63946" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow-red)"/>
+
+    <text x="240" y="30" font-family="sans-serif" font-weight="bold" font-size="14" fill="#2a9d8f" text-anchor="middle">Index / Degree (n)</text>
+    <path d="M 240 35 L 240 50" fill="none" stroke="#2a9d8f" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow-green)"/>
+
+    <text x="380" y="40" font-family="sans-serif" font-weight="bold" font-size="14" fill="#457b9d">Radical Symbol</text>
+    <path d="M 370 45 L 315 45" fill="none" stroke="#457b9d" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow-blue)"/>
+
+    <text x="300" y="145" font-family="sans-serif" font-weight="bold" font-size="14" fill="#f4a261" text-anchor="middle">Radicand (x)</text>
+    <path d="M 300 130 L 300 105" fill="none" stroke="#f4a261" stroke-width="2" stroke-dasharray="4,4" marker-end="url(#arrow-orange)"/>
+
+    <defs>
+        <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#e63946" /></marker>
+        <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2a9d8f" /></marker>
+        <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#457b9d" /></marker>
+        <marker id="arrow-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#f4a261" /></marker>
+    </defs>
+</svg>
+
 * **Coefficient ($a$):** The number multiplying the radical on the outside.
 * **Radical Symbol ($\sqrt{\phantom{x}}$):** The symbol indicating a root is being calculated.
-* **Index / Degree ($n$):** The small number sitting in the "v" of the radical symbol, indicating *which* root is being taken. If no index is written, it is mathematically assumed to be $2$ (a square root).
+* **Index / Degree ($n$):** The small number sitting in the "v" of the radical symbol, indicating *which* root is being taken. If no index is written, it is mathematically assumed to be 2 (a square root).
 * **Radicand ($x$):** The number or expression underneath the radical symbol.
 
 ---
@@ -36,13 +62,13 @@ Every radical expression is made up of three main components. For an expression 
 ## 2. Converting: Entire and Mixed Radicals
 
 Radicals can be written in two forms:
-* **Entire Radicals:** The coefficient is $1$ (everything is under the root), e.g., $\sqrt{20}$.
+* **Entire Radicals:** The coefficient is 1 (everything is under the root), e.g., $\sqrt{20}$.
 * **Mixed Radicals:** There is a coefficient outside the root, e.g., $2\sqrt{5}$.
 
 ### Simplifying (Entire $\rightarrow$ Mixed)
 To simplify a radical, find the **largest perfect square factor** of the radicand.
 1. **Example:** Simplify $\sqrt{72}$.
-2. Find the largest perfect square factor of $72$, which is $36$ ($36 \times 2 = 72$).
+2. Find the largest perfect square factor of 72, which is 36 ($36 \times 2 = 72$).
 3. Split the root: $\sqrt{36} \times \sqrt{2}$.
 4. Evaluate the perfect square: $\mathbf{6\sqrt{2}}$.
 
@@ -83,12 +109,12 @@ A very common scenario is multiplying a radical by itself. Because a square root
     * *Example:* $(3\sqrt{2})^2 = 3^2 \times (\sqrt{2})^2 = 9 \times 2 = \mathbf{18}$
 
 <Aside type="caution" title="Common Misconceptions (Pythagoras Warning!)">
-Many students make these fatal errors, especially when doing Pythagorean theorem ($\text{a}^2 + \text{b}^2 = \text{c}^2$) questions:
+Many students make these fatal errors, especially when doing Pythagorean theorem ($a^2 + b^2 = c^2$) questions:
 
 * ❌ **WRONG:** $2\sqrt{b} = \sqrt{2b}$
-  * **RIGHT:** The $2$ outside is actually $\sqrt{4}$. So, $2\sqrt{b} = \sqrt{4} \times \sqrt{b} = \mathbf{\sqrt{4b}}$.
+  * **RIGHT:** The 2 outside is actually $\sqrt{4}$. So, $2\sqrt{b} = \sqrt{4} \times \sqrt{b} = \mathbf{\sqrt{4b}}$.
 * ❌ **WRONG:** $\frac{\sqrt{b}}{2} = \sqrt{\frac{b}{2}}$
-  * **RIGHT:** The $2$ on the bottom is actually $\sqrt{4}$. So, $\frac{\sqrt{b}}{2} = \frac{\sqrt{b}}{\sqrt{4}} = \mathbf{\sqrt{\frac{b}{4}}}$.
+  * **RIGHT:** The 2 on the bottom is actually $\sqrt{4}$. So, $\frac{\sqrt{b}}{2} = \frac{\sqrt{b}}{\sqrt{4}} = \mathbf{\sqrt{\frac{b}{4}}}$.
 
 Never mix an "outside" integer directly into an "inside" radicand without squaring it first!
 </Aside>
@@ -145,181 +171,237 @@ Multiply the top and bottom by the **conjugate** of the denominator. The conjuga
 ## 6. Standard Practice Problems
 
 <Tabs>
-  <TabItem label="📝 Question 1">
-    Convert $7\sqrt{2}$ into an entire radical.
+  <TabItem label="📝 Q1: Entire to Mixed Radicals">
+    Convert the following entire radicals into their simplest mixed radical form:
+    * **a)** $\sqrt{8}$
+    * **b)** $\sqrt{27}$
+    * **c)** $\sqrt{50}$
+    * **d)** $\sqrt{80}$
+    * **e)** $\sqrt{108}$
+    * **f)** $\sqrt{200}$
+    * **g)** $\sqrt{288}$
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. Square the $7$ and bring it under the root: $\sqrt{7^2 \times 2}$.
-    2. Evaluate: $\sqrt{49 \times 2}$.
-    3. Final Answer: $\mathbf{\sqrt{98}}$.
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Converting mixed radicals to entire radicals" />
-
-<Tabs>
-  <TabItem label="📝 Question 2">
-    Simplify $\sqrt{108}$ into a mixed radical.
-  </TabItem>
-  <TabItem label="✅ Solution 2">
-    1. Find the largest perfect square factor of $108$. It is $36$.
-    2. Split the root: $\sqrt{36 \times 3}$.
-    3. Evaluate the perfect square: $\mathbf{6\sqrt{3}}$.
+    * **a)** $\sqrt{4 \times 2} = \mathbf{2\sqrt{2}}$
+    * **b)** $\sqrt{9 \times 3} = \mathbf{3\sqrt{3}}$
+    * **c)** $\sqrt{25 \times 2} = \mathbf{5\sqrt{2}}$
+    * **d)** $\sqrt{16 \times 5} = \mathbf{4\sqrt{5}}$
+    * **e)** $\sqrt{36 \times 3} = \mathbf{6\sqrt{3}}$
+    * **f)** $\sqrt{100 \times 2} = \mathbf{10\sqrt{2}}$
+    * **g)** $\sqrt{144 \times 2} = \mathbf{12\sqrt{2}}$
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Simplifying entire radicals to mixed radicals" />
 
 <Tabs>
-  <TabItem label="📝 Question 3">
-    Identify an **irrational number** that sits between $4$ and $5$. Justify your answer.
+  <TabItem label="📝 Q2: Mixed to Entire Radicals">
+    Convert the following mixed radicals into a single entire radical:
+    * **a)** $2\sqrt{3}$
+    * **b)** $3\sqrt{5}$
+    * **c)** $4\sqrt{2}$
+    * **d)** $5\sqrt{6}$
+    * **e)** $10\sqrt{3}$
+    * **f)** $7\sqrt{7}$
+    * **g)** $8\sqrt{10}$
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    * **a)** $\sqrt{2^2 \times 3} = \sqrt{4 \times 3} = \mathbf{\sqrt{12}}$
+    * **b)** $\sqrt{3^2 \times 5} = \sqrt{9 \times 5} = \mathbf{\sqrt{45}}$
+    * **c)** $\sqrt{4^2 \times 2} = \sqrt{16 \times 2} = \mathbf{\sqrt{32}}$
+    * **d)** $\sqrt{5^2 \times 6} = \sqrt{25 \times 6} = \mathbf{\sqrt{150}}$
+    * **e)** $\sqrt{10^2 \times 3} = \sqrt{100 \times 3} = \mathbf{\sqrt{300}}$
+    * **f)** $\sqrt{7^2 \times 7} = \sqrt{49 \times 7} = \mathbf{\sqrt{343}}$
+    * **g)** $\sqrt{8^2 \times 10} = \sqrt{64 \times 10} = \mathbf{\sqrt{640}}$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Converting mixed radicals to entire radicals" />
+
+<Tabs>
+  <TabItem label="📝 Q3: Multiplication">
+    Multiply and fully simplify your answers:
+    * **a)** $\sqrt{2} \times \sqrt{3}$
+    * **b)** $\sqrt{5} \times \sqrt{5}$
+    * **c)** $2\sqrt{3} \times 4\sqrt{2}$
+    * **d)** $3\sqrt{6} \times \sqrt{2}$
+    * **e)** $(2\sqrt{5})^2$
+    * **f)** $5\sqrt{10} \times 2\sqrt{5}$
+    * **g)** $\sqrt{3} \times \sqrt{3} \times \sqrt{3}$
   </TabItem>
   <TabItem label="✅ Solution 3">
-    1. Convert both integers into entire square roots by squaring them.
-    2. $4 = \sqrt{4^2} = \sqrt{16}$
-    3. $5 = \sqrt{5^2} = \sqrt{25}$
-    4. Any non-perfect square root between $\sqrt{16}$ and $\sqrt{25}$ is an irrational number between 4 and 5.
-    5. **Possible Answers:** $\mathbf{\sqrt{17}, \sqrt{18}, \sqrt{21}, \sqrt{24}}$, etc.
+    * **a)** $\mathbf{\sqrt{6}}$
+    * **b)** $\mathbf{5}$
+    * **c)** $(2 \times 4)\sqrt{3 \times 2} = \mathbf{8\sqrt{6}}$
+    * **d)** $3\sqrt{12} \implies 3\sqrt{4 \times 3} \implies 3(2)\sqrt{3} = \mathbf{6\sqrt{3}}$
+    * **e)** $(2\sqrt{5})(2\sqrt{5}) = 4 \times 5 = \mathbf{20}$
+    * **f)** $10\sqrt{50} \implies 10\sqrt{25 \times 2} \implies 10(5)\sqrt{2} = \mathbf{50\sqrt{2}}$
+    * **g)** $(\sqrt{3} \times \sqrt{3}) \times \sqrt{3} = 3 \times \sqrt{3} = \mathbf{3\sqrt{3}}$
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding an irrational number between two integers" />
+<SmartAIGenerator topic="Multiplication of radical expressions" />
 
 <Tabs>
-  <TabItem label="📝 Question 4">
-    Evaluate: $\sqrt{11} \times \sqrt{11} \times \sqrt{11}$
+  <TabItem label="📝 Q4: Division">
+    Divide and fully simplify your answers:
+    * **a)** $\frac{\sqrt{10}}{\sqrt{2}}$
+    * **b)** $\frac{\sqrt{48}}{\sqrt{3}}$
+    * **c)** $\frac{8\sqrt{15}}{2\sqrt{5}}$
+    * **d)** $\frac{10\sqrt{24}}{5\sqrt{2}}$
+    * **e)** $\frac{12\sqrt{50}}{3\sqrt{2}}$
+    * **f)** $\frac{\sqrt{90}}{3\sqrt{5}}$
+    * **g)** $\frac{14\sqrt{72}}{2\sqrt{6}}$
   </TabItem>
   <TabItem label="✅ Solution 4">
-    1. Group the first two radicals: $(\sqrt{11} \times \sqrt{11}) \times \sqrt{11}$.
-    2. A square root multiplied by itself gives the radicand: $11 \times \sqrt{11}$.
-    3. Final Answer: $\mathbf{11\sqrt{11}}$.
+    * **a)** $\sqrt{10 \div 2} = \mathbf{\sqrt{5}}$
+    * **b)** $\sqrt{48 \div 3} = \sqrt{16} = \mathbf{4}$
+    * **c)** $(8 \div 2)\sqrt{15 \div 5} = \mathbf{4\sqrt{3}}$
+    * **d)** $2\sqrt{12} \implies 2\sqrt{4 \times 3} \implies 2(2)\sqrt{3} = \mathbf{4\sqrt{3}}$
+    * **e)** $4\sqrt{25} \implies 4 \times 5 = \mathbf{20}$
+    * **f)** Treat numerator as $1\sqrt{90}$. Result: $\frac{1}{3}\sqrt{18} \implies \frac{1}{3}(3\sqrt{2}) = \mathbf{\sqrt{2}}$
+    * **g)** $7\sqrt{12} \implies 7(2\sqrt{3}) = \mathbf{14\sqrt{3}}$
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Multiplying a radical by itself multiple times" />
+<SmartAIGenerator topic="Division of radical expressions" />
 
 <Tabs>
-  <TabItem label="📝 Question 5">
-    Evaluate: $(4\sqrt{3})^2$
+  <TabItem label="📝 Q5: Addition & Subtraction">
+    Add or subtract. Remember to simplify first to find like radicands:
+    * **a)** $3\sqrt{2} + 4\sqrt{2}$
+    * **b)** $5\sqrt{7} - 2\sqrt{7}$
+    * **c)** $\sqrt{12} + \sqrt{27}$
+    * **d)** $\sqrt{50} - \sqrt{18}$
+    * **e)** $2\sqrt{20} + 3\sqrt{45}$
+    * **f)** $4\sqrt{75} - 2\sqrt{12} + \sqrt{3}$
+    * **g)** $\sqrt{32} + \sqrt{48} - \sqrt{8}$
   </TabItem>
   <TabItem label="✅ Solution 5">
-    1. Expand the expression: $4\sqrt{3} \times 4\sqrt{3}$.
-    2. Multiply the coefficients and the radicands: $(4 \times 4) \times (\sqrt{3} \times \sqrt{3})$.
-    3. Evaluate: $16 \times 3$.
-    4. Final Answer: $\mathbf{48}$.
+    * **a)** $\mathbf{7\sqrt{2}}$
+    * **b)** $\mathbf{3\sqrt{7}}$
+    * **c)** $2\sqrt{3} + 3\sqrt{3} = \mathbf{5\sqrt{3}}$
+    * **d)** $5\sqrt{2} - 3\sqrt{2} = \mathbf{2\sqrt{2}}$
+    * **e)** $2(2\sqrt{5}) + 3(3\sqrt{5}) = 4\sqrt{5} + 9\sqrt{5} = \mathbf{13\sqrt{5}}$
+    * **f)** $4(5\sqrt{3}) - 2(2\sqrt{3}) + 1\sqrt{3} = 20\sqrt{3} - 4\sqrt{3} + 1\sqrt{3} = \mathbf{17\sqrt{3}}$
+    * **g)** $4\sqrt{2} + 4\sqrt{3} - 2\sqrt{2} = \mathbf{2\sqrt{2} + 4\sqrt{3}}$
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Squaring mixed radicals" />
+<SmartAIGenerator topic="Addition and subtraction of radical expressions" />
 
 <Tabs>
-  <TabItem label="📝 Question 6">
-    A right-angled triangle has legs of length $2\sqrt{5}$ and $\sqrt{10}$. Find the length of the hypotenuse, $c$.
+  <TabItem label="📝 Q6: Expanding Brackets">
+    Expand using the distributive property or FOIL, then simplify:
+    * **a)** $\sqrt{2}(3 + \sqrt{2})$
+    * **b)** $2\sqrt{3}(\sqrt{3} - 5)$
+    * **c)** $(1 + \sqrt{2})(3 + \sqrt{2})$
+    * **d)** $(\sqrt{5} - 2)(\sqrt{5} + 3)$
+    * **e)** $(2\sqrt{3} + 1)(\sqrt{3} - 4)$
+    * **f)** $(3 - \sqrt{7})^2$
+    * **g)** $(\sqrt{6} + \sqrt{2})(\sqrt{6} - \sqrt{2})$
   </TabItem>
   <TabItem label="✅ Solution 6">
-    1. Apply the Pythagorean theorem: $a^2 + b^2 = c^2$.
-    2. Substitute the lengths: $(2\sqrt{5})^2 + (\sqrt{10})^2 = c^2$.
-    3. Square the first term: $2^2 \times (\sqrt{5})^2 = 4 \times 5 = 20$.
-    4. Square the second term: $(\sqrt{10})^2 = 10$.
-    5. Add them together: $20 + 10 = 30$.
-    6. Therefore, $c^2 = 30$. Solve for $c$: $\mathbf{c = \sqrt{30}}$.
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Solving Pythagorean theorem problems with radical side lengths" />
-
-<Tabs>
-  <TabItem label="📝 Question 7">
-    Simplify fully: $3\sqrt{8} \times 2\sqrt{6}$
-  </TabItem>
-  <TabItem label="✅ Solution 7">
-    1. Multiply coefficients together and radicands together: $(3 \times 2)\sqrt{8 \times 6} = 6\sqrt{48}$.
-    2. Simplify the resulting radical by finding the largest perfect square factor of $48$ (which is $16$).
-    3. Split: $6\sqrt{16 \times 3}$.
-    4. Evaluate: $6 \times 4\sqrt{3}$.
-    5. Final Answer: $\mathbf{24\sqrt{3}}$.
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Multiplying mixed radicals and simplifying" />
-
-<Tabs>
-  <TabItem label="📝 Question 8">
-    Simplify fully: $\frac{15\sqrt{40}}{3\sqrt{5}}$
-  </TabItem>
-  <TabItem label="✅ Solution 8">
-    1. Divide the coefficients and the radicands: $(15 \div 3)\sqrt{40 \div 5}$.
-    2. Evaluate: $5\sqrt{8}$.
-    3. Simplify the radical by finding the largest perfect square factor of $8$ (which is $4$).
-    4. Split: $5\sqrt{4 \times 2}$.
-    5. Evaluate: $5 \times 2\sqrt{2}$.
-    6. Final Answer: $\mathbf{10\sqrt{2}}$.
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Dividing mixed radicals and simplifying" />
-
-<Tabs>
-  <TabItem label="📝 Question 9">
-    Simplify fully: $5\sqrt{12} - 2\sqrt{27} + \sqrt{75}$
-  </TabItem>
-  <TabItem label="✅ Solution 9">
-    1. Simplify each radical first.
-    2. $5\sqrt{12} = 5\sqrt{4 \times 3} = 5(2)\sqrt{3} = 10\sqrt{3}$.
-    3. $2\sqrt{27} = 2\sqrt{9 \times 3} = 2(3)\sqrt{3} = 6\sqrt{3}$.
-    4. $\sqrt{75} = \sqrt{25 \times 3} = 5\sqrt{3}$.
-    5. Rewrite the expression: $10\sqrt{3} - 6\sqrt{3} + 5\sqrt{3}$.
-    6. Combine like terms: $(10 - 6 + 5)\sqrt{3}$.
-    7. Final Answer: $\mathbf{9\sqrt{3}}$.
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Adding and subtracting radicals by simplifying first" />
-
-<Tabs>
-  <TabItem label="📝 Question 10">
-    Expand and simplify: $(3\sqrt{2} - 4)(\sqrt{2} + 5)$
-  </TabItem>
-  <TabItem label="✅ Solution 10">
-    Use FOIL (First, Outer, Inner, Last):
-    1. **First:** $3\sqrt{2} \times \sqrt{2} = 3(2) = 6$.
-    2. **Outer:** $3\sqrt{2} \times 5 = 15\sqrt{2}$.
-    3. **Inner:** $-4 \times \sqrt{2} = -4\sqrt{2}$.
-    4. **Last:** $-4 \times 5 = -20$.
-    5. Combine everything: $6 + 15\sqrt{2} - 4\sqrt{2} - 20$.
-    6. Group like terms: $(6 - 20) + (15\sqrt{2} - 4\sqrt{2})$.
-    7. Final Answer: $\mathbf{-14 + 11\sqrt{2}}$.
+    * **a)** $3\sqrt{2} + (\sqrt{2}\sqrt{2}) = \mathbf{3\sqrt{2} + 2}$
+    * **b)** $2(3) - 10\sqrt{3} = \mathbf{6 - 10\sqrt{3}}$
+    * **c)** $3 + \sqrt{2} + 3\sqrt{2} + 2 = \mathbf{5 + 4\sqrt{2}}$
+    * **d)** $5 + 3\sqrt{5} - 2\sqrt{5} - 6 = \mathbf{-1 + \sqrt{5}}$
+    * **e)** $2(3) - 8\sqrt{3} + \sqrt{3} - 4 = 6 - 7\sqrt{3} - 4 = \mathbf{2 - 7\sqrt{3}}$
+    * **f)** $(3 - \sqrt{7})(3 - \sqrt{7}) = 9 - 3\sqrt{7} - 3\sqrt{7} + 7 = \mathbf{16 - 6\sqrt{7}}$
+    * **g)** $6 - \sqrt{12} + \sqrt{12} - 2 = 6 - 2 = \mathbf{4}$
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Expanding binomials with radicals using FOIL" />
 
 <Tabs>
-  <TabItem label="📝 Question 11">
-    Rationalise the denominator: $\frac{10}{\sqrt{5}}$
+  <TabItem label="📝 Q7: Rationalising (Single Term)">
+    Rationalise the denominators and simplify fully:
+    * **a)** $\frac{1}{\sqrt{2}}$
+    * **b)** $\frac{3}{\sqrt{3}}$
+    * **c)** $\frac{5}{\sqrt{10}}$
+    * **d)** $\frac{14}{\sqrt{7}}$
+    * **e)** $\frac{6}{2\sqrt{3}}$
+    * **f)** $\frac{\sqrt{5}}{\sqrt{2}}$
+    * **g)** $\frac{10\sqrt{3}}{\sqrt{5}}$
   </TabItem>
-  <TabItem label="✅ Solution 11">
-    1. Multiply top and bottom by $\sqrt{5}$: $\frac{10 \times \sqrt{5}}{\sqrt{5} \times \sqrt{5}}$.
-    2. Evaluate the bottom: $\frac{10\sqrt{5}}{5}$.
-    3. Simplify the fraction (divide the coefficients): $10 \div 5 = 2$.
-    4. Final Answer: $\mathbf{2\sqrt{5}}$.
+  <TabItem label="✅ Solution 7">
+    * **a)** $\frac{1 \times \sqrt{2}}{\sqrt{2} \times \sqrt{2}} = \mathbf{\frac{\sqrt{2}}{2}}$
+    * **b)** $\frac{3\sqrt{3}}{3} = \mathbf{\sqrt{3}}$
+    * **c)** $\frac{5\sqrt{10}}{10} = \mathbf{\frac{\sqrt{10}}{2}}$
+    * **d)** $\frac{14\sqrt{7}}{7} = \mathbf{2\sqrt{7}}$
+    * **e)** Simplify fraction first: $\frac{3}{\sqrt{3}} \implies \frac{3\sqrt{3}}{3} = \mathbf{\sqrt{3}}$
+    * **f)** $\frac{\sqrt{5} \times \sqrt{2}}{\sqrt{2} \times \sqrt{2}} = \mathbf{\frac{\sqrt{10}}{2}}$
+    * **g)** $\frac{10\sqrt{3} \times \sqrt{5}}{\sqrt{5} \times \sqrt{5}} = \frac{10\sqrt{15}}{5} = \mathbf{2\sqrt{15}}$
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Rationalising the denominator with a single radical term" />
+<SmartAIGenerator topic="Rationalising single term denominators" />
 
 <Tabs>
-  <TabItem label="📝 Question 12">
-    Rationalise the denominator: $\frac{4}{3 + \sqrt{7}}$
+  <TabItem label="📝 Q8: Rationalising (Conjugates)">
+    Rationalise the denominators by multiplying by the conjugate:
+    * **a)** $\frac{1}{2 + \sqrt{3}}$
+    * **b)** $\frac{2}{\sqrt{5} - 1}$
+    * **c)** $\frac{5}{3 - \sqrt{2}}$
+    * **d)** $\frac{\sqrt{2}}{\sqrt{6} + \sqrt{2}}$
+    * **e)** $\frac{4}{\sqrt{7} - \sqrt{3}}$
+    * **f)** $\frac{\sqrt{3} + 1}{\sqrt{3} - 1}$
+    * **g)** $\frac{3\sqrt{2}}{4 - \sqrt{10}}$
   </TabItem>
-  <TabItem label="✅ Solution 12">
-    1. Multiply top and bottom by the conjugate, $3 - \sqrt{7}$.
-    2. Top: $4(3 - \sqrt{7}) = 12 - 4\sqrt{7}$.
-    3. Bottom (Difference of Squares): $(3 + \sqrt{7})(3 - \sqrt{7}) = 3^2 - (\sqrt{7})^2 = 9 - 7 = 2$.
-    4. Put it together: $\frac{12 - 4\sqrt{7}}{2}$.
-    5. Divide both terms in the numerator by the denominator: $(12 \div 2) - (4\sqrt{7} \div 2)$.
-    6. Final Answer: $\mathbf{6 - 2\sqrt{7}}$.
+  <TabItem label="✅ Solution 8">
+    * **a)** Multiply by $2 - \sqrt{3}$. Bottom: $4 - 3 = 1$. Answer: $\mathbf{2 - \sqrt{3}}$
+    * **b)** Multiply by $\sqrt{5} + 1$. Bottom: $5 - 1 = 4$. Top: $2(\sqrt{5} + 1)$. Simplify: $\mathbf{\frac{\sqrt{5} + 1}{2}}$
+    * **c)** Multiply by $3 + \sqrt{2}$. Bottom: $9 - 2 = 7$. Top: $5(3 + \sqrt{2})$. Answer: $\mathbf{\frac{15 + 5\sqrt{2}}{7}}$
+    * **d)** Multiply by $\sqrt{6} - \sqrt{2}$. Bottom: $6 - 2 = 4$. Top: $\sqrt{12} - 2 = 2\sqrt{3} - 2$. Simplify: $\mathbf{\frac{\sqrt{3} - 1}{2}}$
+    * **e)** Multiply by $\sqrt{7} + \sqrt{3}$. Bottom: $7 - 3 = 4$. Top: $4(\sqrt{7} + \sqrt{3})$. Answer: $\mathbf{\sqrt{7} + \sqrt{3}}$
+    * **f)** Multiply by $\sqrt{3} + 1$. Bottom: $3 - 1 = 2$. Top: $(\sqrt{3} + 1)^2 = 3 + 2\sqrt{3} + 1 = 4 + 2\sqrt{3}$. Simplify: $\mathbf{2 + \sqrt{3}}$
+    * **g)** Multiply by $4 + \sqrt{10}$. Bottom: $16 - 10 = 6$. Top: $12\sqrt{2} + 3\sqrt{20} = 12\sqrt{2} + 6\sqrt{5}$. Simplify: $\mathbf{2\sqrt{2} + \sqrt{5}}$
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Rationalising the denominator using the conjugate" />
+<SmartAIGenerator topic="Rationalising binomial denominators using conjugates" />
+
+<Tabs>
+  <TabItem label="📝 Q9: Structured Problem (Geometry)">
+    A rectangular garden is being designed. Its length is given as $3\sqrt{5} + 2$ metres and its width is $3\sqrt{5} - 2$ metres.
+    * **a)** Calculate the exact area of the garden.
+    * **b)** Calculate the exact perimeter of the garden.
+    * **c)** A diagonal pathway is built across the garden. Calculate the square of the length of this pathway.
+    * **d)** Is the exact length of the pathway a rational or irrational number? Explain.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    * **a)** Area = Length $\times$ Width. $(3\sqrt{5} + 2)(3\sqrt{5} - 2)$. This is a difference of squares: $(3\sqrt{5})^2 - 2^2 \implies (9 \times 5) - 4 = 45 - 4 = \mathbf{41 \text{ m}^2}$.
+    * **b)** Perimeter = 2(Length) + 2(Width). $2(3\sqrt{5} + 2) + 2(3\sqrt{5} - 2) \implies 6\sqrt{5} + 4 + 6\sqrt{5} - 4 = \mathbf{12\sqrt{5} \text{ m}}$.
+    * **c)** Using Pythagoras, $a^2 + b^2 = c^2$, so the square of the diagonal is $c^2 = \text{Length}^2 + \text{Width}^2$.
+       $(3\sqrt{5} + 2)^2 + (3\sqrt{5} - 2)^2$
+       $(45 + 12\sqrt{5} + 4) + (45 - 12\sqrt{5} + 4)$
+       $49 + 49 = \mathbf{98}$.
+    * **d)** The square of the length is 98, so the length is $\sqrt{98}$. Because 98 is not a perfect square, its square root cannot be written as a clean fraction. Therefore, it is an **irrational number** (specifically, $7\sqrt{2}$).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Geometric applications of radicals and surds" />
+
+<Tabs>
+  <TabItem label="📝 Q10: Structured Problem (Algebraic Proof)">
+    Consider the expressions $P = \frac{1}{\sqrt{5} - 2}$ and $Q = \frac{1}{\sqrt{5} + 2}$.
+    * **a)** Rationalise the denominator for $P$ to find its simplest form.
+    * **b)** Rationalise the denominator for $Q$ to find its simplest form.
+    * **c)** Find the exact value of $P + Q$.
+    * **d)** Find the exact value of $P \times Q$.
+    * **e)** Using your previous answers, show that $P^2 + Q^2$ is an integer and state its value.
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    * **a)** Multiply top and bottom by $\sqrt{5} + 2$. Bottom: $5 - 4 = 1$. $P = \mathbf{\sqrt{5} + 2}$.
+    * **b)** Multiply top and bottom by $\sqrt{5} - 2$. Bottom: $5 - 4 = 1$. $Q = \mathbf{\sqrt{5} - 2}$.
+    * **c)** $P + Q = (\sqrt{5} + 2) + (\sqrt{5} - 2) = \mathbf{2\sqrt{5}}$.
+    * **d)** $P \times Q = (\sqrt{5} + 2)(\sqrt{5} - 2) = 5 - 4 = \mathbf{1}$.
+    * **e)** First, square $P$: $(\sqrt{5} + 2)^2 = 5 + 4\sqrt{5} + 4 = 9 + 4\sqrt{5}$.
+       Next, square $Q$: $(\sqrt{5} - 2)^2 = 5 - 4\sqrt{5} + 4 = 9 - 4\sqrt{5}$.
+       Add them together: $(9 + 4\sqrt{5}) + (9 - 4\sqrt{5}) = 18$.
+       **18 is a whole number, therefore it is an integer. Shown.** *(Alternative algebraic trick: $P^2 + Q^2 = (P+Q)^2 - 2PQ$. Using c and d: $(2\sqrt{5})^2 - 2(1) = 20 - 2 = \mathbf{18}$.)*
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Advanced structured algebraic proofs involving radicals" />

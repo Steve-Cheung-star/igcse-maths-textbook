@@ -59,6 +59,7 @@ export default defineConfig({
           label: 'IGCSE Mathematics (0607)',
           collapsed: true,
           items: [
+            { label: '⭐ My Revision', link: '/igcse/my-revision/' },
             { label: '1. Number', autogenerate: { directory: 'igcse/01-number' } },
             { label: '2. Algebra', autogenerate: { directory: 'igcse/02-algebra' } },
             { label: '3. Functions', autogenerate: { directory: 'igcse/03-functions' } },
@@ -69,7 +70,6 @@ export default defineConfig({
             { label: '8. Transformations & Vectors', autogenerate: { directory: 'igcse/08-transformations-vectors' } },
             { label: '9. Probability', autogenerate: { directory: 'igcse/09-probability' } },
             { label: '10. Statistics', autogenerate: { directory: 'igcse/10-statistics' } },
-            { label: '⭐ IGCSE History', link: '/igcse/my-revision/' },
           ],
         },
 
@@ -78,13 +78,13 @@ export default defineConfig({
           label: 'IB Mathematics AI SL', // Updated label
           collapsed: true,
           items: [
+            { label: '⭐ My Revision', link: '/ib-aisl/my-revision/' }, // Updated label & path            
             { label: '1. Number & Algebra', autogenerate: { directory: 'ib-aisl/01-number-and-algebra' } }, // Updated path
             { label: '2. Functions', autogenerate: { directory: 'ib-aisl/02-functions' } }, // Updated path
             { label: '3. 3D Geometry & Trigonometry', autogenerate: { directory: 'ib-aisl/03-geometry-and-trigonometry' } }, // Updated path
             { label: '4. Statistics & Probability', autogenerate: { directory: 'ib-aisl/04-statistics-and-probability' } }, // Updated path
             { label: '5. Calculus', autogenerate: { directory: 'ib-aisl/05-calculus' } }, // Updated path
             // Add more IB directories as you create them
-            { label: '⭐ AI SL History', link: '/ib-aisl/my-revision/' }, // Updated label & path
           ],
         },
       ],

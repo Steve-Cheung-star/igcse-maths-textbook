@@ -17,6 +17,18 @@ $$Value = P \times (\text{multiplier})^n$$
 * **Multiplier**: The percentage change expressed as a decimal ($1 + r$ for growth, $1 - r$ for decay).
 * **$n$**: The number of time periods (usually years).
 
+<svg viewBox="0 0 600 150" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+    <rect x="50" y="20" width="220" height="110" rx="10" fill="none" stroke="#2a9d8f" stroke-width="4"/>
+    <text x="160" y="45" font-family="sans-serif" font-weight="bold" font-size="18" fill="#2a9d8f" text-anchor="middle">📈 Exponential Growth</text>
+    <text x="160" y="75" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">+ 4% increase</text>
+    <text x="160" y="105" font-family="monospace" font-weight="bold" font-size="20" fill="#2a9d8f" text-anchor="middle">Multiplier = 1.04</text>
+
+    <rect x="330" y="20" width="220" height="110" rx="10" fill="none" stroke="#e63946" stroke-width="4"/>
+    <text x="440" y="45" font-family="sans-serif" font-weight="bold" font-size="18" fill="#e63946" text-anchor="middle">📉 Exponential Decay</text>
+    <text x="440" y="75" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">- 15% decrease</text>
+    <text x="440" y="105" font-family="monospace" font-weight="bold" font-size="20" fill="#e63946" text-anchor="middle">Multiplier = 0.85</text>
+</svg>
+
 ---
 
 ## 2. Exponential Growth (Population)
@@ -25,7 +37,7 @@ Growth occurs when the multiplier is greater than 1. This is commonly seen in po
 
 **Example:** A town has a population of 25,000. The population grows at a rate of 3% per year. Calculate the population after 12 years.
 
-1.  **Identify the multiplier:** $100\% + 3\% = 103\% \rightarrow \mathbf{1.03}$
+1.  **Identify the multiplier:** $100\% + 3\% = 103\% \implies \mathbf{1.03}$
 2.  **Set up the equation:** $25,000 \times (1.03)^{12}$
 3.  **Calculate:** $25,000 \times 1.42576... = 35,644.02...$
 4.  **Round to context:** You cannot have 0.02 of a person! 
@@ -44,7 +56,7 @@ Decay occurs when the multiplier is less than 1. The most common exam example is
 
 **Example:** A car is bought for £18,000. It depreciates at a rate of 15% per year. Find its value after 4 years.
 
-1.  **Identify the multiplier:** $100\% - 15\% = 85\% \rightarrow \mathbf{0.85}$
+1.  **Identify the multiplier:** $100\% - 15\% = 85\% \implies \mathbf{0.85}$
 2.  **Set up the equation:** $18,000 \times (0.85)^4$
 3.  **Calculate:** $18,000 \times 0.522 = 9396$
     **Answer:** £9,396
@@ -53,64 +65,135 @@ Decay occurs when the multiplier is less than 1. The most common exam example is
 
 ## 4. Comparing Growth Models
 
-Sometimes you are asked to compare two different investments or populations to see which is "better" over time.
+Sometimes you are asked to compare two different investments or populations to see which is "better" over time. 
 
-| Feature | Linear (Simple) | Exponential (Compound) |
+| Feature | Linear | Exponential |
 | :--- | :--- | :--- |
-| **Change** | Fixed amount (e.g., +$50) | Percentage (e.g., +5%) |
+| **Change** | Fixed amount | Percentage |
 | **Graph Shape** | Straight line | Curved line |
 | **Formula** | $P + (n \times d)$ | $P \times (\text{multiplier})^n$ |
 
-```mermaid
-graph LR
-    A[Exponential] -- "Starts slow, then explodes" --> B((High Growth))
-    C[Linear] -- "Stays steady" --> D((Constant))
-    style A fill:#f9f,stroke:#333
-```
+<svg viewBox="0 0 600 300" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 50 250 L 550 250" fill="none" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M 50 250 L 50 30" fill="none" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="540" y="280" font-family="sans-serif" font-weight="bold" font-size="14" fill="#333" text-anchor="middle">Time</text>
+    <text x="30" y="40" font-family="sans-serif" font-weight="bold" font-size="14" fill="#333" transform="rotate(-90 30 40)" text-anchor="middle">Value</text>
+
+    <path d="M 50 180 L 500 80" fill="none" stroke="#457b9d" stroke-width="4" stroke-dasharray="8,4"/>
+    <text x="480" y="70" font-family="sans-serif" font-weight="bold" font-size="16" fill="#457b9d" text-anchor="middle">Linear</text>
+
+    <path d="M 50 220 Q 300 210 480 30" fill="none" stroke="#e63946" stroke-width="4"/>
+    <text x="480" y="20" font-family="sans-serif" font-weight="bold" font-size="16" fill="#e63946" text-anchor="middle">Exponential</text>
+
+    <circle cx="50" cy="180" r="6" fill="#457b9d"/>
+    <circle cx="50" cy="220" r="6" fill="#e63946"/>
+
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+        </marker>
+    </defs>
+</svg>
 
 ---
 
 ## 5. Standard Practice Problems
 
 <Tabs>
-  <TabItem label="📝 Question 1: Population">
-    The number of bacteria in a colony doubles every hour. If there are 500 bacteria initially, how many will there be after 8 hours?
+  <TabItem label="📝 Question 1: Basic Growth">
+    * **a)** The number of bacteria in a colony doubles every hour. If there are 500 bacteria initially, how many will there be after 8 hours?
+    * **b)** A town's population of 12,000 grows at 4% per year. What is the population after 5 years? (Round to the nearest whole person).
+    * **c)** A viral video has 2,000 views. Views increase by 15% every hour. How many views will it have after exactly 24 hours?
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. "Doubles" means an increase of 100%, so the multiplier is **2**.
-    2. Calculation: $500 \times 2^8$
-    3. $500 \times 256 = 128,000$
-    **Answer:** 128,000 bacteria
+    * **a)** "Doubles" means an increase of 100%, so the multiplier is **2**. Calculation: $500 \times 2^8 = 128,000$. **Answer: 128,000 bacteria**
+    * **b)** Multiplier: $1 + 0.04 = 1.04$. Calculation: $12,000 \times 1.04^5 = 14599.8...$ **Answer: 14,600 people**
+    * **c)** Multiplier: $1 + 0.15 = 1.15$. Calculation: $2000 \times 1.15^{24} = 57245.5...$ **Answer: 57,246 views**
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Exponential growth in populations and bacteria" />
+<SmartAIGenerator topic="Basic exponential growth in populations and bacteria" />
 
 <Tabs>
-  <TabItem label="📝 Question 2: Depreciation">
-    A laptop costs £800. Its value depreciates by 25% each year. Calculate its value after 3 years.
+  <TabItem label="📝 Question 2: Basic Decay">
+    * **a)** A laptop costs £800. Its value depreciates by 25% each year. Calculate its exact value after 3 years.
+    * **b)** A car bought for £24,000 loses 12% of its value annually. What is its value after 6 years? (To the nearest penny).
+    * **c)** A radioactive isotope has a mass of 400g. It decays by 5% per day. Calculate its mass after 10 days. (Round to 1 decimal place).
   </TabItem>
   <TabItem label="✅ Solution 2">
-    1. Multiplier: $1 - 0.25 = 0.75$
-    2. Calculation: $800 \times (0.75)^3$
-    3. $800 \times 0.421875 = 337.5$
-    **Answer:** £337.50
+    * **a)** Multiplier: $1 - 0.25 = 0.75$. Calculation: $800 \times 0.75^3 = 337.5$. **Answer: £337.50**
+    * **b)** Multiplier: $1 - 0.12 = 0.88$. Calculation: $24,000 \times 0.88^6 = 11145.645...$ **Answer: £11,145.65**
+    * **c)** Multiplier: $1 - 0.05 = 0.95$. Calculation: $400 \times 0.95^{10} = 239.49...$ **Answer: 239.5 g**
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Exponential decay and asset depreciation" />
 
 <Tabs>
-  <TabItem label="📝 Question 3: Solving for 'n'">
-    A rare stamp is worth £500. Its value increases by 10% each year. Find the number of **full years** it takes for the value to exceed £800.
+  <TabItem label="📝 Question 3: Finding the Initial Value">
+    * **a)** An investment grows by 5% per year. After 3 years it is worth £1,157.63. What was the initial amount invested?
+    * **b)** A machine depreciates by 20% a year. After 2 years it is worth £3,200. What was its original price?
+    * **c)** A forest shrinks by 2.5% per year. After 4 years, it covers 8,500 hectares. What was its original area? (Nearest whole number).
   </TabItem>
   <TabItem label="✅ Solution 3">
-    1. Equation: $500 \times (1.1)^n > 800$
-    2. Use trial and improvement:
-       * $n=4: 500 \times 1.1^4 = 732.05$
-       * $n=5: 500 \times 1.1^5 = 805.26$
-    **Answer:** 5 years
+    * **a)** Let initial = $P$. Equation: $P \times 1.05^3 = 1157.63$. Reverse it: $P = 1157.63 \div 1.05^3$. **Answer: £1,000**
+    * **b)** Equation: $P \times 0.80^2 = 3200$. Reverse it: $P = 3200 \div 0.80^2$. **Answer: £5,000**
+    * **c)** Equation: $P \times 0.975^4 = 8500$. Reverse it: $P = 8500 \div 0.975^4 = 9377.3...$ **Answer: 9,377 hectares**
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Reverse exponential growth to find initial values" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Solving for 'n' (Trial and Improvement)">
+    * **a)** A rare stamp is worth £500. Its value increases by 10% each year. Find the number of **full years** it takes for the value to exceed £800.
+    * **b)** A car worth £15,000 depreciates 18% per year. How many full years until its value drops below £5,000?
+    * **c)** A bank account offers 3.5% compound interest per year. How many full years will it take to double an initial investment of £1,000?
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    * **a)** Equation: $500 \times 1.1^n > 800$. Try $n=4$: $500 \times 1.1^4 = 732.05$. Try $n=5$: $500 \times 1.1^5 = 805.26$. **Answer: 5 years**
+    * **b)** Equation: $15,000 \times 0.82^n < 5000$. Try $n=5$: $\approx £5561$. Try $n=6$: $\approx £4560$. **Answer: 6 years**
+    * **c)** Equation: $1000 \times 1.035^n > 2000$ (or just $1.035^n > 2$). Try $n=20$: $\approx 1.989$. Try $n=21$: $\approx 2.059$. **Answer: 21 years**
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Solving exponential inequalities using trial and improvement" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Structured Comparing Models">
+    * **a)** Town A has 50,000 people and grows by 2% per year. Find its population after 10 years.
+    * **b)** Town B has 60,000 people and its population decreases by 1% per year. Find its population after 10 years.
+    * **c)** By testing values of $n$, determine the exact year in which the population of Town A first exceeds Town B.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    * **a)** $50,000 \times 1.02^{10} = 60949.7...$ **Answer: 60,950 people**
+    * **b)** $60,000 \times 0.99^{10} = 54264.2...$ **Answer: 54,264 people**
+    * **c)** Test values where $50000 \times 1.02^n > 60000 \times 0.99^n$. 
+       $n=6$: Town A = 56,308, Town B = 56,488. (A is still smaller).
+       $n=7$: Town A = 57,434, Town B = 55,923. (A is now larger).
+       **Answer: Year 7**
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing multiple exponential growth and decay scenarios" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Structured Multi-Stage Growth">
+    * **a)** A car is bought for £20,000. It depreciates by 20% in the first year, and then by 10% in each subsequent year. What is its value after exactly 4 years?
+    * **b)** A rare painting is bought for £5,000. Its value increases by 8% each year for the first 3 years. Then the market slows down and it increases by only 3% each year. Find its value after 6 years total.
+    * **c)** A shopkeeper increases the price of an item by 10%, but then immediately applies a 10% discount on the new price. Show mathematically that the final price is a 1% overall decrease from the original.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    * **a)** You have 1 year at 20% decay, and 3 years at 10% decay. 
+       Calculation: $20,000 \times 0.8 \times 0.9^3 = 11664$. **Answer: £11,664**
+    * **b)** Stage 1 (3 yrs): $5000 \times 1.08^3$. Stage 2 (3 yrs): Multiply that result by $1.03^3$. 
+       Calculation: $5000 \times 1.08^3 \times 1.03^3 = 6882.63...$ **Answer: £6,882.63**
+    * **c)** Let the original price be $P$. 
+       Increase by 10%: $P \times 1.1$. 
+       Decrease by 10%: $(P \times 1.1) \times 0.9$. 
+       Overall multiplier: $1.1 \times 0.9 = 0.99$. 
+       A multiplier of 0.99 equals a 1% decrease. **Answer: Shown.**
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Multi-stage exponential growth and decay problems" />

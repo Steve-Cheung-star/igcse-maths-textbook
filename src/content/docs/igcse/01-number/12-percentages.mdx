@@ -3,7 +3,7 @@ title: 1.12 Percentages
 description: Master percentage of amounts, increases, simple and compound interest, and the high-stakes "Reverse Percentage" problems.
 ---
 
-Percentages are parts of 100. Whether you are calculating a store discount, a bank's interest rate, or a business profit, the goal is to understand how a portion relates to the whole.
+Percentages are parts of 100. Whether you are calculating a discount at a Mong Kok sneaker store, a bank's interest rate, or a business profit, the goal is to understand how a portion relates to the whole.
 
 ---
 
@@ -12,16 +12,20 @@ Percentages are parts of 100. Whether you are calculating a store discount, a ba
 To find a percentage of an amount, convert the percentage to a decimal (the **multiplier**) and multiply.
 
 * **Method:** Divide the percentage by 100, then multiply by the quantity.
-* **Example:** Find 15% of £480.
+* **Example:** Find 15% of 480 HKD (the cost of a family dim sum lunch).
     1. $15 \div 100 = 0.15$
     2. $0.15 \times 480 = 72$
-    **Answer:** £72
+    **Answer:** 72 HKD
 
-```mermaid
-pie title 15% of £480
-    "15% (The Part: £72)" : 15
-    "85% (The Rest: £408)" : 85
-```
+<svg viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="#f8fafc" rx="8"/>
+    <rect x="50" y="40" width="400" height="40" fill="#cbd5e1" rx="5"/>
+    <rect x="50" y="40" width="60" height="40" fill="#3b82f6" rx="5"/>
+    <text x="80" y="65" fill="white" font-weight="bold" font-family="sans-serif" font-size="14" text-anchor="middle">15%</text>
+    <text x="250" y="65" fill="#334155" font-weight="bold" font-family="sans-serif" font-size="14" text-anchor="middle">85% (The Rest: 408 HKD)</text>
+    <text x="80" y="30" fill="#1e293b" font-weight="bold" font-family="sans-serif" font-size="14" text-anchor="middle">72 HKD</text>
+    <text x="250" y="100" fill="#1e293b" font-weight="bold" font-family="sans-serif" font-size="16" text-anchor="middle">Total: 480 HKD</text>
+</svg>
 
 ---
 
@@ -30,7 +34,7 @@ pie title 15% of £480
 This is essentially "writing a test score." You create a fraction representing the part over the whole, and then turn it into a percentage.
 
 * **Formula:** $\frac{\text{Part}}{\text{Whole}} \times 100$
-* **Example:** A student scores 34 out of 40 on a mental maths test. What is their percentage?
+* **Example:** A student scores 34 out of 40 on their HKDSE mock exam. What is their percentage?
     1. $\frac{34}{40} = 0.85$
     2. $0.85 \times 100 = 85$
     **Answer:** 85%
@@ -45,22 +49,44 @@ You can do this in two steps (find the percentage, then add/subtract), but using
 * **Increase by 20%:** The original is 100%. $100\% + 20\% = 120\%$. As a decimal: **1.20**
 * **Decrease by 15%:** The original is 100%. $100\% - 15\% = 85\%$. As a decimal: **0.85**
 
-**Example:** A coat costs £120. It is reduced by 35% in a sale. Find the new price.
+**Example:** A sneaker in Mong Kok costs 800 HKD. It is reduced by 35% in a sale. Find the new price.
 1. Multiplier: $100\% - 35\% = 65\% \rightarrow 0.65$.
-2. Calculation: $120 \times 0.65 = 78$.
-**Answer:** £78
+2. Calculation: $800 \times 0.65 = 520$.
+**Answer:** 520 HKD
 
 ### Chained (Repeated) Percentage Changes
 When an amount undergoes multiple percentage changes over time, you **multiply the multipliers**. You never just add or subtract the percentages themselves.
 
 **The Timeline of a Chained Change:**
-Let's say a population of 5000 increases by 10% in Year 1, and then decreases by 10% in Year 2.
+Let's say the rent for a subdivided flat is 5000 HKD. It increases by 10% in Year 1, and then the landlord offers a 10% discount (decrease) in Year 2.
 
-```mermaid
-flowchart LR
-    A[Original: 5000] -- "× 1.10 (+10%)" --> B[Year 1: 5500]
-    B -- "× 0.90 (-10%)" --> C[Year 2: 4950]
-```
+<svg viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="transparent"/>
+    <rect x="20" y="40" width="120" height="60" rx="8" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+    <text x="80" y="65" fill="#1e293b" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">Original Rent</text>
+    <text x="80" y="85" fill="#3b82f6" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">5000 HKD</text>
+
+    <path d="M 150 70 L 230 70" fill="none" stroke="#10b981" stroke-width="3" marker-end="url(#arrow-green)"/>
+    <text x="190" y="60" fill="#10b981" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">× 1.10</text>
+    <text x="190" y="90" fill="#10b981" font-family="sans-serif" font-size="12" text-anchor="middle">(+10%)</text>
+
+    <rect x="240" y="40" width="120" height="60" rx="8" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+    <text x="300" y="65" fill="#1e293b" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">Year 1</text>
+    <text x="300" y="85" fill="#3b82f6" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">5500 HKD</text>
+
+    <path d="M 370 70 L 450 70" fill="none" stroke="#ef4444" stroke-width="3" marker-end="url(#arrow-red)"/>
+    <text x="410" y="60" fill="#ef4444" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">× 0.90</text>
+    <text x="410" y="90" fill="#ef4444" font-family="sans-serif" font-size="12" text-anchor="middle">(-10%)</text>
+
+    <rect x="460" y="40" width="120" height="60" rx="8" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+    <text x="520" y="65" fill="#1e293b" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">Year 2</text>
+    <text x="520" y="85" fill="#3b82f6" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">4950 HKD</text>
+
+    <defs>
+        <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981" /></marker>
+        <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#ef4444" /></marker>
+    </defs>
+</svg>
 
 * **Fast Calculation:** $5000 \times 1.10 \times 0.90 = 4950$.
 
@@ -71,8 +97,8 @@ The second percentage change (the decrease) is calculated on the **new, larger a
 
 <SteveTip title="Profit and Loss">
 "Profit" is just a fancy word for **percentage increase**. "Loss" is a **percentage decrease**. 
-If a shopkeeper buys a phone for £200 and sells it for £250:
-1. Profit = £50.
+If a shopkeeper in Sham Shui Po buys a smartphone case bulk lot for 200 HKD and sells it for 250 HKD:
+1. Profit = 50 HKD.
 2. Percentage Profit = $\frac{50}{200} \times 100 = 25\%$.
 </SteveTip>
 
@@ -90,20 +116,26 @@ Interest is only calculated on the **original** amount. It stays exactly the sam
 Interest is calculated on the **new total** each year (you earn interest on your interest). This creates exponential growth.
 * **Formula:** $\text{Total Amount} = P \times (\text{Multiplier})^T$
 
-```mermaid
-xychart-beta
-    title "Growth of £1000 at 10% Interest"
-    x-axis ["Yr 1", "Yr 2", "Yr 3", "Yr 4", "Yr 5"]
-    y-axis "Total (£)" 1000 --> 1700
-    line [1100, 1200, 1300, 1400, 1500]
-    line [1100, 1210, 1331, 1464, 1611]
-```
-*(The lower straight line represents Simple Interest; the upper curved line represents Compound Interest)*
+<svg viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+    <line x1="50" y1="250" x2="450" y2="250" stroke="#334155" stroke-width="2"/>
+    <line x1="50" y1="250" x2="50" y2="50" stroke="#334155" stroke-width="2"/>
+    
+    <polyline points="50,200 450,110" fill="none" stroke="#3b82f6" stroke-width="3" stroke-dasharray="5,5"/>
+    
+    <path d="M 50 240 Q 300 240 450 40" fill="none" stroke="#ef4444" stroke-width="4"/>
+    
+    <text x="130" y="270" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Year 2</text>
+    <text x="450" y="270" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="middle">Year 10</text>
+    
+    <text x="360" y="30" font-family="sans-serif" font-size="14" font-weight="bold" fill="#ef4444">Compound Interest</text>
+    <text x="380" y="140" font-family="sans-serif" font-size="14" font-weight="bold" fill="#3b82f6">Simple Interest</text>
+    <text x="250" y="15" font-family="sans-serif" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle">Yield Comparison over Time</text>
+</svg>
 
-**Example: £2000 is invested at 4% per year compound interest for 3 years.**
+**Example: 20,000 HKD is invested at 4% per year compound interest in Hang Seng Bank for 3 years.**
 1. Multiplier for 4% increase: $1.04$
-2. Calculation: $2000 \times (1.04)^3 = 2249.73$
-**Answer:** £2249.73
+2. Calculation: $20,000 \times (1.04)^3 = 22,497.28$
+**Answer:** 22,497.28 HKD
 
 <Aside type="caution" title="Pitfall: Interest vs. Total Balance">
 Read the question carefully! Does it ask for the **total amount** in the bank or just the **interest earned**? 
@@ -117,9 +149,9 @@ If it asks for interest only: **[Total Balance] - [Original Investment] = [Inter
 These use exactly the same mathematical structure as compound interest, but they represent real-world values changing over time.
 
 * **Depreciation (Value Goes Down):** Used for cars, machinery, or technology. The multiplier is less than 1.
-    * *Example:* A car worth £15,000 depreciates by 12% each year. Value after 5 years: $15,000 \times (0.88)^5$.
-* **Inflation (Value Goes Up):** Used for the cost of living, groceries, or house prices. The multiplier is greater than 1.
-    * *Example:* Bread costs £1.20. If annual inflation is 3%, what is the cost after 2 years? $1.20 \times (1.03)^2$.
+    * *Example:* A Tesla worth 250,000 HKD depreciates by 12% each year. Value after 5 years: $250,000 \times (0.88)^5$.
+* **Inflation (Value Goes Up):** Used for the cost of living, groceries, or property prices. The multiplier is greater than 1.
+    * *Example:* A pineapple bun at a local cha chaan teng costs 12 HKD. If annual inflation is 3%, what is the cost after 2 years? $12 \times (1.03)^2$.
 
 ---
 
@@ -128,16 +160,16 @@ These use exactly the same mathematical structure as compound interest, but they
 Sometimes the exam flips the compound interest question and asks you to find the **Rate ($R$)** or the **Time ($n$)**.
 
 ### Finding an Unknown Rate (The nth Root)
-If an investment of £500 grows to £600 in 4 years, what is the annual compound interest rate?
-1. Set up the equation: $500 \times x^4 = 600$
-2. Isolate the multiplier ($x$): $x^4 = \frac{600}{500} = 1.2$
+If an investment of 50,000 JPY grows to 60,000 JPY in 4 years, what is the annual compound interest rate?
+1. Set up the equation: $50,000 \times x^4 = 60,000$
+2. Isolate the multiplier ($x$): $x^4 = \frac{60,000}{50,000} = 1.2$
 3. Use the nth root on your calculator: $x = \sqrt[4]{1.2} \approx 1.0466$
 4. Convert multiplier back to a percentage: A multiplier of $1.0466$ means a $4.66\%$ increase.
 **Answer:** 4.66%
 
 ### Finding Unknown Time (Logarithms or Graphs)
-If an investment of £1000 at 5% needs to reach £1500, how many years does it take?
-1. Set up the equation: $1000 \times (1.05)^n = 1500$
+If an investment of 10,000 HKD at 5% needs to reach 15,000 HKD, how many years does it take?
+1. Set up the equation: $10,000 \times (1.05)^n = 15,000$
 2. Isolate the power: $1.05^n = 1.5$
 
 <Aside type="note" title="Sneak Peek: Logs and Graphs">
@@ -150,30 +182,46 @@ To solve for an exponent like $n$, we will eventually use **Logarithms** (Chapte
 
 This is heavily tested in Paper 4. You are given the **final** value after a change has happened, and you are asked to find the **original** starting value.
 
-**Example: A laptop is sold for £540 after a 10% discount. Find the original price.**
+**Example: A "Nintendo Switch 2" in Sham Shui Po is sold for 3,420 HKD after a 10% student discount. Find the original price.**
 
 <Aside type="caution" title="Pitfall: The 10% Illusion">
-Do not calculate 10% of £540 and add it on! The 10% discount was calculated based on the *original* (larger) price, not the sale price.
+Do not calculate 10% of 3420 HKD and add it on! The 10% discount was calculated based on the *original* (larger) price, not the sale price.
 </Aside>
 
 ### The Reverse Timeline Method
-Think about how the price moved forward in time, and then reverse the mathematics to go backward in time.
+To go backward in time, we reverse the multiplication into a division.
 
-```mermaid
-flowchart LR
-    subgraph Forward [1. The Forward Journey]
-        direction LR
-        A[Original Price: ?] -- "× 0.90" --> B[Sale Price: £540]
-    end
+<svg viewBox="0 0 650 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="transparent"/>
     
-    subgraph Reverse [2. The Reverse Journey]
-        direction RL
-        C[Sale Price: £540] -- "÷ 0.90" --> D[Original Price: £600]
-    end
-```
+    <text x="50" y="30" font-family="sans-serif" font-weight="bold" fill="#64748b">1. The Forward Journey (Wahoo!)</text>
+    <rect x="50" y="50" width="180" height="40" rx="6" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2"/>
+    <text x="140" y="75" font-family="sans-serif" font-weight="bold" fill="#334155" text-anchor="middle">Original Price: ?</text>
+    
+    <path d="M 240 70 L 390 70" fill="none" stroke="#3b82f6" stroke-width="3" marker-end="url(#arrow-blue)"/>
+    <text x="315" y="60" font-family="sans-serif" font-weight="bold" fill="#3b82f6" text-anchor="middle">× 0.90</text>
+    
+    <rect x="410" y="50" width="200" height="40" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="510" y="75" font-family="sans-serif" font-weight="bold" fill="#1d4ed8" text-anchor="middle">Sale Price: 3,420 HKD</text>
 
-* **Calculation:** $540 \div 0.90 = 600$.
-**Answer:** £600
+    <text x="50" y="125" font-family="sans-serif" font-weight="bold" fill="#64748b">2. The Reverse Journey (Ya-hoo!)</text>
+    <rect x="410" y="145" width="200" height="40" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+    <text x="510" y="170" font-family="sans-serif" font-weight="bold" fill="#1d4ed8" text-anchor="middle">Sale Price: 3,420 HKD</text>
+    
+    <path d="M 390 165 L 240 165" fill="none" stroke="#10b981" stroke-width="3" marker-end="url(#arrow-green-rev)"/>
+    <text x="315" y="155" font-family="sans-serif" font-weight="bold" fill="#10b981" text-anchor="middle">÷ 0.90</text>
+    
+    <rect x="50" y="145" width="180" height="40" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+    <text x="140" y="170" font-family="sans-serif" font-weight="bold" fill="#047857" text-anchor="middle">Original: 3,800 HKD</text>
+    
+    <defs>
+        <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" /></marker>
+        <marker id="arrow-green-rev" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981" /></marker>
+    </defs>
+</svg>
+
+* **Calculation:** $3420 \div 0.90 = 3800$.
+**Answer:** 3800 HKD
 
 <SteveTip title="Spotting the Reverse Question">
 Whenever you see phrases like "Original price," "Before the increase," "Cost price," or "Prior to the sale," you are dealing with a **Reverse Percentage**. Your first step should always be to set up a division:
@@ -187,181 +235,90 @@ Whenever you see phrases like "Original price," "Before the increase," "Cost pri
 ### Part A: Basic Percentages & Expressing Quantities
 
 <Tabs>
-  <TabItem label="📝 Question 1: VAT">
-    A plumber charges £240 for a job. He then adds 20% VAT (tax) to the bill. Calculate the total cost.
+  <TabItem label="📝 Question 1">
+    * **a)** A freelance web developer charges 2400 HKD for a job. They then add 10% service charge to the bill. Calculate the total cost.
+    * **b)** A watch dealer buys a vintage timepiece for 45,000 HKD and sells it for 52,000 HKD. Calculate the percentage profit, giving your answer to 1 decimal place.
+    * **c)** An MTR monthly pass originally costs 400 HKD. It is reduced to 340 HKD with a student subsidy. What is the percentage discount?
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. Multiplier for 20% increase: $1.20$.
-    2. $240 \times 1.20 = 288$.
-    **Answer:** £288
+    * **a)** Multiplier for 10% increase: $1.10$. Total: $2400 \times 1.10 = \mathbf{2640\text{ HKD}}$.
+    * **b)** Profit: $52,000 - 45,000 = 7000$. Percentage: $\frac{7000}{45000} \times 100 \approx \mathbf{15.6\%}$.
+    * **c)** Discount amount: $400 - 340 = 60$. Percentage: $\frac{60}{400} \times 100 = \mathbf{15\%}$.
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Percentage of amounts and adding tax/VAT" />
-
-<Tabs>
-  <TabItem label="📝 Question 2: Expressing">
-    A car dealer buys a car for £4500 and sells it for £5200. Calculate the percentage profit, giving your answer to 1 decimal place.
-  </TabItem>
-  <TabItem label="✅ Solution 2">
-    1. Find the actual profit: $5200 - 4500 = 700$.
-    2. Divide profit by the **original** cost: $\frac{700}{4500} \approx 0.1555...$
-    3. Multiply by 100: $15.55...\%$
-    **Answer:** 15.6%
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Expressing one quantity as a percentage of another and calculating percentage profit/loss" />
+<SmartAIGenerator topic="Percentage of amounts, adding tax, and calculating percentage profit/loss" />
 
 ### Part B: Chained Percentages & Multipliers
 
 <Tabs>
-  <TabItem label="📝 Question 3: The '+/- Trap'">
-    A stock portfolio is worth £10,000. In 2021, its value increases by 15%. In 2022, its value decreases by 15%. Find the final value of the portfolio at the end of 2022.
+  <TabItem label="📝 Question 2">
+    * **a)** A stock portfolio on the Hang Seng Index is worth 100,000 HKD. In 2023, its value increases by 15%. In 2024, its value decreases by 15%. Find the final value of the portfolio at the end of 2024.
+    * **b)** A television is reduced by 20% during the SOGO Thankful Week. On the final day, it is reduced by a further 10% of the sale price. What is the single overall percentage reduction?
+    * **c)** A town's population of 50,000 increases by 5% every year for 3 years. Calculate the new population, rounded to the nearest whole number.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    * **a)** Use chained multipliers: $100,000 \times 1.15 \times 0.85 = \mathbf{97,750\text{ HKD}}$. (Notice it does not return to 100,000!)
+    * **b)** Multiply the two multipliers: $0.80 \times 0.90 = 0.72$. A final multiplier of $0.72$ means it retains 72% of its value. Overall reduction: $100\% - 72\% = \mathbf{28\%}$.
+    * **c)** $50,000 \times (1.05)^3 = 57,881.25$. Rounded: $\mathbf{57,881}$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Chained percentage increases, decreases, and overall multipliers" />
+
+### Part C: Compound vs. Simple Interest & Depreciation
+
+<Tabs>
+  <TabItem label="📝 Question 3">
+    * **a)** David invests 60,000 JPY in a bank account paying 3.5% simple interest per year. Calculate the **total amount** in his account after 5 years.
+    * **b)** Sarah invests 60,000 JPY in a different account paying 3.5% compound interest per year. Calculate the total amount in her account after 5 years.
+    * **c)** A logistics company buys a delivery van for 450,000 HKD. It depreciates at a rate of 18% per annum. Find its value after 4 years, to the nearest dollar.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    1. Use the timeline multiplier method.
-    2. Year 1 multiplier: $1.15$. Year 2 multiplier: $0.85$.
-    3. Calculation: $10,000 \times 1.15 \times 0.85 = 9775$.
-    **Answer:** £9775 (Notice it did not return to £10,000!)
+    * **a)** Interest: $I = \frac{60000 \times 3.5 \times 5}{100} = 10,500$. Total Amount: $60,000 + 10,500 = \mathbf{70,500\text{ JPY}}$.
+    * **b)** Multiplier: $1.035$. Calculation: $60,000 \times (1.035)^5 = \mathbf{71,261.12\text{ JPY}}$ (to 2 d.p.).
+    * **c)** Multiplier for 18% decrease: $0.82$. Calculation: $450,000 \times (0.82)^4 = 203,458.56...$ Rounded: $\mathbf{203,459\text{ HKD}}$.
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Chained percentage increases and decreases" />
+<SmartAIGenerator topic="Comparing simple and compound interest alongside compound depreciation" />
+
+### Part D: Solving for Unknowns
 
 <Tabs>
-  <TabItem label="📝 Question 4: Multiplier Focus">
-    A television is reduced by 20% in a sale. On the final day, it is reduced by a further 10% of the sale price. What is the single overall percentage reduction?
+  <TabItem label="📝 Question 4">
+    * **a)** An investment of 12,000 SGD is left in a compound interest account for 6 years. It grows to 15,000 SGD. Calculate the annual percentage interest rate to 3 significant figures.
+    * **b)** A company car is bought for 240,000 HKD. After 3 years of depreciating at a constant annual rate, its value is 135,000 HKD. Calculate the exact annual rate of depreciation.
+    * **c)** John invests 30,000 HKD in a savings account paying 4% compound interest per year. Using trial and improvement, find the minimum number of full years it takes for the total amount to exceed 40,000 HKD.
   </TabItem>
   <TabItem label="✅ Solution 4">
-    1. Multiply the two multipliers together: $0.80 \times 0.90 = 0.72$.
-    2. A final multiplier of $0.72$ means the item is worth 72% of its original value.
-    3. The overall reduction is $100\% - 72\% = 28\%$.
-    **Answer:** A 28% reduction (Not 30%!)
+    * **a)** Equation: $12000 \times r^6 = 15000$. Divide: $r^6 = 1.25$. Root: $r = \sqrt[6]{1.25} \approx 1.03789$. This is a $\mathbf{3.79\%}$ increase.
+    * **b)** Equation: $240000 \times r^3 = 135000$. Divide: $r^3 = 0.5625$. Root: $r = \sqrt[3]{0.5625} \approx 0.8255$. This multiplier represents a decrease of $100\% - 82.55\% = \mathbf{17.45\%}$.
+    * **c)** Equation: $30000 \times (1.04)^n > 40000 \rightarrow 1.04^n > 1.333...$ 
+       Test $n=7$: $1.04^7 \approx 1.316$.
+       Test $n=8$: $1.04^8 \approx 1.368$. 
+       **Answer:** $\mathbf{8\text{ years}}$.
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding the single overall percentage change from chained multipliers" />
+<SmartAIGenerator topic="Finding unknown interest rates, depreciation rates, and time periods using roots" />
 
-### Part C: Compound Interest vs. Simple Interest
+### Part E: Reverse Percentages
 
 <Tabs>
-  <TabItem label="📝 Question 5: Simple Interest">
-    David invests £6000 in a bank account paying 3.5% simple interest per year. How much **interest** has he earned after 5 years?
+  <TabItem label="📝 Question 5">
+    * **a)** After a 15% pay rise, an accountant in Central earns 48,300 HKD per month. Calculate their salary before the pay rise.
+    * **b)** In 2005, a tech entrepreneur sold his Chelsea-moored houseboat (the one with the "Revolutionary" name) for 253,000 GBP. If this sale price represented a 15% profit on his original purchase, how much did the houseboat originally cost?
+    * **c)** At a pop-up shop in Tsim Sha Tsui, a limited edition console is reduced by 25%. A buyer uses a coupon to get another 10% off the sale price and pays 2,700 HKD. What was the original price?
   </TabItem>
   <TabItem label="✅ Solution 5">
-    1. Use the formula: $I = \frac{P \times R \times T}{100}$.
-    2. $I = \frac{6000 \times 3.5 \times 5}{100} = 1050$.
-    **Answer:** £1050
+    * **a)** Multiplier for 15% increase: $1.15$. Reverse calculation: $48,300 \div 1.15 = \mathbf{42,000\text{ HKD}}$.
+    * **b)** Multiplier for 15% profit (increase): $1.15$. Reverse calculation: $253,000 \div 1.15 = \mathbf{220,000\text{ GBP}}$.
+    * **c)** The chained multipliers going forward were $0.70$ and $0.90$. 
+       Working backwards step-by-step: 
+       Price before coupon: $2700 \div 0.90 = 3000$. 
+       Price before pop-up sale: $3000 \div 0.75 = \mathbf{4000\text{ HKD}}$.
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Calculating simple interest and total amounts" />
-
-<Tabs>
-  <TabItem label="📝 Question 6: Compound Interest">
-    Sarah invests £6000 in a different account paying 3.5% compound interest per year. Calculate the **total amount** in her account after 5 years.
-  </TabItem>
-  <TabItem label="✅ Solution 6">
-    1. Multiplier for 3.5% compound: $1.035$.
-    2. Calculation: $6000 \times (1.035)^5 = 7126.11$ (to 2 decimal places).
-    **Answer:** £7126.11
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Calculating compound interest and comparing it with simple interest" />
-
-### Part D: Depreciation and Inflation
-
-<Tabs>
-  <TabItem label="📝 Question 7: Depreciation">
-    A company buys a printing machine for £45,000. It depreciates at a rate of 18% per annum. Find its value after 4 years, to the nearest pound.
-  </TabItem>
-  <TabItem label="✅ Solution 7">
-    1. Multiplier for 18% decrease: $100\% - 18\% = 82\% \rightarrow 0.82$.
-    2. Calculation: $45,000 \times (0.82)^4 = 20345.86...$
-    3. Round to nearest pound.
-    **Answer:** £20,346
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Calculating depreciation and inflation over multiple years" />
-
-### Part E: Solving for Unknowns (Rates and Time)
-
-<Tabs>
-  <TabItem label="📝 Question 8: Unknown Rate">
-    An investment of £1200 is left in a compound interest account for 6 years. It grows to £1500. Calculate the annual percentage interest rate.
-  </TabItem>
-  <TabItem label="✅ Solution 8">
-    1. Set up the equation: $1200 \times r^6 = 1500$.
-    2. Divide by 1200: $r^6 = \frac{1500}{1200} = 1.25$.
-    3. Take the 6th root: $r = \sqrt[6]{1.25} \approx 1.03789$.
-    4. Convert multiplier back: A multiplier of $1.03789$ is an increase of $3.789\%$.
-    **Answer:** 3.79% (to 3 sig figs)
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Finding unknown compound interest rates using nth roots" />
-
-<Tabs>
-  <TabItem label="📝 Question 9: Unknown Time">
-    John invests £3000 in a savings account paying 4% compound interest per year. Using trial and improvement, find the minimum number of full years it takes for the total amount to exceed £4000.
-  </TabItem>
-  <TabItem label="✅ Solution 9">
-    1. Set up the equation: $3000 \times (1.04)^n > 4000$.
-    2. Isolate the power: $1.04^n > \frac{4000}{3000} \approx 1.333...$
-    3. Use trial and improvement on your calculator:
-       * $1.04^6 \approx 1.265$
-       * $1.04^7 \approx 1.316$
-       * $1.04^8 \approx 1.368$
-    4. Since $1.368 > 1.333$, it takes 8 full years.
-    **Answer:** 8 years
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Finding unknown time periods using trial and improvement" />
-
-<Tabs>
-  <TabItem label="📝 Question 10: Unknown Depreciation Rate">
-    A car is bought for £24,000. After 3 years of depreciating at a constant annual rate, its value is £13,500. Calculate the annual rate of depreciation.
-  </TabItem>
-  <TabItem label="✅ Solution 10">
-    1. Set up the equation: $24000 \times r^3 = 13500$.
-    2. Divide by 24000: $r^3 = \frac{13500}{24000} = 0.5625$.
-    3. Take the cube root: $r = \sqrt[3]{0.5625} \approx 0.8255$.
-    4. A multiplier of $0.8255$ represents a decrease of $100\% - 82.55\% = 17.45\%$.
-    **Answer:** 17.45%
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Finding unknown depreciation rates using roots" />
-
-### Part F: Reverse Percentages
-
-<Tabs>
-  <TabItem label="📝 Question 11: Reverse Sale">
-    After a 15% pay rise, a manager earns £48,300 per year. Calculate their salary before the pay rise.
-  </TabItem>
-  <TabItem label="✅ Solution 11">
-    1. Identify the multiplier for a 15% increase: $1.15$.
-    2. Use the reverse timeline formula: $\text{Final Amount} \div \text{Multiplier} = \text{Original Amount}$.
-    3. Calculation: $48,300 \div 1.15 = 42,000$.
-    **Answer:** £42,000
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Reverse percentages, finding original price before pay rises or added tax" />
-
-<Tabs>
-  <TabItem label="📝 Question 12: Reverse Depreciation">
-    A car depreciates by 20% in its first year. At the end of the first year, it is worth £17,600. How much did it cost brand new?
-  </TabItem>
-  <TabItem label="✅ Solution 12">
-    1. Identify the multiplier for a 20% decrease: $0.80$.
-    2. Use the reverse timeline formula: $17,600 \div 0.80 = 22,000$.
-    **Answer:** £22,000
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Reverse percentages for discounts and depreciation" />
+<SmartAIGenerator topic="Reverse percentages, finding original prices before sales, taxes, or chained discounts" />

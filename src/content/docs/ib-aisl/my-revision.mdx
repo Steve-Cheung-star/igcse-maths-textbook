@@ -6,6 +6,7 @@ sidebar:
 ---
 
 import HistoryViewer from '../../../components/HistoryViewer.jsx';
+import SyncPortal from '../../../components/SyncPortal.jsx';
 
 Welcome to your personal IB AI SL revision hub! Every time you generate and practice a question using the AI tools across this textbook, it is automatically logged here.
 
@@ -19,10 +20,11 @@ Welcome to your personal IB AI SL revision hub! Every time you generate and prac
 
     * **⭐ Bookmark the Best:** Stuck on a tricky statistics or financial math problem? Click the star icon to bookmark it. Use the **Bookmarks** filter to quickly review your most challenging questions before exam day.
     * **🔍 Smart Search:** Looking for that one specific Voronoi diagram question? Use the search bar to instantly filter your history by topic, difficulty level, or specific keywords inside the question.
-    * **📥 Import External AI:** Did you use the **"Copy Prompt"** button from one of our chapters to generate a question in Google Gemini? Click "Import External AI" and paste the exact response here. Our importer looks for those specific tags to seamlessly add it to your log.
-    * **📋 Copy & Share:** Easily copy the exact markdown of any question and solution to your clipboard to share with a study group or paste into your own digital notes.
+    * **🧠 Import External AI:** Did you use the **"Copy Prompt"** button from one of our chapters to generate a question in Google Gemini? Click "Import External AI" and paste the exact response here. This privately saves the question to your local history.
+    * **📡 Live Revision Portal:** Study with a classmate! Enter a room name and hit Connect (or hit **✨ Magic** to instantly create a random one). When your friends share questions, they will pop up here with an **📥 Import** button to add to your own history.
+    * **📋 Copy & Broadcast:** Click the clipboard icon to copy the text of any question for your own digital notes. **Pro-Tip:** If you are connected to a Revision Portal room, clicking copy will *instantly broadcast* that specific question to everyone else in the room!
 
-    > **🔒 Privacy Note:** Your revision history is entirely private and stored locally on your current device. *If you switch computers, use a private/incognito window, or clear your browser data, this history will reset.*
+    > **🔒 Privacy Note:** Your revision history is entirely private and stored locally on your current device. *If you switch computers, use a private/incognito window, or clear your browser data, this history will reset (unless you beam it to another device via the Revision Portal!)*
     
     <div style={{ marginTop: '1.5rem', textAlign: 'center', fontSize: '0.8rem', color: 'var(--sl-color-gray-3)', borderTop: '1px solid var(--sl-color-gray-5)', paddingTop: '1rem' }}>
       Made with ❤️ for my students <br />
@@ -30,5 +32,7 @@ Welcome to your personal IB AI SL revision hub! Every time you generate and prac
     </div>
   </div>
 </details>
+
+<SyncPortal storageKey="ib_aisl_math_history" client:only="react" />
 
 <HistoryViewer storageKey="ib_aisl_math_history" client:only="react" />

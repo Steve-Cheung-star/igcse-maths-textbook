@@ -5,14 +5,23 @@ description: Learn to use a scientific calculator efficiently, enter values corr
 
 Your scientific calculator is the most powerful tool in your maths kit, but it is only as smart as the person typing the buttons. Misunderstanding how your calculator interprets data or displays answers is a common way to lose easy marks.
 
-
-
-
 ---
 
 ## 1. Efficient Calculator Use
 
 Typing every single calculation out step-by-step and hitting equals after every operation is slow and leads to mistakes. Modern scientific calculators allow you to type the calculation *exactly* as it appears on the exam paper.
+
+<svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="20" y="50" width="200" height="100" rx="10" fill="none" stroke="#e63946" stroke-width="4"/>
+    <text x="120" y="35" font-family="sans-serif" font-weight="bold" fill="#e63946" text-anchor="middle">Avoid Linear Typing</text>
+    <text x="120" y="105" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">(4.5+2.1)÷3.2²</text>
+
+    <rect x="280" y="50" width="200" height="100" rx="10" fill="none" stroke="#2a9d8f" stroke-width="4"/>
+    <text x="380" y="35" font-family="sans-serif" font-weight="bold" fill="#2a9d8f" text-anchor="middle">Use Fraction Template</text>
+    <line x1="330" y1="100" x2="430" y2="100" stroke="#333" stroke-width="2"/>
+    <text x="380" y="90" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">4.5 + 2.1</text>
+    <text x="380" y="125" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">3.2²</text>
+</svg>
 
 * **The Fraction Button:** Always use the fraction button (usually showing two boxes on top of each other) rather than the division symbol ($\div$) for complex algebraic or numerical fractions. This ensures the calculator groups the top (numerator) and bottom (denominator) correctly.
   * *Example:* To calculate $\frac{4.5 + 2.1}{3.2^2}$, press the fraction button first, type $4.5 + 2.1$ on the top, use the down arrow to navigate to the denominator, and type $3.2^2$ on the bottom.
@@ -40,17 +49,42 @@ Be very careful using the `Ans` feature on a TI-Nspire. If you calculate the squ
 **The Safer Method:** Use the **Up arrow** on the directional pad to highlight the exact previous answer, then press **Enter** to copy it down onto your current line.
 </Aside>
 
-```mermaid
-flowchart TD
-    A[Start: 100 ÷ 3] --> B(Write down 33.3)
-    A --> C(Keep 33.333333... in calculator)
-    
-    B -- "Multiply by 6" --> D(33.3 × 6 = 199.8)
-    C -- "Multiply by 6" --> E(33.333... × 6 = 200)
-    
-    D --> F[WRONG ANSWER ❌]
-    E --> G[CORRECT ANSWER ✅]
-```
+<svg viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+        </marker>
+    </defs>
+    <rect x="200" y="10" width="200" height="40" rx="5" fill="none" stroke="#333" stroke-width="2"/>
+    <text x="300" y="35" font-family="sans-serif" font-weight="bold" font-size="16" fill="#333" text-anchor="middle">Start: 100 ÷ 3</text>
+
+    <path d="M 300 50 L 300 70 L 150 70 L 150 90" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 300 50 L 300 70 L 450 70 L 450 90" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="50" y="90" width="200" height="40" rx="5" fill="none" stroke="#e63946" stroke-width="2"/>
+    <text x="150" y="115" font-family="sans-serif" font-size="14" font-weight="bold" fill="#e63946" text-anchor="middle">Write down 33.3</text>
+
+    <path d="M 150 130 L 150 170" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="155" y="155" font-family="sans-serif" font-size="12" fill="#333">Multiply by 6</text>
+
+    <rect x="50" y="170" width="200" height="40" rx="5" fill="none" stroke="#e63946" stroke-width="2"/>
+    <text x="150" y="195" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">33.3 × 6 = 199.8</text>
+
+    <path d="M 150 210 L 150 240" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="150" y="260" font-family="sans-serif" font-weight="bold" font-size="16" fill="#e63946" text-anchor="middle">WRONG ANSWER ❌</text>
+
+    <rect x="350" y="90" width="200" height="40" rx="5" fill="none" stroke="#2a9d8f" stroke-width="2"/>
+    <text x="450" y="115" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2a9d8f" text-anchor="middle">Keep 33.3333... in calc</text>
+
+    <path d="M 450 130 L 450 170" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="455" y="155" font-family="sans-serif" font-size="12" fill="#333">Multiply by 6</text>
+
+    <rect x="350" y="170" width="200" height="40" rx="5" fill="none" stroke="#2a9d8f" stroke-width="2"/>
+    <text x="450" y="195" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">33.333... × 6 = 200</text>
+
+    <path d="M 450 210 L 450 240" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="450" y="260" font-family="sans-serif" font-weight="bold" font-size="16" fill="#2a9d8f" text-anchor="middle">CORRECT ANSWER ✅</text>
+</svg>
 
 <Aside type="caution" title="Exam Tip: Show Your Working">
 Even though you are keeping the exact number in your calculator, you should still write down the intermediate numbers on your exam paper (e.g., write down 33.33...) so the examiner can see your logic!
@@ -64,11 +98,43 @@ Calculators are strictly mathematical; they do not understand real-world context
 
 ### Money (Adding the Zero)
 If a question involves currency (£ or $), a calculator will drop trailing zeros because 4.8 is mathematically identical to 4.80.
+
+<svg viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrowMoney" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker>
+    </defs>
+    <rect x="50" y="50" width="120" height="60" rx="5" fill="none" stroke="#457b9d" stroke-width="3"/>
+    <text x="110" y="88" font-family="monospace" font-size="28" fill="#333" text-anchor="middle">4.8</text>
+    <text x="110" y="35" font-family="sans-serif" font-weight="bold" fill="#457b9d" text-anchor="middle">Calculator</text>
+
+    <path d="M 190 80 L 250 80" fill="none" stroke="#333" stroke-width="3" marker-end="url(#arrowMoney)"/>
+
+    <rect x="270" y="50" width="120" height="60" rx="5" fill="none" stroke="#1d3557" stroke-width="3" stroke-dasharray="5,5"/>
+    <text x="330" y="88" font-family="sans-serif" font-size="28" font-weight="bold" fill="#1d3557" text-anchor="middle">£4.80</text>
+    <text x="330" y="35" font-family="sans-serif" font-weight="bold" fill="#1d3557" text-anchor="middle">Exam Paper</text>
+</svg>
+
 * **Calculator Display:** `4.8`
 * **Your Written Answer:** **£4.80** (Money must always be written to two decimal places).
 
 ### Time (The Decimal Trap)
 Time is based on 60, not 100. A decimal of a time does NOT directly translate to minutes!
+
+<svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrowTime" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker>
+    </defs>
+    <rect x="30" y="60" width="140" height="60" rx="5" fill="none" stroke="#e63946" stroke-width="3"/>
+    <text x="100" y="98" font-family="monospace" font-size="24" fill="#333" text-anchor="middle">3.25 hrs</text>
+    <text x="100" y="45" font-family="sans-serif" font-weight="bold" fill="#e63946" text-anchor="middle">Calculator</text>
+
+    <path d="M 185 90 L 245 90" fill="none" stroke="#333" stroke-width="3" marker-end="url(#arrowTime)"/>
+    <text x="215" y="80" font-family="sans-serif" font-size="14" fill="#333" text-anchor="middle">0.25 × 60</text>
+
+    <rect x="270" y="60" width="200" height="60" rx="5" fill="none" stroke="#2a9d8f" stroke-width="3"/>
+    <text x="370" y="98" font-family="sans-serif" font-size="22" font-weight="bold" fill="#2a9d8f" text-anchor="middle">3 hrs 15 mins</text>
+    <text x="370" y="45" font-family="sans-serif" font-weight="bold" fill="#2a9d8f" text-anchor="middle">Reality</text>
+</svg>
 
 * **Calculator Display:** `3.25 hours`
 * **The Trap:** Do not write "3 hours and 25 minutes". 
@@ -87,13 +153,14 @@ If your calculator gives you an answer in decimals, pressing the **° ' "** butt
 
 <Tabs>
   <TabItem label="📝 Question 1: Money">
-    Calculate £12.50 divided by 4. Write down the exact amount you would tell a customer to pay.
+    * **a)** Calculate £12.50 divided by 4. Write down the exact amount you would tell a customer to pay.
+    * **b)** A worker earns £11.45 per hour and works for 37.5 hours. Calculate their total pay.
+    * **c)** A holiday costs £850. It is split equally among 6 friends. How much does each person pay?
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. Calculator output: `3.125`.
-    2. Context: We are dealing with money, which only has two decimal places (pence).
-    3. Rounding: 3.125 rounds up to 3.13.
-    **Answer:** £3.13
+    * **a)** Calculator output: `3.125`. Since we are dealing with money, we need two decimal places. 3.125 rounds up to 3.13. **Answer: £3.13**
+    * **b)** Multiply the hourly rate by the hours: 11.45 × 37.5 = `429.375`. Round to two decimal places. **Answer: £429.38**
+    * **c)** Divide the total cost by 6: 850 ÷ 6 = `141.6666...`. Round correctly to two decimal places. **Answer: £141.67**
   </TabItem>
 </Tabs>
 
@@ -101,14 +168,14 @@ If your calculator gives you an answer in decimals, pressing the **° ' "** butt
 
 <Tabs>
   <TabItem label="📝 Question 2: Time">
-    A train journey takes exactly 285 minutes. Convert this into hours and minutes using your calculator.
+    * **a)** A train journey takes exactly 285 minutes. Convert this into hours and minutes using your calculator.
+    * **b)** Calculate $3.4 \times 1.25$ and interpret your answer as a time in hours and minutes.
+    * **c)** A machine runs continuously for 7.8 hours. Convert this into hours and minutes.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    1. Divide by 60 to find the hours: $285 \div 60 = 4.75$.
-    2. We have 4 full hours. 
-    3. Take the decimal remainder (0.75) and multiply by 60 to find the minutes: $0.75 \times 60 = 45$.
-    *(Alternatively, use the ° ' " button on your calculator!)*
-    **Answer:** 4 hours 45 minutes
+    * **a)** Divide by 60 to find the hours: $285 \div 60 = 4.75$. We have 4 full hours. Take the decimal remainder (0.75) and multiply by 60 to find the minutes: $0.75 \times 60 = 45$. **Answer: 4 hours 45 minutes**
+    * **b)** Calculator gives: `4.25` hours. The whole number is 4 hours. Multiply the decimal part (0.25) by 60: $0.25 \times 60 = 15$. **Answer: 4 hours 15 minutes**
+    * **c)** The whole number is 7 hours. Multiply the decimal part (0.8) by 60: $0.8 \times 60 = 48$. **Answer: 7 hours 48 minutes**
   </TabItem>
 </Tabs>
 
@@ -116,15 +183,14 @@ If your calculator gives you an answer in decimals, pressing the **° ' "** butt
 
 <Tabs>
   <TabItem label="📝 Question 3: Early Rounding">
-    Calculate the area of a circle with a radius of 5.5cm. Then, multiply that area by 12. Give your final answer to 1 decimal place.
+    * **a)** Calculate the area of a circle with a radius of 5.5cm. Then, multiply that area by 12. Give your final answer to 1 decimal place.
+    * **b)** Evaluate $\frac{14.2}{3.1}$ and without rounding, add 5.8. Give your answer to 3 significant figures.
+    * **c)** Find the volume of a cylinder using $V = \pi r^2 h$, where radius $r = 4.2$ cm and height $h = 11.5$ cm. Use the exact value to find the volume of 5 identical cylinders, then round to the nearest whole number.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    1. Area = $\pi \times 5.5^2 = 95.03317...$
-    2. **DO NOT** clear your calculator or type in 95.0. 
-    3. Immediately press `× 12` to use the unrounded exact value (or use the Up arrow on an Nspire to copy it).
-    4. Exact calculation: $95.03317... \times 12 = 1140.3981...$
-    5. Now, round to 1 decimal place.
-    **Answer:** 1140.4 cm²
+    * **a)** Area = $\pi \times 5.5^2 = 95.03317...$ **DO NOT** clear your calculator. Immediately press `× 12` to use the unrounded exact value. Exact calculation: $95.03317... \times 12 = 1140.3981...$ **Answer: 1140.4 cm²**
+    * **b)** Fraction calculation: 14.2 ÷ 3.1 = `4.580645...` Keep this on the screen and press `+ 5.8`. Output: `10.380645...` Round to 3 significant figures. **Answer: 10.4**
+    * **c)** Volume of one cylinder = $\pi \times 4.2^2 \times 11.5 = 637.3008...$ Multiply by 5 without clearing: `3186.504...` Round to the nearest whole number. **Answer: 3187 cm³**
   </TabItem>
 </Tabs>
 
@@ -132,18 +198,33 @@ If your calculator gives you an answer in decimals, pressing the **° ' "** butt
 
 <Tabs>
   <TabItem label="📝 Question 4: Fractions & Negatives">
-    Calculate the exact value of $\frac{-8.4 + 2.6}{0.5}$. Give your answer as a decimal.
+    * **a)** Calculate the exact value of $\frac{-8.4 + 2.6}{0.5}$. Give your answer as a decimal.
+    * **b)** Evaluate $(-4.2)^2 - \frac{15}{-2.5}$.
+    * **c)** Calculate $\frac{3.1 \times -4.5}{(-1.2)^3}$. Give your answer as an exact fraction.
   </TabItem>
   <TabItem label="✅ Solution 4">
-    1. Press the fraction button.
-    2. On the top, use the **negative** button `(-)` (not the subtract button) to type `-8.4 + 2.6`.
-    3. On the bottom, type `0.5`.
-    4. Press equals, then use the S↔D or ◀▶ button to convert to a decimal.
-    **Answer:** -11.6
+    * **a)** Press the fraction button. Use the **negative** button `(-)` to type `-8.4 + 2.6` on the top. Type `0.5` on the bottom. Press equals, then use the S↔D or ◀▶ button to convert to a decimal. **Answer: -11.6**
+    * **b)** Use brackets for the negative square: `(-4.2)²`. Then subtract the fraction `15 / -2.5`. The calculator handles the double negative. Output is `17.64 - (-6)`. **Answer: 23.64**
+    * **c)** Enter using the fraction template. Top: `3.1 × -4.5`. Bottom: `(-1.2)³`. The calculator will output a long decimal (`8.072916...`). Use the fraction conversion button (S↔D or menu). **Answer: 775/96**
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Calculating complex fractions with negative numbers on a GDC" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Advanced Calculator Input">
+    * **a)** Calculate the exact value of $\frac{(4.5 - 1.3)^2}{\sqrt{2.56}}$.
+    * **b)** Evaluate $\sqrt[3]{\frac{-11.625 + 2.5^3}{0.5}}$.
+    * **c)** Calculate $\frac{5.4^2 - \sqrt{8.5}}{(3.1 - 4.6)^3}$. Give your answer to 2 decimal places.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    * **a)** Use the fraction button first. Type `(4.5 - 1.3)²` on the top and `√2.56` on the bottom. The calculator simplifies this exactly. **Answer: 6.4**
+    * **b)** Press the cube root button `∛` first (usually shift + square root), then the fraction button. Type `-11.625 + 2.5³` on the top, and `0.5` on the bottom. **Answer: 2**
+    * **c)** Use the fraction button. Top: `5.4² - √8.5`. Bottom: `(3.1 - 4.6)³`. The calculator will output `-7.776158...`. Round to 2 decimal places. **Answer: -7.78**
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Complex calculator evaluations involving roots, powers, fractions, and negative numbers" />
 
 ---
 

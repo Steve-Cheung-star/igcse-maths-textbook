@@ -34,7 +34,7 @@ Exam questions will frequently use the 24-hour clock, especially when dealing wi
 
 ### Conversion Rules:
 * **a.m. times:** Keep the numbers the same, but ensure there are four digits. (e.g., 6.15 a.m. becomes `06 15`). *Exception: 12.xx a.m. (midnight) translates to `00 xx`.*
-* **p.m. times:** Add 12 to the hours. (e.g., 3.15 p.m. becomes $3 + 12 = 15$, so it is written as `15 15`). *Exception: 12.xx p.m. (midday) stays as `12 xx`.*
+* **p.m. times:** Add 12 to the hours. (e.g., 3.15 p.m. becomes 3 + 12 = 15, so it is written as `15 15`). *Exception: 12.xx p.m. (midday) stays as `12 xx`.*
 
 <SteveTip title="Cambridge Formatting Quirk">
 You are probably used to seeing digital time written with a colon (like `15:15`). However, the Cambridge syllabus officially denotes 24-hour time with a space instead of a colon, such as **`15 15`** or **`03 15`**. Get used to reading and writing it this way for your exam!
@@ -54,22 +54,80 @@ When calculating how long a journey takes, the safest method is **counting up** 
 
 ---
 
-## 4. Time Zones, Speed, and Local Time
+## 4. Time Zones and Overlapping Days
 
+Examiners love to give you a flight that leaves at one local time and arrives at another, often crossing midnight or incorporating half-hour time zones.
+Note that IGCSE uses the **xx xx** convention for 24-hour time without colons (e.g., 08 00).
+To solve these, always **bring the times to a neutral, shared time zone first.**
 
+**Example: A flight leaves London (GMT) at 18 00 on Tuesday and arrives in Mumbai (GMT+5:30) at 08 00 on Wednesday. How long was the flight?**
 
-The world is split into different time zones. When it is morning in London, it is evening in Tokyo. Exam questions will often combine time zones with a speed calculation to make you find the flight duration first.
+<svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="transparent" rx="10"/>
+    
+    <path d="M 150 100 Q 300 10 450 100" fill="none" stroke="#a8dadc" stroke-width="4" stroke-dasharray="10,10" />
+    
+    <g transform="translate(300, 35) rotate(30)">
+        <path d="M -15 0 L 15 0 M 5 -10 L 15 0 L 5 10" fill="none" stroke="#1d3557" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    
+    <circle cx="150" cy="100" r="10" fill="#1d3557"/>
+    <text x="150" y="130" font-family="sans-serif" font-weight="bold" font-size="16" fill="#333" text-anchor="middle">London (GMT)</text>
+    <rect x="100" y="145" width="100" height="50" rx="5" fill="#fff" stroke="#1d3557" stroke-width="2"/>
+    <text x="150" y="165" font-family="monospace" font-weight="bold" font-size="16" fill="#1d3557" text-anchor="middle">18 00</text>
+    <text x="150" y="185" font-family="sans-serif" font-size="12" fill="#555" text-anchor="middle">Tuesday</text>
+    
+    <circle cx="450" cy="100" r="10" fill="#e63946"/>
+    <text x="450" y="130" font-family="sans-serif" font-weight="bold" font-size="16" fill="#333" text-anchor="middle">Mumbai (GMT+5:30)</text>
+    <rect x="400" y="145" width="100" height="50" rx="5" fill="#fff" stroke="#e63946" stroke-width="2"/>
+    <text x="450" y="165" font-family="monospace" font-weight="bold" font-size="16" fill="#e63946" text-anchor="middle">08 00</text>
+    <text x="450" y="185" font-family="sans-serif" font-size="12" fill="#555" text-anchor="middle">Wednesday</text>
 
+    <rect x="230" y="70" width="140" height="30" rx="15" fill="#f1faee" stroke="#a8dadc" stroke-width="2"/>
+    <text x="300" y="90" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1d3557" text-anchor="middle">OVERNIGHT FLIGHT</text>
+</svg>
 
+### The Calculation Method
 
-### Integrating Speed and Distance
-To find the duration of a flight when given the distance and average speed, use the formula:
-$Time = \frac{Distance}{Speed}$
+You cannot simply subtract 18 00 from 08 00 because they are in different time zones and on different days.
+**Convert the arrival time back to the departure time zone first.**
 
-This will usually give you a decimal hour (like 11.25 hours). Remember to multiply the decimal part by 60 to convert it into exact minutes before adding it to your departure time!
+<svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="transparent"/>
+    
+    <rect x="40" y="90" width="160" height="85" rx="8" fill="#1d3557" />
+    <text x="120" y="115" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">Departure (GMT)</text>
+    <text x="120" y="145" fill="#a8dadc" font-family="monospace" font-weight="bold" font-size="18" text-anchor="middle">18 00</text>
+    <text x="120" y="165" fill="#a8dadc" font-family="sans-serif" font-size="12" text-anchor="middle">Tuesday</text>
 
-**The Golden Rule for Flights:**
-Always calculate the arrival time in the **country of departure first**, then apply the time zone difference at the very end.
+    <rect x="400" y="10" width="160" height="85" rx="8" fill="#e63946" />
+    <text x="480" y="35" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">Arrival (GMT+5:30)</text>
+    <text x="480" y="65" fill="#ffb7b2" font-family="monospace" font-weight="bold" font-size="18" text-anchor="middle">08 00</text>
+    <text x="480" y="85" fill="#ffb7b2" font-family="sans-serif" font-size="12" text-anchor="middle">Wednesday</text>
+
+    <rect x="400" y="150" width="160" height="85" rx="8" fill="#1d3557" />
+    <text x="480" y="175" fill="#fff" font-family="sans-serif" font-weight="bold" font-size="14" text-anchor="middle">Arrival (GMT)</text>
+    <text x="480" y="205" fill="#a8dadc" font-family="monospace" font-weight="bold" font-size="18" text-anchor="middle">02 30</text>
+    <text x="480" y="225" fill="#a8dadc" font-family="sans-serif" font-size="12" text-anchor="middle">Wednesday</text>
+
+    <path d="M 480 100 L 480 145" fill="none" stroke="#e63946" stroke-width="3" stroke-dasharray="5,5" marker-end="url(#arrow-red)"/>
+    <text x="495" y="127" font-family="sans-serif" font-size="12" font-weight="bold" fill="#e63946">-5h 30m</text>
+
+    <path d="M 210 135 L 290 135 L 290 195 L 390 195" fill="none" stroke="#2a9d8f" stroke-width="4" marker-end="url(#arrow-green)"/>
+    <text x="300" y="125" font-family="sans-serif" font-weight="bold" font-size="14" fill="#2a9d8f" text-anchor="middle">DURATION = 8h 30m</text>
+
+    <defs>
+        <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#e63946" /></marker>
+        <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2a9d8f" /></marker>
+    </defs>
+</svg>
+
+1.  **Bring to same Time Zone:** When it is 08 00 (Wed) in Mumbai, what time is it in London?
+Mumbai is 5 hours and 30 mins ahead, so subtract 5.5 hours from 08 00. This gives **02 30 (Wed)** in London.
+2.  **Calculate Difference:** From 18 00 (Tue) to midnight is 6 hours.
+From midnight to 02 30 (Wed) is 2.5 hours. 
+3.  6 + 2.5 = 8.5 hours.
+**Answer:** **8 hours 30 minutes**.
 
 ---
 
@@ -78,19 +136,19 @@ Always calculate the arrival time in the **country of departure first**, then ap
 <Tabs>
   <TabItem label="📝 Question 1: Time Conversions">
     Convert the following times:
-    a) Write 8.45 p.m. in the 24-hour clock.
-    b) Write `07 05` in the 12-hour clock.
+    * **a)** Write 8.45 p.m. in the 24-hour clock.
+    * **b)** Write `07 05` in the 12-hour clock.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    **a)** Because it is p.m., add 12 to the hours: $8 + 12 = 20$. 
+    * **a)** Because it is p.m., add 12 to the hours: 8 + 12 = 20. 
     **Answer:** `20 45`
 
-    **b)** Because the hours are less than 12, it is a.m. Drop the leading zero and add a.m.
+    * **b)** Because the hours are less than 12, it is a.m. Drop the leading zero and add a.m.
     **Answer:** 7.05 a.m.
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Converting between 12-hour and 24-hour clock formats" />
+<AIGenerator topic="Converting between 12-hour and 24-hour clock formats" difficulty="IGCSE Core" client:load />
 
 <Tabs>
   <TabItem label="📝 Question 2: Timetables">
@@ -107,7 +165,7 @@ Always calculate the arrival time in the **country of departure first**, then ap
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Calculating arrival times and journey durations using the 24-hour clock" />
+<AIGenerator topic="Calculating arrival times and journey durations using the 24-hour clock" difficulty="IGCSE Core" client:load />
 
 <Tabs>
   <TabItem label="📝 Question 3: Time Zones">
@@ -119,7 +177,7 @@ Always calculate the arrival time in the **country of departure first**, then ap
     **Step 1:** Calculate the arrival time in New York's local time.
     * Departure: `21 30`
     * Add 7 hours: `21 30` + 7 hours = `28 30`. 
-    * Because `28 30` is past midnight (`24 00`), subtract 24. $28 - 24 = 4$. So it arrives at `04 30` the next day (New York time).
+    * Because `28 30` is past midnight (`24 00`), subtract 24. 28 - 24 = 4. So it arrives at `04 30` the next day (New York time).
     * Add the 10 minutes: `04 30` + 10 mins = `04 40` (New York time).
 
     **Step 2:** Apply the time difference.
@@ -138,15 +196,15 @@ Always calculate the arrival time in the **country of departure first**, then ap
   </TabItem>
   <TabItem label="✅ Solution 4">
     **Step 1: Calculate the flight duration.**
-    * $Time = \frac{Distance}{Speed} = \frac{9000}{800} = 11.25$ hours.
-    * Convert 0.25 hours into minutes: $0.25 \times 60 = 15$ minutes.
+    * Time = 9000 / 800 = 11.25 hours.
+    * Convert 0.25 hours into minutes: 0.25 × 60 = 15 minutes.
     * Total flight time = 11 hours 15 minutes.
 
     **Step 2: Find the arrival time in London's local time.**
     * Departure: `14 30`
     * Add 11 hours: `14 30` + 11 hours = `25 30`.
     * Add 15 minutes: `25 30` + 15 mins = `25 45`.
-    * Subtract 24 hours to step into the next day: $25 - 24 = 1$. The plane lands at `01 45` on Wednesday (London time).
+    * Subtract 24 hours to step into the next day: 25 - 24 = 1. The plane lands at `01 45` on Wednesday (London time).
 
     **Step 3: Apply the time difference for Tokyo.**
     * Tokyo is 9 hours ahead, so we add 9 hours to the London arrival time.
@@ -156,4 +214,73 @@ Always calculate the arrival time in the **country of departure first**, then ap
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Complex time zone differences involving flight speed and distance calculations" />
+---
+
+## 6. Advanced Practice: Time Zones & Speed/Distance
+
+<Tabs>
+  <TabItem label="📝 Question 5: Offsets and Calculations">
+    * **a)** A flight leaves City A (GMT) at **10 45** and lands in City B (GMT+3) at **19 15** local time. How long was the flight?
+    * **b)** A plane leaves City C (GMT-4) at **21 15** and arrives in City D (GMT+1) at **11 45** the **next day**. Calculate the duration.
+    * **c)** A flight takes 6 hours 45 minutes from City P (GMT+5:30) to City Q (GMT+1). If it leaves at **03 00**, what is the local arrival time in Q?
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    * **a)** Convert Arrival to GMT: 19 15 - 3 hours = 16 15. Duration from 10 45 to 16 15: 16 15 - 10 45 = **5 hours 30 minutes**.
+    * **b)** Convert Arrival to GMT-4: 11 45 - 5 hours = 06 45 (next day). Duration from 21 15 to 06 45: 2.75 hours (to midnight) + 6.75 hours = 9.5 hours = **9 hours 30 minutes**.
+    * **c)** Arrival in P's time: 03 00 + 6 hours 45 minutes = 09 45. Convert to Q's time (which is 4.5 hours behind P): 09 45 - 4 hours 30 minutes = **05 15**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: Crossing Midnight & The Date Line">
+    * **a)** A train departs at **22 40**. The journey takes 8 hours 50 minutes. Find the arrival time (assuming no time zone changes).
+    * **b)** A flight leaves Tokyo (GMT+9) at **23 30** on Monday. It flies for 10 hours to Los Angeles (GMT-8). Find the local arrival time and day in Los Angeles.
+    * **c)** A plane leaves Perth (GMT+8) at **18 45** on Friday. It flies 14 hours 20 minutes to London (GMT). Find the local arrival time and day in London.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    * **a)** 22 40 + 8 hours = 06 40 (next day). Add 50 minutes: 06 40 + 50 minutes = **07 30**.
+    * **b)** Arrival in Tokyo time: 23 30 + 10 hours = 09 30 Tuesday. LA is 17 hours behind Tokyo (9 - (-8) = 17). 09 30 Tuesday - 17 hours = **16 30 Monday**.
+    * **c)** Arrival in Perth time: 18 45 + 14 hours 20 minutes = 09 05 Saturday. London is 8 hours behind Perth. 09 05 Saturday - 8 hours = **01 05 Saturday**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Speed & Time Zones (Basic)">
+    * **a)** A plane flies **6000 km** from City A (GMT+1) to City B (GMT+4) at an average speed of **800 km/h**. It departs City A at **09 30** local time. Calculate the flight duration.
+    * **b)** Convert the departure time to City B's local time.
+    * **c)** Find the local time of arrival at City B.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    * **a)** Duration = 6000 / 800 = 7.5 hours = **7 hours 30 minutes**.
+    * **b)** City B is 3 hours ahead of City A. Departure in B's time: 09 30 + 3 hours = **12 30**.
+    * **c)** Local arrival: 12 30 + 7 hours 30 minutes = **20 00**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Speed & Time Zones (Intermediate)">
+    * **a)** A flight leaves Paris (GMT+1) at **22 45** on Monday and arrives in Tokyo (GMT+9) at **18 15** on Tuesday. What is the arrival time converted to Paris time?
+    * **b)** How long was the flight?
+    * **c)** If the distance between the cities is **9200 km**, calculate the average speed of the flight in km/h.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    * **a)** Tokyo is 8 hours ahead of Paris. Arrival in Paris time: 18 15 Tuesday - 8 hours = **10 15 Tuesday**.
+    * **b)** Duration from 22 45 Monday to 10 15 Tuesday: 1 hour 15 minutes (to midnight) + 10 hours 15 minutes = **11 hours 30 minutes**.
+    * **c)** 11 hours 30 minutes = 11.5 hours. Speed = 9200 / 11.5 = **800 km/h**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 9: The Canadian Hockey Mishap">
+    * **a)** Mr. Cheung is flying from Hong Kong (GMT+8) to Vancouver (GMT-8) for a hockey game starting at **19 00** on Friday. The distance is **10,200 km**, and the average flight speed is **850 km/h**. How long is the flight duration?
+    * **b)** His flight leaves Hong Kong at **23 30** on Friday local time. What time does he land in Vancouver (local time)?
+    * **c)** Does he make it to the puck drop on time?
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    * **a)** Duration: 10200 / 850 = **12 hours**.
+    * **b)** Vancouver is 16 hours behind HK. Departure in Vancouver time: 23 30 - 16 hours = 07 30 Friday. Arrival: 07 30 + 12 hours = **19 30 Friday**.
+    * **c)** The game starts at 19 00, but he lands at 19 30. **No, he misses the puck drop by 30 minutes and is stuck eating airport poutine!**
+  </TabItem>
+</Tabs>
+
+<AIGenerator topic="Flight times crossing midnight and international date lines with fractional time zones and speed calculations" difficulty="IGCSE Extended" client:load />

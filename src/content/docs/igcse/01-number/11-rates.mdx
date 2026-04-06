@@ -1,6 +1,6 @@
 ---
 title: 1.11 Rates and Speed
-description: Master the calculation of common rates including speed, hourly pay, fuel consumption, and flow rates for IGCSE 0607.
+description: Master the calculation of common rates including speed, hourly pay, exchange rates, fuel consumption, and flow rates for IGCSE 0607.
 ---
 
 A **rate** is a way of comparing two different quantities (like distance and time, or money and hours). In mathematics, the word "per" almost always means **divide**.
@@ -13,13 +13,14 @@ A rate tells you how much of one thing happens for every one unit of another. Th
 
 | Rate Type | Common Units | Calculation Logic |
 | :--- | :--- | :--- |
-| **Hourly Pay** | £/hr | Total Pay $\div$ Hours worked |
-| **Fuel Consumption** | km/L | Distance $\div$ Fuel used |
-| **Flow Rate** | L/sec | Volume $\div$ Time |
-| **Density** | g/cm³ | Mass $\div$ Volume |
+| **Hourly Pay** | GBP/hr | Total Pay ÷ Hours worked |
+| **Exchange Rate** | USD/EUR | Currency A ÷ Currency B |
+| **Fuel Consumption** | km/L | Distance ÷ Fuel used |
+| **Flow Rate** | L/sec | Volume ÷ Time |
+| **Density** | g/cm³ | Mass ÷ Volume |
 
 <Aside type="note" title="Reading the Units">
-The forward slash ($/$) in units like **m/s** is literally a division sign. It tells you to take the **metres** and divide them by the **seconds**. If you forget a formula in the exam, just look at the units in the question!
+The forward slash (/) in units like **m/s** is literally a division sign. It tells you to take the **metres** and divide them by the **seconds**. If you forget a formula in the exam, just look at the units in the question!
 </Aside>
 
 ---
@@ -28,20 +29,29 @@ The forward slash ($/$) in units like **m/s** is literally a division sign. It t
 
 Speed is the rate at which distance changes over time. You must be able to rearrange the relationship between these three variables.
 
-
+<svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="transparent" />
+    <polygon points="200,30 100,200 300,200" fill="#eaf4f4" stroke="#0a9396" stroke-width="4"/>
+    <line x1="140" y1="130" x2="260" y2="130" stroke="#0a9396" stroke-width="4" />
+    <line x1="200" y1="130" x2="200" y2="200" stroke="#0a9396" stroke-width="4" />
+    <text x="200" y="105" font-family="sans-serif" font-size="36" font-weight="bold" fill="#0a9396" text-anchor="middle">D</text>
+    <text x="150" y="180" font-family="sans-serif" font-size="36" font-weight="bold" fill="#0a9396" text-anchor="middle">S</text>
+    <text x="250" y="180" font-family="sans-serif" font-size="36" font-weight="bold" fill="#0a9396" text-anchor="middle">T</text>
+    <text x="200" y="235" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">Distance = Speed × Time</text>
+</svg>
 
 ### The Core Formulae
-* $\text{Speed} = \frac{\text{Distance}}{\text{Time}}$
-* $\text{Distance} = \text{Speed} \times \text{Time}$
-* $\text{Time} = \frac{\text{Distance}}{\text{Speed}}$
+* $$ \text{Speed} = \frac{\text{Distance}}{\text{Time}} $$
+* $$ \text{Distance} = \text{Speed} \times \text{Time} $$
+* $$ \text{Time} = \frac{\text{Distance}}{\text{Speed}} $$
 
-### The $m/s$ to $km/h$ Shortcut
+### The m/s to km/h Shortcut
 In the exam, you often need to convert between these two. Instead of doing three separate conversions (metres to km, seconds to mins, mins to hours), use the **3.6 Rule**:
 
-* **To go from $m/s \rightarrow km/h$:** Multiply by **$3.6$**.
-* **To go from $km/h \rightarrow m/s$:** Divide by **$3.6$**.
+* **To go from m/s to km/h:** Multiply by **3.6**.
+* **To go from km/h to m/s:** Divide by **3.6**.
 
-> **Why 3.6?** There are $3600$ seconds in an hour and $1000$ metres in a km. $\frac{3600}{1000} = 3.6$.
+> **Why 3.6?** There are **3600** seconds in an hour and **1000** metres in a km. $3600 \div 1000 = 3.6$.
 
 ---
 
@@ -49,45 +59,63 @@ In the exam, you often need to convert between these two. Instead of doing three
 
 This is the #1 place students lose marks. You **cannot** calculate with minutes directly in a speed formula.
 
-### Entering the Formula (Minutes $\rightarrow$ Decimal)
-If the question gives you $2\text{ hours } 15\text{ mins}$, you must convert to a decimal before multiplying or dividing:
-$$ 15 \div 60 = 0.25 \rightarrow \mathbf{2.25 \text{ hours}} $$
+<svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100%" height="100%" fill="transparent" />
+    
+    <rect x="50" y="50" width="120" height="50" rx="10" fill="#fff3cd" stroke="#856404" stroke-width="3"/>
+    <text x="110" y="80" font-family="sans-serif" font-size="16" font-weight="bold" fill="#856404" text-anchor="middle">Minutes</text>
+    
+    <rect x="330" y="50" width="120" height="50" rx="10" fill="#d1e7dd" stroke="#0f5132" stroke-width="3"/>
+    <text x="390" y="80" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0f5132" text-anchor="middle">Decimal</text>
+    
+    <path d="M 180 65 L 310 65" fill="none" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="245" y="55" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">÷ 60</text>
+    
+    <path d="M 320 85 L 190 85" fill="none" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="255" y="105" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">× 60</text>
+    
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker>
+    </defs>
+</svg>
 
-### Exiting the Formula (Decimal $\rightarrow$ Minutes)
-If your calculation gives you a time like $4.3\text{ hours}$, this is **NOT** 4 hours and 3 minutes.
-1. **The "Whole" is hours:** $4\text{ hours}$.
+### Entering the Formula (Minutes to Decimal)
+If the question gives you **2 hours 15 mins**, you must convert to a decimal before multiplying or dividing:
+15 ÷ 60 = 0.25 $\implies$ **2.25 hours**
+
+### Exiting the Formula (Decimal to Minutes)
+If your calculation gives you a time like **4.3 hours**, this is **NOT** 4 hours and 3 minutes.
+1. **The "Whole" is hours:** **4 hours**.
 2. **The decimal is minutes:** Multiply the decimal part by 60.
-3. $0.3 \times 60 = 18\text{ minutes}$.
-**Answer:** $4\text{ hours and } 18\text{ minutes}$.
-
-
+3. 0.3 × 60 = **18 minutes**.
+**Answer:** **4 hours and 18 minutes**.
 
 <SteveTip title="The 0.45 Illusion">
-Students often write $1.45$ for $1\text{ hour } 45\text{ mins}$. This is a guaranteed way to lose the method mark. Always ask: "Is 45 minutes nearly an hour?" Yes. So the decimal must be $0.75$. If you find yourself writing the minutes exactly as the decimal, stop and divide by 60!
+Students often write **1.45** for **1 hour 45 mins**. This is a guaranteed way to lose the method mark. Always ask: "Is 45 minutes nearly an hour?" Yes. So the decimal must be **0.75**. If you find yourself writing the minutes exactly as the decimal, stop and divide by 60!
 </SteveTip>
 
 ---
 
-## 4. Time Zones and Flight Times
+## 4. Average Speed
 
-Examiners love to give you a flight that leaves at one local time and arrives at another. To solve these, always find the **Duration** in a neutral space.
+Average speed is **not** just the mean of two speeds. It must be calculated using the total distance and total time for the entire journey.
 
-**Example: A flight leaves London (GMT) at 10:00 and arrives in New York (GMT-5) at 13:00. How long was the flight?**
+$$ \text{Average Speed} = \frac{\text{Total Distance}}{\text{Total Time}} $$
 
-1.  **Bring to same Time Zone:** When it is 13:00 in New York, what time is it in London? New York is 5 hours behind, so London is 18:00.
-2.  **Calculate Difference:** $18:00 - 10:00 = 8\text{ hours}$.
-**Answer:** $8\text{ hours}$.
+**Example from Syllabus:** A cyclist travels 45 km in 3 hours 45 minutes. What is their average speed?
+1. Convert the time to a decimal: 3 hours + (45 ÷ 60) hours = **3.75 hours**.
+2. Apply the formula: 45 ÷ 3.75 = **12 km/h**.
 
 ---
 
 ## 5. Speed Equations & Algebra
 
 ### Linear Speed Equations
-Sometimes you are told a journey takes $20\text{ minutes}$ longer if the speed is reduced by $10\text{ km/h}$. You set this up by making the **Time** the subject:
+Sometimes you are told a journey takes **20 minutes** longer if the speed is reduced by **10 km/h**. You set this up by making the **Time** the subject:
 $$ \text{Time}_1 - \text{Time}_2 = \frac{20}{60} $$
 
 ### Quadratic Speed Equations (Sneak Peek)
-In harder Paper 4 questions, you might see something like: *"A car travels $100\text{ km}$. If the speed increases by $x$, the time taken decreases by $1\text{ hour}$."*
+In harder Paper 4 questions, you might see something like: *"A car travels **100 km**. If the speed increases by $x$, the time taken decreases by **1 hour**."*
 
 $$ \frac{100}{v} - \frac{100}{v+x} = 1 $$
 
@@ -107,92 +135,94 @@ Since the slower speed takes *more* time, it must come first to get a positive r
 ## 6. Practice Problems
 
 ### Part A: Speed and Time Conversions
+
 <Tabs>
-  <TabItem label="📝 Question 1: Shortcut">
-    A wind turbine spins such that the tip of the blade moves at $15\text{ m/s}$. Calculate this speed in $\text{km/h}$.
+  <TabItem label="📝 Question 1: Speed & Time">
+    * **a)** A wind turbine spins such that the tip of the blade moves at **15 m/s**. Calculate this speed in **km/h**.
+    * **b)** A journey of **15 km** takes **20 minutes**. Find the average speed in **km/h**.
+    * **c)** A train travels **154 km** at an average speed of **70 km/h**. Calculate the time taken in **hours and minutes**.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. Use the $3.6$ shortcut: $15 \times 3.6 = 54$.
-    **Answer:** $54\text{ km/h}$
-  </TabItem>
-  <TabItem label="📝 Question 2: The Reverse Time Trap">
-    A train travels $154\text{ km}$ at an average speed of $70\text{ km/h}$. Calculate the time taken in **hours and minutes**.
-  </TabItem>
-  <TabItem label="✅ Solution 2">
-    1. $\text{Time} = 154 \div 70 = 2.2\text{ hours}$.
-    2. Convert decimal: $0.2 \times 60 = 12\text{ minutes}$.
-    **Answer:** $2\text{ hours and } 12\text{ minutes}$.
+    * **a)** Use the 3.6 shortcut: 15 × 3.6 = **54 km/h**.
+    * **b)** Convert minutes to decimal: 20 ÷ 60 = 1/3 hours. Speed: 15 ÷ (1/3) = **45 km/h**.
+    * **c)** Time: 154 ÷ 70 = 2.2 hours. Convert decimal: 0.2 × 60 = 12 minutes. **Answer: 2 hours 12 minutes**.
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Speed, distance, and time with decimal/minute conversions" />
 
-### Part B: Time Zones & Flights
+### Part B: Average Speed & Multi-Stage Journeys
+
 <Tabs>
-  <TabItem label="📝 Question 3">
-    A flight leaves Dubai (GMT+4) at 08:30. The flight takes $7\text{ hours } 15\text{ minutes}$. If London is GMT, what is the local time of arrival?
+  <TabItem label="📝 Question 2: Multi-Part Journeys">
+    * **a)** A car travels **80 km** at **40 km/h**, stops for a **30-minute** break, and then travels **120 km** at **60 km/h**. Calculate the average speed for the entire journey.
+    * **b)** A runner completes a **5 km** race. They run the first **3 km** at **12 km/h** and the remaining **2 km** at **10 km/h**. What is their average speed for the whole race?
   </TabItem>
-  <TabItem label="✅ Solution 3">
-    1. Departure in GMT: $08:30 - 4\text{ hours} = 04:30\text{ GMT}$.
-    2. Add Duration: $04:30 + 7\text{ hrs } 15\text{ mins} = 11:45\text{ GMT}$.
-    3. London is GMT: So local time is $11:45$.
-    **Answer:** $11:45$
-  </TabItem>
-  <TabItem label="📝 Question 4: Return Flight">
-    A plane flies from Singapore (GMT+8) to Sydney (GMT+11). Departure is 23:00 local time. Arrival is 09:30 local time the next day. How long was the flight?
-  </TabItem>
-  <TabItem label="✅ Solution 4">
-    1. Convert Arrival to Singapore Time: $09:30 - 3\text{ hours} = 06:30$.
-    2. Duration from 23:00 to 06:30: $1\text{ hour to midnight} + 6.5\text{ hours} = 7.5\text{ hours}$.
-    **Answer:** $7\text{ hours } 30\text{ minutes}$.
+  <TabItem label="✅ Solution 2">
+    * **a)** Total Distance: 80 + 120 = 200 km. <br/>
+       Time 1: 80 ÷ 40 = 2 hours. Stop Time: 0.5 hours. Time 2: 120 ÷ 60 = 2 hours. <br/>
+       Total Time = 2 + 0.5 + 2 = 4.5 hours. <br/>
+       Average Speed = 200 ÷ 4.5 = **44.4 km/h** (to 1 d.p.).
+    * **b)** Total Distance: 5 km. <br/>
+       Time 1: 3 ÷ 12 = 0.25 hours. Time 2: 2 ÷ 10 = 0.2 hours. <br/>
+       Total Time = 0.25 + 0.2 = 0.45 hours. <br/>
+       Average Speed = 5 ÷ 0.45 = **11.1 km/h** (to 1 d.p.).
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Flight times and duration across different time zones" />
+<SmartAIGenerator topic="Multi-stage journeys and average speed calculations" />
 
-### Part C: Setting up Algebra Equations
+### Part C: Real-World Rates (Pay, Fuel, Flow)
+
 <Tabs>
-  <TabItem label="📝 Question 5: Linear Time Difference">
-    A journey of $15\text{ km}$ takes $20\text{ minutes}$. Find the speed in **km/h**.
+  <TabItem label="📝 Question 3: Everyday Rates">
+    * **a)** An apprentice earns **£8.50** per hour. They work **38 hours** a week. Calculate their annual pay (assume 52 weeks in a year).
+    * **b)** A car travels **630 km** and uses **45 litres** of fuel. Calculate its fuel consumption in **km/L**.
+    * **c)** A tap fills a **500 ml** jug in **4 seconds**. How long will it take to fill a **12 litre** bucket? Give your answer in minutes and seconds.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    * **a)** Weekly pay: 8.50 × 38 = £323. Annual pay: 323 × 52 = **£16,796**.
+    * **b)** Fuel consumption: Distance ÷ Fuel = 630 ÷ 45 = **14 km/L**.
+    * **c)** Flow rate: 500 ÷ 4 = 125 ml/sec. Volume: 12 Litres = 12,000 ml. Time: 12,000 ÷ 125 = 96 seconds. **Answer: 1 minute 36 seconds**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Everyday rates involving pay, fuel consumption, and flow rates" />
+
+### Part D: Exchange Rates & Density
+
+<Tabs>
+  <TabItem label="📝 Question 4: Currencies and Mass">
+    * **a)** A tourist changes **£450** into Euros (€) when the exchange rate is **£1 = €1.15**. How many Euros do they receive?
+    * **b)** Later, they change **€85** back to Pounds when the rate is **£1 = €1.18**. How many Pounds do they get?
+    * **c)** A metal block has a mass of **420 g** and a volume of **60 cm³**. Calculate its density.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    * **a)** £ to € (multiplying by the rate): 450 × 1.15 = **€517.50**.
+    * **b)** € to £ (dividing by the rate): 85 ÷ 1.18 = **£72.03** (to 2 d.p.).
+    * **c)** Density = Mass ÷ Volume = 420 ÷ 60 = **7 g/cm³**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Currency exchange rates and density calculations" />
+
+### Part E: Algebra & Speed Equations
+
+<Tabs>
+  <TabItem label="📝 Question 5: Speed Equations">
+    * **a)** A car travels **200 km** at an average speed of **$x$ km/h**. If the speed was **$(x+10)$ km/h**, the journey would take 1 hour less. Show that $x^2 + 10x - 2000 = 0$.
+    * **b)** A cyclist rides **30 km** at speed $v$. If they rode at $(v-5)$ km/h, it would take 30 minutes longer. Write down an equation in terms of $v$.
+    * **c)** A runner covers **12 km** at speed $s$. If they speed up by 2 km/h, they shave 15 minutes off their time. Set up the fractional equation.
   </TabItem>
   <TabItem label="✅ Solution 5">
-    1. Convert minutes to decimal: $20/60 = 1/3$.
-    2. Speed = $15 \div (1/3) = 45$.
-    **Answer:** $45\text{ km/h}$
-  </TabItem>
-  <TabItem label="📝 Question 6: The Quadratic Setup">
-    A car travels $200\text{ km}$ at an average speed of $x\text{ km/h}$. If the speed was $(x+10)\text{ km/h}$, the journey would take 1 hour less. Show that $x^2 + 10x - 2000 = 0$.
-  </TabItem>
-  <TabItem label="✅ Solution 6">
-    1. $\text{Time}_1 = \frac{200}{x}$, $\text{Time}_2 = \frac{200}{x+10}$.
-    2. $\frac{200}{x} - \frac{200}{x+10} = 1$.
-    3. Multiply by $x(x+10)$: $200(x+10) - 200x = x(x+10)$.
-    4. $200x + 2000 - 200x = x^2 + 10x \rightarrow 2000 = x^2 + 10x$.
-    **Result:** $x^2 + 10x - 2000 = 0$.
+    * **a)** $\text{Time}_1 = \frac{200}{x}$, $\text{Time}_2 = \frac{200}{x+10}$.<br/>
+       Equation: $\frac{200}{x} - \frac{200}{x+10} = 1$.<br/>
+       Multiply by $x(x+10)$: $200(x+10) - 200x = x^2 + 10x \implies$ **$x^2 + 10x - 2000 = 0$**.
+    * **b)** Slow Time - Fast Time = Diff. (Note: 30 mins = 0.5 hours).<br/>
+       **$\frac{30}{v-5} - \frac{30}{v} = 0.5$**
+    * **c)** Slow Time - Fast Time = Diff. (Note: 15 mins = 0.25 or 1/4 hours).<br/>
+       **$\frac{12}{s} - \frac{12}{s+2} = 0.25$**
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Setting up linear and quadratic speed/time equations" />
-
-### Part D: Rates and Pay
-<Tabs>
-  <TabItem label="📝 Question 7: Annual Pay">
-    An apprentice earns £8.50 per hour. They work 38 hours a week. Calculate their annual pay (52 weeks).
-  </TabItem>
-  <TabItem label="✅ Solution 7">
-    1. Weekly pay: $8.50 \times 38 = £323$.
-    2. Annual pay: $323 \times 52 = £16,796$.
-    **Answer:** £16,796
-  </TabItem>
-  <TabItem label="📝 Question 8: Flow Rate (Volume)">
-    A tap fills a $500\text{ ml}$ jug in 4 seconds. How long will it take to fill a $12\text{ litre}$ bucket?
-  </TabItem>
-  <TabItem label="✅ Solution 8">
-    1. Flow rate: $500 \div 4 = 125\text{ ml/sec}$.
-    2. Volume: $12\text{ Litres} = 12,000\text{ ml}$.
-    3. Time: $12,000 \div 125 = 96\text{ seconds}$.
-    **Answer:** $1\text{ minute } 36\text{ seconds}$.
-  </TabItem>
-</Tabs>
-
-<SmartAIGenerator topic="Complex rates involving pay, fuel, and flow" />
