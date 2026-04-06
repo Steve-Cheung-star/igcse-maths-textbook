@@ -11,113 +11,74 @@ Understanding the shapes and features of different mathematical functions is a c
 
 You must be able to recognise the following families of functions purely by looking at their curves.
 
-<div className="not-content">
-  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', marginTop: '2rem' }}>
-    
-    {/* LINEAR */}
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <svg viewBox="0 0 200 200" width="100%" style={{ display: 'block', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-        <g stroke="#cbd5e1" stroke-width="2">
-          <line x1="0" y1="100" x2="200" y2="100" />
-          <polygon points="192,96 200,100 192,104" fill="#cbd5e1" stroke-width="0" />
-          <line x1="100" y1="200" x2="100" y2="0" />
-          <polygon points="96,8 100,0 104,8" fill="#cbd5e1" stroke-width="0" />
-          <line x1="120" y1="97" x2="120" y2="103" />
-          <line x1="80" y1="97" x2="80" y2="103" />
-          <line x1="97" y1="80" x2="103" y2="80" />
-          <line x1="97" y1="120" x2="103" y2="120" />
-        </g>
-        <text x="185" y="90" fontSize="12" fill="#64748b" fontFamily="sans-serif" fontStyle="italic">x</text>
-        <text x="110" y="15" fontSize="12" fill="#64748b" fontFamily="sans-serif" fontStyle="italic">y</text>
-        <text x="88" y="112" fontSize="10" fill="#64748b" fontFamily="sans-serif">0</text>
-        <polyline fill="none" stroke="#3b82f6" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
-          const x = i;
-          const mathX = (x - 100) / 20;
-          const mathY = 0.8 * mathX;
-          return `${x},${100 - mathY * 20}`;
-        }).join(' ')} />
-      </svg>
-      <div style={{ marginTop: '1rem', textAlign: 'center', lineHeight: '1.2' }}>
-        <strong>Linear:</strong> $f(x) = ax + b$
-      </div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
+  
+  {/* LINEAR */}
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+      <g stroke="#cbd5e1" stroke-width="2">
+        <line x1="10" y1="100" x2="190" y2="100" />
+        <line x1="100" y1="190" x2="100" y2="10" />
+      </g>
+      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
+      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start">y</text>
+      <text x="90" y="115" font-size="10" fill="#64748b" text-anchor="end">0</text>
+      <path d="M 20 180 L 180 20" fill="none" stroke="#3b82f6" stroke-width="3" />
+    </svg>
+    <div style="margin-top: 1rem; text-align: center;">
+      <strong>Linear:</strong> $f(x) = ax + b$
     </div>
-    
-    {/* QUADRATIC */}
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <svg viewBox="0 0 200 200" width="100%" style={{ display: 'block', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-        <g stroke="#cbd5e1" stroke-width="2">
-          <line x1="0" y1="100" x2="200" y2="100" />
-          <polygon points="192,96 200,100 192,104" fill="#cbd5e1" stroke-width="0" />
-          <line x1="100" y1="200" x2="100" y2="0" />
-          <polygon points="96,8 100,0 104,8" fill="#cbd5e1" stroke-width="0" />
-        </g>
-        <text x="185" y="90" fontSize="12" fill="#64748b" fontFamily="sans-serif" fontStyle="italic">x</text>
-        <text x="110" y="15" fontSize="12" fill="#64748b" fontFamily="sans-serif" fontStyle="italic">y</text>
-        <text x="88" y="112" fontSize="10" fill="#64748b" fontFamily="sans-serif">0</text>
-        <polyline fill="none" stroke="#ef4444" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
-          const x = i;
-          const mathX = (x - 100) / 15;
-          const mathY = 0.4 * mathX * mathX - 4;
-          return `${x},${100 - mathY * 10}`;
-        }).join(' ')} />
-      </svg>
-      <div style={{ marginTop: '1rem', textAlign: 'center', lineHeight: '1.2' }}>
-        <strong>Quadratic:</strong> $f(x) = ax^2 + bx + c$
-      </div>
+  </div>
+  
+  {/* QUADRATIC */}
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+      <g stroke="#cbd5e1" stroke-width="2">
+        <line x1="10" y1="100" x2="190" y2="100" />
+        <line x1="100" y1="190" x2="100" y2="10" />
+      </g>
+      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
+      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start">y</text>
+      <text x="90" y="115" font-size="10" fill="#64748b" text-anchor="end">0</text>
+      <path d="M 30 20 Q 100 200 170 20" fill="none" stroke="#ef4444" stroke-width="3" />
+    </svg>
+    <div style="margin-top: 1rem; text-align: center;">
+      <strong>Quadratic:</strong> $f(x) = ax^2 + bx + c$
     </div>
-    
-    {/* CUBIC */}
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <svg viewBox="0 0 200 200" width="100%" style={{ display: 'block', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-        <g stroke="#cbd5e1" stroke-width="2">
-          <line x1="0" y1="100" x2="200" y2="100" />
-          <polygon points="192,96 200,100 192,104" fill="#cbd5e1" stroke-width="0" />
-          <line x1="100" y1="200" x2="100" y2="0" />
-          <polygon points="96,8 100,0 104,8" fill="#cbd5e1" stroke-width="0" />
-        </g>
-        <text x="185" y="90" fontSize="12" fill="#64748b" fontFamily="sans-serif" fontStyle="italic">x</text>
-        <text x="110" y="15" fontSize="12" fill="#64748b" fontFamily="sans-serif" fontStyle="italic">y</text>
-        <text x="88" y="112" fontSize="10" fill="#64748b" fontFamily="sans-serif">0</text>
-        <polyline fill="none" stroke="#10b981" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
-          const x = i;
-          const mathX = (x - 100) / 20;
-          const mathY = 0.5 * Math.pow(mathX, 3) - 2 * mathX;
-          return `${x},${100 - mathY * 15}`;
-        }).join(' ')} />
-      </svg>
-      <div style={{ marginTop: '1rem', textAlign: 'center', lineHeight: '1.2' }}>
-        <strong>Cubic:</strong> $f(x) = ax^3 + bx^2 + cx + d$
-      </div>
+  </div>
+  
+  {/* CUBIC */}
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+      <g stroke="#cbd5e1" stroke-width="2">
+        <line x1="10" y1="100" x2="190" y2="100" />
+        <line x1="100" y1="190" x2="100" y2="10" />
+      </g>
+      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
+      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start">y</text>
+      <text x="90" y="115" font-size="10" fill="#64748b" text-anchor="end">0</text>
+      <path d="M 30 180 C 80 20, 120 180, 170 20" fill="none" stroke="#10b981" stroke-width="3" />
+    </svg>
+    <div style="margin-top: 1rem; text-align: center;">
+      <strong>Cubic:</strong> $f(x) = ax^3 + bx^2 + cx + d$
     </div>
+  </div>
 
-    {/* RECIPROCAL */}
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <svg viewBox="0 0 200 200" width="100%" style={{ display: 'block', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-        <g stroke="#cbd5e1" stroke-width="2">
-          <line x1="0" y1="100" x2="200" y2="100" />
-          <polygon points="192,96 200,100 192,104" fill="#cbd5e1" stroke-width="0" />
-          <line x1="100" y1="200" x2="100" y2="0" />
-          <polygon points="96,8 100,0 104,8" fill="#cbd5e1" stroke-width="0" />
-        </g>
-        <text x="185" y="90" fontSize="12" fill="#64748b" fontFamily="sans-serif" fontStyle="italic">x</text>
-        <text x="110" y="15" fontSize="12" fill="#64748b" fontFamily="sans-serif" fontStyle="italic">y</text>
-        <text x="88" y="112" fontSize="10" fill="#64748b" fontFamily="sans-serif">0</text>
-        <polyline fill="none" stroke="#f59e0b" stroke-width="3" points={Array.from({ length: 98 }, (_, i) => {
-          const x = i;
-          const mathX = (x - 100) / 20;
-          const mathY = 2 / mathX;
-          return `${x},${100 - mathY * 20}`;
-        }).join(' ')} />
-        <polyline fill="none" stroke="#f59e0b" stroke-width="3" points={Array.from({ length: 98 }, (_, i) => {
-          const x = i + 102;
-          const mathX = (x - 100) / 20;
-          const mathY = 2 / mathX;
-          return `${x},${100 - mathY * 20}`;
-        }).join(' ')} />
-      </svg>
-      <div style={{ marginTop: '1rem', textAlign: 'center', lineHeight: '1.2' }}>
-        <strong>Reciprocal:</strong> $f(x) = \frac{a}{x}$
-      </div>
+  {/* RECIPROCAL */}
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+      <g stroke="#cbd5e1" stroke-width="2">
+        <line x1="10" y1="100" x2="190" y2="100" />
+        <line x1="100" y1="190" x2="100" y2="10" />
+      </g>
+      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
+      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start">y</text>
+      <text x="90" y="115" font-size="10" fill="#64748b" text-anchor="end">0</text>
+      <path d="M 110 20 Q 110 90 180 90" fill="none" stroke="#f59e0b" stroke-width="3" />
+      <path d="M 90 180 Q 90 110 20 110" fill="none" stroke="#f59e0b" stroke-width="3" />
+    </svg>
+    <div style="margin-top: 1rem; text-align: center;">
+      <strong>Reciprocal:</strong> $f(x) = \frac{a}{x}$
     </div>
   </div>
 </div>
@@ -130,59 +91,43 @@ You must be able to recognise the following families of functions purely by look
 
 ### Exponential Graphs
 
-Exponential graphs take the form $f(x) = a^x$. Their shape changes drastically depending on whether the base $a$ is greater than 1, or between 0 and 1.
+Exponential graphs take the form $f(x) = a^x$. Their shape changes drastically depending on whether the base $a$ is greater than $1$, or between $0$ and $1$.
 
-<div className="not-content">
-  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '2rem', margin: '2rem 0' }}>
-    
-    {/* EXPONENTIAL GROWTH */}
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', verticalAlign: 'middle' }}>
-      <svg viewBox="0 0 200 200" width="100%" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-        <g stroke="#cbd5e1" stroke-width="2">
-          <line x1="0" y1="150" x2="200" y2="150" />
-          <polygon points="192,146 200,150 192,154" fill="#cbd5e1" stroke-width="0" />
-          <line x1="100" y1="200" x2="100" y2="0" />
-          <polygon points="96,8 100,0 104,8" fill="#cbd5e1" stroke-width="0" />
-        </g>
-        <text x="185" y="140" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
-        <text x="110" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
-        <text x="88" y="165" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
-        <polyline fill="none" stroke="#8b5cf6" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
-          const x = i;
-          const mathX = (x - 100) / 20;
-          const mathY = Math.pow(1.8, mathX);
-          return `${x},${150 - mathY * 15}`;
-        }).join(' ')} />
-      </svg>
-      <p style={{ marginTop: '1rem', marginBottom: 0 }}><strong>Exponential Growth:</strong> $a > 1$</p>
-    </div>
-    
-    {/* EXPONENTIAL DECAY */}
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', verticalAlign: 'middle' }}>
-      <svg viewBox="0 0 200 200" width="100%" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-        <g stroke="#cbd5e1" stroke-width="2">
-          <line x1="0" y1="150" x2="200" y2="150" />
-          <polygon points="192,146 200,150 192,154" fill="#cbd5e1" stroke-width="0" />
-          <line x1="100" y1="200" x2="100" y2="0" />
-          <polygon points="96,8 100,0 104,8" fill="#cbd5e1" stroke-width="0" />
-        </g>
-        <text x="185" y="140" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
-        <text x="110" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
-        <text x="88" y="165" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
-        <polyline fill="none" stroke="#8b5cf6" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
-          const x = i;
-          const mathX = (x - 100) / 20;
-          const mathY = Math.pow(0.55, mathX);
-          return `${x},${150 - mathY * 15}`;
-        }).join(' ')} />
-      </svg>
-      <p style={{ marginTop: '1rem', marginBottom: 0 }}><strong>Exponential Decay:</strong> $0 < a < 1$</p>
-    </div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
+  
+  {/* EXPONENTIAL GROWTH */}
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+      <g stroke="#cbd5e1" stroke-width="2">
+        <line x1="10" y1="150" x2="190" y2="150" />
+        <line x1="100" y1="190" x2="100" y2="10" />
+      </g>
+      <text x="185" y="140" font-size="12" fill="#64748b" text-anchor="end">x</text>
+      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start">y</text>
+      <text x="90" y="165" font-size="10" fill="#64748b" text-anchor="end">0</text>
+      <path d="M 20 145 Q 120 140 180 20" fill="none" stroke="#8b5cf6" stroke-width="3" />
+    </svg>
+    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Exponential Growth:</strong> $a > 1$</p>
+  </div>
+  
+  {/* EXPONENTIAL DECAY */}
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+      <g stroke="#cbd5e1" stroke-width="2">
+        <line x1="10" y1="150" x2="190" y2="150" />
+        <line x1="100" y1="190" x2="100" y2="10" />
+      </g>
+      <text x="185" y="140" font-size="12" fill="#64748b" text-anchor="end">x</text>
+      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start">y</text>
+      <text x="90" y="165" font-size="10" fill="#64748b" text-anchor="end">0</text>
+      <path d="M 20 20 Q 80 140 180 145" fill="none" stroke="#8b5cf6" stroke-width="3" />
+    </svg>
+    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Exponential Decay:</strong> $0 < a < 1$</p>
   </div>
 </div>
 
 <Aside type="tip" title="Exponential Intercepts">
-For any basic exponential function $f(x) = a^x$, the y-intercept is always $(0, 1)$ because any number to the power of 0 equals 1. The curve gets extremely close to the x-axis but never touches it (an asymptote at $y = 0$).
+For any basic exponential function $f(x) = a^x$, the y-intercept is always $(0, 1)$ because any number to the power of $0$ equals $1$. The curve gets extremely close to the x-axis but never touches it (an asymptote at $y = 0$).
 </Aside>
 
 ---
@@ -193,127 +138,79 @@ You must recognise the sine, cosine, and tangent waves. For functions of the for
 * **Amplitude ($a$):** The maximum height of the wave measured from the centre line.
 * **Period:** The distance on the x-axis for one complete cycle. It is calculated as $\frac{360^\circ}{b}$.
 
-<div className="not-content">
-  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem', margin: '2rem 0' }}>
-    
-    {/* SINE WAVE */}
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', verticalAlign: 'middle' }}>
-      <svg viewBox="0 0 200 200" width="100%" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-        <g stroke="#cbd5e1" stroke-width="2">
-          <line x1="0" y1="100" x2="200" y2="100" />
-          <polygon points="192,96 200,100 192,104" fill="#cbd5e1" stroke-width="0" />
-          <line x1="4" y1="200" x2="4" y2="0" />
-          <polygon points="0,8 4,0 8,8" fill="#cbd5e1" stroke-width="0" />
-          <line x1="49" y1="97" x2="49" y2="103" />
-          <line x1="94" y1="97" x2="94" y2="103" />
-          <line x1="139" y1="97" x2="139" y2="103" />
-          <line x1="184" y1="97" x2="184" y2="103" />
-          <line x1="1" y1="40" x2="7" y2="40" />
-          <line x1="1" y1="160" x2="7" y2="160" />
-        </g>
-        <text x="185" y="90" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
-        <text x="12" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
-        <text x="6" y="115" font-size="9" fill="#64748b" font-family="sans-serif">0°</text>
-        <text x="40" y="115" font-size="9" fill="#64748b" font-family="sans-serif">90°</text>
-        <text x="83" y="115" font-size="9" fill="#64748b" font-family="sans-serif">180°</text>
-        <text x="128" y="115" font-size="9" fill="#64748b" font-family="sans-serif">270°</text>
-        <text x="173" y="115" font-size="9" fill="#64748b" font-family="sans-serif">360°</text>
-        <text x="10" y="44" font-size="10" fill="#64748b" font-family="sans-serif">1</text>
-        <text x="10" y="164" font-size="10" fill="#64748b" font-family="sans-serif">-1</text>
-        <polyline fill="none" stroke="#ec4899" stroke-width="3" points={Array.from({ length: 181 }, (_, i) => {
-          const x = i + 4;
-          const angle = (x - 4) * 2;
-          const rad = angle * Math.PI / 180;
-          return `${x},${100 - Math.sin(rad) * 60}`;
-        }).join(' ')} />
-      </svg>
-      <p style={{ marginTop: '1rem', marginBottom: 0 }}><strong>Sine:</strong> Starts at 0, goes up.</p>
-    </div>
-    
-    {/* COSINE WAVE */}
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', verticalAlign: 'middle' }}>
-      <svg viewBox="0 0 200 200" width="100%" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-        <g stroke="#cbd5e1" stroke-width="2">
-          <line x1="0" y1="100" x2="200" y2="100" />
-          <polygon points="192,96 200,100 192,104" fill="#cbd5e1" stroke-width="0" />
-          <line x1="4" y1="200" x2="4" y2="0" />
-          <polygon points="0,8 4,0 8,8" fill="#cbd5e1" stroke-width="0" />
-          <line x1="49" y1="97" x2="49" y2="103" />
-          <line x1="94" y1="97" x2="94" y2="103" />
-          <line x1="139" y1="97" x2="139" y2="103" />
-          <line x1="184" y1="97" x2="184" y2="103" />
-          <line x1="1" y1="40" x2="7" y2="40" />
-          <line x1="1" y1="160" x2="7" y2="160" />
-        </g>
-        <text x="185" y="90" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
-        <text x="12" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
-        <text x="6" y="115" font-size="9" fill="#64748b" font-family="sans-serif">0°</text>
-        <text x="40" y="115" font-size="9" fill="#64748b" font-family="sans-serif">90°</text>
-        <text x="83" y="115" font-size="9" fill="#64748b" font-family="sans-serif">180°</text>
-        <text x="128" y="115" font-size="9" fill="#64748b" font-family="sans-serif">270°</text>
-        <text x="173" y="115" font-size="9" fill="#64748b" font-family="sans-serif">360°</text>
-        <text x="10" y="44" font-size="10" fill="#64748b" font-family="sans-serif">1</text>
-        <text x="10" y="164" font-size="10" fill="#64748b" font-family="sans-serif">-1</text>
-        <polyline fill="none" stroke="#ec4899" stroke-width="3" points={Array.from({ length: 181 }, (_, i) => {
-          const x = i + 4;
-          const angle = (x - 4) * 2;
-          const rad = angle * Math.PI / 180;
-          return `${x},${100 - Math.cos(rad) * 60}`;
-        }).join(' ')} />
-      </svg>
-      <p style={{ marginTop: '1rem', marginBottom: 0 }}><strong>Cosine:</strong> Starts at the maximum.</p>
-    </div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0;">
+  
+  {/* SINE WAVE */}
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+      <g stroke="#cbd5e1" stroke-width="2">
+        <line x1="20" y1="100" x2="180" y2="100" />
+        <line x1="20" y1="180" x2="20" y2="20" />
+        <line x1="60" y1="97" x2="60" y2="103" />
+        <line x1="100" y1="97" x2="100" y2="103" />
+        <line x1="140" y1="97" x2="140" y2="103" />
+        <line x1="180" y1="97" x2="180" y2="103" />
+      </g>
+      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
+      <text x="25" y="15" font-size="12" fill="#64748b" text-anchor="start">y</text>
+      <text x="20" y="115" font-size="9" fill="#64748b" text-anchor="middle">0°</text>
+      <text x="60" y="115" font-size="9" fill="#64748b" text-anchor="middle">90°</text>
+      <text x="100" y="115" font-size="9" fill="#64748b" text-anchor="middle">180°</text>
+      <text x="140" y="115" font-size="9" fill="#64748b" text-anchor="middle">270°</text>
+      <text x="180" y="115" font-size="9" fill="#64748b" text-anchor="middle">360°</text>
+      <path d="M 20 100 C 45 30, 75 30, 100 100 C 125 170, 155 170, 180 100" fill="none" stroke="#ec4899" stroke-width="3" />
+    </svg>
+    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Sine:</strong> Starts at $0$, goes up.</p>
+  </div>
+  
+  {/* COSINE WAVE */}
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+      <g stroke="#cbd5e1" stroke-width="2">
+        <line x1="20" y1="100" x2="180" y2="100" />
+        <line x1="20" y1="180" x2="20" y2="20" />
+        <line x1="60" y1="97" x2="60" y2="103" />
+        <line x1="100" y1="97" x2="100" y2="103" />
+        <line x1="140" y1="97" x2="140" y2="103" />
+        <line x1="180" y1="97" x2="180" y2="103" />
+      </g>
+      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
+      <text x="25" y="15" font-size="12" fill="#64748b" text-anchor="start">y</text>
+      <text x="20" y="115" font-size="9" fill="#64748b" text-anchor="middle">0°</text>
+      <text x="60" y="115" font-size="9" fill="#64748b" text-anchor="middle">90°</text>
+      <text x="100" y="115" font-size="9" fill="#64748b" text-anchor="middle">180°</text>
+      <text x="140" y="115" font-size="9" fill="#64748b" text-anchor="middle">270°</text>
+      <text x="180" y="115" font-size="9" fill="#64748b" text-anchor="middle">360°</text>
+      <path d="M 20 30 C 60 30, 60 170, 100 170 C 140 170, 140 30, 180 30" fill="none" stroke="#ec4899" stroke-width="3" />
+    </svg>
+    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Cosine:</strong> Starts at the maximum.</p>
+  </div>
 
-    {/* TANGENT WAVE */}
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', verticalAlign: 'middle' }}>
-      <svg viewBox="0 0 200 200" width="100%" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-        <g stroke="#cbd5e1" stroke-width="2">
-          <line x1="0" y1="100" x2="200" y2="100" />
-          <polygon points="192,96 200,100 192,104" fill="#cbd5e1" stroke-width="0" />
-          <line x1="4" y1="200" x2="4" y2="0" />
-          <polygon points="0,8 4,0 8,8" fill="#cbd5e1" stroke-width="0" />
-        </g>
-        <text x="185" y="90" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
-        <text x="12" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
-        <text x="6" y="115" font-size="9" fill="#64748b" font-family="sans-serif">0°</text>
-        <text x="40" y="115" font-size="9" fill="#64748b" font-family="sans-serif">90°</text>
-        <text x="83" y="115" font-size="9" fill="#64748b" font-family="sans-serif">180°</text>
-        <text x="128" y="115" font-size="9" fill="#64748b" font-family="sans-serif">270°</text>
-        <text x="173" y="115" font-size="9" fill="#64748b" font-family="sans-serif">360°</text>
-        
-        {/* Asymptotes */}
-        <line x1="49" y1="0" x2="49" y2="200" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4" />
-        <text x="52" y="15" font-size="9" fill="#94a3b8" font-family="sans-serif">x=90°</text>
-        
-        <line x1="139" y1="0" x2="139" y2="200" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4" />
-        <text x="142" y="15" font-size="9" fill="#94a3b8" font-family="sans-serif">x=270°</text>
-        
-        {/* Tangent Left Branch */}
-        <polyline fill="none" stroke="#ec4899" stroke-width="3" points={Array.from({ length: 43 }, (_, i) => {
-          const x = i + 4;
-          const angle = (x - 4) * 2;
-          const rad = angle * Math.PI / 180;
-          return `${x},${100 - Math.tan(rad) * 40}`;
-        }).join(' ')} />
-        
-        {/* Tangent Middle Branch */}
-        <polyline fill="none" stroke="#ec4899" stroke-width="3" points={Array.from({ length: 85 }, (_, i) => {
-          const x = i + 52;
-          const angle = (x - 4) * 2;
-          const rad = angle * Math.PI / 180;
-          return `${x},${100 - Math.tan(rad) * 40}`;
-        }).join(' ')} />
-        
-        {/* Tangent Right Branch */}
-        <polyline fill="none" stroke="#ec4899" stroke-width="3" points={Array.from({ length: 43 }, (_, i) => {
-          const x = i + 142;
-          const angle = (x - 4) * 2;
-          const rad = angle * Math.PI / 180;
-          return `${x},${100 - Math.tan(rad) * 40}`;
-        }).join(' ')} />
-      </svg>
-      <p style={{ marginTop: '1rem', marginBottom: 0 }}><strong>Tangent:</strong> Asymptotes at $90^\circ, 270^\circ$.</p>
-    </div>
+  {/* TANGENT WAVE */}
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+      <g stroke="#cbd5e1" stroke-width="2">
+        <line x1="20" y1="100" x2="180" y2="100" />
+        <line x1="20" y1="180" x2="20" y2="20" />
+      </g>
+      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
+      <text x="25" y="15" font-size="12" fill="#64748b" text-anchor="start">y</text>
+      <text x="20" y="115" font-size="9" fill="#64748b" text-anchor="middle">0°</text>
+      <text x="60" y="115" font-size="9" fill="#64748b" text-anchor="middle">90°</text>
+      <text x="100" y="115" font-size="9" fill="#64748b" text-anchor="middle">180°</text>
+      <text x="140" y="115" font-size="9" fill="#64748b" text-anchor="middle">270°</text>
+      <text x="180" y="115" font-size="9" fill="#64748b" text-anchor="middle">360°</text>
+      
+      {/* Asymptotes */}
+      <line x1="60" y1="20" x2="60" y2="180" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="140" y1="20" x2="140" y2="180" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4" />
+      
+      {/* Tangent Branches */}
+      <path d="M 20 100 C 40 100, 50 80, 55 20" fill="none" stroke="#ec4899" stroke-width="3" />
+      <path d="M 65 180 C 80 110, 120 90, 135 20" fill="none" stroke="#ec4899" stroke-width="3" />
+      <path d="M 145 180 C 150 120, 160 100, 180 100" fill="none" stroke="#ec4899" stroke-width="3" />
+    </svg>
+    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Tangent:</strong> Asymptotes at $90^\circ, 270^\circ$.</p>
   </div>
 </div>
 
@@ -333,7 +230,7 @@ Exam questions will frequently provide a graph and its general equation with mis
 3. **Amplitude and Period:** For trig graphs like $y = a \sin(bx)$, the peak value gives you $a$. Observe how many degrees it takes to complete one wave to determine $b$.
 </Aside>
 
-<Aside type="caution" title="Confusing Roots with Turning Points">
+<Aside type="caution" title="Common Misconception: Roots vs. Turning Points">
 A common mistake is using the coordinates of the turning point (vertex) when the question expects you to use the roots (where $y=0$). Always verify which key feature the coordinate represents before substituting it into your equation.
 </Aside>
 

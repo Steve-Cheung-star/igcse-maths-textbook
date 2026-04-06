@@ -3,15 +3,15 @@ title: 2.8 Proportion
 description: Express direct and inverse proportion algebraically, find unknown quantities, and identify the best variation model for given data.
 ---
 
+<Aside type="note">
 In mathematics, **proportion** (or variation) describes how one variable changes in relation to another. We use the proportional symbol **$\propto$** to show this relationship. 
 
 To solve proportion problems, we always replace the $\propto$ symbol with an equals sign ($=$) and a **constant of proportionality**, usually represented by the letter **$k$**.
-
----
+</Aside>
 
 ## 1. Translating Proportionality Statements
 
-Exams will use specific phrasing to tell you exactly what power or root to use in your equation. You must memorize these translations before you can set up your algebra:
+Exams will use specific phrasing to tell you exactly what power or root to use in your equation. You must memorise these translations before you can set up your algebra:
 
 | English Phrasing | Algebraic Translation | Proportionality Equation |
 | :--- | :--- | :--- |
@@ -22,170 +22,203 @@ Exams will use specific phrasing to tell you exactly what power or root to use i
 | "...the **cube root** of $x$" | $\sqrt[3]{x}$ | $y = k\sqrt[3]{x}$ |
 
 <SteveTip title="The Golden Rule of Proportion">
-Every standard proportion problem follows the exact same three steps:
-1. **Set it up:** Write the equation with $k$ using the correct translation from the table above.
-2. **Find $k$:** Substitute the known pair of values to calculate your constant $k$.
-3. **Solve:** Rewrite the full equation with your new $k$ value, then use it to find the final unknown quantity.
+  Every standard proportion problem follows the exact same three steps:
+  <Steps>
+  1. **Set it up:** Write the equation with $k$ using the correct translation from the table above.
+  2. **Find $k$:** Substitute the known pair of values to calculate your constant $k$.
+  3. **Solve:** Rewrite the full equation with your new $k$ value, then use it to find the final unknown quantity.
+  </Steps>
 </SteveTip>
 
 ---
 
 ## 2. Direct Proportion
 
-If two quantities are in **direct proportion**, as one increases, the other increases at the same relative rate. 
+
+
+If two quantities are in **direct proportion**, as one increases, the other increases at the same relative rate. Graphically, standard direct proportion ($y = kx$) is a straight line passing through the origin $(0,0)$.
+
+<svg viewBox="0 0 400 250" style="background: transparent; margin: 1.5rem 0;" xmlns="http://www.w3.org/2000/svg">
+  <line x1="40" y1="210" x2="360" y2="210" stroke="#333" stroke-width="2" />
+  <line x1="40" y1="210" x2="40" y2="20" stroke="#333" stroke-width="2" />
+  <text x="370" y="215" fill="#333" text-anchor="start" font-family="sans-serif" font-size="14">x</text>
+  <text x="35" y="15" fill="#333" text-anchor="end" font-family="sans-serif" font-size="14">y</text>
+  
+  <line x1="40" y1="210" x2="300" y2="40" stroke="#2563eb" stroke-width="3" />
+  <text x="310" y="45" fill="#2563eb" text-anchor="start" font-family="sans-serif" font-weight="bold">y ∝ x</text>
+  
+  <path d="M 40 210 Q 200 210 240 30" fill="none" stroke="#dc2626" stroke-width="3" stroke-dasharray="6,4" />
+  <text x="250" y="35" fill="#dc2626" text-anchor="start" font-family="sans-serif" font-weight="bold">y ∝ x²</text>
+</svg>
 
 ### Algebraic Direct Proportion
 Variables aren't always proportional to just $x$. They can be proportional to powers or roots of $x$, as shown in the translation table.
 
 **Example:** $y$ is directly proportional to the square of $x$. When $x = 3$, $y = 36$. Find the value of $y$ when $x = 5$.
 
-**Step 1: Set it up**
-$$
-\begin{aligned}
-y &\propto x^2 \\
-y &= kx^2
-\end{aligned}
-$$
-
-**Step 2: Find $k$**
-Substitute $x = 3$ and $y = 36$:
-$$
-\begin{aligned}
-36 &= k(3)^2 \\
-36 &= 9k \\
-k &= 4
-\end{aligned}
-$$
-So, the exact formula connecting $x$ and $y$ is **$y = 4x^2$**.
-
-**Step 3: Solve for the unknown**
-Substitute $x = 5$ into your new formula:
-$$
-\begin{aligned}
-y &= 4(5)^2 \\
-y &= 4(25) \\
-y &= 100
-\end{aligned}
-$$
+<Steps>
+1. **Set it up**
+   $$
+   \begin{aligned}
+   y &\propto x^2 \\
+   y &= kx^2
+   \end{aligned}
+   $$
+2. **Find $k$**
+   Substitute $x = 3$ and $y = 36$:
+   $$
+   \begin{aligned}
+   36 &= k(3)^2 \\
+   36 &= 9k \\
+   k &= 4
+   \end{aligned}
+   $$
+   So, the exact formula connecting $x$ and $y$ is **$y = 4x^2$**.
+3. **Solve for the unknown**
+   Substitute $x = 5$ into your new formula:
+   $$
+   \begin{aligned}
+   y &= 4(5)^2 \\
+   y &= 4(25) \\
+   y &= 100
+   \end{aligned}
+   $$
+</Steps>
 
 ### Direct Proportion in Word Problems
 Real-world scenarios often use direct proportion. Common examples include currency conversion (more USD = more EUR), or mass and volume (more volume of a liquid = more mass). 
 
-**Example:** The distance a heavy ball falls ($d$) is directly proportional to the square of the time ($t$) it has been falling. If it falls $20$ m in $2$ seconds, how far does it fall in $5$ seconds?
+**Example:** The distance a heavy ball falls ($d$) is directly proportional to the square of the time ($t$) it has been falling. If it falls 20 m in 2 seconds, how far does it fall in 5 seconds?
 
-**Step 1: Set up**
-$$
-\begin{aligned}
-d &\propto t^2 \\
-d &= kt^2
-\end{aligned}
-$$
-
-**Step 2: Find $k$**
-$$
-\begin{aligned}
-20 &= k(2)^2 \\
-20 &= 4k \\
-k &= 5
-\end{aligned}
-$$
-The equation is $d = 5t^2$.
-
-**Step 3: Solve**
-$$
-\begin{aligned}
-d &= 5(5)^2 \\
-d &= 5(25) \\
-d &= 125
-\end{aligned}
-$$
-The ball falls **$125$ m**.
+<Steps>
+1. **Set up**
+   $$
+   \begin{aligned}
+   d &\propto t^2 \\
+   d &= kt^2
+   \end{aligned}
+   $$
+2. **Find $k$**
+   $$
+   \begin{aligned}
+   20 &= k(2)^2 \\
+   20 &= 4k \\
+   k &= 5
+   \end{aligned}
+   $$
+   The equation is $d = 5t^2$.
+3. **Solve**
+   $$
+   \begin{aligned}
+   d &= 5(5)^2 \\
+   d &= 5(25) \\
+   d &= 125
+   \end{aligned}
+   $$
+   The ball falls **125 m**.
+</Steps>
 
 ---
 
 ## 3. Inverse Proportion
 
-If two quantities are in **inverse proportion**, as one increases, the other *decreases* at a proportional rate. We express this by making the variable a denominator (the reciprocal).
+
+
+If two quantities are in **inverse proportion**, as one increases, the other *decreases* at a proportional rate. We express this by making the variable a denominator (the reciprocal). Graphically, inverse proportion creates a curve that approaches, but never touches, the axes (an asymptote).
 
 * **Standard Inverse:** $y \propto \frac{1}{x}$ which becomes $y = \frac{k}{x}$
 * **Inverse Square:** $y \propto \frac{1}{x^2}$ which becomes $y = \frac{k}{x^2}$
 
+<svg viewBox="0 0 400 250" style="background: transparent; margin: 1.5rem 0;" xmlns="http://www.w3.org/2000/svg">
+  <line x1="40" y1="210" x2="360" y2="210" stroke="#333" stroke-width="2" />
+  <line x1="40" y1="210" x2="40" y2="20" stroke="#333" stroke-width="2" />
+  <text x="370" y="215" fill="#333" text-anchor="start" font-family="sans-serif" font-size="14">x</text>
+  <text x="35" y="15" fill="#333" text-anchor="end" font-family="sans-serif" font-size="14">y</text>
+  
+  <path d="M 50 30 Q 60 190 350 200" fill="none" stroke="#9333ea" stroke-width="3" />
+  <text x="200" y="150" fill="#9333ea" text-anchor="middle" font-family="sans-serif" font-weight="bold">y ∝ 1/x</text>
+</svg>
+
 ### Algebraic Inverse Proportion
 **Example:** $p$ is inversely proportional to the square root of $q$. When $q = 25$, $p = 4$. Find the value of $q$ when $p = 10$.
 
-**Step 1: Set it up**
-$$
-\begin{aligned}
-p &\propto \frac{1}{\sqrt{q}} \\
-p &= \frac{k}{\sqrt{q}}
-\end{aligned}
-$$
-
-**Step 2: Find $k$**
-Substitute $q = 25$ and $p = 4$:
-$$
-\begin{aligned}
-4 &= \frac{k}{\sqrt{25}} \\
-4 &= \frac{k}{5} \\
-k &= 20
-\end{aligned}
-$$
-The exact formula is **$p = \frac{20}{\sqrt{q}}$**.
-
-**Step 3: Solve for the unknown**
-Substitute $p = 10$:
-$$
-\begin{aligned}
-10 &= \frac{20}{\sqrt{q}} \\
-\sqrt{q} &= \frac{20}{10} \\
-\sqrt{q} &= 2
-\end{aligned}
-$$
-Square both sides to find $q$:
-$$
-\begin{aligned}
-q &= 2^2 \\
-q &= 4
-\end{aligned}
-$$
+<Steps>
+1. **Set it up**
+   $$
+   \begin{aligned}
+   p &\propto \frac{1}{\sqrt{q}} \\
+   p &= \frac{k}{\sqrt{q}}
+   \end{aligned}
+   $$
+2. **Find $k$**
+   Substitute $q = 25$ and $p = 4$:
+   $$
+   \begin{aligned}
+   4 &= \frac{k}{\sqrt{25}} \\
+   4 &= \frac{k}{5} \\
+   k &= 20
+   \end{aligned}
+   $$
+   The exact formula is **$p = \frac{20}{\sqrt{q}}$**.
+3. **Solve for the unknown**
+   Substitute $p = 10$:
+   $$
+   \begin{aligned}
+   10 &= \frac{20}{\sqrt{q}} \\
+   \sqrt{q} &= \frac{20}{10} \\
+   \sqrt{q} &= 2
+   \end{aligned}
+   $$
+   Square both sides to find $q$:
+   $$
+   \begin{aligned}
+   q &= 2^2 \\
+   q &= 4
+   \end{aligned}
+   $$
+</Steps>
 
 ### Inverse Proportion Word Problems (The "Man-Power" Rule)
 The most common real-world application of inverse proportion is "Work and Time" problems involving man-power or speed. 
 
+<Aside type="caution">
+  **Common Misconception:** Students often try to apply direct proportion to speed/time or worker/time scenarios. If 2 builders take 10 days, 4 builders will NOT take 20 days. They will take 5 days. Always check if the relationship is "more is less" before calculating.
+</Aside>
+
 <SteveTip title="The More-is-Less Logic">
-Think logically about the scenario: If you have **more** workers on a job, it will take **less** time to finish it. If you drive at a **higher** speed, it will take **less** time to reach your destination. This "more is less" relationship is the definition of **inverse proportion**.
+  Think logically about the scenario: If you have **more** workers on a job, it will take **less** time to finish it. If you drive at a **higher** speed, it will take **less** time to reach your destination. This "more is less" relationship is the definition of **inverse proportion**.
 </SteveTip>
 
-**Example:** A team of $5$ decorators can finish painting a house in $12$ days. Assuming they all work at the exact same rate, how many decorators are needed to finish the house in $4$ days?
+**Example:** A team of 5 decorators can finish painting a house in 12 days. Assuming they all work at the exact same rate, how many decorators are needed to finish the house in 4 days?
 
-**Step 1: Set up**
-Time ($T$) is inversely proportional to Workers ($W$). 
-$$
-\begin{aligned}
-T &= \frac{k}{W}
-\end{aligned}
-$$
-
-**Step 2: Find $k$**
-Here, $k$ represents the total number of "man-days" required for the whole job.
-$$
-\begin{aligned}
-12 &= \frac{k}{5} \\
-k &= 60
-\end{aligned}
-$$
-The equation is $T = \frac{60}{W}$.
-
-**Step 3: Solve**
-We need the job done in $T = 4$ days. 
-$$
-\begin{aligned}
-4 &= \frac{60}{W} \\
-4W &= 60 \\
-W &= 15
-\end{aligned}
-$$
-You will need **$15$ decorators**.
+<Steps>
+1. **Set up**
+   Time ($T$) is inversely proportional to Workers ($W$). 
+   $$
+   \begin{aligned}
+   T &= \frac{k}{W}
+   \end{aligned}
+   $$
+2. **Find $k$**
+   Here, $k$ represents the total number of "man-days" required for the whole job.
+   $$
+   \begin{aligned}
+   12 &= \frac{k}{5} \\
+   k &= 60
+   \end{aligned}
+   $$
+   The equation is $T = \frac{60}{W}$.
+3. **Solve**
+   We need the job done in $T = 4$ days. 
+   $$
+   \begin{aligned}
+   4 &= \frac{60}{W} \\
+   4W &= 60 \\
+   W &= 15
+   \end{aligned}
+   $$
+   You will need **15 decorators**.
+</Steps>
 
 ---
 
@@ -200,45 +233,44 @@ These questions heavily test your ability to simplify algebraic fractions, use t
 $y$ is inversely proportional to the fourth power of $w$. When $w = 2$, $y = 3$.
 Find an expression for $\sqrt{xy}$ in its simplest form, in terms of $w$.
 
-**Step 1: Find the equation for $x$**
-$$
-\begin{aligned}
-x &= k_1 w^2 \\
-12 &= k_1 (2)^2 \\
-12 &= 4k_1 \\
-k_1 &= 3
-\end{aligned}
-$$
-**Equation 1:** $x = 3w^2$
-
-**Step 2: Find the equation for $y$**
-$$
-\begin{aligned}
-y &= \frac{k_2}{w^4} \\
-3 &= \frac{k_2}{2^4} \\
-3 &= \frac{k_2}{16} \\
-k_2 &= 48
-\end{aligned}
-$$
-**Equation 2:** $y = \frac{48}{w^4}$
-
-**Step 3: Substitute both into the required expression and simplify**
-We need to find $xy$. First, find $xy$:
-$$
-\begin{aligned}
-xy &= (3w^2) \times \left(\frac{48}{w^4}\right) \\[1ex]
-xy &= \frac{144w^2}{w^4} \\[1ex]
-xy &= \frac{144}{w^2}
-\end{aligned}
-$$
-
-Now, take the square root of the whole expression. Remember to square root both the numerator and the denominator:
-$$
-\begin{aligned}
-\sqrt{xy} &= \sqrt{\frac{144}{w^2}} \\[1ex]
-\sqrt{xy} &= \frac{12}{w}
-\end{aligned}
-$$
+<Steps>
+1. **Find the equation for $x$**
+   $$
+   \begin{aligned}
+   x &= k_1 w^2 \\
+   12 &= k_1 (2)^2 \\
+   12 &= 4k_1 \\
+   k_1 &= 3
+   \end{aligned}
+   $$
+   **Equation 1:** $x = 3w^2$
+2. **Find the equation for $y$**
+   $$
+   \begin{aligned}
+   y &= \frac{k_2}{w^4} \\
+   3 &= \frac{k_2}{2^4} \\
+   3 &= \frac{k_2}{16} \\
+   k_2 &= 48
+   \end{aligned}
+   $$
+   **Equation 2:** $y = \frac{48}{w^4}$
+3. **Substitute both into the required expression and simplify**
+   We need to find $xy$. First, find $xy$:
+   $$
+   \begin{aligned}
+   xy &= (3w^2) \times \left(\frac{48}{w^4}\right) \\[1ex]
+   xy &= \frac{144w^2}{w^4} \\[1ex]
+   xy &= \frac{144}{w^2}
+   \end{aligned}
+   $$
+   Now, take the square root of the whole expression. Remember to square root both the numerator and the denominator:
+   $$
+   \begin{aligned}
+   \sqrt{xy} &= \sqrt{\frac{144}{w^2}} \\[1ex]
+   \sqrt{xy} &= \frac{12}{w}
+   \end{aligned}
+   $$
+</Steps>
 
 ---
 
@@ -246,11 +278,12 @@ $$
 
 Sometimes, instead of being told the relationship, you are given a table of data and asked to find the model that fits. 
 
+<Aside type="tip">
 To do this, you test different formulas to see which one produces a **constant value for $k$** across all pairs of data.
-
 * If $y = kx$, then **$k = \frac{y}{x}$** (Direct Linear)
 * If $y = kx^2$, then **$k = \frac{y}{x^2}$** (Direct Square)
 * If $y = \frac{k}{x}$, then **$k = yx$** (Inverse Linear)
+</Aside>
 
 ### Example: Finding the Model from Data
 Identify the correct variation model for the data below:
@@ -281,273 +314,522 @@ The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
 
 <Tabs>
   <TabItem label="📝 Question 1 (Core)">
+    Solve the following direct proportion problems:  
 
-The cost ($C$) of purchasing copper wire is directly proportional to its length ($L$). If 15 m of wire costs \$24, calculate the cost of 25 m of wire.
+    a) The cost ($C$) of purchasing copper wire is directly proportional to its length ($L$). If 15 m of wire costs \$24, calculate the cost of 25 m of wire.  
 
+    b) The weight ($W$) of a metal pipe is directly proportional to its length ($L$). If a 4 m pipe weighs 18 kg, find the weight of a 10 m pipe.  
+
+    c) The amount of water ($V$) a hose outputs is directly proportional to the time ($t$) it is left on. If it outputs 45 liters in 3 minutes, how much water does it output in 8 minutes?  
+
+    d) The number of calories ($C$) burned running is directly proportional to the distance ($d$) run. If running 5 km burns 320 calories, how many calories are burned running 12 km?  
+
+    e) The electrical resistance ($R$) of a wire is directly proportional to its length ($L$). If 50 m of wire has a resistance of 2 ohms, what is the resistance of 125 m of the same wire?  
+
+    f) The stretch ($S$) of a spring is directly proportional to the force ($F$) applied to it. If a force of 10 N stretches the spring 4 cm, how much force is needed to stretch it 14 cm?  
   </TabItem>
   <TabItem label="✅ Solution 1">
+    **a)**
+    <Steps>
+      1. **Set up:** $C = kL$  
+      2. **Find $k$:** $24 = k(15) \implies k = 1.6$. Equation: $C = 1.6L$  
+      3. **Solve:** $C = 1.6(25) \implies C = 40$. The cost is **\$40**.  
+    </Steps>
 
-**1. Set up:**
-$$
-\begin{aligned}
-C &= kL
-\end{aligned}
-$$
+    **b)**
+    <Steps>
+      1. **Set up:** $W = kL$  
+      2. **Find $k$:** $18 = k(4) \implies k = 4.5$. Equation: $W = 4.5L$  
+      3. **Solve:** $W = 4.5(10) \implies W = 45$. The weight is **45 kg**.  
+    </Steps>
 
-**2. Find $k$:**
-$$
-\begin{aligned}
-24 &= k(15) \\
-k &= 1.6
-\end{aligned}
-$$
-Equation: $C = 1.6L$
+    **c)**
+    <Steps>
+      1. **Set up:** $V = kt$  
+      2. **Find $k$:** $45 = k(3) \implies k = 15$. Equation: $V = 15t$  
+      3. **Solve:** $V = 15(8) \implies V = 120$. The volume is **120 liters**.  
+    </Steps>
 
-**3. Solve:**
-$$
-\begin{aligned}
-C &= 1.6(25) \\
-C &= 40
-\end{aligned}
-$$
-The cost is **\$40**.
+    **d)**
+    <Steps>
+      1. **Set up:** $C = kd$  
+      2. **Find $k$:** $320 = k(5) \implies k = 64$. Equation: $C = 64d$  
+      3. **Solve:** $C = 64(12) \implies C = 768$. You burn **768 calories**.  
+    </Steps>
 
+    **e)**
+    <Steps>
+      1. **Set up:** $R = kL$  
+      2. **Find $k$:** $2 = k(50) \implies k = 0.04$. Equation: $R = 0.04L$  
+      3. **Solve:** $R = 0.04(125) \implies R = 5$. The resistance is **5 ohms**.  
+    </Steps>
+
+    **f)**
+    <Steps>
+      1. **Set up:** $S = kF$  
+      2. **Find $k$:** $4 = k(10) \implies k = 0.4$. Equation: $S = 0.4F$  
+      3. **Solve:** $14 = 0.4F \implies F = 14 / 0.4 \implies F = 35$. The force is **35 N**.  
+    </Steps>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Direct proportion word problems" />
 
 <Tabs>
   <TabItem label="📝 Question 2 (Core)">
+    Solve the following inverse proportion problems:  
 
-It takes $6$ machines $15$ hours to manufacture a batch of parts. 
-Assuming all machines work at the same rate, how long would it take $9$ machines to manufacture the same batch of parts?
+    a) It takes 6 machines 15 hours to manufacture a batch of parts. Assuming all machines work at the same rate, how long would it take 9 machines?  
 
+    b) A journey takes 4 hours when traveling at an average speed of 60 km/h. How long would the same journey take at 80 km/h?  
+
+    c) 8 builders can complete a wall in 5 days. How many builders are needed to complete the wall in 2 days?  
+
+    d) It takes 12 identical pipes 10 hours to fill a tank. How long would it take 5 pipes to fill the same tank?  
+
+    e) A farmer has enough feed for 20 cows to last 15 days. If he buys 5 more cows, how many days will be the feed last?  
+
+    f) A choir of 15 people takes 3 hours to learn a new song. How long would it take 9 people of equal ability to learn the same song? (Careful: Does man-power apply here?)  
   </TabItem>
   <TabItem label="✅ Solution 2">
+    **a)**
+    <Steps>
+      1. **Set up:** $T = \frac{k}{M}$  
+      2. **Find $k$:** $15 = \frac{k}{6} \implies k = 90$. Equation: $T = \frac{90}{M}$  
+      3. **Solve:** $T = \frac{90}{9} \implies T = 10$. It will take **10 hours**.  
+    </Steps>
 
-More machines mean less time, so this is **inverse proportion**.
+    **b)**
+    <Steps>
+      1. **Set up:** $T = \frac{k}{S}$  
+      2. **Find $k$:** $4 = \frac{k}{60} \implies k = 240$. Equation: $T = \frac{240}{S}$  
+      3. **Solve:** $T = \frac{240}{80} \implies T = 3$. It will take **3 hours**.  
+    </Steps>
 
-**1. Set up:**
-$$
-\begin{aligned}
-T &= \frac{k}{M}
-\end{aligned}
-$$
+    **c)**
+    <Steps>
+      1. **Set up:** $D = \frac{k}{B}$  
+      2. **Find $k$:** $5 = \frac{k}{8} \implies k = 40$. Equation: $D = \frac{40}{B}$  
+      3. **Solve:** $2 = \frac{40}{B} \implies B = \frac{40}{2} \implies B = 20$. It requires **20 builders**.  
+    </Steps>
 
-**2. Find $k$:**
-$$
-\begin{aligned}
-15 &= \frac{k}{6} \\
-k &= 90
-\end{aligned}
-$$
-Equation: $T = \frac{90}{M}$
+    **d)**
+    <Steps>
+      1. **Set up:** $T = \frac{k}{P}$  
+      2. **Find $k$:** $10 = \frac{k}{12} \implies k = 120$. Equation: $T = \frac{120}{P}$  
+      3. **Solve:** $T = \frac{120}{5} \implies T = 24$. It will take **24 hours**.  
+    </Steps>
 
-**3. Solve:**
-$$
-\begin{aligned}
-T &= \frac{90}{9} \\
-T &= 10
-\end{aligned}
-$$
-It will take **$10$ hours**.
+    **e)**
+    <Steps>
+      1. **Set up:** $D = \frac{k}{C}$  
+      2. **Find $k$:** $15 = \frac{k}{20} \implies k = 300$. Equation: $D = \frac{300}{C}$  
+      3. **Solve:** The new number of cows is 25. $D = \frac{300}{25} \implies D = 12$. It will last **12 days**.  
+    </Steps>
 
+    **f)**
+    <Steps>
+      1. Learning a song is **NOT** a man-power problem. The time it takes one person to learn a song is the same time it takes a group to learn it (assuming they learn simultaneously and independently).  
+      2. Therefore, it still takes **3 hours**.  
+    </Steps>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Word problems involving inverse proportion and man-power" />
 
 <Tabs>
   <TabItem label="📝 Question 3 (Extended)">
+    Find the unknown values for these direct proportion equations involving powers and roots:  
 
-$y$ is directly proportional to the cube root of $x$. 
-When $x = 8$, $y = 10$.
-Find the value of $y$ when $x = 64$.
+    a) $y$ is directly proportional to the cube root of $x$. When $x = 8$, $y = 10$. Find $y$ when $x = 64$.  
 
+    b) $p$ is directly proportional to the square of $q$. When $q = 3$, $p = 45$. Find $p$ when $q = 5$.  
+
+    c) $m$ is directly proportional to the square root of $n$. When $n = 36$, $m = 24$. Find $m$ when $n = 81$.  
+
+    d) $a$ is directly proportional to the cube of $b$. When $b = 2$, $a = 16$. Find $a$ when $b = 4$.  
+
+    e) $c$ is directly proportional to $d^2$. When $d = 4$, $c = 8$. Find $c$ when $d = 10$.  
+
+    f) $v$ is directly proportional to $\sqrt[3]{w}$. When $w = 27$, $v = 12$. Find $w$ when $v = 20$.  
   </TabItem>
   <TabItem label="✅ Solution 3">
+    **a)**
+    <Steps>
+      1. **Set up:** $y = k\sqrt[3]{x}$  
+      2. **Find $k$:** $10 = k\sqrt[3]{8} \implies 10 = k(2) \implies k = 5$. Equation: $y = 5\sqrt[3]{x}$  
+      3. **Solve:** $y = 5\sqrt[3]{64} \implies y = 5(4) \implies y = 20$.  
+    </Steps>
 
-**1. Set up:**
-$$
-\begin{aligned}
-y &= k\sqrt[3]{x}
-\end{aligned}
-$$
+    **b)**
+    <Steps>
+      1. **Set up:** $p = kq^2$  
+      2. **Find $k$:** $45 = k(3^2) \implies 45 = 9k \implies k = 5$. Equation: $p = 5q^2$  
+      3. **Solve:** $p = 5(5^2) \implies p = 5(25) \implies p = 125$.  
+    </Steps>
 
-**2. Find $k$:**
-$$
-\begin{aligned}
-10 &= k\sqrt[3]{8} \\
-10 &= k(2) \\
-k &= 5
-\end{aligned}
-$$
-Equation: $y = 5\sqrt[3]{x}$
+    **c)**
+    <Steps>
+      1. **Set up:** $m = k\sqrt{n}$  
+      2. **Find $k$:** $24 = k\sqrt{36} \implies 24 = 6k \implies k = 4$. Equation: $m = 4\sqrt{n}$  
+      3. **Solve:** $m = 4\sqrt{81} \implies m = 4(9) \implies m = 36$.  
+    </Steps>
 
-**3. Solve:**
-$$
-\begin{aligned}
-y &= 5\sqrt[3]{64} \\
-y &= 5(4) \\
-y &= 20
-\end{aligned}
-$$
+    **d)**
+    <Steps>
+      1. **Set up:** $a = kb^3$  
+      2. **Find $k$:** $16 = k(2^3) \implies 16 = 8k \implies k = 2$. Equation: $a = 2b^3$  
+      3. **Solve:** $a = 2(4^3) \implies a = 2(64) \implies a = 128$.  
+    </Steps>
 
+    **e)**
+    <Steps>
+      1. **Set up:** $c = kd^2$  
+      2. **Find $k$:** $8 = k(4^2) \implies 8 = 16k \implies k = 0.5$. Equation: $c = 0.5d^2$  
+      3. **Solve:** $c = 0.5(10^2) \implies c = 0.5(100) \implies c = 50$.  
+    </Steps>
+
+    **f)**
+    <Steps>
+      1. **Set up:** $v = k\sqrt[3]{w}$  
+      2. **Find $k$:** $12 = k\sqrt[3]{27} \implies 12 = 3k \implies k = 4$. Equation: $v = 4\sqrt[3]{w}$  
+      3. **Solve:** $20 = 4\sqrt[3]{w} \implies 5 = \sqrt[3]{w} \implies w = 5^3 \implies w = 125$.  
+    </Steps>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Direct proportion with powers and roots" />
 
 <Tabs>
   <TabItem label="📝 Question 4 (Extended)">
+    Find the unknown values for these inverse proportion equations:  
 
-The intensity of light ($I$) is inversely proportional to the square of the distance ($d$) from the light source. When the distance is $3$ m, the intensity is $40$ units. Find the intensity when the distance is $6$ m.
+    a) The intensity of light ($I$) is inversely proportional to the square of the distance ($d$) from the light source. When the distance is 3 m, the intensity is 40 units. Find the intensity when the distance is 6 m.  
 
+    b) The force ($F$) of gravity between two objects is inversely proportional to the square of the distance ($r$) between them. When $r = 2$, $F = 100$. Find $F$ when $r = 5$.  
+
+    c) $y$ is inversely proportional to the square of $x$. When $x = 4$, $y = 3$. Find $y$ when $x = 2$.  
+
+    d) $E$ is inversely proportional to the cube of $v$. When $v = 2$, $E = 10$. Find $E$ when $v = 4$.  
+
+    e) $P$ is inversely proportional to the square root of $t$. When $t = 16$, $P = 5$. Find $P$ when $t = 100$.  
+
+    f) $W$ is inversely proportional to the square of $s$. When $s = 0.5$, $W = 40$. Find $s$ when $W = 10$.  
   </TabItem>
   <TabItem label="✅ Solution 4">
+    **a)**
+    <Steps>
+      1. **Set up:** $I = \frac{k}{d^2}$  
+      2. **Find $k$:** $40 = \frac{k}{3^2} \implies 40 = \frac{k}{9} \implies k = 360$. Equation: $I = \frac{360}{d^2}$  
+      3. **Solve:** $I = \frac{360}{6^2} \implies I = \frac{360}{36} \implies I = 10$.  
+    </Steps>
 
-**1. Set up:**
-$$
-\begin{aligned}
-I &= \frac{k}{d^2}
-\end{aligned}
-$$
+    **b)**
+    <Steps>
+      1. **Set up:** $F = \frac{k}{r^2}$  
+      2. **Find $k$:** $100 = \frac{k}{2^2} \implies 100 = \frac{k}{4} \implies k = 400$. Equation: $F = \frac{400}{r^2}$  
+      3. **Solve:** $F = \frac{400}{5^2} \implies F = \frac{400}{25} \implies F = 16$.  
+    </Steps>
 
-**2. Find $k$:**
-$$
-\begin{aligned}
-40 &= \frac{k}{3^2} \\
-40 &= \frac{k}{9} \\
-k &= 360
-\end{aligned}
-$$
-Equation: $I = \frac{360}{d^2}$
+    **c)**
+    <Steps>
+      1. **Set up:** $y = \frac{k}{x^2}$  
+      2. **Find $k$:** $3 = \frac{k}{4^2} \implies 3 = \frac{k}{16} \implies k = 48$. Equation: $y = \frac{48}{x^2}$  
+      3. **Solve:** $y = \frac{48}{2^2} \implies y = \frac{48}{4} \implies y = 12$.  
+    </Steps>
 
-**3. Solve:**
-$$
-\begin{aligned}
-I &= \frac{360}{6^2} \\
-I &= \frac{360}{36} \\
-I &= 10
-\end{aligned}
-$$
-The intensity is **$10$ units**.
+    **d)**
+    <Steps>
+      1. **Set up:** $E = \frac{k}{v^3}$  
+      2. **Find $k$:** $10 = \frac{k}{2^3} \implies 10 = \frac{k}{8} \implies k = 80$. Equation: $E = \frac{80}{v^3}$  
+      3. **Solve:** $E = \frac{80}{4^3} \implies E = \frac{80}{64} \implies E = 1.25$.  
+    </Steps>
 
+    **e)**
+    <Steps>
+      1. **Set up:** $P = \frac{k}{\sqrt{t}}$  
+      2. **Find $k$:** $5 = \frac{k}{\sqrt{16}} \implies 5 = \frac{k}{4} \implies k = 20$. Equation: $P = \frac{20}{\sqrt{t}}$  
+      3. **Solve:** $P = \frac{20}{\sqrt{100}} \implies P = \frac{20}{10} \implies P = 2$.  
+    </Steps>
+
+    **f)**
+    <Steps>
+      1. **Set up:** $W = \frac{k}{s^2}$  
+      2. **Find $k$:** $40 = \frac{k}{0.5^2} \implies 40 = \frac{k}{0.25} \implies k = 10$. Equation: $W = \frac{10}{s^2}$  
+      3. **Solve:** $10 = \frac{10}{s^2} \implies 10s^2 = 10 \implies s^2 = 1 \implies s = 1$ (assuming $s > 0$).  
+    </Steps>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Inverse square proportion in physical sciences" />
 
 <Tabs>
   <TabItem label="📝 Question 5 (Extended)">
+    Determine the relationship between $x$ and $y$ from the following tables, giving your answer in the form $y = f(x)$.  
 
-Determine the relationship between $x$ and $y$ from the following table, giving your answer in the form $y = f(x)$.
+    a)  
+    | $x$ | 2 | 4 | 5 |
+    | :--- | :--- | :--- | :--- |
+    | $y$ | 10 | 5 | 4 |  
 
-| $x$ | 2 | 4 | 5 |
-| :--- | :--- | :--- | :--- |
-| $y$ | 10 | 5 | 4 |
+    b)  
+    | $x$ | 1 | 3 | 5 |
+    | :--- | :--- | :--- | :--- |
+    | $y$ | 4 | 36 | 100 |  
 
+    c)  
+    | $x$ | 2 | 5 | 8 |
+    | :--- | :--- | :--- | :--- |
+    | $y$ | 14 | 35 | 56 |  
+
+    d)  
+    | $x$ | 2 | 3 | 4 |
+    | :--- | :--- | :--- | :--- |
+    | $y$ | 18 | 8 | 4.5 |  
+
+    e)  
+    | $x$ | 1 | 8 | 27 |
+    | :--- | :--- | :--- | :--- |
+    | $y$ | 5 | 10 | 15 |  
+
+    f)  
+    | $x$ | 3 | 6 | 9 |
+    | :--- | :--- | :--- | :--- |
+    | $y$ | 12 | 24 | 36 |  
   </TabItem>
   <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. Test for constant $k$: $xy = 2 \times 10 = 20$, $4 \times 5 = 20$, $5 \times 4 = 20$.  
+      2. Since $xy$ is constant, this is inverse linear proportion. Equation: **$y = \frac{20}{x}$**
+      </Steps>
 
-Test for a constant $k$:
+    **b)**
+    <Steps>
+      1. Test for constant $k$: $y \div x^2 = 4 \div 1^2 = 4$, $36 \div 3^2 = 4$, $100 \div 5^2 = 4$.  
+      2. Since $y \div x^2$ is constant, this is direct square proportion. Equation: **$y = 4x^2$**
+      </Steps>
 
-* **Test $y \div x$ (Linear):** $10 \div 2 = 5$, $5 \div 4 = 1.25$ (Not constant)
-* **Test $xy$ (Inverse):** $2 \times 10 = 20$, $4 \times 5 = 20$, $5 \times 4 = 20$.
+    **c)**
+    <Steps>
+      1. Test for constant $k$: $y \div x = 14 \div 2 = 7$, $35 \div 5 = 7$, $56 \div 8 = 7$.  
+      2. Since $y \div x$ is constant, this is direct linear proportion. Equation: **$y = 7x$**
+      </Steps>
 
-Since $xy$ is a constant ($20$), this is an inverse relationship where $k = 20$.
+    **d)**
+    <Steps>
+      1. Test for constant $k$: $y \times x^2 = 18 \times 2^2 = 72$, $8 \times 3^2 = 72$, $4.5 \times 4^2 = 72$.  
+      2. Since $yx^2$ is constant, this is inverse square proportion. Equation: **$y = \frac{72}{x^2}$** 
+      </Steps>
 
-The relationship is **$y = \frac{20}{x}$**.
+    **e)**
+    <Steps>
+      1. Test for constant $k$: $y \div \sqrt[3]{x} = 5 \div 1 = 5$, $10 \div 2 = 5$, $15 \div 3 = 5$.  
+      2. Since $y \div \sqrt[3]{x}$ is constant, this is direct cube root proportion. Equation: **$y = 5\sqrt[3]{x}$** 
+      </Steps>
 
+    **f)**
+    <Steps>
+      1. Test for constant $k$: $y \div x = 12 \div 3 = 4$, $24 \div 6 = 4$, $36 \div 9 = 4$.  
+      2. Since $y \div x$ is constant, this is direct linear proportion. Equation: **$y = 4x$** 
+      </Steps>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Identifying variation models from tables of data" />
 
 <Tabs>
   <TabItem label="📝 Question 6 (Extended/Hard)">
+    Combine proportionality models to find single expressions:  
 
-$a$ is directly proportional to the cube of $b$. When $b = 2$, $a = 24$.
-$c$ is inversely proportional to $b$. When $b = 3$, $c = 2$.
-Find an expression for $\frac{a}{c}$ in terms of $b$. Give your answer in its simplest form.
+    a) $a$ is directly proportional to the cube of $b$. When $b = 2$, $a = 24$. $c$ is inversely proportional to $b$. When $b = 3$, $c = 2$. Find an expression for $\frac{a}{c}$ in terms of $b$. Give your answer in its simplest form.  
 
+    b) $x$ is directly proportional to $y^2$. When $y = 3$, $x = 18$. $z$ is directly proportional to $y$. When $y = 4$, $z = 20$. Find an expression for $xz$ in terms of $y$.  
+
+    c) $p$ is inversely proportional to $q^2$. When $q = 2$, $p = 5$. $r$ is inversely proportional to $q$. When $q = 5$, $r = 2$. Find an expression for $\frac{p}{r}$ in terms of $q$.  
+
+    d) $m$ is directly proportional to $\sqrt{n}$. When $n = 16$, $m = 12$. $w$ is inversely proportional to $\sqrt{n}$. When $n = 9$, $w = 2$. Find an expression for $mw$ in terms of $n$.  
+
+    e) $u$ is directly proportional to $v^3$. When $v = 2$, $u = 40$. $t$ is directly proportional to $v^2$. When $v = 3$, $t = 27$. Find an expression for $\frac{u}{t}$ in terms of $v$.  
+
+    f) $g$ is inversely proportional to $h^3$. When $h = 2$, $g = 3$. $f$ is directly proportional to $h^4$. When $h = 2$, $f = 32$. Find an expression for $gf$ in terms of $h$.  
   </TabItem>
   <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. Find $a$: $a = k_1 b^3 \implies 24 = k_1(8) \implies k_1 = 3 \implies a = 3b^3$  
+      2. Find $c$: $c = \frac{k_2}{b} \implies 2 = \frac{k_2}{3} \implies k_2 = 6 \implies c = \frac{6}{b}$  
+      3. Combine: $\frac{a}{c} = \frac{3b^3}{\frac{6}{b}} = 3b^3 \times \frac{b}{6} = \frac{3b^4}{6} = \frac{b^4}{2}$  
+    </Steps>
 
-**Find equation for $a$:**
-$$
-\begin{aligned}
-a &= k_1 b^3 \\
-24 &= k_1(2)^3 \\
-24 &= 8k_1 \\
-k_1 &= 3
-\end{aligned}
-$$
-Equation 1: $a = 3b^3$
+    **b)**
+    <Steps>
+      1. Find $x$: $x = k_1 y^2 \implies 18 = k_1(9) \implies k_1 = 2 \implies x = 2y^2$  
+      2. Find $z$: $z = k_2 y \implies 20 = k_2(4) \implies k_2 = 5 \implies z = 5y$  
+      3. Combine: $xz = (2y^2)(5y) = 10y^3$  
+    </Steps>
 
-**Find equation for $c$:**
-$$
-\begin{aligned}
-c &= \frac{k_2}{b} \\
-2 &= \frac{k_2}{3} \\
-k_2 &= 6
-\end{aligned}
-$$
-Equation 2: $c = \frac{6}{b}$
+    **c)**
+    <Steps>
+      1. Find $p$: $p = \frac{k_1}{q^2} \implies 5 = \frac{k_1}{4} \implies k_1 = 20 \implies p = \frac{20}{q^2}$  
+      2. Find $r$: $r = \frac{k_2}{q} \implies 2 = \frac{k_2}{5} \implies k_2 = 10 \implies r = \frac{10}{q}$  
+      3. Combine: $\frac{p}{r} = \frac{\frac{20}{q^2}}{\frac{10}{q}} = \frac{20}{q^2} \times \frac{q}{10} = \frac{2}{q}$  
+    </Steps>
 
-**Combine and simplify:**
-$$
-\begin{aligned}
-\frac{a}{c} &= \frac{3b^3}{\frac{6}{b}} \\[1ex]
-\frac{a}{c} &= 3b^3 \times \frac{b}{6} \\[1ex]
-\frac{a}{c} &= \frac{3b^4}{6} \\[1ex]
-\frac{a}{c} &= \frac{b^4}{2}
-\end{aligned}
-$$
+    **d)**
+    <Steps>
+      1. Find $m$: $m = k_1 \sqrt{n} \implies 12 = k_1(4) \implies k_1 = 3 \implies m = 3\sqrt{n}$  
+      2. Find $w$: $w = \frac{k_2}{\sqrt{n}} \implies 2 = \frac{k_2}{3} \implies k_2 = 6 \implies w = \frac{6}{\sqrt{n}}$  
+      3. Combine: $mw = (3\sqrt{n}) \times \left(\frac{6}{\sqrt{n}}\right) = 18$  
+    </Steps>
 
+    **e)**
+    <Steps>
+      1. Find $u$: $u = k_1 v^3 \implies 40 = k_1(8) \implies k_1 = 5 \implies u = 5v^3$  
+      2. Find $t$: $t = k_2 v^2 \implies 27 = k_2(9) \implies k_2 = 3 \implies t = 3v^2$  
+      3. Combine: $\frac{u}{t} = \frac{5v^3}{3v^2} = \frac{5v}{3}$  
+    </Steps>
+
+    **f)**
+    <Steps>
+      1. Find $g$: $g = \frac{k_1}{h^3} \implies 3 = \frac{k_1}{8} \implies k_1 = 24 \implies g = \frac{24}{h^3}$  
+      2. Find $f$: $f = k_2 h^4 \implies 32 = k_2(16) \implies k_2 = 2 \implies f = 2h^4$  
+      3. Combine: $gf = \left(\frac{24}{h^3}\right)(2h^4) = 48h$  
+    </Steps>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Linking direct and inverse proportionality models and simplifying" />
 
 <Tabs>
   <TabItem label="📝 Question 7 (Hard)">
+    Calculate the percentage changes in these proportionality scenarios:  
 
-$y$ is directly proportional to the square of $x$. 
-If the value of $x$ is increased by $20\%$, calculate the percentage increase in $y$.
+    a) $y$ is directly proportional to the square of $x$. If the value of $x$ is increased by 20%, calculate the percentage increase in $y$.  
 
+    b) $p$ is directly proportional to the cube of $q$. If $q$ is increased by 10%, calculate the percentage increase in $p$.  
+
+    c) $m$ is inversely proportional to $n$. If $n$ is increased by 25%, calculate the percentage decrease in $m$.  
+
+    d) $w$ is inversely proportional to the square of $v$. If $v$ is increased by 100%, calculate the percentage decrease in $w$.  
+
+    e) $c$ is directly proportional to the square root of $d$. If $d$ is increased by 44%, calculate the percentage increase in $c$.  
+
+    f) $a$ is inversely proportional to the square root of $b$. If $b$ is decreased by 36%, calculate the percentage increase in $a$.  
   </TabItem>
   <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. **Initial:** $y_1 = kx_1^2$  
+      2. **New $x$:** $x_2 = 1.2x_1$  
+      3. **Substitute:** $y_2 = k(1.2x_1)^2 = k(1.44x_1^2) = 1.44(kx_1^2)$  
+      4. **Compare:** $y_2 = 1.44y_1$. A multiplier of 1.44 represents a **44% increase**.  
+    </Steps>
 
-**1. Set up the initial relationship:**
-Let the original values be $x_1$ and $y_1$.
-$$
-\begin{aligned}
-y_1 &= kx_1^2
-\end{aligned}
-$$
+    **b)**
+    <Steps>
+      1. **Initial:** $p_1 = kq_1^3$  
+      2. **New $q$:** $q_2 = 1.1q_1$  
+      3. **Substitute:** $p_2 = k(1.1q_1)^3 = k(1.331q_1^3) = 1.331(kq_1^3)$  
+      4. **Compare:** $p_2 = 1.331p_1$. A multiplier of 1.331 represents a **33.1% increase**.  
+    </Steps>
 
-**2. Determine the new value of $x$:**
-A $20\%$ increase means the multiplier is $1.2$.
-$$
-\begin{aligned}
-x_2 &= 1.2x_1
-\end{aligned}
-$$
+    **c)**
+    <Steps>
+      1. **Initial:** $m_1 = \frac{k}{n_1}$  
+      2. **New $n$:** $n_2 = 1.25n_1$  
+      3. **Substitute:** $m_2 = \frac{k}{1.25n_1} = \frac{1}{1.25} \times \left(\frac{k}{n_1}\right) = 0.8m_1$  
+      4. **Compare:** A multiplier of 0.8 represents a **20% decrease**.  
+    </Steps>
 
-**3. Substitute the new $x$ into the formula:**
-$$
-\begin{aligned}
-y_2 &= k(1.2x_1)^2 \\
-y_2 &= k(1.44x_1^2) \\
-y_2 &= 1.44(kx_1^2)
-\end{aligned}
-$$
+    **d)**
+    <Steps>
+      1. **Initial:** $w_1 = \frac{k}{v_1^2}$  
+      2. **New $v$:** $v_2 = 2v_1$ (100% increase means it doubles)  
+      3. **Substitute:** $w_2 = \frac{k}{(2v_1)^2} = \frac{k}{4v_1^2} = 0.25w_1$  
+      4. **Compare:** A multiplier of 0.25 represents a **75% decrease**.  
+    </Steps>
 
-**4. Compare and find the percentage change:**
-Since $kx_1^2 = y_1$, we can rewrite the equation:
-$$
-\begin{aligned}
-y_2 &= 1.44y_1
-\end{aligned}
-$$
-A multiplier of $1.44$ represents a **$44\%$ increase**.
+    **e)**
+    <Steps>
+      1. **Initial:** $c_1 = k\sqrt{d_1}$  
+      2. **New $d$:** $d_2 = 1.44d_1$  
+      3. **Substitute:** $c_2 = k\sqrt{1.44d_1} = 1.2k\sqrt{d_1} = 1.2c_1$  
+      4. **Compare:** A multiplier of 1.2 represents a **20% increase**.  
+    </Steps>
 
+    **f)**
+    <Steps>
+      1. **Initial:** $a_1 = \frac{k}{\sqrt{b_1}}$  
+      2. **New $b$:** $b_2 = 0.64b_1$ (100% - 36% = 64%)  
+      3. **Substitute:** $a_2 = \frac{k}{\sqrt{0.64b_1}} = \frac{k}{0.8\sqrt{b_1}} = \frac{1}{0.8}a_1 = 1.25a_1$  
+      4. **Compare:** A multiplier of 1.25 represents a **25% increase**.  
+    </Steps>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Percentage change in direct and inverse proportion" />
+
+<Tabs>
+  <TabItem label="📝 Question 8 (Structured Context)">
+    A spherical weather balloon's volume ($V$) is directly proportional to the cube of its radius ($r$). When the balloon is inflated to a radius of 3 m, its volume is $36\pi$ cubic meters.  
+    
+    a) Find the exact equation linking $V$ and $r$.  
+
+    b) What is the volume of the balloon when the radius is increased to 5 m? Give your answer in terms of $\pi$.  
+
+    c) A new safety regulation requires the balloon's volume not to exceed $288\pi$ cubic meters. What is the maximum possible radius of the balloon?  
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+    <Steps>
+      1. **Set up:** $V = kr^3$  
+      2. **Find $k$:** $36\pi = k(3^3) \implies 36\pi = 27k \implies k = \frac{36\pi}{27} \implies k = \frac{4\pi}{3}$. Equation: **$V = \frac{4\pi}{3}r^3$** 
+      </Steps>
+
+    **b)**
+    <Steps>
+      1. **Solve:** $V = \frac{4\pi}{3}(5^3) \implies V = \frac{4\pi}{3}(125) \implies V = \frac{500\pi}{3}$. The volume is **$\frac{500\pi}{3}$ cubic meters**.  
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. **Solve for r:** $288\pi = \frac{4\pi}{3}r^3$  
+      2. **Rearrange:** $r^3 = \frac{288\pi \times 3}{4\pi} \implies r^3 = 72 \times 3 \implies r^3 = 216$  
+      3. **Cube root:** $r = \sqrt[3]{216} \implies r = 6$. The maximum radius is **6 m**.  
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 9 (Structured Context)">
+    The lifespan ($L$) in hours of a specific type of LED bulb is inversely proportional to the square of the operating temperature ($T$) in degrees Celsius. When tested at an operating temperature of 40°C, the lifespan is 10,000 hours.  
+    
+    a) Find the equation linking $L$ and $T$.  
+
+    b) If the bulb is operated in a hotter environment at 50°C, what is its expected lifespan?  
+
+    c) Engineers want the bulb to last a minimum of 40,000 hours. What is the maximum operating temperature allowed to achieve this lifespan?  
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)**
+    <Steps>
+      1. **Set up:** $L = \frac{k}{T^2}$  
+      2. **Find $k$:** $10000 = \frac{k}{40^2} \implies 10000 = \frac{k}{1600} \implies k = 16000000$. Equation: **$L = \frac{16000000}{T^2}$** 
+      </Steps>
+
+    **b)**
+    <Steps>
+      1. **Solve:** $L = \frac{16000000}{50^2} \implies L = \frac{16000000}{2500} \implies L = 6400$. The expected lifespan is **6400 hours**.  
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. **Solve for T:** $40000 = \frac{16000000}{T^2}$  
+      2. **Rearrange:** $T^2 = \frac{16000000}{40000} \implies T^2 = 400$  
+      3. **Square root:** $T = \sqrt{400} \implies T = 20$. The maximum operating temperature is **20°C**.  
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying proportion to structured word problems" />

@@ -308,7 +308,7 @@ Substitute vertically to find $a, b, c$, and $d$:
 Sometimes you will be given a rational sequence (a sequence of fractions). 
 The trick here is **not to divide them**, but to **completely separate the numerators (tops) and the denominators (bottoms)**. Treat them as two entirely independent sequences, figure out their formulas separately, and finally stack them back into a single fraction.
 
-#### Example 1: Standard Rational Sequence
+### Example 1: Standard Rational Sequence
 Find the $n$th term of the sequence: $\frac{3}{2}, \frac{5}{6}, \frac{7}{12}, \frac{9}{20}, \dots$
 
 **Step 1: The Numerators (Tops)**
@@ -355,7 +355,7 @@ $$
 T_n = \frac{2n + 1}{n^2 + n}
 $$
 
-#### Example 2: Disguised (Simplified) Fractions
+### Example 2: Disguised (Simplified) Fractions
 Sometimes, fractions are simplified by the examiner to hide the true underlying pattern. If a sequence of fractions seems to have a broken pattern—or contains random whole numbers—try **"un-simplifying"** them to reveal consistent differences.
 
 Find the $n$th term of the sequence: $\frac{2}{3}, 1, \frac{6}{5}, \frac{4}{3}, \frac{10}{7}, \dots$
@@ -612,7 +612,7 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
 ## 8. Practice Questions
 
 <Tabs>
-  <TabItem label="📝 Linear Practice">
+  <TabItem label="📝 1. Linear Practice">
     Find the $n$th term of the following linear sequences:
     
     a) $-2, 3, 8, 13, 18, \dots$
@@ -620,6 +620,12 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
     b) $22, 16, 10, 4, -2, \dots$
 
     c) $4.5, 6.0, 7.5, 9.0, 10.5, \dots$
+
+    d) $-10, -6, -2, 2, 6, \dots$
+
+    e) $100, 93, 86, 79, 72, \dots$
+
+    f) $0.5, 1.0, 1.5, 2.0, 2.5, \dots$
   </TabItem>
   <TabItem label="✅ Solution">
     **a)**
@@ -642,12 +648,33 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
     2. **Find $c$:** The 0th term is $4.5 - 1.5 = 3$.
     3. **Combine:** **$T_n = 1.5n + 3$**
     </Steps>
+
+    **d)**
+    <Steps>
+    1. **Find $d$:** The sequence goes up by $4$. So, $4n$.
+    2. **Find $c$:** The 0th term: Work backwards one step: $-10 - 4 = -14$.
+    3. **Combine:** **$T_n = 4n - 14$**
+    </Steps>
+
+    **e)**
+    <Steps>
+    1. **Find $d$:** The sequence goes down by $7$. So, $-7n$.
+    2. **Find $c$:** The 0th term is $100 + 7 = 107$.
+    3. **Combine:** **$T_n = -7n + 107$** (or **$T_n = 107 - 7n$**)
+    </Steps>
+
+    **f)**
+    <Steps>
+    1. **Find $d$:** The sequence goes up by $0.5$. So, $0.5n$.
+    2. **Find $c$:** The 0th term is $0.5 - 0.5 = 0$.
+    3. **Combine:** **$T_n = 0.5n$**
+    </Steps>
   </TabItem>
 </Tabs>
 <SmartAIGenerator topic="Finding the nth term of a linear sequence" />
 
 <Tabs>
-  <TabItem label="📝 Quadratic Practice">
+  <TabItem label="📝 2. Quadratic Practice">
     Find an expression for the $n$th term of the following quadratic sequences: 
     
     a) $5, 14, 27, 44, \dots$
@@ -655,6 +682,12 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
     b) $2, 9, 20, 35, \dots$
 
     c) $-3, 0, 7, 18, \dots$
+
+    d) $4, 9, 16, 25, \dots$
+
+    e) $4, 12, 26, 46, \dots$
+
+    f) $4, 6, 6, 4, \dots$
   </TabItem>
   <TabItem label="✅ Solution">
     **a)**
@@ -752,19 +785,121 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
        $$
     </Steps>
     $$\boldsymbol{T_n = 2n^2 - 3n - 2}$$
+
+    **d)**
+    * Sequence: $\boldsymbol{4}, 9, 16, 25$
+    * 1st diff: $\color{#3b82f6}{\boldsymbol{+5}}, +7, +9$
+    * 2nd diff: $\color{#ef4444}{\boldsymbol{+2}}, +2$
+    
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       2a &= 2 \\
+       a &= 1
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       3(1) + b &= 5 \\
+       3 + b &= 5 \\
+       b &= 2
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       1 + 2 + c &= 4 \\
+       3 + c &= 4 \\
+       c &= 1
+       \end{aligned}
+       $$
+    </Steps>
+    $$\boldsymbol{T_n = n^2 + 2n + 1}$$
+
+    **e)**
+    * Sequence: $\boldsymbol{4}, 12, 26, 46$
+    * 1st diff: $\color{#3b82f6}{\boldsymbol{+8}}, +14, +20$
+    * 2nd diff: $\color{#ef4444}{\boldsymbol{+6}}, +6$
+    
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       2a &= 6 \\
+       a &= 3
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       3(3) + b &= 8 \\
+       9 + b &= 8 \\
+       b &= -1
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       3 - 1 + c &= 4 \\
+       2 + c &= 4 \\
+       c &= 2
+       \end{aligned}
+       $$
+    </Steps>
+    $$\boldsymbol{T_n = 3n^2 - n + 2}$$
+
+    **f)**
+    * Sequence: $\boldsymbol{4}, 6, 6, 4$
+    * 1st diff: $\color{#3b82f6}{\boldsymbol{+2}}, 0, -2$
+    * 2nd diff: $\color{#ef4444}{\boldsymbol{-2}}, -2$
+    
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       2a &= -2 \\
+       a &= -1
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       3(-1) + b &= 2 \\
+       -3 + b &= 2 \\
+       b &= 5
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       -1 + 5 + c &= 4 \\
+       4 + c &= 4 \\
+       c &= 0
+       \end{aligned}
+       $$
+    </Steps>
+    $$\boldsymbol{T_n = -n^2 + 5n}$$
   </TabItem>
 </Tabs>
 <SmartAIGenerator topic="Finding the nth term of a quadratic sequence" />
 
 <Tabs>
-  <TabItem label="📝 Cubic Practice">
+  <TabItem label="📝 3. Cubic Practice">
     Find an expression for the $n$th term of the following cubic sequences: 
     
     a) $1, 14, 51, 124, \dots$
 
-    b) $0, 7, 26, 63, 124, \dots$
+    b) $0, 7, 26, 63, \dots$
 
     c) $2, 11, 32, 71, \dots$
+
+    d) $2, 12, 36, 80, \dots$
+
+    e) $3, 17, 55, 129, \dots$
+
+    f) $0, 2, 12, 36, \dots$
   </TabItem>
   <TabItem label="✅ Solution">
     **a)**
@@ -892,12 +1027,137 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
        $$
     </Steps>
     $$\boldsymbol{T_n = n^3 + 2n - 1}$$
+
+    **d)**
+    * Sequence: $\boldsymbol{2}, 12, 36, 80$
+    * 1st diff: $\color{#3b82f6}{\boldsymbol{+10}}, +24, +44$
+    * 2nd diff: $\color{#ef4444}{\boldsymbol{+14}}, +20$
+    * 3rd diff: $\color{#a855f7}{\boldsymbol{+6}}$
+    
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       6a &= 6 \\
+       a &= 1
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       12(1) + 2b &= 14 \\
+       12 + 2b &= 14 \\
+       2b &= 2 \\
+       b &= 1
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       7(1) + 3(1) + c &= 10 \\
+       10 + c &= 10 \\
+       c &= 0
+       \end{aligned}
+       $$
+    4. **Find $d$:**
+       $$
+       \begin{aligned}
+       1 + 1 + 0 + d &= 2 \\
+       2 + d &= 2 \\
+       d &= 0
+       \end{aligned}
+       $$
+    </Steps>
+    $$\boldsymbol{T_n = n^3 + n^2}$$
+
+    **e)**
+    * Sequence: $\boldsymbol{3}, 17, 55, 129$
+    * 1st diff: $\color{#3b82f6}{\boldsymbol{+14}}, +38, +74$
+    * 2nd diff: $\color{#ef4444}{\boldsymbol{+24}}, +36$
+    * 3rd diff: $\color{#a855f7}{\boldsymbol{+12}}$
+    
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       6a &= 12 \\
+       a &= 2
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       12(2) + 2b &= 24 \\
+       24 + 2b &= 24 \\
+       2b &= 0 \\
+       b &= 0
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       7(2) + 3(0) + c &= 14 \\
+       14 + c &= 14 \\
+       c &= 0
+       \end{aligned}
+       $$
+    4. **Find $d$:**
+       $$
+       \begin{aligned}
+       2 + 0 + 0 + d &= 3 \\
+       2 + d &= 3 \\
+       d &= 1
+       \end{aligned}
+       $$
+    </Steps>
+    $$\boldsymbol{T_n = 2n^3 + 1}$$
+
+    **f)**
+    * Sequence: $\boldsymbol{0}, 2, 12, 36$
+    * 1st diff: $\color{#3b82f6}{\boldsymbol{+2}}, +10, +24$
+    * 2nd diff: $\color{#ef4444}{\boldsymbol{+8}}, +14$
+    * 3rd diff: $\color{#a855f7}{\boldsymbol{+6}}$
+    
+    <Steps>
+    1. **Find $a$:**
+       $$
+       \begin{aligned}
+       6a &= 6 \\
+       a &= 1
+       \end{aligned}
+       $$
+    2. **Find $b$:**
+       $$
+       \begin{aligned}
+       12(1) + 2b &= 8 \\
+       12 + 2b &= 8 \\
+       2b &= -4 \\
+       b &= -2
+       \end{aligned}
+       $$
+    3. **Find $c$:**
+       $$
+       \begin{aligned}
+       7(1) + 3(-2) + c &= 2 \\
+       7 - 6 + c &= 2 \\
+       c &= 1
+       \end{aligned}
+       $$
+    4. **Find $d$:**
+       $$
+       \begin{aligned}
+       1 - 2 + 1 + d &= 0 \\
+       d &= 0
+       \end{aligned}
+       $$
+    </Steps>
+    $$\boldsymbol{T_n = n^3 - 2n^2 + n}$$
   </TabItem>
 </Tabs>
 <SmartAIGenerator topic="Finding the nth term of a cubic sequence" />
 
 <Tabs>
-  <TabItem label="📝 Rational Practice">
+  <TabItem label="📝 4. Rational Practice">
     Find the $n$th term of the following sequences of fractions. Look out for disguised sequences!
     
     a) $\frac{2}{5}, \frac{4}{12}, \frac{6}{23}, \frac{8}{38}, \dots$
@@ -905,6 +1165,12 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
     b) $\frac{1}{2}, \frac{4}{5}, \frac{9}{10}, \frac{16}{17}, \dots$
 
     c) $\frac{3}{4}, \frac{6}{5}, \frac{3}{2}, \frac{12}{7}, \dots$
+
+    d) $\frac{1}{3}, \frac{2}{5}, \frac{3}{7}, \frac{4}{9}, \dots$
+
+    e) $\frac{2}{1}, \frac{3}{4}, \frac{4}{9}, \frac{5}{16}, \dots$
+
+    f) $\frac{2}{5}, \frac{1}{2}, \frac{6}{11}, \frac{4}{7}, \dots$
   </TabItem>
   <TabItem label="✅ Solution">
     **a)**
@@ -953,12 +1219,31 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
     * **Tops:** $3, 6, 9, 12 \dots \implies 3n$
     * **Bottoms:** $4, 5, 6, 7 \dots \implies n + 3$
     $$\boldsymbol{T_n = \frac{3n}{n + 3}}$$
+
+    **d)**
+    * **Tops:** $1, 2, 3, 4 \dots \implies n$
+    * **Bottoms:** $3, 5, 7, 9 \dots$ This is a linear sequence going up by 2.
+      * 1st diff: $+2 \implies 2n$
+      * 0th term: $3 - 2 = 1 \implies 2n + 1$
+    $$\boldsymbol{T_n = \frac{n}{2n + 1}}$$
+
+    **e)**
+    * **Tops:** $2, 3, 4, 5 \dots \implies n + 1$
+    * **Bottoms:** $1, 4, 9, 16 \dots$ These are perfect square numbers $\implies n^2$
+    $$\boldsymbol{T_n = \frac{n + 1}{n^2}}$$
+
+    **f)**
+    This is a disguised sequence. Let's un-simplify the second and fourth terms. Multiply the top and bottom of $\frac{1}{2}$ by $2$ to get $\frac{4}{8}$, and multiply $\frac{4}{7}$ by $2$ to get $\frac{8}{14}$.
+    New sequence: $\frac{2}{5}, \frac{4}{8}, \frac{6}{11}, \frac{8}{14}, \dots$
+    * **Tops:** $2, 4, 6, 8 \dots \implies 2n$
+    * **Bottoms:** $5, 8, 11, 14 \dots \implies 3n + 2$
+    $$\boldsymbol{T_n = \frac{2n}{3n + 2}}$$
   </TabItem>
 </Tabs>
 <SmartAIGenerator topic="Finding the nth term of a rational sequence with fractions" />
 
 <Tabs>
-  <TabItem label="📝 Exponential Practice">
+  <TabItem label="📝 5. Exponential Practice">
     Find the $n$th term for the geometric sequences: 
     
     a) $2, 10, 50, 250, \dots$
@@ -966,6 +1251,12 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
     b) $7, -14, 28, -56, \dots$
 
     c) $162, 54, 18, 6, \dots$
+
+    d) $3, 12, 48, 192, \dots$
+
+    e) $100, 10, 1, 0.1, \dots$
+
+    f) $-5, -15, -45, -135, \dots$
   </TabItem>
   <TabItem label="✅ Solution">
     **a)**
@@ -982,12 +1273,27 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
     1. Check the 1st term ($a$): $162$
     2. Find the common multiplier ($r$): $54 \div 162 = \textcolor{#ea580c}{\frac{1}{3}}$. The sequence is decaying.
     $$\boldsymbol{T_n = 162 \times \left(\textcolor{#ea580c}{\frac{1}{3}}\right)^{n-1}}$$
+
+    **d)**
+    1. Check the 1st term ($a$): $3$
+    2. Find the common multiplier ($r$): $12 \div 3 = \textcolor{#ea580c}{4}$. Each term is multiplied by $4$.
+    $$\boldsymbol{T_n = 3 \times \textcolor{#ea580c}{4}^{n-1}}$$
+
+    **e)**
+    1. Check the 1st term ($a$): $100$
+    2. Find the common multiplier ($r$): $10 \div 100 = \textcolor{#ea580c}{0.1}$ (or $\frac{1}{10}$). The sequence is decaying.
+    $$\boldsymbol{T_n = 100 \times \textcolor{#ea580c}{0.1}^{n-1}}$$
+
+    **f)**
+    1. Check the 1st term ($a$): $-5$
+    2. Find the common multiplier ($r$): $-15 \div -5 = \textcolor{#ea580c}{3}$.
+    $$\boldsymbol{T_n = -5 \times \textcolor{#ea580c}{3}^{n-1}}$$
   </TabItem>
 </Tabs>
 <SmartAIGenerator topic="Finding the nth term of exponential sequences" />
 
 <Tabs>
-  <TabItem label="📝 Contextual Practice: The 'Literally' Count">
+  <TabItem label="📝 6. Contextual Practice: The 'Literally' Count">
     Kanna and Abi are playfully keeping track of how many times their teacher, Mr. Cheung, says the word "literally" during a sequence of maths lessons. 
     * In Lesson 1, he says it $5$ times.
     * In Lesson 2, he says it $8$ times.
