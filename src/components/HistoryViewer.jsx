@@ -5,7 +5,6 @@ import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 
-// 1. ADDED storageKey PROP HERE
 export default function HistoryViewer({ storageKey = 'igcse_ai_history' }) {
   const [history, setHistory] = useState([]);
   const [mounted, setMounted] = useState(false);
@@ -21,7 +20,6 @@ export default function HistoryViewer({ storageKey = 'igcse_ai_history' }) {
   const [importText, setImportText] = useState('');
   const [importError, setImportError] = useState('');
 
-  // 2. UPDATED ALL LOCAL STORAGE CALLS TO USE storageKey
   useEffect(() => {
     const savedData = JSON.parse(localStorage.getItem(storageKey) || '[]');
     setHistory(savedData);
@@ -52,11 +50,15 @@ export default function HistoryViewer({ storageKey = 'igcse_ai_history' }) {
     }
   };
 
+  // 🔥 THE MAGIC HAPPENS HERE: Copy to clipboard AND send to SyncPortal
   const handleCopy = (item) => {
     const textToCopy = `TOPIC: ${item.topic}\nDIFFICULTY: ${item.difficulty}\n\nPROBLEM:\n${item.question}\n\nSOLUTION:\n${item.feedback}`;
     navigator.clipboard.writeText(textToCopy).then(() => {
       setCopiedId(item.id);
       setTimeout(() => setCopiedId(null), 2000); 
+      
+      // Dispatch event to broadcast this EXACT item
+      window.dispatchEvent(new CustomEvent('broadcast-specific-question', { detail: item }));
     });
   };
 
@@ -236,7 +238,7 @@ export default function HistoryViewer({ storageKey = 'igcse_ai_history' }) {
           
           <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', margin: 0, height: '42px', boxSizing: 'border-box' }}>
             <button onClick={() => setShowImport(!showImport)} style={{ margin: 0, boxSizing: 'border-box', height: '100%', background: 'var(--sl-color-gray-6)', color: 'var(--sl-color-white)', border: '1px solid var(--sl-color-gray-5)', padding: '0 1rem', borderRadius: '6px', cursor: 'pointer', fontSize: '0.9rem', fontWeight: '600', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-              {showImport ? 'Cancel Import' : '📥 Import External AI'}
+              {showImport ? 'Cancel Import' : '🧠 Import External AI'}
             </button>
           </div>
         </div>
@@ -266,7 +268,6 @@ export default function HistoryViewer({ storageKey = 'igcse_ai_history' }) {
             <div style={{ flex: '1 1 200px' }}>
               <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.4rem', color: 'var(--sl-color-gray-3)' }}>Difficulty (Fallback)</label>
               <select className="import-input" value={importDifficulty} onChange={(e) => setImportDifficulty(e.target.value)}>
-                {/* 3. UPDATED DROPDOWN OPTIONS */}
                 <option>IGCSE Core</option>
                 <option>IGCSE Extended</option>
                 <option>IB AI SL</option>
@@ -313,7 +314,7 @@ export default function HistoryViewer({ storageKey = 'igcse_ai_history' }) {
                   {item.bookmarked ? '⭐' : '☆'}
                 </button>
                 
-                <button onClick={() => handleCopy(item)} className="icon-btn copy-btn" style={{ height: '100%', margin: 0, boxSizing: 'border-box' }} title="Copy Markdown">
+                <button onClick={() => handleCopy(item)} className="icon-btn copy-btn" style={{ height: '100%', margin: 0, boxSizing: 'border-box' }} title="Copy & Share to Room">
                   <span key={copiedId === item.id ? 'check' : 'clipboard'} className="icon-animate">
                     {copiedId === item.id ? '✅' : '📋'}
                   </span>
