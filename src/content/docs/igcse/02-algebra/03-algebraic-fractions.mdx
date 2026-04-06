@@ -9,23 +9,40 @@ Algebraic fractions follow the exact same mathematical rules as numerical fracti
 
 ---
 
-## 1. Simplifying Algebraic Fractions
+## 1. HCF and LCM of Algebraic Terms
 
-Simplifying requires factoring out the Highest Common Factor (HCF) from the numerator and denominator and reducing appropriately. Do this *before* you attempt any complex multiplication or division!
+Before you can simplify or add algebraic fractions, you must be comfortable finding the Highest Common Factor (HCF) and Lowest Common Multiple (LCM) of algebraic terms.
+
+* **HCF (Highest Common Factor):** Look at the numbers first, then take the **lowest** power of any common variables. You use the HCF to *simplify* fractions.
+* **LCM (Lowest Common Multiple):** Look at the numbers first, then take the **highest** power of **all** variables present. You use the LCM to find a *common denominator*.
+
+**Example:** Find the HCF and LCM of $6x^2y$ and $8xy^3$
+* **Numbers:** The HCF of 6 and 8 is 2. The LCM of 6 and 8 is 24.
+* **Variables:** The lowest powers are $x$ and $y$. The highest powers are $x^2$ and $y^3$.
+* **HCF:** $2xy$
+* **LCM:** $24x^2y^3$
+
+---
+
+## 2. Simplifying Algebraic Fractions
+
+Simplifying requires factoring out the HCF from the numerator and denominator and reducing appropriately. Do this *before* you attempt any complex multiplication or division!
 
 ### Basic Simplification and Indices
 When simplifying brackets with powers, use your index laws just like you would with single variables.
 
 **Example A: Constant Factors**
 $\frac{8(x-4)}{2} = 4(x-4)$
+
 <SteveTip title="No Need to Expand!">
 When you simplify a fraction and are left with brackets in the numerator or denominator, you usually do not need to expand them unless the question specifically asks for it. Leaving it as $4(x-4)$ is perfectly acceptable and safer!
 </SteveTip>
 
 **Example B: Identical Brackets**
 $\frac{y-2}{y-2} = 1$
+
 <Aside type="caution" title="It is NOT 0!">
-A very common mistake when everything cancels out is to write $0$ as the answer. Remember, any number (or expression) divided by itself is $1$. 
+A very common mistake when everything cancels out is to write 0 as the answer. Remember, any number (or expression) divided by itself is 1. 
 </Aside>
 
 **Example C: Cancelling with Indices**
@@ -67,7 +84,7 @@ $$
 
 ---
 
-## 2. Multiplying and Dividing Algebraic Fractions
+## 3. Multiplying and Dividing Algebraic Fractions
 
 Multiplying and dividing are the easiest operations to perform on fractions because you do not need a common denominator.
 
@@ -103,7 +120,7 @@ $$
 \end{aligned}
 $$
 
-Now, simplify the fraction. Both $30$ and $36$ are divisible by $6$, and the $a$ on the top and bottom cancel each other out.
+Now, simplify the fraction. Both 30 and 36 are divisible by 6, and the $a$ on the top and bottom cancel each other out.
 
 $$
 \begin{aligned}
@@ -114,27 +131,70 @@ $$
 
 ---
 
-## 3. Adding and Subtracting Algebraic Fractions
+## 4. Adding and Subtracting Algebraic Fractions
 
 To add or subtract algebraic fractions, you **must** find a common denominator. This is usually the Lowest Common Multiple (LCM) of the denominators.
 
-```mermaid
-graph TD
-    Start[Look at the fractions] --> Q1{Are denominators the same?}
-    Q1 -- Yes --> Add[Add/Subtract numerators directly]
-    Q1 -- No --> Q2{Can you factorise denominators?}
-    Q2 -- Yes --> Fact[Factorise to find the LCM easily]
-    Q2 -- No --> Multiply[Multiply denominators together for LCM]
-    Fact --> Equiv[Create equivalent fractions]
-    Multiply --> Equiv
-    Equiv --> Expand[Expand brackets on the top]
-    Expand --> Combine[Combine over a single denominator]
-    Combine --> Simplify[Collect like terms]
-```
+<svg viewBox="0 0 700 450" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+    <rect x="250" y="20" width="150" height="40" rx="8" fill="#f8f9fa" stroke="#333" stroke-width="2"/>
+    <text x="325" y="45" font-family="sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">Look at Denominators</text>
+
+    <path d="M 325 60 L 325 90" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <path d="M 325 90 L 420 130 L 325 170 L 230 130 Z" fill="#fff" stroke="#457b9d" stroke-width="2"/>
+    <text x="325" y="125" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Are they</text>
+    <text x="325" y="145" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">exactly the same?</text>
+
+    <path d="M 420 130 L 600 130 L 600 160" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="510" y="120" font-family="sans-serif" font-size="12" fill="#2a9d8f" font-weight="bold">Yes</text>
+    <rect x="525" y="160" width="150" height="40" rx="5" fill="#e9ecef" stroke="#333"/>
+    <text x="600" y="185" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Add/Sub Numerators</text>
+
+    <path d="M 600 200 L 600 380 L 390 380" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <path d="M 325 170 L 325 210" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="335" y="195" font-family="sans-serif" font-size="12" fill="#e63946" font-weight="bold">No</text>
+
+    <path d="M 325 210 L 405 240 L 325 270 L 245 240 Z" fill="#fff" stroke="#e63946" stroke-width="2"/>
+    <text x="325" y="235" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Can you</text>
+    <text x="325" y="255" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">factorise them?</text>
+
+    <path d="M 245 240 L 160 240 L 160 270" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="200" y="230" font-family="sans-serif" font-size="12" fill="#2a9d8f">Yes</text>
+    <rect x="95" y="270" width="130" height="40" rx="5" fill="#f1faee" stroke="#333"/>
+    <text x="160" y="295" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Factorise to find LCM</text>
+
+    <path d="M 405 240 L 485 240 L 485 270" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="440" y="230" font-family="sans-serif" font-size="12" fill="#e63946">No</text>
+    <rect x="420" y="270" width="130" height="40" rx="5" fill="#f1faee" stroke="#333"/>
+    <text x="485" y="295" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Multiply to find LCM</text>
+
+    <path d="M 160 310 L 160 330 L 250 330" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M 485 310 L 485 330 L 400 330" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="250" y="310" width="150" height="40" rx="5" fill="#fff3b0" stroke="#333"/>
+    <text x="325" y="335" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Make Equivalent Fractions</text>
+
+    <path d="M 325 350 L 325 365" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="260" y="365" width="130" height="30" rx="5" fill="#e9ecef" stroke="#333"/>
+    <text x="325" y="385" font-family="sans-serif" font-size="12" fill="#333" text-anchor="middle">Expand & Combine</text>
+
+    <path d="M 325 395 L 325 410" fill="none" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+
+    <rect x="275" y="410" width="100" height="30" rx="5" fill="#a8dadc" stroke="#333"/>
+    <text x="325" y="430" font-family="sans-serif" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">Simplify</text>
+
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+        </marker>
+    </defs>
+</svg>
 
 ### Basic Addition and Subtraction
 **Example A:** Express $\frac{2x + 1}{3} - \frac{x + 5}{7}$ as a single fraction.
-The common denominator for $3$ and $7$ is $21$. Multiply the top and bottom of each fraction to achieve this.
+The common denominator for 3 and 7 is 21. Multiply the top and bottom of each fraction to achieve this.
 
 $$
 \begin{aligned}
@@ -144,7 +204,7 @@ $$
 $$
 
 <SteveTip title="The Invisible Brackets">
-When subtracting a fraction with multiple terms in its numerator, treat that numerator as if it is wrapped in invisible brackets. The negative sign must distribute to **every** term inside! In the example above, you are subtracting positive $15$, which becomes $-15$.
+When subtracting a fraction with multiple terms in its numerator, treat that numerator as if it is wrapped in invisible brackets. The negative sign must distribute to **every** term inside! In the example above, you are subtracting positive 15, which becomes $-15$.
 </SteveTip>
 
 $$
@@ -186,124 +246,285 @@ $$
 
 ---
 
-## 4. Practice Questions
+## 5. Practice Questions
 
 <Tabs>
-  <TabItem label="📝 Q1: Simplifying Fractions">
-    Simplify the following completely:
-    1. $\frac{10(x-2)^5}{15(x-2)^2}$
-    2. $\frac{3x^2 - 12x}{x^2 - 16}$
+  <TabItem label="📝 Q1: HCF and LCM of Terms">
+    Find the Highest Common Factor (HCF) and Lowest Common Multiple (LCM) for each pair/set of terms:  
+
+    a) $4x$ and $6x^2$  
+
+    b) $12ab^2$ and $8a^2b$  
+
+    c) $5y^3$ and $15y$  
+
+    d) $3m^2n$, $9mn^2$, and $6m^2n^2$  
+
+    e) $10p^3q$ and $25pq^2$  
+
+    f) $7x^2y^2$, $14xy^3$, and $21x^3y$  
   </TabItem>
   <TabItem label="✅ Solution 1">
-    **1. Cancelling with Indices:**
-    Simplify the numbers: $\frac{10}{15} = \frac{2}{3}$.
-    Subtract the indices: $5 - 2 = 3$.
-    **Answer:** $\frac{2(x-2)^3}{3}$
-    
-    **2. Factorise and Cancel:**
-    Top (Extract HCF): $3x(x - 4)$
-    Bottom (DOTS): $(x - 4)(x + 4)$
-    Cancel the common $(x - 4)$ bracket.
-    **Answer:** $\frac{3x}{x + 4}$
+    **a)** HCF = $2x$, LCM = $12x^2$  
+
+    **b)** HCF = $4ab$, LCM = $24a^2b^2$  
+
+    **c)** HCF = $5y$, LCM = $15y^3$  
+
+    **d)** HCF = $3mn$, LCM = $18m^2n^2$  
+
+    **e)** HCF = $5pq$, LCM = $50p^3q^2$  
+
+    **f)** HCF = $7xy$, LCM = $42x^3y^3$  
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Simplifying rational algebraic expressions using index laws, factorising quadratics, and DOTS" />
+<SmartAIGenerator topic="Finding HCF and LCM of algebraic terms" />
 
 <Tabs>
-  <TabItem label="📝 Q2: Multiplying & Dividing">
-    1. Simplify $\frac{4m}{5} \times \frac{15m}{8}$
-    2. Simplify $\frac{7p}{12} \div \frac{14p^2}{3}$
+  <TabItem label="📝 Q2: Basic Simplification & Indices">
+    Simplify the following fractions completely:  
+
+    a) $\dfrac{12x^3}{4x}$  
+
+    b) $\dfrac{15a^2b}{20ab^2}$  
+
+    c) $\dfrac{8(m-2)^4}{12(m-2)}$  
+
+    d) $\dfrac{18x^4y^3}{6x^2y^5}$  
+
+    e) $\dfrac{-24p^5q}{8p^2q^2}$  
+
+    f) $\dfrac{5(x+1)^2}{15(x+1)^5}$  
   </TabItem>
   <TabItem label="✅ Solution 2">
-    **1. Multiplication:**
-    $$
-    \begin{aligned}
-    &\quad \frac{4m \times 15m}{5 \times 8} \\
-    &= \frac{60m^2}{40} \\
-    &= \frac{3m^2}{2}
-    \end{aligned}
-    $$
-    
-    **2. Division:**
-    $$
-    \begin{aligned}
-    &\quad \frac{7p}{12} \times \frac{3}{14p^2} \\
-    &= \frac{21p}{168p^2} \\
-    &= \frac{1}{8p}
-    \end{aligned}
-    $$
+    **a)** $3x^2$  
+
+    **b)** $\dfrac{3a}{4b}$  
+
+    **c)** $\dfrac{2(m-2)^3}{3}$  
+
+    **d)** $\dfrac{3x^2}{y^2}$  
+
+    **e)** $\dfrac{-3p^3}{q}$  
+
+    **f)** $\dfrac{1}{3(x+1)^3}$  
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Multiplying and dividing simple algebraic fractions" />
-
 <Tabs>
-  <TabItem label="📝 Q3: Adding/Subtracting Fractions">
-    Express as a single fraction in its simplest form:
-    1. $\frac{2x - 1}{4} + \frac{x + 3}{5}$
-    2. $\frac{3y + 2}{3} - \frac{y - 4}{4}$
+  <TabItem label="📝 Q3: Simplifying Rational Expressions">
+    Factorise fully, then simplify:  
+
+    a) $\dfrac{2x+4}{2}$  
+
+    b) $\dfrac{x^2-9}{x-3}$  
+
+    c) $\dfrac{y^2+5y}{y^2+7y+10}$  
+
+    d) $\dfrac{m^2-2m-8}{m^2-16}$  
+
+    e) $\dfrac{3a^2-12a}{a^2-8a+16}$  
+
+    f) $\dfrac{2x^2-18}{x^2+x-6}$  
   </TabItem>
   <TabItem label="✅ Solution 3">
-    **1. Addition (LCM = 20):**
-    $$
-    \begin{aligned}
-    &\quad \frac{5(2x - 1)}{20} + \frac{4(x + 3)}{20} \\
-    &= \frac{10x - 5 + 4x + 12}{20} \\
-    &= \frac{14x + 7}{20}
-    \end{aligned}
-    $$
+    **a)** $x+2$  
 
-    **2. Subtraction (LCM = 12):** Watch the negative sign!
-    $$
-    \begin{aligned}
-    &\quad \frac{4(3y + 2)}{12} - \frac{3(y - 4)}{12} \\
-    &= \frac{12y + 8 - 3(y - 4)}{12} \\
-    &= \frac{12y + 8 - 3y + 12}{12} \\
-    &= \frac{9y + 20}{12}
-    \end{aligned}
-    $$
-  </TabItem>
+    **b)** $x+3$ *(DOTS on top)* **c)** $\dfrac{y}{y+2}$  
+
+    **d)** $\dfrac{m+2}{m+4}$  
+
+    **e)** $\dfrac{3a}{a-4}$  
+
+    **f)** $\dfrac{2(x-3)}{x-2}$ *(Extract HCF 2 first on top, then DOTS)*
+    </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Adding and subtracting algebraic fractions with numerical denominators" />
+<SmartAIGenerator topic="Simplifying rational algebraic expressions using factorisation" />
 
 <Tabs>
-  <TabItem label="📝 Q4: Binomial Denominators (Extended)">
-    Express as a single fraction in its simplest form:
-    $\frac{4}{x + 2} - \frac{5}{x - 3}$
+  <TabItem label="📝 Q4: Multiplying Fractions">
+    Simplify the following:  
+
+    a) $\dfrac{2x}{3} \times \dfrac{9}{4x}$  
+
+    b) $\dfrac{5a^2}{7} \times \dfrac{14}{10a}$  
+
+    c) $\dfrac{x-2}{4} \times \dfrac{8}{x-2}$  
+
+    d) $\dfrac{m^2-9}{2m} \times \dfrac{4m^2}{m+3}$  
+
+    e) $\dfrac{y^2+2y}{5} \times \dfrac{15}{y^2-4}$  
+
+    f) $\dfrac{3x+6}{x^2-1} \times \dfrac{x-1}{x+2}$  
   </TabItem>
   <TabItem label="✅ Solution 4">
-    The common denominator is $(x + 2)(x - 3)$.
-    $$
-    \begin{aligned}
-    &\quad \frac{4(x - 3)}{(x + 2)(x - 3)} - \frac{5(x + 2)}{(x + 2)(x - 3)} \\
-    &= \frac{4x - 12 - 5(x + 2)}{(x + 2)(x - 3)} \\
-    &= \frac{4x - 12 - 5x - 10}{(x + 2)(x - 3)} \\
-    &= \frac{-x - 22}{(x + 2)(x - 3)} \quad \text{or} \quad \frac{-(x + 22)}{(x + 2)(x - 3)}
-    \end{aligned}
-    $$
+    **a)** $\dfrac{3}{2}$  
+
+    **b)** $a$  
+
+    **c)** $2$  
+
+    **d)** $2m(m-3)$  
+
+    **e)** $\dfrac{3y}{y-2}$  
+
+    **f)** $\dfrac{3}{x+1}$  
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Adding and subtracting algebraic fractions with binomial denominators" />
 
 <Tabs>
-  <TabItem label="📝 Q5: Factoring Denominators First (Extended)">
-    Express as a single fraction in its simplest form:
-    $\frac{7}{3x - 6} + \frac{2}{x - 2}$
+  <TabItem label="📝 Q5: Dividing Fractions">
+    Simplify the following (remember to Keep-Change-Flip):  
+
+    a) $\dfrac{3x}{5} \div \dfrac{9x}{10}$  
+
+    b) $\dfrac{8a^2}{3b} \div \dfrac{4a}{9b^2}$  
+
+    c) $\dfrac{x+5}{2} \div \dfrac{x+5}{6}$  
+
+    d) $\dfrac{m^2-25}{3m} \div \dfrac{m-5}{6m^2}$  
+
+    e) $\dfrac{y^2+3y}{4} \div \dfrac{y^2-9}{8}$  
+
+    f) $\dfrac{2x-4}{x^2-16} \div \dfrac{x-2}{x+4}$  
   </TabItem>
   <TabItem label="✅ Solution 5">
-    Notice that $3x - 6$ factorises to $3(x - 2)$.
-    Therefore, the LCM is $3(x - 2)$. We only need to multiply the second fraction by $\frac{3}{3}$.
-    $$
-    \begin{aligned}
-    &\quad \frac{7}{3(x - 2)} + \frac{2 \times 3}{3(x - 2)} \\
-    &= \frac{7}{3(x - 2)} + \frac{6}{3(x - 2)} \\
-    &= \frac{13}{3(x - 2)}
-    \end{aligned}
-    $$
+    **a)** $\dfrac{2}{3}$  
+
+    **b)** $6ab$  
+
+    **c)** $3$  
+
+    **d)** $2m(m+5)$  
+
+    **e)** $\dfrac{2y}{y-3}$  
+
+    **f)** $\dfrac{2}{x-4}$  
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Adding and subtracting algebraic fractions by factoring denominators to find the LCM" />
+<SmartAIGenerator topic="Multiplying and dividing complex algebraic fractions" />
+
+<Tabs>
+  <TabItem label="📝 Q6: Adding/Subtracting (Numerical Denominators)">
+    Express as a single fraction in its simplest form:  
+
+    a) $\dfrac{x}{3} + \dfrac{x}{4}$  
+
+    b) $\dfrac{2y}{5} - \dfrac{y}{2}$  
+
+    c) $\dfrac{a+1}{2} + \dfrac{a-2}{3}$  
+
+    d) $\dfrac{2m-1}{4} - \dfrac{m+3}{5}$  
+
+    e) $\dfrac{3x-2}{6} + \dfrac{x+4}{3}$  
+
+    f) $\dfrac{5p+2}{8} - \dfrac{2p-1}{4}$  
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** $\dfrac{7x}{12}$  
+
+    **b)** $\dfrac{-y}{10}$  
+
+    **c)** $\dfrac{5a-1}{6}$  
+
+    **d)** $\dfrac{6m-17}{20}$ *(Watch the invisible brackets!)* **e)** $\dfrac{5x+6}{6}$  
+
+    **f)** $\dfrac{p+4}{8}$  
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Adding/Subtracting (Algebraic Denominators)">
+    Express as a single fraction in its simplest form:  
+
+    a) $\dfrac{2}{x} + \dfrac{3}{y}$  
+
+    b) $\dfrac{4}{a} - \dfrac{1}{2a}$  
+
+    c) $\dfrac{3}{x+1} + \dfrac{2}{x+2}$  
+
+    d) $\dfrac{5}{m-3} - \dfrac{2}{m+1}$  
+
+    e) $\dfrac{1}{y-2} + \dfrac{4}{y+2}$  
+
+    f) $\dfrac{x}{x-1} - \dfrac{2}{x+3}$  
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** $\dfrac{2y+3x}{xy}$  
+
+    **b)** $\dfrac{7}{2a}$ *(LCM is $2a$)* **c)** $\dfrac{5x+8}{(x+1)(x+2)}$  
+
+    **d)** $\dfrac{3m+11}{(m-3)(m+1)}$  
+
+    **e)** $\dfrac{5y-6}{(y-2)(y+2)}$  
+
+    **f)** $\dfrac{x^2+x+2}{(x-1)(x+3)}$  
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Adding/Subtracting (Factoring Denominators First)">
+    Factorise the denominators to find the LCM, then express as a single fraction:  
+
+    a) $\dfrac{3}{2x+4} + \dfrac{1}{x+2}$  
+
+    b) $\dfrac{5}{3m-9} - \dfrac{2}{m-3}$  
+
+    c) $\dfrac{4}{x^2-4} + \dfrac{1}{x-2}$  
+
+    d) $\dfrac{2}{y^2-9} - \dfrac{3}{y+3}$  
+
+    e) $\dfrac{x}{x^2+5x+6} + \dfrac{2}{x+3}$  
+
+    f) $\dfrac{3}{a^2-a-12} - \dfrac{1}{a-4}$  
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)** $\dfrac{5}{2(x+2)}$  
+
+    **b)** $\dfrac{-1}{3(m-3)}$  
+
+    **c)** $\dfrac{x+6}{(x-2)(x+2)}$  
+
+    **d)** $\dfrac{-3y+11}{(y-3)(y+3)}$  
+
+    **e)** $\dfrac{x+4}{(x+2)(x+3)}$  
+
+    **f)** $\dfrac{-a}{a^2-a-12}$ or $\dfrac{-a}{(a-4)(a+3)}$  
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q9: Mixed Operations Challenge">
+    Carefully apply the order of operations (BIDMAS/BODMAS) to simplify:  
+
+    a) $\left(\dfrac{2x}{3} + \dfrac{x}{6}\right) \times \dfrac{4}{x}$  
+
+    b) $\dfrac{x^2-1}{x} \div \left(\dfrac{x+1}{3} - \dfrac{x+1}{6}\right)$  
+
+    c) $\dfrac{2}{x-1} + \dfrac{3x}{x^2-1} \times \dfrac{x+1}{x}$  
+
+    d) $\dfrac{a^2-b^2}{a+b} - \dfrac{a^2-ab}{a}$  
+
+    e) $\dfrac{m}{m+2} \div \dfrac{m^2}{m^2-4} + \dfrac{1}{m}$  
+
+    f) $\left(\dfrac{1}{x} - \dfrac{1}{y}\right) \div \left(\dfrac{x-y}{xy}\right)$  
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)** Bracket first: $\dfrac{5x}{6} \times \dfrac{4}{x} = \dfrac{10}{3}$  
+
+    **b)** Bracket first: $\dfrac{x+1}{6}$. Then divide: $\dfrac{6(x-1)}{x}$  
+
+    **c)** Multiply first: $\dfrac{3}{x-1}$. Then add: $\dfrac{5}{x-1}$  
+
+    **d)** Simplify individual fractions first: $(a-b) - (a-b) = 0$  
+
+    **e)** Divide first: $\dfrac{m-2}{m}$. Then add: $\dfrac{m-1}{m}$  
+
+    **f)** Bracket first: $\dfrac{y-x}{xy}$. Then divide: $\dfrac{y-x}{x-y} = -1$  
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Adding, subtracting, and mixed operations with algebraic fractions" />

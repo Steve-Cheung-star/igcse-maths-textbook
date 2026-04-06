@@ -9,7 +9,47 @@ An equation is a mathematical statement that two expressions are equal. Solving 
 
 ## 1. Linear Equations
 
-Linear equations are equations where the highest power of the unknown variable is $1$ (e.g., $x$, not $x^2$). The goal is to isolate the variable on one side of the equals sign using inverse operations.
+Linear equations are equations where the highest power of the unknown variable is $1$ (e.g., $x$, not $x^2$). The goal is to isolate the variable on one side of the equals sign using inverse operations. Think of an equation like a set of perfectly balanced scales: whatever you do to one side, you **must** do to the other to keep it balanced.
+
+<svg viewBox="0 0 600 250" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+    <text x="300" y="30" font-family="sans-serif" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">3x + 4 = 10</text>
+
+    <path d="M 300 210 L 250 240 L 350 240 Z" fill="#457b9d" stroke="#1d3557" stroke-width="2"/>
+    <rect x="290" y="90" width="20" height="120" fill="#457b9d" stroke="#1d3557" stroke-width="2"/>
+    
+    <line x1="150" y1="90" x2="450" y2="90" stroke="#1d3557" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="300" cy="90" r="8" fill="#e63946"/>
+    
+    <path d="M 150 90 L 100 160 L 200 160 Z" fill="none" stroke="#1d3557" stroke-width="2"/>
+    <rect x="90" y="160" width="120" height="8" rx="4" fill="#a8dadc" stroke="#1d3557" stroke-width="2"/>
+    
+    <rect x="100" y="120" width="24" height="40" rx="3" fill="#e63946" stroke="#1d3557" stroke-width="2"/>
+    <text x="112" y="145" font-family="sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">x</text>
+    <rect x="128" y="120" width="24" height="40" rx="3" fill="#e63946" stroke="#1d3557" stroke-width="2"/>
+    <text x="140" y="145" font-family="sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">x</text>
+    <rect x="156" y="120" width="24" height="40" rx="3" fill="#e63946" stroke="#1d3557" stroke-width="2"/>
+    <text x="168" y="145" font-family="sans-serif" font-size="16" font-weight="bold" fill="#fff" text-anchor="middle">x</text>
+    <rect x="184" y="145" width="15" height="15" rx="2" fill="#f4a261" stroke="#1d3557" stroke-width="1.5"/>
+    <rect x="184" y="128" width="15" height="15" rx="2" fill="#f4a261" stroke="#1d3557" stroke-width="1.5"/>
+    <rect x="184" y="111" width="15" height="15" rx="2" fill="#f4a261" stroke="#1d3557" stroke-width="1.5"/>
+    <rect x="184" y="94" width="15" height="15" rx="2" fill="#f4a261" stroke="#1d3557" stroke-width="1.5"/>
+
+    <path d="M 450 90 L 400 160 L 500 160 Z" fill="none" stroke="#1d3557" stroke-width="2"/>
+    <rect x="390" y="160" width="120" height="8" rx="4" fill="#a8dadc" stroke="#1d3557" stroke-width="2"/>
+    
+    <g fill="#f4a261" stroke="#1d3557" stroke-width="1.5">
+        <rect x="420" y="145" width="15" height="15" rx="2"/>
+        <rect x="420" y="128" width="15" height="15" rx="2"/>
+        <rect x="420" y="111" width="15" height="15" rx="2"/>
+        <rect x="420" y="94" width="15" height="15" rx="2"/>
+        <rect x="420" y="77" width="15" height="15" rx="2"/>
+        <rect x="437" y="145" width="15" height="15" rx="2"/>
+        <rect x="437" y="128" width="15" height="15" rx="2"/>
+        <rect x="437" y="111" width="15" height="15" rx="2"/>
+        <rect x="437" y="94" width="15" height="15" rx="2"/>
+        <rect x="437" y="77" width="15" height="15" rx="2"/>
+    </g>
+</svg>
 
 ### Basic Linear Equations
 **Example 1:** Solve $3x + 4 = 10$
@@ -35,7 +75,7 @@ $$
 \begin{aligned}
 5 - 21 &= 3x + 2x \\
 -16 &= 5x \\
-x &= -\frac{16}{5} \quad \text{(or } -3.2\text{)}
+x &= -\dfrac{16}{5} \quad \text{(or } -3.2\text{)}
 \end{aligned}
 $$
 
@@ -48,7 +88,7 @@ Equations with fractions require you to eliminate the denominators. You can do t
 ### Method 1: Cross-Multiplication
 Use this when you have one fraction strictly equal to another.
 
-**Example:** Solve $\frac{x}{2} = \frac{2x + 1}{3}$
+**Example:** Solve $\dfrac{x}{2} = \dfrac{2x + 1}{3}$
 
 Multiply the numerator of one side by the denominator of the other:
 $$
@@ -62,7 +102,7 @@ $$
 <Aside type="caution" title="Variables in the Denominator">
 The same cross-multiplication rule applies even if the variable is in the denominator!
 
-Solve $\frac{x}{x + 2} = \frac{4}{x - 6}$
+Solve $\dfrac{x}{x + 2} = \dfrac{4}{x - 6}$
 
 $$
 \begin{aligned}
@@ -76,18 +116,18 @@ $$
 ### Method 2: Finding a Common Denominator
 Use this when adding or subtracting multiple fractions in an equation.
 
-**Example:** Solve $\frac{x + 2}{3} + \frac{2x - 1}{2} = 1$
+**Example:** Solve $\dfrac{x + 2}{3} + \dfrac{2x - 1}{2} = 1$
 
 The Lowest Common Multiple (LCM) of 3 and 2 is 6. Multiply **every single term** in the equation by 6 to eliminate the fractions.
 
 $$
 \begin{aligned}
-6 \times \left(\frac{x + 2}{3}\right) + 6 \times \left(\frac{2x - 1}{2}\right) &= 6 \times (1) \\
+6 \times \left(\dfrac{x + 2}{3}\right) + 6 \times \left(\dfrac{2x - 1}{2}\right) &= 6 \times (1) \\
 2(x + 2) + 3(2x - 1) &= 6 \\
 2x + 4 + 6x - 3 &= 6 \\
 8x + 1 &= 6 \\
 8x &= 5 \\
-x &= \frac{5}{8}
+x &= \dfrac{5}{8}
 \end{aligned}
 $$
 
@@ -95,7 +135,39 @@ $$
 
 ## 3. Simultaneous Equations
 
-Simultaneous equations involve two or more equations with two or more unknowns (usually $x$ and $y$). You must find the pair of values that makes **both** equations true at the same time. The most common algebraic methods are **Elimination** and **Substitution**.
+Simultaneous equations involve two or more equations with two or more unknowns (usually $x$ and $y$). You must find the pair of values that makes **both** equations true at the same time. Graphically, the solution is the exact coordinate where the two lines intersect.
+
+<svg viewBox="0 0 600 250" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 100 50 L 500 50 M 100 100 L 500 100 M 100 150 L 500 150 M 100 200 L 500 200" stroke="#f0f0f0" stroke-width="1"/>
+    <path d="M 150 20 L 150 220 M 200 20 L 200 220 M 250 20 L 250 220 M 300 20 L 300 220 M 350 20 L 350 220 M 400 20 L 400 220 M 450 20 L 450 220" stroke="#f0f0f0" stroke-width="1"/>
+
+    <line x1="100" y1="200" x2="520" y2="200" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="150" y1="220" x2="150" y2="20" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="515" y="190" font-family="sans-serif" font-size="12" fill="#333">x</text>
+    <text x="135" y="30" font-family="sans-serif" font-size="12" fill="#333">y</text>
+    <text x="135" y="215" font-family="sans-serif" font-size="12" fill="#333">0</text>
+
+    <line x1="100" y1="200" x2="300" y2="0" stroke="#e63946" stroke-width="3"/>
+    <text x="120" y="170" font-family="sans-serif" font-size="12" fill="#e63946" transform="rotate(-45, 120, 170)">y = x + 1</text>
+
+    <line x1="200" y1="250" x2="350" y2="-50" stroke="#457b9d" stroke-width="3"/>
+    <text x="310" y="50" font-family="sans-serif" font-size="12" fill="#457b9d" transform="rotate(63, 310, 50)">y = -2x + 7</text>
+
+    <circle cx="250" cy="50" r="5" fill="#2a9d8f"/>
+    <text x="260" y="45" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2a9d8f">Solution: (2, 3)</text>
+    
+    <line x1="250" y1="50" x2="250" y2="200" stroke="#2a9d8f" stroke-width="1.5" stroke-dasharray="5,5"/>
+    <line x1="250" y1="50" x2="150" y2="50" stroke="#2a9d8f" stroke-width="1.5" stroke-dasharray="5,5"/>
+    
+    <text x="245" y="215" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2a9d8f">2</text>
+    <text x="135" y="55" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2a9d8f">3</text>
+
+    <defs>
+        <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
+        </marker>
+    </defs>
+</svg>
 
 **Example (Elimination):** Solve the simultaneous equations:
 
@@ -131,7 +203,26 @@ $$
 
 ## 4. Quadratic Equations
 
-A quadratic equation takes the form $ax^2 + bx + c = 0$. Depending on the equation, you can solve it via factorisation, the quadratic formula, or your GDC.
+A quadratic equation takes the form $ax^2 + bx + c = 0$. Depending on the equation, you can solve it via factorisation, the quadratic formula, or your GDC. The solutions to a quadratic equation are the exact points where the parabola crosses the x-axis (its roots).
+
+<svg viewBox="0 0 600 250" fill="transparent" xmlns="http://www.w3.org/2000/svg">
+    <path d="M 100 50 L 500 50 M 100 100 L 500 100 M 100 150 L 500 150 M 100 200 L 500 200" stroke="#f0f0f0" stroke-width="1"/>
+
+    <line x1="100" y1="150" x2="520" y2="150" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <line x1="300" y1="220" x2="300" y2="20" stroke="#333" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="515" y="140" font-family="sans-serif" font-size="12" fill="#333">x</text>
+    <text x="285" y="30" font-family="sans-serif" font-size="12" fill="#333">y</text>
+
+    <path d="M 150 20 Q 300 350 450 20" fill="none" stroke="#e63946" stroke-width="3"/>
+
+    <circle cx="225" cy="150" r="5" fill="#2a9d8f"/>
+    <circle cx="375" cy="150" r="5" fill="#2a9d8f"/>
+    
+    <text x="225" y="135" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2a9d8f" text-anchor="middle">Root 1</text>
+    <text x="375" y="135" font-family="sans-serif" font-size="12" font-weight="bold" fill="#2a9d8f" text-anchor="middle">Root 2</text>
+    
+    <text x="310" y="225" font-family="sans-serif" font-size="12" fill="#e63946">y = ax² + bx + c</text>
+</svg>
 
 ### Solving by Factorisation
 If the expression factorises nicely, use the **Zero Product Property** (If $ab = 0$, then $a = 0$ or $b = 0$).
@@ -152,7 +243,7 @@ Therefore, either $x - 2 = 0$ or $x - 3 = 0$.
 If an equation does not factorise easily, use the quadratic formula (this is provided in your exam).
 
 $$
-x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}
 $$
 
 **Example:** Solve $2x^2 - 5x - 4 = 0$. Give your answers exact in surd form.
@@ -165,7 +256,7 @@ Here, $a = 2$, $b = -5$, and $c = -4$. *(Always take the sign in front of the nu
 
 $$
 \begin{aligned}
-x &= \frac{-(-5) \pm \sqrt{(-5)^2 - 4(2)(-4)}}{2(2)}
+x &= \dfrac{-(-5) \pm \sqrt{(-5)^2 - 4(2)(-4)}}{2(2)}
 \end{aligned}
 $$
 
@@ -173,9 +264,9 @@ $$
 
 $$
 \begin{aligned}
-x &= \frac{5 \pm \sqrt{25 - (-32)}}{4} \\
-x &= \frac{5 \pm \sqrt{25 + 32}}{4} \\
-x &= \frac{5 \pm \sqrt{57}}{4}
+x &= \dfrac{5 \pm \sqrt{25 - (-32)}}{4} \\
+x &= \dfrac{5 \pm \sqrt{25 + 32}}{4} \\
+x &= \dfrac{5 \pm \sqrt{57}}{4}
 \end{aligned}
 $$
 
@@ -205,7 +296,7 @@ $$
 ### The Subject Appears Twice (Extended)
 If the letter you want to make the subject appears more than once, you **must factorise** to isolate it.
 
-**Example 2:** Make $x$ the subject of $y = \frac{2x + 1}{x - 3}$
+**Example 2:** Make $x$ the subject of $y = \dfrac{2x + 1}{x - 3}$
 
 $$
 \begin{aligned}
@@ -227,7 +318,7 @@ $$
 $$
 \begin{aligned}
 x(y - 2) &= 3y + 1 \\
-x &= \frac{3y + 1}{y - 2} \quad \text{(Divide by the bracket)}
+x &= \dfrac{3y + 1}{y - 2} \quad \text{(Divide by the bracket)}
 \end{aligned}
 $$
 
@@ -237,18 +328,18 @@ $$
 
 For complex or "unfamiliar" equations, your Graphic Display Calculator is your best friend.
 
-**Example:** Solve $2x - 1 = \frac{1}{x^3}$ using a GDC.
+**Example:** Solve $2x - 1 = \dfrac{1}{x^3}$ using a GDC.
 
 This is highly complex to solve algebraically, but very easy graphically.
 
 **Method 1: Intersection**
 1. Enter $y_1 = 2x - 1$
-2. Enter $y_2 = \frac{1}{x^3}$
+2. Enter $y_2 = \dfrac{1}{x^3}$
 3. Graph both functions.
 4. Use `[Menu] → [Analyse Graph] → [Intersection]` to find the $x$-coordinate where the two graphs cross.
 
 **Method 2: Finding Zeros (Roots)**
-1. Rearrange the equation to equal zero: $2x - 1 - \frac{1}{x^3} = 0$
+1. Rearrange the equation to equal zero: $2x - 1 - \dfrac{1}{x^3} = 0$
 2. Enter this entire expression into $y_1$.
 3. Graph the function.
 4. Use `[Menu] → [Analyse Graph] → [Zero]` to find the $x$-intercepts. The $x$-values are your solutions!
@@ -257,652 +348,149 @@ This is highly complex to solve algebraically, but very easy graphically.
 
 ## 7. Practice Questions
 
-### Basic Linear & Fractional Equations
-
 <Tabs>
-  <TabItem label="📝 Question 1">
-    Solve the equation: 
-    
-    $4x + 7 = 39$
+  <TabItem label="📝 Q1: Linear & Fractional Equations">
+    Solve the following equations for $x$:  
+
+    a) $4x + 7 = 39$  
+
+    b) $5(x - 3) = 2(x + 6)$  
+
+    c) $\dfrac{x}{3} - 4 = 5$  
+
+    d) $\dfrac{2x + 1}{3} = \dfrac{x - 4}{2}$  
+
+    e) $\dfrac{x}{4} + \dfrac{x - 1}{3} = 2$  
+
+    f) $\dfrac{2x}{5} - \dfrac{x-2}{4} = 1$  
   </TabItem>
   <TabItem label="✅ Solution 1">
-    Subtract $7$ from both sides:
-    
-    $$4x = 32$$
-    
-    Divide by $4$:
-    
-    $$\boldsymbol{x = 8}$$
+    **a)** $4x = 32 \Rightarrow \boldsymbol{x = 8}$  
+
+    **b)** $5x - 15 = 2x + 12 \Rightarrow 3x = 27 \Rightarrow \boldsymbol{x = 9}$  
+
+    **c)** $\dfrac{x}{3} = 9 \Rightarrow \boldsymbol{x = 27}$  
+
+    **d)** $2(2x + 1) = 3(x - 4) \Rightarrow 4x + 2 = 3x - 12 \Rightarrow \boldsymbol{x = -14}$  
+
+    **e)** Multiply by 12: $3x + 4(x - 1) = 24 \Rightarrow 7x - 4 = 24 \Rightarrow 7x = 28 \Rightarrow \boldsymbol{x = 4}$  
+
+    **f)** Multiply by 20: $4(2x) - 5(x - 2) = 20 \Rightarrow 8x - 5x + 10 = 20 \Rightarrow 3x = 10 \Rightarrow \boldsymbol{x = \dfrac{10}{3}}$  
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Solving basic two-step linear equations" />
+
+<SmartAIGenerator topic="Solving linear equations with brackets and fractions" />
 
 <Tabs>
-  <TabItem label="📝 Question 2">
-    Solve the equation: 
-    
-    $5(x - 3) = 2(x + 6)$
+  <TabItem label="📝 Q2: Simultaneous Equations">
+    Solve the following pairs of simultaneous equations:  
+
+    a) $x + y = 10$ and $x - y = 4$  
+
+    b) $3x + 4y = 24$ and $4x - y = 13$  
+
+    c) $y = 2x - 5$ and $3x + 2y = 11$  
+
+    d) $2x + 3y = 15$ and $5x - 2y = 9$  
+
+    e) The cost of 3 apples and 4 oranges is $\$4.30$. The cost of 5 apples and 2 oranges is $\$4.60$. Find the cost of one apple.  
+
+    f) A boat travels 24 km upstream in 2 hours, and 24 km downstream in 1.5 hours. Find the speed of the boat in still water.  
   </TabItem>
   <TabItem label="✅ Solution 2">
-    Expand brackets on both sides:
-    
-    $$5x - 15 = 2x + 12$$
-    
-    Subtract $2x$ from both sides:
-    
-    $$3x - 15 = 12$$
-    
-    Add $15$ to both sides:
-    
-    $$3x = 27$$
-    
-    $$\boldsymbol{x = 9}$$
+    **a)** Add equations to eliminate $y$: $2x = 14 \Rightarrow x=7$. Substitute: $7+y=10 \Rightarrow y=3$. **(7, 3)** **b)** Multiply 2nd eq by 4: $16x - 4y = 52$. Add to 1st eq: $19x = 76 \Rightarrow x=4$. Substitute: $4(4)-y=13 \Rightarrow y=3$. **(4, 3)** **c)** Substitute $y$ directly: $3x + 2(2x - 5) = 11 \Rightarrow 7x - 10 = 11 \Rightarrow x=3$. Substitute: $y = 2(3)-5 \Rightarrow y=1$. **(3, 1)** **d)** Multiply 1st by 2, 2nd by 3: $4x+6y=30$ and $15x-6y=27$. Add them: $19x = 57 \Rightarrow x=3$. Substitute: $6+3y=15 \Rightarrow y=3$. **(3, 3)** **e)** $3a+4o=4.30$, $5a+2o=4.60$. Double 2nd eq: $10a+4o=9.20$. Subtract 1st eq: $7a = 4.90 \Rightarrow \boldsymbol{a = \$0.70}$.  
+
+    **f)** Speed = Dist/Time. Up: $v-c = 12$. Down: $v+c = 16$. Add equations: $2v = 28 \Rightarrow \boldsymbol{v = 14 \text{ km/h}}$.  
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Solving linear equations with brackets on both sides" />
+
+<SmartAIGenerator topic="Solving simultaneous linear equations using elimination, substitution, and applied word problems" />
 
 <Tabs>
-  <TabItem label="📝 Question 3">
-    Solve the equation: 
-    
-    $\frac{x}{3} - 4 = 5$
+  <TabItem label="📝 Q3: Quadratic Equations">
+    Solve the following quadratic equations (give exact surds where necessary):  
+
+    a) $x^2 - 7x + 10 = 0$  
+
+    b) $x^2 + x - 12 = 0$  
+
+    c) $3x^2 - 13x - 10 = 0$  
+
+    d) $x^2 + 6x - 2 = 0$  
+
+    e) $x - \dfrac{12}{x} = 4$  
+
+    f) $x^4 - 13x^2 + 36 = 0$  
   </TabItem>
   <TabItem label="✅ Solution 3">
-    Add $4$ to both sides first:
-    
-    $$\frac{x}{3} = 9$$
-    
-    Multiply by $3$:
-    
-    $$\boldsymbol{x = 27}$$
+    **a)** $(x-2)(x-5)=0 \Rightarrow \boldsymbol{x = 2 \text{ or } 5}$  
+
+    **b)** $(x+4)(x-3)=0 \Rightarrow \boldsymbol{x = -4 \text{ or } 3}$  
+
+    **c)** Split middle term: $3x^2 - 15x + 2x - 10 = 0 \Rightarrow 3x(x-5)+2(x-5)=0 \Rightarrow (3x+2)(x-5)=0 \Rightarrow \boldsymbol{x = -\dfrac{2}{3} \text{ or } 5}$  
+
+    **d)** Quadratic formula: $\dfrac{-6 \pm \sqrt{36 - 4(1)(-2)}}{2} = \dfrac{-6 \pm \sqrt{44}}{2} = \dfrac{-6 \pm 2\sqrt{11}}{2} = \boldsymbol{-3 \pm \sqrt{11}}$  
+
+    **e)** Multiply by $x$: $x^2 - 4x - 12 = 0 \Rightarrow (x-6)(x+2)=0 \Rightarrow \boldsymbol{x = 6 \text{ or } -2}$  
+
+    **f)** Let $y = x^2$: $y^2 - 13y + 36 = 0 \Rightarrow (y-9)(y-4)=0 \Rightarrow y=9 \text{ or } 4$. Since $x^2=9$ and $x^2=4$, $\boldsymbol{x = \pm3 \text{ or } \pm2}$  
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Solving basic fractional linear equations" />
+
+<SmartAIGenerator topic="Solving quadratic equations by factorisation, quadratic formula, and substitution" />
 
 <Tabs>
-  <TabItem label="📝 Question 4">
-    Solve the equation: 
-    
-    $\frac{2x + 1}{3} = \frac{x - 4}{2}$
+  <TabItem label="📝 Q4: Changing the Subject">
+    Rearrange each formula to make the indicated variable the subject:  
+
+    a) $A = \dfrac{1}{2}bh$ (Make $h$ the subject)  
+
+    b) $V = \pi r^2 h$ (Make $r$ the subject)  
+
+    c) $y = \sqrt{x+2}$ (Make $x$ the subject)  
+
+    d) $y = \dfrac{5}{x} - 2$ (Make $x$ the subject)  
+
+    e) $y = \dfrac{2x+5}{x-1}$ (Make $x$ the subject)  
+
+    f) $P = \dfrac{a+b}{a-b}$ (Make $a$ the subject)  
   </TabItem>
   <TabItem label="✅ Solution 4">
-    Cross-multiply to eliminate denominators:
-    
-    $$2(2x + 1) = 3(x - 4)$$
-    
-    Expand brackets:
-    
-    $$4x + 2 = 3x - 12$$
-    
-    Subtract $3x$ from both sides:
-    
-    $$x + 2 = -12$$
-    
-    Subtract $2$:
-    
-    $$\boldsymbol{x = -14}$$
+    **a)** Multiply by 2, divide by $b$: $\boldsymbol{h = \dfrac{2A}{b}}$  
+
+    **b)** Divide by $\pi h$, then square root: $\boldsymbol{r = \sqrt{\dfrac{V}{\pi h}}}$  
+
+    **c)** Square both sides, subtract 2: $\boldsymbol{x = y^2 - 2}$  
+
+    **d)** $y+2 = \dfrac{5}{x} \Rightarrow x(y+2) = 5 \Rightarrow \boldsymbol{x = \dfrac{5}{y+2}}$  
+
+    **e)** $y(x-1) = 2x+5 \Rightarrow xy-y = 2x+5 \Rightarrow xy-2x = y+5 \Rightarrow x(y-2) = y+5 \Rightarrow \boldsymbol{x = \dfrac{y+5}{y-2}}$  
+
+    **f)** $P(a-b) = a+b \Rightarrow Pa - Pb = a+b \Rightarrow Pa - a = Pb+b \Rightarrow a(P-1) = b(P+1) \Rightarrow \boldsymbol{a = \dfrac{b(P+1)}{P-1}}$  
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Solving fractional equations using cross-multiplication" />
+
+<SmartAIGenerator topic="Rearranging complex algebraic formulas" />
 
 <Tabs>
-  <TabItem label="📝 Question 5">
-    Solve the equation: 
-    
-    $\frac{x}{4} + \frac{x - 1}{3} = 2$
+  <TabItem label="📝 Q5: Structured Applications (Longer Questions)">
+    **a)** The product of two consecutive positive even numbers is $48$. Form a quadratic equation and solve it to find the numbers.  
+
+    **b)** A right-angled triangle has a base of $x$ cm and a height of $(x - 7)$ cm. Its area is $30 \text{ cm}^2$. Form a quadratic equation and solve it to find the exact perimeter of the triangle.  
+
+    **c)** A cyclist rides 30 km at an average speed of $v$ km/h, and then a further 40 km at $(v + 10)$ km/h. The entire journey takes 2 hours. Find the initial speed $v$.  
+
+    **d)** The number of diagonals, $D$, in a polygon with $n$ sides is $D = \dfrac{n(n-3)}{2}$. If a polygon has 35 diagonals, how many sides does it have?  
   </TabItem>
   <TabItem label="✅ Solution 5">
-    Multiply every term by the Lowest Common Multiple of 4 and 3, which is $12$:
-    
-    $$12\left(\frac{x}{4}\right) + 12\left(\frac{x - 1}{3}\right) = 12(2)$$
-    
-    $$3x + 4(x - 1) = 24$$
-    
-    Expand brackets:
-    
-    $$3x + 4x - 4 = 24$$
-    
-    Combine like terms:
-    
-    $$7x - 4 = 24$$
-    
-    $$7x = 28$$
-    
-    $$\boldsymbol{x = 4}$$
+    **a)** Let numbers be $x$ and $x+2$. $x(x+2) = 48 \Rightarrow x^2 + 2x - 48 = 0 \Rightarrow (x+8)(x-6)=0$. Since they are positive, $x=6$. The numbers are **6 and 8**.  
+
+    **b)** Area: $\dfrac{1}{2}x(x-7) = 30 \Rightarrow x^2 - 7x - 60 = 0 \Rightarrow (x-12)(x+5)=0$. Since length must be positive, base $x=12$, height $= 5$. Hypotenuse $= \sqrt{12^2 + 5^2} = 13$. Perimeter $= 12 + 5 + 13 =$ **30 cm**.  
+
+    **c)** $\dfrac{30}{v} + \dfrac{40}{v+10} = 2$. Multiply by $v(v+10)$: $30(v+10) + 40v = 2v(v+10) \Rightarrow 70v + 300 = 2v^2 + 20v \Rightarrow 2v^2 - 50v - 300 = 0 \Rightarrow v^2 - 25v - 150 = 0 \Rightarrow (v-30)(v+5)=0$. Speed cannot be negative, so $\boldsymbol{v = 30 \text{ km/h}}$.  
+
+    **d)** $35 = \dfrac{n(n-3)}{2} \Rightarrow 70 = n^2 - 3n \Rightarrow n^2 - 3n - 70 = 0 \Rightarrow (n-10)(n+7)=0$. A polygon cannot have negative sides, so $\boldsymbol{n = 10}$ **sides**.  
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Solving complex fractional equations requiring a common denominator" />
 
-### Simultaneous Equations
-
-<Tabs>
-  <TabItem label="📝 Question 6">
-    Solve the simultaneous equations using elimination:
-    
-    $3x + 4y = 24$ 
-    
-    $4x - y = 13$
-  </TabItem>
-  <TabItem label="✅ Solution 6">
-    Multiply the second equation by $4$ to match the $y$ coefficients:
-    
-    $16x - 4y = 52$
-    
-    Add this to the first equation to eliminate $y$:
-    
-    $$(3x + 4y) + (16x - 4y) = 24 + 52$$
-    
-    $$19x = 76$$
-    
-    $$x = 4$$
-    
-    Substitute $x=4$ back into $4x - y = 13$:
-    
-    $$4(4) - y = 13$$
-    
-    $$16 - y = 13$$
-    
-    $$y = 3$$
-    
-    **Answer:** $\boldsymbol{x = 4, y = 3}$
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Solving simultaneous linear equations using the elimination method" />
-
-<Tabs>
-  <TabItem label="📝 Question 7">
-    Solve the simultaneous equations using substitution:
-    
-    $y = 2x - 5$
-    
-    $3x + 2y = 11$
-  </TabItem>
-  <TabItem label="✅ Solution 7">
-    Substitute the expression for $y$ from the first equation into the second:
-    
-    $$3x + 2(2x - 5) = 11$$
-    
-    Expand and solve:
-    
-    $$3x + 4x - 10 = 11$$
-    
-    $$7x - 10 = 11$$
-    
-    $$7x = 21$$
-    
-    $$x = 3$$
-    
-    Substitute $x=3$ back into the first equation:
-    
-    $$y = 2(3) - 5$$
-    
-    $$y = 6 - 5$$
-    
-    $$y = 1$$
-    
-    **Answer:** $\boldsymbol{x = 3, y = 1}$
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Solving simultaneous linear equations using the substitution method" />
-
-### Quadratic Equations
-
-<Tabs>
-  <TabItem label="📝 Question 8">
-    Solve the quadratic equation by factorisation: 
-    
-    $x^2 - 7x + 10 = 0$
-  </TabItem>
-  <TabItem label="✅ Solution 8">
-    Find two numbers that multiply to $+10$ and add to $-7$. These are $-2$ and $-5$.
-    
-    $$(x - 2)(x - 5) = 0$$
-    
-    **Answer:** $\boldsymbol{x = 2}$ or $\boldsymbol{x = 5}$
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Solving monic quadratic equations by factorisation" />
-
-<Tabs>
-  <TabItem label="📝 Question 9">
-    Solve the quadratic equation by factorisation: 
-    
-    $3x^2 - 13x - 10 = 0$
-  </TabItem>
-  <TabItem label="✅ Solution 9">
-    Find two numbers that multiply to $ac$ ($3 \times -10 = -30$) and add to $b$ ($-13$). These are $-15$ and $+2$.
-    
-    Split the middle term:
-    
-    $$3x^2 - 15x + 2x - 10 = 0$$
-    
-    Factorise by grouping:
-    
-    $$3x(x - 5) + 2(x - 5) = 0$$
-    
-    $$(3x + 2)(x - 5) = 0$$
-    
-    **Answer:** $\boldsymbol{x = -\frac{2}{3}}$ or $\boldsymbol{x = 5}$
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Solving non-monic quadratic equations by factorisation" />
-
-<Tabs>
-  <TabItem label="📝 Question 10">
-    Solve the quadratic equation: 
-    
-    $x^2 + 6x - 2 = 0$. Give your answer in exact surd form.
-  </TabItem>
-  <TabItem label="✅ Solution 10">
-    Use the Quadratic Formula with $a=1, b=6, c=-2$:
-    
-    $$x = \frac{-6 \pm \sqrt{6^2 - 4(1)(-2)}}{2(1)}$$
-    
-    $$x = \frac{-6 \pm \sqrt{36 + 8}}{2}$$
-    
-    $$x = \frac{-6 \pm \sqrt{44}}{2}$$
-    
-    Simplify the surd: $\sqrt{44} = \sqrt{4 \times 11} = 2\sqrt{11}$
-    
-    $$x = \frac{-6 \pm 2\sqrt{11}}{2}$$
-    
-    Divide both terms in the numerator by $2$:
-    
-    **Answer:** $\boldsymbol{x = -3 \pm \sqrt{11}}$
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Solving quadratic equations using the quadratic formula, leaving answers in exact surd form" />
-
-### Changing the Subject of a Formula
-
-<Tabs>
-  <TabItem label="📝 Question 11">
-    Make $a$ the subject of the formula: 
-    
-    $A = \frac{1}{2}(a + b)h$
-  </TabItem>
-  <TabItem label="✅ Solution 11">
-    Multiply both sides by $2$ to remove the fraction:
-    
-    $$2A = (a + b)h$$
-    
-    Divide both sides by $h$:
-    
-    $$\frac{2A}{h} = a + b$$
-    
-    Subtract $b$:
-    
-    $$\boldsymbol{a = \frac{2A}{h} - b}$$
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Changing the subject of a formula involving fractions and brackets" />
-
-<Tabs>
-  <TabItem label="📝 Question 12">
-    Make $x$ the subject of the formula: 
-    
-    $y = \frac{2x + 5}{x - 1}$
-  </TabItem>
-  <TabItem label="✅ Solution 12">
-    Multiply by the denominator:
-    
-    $$y(x - 1) = 2x + 5$$
-    
-    Expand the bracket:
-    
-    $$xy - y = 2x + 5$$
-    
-    Group all terms containing $x$ on one side:
-    
-    $$xy - 2x = y + 5$$
-    
-    Factorise out the $x$:
-    
-    $$x(y - 2) = y + 5$$
-    
-    Divide to isolate $x$:
-    
-    $$\boldsymbol{x = \frac{y + 5}{y - 2}}$$
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Changing the subject of a formula where the subject appears twice, requiring factorisation" />
-
-### Disguised Quadratics
-
-<Tabs>
-  <TabItem label="📝 Question 13">
-    Solve the equation: 
-    
-    $x - \frac{12}{x} = 4$
-  </TabItem>
-  <TabItem label="✅ Solution 13">
-    Multiply every term by $x$ to clear the denominator:
-    
-    $$x^2 - 12 = 4x$$
-    
-    Rearrange into the standard quadratic form $ax^2 + bx + c = 0$:
-    
-    $$x^2 - 4x - 12 = 0$$
-    
-    Factorise:
-    
-    $$(x - 6)(x + 2) = 0$$
-    
-    **Answer:** $\boldsymbol{x = 6}$ or $\boldsymbol{x = -2}$
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Solving disguised quadratic equations with variables in the denominator" />
-
-<Tabs>
-  <TabItem label="📝 Question 14">
-    Solve the equation: 
-    
-    $x^4 - 13x^2 + 36 = 0$
-  </TabItem>
-  <TabItem label="✅ Solution 14">
-    Use a substitution. Let $y = x^2$. The equation becomes a standard quadratic:
-    
-    $$y^2 - 13y + 36 = 0$$
-    
-    Factorise:
-    
-    $$(y - 9)(y - 4) = 0$$
-    
-    So, $y = 9$ or $y = 4$. 
-    
-    Now substitute $x^2$ back in for $y$:
-    
-    $$x^2 = 9 \Rightarrow \boldsymbol{x = 3 \text{ or } -3}$$
-    
-    $$x^2 = 4 \Rightarrow \boldsymbol{x = 2 \text{ or } -2}$$
-    
-    *(Note: There are 4 valid solutions!)*
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Solving higher-order polynomial equations using quadratic substitution" />
-
-### Word Problems & Extraneous Solutions
-
-<Tabs>
-  <TabItem label="📝 Question 15: Numbers">
-    The product of two consecutive positive even numbers is $48$. Form an equation and find the numbers.
-  </TabItem>
-  <TabItem label="✅ Solution 15">
-    Let the numbers be $x$ and $(x + 2)$.
-    
-    $$x(x + 2) = 48$$
-    
-    $$x^2 + 2x - 48 = 0$$
-    
-    Factorise:
-    
-    $$(x + 8)(x - 6) = 0$$
-    
-    This gives $x = -8$ or $x = 6$.
-    
-    *Extraneous solution:* The question specifies **positive** even numbers, so $x = -8$ is mathematically valid but physically invalid for this scenario. 
-    
-    **Answer:** The numbers are $\boldsymbol{6}$ and $\boldsymbol{8}$.
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Forming and solving quadratic equations from word problems about consecutive numbers" />
-
-<Tabs>
-  <TabItem label="📝 Question 16: Geometry">
-    A right-angled triangle has a base of $x$ cm and a height of $(x - 7)$ cm. Its area is $30 \text{ cm}^2$. Find the value of $x$.
-  </TabItem>
-  <TabItem label="✅ Solution 16">
-    Area = $\frac{1}{2} \times \text{base} \times \text{height}$
-    
-    $$\frac{1}{2}(x)(x - 7) = 30$$
-    
-    Multiply by 2:
-    
-    $$x(x - 7) = 60$$
-    
-    $$x^2 - 7x - 60 = 0$$
-    
-    Factorise:
-    
-    $$(x - 12)(x + 5) = 0$$
-    
-    This gives $x = 12$ or $x = -5$.
-    
-    *Extraneous solution:* A triangle cannot have a negative base length, so discard $-5$.
-    
-    **Answer:** $\boldsymbol{x = 12}$
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Forming and solving quadratic equations from geometric area problems, handling extraneous solutions" />
-
-<Tabs>
-  <TabItem label="📝 Question 17: Speed/Distance">
-    A train travels $120$ km at an average speed of $v$ km/h. If the speed is increased by $20$ km/h, the journey takes $1$ hour less. Form an equation in $v$ and find the original speed.
-  </TabItem>
-  <TabItem label="✅ Solution 17">
-    $\text{Time} = \text{Distance} \div \text{Speed}$. 
-    
-    Original time = $\frac{120}{v}$. New time = $\frac{120}{v + 20}$.
-    
-    Equation (Original Time - New Time = Difference): 
-    
-    $$\frac{120}{v} - \frac{120}{v + 20} = 1$$
-    
-    Multiply by LCM $v(v+20)$: 
-    
-    $$120(v + 20) - 120v = 1(v)(v + 20)$$
-    
-    $$120v + 2400 - 120v = v^2 + 20v$$
-    
-    $$v^2 + 20v - 2400 = 0$$
-    
-    Factorise:
-    
-    $$(v + 60)(v - 40) = 0$$
-    
-    This gives $v = -60$ or $v = 40$.
-    
-    *Extraneous solution:* Speed cannot be negative here.
-    
-    **Answer:** The original speed was $\boldsymbol{40 \text{ km/h}}$.
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Forming and solving rational equations from speed, distance, and time scenarios" />
-
-<Tabs>
-  <TabItem label="📝 Question 18: Simultaneous Real-world">
-    Tickets to a play cost \$5 for adults and \$3 for children. 120 tickets were sold, making \$500. Form a pair of simultaneous equations to find how many adult tickets were sold.
-  </TabItem>
-  <TabItem label="✅ Solution 18">
-    Let $a$ = number of adults, $c$ = number of children.
-    
-    Equation 1 (Total Tickets): $a + c = 120$
-    
-    Equation 2 (Total Money): $5a + 3c = 500$
-    
-    Multiply Eq 1 by 3: 
-    
-    $$3a + 3c = 360$$
-    
-    Subtract from Eq 2: 
-    
-    $$(5a - 3a) = 500 - 360$$
-    
-    $$2a = 140$$
-    
-    $$a = 70$$
-    
-    **Answer:** $\boldsymbol{70}$ adult tickets were sold.
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Forming and solving simultaneous equations from real-world cost and quantity word problems" />
-
-### Advanced Applications (Exam Favourites)
-
-<Tabs>
-  <TabItem label="📝 Question 19: Total Time (SDT)">
-    A cyclist rides 30 km at an average speed of $x$ km/h, and then a further 40 km at $(x + 10)$ km/h. The entire journey takes 2 hours. Form a quadratic equation in $x$ and solve it to find the initial speed.
-  </TabItem>
-  <TabItem label="✅ Solution 19">
-    $\text{Time} = \text{Distance} \div \text{Speed}$. Total time is 2 hours.
-    
-    $$\frac{30}{x} + \frac{40}{x+10} = 2$$
-    
-    Multiply everything by the LCM, $x(x+10)$:
-    
-    $$30(x+10) + 40x = 2x(x+10)$$
-    
-    $$30x + 300 + 40x = 2x^2 + 20x$$
-    
-    $$70x + 300 = 2x^2 + 20x$$
-    
-    $$2x^2 - 50x - 300 = 0$$
-    
-    Divide by 2 to simplify: 
-    
-    $$x^2 - 25x - 150 = 0$$
-    
-    Factorise: 
-    
-    $$(x - 30)(x + 5) = 0$$
-    
-    This gives $x = 30$ or $x = -5$.
-    
-    *Extraneous solution:* Speed cannot be negative, so $x = -5$ is invalid.
-    
-    **Answer:** Initial speed is $\boldsymbol{30 \text{ km/h}}$.
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Advanced speed-distance-time word problems leading to quadratic equations" />
-
-<Tabs>
-  <TabItem label="📝 Question 20: Apples and Oranges">
-    The total cost of 3 apples and 4 oranges is \$4.30. The total cost of 5 apples and 2 oranges is \$4.60. Set up a pair of simultaneous equations to find the cost of one apple and one orange.
-  </TabItem>
-  <TabItem label="✅ Solution 20">
-    Let $a$ = cost of an apple, $o$ = cost of an orange.
-    
-    Eq 1: $3a + 4o = 4.30$
-    
-    Eq 2: $5a + 2o = 4.60$
-    
-    Multiply Eq 2 by 2 to match the $o$ terms: 
-    
-    $$10a + 4o = 9.20$$
-    
-    Subtract Eq 1 from this new equation: 
-    
-    $$(10a - 3a) = 9.20 - 4.30$$
-    
-    $$7a = 4.90$$
-    
-    $$a = 0.70$$
-    
-    Substitute $a$ back into Eq 1: 
-    
-    $$3(0.70) + 4o = 4.30$$
-    
-    $$2.10 + 4o = 4.30$$
-    
-    $$4o = 2.20$$
-    
-    $$o = 0.55$$
-    
-    **Answer:** Apple = **\$0.70**, Orange = **\$0.55**.
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Setting up and solving simultaneous equations from shopping word problems" />
-
-<Tabs>
-  <TabItem label="📝 Question 21: Changing Ratios">
-    The ratio of apples to oranges in a basket is $3:2$. After 5 apples are eaten and 5 new oranges are added to the basket, the new ratio of apples to oranges becomes $1:1$. Find the original number of apples.
-  </TabItem>
-  <TabItem label="✅ Solution 21">
-    Original ratio: 
-    
-    $$\frac{a}{o} = \frac{3}{2} \Rightarrow 2a = 3o \Rightarrow a = 1.5o$$
-    
-    New ratio: 
-    
-    $$\frac{a - 5}{o + 5} = \frac{1}{1} \Rightarrow a - 5 = o + 5 \Rightarrow a - o = 10$$
-    
-    Substitute the first relation into the second: 
-    
-    $$1.5o - o = 10$$
-    
-    $$0.5o = 10$$
-    
-    $$o = 20$$
-    
-    Original apples: $a = 1.5(20) = 30$.
-    
-    **Answer:** There were originally $\boldsymbol{30}$ apples.
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Solving word problems involving changing ratios and simultaneous equations" />
-
-<Tabs>
-  <TabItem label="📝 Question 22: Upstream/Downstream">
-    A boat travels 24 km upstream in 2 hours, and 24 km downstream in 1.5 hours. Let $v$ be the boat's speed in still water and $c$ be the speed of the current. Form two equations and solve for $v$ and $c$.
-  </TabItem>
-  <TabItem label="✅ Solution 22">
-    Upstream speed = $(v - c)$. Downstream speed = $(v + c)$. 
-    
-    $\text{Speed} = \text{Distance} \div \text{Time}$.
-    
-    Upstream Eq: 
-    
-    $$v - c = \frac{24}{2} \Rightarrow v - c = 12$$
-    
-    Downstream Eq: 
-    
-    $$v + c = \frac{24}{1.5} \Rightarrow v + c = 16$$
-    
-    Add equations together to eliminate $c$: 
-    
-    $$(v - c) + (v + c) = 12 + 16$$
-    
-    $$2v = 28$$
-    
-    $$v = 14$$
-    
-    Substitute $v=14$ into the downstream equation: 
-    
-    $$14 + c = 16$$
-    
-    $$c = 2$$
-    
-    **Answer:** Boat speed = $\boldsymbol{14 \text{ km/h}}$, Current = $\boldsymbol{2 \text{ km/h}}$.
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Solving upstream and downstream boat problems using simultaneous linear equations" />
-
-<Tabs>
-  <TabItem label="📝 Question 23: Polygon Formula">
-    The number of diagonals, $D$, in a polygon with $n$ sides is given by the formula $D = \frac{n(n-3)}{2}$. A certain polygon has 35 diagonals. Find the number of sides it has, taking care to discard any mathematically invalid solutions.
-  </TabItem>
-  <TabItem label="✅ Solution 23">
-    Substitute $D = 35$ into the formula:
-    
-    $$35 = \frac{n(n-3)}{2}$$
-    
-    Multiply by 2: 
-    
-    $$70 = n^2 - 3n$$
-    
-    Rearrange: 
-    
-    $$n^2 - 3n - 70 = 0$$
-    
-    Factorise: 
-    
-    $$(n - 10)(n + 7) = 0$$
-    
-    This gives $n = 10$ or $n = -7$.
-    
-    *Extraneous solution:* A polygon cannot have a negative number of sides ($-7$).
-    
-    **Answer:** The polygon has $\boldsymbol{10}$ sides.
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Solving quadratic equations derived from geometric formulas, evaluating valid physical solutions" />
+<SmartAIGenerator topic="Solving applied structured word problems using quadratic equations" />

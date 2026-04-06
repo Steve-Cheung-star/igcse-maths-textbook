@@ -17,8 +17,8 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
 const generateMagicName = () => {
-  const adjs = ["Swift", "Clever", "Bright", "Math", "Magic", "Cool", "Zen", "Golden", "Epic"];
-  const nouns = ["Unicorn", "Fox", "Owl", "Dragon", "Panda", "Koala", "Tiger", "Eagle", "Wolf"];
+  const adjs = ["Swift", "Clever", "Bright", "Math", "Magic", "Cool", "Zen", "Golden", "Epic", "Eternal"];
+  const nouns = ["Unicorn", "Fox", "Owl", "Dragon", "Panda", "Koala", "Tiger", "Eagle", "Wolf", "Strawberry", "Oblivion", "Sphere", "Rat"];
   return `${adjs[Math.floor(Math.random() * adjs.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]}`;
 };
 
@@ -145,18 +145,35 @@ export default function SyncPortal({ storageKey }) {
   return (
     <div style={{ background: 'var(--sl-color-gray-6)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--sl-color-gray-5)', marginBottom: '2rem' }}>
       {!isConnected ? (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
           <p style={{ margin: 0, fontSize: '0.8rem', fontWeight: 'bold', opacity: 0.8 }}>📡 Join Revision Portal</p>
-          <div style={{ display: 'flex', gap: '0.4rem' }}>
-            <input type="text" placeholder="Room" value={roomId} onChange={(e) => setRoomId(e.target.value)} style={{ flex: 1.5, padding: '0.4rem 0.7rem', fontSize: '0.85rem', borderRadius: '4px', background: 'rgba(var(--sl-color-gray-5-rgb), 0.3)', color: 'var(--sl-color-text)', border: '1px solid var(--sl-color-gray-4)', outline: 'none' }} />
-            <input type="text" placeholder="Name" value={userName} onChange={(e) => setUserName(e.target.value)} style={{ flex: 1, padding: '0.4rem 0.7rem', fontSize: '0.85rem', borderRadius: '4px', background: 'rgba(var(--sl-color-gray-5-rgb), 0.3)', color: 'var(--sl-color-text)', border: '1px solid var(--sl-color-gray-4)', outline: 'none' }} />
-          </div>
-          <div style={{ display: 'flex', gap: '0.4rem' }}>
+          
+          {/* Room Input - Full Width */}
+          <input 
+            type="text" 
+            placeholder="Room ID (e.g. room-1234)" 
+            value={roomId} 
+            onChange={(e) => setRoomId(e.target.value)} 
+            style={{ width: '100%', padding: '0.5rem 0.7rem', fontSize: '0.85rem', borderRadius: '4px', background: 'rgba(var(--sl-color-gray-5-rgb), 0.3)', color: 'var(--sl-color-text)', border: '1px solid var(--sl-color-gray-4)', outline: 'none' }} 
+          />
+          
+          {/* Name Input - New Line, Full Width */}
+          <input 
+            type="text" 
+            placeholder="Your Name" 
+            value={userName} 
+            onChange={(e) => setUserName(e.target.value)} 
+            style={{ width: '100%', padding: '0.5rem 0.7rem', fontSize: '0.85rem', borderRadius: '4px', background: 'rgba(var(--sl-color-gray-5-rgb), 0.3)', color: 'var(--sl-color-text)', border: '1px solid var(--sl-color-gray-4)', outline: 'none' }} 
+          />
+
+          {/* Buttons Row */}
+          <div style={{ display: 'flex', gap: '0.4rem', marginTop: '0.2rem' }}>
             <button onClick={handleJoin} style={{ flex: 2, background: 'var(--sl-color-accent-high)', color: 'white', border: 'none', padding: '0.5rem', fontSize: '0.85rem', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>Connect</button>
             <button onClick={handleMagicJoin} style={{ flex: 1, background: 'var(--sl-color-gray-5)', color: 'var(--sl-color-text)', border: '1px solid var(--sl-color-accent)', padding: '0.5rem', fontSize: '0.85rem', borderRadius: '4px', cursor: 'pointer' }}>✨ Magic</button>
           </div>
         </div>
       ) : (
+        /* ... rest of the code remains the same ... */
         <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '0.8rem' }}>
             <span>📍 <b>{roomId}</b> as <b>{userName}</b></span>

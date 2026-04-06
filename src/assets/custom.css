@@ -94,9 +94,10 @@
   line-height: var(--sl-line-height) !important; /* Restores text spacing */
 }
 
-.starlight-aside svg {
-  display: inline-block !important; /* Keeps icons inline with title */
-  margin: 0 0.5rem 0 0 !important; /* Standard icon spacing */
+/* Update: Added :not(.katex *) to protect math SVGs from being shifted */
+.starlight-aside svg:not(.katex *) {
+  display: inline-block !important; 
+  margin: 0 0.5rem 0 0 !important; 
   vertical-align: middle !important;
 }
 
