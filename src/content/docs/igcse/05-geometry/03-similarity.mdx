@@ -9,7 +9,6 @@ In geometry, it is crucial to distinguish between shapes that are **congruent** 
 
 import GrowingAvocado from '../../../../components/GrowingAvocado.jsx'
 
-
 ## 1. Proving Similarity in Triangles
 
 Before calculating missing lengths, you are often required to prove *why* two shapes are similar. For triangles, this simplifies into checking any of the following standard conditions:
@@ -30,7 +29,7 @@ In IGCSE exams, similar triangles usually appear in one of two formats: the **Ne
 Here, a smaller triangle is drawn inside a larger one by drawing a line parallel to the base. 
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+  <svg viewBox="0 0 400 300" style={{ width: '100%', maxWidth: '400px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     {/* Large Triangle ABC */}
     <polygon points="200,40 50,250 350,250" fill="none" stroke="#1e293b" strokeWidth="2" />
     
@@ -64,7 +63,7 @@ Triangle $ADE$ is similar to triangle $ABC$ (AA Similarity) because:
 Here, two parallel lines form the bases, and the sides cross over each other, creating vertically opposite triangles. 
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 400 350" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+  <svg viewBox="0 0 400 350" style={{ width: '100%', maxWidth: '400px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     {/* Triangle Top */}
     <polygon points="100,50 300,50 200,150" fill="none" stroke="#1e293b" strokeWidth="2" />
     {/* Triangle Bottom */}
@@ -107,7 +106,7 @@ Once similarity is established, we use the **Linear Scale Factor (LSF)** to find
 
 $$
 \begin{aligned}
-\text{Linear Scale Factor (LSF)} = \frac{\text{Length of BIGGER shape}}{\text{Corresponding length of SMALLER shape}}
+\mathrm{LSF} = \frac{\text{Length of BIGGER shape}}{\text{Corresponding length of SMALLER shape}}
 \end{aligned}
 $$
 
@@ -117,7 +116,7 @@ $$
 At the Extended level, side lengths are often given as algebraic expressions, requiring you to set up and solve a linear equation using proportional ratios.
 
 **Example 1: Algebraic Similarity** In the similar triangles $ADE$ and $ABC$ from Configuration A (Nested), you are given:  
-$AD = x$, $DB = 4\text{ cm}$, $AE = 6\text{ cm}$, and $EC = 8\text{ cm}$.  
+$AD = x$, $DB = 4$ cm, $AE = 6$ cm, and $EC = 8$ cm.  
 Find the value of $x$.
 
 <Steps>
@@ -129,7 +128,7 @@ Find the value of $x$.
   2. Since the triangles are similar, the ratios of their corresponding sides must be equal. We set up an equation and solve:
      $$
      \begin{aligned}
-     \frac{\text{Large Side } AB}{\text{Small Side } AD} &= \frac{\text{Large Side } AC}{\text{Small Side } AE} \\[1.5ex]
+     \frac{AB}{AD} &= \frac{AC}{AE} \\[1.5ex]
      \frac{x + 4}{x} &= \frac{14}{6} \\[1.5ex]
      \frac{x + 4}{x} &= \frac{7}{3} \\[1.5ex]
      3(x + 4) &= 7x \\[1.5ex]
@@ -140,7 +139,7 @@ Find the value of $x$.
      $$
 </Steps>
 
-**Answer:** $x = 3$ (So the small side $AD$ is $3\text{ cm}$, and the large side $AB$ is $7\text{ cm}$).
+**Answer:** $x = 3$ (So the small side $AD$ is $3$ cm, and the large side $AB$ is $7$ cm).
 
 ---
 
@@ -154,16 +153,47 @@ When two solids are mathematically similar, their measurements scale based on th
 * **2D - Area Scale Factor (ASF):** Area also applies to total surface area and cross-sectional area. 
   $$
   \begin{aligned}
-  \text{ASF} &= (\text{LSF})^2
+  \mathrm{ASF} &= (\mathrm{LSF})^2
   \end{aligned}
   $$
 * **3D - Volume Scale Factor (VSF):** Volume also applies to capacity, mass, and weight (assuming uniform density). 
   $$
   \begin{aligned}
-  \text{VSF} &= (\text{LSF})^3
+  \mathrm{VSF} &= (\mathrm{LSF})^3
   \end{aligned}
   $$
 </Aside>
+
+### Visualizing the Area Scale Factor
+
+If you double the sides of a square (LSF = 2), the area does not just double; it becomes 4 times larger! Let's visualize an LSF of 3.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 160" style={{ width: '100%', maxWidth: '400px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Small Square */}
+    <rect x="40" y="60" width="40" height="40" fill="#bfdbfe" stroke="#3b82f6" strokeWidth="2" />
+    <text x="60" y="50" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#1e293b">1 × 1</text>
+    <text x="60" y="120" fontSize="12" textAnchor="middle" fill="#64748b">Area = 1</text>
+    
+    {/* Arrow */}
+    <line x1="100" y1="80" x2="160" y2="80" stroke="#94a3b8" strokeWidth="2" strokeDasharray="4,4" />
+    <polygon points="160,80 150,75 150,85" fill="#94a3b8" />
+    <text x="130" y="70" fontSize="12" textAnchor="middle" fill="#64748b">LSF = 3</text>
+
+    {/* Large Square formed by Loop */}
+    {Array.from({ length: 9 }, (_, i) => (
+      <rect 
+        key={i}
+        x={190 + (i % 3) * 40} 
+        y={20 + Math.floor(i / 3) * 40} 
+        width="40" height="40" 
+        fill="#bbf7d0" stroke="#22c55e" strokeWidth="2" 
+      />
+    ))}
+    <text x="250" y="16" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#1e293b">3 × 3</text>
+    <text x="250" y="155" fontSize="12" textAnchor="middle" fill="#64748b">Area = 9</text>
+  </svg>
+</div>
 
 ### 🌱 Click to grow!
 
@@ -175,37 +205,37 @@ When two solids are mathematically similar, their measurements scale based on th
 
 You will frequently be given the areas or volumes of two similar shapes and asked to find a length. You cannot jump directly from Area to Volume. You must **always return to the Linear Scale Factor first**.
 
-* To find LSF from Area: $\text{LSF} = \sqrt{\text{ASF}}$
-* To find LSF from Volume: $\text{LSF} = \sqrt[3]{\text{VSF}}$
-* To convert Area to Volume: $\text{VSF} = (\sqrt{\text{ASF}})^3$
+* To find LSF from Area: $\mathrm{LSF} = \sqrt{\mathrm{ASF}}$
+* To find LSF from Volume: $\mathrm{LSF} = \sqrt[3]{\mathrm{VSF}}$
+* To convert Area to Volume: $\mathrm{VSF} = (\sqrt{\mathrm{ASF}})^3$
 
-**Example 2: Working Backwards with Area** Two similar rectangular badges are printed. The small badge has a width of $4\text{ cm}$ and an area of $12\text{ cm}^2$. The large badge has an area of $108\text{ cm}^2$. Find the width of the large badge.
+**Example 2: Working Backwards with Area** Two similar rectangular badges are printed. The small badge has a width of $4$ cm and an area of $12$ cm$^2$. The large badge has an area of $108$ cm$^2$. Find the width of the large badge.
 
 <Steps>
   1. Find the Area Scale Factor (Big $\div$ Small):
      $$
      \begin{aligned}
-     \text{ASF} &= \frac{108}{12} \\[1.5ex]
-     \text{ASF} &= 9
+     \mathrm{ASF} &= \frac{108}{12} \\[1.5ex]
+     \mathrm{ASF} &= 9
      \end{aligned}
      $$
   2. Square root to find the Linear Scale Factor:
      $$
      \begin{aligned}
-     \text{LSF} &= \sqrt{9} \\[1.5ex]
-     \text{LSF} &= 3
+     \mathrm{LSF} &= \sqrt{9} \\[1.5ex]
+     \mathrm{LSF} &= 3
      \end{aligned}
      $$
   3. We need the width of the *larger* badge, so we **multiply** the small width by the LSF:
      $$
      \begin{aligned}
-     \text{Large Width} &= 4 \times 3 \\[1.5ex]
-     \text{Large Width} &= 12\text{ cm}
+     W_{\mathrm{large}} &= 4 \times 3 \\[1.5ex]
+     W_{\mathrm{large}} &= 12
      \end{aligned}
      $$
 </Steps>
 
-**Answer:** $12\text{ cm}$
+**Answer:** $12$ cm
 
 ### Extended Application: Quadratics and 3D Objects
 
@@ -213,7 +243,7 @@ In Extended math, similarity problems often intersect with solving quadratics an
 
 <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', margin: '2rem 0', flexWrap: 'wrap', alignItems: 'flex-end' }}>
   {/* Small Jelly */}
-  <svg viewBox="0 0 200 200" width="100%" maxWidth="150px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
+  <svg viewBox="0 0 200 200" style={{ width: '100%', maxWidth: '150px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
     <path d="M 50 140 Q 50 80 100 80 Q 150 80 150 140 C 150 160 130 170 100 170 C 70 170 50 160 50 140 Z" fill="#f472b6" stroke="#db2777" strokeWidth="4" />
     <circle cx="85" cy="115" r="6" fill="#fff" />
     <circle cx="115" cy="115" r="6" fill="#fff" />
@@ -225,7 +255,7 @@ In Extended math, similarity problems often intersect with solving quadratics an
   </svg>
   
   {/* Large Jelly */}
-  <svg viewBox="0 0 200 200" width="100%" maxWidth="220px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
+  <svg viewBox="0 0 200 200" style={{ width: '100%', maxWidth: '220px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
     <path d="M 30 140 Q 30 50 100 50 Q 170 50 170 140 C 170 170 140 180 100 180 C 60 180 30 170 30 140 Z" fill="#f472b6" stroke="#db2777" strokeWidth="4" />
     <circle cx="75" cy="105" r="10" fill="#fff" />
     <circle cx="125" cy="105" r="10" fill="#fff" />
@@ -237,35 +267,36 @@ In Extended math, similarity problems often intersect with solving quadratics an
   </svg>
 </div>
 
-**Example 3: Volume and Mass (Jellies)** The two mathematically similar jellies shown above have heights of $10\text{ cm}$ and $15\text{ cm}$.   
-If the small jelly requires $200\text{ g}$ of gelatin mix to make, calculate the mass of gelatin mix required for the large jelly.
+**Example 3: Volume and Mass (Jellies)** The two mathematically similar jellies shown above have heights of $10$ cm and $15$ cm.   
+If the small jelly requires $200$ g of gelatin mix to make, calculate the mass of gelatin mix required for the large jelly.
 
 Remember: Mass and weight scale with volume!
+
 <Steps>
   1. Find the Linear Scale Factor (LSF) (Big $\div$ Small):
      $$
      \begin{aligned}
-     \text{LSF} &= \frac{15}{10} \\[1.5ex]
-     \text{LSF} &= 1.5
+     \mathrm{LSF} &= \frac{15}{10} \\[1.5ex]
+     \mathrm{LSF} &= 1.5
      \end{aligned}
      $$
   2. Convert LSF to Volume Scale Factor (VSF):
      $$
      \begin{aligned}
-     \text{VSF} &= (1.5)^3 \\[1.5ex]
-     \text{VSF} &= 3.375
+     \mathrm{VSF} &= (1.5)^3 \\[1.5ex]
+     \mathrm{VSF} &= 3.375
      \end{aligned}
      $$
   3. Multiply the small mass by the VSF to find the large mass:
      $$
      \begin{aligned}
-     \text{Mass of large jelly} &= 200 \times 3.375 \\[1.5ex]
-     \text{Mass of large jelly} &= 675\text{ g}
+     M_{\mathrm{large}} &= 200 \times 3.375 \\[1.5ex]
+     M_{\mathrm{large}} &= 675
      \end{aligned}
      $$
 </Steps>
 
-**Answer:** $675\text{ g}$
+**Answer:** $675$ g
 
 
 **Example 4: Areas leading to Quadratics** Two mathematically similar triangles have a Linear Scale Factor of $2$.   
@@ -276,7 +307,7 @@ Calculate the exact area of the smaller triangle.
 <Steps>
   1. We know the Linear Scale Factor is $2$.
   2. Therefore, the Area Scale Factor must be $2^2 = 4$.
-  3. This tells us that $4 \times (\text{Small Area}) = \text{Large Area}$.
+  3. This tells us that $4 \times (A_{\mathrm{small}}) = A_{\mathrm{large}}$.
   4. Substitute the expressions to form an equation and solve:
      $$
      \begin{aligned}
@@ -302,154 +333,509 @@ Calculate the exact area of the smaller triangle.
 
 Try these practice questions on your own before checking the solutions. Use the AI Generators to spawn more questions of the same type if you need extra practice.
 
-### Algebraic Similar Triangles
-
 <Tabs>
-  <TabItem label="📝 Question 1: Hourglass Algebra">
-    Triangles $ABE$ and $CDE$ form an hourglass shape intersecting at $E$, with $AB$ parallel to $CD$.  
-    $AB = 5\text{ cm}$ and $CD = 15\text{ cm}$.   
-    If $AE = x + 1$ and $CE = 4x - 1$, set up an equation and find the value of $x$.
+  <TabItem label="📝 Question 1: Scale Factor Foundations">
+    Two mathematically similar rectangles, Shape A and Shape B, are drawn on a grid.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 300 200" style={{ width: '100%', maxWidth: '350px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* Grid Loop */}
+        {Array.from({ length: 16 }).map((_, i) => (
+          <line key={`v-${i}`} x1={i * 20} y1="0" x2={i * 20} y2="200" stroke="#e2e8f0" strokeWidth="1" />
+        ))}
+        {Array.from({ length: 11 }).map((_, i) => (
+          <line key={`h-${i}`} x1="0" y1={i * 20} x2="300" y2={i * 20} stroke="#e2e8f0" strokeWidth="1" />
+        ))}
+        
+        {/* Rectangle A */}
+        <rect x="20" y="20" width="40" height="60" fill="#bfdbfe" stroke="#3b82f6" strokeWidth="2" />
+        <text x="40" y="15" fontSize="12" fontWeight="bold" textAnchor="middle" fill="#1e293b">A</text>
+        
+        {/* Rectangle B */}
+        <rect x="100" y="20" width="120" height="180" fill="#bbf7d0" stroke="#22c55e" strokeWidth="2" />
+        <text x="160" y="15" fontSize="12" fontWeight="bold" textAnchor="middle" fill="#1e293b">B</text>
+      </svg>
+    </div>
+
+    a) Determine the Linear Scale Factor (LSF) from Shape A to Shape B by counting the grid squares.
+
+    b) Calculate the Area Scale Factor (ASF).
+
+    c) If Shape A represents the cross-section of a 3D solid and the Volume Scale Factor (VSF) to a similar solid is $1000$, calculate the LSF for that 3D enlargement.
+    
   </TabItem>
   <TabItem label="✅ Solution 1">
+    **a)**
+    
     <Steps>
-      1. Identify corresponding sides: $AB$ corresponds to $CD$, and $AE$ corresponds to $CE$.
-      2. Find the LSF from small to large: 
-         $$
-         \begin{aligned}
-         \text{LSF} &= \frac{15}{5} \\[1.5ex]
-         \text{LSF} &= 3
-         \end{aligned}
-         $$
-      3. Apply the LSF to the algebraic sides and solve: 
-         $$
-         \begin{aligned}
-         3 \times (AE) &= CE \\[1.5ex]
-         3(x + 1) &= 4x - 1 \\[1.5ex]
-         3x + 3 &= 4x - 1 \\[1.5ex]
-         4 &= x
-         \end{aligned}
-         $$
+      1. Count the width of Shape A on the grid: 2 squares.
+      2. Count the width of Shape B on the grid: 6 squares.
+      3. $\mathrm{LSF} = \frac{6}{2} = 3$.
     </Steps>
-    **Answer:** $x = 4$
+
+    **b)**
+    
+    <Steps>
+      1. Square the LSF to find the ASF.
+      2. $\mathrm{ASF} = 3^2 = 9$.
+    </Steps>
+
+    **c)**
+    
+    <Steps>
+      1. The VSF is $1000$.
+      2. The LSF is the cube root of the VSF.
+      3. $\mathrm{LSF} = \sqrt[3]{1000} = 10$.
+    </Steps>
+    
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 2: Nested Triangles">
+    In triangle $PQR$, a line $ST$ is drawn parallel to the base $QR$, creating a smaller triangle $PST$.
+    The length of $PS$ is $6$ cm and $SQ$ is $3$ cm. The length of $ST$ is $8$ cm.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 350 250" style={{ width: '100%', maxWidth: '400px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <g>
+          {/* Main Triangle */}
+          <polygon points="175,30 70,210 280,210" fill="none" stroke="#1e293b" strokeWidth="2" />
+          
+          {/* Parallel Line ST */}
+          <line x1="105" y1="150" x2="245" y2="150" stroke="#3b82f6" strokeWidth="2" />
+          
+          {/* Parallel Markers */}
+          <polygon points="175,150 165,145 165,155" fill="#3b82f6" />
+          <polygon points="175,210 165,205 165,215" fill="#1e293b" />
+          
+          {/* Labels for points */}
+          <text x="175" y="20" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#1e293b">P</text>
+          <text x="55" y="225" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#1e293b">Q</text>
+          <text x="295" y="225" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#1e293b">R</text>
+          <text x="90" y="155" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#3b82f6">S</text>
+          <text x="260" y="155" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#3b82f6">T</text>
+          
+          {/* Length Labels */}
+          <text x="125" y="90" fontSize="14" fontWeight="bold" fill="#ef4444">6 cm</text>
+          <text x="65" y="180" fontSize="14" fontWeight="bold" fill="#ef4444">3 cm</text>
+          <text x="175" y="140" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#3b82f6">8 cm</text>
+        </g>
+      </svg>
+    </div>
+
+    a) Explain briefly why triangle $PST$ is similar to triangle $PQR$.
+
+    b) Calculate the length of $QR$.
+
+    c) If the area of triangle $PST$ is $12$ cm$^2$, calculate the area of the trapezium $STRQ$.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+    
+    <Steps>
+      1. Triangle $PST$ and $PQR$ are similar due to AA Similarity. They share angle $P$.
+      2. The corresponding angles $PST$ and $PQR$ are equal because lines $ST$ and $QR$ are parallel.
+    </Steps>
+
+    **b)**
+    
+    <Steps>
+      1. Identify the corresponding sides: small side $PS = 6$ and large side $PQ = 6 + 3 = 9$.
+      2. Calculate the LSF: $\frac{9}{6} = 1.5$.
+      3. Multiply the smaller base $ST$ by the LSF: $8 \times 1.5 = 12$.
+      4. **Answer:** $12$ cm
+    </Steps>
+
+    **c)**
+    
+    <Steps>
+      1. Calculate the Area Scale Factor: $\mathrm{ASF} = 1.5^2 = 2.25$.
+      2. Find the area of the entire large triangle $PQR$: $12 \times 2.25 = 27$.
+      3. The trapezium $STRQ$ is the large triangle minus the small triangle: $27 - 12 = 15$.
+      4. **Answer:** $15$ cm$^2$
+    </Steps>
+    
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Hourglass Algebra">
+    Triangles $ABE$ and $CDE$ form an hourglass shape intersecting at $E$, with $AB$ parallel to $CD$.  
+    $AB = 5$ cm and $CD = 15$ cm.   
+    The side $AE = x + 1$ corresponds to the side $CE = 4x - 1$.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 400 350" style={{ width: '100%', maxWidth: '350px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <g>
+          {/* Top Triangle ABE */}
+          <polygon points="150,100 250,100 200,150" fill="none" stroke="#1e293b" strokeWidth="2" />
+          
+          {/* Bottom Triangle CDE */}
+          <polygon points="100,250 300,250 200,150" fill="none" stroke="#3b82f6" strokeWidth="2" />
+          
+          {/* Parallel Arrows */}
+          <polygon points="200,100 190,95 190,105" fill="#1e293b" />
+          <polygon points="200,250 190,245 190,255" fill="#3b82f6" />
+          
+          {/* Point Labels */}
+          <text x="140" y="90" fontSize="16" fontWeight="bold" fill="#1e293b">A</text>
+          <text x="260" y="90" fontSize="16" fontWeight="bold" fill="#1e293b">B</text>
+          <text x="85" y="265" fontSize="16" fontWeight="bold" fill="#3b82f6">D</text>
+          <text x="315" y="265" fontSize="16" fontWeight="bold" fill="#3b82f6">C</text>
+          <text x="215" y="155" fontSize="16" fontWeight="bold" fill="#ef4444">E</text>
+
+          {/* Measurements */}
+          <text x="200" y="85" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#1e293b">5 cm</text>
+          <text x="200" y="275" fontSize="14" fontWeight="bold" textAnchor="middle" fill="#3b82f6">15 cm</text>
+          <text x="150" y="130" fontSize="14" fontWeight="bold" fill="#ef4444">x + 1</text>
+          <text x="235" y="210" fontSize="14" fontWeight="bold" fill="#ef4444">4x - 1</text>
+        </g>
+      </svg>
+    </div>
+
+    a) Calculate the Linear Scale Factor (LSF) from triangle $ABE$ to triangle $CDE$.
+
+    b) Write down an algebraic equation using the given side lengths.
+
+    c) Solve your equation to find the value of $x$.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+    
+    <Steps>
+      1. Use the parallel sides to establish the ratio.
+      2. $\mathrm{LSF} = \frac{15}{5} = 3$.
+      3. **Answer:** $3$
+    </Steps>
+
+    **b)**
+    
+    <Steps>
+      1. Multiply the smaller side by the LSF to equal the corresponding larger side.
+      2. $3 \times (AE) = CE$.
+      3. $3(x + 1) = 4x - 1$.
+      4. **Answer:** $3(x + 1) = 4x - 1$
+    </Steps>
+
+    **c)**
+    
+    <Steps>
+      1. Expand the brackets: $3x + 3 = 4x - 1$.
+      2. Subtract $3x$ from both sides: $3 = x - 1$.
+      3. Add $1$ to both sides: $x = 4$.
+      4. **Answer:** $4$
+    </Steps>
+    
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Solving for algebraic side lengths using similar triangles and proportions" />
 
-### Working Backwards with Area
-
 <Tabs>
-  <TabItem label="📝 Question 2: Areas of Polygons">
-    Two regular hexagons are similar. The larger hexagon has a perimeter of $60\text{ cm}$ and an area of $250\text{ cm}^2$. The smaller hexagon has an area of $90\text{ cm}^2$. Calculate the perimeter of the smaller hexagon.
+  <TabItem label="📝 Question 4: Areas of Polygons">
+    Two regular hexagons are similar. The larger hexagon has a perimeter of $60$ cm and an area of $250$ cm$^2$. The smaller hexagon has an area of $90$ cm$^2$. 
+
+    a) Calculate the Area Scale Factor (ASF) between the two hexagons.
+
+    b) State the Linear Scale Factor (LSF).
+
+    c) Calculate the perimeter of the smaller hexagon.
+    
   </TabItem>
-  <TabItem label="✅ Solution 2">
-    Perimeter is a 1-dimensional measurement, so it uses the LSF.
+  <TabItem label="✅ Solution 4">
+    **a)**
+    
     <Steps>
-      1. Find the Area Scale Factor (Big $\div$ Small):
-         $$
-         \begin{aligned}
-         \text{ASF} &= \frac{250}{90} \\[1.5ex]
-         \text{ASF} &= \frac{25}{9}
-         \end{aligned}
-         $$
-      2. Square root to find the Linear Scale Factor:
-         $$
-         \begin{aligned}
-         \text{LSF} &= \sqrt{\frac{25}{9}} \\[1.5ex]
-         \text{LSF} &= \frac{5}{3}
-         \end{aligned}
-         $$
-      3. We need the smaller perimeter, so divide the large perimeter by the LSF:
-         $$
-         \begin{aligned}
-         \text{Small Perimeter} &= 60 \div \frac{5}{3} \\[1.5ex]
-         \text{Small Perimeter} &= 60 \times \frac{3}{5} \\[1.5ex]
-         \text{Small Perimeter} &= 36\text{ cm}
-         \end{aligned}
-         $$
+      1. Find the ratio of the areas (Big $\div$ Small).
+      2. $\mathrm{ASF} = \frac{250}{90} = \frac{25}{9}$.
+      3. **Answer:** $\frac{25}{9}$
     </Steps>
-    **Answer:** $36\text{ cm}$
+
+    **b)**
+    
+    <Steps>
+      1. Take the square root of the ASF to find the LSF.
+      2. $\mathrm{LSF} = \sqrt{\frac{25}{9}} = \frac{5}{3}$.
+      3. **Answer:** $\frac{5}{3}$
+    </Steps>
+
+    **c)**
+    
+    <Steps>
+      1. Perimeter is a 1-dimensional measurement, so it scales using the LSF.
+      2. Divide the large perimeter by the LSF to find the smaller perimeter.
+      3. $P_{\mathrm{small}} = 60 \div \frac{5}{3} = 60 \times \frac{3}{5} = 36$.
+      4. **Answer:** $36$ cm
+    </Steps>
+    
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Calculating 1D lengths or perimeters given the areas of similar shapes by finding the area scale factor" />
 
-### Working Backwards with Volume and Mass
-
 <Tabs>
-  <TabItem label="📝 Question 3: Melting Gold Ingots">
-    Two mathematically similar gold ingots have widths of $12\text{ cm}$ and $21\text{ cm}$. The lighter ingot weighs $2.05\text{ kg}$. Calculate the weight of the heavier ingot.
+  <TabItem label="📝 Question 5: Melting Gold Ingots">
+    Two mathematically similar gold ingots have widths of $12$ cm and $21$ cm. The lighter ingot weighs $2.05$ kg. 
+
+    a) Calculate the Linear Scale Factor (LSF) from the lighter ingot to the heavier ingot.
+
+    b) Calculate the Volume Scale Factor (VSF).
+
+    c) Calculate the weight of the heavier ingot.
+    
   </TabItem>
-  <TabItem label="✅ Solution 3">
+  <TabItem label="✅ Solution 5">
+    **a)**
+    
     <Steps>
-      1. Find the Linear Scale Factor (Big $\div$ Small):
-         $$
-         \begin{aligned}
-         \text{LSF} &= \frac{21}{12} \\[1.5ex]
-         \text{LSF} &= \frac{7}{4}
-         \end{aligned}
-         $$
-      2. Cube it to find the Volume Scale Factor (which applies to weight):
-         $$
-         \begin{aligned}
-         \text{VSF} &= \left(\frac{7}{4}\right)^3 \\[1.5ex]
-         \text{VSF} &= \frac{343}{64}
-         \end{aligned}
-         $$
-      3. We need the heavier weight, so multiply to scale up:
-         $$
-         \begin{aligned}
-         \text{Heavy Weight} &= 2.05 \times \frac{343}{64} \\[1.5ex]
-         \text{Heavy Weight} &= 10.9859...
-         \end{aligned}
-         $$
+      1. Ratio of corresponding lengths (Big $\div$ Small).
+      2. $\mathrm{LSF} = \frac{21}{12} = \frac{7}{4}$.
+      3. **Answer:** $\frac{7}{4}$ (or $1.75$)
     </Steps>
-    **Answer:** $11.0\text{ kg}$
+
+    **b)**
+    
+    <Steps>
+      1. Cube the LSF to find the VSF.
+      2. $\mathrm{VSF} = \left(\frac{7}{4}\right)^3 = \frac{343}{64}$.
+      3. **Answer:** $\frac{343}{64}$ (or $5.359...$)
+    </Steps>
+
+    **c)**
+    
+    <Steps>
+      1. Weight scales proportionally with volume, so use the VSF.
+      2. Multiply the lighter weight by the VSF.
+      3. $W_{\mathrm{heavy}} = 2.05 \times \frac{343}{64} \approx 10.9859$.
+      4. **Answer:** $11.0$ kg
+    </Steps>
+    
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Calculating volumes and masses of similar 3D solids using linear and volume scale factors" />
 
-### Complex Area to Volume Conversions
-
 <Tabs>
-  <TabItem label="📝 Question 4: The Russian Dolls">
+  <TabItem label="📝 Question 6: The Russian Dolls">
     A set of Russian dolls are mathematically similar.   
-    The smallest doll has a surface area of $150\text{ cm}^2$ and a volume of $250\text{ cm}^3$.  
-    The largest doll has a surface area of $540\text{ cm}^2$. Find the volume of the largest doll.
+    The smallest doll has a surface area of $150$ cm$^2$ and a volume of $250$ cm$^3$.  
+    The largest doll has a surface area of $540$ cm$^2$. 
+
+    a) Calculate the Area Scale Factor (ASF) between the smallest and largest doll.
+
+    b) Determine the Volume Scale Factor (VSF).
+
+    c) Calculate the volume of the largest doll.
+    
   </TabItem>
-  <TabItem label="✅ Solution 4">
+  <TabItem label="✅ Solution 6">
+    **a)**
+    
     <Steps>
-      1. Find the Area Scale Factor (Big $\div$ Small):
-         $$
-         \begin{aligned}
-         \text{ASF} &= \frac{540}{150} \\[1.5ex]
-         \text{ASF} &= 3.6
-         \end{aligned}
-         $$
-      2. Square root to find the Linear Scale Factor:
-         $$
-         \begin{aligned}
-         \text{LSF} &= \sqrt{3.6}
-         \end{aligned}
-         $$
-      3. Cube the LSF to find the Volume Scale Factor:
-         $$
-         \begin{aligned}
-         \text{VSF} &= (\sqrt{3.6})^3 \\[1.5ex]
-         \text{VSF} &\approx 6.8305
-         \end{aligned}
-         $$
-      4. Multiply the small volume by the VSF:
-         $$
-         \begin{aligned}
-         \text{Large Volume} &= 250 \times 6.8305 \\[1.5ex]
-         \text{Large Volume} &\approx 1707.6\text{ cm}^3
-         \end{aligned}
-         $$
+      1. $\mathrm{ASF} = \frac{\text{Large Area}}{\text{Small Area}}$.
+      2. $\mathrm{ASF} = \frac{540}{150} = 3.6$.
+      3. **Answer:** $3.6$
     </Steps>
-    **Answer:** $1707.6\text{ cm}^3$
+
+    **b)**
+    
+    <Steps>
+      1. First find the LSF: $\mathrm{LSF} = \sqrt{3.6}$.
+      2. Cube the LSF to find the VSF: $\mathrm{VSF} = (\sqrt{3.6})^3 \approx 6.8305$.
+      3. **Answer:** $6.8305$
+    </Steps>
+
+    **c)**
+    
+    <Steps>
+      1. Multiply the smaller volume by the VSF.
+      2. $V_{\mathrm{large}} = 250 \times 6.8305 \approx 1707.6$.
+      3. **Answer:** $1707.6$ cm$^3$
+    </Steps>
+    
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Converting between surface area and volume of similar solids by working through the linear scale factor" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Similar Cylinders">
+    Two mathematically similar cylinders have radii of $3$ cm and $12$ cm.
+
+    <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', margin: '1.5rem 0', alignItems: 'flex-end' }}>
+      <svg viewBox="0 0 100 150" style={{ width: '100%', maxWidth: '100px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
+        {/* Small Cylinder */}
+        <ellipse cx="50" cy="30" rx="30" ry="10" fill="#bfdbfe" stroke="#3b82f6" strokeWidth="2" />
+        <path d="M 20 30 L 20 120 A 30 10 0 0 0 80 120 L 80 30" fill="#bfdbfe" stroke="#3b82f6" strokeWidth="2" />
+        <line x1="50" y1="30" x2="80" y2="30" stroke="#1e293b" strokeWidth="1.5" strokeDasharray="3,3" />
+        <text x="65" y="25" fontSize="12" fill="#1e293b" textAnchor="middle">3</text>
+      </svg>
+      <svg viewBox="0 0 200 250" style={{ width: '100%', maxWidth: '200px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
+        {/* Large Cylinder */}
+        <ellipse cx="100" cy="50" rx="80" ry="20" fill="#bbf7d0" stroke="#22c55e" strokeWidth="2" />
+        <path d="M 20 50 L 20 200 A 80 20 0 0 0 180 200 L 180 50" fill="#bbf7d0" stroke="#22c55e" strokeWidth="2" />
+        <line x1="100" y1="50" x2="180" y2="50" stroke="#1e293b" strokeWidth="1.5" strokeDasharray="4,4" />
+        <text x="140" y="40" fontSize="14" fill="#1e293b" textAnchor="middle">12</text>
+      </svg>
+    </div>
+
+    a) State the Linear Scale Factor (LSF) from the smaller cylinder to the larger cylinder.
+
+    b) The surface area of the smaller cylinder is $40\pi$ cm$^2$. Calculate the surface area of the larger cylinder.
+
+    c) The volume of the larger cylinder is $2880\pi$ cm$^3$. Calculate the volume of the smaller cylinder.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    
+    <Steps>
+      1. $\mathrm{LSF} = \frac{12}{3} = 4$.
+      2. **Answer:** $4$
+    </Steps>
+
+    **b)**
+    
+    <Steps>
+      1. Calculate the Area Scale Factor: $\mathrm{ASF} = 4^2 = 16$.
+      2. Multiply the smaller area by the ASF: $40\pi \times 16 = 640\pi$.
+      3. **Answer:** $640\pi$ cm$^2$
+    </Steps>
+
+    **c)**
+    
+    <Steps>
+      1. Calculate the Volume Scale Factor: $\mathrm{VSF} = 4^3 = 64$.
+      2. Since we are finding the smaller volume, divide the larger volume by the VSF: $2880\pi \div 64 = 45\pi$.
+      3. **Answer:** $45\pi$ cm$^3$
+    </Steps>
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Multi-part properties of similar 3D cylinders including curved surface area and volume" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Missing Lengths from Volumes">
+    Two similar containers have capacities of $54$ ml and $250$ ml. 
+    The height of the larger container is $15$ cm. 
+
+    a) Calculate the Volume Scale Factor (VSF) from the smaller to the larger container.
+
+    b) State the Linear Scale Factor (LSF).
+
+    c) Calculate the height of the smaller container.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+    
+    <Steps>
+      1. Identify the Volume Scale Factor (Big $\div$ Small).
+      2. $\mathrm{VSF} = \frac{250}{54} = \frac{125}{27}$.
+      3. **Answer:** $\frac{125}{27}$
+    </Steps>
+
+    **b)**
+    
+    <Steps>
+      1. Cube root the VSF to find the LSF.
+      2. $\mathrm{LSF} = \sqrt[3]{\frac{125}{27}} = \frac{5}{3}$.
+      3. **Answer:** $\frac{5}{3}$
+    </Steps>
+
+    **c)**
+    
+    <Steps>
+      1. Since we are finding the smaller height, divide the larger height by the LSF.
+      2. $H_{\mathrm{small}} = 15 \div \frac{5}{3} = 15 \times \frac{3}{5} = 9$.
+      3. **Answer:** $9$ cm
+    </Steps>
+    
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 9: Painting Statues">
+    A manufacturer produces two mathematically similar statues. 
+    It costs $15$ USD to paint the smaller statue and $135$ USD to paint the larger statue (assuming cost is directly proportional to surface area).
+    The volume of the larger statue is $4050$ cm$^3$.
+
+    a) Calculate the Area Scale Factor (ASF) between the statues.
+
+    b) Calculate the Volume Scale Factor (VSF).
+
+    c) Calculate the volume of the smaller statue.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)**
+    
+    <Steps>
+      1. Since cost is proportional to area, the ratio of the costs is the ASF.
+      2. $\mathrm{ASF} = \frac{135}{15} = 9$.
+      3. **Answer:** $9$
+    </Steps>
+
+    **b)**
+    
+    <Steps>
+      1. Find the LSF from the ASF: $\mathrm{LSF} = \sqrt{9} = 3$.
+      2. Find the VSF from the LSF: $\mathrm{VSF} = 3^3 = 27$.
+      3. **Answer:** $27$
+    </Steps>
+
+    **c)**
+    
+    <Steps>
+      1. Since we want the smaller volume, divide the large volume by the VSF.
+      2. $V_{\mathrm{small}} = \frac{4050}{27} = 150$.
+      3. **Answer:** $150$ cm$^3$
+    </Steps>
+    
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Cost analysis and proportional scaling applied to similar figures" />
+
+<Tabs>
+  <TabItem label="📝 Question 10: Ratios and Proportions">
+    The ratio of the corresponding side lengths of two similar prisms is $2:5$.
+
+    a) Write down the ratio of their surface areas.
+
+    b) Write down the ratio of their volumes.
+
+    c) If the smaller prism has a mass of $32$ g, what is the mass of the larger prism?
+    
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    **a)**
+    
+    <Steps>
+      1. The linear ratio is $2:5$.
+      2. Square the ratio for the area ratio: $2^2 : 5^2 = 4:25$.
+      3. **Answer:** $4:25$
+    </Steps>
+
+    **b)**
+    
+    <Steps>
+      1. Cube the linear ratio for the volume ratio: $2^3 : 5^3 = 8:125$.
+      2. **Answer:** $8:125$
+    </Steps>
+
+    **c)**
+    
+    <Steps>
+      1. Mass is proportional to volume, so we use the volume ratio $8:125$.
+      2. This means $\mathrm{VSF} = \frac{125}{8}$.
+      3. Multiply the smaller mass by the VSF: $32 \times \frac{125}{8} = 4 \times 125 = 500$.
+      4. **Answer:** $500$ g
+    </Steps>
+    
+  </TabItem>
+</Tabs>

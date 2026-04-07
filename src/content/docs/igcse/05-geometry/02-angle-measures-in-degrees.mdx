@@ -46,20 +46,33 @@ If a question states "point $D$ is due east of point $C$", it means the bearing 
   <svg viewBox="0 0 400 400" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <g transform="translate(-24, 0)">
       {/* Background Circle */}
-      <circle cx="200" cy="200" r="100" fill="none" stroke="#e2e8f0" strokeWidth="2" />
+      <circle cx="200" cy="200" r="100" fill="none" stroke="#e2e8f0" stroke-width="2" />
+      
+      {/* Compass Tick Marks Loop */}
+      {Array.from({ length: 12 }, (_, i) => (
+        <line 
+          key={i}
+          x1={200 + 90 * Math.sin((i * 30 * Math.PI) / 180)} 
+          y1={200 - 90 * Math.cos((i * 30 * Math.PI) / 180)} 
+          x2={200 + 100 * Math.sin((i * 30 * Math.PI) / 180)} 
+          y2={200 - 100 * Math.cos((i * 30 * Math.PI) / 180)} 
+          stroke={i % 3 === 0 ? "#64748b" : "#cbd5e1"} 
+          stroke-width={i % 3 === 0 ? "3" : "1"} 
+        />
+      ))}
       
       {/* Axes */}
-      <line x1="200" y1="60" x2="200" y2="340" stroke="#94a3b8" strokeWidth="2" strokeDasharray="5,5" />
-      <line x1="60" y1="200" x2="340" y2="200" stroke="#94a3b8" strokeWidth="2" strokeDasharray="5,5" />
+      <line x1="200" y1="60" x2="200" y2="340" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5" />
+      <line x1="60" y1="200" x2="340" y2="200" stroke="#94a3b8" stroke-width="2" stroke-dasharray="5,5" />
       
       {/* Labels */}
-      <text x="200" y="50" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#1e293b">N (000°)</text>
-      <text x="350" y="205" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#1e293b">E (090°)</text>
-      <text x="200" y="360" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#1e293b">S (180°)</text>
-      <text x="50" y="205" fontSize="16" fontWeight="bold" textAnchor="middle" fill="#1e293b">W (270°)</text>
+      <text x="200" y="50" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">N (000°)</text>
+      <text x="350" y="205" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">E (090°)</text>
+      <text x="200" y="360" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">S (180°)</text>
+      <text x="50" y="205" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">W (270°)</text>
       
       {/* Angle Arc for East */}
-      <path d="M 200 120 A 80 80 0 0 1 280 200" fill="none" stroke="#3b82f6" strokeWidth="3" />
+      <path d="M 200 120 A 80 80 0 0 1 280 200" fill="none" stroke="#3b82f6" stroke-width="3" />
       {/* Arrowhead */}
       <polygon points="280,200 275,190 285,190" fill="#3b82f6" />
     </g>
@@ -79,33 +92,35 @@ Because North lines are always parallel, we can use the "allied angles" (co-inte
 </SteveTip>
 
 In our example, $025^\circ$ is less than $180^\circ$, so:
-$$\text{Bearing of } A \text{ from } B = 025^\circ + 180^\circ = 205^\circ$$
+$$
+\text{Bearing of } A \text{ from } B = 025^\circ + 180^\circ = 205^\circ
+$$
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 300" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <g transform="translate(0, 40)">
       {/* Point A */}
       <circle cx="100" cy="200" r="4" fill="#ef4444" />
-      <text x="85" y="210" fontSize="16" fontWeight="bold" fill="#ef4444">A</text>
-      <line x1="100" y1="200" x2="100" y2="80" stroke="#94a3b8" strokeWidth="2" strokeDasharray="4,4" />
-      <text x="100" y="70" fontSize="14" textAnchor="middle" fill="#64748b">N</text>
+      <text x="85" y="210" font-size="16" font-weight="bold" fill="#ef4444">A</text>
+      <line x1="100" y1="200" x2="100" y2="80" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+      <text x="100" y="70" font-size="14" text-anchor="middle" fill="#64748b">N</text>
       
       {/* Point B */}
       <circle cx="280" cy="100" r="4" fill="#3b82f6" />
-      <text x="295" y="110" fontSize="16" fontWeight="bold" fill="#3b82f6">B</text>
-      <line x1="280" y1="100" x2="280" y2="20" stroke="#94a3b8" strokeWidth="2" strokeDasharray="4,4" />
-      <text x="280" y="10" fontSize="14" textAnchor="middle" fill="#64748b">N</text>
+      <text x="295" y="110" font-size="16" font-weight="bold" fill="#3b82f6">B</text>
+      <line x1="280" y1="100" x2="280" y2="20" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+      <text x="280" y="10" font-size="14" text-anchor="middle" fill="#64748b">N</text>
       
       {/* Line connecting A and B */}
-      <line x1="100" y1="200" x2="280" y2="100" stroke="#1e293b" strokeWidth="2" />
+      <line x1="100" y1="200" x2="280" y2="100" stroke="#1e293b" stroke-width="2" />
       
       {/* Angle at A (025) */}
-      <path d="M 100 160 A 40 40 0 0 1 118 190" fill="none" stroke="#ef4444" strokeWidth="2" />
-      <text x="120" y="160" fontSize="14" fill="#ef4444">025°</text>
+      <path d="M 100 160 A 40 40 0 0 1 118 190" fill="none" stroke="#ef4444" stroke-width="2" />
+      <text x="120" y="160" font-size="14" fill="#ef4444">025°</text>
       
       {/* Angle at B (205) */}
-      <path d="M 280 60 A 40 40 0 1 1 245 120" fill="none" stroke="#3b82f6" strokeWidth="2" />
-      <text x="220" y="60" fontSize="14" fill="#3b82f6">205°</text>
+      <path d="M 280 60 A 40 40 0 1 1 245 120" fill="none" stroke="#3b82f6" stroke-width="2" />
+      <text x="220" y="60" font-size="14" fill="#3b82f6">205°</text>
     </g>
   </svg>
 </div>
@@ -115,38 +130,302 @@ $$\text{Bearing of } A \text{ from } B = 025^\circ + 180^\circ = 205^\circ$$
 ## 3. Practice Problems
 
 <Tabs>
-  <TabItem label="📝 Question 1: Compass Directions">
-    A ship sails from port $P$ due south to a lighthouse $L$. Write down the three-figure bearing of the lighthouse $L$ from the port $P$.
+  <TabItem label="📝 Question 1: Fundamental Bearings">
+    A lighthouse $L$ is situated off the coast. A boat $B$ is positioned directly to the South-East of the lighthouse.
+    
+    a) Write down the three-figure bearing of the boat $B$ from the lighthouse $L$.
+
+    b) Calculate the reverse bearing, indicating the bearing of the lighthouse $L$ from the boat $B$.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    "Due south" is exactly half a turn clockwise from North.
-    $$180^\circ$$
-    **Answer:** $180^\circ$
+    **a)**
+    <Steps>
+      1. South-East is exactly halfway between South ($180^\circ$) and East ($090^\circ$).
+      2. The calculation is $090^\circ + 45^\circ = 135^\circ$.
+      3. **Answer:** $135^\circ$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Apply the reverse bearing rule. Since $135^\circ < 180^\circ$, add $180^\circ$.
+      2. $135^\circ + 180^\circ = 315^\circ$.
+      3. **Answer:** $315^\circ$
+    </Steps>
   </TabItem>
 </Tabs>
 
+<SmartAIGenerator topic="Understanding cardinal directions and their exact three-figure bearings" />
+
 <Tabs>
-  <TabItem label="📝 Question 2: Reverse Bearings">
-    The bearing of a radio tower $T$ from a hiker $H$ is $315^\circ$. What is the bearing of the hiker $H$ from the radio tower $T$?
+  <TabItem label="📝 Question 2: Navigating the Map">
+    Look at the layout of three landmarks below. Point $Q$ is on a bearing of $060^\circ$ from point $P$.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <g>
+          {/* North Lines */}
+          <line x1="80" y1="180" x2="80" y2="40" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+          <text x="80" y="30" font-size="14" text-anchor="middle" fill="#64748b">N</text>
+          
+          <line x1="260" y1="76" x2="260" y2="20" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+          <text x="260" y="10" font-size="14" text-anchor="middle" fill="#64748b">N</text>
+
+          {/* Lines connecting points */}
+          <line x1="80" y1="180" x2="260" y2="76" stroke="#1e293b" stroke-width="2" />
+          <line x1="260" y1="76" x2="260" y2="200" stroke="#1e293b" stroke-width="2" />
+
+          {/* Points */}
+          <circle cx="80" cy="180" r="5" fill="#ef4444" />
+          <text x="60" y="195" font-size="14" font-weight="bold" fill="#b91c1c">P</text>
+          
+          <circle cx="260" cy="76" r="5" fill="#3b82f6" />
+          <text x="275" y="70" font-size="14" font-weight="bold" fill="#1d4ed8">Q</text>
+          
+          <circle cx="260" cy="200" r="5" fill="#10b981" />
+          <text x="275" y="210" font-size="14" font-weight="bold" fill="#047857">R</text>
+
+          {/* Angles */}
+          <path d="M 80 140 A 40 40 0 0 1 115 160" fill="none" stroke="#ef4444" stroke-width="2" />
+          <text x="95" y="130" font-size="14" fill="#ef4444">060°</text>
+        </g>
+      </svg>
+    </div>
+
+    a) What is the bearing of $P$ from $Q$?
+
+    b) Point $R$ is located directly South of $Q$. Calculate the interior angle $PQR$.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    Since the given bearing ($315^\circ$) is greater than $180^\circ$, we subtract $180^\circ$ to find the reverse bearing.
-    $$315^\circ - 180^\circ = 135^\circ$$
-    **Answer:** $135^\circ$
+    **a)**
+    <Steps>
+      1. We need the reverse bearing of $P$ from $Q$. The bearing of $Q$ from $P$ is $060^\circ$.
+      2. Since $060^\circ < 180^\circ$, add $180^\circ$.
+      3. $060^\circ + 180^\circ = 240^\circ$.
+      4. **Answer:** $240^\circ$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The North line at $Q$ points to $000^\circ$. The South line at $Q$ (pointing towards $R$) is $180^\circ$.
+      2. The bearing of the line $QP$ is $240^\circ$ (calculated in part a).
+      3. The interior angle $PQR$ is the difference between the bearing of $QP$ ($240^\circ$) and the bearing of $QR$ ($180^\circ$).
+      4. Angle $PQR = 240^\circ - 180^\circ = 60^\circ$.
+      5. **Answer:** $60^\circ$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating interior angles of triangles using bearings" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Multiple Reverse Bearings">
+    Calculate the reverse bearings for the following flight paths:
+    
+    a) A helicopter flies on a bearing of $105^\circ$. What is the bearing to return directly to its base?
+
+    b) An airplane flies on a bearing of $292^\circ$. What is the reverse bearing?
+
+    c) A drone flies on a bearing of $008^\circ$. What is the reverse bearing?
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+    <Steps>
+      1. Given bearing $= 105^\circ$. Since $105^\circ < 180^\circ$, add $180^\circ$.
+      2. $105^\circ + 180^\circ = 285^\circ$.
+      3. **Answer:** $285^\circ$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Given bearing $= 292^\circ$. Since $292^\circ > 180^\circ$, subtract $180^\circ$.
+      2. $292^\circ - 180^\circ = 112^\circ$.
+      3. **Answer:** $112^\circ$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Given bearing $= 008^\circ$. Since $008^\circ < 180^\circ$, add $180^\circ$.
+      2. $008^\circ + 180^\circ = 188^\circ$.
+      3. **Answer:** $188^\circ$
+    </Steps>
   </TabItem>
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 3: Bearings and Angles">
-    Point $Y$ is on a bearing of $110^\circ$ from point $X$. Point $Z$ is due east of $X$. Calculate the angle $YXZ$.
+  <TabItem label="📝 Question 4: Bearings and Coordinate Grids">
+    Points $A$, $B$, and $C$ form an equilateral triangle. Point $B$ is directly East of Point $A$. 
+    Point $C$ is situated North-East of both points, forming the peak of the triangle.
+    
+    a) What is the bearing of $B$ from $A$?
+
+    b) What is the bearing of $C$ from $A$?
+
+    c) What is the bearing of $A$ from $C$?
   </TabItem>
-  <TabItem label="✅ Solution 3">
-    1. The bearing of $Y$ from $X$ is $110^\circ$.
-    2. The bearing of $Z$ from $X$ (due east) is $090^\circ$.
-    3. The angle between them is the difference between these two bearings.
-    $$110^\circ - 090^\circ = 20^\circ$$
-    **Answer:** $20^\circ$
+  <TabItem label="✅ Solution 4">
+    **a)**
+    <Steps>
+      1. "Directly East" corresponds to the $090^\circ$ mark on a compass.
+      2. **Answer:** $090^\circ$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. An equilateral triangle has interior angles of $60^\circ$.
+      2. The line $AB$ is on a bearing of $090^\circ$.
+      3. To get to line $AC$, we subtract the $60^\circ$ interior angle from the $090^\circ$ East line (moving counter-clockwise towards North).
+      4. $090^\circ - 60^\circ = 030^\circ$.
+      5. **Answer:** $030^\circ$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. We need the reverse bearing of $C$ from $A$. The bearing of $C$ from $A$ is $030^\circ$.
+      2. Since $030^\circ < 180^\circ$, add $180^\circ$.
+      3. $030^\circ + 180^\circ = 210^\circ$.
+      4. **Answer:** $210^\circ$
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Measuring lines, three-figure bearings, and calculating reverse bearings" />
+<SmartAIGenerator topic="Applying geometric properties of polygons to solve bearing problems" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Algebraic Bearings">
+    The bearing of a ship $S$ from a port $P$ is represented by the expression $(3x + 10)^\circ$. 
+    The reverse bearing of the port $P$ from the ship $S$ is given by the expression $(8x - 20)^\circ$.
+    Assume the initial bearing of $S$ from $P$ is less than $180^\circ$.
+    
+    a) Write down an algebraic equation connecting these two bearings.
+
+    b) Solve your equation to find the value of $x$.
+
+    c) Calculate the exact three-figure bearing of the ship $S$ from the port $P$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. The rule for reverse bearings when the initial bearing is less than $180^\circ$ is: $\text{Reverse Bearing} = \text{Initial Bearing} + 180^\circ$.
+      2. Substitute the algebraic expressions: $(8x - 20) = (3x + 10) + 180$.
+      3. **Answer:** $8x - 20 = 3x + 190$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Start with the simplified equation: $8x - 20 = 3x + 190$.
+      2. Subtract $3x$ from both sides: $5x - 20 = 190$.
+      3. Add $20$ to both sides: $5x = 210$.
+      4. Divide by $5$: $x = 42$.
+      5. **Answer:** $x = 42$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Substitute $x = 42$ back into the expression for the initial bearing $(3x + 10)^\circ$.
+      2. $3(42) + 10 = 126 + 10 = 136^\circ$.
+      3. Check using the three-figure format.
+      4. **Answer:** $136^\circ$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: A Multi-Step Journey">
+    A hiker starts at base camp $C$. They walk to checkpoint $X$ on a bearing of $150^\circ$. 
+    From checkpoint $X$, they turn and walk to a waterfall $W$ on a bearing of $040^\circ$.
+    
+    a) Calculate the reverse bearing of base camp $C$ from checkpoint $X$.
+
+    b) Calculate the interior angle $CXW$ (the angle formed between the path back to camp and the path to the waterfall).
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. The bearing of $X$ from $C$ is $150^\circ$.
+      2. To find the bearing of $C$ from $X$, add $180^\circ$ because $150^\circ < 180^\circ$.
+      3. $150^\circ + 180^\circ = 330^\circ$.
+      4. **Answer:** $330^\circ$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. At checkpoint $X$, the bearing back to camp $C$ is $330^\circ$.
+      2. The bearing to the waterfall $W$ is $040^\circ$.
+      3. To find the angle between them, we calculate the clockwise difference. From $330^\circ$ to $360^\circ$ (North) is $30^\circ$.
+      4. From North ($000^\circ$) to the waterfall is another $40^\circ$.
+      5. Total angle $= 30^\circ + 40^\circ = 70^\circ$.
+      6. **Answer:** $70^\circ$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Identifying Bearings from a Compass Rose">
+    Using the compass markings, determine the angles needed to complete the tasks below.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 300 300" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <g transform="translate(150, 150)">
+          {/* Circular Grid Lines */}
+          <circle cx="0" cy="0" r="100" fill="none" stroke="#e2e8f0" stroke-width="2" />
+          <circle cx="0" cy="0" r="60" fill="none" stroke="#e2e8f0" stroke-width="1" />
+          
+          {/* Tick marks via loop */}
+          {Array.from({ length: 8 }, (_, i) => (
+            <line 
+              key={i}
+              x1={0} 
+              y1={0} 
+              x2={100 * Math.sin((i * 45 * Math.PI) / 180)} 
+              y2={-100 * Math.cos((i * 45 * Math.PI) / 180)} 
+              stroke="#94a3b8" 
+              stroke-width={i % 2 === 0 ? "2" : "1"} 
+              stroke-dasharray={i % 2 === 0 ? "none" : "3,3"}
+            />
+          ))}
+          
+          {/* Points */}
+          <circle cx="0" cy="-100" r="4" fill="#1e293b" />
+          <text x="0" y="-115" font-size="14" font-weight="bold" text-anchor="middle" fill="#1e293b">N</text>
+          
+          <circle cx={100 * Math.sin((3 * 45 * Math.PI) / 180)} cy={-100 * Math.cos((3 * 45 * Math.PI) / 180)} r="5" fill="#8b5cf6" />
+          <text x={115 * Math.sin((3 * 45 * Math.PI) / 180)} y={-115 * Math.cos((3 * 45 * Math.PI) / 180) + 5} font-size="14" font-weight="bold" text-anchor="middle" fill="#6d28d9">Point M</text>
+          
+          <circle cx={100 * Math.sin((7 * 45 * Math.PI) / 180)} cy={-100 * Math.cos((7 * 45 * Math.PI) / 180)} r="5" fill="#f59e0b" />
+          <text x={115 * Math.sin((7 * 45 * Math.PI) / 180)} y={-115 * Math.cos((7 * 45 * Math.PI) / 180) + 5} font-size="14" font-weight="bold" text-anchor="middle" fill="#d97706">Point K</text>
+        </g>
+      </svg>
+    </div>
+
+    The compass diagram is split into equal $45^\circ$ segments starting from North.
+    
+    a) Determine the exact bearing of Point $M$ from the center origin.
+
+    b) Determine the exact bearing of Point $K$ from the center origin.
+
+    c) Calculate the shortest angle between the lines connecting the center to Point $M$ and Point $K$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. The compass is split into $45^\circ$ sections. Point $M$ is at the 3rd tick mark clockwise from North.
+      2. Calculation: $3 \times 45^\circ = 135^\circ$.
+      3. **Answer:** $135^\circ$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Point $K$ is at the 7th tick mark clockwise from North (or one tick mark counter-clockwise from North).
+      2. Calculation: $7 \times 45^\circ = 315^\circ$.
+      3. **Answer:** $315^\circ$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. To find the shortest angle, we can subtract the smaller bearing from the larger one.
+      2. $315^\circ - 135^\circ = 180^\circ$.
+      3. Wait, a perfectly straight line is $180^\circ$, meaning they are directly opposite each other on the grid.
+      4. **Answer:** $180^\circ$
+    </Steps>
+  </TabItem>
+</Tabs>

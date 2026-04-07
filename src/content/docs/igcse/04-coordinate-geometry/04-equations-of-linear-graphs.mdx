@@ -15,7 +15,7 @@ $$
 y = mx + c
 $$
 
-* **$\boldsymbol{m}$ represents the gradient (steepness).** It tells you how many units the line goes *up* (or down) for every $1$ unit it moves to the *right*.
+* **$\boldsymbol{m}$ represents the gradient (steepness).** It tells you how many units the line goes *up* (or down) for every 1 unit it moves to the *right*.
 * **$\boldsymbol{c}$ represents the $y$-intercept.** This is the exact value where the line crosses the vertical $y$-axis (where $x = 0$).
 
 ### 1.1 Finding the equation from a graph
@@ -66,7 +66,7 @@ To find the equation of a line when looking at its graph, you need to identify $
 </div>
 
 **Example Walkthrough:**
-1.  **Find $\boldsymbol{c}$:** Look at the $y$-axis. The line crosses at $1$, so $\boldsymbol{c = 1}$.
+1.  **Find $\boldsymbol{c}$:** Look at the $y$-axis. The line crosses at 1, so $\boldsymbol{c = 1}$.
 2.  **Find $\boldsymbol{m}$:** Pick two easy-to-read points on the line, like $(0, 1)$ and $(4, 3)$. 
     $$
     m = \frac{\text{Rise}}{\text{Run}} = \frac{\text{Change in } y}{\text{Change in } x} = \frac{2}{4} = \boldsymbol{0.5}
@@ -83,15 +83,52 @@ To find the equation of a line when looking at its graph, you need to identify $
 Often, you are given the gradient ($m$) and just one coordinate point that the line passes through. How you handle this depends on whether that point is the $y$-intercept or not.
 
 ### Case A: The point is the $y$-intercept $(0, c)$
-If the given point has an $x$-coordinate of $0$, it **is** the $y$-intercept. You have everything you need to write the equation immediately.
+If the given point has an $x$-coordinate of 0, it **is** the $y$-intercept. You have everything you need to write the equation immediately.
 
-**Example:** A line has a gradient of $-3$ and passes through $(0, 5)$.
+**Example:** A line has a gradient of -3 and passes through $(0, 5)$.
 * $m = -3$
 * Because $x=0$, we know $c = 5$.
 * **Answer:** $\boldsymbol{y = -3x + 5}$
 
 ### Case B: The point is NOT the $y$-intercept $(x, y)$
 If the point is anywhere else, you must use algebra to solve for $c$. This is the absolute most important method to master for your exams!
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <defs>
+      <pattern id="grid2" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="400" height="300" fill="url(#grid2)" />
+    
+    {/* Axes */}
+    <g stroke="#94a3b8" stroke-width="2">
+      <line x1="20" y1="260" x2="380" y2="260" />
+      <polygon points="372,256 380,260 372,264" fill="#94a3b8" />
+      <line x1="40" y1="280" x2="40" y2="20" />
+      <polygon points="36,28 40,20 44,28" fill="#94a3b8" />
+    </g>
+    <text x="375" y="250" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="50" y="30" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+
+    {/* The Line Segment representing y = 4x + 3 */}
+    <line x1="20" y1="280" x2="90" y2="0" stroke="#3b82f6" stroke-width="4" />
+
+    {/* Point (2, 11) */}
+    <circle cx="80" cy="40" r="6" fill="#8b5cf6" />
+    <text x="95" y="45" font-size="14" font-weight="bold" fill="#6d28d9" font-family="sans-serif">Point (2, 11)</text>
+
+    {/* Y-intercept calculation visualization */}
+    <circle cx="40" cy="200" r="6" fill="#ef4444" />
+    <text x="50" y="215" font-size="14" font-weight="bold" fill="#b91c1c" font-family="sans-serif">Unknown c = ?</text>
+    
+    <line x1="40" y1="40" x2="80" y2="40" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="40" y1="200" x2="40" y2="40" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+    
+    <text x="140" y="130" font-size="14" font-style="italic" fill="#3b82f6" font-family="sans-serif">y = 4x + c</text>
+  </svg>
+</div>
 
 <Aside type="tip" title="Mastering the Gradient-Intercept Method">
 <Steps>
@@ -103,7 +140,7 @@ If the point is anywhere else, you must use algebra to solve for $c$. This is th
 </Steps>
 </Aside>
 
-**Example:** A line has a gradient of $4$ and passes through the point $(2, 11)$. Find its equation.
+**Example:** A line has a gradient of 4 and passes through the point $(2, 11)$. Find its equation.
 1. Start with the formula: $y = mx + c$
 2. Substitute the gradient: $y = 4x + c$
 3. Substitute the coordinates ($x = 2$, $y = 11$):
@@ -155,7 +192,7 @@ Lines that are perfectly flat or perfectly upright have special, very simple equ
   </svg>
 </div>
 
-* **Horizontal Lines ($\boldsymbol{y = c}$):** Every point on this line has the exact same $y$-coordinate. The gradient is $0$, so the "$mx$" part disappears. 
+* **Horizontal Lines ($\boldsymbol{y = c}$):** Every point on this line has the exact same $y$-coordinate. The gradient is 0, so the "$mx$" part disappears. 
 * **Vertical Lines ($\boldsymbol{x = k}$):** Every point on this line has the exact same $x$-coordinate. The gradient is "undefined" (infinitely steep), so we cannot use $y=mx+c$.
 
 ---
@@ -165,7 +202,7 @@ Lines that are perfectly flat or perfectly upright have special, very simple equ
 Sometimes, equations are written with both variables on the same side, like $3x + 2y = 12$. This is often called the **general form**. 
 
 <Aside type="danger" title="Common Misconception">
-Students frequently look at $3x + 2y = 12$ and assume the gradient is $3$ because it is the number attached to $x$. **This is wrong!** You can only read the gradient when $y$ is completely by itself on one side of the equals sign.
+Students frequently look at $3x + 2y = 12$ and assume the gradient is 3 because it is the number attached to $x$. **This is wrong!** You can only read the gradient when $y$ is completely by itself on one side of the equals sign.
 </Aside>
 
 ### 4.1 Converting General Form to $y = mx + c$
@@ -179,7 +216,7 @@ Find the gradient and $y$-intercept of the graph with equation $5x + 4y = 8$.
     $$
     4y = -5x + 8
     $$
-2.  **Make $y$ the subject:** Divide *everything* by $4$.
+2.  **Make $y$ the subject:** Divide *everything* by 4.
     $$
     y = -\frac{5}{4}x + \frac{8}{4}
     $$
@@ -208,7 +245,7 @@ Higher-tier questions may ask you to give your final equation in the form $ax + 
 **Example Walkthrough:**
 Rewrite the equation $y = \frac{2}{3}x - 4$ in the form $ax + by = c$, where $a, b, c$ are integers.
 
-1.  **Clear the fraction:** Multiply *every* single term by the denominator ($3$).
+1.  **Clear the fraction:** Multiply *every* single term by the denominator (3).
     $$
     \begin{aligned}
     (3)y &= (3)\frac{2}{3}x - (3)4 \\
@@ -226,6 +263,31 @@ Rewrite the equation $y = \frac{2}{3}x - 4$ in the form $ax + by = c$, where $a,
 ## 5. Finding the Equation from Two Given Points
 
 If you aren't given a graph, but instead are given two coordinate points, you can calculate the equation entirely algebraically by first finding the gradient, and then using Concept 2 (Case B).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <g stroke="#cbd5e1" stroke-width="1">
+       <line x1="0" y1="180" x2="400" y2="180" stroke="#94a3b8" stroke-width="2"/>
+       <line x1="50" y1="0" x2="50" y2="250" stroke="#94a3b8" stroke-width="2"/>
+    </g>
+    
+    {/* Abstract line through A and B */}
+    <line x1="10" y1="210" x2="350" y2="10" stroke="#3b82f6" stroke-width="4" />
+    
+    <circle cx="150" cy="127" r="6" fill="#1e3a8a" />
+    <text x="165" y="132" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">A (2, 5)</text>
+    
+    <circle cx="280" cy="51" r="6" fill="#1e3a8a" />
+    <text x="295" y="56" font-size="14" font-weight="bold" fill="#1e40af" font-family="sans-serif">B (6, 17)</text>
+    
+    {/* Gradient Triangle */}
+    <line x1="150" y1="127" x2="280" y2="127" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="280" y1="127" x2="280" y2="51" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+    
+    <text x="190" y="145" font-size="14" fill="#047857" font-weight="bold" font-family="sans-serif">Run = 4</text>
+    <text x="290" y="95" font-size="14" fill="#d97706" font-weight="bold" font-family="sans-serif">Rise = 12</text>
+  </svg>
+</div>
 
 **Example Walkthrough:**
 Find the fully simplified equation of the line passing through $A(2, 5)$ and $B(6, 17)$.
@@ -279,7 +341,7 @@ y &= \frac{2}{3}x - 3 \quad \text{(added 1 to both sides)}
 $$
 
 **Step 3: General Form ($ax + by = c$ with integers)**
-Take your $y = mx + c$ answer, clear the fraction by multiplying everything by $3$, and rearrange:
+Take your $y = mx + c$ answer, clear the fraction by multiplying everything by 3, and rearrange:
 $$
 \begin{aligned}
 3y &= 2x - 9 \\
@@ -293,108 +355,460 @@ $$
 
 <Tabs>
   <TabItem label="📝 Question 1: Extracting from a Graph">
-    A line passes through the $y$-axis at $(0, -3)$ and crosses the $x$-axis at $(6, 0)$. 
-    Write down the fully simplified equation of this line.
+    A straight line is shown in the graph below. It passes through the $y$-axis at $(0, -3)$ and crosses the $x$-axis at $(6, 0)$. 
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 300 220" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* Grid */}
+        <g stroke="#e2e8f0" stroke-width="1">
+          {Array.from({ length: 11 }, (_, i) => (
+            <line key={'h'+i} x1="0" y1={10 + i*20} x2="300" y2={10 + i*20} />
+          ))}
+          {Array.from({ length: 15 }, (_, i) => (
+            <line key={'v'+i} x1={10 + i*20} y1="0" x2={10 + i*20} y2="220" />
+          ))}
+        </g>
+        {/* Axes: Origin at x=70, y=110 */}
+        <g stroke="#94a3b8" stroke-width="2">
+          <line x1="10" y1="110" x2="290" y2="110" /> 
+          <line x1="70" y1="10" x2="70" y2="210" /> 
+        </g>
+        <text x="280" y="100" font-size="12" fill="#64748b" font-style="italic">x</text>
+        <text x="80" y="20" font-size="12" fill="#64748b" font-style="italic">y</text>
+        <text x="55" y="125" font-size="12" fill="#64748b">0</text>
+
+        {/* Line: Passes through (0, -3) and (6, 0) */}
+        <line x1="30" y1="190" x2="270" y2="70" stroke="#3b82f6" stroke-width="3" />
+
+        {/* Points */}
+        <circle cx="70" cy="170" r="4" fill="#ef4444" />
+        <text x="80" y="180" font-size="12" font-weight="bold" fill="#b91c1c">(0, -3)</text>
+        
+        <circle cx="190" cy="110" r="4" fill="#ef4444" />
+        <text x="195" y="100" font-size="12" font-weight="bold" fill="#b91c1c">(6, 0)</text>
+      </svg>
+    </div>
+    
+    a) Identify the $y$-intercept ($c$) from the given coordinates.
+    
+    b) Calculate the exact gradient ($m$) of the line using the points.
+    
+    c) Write down the fully simplified equation of the line.
+    
+    d) Use your equation to find the value of $y$ when $x = 10$.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    The $y$-intercept $c = -3$.
-    
-    To find the gradient $m$, calculate rise over run from $(0, -3)$ to $(6, 0)$:
-    $$
-    m = \frac{0 - (-3)}{6 - 0} = \frac{3}{6} = \frac{1}{2}
-    $$
-    
-    **Answer:** $\boldsymbol{y = \frac{1}{2}x - 3}$
+    **a)**
+    <Steps>
+      1. The $y$-intercept is where the line crosses the $y$-axis, which occurs when $x=0$.
+      2. Looking at the point $(0, -3)$, we can determine the intercept.
+      3. **$c = -3$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Use the gradient formula $m = \frac{y_2 - y_1}{x_2 - x_1}$ with the points $(0, -3)$ and $(6, 0)$.
+      2. $m = \frac{0 - (-3)}{6 - 0}$.
+      3. $m = \frac{3}{6}$.
+      4. **$m = \frac{1}{2}$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Substitute $m = \frac{1}{2}$ and $c = -3$ into $y = mx + c$.
+      2. **$y = \frac{1}{2}x - 3$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Substitute $x = 10$ into the equation: $y = \frac{1}{2}(10) - 3$.
+      2. $y = 5 - 3$.
+      3. **$y = 2$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding the equation of a straight line given its graph or its intercepts" />
+<SmartAIGenerator topic="Finding the equation of a straight line given its intercepts and testing points" />
 
 <Tabs>
   <TabItem label="📝 Question 2: Point and Gradient">
-    A line has a gradient of $-\frac{1}{2}$ and passes through the point $(4, 1)$. Find the equation of the line in the form $y = mx + c$.
+    The graph below shows a straight line with a gradient of $-\frac{1}{2}$ that passes through the coordinate point $P(4, 1)$.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 300 220" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* Grid */}
+        <g stroke="#e2e8f0" stroke-width="1">
+          {Array.from({ length: 11 }, (_, i) => (
+            <line key={'h'+i} x1="0" y1={10 + i*20} x2="300" y2={10 + i*20} />
+          ))}
+          {Array.from({ length: 15 }, (_, i) => (
+            <line key={'v'+i} x1={10 + i*20} y1="0" x2={10 + i*20} y2="220" />
+          ))}
+        </g>
+        {/* Axes: Origin at x=50, y=170 */}
+        <g stroke="#94a3b8" stroke-width="2">
+          <line x1="10" y1="170" x2="290" y2="170" /> 
+          <line x1="50" y1="10" x2="50" y2="210" /> 
+        </g>
+        <text x="280" y="160" font-size="12" fill="#64748b" font-style="italic">x</text>
+        <text x="60" y="20" font-size="12" fill="#64748b" font-style="italic">y</text>
+        <text x="35" y="185" font-size="12" fill="#64748b">0</text>
+
+        {/* Line */}
+        <line x1="10" y1="90" x2="250" y2="210" stroke="#3b82f6" stroke-width="3" />
+
+        {/* The given point (4, 1) */}
+        <circle cx="130" cy="150" r="4" fill="#8b5cf6" />
+        <text x="140" y="145" font-size="12" font-weight="bold" fill="#6d28d9">P (4, 1)</text>
+
+        {/* Triangle to show gradient = -1/2 */}
+        <line x1="50" y1="110" x2="130" y2="110" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+        <line x1="130" y1="110" x2="130" y2="150" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="75" y="100" font-size="12" font-weight="bold" fill="#047857">+2 (Run)</text>
+        <text x="140" y="125" font-size="12" font-weight="bold" fill="#d97706">-1 (Rise)</text>
+      </svg>
+    </div>
+    
+    a) Set up the standard linear equation by substituting the known gradient.
+    
+    b) Substitute the given coordinate point into your equation.
+    
+    c) Solve algebraically to find the exact $y$-intercept ($c$).
+    
+    d) Write the final equation of the line in the form $y = mx + c$.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    Substitute $m = -\frac{1}{2}$, $x = 4$, and $y = 1$ into $y = mx + c$:
-    $$
-    \begin{aligned}
-    1 &= \left(-\frac{1}{2}\right)(4) + c \\
-    1 &= -2 + c \\
-    c &= 3
-    \end{aligned}
-    $$
-    **Answer:** $\boldsymbol{y = -\frac{1}{2}x + 3}$
+    **a)**
+    <Steps>
+      1. Start with the form $y = mx + c$.
+      2. Substitute $m = -\frac{1}{2}$.
+      3. **$y = -\frac{1}{2}x + c$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Use the given point where $x = 4$ and $y = 1$.
+      2. Replace $x$ and $y$ in the equation.
+      3. **$1 = \left(-\frac{1}{2}\right)(4) + c$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Multiply the terms: $1 = -2 + c$.
+      2. Add 2 to both sides of the equation.
+      3. **$c = 3$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Combine the gradient and calculated $y$-intercept.
+      2. **$y = -\frac{1}{2}x + 3$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding the equation of a line given its gradient and a coordinate point" />
+<SmartAIGenerator topic="Finding linear equations from a gradient and a single coordinate point" />
 
 <Tabs>
-  <TabItem label="📝 Question 3: Rearranging to Find Gradient">
-    Find the exact gradient and $y$-intercept of the line given by the equation:
-    $$4x + 6y = 15$$
+  <TabItem label="📝 Question 3: Rearranging the General Form">
+    Line $L$ has the algebraic equation $4x + 6y = 15$.
+    
+    a) Rearrange the equation to isolate the $y$ term on one side.
+    
+    b) Make $y$ the subject by dividing the entire equation.
+    
+    c) Simplify the resulting fractions to their lowest terms.
+    
+    d) State the exact gradient and $y$-intercept of Line $L$.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    Rearrange to make $y$ the subject ($y = mx + c$):
-    $$
-    \begin{aligned}
-    6y &= -4x + 15 \\
-    y &= -\frac{4}{6}x + \frac{15}{6}
-    \end{aligned}
-    $$
-    Simplify the fractions! $-\frac{4}{6}$ becomes $-\frac{2}{3}$, and $\frac{15}{6}$ becomes $\frac{5}{2}$.
-    $$
-    y = -\frac{2}{3}x + \frac{5}{2}
-    $$
-    
-    **Answer:** Gradient = $\boldsymbol{-\frac{2}{3}}$, $y$-intercept = $\boldsymbol{\frac{5}{2}}$ (or $2.5$).
+    **a)**
+    <Steps>
+      1. Subtract $4x$ from both sides to isolate the term with $y$.
+      2. **$6y = -4x + 15$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Divide every single term by 6 to make $y$ the subject.
+      2. **$y = -\frac{4}{6}x + \frac{15}{6}$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Simplify $-\frac{4}{6}$ by dividing numerator and denominator by 2 to get $-\frac{2}{3}$.
+      2. Simplify $\frac{15}{6}$ by dividing numerator and denominator by 3 to get $\frac{5}{2}$.
+      3. **$y = -\frac{2}{3}x + \frac{5}{2}$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Read the values directly from the simplified equation.
+      2. **Gradient ($m$) = $-\frac{2}{3}$**, **$y$-intercept ($c$) = $\frac{5}{2}$ (or 2.5)**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Rearranging equations in the form ax + by = c to find the simplified gradient and y-intercept" />
+<SmartAIGenerator topic="Rearranging equations in the general form ax + by = c to find the gradient" />
 
 <Tabs>
   <TabItem label="📝 Question 4: Converting to General Form">
-    A straight line has the equation $y = \frac{3}{5}x + 2$. Write this equation in the form $ax + by = c$, where $a, b,$ and $c$ are integers.
+    A straight line has the equation $y = \frac{3}{5}x + 2$. 
+    
+    a) Multiply the entire equation by a suitable integer to remove the fraction.
+    
+    b) Rearrange the equation so that both $x$ and $y$ are on the same side.
+    
+    c) Write your final answer in the form $ax + by = c$, ensuring $a, b,$ and $c$ are integers.
+    
+    d) Write an equivalent equation by multiplying your answer from (c) by $-1$.
   </TabItem>
   <TabItem label="✅ Solution 4">
-    Multiply every term by 5 to remove the fraction:
-    $$
-    \begin{aligned}
-    5y &= 3x + 10
-    \end{aligned}
-    $$
-    Rearrange to get $x$ and $y$ on the same side. Subtract $3x$:
-    $$
-    \boldsymbol{-3x + 5y = 10}
-    $$
-    *(Alternatively, subtract $5y$ and $10$ to get $\boldsymbol{3x - 5y = -10}$).*
+    **a)**
+    <Steps>
+      1. The denominator of the fraction is 5, so multiply every term by 5.
+      2. $(5)y = (5)\frac{3}{5}x + (5)2$.
+      3. **$5y = 3x + 10$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Move the $x$ term to the left side by subtracting $3x$ from both sides.
+      2. **$-3x + 5y = 10$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Verify that the coefficients are integers: $-3, 5,$ and $10$ are all integers.
+      2. **$-3x + 5y = 10$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Multiply all terms by $-1$ to flip the signs.
+      2. Both answers are perfectly valid general forms.
+      3. **$3x - 5y = -10$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Converting linear equations from gradient-intercept form into general form with integer coefficients" />
+<SmartAIGenerator topic="Converting fractional linear equations into standard general form" />
 
 <Tabs>
   <TabItem label="📝 Question 5: Equation from Two Points">
-    Find the fully simplified equation of the line passing through $(-4, 10)$ and $(2, -2)$.
+    Find the fully simplified equation of the line passing through $A(-4, 10)$ and $B(2, -2)$.
+    
+    a) Calculate the exact gradient ($m$) between point $A$ and point $B$.
+    
+    b) Choose point $B$ and substitute it into $y = mx + c$ to form an equation for $c$.
+    
+    c) Solve algebraically for the $y$-intercept ($c$).
+    
+    d) Write the final equation of the line.
   </TabItem>
   <TabItem label="✅ Solution 5">
-    Step 1: Find gradient $m$.
-    $$
-    m = \frac{-2 - 10}{2 - (-4)} = \frac{-12}{6} = -2
-    $$
-    
-    Step 2: Substitute to find $c$ using $(2, -2)$.
-    $$
-    \begin{aligned}
-    -2 &= (-2)(2) + c \\
-    -2 &= -4 + c \\
-    c &= 2
-    \end{aligned}
-    $$
-    
-    **Answer:** $\boldsymbol{y = -2x + 2}$
+    **a)**
+    <Steps>
+      1. Apply the formula $m = \frac{y_2 - y_1}{x_2 - x_1}$.
+      2. $m = \frac{-2 - 10}{2 - (-4)}$.
+      3. $m = \frac{-12}{6}$.
+      4. **$m = -2$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Substitute $m = -2$ and the coordinates of $B(2, -2)$ into $y = mx + c$.
+      2. **$-2 = (-2)(2) + c$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Simplify the multiplication: $-2 = -4 + c$.
+      2. Add 4 to both sides.
+      3. **$c = 2$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Combine the calculated gradient and $y$-intercept.
+      2. **$y = -2x + 2$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding the equation of a linear graph y=mx+c passing through two given coordinate points" />
+<SmartAIGenerator topic="Calculating linear equations y=mx+c from two coordinate points" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Horizontal and Vertical Lines">
+    Consider the coordinate point $P(4, -7)$.
+    
+    a) Write the equation of a line passing through $P$ that is perfectly parallel to the $x$-axis.
+    
+    b) State the exact gradient of the line from part (a).
+    
+    c) Write the equation of a line passing through $P$ that is perfectly parallel to the $y$-axis.
+    
+    d) State the exact gradient of the line from part (c).
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. Lines parallel to the $x$-axis are horizontal and have the form $y = c$.
+      2. The $y$-coordinate of the point is $-7$.
+      3. **$y = -7$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. A perfectly horizontal line has zero vertical rise.
+      2. **The gradient is 0.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Lines parallel to the $y$-axis are vertical and have the form $x = k$.
+      2. The $x$-coordinate of the point is $4$.
+      3. **$x = 4$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. A perfectly vertical line has zero horizontal run, resulting in division by zero.
+      2. **The gradient is undefined.**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding equations and gradients of horizontal and vertical lines" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Working with Fractional Gradients">
+    A line has a gradient of $\frac{2}{3}$ and passes through the point $(-3, 4)$.
+    
+    a) Write down the incomplete equation using the given gradient.
+    
+    b) Substitute the coordinates $x = -3$ and $y = 4$ into the equation.
+    
+    c) Solve the algebraic equation to find the exact value of $c$.
+    
+    d) Write the final equation in the form $y = mx + c$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. Use the form $y = mx + c$.
+      2. Substitute $m = \frac{2}{3}$.
+      3. **$y = \frac{2}{3}x + c$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Replace $x$ and $y$ with the coordinates of the point.
+      2. **$4 = \left(\frac{2}{3}\right)(-3) + c$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Multiply the fraction: $\left(\frac{2}{3}\right)(-3) = -2$.
+      2. The equation becomes $4 = -2 + c$.
+      3. Add 2 to both sides.
+      4. **$c = 6$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Write the full equation using your values.
+      2. **$y = \frac{2}{3}x + 6$**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for the y-intercept when working with fractional gradients" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Finding the x-intercept">
+    A straight line has the equation $y = 3x - 12$.
+    
+    a) State the $y$-intercept of this line.
+    
+    b) The $x$-intercept is the point where the line crosses the horizontal axis. State the $y$-coordinate at this point.
+    
+    c) Substitute your answer from (b) into the equation to find the $x$-intercept.
+    
+    d) Write the $x$-intercept as a coordinate point $(x, y)$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+    <Steps>
+      1. The $y$-intercept is the $c$ value in $y = mx + c$.
+      2. **$y$-intercept = $-12$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Any point on the $x$-axis has a vertical height of zero.
+      2. **$y = 0$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Substitute $y = 0$ into the equation: $0 = 3x - 12$.
+      2. Add 12 to both sides: $12 = 3x$.
+      3. Divide by 3.
+      4. **$x = 4$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Combine the $x$ and $y$ values into a coordinate pair.
+      2. **$(4, 0)$**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the x-intercept and y-intercept of a linear equation" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Parallel Lines Application">
+    Find the equation of a line that is parallel to $2x - y = 4$ and passes through the point $(1, 5)$.
+    
+    a) Rearrange the original equation $2x - y = 4$ into the form $y = mx + c$ to find its gradient.
+    
+    b) State the exact gradient of the new parallel line.
+    
+    c) Use the gradient from part (b) and the point $(1, 5)$ to find the new $y$-intercept.
+    
+    d) Write the final equation of the new line.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)**
+    <Steps>
+      1. Start with $2x - y = 4$.
+      2. Subtract $2x$ from both sides: $-y = -2x + 4$.
+      3. Multiply by $-1$ to make $y$ positive: $y = 2x - 4$.
+      4. **The original gradient is 2.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Parallel lines share the exact same gradient.
+      2. **The new gradient is 2.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Substitute $m = 2$, $x = 1$, and $y = 5$ into $y = mx + c$.
+      2. $5 = (2)(1) + c$.
+      3. $5 = 2 + c$.
+      4. **$c = 3$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Combine the parallel gradient and the new $y$-intercept.
+      2. **$y = 2x + 3$**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Deriving the equation of a line parallel to a general form equation" />

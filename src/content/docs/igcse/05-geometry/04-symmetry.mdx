@@ -27,15 +27,35 @@ A shape has rotational symmetry if it still looks exactly the same after a rotat
 * **Centre of rotation:** The fixed point around which the shape is rotated.
 
 <Steps>
-1. Place tracing paper over the shape and draw its outline.
-2. Place your pen on the centre of the shape.
-3. Rotate the tracing paper one full turn (360 degrees).
-4. Count how many times the traced outline matches the original shape underneath.
+  1. Place tracing paper over the shape and draw its outline.
+  2. Place your pen on the centre of the shape.
+  3. Rotate the tracing paper one full turn (360 degrees).
+  4. Count how many times the traced outline matches the original shape underneath.
 </Steps>
 
 <SteveTip title="Order 1 is No Symmetry">
   Every shape fits onto itself after a full 360-degree turn. If a shape ONLY fits onto itself once during a full rotation, we say it has an **order of rotational symmetry of 1**. This effectively means it has NO rotational symmetry.
 </SteveTip>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 200" width="100%" maxWidth="550px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <g transform="translate(125, 100)">
+      {Array.from({ length: 4 }).map((_, i) => (
+        <polygon key={`star-${i}`} points="0,0 20,-40 0,-80 -20,-40" fill="#cbd5e1" stroke="#475569" stroke-width="2" transform={`rotate(${i * 90})`} />
+      ))}
+      <circle cx="0" cy="0" r="5" fill="#ef4444" />
+    </g>
+    <text x="125" y="190" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Order 4 (e.g. 4-point star)</text>
+
+    <g transform="translate(375, 100)">
+      {Array.from({ length: 3 }).map((_, i) => (
+        <polygon key={`tri-${i}`} points="0,0 20,-40 0,-60 -20,-40" fill="#fde047" stroke="#ca8a04" stroke-width="2" transform={`rotate(${i * 120})`} />
+      ))}
+      <circle cx="0" cy="0" r="5" fill="#ef4444" />
+    </g>
+    <text x="375" y="190" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Order 3</text>
+  </svg>
+</div>
 
 ### Symmetry Properties of Quadrilaterals
 
@@ -55,14 +75,14 @@ It is crucial to memorise the symmetries of special quadrilaterals, as these def
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 500 220" width="100%" maxWidth="550px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-    <rect x="50" y="50" width="140" height="100" fill="#e0f2fe" stroke="#0284c7" strokeWidth="2" />
-    <line x1="120" y1="30" x2="120" y2="170" stroke="#ef4444" strokeWidth="2" strokeDasharray="5 5" />
-    <line x1="30" y1="100" x2="210" y2="100" stroke="#ef4444" strokeWidth="2" strokeDasharray="5 5" />
-    <text x="120" y="185" fontSize="14" fill="#1e293b" text-anchor="middle" fontFamily="sans-serif">Rectangle: 2 Lines</text>
+    <rect x="50" y="50" width="140" height="100" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+    <line x1="120" y1="30" x2="120" y2="170" stroke="#ef4444" stroke-width="2" stroke-dasharray="5 5" />
+    <line x1="30" y1="100" x2="210" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="5 5" />
+    <text x="120" y="185" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Rectangle: 2 Lines</text>
 
-    <polygon points="270,150 300,50 400,50 370,150" fill="#fef08a" stroke="#ca8a04" strokeWidth="2" />
+    <polygon points="270,150 300,50 400,50 370,150" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
     <circle cx="335" cy="100" r="4" fill="#1e293b" />
-    <text x="335" y="185" fontSize="14" fill="#1e293b" text-anchor="middle" fontFamily="sans-serif">Parallelogram: Rotational Order 2</text>
+    <text x="335" y="185" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Parallelogram: Rotational Order 2</text>
   </svg>
 </div>
 
@@ -87,23 +107,23 @@ Here are all 9 planes of symmetry for a perfect cube. Notice how 3 of the planes
     <defs>
       {/* Original Base Cube */}
       <g id="base-cube">
-        <line x1="0" y1="-40" x2="0" y2="0" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="3 3" />
-        <line x1="-35" y1="-20" x2="0" y2="-40" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="3 3" />
-        <line x1="35" y1="-20" x2="0" y2="-40" stroke="#cbd5e1" strokeWidth="1.5" strokeDasharray="3 3" />
-        <polygon points="0,0 -35,-20 0,-40 35,-20" fill="#f8fafc" stroke="#64748b" strokeWidth="1.5" strokeLinejoin="round"/>
-        <polygon points="0,0 -35,-20 -35,20 0,40" fill="#f1f5f9" stroke="#64748b" strokeWidth="1.5" strokeLinejoin="round"/>
-        <polygon points="0,0 35,-20 35,20 0,40" fill="#e2e8f0" stroke="#64748b" strokeWidth="1.5" strokeLinejoin="round"/>
+        <line x1="0" y1="-40" x2="0" y2="0" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3 3" />
+        <line x1="-35" y1="-20" x2="0" y2="-40" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3 3" />
+        <line x1="35" y1="-20" x2="0" y2="-40" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="3 3" />
+        <polygon points="0,0 -35,-20 0,-40 35,-20" fill="#f8fafc" stroke="#64748b" stroke-width="1.5" stroke-linejoin="round" />
+        <polygon points="0,0 -35,-20 -35,20 0,40" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5" stroke-linejoin="round" />
+        <polygon points="0,0 35,-20 35,20 0,40" fill="#e2e8f0" stroke="#64748b" stroke-width="1.5" stroke-linejoin="round" />
       </g>
 
       {/* Easter Egg: The Kiwi Cube */}
       <g id="kiwi-cube">
         {/* Hidden back lines */}
-        <line x1="0" y1="-40" x2="0" y2="0" stroke="#a16207" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.5"/>
-        <line x1="-35" y1="-20" x2="0" y2="-40" stroke="#a16207" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.5"/>
-        <line x1="35" y1="-20" x2="0" y2="-40" stroke="#a16207" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.5"/>
+        <line x1="0" y1="-40" x2="0" y2="0" stroke="#a16207" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+        <line x1="-35" y1="-20" x2="0" y2="-40" stroke="#a16207" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
+        <line x1="35" y1="-20" x2="0" y2="-40" stroke="#a16207" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.5"/>
         
         {/* Top Face: Vibrant Kiwi Flesh */}
-        <polygon points="0,0 -35,-20 0,-40 35,-20" fill="#a3e635" stroke="#65a30d" strokeWidth="1.5" strokeLinejoin="round"/>
+        <polygon points="0,0 -35,-20 0,-40 35,-20" fill="#a3e635" stroke="#65a30d" stroke-width="1.5" stroke-linejoin="round"/>
         
         {/* Pale Kiwi Core (Isometric Diamond) */}
         <polygon points="0,-15 -10,-20 0,-25 10,-20" fill="#ecfccb" opacity="0.9" />
@@ -123,63 +143,63 @@ Here are all 9 planes of symmetry for a perfect cube. Notice how 3 of the planes
         <circle cx="0" cy="-11" r="1.2" fill="#1c1917" />
 
         {/* Left Face: Darker Brown Fuzzy Skin */}
-        <polygon points="0,0 -35,-20 -35,20 0,40" fill="#78350f" stroke="#451a03" strokeWidth="1.5" strokeLinejoin="round"/>
+        <polygon points="0,0 -35,-20 -35,20 0,40" fill="#78350f" stroke="#451a03" stroke-width="1.5" stroke-linejoin="round"/>
         
         {/* Right Face: Lighter Brown Skin (Lighting effect) */}
-        <polygon points="0,0 35,-20 35,20 0,40" fill="#92400e" stroke="#451a03" strokeWidth="1.5" strokeLinejoin="round"/>
+        <polygon points="0,0 35,-20 35,20 0,40" fill="#92400e" stroke="#451a03" stroke-width="1.5" stroke-linejoin="round"/>
       </g>
     </defs>
 
     {/* Row 1: The 3 Axial Planes */}
     <g transform="translate(75, 80)">
       <use href="#base-cube" />
-      <polygon points="-35,0 0,20 35,0 0,-20" fill="#ef4444" opacity="0.6" stroke="#b91c1c" strokeWidth="1" />
-      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Horizontal</text>
+      <polygon points="-35,0 0,20 35,0 0,-20" fill="#ef4444" opacity="0.6" stroke="#b91c1c" stroke-width="1" />
+      <text x="0" y="65" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">Horizontal</text>
     </g>
     <g transform="translate(225, 80)">
       <use href="#base-cube" />
-      <polygon points="-17.5,-30 17.5,-10 17.5,30 -17.5,10" fill="#3b82f6" opacity="0.6" stroke="#1d4ed8" strokeWidth="1" />
-      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Vertical (Front-Left)</text>
+      <polygon points="-17.5,-30 17.5,-10 17.5,30 -17.5,10" fill="#3b82f6" opacity="0.6" stroke="#1d4ed8" stroke-width="1" />
+      <text x="0" y="65" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">Vertical (Front-Left)</text>
     </g>
     <g transform="translate(375, 80)">
       <use href="#base-cube" />
-      <polygon points="17.5,-30 -17.5,-10 -17.5,30 17.5,10" fill="#10b981" opacity="0.6" stroke="#047857" strokeWidth="1" />
-      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Vertical (Front-Right)</text>
+      <polygon points="17.5,-30 -17.5,-10 -17.5,30 17.5,10" fill="#10b981" opacity="0.6" stroke="#047857" stroke-width="1" />
+      <text x="0" y="65" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">Vertical (Front-Right)</text>
     </g>
 
     {/* Row 2: 3 Diagonal Planes */}
     <g transform="translate(75, 230)">
       <use href="#base-cube" />
-      <polygon points="-35,-20 35,-20 35,20 -35,20" fill="#8b5cf6" opacity="0.5" stroke="#6d28d9" strokeWidth="1" />
-      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Diagonal 1</text>
+      <polygon points="-35,-20 35,-20 35,20 -35,20" fill="#8b5cf6" opacity="0.5" stroke="#6d28d9" stroke-width="1" />
+      <text x="0" y="65" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">Diagonal 1</text>
     </g>
     <g transform="translate(225, 230)">
       <use href="#base-cube" />
-      <polygon points="-2,-40 2,-40 2,40 -2,40" fill="#f59e0b" opacity="0.7" stroke="#b45309" strokeWidth="1" />
-      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Diagonal 2 (Edge-on)</text>
+      <polygon points="-2,-40 2,-40 2,40 -2,40" fill="#f59e0b" opacity="0.7" stroke="#b45309" stroke-width="1" />
+      <text x="0" y="65" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">Diagonal 2 (Edge-on)</text>
     </g>
     <g transform="translate(375, 230)">
       <use href="#base-cube" />
-      <polygon points="0,-40 -35,-20 0,40 35,20" fill="#ec4899" opacity="0.6" stroke="#be185d" strokeWidth="1" />
-      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Diagonal 3</text>
+      <polygon points="0,-40 -35,-20 0,40 35,20" fill="#ec4899" opacity="0.6" stroke="#be185d" stroke-width="1" />
+      <text x="0" y="65" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">Diagonal 3</text>
     </g>
 
     {/* Row 3: 3 Diagonal Planes */}
     <g transform="translate(75, 380)">
       <use href="#base-cube" />
-      <polygon points="0,-40 35,-20 0,40 -35,20" fill="#06b6d4" opacity="0.6" stroke="#0e7490" strokeWidth="1" />
-      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Diagonal 4</text>
+      <polygon points="0,-40 35,-20 0,40 -35,20" fill="#06b6d4" opacity="0.6" stroke="#0e7490" stroke-width="1" />
+      <text x="0" y="65" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">Diagonal 4</text>
     </g>
     <g transform="translate(225, 380)">
       <use href="#base-cube" />
-      <polygon points="-35,-22 -35,-18 35,22 35,18" fill="#84cc16" opacity="0.7" stroke="#4d7c0f" strokeWidth="1" />
-      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Diagonal 5 (Edge-on)</text>
+      <polygon points="-35,-22 -35,-18 35,22 35,18" fill="#84cc16" opacity="0.7" stroke="#4d7c0f" stroke-width="1" />
+      <text x="0" y="65" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">Diagonal 5 (Edge-on)</text>
     </g>
     <g transform="translate(375, 380)">
       {/* BOOM! The Kiwi swaps in here */}
       <use href="#kiwi-cube" />
-      <polygon points="35,-22 35,-18 -35,22 -35,18" fill="#f43f5e" opacity="0.7" stroke="#be123c" strokeWidth="1" />
-      <text x="0" y="65" fontSize="12" fill="#475569" text-anchor="middle" fontFamily="sans-serif">Diagonal 6 (Edge-on)</text>
+      <polygon points="35,-22 35,-18 -35,22 -35,18" fill="#f43f5e" opacity="0.7" stroke="#be123c" stroke-width="1" />
+      <text x="0" y="65" font-size="12" fill="#475569" text-anchor="middle" font-family="sans-serif">Diagonal 6 (Edge-on)</text>
     </g>
   </svg>
 </div>
@@ -219,11 +239,246 @@ An **axis of symmetry** is a straight line passing through the centre of a 3D so
   <TabItem label="✅ Solution 2">
     To find the planes of symmetry for a regular octahedron:
     <Steps>
-    1. First, consider the horizontal plane where the two square bases meet. This gives **1 plane of symmetry**.
-    2. Next, look at the vertical planes that cut straight down through the opposite vertices. Since the cross-section is a square, there are **4 planes** here (2 parallel to the sides of the square, 2 across the diagonals of the square).
-    3. Since the octahedron is completely regular, you can re-orient the solid to stand on any pair of opposite vertices. There are 3 axes you can align it on.
-    4. By systematically rotating the shape, you'll find the octahedron shares the exact same symmetries as a cube. 
-    5. Therefore, there are **9 planes of symmetry** in total.
+      1. First, consider the horizontal plane where the two square bases meet. This gives **1 plane of symmetry**.
+      2. Next, look at the vertical planes that cut straight down through the opposite vertices. Since the cross-section is a square, there are **4 planes** here (2 parallel to the sides of the square, 2 across the diagonals of the square).
+      3. Since the octahedron is completely regular, you can re-orient the solid to stand on any pair of opposite vertices. There are 3 axes you can align it on.
+      4. By systematically rotating the shape, you'll find the octahedron shares the exact same symmetries as a cube. 
+      5. Therefore, there are **9 planes of symmetry** in total.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Symmetry of Quadrilaterals">
+    Consider a standard rhombus and a standard parallelogram.
+    
+    a) State the number of lines of symmetry for the rhombus.
+    
+    b) State the order of rotational symmetry for the rhombus.
+    
+    c) State the number of lines of symmetry for the parallelogram.
+    
+    d) State the order of rotational symmetry for the parallelogram.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+    <Steps>
+      1. A rhombus has diagonals that act as lines of symmetry, bisecting opposite angles.
+      2. **It has 2 lines of symmetry.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. A rhombus maps onto itself after a 180-degree turn.
+      2. **The order of rotational symmetry is 2.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. A standard parallelogram cannot be folded in half to match exactly.
+      2. **It has 0 lines of symmetry.**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. A parallelogram fits onto itself after a 180-degree turn.
+      2. **The order of rotational symmetry is 2.**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 4: Letter Symmetries">
+    Examine the capital letters **H**, **S**, and **A** in standard un-stylised Arial font.
+    
+    a) Which of these letters has exactly 1 line of symmetry?
+    
+    b) Which of these letters has rotational symmetry of order 2 but NO lines of symmetry?
+    
+    c) State the lines of symmetry and rotational order for the letter H.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+    <Steps>
+      1. The letter A can be folded down a vertical middle line.
+      2. **The letter A has exactly 1 line of symmetry.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The letter S cannot be folded in half symmetrically, but it looks identical upside down (180 degrees).
+      2. **The letter S has rotational symmetry of order 2 and 0 lines of symmetry.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The letter H can be folded vertically and horizontally. It also looks identical upside down.
+      2. **The letter H has 2 lines of symmetry and rotational symmetry of order 2.**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Reflection on a Grid">
+    A triangle is plotted on a coordinate grid.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 200 200" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <g stroke="#e2e8f0" stroke-width="1">
+          {Array.from({ length: 11 }).map((_, i) => (
+            <line key={`grid-h-${i}`} x1="0" y1={i*20} x2="200" y2={i*20} />
+          ))}
+          {Array.from({ length: 11 }).map((_, i) => (
+            <line key={`grid-v-${i}`} x1={i*20} y1="0" x2={i*20} y2="200" />
+          ))}
+        </g>
+        {/* Axes */}
+        <line x1="100" y1="0" x2="100" y2="200" stroke="#94a3b8" stroke-width="2" />
+        <line x1="0" y1="100" x2="200" y2="100" stroke="#94a3b8" stroke-width="2" />
+        
+        {/* Triangle to reflect */}
+        <polygon points="120,80 160,80 120,20" fill="#3b82f6" opacity="0.8" stroke="#1d4ed8" stroke-width="2" />
+        
+        {/* Line of Symmetry */}
+        <line x1="100" y1="0" x2="100" y2="200" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+        
+        <text x="180" y="115" font-size="12" fill="#64748b" font-family="sans-serif">x</text>
+        <text x="110" y="15" font-size="12" fill="#64748b" font-family="sans-serif">y</text>
+      </svg>
+    </div>
+
+    The red dashed line represents the line of symmetry (the y-axis). Assume each grid square is 1 unit, and the origin is at the intersection of the solid grey axes.
+    
+    a) Write down the coordinates of the three vertices of the original triangle.
+    
+    b) The triangle is reflected across the line of symmetry. Write down the new coordinates of its vertices.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. From the origin (100, 100 on the SVG), each grid line is 1 unit.
+      2. The bottom-left vertex is 1 unit right, 1 unit up: $(1, 1)$.
+      3. The bottom-right vertex is 3 units right, 1 unit up: $(3, 1)$.
+      4. The top vertex is 1 unit right, 4 units up: $(1, 4)$.
+      5. **Original coordinates: $(1, 1)$, $(3, 1)$, and $(1, 4)$.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Reflecting across the $y$-axis changes the sign of the $x$-coordinate, while the $y$-coordinate remains the same.
+      2. $(1, 1)$ becomes $(-1, 1)$.
+      3. $(3, 1)$ becomes $(-3, 1)$.
+      4. $(1, 4)$ becomes $(-1, 4)$.
+      5. **New coordinates: $(-1, 1)$, $(-3, 1)$, and $(-1, 4)$.**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: Symmetry of a Cylinder">
+    Consider a standard right circular cylinder.
+    
+    a) Describe the axes of symmetry for a cylinder.
+    
+    b) How many planes of symmetry does a cylinder have?
+    
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. A cylinder has one main vertical axis of symmetry passing straight through the centres of its circular top and bottom faces.
+      2. **This vertical axis has an infinite order of rotational symmetry.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. You can slice a cylinder in half horizontally, giving 1 plane of symmetry.
+      2. You can slice it vertically straight through the centre point of the circular faces from any angle. Because a circle has infinite lines of symmetry, there are infinite vertical planes.
+      3. **A cylinder has an infinite number of planes of symmetry.**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Identifying 3D Planes">
+    An equilateral triangular prism is sitting flat on one of its rectangular faces.
+    
+    a) How many planes of symmetry cut vertically through the prism?
+    
+    b) Does this prism have a horizontal plane of symmetry?
+    
+    c) State the total number of planes of symmetry for this prism.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. Look at the equilateral triangular cross-section. It has 3 lines of symmetry.
+      2. Extending these 3 lines through the entire length of the prism creates 3 vertical planes of symmetry.
+      3. **There are 3 vertical planes of symmetry.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. A horizontal plane cutting the prism exactly halfway up its height would split the top ridge from the flat rectangular base.
+      2. These two halves are not identical mirror images of each other.
+      3. **No, it does not have a horizontal plane of symmetry.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Wait, there is one more plane. The plane that slices exactly halfway through the length of the rectangular faces, perpendicular to the triangular ends.
+      2. So, 3 planes from the cross-section + 1 plane bisecting the length.
+      3. **The total number of planes of symmetry is 4.**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Combined Rotational Symmetry">
+    A new shape is created by attaching a regular pentagon to each side of a regular decagon (a 10-sided polygon). 
+    
+    a) Assuming all attachments are perfectly centered and symmetrical, what is the order of rotational symmetry of the combined shape?
+    
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+    <Steps>
+      1. A regular decagon naturally has rotational symmetry of order 10.
+      2. By attaching exactly one identical regular pentagon to each of the 10 sides, the overall shape maintains its 10-fold symmetry.
+      3. Rotating the entire structure by one-tenth of a full turn (36 degrees) will map it perfectly onto itself.
+      4. **The order of rotational symmetry is 10.**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 9: Half-Turn Symmetry">
+    A shape has an order of rotational symmetry of 2.
+    
+    a) What is the angle of rotation required to map the shape onto itself for the first time?
+    
+    b) Give two examples of standard geometric shapes that have an order of rotational symmetry of 2 but do not have 2 lines of symmetry.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)**
+    <Steps>
+      1. A full turn is 360 degrees.
+      2. If the order is 2, it fits exactly twice in one full turn.
+      3. The required angle is $360 \div 2$.
+      4. **The angle of rotation is 180 degrees.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. We need shapes with rotational order 2 but NOT exactly 2 lines of symmetry.
+      2. A standard parallelogram has rotational order 2, but 0 lines of symmetry.
+      3. The letter 'Z' or 'S' (as standard geometric figures) have rotational order 2, but 0 lines of symmetry.
+      4. **Examples include a standard parallelogram and a stylized letter Z or S.**
     </Steps>
   </TabItem>
 </Tabs>

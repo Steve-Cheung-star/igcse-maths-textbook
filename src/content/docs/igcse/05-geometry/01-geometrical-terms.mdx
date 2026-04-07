@@ -15,40 +15,40 @@ Let's start with the basic building blocks of space and how lines interact with 
   <svg viewBox="0 0 800 180" width="100%" maxWidth="800px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
     
     {/* Point */}
-    <g transform="translate(80, 80)">
-      <circle cx="0" cy="0" r="4" fill="#1e293b" />
-      <text x="0" y="25" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Point A</text>
+    <g transform="translate(60, 70)">
+      <circle cx="20" cy="0" r="4" fill="#1e293b" />
+      <text x="20" y="70" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Point A</text>
     </g>
 
     {/* Line */}
-    <g transform="translate(180, 80)">
-      <line x1="0" y1="0" x2="100" y2="0" stroke="#3b82f6" stroke-width="3" />
+    <g transform="translate(200, 70)">
+      <line x1="0" y1="0" x2="80" y2="0" stroke="#3b82f6" stroke-width="3" />
       <polygon points="-5,0 5,-5 5,5" fill="#3b82f6" />
-      <polygon points="105,0 95,-5 95,5" fill="#3b82f6" />
-      <text x="50" y="25" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Line</text>
+      <polygon points="85,0 75,-5 75,5" fill="#3b82f6" />
+      <text x="40" y="70" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Line</text>
     </g>
 
     {/* Plane */}
-    <g transform="translate(360, 50)">
-      <polygon points="20,60 120,60 100,0 0,0" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
-      <text x="60" y="85" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Plane</text>
+    <g transform="translate(350, 40)">
+      <polygon points="20,60 100,60 80,0 0,0" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2" />
+      <text x="50" y="100" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Plane</text>
     </g>
 
     {/* Parallel */}
-    <g transform="translate(520, 50)">
+    <g transform="translate(520, 40)">
       <line x1="0" y1="15" x2="80" y2="15" stroke="#10b981" stroke-width="3" />
       <line x1="0" y1="45" x2="80" y2="45" stroke="#10b981" stroke-width="3" />
       <path d="M 35 9 L 45 15 L 35 21" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       <path d="M 35 39 L 45 45 L 35 51" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-      <text x="40" y="85" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Parallel</text>
+      <text x="40" y="100" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Parallel</text>
     </g>
 
     {/* Perpendicular */}
-    <g transform="translate(680, 50)">
-      <line x1="0" y1="60" x2="80" y2="60" stroke="#ef4444" stroke-width="3" />
-      <line x1="40" y1="20" x2="40" y2="100" stroke="#ef4444" stroke-width="3" />
-      <polygon points="40,60 40,50 50,50 50,60" fill="#fca5a5" stroke="#ef4444" stroke-width="1.5" />
-      <text x="40" y="115" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Perpendicular</text>
+    <g transform="translate(680, 30)">
+      <line x1="0" y1="40" x2="80" y2="40" stroke="#ef4444" stroke-width="3" />
+      <line x1="40" y1="0" x2="40" y2="80" stroke="#ef4444" stroke-width="3" />
+      <polygon points="40,40 40,30 50,30 50,40" fill="#fca5a5" stroke="#ef4444" stroke-width="1.5" />
+      <text x="40" y="110" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Perpendicular</text>
     </g>
   </svg>
 </div>
@@ -82,7 +82,7 @@ Let's start with the basic building blocks of space and how lines interact with 
     <g transform="translate(300, 140)">
       <line x1="0" y1="0" x2="80" y2="0" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
       <line x1="0" y1="0" x2="0" y2="-70" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
-      <polyline points="0,-20 20,-20 20,0" fill="none" stroke="#ef4444" stroke-width="2" />
+      <polyline points="0,-20 20,-20 20,0" fill="none" stroke="#ef4444" stroke-width="2" stroke-linejoin="round" />
       <text x="40" y="35" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Right Angle</text>
       <text x="40" y="55" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">Exactly 90°</text>
     </g>
@@ -125,8 +125,7 @@ A polygon with three edges and three vertices. The sum of interior angles is alw
     
     {/* Equilateral */}
     <g transform="translate(60, 130)">
-      <polygon points="0,0 80,0 40,-69" fill="#dcfce3" stroke="#10b981" stroke-width="2" />
-      {/* Perpendicular Notches */}
+      <polygon points="0,0 80,0 40,-69" fill="#dcfce3" stroke="#10b981" stroke-width="2" stroke-linejoin="round" />
       <line x1="40" y1="-5" x2="40" y2="5" stroke="#10b981" stroke-width="2" />
       <line x1="16" y1="-38" x2="24" y2="-32" stroke="#10b981" stroke-width="2" />
       <line x1="64" y1="-38" x2="56" y2="-32" stroke="#10b981" stroke-width="2" />
@@ -135,8 +134,7 @@ A polygon with three edges and three vertices. The sum of interior angles is alw
 
     {/* Isosceles */}
     <g transform="translate(260, 130)">
-      <polygon points="0,0 70,0 35,-90" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" />
-      {/* Perpendicular Notches */}
+      <polygon points="0,0 70,0 35,-90" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" stroke-linejoin="round" />
       <line x1="14" y1="-47" x2="22" y2="-43" stroke="#3b82f6" stroke-width="2" /> 
       <line x1="56" y1="-47" x2="48" y2="-43" stroke="#3b82f6" stroke-width="2" /> 
       <text x="35" y="30" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Isosceles</text>
@@ -144,14 +142,14 @@ A polygon with three edges and three vertices. The sum of interior angles is alw
 
     {/* Scalene */}
     <g transform="translate(450, 130)">
-      <polygon points="0,0 100,0 80,-70" fill="#fee2e2" stroke="#ef4444" stroke-width="2" />
+      <polygon points="0,0 100,0 80,-70" fill="#fee2e2" stroke="#ef4444" stroke-width="2" stroke-linejoin="round" />
       <text x="50" y="30" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Scalene</text>
     </g>
 
     {/* Right-Angled */}
     <g transform="translate(650, 130)">
-      <polygon points="0,0 80,0 0,-80" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" />
-      <polyline points="0,-15 15,-15 15,0" fill="none" stroke="#f59e0b" stroke-width="2" />
+      <polygon points="0,0 80,0 0,-80" fill="#fef3c7" stroke="#f59e0b" stroke-width="2" stroke-linejoin="round" />
+      <polyline points="0,-15 15,-15 15,0" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linejoin="round" />
       <text x="40" y="30" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Right-Angled</text>
     </g>
   </svg>
@@ -174,11 +172,11 @@ A polygon with four edges and four vertices. The sum of interior angles is alway
     {/* ROW 1 */}
     {/* Square */}
     <g transform="translate(60, 100)">
-      <polygon points="0,0 60,0 60,-60 0,-60" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
-      <polyline points="0,-10 10,-10 10,0" fill="none" stroke="#4f46e5" />
-      <polyline points="50,0 50,-10 60,-10" fill="none" stroke="#4f46e5" />
-      <polyline points="0,-50 10,-50 10,-60" fill="none" stroke="#4f46e5" />
-      <polyline points="60,-50 50,-50 50,-60" fill="none" stroke="#4f46e5" />
+      <polygon points="0,0 60,0 60,-60 0,-60" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
+      <polyline points="0,-10 10,-10 10,0" fill="none" stroke="#4f46e5" stroke-linejoin="round" />
+      <polyline points="50,0 50,-10 60,-10" fill="none" stroke="#4f46e5" stroke-linejoin="round" />
+      <polyline points="0,-50 10,-50 10,-60" fill="none" stroke="#4f46e5" stroke-linejoin="round" />
+      <polyline points="60,-50 50,-50 50,-60" fill="none" stroke="#4f46e5" stroke-linejoin="round" />
       <line x1="30" y1="-5" x2="30" y2="5" stroke="#4f46e5" stroke-width="2" />
       <line x1="30" y1="-65" x2="30" y2="-55" stroke="#4f46e5" stroke-width="2" />
       <line x1="-5" y1="-30" x2="5" y2="-30" stroke="#4f46e5" stroke-width="2" />
@@ -188,11 +186,11 @@ A polygon with four edges and four vertices. The sum of interior angles is alway
 
     {/* Rectangle */}
     <g transform="translate(220, 100)">
-      <polygon points="0,0 100,0 100,-60 0,-60" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
-      <polyline points="0,-10 10,-10 10,0" fill="none" stroke="#4f46e5" />
-      <polyline points="100,-10 90,-10 90,0" fill="none" stroke="#4f46e5" />
-      <polyline points="0,-50 10,-50 10,-60" fill="none" stroke="#4f46e5" />
-      <polyline points="100,-50 90,-50 90,-60" fill="none" stroke="#4f46e5" />
+      <polygon points="0,0 100,0 100,-60 0,-60" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
+      <polyline points="0,-10 10,-10 10,0" fill="none" stroke="#4f46e5" stroke-linejoin="round" />
+      <polyline points="100,-10 90,-10 90,0" fill="none" stroke="#4f46e5" stroke-linejoin="round" />
+      <polyline points="0,-50 10,-50 10,-60" fill="none" stroke="#4f46e5" stroke-linejoin="round" />
+      <polyline points="100,-50 90,-50 90,-60" fill="none" stroke="#4f46e5" stroke-linejoin="round" />
       <line x1="50" y1="-5" x2="50" y2="5" stroke="#4f46e5" stroke-width="2" />
       <line x1="50" y1="-65" x2="50" y2="-55" stroke="#4f46e5" stroke-width="2" />
       <line x1="-5" y1="-32" x2="5" y2="-32" stroke="#4f46e5" stroke-width="2" />
@@ -204,21 +202,17 @@ A polygon with four edges and four vertices. The sum of interior angles is alway
 
     {/* Parallelogram */}
     <g transform="translate(420, 100)">
-      <polygon points="20,0 100,0 80,-60 0,-60" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
-      {/* Top single chevron */}
+      <polygon points="20,0 100,0 80,-60 0,-60" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
       <g transform="translate(40, -60)">
         <polyline points="-5,-5 0,0 -5,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </g>
-      {/* Bottom single chevron */}
       <g transform="translate(60, 0)">
         <polyline points="-5,-5 0,0 -5,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </g>
-      {/* Left double chevron */}
       <g transform="translate(10, -30) rotate(71.56)">
         <polyline points="-4,-5 1,0 -4,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         <polyline points="-10,-5 -5,0 -10,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </g>
-      {/* Right double chevron */}
       <g transform="translate(90, -30) rotate(71.56)">
         <polyline points="-4,-5 1,0 -4,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         <polyline points="-10,-5 -5,0 -10,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -228,21 +222,17 @@ A polygon with four edges and four vertices. The sum of interior angles is alway
 
     {/* Rhombus */}
     <g transform="translate(620, 100)">
-      <polygon points="40,0 80,-30 40,-60 0,-30" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
-      {/* Top-Right Side single chevron */}
+      <polygon points="40,0 80,-30 40,-60 0,-30" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
       <g transform="translate(60, -45) rotate(36.87)">
         <polyline points="-5,-5 0,0 -5,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </g>
-      {/* Bottom-Left Side single chevron */}
       <g transform="translate(20, -15) rotate(36.87)">
         <polyline points="-5,-5 0,0 -5,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </g>
-      {/* Top-Left Side double chevron (closely grouped like Parallelogram) */}
       <g transform="translate(20, -45) rotate(-36.87)">
         <polyline points="-4,-5 1,0 -4,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         <polyline points="-10,-5 -5,0 -10,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </g>
-      {/* Bottom-Right Side double chevron (closely grouped like Parallelogram) */}
       <g transform="translate(60, -15) rotate(-36.87)">
         <polyline points="-4,-5 1,0 -4,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         <polyline points="-10,-5 -5,0 -10,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -253,8 +243,7 @@ A polygon with four edges and four vertices. The sum of interior angles is alway
     {/* ROW 2 */}
     {/* Trapezium */}
     <g transform="translate(100, 260)">
-      <polygon points="0,0 90,0 60,-60 20,-60" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
-      {/* Single parallel chevrons on parallel sides */}
+      <polygon points="0,0 90,0 60,-60 20,-60" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
       <g transform="translate(40, -60)">
         <polyline points="-5,-5 0,0 -5,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </g>
@@ -266,15 +255,13 @@ A polygon with four edges and four vertices. The sum of interior angles is alway
 
     {/* Isosceles Trapezium */}
     <g transform="translate(340, 260)">
-      <polygon points="0,0 100,0 75,-60 25,-60" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
-      {/* Single parallel chevrons on parallel sides */}
+      <polygon points="0,0 100,0 75,-60 25,-60" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
       <g transform="translate(50, -60)">
         <polyline points="-5,-5 0,0 -5,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </g>
       <g transform="translate(50, 0)">
         <polyline points="-5,-5 0,0 -5,5" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </g>
-      {/* Equal side notches (Flipped upside down) */}
       <line x1="8" y1="-32" x2="17" y2="-28" stroke="#4f46e5" stroke-width="2" />
       <line x1="83" y1="-28" x2="92" y2="-32" stroke="#4f46e5" stroke-width="2" />
       <text x="50" y="30" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Isosceles Trapezium</text>
@@ -282,11 +269,9 @@ A polygon with four edges and four vertices. The sum of interior angles is alway
 
     {/* Kite */}
     <g transform="translate(600, 270)">
-      <polygon points="40,0 70,-30 40,-90 10,-30" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
-      {/* Top single notches */}
+      <polygon points="40,0 70,-30 40,-90 10,-30" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
       <line x1="21" y1="-62" x2="29" y2="-58" stroke="#4f46e5" stroke-width="2" />
       <line x1="51" y1="-58" x2="59" y2="-62" stroke="#4f46e5" stroke-width="2" />
-      {/* Bottom double notches */}
       <line x1="24" y1="-10" x2="30" y2="-16" stroke="#4f46e5" stroke-width="2" />
       <line x1="20" y1="-14" x2="26" y2="-20" stroke="#4f46e5" stroke-width="2" />
       <line x1="50" y1="-16" x2="56" y2="-10" stroke="#4f46e5" stroke-width="2" />
@@ -308,14 +293,14 @@ A polygon with four edges and four vertices. The sum of interior angles is alway
 
 ## 5. Polygons
 
-A polygon is any closed 2D shape with straight sides. 
+A polygon is any closed 2D shape with straight sides.
 * **Regular Polygon:** All sides are equal in length, and all interior angles are equal.
 * **Irregular Polygon:** Sides and angles are of different sizes.
 
 | Name of Polygon | Number of Sides | Name of Polygon | Number of Sides |
 | :--- | :--- | :--- | :--- |
 | **Triangle** | 3 | **Octagon** | 8 |
-| **Quadrilateral** | 4 | **Nonagon** (Not explicitly tested, good to know) | 9 |
+| **Quadrilateral** | 4 | **Nonagon** | 9 |
 | **Pentagon** | 5 | **Decagon** | 10 |
 | **Hexagon** | 6 | | |
 
@@ -405,111 +390,143 @@ It is much easier to digest the parts of a circle when we split them into lines 
 
 ## 7. Solids (3D Shapes)
 
-Three-dimensional shapes possess volume and surface area. 
+Three-dimensional shapes possess volume and surface area. We carefully construct them mathematically including the dashed invisible back edges to show true spatial depth.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 800 300" width="100%" maxWidth="800px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
     
     {/* ROW 1 */}
+    
     {/* Cube */}
     <g transform="translate(60, 40)">
-      <rect x="0" y="20" width="50" height="50" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
-      <polygon points="0,20 20,0 70,0 50,20" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2" />
-      <polygon points="50,20 70,0 70,50 50,70" fill="#a5b4fc" stroke="#4f46e5" stroke-width="2" />
-      <line x1="50" y1="20" x2="50" y2="70" stroke="#ef4444" stroke-width="4" />
+      {/* Faces and Visible Edges */}
+      <rect x="0" y="20" width="50" height="50" fill="#e0e7ff" fill-opacity="0.8" stroke="#4f46e5" stroke-width="2" />
+      <polygon points="0,20 20,0 70,0 50,20" fill="#c7d2fe" fill-opacity="0.8" stroke="#4f46e5" stroke-width="2" />
+      <polygon points="50,20 70,0 70,50 50,70" fill="#a5b4fc" fill-opacity="0.8" stroke="#4f46e5" stroke-width="2" />
+      
+      {/* Red vertical edge */}
+      <line x1="50" y1="20" x2="50" y2="70" stroke="#ef4444" stroke-width="4" stroke-linecap="round" />
+      
+      {/* Callouts */}
       <line x1="25" y1="45" x2="-15" y2="45" stroke="#1e293b" stroke-width="1.5" />
       <text x="-20" y="49" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="end" font-family="sans-serif">Face</text>
+      
       <line x1="50" y1="20" x2="85" y2="-5" stroke="#1e293b" stroke-width="1.5" />
       <text x="90" y="-1" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">Vertex</text>
+      
       <line x1="50" y1="45" x2="85" y2="45" stroke="#1e293b" stroke-width="1.5" />
-      <text x="90" y="49" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">Edge</text>
+      <text x="90" y="49" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">Edge</text>
+
       <text x="35" y="100" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Cube</text>
+
+      {/* Invisible Back Edges */}
+      <line x1="0" y1="70" x2="20" y2="50" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+      <line x1="20" y1="50" x2="70" y2="50" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+      <line x1="20" y1="50" x2="20" y2="0" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
     </g>
 
     {/* Cuboid */}
-    <g transform="translate(250, 40)">
-      <rect x="0" y="20" width="80" height="40" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
-      <polygon points="0,20 20,0 100,0 80,20" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2" />
-      <polygon points="80,20 100,0 100,40 80,60" fill="#a5b4fc" stroke="#4f46e5" stroke-width="2" />
+    <g transform="translate(240, 40)">
+      {/* Faces and Visible Edges */}
+      <rect x="0" y="20" width="80" height="40" fill="#e0e7ff" fill-opacity="0.8" stroke="#4f46e5" stroke-width="2" />
+      <polygon points="0,20 20,0 100,0 80,20" fill="#c7d2fe" fill-opacity="0.8" stroke="#4f46e5" stroke-width="2" />
+      <polygon points="80,20 100,0 100,40 80,60" fill="#a5b4fc" fill-opacity="0.8" stroke="#4f46e5" stroke-width="2" />
+
       <text x="50" y="100" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Cuboid</text>
+
+      {/* Invisible Back Edges */}
+      <line x1="0" y1="60" x2="20" y2="40" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+      <line x1="20" y1="40" x2="100" y2="40" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+      <line x1="20" y1="40" x2="20" y2="0" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
     </g>
 
     {/* Cylinder */}
-    <g transform="translate(450, 40)">
-      <path d="M 0 15 L 0 70 A 30 12 0 0 0 60 70 L 60 15 Z" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
-      <path d="M 0 70 A 30 12 0 0 1 60 70" fill="none" stroke="#4f46e5" stroke-width="2" stroke-dasharray="3 3" />
-      <ellipse cx="30" cy="15" rx="30" ry="12" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2" />
-      <text x="30" y="100" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Cylinder</text>
+    <g transform="translate(400, 40)">
+      <path d="M 10 65 L 10 15 A 30 10 0 0 1 70 15 L 70 65 A 30 10 0 0 1 10 65 Z" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
+      <ellipse cx="40" cy="15" rx="30" ry="10" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2" />
+      <path d="M 10 65 A 30 10 0 0 0 70 65" fill="none" stroke="#4f46e5" stroke-width="2" />
+      
+      <text x="40" y="100" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Cylinder</text>
+      
+      {/* Invisible Back Edge */}
+      <path d="M 10 65 A 30 10 0 0 1 70 65" fill="none" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+    </g>
+
+    {/* Square-based Pyramid */}
+    <g transform="translate(540, 40)">
+      {/* Visible Faces */}
+      <polygon points="5,60 45,60 35,0" fill="#c7d2fe" fill-opacity="0.9" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
+      <polygon points="45,60 65,40 35,0" fill="#a5b4fc" fill-opacity="0.9" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
+      
+      <text x="35" y="100" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Pyramid</text>
+
+      {/* Invisible Back Edges */}
+      <line x1="5" y1="60" x2="25" y2="40" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+      <line x1="25" y1="40" x2="65" y2="40" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+      <line x1="25" y1="40" x2="35" y2="0" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
     </g>
 
     {/* Cone */}
-    <g transform="translate(620, 40)">
+    <g transform="translate(680, 40)">
       <path d="M 5 70 L 35 10 L 65 70" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
-      <path d="M 5 70 A 30 12 0 0 0 65 70 Z" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2" />
-      <path d="M 5 70 A 30 12 0 0 1 65 70" fill="none" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+      
+      {/* Full shaded elliptical base rather than semicircle */}
+      <ellipse cx="35" cy="70" rx="30" ry="12" fill="#c7d2fe" stroke="none" />
+      <path d="M 5 70 A 30 12 0 0 0 65 70" fill="none" stroke="#4f46e5" stroke-width="2" />
+      
       <text x="35" y="100" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Cone</text>
+
+      {/* Invisible Back Edge */}
+      <path d="M 5 70 A 30 12 0 0 1 65 70" fill="none" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
     </g>
 
     {/* ROW 2 */}
+    
     {/* Triangular Prism */}
-    <g transform="translate(60, 170)">
-      <line x1="0" y1="50" x2="30" y2="40" stroke="#4f46e5" stroke-width="2" stroke-dasharray="3 3" />
-      <line x1="30" y1="40" x2="70" y2="40" stroke="#4f46e5" stroke-width="2" stroke-dasharray="3 3" />
-      <line x1="30" y1="40" x2="50" y2="0" stroke="#4f46e5" stroke-width="2" stroke-dasharray="3 3" />
-      <polygon points="0,50 40,50 20,10" fill="#e0e7ff" fill-opacity="0.9" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
-      <line x1="20" y1="10" x2="50" y2="0" stroke="#4f46e5" stroke-width="2" />
-      <line x1="40" y1="50" x2="70" y2="40" stroke="#4f46e5" stroke-width="2" />
-      <line x1="50" y1="0" x2="70" y2="40" stroke="#4f46e5" stroke-width="2" />
-      <text x="35" y="90" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Prism</text>
+    <g transform="translate(240, 170)">
+      {/* Faces */}
+      <polygon points="0,50 40,50 20,10" fill="#e0e7ff" fill-opacity="0.9" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" /> 
+      <polygon points="40,50 70,40 50,0 20,10" fill="#c7d2fe" fill-opacity="0.9" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
+
+      <text x="35" y="90" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Triangular Prism</text>
+
+      {/* Invisible Back Edges */}
+      <line x1="0" y1="50" x2="30" y2="40" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+      <line x1="30" y1="40" x2="70" y2="40" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+      <line x1="30" y1="40" x2="50" y2="0" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
     </g>
 
-    {/* Tetrahedron */}
-    <g transform="translate(230, 170)">
-      <line x1="0" y1="50" x2="45" y2="35" stroke="#4f46e5" stroke-width="2" stroke-dasharray="3 3" />
-      <line x1="60" y1="60" x2="45" y2="35" stroke="#4f46e5" stroke-width="2" stroke-dasharray="3 3" />
-      <line x1="30" y1="0" x2="45" y2="35" stroke="#4f46e5" stroke-width="2" stroke-dasharray="3 3" />
-      <polygon points="0,50 60,60 30,0" fill="#e0e7ff" fill-opacity="0.9" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
-      <line x1="0" y1="50" x2="30" y2="0" stroke="#4f46e5" stroke-width="2" />
-      <line x1="60" y1="60" x2="30" y2="0" stroke="#4f46e5" stroke-width="2" />
-      <text x="30" y="90" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Tetrahedron</text>
+    {/* Sphere */}
+    <g transform="translate(400, 150)">
+      <circle cx="40" cy="50" r="40" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
+      <path d="M 0 50 A 40 15 0 0 0 80 50" fill="none" stroke="#4f46e5" stroke-width="2" />
+
+      <text x="40" y="110" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Sphere</text>
+
+      {/* Invisible Back Edge */}
+      <path d="M 0 50 A 40 15 0 0 1 80 50" fill="none" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
     </g>
 
-    {/* Pyramid */}
-    <g transform="translate(380, 170)">
-      <polyline points="0,50 30,35 70,35" fill="none" stroke="#4f46e5" stroke-width="2" stroke-dasharray="3 3" />
-      <line x1="30" y1="35" x2="35" y2="0" stroke="#4f46e5" stroke-width="2" stroke-dasharray="3 3" />
-      <polygon points="0,50 40,65 70,35 35,0" fill="#e0e7ff" fill-opacity="0.9" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
-      <line x1="40" y1="65" x2="35" y2="0" stroke="#4f46e5" stroke-width="2" />
-      <text x="35" y="90" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Pyramid</text>
-    </g>
+    {/* Hemisphere */}
+    <g transform="translate(540, 150)">
+      <path d="M 0 50 A 40 40 0 0 0 80 50" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
+      
+      {/* Full shaded visible ellipse instead of split paths/dashed line */}
+      <ellipse cx="40" cy="50" rx="40" ry="12" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2" />
 
-    {/* Sphere & Hemisphere */}
-    <g transform="translate(530, 170)">
-      <circle cx="35" cy="35" r="35" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
-      <ellipse cx="35" cy="35" rx="35" ry="10" fill="none" stroke="#4f46e5" stroke-width="1.5" stroke-dasharray="4 4" />
-      <path d="M 0 35 A 35 10 0 0 0 70 35" fill="none" stroke="#4f46e5" stroke-width="2" />
-      <text x="35" y="100" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Sphere</text>
+      <text x="40" y="110" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Hemisphere</text>
     </g>
-
-    <g transform="translate(680, 170)">
-      <path d="M 0 35 A 35 35 0 0 0 70 35" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2" />
-      <ellipse cx="35" cy="35" rx="35" ry="10" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
-      <path d="M 0 35 A 35 10 0 0 1 70 35" fill="none" stroke="#4f46e5" stroke-width="1.5" stroke-dasharray="4 4" />
-      <text x="35" y="100" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Hemisphere</text>
-    </g>
-
   </svg>
 </div>
 
 * **Face:** A flat 2D surface on a solid object.
-* **Edge:** The straight line segment where two faces meet.
+* **Edge:** The straight line segment where two faces meet. 
 * **Vertex:** The corner point where edges meet.
-* **Cube:** 6 identical square faces. All edges are equal.
+* **Cube:** 6 identical square faces. All edges are equal. 
 * **Cuboid:** 6 rectangular faces (a 3D rectangle/box).
-* **Prism:** A solid with the exact same cross-section all the way through its length (e.g., a Toblerone bar is a triangular prism).
-* **Cylinder:** A specific type of prism with a circular cross-section.
-* **Pyramid:** A base with straight triangular faces that meet at a single top point (apex).
-* **Tetrahedron:** A specific pyramid with a triangular base (4 triangular faces in total).
+* **Prism:** A solid with the exact same cross-section all the way through its length (e.g., a Toblerone box is a triangular prism).
+* **Cylinder:** A prism with a circular cross-section.
+* **Pyramid:** A solid with a polygon base, whose faces are triangles that meet at a single point (apex). 
 * **Cone:** A circular base tapering smoothly to a single point (apex).
 * **Sphere:** A perfectly round 3D object (like a ball). Every point on the surface is an equal distance from the centre.
 * **Hemisphere:** Exactly half of a sphere.
@@ -520,14 +537,229 @@ A **frustum** is the portion of a cone or pyramid that remains after its top (ap
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 300 200" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
     {/* Dotted top cone (removed part) */}
-    <path d="M 150 20 L 110 80 A 40 10 0 0 0 190 80 Z" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <path d="M 150 20 L 110 80" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <path d="M 150 20 L 190 80" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
     <ellipse cx="150" cy="80" rx="40" ry="10" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
     
     {/* Frustum (Remaining part) */}
-    <path d="M 110 80 L 70 160 A 80 20 0 0 0 230 160 L 190 80 A 40 10 0 0 1 110 80 Z" fill="#fed7aa" stroke="#ea580c" stroke-width="2" />
-    <ellipse cx="150" cy="160" rx="80" ry="20" fill="none" stroke="#ea580c" stroke-width="2" />
-    <ellipse cx="150" cy="80" rx="40" ry="10" fill="#ffedd5" stroke="#ea580c" stroke-width="2" />
+    <path d="M 110 80 L 70 160 A 80 20 0 0 0 230 160 L 190 80 A 40 10 0 0 1 110 80 Z" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2" />
+    <ellipse cx="150" cy="80" rx="40" ry="10" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2" />
     
-    <text x="150" y="140" font-size="14" font-weight="bold" fill="#9a3412" text-anchor="middle" font-family="sans-serif">Frustum</text>
+    <path d="M 70 160 A 80 20 0 0 1 230 160" fill="none" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+    
+    <text x="150" y="190" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Frustum of a Cone</text>
   </svg>
 </div>
+
+---
+
+## 8. Practice Problems
+
+<Tabs>
+  <TabItem label="📝 Question 1: Classifying Angles">
+    Identify the type of angle represented by each of the following measurements:
+    
+    a) $89^\circ$
+    
+    b) $181^\circ$
+    
+    c) $90^\circ$
+    
+    d) $145^\circ$
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+    <Steps>
+      1. The angle is strictly less than $90^\circ$.
+      2. **Answer:** Acute angle.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The angle is greater than $180^\circ$ but less than $360^\circ$.
+      2. **Answer:** Reflex angle.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The angle is exactly $90^\circ$.
+      2. **Answer:** Right angle.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. The angle is greater than $90^\circ$ but less than $180^\circ$.
+      2. **Answer:** Obtuse angle.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 2: Triangle Properties">
+    A triangle has interior angles measuring $40^\circ$ and $100^\circ$.
+    
+    a) Calculate the size of the third interior angle.
+    
+    b) State the specific mathematical name for this type of triangle based on its angles and sides.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+    <Steps>
+      1. The sum of interior angles in a triangle is exactly $180^\circ$.
+      2. Sum of given angles = $40^\circ + 100^\circ = 140^\circ$.
+      3. Third angle = $180^\circ - 140^\circ$.
+      4. **Answer:** $40^\circ$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The interior angles are $40^\circ$, $40^\circ$, and $100^\circ$.
+      2. Since two angles are identical ($40^\circ$), it must have two sides of equal length.
+      3. **Answer:** Isosceles triangle.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Parts of a Circle">
+    Look at the circle described below.
+    A straight line segment connects point $P$ on the circumference to point $Q$ on the circumference. The line segment does *not* pass through the centre.
+    
+    a) What is the mathematical name for the line segment $PQ$?
+    
+    b) What is the mathematical name for the region enclosed by the line segment $PQ$ and the minor arc $PQ$?
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+    <Steps>
+      1. A line connecting two points on the circumference is a chord.
+      2. **Answer:** Chord.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The region bounded by a chord and an arc is called a segment.
+      2. **Answer:** Minor segment.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 4: Quadrilateral Deductions">
+    A mystery quadrilateral has the following properties:
+    - All four sides are equal in length.
+    - Opposite angles are equal.
+    - Its diagonals intersect at a exactly $90^\circ$ angle.
+    - Its interior angles are *not* $90^\circ$.
+    
+    Identify the name of this quadrilateral.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+      1. Four equal sides means it must be a square or a rhombus.
+      2. The interior angles are *not* $90^\circ$, so it cannot be a square.
+      3. **Answer:** Rhombus.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Understanding Regular Polygons">
+    A regular polygon has $8$ sides.
+    
+    a) What is the mathematical name for this polygon?
+    
+    b) What does the word "regular" tell you about the lengths of its sides and sizes of its interior angles?
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. An 8-sided polygon is an octagon.
+      2. **Answer:** Octagon.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The defining property of a regular polygon is uniformity.
+      2. **Answer:** All 8 sides are equal in length, and all 8 interior angles are equal in size.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: 3D Solids Properties">
+    Determine the number of faces, edges, and vertices for a cube.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 200 200" width="100%" maxWidth="200px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <g transform="translate(50, 50)">
+          {/* Dashed back edges */}
+          <line x1="0" y1="80" x2="30" y2="50" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+          <line x1="30" y1="50" x2="110" y2="50" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+          <line x1="30" y1="50" x2="30" y2="-30" stroke="#4f46e5" stroke-width="2" stroke-dasharray="4 4" />
+          
+          <polyline points="30,-30 110,-30 110,50" fill="none" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
+          <line x1="0" y1="0" x2="30" y2="-30" stroke="#4f46e5" stroke-width="2" />
+          <line x1="80" y1="0" x2="110" y2="-30" stroke="#4f46e5" stroke-width="2" />
+          <line x1="80" y1="80" x2="110" y2="50" stroke="#4f46e5" stroke-width="2" />
+          
+          <rect x="0" y="0" width="80" height="80" fill="#e0e7ff" fill-opacity="0.8" stroke="#4f46e5" stroke-width="2" />
+          <polygon points="0,0 30,-30 110,-30 80,0" fill="#c7d2fe" fill-opacity="0.8" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
+          <polygon points="80,0 110,-30 110,50 80,80" fill="#a5b4fc" fill-opacity="0.8" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round" />
+        </g>
+      </svg>
+    </div>
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+      1. **Faces:** A cube has a top, bottom, front, back, left, and right face. ($6$ faces).
+      2. **Edges:** $4$ on the top base, $4$ on the bottom base, and $4$ vertical uprights. ($12$ edges).
+      3. **Vertices:** $4$ corners on the top face and $4$ corners on the bottom face. ($8$ vertices).
+      4. **Answer:** $6$ faces, $12$ edges, $8$ vertices.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Identifying Prisms">
+    Which of the following solids is classified as a prism?
+    
+    A) Cone  
+    B) Hemisphere  
+    C) Cylinder  
+    D) Square-based Pyramid  
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+      1. A prism is a solid that maintains the exact same cross-section all the way through its length.
+      2. A cone tapers to a point, so the cross-section changes size.
+      3. A hemisphere's circular cross-section gets smaller as you move from the base to the top.
+      4. A pyramid tapers to an apex.
+      5. A cylinder maintains a constant circular cross-section throughout its entire height.
+      6. **Answer:** C) Cylinder.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Geometric Slicing (The Frustum)">
+    A solid cone has its top portion sliced off by a plane that cuts horizontally, parallel to its circular base. 
+    
+    a) What is the mathematical name for the newly created bottom solid?
+    
+    b) Describe the shape of the newly exposed top face of this remaining solid.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+    <Steps>
+      1. Slicing the apex off a cone or pyramid parallel to the base creates a frustum.
+      2. **Answer:** Frustum (or Frustum of a cone).
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Because the slicing plane was perfectly parallel to the circular base, the new cross-section remains the same 2D shape, just smaller.
+      2. **Answer:** It is a circle.
+    </Steps>
+  </TabItem>
+</Tabs>

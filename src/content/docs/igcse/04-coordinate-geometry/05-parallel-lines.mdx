@@ -5,7 +5,47 @@ description: Learn how to find the gradient and equation of a straight line that
 
 When two straight lines are **parallel**, they travel in the exact same direction and will never intersect, no matter how far you extend them. 
 
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid Lines */}
+    <g stroke="#e2e8f0" stroke-width="1">
+      {Array.from({ length: 16 }, (_, i) => (
+        <g key={i}>
+          <line x1="0" y1={i * 20} x2="400" y2={i * 20} />
+          <line x1={i * 20} y1="0" x2={i * 20} y2="300" />
+        </g>
+      ))}
+    </g>
+    {/* Axes */}
+    <g stroke="#94a3b8" stroke-width="2">
+      <line x1="20" y1="260" x2="380" y2="260" />
+      <polygon points="372,256 380,260 372,264" fill="#94a3b8" stroke-width="0" />
+      <line x1="40" y1="280" x2="40" y2="20" />
+      <polygon points="36,28 40,20 44,28" fill="#94a3b8" stroke-width="0" />
+    </g>
+    <text x="375" y="250" font-size="12" fill="#64748b" font-style="italic">x</text>
+    <text x="50" y="30" font-size="12" fill="#64748b" font-style="italic">y</text>
 
+    {/* Line 1: y = 2x + 2 */}
+    <line x1="20" y1="260" x2="130" y2="40" stroke="#3b82f6" stroke-width="4" />
+    <text x="110" y="30" font-size="14" font-weight="bold" fill="#2563eb">y = 2x + 2</text>
+
+    {/* Line 2: y = 2x - 4 */}
+    <line x1="80" y1="300" x2="210" y2="40" stroke="#10b981" stroke-width="4" />
+    <text x="190" y="30" font-size="14" font-weight="bold" fill="#059669">y = 2x - 4</text>
+    
+    {/* Gradient Triangles */}
+    <g stroke-dasharray="4 4" stroke-width="2">
+      <line x1="60" y1="180" x2="80" y2="180" stroke="#f59e0b" />
+      <line x1="80" y1="180" x2="80" y2="140" stroke="#ef4444" />
+      <text x="35" y="165" font-size="12" font-weight="bold" fill="#b91c1c">m = 2</text>
+      
+      <line x1="140" y1="180" x2="160" y2="180" stroke="#f59e0b" />
+      <line x1="160" y1="180" x2="160" y2="140" stroke="#ef4444" />
+      <text x="170" y="165" font-size="12" font-weight="bold" fill="#b91c1c">m = 2</text>
+    </g>
+  </svg>
+</div>
 
 In coordinate geometry, this translates to one very simple, golden rule:
 **Parallel lines have the exact same gradient ($m$).**
@@ -110,123 +150,409 @@ If you remember the **point-gradient formula** ($y - y_1 = m(x - x_1)$), finding
 
 <Tabs>
   <TabItem label="📝 Question 1: Basic Parallel Line">
-    Find the equation of the line parallel to $y = 2x + 5$ that passes through the point $(3, 10)$. Give your answer in the form $y = mx + c$.
+    Find the equation of the line that is parallel to $y = 3x - 2$ and passes through the point $(2, 5)$.
+    
+    a) State the gradient of the original line.
+    
+    b) Write down the gradient of the new parallel line.
+    
+    c) Substitute the new gradient and the point $(2, 5)$ into $y = mx + c$ to find the $y$-intercept.
+    
+    d) Write the final equation of the parallel line.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    Step 1: The original gradient is $2$.
-    Step 2: The new line has $m = 2$.
-    Step 3: Substitute $m = 2$, $x = 3$, and $y = 10$ into $y = mx + c$.
-    $$
-    \begin{aligned}
-    10 &= (2)(3) + c \\
-    10 &= 6 + c \\
-    c &= 4
-    \end{aligned}
-    $$
-    
-    **Answer:** $\boldsymbol{y = 2x + 4}$
+    **a)**
+    <Steps>
+      1. The equation is in the form $y = mx + c$.
+      2. Looking at $y = 3x - 2$, the gradient is the coefficient of $x$.
+      3. **Original gradient = 3**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Parallel lines have identical gradients.
+      2. **New gradient ($m$) = 3**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Use $y = mx + c$ and substitute $m = 3$, $x = 2$, and $y = 5$.
+      2. $5 = (3)(2) + c$
+      3. $5 = 6 + c$
+      4. **$c = -1$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Substitute $m = 3$ and $c = -1$ into the general equation.
+      2. **Answer:** $\boldsymbol{y = 3x - 1}$
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding the equation of a parallel line given a y=mx+c equation and a coordinate point" />
+<SmartAIGenerator topic="Finding the equation of a parallel line given a y=mx+c equation and a positive coordinate point" />
 
 <Tabs>
-  <TabItem label="📝 Question 2: Negative Fractional Gradient">
-    Find the equation of the line parallel to $y = -\frac{1}{2}x - 4$ that passes through $(-4, 5)$.
+  <TabItem label="📝 Question 2: Negative Gradient">
+    Find the equation of the line that is parallel to $y = -2x + 7$ and passes through the point $(-1, 4)$.
+    
+    a) State the gradient of the parallel line.
+    
+    b) Substitute the gradient and point into $y = mx + c$.
+    
+    c) Solve for the new $y$-intercept.
+    
+    d) State the final equation of the line.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    The new gradient is $m = -\frac{1}{2}$.
-    Substitute $x = -4$ and $y = 5$:
-    $$
-    \begin{aligned}
-    5 &= \left(-\frac{1}{2}\right)(-4) + c \\
-    5 &= 2 + c \\
-    c &= 3
-    \end{aligned}
-    $$
-    
-    **Answer:** $\boldsymbol{y = -\frac{1}{2}x + 3}$
+    **a)**
+    <Steps>
+      1. The original gradient is $-2$.
+      2. **New gradient ($m$) = -2**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Substitute $m = -2$, $x = -1$, and $y = 4$ into $y = mx + c$.
+      2. **$4 = (-2)(-1) + c$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Simplify the multiplication: $4 = 2 + c$.
+      2. Subtract $2$ from both sides.
+      3. **$c = 2$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Combine the calculated $m$ and $c$.
+      2. **Answer:** $\boldsymbol{y = -2x + 2}$
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding the equation of a parallel line with fractional or negative gradients" />
+<SmartAIGenerator topic="Finding the equation of a parallel line with a negative gradient" />
 
 <Tabs>
-  <TabItem label="📝 Question 3: Rearranging First (Extended)">
-    Find the equation of the line that passes through $(6, -2)$ and is parallel to the line $x + 3y = 9$. Write your final equation in the form $y = mx + c$.
+  <TabItem label="📝 Question 3: Fractional Gradient">
+    Find the equation of the line that is parallel to $y = \frac{3}{4}x - 1$ and passes through the point $(8, -2)$.
+    
+    a) Identify the gradient of the parallel line.
+    
+    b) Calculate the new $y$-intercept by substituting the known values.
+    
+    c) Write the final equation.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    Step 1: Rearrange the original equation to find its gradient.
-    $$
-    \begin{aligned}
-    3y &= -x + 9 \\
-    y &= -\frac{1}{3}x + 3
-    \end{aligned}
-    $$
-    The gradient is $m = -\frac{1}{3}$.
-    
-    Step 2: Substitute $m = -\frac{1}{3}$ and the point $(6, -2)$ into $y = mx + c$.
-    $$
-    \begin{aligned}
-    -2 &= \left(-\frac{1}{3}\right)(6) + c \\
-    -2 &= -2 + c \\
-    c &= 0
-    \end{aligned}
-    $$
-    
-    **Answer:** $\boldsymbol{y = -\frac{1}{3}x}$ *(Note: Since $c=0$, you do not need to write $+ 0$)*.
+    **a)**
+    <Steps>
+      1. The original gradient is $\frac{3}{4}$.
+      2. **New gradient ($m$) = $\frac{3}{4}$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Substitute $m = \frac{3}{4}$, $x = 8$, and $y = -2$ into $y = mx + c$.
+      2. $-2 = \left(\frac{3}{4}\right)(8) + c$
+      3. $-2 = 6 + c$
+      4. **$c = -8$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Put the equation together.
+      2. **Answer:** $\boldsymbol{y = \frac{3}{4}x - 8}$
+    </Steps>
   </TabItem>
 </Tabs>
 
+<SmartAIGenerator topic="Finding the equation of a parallel line with a fractional gradient" />
+
 <Tabs>
-  <TabItem label="📝 Question 4: The General Form Shortcut">
-    A line is parallel to $5x - 4y = 20$ and passes through the point $(2, -3)$. Use the general form shortcut to find its equation in the form $ax + by = k$.
+  <TabItem label="📝 Question 4: Rearranging First">
+    Find the equation of the line that is parallel to $2x + 5y = 10$ and passes through the point $(5, 3)$. Give your answer in the form $y = mx + c$.
+    
+    a) Rearrange the original equation to make $y$ the subject.
+    
+    b) State the gradient of the parallel line.
+    
+    c) Calculate the $y$-intercept of the new line.
+    
+    d) Write the final equation.
   </TabItem>
   <TabItem label="✅ Solution 4">
-    Because the lines are parallel, we can keep the $x$ and $y$ terms identical. The new equation will take the form:
-    $$5x - 4y = k$$
+    **a)**
+    <Steps>
+      1. Start with $2x + 5y = 10$.
+      2. Subtract $2x$ from both sides: $5y = -2x + 10$.
+      3. Divide by $5$: **$y = -\frac{2}{5}x + 2$**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Read the gradient from the rearranged equation.
+      2. **New gradient ($m$) = $-\frac{2}{5}$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Substitute $m = -\frac{2}{5}$, $x = 5$, and $y = 3$ into $y = mx + c$.
+      2. $3 = \left(-\frac{2}{5}\right)(5) + c$
+      3. $3 = -2 + c$
+      4. **$c = 5$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Combine to form the equation.
+      2. **Answer:** $\boldsymbol{y = -\frac{2}{5}x + 5}$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the equation of a parallel line after rearranging the original equation" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: General Form Shortcut">
+    A line is parallel to $3x - 4y = 12$ and passes through the point $(2, -1)$. Use the general form shortcut to find its equation in the form $ax + by = k$.
     
-    Substitute the coordinates $x = 2$ and $y = -3$ to find $k$:
-    $$
-    \begin{aligned}
-    5(2) - 4(-3) &= k \\
-    10 + 12 &= k \\
-    22 &= k
-    \end{aligned}
-    $$
+    a) State the initial setup for the new equation using the shortcut.
     
-    **Answer:** $\boldsymbol{5x - 4y = 22}$
+    b) Substitute the coordinate point $(2, -1)$ to find $k$.
+    
+    c) State the final equation.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. Parallel lines share the same $x$ and $y$ coefficients in the general form.
+      2. **New equation setup: $3x - 4y = k$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Substitute $x = 2$ and $y = -1$.
+      2. $3(2) - 4(-1) = k$
+      3. $6 + 4 = k$
+      4. **$k = 10$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Write the completed equation.
+      2. **Answer:** $\boldsymbol{3x - 4y = 10}$
+    </Steps>
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Finding the equation of a parallel line using the general form ax+by=c shortcut" />
 
 <Tabs>
-  <TabItem label="📝 Question 5: Point-Gradient Form">
-    Find the equation of the line parallel to $y = -3x + 4$ that passes through $(-1, 6)$. Build the equation using the point-gradient form, then simplify it to $y = mx + c$.
+  <TabItem label="📝 Question 6: Visualizing Parallel Lines">
+    The graph below displays a solid blue line $L_1$ with the equation $y = 2x + 1$. We want to find the equation of a new dashed line $L_2$ that is parallel to $L_1$ and passes through the point $P(1, -2)$.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 300 300" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* Grid */}
+        <g stroke="#e2e8f0" stroke-width="1">
+          {Array.from({ length: 15 }, (_, i) => (
+            <g key={i}>
+              <line x1="0" y1={10 + i*20} x2="300" y2={10 + i*20} />
+              <line x1={10 + i*20} y1="0" x2={10 + i*20} y2="300" />
+            </g>
+          ))}
+        </g>
+        {/* Axes: Origin at x=150, y=150 */}
+        <g stroke="#94a3b8" stroke-width="2">
+          <line x1="10" y1="150" x2="290" y2="150" /> 
+          <line x1="150" y1="10" x2="150" y2="290" /> 
+        </g>
+        <text x="280" y="140" font-size="12" fill="#64748b" font-style="italic">x</text>
+        <text x="160" y="20" font-size="12" fill="#64748b" font-style="italic">y</text>
+        
+        {/* L1: y = 2x + 1 (Passes through (0, 1) -> (150, 130) and (-2, -3) -> (110, 210) ) */}
+        <line x1="110" y1="230" x2="190" y2="70" stroke="#3b82f6" stroke-width="3" />
+        <text x="175" y="65" font-size="12" font-weight="bold" fill="#2563eb">L₁</text>
+
+        {/* L2 (Dashed): y = 2x - 4 (Passes through (0, -4) -> (150, 230) and (2, 0) -> (190, 150) ) */}
+        <line x1="130" y1="270" x2="210" y2="110" stroke="#10b981" stroke-width="3" stroke-dasharray="6 6" />
+        <text x="215" y="105" font-size="12" font-weight="bold" fill="#059669">L₂</text>
+
+        {/* Point P (1, -2) -> Graph coords: x=150+20(1)=170, y=150-20(2)=190 */}
+        <circle cx="170" cy="190" r="5" fill="#8b5cf6" />
+        <text x="180" y="195" font-size="12" font-weight="bold" fill="#6d28d9">P (1, -2)</text>
+      </svg>
+    </div>
+
+    a) What is the gradient of line $L_1$?
+    
+    b) What must the gradient of line $L_2$ be?
+    
+    c) Using the gradient and the point $P(1, -2)$, find the equation of line $L_2$.
   </TabItem>
-  <TabItem label="✅ Solution 5">
-    Step 1: The original gradient is $-3$, so the new gradient is $m = -3$.
-    
-    Step 2: Substitute $m = -3$ and the point $(-1, 6)$ into $y - y_1 = m(x - x_1)$.
-    $$
-    \begin{aligned}
-    y - 6 &= -3(x - (-1)) \\
-    y - 6 &= -3(x + 1)
-    \end{aligned}
-    $$
-    
-    Step 3: Expand the bracket and make $y$ the subject.
-    $$
-    \begin{aligned}
-    y - 6 &= -3x - 3 \\
-    y &= -3x - 3 + 6 \\
-    y &= -3x + 3
-    \end{aligned}
-    $$
-    
-    **Answer:** $\boldsymbol{y = -3x + 3}$
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. Read the gradient from the equation of $L_1$: $y = 2x + 1$.
+      2. **Gradient of $L_1$ = 2**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Since $L_2$ is parallel to $L_1$, they have the same gradient.
+      2. **Gradient of $L_2$ = 2**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Substitute $m = 2$ and the point $(1, -2)$ into $y = mx + c$.
+      2. $-2 = (2)(1) + c$
+      3. $-2 = 2 + c$
+      4. $c = -4$
+      5. **Answer:** $\boldsymbol{y = 2x - 4}$
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding the equation of a parallel line using the point-gradient formula" />
+<SmartAIGenerator topic="Finding the equation of a parallel line from a graph" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Parallel to a Horizontal Line">
+    Find the equation of the line that is parallel to the line $y = 4$ and passes through the point $(3, -2)$.
+    
+    a) Identify the characteristic of the line $y = 4$.
+    
+    b) Determine the gradient of a line parallel to $y = 4$.
+    
+    c) State the equation of the new parallel line.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. The equation $y = 4$ has no $x$ term.
+      2. **It is a horizontal line.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. All horizontal lines have a gradient of zero.
+      2. **New gradient ($m$) = 0**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. A line parallel to a horizontal line must also be a horizontal line.
+      2. Horizontal lines take the form $y = c$, where $c$ is the $y$-coordinate of any point it passes through.
+      3. Since it passes through $(3, -2)$, the $y$-coordinate is always $-2$.
+      4. **Answer:** $\boldsymbol{y = -2}$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the equation of a line parallel to horizontal or vertical lines" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Parallel to a Vertical Line">
+    Find the equation of the line that is parallel to the line $x = -5$ and passes through the point $(7, 10)$.
+    
+    a) Identify the characteristic of the line $x = -5$.
+    
+    b) Determine the general form for a line parallel to $x = -5$.
+    
+    c) State the equation of the new parallel line.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+    <Steps>
+      1. The equation $x = -5$ has no $y$ term.
+      2. **It is a vertical line.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. A line parallel to a vertical line must also be a vertical line.
+      2. **All vertical lines take the form $x = k$.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The new line passes through $(7, 10)$. Its $x$-coordinate is always $7$.
+      2. **Answer:** $\boldsymbol{x = 7}$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the equation of a line parallel to vertical lines" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Finding an Equation from Two Given Points">
+    Line $A$ passes through the points $(1, 2)$ and $(4, 11)$. Find the equation of line $B$, which is parallel to Line $A$ and passes through the point $(0, -5)$.
+    
+    a) Calculate the gradient of Line $A$.
+    
+    b) What is the $y$-intercept of Line $B$?
+    
+    c) Write the final equation for Line $B$.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)**
+    <Steps>
+      1. Use the gradient formula: $m = \frac{y_2 - y_1}{x_2 - x_1}$.
+      2. $m = \frac{11 - 2}{4 - 1}$
+      3. $m = \frac{9}{3}$
+      4. **Gradient of Line $A$ ($m$) = $3$.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Line $B$ passes through $(0, -5)$. Since the $x$-coordinate is $0$, this is the $y$-intercept.
+      2. **$c = -5$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Line $B$ has the same gradient as Line $A$ ($m = 3$) and crosses the $y$-axis at $-5$.
+      2. **Answer:** $\boldsymbol{y = 3x - 5}$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the equation of a parallel line from two given points" />
+
+<Tabs>
+  <TabItem label="📝 Question 10: The Geometry Problem">
+    A parallelogram $ABCD$ has side $AB$ on the line with equation $y = \frac{1}{2}x + 3$. The vertex $C$ is at the coordinates $(6, 1)$. Find the equation of the line that passes through the side $CD$.
+    
+    a) Identify the relationship between side $AB$ and side $CD$.
+    
+    b) State the gradient of the line passing through $CD$.
+    
+    c) Find the equation of the line passing through $CD$ in $y = mx + c$ form.
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    **a)**
+    <Steps>
+      1. In a parallelogram, opposite sides are parallel.
+      2. **Side $CD$ is parallel to side $AB$.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The equation of $AB$ is $y = \frac{1}{2}x + 3$, so its gradient is $\frac{1}{2}$.
+      2. Since $CD$ is parallel, its gradient is identical.
+      3. **Gradient of $CD$ ($m$) = $\frac{1}{2}$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Side $CD$ passes through point $C(6, 1)$. Substitute $m = \frac{1}{2}$, $x = 6$, and $y = 1$ into $y = mx + c$.
+      2. $1 = (\frac{1}{2})(6) + c$
+      3. $1 = 3 + c$
+      4. $c = -2$
+      5. **Answer:** $\boldsymbol{y = \frac{1}{2}x - 2}$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding equations of parallel lines in geometric shapes like parallelograms" />
