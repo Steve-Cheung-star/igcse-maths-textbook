@@ -155,51 +155,308 @@ The new function would be $y = f(x + 5) + 2$.
 ## 4. Practice Problems
 
 <Tabs>
-  <TabItem label="📝 Question 1: Finding the Equation">
-    The graph of $y = f(x)$ is translated down by 7 units to form the graph of $y = g(x)$. 
-    Write down $g(x)$ in terms of $f(x)$.
+  <TabItem label="📝 Question 1: Basic Function Notation">
+    Consider a base function $y = f(x)$.
+    
+    a) Describe the geometric translation represented by $y = f(x) + 8$.
+
+    b) Describe the geometric translation represented by $y = f(x - 3)$.
+
+    c) Write down the new function, in terms of $f(x)$, if the graph is shifted down by $5$ units.
+
+    d) Write down the new function, in terms of $f(x)$, if the graph is shifted left by $2$ units.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    A downward shift is a vertical translation. We subtract from the outside of the function.
-    
-    **Answer:** $g(x) = f(x) - 7$
+    **a)**
+    <Steps>
+      1. A number added on the outside of the function is a vertical shift.
+      2. It is a translation **up by $8$ units**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. A subtracted number on the inside of the function is a horizontal shift in the positive direction.
+      2. It is a translation **right by $3$ units**.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. A downward shift requires subtracting from the outside of the function.
+      2. **$y = f(x) - 5$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. A leftward shift requires adding to the inside of the function brackets.
+      2. **$y = f(x + 2)$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Writing basic vertical and horizontal translation equations in function notation" />
+<SmartAIGenerator topic="Identifying basic geometric shifts from functional notation" />
 
 <Tabs>
-  <TabItem label="📝 Question 2: Applying a Vector">
-    The graph of $y = x^2$ is mapped onto the graph of $y = g(x)$ by a translation with the vector $\begin{pmatrix} 3 \\ -1 \end{pmatrix}$. 
-    Find $g(x)$ in terms of $x$.
+  <TabItem label="📝 Question 2: Applying Vectors">
+    The base graph $f(x) = x^2$ is mapped onto a new function $g(x)$ by a specific translation vector. Find the expression for $g(x)$ if the vector is:
+    
+    a) $\begin{pmatrix} 6 \\ 0 \end{pmatrix}$
+
+    b) $\begin{pmatrix} 0 \\ -4 \end{pmatrix}$
+
+    c) $\begin{pmatrix} -2 \\ 7 \end{pmatrix}$
+
+    d) Expand and simplify your answer from part (c) into the form $ax^2 + bx + c$.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    The vector $\begin{pmatrix} 3 \\ -1 \end{pmatrix}$ means:
-    * Shift right by 3 units (horizontal).
-    * Shift down by 1 unit (vertical).
-    
-    Start with $f(x) = x^2$.
-    * Horizontal shift right by 3 means replacing $x$ with $(x - 3)$. This gives $(x - 3)^2$.
-    * Vertical shift down by 1 means subtracting 1 at the end. This gives $(x - 3)^2 - 1$.
-    
-    **Answer:** $g(x) = (x - 3)^2 - 1$
+    **a)**
+    <Steps>
+      1. $\begin{pmatrix} 6 \\ 0 \end{pmatrix}$ means right $6$ and up $0$.
+      2. Inside the bracket, we subtract $6$.
+      3. **$g(x) = (x - 6)^2$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. $\begin{pmatrix} 0 \\ -4 \end{pmatrix}$ means right $0$ and down $4$.
+      2. Outside the bracket, we subtract $4$.
+      3. **$g(x) = x^2 - 4$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. $\begin{pmatrix} -2 \\ 7 \end{pmatrix}$ means left $2$ and up $7$.
+      2. Inside we add $2$, outside we add $7$.
+      3. **$g(x) = (x + 2)^2 + 7$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Start with $g(x) = (x + 2)^2 + 7$.
+      2. Expand the squared bracket: $(x + 2)(x + 2) = x^2 + 4x + 4$.
+      3. Add the $7$: $x^2 + 4x + 4 + 7$.
+      4. **$g(x) = x^2 + 4x + 11$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Applying translation column vectors to algebraic functions to find a new equation" />
+<SmartAIGenerator topic="Applying horizontal and vertical translation column vectors to quadratic functions" />
 
 <Tabs>
   <TabItem label="📝 Question 3: Finding the Vector">
-    The function $f(x) = \frac{1}{x}$ is translated to become $g(x) = \frac{1}{x + 6} + 4$. 
-    Write down the column vector that represents this translation.
+    For each pair of functions below, write down the column vector $\begin{pmatrix} p \\ q \end{pmatrix}$ that translates $f(x)$ onto the new function.
+    
+    a) $f(x) = 3^x$ translates to $g(x) = 3^x + 9$.
+
+    b) $f(x) = \cos(x)$ translates to $h(x) = \cos(x - 45^\circ)$.
+
+    c) $f(x) = \frac{1}{x}$ translates to $j(x) = \frac{1}{x + 5} - 2$.
+
+    d) Briefly explain why the top number of your vector in part (c) is negative.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    Let's break down the changes from $f(x)$ to $g(x)$:
-    * The denominator changed from $x$ to $x + 6$. Because it's a $+6$ on the *inside* of the fraction, this is a shift to the **LEFT** by 6 units. The horizontal vector component is $-6$.
-    * There is a $+ 4$ added to the *outside* of the fraction. This is a shift **UP** by 4 units. The vertical vector component is $4$.
-    
-    **Answer:** The translation vector is $\begin{pmatrix} -6 \\ 4 \end{pmatrix}$.
+    **a)**
+    <Steps>
+      1. The $+9$ is outside the power, meaning it's a vertical shift up by $9$. There is no horizontal shift.
+      2. Vector is **$\begin{pmatrix} 0 \\ 9 \end{pmatrix}$**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The $-45^\circ$ is inside the bracket, meaning a shift right by $45^\circ$. There is no vertical shift.
+      2. Vector is **$\begin{pmatrix} 45 \\ 0 \end{pmatrix}$**.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The $+5$ is inside the denominator, meaning a shift left by $5$ (so $-5$).
+      2. The $-2$ is outside, meaning a shift down by $2$ (so $-2$).
+      3. Vector is **$\begin{pmatrix} -5 \\ -2 \end{pmatrix}$**.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. The top number represents horizontal movement.
+      2. **Adding $5$ inside the function shifts the graph in the negative direction (left)**, therefore the vector requires a $-5$ to represent this leftward movement.
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Identifying the column vector of a translation by comparing two algebraic functions" />
+<SmartAIGenerator topic="Identifying column vectors from translated exponential, trigonometric, and rational functions" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Vertex Movement">
+    The base quadratic $f(x) = x^2$ has its vertex at $(0, 0)$. It is translated to become $g(x) = (x - 8)^2 + 3$.
+    
+    a) State the coordinates of the vertex of $g(x)$.
+
+    b) Write down the translation vector that maps $f(x)$ onto $g(x)$.
+
+    c) The graph of $g(x)$ is further translated by the vector $\begin{pmatrix} -4 \\ -5 \end{pmatrix}$ to become $h(x)$. Find the coordinates of the vertex of $h(x)$.
+
+    d) Write the algebraic equation for $h(x)$ in vertex form.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+    <Steps>
+      1. The equation shows a shift right by $8$ and up by $3$.
+      2. The new vertex is **$(8, 3)$**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Horizontal shift is $+8$, vertical shift is $+3$.
+      2. **$\begin{pmatrix} 8 \\ 3 \end{pmatrix}$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Start with the vertex of $g(x)$ at $(8, 3)$.
+      2. Apply the vector: move left $4$ (so $8 - 4 = 4$) and down $5$ (so $3 - 5 = -2$).
+      3. The new vertex is **$(4, -2)$**.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. A quadratic with vertex $(4, -2)$ takes the form $(x - h)^2 + k$.
+      2. **$h(x) = (x - 4)^2 - 2$**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Tracking the vertex of a quadratic function through multiple sequential vector translations" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Asymptote Movement">
+    The basic rational function $f(x) = \frac{1}{x}$ has a vertical asymptote at $x = 0$ and a horizontal asymptote at $y = 0$.
+    
+    a) The function is mapped onto $g(x) = \frac{1}{x + 3} + 5$. State the translation vector.
+
+    b) State the equation of the new vertical asymptote for $g(x)$.
+
+    c) State the equation of the new horizontal asymptote for $g(x)$.
+
+    d) Find the exact coordinates of the y-intercept of $g(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. $+3$ in the denominator means left $3$ ($-3$).
+      2. $+5$ on the outside means up $5$ ($+5$).
+      3. Vector is **$\begin{pmatrix} -3 \\ 5 \end{pmatrix}$**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. A horizontal shift of $-3$ moves the vertical asymptote from $x = 0$ to $x = -3$.
+      2. (Check: set denominator to zero: $x + 3 = 0 \implies x = -3$).
+      3. **$x = -3$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. A vertical shift of $+5$ moves the horizontal asymptote from $y = 0$ to $y = 5$.
+      2. **$y = 5$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Set $x = 0$: $g(0) = \frac{1}{0 + 3} + 5$.
+      2. $g(0) = \frac{1}{3} + 5 = \frac{16}{3}$ (or $5.33$).
+      3. The y-intercept is **$(0, \frac{16}{3})$**.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Determining how translation column vectors shift the equations of asymptotes" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Reversing Translations">
+    A cubic function $g(x) = (x - 7)^3 - 1$ was formed by translating the base function $f(x) = x^3$.
+    
+    a) State the column vector that maps $f(x)$ onto $g(x)$.
+
+    b) What column vector would translate $g(x)$ back to $f(x)$?
+
+    c) A third function is given by $h(x) = x^3 + 4$. Write the column vector that maps $g(x)$ directly onto $h(x)$.
+
+    d) Evaluate $h(2)$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. $g(x)$ is shifted right by $7$ and down by $1$.
+      2. Vector is **$\begin{pmatrix} 7 \\ -1 \end{pmatrix}$**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. To reverse the translation, simply flip the signs of the original vector.
+      2. You must go left $7$ and up $1$.
+      3. Vector is **$\begin{pmatrix} -7 \\ 1 \end{pmatrix}$**.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. $g(x)$ has "center" at $(7, -1)$. $h(x)$ has "center" at $(0, 4)$.
+      2. To move from $x=7$ to $x=0$, move left $7$ ($-7$).
+      3. To move from $y=-1$ to $y=4$, move up $5$ ($+5$).
+      4. Vector is **$\begin{pmatrix} -7 \\ 5 \end{pmatrix}$**.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Substitute $x = 2$ into $h(x)$:
+      2. $h(2) = 2^3 + 4$
+      3. $h(2) = 8 + 4 = \mathbf{12}$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Reversing and combining multiple translation column vectors" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Interpreting Coordinate Shifts">
+    A point $P(3, 8)$ lies on the curve $y = f(x)$.
+    
+    a) Find the corresponding coordinates of point $P$ on the curve $y = f(x) + 6$.
+
+    b) Find the corresponding coordinates of point $P$ on the curve $y = f(x + 4)$.
+
+    c) The original curve is translated by the vector $\begin{pmatrix} -2 \\ -5 \end{pmatrix}$. Find the new coordinates of $P$.
+
+    d) A different point $Q(a, b)$ on $y = f(x)$ maps to the coordinate $(10, -1)$ after a translation of $\begin{pmatrix} 3 \\ -4 \end{pmatrix}$. Find the values of $a$ and $b$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. $y = f(x) + 6$ is a vertical shift up by $6$.
+      2. Only the $y$-coordinate changes: $8 + 6 = 14$.
+      3. **$(3, 14)$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. $y = f(x + 4)$ is a horizontal shift left by $4$.
+      2. Only the $x$-coordinate changes: $3 - 4 = -1$.
+      3. **$(-1, 8)$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Apply the vector: subtract $2$ from $x$ and subtract $5$ from $y$.
+      2. $x = 3 - 2 = 1$
+      3. $y = 8 - 5 = 3$
+      4. **$(1, 3)$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. We know $a + 3 = 10$ and $b - 4 = -1$.
+      2. Solve for $a$: $10 - 3 \implies a = 7$.
+      3. Solve for $b$: $-1 + 4 \implies b = 3$.
+      4. **$a = 7$, $b = 3$**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the movement of specific coordinate points under function translations" />

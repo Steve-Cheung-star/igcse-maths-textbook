@@ -170,22 +170,44 @@ You have successfully found the coefficients without doing any messy simultaneou
 <Tabs>
   <TabItem label="📝 Question 1: Given Vertex and a Point">
     The turning point of a quadratic graph is $(3, 4)$. The graph crosses the y-axis at $(0, -14)$.
-    Find the equation of the quadratic in the form $y = a(x - h)^2 + k$.
+    
+    a) Write down the incomplete equation of the curve in vertex form.
+
+    b) Use the given coordinate to find the value of the constant $a$.
+
+    c) Write the final equation in the form $y = a(x - h)^2 + k$.
+
+    d) Expand your answer to write the equation in the form $y = ax^2 + bx + c$.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. The vertex is $(3, 4)$, so $h = 3$ and $k = 4$.
-       $$y = a(x - 3)^2 + 4$$
-    2. The graph passes through $(0, -14)$. Substitute $x=0, y=-14$:
-       $$
-       \begin{aligned}
-       -14 &= a(0 - 3)^2 + 4 \\
-       -14 &= 9a + 4 \\
-       -18 &= 9a \\
-       a &= -2
-       \end{aligned}
-       $$
-    3. The equation is:
-       **$$y = -2(x - 3)^2 + 4$$**
+    **a)**
+    The vertex is $(3, 4)$, so substitute $h = 3$ and $k = 4$ into the vertex form:
+    $$y = a(x - 3)^2 + 4$$
+
+    **b)**
+    <Steps>
+      1. The y-intercept $(0, -14)$ gives us an $x$ and $y$ value to substitute:
+         $$-14 = a(0 - 3)^2 + 4$$
+      2. Simplify the bracket and subtract $4$ from both sides:
+         $$-14 = 9a + 4$$
+         $$-18 = 9a$$
+      3. Divide by $9$:
+         $$a = -2$$
+    </Steps>
+
+    **c)**
+    Substitute $a = -2$ back into the equation from part (a):
+    **$$y = -2(x - 3)^2 + 4$$**
+
+    **d)**
+    <Steps>
+      1. Expand the squared bracket first:
+         $$y = -2(x^2 - 6x + 9) + 4$$
+      2. Multiply through by $-2$:
+         $$y = -2x^2 + 12x - 18 + 4$$
+      3. Simplify the constants:
+         **$$y = -2x^2 + 12x - 14$$**
+    </Steps>
   </TabItem>
 </Tabs>
 
@@ -194,34 +216,45 @@ You have successfully found the coefficients without doing any messy simultaneou
 <Tabs>
   <TabItem label="📝 Question 2: Given Roots and a Point">
     A quadratic curve has x-intercepts at $x = -2$ and $x = 5$. It passes through the point $(4, 18)$.
-    Find the equation of the curve in the form $y = ax^2 + bx + c$.
+    
+    a) Write down the incomplete equation of the curve in factored form.
+
+    b) Find the value of the leading coefficient $a$.
+
+    c) Write the expanded equation of the curve in the form $y = ax^2 + bx + c$.
+
+    d) Find the coordinates of the y-intercept.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    1. Use the factored form with roots $-2$ and $5$:
-       $$
-       \begin{aligned}
-       y &= a(x - (-2))(x - 5) \\
-       y &= a(x + 2)(x - 5)
-       \end{aligned}
-       $$
-    2. Substitute the point $(4, 18)$ to find $a$:
-       $$
-       \begin{aligned}
-       18 &= a(4 + 2)(4 - 5) \\
-       18 &= a(6)(-1) \\
-       18 &= -6a \\
-       a &= -3
-       \end{aligned}
-       $$
-    3. Write the equation and expand to the requested form:
-       $$
-       \begin{aligned}
-       y &= -3(x + 2)(x - 5) \\
-       y &= -3(x^2 - 5x + 2x - 10) \\
-       y &= -3(x^2 - 3x - 10) \\
-       y &= -3x^2 + 9x + 30
-       \end{aligned}
-       $$
+    **a)**
+    Use the factored form $y = a(x - p)(x - q)$ with roots $-2$ and $5$:
+    $$y = a(x + 2)(x - 5)$$
+
+    **b)**
+    <Steps>
+      1. Substitute the point $x = 4, y = 18$:
+         $$18 = a(4 + 2)(4 - 5)$$
+      2. Simplify the brackets:
+         $$18 = a(6)(-1)$$
+         $$18 = -6a$$
+      3. Divide by $-6$:
+         $$a = -3$$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Substitute $a = -3$ into the factored form:
+         $$y = -3(x + 2)(x - 5)$$
+      2. Expand the brackets:
+         $$y = -3(x^2 - 5x + 2x - 10)$$
+         $$y = -3(x^2 - 3x - 10)$$
+      3. Distribute the $-3$:
+         **$$y = -3x^2 + 9x + 30$$**
+    </Steps>
+
+    **d)**
+    The y-intercept occurs where $x = 0$. Using the expanded form from part (c), the constant term $c$ is the y-intercept.
+    The coordinates are **$(0, 30)$**.
   </TabItem>
 </Tabs>
 
@@ -229,28 +262,274 @@ You have successfully found the coefficients without doing any messy simultaneou
 
 <Tabs>
   <TabItem label="📝 Question 3: The a = 1 Shortcut">
-    The graph of $y = x^2 + px + q$ has a minimum point at $(-5, -2)$. 
-    Find the values of $p$ and $q$.
+    The graph of $y = x^2 + px + q$ has a minimum turning point at $(-5, -2)$. 
+    
+    a) Write the equation of the curve in vertex form.
+
+    b) Expand your equation to find the values of $p$ and $q$.
+
+    c) State the coordinates of the y-intercept.
+
+    d) Does this graph cross the x-axis? Justify your answer.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    1. The form $y = x^2 + px + q$ means that $a = 1$.
-    2. The vertex is $(-5, -2)$. Put this directly into vertex form $y = (x - h)^2 + k$:
-       $$
-       \begin{aligned}
-       y &= (x - (-5))^2 - 2 \\
-       y &= (x + 5)^2 - 2
-       \end{aligned}
-       $$
-    3. Expand the brackets:
-       $$
-       \begin{aligned}
-       y &= (x^2 + 10x + 25) - 2 \\
-       y &= x^2 + 10x + 23
-       \end{aligned}
-       $$
-    4. Compare this to $y = x^2 + px + q$:
-       **$p = 10, q = 23$**
+    **a)**
+    The form $y = x^2 + px + q$ indicates that $a = 1$. Substitute the vertex $(-5, -2)$ directly into vertex form:
+    **$$y = (x + 5)^2 - 2$$**
+
+    **b)**
+    <Steps>
+      1. Expand the squared binomial:
+         $$y = (x^2 + 10x + 25) - 2$$
+      2. Simplify:
+         $$y = x^2 + 10x + 23$$
+      3. Compare this to $y = x^2 + px + q$:
+         **$p = 10$ and $q = 23$**
+    </Steps>
+
+    **c)**
+    The y-intercept is the constant term $q$.
+    Coordinates: **$(0, 23)$**.
+
+    **d)**
+    **Yes**. The vertex $(-5, -2)$ has a negative y-coordinate, meaning the lowest point of the graph is below the x-axis. Because $a = 1$ (which is positive), the parabola opens upwards. Therefore, it must cross the x-axis to go back up.
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Finding the coefficients of a quadratic equation when the vertex is given and a=1" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Symmetry and Roots">
+    A quadratic curve has a vertical line of symmetry at $x = 4$. One of its x-intercepts is located at $x = 1$. The curve passes through the point $(5, -8)$.
+    
+    a) Find the coordinate of the other x-intercept.
+
+    b) Write the incomplete factored form of the equation.
+
+    c) Find the full equation of the curve in factored form.
+
+    d) Find the exact coordinates of the vertex.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+    <Steps>
+      1. The line of symmetry $x = 4$ is exactly halfway between the two roots.
+      2. The distance from the known root ($x = 1$) to the symmetry line is $3$ units.
+      3. Add $3$ units to the other side of the symmetry line: $4 + 3 = 7$.
+      4. The other x-intercept is **$x = 7$**.
+    </Steps>
+
+    **b)**
+    Using roots $1$ and $7$:
+    **$$y = a(x - 1)(x - 7)$$**
+
+    **c)**
+    <Steps>
+      1. Substitute the point $(5, -8)$ to find $a$:
+         $$-8 = a(5 - 1)(5 - 7)$$
+      2. Simplify:
+         $$-8 = a(4)(-2)$$
+         $$-8 = -8a$$
+      3. Solve for $a$:
+         $$a = 1$$
+      4. The equation is **$$y = (x - 1)(x - 7)$$**.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. The x-coordinate of the vertex lies on the line of symmetry, so $x = 4$.
+      2. Substitute $x = 4$ into the equation to find the y-coordinate:
+         $$y = (4 - 1)(4 - 7)$$
+         $$y = (3)(-3) = -9$$
+      3. The vertex coordinates are **$(4, -9)$**.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the axis of symmetry to find missing roots of a quadratic function" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Vertex on an Axis">
+    A parabola touches the x-axis at $x = 3$ and passes through the point $(1, 8)$.
+    
+    a) State the coordinates of the vertex.
+
+    b) Find the equation of the parabola in vertex form.
+
+    c) Expand the equation into the form $y = ax^2 + bx + c$.
+
+    d) Find the value of $y$ when $x = 6$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    When a parabola "touches" the x-axis without crossing it, that point is the turning point. 
+    The vertex is **$(3, 0)$**.
+
+    **b)**
+    <Steps>
+      1. Use the vertex form with $h = 3$ and $k = 0$:
+         $$y = a(x - 3)^2 + 0 \implies y = a(x - 3)^2$$
+      2. Substitute the point $(1, 8)$:
+         $$8 = a(1 - 3)^2$$
+      3. Solve for $a$:
+         $$8 = a(-2)^2$$
+         $$8 = 4a \implies a = 2$$
+      4. The equation is **$$y = 2(x - 3)^2$$**.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Expand the square:
+         $$y = 2(x^2 - 6x + 9)$$
+      2. Distribute the $2$:
+         **$$y = 2x^2 - 12x + 18$$**
+    </Steps>
+
+    **d)**
+    Substitute $x = 6$ into either equation (vertex form is easier):
+    $$y = 2(6 - 3)^2$$
+    $$y = 2(3)^2 = 2(9) = 18$$
+    **$y = 18$**
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding equations of parabolas that are tangent to the x-axis" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Translating a Described Graph">
+    A bridge is supported by a parabolic arch. The arch meets the ground (the x-axis) at the origin $(0,0)$ and at a point $6\text{ m}$ away $(6,0)$. The maximum height of the arch is $18\text{ m}$.
+    
+    a) State the two x-intercepts.
+
+    b) Find the coordinates of the vertex.
+
+    c) Find the equation of the quadratic function representing the arch.
+
+    d) State the domain for which the height $y$ is non-negative ($y \ge 0$).
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    The intercepts are given by the ground points: **$x = 0$ and $x = 6$**.
+
+    **b)**
+    <Steps>
+      1. The x-coordinate of the vertex is halfway between $0$ and $6$, which is $x = 3$.
+      2. The maximum height is $18$, which is the y-coordinate.
+      3. The vertex is **$(3, 18)$**.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Using the factored form with roots $0$ and $6$:
+         $$y = a(x - 0)(x - 6) \implies y = ax(x - 6)$$
+      2. Substitute the vertex $(3, 18)$ to find $a$:
+         $$18 = a(3)(3 - 6)$$
+         $$18 = a(3)(-3)$$
+         $$18 = -9a \implies a = -2$$
+      3. The equation is **$$y = -2x(x - 6)$$** (or $y = -2x^2 + 12x$).
+    </Steps>
+
+    **d)**
+    The height $y$ is non-negative above the ground. This occurs between the two x-intercepts.
+    **$0 \le x \le 6$**
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Modeling real-world parabolic structures using quadratic equations" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Using Simultaneous Equations">
+    The curve $y = ax^2 + bx + c$ passes through three coordinates: $(0, 5)$, $(1, 10)$, and $(-1, 4)$.
+    
+    a) Use the first coordinate to find the value of $c$.
+
+    b) Substitute the other two coordinates to set up a pair of simultaneous equations for $a$ and $b$.
+
+    c) Solve the simultaneous equations to find $a$ and $b$.
+
+    d) Write the final equation and state whether it has a maximum or minimum point.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    Substitute $x = 0, y = 5$:
+    $$5 = a(0)^2 + b(0) + c \implies \mathbf{c = 5}$$
+
+    **b)**
+    <Steps>
+      1. Substitute $(1, 10)$ and $c=5$:
+         $$10 = a(1)^2 + b(1) + 5 \implies a + b + 5 = 10 \implies \mathbf{a + b = 5}$$
+      2. Substitute $(-1, 4)$ and $c=5$:
+         $$4 = a(-1)^2 + b(-1) + 5 \implies a - b + 5 = 4 \implies \mathbf{a - b = -1}$$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Add the two equations together to eliminate $b$:
+         $$(a + b) + (a - b) = 5 + (-1)$$
+         $$2a = 4 \implies \mathbf{a = 2}$$
+      2. Substitute $a=2$ back into $a + b = 5$:
+         $$2 + b = 5 \implies \mathbf{b = 3}$$
+    </Steps>
+
+    **d)**
+    The full equation is **$$y = 2x^2 + 3x + 5$$**.
+    Because $a = 2$ (a positive number), the parabola opens upwards and therefore has a **minimum point**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding a quadratic equation from three given coordinates using simultaneous equations" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Extracting from Standard Form">
+    A quadratic function is defined as $y = 2x^2 + bx + c$. Its turning point is located at $(1, -5)$.
+    
+    a) Using the axis of symmetry formula $x = -\frac{b}{2a}$, find the value of $b$.
+
+    b) Substitute the vertex into the equation to find the value of $c$.
+
+    c) State the coordinates of the y-intercept.
+
+    d) Find the exact roots of the equation in the form $x = \frac{p \pm \sqrt{q}}{r}$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+    <Steps>
+      1. The x-coordinate of the vertex is $1$, and we know $a = 2$.
+      2. Substitute these into the symmetry formula:
+         $$1 = -\frac{b}{2(2)}$$
+         $$1 = -\frac{b}{4}$$
+      3. Multiply by $-4$:
+         **$$b = -4$$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The incomplete equation is now $y = 2x^2 - 4x + c$.
+      2. Substitute the vertex $(1, -5)$:
+         $$-5 = 2(1)^2 - 4(1) + c$$
+         $$-5 = 2 - 4 + c$$
+         $$-5 = -2 + c$$
+      3. Add $2$ to both sides:
+         **$$c = -3$$**
+         *(The full equation is $y = 2x^2 - 4x - 3$)*
+    </Steps>
+
+    **c)**
+    The y-intercept is the $c$ value.
+    The coordinates are **$(0, -3)$**.
+
+    **d)**
+    <Steps>
+      1. Set the equation to zero: $2x^2 - 4x - 3 = 0$.
+      2. Apply the quadratic formula with $a=2, b=-4, c=-3$:
+         $$x = \frac{-(-4) \pm \sqrt{(-4)^2 - 4(2)(-3)}}{2(2)}$$
+      3. Simplify the discriminant:
+         $$x = \frac{4 \pm \sqrt{16 - (-24)}}{4}$$
+         $$x = \frac{4 \pm \sqrt{40}}{4}$$
+      4. You can leave it in this exact form, or simplify the surd:
+         $$x = \frac{4 \pm 2\sqrt{10}}{4} \implies \mathbf{x = \frac{2 \pm \sqrt{10}}{2}}$$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding coefficients using the axis of symmetry formula and exact roots" />

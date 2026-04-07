@@ -3,144 +3,164 @@ title: 3.1 Graphs of Functions
 description: Recognise and analyse linear, quadratic, cubic, reciprocal, exponential, and trigonometric graphs for IGCSE 0607.
 ---
 
+# 3.1 Graphs of Functions
+
 Understanding the shapes and features of different mathematical functions is a core skill in IGCSE 0607. You must be able to visually identify a function type, extract unknown values from its graph, and understand features like symmetry, amplitude, and period.
 
 ---
 
 ## 1. Recognising Function Shapes
 
-You must be able to recognise the following families of functions purely by looking at their curves.
+According to the syllabus, you must be able to recognise the following families of functions purely by looking at their curves.
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 2rem;">
-  
-  {/* LINEAR */}
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
-      <g stroke="#cbd5e1" stroke-width="2">
-        <line x1="10" y1="100" x2="190" y2="100" />
-        <line x1="100" y1="190" x2="100" y2="10" />
-      </g>
-      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
-      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start">y</text>
-      <text x="90" y="115" font-size="10" fill="#64748b" text-anchor="end">0</text>
-      <path d="M 20 180 L 180 20" fill="none" stroke="#3b82f6" stroke-width="3" />
-    </svg>
-    <div style="margin-top: 1rem; text-align: center;">
-      <strong>Linear:</strong> $f(x) = ax + b$
-    </div>
-  </div>
-  
-  {/* QUADRATIC */}
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
-      <g stroke="#cbd5e1" stroke-width="2">
-        <line x1="10" y1="100" x2="190" y2="100" />
-        <line x1="100" y1="190" x2="100" y2="10" />
-      </g>
-      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
-      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start">y</text>
-      <text x="90" y="115" font-size="10" fill="#64748b" text-anchor="end">0</text>
-      <path d="M 30 20 Q 100 200 170 20" fill="none" stroke="#ef4444" stroke-width="3" />
-    </svg>
-    <div style="margin-top: 1rem; text-align: center;">
-      <strong>Quadratic:</strong> $f(x) = ax^2 + bx + c$
-    </div>
-  </div>
-  
-  {/* CUBIC */}
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
-      <g stroke="#cbd5e1" stroke-width="2">
-        <line x1="10" y1="100" x2="190" y2="100" />
-        <line x1="100" y1="190" x2="100" y2="10" />
-      </g>
-      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
-      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start">y</text>
-      <text x="90" y="115" font-size="10" fill="#64748b" text-anchor="end">0</text>
-      <path d="M 30 180 C 80 20, 120 180, 170 20" fill="none" stroke="#10b981" stroke-width="3" />
-    </svg>
-    <div style="margin-top: 1rem; text-align: center;">
-      <strong>Cubic:</strong> $f(x) = ax^3 + bx^2 + cx + d$
-    </div>
-  </div>
+### (a) Linear: $f(x) = ax + b$
 
-  {/* RECIPROCAL */}
+Linear graphs are straight lines. The value $a$ represents the gradient (slope), and $b$ represents the y-intercept.
+
+<div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem;">
+  <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; max-width: 300px; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;">
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="10" y1="100" x2="190" y2="100" />
+      <line x1="100" y1="190" x2="100" y2="10" />
+    </g>
+    <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end" font-style="italic">x</text>
+    <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start" font-style="italic">y</text>
+    <text x="90" y="115" font-size="10" fill="#64748b" text-anchor="end">0</text>
+    <polyline fill="none" stroke="#3b82f6" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 100) / 20;
+      const mathY = mathX;
+      return `${x},${100 - mathY * 20}`;
+    }).join(' ')} />
+  </svg>
+</div>
+
+### (b) Quadratic: $f(x) = ax^2 + bx + c$
+
+Quadratic functions form parabolas with a vertical line of symmetry passing through their vertex (turning point). If $a > 0$, it is U-shaped; if $a < 0$, it is n-shaped.
+
+<div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem;">
+  <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; max-width: 300px; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;">
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="10" y1="100" x2="190" y2="100" />
+      <line x1="100" y1="190" x2="100" y2="10" />
+    </g>
+    <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end" font-style="italic">x</text>
+    <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start" font-style="italic">y</text>
+    <text x="90" y="115" font-size="10" fill="#64748b" text-anchor="end">0</text>
+    <polyline fill="none" stroke="#ef4444" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 100) / 20;
+      const mathY = (mathX * mathX) - 3;
+      return `${x},${100 - mathY * 20}`;
+    }).join(' ')} />
+  </svg>
+</div>
+
+### (c) Cubic: $f(x) = ax^3 + bx^2 + cx + d$
+
+Cubic functions often exhibit rotational symmetry about their point of inflection and can cross the x-axis up to three times.
+
+<div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem;">
+  <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; max-width: 300px; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;">
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="10" y1="100" x2="190" y2="100" />
+      <line x1="100" y1="190" x2="100" y2="10" />
+    </g>
+    <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end" font-style="italic">x</text>
+    <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start" font-style="italic">y</text>
+    <text x="90" y="115" font-size="10" fill="#64748b" text-anchor="end">0</text>
+    <polyline fill="none" stroke="#10b981" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 100) / 20;
+      const mathY = 0.5 * Math.pow(mathX, 3) - 2 * mathX;
+      return `${x},${100 - mathY * 20}`;
+    }).join(' ')} />
+  </svg>
+</div>
+
+### (d) Reciprocal: $f(x) = \frac{a}{x}$
+
+These graphs have rotational symmetry about the origin (if no translations have occurred) and do not cross the axes due to vertical and horizontal asymptotes.
+
+<div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem;">
+  <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; max-width: 300px; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;">
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="10" y1="100" x2="190" y2="100" />
+      <line x1="100" y1="190" x2="100" y2="10" />
+    </g>
+    <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end" font-style="italic">x</text>
+    <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start" font-style="italic">y</text>
+    <text x="90" y="115" font-size="10" fill="#64748b" text-anchor="end">0</text>
+    
+    <polyline fill="none" stroke="#f59e0b" stroke-width="3" stroke-linejoin="round" points={Array.from({ length: 95 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 100) / 20;
+      const mathY = 2 / mathX;
+      return `${x},${100 - mathY * 20}`;
+    }).join(' ')} />
+    
+    <polyline fill="none" stroke="#f59e0b" stroke-width="3" stroke-linejoin="round" points={Array.from({ length: 95 }, (_, i) => {
+      const x = i + 105;
+      const mathX = (x - 100) / 20;
+      const mathY = 2 / mathX;
+      return `${x},${100 - mathY * 20}`;
+    }).join(' ')} />
+  </svg>
+</div>
+
+### (e) Exponential: $f(x) = a^x$ with $0 < a < 1$ or $a > 1$
+
+The shape changes drastically depending on whether the base $a$ is greater than 1, or between 0 and 1. The y-intercept is always $(0, 1)$ unless the function has been vertically stretched or shifted.
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+  
   <div style="display: flex; flex-direction: column; align-items: center;">
-    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;">
       <g stroke="#cbd5e1" stroke-width="2">
-        <line x1="10" y1="100" x2="190" y2="100" />
+        <line x1="10" y1="160" x2="190" y2="160" />
         <line x1="100" y1="190" x2="100" y2="10" />
       </g>
-      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
-      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start">y</text>
-      <text x="90" y="115" font-size="10" fill="#64748b" text-anchor="end">0</text>
-      <path d="M 110 20 Q 110 90 180 90" fill="none" stroke="#f59e0b" stroke-width="3" />
-      <path d="M 90 180 Q 90 110 20 110" fill="none" stroke="#f59e0b" stroke-width="3" />
+      <text x="185" y="150" font-size="12" fill="#64748b" text-anchor="end" font-style="italic">x</text>
+      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start" font-style="italic">y</text>
+      <text x="90" y="175" font-size="10" fill="#64748b" text-anchor="end">0</text>
+      <polyline fill="none" stroke="#8b5cf6" stroke-width="3" stroke-linejoin="round" points={Array.from({ length: 201 }, (_, i) => {
+        const x = i;
+        const mathX = (x - 100) / 20;
+        const mathY = Math.pow(2, mathX);
+        return `${x},${160 - mathY * 20}`;
+      }).join(' ')} />
     </svg>
-    <div style="margin-top: 1rem; text-align: center;">
-      <strong>Reciprocal:</strong> $f(x) = \frac{a}{x}$
-    </div>
+    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Growth:</strong> $a > 1$</p>
+  </div>
+  
+  <div style="display: flex; flex-direction: column; align-items: center;">
+    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;">
+      <g stroke="#cbd5e1" stroke-width="2">
+        <line x1="10" y1="160" x2="190" y2="160" />
+        <line x1="100" y1="190" x2="100" y2="10" />
+      </g>
+      <text x="185" y="150" font-size="12" fill="#64748b" text-anchor="end" font-style="italic">x</text>
+      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start" font-style="italic">y</text>
+      <text x="90" y="175" font-size="10" fill="#64748b" text-anchor="end">0</text>
+      <polyline fill="none" stroke="#8b5cf6" stroke-width="3" stroke-linejoin="round" points={Array.from({ length: 201 }, (_, i) => {
+        const x = i;
+        const mathX = (x - 100) / 20;
+        const mathY = Math.pow(0.5, mathX);
+        return `${x},${160 - mathY * 20}`;
+      }).join(' ')} />
+    </svg>
+    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Decay:</strong> $0 < a < 1$</p>
   </div>
 </div>
 
-<Aside type="note" title="Graph Symmetry">
-- **Quadratic functions** have a vertical line of symmetry passing through their vertex (turning point).
-- **Cubic functions** often have rotational symmetry about their point of inflection.
-- **Reciprocal functions** have rotational symmetry about the origin (if no translations have occurred) and do not cross the axes due to asymptotes.
-</Aside>
+### (f) Trigonometric: $f(x) = a \sin(bx)$; $a \cos(bx)$; $\tan x$
 
-### Exponential Graphs
-
-Exponential graphs take the form $f(x) = a^x$. Their shape changes drastically depending on whether the base $a$ is greater than $1$, or between $0$ and $1$.
-
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
-  
-  {/* EXPONENTIAL GROWTH */}
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
-      <g stroke="#cbd5e1" stroke-width="2">
-        <line x1="10" y1="150" x2="190" y2="150" />
-        <line x1="100" y1="190" x2="100" y2="10" />
-      </g>
-      <text x="185" y="140" font-size="12" fill="#64748b" text-anchor="end">x</text>
-      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start">y</text>
-      <text x="90" y="165" font-size="10" fill="#64748b" text-anchor="end">0</text>
-      <path d="M 20 145 Q 120 140 180 20" fill="none" stroke="#8b5cf6" stroke-width="3" />
-    </svg>
-    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Exponential Growth:</strong> $a > 1$</p>
-  </div>
-  
-  {/* EXPONENTIAL DECAY */}
-  <div style="display: flex; flex-direction: column; align-items: center;">
-    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
-      <g stroke="#cbd5e1" stroke-width="2">
-        <line x1="10" y1="150" x2="190" y2="150" />
-        <line x1="100" y1="190" x2="100" y2="10" />
-      </g>
-      <text x="185" y="140" font-size="12" fill="#64748b" text-anchor="end">x</text>
-      <text x="110" y="20" font-size="12" fill="#64748b" text-anchor="start">y</text>
-      <text x="90" y="165" font-size="10" fill="#64748b" text-anchor="end">0</text>
-      <path d="M 20 20 Q 80 140 180 145" fill="none" stroke="#8b5cf6" stroke-width="3" />
-    </svg>
-    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Exponential Decay:</strong> $0 < a < 1$</p>
-  </div>
-</div>
-
-<Aside type="tip" title="Exponential Intercepts">
-For any basic exponential function $f(x) = a^x$, the y-intercept is always $(0, 1)$ because any number to the power of $0$ equals $1$. The curve gets extremely close to the x-axis but never touches it (an asymptote at $y = 0$).
-</Aside>
-
----
-
-## 2. Trigonometric Graphs (0° to 360°)
-
-You must recognise the sine, cosine, and tangent waves. For functions of the form $f(x) = a \sin(bx)$ or $f(x) = a \cos(bx)$:
 * **Amplitude ($a$):** The maximum height of the wave measured from the centre line.
-* **Period:** The distance on the x-axis for one complete cycle. It is calculated as $\frac{360^\circ}{b}$.
+* **Period:** The distance on the x-axis for one complete cycle. Calculated as $\frac{360^\circ}{b}$.
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0;">
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
   
-  {/* SINE WAVE */}
   <div style="display: flex; flex-direction: column; align-items: center;">
     <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
       <g stroke="#cbd5e1" stroke-width="2">
@@ -151,19 +171,23 @@ You must recognise the sine, cosine, and tangent waves. For functions of the for
         <line x1="140" y1="97" x2="140" y2="103" />
         <line x1="180" y1="97" x2="180" y2="103" />
       </g>
-      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
-      <text x="25" y="15" font-size="12" fill="#64748b" text-anchor="start">y</text>
+      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end" font-style="italic">x</text>
+      <text x="25" y="15" font-size="12" fill="#64748b" text-anchor="start" font-style="italic">y</text>
       <text x="20" y="115" font-size="9" fill="#64748b" text-anchor="middle">0°</text>
       <text x="60" y="115" font-size="9" fill="#64748b" text-anchor="middle">90°</text>
       <text x="100" y="115" font-size="9" fill="#64748b" text-anchor="middle">180°</text>
       <text x="140" y="115" font-size="9" fill="#64748b" text-anchor="middle">270°</text>
       <text x="180" y="115" font-size="9" fill="#64748b" text-anchor="middle">360°</text>
-      <path d="M 20 100 C 45 30, 75 30, 100 100 C 125 170, 155 170, 180 100" fill="none" stroke="#ec4899" stroke-width="3" />
+      <polyline fill="none" stroke="#ec4899" stroke-width="3" stroke-linejoin="round" points={Array.from({ length: 161 }, (_, i) => {
+        const x = i + 20;
+        const deg = (i / 160) * 360;
+        const mathY = Math.sin(deg * Math.PI / 180);
+        return `${x},${100 - mathY * 60}`;
+      }).join(' ')} />
     </svg>
-    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Sine:</strong> Starts at $0$, goes up.</p>
+    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Sine:</strong> Starts at 0, peaks at 90°.</p>
   </div>
   
-  {/* COSINE WAVE */}
   <div style="display: flex; flex-direction: column; align-items: center;">
     <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
       <g stroke="#cbd5e1" stroke-width="2">
@@ -174,144 +198,425 @@ You must recognise the sine, cosine, and tangent waves. For functions of the for
         <line x1="140" y1="97" x2="140" y2="103" />
         <line x1="180" y1="97" x2="180" y2="103" />
       </g>
-      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
-      <text x="25" y="15" font-size="12" fill="#64748b" text-anchor="start">y</text>
+      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end" font-style="italic">x</text>
+      <text x="25" y="15" font-size="12" fill="#64748b" text-anchor="start" font-style="italic">y</text>
       <text x="20" y="115" font-size="9" fill="#64748b" text-anchor="middle">0°</text>
       <text x="60" y="115" font-size="9" fill="#64748b" text-anchor="middle">90°</text>
       <text x="100" y="115" font-size="9" fill="#64748b" text-anchor="middle">180°</text>
       <text x="140" y="115" font-size="9" fill="#64748b" text-anchor="middle">270°</text>
       <text x="180" y="115" font-size="9" fill="#64748b" text-anchor="middle">360°</text>
-      <path d="M 20 30 C 60 30, 60 170, 100 170 C 140 170, 140 30, 180 30" fill="none" stroke="#ec4899" stroke-width="3" />
+      <polyline fill="none" stroke="#ec4899" stroke-width="3" stroke-linejoin="round" points={Array.from({ length: 161 }, (_, i) => {
+        const x = i + 20;
+        const deg = (i / 160) * 360;
+        const mathY = Math.cos(deg * Math.PI / 180);
+        return `${x},${100 - mathY * 60}`;
+      }).join(' ')} />
     </svg>
-    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Cosine:</strong> Starts at the maximum.</p>
+    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Cosine:</strong> Starts at maximum peak.</p>
   </div>
 
-  {/* TANGENT WAVE */}
   <div style="display: flex; flex-direction: column; align-items: center;">
-    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <svg viewBox="0 0 200 200" style="background: transparent; width: 100%; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;">
       <g stroke="#cbd5e1" stroke-width="2">
         <line x1="20" y1="100" x2="180" y2="100" />
         <line x1="20" y1="180" x2="20" y2="20" />
       </g>
-      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end">x</text>
-      <text x="25" y="15" font-size="12" fill="#64748b" text-anchor="start">y</text>
+      <text x="185" y="90" font-size="12" fill="#64748b" text-anchor="end" font-style="italic">x</text>
+      <text x="25" y="15" font-size="12" fill="#64748b" text-anchor="start" font-style="italic">y</text>
       <text x="20" y="115" font-size="9" fill="#64748b" text-anchor="middle">0°</text>
       <text x="60" y="115" font-size="9" fill="#64748b" text-anchor="middle">90°</text>
       <text x="100" y="115" font-size="9" fill="#64748b" text-anchor="middle">180°</text>
       <text x="140" y="115" font-size="9" fill="#64748b" text-anchor="middle">270°</text>
       <text x="180" y="115" font-size="9" fill="#64748b" text-anchor="middle">360°</text>
       
-      {/* Asymptotes */}
-      <line x1="60" y1="20" x2="60" y2="180" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4" />
-      <line x1="140" y1="20" x2="140" y2="180" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="60" y1="0" x2="60" y2="200" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4" />
+      <line x1="140" y1="0" x2="140" y2="200" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4 4" />
       
-      {/* Tangent Branches */}
-      <path d="M 20 100 C 40 100, 50 80, 55 20" fill="none" stroke="#ec4899" stroke-width="3" />
-      <path d="M 65 180 C 80 110, 120 90, 135 20" fill="none" stroke="#ec4899" stroke-width="3" />
-      <path d="M 145 180 C 150 120, 160 100, 180 100" fill="none" stroke="#ec4899" stroke-width="3" />
+      <polyline fill="none" stroke="#ec4899" stroke-width="3" stroke-linejoin="round" points={Array.from({ length: 35 }, (_, i) => {
+        const x = i + 20;
+        const deg = ((x - 20) / 160) * 360;
+        const mathY = Math.tan(deg * Math.PI / 180);
+        return `${x},${100 - mathY * 20}`;
+      }).join(' ')} />
+      
+      <polyline fill="none" stroke="#ec4899" stroke-width="3" stroke-linejoin="round" points={Array.from({ length: 71 }, (_, i) => {
+        const x = i + 65;
+        const deg = ((x - 20) / 160) * 360;
+        const mathY = Math.tan(deg * Math.PI / 180);
+        return `${x},${100 - mathY * 20}`;
+      }).join(' ')} />
+      
+      <polyline fill="none" stroke="#ec4899" stroke-width="3" stroke-linejoin="round" points={Array.from({ length: 35 }, (_, i) => {
+        const x = i + 145;
+        const deg = ((x - 20) / 160) * 360;
+        const mathY = Math.tan(deg * Math.PI / 180);
+        return `${x},${100 - mathY * 20}`;
+      }).join(' ')} />
     </svg>
-    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Tangent:</strong> Asymptotes at $90^\circ, 270^\circ$.</p>
+    <p style="margin-top: 1rem; margin-bottom: 0;"><strong>Tangent:</strong> Asymptotes at 90°, 270°.</p>
   </div>
 </div>
 
-<SteveTip title="Tangent Asymptotes">
-The $f(x) = \tan(x)$ graph looks completely different. It does not have an amplitude and it repeats every $180^\circ$. Be prepared to draw its vertical asymptotes at $90^\circ, 270^\circ$, etc.
-</SteveTip>
+---
+
+## 2. Determining Unknown Coefficients
+
+Exam questions frequently provide a graph and its general equation with missing letters (e.g., $f(x) = ax^2 + bx + c$), asking you to find those values.
+
+> **Key Strategies for Extracting Values from Graphs:**
+> 1. **The y-intercept:** Look at where the graph crosses the y-axis ($x = 0$). For a quadratic $f(x) = ax^2 + bx + c$, the y-intercept is exactly $c$.
+> 2. **The x-intercepts (Roots):** Look at where the graph crosses the x-axis ($y = 0$). Substitute these coordinates into the equation to create simultaneous equations.
+> 3. **Amplitude and Period:** For trig graphs like $y = a \sin(bx)$, the peak value gives you $a$. Observe how many degrees it takes to complete one wave to determine $b$.
 
 ---
 
-## 3. Determining Unknown Coefficients
-
-Exam questions will frequently provide a graph and its general equation with missing letters (e.g., $f(x) = ax^2 + bx + c$), asking you to find those values.
-
-<Aside type="note" title="Extracting Values from Graphs">
-1. **The y-intercept:** Look at where the graph crosses the y-axis ($x = 0$). For a quadratic $f(x) = ax^2 + bx + c$, the y-intercept is exactly $c$. For a linear graph $y = ax + b$, the y-intercept is $b$.
-2. **The x-intercepts (Roots):** Look at where the graph crosses the x-axis ($y = 0$). Substitute these coordinates into the equation to create simultaneous equations for $a$ and $b$.
-3. **Amplitude and Period:** For trig graphs like $y = a \sin(bx)$, the peak value gives you $a$. Observe how many degrees it takes to complete one wave to determine $b$.
-</Aside>
-
-<Aside type="caution" title="Common Misconception: Roots vs. Turning Points">
-A common mistake is using the coordinates of the turning point (vertex) when the question expects you to use the roots (where $y=0$). Always verify which key feature the coordinate represents before substituting it into your equation.
-</Aside>
-
----
-
-## 4. Reading Values from a Graph
-
-You can use a given curve to solve equations without any algebra.
-* **Finding $f(x)$:** If asked to find the value of a function for a specific $x$, go to that number on the x-axis, draw a vertical line up to the curve, and read across to the y-axis.
-* **Solving $f(x) = k$:** If asked to solve an equation, draw a horizontal line at $y = k$. The x-coordinates of every intersection point are your solutions.
-
----
-
-## 5. Practice Problems
+## 3. Practice Questions
 
 <Tabs>
-  <TabItem label="📝 Question 1: Finding Coefficients (Quadratic)">
-    The graph of $f(x) = ax^2 + bx + 5$ passes through the points $(1, 8)$ and $(2, 15)$. 
-    Determine the values of $a$ and $b$.
+  <TabItem label="📝 Question 1 (Linear Functions)">
+    Determine the unknown constants and equations for these linear functions:
+
+    <div style="display: flex; justify-content: center; margin: 1rem 0;">
+      <svg viewBox="0 0 200 200" style="background: #f8fafc; width: 100%; max-width: 300px; border-radius: 8px; border: 1px solid #e2e8f0;">
+        <g stroke="#cbd5e1" stroke-width="2">
+          <line x1="0" y1="100" x2="200" y2="100" />
+          <line x1="100" y1="200" x2="100" y2="0" />
+        </g>
+        <polyline fill="none" stroke="#3b82f6" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
+          const x = i;
+          const mathX = (x - 100) / 20;
+          const mathY = 3 * mathX + 4;
+          return `${x},${100 - mathY * 20}`;
+        }).join(' ')} />
+      </svg>
+    </div>
+
+    a) A straight line has the equation $f(x) = ax + b$. It crosses the y-axis at $4$ and passes through the point $(3, 13)$. Find the values of $a$ and $b$.
+
+    b) A line passes through the coordinates $(2, 7)$ and $(5, 13)$. Find the equation of the line in the form $f(x) = ax + b$.
+
+    c) The equation of a line is $f(x) = -2x + 8$. Find the exact coordinates of its x-intercept.
+
+    d) A linear graph is parallel to the line $y = 3x - 1$ and passes through the point $(0, 5)$. Write down the equation of this graph.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    Substitute the given coordinates into the equation to form simultaneous equations.
-    
-    Using $(1, 8)$:
-    $a(1)^2 + b(1) + 5 = 8$
-    $a + b = 3$  **(Equation 1)**
+    **a)**
+    <Steps>
+      1. Find $b$: The y-intercept is $(0, 4)$, so substituting $x = 0$ gives $f(0) = b \implies b = 4$.
+      2. Find $a$: Substitute $(3, 13)$ into $f(x) = ax + 4 \implies 13 = 3a + 4 \implies 9 = 3a \implies a = 3$.
+    </Steps>
 
-    Using $(2, 15)$:
-    $a(2)^2 + b(2) + 5 = 15$
-    $4a + 2b = 10$
-    Divide by 2:
-    $2a + b = 5$ **(Equation 2)**
+    **b)**
+    <Steps>
+      1. Find the gradient $a$: $a = \frac{y_2 - y_1}{x_2 - x_1} = \frac{13 - 7}{5 - 2} = \frac{6}{3} = 2$.
+      2. Find the y-intercept $b$: Substitute $(2, 7)$ and $a=2$ into $y = ax + b \implies 7 = 2(2) + b \implies 7 = 4 + b \implies b = 3$.
+      3. Combine: The equation is $f(x) = 2x + 3$.
+    </Steps>
 
-    Subtract Equation 1 from Equation 2:
-    $(2a + b) - (a + b) = 5 - 3$
-    $a = 2$
+    **c)**
+    <Steps>
+      1. The x-intercept occurs where $y = 0$.
+      2. Set $f(x) = 0 \implies 0 = -2x + 8 \implies 2x = 8 \implies x = 4$.
+      3. The coordinates are $(4, 0)$.
+    </Steps>
 
-    Substitute $a = 2$ back into Equation 1:
-    $2 + b = 3 \implies b = 1$
-
-    **Answer:** $a = 2, b = 1$
+    **d)**
+    <Steps>
+      1. Parallel lines have the same gradient, so $a = 3$.
+      2. The line passes through $(0, 5)$, which is the y-intercept, so $b = 5$.
+      3. The equation is $f(x) = 3x + 5$.
+    </Steps>
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Finding unknown coefficients a, b, c from linear and quadratic graphs using given coordinates" />
+<SmartAIGenerator topic="Finding equations of linear functions from graphical features" />
 
 <Tabs>
-  <TabItem label="📝 Question 2: Trigonometric Parameters">
-    A trigonometric graph has the equation $f(x) = a \cos(bx)$. The graph has a maximum value of 4 at $x=0^\circ$, and its first minimum occurs at $x=90^\circ$. 
-    Find the values of $a$ and $b$.
+  <TabItem label="📝 Question 2 (Quadratic Functions)">
+    Determine the missing features for these quadratic graphs:
+
+    <div style="display: flex; justify-content: center; margin: 1rem 0;">
+      <svg viewBox="0 0 200 200" style="background: #f8fafc; width: 100%; max-width: 300px; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;">
+        <g stroke="#cbd5e1" stroke-width="2">
+          <line x1="0" y1="100" x2="200" y2="100" />
+          <line x1="100" y1="200" x2="100" y2="0" />
+        </g>
+        <polyline fill="none" stroke="#ef4444" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
+          const x = i;
+          const mathX = (x - 100) / 20;
+          const mathY = 3 * (mathX * mathX) - 2 * mathX - 5;
+          return `${x},${100 - mathY * 20}`;
+        }).join(' ')} />
+      </svg>
+    </div>
+
+    a) The graph of $f(x) = 3x^2 - 2x + c$ crosses the y-axis at $-5$. State the value of $c$.
+
+    b) The function $f(x) = ax^2 - 8$ passes through the point $(3, 10)$. Find the exact value of $a$.
+
+    c) The curve $f(x) = x^2 - 6x + 5$ intersects the x-axis at two distinct points. Find the x-coordinates of these points.
+
+    d) A quadratic curve has the equation $f(x) = -x^2 + c$. The roots of the graph are at $x = 4$ and $x = -4$. Find the value of $c$.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    1. **Find $a$:** The maximum value of the cosine wave gives the amplitude directly. Therefore, $a = 4$.
-    2. **Find $b$:** The distance from the maximum ($0^\circ$) to the first minimum ($90^\circ$) represents half of a full period.
-       If half the period is $90^\circ$, the full period is $180^\circ$.
-       We know that Period = $\frac{360^\circ}{b}$.
-       $180^\circ = \frac{360^\circ}{b}$
-       $b = 2$
+    **a)**
+    <Steps>
+      1. The y-intercept occurs where $x = 0$. 
+      2. Substituting $x = 0$ leaves only the constant term. Therefore, $c = -5$.
+    </Steps>
 
-    **Answer:** $a = 4, b = 2$
+    **b)**
+    <Steps>
+      1. Substitute $(3, 10)$ into the equation: $10 = a(3)^2 - 8$.
+      2. Simplify and solve for $a$: $10 = 9a - 8 \implies 18 = 9a \implies a = 2$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The x-axis intersections occur where $f(x) = 0$.
+      2. Set $x^2 - 6x + 5 = 0$.
+      3. Factorise the quadratic: $(x - 5)(x - 1) = 0$.
+      4. The solutions are $x = 5$ and $x = 1$.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Roots are the x-intercepts, where $y = 0$.
+      2. Substitute $x = 4$ and $f(x) = 0$ into the equation: $0 = -(4)^2 + c \implies 0 = -16 + c \implies c = 16$.
+      3. (Verification: substituting $x = -4$ gives the same result: $0 = -(-4)^2 + 16 \implies 0 = -16 + 16$).
+    </Steps>
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Determining amplitude and period from trigonometric graphs to find equation parameters" />
+<SmartAIGenerator topic="Extracting constants and roots from quadratic function models" />
 
 <Tabs>
-  <TabItem label="📝 Question 3: Exponential Growth">
-    The graph of $f(x) = a^x$ passes through the point $(3, 125)$. 
-    Find the value of $a$ and determine whether it represents growth or decay.
+  <TabItem label="📝 Question 3 (Cubic Functions)">
+    Analyse the following cubic function graphs:
+
+    <div style="display: flex; justify-content: center; margin: 1rem 0;">
+      <svg viewBox="0 0 200 200" style="background: #f8fafc; width: 100%; max-width: 300px; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;">
+        <g stroke="#cbd5e1" stroke-width="2">
+          <line x1="0" y1="100" x2="200" y2="100" />
+          <line x1="100" y1="200" x2="100" y2="0" />
+        </g>
+        <polyline fill="none" stroke="#10b981" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
+          const x = i;
+          const mathX = (x - 100) / 20;
+          const mathY = Math.pow(mathX, 3);
+          return `${x},${100 - mathY * 20}`;
+        }).join(' ')} />
+      </svg>
+    </div>
+
+    a) The graph of $f(x) = ax^3$ passes through the point $(2, 40)$. Find the value of $a$.
+
+    b) The function $f(x) = x^3 + d$ crosses the y-axis at the coordinate $(0, -7)$. State the value of $d$.
+
+    c) The curve $f(x) = 2x^3 + c$ passes through the point $(1, 10)$. Find the value of $c$.
+
+    d) A cubic graph has the equation $f(x) = ax^3 + bx^2$. It passes through the points $(1, 2)$ and $(-1, -4)$. Find the exact values of $a$ and $b$.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    Substitute the coordinate $(3, 125)$ into the equation:
-    $125 = a^3$
-    
-    Take the cube root of both sides:
-    $a = \sqrt[3]{125} = 5$
+    **a)**
+    <Steps>
+      1. Substitute the coordinate $(2, 40)$ into $f(x) = ax^3$.
+      2. $40 = a(2)^3 \implies 40 = 8a \implies a = 5$.
+    </Steps>
 
-    Since $a = 5$ and $5 > 1$, this graph represents **exponential growth**.
+    **b)**
+    <Steps>
+      1. The coordinate where it crosses the y-axis represents the y-intercept ($x=0$).
+      2. Substituting $x = 0$ leaves $f(0) = d \implies d = -7$.
+    </Steps>
 
-    **Answer:** $a = 5$, Growth.
+    **c)**
+    <Steps>
+      1. Substitute $(1, 10)$ into the equation: $10 = 2(1)^3 + c$.
+      2. $10 = 2(1) + c \implies 10 = 2 + c \implies c = 8$.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Form Equation 1 using $(1, 2)$: $2 = a(1)^3 + b(1)^2 \implies a + b = 2$.
+      2. Form Equation 2 using $(-1, -4)$: $-4 = a(-1)^3 + b(-1)^2 \implies -a + b = -4$.
+      3. Add both equations to eliminate $a$: $(a + b) + (-a + b) = 2 + (-4) \implies 2b = -2 \implies b = -1$.
+      4. Substitute $b = -1$ back into Equation 1: $a + (-1) = 2 \implies a = 3$.
+    </Steps>
   </TabItem>
 </Tabs>
+<SmartAIGenerator topic="Solving for unknown coefficients in cubic graphs using given coordinates" />
 
-<SmartAIGenerator topic="Identifying properties of exponential and reciprocal functions from points and asymptotes" />
+<Tabs>
+  <TabItem label="📝 Question 4 (Reciprocal Functions)">
+    Work with the following reciprocal models:
+
+    <div style="display: flex; justify-content: center; margin: 1rem 0;">
+      <svg viewBox="0 0 200 200" style="background: #f8fafc; width: 100%; max-width: 300px; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;">
+        <g stroke="#cbd5e1" stroke-width="2">
+          <line x1="0" y1="100" x2="200" y2="100" />
+          <line x1="100" y1="200" x2="100" y2="0" />
+        </g>
+        <polyline fill="none" stroke="#f59e0b" stroke-width="3" points={Array.from({ length: 95 }, (_, i) => {
+          const x = i;
+          const mathX = (x - 100) / 20;
+          const mathY = 4 / mathX;
+          return `${x},${100 - mathY * 20}`;
+        }).join(' ')} />
+        <polyline fill="none" stroke="#f59e0b" stroke-width="3" points={Array.from({ length: 95 }, (_, i) => {
+          const x = i + 105;
+          const mathX = (x - 100) / 20;
+          const mathY = 4 / mathX;
+          return `${x},${100 - mathY * 20}`;
+        }).join(' ')} />
+      </svg>
+    </div>
+
+    a) The function $f(x) = \frac{a}{x}$ passes through the point $(5, 4)$. Find the value of $a$.
+
+    b) Find the value of $y$ when $x = 3$ for the reciprocal graph $f(x) = \frac{15}{x}$.
+
+    c) Write down the equations of the vertical and horizontal asymptotes for the graph of $f(x) = \frac{8}{x}$.
+
+    d) The graph of $f(x) = \frac{a}{x} + b$ has a horizontal asymptote at $y = 3$ and passes through the point $(2, 7)$. Find the values of $a$ and $b$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+    <Steps>
+      1. Substitute the point $(5, 4)$ into the equation: $4 = \frac{a}{5}$.
+      2. Multiply both sides by 5: $a = 20$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Substitute $x = 3$ directly into the function.
+      2. $f(3) = \frac{15}{3} = 5$. Therefore, $y = 5$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Vertical asymptote: The function is undefined when the denominator is zero. Thus, the vertical asymptote is $x = 0$ (the y-axis).
+      2. Horizontal asymptote: As $x$ becomes very large, $\frac{8}{x}$ approaches $0$. Thus, the horizontal asymptote is $y = 0$ (the x-axis).
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Find $b$: A standard $\frac{a}{x}$ graph has an asymptote at $y=0$. The $+b$ shifts the graph vertically. Since the asymptote is $y=3$, $b = 3$.
+      2. Find $a$: Substitute $(2, 7)$ and $b=3$ into the equation: $7 = \frac{a}{2} + 3$.
+      3. Solve for $a$: $4 = \frac{a}{2} \implies a = 8$.
+    </Steps>
+  </TabItem>
+</Tabs>
+<SmartAIGenerator topic="Evaluating reciprocal functions and identifying asymptotes" />
+
+<Tabs>
+  <TabItem label="📝 Question 5 (Exponential Functions)">
+    Determine constants and properties for these exponential graphs:
+
+    <div style="display: flex; justify-content: center; margin: 1rem 0;">
+      <svg viewBox="0 0 200 200" style="background: #f8fafc; width: 100%; max-width: 300px; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;">
+        <g stroke="#cbd5e1" stroke-width="2">
+          <line x1="0" y1="150" x2="200" y2="150" />
+          <line x1="100" y1="200" x2="100" y2="0" />
+        </g>
+        <polyline fill="none" stroke="#8b5cf6" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
+          const x = i;
+          const mathX = (x - 100) / 20;
+          const mathY = Math.pow(2, mathX);
+          return `${x},${150 - mathY * 20}`;
+        }).join(' ')} />
+      </svg>
+    </div>
+
+    a) The curve $f(x) = a^x$ passes through the point $(3, 64)$. Find the exact value of $a$.
+
+    b) The graph of $f(x) = a^x$ passes through $(2, 0.25)$. Find $a$ and state whether the graph represents exponential growth or decay.
+
+    c) The function $f(x) = k \cdot 3^x$ intersects the y-axis at $(0, 5)$. Find the value of $k$.
+
+    d) An exponential curve $f(x) = k \cdot a^x$ passes through the y-intercept $(0, 2)$ and another point $(2, 18)$. Find the values of $k$ and $a$, assuming $a > 0$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. Substitute $(3, 64)$ into the function: $64 = a^3$.
+      2. Take the cube root of both sides: $a = \sqrt[3]{64} = 4$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Substitute $(2, 0.25)$ into the function: $0.25 = a^2$.
+      2. Take the square root: $a = \sqrt{0.25} = 0.5$ (since $a$ must be positive for an exponential base).
+      3. Because $0 < a < 1$, this graph represents exponential decay.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The y-intercept means $x = 0$. Substitute $(0, 5)$ into the equation.
+      2. $5 = k \cdot 3^0$. Since any non-zero number to the power of 0 is 1, this gives $5 = k \cdot 1 \implies k = 5$.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Find $k$: Use the y-intercept $(0, 2)$. $2 = k \cdot a^0 \implies 2 = k(1) \implies k = 2$.
+      2. Find $a$: Substitute $(2, 18)$ and $k = 2$ into the equation: $18 = 2 \cdot a^2$.
+      3. Solve for $a$: $9 = a^2 \implies a = 3$ (reject $-3$ as exponential bases are positive).
+    </Steps>
+  </TabItem>
+</Tabs>
+<SmartAIGenerator topic="Solving parameters for exponential growth and decay models" />
+
+<Tabs>
+  <TabItem label="📝 Question 6 (Trigonometric Functions)">
+    Extract the required features and values from the trigonometric models below:
+
+    <div style="display: flex; justify-content: center; margin: 1rem 0;">
+      <svg viewBox="0 0 200 200" style="background: #f8fafc; width: 100%; max-width: 300px; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden;">
+        <g stroke="#cbd5e1" stroke-width="2">
+          <line x1="0" y1="100" x2="200" y2="100" />
+          <line x1="100" y1="200" x2="100" y2="0" />
+        </g>
+        <polyline fill="none" stroke="#ec4899" stroke-width="3" points={Array.from({ length: 201 }, (_, i) => {
+          const x = i;
+          const deg = ((x - 100) / 80) * 360;
+          const mathY = Math.sin(deg * Math.PI / 180);
+          return `${x},${100 - mathY * 40}`;
+        }).join(' ')} />
+      </svg>
+    </div>
+
+    a) The graph of $f(x) = a \sin(x)$ has a maximum peak at $y = 7$. State the value of the amplitude, $a$.
+
+    b) A cosine graph is given by $f(x) = 5 \cos(bx)$. The graph completes one full wave in a period of 90°. Find the value of $b$.
+
+    c) The trigonometric curve $f(x) = a \sin(bx)$ has a maximum height of 3 and repeats its wave every 180°. Find the values of $a$ and $b$.
+
+    d) Consider the graph of $f(x) = \tan(x)$ for $0^\circ \le x \le 360^\circ$. Write down the smallest positive value of $x$ where a vertical asymptote occurs.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. The standard $\sin(x)$ graph has a peak of $1$. 
+      2. Multiplying it by $a$ scales the peak to $a$. Since the peak is $7$, the amplitude $a = 7$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The formula for the period of a cosine graph is $\text{Period} = \frac{360^\circ}{b}$.
+      2. Substitute the given period: $90 = \frac{360}{b}$.
+      3. Solve for $b$: $90b = 360 \implies b = 4$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Find $a$: The amplitude is directly the maximum height of the basic sine wave, so $a = 3$.
+      2. Find $b$: Use the period formula. $180 = \frac{360}{b} \implies 180b = 360 \implies b = 2$.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. The $\tan(x)$ function is equal to $\frac{\sin(x)}{\cos(x)}$. Vertical asymptotes occur where $\cos(x) = 0$.
+      2. Within the given range, $\cos(x) = 0$ at $x = 90^\circ$ and $x = 270^\circ$.
+      3. The smallest positive value is therefore $x = 90^\circ$.
+    </Steps>
+  </TabItem>
+</Tabs>
+<SmartAIGenerator topic="Extracting amplitude, period, and asymptotes from trigonometric graphs" />

@@ -1,0 +1,85 @@
+/* --- THE STARLIGHT BENTO ENGINE (Theme-Safe Version) --- */
+
+/* 1. Shell Overrides */
+html[data-mode="bento"] {
+  --sl-sidebar-width: 0rem !important;
+  --sl-content-width: 100% !important;
+  /* We keep the theme's background to ensure contrast stays correct */
+}
+
+/* Hide UI Clutter */
+html[data-mode="bento"] header,
+html[data-mode="bento"] .sidebar,
+html[data-mode="bento"] .right-sidebar,
+html[data-mode="bento"] footer,
+html[data-mode="bento"] .pagination {
+  display: none !important;
+}
+
+/* 2. Content Layout */
+html[data-mode="bento"] .main-frame {
+  padding-inline-start: 0 !important;
+  padding-top: 2rem !important;
+}
+
+html[data-mode="bento"] .sl-container {
+  max-width: 94vw !important;
+  margin: 0 auto !important;
+}
+
+/* 3. WRAP LOGIC - ONLY CHANGES POSITION */
+html[data-mode="bento"] .sl-markdown-content {
+  display: block !important; 
+  font-size: 1.5rem !important;
+  line-height: 1.6 !important;
+  padding: 0 5vw !important;
+}
+
+/* Target SteveTips, TeacherNotes, and Starlight's internal Asides */
+html[data-mode="bento"] .sl-markdown-content .steve-tip,
+html[data-mode="bento"] .sl-markdown-content .teacher-note,
+html[data-mode="bento"] .sl-markdown-content .starlight-aside,
+html[data-mode="bento"] .sl-markdown-content aside {
+  float: right;
+  clear: right;
+  width: 400px !important;
+  margin-left: 3rem !important;
+  margin-bottom: 2rem !important;
+  
+  /* Resetting only the float-related positioning */
+  position: relative;
+  z-index: 20;
+}
+
+/* 4. RE-LINKING THE BORDERS */
+/* If the colors are still missing, it means Starlight's default border is 0. 
+   We force the width but let the VARIABLE decide the color. */
+html[data-mode="bento"] .starlight-aside,
+html[data-mode="bento"] .steve-tip {
+    border-inline-start-width: 8px !important;
+    border-inline-start-style: solid !important;
+    /* This uses Starlight's internal logic for border colors */
+}
+
+/* 5. TEXT WRAPPING PRESERVATION */
+html[data-mode="bento"] .sl-markdown-content > p,
+html[data-mode="bento"] .sl-markdown-content > ul,
+html[data-mode="bento"] .sl-markdown-content > ol {
+  max-width: 800px; 
+}
+
+/* Force headings to clear the floated cards */
+html[data-mode="bento"] h1, 
+html[data-mode="bento"] h2, 
+html[data-mode="bento"] h3 {
+  clear: both;
+  margin-top: 3rem !important;
+}
+
+/* 6. Teacher Note Visibility */
+.teacher-note { display: none; }
+html[data-mode="bento"] .teacher-note {
+  display: block !important;
+  background-color: #fff1f0 !important;
+  border: 3px dashed #ff4d4f !important;
+}

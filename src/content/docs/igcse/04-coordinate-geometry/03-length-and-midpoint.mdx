@@ -9,7 +9,7 @@ When we look at a straight line drawn between two points on a coordinate grid, w
 
 ## 1. Calculating the Length of a Line Segment
 
-To find the distance between two points, we don't need a ruler—we need **Pythagoras' theorem**. 
+To find the distance between two points, we don't need a ruler—we need **Pythagoras' theorem**. 
 
 If you draw a right-angled triangle between your two points, the horizontal distance is your "run", the vertical distance is your "rise", and the line segment itself is the **hypotenuse**.
 
@@ -324,131 +324,308 @@ $$
 ## 5. Practice Problems
 
 <Tabs>
-  <TabItem label="📝 Question 1: Finding Distance">
-    Calculate the exact length of the line segment joining the points $P(-3, -1)$ and $Q(5, 5)$.
+  <TabItem label="📝 Question 1: Basic Distance & Midpoint">
+    Consider the two points $P(-3, -1)$ and $Q(5, 5)$.
+    
+    a) Calculate the exact length of the line segment joining $P$ and $Q$.
+    
+    b) Find the coordinates of the midpoint $M$ of the line segment $PQ$.
+    
+    c) State which quadrant the midpoint $M$ lies in.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    Change in $x$: $\Delta x = 5 - (-3) = 8$
-    Change in $y$: $\Delta y = 5 - (-1) = 6$
-    
-    $$
-    \begin{aligned}
-    d^2 &= 8^2 + 6^2 \\
-    d^2 &= 64 + 36 \\
-    d^2 &= 100 \\
-    d &= \sqrt{100} \\
-    \boldsymbol{d} &\boldsymbol{= 10}
-    \end{aligned}
-    $$
+    **a)**
+    <Steps>
+      1. Find $\Delta x$: $5 - (-3) = 8$.
+      2. Find $\Delta y$: $5 - (-1) = 6$.
+      3. Apply Pythagoras: $d = \sqrt{8^2 + 6^2}$.
+      4. $d = \sqrt{64 + 36} = \sqrt{100}$.
+      5. **$d = 10$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Calculate the average of the $x$-coordinates: $\frac{-3 + 5}{2} = \frac{2}{2} = 1$.
+      2. Calculate the average of the $y$-coordinates: $\frac{-1 + 5}{2} = \frac{4}{2} = 2$.
+      3. **$M(1, 2)$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The $x$-coordinate is positive and the $y$-coordinate is positive.
+      2. **Quadrant I**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Calculating the length of a line segment using Pythagoras or the distance formula" />
+<SmartAIGenerator topic="Calculating the length and midpoint of a line segment between two coordinates" />
 
 <Tabs>
-  <TabItem label="📝 Question 2: Distance with Quadratics">
-    The point $A$ has coordinates $(0, 4)$ and point $B$ has coordinates $(k, 0)$. 
-    The distance $AB$ is $\sqrt{41}$. Find the two possible values of $k$.
+  <TabItem label="📝 Question 2: Missing Coordinate given Distance">
+    Point $A$ is located at $(0, 4)$ and point $B$ is located at $(k, 0)$. The exact distance between $A$ and $B$ is $\sqrt{41}$.
+    
+    a) Set up an equation for the distance squared in terms of $k$.
+    
+    b) Solve the equation to find the two possible values of $k$.
+    
+    c) If point $B$ must lie on the positive x-axis, state the exact coordinates of $B$.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    $$
-    \begin{aligned}
-    (\sqrt{41})^2 &= (k - 0)^2 + (0 - 4)^2 \\
-    41 &= k^2 + (-4)^2 \\
-    41 &= k^2 + 16 \\
-    25 &= k^2 \\
-    k &= \pm 5
-    \end{aligned}
-    $$
-    **Answer:** $\boldsymbol{k = 5}$ or $\boldsymbol{k = -5}$.
+    **a)**
+    <Steps>
+      1. Use the distance formula squared: $d^2 = (x_2 - x_1)^2 + (y_2 - y_1)^2$.
+      2. Substitute the values: $(\sqrt{41})^2 = (k - 0)^2 + (0 - 4)^2$.
+      3. **$41 = k^2 + 16$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Subtract 16 from both sides: $41 - 16 = k^2$.
+      2. $25 = k^2$.
+      3. Take the square root of both sides, remembering the $\pm$.
+      4. **$k = 5$ or $k = -5$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. A point on the positive x-axis must have a positive $x$-coordinate.
+      2. Therefore, we select $k = 5$.
+      3. **$(5, 0)$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding an unknown coordinate given the length of a line segment using quadratic equations" />
+<SmartAIGenerator topic="Finding unknown coordinate values using the distance formula and quadratic equations" />
 
 <Tabs>
-  <TabItem label="📝 Question 3: Finding Midpoint">
-    Find the coordinates of the midpoint of the line segment connecting $A(-2, 7)$ and $B(6, -3)$.
+  <TabItem label="📝 Question 3: Missing Endpoint">
+    The midpoint of line segment $XY$ is $M(-2, 5)$. Point $X$ is located at $(3, 1)$.
+    
+    a) Find the horizontal jump ($\Delta x$) and vertical jump ($\Delta y$) from $X$ to $M$.
+    
+    b) Apply these jumps to $M$ to find the coordinates of endpoint $Y$.
+    
+    c) Find the exact straight-line distance from $X$ to $M$.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    x-midpoint: $$\frac{-2 + 6}{2} = \frac{4}{2} = 2$$
-    
-    y-midpoint: $$\frac{7 + (-3)}{2} = \frac{4}{2} = 2$$
-    
-    **Answer:** The midpoint is $\boldsymbol{(2, 2)}$.
+    **a)**
+    <Steps>
+      1. Horizontal jump ($\Delta x$): $-2 - 3 = -5$.
+      2. Vertical jump ($\Delta y$): $5 - 1 = 4$.
+      3. **$\Delta x = -5$, $\Delta y = 4$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Start at $M(-2, 5)$ and apply the exact same jumps.
+      2. $x$-coordinate: $-2 + (-5) = -7$.
+      3. $y$-coordinate: $5 + 4 = 9$.
+      4. **$Y(-7, 9)$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Use the jumps found in part (a) as the sides of the right-angled triangle.
+      2. $d = \sqrt{(-5)^2 + 4^2}$.
+      3. $d = \sqrt{25 + 16}$.
+      4. **$d = \sqrt{41}$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Calculating the midpoint of a line segment given two coordinate points" />
+<SmartAIGenerator topic="Deducing the missing endpoint of a segment using the vector jump method" />
 
 <Tabs>
-  <TabItem label="📝 Question 4: Midpoint with Linear Equations">
-    The midpoint of $P(4c, 6)$ and $Q(8, 2d)$ is $M(-4, 9)$. Find $c$ and $d$.
+  <TabItem label="📝 Question 4: Midpoint with Algebra">
+    The midpoint of the segment joining $P(4c, 6)$ and $Q(8, 2d)$ is the point $M(-4, 9)$.
+    
+    a) Set up a linear equation for the x-coordinates and solve for $c$.
+    
+    b) Set up a linear equation for the y-coordinates and solve for $d$.
+    
+    c) Write down the exact numerical coordinates of points $P$ and $Q$.
   </TabItem>
   <TabItem label="✅ Solution 4">
-    Set up the x-equation:
-    $$
-    \begin{aligned}
-    \frac{4c + 8}{2} &= -4 \\
-    4c + 8 &= -8 \\
-    4c &= -16 \\
-    \boldsymbol{c} &\boldsymbol{= -4}
-    \end{aligned}
-    $$
-    
-    Set up the y-equation:
-    $$
-    \begin{aligned}
-    \frac{6 + 2d}{2} &= 9 \\
-    6 + 2d &= 18 \\
-    2d &= 12 \\
-    \boldsymbol{d} &\boldsymbol{= 6}
-    \end{aligned}
-    $$
+    **a)**
+    <Steps>
+      1. Average the x-coordinates: $\frac{4c + 8}{2} = -4$.
+      2. Multiply by 2: $4c + 8 = -8$.
+      3. Subtract 8: $4c = -16$.
+      4. **$c = -4$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Average the y-coordinates: $\frac{6 + 2d}{2} = 9$.
+      2. Multiply by 2: $6 + 2d = 18$.
+      3. Subtract 6: $2d = 12$.
+      4. **$d = 6$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Substitute $c = -4$ into $P$: $P(4(-4), 6)$.
+      2. Substitute $d = 6$ into $Q$: $Q(8, 2(6))$.
+      3. **$P(-16, 6)$ and $Q(8, 12)$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding unknown variables in coordinates given the midpoint using linear equations" />
+<SmartAIGenerator topic="Finding algebraic coordinate variables using the midpoint formula" />
 
 <Tabs>
-  <TabItem label="📝 Question 5: Finding a Missing Endpoint">
-    The midpoint of line $XY$ is $M(-2, 5)$. If $X$ is at $(3, 1)$, find the coordinates of $Y$.
+  <TabItem label="📝 Question 5: Dividing in a Ratio (Fractional Steps)">
+    The line segment joining $C(-3, -2)$ and $D(5, 14)$ is divided by point $R$ in the ratio $1:3$.
+    
+    a) State the total number of parts the line segment is divided into.
+    
+    b) Calculate the total horizontal ($\Delta x$) and vertical ($\Delta y$) distances from $C$ to $D$.
+    
+    c) Use the fractional steps method to find the exact coordinates of $R$.
   </TabItem>
   <TabItem label="✅ Solution 5">
-    **Using the jump method:**
-    To get from $X(3, 1)$ to $M(-2, 5)$:
-    * x jumps from 3 to -2 ($\Delta x = -5$)
-    * y jumps from 1 to 5 ($\Delta y = +4$)
-    
-    Apply jumps from $M(-2, 5)$ to reach $Y$:
-    * x: $-2 - 5 = \boldsymbol{-7}$
-    * y: $5 + 4 = \boldsymbol{9}$
-    
-    **Answer:** $\boldsymbol{Y(-7, 9)}$.
+    **a)**
+    <Steps>
+      1. Add the parts of the ratio together.
+      2. $1 + 3 = 4$.
+      3. **4 parts**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Horizontal distance: $5 - (-3) = 8$.
+      2. Vertical distance: $14 - (-2) = 16$.
+      3. **$\Delta x = 8$, $\Delta y = 16$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The fraction of the journey from $C$ to $R$ is $\frac{1}{4}$.
+      2. Calculate the fraction of the distances: $\frac{1}{4} \times 8 = 2$, and $\frac{1}{4} \times 16 = 4$.
+      3. Add these moves to point $C(-3, -2)$.
+      4. $x = -3 + 2 = -1$.
+      5. $y = -2 + 4 = 2$.
+      6. **$R(-1, 2)$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding the missing endpoint of a line segment given one endpoint and the midpoint" />
+<SmartAIGenerator topic="Using fractional steps to divide a line segment in a given ratio" />
 
 <Tabs>
-  <TabItem label="📝 Question 6: Dividing in a Ratio">
-    The line segment joining $C(-3, -2)$ and $D(5, 14)$ is divided by the point $R$ in the ratio $1:3$. Find the coordinates of $R$.
+  <TabItem label="📝 Question 6: Ratio (Criss-Cross Formula)">
+    Point $P$ divides the line segment joining $A(-4, 7)$ and $B(6, -8)$ in the ratio $2:3$.
+    
+    a) Identify the values of $x_1, y_1, x_2, y_2, m,$ and $n$ for the section formula.
+    
+    b) Calculate the exact x-coordinate of $P$.
+    
+    c) Calculate the exact y-coordinate of $P$.
   </TabItem>
   <TabItem label="✅ Solution 6">
-    **Method 1: Fractional Steps**
-    Point $R$ is $\frac{1}{4}$ of the way along the line from $C$ to $D$.
-    $\Delta x = 5 - (-3) = 8 \Rightarrow \text{move } = \frac{1}{4}(8) = 2$
-    $\Delta y = 14 - (-2) = 16 \Rightarrow \text{move } = \frac{1}{4}(16) = 4$
-    Add to $C(-3, -2)$: $x = -3 + 2 = \boldsymbol{-1}$, $y = -2 + 4 = \boldsymbol{2}$
-    
-    **Method 2: Criss-Cross Formula**
-    $(x_1, y_1)=(-3, -2)$, $(x_2, y_2)=(5, 14)$, $m=1$, $n=3$.
-    $$
-    x_R = \frac{1(5) + 3(-3)}{1+3} = \frac{-4}{4} = \boldsymbol{-1} \quad \text{and} \quad y_R = \frac{1(14) + 3(-2)}{1+3} = \frac{8}{4} = \boldsymbol{2}
-    $$
-    
-    **Answer:** $\boldsymbol{R(-1, 2)}$.
+    **a)**
+    <Steps>
+      1. Point A is $(x_1, y_1)$: **$x_1 = -4$, $y_1 = 7$**.
+      2. Point B is $(x_2, y_2)$: **$x_2 = 6$, $y_2 = -8$**.
+      3. The ratio is $m:n$: **$m = 2$, $n = 3$**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Use the formula: $x_P = \frac{mx_2 + nx_1}{m+n}$.
+      2. Substitute: $x_P = \frac{2(6) + 3(-4)}{2+3}$.
+      3. Simplify: $x_P = \frac{12 - 12}{5} = \frac{0}{5}$.
+      4. **$x = 0$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Use the formula: $y_P = \frac{my_2 + ny_1}{m+n}$.
+      2. Substitute: $y_P = \frac{2(-8) + 3(7)}{2+3}$.
+      3. Simplify: $y_P = \frac{-16 + 21}{5} = \frac{5}{5}$.
+      4. **$y = 1$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Dividing a line segment in a given ratio m:n" />
+<SmartAIGenerator topic="Applying the section formula to find a coordinate splitting a segment by a ratio" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Application to Circles">
+    A circle is drawn on a coordinate grid. The line segment connecting $A(-2, 5)$ and $B(6, -1)$ forms a complete diameter of the circle.
+    
+    a) Find the coordinates of the center of the circle.
+    
+    b) Calculate the exact length of the diameter.
+    
+    c) State the exact radius of the circle.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. The center of a circle is the exact midpoint of its diameter.
+      2. Use the midpoint formula: $(\frac{-2 + 6}{2}, \frac{5 + (-1)}{2})$.
+      3. Simplify: $(\frac{4}{2}, \frac{4}{2})$.
+      4. **Center = $(2, 2)$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The diameter is the distance between $A$ and $B$.
+      2. $\Delta x = 6 - (-2) = 8$. $\Delta y = -1 - 5 = -6$.
+      3. $d = \sqrt{8^2 + (-6)^2} = \sqrt{64 + 36} = \sqrt{100}$.
+      4. **Diameter = 10 units**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The radius is exactly half of the diameter.
+      2. $10 \div 2 = 5$.
+      3. **Radius = 5 units**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying midpoint and distance formulas to solve circle geometry problems" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Finding Midpoints">
+    Calculate the exact coordinates of the midpoint for the line segments connecting each of the following pairs of points:
+    a) $(2, 4)$ and $(8, 10)$
+    b) $(-4, 3)$ and $(6, 1)$
+    c) $(-5, -5)$ and $(-1, 3)$
+    d) $(0.5, 4)$ and $(3.5, -1)$
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)** Add the $x$-coordinates and divide by 2, then do the same for the $y$-coordinates: $(\frac{2+8}{2}, \frac{4+10}{2})$. The midpoint is **$(5, 7)$**.
+    
+    **b)** Average the $x$-coordinates: $\frac{-4+6}{2} = 1$. Average the $y$-coordinates: $\frac{3+1}{2} = 2$. The midpoint is **$(1, 2)$**.
+    
+    **c)** Average the $x$-coordinates: $\frac{-5+(-1)}{2} = -3$. Average the $y$-coordinates: $\frac{-5+3}{2} = -1$. The midpoint is **$(-3, -1)$**.
+    
+    **d)** Average the $x$-coordinates: $\frac{0.5+3.5}{2} = 2$. Average the $y$-coordinates: $\frac{4+(-1)}{2} = 1.5$. The midpoint is **$(2, 1.5)$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the midpoint between two coordinates with positive, negative, and decimal values" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Calculating Distances">
+    Calculate the exact distance between the following pairs of points. Where necessary, leave your answer in exact surd form (e.g., $\sqrt{20}$).
+    a) $(1, 1)$ and $(4, 5)$
+    b) $(-2, 3)$ and $(4, -5)$
+    c) $(0, 0)$ and $(5, 5)$
+    d) $(-3, 4)$ and $(7, 4)$
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)** $\Delta x = 4 - 1 = 3$ and $\Delta y = 5 - 1 = 4$. Using Pythagoras: $d = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25}$. The distance is **$5$**.
+    
+    **b)** $\Delta x = 4 - (-2) = 6$ and $\Delta y = -5 - 3 = -8$. Using Pythagoras: $d = \sqrt{6^2 + (-8)^2} = \sqrt{36 + 64} = \sqrt{100}$. The distance is **$10$**.
+    
+    **c)** $\Delta x = 5 - 0 = 5$ and $\Delta y = 5 - 0 = 5$. Using Pythagoras: $d = \sqrt{5^2 + 5^2} = \sqrt{25 + 25} = \sqrt{50}$. The exact distance is **$\sqrt{50}$** (or $5\sqrt{2}$).
+    
+    **d)** Because the $y$-coordinates are identical, this is a perfectly horizontal line. You can just find the difference between the $x$-coordinates: $7 - (-3) = 10$. The distance is **$10$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the straight-line distance between two coordinates using Pythagoras" />

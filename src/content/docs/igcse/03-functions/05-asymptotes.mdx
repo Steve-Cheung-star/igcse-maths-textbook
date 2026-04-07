@@ -36,7 +36,7 @@ Rational functions (fractions with algebra in them) are the most common graphs t
 ### Vertical Asymptotes (The Denominator Rule)
 A vertical asymptote occurs where a function is undefined. Since you cannot divide by zero in mathematics, simply **set the denominator equal to zero and solve for $x$**.
 
-For the function $f(x) = \frac{1}{x - 2} + 1$:
+For the function $f(x) = \dfrac{1}{x - 2} + 1$:
 * The denominator is $x - 2$.
 * Set it to zero: $x - 2 = 0 \implies x = 2$.
 * The vertical asymptote is the line **$x = 2$**.
@@ -85,19 +85,19 @@ For the function $f(x) = \frac{1}{x - 2} + 1$:
 
 **Functions with Multiple Vertical Asymptotes:**
 If the denominator is a quadratic expression, the function might have *two* vertical asymptotes!
-For example, $g(x) = \frac{5}{x^2 - 9}$. 
+For example, $g(x) = \dfrac{5}{x^2 - 9}$. 
 Set $x^2 - 9 = 0$. This gives $x^2 = 9$, which means $x = 3$ or $x = -3$. This graph has two vertical breaks.
 
 ### Horizontal Asymptotes (The Ratio Shortcut)
 Horizontal asymptotes look at what happens when $x$ becomes incredibly large (e.g., $1,000,000$). 
-If you have a rational function in the form **$y = \frac{ax + b}{cx + d}$**, as $x$ gets huge, the constants $+b$ and $+d$ become completely insignificant. 
+If you have a rational function in the form **$y = \dfrac{ax + b}{cx + d}$**, as $x$ gets huge, the constants $+b$ and $+d$ become completely insignificant. 
 
-The function behaves like $y = \frac{ax}{cx}$, and the $x$'s cancel out, leaving just the ratio of the coefficients: **$y = \frac{a}{c}$**.
+The function behaves like $y = \dfrac{ax}{cx}$, and the $x$'s cancel out, leaving just the ratio of the coefficients: **$y = \dfrac{a}{c}$**.
 
 <Aside type="caution" title="The Negative Coefficient Trap">
 Examiners love to scramble the order of the terms. 
-If asked for the horizontal asymptote of $h(x) = \frac{1 - 3x}{x - 2}$, rewrite the numerator so the $x$ is first: $h(x) = \frac{-3x + 1}{x - 2}$. 
-The coefficients are $-3$ and $1$. The horizontal asymptote is $y = \frac{-3}{1}$, which is **$y = -3$**.
+If asked for the horizontal asymptote of $h(x) = \dfrac{1 - 3x}{x - 2}$, rewrite the numerator so the $x$ is first: $h(x) = \dfrac{-3x + 1}{x - 2}$. 
+The coefficients are $-3$ and $1$. The horizontal asymptote is $y = \dfrac{-3}{1}$, which is **$y = -3$**.
 </Aside>
 
 ---
@@ -148,7 +148,7 @@ As seen above, the function $f(x) = 2^x - 3$ has been shifted down by 3 units, s
 
 ## 4. Trigonometric Asymptotes
 
-While the sine and cosine graphs are continuous waves, the tangent graph ($f(x) = \tan x$) is very different. Because $\tan x = \frac{\sin x}{\cos x}$, whenever $\cos x = 0$, the tangent function is attempting to divide by zero, creating a recurring pattern of vertical asymptotes.
+While the sine and cosine graphs are continuous waves, the tangent graph ($f(x) = \tan x$) is very different. Because $\tan x = \dfrac{\sin x}{\cos x}$, whenever $\cos x = 0$, the tangent function is attempting to divide by zero, creating a recurring pattern of vertical asymptotes.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
   <svg viewBox="0 0 420 200" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
@@ -204,75 +204,309 @@ If you are unsure whether a value is truly a vertical asymptote, you can verify 
 ## 6. Practice Problems
 
 <Tabs>
-  <TabItem label="📝 Question 1: Finding Horizontal Asymptotes (Shortcut)">
-    State the equation of the horizontal asymptote for the function $f(x) = \frac{6x + 5}{2x - 1}$.
+  <TabItem label="📝 Question 1: Finding Horizontal Asymptotes">
+    Consider the rational function $f(x) = \dfrac{8x + 3}{2x - 1}$.
+    
+    a) Use the ratio shortcut to find the equation of the horizontal asymptote.
+
+    b) State the equation of the vertical asymptote.
+
+    c) Find the exact coordinates of the y-intercept.
+
+    d) Find the exact coordinates of the x-intercept.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    Use the ratio shortcut for rational functions of the form $y = \frac{ax + b}{cx + d}$.
-    The ratio of the $x$ coefficients is $\frac{6}{2}$.
-    $$
-    \begin{aligned}
-    y &= \frac{6}{2} \\
-    y &= 3
-    \end{aligned}
-    $$
-    
-    **Answer:** The horizontal asymptote is the line **$y = 3$**.
+    **a)**
+    <Steps>
+      1. Look at the coefficients of the $x$ terms in the numerator and denominator.
+      2. The ratio is $\dfrac{8}{2}$.
+      3. **$y = 4$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Set the denominator equal to zero:
+         $$2x - 1 = 0$$
+      2. Solve for $x$:
+         $$2x = 1 \implies \mathbf{x = 0.5}$$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Substitute $x = 0$ to find the y-intercept:
+         $$f(0) = \dfrac{8(0) + 3}{2(0) - 1} = \dfrac{3}{-1}$$
+      2. The y-intercept is **$(0, -3)$**.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Substitute $y = 0$ (set the numerator to zero):
+         $$8x + 3 = 0$$
+      2. Solve for $x$:
+         $$8x = -3 \implies x = -0.375$$
+      3. The x-intercept is **$(-0.375, 0)$**.
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding the horizontal asymptote of rational functions using the ratio shortcut" />
+<SmartAIGenerator topic="Finding equations of horizontal and vertical asymptotes using the ratio shortcut" />
 
 <Tabs>
-  <TabItem label="📝 Question 2: Two Vertical Asymptotes">
-    Find the equations of the two vertical asymptotes for the graph of $y = \frac{2x}{x^2 - 16}$.
+  <TabItem label="📝 Question 2: The Coefficient Trap">
+    A graph has the equation $g(x) = \dfrac{7 - 4x}{x + 5}$.
+    
+    a) Rewrite the numerator so the $x$ term appears first.
+
+    b) State the equation of the horizontal asymptote.
+
+    c) State the equation of the vertical asymptote.
+
+    d) Evaluate $g(-2)$.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    Vertical asymptotes occur where the denominator equals zero.
-    Set the quadratic denominator to zero and solve:
-    $$
-    \begin{aligned}
-    x^2 - 16 &= 0 \\
-    x^2 &= 16 \\
-    x &= \pm 4
-    \end{aligned}
-    $$
-    
-    **Answer:** The vertical asymptotes are **$x = 4$** and **$x = -4$**.
+    **a)**
+    Rearranging the terms:
+    **$$g(x) = \dfrac{-4x + 7}{x + 5}$$**
+
+    **b)**
+    <Steps>
+      1. Using the rearranged fraction, take the ratio of the leading $x$ coefficients.
+      2. The ratio is $\dfrac{-4}{1}$.
+      3. The horizontal asymptote is **$y = -4$**.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Set the denominator to zero:
+         $$x + 5 = 0$$
+      2. The vertical asymptote is **$x = -5$**.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Substitute $x = -2$ into the function:
+         $$g(-2) = \dfrac{7 - 4(-2)}{-2 + 5}$$
+      2. Simplify:
+         $$g(-2) = \dfrac{7 + 8}{3} = \dfrac{15}{3}$$
+      3. **$g(-2) = 5$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Finding multiple vertical asymptotes by solving quadratic denominators" />
+<SmartAIGenerator topic="Identifying asymptotes in rational functions with scrambled terms" />
 
 <Tabs>
-  <TabItem label="📝 Question 3: The Coefficient Trap">
-    Write down the equations of both the vertical and horizontal asymptotes for $g(x) = \frac{8 - 5x}{x + 2}$.
+  <TabItem label="📝 Question 3: Two Vertical Asymptotes">
+    Let $h(x) = \dfrac{12}{x^2 - 25}$.
+    
+    a) Factorise the quadratic expression in the denominator.
+
+    b) State the equations of the **two** vertical asymptotes.
+
+    c) Find the coordinates of the y-intercept.
+
+    d) Does the graph of $h(x)$ have an x-intercept? Briefly explain why or why not.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    **Vertical Asymptote:** Set denominator to zero.
-    $$x + 2 = 0 \implies x = -2$$
-    
-    **Horizontal Asymptote:** Rewrite the numerator to put the $x$ term first: $\frac{-5x + 8}{x + 2}$.
-    Take the ratio of the coefficients: $y = \frac{-5}{1}$.
-    
-    **Answer:** Vertical: **$x = -2$**, Horizontal: **$y = -5$**.
+    **a)**
+    <Steps>
+      1. Recognize $x^2 - 25$ as a difference of two squares.
+      2. **$(x + 5)(x - 5)$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Set the factorised denominator equal to zero:
+         $$(x + 5)(x - 5) = 0$$
+      2. The vertical asymptotes are **$x = -5$** and **$x = 5$**.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Substitute $x = 0$:
+         $$h(0) = \dfrac{12}{0^2 - 25} = \dfrac{12}{-25}$$
+      2. The coordinates are **$(0, -0.48)$**.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. To find an x-intercept, $h(x)$ must equal zero. A fraction only equals zero if its numerator is zero.
+      2. The numerator is exactly $12$, which can never be zero.
+      3. **No**, it does not cross the x-axis.
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Identifying both horizontal and vertical asymptotes of rational functions with scrambled terms" />
+<SmartAIGenerator topic="Solving for multiple vertical asymptotes using quadratic denominators" />
 
 <Tabs>
-  <TabItem label="📝 Question 4: Exponential Translations">
-    The function $h(x) = 10^x - 4$ is graphed on a calculator. 
-    State the equation of the horizontal asymptote.
+  <TabItem label="📝 Question 4: Exponential Asymptotes">
+    The function $f(x) = 5^x - 8$ is drawn on a coordinate grid.
+    
+    a) State the equation of the horizontal asymptote.
+
+    b) Does this exponential function have a vertical asymptote?
+
+    c) Find the exact y-coordinate where the graph crosses the y-axis.
+
+    d) Using your GDC, find the x-coordinate where $f(x) = 0$, to 3 significant figures.
   </TabItem>
   <TabItem label="✅ Solution 4">
-    The base exponential function $y = 10^x$ has a horizontal asymptote at $y = 0$.
-    The $- 4$ means the entire graph is translated downwards by 4 units.
-    Therefore, the asymptote is also shifted down by 4 units.
-    
-    **Answer:** The horizontal asymptote is **$y = -4$**.
+    **a)**
+    <Steps>
+      1. The standard curve $y = 5^x$ has an asymptote at $y = 0$.
+      2. The $- 8$ shifts the entire graph and its asymptote downwards.
+      3. **$y = -8$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Exponential functions are defined for all real values of $x$.
+      2. **No**, it does not have a vertical asymptote.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Substitute $x = 0$:
+         $$f(0) = 5^0 - 8$$
+      2. Since $5^0 = 1$:
+         $$f(0) = 1 - 8 = \mathbf{-7}$$
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Set the function to zero: $5^x - 8 = 0 \implies 5^x = 8$.
+      2. Use your GDC solver (or trace function) to find $x$.
+      3. **$x \approx 1.29$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Identifying the horizontal asymptote of exponential functions with vertical translations" />
+<SmartAIGenerator topic="Finding the horizontal asymptote and intercepts of an exponential curve" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Trigonometric Asymptotes">
+    Consider the tangent function, $y = \tan x$, for the domain $0^\circ \le x \le 360^\circ$.
+    
+    a) Explain mathematically why $\tan(90^\circ)$ produces an `undef` error on a calculator.
+
+    b) State the equation of the first vertical asymptote in the given domain.
+
+    c) State the equation of the second vertical asymptote in the given domain.
+
+    d) How many degrees are there between consecutive vertical asymptotes on a tangent graph?
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. Tangent is defined as $\dfrac{\sin x}{\cos x}$.
+      2. $\cos(90^\circ) = 0$.
+      3. Attempting to calculate $\tan(90^\circ)$ forces the calculator to divide by zero, which is **mathematically impossible**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The first place the cosine function equals zero is at $90^\circ$.
+      2. **$x = 90^\circ$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The second place the cosine function equals zero is at $270^\circ$.
+      2. **$x = 270^\circ$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. The difference between $270^\circ$ and $90^\circ$ is $180^\circ$.
+      2. The asymptotes repeat every **$180^\circ$**.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Understanding and locating vertical asymptotes on the tangent graph" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Transformations">
+    The function $f(x) = \dfrac{3x}{x - 4}$. The graph of $g(x)$ is created by translating $f(x)$ vertically upwards by $2$ units.
+    
+    a) State the equation of the vertical asymptote of $f(x)$.
+
+    b) State the equation of the horizontal asymptote of $f(x)$.
+
+    c) Write down the equation of the horizontal asymptote of $g(x)$.
+
+    d) Does the vertical asymptote change for $g(x)$? Briefly explain.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. For $f(x)$, set the denominator to zero: $x - 4 = 0$.
+      2. **$x = 4$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. For $f(x)$, the ratio of the $x$ coefficients is $\dfrac{3}{1}$.
+      2. **$y = 3$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Translating the graph upwards by $2$ shifts the horizontal line up by $2$.
+      2. $y = 3 + 2$
+      3. **$y = 5$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. A vertical translation only moves the graph up and down (affecting $y$-values).
+      2. **No**, the vertical asymptote remains $x = 4$ because the graph was not shifted left or right.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Tracking how graphical translations affect vertical and horizontal asymptotes" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Asymptotes in Context">
+    The population of a bacteria colony over $t$ hours is modelled by the rational function $P(t) = \dfrac{800t + 200}{2t + 4}$ for $t \ge 0$.
+    
+    a) Find the initial population of the bacteria colony.
+
+    b) Calculate the vertical asymptote of this function.
+
+    c) Calculate the horizontal asymptote of this function.
+
+    d) What does the horizontal asymptote represent in the context of this biological model?
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. The initial population occurs at $t = 0$.
+      2. $P(0) = \dfrac{800(0) + 200}{2(0) + 4} = \dfrac{200}{4}$
+      3. **$50$ bacteria**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Set the denominator to zero: $2t + 4 = 0$.
+      2. $2t = -4 \implies \mathbf{t = -2}$.
+      3. *(Note: This asymptote happens before time began ($t \ge 0$), so it won't appear on a real-world graph).*
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The ratio of the leading $t$ coefficients is $\dfrac{800}{2}$.
+      2. **$P = 400$** (or $y = 400$).
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. A horizontal asymptote shows what happens as $t$ gets infinitely large.
+      2. In this context, it represents the **maximum carrying capacity** of the colony. Over a long time, the population will level off and approach **$400$ bacteria**, but never exceed it.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting the real-world meaning of asymptotes in population models" />

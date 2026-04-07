@@ -226,53 +226,241 @@ $$
 ## 3. Practice Problems
 
 <Tabs>
-  <TabItem label="📝 Question 1: Visually Interpreting a Graph">
-    A straight line graph is shown. State its gradient.
-    [Graph showing point A(0, 1) and B(3, 10)]
+  <TabItem label="📝 Question 1: Visual Rise and Run">
+    A straight line passes through point $A(-2, -1)$ and point $B(4, 5)$.
+    
+    a) Find the horizontal change (Run) from $A$ to $B$.
+    
+    b) Find the vertical change (Rise) from $A$ to $B$.
+    
+    c) Calculate the gradient of the line.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    Pick two points that cross grid corners perfectly.
-    Point $A(0, 1)$ is the y-intercept. Let's pick another clear corner, $B(3, 10)$.
-    
-    1. Count **Run** from $A$ to $B$ (move right 3): $\text{Run} = 3$.
-    2. Count **Rise** from $A$ to $B$ (move up from 1 to 10): $\text{Rise} = 9$.
-    
-    $$m = \frac{\text{Rise}}{\text{Run}} = \frac{9}{3} = 3$$
+    **a)**
+    <Steps>
+      1. The horizontal change is the difference in $x$-coordinates.
+      2. From $x = -2$ moving right to $x = 4$ is a movement of $6$ units.
+      3. **Run = 6**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The vertical change is the difference in $y$-coordinates.
+      2. From $y = -1$ moving up to $y = 5$ is a movement of $6$ units.
+      3. **Rise = 6**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Use the formula: $m = \frac{\text{Rise}}{\text{Run}}$.
+      2. $m = \frac{6}{6}$.
+      3. **$m = 1$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Calculating gradients, potentially including visual graph interpretation of Rise over Run with random labelled points" />
+<SmartAIGenerator topic="Calculating gradients visually using Rise over Run between two coordinate points" />
 
 <Tabs>
-  <TabItem label="📝 Question 2: Working with Negatives">
-    A straight line passes through $A(-5, -4)$ and $B(-1, 8)$. Find its gradient.
+  <TabItem label="📝 Question 2: Basic Formula Application">
+    Find the gradient of the straight line passing through the points $(1, 2)$ and $(5, 10)$.
+    
+    a) Identify your coordinates $(x_1, y_1)$ and $(x_2, y_2)$.
+    
+    b) Substitute these values into the algebraic gradient formula.
+    
+    c) Simplify your fraction to find the final gradient.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    Use the formula $m = \frac{y_2 - y_1}{x_2 - x_1}$:
-    $$
-    \begin{aligned}
-    m &= \frac{8 - (-4)}{-1 - (-5)} \\
-    m &= \frac{8 + 4}{-1 + 5} \\
-    m &= \frac{12}{4} \\
-    m &= 3
-    \end{aligned}
-    $$
+    **a)**
+    <Steps>
+      1. The first point is **$(x_1, y_1) = (1, 2)$**.
+      2. The second point is **$(x_2, y_2) = (5, 10)$**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The formula is $m = \frac{y_2 - y_1}{x_2 - x_1}$.
+      2. Substitute the values: **$m = \frac{10 - 2}{5 - 1}$**.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Calculate the numerator and denominator: $m = \frac{8}{4}$.
+      2. Simplify the fraction.
+      3. **$m = 2$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Calculating gradients with negative coordinates and double negatives" />
+<SmartAIGenerator topic="Applying the algebraic gradient formula m = (y2 - y1) / (x2 - x1)" />
 
 <Tabs>
-  <TabItem label="📝 Question 3: Fractional Gradients">
-    Find the gradient of the line passing through the origin and the point $(7, 5)$.
+  <TabItem label="📝 Question 3: Handling Negatives">
+    A straight line connects the points $P(-4, 7)$ and $Q(2, -5)$.
+    
+    a) Set up the gradient fraction by substituting the coordinates into the formula.
+    
+    b) Carefully resolve any double negative signs in the denominator.
+    
+    c) Calculate the simplified final gradient.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    Remember that the "origin" means the point $(0, 0)$.
+    **a)**
+    <Steps>
+      1. Let $P$ be point 1 and $Q$ be point 2.
+      2. **$m = \frac{-5 - 7}{2 - (-4)}$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The denominator has a double negative which turns into addition.
+      2. $2 - (-4)$ becomes $2 + 4$.
+      3. **The denominator simplifies to 6.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The numerator is $-5 - 7 = -12$.
+      2. The fraction is $m = \frac{-12}{6}$.
+      3. **$m = -2$**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating gradients with negative coordinates and resolving double negatives" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Special Gradients">
+    Determine the gradients of the following specific line segments.
     
-    $$m = \frac{5 - 0}{7 - 0} = \frac{5}{7}$$
+    a) Calculate the gradient of the line passing through $(3, 4)$ and $(9, 4)$.
     
-    Leave your answer as an exact fraction rather than a messy decimal.
+    b) Based on your answer to part (a), describe the geometric direction of the line.
+    
+    c) Calculate the gradient of the line passing through $(-2, 1)$ and $(-2, 8)$.
+    
+    d) Based on your answer to part (c), describe the geometric direction of the line.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+    <Steps>
+      1. $m = \frac{4 - 4}{9 - 3}$.
+      2. $m = \frac{0}{6}$.
+      3. **$m = 0$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. A zero gradient means there is no vertical rise.
+      2. The line is perfectly **horizontal**.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. $m = \frac{8 - 1}{-2 - (-2)}$.
+      2. $m = \frac{7}{-2 + 2}$.
+      3. **$m = \frac{7}{0}$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. You cannot divide by zero in mathematics.
+      2. The gradient is **undefined**, meaning the line is perfectly **vertical**.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying and calculating zero and undefined gradients for horizontal and vertical lines" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Exact Fractions">
+    Find the exact gradient of the line passing through $(0, -3)$ and $(10, 1)$.
+    
+    a) Substitute the coordinate values into the algebraic formula.
+    
+    b) Simplify the resulting fraction to its lowest terms.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. Let $(0, -3)$ be point 1 and $(10, 1)$ be point 2.
+      2. **$m = \frac{1 - (-3)}{10 - 0}$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Resolve the double negative: $m = \frac{1 + 3}{10}$.
+      2. $m = \frac{4}{10}$.
+      3. Divide the numerator and denominator by 2 to leave it as an exact simplified fraction.
+      4. **$m = \frac{2}{5}$**
+    </Steps>
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Calculating exact fractional gradients from coordinate points" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Working Backwards">
+    A line passing through the points $(1, y)$ and $(4, 11)$ has a known gradient of $3$.
+    
+    a) Set up an algebraic equation using the gradient formula and the given information.
+    
+    b) Solve your algebraic equation to find the exact value of $y$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. We know $m = 3$.
+      2. Substitute the coordinates into the formula: $3 = \frac{11 - y}{4 - 1}$.
+      3. Simplify the denominator: **$3 = \frac{11 - y}{3}$**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Multiply both sides by 3 to eliminate the fraction: $9 = 11 - y$.
+      2. Add $y$ to both sides: $y + 9 = 11$.
+      3. Subtract 9 from both sides.
+      4. **$y = 2$**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using algebra to find missing coordinate values when given the gradient of a line" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Parallel Lines Check">
+    Line 1 passes through the points $(0, 5)$ and $(2, 9)$. 
+    Line 2 passes through the points $(-1, -2)$ and $(1, 2)$. 
+    
+    a) Calculate the exact gradient of Line 1.
+    
+    b) Calculate the exact gradient of Line 2.
+    
+    c) Mathematical rule: Parallel lines must have identical gradients. Determine if the two lines are parallel.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. $m_1 = \frac{9 - 5}{2 - 0}$.
+      2. $m_1 = \frac{4}{2}$.
+      3. **$m_1 = 2$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. $m_2 = \frac{2 - (-2)}{1 - (-1)}$.
+      2. Resolve the signs: $m_2 = \frac{2 + 2}{1 + 1}$.
+      3. $m_2 = \frac{4}{2}$.
+      4. **$m_2 = 2$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Compare the two gradients: $m_1 = 2$ and $m_2 = 2$.
+      2. **Yes, they are parallel** because their gradients are exactly equal.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating and comparing gradients to prove lines are parallel" />

@@ -4,18 +4,11 @@ import Default from '@astrojs/starlight/components/Sidebar.astro';
 import ExamTimer from './ExamTimer.jsx'; 
 
 const greetings = [
-  "Not another maths page...",
-  "Calculations & Egg Tarts",
-  "The Variable Graveyard",
-  "𝜋: Tasty, but Infinite",
-  "Solve for Why?",
-  "Keep Calm and Carry One",
-  "Warning: High Logic Zone",
-  "𝑥 is missing. Call the police.",
-  "Square Roots & Salty Tears",
-  "Fancy a bit of Algebra?",
-  "Please mind the gap.",
-  "Humidity: 99%. Brain: 1%."
+  "Not another maths page...", "Calculations & Egg Tarts", "The Variable Graveyard",
+  "𝜋: Tasty, but Infinite", "Solve for Why?", "Keep Calm and Carry One",
+  "Warning: High Logic Zone", "𝑥 is missing. Call the police.",
+  "Square Roots & Salty Tears", "Fancy a bit of Algebra?",
+  "Please mind the gap.", "Humidity: 99%. Brain: 1%."
 ];
 
 const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
@@ -27,11 +20,8 @@ const currentSidebar = Astro.locals.starlightRoute?.sidebar || Astro.props.sideb
 const filteredSidebar = currentSidebar.filter(item => {
   if (isTeacher) return true;
   const folderName = item.label || '';
-  if (isIB) {
-    return folderName.includes('IB Mathematics AI SL');
-  } else {
-    return folderName.includes('IGCSE Mathematics');
-  }
+  if (isIB) return folderName.includes('IB Mathematics AI SL');
+  return folderName.includes('IGCSE Mathematics');
 });
 
 if (Astro.locals.starlightRoute) {
@@ -41,100 +31,171 @@ if (Astro.locals.starlightRoute) {
 const newProps = { ...Astro.props, sidebar: filteredSidebar };
 ---
 
+<script is:inline>
+  // 1. GLOBAL STATE MANAGER (Runs immediately)
+  (function() {
+    const applyStoredMode = () => {
+      const mode = localStorage.getItem('whiteboard-mode');
+      if (mode === 'bento') {
+        document.documentElement.setAttribute('data-mode', 'bento');
+      } else {
+        document.documentElement.removeAttribute('data-mode');
+      }
+    };
+
+    window.toggleWhiteboard = function() {
+      const isBento = localStorage.getItem('whiteboard-mode') === 'bento';
+      const nextMode = isBento ? 'normal' : 'bento';
+      localStorage.setItem('whiteboard-mode', nextMode);
+      applyStoredMode();
+    };
+
+    // Use a high-priority 'capture' listener to ensure the shortcut always fires
+    if (!window.wbShortcutAttached) {
+      window.addEventListener('keydown', (e) => {
+        const isP = e.key === 'p' || e.key === 'P' || e.code === 'KeyP';
+        if ((e.ctrlKey || e.metaKey) && e.altKey && isP) {
+          e.preventDefault();
+          e.stopImmediatePropagation(); // Prevent other scripts from blocking this
+          window.toggleWhiteboard();
+        }
+      }, true); 
+      window.wbShortcutAttached = true;
+    }
+
+    applyStoredMode();
+    // Re-apply whenever Starlight swaps pages
+    document.addEventListener('astro:after-swap', applyStoredMode);
+  })();
+</script>
+
 <ExamTimer client:only="react" />
 
 <div class="sidebar-container">
-  {/* Sticky Header with Fixed Height */}
   <div class="sidebar-sticky-wrapper">
     <div id="dynamic-greeting" class="sidebar-header-hint">
       {randomGreeting} 
     </div>
   </div>
-
   <div class="sidebar-content">
     <Default {...newProps}><slot /></Default>
   </div>
 </div>
 
 <style>
-  .sidebar-container {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-  }
-
-  /* FIXED HEIGHT WRAPPER: Prevents content from jumping */
-  .sidebar-sticky-wrapper {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: var(--sl-color-bg-sidebar, var(--sl-color-bg));
-    height: 3rem; /* Locked height */
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid var(--sl-color-hairline);
-  }
-
-  .sidebar-header-hint {
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05rem;
-    font-weight: bold;
-    color: var(--sl-color-gray-3); 
-    padding: 0 1rem;
-    opacity: 0.8;
-    font-family: var(--__sl-font-mono);
-    /* Prevent text wrapping from changing the height */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .sidebar-content {
-    flex: 1;
-    /* This ensures the scroll stays within the content area */
-  }
+  .sidebar-container { height: 100%; display: flex; flex-direction: column; position: relative; }
+  .sidebar-sticky-wrapper { position: sticky; top: 0; z-index: 10; background: var(--sl-color-bg-sidebar, var(--sl-color-bg)); height: 3rem; display: flex; align-items: center; border-bottom: 1px solid var(--sl-color-hairline); }
+  .sidebar-header-hint { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05rem; font-weight: bold; color: var(--sl-color-gray-3); padding: 0 1rem; opacity: 0.8; font-family: var(--__sl-font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sidebar-content { flex: 1; }
 
   :global([data-theme='dark']) .sidebar-container {
-    background: linear-gradient(
-      to bottom, 
-      transparent, 
-      rgba(var(--sl-color-accent-low-rgb), 0.05)
-    );
+    background: linear-gradient(to bottom, transparent, rgba(var(--sl-color-accent-low-rgb), 0.05));
   }
+
+  /* --- BENTO MODE LAYOUT --- */
+  :global(html[data-mode="bento"] .sidebar), 
+  :global(html[data-mode="bento"] .right-sidebar), 
+  :global(html[data-mode="bento"] header), 
+  :global(html[data-mode="bento"] footer),
+  :global(html[data-mode="bento"] .pagination) { 
+    display: none !important; 
+  }
+  :global(html[data-mode="bento"] .main-frame) { padding: 0 !important; }
+  :global(html[data-mode="bento"] .sl-container) { max-width: 94vw !important; margin: 2rem auto !important; }
+  :global(html[data-mode="bento"] .sl-markdown-content) { font-size: 1.7rem !important; }
 </style>
 
 <script is:inline>
+  function injectProjectorUI() {
+    if (document.getElementById('wb-portal')) return;
+    const portal = document.createElement('div');
+    portal.id = 'wb-portal';
+    portal.innerHTML = `
+      <button id="wb-toggle" class="projector-btn" title="Toggle Projector Mode">
+        <svg class="icon-projector" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+          <path d="M5 3h14M12 3v2M4 5h16v12H4zM12 17v4M9 21h6" />
+          <path d="M8 8h8M8 12h5" opacity="0.4" />
+        </svg>
+        <svg class="icon-exit" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
+          <path d="M18 6L6 18M6 6l12 12" />
+        </svg>
+      </button>
+      <style>
+        #wb-portal { position: fixed; top: 0.8rem; right: 8.5rem; z-index: 9999999; pointer-events: none; }
+        
+        .projector-btn { 
+          pointer-events: auto; cursor: pointer; display: flex; align-items: center; justify-content: center;
+          width: 36px; height: 36px; border-radius: 8px; 
+          border: 1px solid var(--sl-color-hairline);
+          background-color: var(--sl-color-bg-nav);
+          color: var(--sl-color-text);
+          transition: opacity 0.3s ease, transform 0.2s ease;
+        }
+
+        .projector-btn:hover { 
+          background-color: var(--sl-color-bg-sidebar) !important; 
+          transform: scale(1.05); 
+        }
+
+        :global([data-theme='dark']) .projector-btn { 
+          color: #ffffff !important; 
+          border-color: var(--sl-color-hairline) !important;
+          background-color: var(--sl-color-bg-nav) !important;
+        }
+        
+        .icon-exit { display: none; }
+
+        html[data-mode="bento"] .projector-btn { 
+          background: transparent !important;
+          border: none !important;
+          opacity: 0.15;
+          position: relative;
+          right: -7.5rem; 
+        }
+        
+        html[data-mode="bento"] .projector-btn:hover { opacity: 0.8; }
+        html[data-mode="bento"] .icon-projector { display: none; }
+        html[data-mode="bento"] .icon-exit { display: block; }
+      </style>
+    `;
+    document.body.appendChild(portal);
+    document.getElementById('wb-toggle').onclick = (e) => {
+      e.preventDefault();
+      window.toggleWhiteboard();
+    };
+  }
+
   function applyDeviceContext() {
     const greetingEl = document.getElementById('dynamic-greeting');
     if (!greetingEl) return;
-
     const hour = new Date().getHours(); 
-    if (hour >= 23 || hour < 4) {
-      greetingEl.innerText = "🌙 Off to bed. Maths can wait.";
-    } else if (hour < 7) {
-      greetingEl.innerText = "☕ Why are you awake?";
-    }
+    if (hour >= 23 || hour < 4) greetingEl.innerText = "🌙 Off to bed. Maths can wait.";
+    else if (hour < 7) greetingEl.innerText = "☕ Why are you awake?";
   }
 
-  applyDeviceContext();
-  document.addEventListener('astro:after-swap', applyDeviceContext);
-
-  setInterval(() => {
+  function spawnX() {
     const container = document.querySelector('.sidebar-container');
     if (!container) return;
     const x = document.createElement('div');
     x.innerText = 'x';
-    x.style.position = 'absolute';
-    x.style.left = '-20px';
+    x.style.cssText = 'position:absolute; left:-20px; transition:all 10s linear; opacity:0.3; pointer-events:none; color:var(--sl-color-accent);';
     x.style.top = Math.random() * 80 + '%';
-    x.style.transition = 'all 10s linear';
-    x.style.opacity = '0.3';
-    x.style.pointerEvents = 'none';
-    x.style.color = 'var(--sl-color-accent)';
     container.appendChild(x);
     setTimeout(() => { x.style.left = '110%'; }, 100);
     setTimeout(() => x.remove(), 10500);
-  }, 300000); 
+  }
+
+  const initSidebarUI = () => {
+    injectProjectorUI();
+    applyDeviceContext();
+  };
+
+  if (!window.xTimerInited) {
+    setInterval(spawnX, 300000);
+    window.xTimerInited = true;
+  }
+
+  initSidebarUI();
+  document.addEventListener('astro:after-swap', initSidebarUI);
+  document.addEventListener('astro:page-load', initSidebarUI);
 </script>

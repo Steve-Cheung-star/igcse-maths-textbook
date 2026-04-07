@@ -21,6 +21,7 @@ export default defineConfig({
         './src/components/SmartAIGenerator.astro',
         './src/components/FormulaBox.astro',
         './src/components/StudentName.astro',
+        './src/components/TeacherNotes.astro',
         {
           '@astrojs/starlight/components': ['Steps', 'Aside', 'Tabs', 'TabItem'],
         },
@@ -37,6 +38,7 @@ export default defineConfig({
       },
       customCss: [
         './src/assets/custom.css',
+        './src/assets/bento-mode.css', // Added Bento Styles
       ],
       components: {
         SocialIcons: './src/components/Tracker.astro',
@@ -52,9 +54,35 @@ export default defineConfig({
             href: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css',
           },
         },
+        // --- POWERPOINT MODE TOGGLE SCRIPT ---
+        {
+          tag: 'script',
+          content: `
+            (function() {
+              const toggleBento = () => {
+                const isBento = document.documentElement.getAttribute('data-mode') === 'bento';
+                const newState = isBento ? 'normal' : 'bento';
+                document.documentElement.setAttribute('data-mode', newState);
+                localStorage.setItem('whiteboard-layout', newState);
+              };
+
+              // Persistent state on page change
+              if (localStorage.getItem('whiteboard-layout') === 'bento') {
+                document.documentElement.setAttribute('data-mode', 'bento');
+              }
+
+              window.addEventListener('keydown', (e) => {
+                // Mac Shortcut: Control + Option + P
+                if (e.ctrlKey && e.altKey && e.code === 'KeyP') {
+                  e.preventDefault();
+                  toggleBento();
+                }
+              });
+            })();
+          `,
+        },
       ],
       sidebar: [
-        // --- IGCSE SECTION ---
         {
           label: 'IGCSE Mathematics (0607)',
           collapsed: true,
@@ -72,19 +100,16 @@ export default defineConfig({
             { label: '10. Statistics', autogenerate: { directory: 'igcse/10-statistics' } },
           ],
         },
-
-        // --- IB SECTION ---
         {
-          label: 'IB Mathematics AI SL', // Updated label
+          label: 'IB Mathematics AI SL',
           collapsed: true,
           items: [
-            { label: '⭐ My Revision', link: '/ib-aisl/my-revision/' }, // Updated label & path            
-            { label: '1. Number & Algebra', autogenerate: { directory: 'ib-aisl/01-number-and-algebra' } }, // Updated path
-            { label: '2. Functions', autogenerate: { directory: 'ib-aisl/02-functions' } }, // Updated path
-            { label: '3. 3D Geometry & Trigonometry', autogenerate: { directory: 'ib-aisl/03-geometry-and-trigonometry' } }, // Updated path
-            { label: '4. Statistics & Probability', autogenerate: { directory: 'ib-aisl/04-statistics-and-probability' } }, // Updated path
-            { label: '5. Calculus', autogenerate: { directory: 'ib-aisl/05-calculus' } }, // Updated path
-            // Add more IB directories as you create them
+            { label: '⭐ My Revision', link: '/ib-aisl/my-revision/' },            
+            { label: '1. Number & Algebra', autogenerate: { directory: 'ib-aisl/01-number-and-algebra' } },
+            { label: '2. Functions', autogenerate: { directory: 'ib-aisl/02-functions' } },
+            { label: '3. 3D Geometry & Trigonometry', autogenerate: { directory: 'ib-aisl/03-geometry-and-trigonometry' } },
+            { label: '4. Statistics & Probability', autogenerate: { directory: 'ib-aisl/04-statistics-and-probability' } },
+            { label: '5. Calculus', autogenerate: { directory: 'ib-aisl/05-calculus' } },
           ],
         },
       ],

@@ -14,16 +14,16 @@ $$f(x) = 3x - 5$$
 This is read as "$f$ of $x$ equals $3x - 5$". It tells us that the function's name is $f$, and its input variable is $x$. 
 
 You will often see different letters used for different functions in the same question to avoid confusion, such as:
-* $g(x) = \frac{3x - 4}{5}$
+* $g(x) = \dfrac{3x - 4}{5}$
 * $h(x) = 2x^2 + 3$
 
-### Domain and Range
+### Domain and Range (Mapping Diagram)
 Every function has a set of allowed inputs and a set of possible outputs.
 * **Domain:** The complete set of all possible **input values** (the $x$-values) that the function is allowed to process.
 * **Range:** The complete set of all possible **output values** (the $f(x)$ or $y$-values) that the machine can produce.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
-  <svg viewBox="0 0 450 220" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+  <svg viewBox="0 0 450 220" width="100%" maxWidth="500px" style={{ background: 'transparent', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <defs>
       <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
         <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
@@ -56,9 +56,62 @@ Every function has a set of allowed inputs and a set of possible outputs.
   </svg>
 </div>
 
-<Aside type="note" title="Mapping Diagrams">
-The visual representation above is called a **mapping diagram**. It clearly shows which input (Domain) maps to which output (Range). Exam questions may occasionally present functions in this format rather than algebraically.
-</Aside>
+### Domain and Range on a Graph
+When looking at the graph of a function on a Cartesian plane:
+* The **Domain** maps directly to the horizontal x-axis (bounded by the furthest left and right points).
+* The **Range** maps directly to the vertical y-axis (bounded by the absolute highest and lowest points).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 550 380" width="100%" maxWidth="600px" style={{ background: 'transparent', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Axes */}
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="30" y1="340" x2="520" y2="340" /> {/* x-axis */}
+      <text x="510" y="330" text-anchor="end" font-size="14" font-style="italic" fill="#64748b" font-family="sans-serif">x</text>
+      
+      <line x1="70" y1="360" x2="70" y2="30" /> {/* y-axis */}
+      <text x="60" y="45" text-anchor="end" font-size="14" font-style="italic" fill="#64748b" font-family="sans-serif">y</text>
+    </g>
+
+    {/* Function Curve */}
+    <path d="M 140 220 C 170 80, 200 80, 260 80 C 320 80, 340 280, 380 280 C 420 280, 460 160, 480 160" fill="none" stroke="#0f172a" stroke-width="3" stroke-linecap="round" />
+    
+    {/* Significant Points */}
+    <circle cx="140" cy="220" r="5" fill="#0f172a" /> {/* Start */}
+    <circle cx="480" cy="160" r="5" fill="#0f172a" /> {/* End */}
+    <circle cx="260" cy="80" r="4" fill="#64748b" /> {/* Global Max */}
+    <circle cx="380" cy="280" r="4" fill="#64748b" /> {/* Global Min */}
+
+    {/* Domain Mapping (dashed drops to x-axis from endpoints) */}
+    <g stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.8">
+      <line x1="140" y1="220" x2="140" y2="340" />
+      <line x1="480" y1="160" x2="480" y2="340" />
+    </g>
+
+    {/* Range Mapping (dashed horizontals to y-axis from extrema) */}
+    <g stroke="#10b981" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.8">
+      <line x1="260" y1="80" x2="70" y2="80" />  {/* Max project */}
+      <line x1="380" y1="280" x2="70" y2="280" /> {/* Min project */}
+    </g>
+
+    {/* Domain on X-axis */}
+    <line x1="140" y1="340" x2="480" y2="340" stroke="#3b82f6" stroke-width="6" stroke-linecap="round" />
+    {/* Domain Interval Caps */}
+    <line x1="140" y1="333" x2="140" y2="347" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+    <line x1="480" y1="333" x2="480" y2="347" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+    
+    {/* Text Top Position for Domain */}
+    <text x="310" y="325" text-anchor="middle" font-size="16" font-weight="bold" fill="#1e3a8a" font-family="sans-serif">Domain</text>
+
+    {/* Range on Y-axis */}
+    <line x1="70" y1="80" x2="70" y2="280" stroke="#10b981" stroke-width="6" stroke-linecap="round" />
+    {/* Range Interval Caps */}
+    <line x1="63" y1="80" x2="77" y2="80" stroke="#10b981" stroke-width="3" stroke-linecap="round" />
+    <line x1="63" y1="280" x2="77" y2="280" stroke="#10b981" stroke-width="3" stroke-linecap="round" />
+
+    {/* Text Top Position for Range */}
+    <text x="60" y="75" text-anchor="end" font-size="16" font-weight="bold" fill="#064e3b" font-family="sans-serif">Range</text>
+  </svg>
+</div>
 
 ---
 
@@ -67,26 +120,69 @@ The visual representation above is called a **mapping diagram**. It clearly show
 An inverse function, written as $f^{-1}(x)$, is a machine that does the exact opposite of $f(x)$. It takes the output and brings you back to the original input.
 
 <Aside type="caution" title="Not a Reciprocal!">
-A very common misconception is thinking that $f^{-1}(x)$ means $\frac{1}{f(x)}$. **It does not.** The $-1$ here is a notation label meaning "inverse", not a negative index!
+A very common misconception is thinking that $f^{-1}(x)$ means $\dfrac{1}{f(x)}$. **It does not.** The $-1$ here is a notation label meaning "inverse", not a negative index!
 </Aside>
 
+### The Geometry of an Inverse Function
+Visually, the graph of an inverse function $f^{-1}(x)$ is a perfect reflection of the original function $f(x)$ across the diagonal line $y = x$. If a point $(a, b)$ is on the graph of $f(x)$, then the point $(b, a)$ will be on the graph of $f^{-1}(x)$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="500px" style={{ background: 'transparent', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid & Axes */}
+    <g stroke="#e2e8f0" stroke-width="1">
+      {Array.from({length: 17}).map((_, i) => <line key={`v${i}`} x1={i*25} y1="0" x2={i*25} y2="300" />)}
+      {Array.from({length: 13}).map((_, i) => <line key={`h${i}`} x1="0" y1={i*25} x2="400" y2={i*25} />)}
+    </g>
+    <g stroke="#94a3b8" stroke-width="2">
+      <line x1="0" y1="250" x2="400" y2="250" />
+      <line x1="50" y1="300" x2="50" y2="0" />
+    </g>
+    
+    {/* Line of symmetry y = x */}
+    <line x1="0" y1="300" x2="300" y2="0" stroke="#64748b" stroke-width="2" stroke-dasharray="6 4" />
+    <text x="280" y="30" font-size="12" font-style="italic" fill="#64748b" font-family="sans-serif">y = x</text>
+    
+    {/* Original Function y = x^2 (restricted domain) -> blue */}
+    <path d="M 50 250 Q 100 250 150 50" fill="none" stroke="#3b82f6" stroke-width="3" />
+    <text x="115" y="45" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">f(x)</text>
+    <circle cx="150" cy="50" r="4" fill="#3b82f6" />
+    <text x="160" y="45" font-size="12" fill="#1e3a8a" font-family="sans-serif">(2, 4)</text>
+
+    {/* Inverse Function y = sqrt(x) -> green */}
+    <path d="M 50 250 Q 50 200 250 150" fill="none" stroke="#10b981" stroke-width="3" />
+    <text x="250" y="135" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">f⁻¹(x)</text>
+    <circle cx="250" cy="150" r="4" fill="#10b981" />
+    <text x="260" y="155" font-size="12" fill="#064e3b" font-family="sans-serif">(4, 2)</text>
+    
+    {/* Mapping Connection */}
+    <line x1="150" y1="50" x2="250" y2="150" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" />
+  </svg>
+</div>
+
 ### How to Find an Inverse Function Algebraically
-There is a reliable, four-step algebraic method to find the inverse of any linear or simple rational function.
+There is a reliable algebraic method to find the inverse of any linear or simple rational function.
 
-**Example:** Find the inverse of $f(x) = \frac{3x - 4}{5}$
+**Example:** Find the inverse of $f(x) = \dfrac{3x - 4}{5}$
 
-1. **Replace $f(x)$ with $y$:** $y = \frac{3x - 4}{5}$
-2. **Swap the $x$ and $y$ variables:** $x = \frac{3y - 4}{5}$
-3. **Rearrange to make $y$ the subject:**
-   $5x = 3y - 4$
-   $5x + 4 = 3y$
-   $y = \frac{5x + 4}{3}$
-4. **Replace $y$ with $f^{-1}(x)$:** $f^{-1}(x) = \frac{5x + 4}{3}$
+<Steps>
+  1. Replace $f(x)$ with $y$:
+     $$y = \dfrac{3x - 4}{5}$$
+  2. Swap the $x$ and $y$ variables:
+     $$x = \dfrac{3y - 4}{5}$$
+  3. Multiply both sides by $5$:
+     $$5x = 3y - 4$$
+  4. Add $4$ to both sides:
+     $$5x + 4 = 3y$$
+  5. Divide by $3$ to make $y$ the subject again:
+     $$\dfrac{5x + 4}{3} = y$$
+  6. Replace $y$ with $f^{-1}(x)$:
+     $$f^{-1}(x) = \dfrac{5x + 4}{3}$$
+</Steps>
 
 ### Self-Inverse Functions
 A function is called **self-inverse** if it is its own inverse. This means that if you perform the four steps above, you end up with the exact same algebraic fraction you started with! In notation, this means:
 $$f(x) = f^{-1}(x)$$
-Common examples include $f(x) = \frac{1}{x}$ and $f(x) = c - x$ (where $c$ is a constant).
+Common examples include $f(x) = \dfrac{1}{x}$ and $f(x) = c - x$ (where $c$ is a constant).
 
 <SteveTip title="The 1-Mark Identity Trick">
 Exams love to test if you truly understand what an inverse is without doing any algebra. Because $f$ and $f^{-1}$ cancel each other out perfectly, you must memorise this rule:
@@ -105,7 +201,7 @@ The notation $gf(x)$ means exactly the same thing as $g(f(x))$. You must work fr
 2. Take that result, and process it through the $g$ machine.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
-  <svg viewBox="0 0 500 120" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+  <svg viewBox="0 0 500 120" width="100%" maxWidth="600px" style={{ background: 'transparent', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <defs>
       <marker id="arrow-comp" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
         <polygon points="0 0, 10 3.5, 0 7" fill="#334155" />
@@ -173,111 +269,465 @@ To solve these:
 ## 6. Practice Problems
 
 <Tabs>
-  <TabItem label="📝 Question 1: Self-Inverse Functions">
-    Let $f(x) = \frac{x+2}{x-1}$. 
-    Find $f^{-1}(x)$ and deduce a special property of this function.
+  <TabItem label="📝 Question 1: Linear & Rational Functions">
+    Let $f(x) = 3x - 5$ and $g(x) = \dfrac{x+2}{x-1}$.
+    
+    a) Evaluate $f(2)$.
+
+    b) Find an expression for $f^{-1}(x)$.
+
+    c) Find an expression for $g^{-1}(x)$ and state why $g(x)$ is a special type of function.
+
+    d) Solve the equation $f(g(x)) = 4$.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. Let $y = \frac{x+2}{x-1}$
-    2. Swap variables: $x = \frac{y+2}{y-1}$
-    3. Rearrange to make $y$ the subject:
-       Multiply both sides by $(y-1)$:
-       $x(y-1) = y + 2$
-       Expand the bracket:
-       $xy - x = y + 2$
-       Group all the $y$ terms on one side:
-       $xy - y = x + 2$
-       Factorise out the $y$:
-       $y(x - 1) = x + 2$
-       Divide by $(x-1)$:
-       $y = \frac{x+2}{x-1}$
-    4. $f^{-1}(x) = \frac{x+2}{x-1}$
-    
-    **Deduction:** Because $f^{-1}(x) = f(x)$, this function is **self-inverse**.
+    **a)**
+    Substitute $2$ into the function:
+    $$f(2) = 3(2) - 5 = 1$$
+
+    **b)**
+    <Steps>
+      1. Let $y$ equal the function:
+         $$y = 3x - 5$$
+      2. Swap the $x$ and $y$ variables:
+         $$x = 3y - 5$$
+      3. Add $5$ to both sides:
+         $$x + 5 = 3y$$
+      4. Divide by $3$:
+         $$y = \dfrac{x+5}{3}$$
+         $$f^{-1}(x) = \dfrac{x+5}{3}$$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Let $y$ equal the function and swap the variables:
+         $$x = \dfrac{y+2}{y-1}$$
+      2. Multiply both sides by $(y-1)$:
+         $$x(y-1) = y + 2$$
+      3. Expand the brackets:
+         $$xy - x = y + 2$$
+      4. Bring all terms containing $y$ to one side:
+         $$xy - y = x + 2$$
+      5. Factor out $y$:
+         $$y(x-1) = x+2$$
+      6. Divide by $(x-1)$ to isolate $y$:
+         $$y = \dfrac{x+2}{x-1}$$
+         $$g^{-1}(x) = \dfrac{x+2}{x-1}$$
+    </Steps>
+    Because $g^{-1}(x) = g(x)$, it is a **self-inverse** function.
+
+    **d)**
+    <Steps>
+      1. Substitute $g(x)$ into $f(x)$ and set equal to $4$:
+         $$3\left(\dfrac{x+2}{x-1}\right) - 5 = 4$$
+      2. Add $5$ to both sides:
+         $$3\left(\dfrac{x+2}{x-1}\right) = 9$$
+      3. Divide by $3$:
+         $$\dfrac{x+2}{x-1} = 3$$
+      4. Multiply both sides by $(x-1)$:
+         $$x+2 = 3(x-1)$$
+      5. Expand and solve for $x$:
+         $$x+2 = 3x - 3$$
+         $$5 = 2x$$
+         $$x = 2.5$$
+    </Steps>
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Finding the inverse of rational functions involving algebraic fraction manipulation" />
 
 <Tabs>
-  <TabItem label="📝 Question 2: Evaluating Composites (Fractions & Negatives)">
-    Let $f(x) = 2x^2 - 3$ and $g(x) = \frac{1}{x}$.
-    Find the exact value of $fg(-\frac{1}{2})$.
+  <TabItem label="📝 Question 2: Evaluating Composites">
+    Let $f(x) = 2x^2 - 3$ and $g(x) = \dfrac{1}{x}$.
+    
+    a) Find the exact value of $g(4)$.
+
+    b) Find the exact value of $fg(-\dfrac{1}{2})$.
+
+    c) Find an expression for $gf(x)$.
+
+    d) Solve the equation $fg(x) = 5$.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    Work from the inside out. Find $g(-\frac{1}{2})$ first:
-    $g(-\frac{1}{2}) = \frac{1}{-\frac{1}{2}}$
-    $g(-\frac{1}{2}) = -2$
+    **a)**
+    Substitute $4$ into $g(x)$:
+    $$g(4) = \dfrac{1}{4}$$
 
-    Now take this result and substitute it into $f(x)$:
-    $f(-2) = 2(-2)^2 - 3$
-    $f(-2) = 2(4) - 3$
-    $f(-2) = 8 - 3 = 5$
+    **b)**
+    <Steps>
+      1. Work inside out. First, evaluate $g(-\dfrac{1}{2})$:
+         $$g\left(-\dfrac{1}{2}\right) = \dfrac{1}{-\dfrac{1}{2}} = -2$$
+      2. Substitute this result into $f(x)$:
+         $$f(-2) = 2(-2)^2 - 3$$
+      3. Calculate the final value:
+         $$f(-2) = 2(4) - 3 = 5$$
+    </Steps>
 
-    **Answer:** $fg(-\frac{1}{2}) = 5$
+    **c)**
+    Substitute $f(x)$ completely into the $x$ position of $g(x)$:
+    $$gf(x) = \dfrac{1}{2x^2 - 3}$$
+
+    **d)**
+    <Steps>
+      1. Find $fg(x)$ by substituting $g(x)$ into $f(x)$:
+         $$fg(x) = 2\left(\dfrac{1}{x}\right)^2 - 3$$
+         $$fg(x) = \dfrac{2}{x^2} - 3$$
+      2. Set the composite equal to $5$:
+         $$\dfrac{2}{x^2} - 3 = 5$$
+      3. Add $3$ to both sides:
+         $$\dfrac{2}{x^2} = 8$$
+      4. Multiply by $x^2$:
+         $$2 = 8x^2$$
+      5. Divide by $8$:
+         $$x^2 = \dfrac{1}{4}$$
+      6. Take the square root (remember the $\pm$):
+         $$x = \dfrac{1}{2} \quad \text{or} \quad x = -\dfrac{1}{2}$$
+    </Steps>
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Evaluating composite functions with negative and fractional inputs" />
 
 <Tabs>
-  <TabItem label="📝 Question 3: Solving Equations with Composites">
-    Given $f(x) = 3x - 1$ and $g(x) = x^2$, solve the equation $fg(x) = f(x)$.
+  <TabItem label="📝 Question 3: Exponential & Logarithmic (Extended)">
+    Let $f(x) = e^{2x}$ and $g(x) = \ln(x + 5)$.
+    
+    a) Evaluate $g(e^2 - 5)$.
+
+    b) Find an expression for $f^{-1}(x)$.
+
+    c) Find an expression for $fg(x)$ in its simplest form.
+
+    d) Solve the equation $f(x) = 10$, giving your answer correct to 3 s.f.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    **Step 1:** Find the algebraic expression for $fg(x)$.
-    Substitute $g(x)$ into $f(x)$:
-    $fg(x) = 3(x^2) - 1 = 3x^2 - 1$
+    **a)**
+    <Steps>
+      1. Substitute $(e^2 - 5)$ into $g(x)$:
+         $$g(e^2 - 5) = \ln((e^2 - 5) + 5)$$
+      2. Simplify the terms inside the log:
+         $$g(e^2 - 5) = \ln(e^2)$$
+      3. Apply inverse properties:
+         $$g(e^2 - 5) = 2$$
+    </Steps>
 
-    **Step 2:** Set up the equation.
-    $fg(x) = f(x)$
-    $3x^2 - 1 = 3x - 1$
+    **b)**
+    <Steps>
+      1. Let $y = e^{2x}$ and swap the variables:
+         $$x = e^{2y}$$
+      2. Take the natural logarithm of both sides to remove the exponential:
+         $$\ln(x) = 2y$$
+      3. Divide by $2$:
+         $$y = \dfrac{\ln(x)}{2}$$
+         $$f^{-1}(x) = \dfrac{\ln(x)}{2}$$
+    </Steps>
 
-    **Step 3:** Solve the resulting quadratic equation.
-    Add 1 to both sides:
-    $3x^2 = 3x$
-    Bring terms to one side:
-    $3x^2 - 3x = 0$
-    Factorise:
-    $3x(x - 1) = 0$
-    
-    **Answers:** $x = 0$ or $x = 1$
-  </TabItem>
-</Tabs>
+    **c)**
+    <Steps>
+      1. Substitute $g(x)$ into $f(x)$:
+         $$fg(x) = e^{2\ln(x+5)}$$
+      2. Use the power rule for logarithms to move the coefficient inside:
+         $$fg(x) = e^{\ln((x+5)^2)}$$
+      3. Simplify using the inverse relationship $e^{\ln(A)} = A$:
+         $$fg(x) = (x+5)^2$$
+    </Steps>
 
-<SmartAIGenerator topic="Forming composite functions algebraically and solving the resulting equations" />
-
-<Tabs>
-  <TabItem label="📝 Question 4: Exponentials and Logarithms">
-    Let $f(x) = e^{2x}$ and $g(x) = \ln(x + 5)$.
-    Find $fg(x)$ and give your answer in its simplest form.
-  </TabItem>
-  <TabItem label="✅ Solution 4">
-    Substitute $g(x)$ into the $x$ position of $f(x)$:
-    $fg(x) = e^{2(\ln(x + 5))}$
-
-    Use the power law of logarithms ($n\ln(A) = \ln(A^n)$) to move the 2:
-    $fg(x) = e^{\ln((x + 5)^2)}$
-
-    Because $e$ and $\ln$ are inverse functions, $e^{\ln(A)} = A$. Therefore, they cancel each other out:
-    $fg(x) = (x + 5)^2$
-
-    **Answer:** $fg(x) = (x + 5)^2$ (or $x^2 + 10x + 25$)
+    **d)**
+    <Steps>
+      1. Set $f(x) = 10$:
+         $$e^{2x} = 10$$
+      2. Take the natural log of both sides:
+         $$2x = \ln(10)$$
+      3. Divide by $2$:
+         $$x = \dfrac{\ln(10)}{2}$$
+      4. Calculate the value to 3 significant figures:
+         $$x \approx 1.15$$
+    </Steps>
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Finding composite functions involving exponentials and natural logarithms" />
 
 <Tabs>
-  <TabItem label="📝 Question 5: The 1-Mark Identity Rule">
-    Given the function $h(x) = \frac{x^3 - 4x^2 + \sin(x)}{\sqrt{x+2}}$, determine the exact value of $h^{-1}h(14.8)$.
-  </TabItem>
-  <TabItem label="✅ Solution 5">
-    Do **not** attempt to calculate $h(14.8)$ or find the inverse function!
-    Remember the identity rule: $h^{-1}h(x) = x$. A function applied to its own inverse perfectly reverses the operation.
+  <TabItem label="📝 Question 4: Domain, Range & Identity">
+    Let $h(x) = \dfrac{x^3 - 4x^2 + \sin(x)}{\sqrt{x+2}}$ and $k(x) = x + 3$.
     
-    **Answer:** $14.8$
+    a) State the domain of the function $y = \sqrt{x+2}$.
+
+    b) Find the exact value of $h^{-1}h(14.8)$.
+
+    c) Find an expression for $kk(x)$ in simplest form.
+
+    d) Solve the equation $k(x) = k^{-1}(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+    You cannot evaluate the square root of a negative number in real mathematics.
+    <Steps>
+      1. Set the expression inside the square root to be greater than or equal to zero:
+         $$x+2 \ge 0$$
+      2. Solve the inequality:
+         $$x \ge -2$$
+    </Steps>
+
+    **b)**
+    Applying a function and its inverse back-to-back perfectly cancels out the operation. By the identity rule $h^{-1}(h(x)) = x$.
+    You do not need to calculate anything. The exact value is $14.8$.
+
+    **c)**
+    <Steps>
+      1. Substitute $k(x)$ into itself:
+         $$kk(x) = k(x+3)$$
+      2. Replace $x$ with $(x+3)$ in the expression:
+         $$kk(x) = (x + 3) + 3$$
+      3. Simplify:
+         $$kk(x) = x + 6$$
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Find $k^{-1}(x)$ by letting $y = x+3$, swapping to $x = y+3$, and rearranging:
+         $$k^{-1}(x) = x-3$$
+      2. Set the function equal to its inverse:
+         $$x+3 = x-3$$
+      3. Subtract $x$ from both sides:
+         $$3 = -3$$
+    </Steps>
+    Because $3 = -3$ is a mathematically false statement, there are **no solutions**.
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Applying the f inverse f identity rule to evaluate complex functions" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Restricted Quadratics">
+    Let $f(x) = (x-3)^2 + 2$ for the domain $x \ge 3$.
+    
+    a) Evaluate $f(4)$.
+
+    b) State the range of $f(x)$.
+
+    c) Find an expression for $f^{-1}(x)$.
+
+    d) State the domain of $f^{-1}(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. Substitute $x=4$:
+         $$f(4) = (4-3)^2 + 2$$
+      2. Calculate the value:
+         $$f(4) = 1^2 + 2 = 3$$
+    </Steps>
+
+    **b)**
+    Because the domain is restricted to $x \ge 3$, the lowest point occurs at the vertex $x=3$. 
+    $f(3) = (0)^2 + 2 = 2$. As $x$ increases, the squared term strictly increases. 
+    The range is $f(x) \ge 2$.
+
+    **c)**
+    <Steps>
+      1. Let $y$ equal the function and swap the variables:
+         $$x = (y-3)^2 + 2$$
+      2. Subtract $2$ from both sides:
+         $$x - 2 = (y-3)^2$$
+      3. Square root both sides:
+         $$y-3 = \pm\sqrt{x-2}$$
+      4. Because the original domain is $x \ge 3$, we select the positive root. Add $3$:
+         $$y = \sqrt{x-2} + 3$$
+         $$f^{-1}(x) = \sqrt{x-2} + 3$$
+    </Steps>
+
+    **d)**
+    A fundamental rule is that the domain of an inverse function is identical to the range of the original function.
+    Since the range of $f(x)$ is $y \ge 2$, the domain of $f^{-1}(x)$ is $x \ge 2$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the domain, range, and inverse of restricted quadratic functions" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Fractional Equations & Composites">
+    Let $f(x) = \dfrac{3x-1}{2}$ and $g(x) = \dfrac{4}{x}$.
+    
+    a) Find $fg(x)$ in simplest form.
+
+    b) Solve the equation $fg(x) = x$.
+
+    c) Find an expression for $g^{-1}(x)$.
+
+    d) Solve the equation $g(x) = f^{-1}(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. Substitute $g(x)$ into $f(x)$:
+         $$fg(x) = \dfrac{3\left(\dfrac{4}{x}\right) - 1}{2}$$
+      2. Simplify the numerator:
+         $$fg(x) = \dfrac{\dfrac{12}{x} - 1}{2}$$
+      3. Multiply the numerator and denominator by $x$ to clear the nested fraction:
+         $$fg(x) = \dfrac{12 - x}{2x}$$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Set $fg(x)$ equal to $x$:
+         $$\dfrac{12 - x}{2x} = x$$
+      2. Multiply both sides by $2x$:
+         $$12 - x = 2x^2$$
+      3. Bring all terms to one side to form a quadratic:
+         $$2x^2 + x - 12 = 0$$
+      4. Factorise (or use the quadratic formula):
+         $$(2x - 3)(x + 4) = 0$$
+      5. Solve for $x$:
+         $$x = 1.5 \quad \text{or} \quad x = -4$$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Let $y = \dfrac{4}{x}$ and swap variables:
+         $$x = \dfrac{4}{y}$$
+      2. Multiply by $y$ and divide by $x$:
+         $$y = \dfrac{4}{x}$$
+         $$g^{-1}(x) = \dfrac{4}{x}$$
+    </Steps>
+    *(Notice it is a self-inverse function).*
+
+    **d)**
+    <Steps>
+      1. First find $f^{-1}(x)$. Let $y = \dfrac{3x-1}{2}$, swap variables, and isolate $y$:
+         $$x = \dfrac{3y-1}{2}$$
+         $$2x = 3y-1$$
+         $$f^{-1}(x) = \dfrac{2x+1}{3}$$
+      2. Set $g(x)$ equal to $f^{-1}(x)$:
+         $$\dfrac{4}{x} = \dfrac{2x+1}{3}$$
+      3. Cross-multiply:
+         $$12 = x(2x+1)$$
+      4. Expand and set to zero:
+         $$12 = 2x^2 + x$$
+         $$2x^2 + x - 12 = 0$$
+    </Steps>
+    This results in the exact same quadratic equation as part (b). 
+    The solutions are $x = 1.5$ or $x = -4$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving equations involving nested algebraic fractions and composite functions" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Abstract Linear Functions">
+    A function is defined as $f(x) = ax + b$, where $a$ and $b$ are constants. You are given that $f(1) = 5$ and $f(2) = 8$.
+    
+    a) Find the values of $a$ and $b$.
+
+    b) Using your answers from (a), find $ff(x)$ in the form $px + q$.
+
+    c) Solve the equation $ff(x) = x$.
+
+    d) Find an expression for $f^{-1}(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. Set up a pair of simultaneous equations using the given coordinates:
+         $$a(1) + b = 5 \Rightarrow a + b = 5$$
+         $$a(2) + b = 8 \Rightarrow 2a + b = 8$$
+      2. Subtract the first equation from the second:
+         $$(2a + b) - (a + b) = 8 - 5$$
+         $$a = 3$$
+      3. Substitute $a=3$ back into the first equation:
+         $$3 + b = 5$$
+         $$b = 2$$
+    </Steps>
+    The function is $f(x) = 3x + 2$.
+
+    **b)**
+    <Steps>
+      1. Substitute $f(x)$ into itself:
+         $$ff(x) = 3(3x + 2) + 2$$
+      2. Expand the brackets:
+         $$ff(x) = 9x + 6 + 2$$
+      3. Simplify:
+         $$ff(x) = 9x + 8$$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Set the composite function equal to $x$:
+         $$9x + 8 = x$$
+      2. Subtract $x$ and $8$ from respective sides:
+         $$8x = -8$$
+      3. Divide by $8$:
+         $$x = -1$$
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Let $y = 3x + 2$ and swap variables:
+         $$x = 3y + 2$$
+      2. Subtract $2$:
+         $$x - 2 = 3y$$
+      3. Divide by $3$:
+         $$y = \dfrac{x-2}{3}$$
+         $$f^{-1}(x) = \dfrac{x-2}{3}$$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving abstract linear function problems using simultaneous equations" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Mixed Function Operations">
+    Let $f(x) = 10^x$, $g(x) = \log(x)$, and $h(x) = 2x$.
+    
+    a) Find $fgh(x)$ in simplest form.
+
+    b) Solve the equation $h(x) = f(2)$.
+
+    c) Find $h^{-1}(x)$.
+
+    d) Show algebraically that $h(x) + h(x) = h(2x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+    <Steps>
+      1. Work from the deepest level out. First, find $gh(x)$:
+         $$gh(x) = \log(2x)$$
+      2. Substitute this result into $f(x)$:
+         $$f(gh(x)) = 10^{\log(2x)}$$
+      3. Use inverse properties to simplify. Because $10^x$ and $\log_{10}(x)$ cancel each other out:
+         $$fgh(x) = 2x$$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Evaluate $f(2)$:
+         $$f(2) = 10^2 = 100$$
+      2. Set $h(x)$ equal to this value:
+         $$2x = 100$$
+      3. Divide by $2$:
+         $$x = 50$$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Let $y = 2x$ and swap variables:
+         $$x = 2y$$
+      2. Isolate $y$:
+         $$y = \dfrac{x}{2}$$
+         $$h^{-1}(x) = \dfrac{x}{2}$$
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Evaluate the Left-Hand Side (LHS) by adding the function to itself:
+         $$h(x) + h(x) = 2x + 2x = 4x$$
+      2. Evaluate the Right-Hand Side (RHS) by substituting $2x$ into the function:
+         $$h(2x) = 2(2x) = 4x$$
+      3. Conclude the proof:
+         Since LHS = RHS ($4x = 4x$), the algebraic statement is proven true.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Simplifying triple composite functions and proving algebraic properties of functions" />

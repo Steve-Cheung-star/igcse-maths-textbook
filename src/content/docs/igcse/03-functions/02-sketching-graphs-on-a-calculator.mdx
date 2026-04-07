@@ -1,6 +1,6 @@
 ---
 title: 3.2 Using a Graphic Display Calculator (TI-Nspire)
-description: Master your TI-Nspire Graphic Display Calculator (GDC) to sketch graphs, produce tables, and find key features like zeros, extrema, and intersections for IGCSE 0607.
+description: Master your TI-Nspire Graphic Display Calculator (GDC) to sketch graphs, produce tables, and find key features like zeros, extrema, intersections, and solve inequalities for IGCSE 0607.
 ---
 
 The Graphic Display Calculator (GDC) is the defining tool of the IGCSE 0607 Extended syllabus. Exams will frequently present you with unfamiliar, complex equations and expect you to find their exact features. You are not expected to use algebra for these; you are expected to use your TI-Nspire efficiently.
@@ -204,57 +204,341 @@ The x-coordinate of the vertex also gives you the equation for the vertical **li
 
 ---
 
-## 6. Practice Problems
+## 6. Solving Inequalities & Finding Number of Solutions
+
+### The "Greater Than" Case: $f(x) > g(x)$
+When an exam asks you to solve an inequality like $f(x) > g(x)$, you are looking for the domain (x-values) where the curve of $f(x)$ is visually **above** the curve of $g(x)$. 
+1. Graph both functions.
+2. Find their points of intersection.
+3. Read the x-values where the condition is met and write your answer as an inequality. Because the symbol is strictly $>$, we use standard `<` or `>` in our answer (the boundaries are *not* included).
+
+Let's look at a visual representation of $f(x) > g(x)$ where $f(x) = -x^2 + 4$ (the red parabola) and $g(x) = x + 2$ (the purple line):
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Highlighted Region: Between x=-2 (pixel 150) and x=1 (pixel 225) */}
+    <rect x="150" y="0" width="75" height="250" fill="#22c55e" opacity="0.15" />
+
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="0" y1="180" x2="400" y2="180" />
+      <polygon points="392,176 400,180 392,184" fill="#cbd5e1" stroke-width="0" />
+      <line x1="200" y1="250" x2="200" y2="0" />
+      <polygon points="196,8 200,0 204,8" fill="#cbd5e1" stroke-width="0" />
+    </g>
+    
+    <text x="385" y="170" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+
+    {/* Math Scale: 1 unit = 25px. Origin at (200, 180) */}
+    <polyline fill="none" stroke="#ef4444" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 25;
+      const mathY = -(mathX * mathX) + 4;
+      return `${x},${180 - mathY * 25}`;
+    }).join(' ')} />
+
+    <polyline fill="none" stroke="#8b5cf6" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 25;
+      const mathY = mathX + 2;
+      return `${x},${180 - mathY * 25}`;
+    }).join(' ')} />
+
+    {/* Dashed Vertical Bounds to denote strict inequality */}
+    <line x1="150" y1="0" x2="150" y2="250" stroke="#15803d" stroke-width="1.5" stroke-dasharray="4 4" />
+    <line x1="225" y1="0" x2="225" y2="250" stroke="#15803d" stroke-width="1.5" stroke-dasharray="4 4" />
+    
+    {/* Open circles for intersection points because it's > not >= */}
+    <circle cx="150" cy="180" r="5" fill="#f8fafc" stroke="#1e293b" stroke-width="2" />
+    <circle cx="225" cy="105" r="5" fill="#f8fafc" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Labels drawn at the very end to prevent clipping */}
+    <text x="145" y="240" text-anchor="end" font-size="12" fill="#15803d" font-family="sans-serif" font-weight="bold">x = -2</text>
+    <text x="230" y="240" text-anchor="start" font-size="12" fill="#15803d" font-family="sans-serif" font-weight="bold">x = 1</text>
+    <text x="187" y="20" text-anchor="middle" font-size="12" fill="#15803d" font-family="sans-serif" font-weight="bold">f(x) &gt; g(x)</text>
+    <text x="187" y="35" text-anchor="middle" font-size="11" fill="#15803d" font-family="sans-serif">Red is ABOVE Purple</text>
+    <text x="187" y="225" text-anchor="middle" font-size="11" fill="#15803d" font-family="sans-serif" font-weight="bold">-2 &lt; x &lt; 1</text>
+  </svg>
+</div>
+
+### The "Less Than or Equal To" Case: $f(x) \leq g(x)$
+Conversely, if an exam asks for $f(x) < g(x)$ or $f(x) \leq g(x)$, you are looking for where the first curve is physically **below** the second curve. 
+
+If the inequality has an "or equal to" sign ($\leq$ or $\geq$), it means the intersection points are **included** in the answer. You use $\leq$ or $\geq$ in your final domain.
+
+Using the exact same functions, let's find $f(x) \leq g(x)$. The red parabola is *below* the purple line on the outer "tails" of the graph. Because it is $\leq$, we include the intersection boundaries with solid lines and closed dots.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Highlighted Outer Regions */}
+    <rect x="0" y="0" width="150" height="250" fill="#3b82f6" opacity="0.15" />
+    <rect x="225" y="0" width="175" height="250" fill="#3b82f6" opacity="0.15" />
+
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="0" y1="180" x2="400" y2="180" />
+      <polygon points="392,176 400,180 392,184" fill="#cbd5e1" stroke-width="0" />
+      <line x1="200" y1="250" x2="200" y2="0" />
+      <polygon points="196,8 200,0 204,8" fill="#cbd5e1" stroke-width="0" />
+    </g>
+    
+    <text x="385" y="170" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
+    <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+
+    {/* Math Scale: 1 unit = 25px. Origin at (200, 180) */}
+    <polyline fill="none" stroke="#ef4444" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 25;
+      const mathY = -(mathX * mathX) + 4;
+      return `${x},${180 - mathY * 25}`;
+    }).join(' ')} />
+
+    <polyline fill="none" stroke="#8b5cf6" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 25;
+      const mathY = mathX + 2;
+      return `${x},${180 - mathY * 25}`;
+    }).join(' ')} />
+
+    {/* Solid Vertical Bounds to denote inclusive inequality */}
+    <line x1="150" y1="0" x2="150" y2="250" stroke="#1d4ed8" stroke-width="2" />
+    <line x1="225" y1="0" x2="225" y2="250" stroke="#1d4ed8" stroke-width="2" />
+    
+    {/* Closed circles for intersection points because it's <= */}
+    <circle cx="150" cy="180" r="5" fill="#1e293b" />
+    <circle cx="225" cy="105" r="5" fill="#1e293b" />
+    
+    {/* Labels drawn at the very end to prevent clipping */}
+    <text x="145" y="240" text-anchor="end" font-size="12" fill="#1d4ed8" font-family="sans-serif" font-weight="bold">x = -2</text>
+    <text x="230" y="240" text-anchor="start" font-size="12" fill="#1d4ed8" font-family="sans-serif" font-weight="bold">x = 1</text>
+    
+    <text x="75" y="20" text-anchor="middle" font-size="12" fill="#1d4ed8" font-family="sans-serif" font-weight="bold">f(x) &le; g(x)</text>
+    <text x="75" y="35" text-anchor="middle" font-size="11" fill="#1d4ed8" font-family="sans-serif">Red BELOW Purple</text>
+    <text x="75" y="225" text-anchor="middle" font-size="11" fill="#1d4ed8" font-family="sans-serif" font-weight="bold">x &le; -2</text>
+
+    <text x="312" y="20" text-anchor="middle" font-size="12" fill="#1d4ed8" font-family="sans-serif" font-weight="bold">f(x) &le; g(x)</text>
+    <text x="312" y="35" text-anchor="middle" font-size="11" fill="#1d4ed8" font-family="sans-serif">Red BELOW Purple</text>
+    <text x="312" y="225" text-anchor="middle" font-size="11" fill="#1d4ed8" font-family="sans-serif" font-weight="bold">x &ge; 1</text>
+  </svg>
+</div>
+
+### Number of Solutions ($f(x) = k$)
+Questions often ask: *"Find the number of solutions to $f(x) = k$"* or *"Find the range of $k$ such that the equation has exactly 3 solutions."*
+Treat $y = k$ as a horizontal line. By imagining sliding this horizontal line up and down over your function, you can count how many times it intersects the curve.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    <g stroke="#cbd5e1" stroke-width="2">
+      <line x1="0" y1="125" x2="400" y2="125" />
+      <polygon points="392,121 400,125 392,129" fill="#cbd5e1" stroke-width="0" />
+      <line x1="200" y1="250" x2="200" y2="0" />
+      <polygon points="196,8 200,0 204,8" fill="#cbd5e1" stroke-width="0" />
+    </g>
+    
+    {/* Math Scale: 1 unit = 50px X, 25px Y. Origin at (200, 125) */}
+    {/* Cubic Curve: y = x^3 - 3x */}
+    <polyline fill="none" stroke="#3b82f6" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
+      const x = i;
+      const mathX = (x - 200) / 50;
+      const mathY = Math.pow(mathX, 3) - 3 * mathX;
+      return `${x},${125 - mathY * 25}`;
+    }).join(' ')} />
+
+    {/* Horizontal Line 1: y = 1 (3 solutions) -> Pixel 100 */}
+    <line x1="0" y1="100" x2="400" y2="100" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6 4" />
+    <text x="10" y="95" font-size="12" fill="#f59e0b" font-family="sans-serif" font-weight="bold">y = k intersects 3 times (3 solutions)</text>
+    <circle cx="123" cy="100" r="4" fill="#f59e0b" />
+    <circle cx="182" cy="100" r="4" fill="#f59e0b" />
+    <circle cx="293" cy="100" r="4" fill="#f59e0b" />
+
+    {/* Horizontal Line 2: y = 3 (1 solution) -> Pixel 50 */}
+    <line x1="0" y1="50" x2="400" y2="50" stroke="#ef4444" stroke-width="2" stroke-dasharray="6 4" />
+    <text x="10" y="45" font-size="12" fill="#ef4444" font-family="sans-serif" font-weight="bold">y = k intersects 1 time (1 solution)</text>
+    <circle cx="305" cy="50" r="4" fill="#ef4444" />
+  </svg>
+</div>
+
+---
+
+## 7. Practice Problems
 
 <Tabs>
-  <TabItem label="📝 Question 1: Finding Extrema">
-    A function is given by $f(x) = x^3 - 5x^2 + 2x + 8$.
-    Using a graphic display calculator, find the coordinates of the local maximum and the local minimum. Round your answers to 2 decimal places.
+  <TabItem label="📝 Q1: Quadratic Features">
+    Let $f(x) = x^2 - 4x - 5$.
+
+    a) Find the y-intercept of $f(x)$.
+
+    b) Find the zeros of $f(x)$.
+
+    c) Write down the coordinates of the vertex.
+
+    d) Write down the equation of the axis of symmetry.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    1. Open a new Graphs document and enter $f1(x) = x^3 - 5x^2 + 2x + 8$.
-    2. Adjust your Window Settings (`Menu` > `4` > `1`) if you cannot see the distinct peaks and troughs.
-    3. Press `Menu` > `6: Analyze Graph` > `3: Maximum`. Select your lower and upper bounds around the peak. The calculator will output $x = 0.2137...$ and $y = 8.211...$
-    4. Press `Menu` > `6: Analyze Graph` > `2: Minimum`. Select bounds around the trough. The calculator will output $x = 3.1196...$ and $y = -4.063...$
-    
-    **Answers:** Local Maximum: $(0.21, 8.21)$
-    Local Minimum: $(3.12, -4.06)$
+    **a)** y-intercept occurs where $x=0$. $(0, -5)$.
+
+    **b)** `Menu` > `6` > `1: Zero`. The graph crosses the x-axis at $x = -1$ and $x = 5$.
+
+    **c)** `Menu` > `6` > `2: Minimum`. The vertex is at $(2, -9)$.
+
+    **d)** The axis of symmetry runs vertically through the vertex. Equation: $x = 2$.
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Using a TI-Nspire to find local maxima and minima of cubic and unfamiliar functions to 2 decimal places" />
-
 <Tabs>
-  <TabItem label="📝 Question 2: Finding Intersections">
-    Find the coordinates of the points where the graphs of $f(x) = 2^x$ and $g(x) = 3 - x^2$ intersect. Give your answers correct to 3 significant figures.
+  <TabItem label="📝 Q2: Extrema & Symmetry">
+    Consider the cubic function $f(x) = x^3 - 3x^2 + 4$.
+
+    a) Find the coordinates of the local maximum.
+
+    b) Find the coordinates of the local minimum.
+
+    c) Find the coordinates of the center of rotational symmetry for this graph.
+
+    d) Find the range of values for $k$ such that the equation $f(x) = k$ has exactly 3 solutions.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    1. Enter $f1(x) = 2^x$. Press `Tab` to open the entry line again and enter $f2(x) = 3 - x^2$.
-    2. Press `Menu` > `6: Analyze Graph` > `4: Intersection`. 
-    3. Select the bounds for the first intersection on the left: $x = -1.688...$, $y = 0.149...$
-    4. Repeat the entire process (`Menu` > `6` > `4`) and select bounds for the second intersection on the right: $x = 1.056...$, $y = 1.884...$
-    
-    **Answers (to 3 s.f.):**
-    $(-1.69, 0.149)$ and $(1.06, 1.88)$
+    **a)** `Menu` > `6` > `3: Maximum`. Local maximum at $(0, 4)$.
+
+    **b)** `Menu` > `6` > `2: Minimum`. Local minimum at $(2, 0)$.
+
+    **c)** For a cubic, the center of rotational symmetry is exactly halfway between the local maximum and minimum. Midpoint of $(0,4)$ and $(2,0)$ is $(1, 2)$.
+
+    **d)** A horizontal line $y=k$ crosses the cubic 3 times strictly *between* the local minimum and local maximum. The y-values are between $0$ and $4$. Answer: $0 < k < 4$.
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Finding the intersection points of a non-linear graph (e.g., exponential) and a quadratic using a TI-Nspire" />
 
 <Tabs>
-  <TabItem label="📝 Question 3: Finding Zeros">
-    Find the zeros of the function $f(x) = \frac{1}{x} + x - 3$.
+  <TabItem label="📝 Q3: Intersections & Inequalities">
+    Let $f(x) = 2^x$ and $g(x) = 3 - x$.
+
+    a) Show that the graphs intersect at the point $(1, 2)$.
+
+    b) Find the solution to the inequality $f(x) < g(x)$.
+
+    c) Find the solution to the inequality $f(x) \geq 1$.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    1. Enter $f1(x) = 1/x + x - 3$. (Use `Ctrl` + `÷` to create a proper fraction!).
-    2. You should see two branches with a vertical asymptote at the y-axis.
-    3. Press `Menu` > `6: Analyze Graph` > `1: Zero`.
-    4. Select bounds around the first root: $x = 0.3819...$
-    5. Repeat the process for the second root: $x = 2.618...$
-    
-    **Answers (to 3 s.f.):**
-    $x = 0.382$ and $x = 2.62$
+    **a)** Substitute $x=1$ into both equations: $f(1) = 2^1 = 2$ and $g(1) = 3 - 1 = 2$. Since $f(1) = g(1)$, they intersect at $(1, 2)$.
+
+    **b)** Looking at the graph, $f(x)$ (the exponential) is physically *below* $g(x)$ (the straight line) for all x-values to the left of the intersection. Answer: $x < 1$.
+
+    **c)** Graph $y = 1$. $f(x)$ is above or equal to $1$ starting from the y-axis and moving right. Answer: $x \geq 0$.
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Using a TI-Nspire to find the zeros (x-intercepts) of unfamiliar rational functions" />
+<Tabs>
+  <TabItem label="📝 Q4: 'Show that' and Quadratics">
+    Let $f(x) = -x^2 + 4$ and $g(x) = x + 2$.
+
+    a) Show that $f(-2) = g(-2)$.
+
+    b) Find the coordinates of the other intersection point.
+
+    c) Find the interval where $f(x) > g(x)$.
+
+    d) Solve $f(x) \leq 0$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** $f(-2) = -(-2)^2 + 4 = -4 + 4 = 0$. $g(-2) = -2 + 2 = 0$. Both equal $0$.
+
+    **b)** `Menu` > `6` > `4: Intersection`. The other point is $(1, 3)$.
+
+    **c)** The parabola $f(x)$ is above the line $g(x)$ *between* the two intersection points. Answer: $-2 < x < 1$.
+
+    **d)** Find where the parabola is below or touching the x-axis. The roots are $x=-2$ and $x=2$. Answer: $x \leq -2$ or $x \geq 2$.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Quartic Functions & Solutions">
+    A quartic function is given by $f(x) = 0.5x^4 - x^2$.
+
+    a) Find the zeros of $f(x)$.
+
+    b) Find the coordinates of the two local minima.
+
+    c) Find the coordinates of the local maximum.
+
+    d) Determine the range of $k$ for which $f(x) = k$ has exactly 4 solutions.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)** Using the Zero tool, $x = -1.41$, $x = 0$, $x = 1.41$.
+
+    **b)** Using the Minimum tool twice, they are at $(-1, -0.5)$ and $(1, -0.5)$.
+
+    **c)** Using the Maximum tool, $(0, 0)$.
+
+    **d)** To hit the "W" shaped curve 4 times, the horizontal line $y=k$ must be above the minima ($y=-0.5$) but below the central maximum ($y=0$). Answer: $-0.5 < k < 0$.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Rational Functions">
+    Let $f(x) = \frac{3}{x} + x$.
+
+    a) Find the coordinates of the local maximum.
+
+    b) Find the coordinates of the local minimum.
+
+    c) Solve the equation $f(x) = 4$.
+
+    d) Solve the inequality $f(x) \leq 4$ for $x > 0$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** The graph has two branches. The left branch has a "peak". Maximum at $(-1.73, -3.46)$.
+
+    **b)** The right branch has a "valley". Minimum at $(1.73, 3.46)$.
+
+    **c)** Graph $y = 4$ and find the intersections. $x = 1$ and $x = 3$.
+
+    **d)** For the domain $x > 0$ (the right branch), the curve dips below the line $y=4$ *between* the intersections. Because it is $\leq$, we include the intersection points. Answer: $1 \leq x \leq 3$.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Complex Inequalities">
+    Let $f(x) = x^3 - 2x^2 - x + 2$.
+
+    a) Find the y-intercept.
+
+    b) Find all the zeros.
+
+    c) Find the intervals where $f(x) > 0$.
+
+    d) State the number of solutions to $f(x) = 3$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** Substitute $x=0$, $y = 2$. Point is $(0, 2)$.
+
+    **b)** Using the Zero tool: $x = -1$, $x = 1$, $x = 2$.
+
+    **c)** The graph is above the x-axis between the first two roots, and after the last root. Answer: $-1 < x < 1$ or $x > 2$.
+
+    **d)** Find the local maximum point; it's approx $(-0.215, 2.11)$. Since $3 > 2.11$, the line $y=3$ is entirely above the "hump" and only intersects the steep right side of the cubic once. Answer: $1$ solution.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Mixed Graphic Display">
+    Let $f(x) = \ln(x) + 2$ and $g(x) = \frac{1}{x}$.
+
+    a) Show that the domain of $f(x)$ is $x > 0$.
+
+    b) Find the coordinates of the point of intersection to 3 s.f.
+
+    c) Solve $f(x) < g(x)$.
+
+    d) Find the zero of $f(x)$ correct to 3 decimal places.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)** You cannot take the natural logarithm of a negative number or zero. The graph of $f(x)$ only exists to the right of the y-axis, confirming the domain is $x > 0$.
+
+    **b)** Graph both and use Intersection tool. Point is $(0.653, 1.53)$.
+
+    **c)** $f(x)$ is below $g(x)$ to the left of the intersection. Since the domain starts at $0$, the answer is $0 < x < 0.653$.
+
+    **d)** Use the Zero tool on $f(x)$. $x = 0.135$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using a TI-Nspire to solve inequalities and find exact intersections, extrema, and zeros for 0607 Extended mathematics" />

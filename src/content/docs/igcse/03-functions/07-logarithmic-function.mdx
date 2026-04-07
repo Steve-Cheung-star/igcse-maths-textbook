@@ -201,103 +201,218 @@ Use **Menu $\rightarrow$ Analyze Graph $\rightarrow$ Intersection** on your calc
 ## 7. Practice Problems
 
 <Tabs>
-  <TabItem label="📝 Question 1: Translating Forms">
-    Write the exponential equation $6^3 = 216$ in logarithmic form.
+  <TabItem label="📝 Question 1: Translating and Evaluating">
+    a) Write the exponential equation $2^7 = 128$ in logarithmic form.
+    
+    b) Write the logarithmic equation $\log_5 625 = 4$ in exponential form.
+    
+    c) Evaluate $\log_{10} 100000$ without using a calculator.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    Use the rule $a^x = y \iff \log_a y = x$.
-    The base is 6, the exponent is 3, and the result is 216.
+    **a)**
+    <Steps>
+      1. Use the rule $a^x = y \iff \log_a y = x$.
+      2. The base is $2$, the exponent is $7$, and the result is $128$.
+      3. **$\log_2 128 = 7$**
+    </Steps>
     
-    **Answer:** $\log_6 216 = 3$
+    **b)**
+    <Steps>
+      1. Reverse the rule: the base is $5$, the logarithm (power) is $4$, and the result is $625$.
+      2. **$5^4 = 625$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Ask yourself: "10 to what power equals 100,000?"
+      2. Count the zeros: $10^5 = 100000$.
+      3. **$5$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Translating between exponential and logarithmic equations" />
+<SmartAIGenerator topic="Translating between exponential and logarithmic forms and basic evaluation without a calculator" />
 
 <Tabs>
-  <TabItem label="📝 Question 2: Evaluating Logs">
-    Solve for $x$: $\log_{10} x = 3.5$. Give your answer correct to the nearest whole number.
+  <TabItem label="📝 Question 2: Cancellation Properties">
+    a) Simplify the expression $10^{\log_{10}(5x)}$.
+    
+    b) Simplify the expression $\log_3(3^{y + 2})$.
+    
+    c) Use cancellation to solve the equation $10^{\log_{10}(2k)} = 18$.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    Convert the logarithmic equation back into exponential form:
-    $$x = 10^{3.5}$$
-    Calculate $10^{3.5}$ using your GDC.
-    $$x = 3162.277...$$
-    
-    **Answer:** $x = 3162$
+    **a)**
+    <Steps>
+      1. Use the property $a^{\log_a(x)} = x$.
+      2. The base 10 exponent and base 10 logarithm cancel.
+      3. **$5x$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Use the property $\log_a(a^x) = x$.
+      2. The base 3 logarithm and base 3 exponent cancel.
+      3. **$y + 2$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Cancel the exponential and logarithm on the left side: $2k = 18$.
+      2. Divide both sides by $2$.
+      3. **$k = 9$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Solving basic logarithmic equations by converting to exponential form" />
+<SmartAIGenerator topic="Simplifying algebraic expressions and solving equations using logarithm cancellation properties" />
 
 <Tabs>
-  <TabItem label="📝 Question 3: Basic Exponential Solving">
-    Solve the equation $5^x = 120$. Give your answer correct to 3 significant figures.
+  <TabItem label="📝 Question 3: Solving Exponential Equations">
+    a) Solve the equation $7^x = 300$. Give your answer correct to 3 significant figures.
+    
+    b) Solve the equation $4 \times 10^x = 850$. Give your answer correct to 3 significant figures.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    Use the logarithm rule for $a^x = b$:
-    $$
-    \begin{aligned}
-    x &= \frac{\log 120}{\log 5} \\
-    x &= 2.9746...
-    \end{aligned}
-    $$
-    
-    **Answer:** $x = 2.97$
+    **a)**
+    <Steps>
+      1. Apply the standard solution formula: $x = \frac{\log 300}{\log 7}$.
+      2. Calculate using your GDC: $x \approx 2.931...$
+      3. **$x = 2.93$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. First, isolate the exponential part by dividing both sides by $4$.
+      2. $10^x = 212.5$
+      3. Convert to logarithmic form: $x = \log_{10} 212.5$.
+      4. Calculate: $x \approx 2.327...$
+      5. **$x = 2.33$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Solving basic exponential equations in the form a^x = b using logarithms" />
+<SmartAIGenerator topic="Solving basic and multistep exponential equations using logarithms" />
 
 <Tabs>
-  <TabItem label="📝 Question 4: Cancellation Properties">
-    Simplify the expression $10^{\log_{10}(3x + 1)}$.
+  <TabItem label="📝 Question 4: Solving Logarithmic Equations">
+    a) Solve for $x$: $\log_{10}(x) = 4.2$. Give your answer correct to 1 decimal place.
+    
+    b) Solve for $x$: $\log_{10}(2x - 5) = 2$.
   </TabItem>
   <TabItem label="✅ Solution 4">
-    Use the cancellation property $a^{\log_a(x)} = x$. 
-    Because the base of the exponential is 10 and the base of the logarithm is 10, they cancel each other out entirely.
-    
-    **Answer:** $3x + 1$
+    **a)**
+    <Steps>
+      1. Convert the logarithmic equation back into exponential form.
+      2. $x = 10^{4.2}$
+      3. Calculate: $x = 15848.931...$
+      4. **$x = 15848.9$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Convert to exponential form: $2x - 5 = 10^2$.
+      2. Simplify: $2x - 5 = 100$.
+      3. Add $5$ to both sides: $2x = 105$.
+      4. Divide by $2$: $x = 52.5$.
+      5. **$x = 52.5$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Using cancellation properties of logarithms and exponentials to simplify expressions" />
+<SmartAIGenerator topic="Solving logarithmic equations by converting them back into exponential form" />
 
 <Tabs>
-  <TabItem label="📝 Question 5: Graphic Intersections">
-    The graphs of $y = \log_{10} x$ and $y = 5 - x$ are drawn on a coordinate grid. They intersect at a single point. 
-    Write down the equation that is being solved at this intersection point.
+  <TabItem label="📝 Question 5: Compound Interest Growth">
+    800 dollars is invested in an account paying 5% compound interest per year. Let $n$ be the number of years.
+    
+    a) Write down an exponential equation to find when the investment will reach 1500 dollars.
+    
+    b) Solve your equation from part (a) to find the exact value of $n$ (to 2 decimal places).
+    
+    c) State the number of *full* years required for the investment to exceed 1500 dollars.
   </TabItem>
   <TabItem label="✅ Solution 5">
-    When two graphs intersect, their $y$-values are equal. To find the equation being solved, simply set the two functions equal to each other.
-    
-    **Answer:** $\log_{10} x = 5 - x$
+    **a)**
+    <Steps>
+      1. The multiplier is $1 + \frac{5}{100} = 1.05$.
+      2. Initial amount $\times$ (multiplier)$^n$ $=$ Final amount.
+      3. **$800 \times 1.05^n = 1500$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Divide both sides by 800: $1.05^n = 1.875$.
+      2. Apply the log rule: $n = \frac{\log 1.875}{\log 1.05}$.
+      3. Calculate: $n = 12.883...$
+      4. **$n = 12.88$**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The threshold is crossed during the 12th year.
+      2. To ensure it has fully *exceeded* the amount, we round up to the next complete year.
+      3. **13 full years**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Identifying the algebraic equation being solved from the intersection of two graphs" />
+<SmartAIGenerator topic="Using logarithms to solve compound interest growth word problems" />
 
 <Tabs>
-  <TabItem label="📝 Question 6: Population Decay">
-    The population of a rare species of bird is currently 4,500. It is declining at a rate of 8% per year.
-    Solve an equation to find how many complete years it will take for the population to drop below 2,000.
+  <TabItem label="📝 Question 6: Exponential Decay (Depreciation)">
+    A machine is purchased for 12,000 dollars. Its value depreciates at a rate of 12% each year. 
+    
+    a) Write down an equation to find how many years ($n$) it takes for the value to drop to exactly 5,000 dollars.
+    
+    b) Solve your equation to find $n$, correct to 2 decimal places.
   </TabItem>
   <TabItem label="✅ Solution 6">
-    Set up the exponential decay equation:
-    $$4500 \times \left(1 - \frac{8}{100}\right)^n = 2000$$
-    $$4500 \times (0.92)^n = 2000$$
-    
-    Divide by 4500:
-    $$0.92^n = \frac{2000}{4500} = \frac{4}{9}$$
-    
-    Solve using logarithms:
-    $$n = \frac{\log(4/9)}{\log(0.92)}$$
-    $$n \approx 9.72$$
-    
-    It will drop below 2,000 during the 9th year, meaning it takes 10 complete years to ensure it is fully below that mark. Based on the wording "complete years", we round up.
-    
-    **Answer:** 10 complete years.
+    **a)**
+    <Steps>
+      1. The multiplier for a 12% decrease is $1 - 0.12 = 0.88$.
+      2. Initial value $\times$ (multiplier)$^n$ $=$ Final value.
+      3. **$12000 \times 0.88^n = 5000$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Divide both sides by 12,000: $0.88^n = \frac{5}{12}$.
+      2. Apply the log rule: $n = \frac{\log(5/12)}{\log 0.88}$.
+      3. Calculate: $n = 6.848...$
+      4. **$n = 6.85$**
+    </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Solving exponential growth and decay word problems for time using logarithms" />
+<SmartAIGenerator topic="Using logarithms to solve exponential decay and depreciation word problems" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Graphical Solutions">
+    Consider the functions $f(x) = 10^{0.5x}$ and $g(x) = 8 - x$.
+    
+    a) If you were to find the intersection of these two graphs, write down the algebraic equation you would be solving.
+    
+    b) By graphing both functions on your GDC, find the $x$-coordinate of their intersection point. Give your answer to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. At the intersection, the $y$-values are equal.
+      2. Set $f(x)$ equal to $g(x)$.
+      3. **$10^{0.5x} = 8 - x$**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Plot $y = 10^{0.5x}$ as your first function on the GDC.
+      2. Plot $y = 8 - x$ as your second function.
+      3. Use the **Menu $\rightarrow$ Analyze Graph $\rightarrow$ Intersection** tool.
+      4. The calculator shows the intersection point at roughly $(1.581..., 6.418...)$.
+      5. The $x$-coordinate solves the equation.
+      6. **$x = 1.58$**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving complex exponential equations using graphing calculator intersection tools" />
