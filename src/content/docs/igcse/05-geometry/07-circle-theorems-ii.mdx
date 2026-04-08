@@ -6,7 +6,7 @@ description: Understand and apply the symmetry properties of circles, including 
 While the first set of circle theorems focuses heavily on inscribed angles, this second set is all about **symmetry and distance**. Circles are perfectly symmetrical shapes, which means that lines, chords, and tangents interact with them in highly predictable, proportional ways.
 
 <SteveTip title="Reasons are Still Mandatory">
-Just like the angle theorems, you must memorise the exact wording of these symmetry properties. Examiners will ask you to "give a reason for your answer" when you use them to find missing lengths or angles. 
+  Just like the angle theorems, you must memorise the exact wording of these symmetry properties. Examiners will ask you to "give a reason for your answer" when you use them to find missing lengths or angles. 
 </SteveTip>
 
 ---
@@ -23,26 +23,26 @@ import CircleSimulator from '../../../../components/CircleSimulator.jsx';
 
 A chord is a straight line drawn between any two points on the circumference. Because a circle is perfectly round, chords that are exactly the same length will always be the exact same distance from the centre.
 
+
+
 <Aside type="tip" title="Theorem 1: Equal Chords">
-**Equal chords are equidistant from the centre**.
-Conversely, if two chords are the same distance from the centre, they must be equal in length.
+  **Equal chords are equidistant from the centre**.
+  Conversely, if two chords are the same distance from the centre, they must be equal in length.
 </Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 300 300" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+  <svg viewBox="0 0 300 300" width="100%" maxWidth="450px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <circle cx="150" cy="150" r="110" fill="#f1f5f9" stroke="#1e293b" stroke-width="2" />
     
-    {/* Right Angle Markers BOTTOM layer */}
-    {/* Top chord marker */}
-    <polygon points="150,84 150,94 160,94 160,84" fill="#e2e8f0" stroke="#ef4444" stroke-width="2" />
-    {/* Slanted chord marker */}
-    <polygon points="189.6,202.8 183.6,194.8 191.6,188.8 197.6,196.8" fill="#e2e8f0" stroke="#ef4444" stroke-width="2" />
+    {/* Right Angle Markers BOTTOM layer plotted mathematically */}
+    <polygon points="150,84 150,94 160,94 160,84" fill="#e2e8f0" stroke="#ef4444" stroke-width="2" stroke-linejoin="round" />
+    <polygon points="189.6,202.8 183.6,194.8 175.6,200.8 181.6,208.8" fill="#e2e8f0" stroke="#ef4444" stroke-width="2" stroke-linejoin="round" />
 
     {/* Top Chord (Distance = 66, Length = 176) */}
-    <line x1="62" y1="84" x2="238" y2="84" stroke="#3b82f6" stroke-width="3" />
+    <line x1="62" y1="84" x2="238" y2="84" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
     
     {/* Slanted Chord (Distance = 66, Length = 176) */}
-    <line x1="119.2" y1="255.6" x2="260" y2="150" stroke="#3b82f6" stroke-width="3" />
+    <line x1="119.2" y1="255.6" x2="260" y2="150" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
     
     {/* Perpendicular Distances */}
     <line x1="150" y1="150" x2="150" y2="84" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
@@ -61,37 +61,39 @@ Conversely, if two chords are the same distance from the centre, they must be eq
 
 If you draw a line from the centre of a circle so that it hits a chord at exactly $90^\circ$ (perpendicular), it will always cut that chord perfectly in half (bisect it). 
 
+[Image illustrating the perpendicular bisector of a chord intersecting the centre of a circle]
+
 <Aside type="tip" title="Theorem 2: Perpendicular Bisector">
-**The perpendicular bisector of a chord passes through the centre**.
-* **Rule A:** A line from the centre perpendicular to a chord bisects the chord.
-* **Rule B:** A line from the centre that bisects a chord is perpendicular to the chord.
+  **The perpendicular bisector of a chord passes through the centre**.
+  * **Rule A:** A line from the centre perpendicular to a chord bisects the chord.
+  * **Rule B:** A line from the centre that bisects a chord is perpendicular to the chord.
 </Aside>
 
 <Aside type="caution" title="The Pythagoras Connection">
-This theorem is almost *always* paired with **Pythagoras' Theorem** in exams. The radius, half the chord, and the perpendicular distance to the centre form a perfect right-angled triangle.
+  This theorem is almost *always* paired with **Pythagoras' Theorem** in exams. The radius, half the chord, and the perpendicular distance to the centre form a perfect right-angled triangle.
 </Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+  <svg viewBox="0 0 300 250" width="100%" maxWidth="450px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <circle cx="150" cy="110" r="90" fill="#f1f5f9" stroke="#1e293b" stroke-width="2" />
     
     {/* Right angle marker BOTTOM layer */}
-    <polygon points="150,170 150,160 160,160 160,170" fill="#e2e8f0" stroke="#1e293b" stroke-width="2" />
+    <polygon points="150,170 150,160 160,160 160,170" fill="#e2e8f0" stroke="#1e293b" stroke-width="2" stroke-linejoin="round" />
     
-    {/* Chord (y=170) -> dx = sqrt(90^2 - 60^2) = 67 */}
-    <line x1="83" y1="170" x2="217" y2="170" stroke="#3b82f6" stroke-width="3" />
+    {/* Chord (y=170) -> dx = sqrt(90^2 - 60^2) = 67.08 */}
+    <line x1="82.9" y1="170" x2="217.1" y2="170" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
     
     {/* Line from Centre (Bisector) */}
-    <line x1="150" y1="110" x2="150" y2="170" stroke="#10b981" stroke-width="3" />
+    <line x1="150" y1="110" x2="150" y2="170" stroke="#10b981" stroke-width="3" stroke-linecap="round" />
     
     {/* Radius forming the triangle */}
-    <line x1="150" y1="110" x2="217" y2="170" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="150" y1="110" x2="217.1" y2="170" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
     
     <circle cx="150" cy="110" r="3" fill="#1e293b" />
     
     {/* Tick marks for bisected chord */}
-    <line x1="116" y1="165" x2="116" y2="175" stroke="#1e293b" stroke-width="2" />
-    <line x1="184" y1="165" x2="184" y2="175" stroke="#1e293b" stroke-width="2" />
+    <line x1="116.5" y1="165" x2="116.5" y2="175" stroke="#1e293b" stroke-width="2" stroke-linecap="round" />
+    <line x1="183.5" y1="165" x2="183.5" y2="175" stroke="#1e293b" stroke-width="2" stroke-linecap="round" />
 
     {/* Labels */}
     <text x="140" y="105" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">O</text>
@@ -107,35 +109,37 @@ This theorem is almost *always* paired with **Pythagoras' Theorem** in exams. Th
 
 If you pick a random point anywhere outside a circle and draw straight lines to the circle, exactly two lines will act as tangents (touching the edge perfectly). Because of the circle's symmetry, these two lines will be a mirror image of each other.
 
+[Image showing equal tangents drawn from an external point forming a geometric kite with the circle's centre]
+
 <Aside type="tip" title="Theorem 3: Tangents from a Point">
-**Tangents from an external point are equal in length**.
+  **Tangents from an external point are equal in length**.
 </Aside>
 
 <Aside type="note" title="The Tangent Kite">
-When you draw two tangents from an external point and connect their touching points to the centre with radii, you create a **kite**.
-* The tangents are equal.
-* The radii are equal.
-* The angle between the tangent and radius is $90^\circ$ (from Theorem 2).
-* A line drawn from the centre to the external point slices the kite into **two identical right-angled triangles**.
+  When you draw two tangents from an external point and connect their touching points to the centre with radii, you create a **kite**.
+  * The tangents are equal.
+  * The radii are equal.
+  * The angle between the tangent and radius is $90^\circ$.
+  * A line drawn from the centre to the external point slices the kite into **two identical right-angled triangles**.
 </Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 350 300" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+  <svg viewBox="0 0 350 300" width="100%" maxWidth="525px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <g transform="translate(40, 0)">
       {/* Circle Centre O(80, 150) r=90 */}
       <circle cx="80" cy="150" r="90" fill="#f1f5f9" stroke="#1e293b" stroke-width="2" />
 
-      {/* Right angle markers BOTTOM layer */}
-      <polygon points="134,78 128,86 136,92 142,84" fill="#e2e8f0" stroke="#ef4444" stroke-width="2" />
-      <polygon points="134,222 128,214 136,208 142,216" fill="#e2e8f0" stroke="#ef4444" stroke-width="2" />
+      {/* Right angle markers BOTTOM layer plotted precisely */}
+      <polygon points="134,78 128,86 136,92 142,84" fill="#e2e8f0" stroke="#ef4444" stroke-width="2" stroke-linejoin="round" />
+      <polygon points="134,222 128,214 136,208 142,216" fill="#e2e8f0" stroke="#ef4444" stroke-width="2" stroke-linejoin="round" />
 
       {/* Radii */}
       <line x1="80" y1="150" x2="134" y2="78" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
       <line x1="80" y1="150" x2="134" y2="222" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
 
       {/* Tangents */}
-      <line x1="230" y1="150" x2="134" y2="78" stroke="#3b82f6" stroke-width="3" />
-      <line x1="230" y1="150" x2="134" y2="222" stroke="#3b82f6" stroke-width="3" />
+      <line x1="230" y1="150" x2="134" y2="78" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+      <line x1="230" y1="150" x2="134" y2="222" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
 
       {/* Line of Symmetry OP */}
       <line x1="80" y1="150" x2="230" y2="150" stroke="#10b981" stroke-width="2" stroke-dasharray="6 6" />
@@ -148,8 +152,8 @@ When you draw two tangents from an external point and connect their touching poi
       <text x="240" y="155" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">P</text>
 
       {/* Tick marks for equal tangents */}
-      <line x1="186" y1="106" x2="178" y2="116" stroke="#1e293b" stroke-width="2" />
-      <line x1="186" y1="194" x2="178" y2="184" stroke="#1e293b" stroke-width="2" />
+      <line x1="186" y1="106" x2="178" y2="116" stroke="#1e293b" stroke-width="2" stroke-linecap="round" />
+      <line x1="186" y1="194" x2="178" y2="184" stroke="#1e293b" stroke-width="2" stroke-linecap="round" />
 
       <text x="182" y="90" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">Equal Tangents</text>
     </g>
@@ -160,23 +164,23 @@ When you draw two tangents from an external point and connect their touching poi
 
 ## 4. Structured Worked Examples
 
-Examiners will blend these symmetry theorems with Pythagoras' Theorem, trigonometry (SOH CAH TOA), and basic angle properties.
+Examiners will consistently blend these symmetry theorems with Pythagoras' Theorem, trigonometry (SOH CAH TOA), and basic lengths.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 300 220" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    <circle cx="150" cy="110" r="90" fill="#f1f5f9" stroke="#1e293b" stroke-width="2" />
+  <svg viewBox="0 0 300 220" width="100%" maxWidth="450px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <circle cx="150" cy="110" r="85" fill="#f1f5f9" stroke="#1e293b" stroke-width="2" />
     
-    <polygon points="150,155 150,145 160,145 160,155" fill="#e2e8f0" stroke="#1e293b" stroke-width="2" />
+    <polygon points="150,150 150,140 160,140 160,150" fill="#e2e8f0" stroke="#1e293b" stroke-width="2" stroke-linejoin="round" />
 
-    <line x1="72" y1="155" x2="228" y2="155" stroke="#3b82f6" stroke-width="3" />
-    <line x1="150" y1="110" x2="150" y2="155" stroke="#ef4444" stroke-width="2" />
-    <line x1="150" y1="110" x2="228" y2="155" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="75" y1="150" x2="225" y2="150" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+    <line x1="150" y1="110" x2="150" y2="150" stroke="#ef4444" stroke-width="2" />
+    <line x1="150" y1="110" x2="225" y2="150" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
     
     <circle cx="150" cy="110" r="3" fill="#1e293b" />
     <text x="150" y="100" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">O</text>
 
     <text x="140" y="135" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">8cm</text>
-    <text x="185" y="175" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">30cm</text>
+    <text x="185" y="170" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">30cm</text>
     <text x="195" y="125" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">r</text>
   </svg>
 </div>
@@ -185,23 +189,23 @@ Examiners will blend these symmetry theorems with Pythagoras' Theorem, trigonome
 
 **Solution:**
 <Steps>
-1. **Apply the theorem:** The perpendicular line from the centre bisects the chord. 
-   Half of the chord $= 30\text{cm} \div 2 = 15\text{cm}$.
-   *Reason:* The perpendicular bisector of a chord passes through the centre.
-2. **Set up Pythagoras:** A right-angled triangle is formed by the radius (hypotenuse), the $8\text{cm}$ distance, and the $15\text{cm}$ half-chord.
-   $$
-   r^2 = 8^2 + 15^2
-   $$
-3. **Solve:**
-   $$
-   r^2 = 64 + 225
-   $$
-   $$
-   r^2 = 289
-   $$
-   $$
-   r = \sqrt{289} = 17\text{cm}
-   $$
+  1. **Apply the theorem:** The perpendicular line from the centre bisects the chord. 
+     Half of the chord $= 30\text{cm} \div 2 = 15\text{cm}$.
+     *Reason:* The perpendicular bisector of a chord passes through the centre.
+  2. **Set up Pythagoras:** A right-angled triangle is formed by the radius (hypotenuse), the $8\text{cm}$ distance, and the $15\text{cm}$ half-chord.
+     $$
+     r^2 = 8^2 + 15^2
+     $$
+  3. **Solve:**
+     $$
+     r^2 = 64 + 225
+     $$
+     $$
+     r^2 = 289
+     $$
+     $$
+     r = \sqrt{289} = 17\text{cm}
+     $$
 </Steps>
 
 ---
@@ -210,29 +214,58 @@ Examiners will blend these symmetry theorems with Pythagoras' Theorem, trigonome
 
 <Tabs>
   <TabItem label="📝 Question 1: Pythagoras and Chords (Core)">
-    A circle has a radius of $13\text{cm}$. A chord is drawn at a distance of $5\text{cm}$ from the centre. 
-    Calculate the total length of the chord.
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 300" width="100%" maxWidth="450px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <circle cx="150" cy="150" r="130" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Chord rotated by 30 degrees. Center (150, 150). Distance=50, Half-chord=120 */}
+        <line x1="21.1" y1="133.3" x2="228.9" y2="253.3" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+        
+        {/* Perpendicular distance from O to M(125, 193.3) */}
+        <line x1="150" y1="150" x2="125" y2="193.3" stroke="#ef4444" stroke-width="2" stroke-linecap="round" />
+        
+        {/* Dashed Radius from O to (228.9, 253.3) */}
+        <line x1="150" y1="150" x2="228.9" y2="253.3" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+        
+        {/* Right angle at M */}
+        <polygon points="125,193.3 130,184.6 138.7,189.6 133.7,198.3" fill="#e2e8f0" stroke="#1e293b" stroke-width="1.5" stroke-linejoin="round" />
+
+        <circle cx="150" cy="150" r="3" fill="#1e293b" />
+        <text x="150" y="140" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">O</text>
+        
+        <text x="125" y="165" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">5cm</text>
+        <text x="200" y="195" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">13cm</text>
+      </svg>
+    </div>
+    A circle has a radius of $13\text{cm}$. A chord is drawn at a perpendicular distance of $5\text{cm}$ from the centre $O$. 
+    
+    a) State the theorem relating a perpendicular line from the centre to a chord.
+
+    b) Calculate half the length of the chord using Pythagoras' Theorem.
+
+    c) Calculate the total length of the chord.
+
   </TabItem>
   <TabItem label="✅ Solution 1">
+    **a)**
     <Steps>
-    1. Draw a quick sketch. The radius ($13\text{cm}$), the distance from the centre ($5\text{cm}$), and *half* of the chord form a right-angled triangle.
-    2. Use Pythagoras' Theorem to find half the chord ($x$):
-       $$
-       13^2 = 5^2 + x^2
-       $$
-       $$
-       169 = 25 + x^2
-       $$
-       $$
-       x^2 = 144
-       $$
-       $$
-       x = 12\text{cm}
-       $$
-    3. The theorem states a line from the centre perpendicular to a chord bisects it. Therefore, the total length is double the half-chord:
-       $$
-       \text{Total Length} = 12 \times 2 = 24\text{cm}
-       $$
+      1. **"A line drawn from the centre perpendicular to a chord bisects the chord."**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The radius ($13\text{cm}$), the distance from the centre ($5\text{cm}$), and *half* of the chord ($x$) form a right-angled triangle.
+      2. Set up Pythagoras' Theorem: $13^2 = 5^2 + x^2$.
+      3. $169 = 25 + x^2$.
+      4. $x^2 = 144$.
+      5. **Half the chord length is $12\text{cm}$.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Because the chord is bisected, the total length is double the half-chord.
+      2. $12\text{cm} \times 2 = 24\text{cm}$.
+      3. **The total length of the chord is $24\text{cm}$.**
     </Steps>
   </TabItem>
 </Tabs>
@@ -240,162 +273,502 @@ Examiners will blend these symmetry theorems with Pythagoras' Theorem, trigonome
 <SmartAIGenerator topic="Using Pythagoras with chords and perpendicular bisectors in circles" />
 
 <Tabs>
-  <TabItem label="📝 Question 2: Tangents and Angles (Extended)">
+  <TabItem label="📝 Question 2: Tangents and Trigonometry (Extended)">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-        <circle cx="80" cy="125" r="70" fill="none" stroke="#1e293b" stroke-width="2" />
+      <svg viewBox="0 0 300 300" width="100%" maxWidth="450px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <circle cx="150" cy="220" r="42" fill="none" stroke="#1e293b" stroke-width="2" />
         
-        {/* Right Angle Markers BOTTOM Layer, perfectly oriented */}
-        <polygon points="104.5,59.4 113.9,62.9 110.4,72.3 101.0,68.8" fill="#e2e8f0" stroke="#ef4444" stroke-width="1.5" />
-        <polygon points="104.5,190.6 113.9,187.1 110.4,177.7 101.0,181.2" fill="#e2e8f0" stroke="#ef4444" stroke-width="1.5" />
+        {/* Right Angle Markers calculated meticulously */}
+        <polygon points="190.3,208.3 180.7,211.1 177.9,201.5 187.5,198.7" fill="#e2e8f0" stroke="#ef4444" stroke-width="1.5" stroke-linejoin="round" />
+        <polygon points="109.7,208.3 119.3,211.1 122.1,201.5 112.5,198.7" fill="#e2e8f0" stroke="#ef4444" stroke-width="1.5" stroke-linejoin="round" />
 
-        <circle cx="80" cy="125" r="3" fill="#1e293b" />
-        <text x="65" y="130" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">O</text>
+        <circle cx="150" cy="220" r="3" fill="#1e293b" />
+        <text x="150" y="240" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">O</text>
         
-        <circle cx="280" cy="125" r="3" fill="#3b82f6" />
-        <text x="290" y="130" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">P</text>
-
-        {/* Tangent points mathematically calculated for exactly 21 degrees internal angle at P */}
-        {/* T1 = (104.5, 59.4), T2 = (104.5, 190.6) */}
+        <circle cx="150" cy="70" r="3" fill="#3b82f6" />
+        <text x="150" y="55" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">P</text>
         
         {/* Radii */}
-        <line x1="80" y1="125" x2="104.5" y2="59.4" stroke="#ef4444" stroke-width="2" />
-        <line x1="80" y1="125" x2="104.5" y2="190.6" stroke="#ef4444" stroke-width="2" />
+        <line x1="150" y1="220" x2="190.3" y2="208.3" stroke="#ef4444" stroke-width="2" stroke-linecap="round" />
+        <line x1="150" y1="220" x2="109.7" y2="208.3" stroke="#ef4444" stroke-width="2" stroke-linecap="round" />
         
         {/* Tangents */}
-        <line x1="280" y1="125" x2="104.5" y2="59.4" stroke="#3b82f6" stroke-width="2" />
-        <line x1="280" y1="125" x2="104.5" y2="190.6" stroke="#3b82f6" stroke-width="2" />
+        <line x1="150" y1="70" x2="190.3" y2="208.3" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" />
+        <line x1="150" y1="70" x2="109.7" y2="208.3" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" />
         
-        {/* 21 Degree Arc at P */}
-        <path d="M 250 125 A 30 30 0 0 1 251.9 114.5" fill="none" stroke="#1e293b" stroke-width="2" />
-        <text x="235" y="118" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">21°</text>
-
-        {/* Symmetry Line OP */}
-        <line x1="80" y1="125" x2="280" y2="125" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+        {/* Symmetry Line OP (Vertical) */}
+        <line x1="150" y1="220" x2="150" y2="70" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
         
-        {/* Reflex Angle 'y' at Centre O */}
-        <path d="M 87 143.7 A 20 20 0 1 1 87 106.3" fill="none" stroke="#10b981" stroke-width="2" />
-        <text x="50" y="130" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">y</text>
+        <text x="135" y="145" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="end" font-family="sans-serif">25cm</text>
+        <text x="180" y="235" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">7cm</text>
       </svg>
     </div>
-    Tangents are drawn from an external point $P$ to a circle with centre $O$. The straight line $OP$ connects the point to the centre. The angle between one tangent and the line $OP$ is $21^\circ$. 
-    Calculate the total reflex angle $y$ at the centre of the circle.
+    Tangents are drawn downwards from an external point $P$ to a circle with centre $O$. The straight line $OP$ has a length of $25\text{cm}$, and the circle has a radius of $7\text{cm}$. 
+    
+    a) State the exact angle formed between the radius and the tangent where they meet.
+
+    b) Calculate the length of the tangent $PT$.
+
+    c) **[Involves Trigonometry]** Calculate the interior angle $OPT$ located at point $P$. Give your answer to one decimal place.
+
+    d) Calculate the total area of the kite shape formed by the two radii and the two tangents.
+
   </TabItem>
   <TabItem label="✅ Solution 2">
+    **a)**
     <Steps>
-    1. A tangent and radius meet at $90^\circ$. So, the triangle formed by $O$, $P$, and the top touch point is a right-angled triangle.
-    2. The angle at $O$ inside that top right-angled triangle is:
-       $$
-       180^\circ - (90^\circ + 21^\circ) = 180^\circ - 111^\circ = 69^\circ
-       $$
-    3. The line $OP$ acts as a line of symmetry, splitting the kite into two identical triangles. 
-       The angle inside the bottom triangle is also $69^\circ$.
-    4. The total internal (obtuse) angle at the centre is:
-       $$
-       69^\circ + 69^\circ = 138^\circ
-       $$
-    5. The question asks for the **reflex angle** $y$, which completes the $360^\circ$ circle at the centre:
-       $$
-       y = 360^\circ - 138^\circ = 222^\circ
-       $$
+      1. By the geometric circle theorem, tangents and radii meet perfectly orthogonally.
+      2. **The angle is $90^\circ$.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Use Pythagoras' Theorem on the right-angled triangle $OPT$.
+      2. $OP^2 = OT^2 + PT^2 \implies 25^2 = 7^2 + PT^2$.
+      3. $625 = 49 + PT^2 \implies PT^2 = 576$.
+      4. **The length of the tangent $PT$ is $24\text{cm}$.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. In the right-angled triangle $OPT$, we need angle $P$. We know the Opposite side ($OT = 7$) and Hypotenuse ($OP = 25$).
+      2. Use Sine: $\sin(OPT) = \frac{7}{25}$.
+      3. Angle $OPT = \sin^{-1}(0.28) = 16.260...^\circ$
+      4. **Angle $OPT = 16.3^\circ$** (to 1 d.p.).
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. The area of one right-angled triangle $OPT = \frac{1}{2} \times \text{base} \times \text{height} = \frac{1}{2} \times 7 \times 24 = 84\text{cm}^2$.
+      2. The kite consists of two identical symmetrical triangles.
+      3. Total area $= 84 \times 2$.
+      4. **Total Area = $168\text{cm}^2$.**
     </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Solving tangent kite problems using trigonometry, Pythagoras, and angle properties" />
+<SmartAIGenerator topic="Solving tangent kite problems using lengths, Pythagoras, and SOH CAH TOA" />
 
 <Tabs>
-  <TabItem label="📝 Question 3: Distances of Equal Chords (Extended)">
-    Two chords, $AB$ and $CD$, are drawn in a circle of radius $10\text{cm}$. Both chords have a length of $16\text{cm}$. 
-    Calculate the perpendicular distance from the centre of the circle to chord $CD$. State the geometrical reason why this distance is the same for both chords.
+  <TabItem label="📝 Question 3: Two Parallel Chords (Extended)">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 300" width="100%" maxWidth="450px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <circle cx="150" cy="150" r="130" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Left Chord AB (x=100, half=120) */}
+        <line x1="100" y1="30" x2="100" y2="270" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+        
+        {/* Right Chord CD (x=270, half=50) */}
+        <line x1="270" y1="100" x2="270" y2="200" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+        
+        {/* Center O */}
+        <circle cx="150" cy="150" r="3" fill="#1e293b" />
+        <text x="140" y="140" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">O</text>
+        
+        {/* Distances from Center */}
+        <line x1="150" y1="150" x2="100" y2="150" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+        <line x1="150" y1="150" x2="270" y2="150" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+        
+        {/* Right angles meticulously positioned */}
+        <polygon points="100,150 110,150 110,160 100,160" fill="#e2e8f0" stroke="#1e293b" stroke-width="1.5" stroke-linejoin="round" />
+        <polygon points="270,150 260,150 260,140 270,140" fill="#e2e8f0" stroke="#1e293b" stroke-width="1.5" stroke-linejoin="round" />
+        
+        <text x="85" y="40" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">A</text>
+        <text x="85" y="270" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">B</text>
+        <text x="280" y="105" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">C</text>
+        <text x="280" y="200" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">D</text>
+      </svg>
+    </div>
+    A circle has a radius of $13\text{cm}$ and centre $O$. Two perfectly vertical, parallel chords are drawn on opposite sides of the centre. Chord $AB$ has a length of $24\text{cm}$, and chord $CD$ has a length of $10\text{cm}$.
+    
+    a) State the theorem that allows you to calculate the shortest distance from the centre to a chord.
+
+    b) Calculate the perpendicular distance from the centre $O$ to chord $AB$.
+
+    c) Calculate the perpendicular distance from the centre $O$ to chord $CD$.
+
+    d) Calculate the total perpendicular distance exactly between the two parallel chords $AB$ and $CD$.
+
   </TabItem>
   <TabItem label="✅ Solution 3">
+    **a)**
     <Steps>
-    1. Focus on one chord (e.g., $CD$). The perpendicular from the centre bisects the chord.
-       Half-chord $= 16 \div 2 = 8\text{cm}$.
-    2. Form a right-angled triangle with the radius ($10\text{cm}$), the half-chord ($8\text{cm}$), and the distance ($d$).
-       $$
-       10^2 = 8^2 + d^2
-       $$
-       $$
-       100 = 64 + d^2
-       $$
-       $$
-       d^2 = 36
-       $$
-       $$
-       d = 6\text{cm}
-       $$
-    3. **Reason:** Equal chords are equidistant from the centre. (Because $AB$ and $CD$ are exactly the same length, they share this exact same distance geometry).
+      1. **"The perpendicular bisector of a chord passes through the centre."** (Meaning the shortest perpendicular distance cuts the chord exactly in half).
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Half of chord $AB$ is $24 \div 2 = 12\text{cm}$.
+      2. Form a right-angled triangle with radius $13\text{cm}$. 
+      3. Distance $d_1^2 = 13^2 - 12^2 = 169 - 144 = 25$.
+      4. **Distance to $AB = 5\text{cm}$.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Half of chord $CD$ is $10 \div 2 = 5\text{cm}$.
+      2. Form a right-angled triangle with radius $13\text{cm}$.
+      3. Distance $d_2^2 = 13^2 - 5^2 = 169 - 25 = 144$.
+      4. **Distance to $CD = 12\text{cm}$.**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Because the chords sit on strictly opposite sides of the centre, their total distance apart is the sum of their individual distances from the centre.
+      2. Total distance $= 5\text{cm} + 12\text{cm}$.
+      3. **Total distance between chords $= 17\text{cm}$.**
     </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Applying the theorem that equal chords are equidistant from the centre" />
-
 <Tabs>
-  <TabItem label="📝 Question 4: Angles from Chords (Extended)">
-    A chord $AB$ of length $12\text{cm}$ is drawn inside a circle of radius $10\text{cm}$. $O$ is the centre of the circle.
-    Calculate the angle subtended by the chord at the centre of the circle (Angle $AOB$).
+  <TabItem label="📝 Question 4: Intersecting Diameter and Chord">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 300" width="100%" maxWidth="450px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <circle cx="150" cy="150" r="100" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Horizontal Diameter */}
+        <line x1="50" y1="150" x2="250" y2="150" stroke="#1e293b" stroke-width="2" stroke-linecap="round" />
+        <circle cx="150" cy="150" r="3" fill="#ef4444" />
+        
+        {/* Vertical Chord RS (x=210, half=80) */}
+        <line x1="210" y1="70" x2="210" y2="230" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+        
+        {/* Right angle at Intersection M(210, 150) */}
+        <polygon points="210,150 200,150 200,140 210,140" fill="#e2e8f0" stroke="#1e293b" stroke-width="1.5" stroke-linejoin="round" />
+        
+        {/* Radius OS */}
+        <line x1="150" y1="150" x2="210" y2="230" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+
+        <text x="35" y="155" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">P</text>
+        <text x="260" y="155" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">Q</text>
+        <text x="205" y="60" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">R</text>
+        <text x="205" y="250" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">S</text>
+        <text x="145" y="140" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">O</text>
+        <text x="215" y="165" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">M</text>
+      </svg>
+    </div>
+    The diameter $PQ$ of a circle intersects the chord $RS$ at right angles at point $M$. The length of the chord $RS$ is $16\text{cm}$, and the circle has a radius of $10\text{cm}$.
+    
+    a) Calculate the exact length of the internal segment $OM$.
+
+    b) Calculate the length of the segment $MQ$.
+
+    c) **[Involves Trigonometry]** Calculate the interior angle $OSM$. Give your answer to one decimal place.
+
   </TabItem>
   <TabItem label="✅ Solution 4">
+    **a)**
     <Steps>
-    1. The perpendicular bisector from the centre $O$ splits the triangle $AOB$ into two identical right-angled triangles.
-    2. The bisector cuts the chord in half. So the opposite side of our right-angled triangle is $12 \div 2 = 6\text{cm}$.
-    3. The hypotenuse is the radius ($10\text{cm}$).
-    4. Let the angle at $O$ for one of these small triangles be $x$. Use SOH CAH TOA:
-       $$
-       \sin(x) = \frac{\text{Opposite}}{\text{Hypotenuse}} = \frac{6}{10} = 0.6
-       $$
-    5. Find $x$ using inverse sine:
-       $$
-       x = \sin^{-1}(0.6) = 36.87^\circ
-       $$
-    6. The total angle $AOB$ is double this value:
-       $$
-       \text{Angle } AOB = 2 \times 36.87^\circ = 73.7^\circ \text{ (to 1 d.p.)}
-       $$
+      1. Since the diameter intersects the chord at $90^\circ$, it acts as a perpendicular bisector.
+      2. Half of the chord $RS$ is $MS = 16 \div 2 = 8\text{cm}$.
+      3. The radius $OS$ is $10\text{cm}$. Form right-angled triangle $OMS$.
+      4. Pythagoras: $OM^2 + 8^2 = 10^2 \implies OM^2 = 100 - 64 = 36$.
+      5. **Length of $OM = 6\text{cm}$.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The segment $OQ$ is a full radius, which equals $10\text{cm}$.
+      2. The length $MQ$ is the remaining part of the radius after subtracting $OM$.
+      3. $MQ = 10 - 6$.
+      4. **Length of $MQ = 4\text{cm}$.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. In the right-angled triangle $OMS$, we know the Adjacent side to angle $S$ ($MS = 8\text{cm}$) and the Hypotenuse ($OS = 10\text{cm}$).
+      2. $\cos(OSM) = \frac{8}{10} = 0.8$.
+      3. Angle $OSM = \cos^{-1}(0.8) = 36.869...^\circ$.
+      4. **Angle $OSM = 36.9^\circ$** (to 1 d.p.).
     </Steps>
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Using right-angled trigonometry with perpendicular bisectors to find subtended angles" />
 
 <Tabs>
-  <TabItem label="📝 Question 5: Tangent Kite Area (Extended)">
-    Tangents are drawn from an external point $T$ to touch a circle at points $P$ and $Q$. The radius of the circle is $5\text{cm}$ and the straight-line distance from the centre $O$ to point $T$ is $13\text{cm}$.
-    Calculate the total area of the kite $OPTQ$.
+  <TabItem label="📝 Question 5: Isosceles Triangle inside a Circle">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 250" width="100%" maxWidth="450px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <circle cx="150" cy="150" r="100" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Horizontal Chord at Top A(90, 70), B(210, 70) */}
+        <line x1="90" y1="70" x2="210" y2="70" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+        
+        {/* Radii forming Isosceles */}
+        <line x1="150" y1="150" x2="90" y2="70" stroke="#ef4444" stroke-width="2" stroke-linecap="round" />
+        <line x1="150" y1="150" x2="210" y2="70" stroke="#ef4444" stroke-width="2" stroke-linecap="round" />
+        
+        {/* Perpendicular Bisector OM */}
+        <line x1="150" y1="150" x2="150" y2="70" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+        <polygon points="150,70 150,80 160,80 160,70" fill="#e2e8f0" stroke="#1e293b" stroke-width="1.5" stroke-linejoin="round" />
+
+        <circle cx="150" cy="150" r="3" fill="#1e293b" />
+        
+        <text x="75" y="65" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">A</text>
+        <text x="220" y="65" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">B</text>
+        <text x="150" y="170" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">O</text>
+        <text x="150" y="60" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">M</text>
+      </svg>
+    </div>
+    A chord $AB$ of length $12\text{cm}$ is drawn inside a circle of radius $10\text{cm}$. The centre of the circle is $O$, and the triangle $AOB$ is naturally an isosceles triangle. Point $M$ sits exactly halfway along the chord $AB$.
+    
+    a) Write down the exact lengths of the lines $OA$ and $OB$.
+
+    b) Calculate the perpendicular distance $OM$ from the centre to the chord.
+
+    c) **[Involves Trigonometry]** Calculate the entire angle $AOB$ subtended by the chord at the centre. Give your answer to one decimal place.
+
+    d) Calculate the total area of the triangle $AOB$.
+
   </TabItem>
   <TabItem label="✅ Solution 5">
+    **a)**
     <Steps>
-    1. The kite $OPTQ$ is formed by two identical right-angled triangles: Triangle $OPT$ and Triangle $OQT$.
-    2. Focus on Triangle $OPT$. The angle at $P$ is $90^\circ$ (tangent meets radius).
-    3. Use Pythagoras' Theorem to find the length of the tangent $PT$:
-       $$
-       OT^2 = OP^2 + PT^2
-       $$
-       $$
-       13^2 = 5^2 + PT^2
-       $$
-       $$
-       169 = 25 + PT^2
-       $$
-       $$
-       PT^2 = 144
-       $$
-       $$
-       PT = 12\text{cm}
-       $$
-    4. Calculate the area of Triangle $OPT$:
-       $$
-       \text{Area} = \frac{1}{2} \times \text{base} \times \text{height} = \frac{1}{2} \times 5 \times 12 = 30\text{cm}^2
-       $$
-    5. The kite consists of two such triangles, so the total area is:
-       $$
-       \text{Total Area} = 30 \times 2 = 60\text{cm}^2
-       $$
+      1. Lines $OA$ and $OB$ map from the centre to the circumference, meaning they are both radii.
+      2. **Lengths $OA = 10\text{cm}$ and $OB = 10\text{cm}$.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The perpendicular bisector $OM$ splits the chord in half. Half of $12\text{cm}$ is $6\text{cm}$.
+      2. Form a right-angled triangle $OMB$.
+      3. Pythagoras: $OM^2 + 6^2 = 10^2 \implies OM^2 = 100 - 36 = 64$.
+      4. **Distance $OM = 8\text{cm}$.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Look at the right-angled triangle $OMB$. The angle at the centre is half of the total angle $AOB$. Let's call it $x$.
+      2. $\sin(x) = \frac{\text{Opp}}{\text{Hyp}} = \frac{6}{10} = 0.6$.
+      3. $x = \sin^{-1}(0.6) = 36.87^\circ$.
+      4. The total angle $AOB$ is double this: $36.87^\circ \times 2 = 73.74^\circ$.
+      5. **Angle $AOB = 73.7^\circ$** (to 1 d.p.).
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Use the basic triangle area formula: Area $= \frac{1}{2} \times \text{base} \times \text{height}$.
+      2. The full base $AB$ is $12\text{cm}$. The perpendicular height $OM$ is $8\text{cm}$.
+      3. Area $= \frac{1}{2} \times 12 \times 8$.
+      4. **Area of triangle $AOB = 48\text{cm}^2$.**
     </Steps>
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Calculating tangent lengths and area of symmetrical kite shapes in circles" />
+<Tabs>
+  <TabItem label="📝 Question 6: Tangent and Chord Angles Combo">
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 300" width="100%" maxWidth="450px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <circle cx="150" cy="150" r="100" fill="#f1f5f9" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Vertical Chord CD (x=230, y=90 to 210) exactly mapped to 12cm dist / 15cm radius scale */}
+        <line x1="230" y1="90" x2="230" y2="210" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+        
+        {/* Slanted Tangent at D(230, 210). Mathematically perpendicular to OD */}
+        <line x1="170" y1="290" x2="290" y2="130" stroke="#1e293b" stroke-width="2" stroke-linecap="round" />
+        
+        {/* Radius OD */}
+        <line x1="150" y1="150" x2="230" y2="210" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+        
+        {/* Radius OC */}
+        <line x1="150" y1="150" x2="230" y2="90" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+        
+        {/* Right angle between radius OD and tangent carefully oriented */}
+        <polygon points="230,210 224,218 216,212 222,204" fill="#e2e8f0" stroke="#1e293b" stroke-width="1.5" stroke-linejoin="round" />
+
+        <circle cx="150" cy="150" r="3" fill="#1e293b" />
+        <text x="140" y="155" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">O</text>
+        <text x="235" y="85" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">C</text>
+        <text x="235" y="225" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">D</text>
+        <text x="160" y="295" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">X</text>
+        <text x="295" y="125" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">Y</text>
+      </svg>
+    </div>
+
+    A circle with centre $O$ has a radius of $15\text{cm}$. A perfectly vertical chord $CD$ is drawn with a length of $18\text{cm}$. The perpendicular distance from the centre to the chord is $12\text{cm}$.
+    A straight line $XY$ is drawn so that it is tangent to the circle at point $D$.
+    
+    a) Use trigonometry to calculate the angle $DOC$.
+    
+    b) Calculate the angle $ODC$ formed between the radius and the chord.
+    
+    c) Calculate the exact angle $CDX$ formed between the chord and the tangent.
+
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+
+    <Steps>
+      1. We can split the isosceles triangle $DOC$ into two right-angled triangles using the $12\text{cm}$ perpendicular distance.
+      2. Half of chord $CD = 9\text{cm}$.
+      3. Focus on one right-angled triangle. Use Sine: $\sin(\text{half-angle}) = \frac{\text{Opp}}{\text{Hyp}} = \frac{9}{15} = 0.6$.
+      4. $\text{Half-angle} = \sin^{-1}(0.6) = 36.87^\circ$.
+      5. Full angle $DOC = 36.87^\circ \times 2 = 73.74^\circ$.
+      6. **Angle $DOC = 73.7^\circ$** (to 1 d.p.).
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. Look at the right-angled triangle formed by the radius $OD$ ($15\text{cm}$), half-chord ($9\text{cm}$), and distance ($12\text{cm}$).
+      2. We want the angle $ODC$ (between radius and chord).
+      3. $\cos(ODC) = \frac{\text{Adj}}{\text{Hyp}} = \frac{9}{15} = 0.6$.
+      4. Angle $ODC = \cos^{-1}(0.6) = 53.13^\circ$.
+      5. **Angle $ODC = 53.1^\circ$** (to 1 d.p.).
+    </Steps>
+
+    **c)**
+
+    <Steps>
+      1. The geometric theorem states that the angle between the full radius $OD$ and the tangent $XDY$ is exactly $90^\circ$.
+      2. The angle between the chord and the tangent sits right next to angle $ODC$, completing the $90^\circ$ corner.
+      3. Angle $CDX = 90^\circ - 53.13^\circ$.
+      4. **Angle $CDX = 36.87^\circ$.**
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Equal Chords and Radii (Extended)">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 300" width="100%" maxWidth="450px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <circle cx="150" cy="150" r="130" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Horizontal Chord EF */}
+        <line x1="30" y1="100" x2="270" y2="100" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+        
+        {/* Slanted Chord GH exactly calculated for same distance=50 */}
+        {/* Midpoint M2(106.7, 175). Vector length 120 */}
+        <line x1="46.7" y1="71.1" x2="166.7" y2="278.9" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+        
+        {/* Perpendiculars from O */}
+        <line x1="150" y1="150" x2="150" y2="100" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+        <line x1="150" y1="150" x2="106.7" y2="175" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+
+        <circle cx="150" cy="150" r="3" fill="#1e293b" />
+        
+        <text x="20" y="105" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">E</text>
+        <text x="280" y="105" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">F</text>
+        <text x="35" y="65" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">G</text>
+        <text x="175" y="290" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">H</text>
+        <text x="160" y="155" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">O</text>
+      </svg>
+    </div>
+    Two chords, $EF$ and $GH$, are drawn inside a circle of radius $13\text{cm}$ with centre $O$. Both chords possess an identical length of $24\text{cm}$.
+    
+    a) Calculate the shortest perpendicular distance from the centre $O$ to chord $EF$.
+
+    b) State the perpendicular distance from the centre $O$ to chord $GH$.
+
+    c) Write down the strict geometrical reason for your answer to part (b).
+
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. The perpendicular drops from the centre $O$ and bisects chord $EF$. Half of $24\text{cm}$ is $12\text{cm}$.
+      2. Form a right-angled triangle with the radius $13\text{cm}$.
+      3. Dist$^2 = 13^2 - 12^2 = 169 - 144 = 25$.
+      4. **The distance to chord $EF$ is $5\text{cm}$.**
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Because chord $GH$ has the exact same length as chord $EF$ ($24\text{cm}$), its geometry reflects $EF$ perfectly.
+      2. **The distance to chord $GH$ is $5\text{cm}$.**
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. **"Equal chords are precisely equidistant from the centre of the circle."**
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Tangent Perimeter & Distance">
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 250" width="100%" maxWidth="450px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <circle cx="150" cy="150" r="45" fill="#f1f5f9" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Tangents from X(150, 18.4) with Half Angle = 20 degrees exactly mapped */}
+        <line x1="150" y1="18.4" x2="192.3" y2="134.6" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" />
+        <line x1="150" y1="18.4" x2="107.7" y2="134.6" stroke="#3b82f6" stroke-width="2" stroke-linecap="round" />
+        
+        {/* Radii to Touch Points */}
+        <line x1="150" y1="150" x2="192.3" y2="134.6" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+        <line x1="150" y1="150" x2="107.7" y2="134.6" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+        
+        {/* Right Angles precisely calculated mapping tangent vectors */}
+        <polygon points="192.3,134.6 188.9,125.2 179.5,128.6 182.9,138.0" fill="#e2e8f0" stroke="#ef4444" stroke-width="1.5" stroke-linejoin="round" />
+        <polygon points="107.7,134.6 111.1,125.2 120.5,128.6 117.1,138.0" fill="#e2e8f0" stroke="#ef4444" stroke-width="1.5" stroke-linejoin="round" />
+        
+        {/* Line of Symmetry OX */}
+        <line x1="150" y1="150" x2="150" y2="18.4" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round" />
+
+        <circle cx="150" cy="150" r="3" fill="#1e293b" />
+        <text x="150" y="170" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">O</text>
+        
+        <text x="150" y="10" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">X</text>
+        <text x="205" y="145" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">Y</text>
+        <text x="85" y="145" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">Z</text>
+        
+        <text x="150" y="80" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">40°</text>
+      </svg>
+    </div>
+
+    Two tangents $XY$ and $XZ$ are drawn from an external point $X$ to a circle with centre $O$. The total angle $YXZ$ between the two tangents is $40^\circ$. The circle has a radius of $8\text{cm}$.
+    
+    a) State the lengths of the straight lines $OY$ and $OZ$.
+    
+    b) Calculate the length of the tangent $XY$.
+    
+    c) Calculate the total perimeter of the resulting geometric kite $OYXZ$.
+    
+    d) **[Involves Trigonometry]** Calculate the straight-line distance $OX$ from the centre of the circle directly to the external point $X$.
+
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+
+    <Steps>
+      1. Both lines represent the radius of the circle.
+      2. **Lengths $OY = 8\text{cm}$ and $OZ = 8\text{cm}$.**
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. The line $OX$ bisects the angle $YXZ$ perfectly into two $20^\circ$ angles due to the kite's symmetry.
+      2. Focus on the right-angled triangle $OXY$. The angle $OXY$ is $20^\circ$. The opposite side $OY$ is $8\text{cm}$.
+      3. We want the adjacent side $XY$. Use Tangent (TOA): $\tan(20^\circ) = \frac{\text{Opp}}{\text{Adj}} = \frac{8}{XY}$.
+      4. $XY = \frac{8}{\tan(20^\circ)} = 21.979...$
+      5. **The length of $XY = 21.98\text{cm}$** (to 2 d.p.).
+    </Steps>
+
+    **c)**
+
+    <Steps>
+      1. The perimeter of kite $OYXZ$ is the sum of its four outer boundary sides: $OY + OZ + XY + XZ$.
+      2. Radii: $8 + 8 = 16\text{cm}$.
+      3. Tangents are equal in length (Theorem 3): $21.98 + 21.98 = 43.96\text{cm}$.
+      4. Total perimeter $= 16 + 43.96$.
+      5. **Perimeter = $59.96\text{cm}$.**
+    </Steps>
+
+    **d)**
+
+    <Steps>
+      1. In the same triangle $OXY$, the side $OX$ is the hypotenuse.
+      2. Use Sine (SOH): $\sin(20^\circ) = \frac{\text{Opp}}{\text{Hyp}} = \frac{8}{OX}$.
+      3. $OX = \frac{8}{\sin(20^\circ)} = 23.390...$
+      4. **The distance $OX = 23.39\text{cm}$** (to 2 d.p.).
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving multi-step circle theorem problems involving tangents, perpendicular bisectors, and intersecting geometries" />

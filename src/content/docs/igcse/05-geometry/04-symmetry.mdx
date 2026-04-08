@@ -3,6 +3,8 @@ title: 5.4 Symmetry
 description: Recognise line symmetry, rotational symmetry in two dimensions, and symmetry properties of 3D solids including planes and axes of symmetry for IGCSE 0607.
 ---
 
+
+
 Symmetry is a fundamental geometrical concept that describes how shapes can be mapped onto themselves through reflection or rotation. Mastering symmetry is essential for classifying polygons and understanding the properties of three-dimensional solids.
 
 ---
@@ -39,21 +41,66 @@ A shape has rotational symmetry if it still looks exactly the same after a rotat
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 500 200" width="100%" maxWidth="550px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-    <g transform="translate(125, 100)">
-      {Array.from({ length: 4 }).map((_, i) => (
-        <polygon key={`star-${i}`} points="0,0 20,-40 0,-80 -20,-40" fill="#cbd5e1" stroke="#475569" stroke-width="2" transform={`rotate(${i * 90})`} />
-      ))}
-      <circle cx="0" cy="0" r="5" fill="#ef4444" />
-    </g>
-    <text x="125" y="190" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Order 4 (e.g. 4-point star)</text>
+    <defs>
+      <radialGradient id="subtleDomeShadow" cx="50%" cy="50%" r="60%" fx="50%" fy="50%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0" /> 
+        <stop offset="30%" stop-color="#e0e0e0" stop-opacity="0.1" />
+        <stop offset="100%" stop-color="#c0c0c0" stop-opacity="0.1" />
+      </radialGradient>
+      
+      <radialGradient id="centralPinkGlow" cx="50%" cy="50%" r="65%">
+        <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9" /> 
+        <stop offset="30%" stop-color="#FF1493" stop-opacity="0.7" />
+        <stop offset="100%" stop-color="#FF1493" stop-opacity="0.0" />
+      </radialGradient>
+    </defs>
 
-    <g transform="translate(375, 100)">
-      {Array.from({ length: 3 }).map((_, i) => (
-        <polygon key={`tri-${i}`} points="0,0 20,-40 0,-60 -20,-40" fill="#fde047" stroke="#ca8a04" stroke-width="2" transform={`rotate(${i * 120})`} />
+    {/* Left Side: Order 4 (Traditional Windmill Blades rotated at 30 deg) */}
+    <g transform="translate(125, 100) rotate(30)">
+      {Array.from({ length: 4 }).map((_, i) => (
+        <g key={`blade-${i}`} transform={`rotate(${i * 90})`}>
+          {/* Main Wooden Spar */}
+          <rect x="-4" y="-85" width="8" height="85" fill="#a8a29e" stroke="#57534e" stroke-width="1.5" />
+          
+          {/* Sail Frame */}
+          <rect x="4" y="-80" width="24" height="55" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5" />
+          
+          {/* Sail Lattice Grid */}
+          <path d="M 4 -70 L 28 -70 M 4 -60 L 28 -60 M 4 -50 L 28 -50 M 4 -40 L 28 -40 M 4 -30 L 28 -30 M 12 -80 L 12 -25 M 20 -80 L 20 -25" stroke="#64748b" stroke-width="1.5" />
+        </g>
       ))}
-      <circle cx="0" cy="0" r="5" fill="#ef4444" />
+      {/* Central Hub */}
+      <circle cx="0" cy="0" r="8" fill="#ef4444" stroke="#b91c1c" stroke-width="2"/>
     </g>
-    <text x="375" y="190" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Order 3</text>
+    <text x="125" y="190" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Order 4 (Windmill Blades)</text>
+
+    {/* Right Side: Order 5 (Mastermind Shield) */}
+    <g transform="translate(375, 100)">
+      <g transform="scale(1.5) translate(-50, -54)">
+        <path d="M50 95 L7 64 L23.5 13 L76.5 13 L93 64 Z" 
+              fill="#f5f5f5" 
+              stroke="#d0d0d0" 
+              stroke-width="5" 
+              stroke-linejoin="round"/>
+
+        <path d="M50 95 L23.5 13 L93 64 L7 64 L76.5 13 Z" 
+              fill="url(#subtleDomeShadow)" 
+              stroke="#E0E0E0" 
+              stroke-width="2.5" 
+              stroke-linejoin="round"/>
+              
+        <circle cx="50" cy="51" r="18" fill="url(#centralPinkGlow)" />
+
+        <g opacity="0.6">
+          <circle cx="50" cy="95" r="4" fill="#FF1493"/>
+          <circle cx="7" cy="64" r="4" fill="#FF1493"/>
+          <circle cx="23.5" cy="13" r="4" fill="#FF1493"/> 
+          <circle cx="76.5" cy="13" r="4" fill="#FF1493"/> 
+          <circle cx="93" cy="64" r="4" fill="#FF1493"/>
+        </g>
+      </g>
+    </g>
+    <text x="375" y="190" font-size="14" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Order 5 (Mastermind Shield)</text>
   </svg>
 </div>
 

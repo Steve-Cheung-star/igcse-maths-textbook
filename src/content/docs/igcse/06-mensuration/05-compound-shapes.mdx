@@ -6,8 +6,10 @@ description: Learn how to calculate the perimeter, area, surface area, and volum
 In the real world, objects are rarely perfect, isolated spheres or basic cylinders. They are usually combinations of multiple shapes (compound shapes) or shapes that have had pieces removed (parts of shapes). 
 
 <SteveTip title="The Golden Rules of Compound Shapes">
+
 1. **Area and Volume are additive/subtractive:** You can simply add the areas/volumes of the individual parts together, or subtract the missing piece from the whole.
 2. **Perimeter and Surface Area are tricky:** You **cannot** just add the perimeters or surface areas together. You must only calculate the exposed outer boundaries. Internal faces where shapes join are hidden and must be ignored!
+
 </SteveTip>
 
 ---
@@ -29,10 +31,11 @@ A rectangular metal plate measures **10 cm** by **8 cm**. A semi-circle with a d
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 300 200" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    {/* Base Shape with opaque fill - Arc sweep flag set to 1 so it cuts INWARD */}
-    <path d="M 50 160 L 250 160 L 250 40 L 190 40 A 40 40 0 0 1 110 40 L 50 40 Z" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/>
+    {/* Base Shape Fill */}
+    <path d="M 50 160 L 250 160 L 250 40 L 190 40 A 40 40 0 0 1 110 40 L 50 40 Z" fill="#dbeafe" />
     
-    {/* Dashed line for the original straight edge of the cut-out */}
+    {/* Outlines (Rendered Last) */}
+    <path d="M 50 160 L 250 160 L 250 40 L 190 40 A 40 40 0 0 1 110 40 L 50 40 Z" fill="none" stroke="#2563eb" stroke-width="3" />
     <line x1="110" y1="40" x2="190" y2="40" stroke="#ef4444" stroke-dasharray="6 4" stroke-width="2" />
     
     {/* Labels */}
@@ -43,6 +46,7 @@ A rectangular metal plate measures **10 cm** by **8 cm**. A semi-circle with a d
 </div>
 
 <Steps>
+
 1. **Area Calculation (Subtract):**
    $$
    \begin{aligned}
@@ -55,7 +59,6 @@ A rectangular metal plate measures **10 cm** by **8 cm**. A semi-circle with a d
    \text{Total Area} &= (80 - 4.5\pi) \text{ cm}^2
    \end{aligned}
    $$
-
 2. **Perimeter Calculation (Add the outside edges):**
    The semi-circle ate into the **10 cm** side. The diameter is **6 cm**, leaving **4 cm** of straight edge on that top side (i.e., **2 cm** on each side of the gap). Three full straight edges remain: **8 cm**, **10 cm**, and **8 cm**.
    $$
@@ -67,6 +70,7 @@ A rectangular metal plate measures **10 cm** by **8 cm**. A semi-circle with a d
    \text{Total Perimeter} &= (30 + 3\pi) \text{ cm}
    \end{aligned}
    $$
+
 </Steps>
 
 ---
@@ -76,7 +80,9 @@ A rectangular metal plate measures **10 cm** by **8 cm**. A semi-circle with a d
 When dealing with 3D compound solids, the same principles apply, but surface area requires careful visualization.
 
 <Aside type="caution" title="Hidden Faces in Surface Area">
+
 If a cone is sitting on top of a cylinder, the flat circular base of the cone and the top circular face of the cylinder are touching. They are now **inside** the new solid. When calculating Total Surface Area, you must exclude these hidden faces and only calculate the exposed outer faces!
+
 </Aside>
 
 ### Example 2: Compound Solid Surface Area
@@ -84,30 +90,34 @@ A solid is made by attaching a hemisphere of radius **5 cm** to one end of a cyl
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 320" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    {/* CYLINDER PART (Outlines only) */}
+    {/* FILLS */}
+    <ellipse cx="125" cy="100" rx="75" ry="25" fill="#f3e8ff" />
+    
+    {/* OUTLINES (Rendered Last) */}
+    {/* Cylinder */}
     <path d="M 50 250 A 75 25 0 0 0 200 250" fill="none" stroke="#2563eb" stroke-width="2" />
     <path d="M 200 250 A 75 25 0 0 0 50 250" fill="none" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
     <line x1="50" y1="100" x2="50" y2="250" stroke="#2563eb" stroke-width="2" />
     <line x1="200" y1="100" x2="200" y2="250" stroke="#2563eb" stroke-width="2" />
     
-    {/* THE HIDDEN JOIN (Shaded) */}
-    <ellipse cx="125" cy="100" rx="75" ry="25" fill="#fca5a5" stroke="#ef4444" stroke-width="2" />
+    {/* Hidden Join */}
+    <ellipse cx="125" cy="100" rx="75" ry="25" fill="none" stroke="#7e22ce" stroke-width="2" />
     
-    {/* HEMISPHERE PART (Outlines only) */}
-    <path d="M 50 100 A 75 75 0 0 1 200 100" fill="none" stroke="#7e22ce" stroke-width="3" />
+    {/* Hemisphere */}
+    <path d="M 50 100 A 75 75 0 0 1 200 100" fill="none" stroke="#2563eb" stroke-width="3" />
 
     {/* Labels */}
-    <text x="125" y="113" font-family="sans-serif" font-weight="bold" fill="#b91c1c" text-anchor="middle">Hidden Face</text>
+    <text x="125" y="113" font-family="sans-serif" font-weight="bold" fill="#7e22ce" text-anchor="middle">Hidden Face</text>
     <text x="35" y="175" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle" transform="rotate(-90 35 175)">12 cm</text>
-    <line x1="125" y1="100" x2="200" y2="100" stroke="#b91c1c" stroke-dasharray="2 2" stroke-width="1.5" />
-    <circle cx="125" cy="100" r="3" fill="#b91c1c" />
-    <text x="162.5" y="90" font-family="sans-serif" font-weight="bold" fill="#b91c1c" text-anchor="middle">5 cm</text>
+    <line x1="125" y1="100" x2="200" y2="100" stroke="#7e22ce" stroke-dasharray="2 2" stroke-width="1.5" />
+    <circle cx="125" cy="100" r="3" fill="#7e22ce" />
+    <text x="162.5" y="90" font-family="sans-serif" font-weight="bold" fill="#7e22ce" text-anchor="middle">5 cm</text>
   </svg>
 </div>
 
 <Steps>
-1. **Identify the exposed faces:** The solid has three exposed parts: the curved surface of the hemisphere, the curved surface of the cylinder, and the flat circular bottom of the cylinder. 
 
+1. **Identify the exposed faces:** The solid has three exposed parts: the curved surface of the hemisphere, the curved surface of the cylinder, and the flat circular bottom of the cylinder. 
 2. **Calculate individual exposed areas:**
    $$
    \begin{aligned}
@@ -121,6 +131,7 @@ A solid is made by attaching a hemisphere of radius **5 cm** to one end of a cyl
    &= 195\pi \text{ cm}^2
    \end{aligned}
    $$
+
 </Steps>
 
 ---
@@ -129,65 +140,70 @@ A solid is made by attaching a hemisphere of radius **5 cm** to one end of a cyl
 
 A **frustum** is what remains when you slice the top off a cone or a pyramid with a cut parallel to the base. It looks like a bucket or a lampshade. 
 
-To find the volume or surface area of a frustum, treat it as a large cone with a smaller cone chopped off the top.
+To find the volume or surface area of a frustum, treat it as a large complete solid with a smaller solid chopped off the top.
 
 $$
 \begin{aligned}
-V_{\text{frustum}} &= V_{\text{large cone}} - V_{\text{small cone}}
+V_{\text{frustum}} &= V_{\text{large}} - V_{\text{small removed top}}
 \end{aligned}
 $$
 
-Often, the exam question will not give you the height of the small removed cone. You must use **similar triangles** (scale factors) to find it.
+Often, the exam question will not give you the dimensions of the small removed top. You must use **similar triangles** (scale factors) to find them.
 
 ### Example 3: Volume of a Frustum
 A large cone has a base radius of **8 cm** and a total height of **20 cm**. A smaller cone is cut from the top parallel to the base, at a height of **10 cm** from the bottom. Find the exact volume of the resulting frustum.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 350 300" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    {/* Large Cone Outline (Dashed top) */}
-    <path d="M 50 250 L 175 30 L 300 250" fill="none" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+  <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* FILLS */}
+    {/* Frustum Body Fill */}
+    <path d="M 70 200 L 110 120 A 40 10 0 0 1 190 120 L 230 200 A 80 20 0 0 1 70 200 Z" fill="#6ee7b7" fill-opacity="0.3" />
     
-    {/* Solid Frustum Body */}
-    <path d="M 50 250 L 112.5 140 L 237.5 140 L 300 250 Z" fill="#6ee7b7" stroke="none" />
-    
-    {/* Front half of the bottom base (solid) */}
-    <path d="M 50 250 A 125 30 0 0 0 300 250" fill="#6ee7b7" stroke="#059669" stroke-width="3" />
-    
-    {/* Top base (solid ellipse) */}
-    <ellipse cx="175" cy="140" rx="62.5" ry="15" fill="#34d399" stroke="#059669" stroke-width="3" />
+    {/* Top Base Fill */}
+    <ellipse cx="150" cy="120" rx="40" ry="10" fill="#34d399" />
+  
 
-    {/* Back half of the bottom base (Drawn LAST so it overlays the solid fill) */}
-    <path d="M 50 250 A 125 30 0 0 1 300 250" fill="none" stroke="#059669" stroke-dasharray="4 4" stroke-width="2" />
+    {/* OUTLINES (Rendered Last) */}
+    {/* Removed Top Cone (Dashed) */}
+    <path d="M 110 120 L 150 40 L 190 120" fill="none" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+    <line x1="150" y1="40" x2="150" y2="120" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
 
-    {/* Frustum Side Edges */}
-    <line x1="50" y1="250" x2="112.5" y2="140" stroke="#059669" stroke-width="3" />
-    <line x1="300" y1="250" x2="237.5" y2="140" stroke="#059669" stroke-width="3" />
+    {/* Back half of bottom base (Dashed) */}
+    <path d="M 230 200 A 80 20 0 0 0 70 200" fill="none" stroke="#059669" stroke-dasharray="4 4" stroke-width="2" />
 
-    {/* Center lines & Labels */}
-    <line x1="175" y1="30" x2="175" y2="250" stroke="#1e293b" stroke-dasharray="4 4" />
-    <circle cx="175" cy="250" r="3" fill="#1e293b" />
-    <circle cx="175" cy="140" r="3" fill="#1e293b" />
-    
-    <line x1="175" y1="250" x2="300" y2="250" stroke="#1e293b" stroke-width="1.5" />
-    <text x="230" y="240" font-family="sans-serif" font-weight="bold" fill="#1e293b">8 cm</text>
-    
-    <line x1="175" y1="140" x2="237.5" y2="140" stroke="#1e293b" stroke-width="1.5" />
-    <text x="195" y="130" font-family="sans-serif" font-weight="bold" fill="#1e293b">r = ?</text>
-    
-    {/* Height brackets/lines */}
-    <line x1="312" y1="250" x2="332" y2="250" stroke="#94a3b8" />
-    <line x1="312" y1="30" x2="332" y2="30" stroke="#94a3b8" />
-    <line x1="322" y1="30" x2="322" y2="250" stroke="#94a3b8" />
-    <text x="319" y="145" font-family="sans-serif" font-weight="bold" fill="#64748b" transform="rotate(-90 319 145)">20 cm</text>
+    {/* Solid Outlines for Frustum */}
+    <line x1="70" y1="200" x2="110" y2="120" stroke="#059669" stroke-width="2" />
+    <line x1="230" y1="200" x2="190" y2="120" stroke="#059669" stroke-width="2" />
+    <ellipse cx="150" cy="120" rx="40" ry="10" fill="none" stroke="#059669" stroke-width="2" />
+    <path d="M 70 200 A 80 20 0 0 0 230 200" fill="none" stroke="#059669" stroke-width="2" />
 
-    <line x1="30" y1="250" x2="50" y2="250" stroke="#94a3b8" />
-    <line x1="30" y1="140" x2="50" y2="140" stroke="#94a3b8" />
-    <line x1="40" y1="140" x2="40" y2="250" stroke="#94a3b8" />
-    <text x="30" y="205" font-family="sans-serif" font-weight="bold" fill="#64748b" transform="rotate(-90 30 205)">10 cm</text>
+    {/* LABELS */}
+    {/* Base Radius Label */}
+    <line x1="150" y1="200" x2="230" y2="200" stroke="#1e293b" stroke-width="1.5" />
+    <circle cx="150" cy="200" r="2" fill="#1e293b" />
+    <text x="190" y="195" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle">8 cm</text>
+
+    {/* Height Labels */}
+    <line x1="280" y1="40" x2="280" y2="200" stroke="#1e293b" stroke-width="1.5" />
+    <polyline points="275,45 280,40 285,45" fill="none" stroke="#1e293b" stroke-width="1.5" />
+    <polyline points="275,195 280,200 285,195" fill="none" stroke="#1e293b" stroke-width="1.5" />
+    <text x="290" y="125" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e293b">20 cm</text>
+
+    <line x1="40" y1="120" x2="40" y2="200" stroke="#059669" stroke-width="1.5" />
+    <polyline points="35,125 40,120 45,125" fill="none" stroke="#059669" stroke-width="1.5" />
+    <polyline points="35,195 40,200 45,195" fill="none" stroke="#059669" stroke-width="1.5" />
+    <text x="45" y="165" font-family="sans-serif" font-size="12" font-weight="bold" fill="#059669">10 cm</text>
+
+    {/* Extension lines */}
+    <line x1="150" y1="40" x2="285" y2="40" stroke="#cbd5e1" stroke-dasharray="4 4" />
+    <line x1="230" y1="200" x2="285" y2="200" stroke="#cbd5e1" stroke-dasharray="4 4" />
+    <line x1="70" y1="200" x2="35" y2="200" stroke="#cbd5e1" stroke-dasharray="4 4" />
+    <line x1="110" y1="120" x2="35" y2="120" stroke="#cbd5e1" stroke-dasharray="4 4" />
   </svg>
 </div>
 
 <Steps>
+
 1. **Find the dimensions of the small (removed) cone:**
    $$
    \begin{aligned}
@@ -195,7 +211,6 @@ A large cone has a base radius of **8 cm** and a total height of **20 cm**. A sm
    &= 10 \text{ cm}
    \end{aligned}
    $$
-
 2. **Use similar triangles to find the small cone's radius ($r$):**
    $$
    \begin{aligned}
@@ -205,7 +220,6 @@ A large cone has a base radius of **8 cm** and a total height of **20 cm**. A sm
    &= 4 \text{ cm}
    \end{aligned}
    $$
-
 3. **Calculate the Volumes:**
    $$
    \begin{aligned}
@@ -219,141 +233,869 @@ A large cone has a base radius of **8 cm** and a total height of **20 cm**. A sm
    &= \frac{1120\pi}{3} \text{ cm}^3
    \end{aligned}
    $$
+
 </Steps>
 
 ---
 
 ## Practice Questions
 
-### Section A: 2D Compound Shapes
-
 <Tabs>
+
   <TabItem label="📝 Question 1: Compound Perimeter and Area (Core/Extended)">
     A shape is formed by attaching an equilateral triangle of side length **6 cm** to the top of a square of side length **6 cm**. 
+    
     a) Calculate the exact perimeter of the shape.
+    
     b) Calculate the area of the shape. Give your answer to 3 significant figures.
+    
   </TabItem>
-  <TabItem label="✅ Solution 1">
-    <Steps>
-    1. **Part a - Perimeter:**
-       The shared line where the triangle meets the square is hidden inside. Exposed outer edges are 3 sides of the square and 2 sides of the triangle.
-       $$
-       \begin{aligned}
-       \text{Perimeter} &= (3 \times 6) + (2 \times 6) \\
-       &= 18 + 12 \\
-       &= 30 \text{ cm}
-       \end{aligned}
-       $$
 
-    2. **Part b - Area:**
-       $$
-       \begin{aligned}
-       \text{Area of square} &= 6 \times 6 \\
-       &= 36 \text{ cm}^2 \\
-       \text{Height of triangle } (h) &= \sqrt{6^2 - 3^2} \\
-       &= \sqrt{27} \\
-       \text{Area of triangle} &= \frac{1}{2} \times 6 \times \sqrt{27} \\
-       &= 3\sqrt{27} \\
-       &\approx 15.588 \text{ cm}^2 \\
-       \text{Total Area} &= 36 + 15.588 \\
-       &= 51.588... \\
-       &\implies 51.6 \text{ cm}^2 \text{ (to 3 s.f.)}
-       \end{aligned}
-       $$
+  <TabItem label="✅ Solution 1">
+
+    **a)**
+    <Steps>
+
+      1. The shared line where the triangle meets the square is hidden inside. Exposed outer edges are 3 sides of the square and 2 sides of the triangle.
+      2. Calculate the perimeter:
+         $$
+         \begin{aligned}
+         \text{Perimeter} &= (3 \times 6) + (2 \times 6) \\
+         &= 18 + 12 \\
+         &= 30 \text{ cm}
+         \end{aligned}
+         $$
+
     </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Find the area of the square:
+         $$
+         \text{Area of square} = 6 \times 6 = 36 \text{ cm}^2
+         $$
+      2. Find the height ($h$) of the equilateral triangle using Pythagoras' theorem:
+         $$
+         h = \sqrt{6^2 - 3^2} = \sqrt{27}
+         $$
+      3. Calculate the area of the triangle:
+         $$
+         \text{Area of triangle} = \frac{1}{2} \times 6 \times \sqrt{27} = 3\sqrt{27} \approx 15.588 \text{ cm}^2
+         $$
+      4. Add the areas together:
+         $$
+         \text{Total Area} = 36 + 15.588 = 51.588... \implies 51.6 \text{ cm}^2 \text{ (to 3 s.f.)}
+         $$
+
+    </Steps>
+
   </TabItem>
+
 </Tabs>
 
 <SmartAIGenerator topic="Calculating the perimeter and area of 2D compound shapes and parts of shapes" />
 
-### Section B: 3D Compound Solids & Frustums
-
 <Tabs>
-  <TabItem label="📝 Question 2: Volume of a Frustum (Extended)">
-    A solid cone has a base radius of **9 cm** and a height of **15 cm**. The top of the cone is removed by making a cut parallel to the base, leaving a frustum. The removed top cone has a height of **5 cm**. 
-    Calculate the exact volume of the frustum in terms of $\pi$.
-  </TabItem>
-  <TabItem label="✅ Solution 2">
-    <Steps>
-    1. **Find the radius of the removed small cone:**
-       $$
-       \begin{aligned}
-       \text{Height scale factor} &= \frac{5}{15} \\
-       &= \frac{1}{3} \\
-       \text{Radius of small cone} &= \frac{1}{3} \times 9 \\
-       &= 3 \text{ cm}
-       \end{aligned}
-       $$
 
-    2. **Calculate Volumes:**
-       $$
-       \begin{aligned}
-       V_{\text{large}} &= \frac{1}{3}\pi (9^2)(15) \\
-       &= 405\pi \\
-       V_{\text{small}} &= \frac{1}{3}\pi (3^2)(5) \\
-       &= 15\pi \\
-       V_{\text{frustum}} &= 405\pi - 15\pi \\
-       &= 390\pi \text{ cm}^3
-       \end{aligned}
-       $$
-    </Steps>
-  </TabItem>
-</Tabs>
+  <TabItem label="📝 Question 2: Volume of a Cone Frustum (Extended)">
 
-<SmartAIGenerator topic="Using similar triangles and subtraction to find the volume of a geometric frustum" />
-
-<Tabs>
-  <TabItem label="📝 Question 3: Drilling Holes - Parts of a Solid (Extended)">
-    A solid wooden cylinder has a radius of **4 cm** and a length of **10 cm**. A cylindrical hole of radius **2 cm** is drilled completely through the center of the wood, parallel to its length. 
-    Calculate the exact total surface area of the resulting object in terms of $\pi$.
-  </TabItem>
-  <TabItem label="✅ Solution 3">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-      <svg viewBox="0 0 300 250" width="100%" maxWidth="280px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-        {/* Top surface (Annulus) */}
-        <ellipse cx="150" cy="60" rx="90" ry="30" fill="#fcd34d" fill-opacity="0.5" stroke="#d97706" stroke-width="3" />
-        <ellipse cx="150" cy="60" rx="40" ry="13" fill="#f8fafc" stroke="#d97706" stroke-width="2" />
+      <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* FILLS */}
+        <path d="M 60 200 L 120 100 A 30 8 0 0 1 180 100 L 240 200 A 90 20 0 0 1 60 200 Z" fill="#fca5a5" fill-opacity="0.2" />
+        <ellipse cx="150" cy="100" rx="30" ry="8" fill="#fecaca" />
         
-        {/* Outer walls */}
-        <rect x="60" y="60" width="180" height="120" fill="#fcd34d" fill-opacity="0.2" />
-        <line x1="60" y1="60" x2="60" y2="180" stroke="#d97706" stroke-width="2" />
-        <line x1="240" y1="60" x2="240" y2="180" stroke="#d97706" stroke-width="2" />
-        
-        {/* Bottom outer edge */}
-        <path d="M 60 180 A 90 30 0 0 0 240 180" fill="none" stroke="#d97706" stroke-width="2" />
-        <path d="M 240 180 A 90 30 0 0 0 60 180" fill="none" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
-        
-        {/* Inner walls (drilled hole) */}
-        <line x1="110" y1="60" x2="110" y2="180" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
-        <line x1="190" y1="60" x2="190" y2="180" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
-        <path d="M 110 180 A 40 13 0 0 0 190 180" fill="none" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+        {/* OUTLINES (Rendered Last) */}
+        {/* Frustum Outline */}
+        <line x1="60" y1="200" x2="120" y2="100" stroke="#ef4444" stroke-width="2" />
+        <line x1="240" y1="200" x2="180" y2="100" stroke="#ef4444" stroke-width="2" />
+        <ellipse cx="150" cy="100" rx="30" ry="8" fill="none" stroke="#ef4444" stroke-width="2" />
+        <path d="M 60 200 A 90 20 0 0 0 240 200" fill="none" stroke="#ef4444" stroke-width="2" />
+        <path d="M 240 200 A 90 20 0 0 0 60 200" fill="none" stroke="#ef4444" stroke-dasharray="4 4" stroke-width="2" />
+
+        {/* LABELS */}
+        <line x1="150" y1="200" x2="240" y2="200" stroke="#1e293b" stroke-width="1.5" />
+        <circle cx="150" cy="200" r="2" fill="#1e293b" />
+        <text x="195" y="195" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle">9 cm</text>
+
+        {/* Height Labels */}
+        <line x1="280" y1="50" x2="280" y2="200" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="275,55 280,50 285,55" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="275,195 280,200 285,195" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <text x="290" y="130" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e293b">15 cm</text>
+
+        <line x1="260" y1="50" x2="260" y2="100" stroke="#ef4444" stroke-width="1.5" />
+        <polyline points="255,55 260,50 265,55" fill="none" stroke="#ef4444" stroke-width="1.5" />
+        <polyline points="255,95 260,100 265,95" fill="none" stroke="#ef4444" stroke-width="1.5" />
+        <text x="215" y="75" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444">5 cm</text>
+
+        {/* Extension lines */}
+        <line x1="180" y1="100" x2="265" y2="100" stroke="#cbd5e1" stroke-dasharray="4 4" />
+        <line x1="240" y1="200" x2="285" y2="200" stroke="#cbd5e1" stroke-dasharray="4 4" />
+        <line x1="150" y1="50" x2="285" y2="50" stroke="#cbd5e1" stroke-dasharray="4 4" />
       </svg>
     </div>
 
-    <Steps>
-    1. **Identify the exposed surfaces:**
-       * The outer curved surface of the large cylinder.
-       * The inner curved surface of the drilled hole (this is a newly exposed surface!).
-       * The two flat ends (which are now rings/annuli, not solid circles).
-
-    2. **Calculate individual exposed areas:**
-       $$
-       \begin{aligned}
-       \text{Outer Curved Area } &= 2\pi(4)(10) \\
-       &= 80\pi \text{ cm}^2 \\
-       \text{Inner Curved Area } &= 2\pi(2)(10) \\
-       &= 40\pi \text{ cm}^2 \\
-       \text{Area of one ring } &= \pi(4^2) - \pi(2^2) \\
-       &= 16\pi - 4\pi \\
-       &= 12\pi \text{ cm}^2 \\
-       \text{Area of both rings } &= 2 \times 12\pi \\
-       &= 24\pi \text{ cm}^2 \\
-       \text{Total Surface Area } &= 80\pi + 40\pi + 24\pi \\
-       &= 144\pi \text{ cm}^2
-       \end{aligned}
-       $$
-    </Steps>
+    A solid cone has a base radius of **9 cm** and a total height of **15 cm**. The top of the cone is removed by making a cut parallel to the base, leaving a frustum. The removed top cone has a height of **5 cm**. 
+    
+    a) Use similar triangles to find the radius of the removed small cone.
+    
+    b) Calculate the exact volume of the frustum in terms of $\pi$.
+    
   </TabItem>
+
+  <TabItem label="✅ Solution 2">
+
+    **a)**
+    <Steps>
+
+      1. Find the scale factor for the heights:
+         $$
+         \text{Height scale factor} = \frac{5}{15} = \frac{1}{3}
+         $$
+      2. Apply the scale factor to the radius:
+         $$
+         \text{Radius of small cone} = \frac{1}{3} \times 9 = 3 \text{ cm}
+         $$
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Calculate the volume of the large original cone:
+         $$
+         V_{\text{large}} = \frac{1}{3}\pi (9^2)(15) = 405\pi
+         $$
+      2. Calculate the volume of the small removed cone:
+         $$
+         V_{\text{small}} = \frac{1}{3}\pi (3^2)(5) = 15\pi
+         $$
+      3. Subtract to find the volume of the frustum:
+         $$
+         V_{\text{frustum}} = 405\pi - 15\pi = 390\pi \text{ cm}^3
+         $$
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Using similar triangles and subtraction to find the volume of a cone frustum" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 3: Volume of a Pyramid Frustum (Extended)">
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 300" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* FILLS */}
+        <polygon points="143.75,77.5 188.75,77.5 206.25,62.5 161.25,62.5" fill="#6ee7b7" /> {/* Top Face */}
+        <polygon points="50,220 230,220 188.75,77.5 143.75,77.5" fill="#a7f3d0" fill-opacity="0.5" /> {/* Front Face */}
+        <polygon points="230,220 300,160 206.25,62.5 188.75,77.5" fill="#34d399" fill-opacity="0.5" /> {/* Right Face */}
+
+        {/* OUTLINES (Rendered Last) */}
+        {/* Hidden lines of Frustum (Back) */}
+        <line x1="50" y1="220" x2="120" y2="160" stroke="#10b981" stroke-dasharray="4 4" stroke-width="2" />
+        <line x1="120" y1="160" x2="300" y2="160" stroke="#10b981" stroke-dasharray="4 4" stroke-width="2" />
+        <line x1="120" y1="160" x2="161.25" y2="62.5" stroke="#10b981" stroke-dasharray="4 4" stroke-width="2" />
+
+        {/* Removed Top Pyramid (Dashed lines sharing exact mathematically correct apex at 175, 30) */}
+        <line x1="175" y1="30" x2="143.75" y2="77.5" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="1.5" />
+        <line x1="175" y1="30" x2="188.75" y2="77.5" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="1.5" />
+        <line x1="175" y1="30" x2="206.25" y2="62.5" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="1.5" />
+        <line x1="175" y1="30" x2="161.25" y2="62.5" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="1.5" />
+
+        {/* Visible Frustum Edges */}
+        <polygon points="143.75,77.5 188.75,77.5 206.25,62.5 161.25,62.5" fill="none" stroke="#059669" stroke-width="2" />
+        <polyline points="50,220 230,220 300,160" fill="none" stroke="#059669" stroke-width="2" />
+        <line x1="50" y1="220" x2="143.75" y2="77.5" stroke="#059669" stroke-width="2" />
+        <line x1="230" y1="220" x2="188.75" y2="77.5" stroke="#059669" stroke-width="2" />
+        <line x1="300" y1="160" x2="206.25" y2="62.5" stroke="#059669" stroke-width="2" />
+
+        {/* LABELS */}
+        {/* Base Dimension */}
+        <line x1="50" y1="235" x2="230" y2="235" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="55,230 50,235 55,240" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="225,230 230,235 225,240" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <text x="140" y="250" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle">12 cm</text>
+
+        {/* Total Height */}
+        <line x1="320" y1="30" x2="320" y2="220" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="315,35 320,30 325,35" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="315,215 320,220 325,215" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <text x="302" y="135" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e293b">20 cm</text>
+
+        {/* Top Removed Height */}
+        <line x1="280" y1="30" x2="280" y2="77.5" stroke="#ef4444" stroke-width="1.5" />
+        <polyline points="275,35 280,30 285,35" fill="none" stroke="#ef4444" stroke-width="1.5" />
+        <polyline points="275,72.5 280,77.5 285,72.5" fill="none" stroke="#ef4444" stroke-width="1.5" />
+        <text x="240" y="60" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444">5 cm</text>
+
+        {/* Extension Lines */}
+        <line x1="175" y1="30" x2="325" y2="30" stroke="#cbd5e1" stroke-dasharray="4 4" />
+        <line x1="188.75" y1="77.5" x2="285" y2="77.5" stroke="#cbd5e1" stroke-dasharray="4 4" />
+        <line x1="230" y1="220" x2="325" y2="220" stroke="#cbd5e1" stroke-dasharray="4 4" />
+      </svg>
+    </div>
+
+    A solid square-based pyramid has a base side length of **12 cm** and a perpendicular height of **20 cm**. The top is removed by a cut parallel to the base, forming a frustum. The height of the removed small pyramid is **5 cm**.
+    
+    a) Calculate the side length of the square base of the removed small pyramid.
+    
+    b) Calculate the volume of the original large pyramid.
+    
+    c) Calculate the exact volume of the frustum.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 3">
+
+    **a)**
+    <Steps>
+
+      1. Calculate the linear scale factor from the heights:
+         $$
+         \text{Scale Factor} = \frac{5}{20} = \frac{1}{4}
+         $$
+      2. Apply the scale factor to the base length:
+         $$
+         \text{Small Base Side} = 12 \times \frac{1}{4} = 3 \text{ cm}
+         $$
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Use the volume formula for a pyramid ($V = \frac{1}{3} \times \text{Base Area} \times h$):
+         $$
+         V_{\text{large}} = \frac{1}{3} \times (12 \times 12) \times 20
+         $$
+      2. Calculate the volume:
+         $$
+         V_{\text{large}} = \frac{1}{3} \times 144 \times 20 = 960 \text{ cm}^3
+         $$
+
+    </Steps>
+
+    **c)**
+    <Steps>
+
+      1. Calculate the volume of the small removed pyramid:
+         $$
+         V_{\text{small}} = \frac{1}{3} \times (3 \times 3) \times 5 = \frac{1}{3} \times 9 \times 5 = 15 \text{ cm}^3
+         $$
+      2. Subtract to find the frustum volume:
+         $$
+         V_{\text{frustum}} = 960 - 15 = 945 \text{ cm}^3
+         $$
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the volume of a square-based pyramid frustum" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 4: Drilling Holes - Parts of a Solid (Extended)">
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* FILLS */}
+        <path d="M 80 40 L 260 40 A 20 80 0 0 1 260 200 L 80 200 A 20 80 0 0 1 80 40 Z" fill="#fcd34d" fill-opacity="0.2" />
+        <ellipse cx="260" cy="120" rx="20" ry="80" fill="#fcd34d" fill-opacity="0.5" />
+        <ellipse cx="260" cy="120" rx="10" ry="40" fill="#f8fafc" />
+
+        {/* OUTLINES (Rendered Last) */}
+        {/* Outer Cylinder Back Edge */}
+        <path d="M 80 40 A 20 80 0 0 0 80 200" fill="none" stroke="#d97706" stroke-dasharray="4 4" stroke-width="2" />
+        
+        {/* Inner Cylinder Back Edge */}
+        <path d="M 80 80 A 10 40 0 0 0 80 160" fill="none" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+
+        {/* Inner walls (drilled hole) */}
+        <line x1="80" y1="80" x2="260" y2="80" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+        <line x1="80" y1="160" x2="260" y2="160" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
+
+        {/* Outer Cylinder Visible Outline */}
+        <path d="M 80 40 L 260 40" fill="none" stroke="#d97706" stroke-width="2" />
+        <path d="M 80 200 L 260 200" fill="none" stroke="#d97706" stroke-width="2" />
+        <path d="M 80 40 A 20 80 0 0 1 80 200" fill="none" stroke="#d97706" stroke-width="2" />
+
+        {/* Top surface (Annulus - Front Face) Outline */}
+        <ellipse cx="260" cy="120" rx="20" ry="80" fill="none" stroke="#d97706" stroke-width="3" />
+        <ellipse cx="260" cy="120" rx="10" ry="40" fill="none" stroke="#d97706" stroke-width="2" />
+
+        {/* LABELS */}
+        {/* Outer Radius */}
+        <line x1="260" y1="120" x2="260" y2="40" stroke="#1e293b" stroke-width="1.5" />
+        <text x="270" y="85" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b">4 cm</text>
+        
+        {/* Inner Radius */}
+        <line x1="260" y1="120" x2="260" y2="160" stroke="#ef4444" stroke-width="1.5" />
+        <text x="270" y="145" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444">2 cm</text>
+
+        {/* Length */}
+        <line x1="80" y1="220" x2="260" y2="220" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="85,215 80,220 85,225" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="255,215 260,220 255,225" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <text x="170" y="235" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle">10 cm</text>
+        
+        {/* Extension lines */}
+        <line x1="80" y1="200" x2="80" y2="225" stroke="#cbd5e1" stroke-dasharray="4 4" />
+        <line x1="260" y1="200" x2="260" y2="225" stroke="#cbd5e1" stroke-dasharray="4 4" />
+      </svg>
+    </div>
+
+    
+
+    A solid wooden cylinder has a radius of **4 cm** and a length of **10 cm**. A cylindrical hole of radius **2 cm** is drilled completely through the center of the wood, parallel to its length. 
+    
+    a) Identify the three distinct parts that make up the total exposed surface area.
+    
+    b) Calculate the exact total surface area of the resulting object in terms of $\pi$.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 4">
+
+    **a)**
+    <Steps>
+
+      1. The outer curved surface of the large cylinder.
+      2. The inner curved surface of the drilled hole (this is a newly exposed surface!).
+      3. The two flat ends (which are now rings/annuli, not solid circles).
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Calculate the curved area of the outer cylinder:
+         $$
+         \text{Outer Curved Area } = 2\pi(4)(10) = 80\pi \text{ cm}^2
+         $$
+      2. Calculate the curved area of the inner drilled cylinder:
+         $$
+         \text{Inner Curved Area } = 2\pi(2)(10) = 40\pi \text{ cm}^2
+         $$
+      3. Calculate the area of one flat end ring (large circle minus small circle):
+         $$
+         \text{Area of one ring } = \pi(4^2) - \pi(2^2) = 16\pi - 4\pi = 12\pi \text{ cm}^2
+         $$
+      4. Sum the components (remembering there are two flat ends):
+         $$
+         \text{Total Surface Area } = 80\pi + 40\pi + 2(12\pi) = 144\pi \text{ cm}^2
+         $$
+
+    </Steps>
+
+  </TabItem>
+
 </Tabs>
 
 <SmartAIGenerator topic="Calculating the total surface area of complex compound 3D solids including hollow parts and drilling" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 5: 2D Running Track (Core/Extended)">
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 400 200" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* FILLS */}
+        <path d="M 100 50 L 300 50 A 50 50 0 0 1 300 150 L 100 150 A 50 50 0 0 1 100 50 Z" fill="#dbeafe" />
+        
+        {/* OUTLINES & LINES (Rendered Last) */}
+        <path d="M 100 50 L 300 50 A 50 50 0 0 1 300 150 L 100 150 A 50 50 0 0 1 100 50 Z" fill="none" stroke="#3b82f6" stroke-width="3" />
+        
+        <g>
+          {Array.from({ length: 3 }, (_, i) => {
+            const inset = (i + 1) * 12.5;
+            const r = 50 - inset;
+            return (
+              <path 
+                key={i} 
+                d={`M 100 ${50 + inset} L 300 ${50 + inset} A ${r} ${r} 0 0 1 300 ${150 - inset} L 100 ${150 - inset} A ${r} ${r} 0 0 1 100 ${50 + inset} Z`} 
+                fill="none" 
+                stroke="#93c5fd" 
+                stroke-width="1.5" 
+              />
+            );
+          })}
+        </g>
+        
+        {/* Dotted lines marking the straight sections */}
+        <line x1="100" y1="50" x2="100" y2="150" stroke="#64748b" stroke-dasharray="4 4" stroke-width="2" />
+        <line x1="300" y1="50" x2="300" y2="150" stroke="#64748b" stroke-dasharray="4 4" stroke-width="2" />
+        
+        {/* Labels */}
+        <text x="200" y="40" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">100 m</text>
+        
+        <line x1="50" y1="50" x2="50" y2="150" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="45,55 50,50 55,55" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="45,145 50,150 55,145" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <text x="35" y="105" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle" transform="rotate(-90 35 105)">100 m</text>
+
+        <line x1="50" y1="50" x2="100" y2="50" stroke="#cbd5e1" stroke-dasharray="4 4" />
+        <line x1="50" y1="150" x2="100" y2="150" stroke="#cbd5e1" stroke-dasharray="4 4" />
+      </svg>
+    </div>
+
+    A school running track consists of a rectangle with a semi-circle at each end. The straight edges of the rectangle are **100 m** long, and the total width of the track (the diameter of the semi-circles) is **100 m**.
+    
+    a) Calculate the total perimeter of the running track to 1 decimal place.
+    
+    b) Calculate the total area enclosed by the running track to 3 significant figures.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 5">
+
+    **a)**
+    <Steps>
+
+      1. The perimeter consists of the two straight edges and the two semi-circular ends. The two semi-circles form one full circle with a diameter of $100\text{ m}$.
+      2. Calculate the circumference of the full circle:
+         $$
+         C = \pi d = 100\pi \approx 314.159\text{ m}
+         $$
+      3. Add the straight sections:
+         $$
+         \text{Perimeter} = 100 + 100 + 314.159 = 514.159\text{ m}
+         $$
+      4. Rounding to 1 decimal place gives $514.2\text{ m}$.
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. The total area is the area of the rectangle plus the area of the full circle (radius = $50\text{ m}$).
+      2. Calculate the area of the rectangle:
+         $$
+         \text{Area of rectangle} = 100 \times 100 = 10000\text{ m}^2
+         $$
+      3. Calculate the area of the full circle:
+         $$
+         \text{Area of circle} = \pi \times 50^2 = 2500\pi \approx 7853.98\text{ m}^2
+         $$
+      4. Add the areas together:
+         $$
+         \text{Total Area} = 10000 + 7853.98 = 17853.98\text{ m}^2
+         $$
+      5. Rounding to 3 significant figures gives $17900\text{ m}^2$.
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Calculating area and perimeter of running track shapes" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 6: 3D Spinning Toy Compound Volume (Extended)">
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 320" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* FILLS */}
+        <path d="M 90 160 L 150 260 L 210 160 Z" fill="#facc15" />
+        <path d="M 90 60 L 90 160 A 60 15 0 0 0 210 160 L 210 60 Z" fill="#fde047" />
+        <ellipse cx="150" cy="60" rx="60" ry="15" fill="#fef08a" />
+
+        {/* OUTLINES (Rendered Last) */}
+        <path d="M 210 160 A 60 15 0 0 0 90 160" fill="none" stroke="#ca8a04" stroke-dasharray="4 4" stroke-width="2" />
+        
+        {/* Cone Outline */}
+        <path d="M 90 160 L 150 260 L 210 160" fill="none" stroke="#ca8a04" stroke-width="2" />
+        <path d="M 90 160 A 60 15 0 0 0 210 160" fill="none" stroke="#ca8a04" stroke-width="2" />
+
+        {/* Cylinder Outline */}
+        <line x1="90" y1="60" x2="90" y2="160" stroke="#ca8a04" stroke-width="2" />
+        <line x1="210" y1="60" x2="210" y2="160" stroke="#ca8a04" stroke-width="2" />
+        <ellipse cx="150" cy="60" rx="60" ry="15" fill="none" stroke="#ca8a04" stroke-width="2" />
+
+        {/* LABELS */}
+        <line x1="150" y1="60" x2="210" y2="60" stroke="#1e293b" stroke-width="1.5" />
+        <circle cx="150" cy="60" r="2" fill="#1e293b" />
+        <text x="180" y="50" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle">3 cm</text>
+
+        <line x1="240" y1="60" x2="240" y2="160" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="235,65 240,60 245,65" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="235,155 240,160 245,155" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <text x="250" y="115" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e293b">8 cm</text>
+
+        <line x1="240" y1="160" x2="240" y2="260" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="235,165 240,160 245,165" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="235,255 240,260 245,255" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <text x="250" y="215" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1e293b">4 cm</text>
+
+        <line x1="210" y1="60" x2="245" y2="60" stroke="#cbd5e1" stroke-dasharray="4 4" />
+        <line x1="210" y1="160" x2="245" y2="160" stroke="#cbd5e1" stroke-dasharray="4 4" />
+        <line x1="150" y1="260" x2="245" y2="260" stroke="#cbd5e1" stroke-dasharray="4 4" />
+        
+        {/* Motion lines for spinning tip */}
+        <path d="M 130 270 Q 150 280 170 270" fill="none" stroke="#94a3b8" stroke-width="2" />
+        <path d="M 140 280 Q 150 285 160 280" fill="none" stroke="#94a3b8" stroke-width="2" />
+      </svg>
+    </div>
+
+    A spinning wooden toy is constructed from a cylinder with an inverted cone attached to the bottom so that it spins on its tip. The common radius is **3 cm**. The cylinder has a height of **8 cm** and the cone has a perpendicular height of **4 cm**.
+    
+    a) Calculate the exact volume of the cylindrical part in terms of $\pi$.
+    
+    b) Calculate the exact volume of the conical part in terms of $\pi$.
+    
+    c) Calculate the total volume of the wooden toy.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 6">
+
+    **a)**
+    <Steps>
+
+      1. Use the cylinder volume formula:
+         $$
+         V_{\text{cylinder}} = \pi r^2 h = \pi (3^2)(8) = \pi(9)(8) = 72\pi \text{ cm}^3
+         $$
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Use the cone volume formula:
+         $$
+         V_{\text{cone}} = \frac{1}{3} \pi r^2 h = \frac{1}{3} \pi (3^2)(4) = \frac{1}{3} \pi (9)(4) = 12\pi \text{ cm}^3
+         $$
+
+    </Steps>
+
+    **c)**
+    <Steps>
+
+      1. Add the two volumes together:
+         $$
+         \text{Total Volume} = 72\pi + 12\pi = 84\pi \text{ cm}^3
+         $$
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Finding the volume of composite shapes made from cylinders and cones" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 7: Cost of Coating a Compound Shape (Extended)">
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 350" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* FILLS */}
+        <path d="M 75 100 A 75 75 0 0 1 225 100 Z" fill="#bfdbfe" fill-opacity="0.3" />
+        <path d="M 75 100 L 75 280 A 75 20 0 0 0 225 280 L 225 100 Z" fill="#bfdbfe" fill-opacity="0.2" />
+        
+        {/* OUTLINES (Rendered Last) */}
+        {/* Hidden lines */}
+        <path d="M 225 280 A 75 20 0 0 0 75 280" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+        <path d="M 225 100 A 75 20 0 0 0 75 100" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+
+        {/* Hemisphere Top Outline */}
+        <path d="M 75 100 A 75 75 0 0 1 225 100" fill="none" stroke="#3b82f6" stroke-width="2" />
+        
+        {/* Cylinder Body Outlines */}
+        <path d="M 75 100 A 75 20 0 0 0 225 100" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="75" y1="100" x2="75" y2="280" stroke="#1e293b" stroke-width="2" />
+        <line x1="225" y1="100" x2="225" y2="280" stroke="#1e293b" stroke-width="2" />
+        <path d="M 75 280 A 75 20 0 0 0 225 280" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        {/* LABELS */}
+        <line x1="150" y1="100" x2="225" y2="100" stroke="#1e293b" stroke-width="1.5" />
+        <circle cx="150" cy="100" r="3" fill="#1e293b" />
+        <text x="185" y="95" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">5 m</text>
+        
+        <line x1="40" y1="100" x2="40" y2="280" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="35,105 40,100 45,105" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <polyline points="35,275 40,280 45,275" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <text x="30" y="195" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif" transform="rotate(-90 30 195)">10 m</text>
+        
+        <line x1="75" y1="100" x2="35" y2="100" stroke="#cbd5e1" stroke-dasharray="4 4" />
+        <line x1="75" y1="280" x2="35" y2="280" stroke="#cbd5e1" stroke-dasharray="4 4" />
+      </svg>
+    </div>
+
+    
+
+    A storage tank consists of a cylinder with a hemispherical top. The cylinder has a radius of **5 m** and a height of **10 m**. The flat circular base of the cylinder sits on the ground and will not be painted. 
+    
+    a) Calculate the exposed surface area of the cylinder.
+    
+    b) Calculate the exposed surface area of the hemispherical top.
+    
+    c) Rust-proof paint costs 15 USD per square metre. Calculate the total cost to paint the outside of the tank. Give your answer to the nearest whole number.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 7">
+
+    **a)**
+    <Steps>
+
+      1. The base sits on the ground, and the top is covered by the hemisphere. Therefore, only the curved surface area of the cylinder is exposed.
+         $$
+         \text{CSA}_{\text{cylinder}} = 2\pi r h = 2\pi(5)(10) = 100\pi \text{ m}^2
+         $$
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. The flat base of the hemisphere is attached to the cylinder. Therefore, only the curved surface area of the hemisphere is exposed.
+         $$
+         \text{CSA}_{\text{hemisphere}} = 2\pi r^2 = 2\pi(5^2) = 50\pi \text{ m}^2
+         $$
+
+    </Steps>
+
+    **c)**
+    <Steps>
+
+      1. Find the total exposed surface area:
+         $$
+         \text{Total Area} = 100\pi + 50\pi = 150\pi \approx 471.2389 \text{ m}^2
+         $$
+      2. Multiply by the cost per square metre:
+         $$
+         \text{Total Cost} = 471.2389 \times 15 = 7068.58 \text{ USD}
+         $$
+      3. Round to the nearest whole number gives 7069 USD.
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Real world compound shape painting cost calculations" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 8: Concentric Layered Volumes (Advanced)">
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 300" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* Draw from bottom tier (i=3) to top tier (i=0) */}
+        <g>
+          {[3, 2, 1, 0].map(i => {
+            const r = (i + 1) * 20;
+            const h = 40;
+            const yTop = 60 + i * h;
+            const yBottom = yTop + h;
+            const ry = r * 0.25;
+            return (
+              <g key={i}>
+                {/* FILLS */}
+                <path d={`M ${175 - r} ${yTop} L ${175 - r} ${yBottom} A ${r} ${ry} 0 0 0 ${175 + r} ${yBottom} L ${175 + r} ${yTop} Z`} fill="#bfdbfe" />
+                <ellipse cx="175" cy={yTop} rx={r} ry={ry} fill="#eff6ff" />
+                {/* LINES (Rendered after fills for each specific layer so 3D occlusion works natively) */}
+                <path d={`M ${175 - r} ${yTop} L ${175 - r} ${yBottom} A ${r} ${ry} 0 0 0 ${175 + r} ${yBottom} L ${175 + r} ${yTop} Z`} fill="none" stroke="#3b82f6" stroke-width="2" />
+                <ellipse cx="175" cy={yTop} rx={r} ry={ry} fill="none" stroke="#3b82f6" stroke-width="2" />
+              </g>
+            );
+          })}
+        </g>
+        
+        {/* LABELS */}
+        <line x1="175" y1="60" x2="195" y2="60" stroke="#1e293b" stroke-width="1.5" />
+        <circle cx="175" cy="60" r="2" fill="#1e293b" />
+        <text x="215" y="65" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">10 cm</text>
+
+        <line x1="260" y1="60" x2="260" y2="100" stroke="#ef4444" stroke-width="1.5" />
+        <polyline points="255,65 260,60 265,65" fill="none" stroke="#ef4444" stroke-width="1.5" />
+        <polyline points="255,95 260,100 265,95" fill="none" stroke="#ef4444" stroke-width="1.5" />
+        <text x="270" y="85" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">5 cm</text>
+        
+        <line x1="195" y1="60" x2="265" y2="60" stroke="#cbd5e1" stroke-dasharray="4 4" />
+        <line x1="215" y1="100" x2="265" y2="100" stroke="#cbd5e1" stroke-dasharray="4 4" />
+      </svg>
+    </div>
+
+    A decorative column base consists of 4 stacked cylindrical solid discs. Each tier has a height of $5\text{ cm}$. The top tier has a radius of $10\text{ cm}$, and each subsequent tier beneath it has a radius that is $5\text{ cm}$ larger than the one above it.
+    
+    a) Determine the radius of the bottom tier.
+    
+    b) Calculate the total volume of all 4 cylindrical discs combined. Give your answer in terms of $\pi$.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 8">
+
+    **a)**
+    <Steps>
+
+      1. Identify the pattern of the radii starting from the top:
+         Tier 1 (top): $r = 10\text{ cm}$
+         Tier 2: $r = 10 + 5 = 15\text{ cm}$
+         Tier 3: $r = 15 + 5 = 20\text{ cm}$
+         Tier 4 (bottom): $r = 20 + 5 = 25\text{ cm}$
+      2. The bottom tier has a radius of $25\text{ cm}$.
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Write the volume formula for each cylinder ($V = \pi r^2 h$) where $h = 5$:
+         $$
+         V_1 = \pi (10)^2 \times 5 = 500\pi
+         $$
+         $$
+         V_2 = \pi (15)^2 \times 5 = \pi(225) \times 5 = 1125\pi
+         $$
+         $$
+         V_3 = \pi (20)^2 \times 5 = \pi(400) \times 5 = 2000\pi
+         $$
+         $$
+         V_4 = \pi (25)^2 \times 5 = \pi(625) \times 5 = 3125\pi
+         $$
+      2. Sum the individual volumes to find the total volume:
+         $$
+         \text{Total Volume} = 500\pi + 1125\pi + 2000\pi + 3125\pi = 6750\pi\text{ cm}^3
+         $$
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Using sequences to calculate total volume of stacked compound cylinders" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 9: Similar Compound Solids (Extended)">
+    Two model toy houses are geometrically similar. Model A has a total height of **15 cm** and a total volume of **400 cm³**. Model B has a total height of **45 cm**.
+    
+    a) Determine the linear scale factor from Model A to Model B.
+    
+    b) Calculate the volume scale factor.
+    
+    c) Hence, calculate the total volume of Model B.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 9">
+
+    **a)**
+    <Steps>
+
+      1. The linear scale factor ($k$) is the ratio of their heights:
+         $$
+         k = \frac{45}{15} = 3
+         $$
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. The volume scale factor is the linear scale factor cubed ($k^3$):
+         $$
+         k^3 = 3^3 = 27
+         $$
+
+    </Steps>
+
+    **c)**
+    <Steps>
+
+      1. Multiply the volume of the smaller model (Model A) by the volume scale factor to find the volume of Model B:
+         $$
+         \text{Volume}_B = 400 \times 27 = 10800 \text{ cm}^3
+         $$
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Applying linear area and volume scale factors to similar compound solids" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 10: Working Backwards with Compound Area (Advanced)">
+    A solid hemisphere has an exact total surface area of $192\pi \text{ cm}^2$.
+    
+    a) Write down the full equation for the total surface area of a solid hemisphere in terms of $r$.
+    
+    b) Solve the equation to find the exact radius of the hemisphere.
+    
+    c) Calculate the exact volume of the hemisphere in terms of $\pi$.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 10">
+
+    **a)**
+    <Steps>
+
+      1. A solid hemisphere includes both the curved face and the flat base.
+         $$
+         \text{Total Surface Area} = 3\pi r^2
+         $$
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Set the formula equal to the given area:
+         $$
+         3\pi r^2 = 192\pi
+         $$
+      2. Divide both sides by $\pi$:
+         $$
+         3r^2 = 192
+         $$
+      3. Divide by 3:
+         $$
+         r^2 = 64
+         $$
+      4. Square root to find the radius:
+         $$
+         r = \sqrt{64} = 8 \text{ cm}
+         $$
+
+    </Steps>
+
+    **c)**
+    <Steps>
+
+      1. Substitute the radius back into the hemisphere volume formula:
+         $$
+         V = \frac{2}{3}\pi r^3 = \frac{2}{3}\pi (8^3)
+         $$
+      2. Calculate the exact volume:
+         $$
+         V = \frac{2}{3}\pi (512) = \frac{1024\pi}{3} \text{ cm}^3
+         $$
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Working backwards from surface area to find the radius and volume of compound shapes" />

@@ -6,7 +6,9 @@ description: Master calculations for the surface area and volume of cuboids, pri
 Moving from 2D to 3D introduces two distinct measurements: **Volume** (the amount of 3D space inside an object) and **Surface Area** (the total 2D area of all the exposed outer surfaces). 
 
 <SteveTip title="The Formula Sheet is Your Friend">
+
 In the IGCSE Extended exam, you are **given** the formulas for the curved surface area of cylinders and cones, the surface area of spheres, and the volumes of prisms, pyramids, cylinders, cones, and spheres. You do not need to memorise them all, but you **must** know how to apply them and how to piece them together for compound shapes!
+
 </SteveTip>
 
 ---
@@ -18,6 +20,7 @@ A **prism** is any 3D solid that has a perfectly uniform (constant) cross-sectio
 A **cylinder** is simply a prism with a circular cross-section. 
 
 <Aside type="tip" title="General Prism Formulas">
+
 * **Volume:**
   $$
   \text{Volume} = \text{Area of cross-section} \times \text{length}
@@ -27,6 +30,7 @@ A **cylinder** is simply a prism with a circular cross-section.
   $$
   \text{Total SA} = 2 \times (\text{Area of cross-section}) + (\text{Perimeter of cross-section} \times \text{length})
   $$
+
 </Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', margin: '2rem 0' }}>
@@ -83,16 +87,20 @@ A **cylinder** is simply a prism with a circular cross-section.
 </div>
 
 <Aside type="note" title="Cylinder-Specific Formulas">
+
 While a cylinder follows the general rules of a prism, its circular nature gives it specific algebraic formulas that you should be comfortable with:
 * **Base Area (Cross-section):** $\pi r^2$
 * **Curved Surface Area (CSA):** $2\pi r h$
 * **Total Surface Area (TSA):** $2\pi r^2 + 2\pi r h$
 * **Volume:** $\pi r^2 h$
+
 </Aside>
 
 ### Example: Volume of a Cylinder
 Calculate the exact volume of a cylinder with a radius of $6\text{ cm}$ and a height of $10\text{ cm}$. Give your answer in terms of $\pi$.
+
 <Steps>
+
 1. Identify the area of the base (a circle):
    $$
    \text{Base Area} = \pi r^2 = \pi \times 6^2 = 36\pi\text{ cm}^2
@@ -101,6 +109,7 @@ Calculate the exact volume of a cylinder with a radius of $6\text{ cm}$ and a he
    $$
    \text{Volume} = 36\pi \times 10 = 360\pi\text{ cm}^3
    $$
+
 </Steps>
 
 ---
@@ -110,10 +119,12 @@ Calculate the exact volume of a cylinder with a radius of $6\text{ cm}$ and a he
 Any 3D shape that tapers from a flat base to a single point (an apex) has exactly **one-third** the volume of a prism with the same base and height. A cone is simply a pyramid with a circular base.
 
 <Aside type="tip" title="General Pyramid & Cone Volume">
+
 * **Volume:**
   $$
   \text{Volume} = \frac{1}{3} \times \text{Base Area} \times \text{Perpendicular Height}
   $$
+
 </Aside>
 
 ### The Square Pyramid
@@ -152,12 +163,14 @@ A square pyramid has a square base. Its volume is $\frac{1}{3} \times (x \times 
 The surface area of a cone is made of two parts: the flat circular base and the curved surface wrapped around the side.
 
 <Aside type="caution" title="Height vs. Slant Height">
+
 For the **volume**, you must use the perpendicular height ($h$). 
 For the **curved surface area**, you must use the slanted height ($l$). 
 Examiners will often give you one, and force you to calculate the other using Pythagoras' Theorem:
 $$
 l^2 = r^2 + h^2
 $$
+
 </Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
@@ -188,11 +201,13 @@ $$
 </div>
 
 <Aside type="note" title="Cone-Specific Formulas">
+
 Just like the cylinder, the circular properties of a cone mean it has precise formulas you need to use:
 * **Base Area:** $\pi r^2$
 * **Curved Surface Area (CSA):** $\pi r l$ (where $l$ is the slant height)
 * **Total Surface Area (TSA):** $\pi r^2 + \pi r l$
 * **Volume:** $\frac{1}{3}\pi r^2 h$
+
 </Aside>
 
 ---
@@ -233,7 +248,6 @@ Spheres are perfectly symmetrical 3D objects.
   <svg viewBox="0 0 250 250" width="100%" maxWidth="200px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     {/* HEMISPHERE */}
     {/* 1. FILLS (Bottommost layer) */}
-    <path d="M 25 150 A 100 100 0 0 1 225 150 Z" fill="#a855f7" fill-opacity="0.15" />
     <ellipse cx="125" cy="150" rx="100" ry="30" fill="#a855f7" fill-opacity="0.15" />
 
     {/* 2. INVISIBLE/DASHED LINES */}
@@ -242,7 +256,7 @@ Spheres are perfectly symmetrical 3D objects.
 
     {/* 3. VISIBLE/SOLID LINES */}
     <path d="M 25 150 A 100 100 0 0 1 225 150" fill="none" stroke="#7e22ce" stroke-width="2" />
-    <path d="M 25 150 A 100 30 0 0 0 225 150" fill="none" stroke="#ef4444" stroke-width="2" />
+    <path d="M 25 150 A 100 30 0 0 0 225 150" fill="none" stroke="#7e22ce" stroke-width="2" />
 
     {/* 4. LABELS & MARKERS */}
     <circle cx="125" cy="150" r="3" fill="#1e293b" />
@@ -257,11 +271,13 @@ A hemisphere is exactly half of a sphere.
 * The **surface area**, however, is a classic exam trap! When you cut a sphere in half, you expose a brand new flat circular base.
 
 <Aside type="caution" title="Hemisphere Total Surface Area">
+
 Total SA of a solid hemisphere = Curved SA + Flat Base Area
 $$
 \text{Total SA} = (2\pi r^2) + (\pi r^2) = 3\pi r^2
 $$
 Always read the question carefully to check if the hemisphere is "solid" (needs the base area added) or "open/hollow" like a bowl (curved area only).
+
 </Aside>
 
 ---
@@ -274,7 +290,9 @@ Another common scenario is **conservation of volume**, where one shape is melted
 
 ### Example: Working Backwards
 The surface area of a sphere is $144\pi\text{ cm}^2$. Calculate its radius.
+
 <Steps>
+
 1. Write down the surface area formula:
    $$
    SA = 4\pi r^2
@@ -291,11 +309,14 @@ The surface area of a sphere is $144\pi\text{ cm}^2$. Calculate its radius.
    $$
    36 = r^2 \implies r = 6\text{ cm}
    $$
+
 </Steps>
 
 ### Example: Melting Shapes
 Three identical solid metal spheres, each with a radius of $2\text{ cm}$, are melted down to form a single solid cone with a base radius of $4\text{ cm}$. Calculate the perpendicular height of the cone.
+
 <Steps>
+
 1. Calculate the total volume of the 3 spheres:
    $$
    \text{Vol}_{\text{spheres}} = 3 \times \left( \frac{4}{3} \pi r^3 \right) = 3 \times \left( \frac{4}{3} \pi \times 2^3 \right) = 4 \pi \times 8 = 32\pi\text{ cm}^3
@@ -317,11 +338,23 @@ Three identical solid metal spheres, each with a radius of $2\text{ cm}$, are me
    $$
    96 = 16h \implies h = 6\text{ cm}
    $$
+
 </Steps>
 
 ---
 
-## 5. Formula Summary Reference
+## 5. Similar Solids and Linear Equations
+
+Exam questions often link **Similarity** with 3D shapes. If two shapes are mathematically similar, their lengths, surface areas, and volumes are connected by a scale factor $k$:
+* **Linear Scale Factor:** Ratio of lengths = $k$
+* **Area Scale Factor:** Ratio of surface areas = $k^2$
+* **Volume Scale Factor:** Ratio of volumes = $k^3$
+
+Sometimes, you won't be given straightforward numbers. Instead, you'll be given algebraic expressions for the dimensions, meaning you will have to set up and solve a linear equation.
+
+---
+
+## 6. Formula Summary Reference
 
 Here is a quick cheat sheet compiling all the essential formulas you need to know for this topic. 
 
@@ -340,172 +373,717 @@ Here is a quick cheat sheet compiling all the essential formulas you need to kno
 
 ## Practice Questions
 
-### Section A: Core Skills (Direct Formula Application)
-
 <Tabs>
+
   <TabItem label="📝 Question 1: Basic Cylinder (Core)">
     A solid cylinder has a radius of $5\text{ cm}$ and a height of $12\text{ cm}$. 
-    Calculate:
-    a) Its exact volume.
-    b) Its total surface area (to 1 decimal place).
+    
+    a) Calculate its exact volume.
+    
+    b) Calculate its total surface area, giving your answer correct to 1 decimal place.
+    
   </TabItem>
+
   <TabItem label="✅ Solution 1">
+
+    **a)**
     <Steps>
-    1. **Part a - Volume:**
-       $$
-       V = \pi r^2 h = \pi \times 5^2 \times 12 = \pi \times 25 \times 12 = 300\pi\text{ cm}^3
-       $$
-    2. **Part b - Total Surface Area:**
-       $$
-       \text{TSA} = 2\pi r^2 + 2\pi r h
-       $$
-       $$
-       \text{TSA} = 2\pi(5)^2 + 2\pi(5)(12) = 50\pi + 120\pi = 170\pi
-       $$
-       $$
-       170\pi \approx 534.1\text{ cm}^2
-       $$
+
+      1. Use the volume formula for a cylinder:
+         $$
+         V = \pi r^2 h = \pi \times 5^2 \times 12
+         $$
+      2. Simplify to find the exact volume:
+         $$
+         V = \pi \times 25 \times 12 = 300\pi\text{ cm}^3
+         $$
+
     </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Use the total surface area formula for a cylinder:
+         $$
+         \text{TSA} = 2\pi r^2 + 2\pi r h
+         $$
+      2. Substitute the values:
+         $$
+         \text{TSA} = 2\pi(5)^2 + 2\pi(5)(12) = 50\pi + 120\pi = 170\pi
+         $$
+      3. Calculate to 1 decimal place:
+         $$
+         170\pi \approx 534.1\text{ cm}^2
+         $$
+
+    </Steps>
+
   </TabItem>
+
 </Tabs>
 
 <SmartAIGenerator topic="Calculating exact volume and total surface area of cylinders" />
 
 <Tabs>
+
   <TabItem label="📝 Question 2: Cone & Pythagoras (Core/Extended)">
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* Base Ellipse Fill */}
+        <path d="M 50 180 A 100 30 0 0 0 250 180" fill="#fca5a5" fill-opacity="0.2" />
+        <path d="M 250 180 A 100 30 0 0 0 50 180" fill="#fca5a5" fill-opacity="0.2" />
+        {/* Cone Body Fill */}
+        <path d="M 150 30 L 50 180 A 100 30 0 0 0 250 180 Z" fill="#fca5a5" fill-opacity="0.2" />
+        {/* Dashed lines */}
+        <path d="M 250 180 A 100 30 0 0 0 50 180" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+        <line x1="150" y1="30" x2="150" y2="180" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+        <line x1="150" y1="180" x2="250" y2="180" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+        {/* Solid lines */}
+        <path d="M 50 180 A 100 30 0 0 0 250 180" fill="none" stroke="#ef4444" stroke-width="2" />
+        <line x1="150" y1="30" x2="50" y2="180" stroke="#1e293b" stroke-width="2" />
+        <line x1="150" y1="30" x2="250" y2="180" stroke="#1e293b" stroke-width="2" />
+        {/* Labels & Markers */}
+        <circle cx="150" cy="180" r="3" fill="#1e293b" />
+        <polygon points="150,180 150,170 160,170 160,180" fill="none" stroke="#1e293b" stroke-width="1.5" />
+        <text x="130" y="115" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">8 cm</text>
+        <text x="200" y="175" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">6 cm</text>
+      </svg>
+    </div>
+
     A cone has a base radius of $6\text{ cm}$ and a perpendicular height of $8\text{ cm}$. 
-    Calculate its curved surface area. Give your answer in terms of $\pi$.
+    
+    a) Calculate the slant height of the cone.
+    
+    b) Calculate the curved surface area of the cone. Give your answer in terms of $\pi$.
+    
   </TabItem>
+
   <TabItem label="✅ Solution 2">
+
+    **a)**
     <Steps>
-    1. **Identify the missing variable:** The CSA formula is $\pi r l$. We need the slant height ($l$), but we only have perpendicular height ($h$).
-    2. **Use Pythagoras to find $l$:**
-       $$
-       l^2 = r^2 + h^2 = 6^2 + 8^2 = 36 + 64 = 100
-       $$
-       $$
-       l = \sqrt{100} = 10\text{ cm}
-       $$
-    3. **Calculate CSA:**
-       $$
-       \text{CSA} = \pi \times 6 \times 10 = 60\pi\text{ cm}^2
-       $$
+
+      1. Identify the missing slant height ($l$) and use Pythagoras' theorem:
+         $$
+         l^2 = r^2 + h^2 = 6^2 + 8^2
+         $$
+      2. Solve for $l$:
+         $$
+         l^2 = 36 + 64 = 100
+         $$
+         $$
+         l = \sqrt{100} = 10\text{ cm}
+         $$
+
     </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Use the curved surface area formula ($\pi r l$):
+         $$
+         \text{CSA} = \pi \times 6 \times 10
+         $$
+      2. Simplify to give the exact answer:
+         $$
+         \text{CSA} = 60\pi\text{ cm}^2
+         $$
+
+    </Steps>
+
   </TabItem>
+
 </Tabs>
 
 <SmartAIGenerator topic="Using Pythagoras to find slant height and calculating curved surface area of cones" />
 
-### Section B: Extended & Advanced Concepts
-
 <Tabs>
+
   <TabItem label="📝 Question 3: The Hemisphere Trap (Extended)">
     A wooden paperweight is made in the shape of a solid hemisphere with a diameter of $14\text{ cm}$. 
-    Calculate the total surface area of the paperweight. Give your answer to 3 significant figures.
+    
+    a) Write down the radius of the hemisphere.
+    
+    b) Calculate the total surface area of the solid paperweight. Give your answer to 3 significant figures.
+    
   </TabItem>
+
   <TabItem label="✅ Solution 3">
+
+    **a)**
     <Steps>
-    1. **Find the radius:** Diameter is $14\text{ cm}$, so $r = 7\text{ cm}$.
-    2. **Recall the solid hemisphere formula:** Because it is solid, we must include the flat circular base.
-       $$
-       \text{Total SA} = 3\pi r^2
-       $$
-    3. **Calculate:**
-       $$
-       \text{Total SA} = 3 \times \pi \times 7^2 = 3 \times 49 \times \pi = 147\pi
-       $$
-       $$
-       147\pi \approx 461.814... \implies 462\text{ cm}^2 \text{ (to 3 s.f.)}
-       $$
+
+      1. The radius is half of the diameter:
+         $$
+         r = \frac{14}{2} = 7\text{ cm}
+         $$
+
     </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Because it is a solid hemisphere, include the curved area and the flat circular base:
+         $$
+         \text{Total SA} = 3\pi r^2
+         $$
+      2. Substitute the radius into the formula:
+         $$
+         \text{Total SA} = 3 \times \pi \times 7^2 = 3 \times 49 \times \pi = 147\pi
+         $$
+      3. Calculate to 3 significant figures:
+         $$
+         147\pi \approx 461.814... \implies 462\text{ cm}^2
+         $$
+
+    </Steps>
+
   </TabItem>
+
 </Tabs>
 
 <SmartAIGenerator topic="Calculating the total surface area of solid hemispheres" />
 
 <Tabs>
+
   <TabItem label="📝 Question 4: Compound Shapes (Extended)">
-    A silo is made of a cylinder with a hemisphere on top. The overall total height of the silo is $20\text{ m}$ and the base radius is $4\text{ m}$.
-    Calculate the total volume of the silo.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 250 350" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* Hemisphere Top Fill */}
+        <path d="M 50 100 A 75 75 0 0 1 200 100 Z" fill="#bfdbfe" fill-opacity="0.3" />
+        {/* Cylinder Body Fill */}
+        <path d="M 50 100 L 50 280 A 75 20 0 0 0 200 280 L 200 100 Z" fill="#bfdbfe" fill-opacity="0.3" />
+        
+        {/* Internal Dashed Lines */}
+        <path d="M 200 280 A 75 20 0 0 0 50 280" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+        <ellipse cx="125" cy="100" rx="75" ry="20" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+        <line x1="125" y1="100" x2="200" y2="100" stroke="#1e293b" stroke-width="2" stroke-dasharray="4 4" />
+        
+        {/* Solid outlines */}
+        <path d="M 50 100 A 75 75 0 0 1 200 100" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <line x1="50" y1="100" x2="50" y2="280" stroke="#1e293b" stroke-width="2" />
+        <line x1="200" y1="100" x2="200" y2="280" stroke="#1e293b" stroke-width="2" />
+        <path d="M 50 280 A 75 20 0 0 0 200 280" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Labels & Markers */}
+        <circle cx="125" cy="100" r="3" fill="#1e293b" />
+        <text x="160" y="95" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">4 m</text>
+        
+        {/* Height Guide - Moved Left */}
+        <line x1="20" y1="25" x2="20" y2="280" stroke="#ef4444" stroke-width="2" />
+        <polygon points="20,25 15,33 25,33" fill="#ef4444" />
+        <polygon points="20,280 15,272 25,272" fill="#ef4444" />
+        <text x="30" y="155" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">20 m</text>
+      </svg>
+    </div>
+
+    A silo is made of a cylinder with a hemisphere placed perfectly on top. The overall total height of the silo is $20\text{ m}$ and the base radius is $4\text{ m}$.
+    
+    a) Determine the height of the cylindrical part of the silo.
+    
+    b) Calculate the volume of the cylindrical part. Give your answer in terms of $\pi$.
+    
+    c) Calculate the volume of the hemispherical top. Give your answer in terms of $\pi$.
+    
+    d) Find the total volume of the silo, correcting your answer to 3 significant figures.
+    
   </TabItem>
+
   <TabItem label="✅ Solution 4">
+
+    **a)**
     <Steps>
-    1. **Analyze the dimensions:** The radius of the hemisphere is $4\text{ m}$, which means it takes up $4\text{ m}$ of the total height.
-    2. **Find the cylinder's height:**
-       $$
-       h_{\text{cylinder}} = \text{Total Height} - \text{Hemisphere Radius} = 20 - 4 = 16\text{ m}
-       $$
-    3. **Calculate the Volume of the Cylinder:**
-       $$
-       V_{\text{cylinder}} = \pi r^2 h = \pi \times 4^2 \times 16 = 256\pi\text{ m}^3
-       $$
-    4. **Calculate the Volume of the Hemisphere:**
-       $$
-       V_{\text{hemisphere}} = \frac{2}{3} \pi r^3 = \frac{2}{3} \pi \times 4^3 = \frac{128\pi}{3}\text{ m}^3
-       $$
-    5. **Total Volume:** Add them together.
-       $$
-       \text{Total } V = 256\pi + \frac{128\pi}{3} = \frac{768\pi}{3} + \frac{128\pi}{3} = \frac{896\pi}{3} \approx 938\text{ m}^3 \text{ (to 3 s.f.)}
-       $$
+
+      1. The radius of the hemisphere is $4\text{ m}$, so it takes up $4\text{ m}$ of the total height.
+         $$
+         h_{\text{cylinder}} = \text{Total Height} - \text{Hemisphere Radius} = 20 - 4 = 16\text{ m}
+         $$
+
     </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Use the cylinder volume formula with $r = 4$ and $h = 16$:
+         $$
+         V_{\text{cylinder}} = \pi r^2 h = \pi \times 4^2 \times 16
+         $$
+      2. Simplify:
+         $$
+         V_{\text{cylinder}} = \pi \times 16 \times 16 = 256\pi\text{ m}^3
+         $$
+
+    </Steps>
+
+    **c)**
+    <Steps>
+
+      1. Use the hemisphere volume formula:
+         $$
+         V_{\text{hemisphere}} = \frac{2}{3} \pi r^3 = \frac{2}{3} \pi \times 4^3
+         $$
+      2. Simplify:
+         $$
+         V_{\text{hemisphere}} = \frac{2}{3} \pi \times 64 = \frac{128\pi}{3}\text{ m}^3
+         $$
+
+    </Steps>
+
+    **d)**
+    <Steps>
+
+      1. Add the two volumes together:
+         $$
+         \text{Total } V = 256\pi + \frac{128\pi}{3} = \frac{768\pi}{3} + \frac{128\pi}{3} = \frac{896\pi}{3}
+         $$
+      2. Evaluate to 3 significant figures:
+         $$
+         \frac{896\pi}{3} \approx 938.28... \implies 938\text{ m}^3
+         $$
+
+    </Steps>
+
   </TabItem>
+
 </Tabs>
 
 <SmartAIGenerator topic="Calculating the volume of compound 3D shapes" />
 
 <Tabs>
+
   <TabItem label="📝 Question 5: Working Backwards (Extended)">
-    The volume of a right circular cone is $100\pi\text{ cm}^3$. Its perpendicular height is $12\text{ cm}$.
-    Calculate the base radius of the cone.
+    The volume of a right circular cone is exactly $100\pi\text{ cm}^3$. Its perpendicular height is $12\text{ cm}$.
+    
+    a) Write down an equation for the volume of the cone in terms of its radius $r$.
+    
+    b) Solve the equation to calculate the base radius of the cone.
+    
   </TabItem>
+
   <TabItem label="✅ Solution 5">
+
+    **a)**
     <Steps>
-    1. **Set up the volume equation:**
-       $$
-       V = \frac{1}{3} \pi r^2 h
-       $$
-       $$
-       100\pi = \frac{1}{3} \pi r^2 (12)
-       $$
-    2. **Cancel $\pi$ and simplify the right side:**
-       $$
-       100 = \frac{12}{3} r^2 \implies 100 = 4r^2
-       $$
-    3. **Solve for $r$:**
-       $$
-       r^2 = \frac{100}{4} = 25
-       $$
-       $$
-       r = \sqrt{25} = 5\text{ cm}
-       $$
+
+      1. Substitute the known volume and height into the cone volume formula:
+         $$
+         V = \frac{1}{3} \pi r^2 h
+         $$
+         $$
+         100\pi = \frac{1}{3} \pi r^2 (12)
+         $$
+
     </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Simplify the right-hand side of the equation:
+         $$
+         100\pi = 4\pi r^2
+         $$
+      2. Cancel $\pi$ from both sides:
+         $$
+         100 = 4r^2
+         $$
+      3. Solve for $r$:
+         $$
+         r^2 = \frac{100}{4} = 25
+         $$
+         $$
+         r = \sqrt{25} = 5\text{ cm}
+         $$
+
+    </Steps>
+
   </TabItem>
+
 </Tabs>
 
 <SmartAIGenerator topic="Working backwards from volume to find missing dimensions of cones" />
 
 <Tabs>
+
   <TabItem label="📝 Question 6: Melting Shapes (Advanced)">
-    A solid metal cylinder with radius $6\text{ cm}$ and height $15\text{ cm}$ is melted down and recast into identical solid spheres. Each sphere has a radius of $3\text{ cm}$. 
-    How many complete spheres can be made?
+    A solid metal cylinder with a radius of $6\text{ cm}$ and a height of $15\text{ cm}$ is completely melted down and recast into identical solid spheres. Each sphere has a radius of $3\text{ cm}$. 
+    
+    a) Calculate the total volume of the original metal cylinder. Give your answer in terms of $\pi$.
+    
+    b) Calculate the exact volume of one solid sphere.
+    
+    c) Calculate the total number of complete spheres that can be made from the melted metal.
+    
   </TabItem>
+
   <TabItem label="✅ Solution 6">
+
+    **a)**
     <Steps>
-    1. **Calculate the Volume of the Cylinder:**
-       $$
-       V_{\text{cylinder}} = \pi r^2 h = \pi \times 6^2 \times 15 = 36\pi \times 15 = 540\pi\text{ cm}^3
-       $$
-    2. **Calculate the Volume of ONE Sphere:**
-       $$
-       V_{\text{sphere}} = \frac{4}{3} \pi r^3 = \frac{4}{3} \pi \times 3^3 = \frac{4}{3} \pi \times 27 = 36\pi\text{ cm}^3
-       $$
-    3. **Find the number of spheres:** Divide total volume by the volume of one sphere.
-       $$
-       \text{Number of spheres} = \frac{540\pi}{36\pi} = \frac{540}{36} = 15
-       $$
-       Exactly 15 complete spheres can be made.
+
+      1. Use the cylinder volume formula:
+         $$
+         V_{\text{cylinder}} = \pi r^2 h = \pi \times 6^2 \times 15
+         $$
+      2. Simplify:
+         $$
+         V_{\text{cylinder}} = 36\pi \times 15 = 540\pi\text{ cm}^3
+         $$
+
     </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Use the sphere volume formula:
+         $$
+         V_{\text{sphere}} = \frac{4}{3} \pi r^3 = \frac{4}{3} \pi \times 3^3
+         $$
+      2. Simplify:
+         $$
+         V_{\text{sphere}} = \frac{4}{3} \pi \times 27 = 36\pi\text{ cm}^3
+         $$
+
+    </Steps>
+
+    **c)**
+    <Steps>
+
+      1. Divide the total melted volume by the volume of a single sphere:
+         $$
+         \text{Number of spheres} = \frac{540\pi}{36\pi} = \frac{540}{36} = 15
+         $$
+      2. State the final answer:
+         Exactly 15 complete spheres can be made.
+
+    </Steps>
+
   </TabItem>
+
 </Tabs>
 
 <SmartAIGenerator topic="Conservation of volume when melting solids into new shapes" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 7: Cost and Surface Area (Core)">
+    A giant decorative globe is shaped as a perfect sphere with a radius of $1.5\text{ m}$. 
+    
+    a) Calculate the total surface area of the globe. Give your answer to 2 decimal places.
+    
+    b) The globe needs to be painted. The paint costs 12 USD per square metre. Calculate the total cost to paint the globe.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 7">
+
+    **a)**
+    <Steps>
+
+      1. Apply the sphere surface area formula:
+         $$
+         SA = 4\pi r^2 = 4 \times \pi \times (1.5)^2
+         $$
+      2. Simplify and calculate:
+         $$
+         SA = 4 \times \pi \times 2.25 = 9\pi \approx 28.274...
+         $$
+         Rounding to 2 decimal places: $28.27\text{ m}^2$.
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Multiply the unrounded total surface area by the cost per square metre:
+         $$
+         \text{Total Cost} = 28.274 \times 12 = 339.288\text{ USD}
+         $$
+      2. Standard rounding for currency gives $339.29\text{ USD}$.
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Applying surface area of spheres to find real-world painting costs" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 8: Prism Volume and Mass (Extended)">
+    A triangular prism is made of solid steel. The triangular cross-section is a right-angled triangle with a base of $8\text{ cm}$ and a height of $6\text{ cm}$. The length of the prism is $20\text{ cm}$.
+    
+    a) Calculate the area of the triangular cross-section.
+    
+    b) Calculate the volume of the prism.
+    
+    c) Given that the density of the steel is $7.8\text{ g/cm}^3$, calculate the mass of the prism in kilograms. (Mass = Density $\times$ Volume)
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 8">
+
+    **a)**
+    <Steps>
+
+      1. Use the area of a triangle formula ($\frac{1}{2}bh$):
+         $$
+         \text{Area} = \frac{1}{2} \times 8 \times 6 = 24\text{ cm}^2
+         $$
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Multiply the cross-sectional area by the length:
+         $$
+         \text{Volume} = 24 \times 20 = 480\text{ cm}^3
+         $$
+
+    </Steps>
+
+    **c)**
+    <Steps>
+
+      1. Find the mass in grams using the given density:
+         $$
+         \text{Mass (g)} = 7.8 \times 480 = 3744\text{ g}
+         $$
+      2. Convert grams to kilograms by dividing by 1000:
+         $$
+         \text{Mass (kg)} = \frac{3744}{1000} = 3.744\text{ kg}
+         $$
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Calculating volumes of triangular prisms and applying density to find mass" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 9: Concentric Layered Volumes (Advanced)">
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* Draw from bottom tier (i=3) to top tier (i=0) to handle overlap properly */}
+        <g>
+          {[3, 2, 1, 0].map(i => {
+            const r = (i + 1) * 25;
+            const yTop = 50 + i * 40;
+            const yBottom = yTop + 40;
+            const ry = 10 + i * 2;
+            return (
+              <g key={i}>
+                <path 
+                  d={`M ${150 - r} ${yTop} L ${150 - r} ${yBottom} A ${r} ${ry} 0 0 0 ${150 + r} ${yBottom} L ${150 + r} ${yTop} Z`} 
+                  fill="#bfdbfe" 
+                  stroke="#3b82f6" 
+                  stroke-width="2" 
+                />
+                <ellipse cx="150" cy={yTop} rx={r} ry={ry} fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
+              </g>
+            );
+          })}
+        </g>
+        {/* Central Axis Line */}
+        <line x1="150" y1="30" x2="150" y2="230" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4" />
+        {/* Labels */}
+        <text x="210" y="45" font-size="12" font-weight="bold" fill="#1e293b" font-family="sans-serif">Top Tier</text>
+      </svg>
+    </div>
+
+    A decorative column base consists of 4 stacked cylindrical solid discs. Each tier has a height of $5\text{ cm}$. The top tier has a radius of $10\text{ cm}$, and each subsequent tier beneath it has a radius that is $5\text{ cm}$ larger than the one above it.
+    
+    a) Determine the radius of the bottom tier.
+    
+    b) Calculate the total volume of all 4 cylindrical discs combined. Give your answer in terms of $\pi$.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 9">
+
+    **a)**
+    <Steps>
+
+      1. Identify the pattern of the radii starting from the top:
+         Tier 1 (top): $r = 10\text{ cm}$
+         Tier 2: $r = 10 + 5 = 15\text{ cm}$
+         Tier 3: $r = 15 + 5 = 20\text{ cm}$
+         Tier 4 (bottom): $r = 20 + 5 = 25\text{ cm}$
+      2. The bottom tier has a radius of $25\text{ cm}$.
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Write the volume formula for each cylinder ($V = \pi r^2 h$) where $h = 5$:
+         $$
+         V_1 = \pi (10)^2 \times 5 = 500\pi
+         $$
+         $$
+         V_2 = \pi (15)^2 \times 5 = \pi(225) \times 5 = 1125\pi
+         $$
+         $$
+         V_3 = \pi (20)^2 \times 5 = \pi(400) \times 5 = 2000\pi
+         $$
+         $$
+         V_4 = \pi (25)^2 \times 5 = \pi(625) \times 5 = 3125\pi
+         $$
+      2. Sum the individual volumes to find the total volume:
+         $$
+         \text{Total Volume} = 500\pi + 1125\pi + 2000\pi + 3125\pi = 6750\pi\text{ cm}^3
+         $$
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Using sequences to calculate total volume of stacked compound cylinders" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 10: Similar Solids & Equations (Advanced)">
+    Cylinder A and Cylinder B are mathematically similar.
+    Cylinder A has a base radius of $x\text{ cm}$ and a height of $(x + 4)\text{ cm}$.
+    Cylinder B has a base radius of $15\text{ cm}$ and a height of $25\text{ cm}$.
+    
+    a) By writing down an equation for the ratio of their dimensions, show that it simplifies to $25x = 15(x + 4)$.
+    
+    b) Solve the equation to find the value of $x$.
+    
+    c) Calculate the exact volume of Cylinder A in terms of $\pi$.
+    
+    d) Use the volume scale factor to find the exact volume of Cylinder B in terms of $\pi$.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 10">
+
+    **a)**
+    <Steps>
+
+      1. Since they are similar, the ratio of their radii is equal to the ratio of their heights:
+         $$
+         \frac{x}{15} = \frac{x + 4}{25}
+         $$
+      2. Cross-multiply to remove the fractions:
+         $$
+         25x = 15(x + 4)
+         $$
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Expand the brackets on the right-hand side:
+         $$
+         25x = 15x + 60
+         $$
+      2. Subtract $15x$ from both sides:
+         $$
+         10x = 60
+         $$
+      3. Divide by 10 to solve for $x$:
+         $$
+         x = 6
+         $$
+
+    </Steps>
+
+    **c)**
+    <Steps>
+
+      1. Substitute $x = 6$ to find the dimensions of Cylinder A:
+         Radius = $6\text{ cm}$, Height = $6 + 4 = 10\text{ cm}$.
+      2. Calculate the volume:
+         $$
+         V_A = \pi \times 6^2 \times 10 = 360\pi\text{ cm}^3
+         $$
+
+    </Steps>
+
+    **d)**
+    <Steps>
+
+      1. Find the linear scale factor $k$ (from A to B) using the radius:
+         $$
+         k = \frac{15}{6} = 2.5
+         $$
+      2. Find the volume scale factor ($k^3$):
+         $$
+         k^3 = (2.5)^3 = 15.625
+         $$
+      3. Multiply the volume of A by $k^3$:
+         $$
+         V_B = 360\pi \times 15.625 = 5625\pi\text{ cm}^3
+         $$
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Solving linear equations to find dimensions of similar solids and applying volume scale factors" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 11: Similar Area & Volume Scale Factors">
+    Two mathematically similar cones have volumes in the ratio $27 : 125$.
+    The total surface area of the smaller cone is $90\pi\text{ cm}^2$.
+    
+    a) Find the ratio of their surface areas.
+    
+    b) Calculate the exact total surface area of the larger cone in terms of $\pi$.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 11">
+
+    **a)**
+    <Steps>
+
+      1. Find the linear scale factor $k$ by cube-rooting the volume ratio:
+         $$
+         \text{Volume Ratio} = 27 : 125 \implies k^3 = \frac{125}{27}
+         $$
+         $$
+         k = \sqrt[3]{\frac{125}{27}} = \frac{5}{3}
+         $$
+      2. Find the area scale factor by squaring the linear scale factor:
+         $$
+         \text{Area Factor } (k^2) = \left(\frac{5}{3}\right)^2 = \frac{25}{9}
+         $$
+      3. The ratio of their surface areas is $9 : 25$.
+
+    </Steps>
+
+    **b)**
+    <Steps>
+
+      1. Multiply the surface area of the smaller cone by the area scale factor:
+         $$
+         \text{Area of larger cone} = 90\pi \times \frac{25}{9}
+         $$
+      2. Simplify the multiplication:
+         $$
+         \text{Area of larger cone} = 10\pi \times 25 = 250\pi\text{ cm}^2
+         $$
+
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Using area and volume scale factors with similar shapes" />
