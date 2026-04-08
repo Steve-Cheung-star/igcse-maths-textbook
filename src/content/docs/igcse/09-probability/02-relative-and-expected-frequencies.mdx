@@ -19,7 +19,7 @@ When we perform an experiment (like spinning a spinner or dropping a piece of to
 
 <Aside type="tip" title="Relative Frequency Formula">
 $$
-\text{Relative Frequency} = \frac{\text{Number of successful trials}}{\text{Total number of trials}}
+\text{Relative Frequency} = \frac{\text{Number of successful outcomes}}{\text{Total number of trials}}
 $$
 </Aside>
 
@@ -32,7 +32,7 @@ In exams, if you are asked how to make an experimental estimate more reliable, t
 </SteveTip>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="-40 -20 440 240" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+  <svg viewBox="-60 -30 520 290" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <g stroke="#e2e8f0" stroke-width="1">
       {/* Horizontal grid lines */}
       {Array.from({length: 11}).map((_, i) => <line key={`x-${i}`} x1="0" y1={i*20} x2="360" y2={i*20} />)}
@@ -41,11 +41,11 @@ In exams, if you are asked how to make an experimental estimate more reliable, t
     </g>
     
     {/* Axes */}
-    <line x1="0" y1="200" x2="380" y2="200" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="0" y1="200" x2="390" y2="200" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)" />
     <line x1="0" y1="200" x2="0" y2="-10" stroke="#1e293b" stroke-width="2" marker-end="url(#arrow)" />
     
-    <text x="180" y="230" font-weight="bold" fill="#1e293b" text-anchor="middle">Number of Trials</text>
-    <text x="-30" y="100" font-weight="bold" fill="#1e293b" text-anchor="middle" transform="rotate(-90, -30, 100)">Relative Frequency</text>
+    <text x="180" y="240" font-weight="bold" fill="#1e293b" text-anchor="middle">Number of Trials</text>
+    <text x="-40" y="100" font-weight="bold" fill="#1e293b" text-anchor="middle" transform="rotate(-90 -40 100)">Relative Frequency</text>
     
     {/* Labels Y axis */}
     <text x="-10" y="204" font-size="10" fill="#64748b" text-anchor="end">0.0</text>
@@ -59,8 +59,8 @@ In exams, if you are asked how to make an experimental estimate more reliable, t
     <text x="360" y="215" font-size="10" fill="#64748b" text-anchor="middle">500</text>
 
     {/* Theoretical Probability Line (y = 0.5 -> SVG y = 100) */}
-    <line x1="0" y1="100" x2="360" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4" />
-    <text x="365" y="95" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="start">Theoretical (0.5)</text>
+    <line x1="0" y1="100" x2="360" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="365" y="104" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="start">Theoretical (0.5)</text>
 
     {/* Fluctuating line representing experimental data */}
     <path d="M 0 200 L 20 20 L 40 140 L 60 60 L 80 120 L 100 80 L 120 110 L 160 90 L 200 105 L 240 98 L 280 101 L 320 99 L 360 100" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linejoin="round" />
@@ -73,8 +73,6 @@ In exams, if you are asked how to make an experimental estimate more reliable, t
     </defs>
   </svg>
 </div>
-
-
 
 ---
 
@@ -126,8 +124,6 @@ How do we test for bias? We use relative frequency! If we roll a dice 600 times,
   </svg>
 </div>
 
-
-
 ---
 
 ## 3. Expected Frequencies
@@ -161,22 +157,38 @@ Mathematically, an expected frequency does **NOT** need to be rounded to a whole
 
 <Tabs>
   <TabItem label="📝 Question 1: Relative Frequency from a Table">
-    A spinner has four colours: Red, Blue, Green, and Yellow. Sarah spins the spinner 200 times. Her results are recorded in the table below.
+    A spinner has four colours: Red, Blue, Green, and Yellow. Sarah spins the spinner multiple times. Her results are recorded in the table below.
 
     | Colour | Red | Blue | Green | Yellow |
     | :--- | :--- | :--- | :--- | :--- |
     | Frequency | 95 | 40 | 35 | 30 |
 
-    1. Calculate the relative frequency of the spinner landing on Red.
-    2. Do you think this spinner is fair? Give a reason for your answer.
+    a) Calculate the total number of times Sarah spun the spinner.
+
+    b) Calculate the relative frequency of the spinner landing on Red.
+
+    c) Do you think this spinner is fair? Give a mathematical reason for your answer.
+
   </TabItem>
   <TabItem label="✅ Solution 1">
+    **a)**
+    <Steps>
+      1. Add all the frequencies together: $95 + 40 + 35 + 30 = 200$.
+      2. The spinner was spun $200$ times.
+    </Steps>
+
+    **b)**
     <Steps>
       1. Use the formula: Relative Frequency = (Successful trials) / (Total trials).
       2. For Red, there were $95$ successful trials out of $200$ total spins.
-      3. Relative frequency of Red = $95 \div 200 = 0.475$.
-      4. To determine if it is fair, consider the theoretical probability. If fair, each of the 4 colours should have a probability of $\frac{1}{4}$ (or $0.25$).
-      5. The relative frequency for Red ($0.475$) is almost double the expected $0.25$. Therefore, the spinner is **biased** towards Red and is **not fair**.
+      3. Relative frequency of Red = $\frac{95}{200}$ or $0.475$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. To determine if it is fair, consider the theoretical probability. If fair, each of the 4 colours should have a probability of $\frac{1}{4}$ (or $0.25$).
+      2. The relative frequency for Red ($0.475$) is almost double the expected $0.25$.
+      3. Therefore, the spinner is **biased** towards Red and is **not fair**.
     </Steps>
   </TabItem>
 </Tabs>
@@ -185,23 +197,28 @@ Mathematically, an expected frequency does **NOT** need to be rounded to a whole
 
 <Tabs>
   <TabItem label="📝 Question 2: Expected Frequency">
-    The probability that a seed germinates and grows into a plant is $0.85$. 
-    A farmer plants $400$ of these seeds.
+    The probability that a special seed germinates and grows into a plant is $0.85$. 
     
-    Calculate the number of seeds the farmer expects to germinate.
+    a) A farmer plants $400$ of these seeds. Calculate the number of seeds the farmer expects to germinate.
+
+    b) The next month, the farmer plants $2000$ seeds. How many seeds are expected NOT to germinate?
+
   </TabItem>
   <TabItem label="✅ Solution 2">
+    **a)**
     <Steps>
       1. Identify the probability: $P(\text{Germinates}) = 0.85$.
-      2. Identify the total number of trials (seeds planted): $\text{Total} = 400$.
-      3. Use the formula: Expected Frequency = Probability $\times$ Total trials.
-         $$
-         \begin{aligned}
-         \text{Expected} &= 0.85 \times 400 \\
-         &= 340
-         \end{aligned}
-         $$
-      4. The farmer expects $340$ seeds to germinate.
+      2. Identify the total number of trials: $\text{Total} = 400$.
+      3. Expected Frequency = Probability $\times$ Total trials.
+      4. $\text{Expected} = 0.85 \times 400 = 340$.
+      5. The farmer expects $340$ seeds to germinate.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. First, find the probability of a seed NOT germinating using the complement rule: $1 - 0.85 = 0.15$.
+      2. Use the expected frequency formula for $2000$ trials: $0.15 \times 2000$.
+      3. $\text{Expected not to germinate} = 300$.
     </Steps>
   </TabItem>
 </Tabs>
@@ -212,24 +229,178 @@ Mathematically, an expected frequency does **NOT** need to be rounded to a whole
   <TabItem label="📝 Question 3: Combining Relative and Expected Frequencies">
     A quality control inspector tests 80 toys from a production line and finds that 3 of them have a manufacturing defect. 
     
-    The factory produces 12,000 toys in a week. Based on the inspector's sample, how many toys would you expect to be defective in that week?
+    a) Write down the relative frequency of a toy having a defect.
+
+    b) The factory produces $12,000$ toys in a week. Based on the inspector's sample, how many toys would you expect to be defective in that week?
+
+    c) How many toys would you expect to be flawless (not defective) in that week?
+
   </TabItem>
   <TabItem label="✅ Solution 3">
+    **a)**
     <Steps>
-      1. First, calculate the relative frequency (experimental probability) of a defect from the sample.
-      2. $P(\text{Defect}) = \frac{3}{80}$.
-      3. Next, apply this probability to the whole population ($12,000$ toys) to find the expected frequency.
-      4. Expected defects = $P(\text{Defect}) \times \text{Total production}$.
-         $$
-         \begin{aligned}
-         \text{Expected defects} &= \frac{3}{80} \times 12000 \\
-         &= 3 \times 150 \\
-         &= 450
-         \end{aligned}
-         $$
-      5. We expect $450$ toys to be defective.
+      1. Use the relative frequency formula: $\frac{\text{Successful outcomes}}{\text{Total trials}}$.
+      2. Relative frequency = $\frac{3}{80}$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Apply the experimental probability to the whole population ($12,000$ toys).
+      2. Expected defects = $\frac{3}{80} \times 12000$.
+      3. $\frac{3}{80} \times 12000 = 3 \times 150 = 450$.
+      4. We expect $450$ toys to be defective.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Subtract the expected defective toys from the total number of toys.
+      2. $12000 - 450 = 11550$.
+      3. We expect $11,550$ toys to be flawless.
     </Steps>
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Using relative frequencies from small samples to estimate expected outcomes in large populations" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Law of Large Numbers">
+    John and Jane each perform an experiment by flipping a coin to see if it is fair. 
+    
+    * John flips the coin $20$ times and gets $14$ Heads.
+    * Jane flips the same coin $2000$ times and gets $1050$ Heads.
+
+    a) Calculate the relative frequency of Heads for John's experiment.
+
+    b) Calculate the relative frequency of Heads for Jane's experiment.
+
+    c) State whose experiment provides a more reliable estimate for the probability of getting Heads, and explain why.
+
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+    <Steps>
+      1. John's relative frequency = $\frac{14}{20}$.
+      2. This simplifies to $\frac{7}{10}$ or $0.7$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Jane's relative frequency = $\frac{1050}{2000}$.
+      2. This simplifies to $\frac{105}{200}$ or $0.525$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Jane's experiment is more reliable.
+      2. According to the Law of Large Numbers, performing an experiment more times (more trials) provides a relative frequency that is much closer to the true theoretical probability.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing the reliability of relative frequencies over different numbers of trials" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Testing for Bias">
+    A standard six-sided dice is rolled $600$ times. The results are shown below:
+
+    | Number | 1 | 2 | 3 | 4 | 5 | 6 |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | Frequency | 102 | 98 | 105 | 95 | 45 | 155 |
+
+    a) If the dice were perfectly fair, what is the expected frequency for each number?
+
+    b) Calculate the relative frequency of rolling a 6 based on this experiment.
+
+    c) Do you think the dice is fair or biased? Give a clear reason.
+
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. A fair dice has a probability of $\frac{1}{6}$ for each number.
+      2. Expected frequency = $\frac{1}{6} \times 600$.
+      3. We would expect each number to appear exactly $100$ times.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The number 6 appeared $155$ times out of $600$.
+      2. Relative frequency = $\frac{155}{600}$.
+      3. This simplifies to $\frac{31}{120}$ (or approximately $0.258$).
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The dice is strongly likely to be **biased**.
+      2. The number 6 appeared $155$ times, which is significantly higher than the expected $100$ times, while the number 5 appeared significantly lower ($45$ times).
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying biased objects by comparing expected and experimental frequencies" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Financial Application">
+    A charity sells $5000$ raffle tickets. The probability of any single ticket winning a $50\text{ GBP}$ prize is $0.015$.
+
+    a) Calculate the expected number of winning tickets.
+
+    b) Calculate the total amount of money, in $\text{ GBP}$, the charity expects to pay out in prize money.
+
+    c) If the charity sells the tickets for $2\text{ GBP}$ each, what is their expected overall profit?
+
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. Use the expected frequency formula: Probability $\times$ Total trials.
+      2. Expected winners = $0.015 \times 5000$.
+      3. $0.015 \times 5000 = 75$. We expect $75$ winning tickets.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Multiply the expected number of winners by the prize amount.
+      2. Expected payout = $75 \times 50\text{ GBP}$.
+      3. The expected payout is $3750\text{ GBP}$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Calculate total income from ticket sales: $5000 \times 2\text{ GBP} = 10000\text{ GBP}$.
+      2. Subtract the expected payout from the total income: $10000 - 3750$.
+      3. The expected overall profit is $6250\text{ GBP}$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying expected frequencies to financial and profit calculations" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Working Backwards">
+    In the month of April ($30$ days), it rained on $12$ days.
+    
+    a) Calculate the relative frequency of a day having rain in April. Give your answer as a fully simplified fraction.
+
+    b) Assuming this relative frequency is a good estimate for the whole year ($365$ days), how many days would you expect it to rain in a full year?
+
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. Relative frequency = $\frac{\text{Days it rained}}{\text{Total days in April}}$.
+      2. Relative frequency = $\frac{12}{30}$.
+      3. Simplify the fraction by dividing top and bottom by 6: $\frac{2}{5}$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Use the expected frequency formula for the new total number of trials ($365$ days).
+      2. Expected rainy days = $\frac{2}{5} \times 365$.
+      3. Calculate: $365 \div 5 = 73$, then $73 \times 2 = 146$.
+      4. You would expect it to rain on $146$ days in a full year.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using past relative frequencies to estimate long-term expected frequencies" />

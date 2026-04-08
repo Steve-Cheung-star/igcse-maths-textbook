@@ -7,6 +7,7 @@ Probability is the mathematical way of measuring how likely it is that an event 
 
 <Aside type="note" title="The Probability Scale">
 Probabilities always exist on a scale from **0 to 1**. 
+
 * **0** means the event is absolutely **impossible**.
 * **1** means the event is absolutely **certain**.
 * **0.5** means there is an **even chance** (a 50/50 probability).
@@ -117,6 +118,7 @@ When using a Venn diagram, the "total number of possible outcomes" is the sum of
 </div>
 
 In the Venn diagram above, the numbers represent frequencies (how many items are in each section).
+
 * Total items = $5 + 3 + 8 + 4 = 20$.
 * Number of items in set $A$ = $5 + 3 = 8$.
 * Therefore, $P(A) = \frac{8}{20} = \frac{2}{5}$.
@@ -131,17 +133,24 @@ When a question asks for $P(A)$ from a Venn diagram, you must add up **all** the
 
 <Tabs>
   <TabItem label="📝 Question 1: The Complement Rule">
-    The probability that a bus arrives late is $0.15$. 
-    Let $L$ be the event that the bus is late.
-    1. Write down $P(L)$.
-    2. Calculate $P(L')$, the probability that the bus is NOT late. Give your answer as a percentage.
+    The probability that a bus arrives late is $0.15$. Let $L$ be the event that the bus is late.
+    
+    a) Write down $P(L)$.
+
+    b) Calculate $P(L')$, the probability that the bus is NOT late. Give your answer as a percentage.
+
   </TabItem>
   <TabItem label="✅ Solution 1">
+    **a)**
     <Steps>
       1. $P(L) = 0.15$.
-      2. Use the complement rule: $P(L') = 1 - P(L)$.
-      3. $P(L') = 1 - 0.15 = 0.85$.
-      4. To convert a decimal to a percentage, multiply by 100: $0.85 \times 100 = 85\%$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Use the complement rule: $P(L') = 1 - P(L)$.
+      2. $P(L') = 1 - 0.15 = 0.85$.
+      3. To convert a decimal to a percentage, multiply by 100: $0.85 \times 100 = 85\%$.
     </Steps>
   </TabItem>
 </Tabs>
@@ -157,16 +166,25 @@ When a question asks for $P(A)$ from a Venn diagram, you must add up **all** the
     | Frequency | 8 | 12 | 6 | 4 |
 
     A token is chosen at random. Find the probability that the token is:
-    1. Blue.
-    2. Not Green.
+    
+    a) Blue.
+
+    b) Not Green.
+
   </TabItem>
   <TabItem label="✅ Solution 2">
+    **a)**
     <Steps>
       1. Verify the total number of outcomes: $8 + 12 + 6 + 4 = 30$.
-      2. For Blue: There are 12 blue tokens. $P(\text{Blue}) = \frac{12}{30}$. (This simplifies to $\frac{2}{5}$, but $\frac{12}{30}$ is fully acceptable).
-      3. For Not Green: First, find $P(\text{Green}) = \frac{6}{30}$.
-      4. Use the complement rule: $P(\text{Green}') = 1 - \frac{6}{30} = \frac{24}{30}$.
-      5. Alternatively, add up all the tokens that are NOT green: $8 (\text{Red}) + 12 (\text{Blue}) + 4 (\text{Yellow}) = 24$. Therefore, $P(\text{Green}') = \frac{24}{30}$.
+      2. There are 12 blue tokens. $P(\text{Blue}) = \frac{12}{30}$. (This simplifies to $\frac{2}{5}$).
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. First, find $P(\text{Green}) = \frac{6}{30}$.
+      2. Use the complement rule: $P(\text{Green}') = 1 - \frac{6}{30} = \frac{24}{30}$.
+      3. Alternatively, add up all the tokens that are NOT green: $8 (\text{Red}) + 12 (\text{Blue}) + 4 (\text{Yellow}) = 24$.
+      4. Therefore, $P(\text{Green}') = \frac{24}{30}$.
     </Steps>
   </TabItem>
 </Tabs>
@@ -176,26 +194,264 @@ When a question asks for $P(A)$ from a Venn diagram, you must add up **all** the
 <Tabs>
   <TabItem label="📝 Question 3: Probability from a Venn Diagram">
     In a class of 35 students, some study Art ($A$) and some study Music ($M$).
+    
     * 12 students study both Art and Music.
     * 8 students study Art only.
     * 10 students study Music only.
     * 5 students study neither.
 
     A student is chosen at random from the whole class. Find:
-    1. $P(A)$
-    2. $P(M')$
+    
+    a) $P(A)$
+
+    b) $P(M')$
+
   </TabItem>
   <TabItem label="✅ Solution 3">
+    **a)**
     <Steps>
       1. The total number of students is 35. This is our denominator.
       2. To find $P(A)$, we must count everyone who studies Art. This includes the "Art only" students AND the "Both" students.
       3. Number of students in $A = 8 + 12 = 20$.
       4. $P(A) = \frac{20}{35}$ (simplifies to $\frac{4}{7}$).
-      5. To find $P(M')$, we must count everyone who does NOT study Music. This includes the "Art only" students AND the "Neither" students.
-      6. Number of students not studying Music $= 8 + 5 = 13$.
-      7. $P(M') = \frac{13}{35}$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. To find $P(M')$, we must count everyone who does NOT study Music.
+      2. This includes the "Art only" students AND the "Neither" students.
+      3. Number of students not studying Music $= 8 + 5 = 13$.
+      4. $P(M') = \frac{13}{35}$.
     </Steps>
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Extracting probability fractions from overlapping Venn diagram data" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Spinner Probabilities">
+    A fair spinner is divided into 8 equal sections. The sections are coloured Red, Blue, Green, and Yellow as shown.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="-100 -100 200 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '50%', border: '2px solid #e2e8f0' }}>
+        {/* 8 Sections of the Spinner */}
+        <path d="M 0 0 L 0 -100 A 100 100 0 0 1 70.7 -70.7 Z" fill="#ef4444" stroke="#1e293b" stroke-width="2" />
+        <path d="M 0 0 L 70.7 -70.7 A 100 100 0 0 1 100 0 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="2" />
+        <path d="M 0 0 L 100 0 A 100 100 0 0 1 70.7 70.7 Z" fill="#ef4444" stroke="#1e293b" stroke-width="2" />
+        <path d="M 0 0 L 70.7 70.7 A 100 100 0 0 1 0 100 Z" fill="#10b981" stroke="#1e293b" stroke-width="2" />
+        <path d="M 0 0 L 0 100 A 100 100 0 0 1 -70.7 70.7 Z" fill="#ef4444" stroke="#1e293b" stroke-width="2" />
+        <path d="M 0 0 L -70.7 70.7 A 100 100 0 0 1 -100 0 Z" fill="#eab308" stroke="#1e293b" stroke-width="2" />
+        <path d="M 0 0 L -100 0 A 100 100 0 0 1 -70.7 -70.7 Z" fill="#10b981" stroke="#1e293b" stroke-width="2" />
+        <path d="M 0 0 L -70.7 -70.7 A 100 100 0 0 1 0 -100 Z" fill="#3b82f6" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Spinner arrow */}
+        <circle cx="0" cy="0" r="10" fill="#1e293b" />
+        <polygon points="-5,-10 5,-10 0,-40" fill="#1e293b" transform="rotate(22.5)" />
+      </svg>
+    </div>
+
+    The spinner is spun once. Find the probability that the arrow lands on:
+
+    a) Red.
+
+    b) Green.
+
+    c) A colour that is NOT Yellow.
+
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+    <Steps>
+      1. Count the total number of sections: There are 8 equal sections.
+      2. Count the number of Red sections: There are 3 Red sections.
+      3. $P(\text{Red}) = \frac{3}{8}$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Count the number of Green sections: There are 2 Green sections.
+      2. $P(\text{Green}) = \frac{2}{8}$.
+      3. This simplifies to $\frac{1}{4}$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Count the number of Yellow sections: There is 1 Yellow section.
+      2. $P(\text{Yellow}) = \frac{1}{8}$.
+      3. Use the complement rule: $P(\text{Not Yellow}) = 1 - \frac{1}{8} = \frac{7}{8}$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding probabilities from visual representations like spinners" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Standard Dice Probabilities">
+    A fair, 6-sided dice is rolled once.
+
+    Find the probability of rolling:
+
+    a) The number 5.
+
+    b) An even number.
+
+    c) A prime number.
+
+    d) A number greater than 4.
+
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. The possible outcomes are $1, 2, 3, 4, 5, 6$. Total outcomes = 6.
+      2. There is only one $5$.
+      3. $P(5) = \frac{1}{6}$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The even numbers on a dice are $2, 4,$ and $6$.
+      2. There are 3 successful outcomes.
+      3. $P(\text{Even}) = \frac{3}{6} = \frac{1}{2}$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The prime numbers on a dice are $2, 3,$ and $5$. (Remember: 1 is not prime!).
+      2. There are 3 successful outcomes.
+      3. $P(\text{Prime}) = \frac{3}{6} = \frac{1}{2}$.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. The numbers greater than 4 are $5$ and $6$.
+      2. There are 2 successful outcomes.
+      3. $P(>4) = \frac{2}{6} = \frac{1}{3}$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating probabilities of number properties from a standard dice roll" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Picking Letters from a Word">
+    The letters of the word **PROBABILITY** are written on individual cards and placed in a box. One card is chosen at random.
+
+    a) Write down the total number of possible outcomes.
+
+    b) Find the probability of choosing the letter 'B'.
+
+    c) Find the probability of choosing a vowel (A, E, I, O, U).
+
+    d) Find the probability of choosing a letter that is NOT 'I'.
+
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. Count the total number of letters in the word PROBABILITY.
+      2. There are 11 letters in total.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Count the number of times the letter 'B' appears.
+      2. It appears twice.
+      3. $P(\text{B}) = \frac{2}{11}$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Identify the vowels in PROBABILITY: O, A, I, I.
+      2. There are 4 vowels in total.
+      3. $P(\text{Vowel}) = \frac{4}{11}$.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Identify how many times 'I' appears: twice.
+      2. $P(\text{I}) = \frac{2}{11}$.
+      3. Use the complement rule: $P(\text{Not I}) = 1 - \frac{2}{11} = \frac{9}{11}$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the probability of selecting specific items from a defined text or list" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Currency Probability">
+    A wallet contains several banknotes. 
+    There are five $10\text{ GBP}$ notes, three $20\text{ GBP}$ notes, and two $50\text{ GBP}$ notes.
+    A note is drawn at random from the wallet.
+
+    a) How many notes are in the wallet in total?
+
+    b) What is the probability that the note drawn is a $50\text{ GBP}$ note?
+
+    c) What is the probability that the note drawn is NOT a $10\text{ GBP}$ note?
+
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. Add the number of each note together: $5 + 3 + 2 = 10$.
+      2. There are 10 notes in total.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Identify the number of $50\text{ GBP}$ notes.
+      2. There are 2 such notes.
+      3. $P(50\text{ GBP}) = \frac{2}{10} = \frac{1}{5}$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Find the probability of drawing a $10\text{ GBP}$ note: $\frac{5}{10}$.
+      2. Use the complement rule: $P(\text{Not } 10\text{ GBP}) = 1 - \frac{5}{10} = \frac{5}{10}$.
+      3. Simplify the fraction to $\frac{1}{2}$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating probabilities of selecting specific currency denominations" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Missing Probabilities in a Table">
+    A biased dice has four faces numbered 1, 2, 3, and 4. The probability of rolling each number is shown in the table below.
+
+    | Outcome | 1 | 2 | 3 | 4 |
+    | :--- | :--- | :--- | :--- | :--- |
+    | Probability | $0.2$ | $x$ | $0.35$ | $0.15$ |
+
+    a) State the sum of all probabilities for mutually exclusive outcomes.
+
+    b) Form an equation and solve it to find the value of $x$.
+
+    c) Find the probability of rolling an even number.
+
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+    <Steps>
+      1. The sum of all possible probabilities in an experiment always equals 1.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Set up the equation: $0.2 + x + 0.35 + 0.15 = 1$.
+      2. Combine the known probabilities: $0.2 + 0.35 + 0.15 = 0.7$.
+      3. $0.7 + x = 1$.
+      4. Subtract $0.7$ from both sides: $x = 1 - 0.7 = 0.3$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. The even numbers on this dice are 2 and 4.
+      2. $P(\text{Even}) = P(2) + P(4)$.
+      3. $P(\text{Even}) = 0.3 + 0.15 = 0.45$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for unknown probabilities using the rule that all probabilities sum to 1" />

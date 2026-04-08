@@ -11,6 +11,8 @@ Moving from 2D to 3D can feel intimidating because the diagrams look much more c
 
 ## 1. 3D Pythagoras (The Shortcut)
 
+
+
 If you need to find the longest diagonal stretching across an empty room (from the bottom-front-left corner to the top-back-right corner), you are finding the **space diagonal** of a cuboid.
 
 You *could* do Pythagoras twice (once to find the diagonal across the floor, and once using that floor diagonal to go up to the ceiling), but there is a brilliant shortcut formula. 
@@ -47,11 +49,11 @@ $$
 
 ## 2. The Angle Between a Line and a Plane
 
+
+
 This is the most heavily tested concept in 3D trigonometry. A **plane** is just a flat surface (like the floor of a room or the base of a pyramid). 
 
 To find the angle between a sloped 3D line and a flat plane, you must find the line's **"shadow"** (its mathematical name is the *projection*).
-
-
 
 **The 3-Step "Drop and Connect" Method:**
 1. Look at the top point of your sloping line. 
@@ -60,8 +62,10 @@ To find the angle between a sloped 3D line and a flat plane, you must find the l
 
 The angle between a line and a plane is **always** the angle tucked between the sloping line and its flat shadow.
 
-<SteveTip>
-If you are struggling to visualize the "shadow" of a line, imagine shining a bright flashlight from the ceiling pointing straight down at the floor. The dark line cast onto the floor by your sloping 3D edge is exactly the shadow you need to draw your 2D triangle!
+<SteveTip title="Flashlight Visualization">
+
+  If you are struggling to visualize the "shadow" of a line, imagine shining a bright flashlight from the ceiling pointing straight down at the floor. The dark line cast onto the floor by your sloping 3D edge is exactly the shadow you need to draw your 2D triangle!
+
 </SteveTip>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
@@ -96,9 +100,11 @@ If you are struggling to visualize the "shadow" of a line, imagine shining a bri
 </div>
 
 <Aside type="caution" title="Sloping Edge vs. Sloping Face!">
-In pyramid questions, examiners love to trick you by asking for the angle between a **sloping face** (the flat triangular side) and the base, instead of a **sloping edge**. 
 
-The method is similar, but your flashlight casts a different shadow. The vertical drop goes to the center, but the shadow connects to the **middle of the base edge**, NOT to the corner! Always read carefully to see if they want the edge or the face.
+  In pyramid questions, examiners love to trick you by asking for the angle between a **sloping face** (the flat triangular side) and the base, instead of a **sloping edge**. 
+
+  The method is similar, but your flashlight casts a different shadow. The vertical drop goes to the center, but the shadow connects to the **middle of the base edge**, NOT to the corner! Always read carefully to see if they want the edge or the face.
+
 </Aside>
 
 ---
@@ -108,17 +114,19 @@ The method is similar, but your flashlight casts a different shadow. The vertica
 Practice using your "x-ray vision" to extract hidden right-angled triangles from complex 3D scenarios.
 
 <Tabs>
+
   <TabItem label="📝 Question 1: Cuboid Diagnostics">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
-        {/* Invisible dashed lines made thicker and fully visible by removing polygon fills */}
-        <line x1="100" y1="170" x2="250" y2="170" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
-        <line x1="100" y1="170" x2="50" y2="220" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
-        <line x1="100" y1="170" x2="100" y2="70" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
-        
+        {/* Solid polygons rendered first */}
         <polygon points="50,220 200,220 200,120 50,120" fill="none" stroke="#1e293b" stroke-width="2" />
         <polygon points="200,220 250,170 250,70 200,120" fill="none" stroke="#1e293b" stroke-width="2" />
         <polygon points="50,120 200,120 250,70 100,70" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Invisible dashed lines rendered LAST to show up on the diagram */}
+        <line x1="100" y1="170" x2="250" y2="170" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="100" y1="170" x2="50" y2="220" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="100" y1="170" x2="100" y2="70" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
         
         <text x="35" y="230" font-weight="bold">A</text>
         <text x="205" y="235" font-weight="bold">B</text>
@@ -133,21 +141,26 @@ Practice using your "x-ray vision" to extract hidden right-angled triangles from
     </div>
 
     A cuboid $ABCDEFGH$ has a rectangular base $ABCD$. 
-    $AB = 8$ cm, $BC = 6$ cm, and the height $CG = 5$ cm. 
+    $AB = 8\text{ cm}$, $BC = 6\text{ cm}$, and the height $CG = 5\text{ cm}$. 
     
-    **(a)** Calculate the length of the space diagonal $AG$.
-    **(b)** Calculate the angle between the diagonal $AG$ and the base $ABCD$.
+    a) Calculate the length of the space diagonal $AG$.
+    
+    b) Calculate the angle between the diagonal $AG$ and the base $ABCD$.
+    
   </TabItem>
+
   <TabItem label="✅ Solution 1">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
-        <line x1="100" y1="170" x2="250" y2="170" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
-        <line x1="100" y1="170" x2="50" y2="220" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
-        <line x1="100" y1="170" x2="100" y2="70" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
-        
+        {/* Solid polygons rendered first */}
         <polygon points="50,220 200,220 200,120 50,120" fill="none" stroke="#1e293b" stroke-width="2" />
         <polygon points="200,220 250,170 250,70 200,120" fill="none" stroke="#1e293b" stroke-width="2" />
         <polygon points="50,120 200,120 250,70 100,70" fill="none" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Invisible dashed lines rendered later */}
+        <line x1="100" y1="170" x2="250" y2="170" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="100" y1="170" x2="50" y2="220" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="100" y1="170" x2="100" y2="70" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6,6" />
         
         <text x="35" y="230" font-weight="bold">A</text>
         <text x="205" y="235" font-weight="bold">B</text>
@@ -159,48 +172,49 @@ Practice using your "x-ray vision" to extract hidden right-angled triangles from
         <text x="235" y="210" font-weight="bold" text-anchor="middle">6 cm</text>
         <text x="260" y="125" font-weight="bold" text-anchor="middle">5 cm</text>
 
-        {/* Triangle ACG highlight */}
+        {/* Triangle ACG highlight - rendered on top */}
         <polygon points="50,220 250,170 250,70" fill="#eff6ff" opacity="0.6" stroke="none" />
-        <line x1="50" y1="220" x2="250" y2="70" stroke="#ef4444" stroke-width="2" /> {/* AG */}
-        <line x1="50" y1="220" x2="250" y2="170" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,6" /> {/* AC */}
-        <line x1="250" y1="170" x2="250" y2="70" stroke="#10b981" stroke-width="2" /> {/* CG */}
+        <line x1="50" y1="220" x2="250" y2="70" stroke="#ef4444" stroke-width="2" />
+        <line x1="50" y1="220" x2="250" y2="170" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,6" />
+        <line x1="250" y1="170" x2="250" y2="70" stroke="#10b981" stroke-width="2" />
         
-        {/* Arc precisely touches AC and AG */}
-        <path d="M 90 210 A 40 40 0 0 0 85 194" fill="none" stroke="#1e293b" stroke-width="2" />
+        {/* Mathematically precise arc for angle CAG */}
+        <path d="M 88.8 210.3 A 40 40 0 0 0 82 196" fill="none" stroke="#1e293b" stroke-width="2" />
       </svg>
     </div>
     
     <Steps>
-    1. **(a) Length of AG:** Use the 3D Pythagoras shortcut.
-       $$
-       \begin{aligned}
-       d &= \sqrt{l^2 + w^2 + h^2} \\
-       AG &= \sqrt{8^2 + 6^2 + 5^2} \\
-       AG &= \sqrt{64 + 36 + 25} \\
-       AG &= \sqrt{125} \approx 11.2 \text{ cm (to 3 s.f.)}
-       \end{aligned}
-       $$
-    2. **(b) Angle between AG and base ABCD:** Look at line $AG$. The bottom is $A$, the top is $G$. Drop a vertical line from $G$ down to the base. It lands at $C$. The "shadow" on the base is $AC$. We need the angle $CAG$. We just created a 2D right-angled triangle $\Delta ACG$.
-    3. **Find the length of the shadow ($AC$):**
-       Using standard Pythagoras on the floor ($\Delta ABC$):
-       $$AC = \sqrt{8^2 + 6^2} = \sqrt{100} = 10 \text{ cm}$$
-    4. **Calculate the angle:**
-       In the upright right-angled triangle $\Delta ACG$, we know Opposite ($CG$) = 5 cm and Adjacent ($AC$) = 10 cm.
-       $$
-       \begin{aligned}
-       \tan(CAG) &= \frac{\text{Opposite}}{\text{Adjacent}} \\
-       \tan(CAG) &= \frac{5}{10} = 0.5 \\
-       CAG &= \tan^{-1}(0.5) \\
-       CAG &\approx 26.6^\circ \text{ (to 1 d.p.)}
-       \end{aligned}
-       $$
+      1. **Part a:** Use the 3D Pythagoras shortcut.
+         $$
+         \begin{aligned}
+         d &= \sqrt{l^2 + w^2 + h^2} \\
+         AG &= \sqrt{8^2 + 6^2 + 5^2} \\
+         AG &= \sqrt{64 + 36 + 25} \\
+         AG &= \sqrt{125} \approx 11.2\text{ cm (to 3 s.f.)}
+         \end{aligned}
+         $$
+      2. **Part b:** Look at line $AG$. The bottom is $A$, the top is $G$. Drop a vertical line from $G$ down to the base. It lands at $C$. The "shadow" on the base is $AC$. We need the angle $CAG$. We just created a 2D right-angled triangle $\Delta ACG$.
+      3. **Part b (continued):** Find the length of the shadow ($AC$) using standard Pythagoras on the floor ($\Delta ABC$):
+         $$AC = \sqrt{8^2 + 6^2} = \sqrt{100} = 10\text{ cm}$$
+      4. **Part b (continued):** Calculate the angle. In the upright right-angled triangle $\Delta ACG$, we know Opposite ($CG$) = 5 cm and Adjacent ($AC$) = 10 cm.
+         $$
+         \begin{aligned}
+         \tan(CAG) &= \frac{\text{Opposite}}{\text{Adjacent}} \\
+         \tan(CAG) &= \frac{5}{10} = 0.5 \\
+         CAG &= \tan^{-1}(0.5) \\
+         CAG &\approx 26.6^\circ\text{ (to 1 d.p.)}
+         \end{aligned}
+         $$
     </Steps>
+
   </TabItem>
+
 </Tabs>
 
----
+<SmartAIGenerator topic="Calculating the space diagonal and angle in a cuboid" />
 
 <Tabs>
+
   <TabItem label="📝 Question 2: The Square-Based Pyramid">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
@@ -225,13 +239,16 @@ Practice using your "x-ray vision" to extract hidden right-angled triangles from
     </div>
 
     $VABCD$ is a right square-based pyramid. 
-    The base $ABCD$ is a square of side 12 cm. 
+    The base $ABCD$ is a square of side $12\text{ cm}$. 
     The vertex $V$ is directly above the center of the base, $M$.
-    Every sloping edge ($VA$, $VB$, $VC$, $VD$) is 15 cm long.
+    Every sloping edge ($VA$, $VB$, $VC$, $VD$) is $15\text{ cm}$ long.
     
-    **(a)** Find the vertical height of the pyramid ($VM$).
-    **(b)** Find the angle between the sloping edge $VA$ and the base $ABCD$.
+    a) Find the vertical height of the pyramid ($VM$).
+    
+    b) Find the angle between the sloping edge $VA$ and the base $ABCD$.
+    
   </TabItem>
+
   <TabItem label="✅ Solution 2">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
@@ -258,47 +275,50 @@ Practice using your "x-ray vision" to extract hidden right-angled triangles from
         <text x="135" y="235" font-weight="bold" text-anchor="middle">12 cm</text>
         <text x="80" y="125" font-weight="bold" fill="#ef4444" text-anchor="middle">15 cm</text>
         
-        {/* Arc precisely touches AM and VA */}
-        <path d="M 90 203 A 40 40 0 0 0 81.3 181.2" fill="none" stroke="#1e293b" stroke-width="2" />
+        {/* Mathematically precise arc touching AM and VA */}
+        <path d="M 89 211.1 A 40 40 0 0 0 71.7 186.4" fill="none" stroke="#1e293b" stroke-width="2" />
       </svg>
     </div>
 
     <Steps>
-    1. **Extract the 2D Triangle:** We want to work with the upright right-angled triangle $\Delta VAM$. Hypotenuse = $VA = 15$ cm. Vertical Height = $VM$. Base/Shadow = $AM$ (half of the full floor diagonal $AC$).
-    2. **Find the full floor diagonal ($AC$):**
-       The base is a $12 \times 12$ square.
-       $$AC = \sqrt{12^2 + 12^2} = \sqrt{144 + 144} = \sqrt{288} \approx 16.97 \text{ cm}$$
-    3. **Find the shadow ($AM$):**
-       $AM$ is exactly half of the full diagonal because the apex $V$ is exactly in the center.
-       $$AM = \frac{\sqrt{288}}{2} \approx 8.485 \text{ cm}$$
-    4. **(a) Find the vertical height ($VM$):**
-       Use Pythagoras on our target triangle $\Delta VAM$. We know the hypotenuse is 15.
-       $$
-       \begin{aligned}
-       VM^2 + AM^2 &= VA^2 \\
-       VM^2 + (8.485...)^2 &= 15^2 \\
-       VM^2 + 72 &= 225 \\
-       VM^2 &= 153 \\
-       VM &= \sqrt{153} \approx 12.4 \text{ cm (to 3 s.f.)}
-       \end{aligned}
-       $$
-    5. **(b) Angle between VA and the base:**
-       The angle is $\angle VAM$. We have the Adjacent ($AM \approx 8.485$) and Hypotenuse ($VA = 15$).
-       $$
-       \begin{aligned}
-       \cos(VAM) &= \frac{\text{Adjacent}}{\text{Hypotenuse}} \\
-       \cos(VAM) &= \frac{8.485...}{15} \\
-       VAM &= \cos^{-1}\left(\frac{8.485...}{15}\right) \\
-       VAM &\approx 55.6^\circ \text{ (to 1 d.p.)}
-       \end{aligned}
-       $$
+      1. **Part a:** Extract the 2D Triangle. We want to work with the upright right-angled triangle $\Delta VAM$. Hypotenuse = $VA = 15\text{ cm}$. Vertical Height = $VM$. Base/Shadow = $AM$ (half of the full floor diagonal $AC$).
+      2. **Part a (continued):** Find the full floor diagonal ($AC$):
+         The base is a $12 \times 12$ square.
+         $$AC = \sqrt{12^2 + 12^2} = \sqrt{144 + 144} = \sqrt{288} \approx 16.97\text{ cm}$$
+      3. **Part a (continued):** Find the shadow ($AM$):
+         $AM$ is exactly half of the full diagonal because the apex $V$ is exactly in the center.
+         $$AM = \frac{\sqrt{288}}{2} \approx 8.485\text{ cm}$$
+      4. **Part a (continued):** Find the vertical height ($VM$):
+         Use Pythagoras on our target triangle $\Delta VAM$. We know the hypotenuse is 15.
+         $$
+         \begin{aligned}
+         VM^2 + AM^2 &= VA^2 \\
+         VM^2 + (8.485...)^2 &= 15^2 \\
+         VM^2 + 72 &= 225 \\
+         VM^2 &= 153 \\
+         VM &= \sqrt{153} \approx 12.4\text{ cm (to 3 s.f.)}
+         \end{aligned}
+         $$
+      5. **Part b:** Angle between VA and the base:
+         The angle is $\angle VAM$. We have the Adjacent ($AM \approx 8.485$) and Hypotenuse ($VA = 15$).
+         $$
+         \begin{aligned}
+         \cos(VAM) &= \frac{\text{Adjacent}}{\text{Hypotenuse}} \\
+         \cos(VAM) &= \frac{8.485...}{15} \\
+         VAM &= \cos^{-1}\left(\frac{8.485...}{15}\right) \\
+         VAM &\approx 55.6^\circ\text{ (to 1 d.p.)}
+         \end{aligned}
+         $$
     </Steps>
+
   </TabItem>
+
 </Tabs>
 
----
+<SmartAIGenerator topic="Finding the angle between a sloping edge and the base of a square pyramid" />
 
 <Tabs>
+
   <TabItem label="📝 Question 3: Square Pyramid (Working Backwards)">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
@@ -316,15 +336,20 @@ Practice using your "x-ray vision" to extract hidden right-angled triangles from
         
         <text x="135" y="240" font-weight="bold" fill="#3b82f6" text-anchor="middle">x cm</text>
         <text x="80" y="125" font-weight="bold" fill="#ef4444" text-anchor="middle">20 cm</text>
-        {/* Removed 45 degree arc and text as requested */}
       </svg>
     </div>
 
-    A square-based pyramid has a sloping edge of 20 cm. 
+    A square-based pyramid has a sloping edge of $20\text{ cm}$. 
     The angle between a sloping edge and the square base is $45^\circ$.
     
-    Calculate the length of one side of the square base.
+    a) Identify the right-angled triangle involving the sloping edge, and calculate the length of the shadow it casts on the base.
+    
+    b) Use the shadow's length to find the full diagonal of the square base.
+    
+    c) Calculate the length of one side of the square base.
+    
   </TabItem>
+
   <TabItem label="✅ Solution 3">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
@@ -348,52 +373,55 @@ Practice using your "x-ray vision" to extract hidden right-angled triangles from
         <text x="105" y="210" font-weight="bold" fill="#f59e0b" text-anchor="middle">y cm</text>
         <text x="80" y="125" font-weight="bold" fill="#ef4444" text-anchor="middle">20 cm</text>
         
-        {/* Arc added back here in solution for context, precisely touching arms */}
-        <path d="M 85 198 A 30 30 0 0 0 65 210" fill="none" stroke="#1e293b" stroke-width="2" />
+        {/* Precise internal arc */}
+        <path d="M 79.3 213.4 A 30 30 0 0 0 66.3 194.8" fill="none" stroke="#1e293b" stroke-width="2" />
         <text x="90" y="215" font-size="14" font-weight="bold" text-anchor="start">45°</text>
       </svg>
     </div>
+
     <Steps>
-    1. **Extract the 2D Triangle:** We look at the right-angled triangle formed by the sloping edge, the vertical drop to the center, and the shadow (half the floor diagonal). 
-       * Hypotenuse = 20 cm
-       * Angle at base = $45^\circ$
-       * We need to find the shadow (Adjacent). Let's call the shadow $y$.
-    2. **Find the shadow using Trigonometry:**
-       $$
-       \begin{aligned}
-       \cos(45^\circ) &= \frac{\text{Adjacent}}{\text{Hypotenuse}} \\
-       \cos(45^\circ) &= \frac{y}{20} \\
-       y &= 20 \times \cos(45^\circ) \\
-       y &= 20 \times \left(\frac{\sqrt{2}}{2}\right) = 10\sqrt{2} \approx 14.14 \text{ cm}
-       \end{aligned}
-       $$
-    3. **Find the full diagonal of the base:**
-       The shadow is exactly half the diagonal.
-       $$ \text{Full Diagonal} = 2 \times 10\sqrt{2} = 20\sqrt{2} \approx 28.28 \text{ cm} $$
-    4. **Find the side length of the square base:**
-       Let the side length of the square be $x$. The base is a square, so standard 2D Pythagoras applies:
-       $$
-       \begin{aligned}
-       x^2 + x^2 &= \text{Diagonal}^2 \\
-       2x^2 &= (20\sqrt{2})^2 \\
-       2x^2 &= 400 \times 2 \\
-       2x^2 &= 800 \\
-       x^2 &= 400 \\
-       x &= \sqrt{400} = 20 \text{ cm}
-       \end{aligned}
-       $$
+      1. **Part a:** We look at the right-angled triangle formed by the sloping edge, the vertical drop to the center, and the shadow (half the floor diagonal). 
+         * Hypotenuse = $20\text{ cm}$
+         * Angle at base = $45^\circ$
+         * We need to find the shadow (Adjacent). Let's call the shadow $y$.
+      2. **Part a (continued):** Find the shadow using Trigonometry:
+         $$
+         \begin{aligned}
+         \cos(45^\circ) &= \frac{\text{Adjacent}}{\text{Hypotenuse}} \\
+         \cos(45^\circ) &= \frac{y}{20} \\
+         y &= 20 \times \cos(45^\circ) \\
+         y &= 20 \times \left(\frac{\sqrt{2}}{2}\right) = 10\sqrt{2} \approx 14.14\text{ cm}
+         \end{aligned}
+         $$
+      3. **Part b:** Find the full diagonal of the base.
+         The shadow is exactly half the diagonal.
+         $$ \text{Full Diagonal} = 2 \times 10\sqrt{2} = 20\sqrt{2} \approx 28.28\text{ cm} $$
+      4. **Part c:** Find the side length of the square base.
+         Let the side length of the square be $x$. The base is a square, so standard 2D Pythagoras applies:
+         $$
+         \begin{aligned}
+         x^2 + x^2 &= \text{Diagonal}^2 \\
+         2x^2 &= (20\sqrt{2})^2 \\
+         2x^2 &= 400 \times 2 \\
+         2x^2 &= 800 \\
+         x^2 &= 400 \\
+         x &= \sqrt{400} = 20\text{ cm}
+         \end{aligned}
+         $$
     </Steps>
+
   </TabItem>
+
 </Tabs>
 
----
+<SmartAIGenerator topic="Using 3D trigonometry to find the side length of a square-based pyramid" />
 
 <Tabs>
+
   <TabItem label="📝 Question 4: Triangular Prism">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
         <polygon points="50,200 250,200 300,130 100,130" fill="none" stroke="#1e293b" stroke-width="2" />
-        {/* Dashed lines made heavily visible with stroke-width 4 */}
         <line x1="100" y1="130" x2="300" y2="130" stroke="#94a3b8" stroke-width="4" stroke-dasharray="8,6" />
         <line x1="50" y1="200" x2="100" y2="130" stroke="#94a3b8" stroke-width="4" stroke-dasharray="8,6" />
         <line x1="50" y1="200" x2="50" y2="80" stroke="#1e293b" stroke-width="2" />
@@ -410,21 +438,25 @@ Practice using your "x-ray vision" to extract hidden right-angled triangles from
         <text x="140" y="220" font-weight="bold" text-anchor="middle">10 cm</text>
         <text x="275" y="180" font-weight="bold" text-anchor="middle">15 cm</text>
         <text x="20" y="140" font-weight="bold" text-anchor="middle">8 cm</text>
-        {/* Removed internal black lines entirely as requested */}
       </svg>
     </div>
 
     A right triangular prism has a rectangular base $ABDE$ on the floor. 
-    $AB = 10$ cm and the length $AD = 15$ cm. 
-    The front face is a right-angled triangle $ABC$, where angle $ABC = 90^\circ$ and the vertical height $BC = 8$ cm.
+    $AB = 10\text{ cm}$ and the length $AD = 15\text{ cm}$. 
+    The front face is a right-angled triangle $ABC$, where angle $ABC = 90^\circ$ and the vertical height $BC = 8\text{ cm}$.
     
-    Calculate the angle between the diagonal $CD$ (stretching from the top-front corner to the bottom-back corner) and the rectangular base.
+    a) Identify the 2D right-angled triangle needed to find the angle between the diagonal $CD$ and the base.
+    
+    b) Calculate the length of the shadow cast by the diagonal $CD$ onto the rectangular base.
+    
+    c) Calculate the angle between the diagonal $CD$ and the rectangular base.
+    
   </TabItem>
+
   <TabItem label="✅ Solution 4">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
         <polygon points="50,200 250,200 300,130 100,130" fill="none" stroke="#1e293b" stroke-width="2" />
-        {/* Thickened dashed lines */}
         <line x1="100" y1="130" x2="300" y2="130" stroke="#94a3b8" stroke-width="4" stroke-dasharray="8,6" />
         <line x1="50" y1="200" x2="100" y2="130" stroke="#94a3b8" stroke-width="4" stroke-dasharray="8,6" />
         <line x1="50" y1="200" x2="50" y2="80" stroke="#1e293b" stroke-width="2" />
@@ -444,44 +476,49 @@ Practice using your "x-ray vision" to extract hidden right-angled triangles from
         
         <polygon points="50,200 300,130 50,80" fill="#eff6ff" opacity="0.6" stroke="none" />
         <line x1="50" y1="80" x2="300" y2="130" stroke="#ef4444" stroke-width="3" />
-        <line x1="50" y1="200" x2="300" y2="130" stroke="#f59e0b" stroke-width="4" stroke-dasharray="8,6" /> {/* Shadow BD */}
+        <line x1="50" y1="200" x2="300" y2="130" stroke="#f59e0b" stroke-width="4" stroke-dasharray="8,6" />
         <line x1="50" y1="200" x2="50" y2="80" stroke="#10b981" stroke-width="3" />
         
-        {/* Arc precisely touches arms BD and CD */}
-        <path d="M 270 138 A 40 40 0 0 0 263 123" fill="none" stroke="#1e293b" stroke-width="2" />
+        {/* Precise arc placed at D between DB and DC */}
+        <path d="M 261.5 140.8 A 40 40 0 0 1 260.8 122.2" fill="none" stroke="#1e293b" stroke-width="2" />
       </svg>
     </div>
+
     <Steps>
-    1. **Identify the Triangle:** * Top point of the diagonal is $C$.
-       * Drop a vertical line to the base—it lands perfectly on $B$ (since the front face is vertical).
-       * Connect $B$ to the end of the diagonal $D$. The line $BD$ is our shadow!
-       * We are working with the vertical right-angled triangle $\Delta CBD$. We want the angle $CDB$.
-    2. **Find the length of the shadow ($BD$):**
-       The shadow stretches directly across the rectangular base $ABDE$. Use 2D Pythagoras on the floor.
-       $$
-       \begin{aligned}
-       BD &= \sqrt{AB^2 + AD^2} \\
-       BD &= \sqrt{10^2 + 15^2} \\
-       BD &= \sqrt{100 + 225} = \sqrt{325} \approx 18.03 \text{ cm}
-       \end{aligned}
-       $$
-    3. **Calculate the angle:**
-       In triangle $\Delta CBD$, the vertical Opposite side ($CB$) is 8 cm, and the Adjacent shadow ($BD$) is $\sqrt{325}$.
-       $$
-       \begin{aligned}
-       \tan(CDB) &= \frac{\text{Opposite}}{\text{Adjacent}} \\
-       \tan(CDB) &= \frac{8}{\sqrt{325}} \\
-       CDB &= \tan^{-1}\left(\frac{8}{\sqrt{325}}\right) \\
-       CDB &\approx 23.9^\circ \text{ (to 1 d.p.)}
-       \end{aligned}
-       $$
+      1. **Part a:** Identify the Triangle. 
+         * Top point of the diagonal is $C$.
+         * Drop a vertical line to the base—it lands perfectly on $B$ (since the front face is vertical).
+         * Connect $B$ to the end of the diagonal $D$. The line $BD$ is our shadow!
+         * We are working with the vertical right-angled triangle $\Delta CBD$. We want the angle $CDB$.
+      2. **Part b:** Find the length of the shadow ($BD$):
+         The shadow stretches directly across the rectangular base $ABDE$. Use 2D Pythagoras on the floor.
+         $$
+         \begin{aligned}
+         BD &= \sqrt{AB^2 + AD^2} \\
+         BD &= \sqrt{10^2 + 15^2} \\
+         BD &= \sqrt{100 + 225} = \sqrt{325} \approx 18.03\text{ cm}
+         \end{aligned}
+         $$
+      3. **Part c:** Calculate the angle:
+         In triangle $\Delta CBD$, the vertical Opposite side ($CB$) is $8\text{ cm}$, and the Adjacent shadow ($BD$) is $\sqrt{325}$.
+         $$
+         \begin{aligned}
+         \tan(CDB) &= \frac{\text{Opposite}}{\text{Adjacent}} \\
+         \tan(CDB) &= \frac{8}{\sqrt{325}} \\
+         CDB &= \tan^{-1}\left(\frac{8}{\sqrt{325}}\right) \\
+         CDB &\approx 23.9^\circ\text{ (to 1 d.p.)}
+         \end{aligned}
+         $$
     </Steps>
+
   </TabItem>
+
 </Tabs>
 
----
+<SmartAIGenerator topic="Calculating the angle between an internal diagonal and the base in a triangular prism" />
 
 <Tabs>
+
   <TabItem label="📝 Question 5: Cylinder Internal Diagonal">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 350 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
@@ -496,11 +533,14 @@ Practice using your "x-ray vision" to extract hidden right-angled triangles from
       </svg>
     </div>
 
-    A cylinder has a base radius of 4 cm and a height of 12 cm. 
+    A cylinder has a base radius of $4\text{ cm}$ and a height of $12\text{ cm}$. 
     
-    **(a)** Calculate the length of the longest straight line that can fit inside the cylinder.
-    **(b)** Calculate the angle this longest line makes with the circular base.
+    a) Calculate the length of the longest straight line that can fit inside the cylinder.
+    
+    b) Calculate the angle this longest line makes with the circular base.
+    
   </TabItem>
+
   <TabItem label="✅ Solution 5">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 350 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
@@ -516,40 +556,44 @@ Practice using your "x-ray vision" to extract hidden right-angled triangles from
         <text x="175" y="245" font-weight="bold" text-anchor="middle">Radius = 4 cm</text>
         <text x="60" y="130" font-weight="bold" text-anchor="middle">12 cm</text>
         
-        {/* Arc precisely touches diameter shadow and diagonal */}
-        <path d="M 220 200 A 35 35 0 0 0 216 163.5" fill="none" stroke="#1e293b" stroke-width="2" />
+        {/* Arc touching the shadow (diameter) and diagonal precisely */}
+        <path d="M 225 200 A 30 30 0 0 1 233.1 179.5" fill="none" stroke="#1e293b" stroke-width="2" />
       </svg>
     </div>
+
     <Steps>
-    1. **Visualize the Longest Line:** The longest line stretches from the bottom edge of the cylinder straight through the middle to the exact opposite top edge. 
-       If we shine our flashlight down from the top edge, the drop is the vertical height of the cylinder (12 cm). The "shadow" cast directly across the circular floor is the **diameter** of the base.
-    2. **(a) Length of the diagonal:**
-       The radius is 4 cm, so the full diameter (shadow) is $2 \times 4 = 8$ cm.
-       Use Pythagoras with the height and diameter:
-       $$
-       \begin{aligned}
-       \text{Diagonal}^2 &= 8^2 + 12^2 \\
-       \text{Diagonal}^2 &= 64 + 144 \\
-       \text{Diagonal}^2 &= 208 \\
-       \text{Diagonal} &= \sqrt{208} \approx 14.4 \text{ cm (to 3 s.f.)}
-       \end{aligned}
-       $$
-    3. **(b) Angle with the base:**
-       We have a right-angled triangle. Opposite (height) = 12 cm. Adjacent (diameter) = 8 cm.
-       $$
-       \begin{aligned}
-       \tan(\theta) &= \frac{12}{8} \\
-       \theta &= \tan^{-1}(1.5) \\
-       \theta &\approx 56.3^\circ \text{ (to 1 d.p.)}
-       \end{aligned}
-       $$
+      1. **Part a:** Visualize the Longest Line: The longest line stretches from the bottom edge of the cylinder straight through the middle to the exact opposite top edge. 
+         If we shine our flashlight down from the top edge, the drop is the vertical height of the cylinder ($12\text{ cm}$). The "shadow" cast directly across the circular floor is the **diameter** of the base.
+      2. **Part a (continued):** Length of the diagonal:
+         The radius is $4\text{ cm}$, so the full diameter (shadow) is $2 \times 4 = 8\text{ cm}$.
+         Use Pythagoras with the height and diameter:
+         $$
+         \begin{aligned}
+         \text{Diagonal}^2 &= 8^2 + 12^2 \\
+         \text{Diagonal}^2 &= 64 + 144 \\
+         \text{Diagonal}^2 &= 208 \\
+         \text{Diagonal} &= \sqrt{208} \approx 14.4\text{ cm (to 3 s.f.)}
+         \end{aligned}
+         $$
+      3. **Part b:** Angle with the base:
+         We have a right-angled triangle. Opposite (height) = $12\text{ cm}$. Adjacent (diameter) = $8\text{ cm}$.
+         $$
+         \begin{aligned}
+         \tan(\theta) &= \frac{12}{8} \\
+         \theta &= \tan^{-1}(1.5) \\
+         \theta &\approx 56.3^\circ\text{ (to 1 d.p.)}
+         \end{aligned}
+         $$
     </Steps>
+
   </TabItem>
+
 </Tabs>
 
----
+<SmartAIGenerator topic="Finding the longest internal diagonal and its angle in a cylinder" />
 
 <Tabs>
+
   <TabItem label="📝 Question 6: Cone Geometry">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 350 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
@@ -562,48 +606,229 @@ Practice using your "x-ray vision" to extract hidden right-angled triangles from
       </svg>
     </div>
 
-    A solid cone has a base radius of 6 cm and a slant height of 10 cm. 
+    A solid cone has a base radius of $6\text{ cm}$ and a slant height of $10\text{ cm}$. 
     
-    **(a)** Calculate the perpendicular vertical height of the cone.
-    **(b)** Calculate the angle the slant height makes with the flat circular base.
+    a) Calculate the perpendicular vertical height of the cone.
+    
+    b) Calculate the angle the slant height makes with the flat circular base.
+    
   </TabItem>
+
   <TabItem label="✅ Solution 6">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 350 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
         <ellipse cx="175" cy="200" rx="80" ry="25" fill="none" stroke="#1e293b" stroke-width="2" />
         <line x1="175" y1="40" x2="95" y2="200" stroke="#1e293b" stroke-width="2" />
-        <line x1="175" y1="40" x2="255" y2="200" stroke="#ef4444" stroke-width="3" />
         
-        <line x1="175" y1="40" x2="175" y2="200" stroke="#10b981" stroke-width="3" stroke-dasharray="4,4" />
+        {/* Extracted 2D right triangle */}
+        <polygon points="175,200 255,200 175,40" fill="#eff6ff" opacity="0.6" stroke="none" />
         <line x1="175" y1="200" x2="255" y2="200" stroke="#f59e0b" stroke-width="3" stroke-dasharray="4,4" />
+        <line x1="175" y1="40" x2="175" y2="200" stroke="#10b981" stroke-width="3" stroke-dasharray="4,4" />
+        <line x1="175" y1="40" x2="255" y2="200" stroke="#ef4444" stroke-width="3" />
         
         <text x="215" y="225" font-weight="bold" text-anchor="middle">6 cm</text>
         <text x="235" y="115" font-weight="bold" fill="#ef4444" text-anchor="middle">10 cm</text>
+        <text x="160" y="125" font-weight="bold" fill="#10b981" text-anchor="middle">h</text>
         
-        {/* Arc precisely touches radius and slant height */}
-        <path d="M 225 200 A 30 30 0 0 0 216.5 140" fill="none" stroke="#1e293b" stroke-width="2" />
+        {/* Precise arc touching base and slant edge */}
+        <path d="M 230 200 A 25 25 0 0 1 243.8 177.6" fill="none" stroke="#1e293b" stroke-width="2" />
       </svg>
     </div>
+
     <Steps>
-    1. **(a) Vertical Height:** The vertical height, the radius (shadow), and the slant height form a perfect right-angled triangle. We need a shorter side, so we subtract using Pythagoras.
-       $$
-       \begin{aligned}
-       \text{Height}^2 + 6^2 &= 10^2 \\
-       \text{Height}^2 &= 100 - 36 \\
-       \text{Height}^2 &= 64 \\
-       \text{Height} &= \sqrt{64} = 8 \text{ cm}
-       \end{aligned}
-       $$
-    2. **(b) Angle with the base:**
-       Use the original numbers given to avoid rounding errors. We have the Adjacent (radius = 6) and the Hypotenuse (slant height = 10).
-       $$
-       \begin{aligned}
-       \cos(\theta) &= \frac{\text{Adjacent}}{\text{Hypotenuse}} \\
-       \cos(\theta) &= \frac{6}{10} = 0.6 \\
-       \theta &= \cos^{-1}(0.6) \\
-       \theta &\approx 53.1^\circ \text{ (to 1 d.p.)}
-       \end{aligned}
-       $$
+      1. **Part a:** Extract the 2D Triangle. The cross-section of the cone gives us a right-angled triangle where the hypotenuse is the slant height ($10\text{ cm}$), the base is the radius ($6\text{ cm}$), and the vertical side is the height ($h$).
+      2. **Part a (continued):** Find the vertical height ($h$):
+         Use standard Pythagoras:
+         $$
+         \begin{aligned}
+         h^2 + 6^2 &= 10^2 \\
+         h^2 + 36 &= 100 \\
+         h^2 &= 64 \\
+         h &= \sqrt{64} = 8\text{ cm}
+         \end{aligned}
+         $$
+      3. **Part b:** Angle with the circular base:
+         Using the radius (Adjacent) and slant height (Hypotenuse):
+         $$
+         \begin{aligned}
+         \cos(\theta) &= \frac{\text{Adjacent}}{\text{Hypotenuse}} \\
+         \cos(\theta) &= \frac{6}{10} = 0.6 \\
+         \theta &= \cos^{-1}(0.6) \\
+         \theta &\approx 53.1^\circ\text{ (to 1 d.p.)}
+         \end{aligned}
+         $$
     </Steps>
+
   </TabItem>
+
 </Tabs>
+
+<SmartAIGenerator topic="Using Pythagoras and trigonometry to find height and angles in a cone" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 7: Rectangular Pyramid">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <polygon points="50,220 220,220 270,170 100,170" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="50" y1="220" x2="270" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        <line x1="220" y1="220" x2="100" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        <line x1="160" y1="40" x2="50" y2="220" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="40" x2="220" y2="220" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="40" x2="270" y2="170" stroke="#ef4444" stroke-width="2" />
+        <line x1="160" y1="40" x2="100" y2="170" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" />
+        <line x1="160" y1="40" x2="160" y2="195" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4" />
+        
+        <text x="35" y="230" font-weight="bold">A</text>
+        <text x="225" y="235" font-weight="bold">B</text>
+        <text x="280" y="175" font-weight="bold">C</text>
+        <text x="85" y="165" font-weight="bold">D</text>
+        <text x="160" y="30" font-weight="bold" text-anchor="middle">V</text>
+        
+        <text x="135" y="240" font-weight="bold" text-anchor="middle">8 cm</text>
+        <text x="260" y="210" font-weight="bold" text-anchor="middle">6 cm</text>
+        <text x="175" y="125" font-weight="bold" fill="#10b981" text-anchor="start">12 cm</text>
+      </svg>
+    </div>
+
+    A rectangular-based pyramid $VABCD$ has a base $ABCD$ where $AB = 8\text{ cm}$ and $BC = 6\text{ cm}$. 
+    The vertical height of the pyramid is $12\text{ cm}$, with the apex $V$ located directly above the center of the rectangular base.
+    
+    a) Find the length of a sloping edge $VC$.
+    
+    b) Find the angle between the sloping edge $VC$ and the base $ABCD$.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 7">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <polygon points="50,220 220,220 270,170 100,170" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="50" y1="220" x2="270" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        <line x1="220" y1="220" x2="100" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        
+        <polygon points="160,40 270,170 160,195" fill="#eff6ff" opacity="0.6" stroke="none" />
+        <line x1="160" y1="40" x2="160" y2="195" stroke="#10b981" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="270" y1="170" x2="160" y2="195" stroke="#f59e0b" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="160" y1="40" x2="270" y2="170" stroke="#ef4444" stroke-width="3" />
+        
+        <text x="35" y="230" font-weight="bold">A</text>
+        <text x="225" y="235" font-weight="bold">B</text>
+        <text x="280" y="175" font-weight="bold">C</text>
+        <text x="85" y="165" font-weight="bold">D</text>
+        <text x="160" y="30" font-weight="bold" text-anchor="middle">V</text>
+        <text x="150" y="210" font-weight="bold" text-anchor="middle">M</text>
+        
+        {/* Precise arc placed between CM and CV */}
+        <path d="M 240.8 176.6 A 30 30 0 0 1 250.6 147.1" fill="none" stroke="#1e293b" stroke-width="2" />
+      </svg>
+    </div>
+
+    <Steps>
+      1. **Part a:** Length of the sloping edge $VC$:
+         First, we need the full diagonal of the rectangular base $AC$.
+         $$ AC = \sqrt{8^2 + 6^2} = \sqrt{100} = 10\text{ cm} $$
+         The shadow of the sloping edge ($MC$) is exactly half of this diagonal because the apex is centered.
+         $$ MC = 10 \div 2 = 5\text{ cm} $$
+         Now, use Pythagoras on the upright triangle $\Delta VMC$ (vertical height $VM = 12$, shadow $MC = 5$).
+         $$
+         \begin{aligned}
+         VC^2 &= 12^2 + 5^2 \\
+         VC^2 &= 144 + 25 = 169 \\
+         VC &= \sqrt{169} = 13\text{ cm}
+         \end{aligned}
+         $$
+      2. **Part b:** Angle with the base:
+         We need the angle $\angle VCM$.
+         $$
+         \begin{aligned}
+         \tan(VCM) &= \frac{\text{Opposite}}{\text{Adjacent}} \\
+         \tan(VCM) &= \frac{12}{5} = 2.4 \\
+         VCM &= \tan^{-1}(2.4) \\
+         VCM &\approx 67.4^\circ\text{ (to 1 d.p.)}
+         \end{aligned}
+         $$
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the sloping edge length and base angle in a rectangular pyramid" />
+
+<Tabs>
+
+  <TabItem label="📝 Question 8: Sloping Face vs Base">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <polygon points="50,220 220,220 270,170 100,170" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="40" x2="50" y2="220" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="40" x2="220" y2="220" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="40" x2="270" y2="170" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="40" x2="100" y2="170" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" />
+        
+        <text x="35" y="230" font-weight="bold">A</text>
+        <text x="225" y="235" font-weight="bold">B</text>
+        <text x="280" y="175" font-weight="bold">C</text>
+        <text x="85" y="165" font-weight="bold">D</text>
+        <text x="160" y="30" font-weight="bold" text-anchor="middle">V</text>
+        
+        <text x="135" y="240" font-weight="bold" text-anchor="middle">10 cm</text>
+      </svg>
+    </div>
+
+    A square-based pyramid $VABCD$ has base sides of $10\text{ cm}$ and a vertical height of $12\text{ cm}$. 
+    
+    a) Determine the length of the shadow cast by the sloping face $VAB$ from the center of the base to the midpoint of the edge $AB$.
+    
+    b) Calculate the angle between the **sloping face** $VAB$ and the base $ABCD$.
+    
+  </TabItem>
+
+  <TabItem label="✅ Solution 8">
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 280" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+        <polygon points="50,220 220,220 270,170 100,170" fill="none" stroke="#1e293b" stroke-width="2" />
+        <line x1="160" y1="40" x2="50" y2="220" stroke="#1e293b" stroke-width="1" />
+        <line x1="160" y1="40" x2="220" y2="220" stroke="#1e293b" stroke-width="1" />
+        <line x1="160" y1="40" x2="270" y2="170" stroke="#1e293b" stroke-width="1" />
+        <line x1="160" y1="40" x2="100" y2="170" stroke="#94a3b8" stroke-width="1" stroke-dasharray="6,6" />
+        
+        <polygon points="160,40 135,220 160,195" fill="#eff6ff" opacity="0.6" stroke="none" />
+        <line x1="160" y1="40" x2="160" y2="195" stroke="#10b981" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="135" y1="220" x2="160" y2="195" stroke="#f59e0b" stroke-width="3" stroke-dasharray="6,6" />
+        <line x1="160" y1="40" x2="135" y2="220" stroke="#ef4444" stroke-width="3" />
+        
+        <text x="35" y="230" font-weight="bold">A</text>
+        <text x="225" y="235" font-weight="bold">B</text>
+        <text x="160" y="30" font-weight="bold" text-anchor="middle">V</text>
+        <text x="135" y="240" font-weight="bold" text-anchor="middle">N</text>
+        <text x="175" y="210" font-weight="bold" text-anchor="middle">M</text>
+        
+        {/* Precise arc placed between NM and NV */}
+        <path d="M 156.2 198.8 A 30 30 0 0 0 139.1 190.3" fill="none" stroke="#1e293b" stroke-width="2" />
+      </svg>
+    </div>
+
+    <Steps>
+      1. **Part a:** Warning! Sloping Face vs Edge: We are not looking for the angle of the edge $VA$ or $VB$. We need the angle of the entire triangular face $VAB$.
+      2. **Part a (continued):** Drop and Connect: Drop the vertical line from $V$ to the center of the base $M$. To represent the face $VAB$, draw a line from the apex down to the **midpoint** of the edge $AB$. Let's call this midpoint $N$. Connect $N$ to the center $M$ to create our shadow.
+      3. **Part a (continued):** Calculate the shadow length: The shadow $NM$ runs from the center of the square to the middle of the side. This is exactly half the length of the base side!
+         $$ NM = 10 \div 2 = 5\text{ cm} $$
+      4. **Part b:** Calculate the angle:
+         The vertical height $VM$ is given as $12\text{ cm}$. We are looking at the right-angled triangle $\Delta VNM$. We need the angle $\angle VNM$.
+         $$
+         \begin{aligned}
+         \tan(VNM) &= \frac{\text{Opposite}}{\text{Adjacent}} \\
+         \tan(VNM) &= \frac{VM}{NM} = \frac{12}{5} = 2.4 \\
+         VNM &= \tan^{-1}(2.4) \\
+         VNM &\approx 67.4^\circ\text{ (to 1 d.p.)}
+         \end{aligned}
+         $$
+    </Steps>
+
+  </TabItem>
+
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the angle between a sloping face and the base in a pyramid" />

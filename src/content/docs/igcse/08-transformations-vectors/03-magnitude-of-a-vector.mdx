@@ -48,11 +48,11 @@ $$
     </g>
     
     {/* x component: (20, 140) to (180, 140) -> length 160px = 8 units */}
-    <path d="M 20 140 L 180 140" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <path d="M 20 140 L 180 140" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
     <text x="100" y="155" font-weight="bold" fill="#64748b" text-anchor="middle">x = 8</text>
     
     {/* y component: (180, 140) to (180, 20) -> length 120px = 6 units */}
-    <path d="M 180 140 L 180 20" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <path d="M 180 140 L 180 20" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
     <text x="200" y="85" font-weight="bold" fill="#64748b" text-anchor="middle">y = 6</text>
 
     {/* Right angle square */}
@@ -72,8 +72,6 @@ $$
   </svg>
 </div>
 
-
-
 <Aside type="caution" title="Squaring Negatives">
 A very common exam mistake is entering negative numbers incorrectly into a calculator. Remember that squaring a negative component always results in a positive number! 
 $(-3)^2$ is $+9$, not $-9$. A vector's length can never be negative. If your calculator says $\sqrt{-16}$, you have made a mistake.
@@ -85,15 +83,33 @@ $(-3)^2$ is $+9$, not $-9$. A vector's length can never be negative. If your cal
 
 <Tabs>
   <TabItem label="📝 Question 1: Basic Magnitude">
-    Find the magnitude of the vector $\mathbf{p} = \begin{pmatrix} -5 \\ 12 \end{pmatrix}$.
+    Given the vector $\mathbf{p} = \begin{pmatrix} -5 \\ 12 \end{pmatrix}$.
+
+    a) Write down the horizontal and vertical components of the vector $\mathbf{p}$.
+
+    b) State the square of each component.
+
+    c) Calculate the exact magnitude of the vector $\mathbf{p}$.
+
   </TabItem>
   <TabItem label="✅ Solution 1">
+    **a)**
     <Steps>
-    1. Identify the $x$ and $y$ components: $x = -5$ and $y = 12$.
-    2. Substitute them into the magnitude formula: $|\mathbf{p}| = \sqrt{(-5)^2 + 12^2}$.
-    3. Square the components (remembering that $(-5) \times (-5) = 25$): $|\mathbf{p}| = \sqrt{25 + 144}$.
-    4. Add them together: $|\mathbf{p}| = \sqrt{169}$.
-    5. Find the square root: $|\mathbf{p}| = 13$.
+      1. The horizontal component is the top number: $x = -5$.
+      2. The vertical component is the bottom number: $y = 12$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. $(-5)^2 = (-5) \times (-5) = 25$.
+      2. $12^2 = 12 \times 12 = 144$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Substitute into the formula: $|\mathbf{p}| = \sqrt{(-5)^2 + 12^2}$.
+      2. Add the squares: $|\mathbf{p}| = \sqrt{25 + 144}$.
+      3. Simplify: $|\mathbf{p}| = \sqrt{169} = 13$.
     </Steps>
   </TabItem>
 </Tabs>
@@ -103,18 +119,31 @@ $(-3)^2$ is $+9$, not $-9$. A vector's length can never be negative. If your cal
 <Tabs>
   <TabItem label="📝 Question 2: Magnitude from Coordinates">
     Point $A$ has coordinates $(-2, 4)$ and point $B$ has coordinates $(4, -4)$.
-    
-    Calculate $|\overrightarrow{AB}|$.
+
+    a) Calculate the horizontal change ($x$-movement) and vertical change ($y$-movement) from $A$ to $B$.
+
+    b) Write down the displacement vector $\overrightarrow{AB}$.
+
+    c) Calculate the magnitude $|\overrightarrow{AB}|$.
+
   </TabItem>
   <TabItem label="✅ Solution 2">
+    **a)**
     <Steps>
-    1. First, find the displacement vector $\overrightarrow{AB}$ by calculating the change in $x$ and the change in $y$.
-    2. $x$-movement: $4 - (-2) = 6$.
-    3. $y$-movement: $-4 - 4 = -8$.
-    4. The column vector is $\overrightarrow{AB} = \begin{pmatrix} 6 \\ -8 \end{pmatrix}$.
-    5. Apply the magnitude formula: $|\overrightarrow{AB}| = \sqrt{6^2 + (-8)^2}$.
-    6. Simplify: $|\overrightarrow{AB}| = \sqrt{36 + 64} = \sqrt{100}$.
-    7. Final answer: $|\overrightarrow{AB}| = 10$.
+      1. Change in $x = x_2 - x_1 = 4 - (-2) = 6$.
+      2. Change in $y = y_2 - y_1 = -4 - 4 = -8$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Place the changes into a column vector: $\overrightarrow{AB} = \begin{pmatrix} 6 \\ -8 \end{pmatrix}$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Apply the magnitude formula: $|\overrightarrow{AB}| = \sqrt{6^2 + (-8)^2}$.
+      2. Simplify the squares: $|\overrightarrow{AB}| = \sqrt{36 + 64}$.
+      3. Add to find the square root: $|\overrightarrow{AB}| = \sqrt{100} = 10$.
     </Steps>
   </TabItem>
 </Tabs>
@@ -124,19 +153,201 @@ $(-3)^2$ is $+9$, not $-9$. A vector's length can never be negative. If your cal
 <Tabs>
   <TabItem label="📝 Question 3: Scalar Multiples & Magnitude">
     Given $\mathbf{q} = \begin{pmatrix} 3 \\ -4 \end{pmatrix}$.
-    
-    Calculate the exact value of $|2\mathbf{q}|$.
+
+    a) Find the vector $2\mathbf{q}$.
+
+    b) Calculate the magnitude of $2\mathbf{q}$.
+
+    c) Calculate the magnitude of $\mathbf{q}$.
+
+    d) Describe the relationship between $|\mathbf{q}|$ and $|2\mathbf{q}|$.
+
   </TabItem>
   <TabItem label="✅ Solution 3">
+    **a)**
     <Steps>
-    1. First, find the vector $2\mathbf{q}$ by performing scalar multiplication.
-    2. Multiply both components by 2: $2\mathbf{q} = 2 \begin{pmatrix} 3 \\ -4 \end{pmatrix} = \begin{pmatrix} 6 \\ -8 \end{pmatrix}$.
-    3. Now, find the magnitude of this new vector: $|2\mathbf{q}| = \sqrt{6^2 + (-8)^2}$.
-    4. Simplify the squares: $|2\mathbf{q}| = \sqrt{36 + 64}$.
-    5.  $|2\mathbf{q}| = \sqrt{100} = 10$.
-    6. *(Shortcut tip: You could also find $|\mathbf{q}| = 5$, and since the vector is scaled by 2, its length is simply $5 \times 2 = 10$!)*
+      1. Multiply both components by 2: $2\mathbf{q} = 2 \begin{pmatrix} 3 \\ -4 \end{pmatrix} = \begin{pmatrix} 6 \\ -8 \end{pmatrix}$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Find the magnitude of this new vector: $|2\mathbf{q}| = \sqrt{6^2 + (-8)^2}$.
+      2. Simplify the squares: $|2\mathbf{q}| = \sqrt{36 + 64}$.
+      3. $|2\mathbf{q}| = \sqrt{100} = 10$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Find the magnitude of the original vector: $|\mathbf{q}| = \sqrt{3^2 + (-4)^2}$.
+      2. Simplify the squares: $|\mathbf{q}| = \sqrt{9 + 16}$.
+      3. $|\mathbf{q}| = \sqrt{25} = 5$.
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. The magnitude $|2\mathbf{q}|$ is exactly twice the magnitude of $|\mathbf{q}|$ (since $10 = 2 \times 5$). Multiplying a vector by a scalar multiplies its length by the same factor.
     </Steps>
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Combining scalar multiplication with magnitude calculations" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Missing Component (Structured)">
+    A vector is given as $\mathbf{v} = \begin{pmatrix} k \\ 8 \end{pmatrix}$, where $k$ is an unknown number. The magnitude of the vector is $10$.
+
+    a) Write down an expression for the magnitude of $\mathbf{v}$ in terms of $k$.
+
+    b) Set your expression equal to $10$ and square both sides of the equation.
+
+    c) Solve the equation to find the two possible values of $k$.
+
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+    <Steps>
+      1. Use Pythagoras' theorem: $|\mathbf{v}| = \sqrt{k^2 + 8^2}$.
+      2. Simplify: $|\mathbf{v}| = \sqrt{k^2 + 64}$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Set the magnitude to 10: $\sqrt{k^2 + 64} = 10$.
+      2. Square both sides to remove the square root: $k^2 + 64 = 100$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Subtract 64 from both sides: $k^2 = 100 - 64$.
+      2. Simplify: $k^2 = 36$.
+      3. Take the square root of both sides (remembering positive and negative roots): $k = 6$ or $k = -6$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for an unknown component when given the magnitude of a vector" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Vector Addition and Magnitude">
+    Let $\mathbf{a} = \begin{pmatrix} 1 \\ 7 \end{pmatrix}$ and $\mathbf{b} = \begin{pmatrix} 5 \\ 1 \end{pmatrix}$.
+
+    a) Calculate the resultant vector $\mathbf{a} + \mathbf{b}$.
+
+    b) Find the exact magnitude of $\mathbf{a} + \mathbf{b}$.
+
+    c) Calculate $|\mathbf{a}|$ and $|\mathbf{b}|$ to 2 decimal places, and confirm whether $|\mathbf{a} + \mathbf{b}|$ is equal to $|\mathbf{a}| + |\mathbf{b}|$.
+
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. Add the horizontal components: $1 + 5 = 6$.
+      2. Add the vertical components: $7 + 1 = 8$.
+      3. Resultant vector: $\mathbf{a} + \mathbf{b} = \begin{pmatrix} 6 \\ 8 \end{pmatrix}$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Use the magnitude formula: $|\mathbf{a} + \mathbf{b}| = \sqrt{6^2 + 8^2}$.
+      2. $|\mathbf{a} + \mathbf{b}| = \sqrt{36 + 64} = \sqrt{100} = 10$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Calculate $|\mathbf{a}| = \sqrt{1^2 + 7^2} = \sqrt{50} \approx 7.07$.
+      2. Calculate $|\mathbf{b}| = \sqrt{5^2 + 1^2} = \sqrt{26} \approx 5.10$.
+      3. Sum of magnitudes = $7.07 + 5.10 = 12.17$.
+      4. Since $10 \neq 12.17$, $|\mathbf{a} + \mathbf{b}|$ does **not** equal $|\mathbf{a}| + |\mathbf{b}|$. (This is the triangle inequality principle).
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the magnitude of resultant vectors after addition" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Problem Solving with Distance">
+    The points $P(2, 5)$ and $Q(8, y)$ are separated by a distance of $10$ units.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 200 160" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <g stroke="#e2e8f0" stroke-width="1">
+          {Array.from({length: 9}).map((_, i) => <line key={`gx-${i}`} x1="0" y1={i*20} x2="200" y2={i*20} />)}
+          {Array.from({length: 11}).map((_, i) => <line key={`gy-${i}`} x1={i*20} y1="0" x2={i*20} y2="160" />)}
+        </g>
+        <circle cx="40" cy="100" r="4" fill="#3b82f6" />
+        <text x="45" y="95" font-size="12" fill="#1d4ed8" font-weight="bold">P(2, 5)</text>
+        <line x1="40" y1="100" x2="160" y2="20" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="85" y="50" font-size="12" fill="#3b82f6" font-weight="bold" transform="rotate(-33 85 50)">Distance = 10</text>
+        <circle cx="160" cy="20" r="4" fill="#ef4444" />
+        <text x="165" y="15" font-size="12" fill="#b91c1c" font-weight="bold">Q(8, y)</text>
+      </svg>
+    </div>
+
+    a) Find the displacement vector $\overrightarrow{PQ}$ in terms of $y$.
+
+    b) Form an equation representing the magnitude of $\overrightarrow{PQ}$.
+
+    c) Solve the equation to find the two possible values of $y$.
+
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. Calculate the $x$-movement: $8 - 2 = 6$.
+      2. Calculate the $y$-movement: $y - 5$.
+      3. Displacement vector: $\overrightarrow{PQ} = \begin{pmatrix} 6 \\ y - 5 \end{pmatrix}$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The distance is the magnitude: $\sqrt{6^2 + (y - 5)^2} = 10$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Square both sides: $36 + (y - 5)^2 = 100$.
+      2. Subtract 36 from both sides: $(y - 5)^2 = 64$.
+      3. Take the square root of both sides: $y - 5 = 8$ or $y - 5 = -8$.
+      4. Solve for $y$: $y = 13$ or $y = -3$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using distance between coordinate points to solve for missing variables" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Applying Pythagoras (Word Problem)">
+    A ship sails $15$ km East and then $x$ km South. Its final distance from the starting point is $25$ km.
+
+    a) Write down its displacement vector in terms of $x$, assuming East is the positive $x$-direction and North is the positive $y$-direction.
+
+    b) Use the magnitude formula to set up an equation.
+
+    c) Solve the equation to find the distance the ship sailed South.
+
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    <Steps>
+      1. East is the positive $x$ direction, so the horizontal component is $15$.
+      2. South is the negative $y$ direction, so the vertical component is $-x$.
+      3. Displacement vector: $\begin{pmatrix} 15 \\ -x \end{pmatrix}$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The straight-line distance is the magnitude: $\sqrt{15^2 + (-x)^2} = 25$.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Square both sides: $15^2 + x^2 = 25^2$.
+      2. Expand the squares: $225 + x^2 = 625$.
+      3. Subtract 225: $x^2 = 400$.
+      4. Take the square root: $x = 20$. (Distance must be positive).
+      5. The ship sailed $20$ km South.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying vector magnitude to real-world context and displacement problems" />

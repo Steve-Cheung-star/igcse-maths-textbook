@@ -68,15 +68,13 @@ A **sample space diagram** is a 2D grid used to show all the possible outcomes o
     ))}
     
     {/* Highlight circles for sum of 6. Coords: r=1,c=3 -> x=230,y=155; r=2,c=2 -> x=190,y=195; r=3,c=1 -> x=150,y=235 */}
-    <circle cx="230" cy="150" r="14" fill="none" stroke="#10b981" stroke-width="2" />
-    <circle cx="190" cy="190" r="14" fill="none" stroke="#10b981" stroke-width="2" />
-    <circle cx="150" cy="230" r="14" fill="none" stroke="#10b981" stroke-width="2" />
+    <circle cx="230" cy="110" r="14" fill="none" stroke="#10b981" stroke-width="2" />
+    <circle cx="190" cy="150" r="14" fill="none" stroke="#10b981" stroke-width="2" />
+    <circle cx="150" cy="190" r="14" fill="none" stroke="#10b981" stroke-width="2" />
   </svg>
 </div>
 
-
-
-Looking at the sample space diagram above, there are $4 \times 4 = 16$ total possible outcomes. By counting the circled $6$s in the grid, we can easily see there are exactly $3$ ways to score a 6.
+Looking at the sample space diagram above, there are $4 \times 4 = 16$ total possible outcomes. By counting the highlighted $6$s in the grid, we can easily see there are exactly $3$ ways to score a 6.
 
 $$
 \begin{aligned}
@@ -174,8 +172,6 @@ Below is a visual comparison of picking two balls from a bag containing **3 Red 
   </div>
 </div>
 
-
-
 <SteveTip title="Adding the Ends">
 A brilliant way to check if your tree diagram is correct in an exam is to add up all the final probabilities on the far right. They MUST add up exactly to $1$ (e.g., in the Without Replacement tree: $\frac{6}{20} + \frac{6}{20} + \frac{6}{20} + \frac{2}{20} = \frac{20}{20} = 1$).
 </SteveTip>
@@ -239,8 +235,6 @@ We can also represent the probability of combined events using Venn diagrams and
 * **Intersection (AND):** $P(A \cap B)$ is the probability of choosing something that belongs to BOTH event $A$ and event $B$ (the overlapping middle section).
 * **Union (OR):** $P(A \cup B)$ is the probability of choosing something that belongs to event $A$, event $B$, or BOTH (the entirety of both circles).
 
-
-
 ---
 
 ## Practice Questions
@@ -250,6 +244,7 @@ We can also represent the probability of combined events using Venn diagrams and
     A bag contains $4$ red sweets and $6$ yellow sweets. Two sweets are selected at random **without replacement**.
     
     Calculate the probability that **at least one** of the sweets is red.
+    
   </TabItem>
   <TabItem label="✅ Solution 1">
     <Steps>
@@ -299,6 +294,7 @@ We can also represent the probability of combined events using Venn diagrams and
         <text x="40" y="170" font-weight="bold" fill="#1e293b" text-anchor="middle">6</text>
       </svg>
     </div>
+    
   </TabItem>
   <TabItem label="✅ Solution 2">
     <Steps>
@@ -338,6 +334,7 @@ We can also represent the probability of combined events using Venn diagrams and
     A token is selected at random from Box X and moved into Box Y. Then, a token is selected at random from Box Y.
     
     Calculate the probability that the token selected from Box Y is **white**.
+    
   </TabItem>
   <TabItem label="✅ Solution 3">
     <Steps>
@@ -365,3 +362,278 @@ We can also represent the probability of combined events using Venn diagrams and
 </Tabs>
 
 <SmartAIGenerator topic="Complex conditional probability involving transferring items between containers" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Sample Space with Coins and Spinners">
+    A fair coin is flipped (Heads or Tails) and a fair 3-sided spinner (numbered 1, 2, 3) is spun.
+    
+    a) Draw a sample space diagram to show all possible outcomes.
+    
+    b) Calculate the probability of getting Heads and an even number.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+      1. **Part a)** Create a grid with the coin outcomes on one axis and the spinner outcomes on the other.
+      2. The total number of outcomes is $2 \times 3 = 6$.
+    </Steps>
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 300 200" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <g stroke="#e2e8f0" stroke-width="1">
+          {[0, 1, 2].map((i) => <line key={`h-${i}`} x1="50" y1={50 + i*50} x2="250" y2={50 + i*50} />)}
+          {[0, 1, 2, 3].map((i) => <line key={`v-${i}`} x1={50 + i*60} y1="50" x2={50 + i*60} y2="150" />)}
+        </g>
+        <line x1="50" y1="100" x2="250" y2="100" stroke="#1e293b" stroke-width="2" />
+        <line x1="110" y1="50" x2="110" y2="150" stroke="#1e293b" stroke-width="2" />
+        
+        {/* Headers */}
+        <text x="80" y="80" font-weight="bold" fill="#64748b" text-anchor="middle">H</text>
+        <text x="80" y="130" font-weight="bold" fill="#64748b" text-anchor="middle">T</text>
+        <text x="140" y="40" font-weight="bold" fill="#3b82f6" text-anchor="middle">1</text>
+        <text x="200" y="40" font-weight="bold" fill="#3b82f6" text-anchor="middle">2</text>
+        <text x="260" y="40" font-weight="bold" fill="#3b82f6" text-anchor="middle">3</text>
+        
+        {/* Outcomes */}
+        <text x="140" y="80" font-weight="bold" fill="#1e293b" text-anchor="middle">H,1</text>
+        <text x="200" y="80" font-weight="bold" fill="#10b981" text-anchor="middle">H,2</text>
+        <text x="260" y="80" font-weight="bold" fill="#1e293b" text-anchor="middle">H,3</text>
+        <text x="140" y="130" font-weight="bold" fill="#1e293b" text-anchor="middle">T,1</text>
+        <text x="200" y="130" font-weight="bold" fill="#1e293b" text-anchor="middle">T,2</text>
+        <text x="260" y="130" font-weight="bold" fill="#1e293b" text-anchor="middle">T,3</text>
+      </svg>
+    </div>
+
+    <Steps>
+      3. **Part b)** From the diagram, the only outcome that is Heads AND an even number is highlighted in green (H, 2).
+      4. There is $1$ successful outcome out of $6$ total outcomes.
+      5. $P(\text{Heads and Even}) = \frac{1}{6}$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Drawing sample space diagrams for mixed independent events" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Without Replacement">
+    A box contains $5$ green apples and $4$ red apples.
+    Two apples are taken out at random, **without replacement**.
+    
+    a) Calculate the probability that both apples are green.
+    
+    b) Calculate the probability that the two apples are different colours.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+      1. **Part a)** The probability of the first apple being green is $\frac{5}{9}$.
+      2. After removing one green apple, there are $4$ green apples left out of a total of $8$ apples.
+      3. The probability of the second apple being green is $\frac{4}{8} = \frac{1}{2}$.
+      4. Multiply along the branches:
+         $$
+         \begin{aligned}
+         P(G, G) &= \frac{5}{9} \times \frac{1}{2} \\
+         &= \frac{5}{18}
+         \end{aligned}
+         $$
+      5. **Part b)** "Different colours" means picking (Green, Red) OR (Red, Green).
+      6. Path 1: $P(G, R) = \frac{5}{9} \times \frac{4}{8} = \frac{20}{72}$.
+      7. Path 2: $P(R, G) = \frac{4}{9} \times \frac{5}{8} = \frac{20}{72}$.
+      8. Add the probabilities of these mutually exclusive paths:
+         $$
+         \begin{aligned}
+         P(\text{Different colours}) &= \frac{20}{72} + \frac{20}{72} \\
+         &= \frac{40}{72} \\
+         &= \frac{5}{9}
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating probabilities of drawing items without replacement" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Venn Diagrams and Conditional Logic">
+    In a class of $30$ students:
+    * $20$ play Football ($F$)
+    * $12$ play Basketball ($B$)
+    * $5$ play neither sport.
+    
+    a) Find the number of students who play both sports, $n(F \cap B)$.
+    
+    b) A student is chosen at random. Given that they play Football, find the probability that they also play Basketball.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+      1. **Part a)** Total playing at least one sport = $30 - 5 = 25$.
+      2. Sum of Football and Basketball players = $20 + 12 = 32$.
+      3. Number of students playing both = $32 - 25 = 7$.
+      4. $n(F \cap B) = 7$.
+      5. **Part b)** We are given that the student plays Football, so our new denominator is the total number of Football players ($20$).
+      6. The number of those Football players who *also* play Basketball is the intersection ($7$).
+      7. The conditional probability is therefore:
+         $$
+         P(B \mid F) = \frac{7}{20}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using Venn diagrams for conditional probability" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Multiple Independent Events">
+    The probability that a morning bus is late is $0.15$.
+    The probability that an evening train is late is $0.2$.
+    
+    a) Calculate the probability that both the bus and the train are on time.
+    
+    b) Calculate the probability that exactly one of the services is late.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+      1. **Part a)** Find the probabilities of being on time using the complement rule.
+      2. $P(\text{Bus on time}) = 1 - 0.15 = 0.85$.
+      3. $P(\text{Train on time}) = 1 - 0.2 = 0.8$.
+      4. Multiply the independent probabilities:
+         $$
+         \begin{aligned}
+         P(\text{Both on time}) &= 0.85 \times 0.8 \\
+         &= 0.68
+         \end{aligned}
+         $$
+      5. **Part b)** "Exactly one is late" means (Bus Late AND Train On Time) OR (Bus On Time AND Train Late).
+      6. $P(\text{Bus Late, Train On Time}) = 0.15 \times 0.8 = 0.12$.
+      7. $P(\text{Bus On Time, Train Late}) = 0.85 \times 0.2 = 0.17$.
+      8. Add the two mutually exclusive paths together:
+         $$
+         \begin{aligned}
+         P(\text{Exactly one is late}) &= 0.12 + 0.17 \\
+         &= 0.29
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating probabilities of independent events" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: The 'At Least One' Strategy with Prizemoney">
+    A carnival game costs GBP 2 to play. The probability of winning the top prize of GBP 50 is $0.05$.
+    
+    A player decides to play the game $3$ times.
+    
+    a) Calculate the probability that the player wins absolutely nothing.
+    
+    b) Calculate the probability that the player wins the top prize at least once.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    <Steps>
+      1. **Part a)** The probability of losing a single game is $1 - 0.05 = 0.95$.
+      2. Since the $3$ games are independent, we multiply the probability of losing $3$ times in a row.
+         $$
+         \begin{aligned}
+         P(\text{Lose all 3}) &= 0.95 \times 0.95 \times 0.95 \\
+         &= 0.857375
+         \end{aligned}
+         $$
+      3. **Part b)** Use the complement rule for "at least one".
+      4. "At least one win" is the exact opposite of "winning nothing".
+         $$
+         \begin{aligned}
+         P(\text{At least one win}) &= 1 - P(\text{Lose all 3}) \\
+         &= 1 - 0.857375 \\
+         &= 0.142625
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the complement rule to find the probability of winning at least once" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Multi-Stage Box Transfer">
+    Container A holds $4$ blue tokens and $2$ yellow tokens.
+    Container B holds $3$ blue tokens and $5$ yellow tokens.
+    
+    One token is drawn at random from Container A and placed into Container B.
+    Then, a token is drawn at random from Container B.
+    
+    a) Given that a yellow token was transferred, state the new probability of drawing a blue token from Container B.
+    
+    b) Calculate the overall probability that the token finally drawn from Container B is blue.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    <Steps>
+      1. **Part a)** If a yellow token is transferred, Container B gains $1$ yellow token.
+      2. Container B originally had $8$ tokens ($3$ blue, $5$ yellow). It now has $9$ tokens ($3$ blue, $6$ yellow).
+      3. The new probability of drawing a blue token is $\frac{3}{9}$ or $\frac{1}{3}$.
+      4. **Part b)** We must calculate both paths that result in drawing a blue token from B.
+      5. **Path 1:** (Blue transferred) THEN (Blue drawn from B)
+         * $P(\text{Blue from A}) = \frac{4}{6}$
+         * B now has $4$ Blue, $5$ Yellow (Total $9$).
+         * $P(\text{Blue from B}) = \frac{4}{9}$
+         * Path 1 probability = $\frac{4}{6} \times \frac{4}{9} = \frac{16}{54}$
+      6. **Path 2:** (Yellow transferred) THEN (Blue drawn from B)
+         * $P(\text{Yellow from A}) = \frac{2}{6}$
+         * B now has $3$ Blue, $6$ Yellow (Total $9$).
+         * $P(\text{Blue from B}) = \frac{3}{9}$
+         * Path 2 probability = $\frac{2}{6} \times \frac{3}{9} = \frac{6}{54}$
+      7. Add the valid paths together:
+         $$
+         \begin{aligned}
+         P(\text{Blue from Container B}) &= \frac{16}{54} + \frac{6}{54} \\
+         &= \frac{22}{54} \\
+         &= \frac{11}{27}
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating probabilities with dependent events across multiple containers" />
+
+<Tabs>
+  <TabItem label="📝 Question 10: Sequential Events Until Success">
+    An archer shoots arrows at a target. The probability that she hits the bullseye on any single shot is $0.4$.
+    
+    She will keep shooting until she hits the bullseye, but she will take a **maximum of 3 shots**.
+    
+    a) Calculate the probability that she hits the bullseye on her 2nd shot.
+    
+    b) Calculate the probability that she fails to hit the bullseye entirely.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    <Steps>
+      1. **Part a)** Hitting on the 2nd shot means she must Miss on the 1st shot, then Hit on the 2nd shot.
+      2. $P(\text{Miss}) = 1 - 0.4 = 0.6$.
+      3. $P(\text{Hit}) = 0.4$.
+      4. Multiply the probabilities:
+         $$
+         \begin{aligned}
+         P(\text{Miss, Hit}) &= 0.6 \times 0.4 \\
+         &= 0.24
+         \end{aligned}
+         $$
+      5. **Part b)** Failing to hit the bullseye entirely means she must miss all 3 shots.
+      6. We need to calculate $P(\text{Miss, Miss, Miss})$.
+      7. Multiply the probability of missing $3$ times:
+         $$
+         \begin{aligned}
+         P(\text{Miss 3 times}) &= 0.6 \times 0.6 \times 0.6 \\
+         &= 0.216
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating probabilities of sequential success and failure events" />
