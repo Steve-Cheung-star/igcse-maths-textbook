@@ -64,7 +64,7 @@ When given a table, bar chart, pie chart, or scatter graph, you need to go beyon
       <text x="-15" y="55" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">45</text>
       <text x="-15" y="5" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">60</text>
 
-      {/* Bars (Values are actually 51 and 58, mapped to a scale where 200px = 60 units, so scale is 200/60 = 3.33px per unit) */}
+      {/* Bars */}
       <rect x="40" y="30" width="60" height="170" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="2" />
       <text x="70" y="220" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Brand A</text>
       
@@ -119,14 +119,14 @@ Here are the summary statistics for a maths test taken by two different classes 
       <line x1="500" y1="180" x2="500" y2="185" stroke="#94a3b8" /> <text x="500" y="200">80</text>
     </g>
 
-    {/* Class X Distribution (Wide spread: Range 40 -> 400px wide. Min 46, Max 86) */}
+    {/* Class X Distribution (Wide spread) */}
     <path d="M 160 180 Q 360 20 560 180" fill="rgba(59, 130, 246, 0.15)" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 4" />
     <line x1="360" y1="180" x2="360" y2="90" stroke="#3b82f6" stroke-width="2" />
     <text x="360" y="80" font-size="12" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Class X Median (66)</text>
     <path d="M 160 230 L 160 235 L 560 235 L 560 230" fill="none" stroke="#3b82f6" stroke-width="1.5" />
     <text x="360" y="248" font-size="12" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Wide Range = 40 (Less Consistent)</text>
 
-    {/* Class Y Distribution (Narrow spread: Range 15 -> 150px wide. Min 66.5, Max 81.5) */}
+    {/* Class Y Distribution (Narrow spread) */}
     <path d="M 365 180 Q 440 -60 515 180" fill="rgba(16, 185, 129, 0.3)" stroke="#10b981" stroke-width="2" />
     <line x1="440" y1="180" x2="440" y2="50" stroke="#10b981" stroke-width="2" />
     <text x="440" y="40" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">Class Y Median (74)</text>
@@ -173,7 +173,6 @@ Here are the most common restrictions and flaws to look out for:
         <path d="M 0 34 Q 4 38 0 42 T 0 50" transform="rotate(315)" /> {/* South East */}
       </g>
 
-      {/* Text moved to the end of waves, broken into two lines, and lowered to avoid overlap */}
       <text x="0" y="66" font-size="12" font-weight="bold" fill="#b45309" text-anchor="middle" font-family="sans-serif">
         <tspan x="0" dy="0">Summer</tspan>
         <tspan x="0" dy="14">Heat</tspan>
@@ -227,12 +226,14 @@ Here are the most common restrictions and flaws to look out for:
     Write two sentences comparing their running performances.
   </TabItem>
   <TabItem label="✅ Solution 1">
+
     <Steps>
-    1. First, compare the averages (mean). Remember that for racing, a *lower* time is better.
-    2. **Statement 1 (Average):** On average, David is the faster runner because his mean time is $11.5\text{s}$, which is lower than Sarah's mean of $12.1\text{s}$.
-    3. Next, compare the spread (range). A smaller range means the runner gets roughly the same time every race.
-    4. **Statement 2 (Spread):** However, Sarah is a much more consistent runner than David because her range is only $0.4\text{s}$, compared to David's highly varied range of $1.8\text{s}$.
+      1. First, compare the averages (mean). Remember that for racing, a *lower* time is better.
+      2. **Statement 1 (Average):** On average, David is the faster runner because his mean time is $11.5\text{s}$, which is lower than Sarah's mean of $12.1\text{s}$.
+      3. Next, compare the spread (range). A smaller range means the runner gets roughly the same time every race.
+      4. **Statement 2 (Spread):** However, Sarah is a much more consistent runner than David because her range is only $0.4\text{s}$, compared to David's highly varied range of $1.8\text{s}$.
     </Steps>
+
   </TabItem>
 </Tabs>
 
@@ -247,12 +248,14 @@ Here are the most common restrictions and flaws to look out for:
     Give two distinct reasons why the data collected may not support this conclusion.
   </TabItem>
   <TabItem label="✅ Solution 2">
+
     <Steps>
-    1. Analyse the sample size. Is it large enough?
-    2. **Reason 1:** The sample size is far too small. Surveying only $20$ people is not enough to accurately represent the views of an entire town.
-    3. Analyse the location and time (bias). Who is being asked? Who is being left out?
-    4. **Reason 2:** The sample is heavily biased. The reporter is asking people who are already at a shopping mall, meaning they likely enjoy shopping more than the average resident. Also, by asking on a Tuesday morning, they are missing anyone who works standard weekday hours or is at school.
+      1. Analyse the sample size. Is it large enough?
+      2. **Reason 1:** The sample size is far too small. Surveying only $20$ people is not enough to accurately represent the views of an entire town.
+      3. Analyse the location and time (bias). Who is being asked? Who is being left out?
+      4. **Reason 2:** The sample is heavily biased. The reporter is asking people who are already at a shopping mall, meaning they likely enjoy shopping more than the average resident. Also, by asking on a Tuesday morning, they are missing anyone who works standard weekday hours or is at school.
     </Steps>
+
   </TabItem>
 </Tabs>
 
@@ -294,12 +297,21 @@ Here are the most common restrictions and flaws to look out for:
     b) The shop owner concludes: *"Eating ice cream causes people's eyes to become sensitive, which makes them buy sunglasses."* Explain why this conclusion is logically flawed.
   </TabItem>
   <TabItem label="✅ Solution 3">
+    **a)**
+
     <Steps>
-    1. **Part (a):** As the number of ice creams sold increases, the number of sunglasses sold also increases.
-    2. **Answer a:** The graph shows a **strong positive correlation**.
-    3. **Part (b):** The owner is confusing correlation with causation.
-    4. **Answer b:** Correlation does not imply causation. It is highly unlikely that ice cream physically causes eye sensitivity. Instead, there is a **hidden third variable** (the hot, sunny weather). Sunny weather causes *both* ice cream sales and sunglass sales to increase at the same time.
+      1. As the number of ice creams sold increases, the number of sunglasses sold also increases.
+      2. The graph shows a **strong positive correlation**.
     </Steps>
+
+    **b)**
+
+    <Steps>
+      1. The owner is confusing correlation with causation.
+      2. Correlation does not imply causation. It is highly unlikely that ice cream physically causes eye sensitivity.
+      3. Instead, there is a **hidden third variable** (the hot, sunny weather). Sunny weather causes *both* ice cream sales and sunglass sales to increase at the same time.
+    </Steps>
+
   </TabItem>
 </Tabs>
 
@@ -348,15 +360,29 @@ Here are the most common restrictions and flaws to look out for:
     c) Although the 2024 bar is mathematically $9$ times taller than the 2023 bar on this graph, calculate the *actual* percentage increase in followers.
   </TabItem>
   <TabItem label="✅ Solution 4">
+    **a)**
+
     <Steps>
-    1. **Part (a):** Read the heights against the $y$-axis.
-    2. **Answer a:** In 2023, they had approximately **$91,000$** followers. In 2024, they had approximately **$99,000$** followers.
-    3. **Part (b):** Look at where the $y$-axis begins.
-    4. **Answer b:** The $y$-axis does not start at zero (it has been truncated at $90,000$). This artificially exaggerates the visual difference between the two bars, making a small increase look massive.
-    5. **Part (c):** Calculate percentage change: $\frac{\text{Change}}{\text{Original}} \times 100$.
-    6. **Answer c:** Change $= 99,000 - 91,000 = 8,000$. 
-       Percentage increase $= \frac{8,000}{91,000} \times 100 \approx 8.79\%$.
+      1. Read the heights against the $y$-axis.
+      2. In 2023, they had approximately **$91,000$** followers. In 2024, they had approximately **$99,000$** followers.
     </Steps>
+
+    **b)**
+
+    <Steps>
+      1. Look at where the $y$-axis begins.
+      2. The $y$-axis does not start at zero (it has been truncated at $90,000$). This artificially exaggerates the visual difference between the two bars, making a small increase look massive.
+    </Steps>
+
+    **c)**
+
+    <Steps>
+      1. Calculate percentage change: $\frac{\text{Change}}{\text{Original}} \times 100$.
+      2. Change $= 99,000 - 91,000 = 8,000$. 
+      3. Percentage increase $= \frac{8,000}{91,000} \times 100 \approx 8.79\%$.
+      4. The actual increase is only **$8.79\%$**.
+    </Steps>
+
   </TabItem>
 </Tabs>
 
@@ -376,13 +402,169 @@ Here are the most common restrictions and flaws to look out for:
     b) The farmer decides to buy Brand A. Using the statistical data, give a valid reason why he might have chosen Brand A over Brand B.
   </TabItem>
   <TabItem label="✅ Solution 5">
+    **a)**
+
     <Steps>
-    1. **Part (a):** Averages describe the typical amount. Look at the medians.
-    2. **Answer a:** **Brand B** produced a better typical yield because its median ($148\text{ kg}$) is higher than Brand A's median ($145\text{ kg}$).
-    3. **Part (b):** Look at the spread. Why would someone prefer the fertiliser with the slightly lower average?
-    4. **Answer b:** The farmer likely chose Brand A because its yield is much more **consistent** (or reliable). We know this because Brand A has a significantly smaller range ($12\text{ kg}$) compared to the highly unpredictable range of Brand B ($45\text{ kg}$).
+      1. Averages describe the typical amount. Look at the medians.
+      2. **Brand B** produced a better typical yield because its median ($148\text{ kg}$) is higher than Brand A's median ($145\text{ kg}$).
     </Steps>
+
+    **b)**
+
+    <Steps>
+      1. Look at the spread. Why would someone prefer the fertiliser with the slightly lower average?
+      2. The farmer likely chose Brand A because its yield is much more **consistent** (or reliable). 
+      3. We know this because Brand A has a significantly smaller range ($12\text{ kg}$) compared to the highly unpredictable range of Brand B ($45\text{ kg}$).
+    </Steps>
+
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Using range and consistency to justify real-world statistical choices" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Identifying Sampling Bias">
+    A school principal wants to know if the students would like to change the school uniform. To find out, he surveys $40$ students who are currently sitting in detention after school.
+    
+    a) What is the sample size in this survey?
+
+    b) Explain why this sampling method is biased and may not reflect the views of the whole school.
+
+    c) Suggest a more reliable sampling method the principal could use.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+
+    <Steps>
+      1. The sample size is simply the number of people surveyed.
+      2. The sample size is **$40$**.
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. A biased sample does not fairly represent the entire population.
+      2. Surveying students in detention means the principal is only asking students who have likely broken school rules. These students might have a more negative view of the school uniform than the average student, making the data unreliable.
+    </Steps>
+
+    **c)**
+
+    <Steps>
+      1. A reliable sample should give everyone an equal chance of being selected.
+      2. A better method would be to use a **random sample**, such as randomly selecting $5$ students from every class register across the school.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying sampling bias and suggesting random sampling methods" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Interpreting Box Plot Statistics">
+    Two battery companies, VoltCore and EnerCell, test the lifespan of their AA batteries. They record the lifespan in hours. The results are summarised below:
+    
+    * **VoltCore:** Median $= 45 \text{ hours}$, Interquartile Range (IQR) $= 4 \text{ hours}$
+    * **EnerCell:** Median $= 41 \text{ hours}$, Interquartile Range (IQR) $= 12 \text{ hours}$
+    
+    Write two sentences to compare the performance of the two battery brands.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+
+    <Steps>
+      1. Compare the central tendency using the median. A higher lifespan is better.
+      2. **Statement 1:** On average, VoltCore batteries last longer because their median lifespan is $45 \text{ hours}$, compared to EnerCell's median of $41 \text{ hours}$.
+      3. Compare the dispersion using the IQR. A smaller IQR means the data is more consistent.
+      4. **Statement 2:** VoltCore batteries are also much more reliable and consistent, as their IQR is only $4 \text{ hours}$, which is much smaller than EnerCell's highly variable IQR of $12 \text{ hours}$.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing data using Median and Interquartile Range (IQR)" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Deceptive Pictograms">
+    A coffee shop displays a pictogram to show their annual profits. 
+    
+    * In 2022, the profit was $10,000 \text{ USD}$. This is represented by a circle with a radius of $1\text{ cm}$.
+    * In 2023, the profit was $20,000 \text{ USD}$. This is represented by a circle with a radius of $2\text{ cm}$.
+    
+    a) What is the ratio of the true profit in 2023 compared to 2022?
+
+    b) Explain mathematically why representing the 2023 profit with a circle of $2\text{ cm}$ radius is highly misleading to customers.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+
+    <Steps>
+      1. Divide the 2023 profit by the 2022 profit.
+      2. $20,000 \div 10,000 = 2$.
+      3. The true profit has exactly **doubled** (a ratio of $2:1$).
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. Consider how the human eye interprets the size of 2D shapes on a pictogram. We look at the total *Area*, not just the radius.
+      2. Area of 2022 circle $= \pi \times 1^2 = 1\pi \text{ cm}^2$.
+      3. Area of 2023 circle $= \pi \times 2^2 = 4\pi \text{ cm}^2$.
+      4. Because the radius was doubled, the actual area drawn is **four times larger**. This is misleading because the viewer will visually assume profits quadrupled, when they only doubled.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Understanding how 2D scaling in pictograms can distort data interpretation" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Hidden Variables in Scatter Graphs">
+    A researcher visits a hospital and plots a scatter graph showing the number of doctors on duty versus the number of patients admitted that day. The graph shows a very strong positive correlation.
+    
+    The researcher writes in their report: *"Hiring more doctors causes more people to get sick and be admitted to the hospital."*
+    
+    Explain why this statement is incorrect and suggest a more logical reason for the correlation.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+
+    <Steps>
+      1. Identify the logical fallacy in the researcher's statement.
+      2. The statement falsely assumes that **correlation equals causation**. Doctors do not cause patients to become sick.
+      3. Suggest the hidden third variable or the true direction of causation.
+      4. In reality, the causation is likely reversed or driven by external factors: when a hospital knows there will be a busy period (e.g., during flu season), they deliberately schedule more doctors to be on duty to handle the increased number of sick patients.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying reverse causation and logical fallacies in positive correlations" />
+
+<Tabs>
+  <TabItem label="📝 Question 10: Summary Statistics Comparison">
+    The weights (in kg) of two breeds of dogs, Breed X and Breed Y, are recorded.
+    
+    * **Breed X:** Mean $= 22 \text{ kg}$, Range $= 3.5 \text{ kg}$
+    * **Breed Y:** Mean $= 25 \text{ kg}$, Range $= 8.2 \text{ kg}$
+    
+    a) Which breed is generally heavier? Give a reason.
+
+    b) Which breed has weights that are more spread out? Give a reason.
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    **a)**
+
+    <Steps>
+      1. To determine which is "generally" heavier, look at the measure of central tendency (the mean).
+      2. **Breed Y** is generally heavier because its mean weight of $25 \text{ kg}$ is higher than Breed X's mean weight of $22 \text{ kg}$.
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. To determine spread, look at the measure of dispersion (the range).
+      2. **Breed Y** has more spread out weights because its range of $8.2 \text{ kg}$ is much larger than Breed X's range of $3.5 \text{ kg}$.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing basic summary statistics for mean and range" />

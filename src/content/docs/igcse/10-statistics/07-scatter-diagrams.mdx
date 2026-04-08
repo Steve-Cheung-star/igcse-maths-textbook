@@ -65,8 +65,8 @@ When we want to see if there is a relationship between two different variables (
 * **Zero Correlation:** There is no relationship at all between the variables (e.g., Number of pets owned and Score on a maths test). The points are scattered randomly.
 
 <Aside type="note" title="Strong vs. Weak">
-Correlation can also be described as **strong** or **weak**. 
-If the points are clustered tightly together in a straight line, the correlation is **strong**. If the points follow a general trend but are widely spread out, the correlation is **weak**.
+  Correlation can also be described as **strong** or **weak**. 
+  If the points are clustered tightly together in a straight line, the correlation is **strong**. If the points follow a general trend but are widely spread out, the correlation is **weak**.
 </Aside>
 
 ---
@@ -76,9 +76,9 @@ If the points are clustered tightly together in a straight line, the correlation
 When asked to draw a scatter diagram in the exam, there are strict rules you must follow to secure your plotting marks.
 
 <SteveTip title="The Golden Rules of Plotting">
-1. **Use Crosses:** You **MUST** plot points using small, neat crosses ($\times$). Do not use dots or filled circles! Examiners will deduct marks if your points are not clear crosses.
-2. **Read the Scale Carefully:** Do not blindly assume that one little square on the grid equals $1$ unit. Common values for one small square are $1, 2, 5, 0.1, 0.2,$ or $0.5$. 
-   *Pro-tip:* To find the exact value of one small square, locate two major number labels on the axis, find their difference (e.g., $40 - 20 = 20$), count the number of small squares between them (e.g., $10$ squares), and divide the difference by the number of squares ($20 \div 10 = 2$ units per square). Be mindful of this!
+  1. **Use Crosses:** You **MUST** plot points using small, neat crosses ($\times$). Do not use dots or filled circles! Examiners will deduct marks if your points are not clear crosses.
+  2. **Read the Scale Carefully:** Do not blindly assume that one little square on the grid equals $1$ unit. Common values for one small square are $1, 2, 5, 0.1, 0.2,$ or $0.5$. 
+     *Pro-tip:* To find the exact value of one small square, locate two major number labels on the axis, find their difference (e.g., $40 - 20 = 20$), count the number of small squares between them (e.g., $10$ squares), and divide the difference by the number of squares ($20 \div 10 = 2$ units per square). Be mindful of this!
 </SteveTip>
 
 ### Example: Plotting Additional Points
@@ -264,8 +264,8 @@ If an exam question asks you to draw a line of best fit "by eye", you must follo
 Once you have drawn the line of best fit, you can use it to estimate values. 
 
 <Aside type="caution" title="Interpolation vs. Extrapolation">
-* **Interpolation:** Estimating a value *inside* the range of your plotted data. This is generally **reliable**.
-* **Extrapolation:** Extending the line to estimate a value *outside* the range of your plotted data. This is **unreliable** because we don't know if the trend continues beyond the data we have measured. Examiners love asking why an estimate is unreliable!
+  * **Interpolation:** Estimating a value *inside* the range of your plotted data. This is generally **reliable**.
+  * **Extrapolation:** Extending the line to estimate a value *outside* the range of your plotted data. This is **unreliable** because we don't know if the trend continues beyond the data we have measured. Examiners love asking why an estimate is unreliable!
 </Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
@@ -348,115 +348,676 @@ $$
 ## Practice Questions
 
 <Tabs>
-  <TabItem label="📝 Q1: Plotting and Scale">
-    The scatter graph shows the heights and weights of some dogs. 
-    The x-axis (Height) has 1 large square representing 10 cm, split into 10 small squares.
-    The y-axis (Weight) has 1 large square representing 5 kg, split into 10 small squares.
+  <TabItem label="📝 Q1: Plotting with Grid Scale (Positive Correlation)">
+    The scatter graph shows the heights of trees (m) and their trunk diameter (cm). 
+    Six trees have already been plotted.
     
-    A new dog is 44 cm tall and weighs 21.5 kg. 
-    Explain exactly how many small squares along and up from the origin you would plot this cross.
+    You need to plot two additional trees:
+    * **Tree G:** Height 23 m, Diameter 115 cm
+    * **Tree H:** Height 35 m, Diameter 142.5 cm
+    
+    Explain how you would locate the exact positions for Tree G and Tree H on the grid provided below, noting that some points fall perfectly between the grid lines.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 380 320" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q1_smallGrid" width="5" height="5" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 5 0 L 0 0 0 5" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q1_majorGrid" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="50" fill="url(#q1_smallGrid)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+
+        <rect x="50" y="20" width="250" height="250" fill="url(#q1_majorGrid)" stroke="#94a3b8" stroke-width="1.5" />
+        
+        <text x="175" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Height (m)</text>
+        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Diameter (cm)</text>
+
+        <text x="50" y="285" font-size="10" fill="#475569" text-anchor="middle">0</text>
+        <text x="100" y="285" font-size="10" fill="#475569" text-anchor="middle">10</text>
+        <text x="150" y="285" font-size="10" fill="#475569" text-anchor="middle">20</text>
+        <text x="200" y="285" font-size="10" fill="#475569" text-anchor="middle">30</text>
+        <text x="250" y="285" font-size="10" fill="#475569" text-anchor="middle">40</text>
+        <text x="300" y="285" font-size="10" fill="#475569" text-anchor="middle">50</text>
+
+        <text x="40" y="273" font-size="10" fill="#475569" text-anchor="end">0</text>
+        <text x="40" y="223" font-size="10" fill="#475569" text-anchor="end">50</text>
+        <text x="40" y="173" font-size="10" fill="#475569" text-anchor="end">100</text>
+        <text x="40" y="123" font-size="10" fill="#475569" text-anchor="end">150</text>
+        <text x="40" y="73" font-size="10" fill="#475569" text-anchor="end">200</text>
+        <text x="40" y="23" font-size="10" fill="#475569" text-anchor="end">250</text>
+
+        <path d="M 71 236 L 79 244 M 71 244 L 79 236" stroke="#0284c7" stroke-width="2" />
+        <path d="M 106 206 L 114 214 M 106 214 L 114 206" stroke="#0284c7" stroke-width="2" />
+        <path d="M 136 181 L 144 189 M 136 189 L 144 181" stroke="#0284c7" stroke-width="2" />
+        <path d="M 186 126 L 194 134 M 186 134 L 194 126" stroke="#0284c7" stroke-width="2" />
+        <path d="M 246 61 L 254 69 M 246 69 L 254 61" stroke="#0284c7" stroke-width="2" />
+        <path d="M 271 36 L 279 44 M 271 44 L 279 36" stroke="#0284c7" stroke-width="2" />
+      </svg>
+    </div>
   </TabItem>
   <TabItem label="✅ Solution 1">
     <Steps>
-      1. **X-axis (Height):** 10 small squares = 10 cm. 
-         Therefore, 1 small square = $10 \div 10 = 1$ cm.
-         To plot 44 cm, move **44 small squares** along the x-axis.
-      2. **Y-axis (Weight):** 10 small squares = 5 kg. 
-         Therefore, 1 small square = $5 \div 10 = 0.5$ kg.
-         To plot 21.5 kg, divide the weight by the value of one square:
-         $21.5 \div 0.5 = 43$.
-         Move **43 small squares** up the y-axis.
-      3. Plot a small, neat cross ($\times$) at this exact intersection.
+      1. **Analyze the Grid Scale:**
+         * **X-axis:** 10 small squares = 10 units. Therefore, **1 small square = 1 m**.
+         * **Y-axis:** 10 small squares = 50 units. Therefore, **1 small square = 5 cm**.
+      2. **Plotting Tree G $(23, 115)$:**
+         * Move 23 small squares to the right along the X-axis.
+         * Divide the Y-value by the Y-scale: $115 \div 5 = 23$. Move exactly **23 small squares up**. Plot the cross.
+      3. **Plotting Tree H $(35, 142.5)$:**
+         * Move 35 small squares to the right along the X-axis.
+         * Divide the Y-value by the Y-scale: $142.5 \div 5 = 28.5$. Move **28 and a half squares up**. This point sits perfectly on the halfway line between two small grid lines!
     </Steps>
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 380 320" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q1_sol_smallGrid" width="5" height="5" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 5 0 L 0 0 0 5" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q1_sol_majorGrid" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="50" fill="url(#q1_sol_smallGrid)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+        <rect x="50" y="20" width="250" height="250" fill="url(#q1_sol_majorGrid)" stroke="#94a3b8" stroke-width="1.5" />
+        
+        <text x="175" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Height (m)</text>
+        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Diameter (cm)</text>
+
+        <text x="50" y="285" font-size="10" fill="#475569" text-anchor="middle">0</text>
+        <text x="100" y="285" font-size="10" fill="#475569" text-anchor="middle">10</text>
+        <text x="150" y="285" font-size="10" fill="#475569" text-anchor="middle">20</text>
+        <text x="200" y="285" font-size="10" fill="#475569" text-anchor="middle">30</text>
+        <text x="250" y="285" font-size="10" fill="#475569" text-anchor="middle">40</text>
+        <text x="300" y="285" font-size="10" fill="#475569" text-anchor="middle">50</text>
+
+        <text x="40" y="273" font-size="10" fill="#475569" text-anchor="end">0</text>
+        <text x="40" y="223" font-size="10" fill="#475569" text-anchor="end">50</text>
+        <text x="40" y="173" font-size="10" fill="#475569" text-anchor="end">100</text>
+        <text x="40" y="123" font-size="10" fill="#475569" text-anchor="end">150</text>
+        <text x="40" y="73" font-size="10" fill="#475569" text-anchor="end">200</text>
+        <text x="40" y="23" font-size="10" fill="#475569" text-anchor="end">250</text>
+
+        <path d="M 71 236 L 79 244 M 71 244 L 79 236" stroke="#0284c7" stroke-width="2" />
+        <path d="M 106 206 L 114 214 M 106 214 L 114 206" stroke="#0284c7" stroke-width="2" />
+        <path d="M 136 181 L 144 189 M 136 189 L 144 181" stroke="#0284c7" stroke-width="2" />
+        <path d="M 186 126 L 194 134 M 186 134 L 194 126" stroke="#0284c7" stroke-width="2" />
+        <path d="M 246 61 L 254 69 M 246 69 L 254 61" stroke="#0284c7" stroke-width="2" />
+        <path d="M 271 36 L 279 44 M 271 44 L 279 36" stroke="#0284c7" stroke-width="2" />
+
+        <circle cx="165" cy="155" r="8" fill="none" stroke="#ef4444" stroke-width="2" />
+        <path d="M 161 151 L 169 159 M 161 159 L 169 151" stroke="#ef4444" stroke-width="2" />
+        <text x="180" y="158" font-size="10" font-weight="bold" fill="#ef4444">Tree G</text>
+
+        <circle cx="225" cy="127.5" r="8" fill="none" stroke="#ef4444" stroke-width="2" />
+        <path d="M 221 123.5 L 229 131.5 M 221 131.5 L 229 123.5" stroke="#ef4444" stroke-width="2" />
+        <text x="240" y="130" font-size="10" font-weight="bold" fill="#ef4444">Tree H</text>
+      </svg>
+    </div>
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Understanding and reading grid scales to accurately plot coordinates" />
 
 <Tabs>
-  <TabItem label="📝 Q2: Calculating the Mean Point">
-    A botanist measures the temperature ($x ^\circ\text{C}$) and the growth of a plant ($y$ mm) over 5 days.
-    The results are:
-    $(15, 20), (18, 26), (20, 30), (22, 35), (25, 44)$.
+  <TabItem label="📝 Q2: Plotting with Decimal Grids (Negative Correlation)">
+    A real estate agent plots the distance from the city centre ($x$ km) against the monthly rent ($y$ in thousands of USD) for apartments. 
     
-    Calculate the coordinates of the mean point $(\bar{x}, \bar{y})$.
+    The partially completed scatter plot is below. 
+    
+    a) Determine the value of one small square on both the x-axis and the y-axis.
+    
+    b) You need to add two more apartments to the grid:
+       * **Apt M:** 12.25 km from the centre, Rent 2.15 thousand USD
+       * **Apt N:** 22.5 km from the centre, Rent 0.8 thousand USD
+       
+       Explain how you would plot Apt M and Apt N on the grid.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 380 320" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q2_smallGrid" width="5" height="5" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 5 0 L 0 0 0 5" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q2_majorGrid" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="50" fill="url(#q2_smallGrid)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+
+        <rect x="50" y="20" width="250" height="250" fill="url(#q2_majorGrid)" stroke="#94a3b8" stroke-width="1.5" />
+        
+        <text x="175" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Distance from City Centre (km)</text>
+        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Monthly Rent (1000 USD)</text>
+
+        <text x="50" y="285" font-size="10" fill="#475569" text-anchor="middle">0</text>
+        <text x="100" y="285" font-size="10" fill="#475569" text-anchor="middle">5</text>
+        <text x="150" y="285" font-size="10" fill="#475569" text-anchor="middle">10</text>
+        <text x="200" y="285" font-size="10" fill="#475569" text-anchor="middle">15</text>
+        <text x="250" y="285" font-size="10" fill="#475569" text-anchor="middle">20</text>
+        <text x="300" y="285" font-size="10" fill="#475569" text-anchor="middle">25</text>
+
+        <text x="40" y="273" font-size="10" fill="#475569" text-anchor="end">0</text>
+        <text x="40" y="223" font-size="10" fill="#475569" text-anchor="end">1</text>
+        <text x="40" y="173" font-size="10" fill="#475569" text-anchor="end">2</text>
+        <text x="40" y="123" font-size="10" fill="#475569" text-anchor="end">3</text>
+        <text x="40" y="73" font-size="10" fill="#475569" text-anchor="end">4</text>
+        <text x="40" y="23" font-size="10" fill="#475569" text-anchor="end">5</text>
+
+        <path d="M 66 41 L 74 49 M 66 49 L 74 41" stroke="#0284c7" stroke-width="2" />
+        <path d="M 96 76 L 104 84 M 96 84 L 104 76" stroke="#0284c7" stroke-width="2" />
+        <path d="M 146 141 L 154 149 M 146 149 L 154 141" stroke="#0284c7" stroke-width="2" />
+        <path d="M 196 176 L 204 184 M 196 184 L 204 176" stroke="#0284c7" stroke-width="2" />
+        <path d="M 246 206 L 254 214 M 246 214 L 254 206" stroke="#0284c7" stroke-width="2" />
+      </svg>
+    </div>
   </TabItem>
   <TabItem label="✅ Solution 2">
+    **a)**
     <Steps>
-      1. Calculate the mean of the $x$-values:
-         
-         $$
-         \bar{x} = \frac{15 + 18 + 20 + 22 + 25}{5} = \frac{100}{5} = 20
-         $$
-         
-      2. Calculate the mean of the $y$-values:
-         
-         $$
-         \bar{y} = \frac{20 + 26 + 30 + 35 + 44}{5} = \frac{155}{5} = 31
-         $$
-         
-      3. **Mean Point:** $(20, 31)$
+      1. **X-axis:** The gap between major labels (e.g., 0 to 5) spans 10 small squares. 
+         $5 \div 10 = \mathbf{0.5 \text{ km}}$ per small square.
+      2. **Y-axis:** The gap between major labels (e.g., 0 to 1) spans 10 small squares. 
+         $1 \div 10 = \mathbf{0.1 \text{ thousand USD}}$ per small square.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. **Apt M $(12.25, 2.15)$:** * For X ($12.25$): Divide by $0.5$ scale $\rightarrow$ $24.5$ small squares. This is precisely **halfway** between the 24th and 25th small vertical grid line.
+         * For Y ($2.15$): Divide by $0.1$ scale $\rightarrow$ $21.5$ small squares. This is precisely **halfway** between the 21st and 22nd horizontal grid line from the bottom.
+      2. **Apt N $(22.5, 0.8)$:**
+         * For X ($22.5$): Divide by $0.5$ scale $\rightarrow$ exactly **45 small squares** to the right.
+         * For Y ($0.8$): Divide by $0.1$ scale $\rightarrow$ exactly **8 small squares** up.
     </Steps>
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Calculating the mean point from a set of bivariate data coordinates" />
 
 <Tabs>
-  <TabItem label="📝 Q3: Equation of Linear Regression (Extended)">
-    The table shows the number of hours studied ($x$) and the test score ($y$) for 6 students.
+  <TabItem label="📝 Q3: Mean Point and Line of Best Fit">
+    A botanist records the age ($x$ weeks) and the height ($y$ cm) of 6 plants of the same species.
     
-    | Hours ($x$) | Score ($y$) |
-    | :--- | :--- |
-    | 2 | 45 |
-    | 3 | 55 |
-    | 5 | 70 |
-    | 6 | 80 |
-    | 8 | 90 |
-    | 9 | 95 |
+    | Age ($x$) | 2 | 4 | 5 | 7 | 8 | 10 |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Height ($y$)** | 12 | 22 | 26 | 38 | 44 | 50 |
 
-    a) Use your graphic display calculator to find the equation of the linear regression line, in the form $y = mx + c$.
-    b) Use your equation to estimate the score of a student who studied for $4$ hours.
+    a) Calculate the coordinates of the mean point $(\bar{x}, \bar{y})$.
+    
+    b) Using the partially filled scatter diagram below, plot the mean point and label it 'M'.
+    
+    c) Draw a single, straight line of best fit by eye, ensuring it follows the strict rules for the exam.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 380 320" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q3_smallGrid" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q3_majorGrid" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="50" fill="url(#q3_smallGrid)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+        <rect x="50" y="20" width="250" height="250" fill="url(#q3_majorGrid)" stroke="#94a3b8" stroke-width="1.5" />
+        
+        <text x="175" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Age (weeks)</text>
+        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Height (cm)</text>
+
+        <text x="50" y="285" font-size="10" fill="#475569" text-anchor="middle">0</text>
+        <text x="100" y="285" font-size="10" fill="#475569" text-anchor="middle">2</text>
+        <text x="150" y="285" font-size="10" fill="#475569" text-anchor="middle">4</text>
+        <text x="200" y="285" font-size="10" fill="#475569" text-anchor="middle">6</text>
+        <text x="250" y="285" font-size="10" fill="#475569" text-anchor="middle">8</text>
+        <text x="300" y="285" font-size="10" fill="#475569" text-anchor="middle">10</text>
+
+        <text x="40" y="273" font-size="10" fill="#475569" text-anchor="end">0</text>
+        <text x="40" y="223" font-size="10" fill="#475569" text-anchor="end">10</text>
+        <text x="40" y="173" font-size="10" fill="#475569" text-anchor="end">20</text>
+        <text x="40" y="123" font-size="10" fill="#475569" text-anchor="end">30</text>
+        <text x="40" y="73" font-size="10" fill="#475569" text-anchor="end">40</text>
+        <text x="40" y="23" font-size="10" fill="#475569" text-anchor="end">50</text>
+
+        <path d="M 96 206 L 104 214 M 96 214 L 104 206" stroke="#0284c7" stroke-width="2" />
+        <path d="M 146 156 L 154 164 M 146 164 L 154 156" stroke="#0284c7" stroke-width="2" />
+        <path d="M 171 136 L 179 144 M 171 144 L 179 136" stroke="#0284c7" stroke-width="2" />
+        <path d="M 221 76 L 229 84 M 221 84 L 229 76" stroke="#0284c7" stroke-width="2" />
+        <path d="M 246 46 L 254 54 M 246 54 L 254 46" stroke="#0284c7" stroke-width="2" />
+        <path d="M 296 16 L 304 24 M 296 24 L 304 16" stroke="#0284c7" stroke-width="2" />
+      </svg>
+    </div>
   </TabItem>
   <TabItem label="✅ Solution 3">
+    **a)** 
     <Steps>
-      1. **Part a:** Enter the $x$ values into column A and $y$ values into column B on your GDC.
-      2. Run the Linear Regression (mx+b) calculation.
-      3. The calculator outputs:
-         $m = 7.152...$
-         $b = 33.152...$
-      4. Write the equation to 3 significant figures:
-         
-         $$
-         y = 7.15x + 33.2
-         $$
-         
-      5. **Part b:** Substitute $x = 4$ into your equation.
-         
-         $$
-         y = 7.15(4) + 33.2
-         $$
-         
-         $$
-         y = 28.6 + 33.2 = 61.8
-         $$
-         
-      6. The estimated score is **$61.8$**. *(This is a reliable estimate because $x=4$ is an interpolation within our data range).*
+      1. Calculate the mean of the $x$-values:
+         $\bar{x} = \frac{2 + 4 + 5 + 7 + 8 + 10}{6} = \frac{36}{6} = 6$
+      2. Calculate the mean of the $y$-values:
+         $\bar{y} = \frac{12 + 22 + 26 + 38 + 44 + 50}{6} = \frac{192}{6} = 32$
+      3. The mean point is **$(6, 32)$**.
     </Steps>
+
+    **b & c)** 
+    <Steps>
+      1. Plot the mean point $(6, 32)$ clearly.
+      2. Draw a ruled line of best fit that directly intersects the mean point and balances the other points around it.
+    </Steps>
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 380 320" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q3_sol_smallGrid" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q3_sol_majorGrid" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="50" fill="url(#q3_sol_smallGrid)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+        <rect x="50" y="20" width="250" height="250" fill="url(#q3_sol_majorGrid)" stroke="#94a3b8" stroke-width="1.5" />
+        
+        <text x="175" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Age (weeks)</text>
+        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Height (cm)</text>
+
+        <text x="50" y="285" font-size="10" fill="#475569" text-anchor="middle">0</text>
+        <text x="100" y="285" font-size="10" fill="#475569" text-anchor="middle">2</text>
+        <text x="150" y="285" font-size="10" fill="#475569" text-anchor="middle">4</text>
+        <text x="200" y="285" font-size="10" fill="#475569" text-anchor="middle">6</text>
+        <text x="250" y="285" font-size="10" fill="#475569" text-anchor="middle">8</text>
+        <text x="300" y="285" font-size="10" fill="#475569" text-anchor="middle">10</text>
+
+        <text x="40" y="273" font-size="10" fill="#475569" text-anchor="end">0</text>
+        <text x="40" y="223" font-size="10" fill="#475569" text-anchor="end">10</text>
+        <text x="40" y="173" font-size="10" fill="#475569" text-anchor="end">20</text>
+        <text x="40" y="123" font-size="10" fill="#475569" text-anchor="end">30</text>
+        <text x="40" y="73" font-size="10" fill="#475569" text-anchor="end">40</text>
+        <text x="40" y="23" font-size="10" fill="#475569" text-anchor="end">50</text>
+
+        <path d="M 96 206 L 104 214 M 96 214 L 104 206" stroke="#0284c7" stroke-width="2" />
+        <path d="M 146 156 L 154 164 M 146 164 L 154 156" stroke="#0284c7" stroke-width="2" />
+        <path d="M 171 136 L 179 144 M 171 144 L 179 136" stroke="#0284c7" stroke-width="2" />
+        <path d="M 221 76 L 229 84 M 221 84 L 229 76" stroke="#0284c7" stroke-width="2" />
+        <path d="M 246 46 L 254 54 M 246 54 L 254 46" stroke="#0284c7" stroke-width="2" />
+        <path d="M 296 16 L 304 24 M 296 24 L 304 16" stroke="#0284c7" stroke-width="2" />
+
+        <circle cx="200" cy="110" r="8" fill="none" stroke="#ef4444" stroke-width="2" />
+        <path d="M 196 106 L 204 114 M 196 114 L 204 106" stroke="#ef4444" stroke-width="2" />
+        <text x="215" y="115" font-size="12" font-weight="bold" fill="#ef4444">M (6, 32)</text>
+
+        <line x1="50" y1="252.5" x2="300" y2="15" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5" />
+      </svg>
+    </div>
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Using a GDC to find the linear regression equation and making estimates" />
 
 <Tabs>
-  <TabItem label="📝 Q4: Reliability of Estimates">
-    Using the data from Question 3, a teacher estimates the score of a student who studied for $15$ hours. 
-    State whether this estimate is reliable, and give a mathematical reason for your answer.
+  <TabItem label="📝 Q4: Equation of Linear Regression (GDC)">
+    A factory machine's value depreciates as it ages. The table below shows the age of 5 similar machines ($x$ years) and their current value ($y$ in USD).
+    
+    | Age ($x$) | 2 | 4 | 5 | 7 | 9 |
+    | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Value ($y$)** | 18500 | 14200 | 11500 | 7800 | 4500 |
+
+    a) State whether the correlation for this data is positive, negative, or zero.
+    
+    b) Use your Graphic Display Calculator to find the exact equation of the linear regression line, $y = mx + c$. Give $m$ and $c$ to 3 significant figures.
   </TabItem>
   <TabItem label="✅ Solution 4">
+    **a)**
     <Steps>
-      1. Look at the original data table. The $x$-values (hours studied) range from $2$ to $9$.
-      2. The value $x = 15$ is far outside the range of our given data.
-      3. **Answer:** The estimate is **unreliable**.
-      4. **Reason:** This is **extrapolation**. We cannot be sure that the linear trend continues beyond 9 hours (e.g., the student might get tired and their score might plateau).
+      1. As the age ($x$) increases, the value ($y$) decreases. 
+      2. Therefore, this is a **negative correlation**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Enter the $x$ values into your GDC Lists & Spreadsheet (Column A).
+      2. Enter the $y$ values into Column B.
+      3. Run the **Linear Regression (mx+b)** calculation.
+      4. The calculator provides:
+         $m = -1994.04...$
+         $b = 22160.7...$
+      5. Round to 3 significant figures: $m = -1990$, $c = 22200$.
+      6. Final Equation: **$y = -1990x + 22200$**
     </Steps>
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Evaluating the reliability of estimates using interpolation versus extrapolation" />
+
+<Tabs>
+  <TabItem label="📝 Q5: Reliability and Extrapolation">
+    Using the regression equation from Question 4 ($y = -1990x + 22200$), the factory manager wants to predict the value of a machine that is $14$ years old.
+    
+    a) Use the equation to calculate the predicted value of the machine.
+    
+    b) Explain why relying on this specific estimate might lead to a poor financial decision.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. Substitute $x = 14$ into the equation.
+      2. $y = -1990(14) + 22200$
+      3. $y = -27860 + 22200 = -5660$
+      4. The predicted value is **$-5660$ USD**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. The original data only goes up to $x = 9$ years. Predicting for $x = 14$ is **extrapolation**.
+      2. It is highly unreliable to assume the linear trend continues indefinitely. In this case, the linear model predicts a *negative* financial value, which is impossible for a physical machine (its lowest value is effectively 0 USD as scrap). 
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Identifying Outliers on a Scatter Graph">
+    The scatter diagram below maps the number of daily visitors ($x$) against the number of ice creams sold ($y$) at a coastal shop.
+    
+    a) The shop owner recorded one more day: $120$ visitors, and $20$ ice creams sold. **Plot this point** on the grid.
+    
+    b) Identify the coordinate of the outlier in the complete dataset.
+    
+    c) Suggest a real-world reason why this specific point might be an outlier.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 380 320" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q6_smallGrid" width="5" height="5" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 5 0 L 0 0 0 5" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q6_majorGrid" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="50" fill="url(#q6_smallGrid)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+
+        <rect x="50" y="20" width="250" height="250" fill="url(#q6_majorGrid)" stroke="#94a3b8" stroke-width="1.5" />
+        
+        <text x="175" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Number of Visitors</text>
+        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Ice Creams Sold</text>
+
+        <text x="50" y="285" font-size="10" fill="#475569" text-anchor="middle">0</text>
+        <text x="100" y="285" font-size="10" fill="#475569" text-anchor="middle">30</text>
+        <text x="150" y="285" font-size="10" fill="#475569" text-anchor="middle">60</text>
+        <text x="200" y="285" font-size="10" fill="#475569" text-anchor="middle">90</text>
+        <text x="250" y="285" font-size="10" fill="#475569" text-anchor="middle">120</text>
+        <text x="300" y="285" font-size="10" fill="#475569" text-anchor="middle">150</text>
+
+        <text x="40" y="273" font-size="10" fill="#475569" text-anchor="end">0</text>
+        <text x="40" y="223" font-size="10" fill="#475569" text-anchor="end">20</text>
+        <text x="40" y="173" font-size="10" fill="#475569" text-anchor="end">40</text>
+        <text x="40" y="123" font-size="10" fill="#475569" text-anchor="end">60</text>
+        <text x="40" y="73" font-size="10" fill="#475569" text-anchor="end">80</text>
+        <text x="40" y="23" font-size="10" fill="#475569" text-anchor="end">100</text>
+
+        <path d="M 106 201 L 114 209 M 106 209 L 114 201" stroke="#0284c7" stroke-width="2" />
+        <path d="M 146 161 L 154 169 M 146 169 L 154 161" stroke="#0284c7" stroke-width="2" />
+        <path d="M 171 121 L 179 129 M 171 129 L 179 121" stroke="#0284c7" stroke-width="2" />
+        <path d="M 221 81 L 229 89 M 221 89 L 229 81" stroke="#0284c7" stroke-width="2" />
+        <path d="M 271 41 L 279 49 M 271 49 L 279 41" stroke="#0284c7" stroke-width="2" />
+      </svg>
+    </div>
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    <Steps>
+      1. The coordinate to plot is $(120, 20)$.
+      2. The $x = 120$ mark is exactly on the major vertical grid line labeled "120".
+      3. The $y = 20$ mark is exactly on the first major horizontal grid line above zero labeled "20".
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. An outlier is a point that does not follow the general positive trend (where more visitors equal more ice creams sold).
+      2. The new point is highly detached from the linear pattern of the others.
+      3. The outlier is **$(120, 20)$**.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Any reasonable real-world context works.
+      2. **Reason:** It might have been a very cold or rainy day. Many people still visited the coast, but because of the poor weather, very few decided to buy ice cream.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Reading Intersections from Scatter Diagrams">
+    The scatter diagram shows the score of students on a Physics Test and a Chemistry Test. A line of best fit has been drawn.
+    
+    A student scores exactly $65$ on their Physics Test.
+    
+    Use the line of best fit to estimate their Chemistry score. Read the graph carefully.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 380 320" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q7_smallGrid" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q7_majorGrid" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="50" fill="url(#q7_smallGrid)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+
+        <rect x="50" y="20" width="250" height="250" fill="url(#q7_majorGrid)" stroke="#94a3b8" stroke-width="1.5" />
+        
+        <text x="175" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Physics Score</text>
+        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Chemistry Score</text>
+
+        <text x="50" y="285" font-size="10" fill="#475569" text-anchor="middle">0</text>
+        <text x="100" y="285" font-size="10" fill="#475569" text-anchor="middle">20</text>
+        <text x="150" y="285" font-size="10" fill="#475569" text-anchor="middle">40</text>
+        <text x="200" y="285" font-size="10" fill="#475569" text-anchor="middle">60</text>
+        <text x="250" y="285" font-size="10" fill="#475569" text-anchor="middle">80</text>
+        <text x="300" y="285" font-size="10" fill="#475569" text-anchor="middle">100</text>
+
+        <text x="40" y="273" font-size="10" fill="#475569" text-anchor="end">0</text>
+        <text x="40" y="223" font-size="10" fill="#475569" text-anchor="end">20</text>
+        <text x="40" y="173" font-size="10" fill="#475569" text-anchor="end">40</text>
+        <text x="40" y="123" font-size="10" fill="#475569" text-anchor="end">60</text>
+        <text x="40" y="73" font-size="10" fill="#475569" text-anchor="end">80</text>
+        <text x="40" y="23" font-size="10" fill="#475569" text-anchor="end">100</text>
+
+        <path d="M 86 211 L 94 219 M 86 219 L 94 211" stroke="#0284c7" stroke-width="2" />
+        <path d="M 121 166 L 129 174 M 121 174 L 129 166" stroke="#0284c7" stroke-width="2" />
+        <path d="M 166 141 L 174 149 M 166 149 L 174 141" stroke="#0284c7" stroke-width="2" />
+        <path d="M 196 116 L 204 124 M 196 124 L 204 116" stroke="#0284c7" stroke-width="2" />
+        <path d="M 236 81 L 244 89 M 236 89 L 244 81" stroke="#0284c7" stroke-width="2" />
+        <path d="M 286 56 L 294 64 M 286 64 L 294 56" stroke="#0284c7" stroke-width="2" />
+
+        <line x1="50" y1="240" x2="300" y2="40" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5" />
+      </svg>
+    </div>
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+      1. Determine the scale on the x-axis: 10 small squares = 20 points, so **1 small square = 2 units** (wait, checking the drawing: 50px = 20 units, 10px grid = 4 units! The major grid has 5 sub-divisions, meaning $20 \div 5 = 4$ units per square).
+      2. Locate $65$ on the x-axis: It is past 60. Since 1 square = 4 units, $65$ is one full square ($64$) plus a quarter of a square to the right. 
+      3. Draw a line vertically up from $65$ to intersect the line of best fit.
+      4. Draw a horizontal line from this intersection to the y-axis.
+      5. The intersection happens at roughly $105$ pixels from the bottom, which corresponds to $y = 74$.
+      6. Estimated score: **$74$** (Examiners will accept answers within a small tolerance, e.g., $72 - 76$).
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Classifying Real-World Correlations">
+    For each of the following scenarios, state whether you would expect to see a **Positive**, **Negative**, or **Zero** correlation on a scatter diagram.
+    
+    a) The weight of a passenger's suitcase ($x$) and the fee they must pay for extra baggage at the airport ($y$).
+    
+    b) The shoe size of an adult ($x$) and their score on an IQ test ($y$).
+    
+    c) The outside temperature ($x$) and the number of heavy winter coats sold by a store ($y$).
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+    <Steps>
+      1. As the weight of the suitcase increases, the fee charged by the airline will also increase.
+      2. Answer: **Positive Correlation**.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. There is no mathematical or logical link between how large someone's feet are and their intelligence.
+      2. Answer: **Zero Correlation**.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. As the outside temperature increases (gets hotter), the number of winter coats sold will logically decrease.
+      2. Answer: **Negative Correlation**.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q9: Tricky Scaling, Interpolation and Equation of Best Fit">
+    A chemist heats a chemical compound and records its remaining mass ($y$ grams) at different times ($x$ minutes).
+    
+    | Time ($x$) | 0.3 | 0.825 | 1.45 | 1.875 | 2.35 | 2.925 |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Mass ($y$)** | 1.10 | 0.89 | 0.64 | 0.47 | 0.28 | 0.05 |
+
+    a) Determine the numerical value for one small square on the x-axis and the y-axis using the partially filled grid below.
+    
+    b) The points for $x = 0.3, 1.45, 2.35,$ and $2.925$ are already plotted. Explain how you would plot the remaining two points $(0.825, 0.89)$ and $(1.875, 0.47)$, which require tricky half-square placements.
+    
+    c) Use a Graphic Display Calculator to find the exact equation of the linear regression line, in the form $y = mx + c$.
+    
+    d) Use your equation to calculate the fitted value (estimate) for the mass when the heating time is exactly $2.1$ minutes.
+    
+    e) Is your estimate in part (d) reliable? Justify your answer.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 380 420" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q11_smallGrid" width="5" height="5" patternUnits="userSpaceOnUse" x="50" y="50">
+            <path d="M 5 0 L 0 0 0 5" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q11_majorGrid" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="50">
+            <rect width="50" height="50" fill="url(#q11_smallGrid)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+
+        <rect x="50" y="50" width="300" height="300" fill="url(#q11_majorGrid)" stroke="#94a3b8" stroke-width="1.5" />
+        
+        <text x="200" y="395" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Heating Time (minutes)</text>
+        <text x="15" y="200" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 200)">Remaining Mass (g)</text>
+
+        {/* X Axis Ticks (0 to 3.0, 50px = 0.5 units) */}
+        <text x="50" y="370" font-size="10" fill="#475569" text-anchor="middle">0.0</text>
+        <text x="100" y="370" font-size="10" fill="#475569" text-anchor="middle">0.5</text>
+        <text x="150" y="370" font-size="10" fill="#475569" text-anchor="middle">1.0</text>
+        <text x="200" y="370" font-size="10" fill="#475569" text-anchor="middle">1.5</text>
+        <text x="250" y="370" font-size="10" fill="#475569" text-anchor="middle">2.0</text>
+        <text x="300" y="370" font-size="10" fill="#475569" text-anchor="middle">2.5</text>
+        <text x="350" y="370" font-size="10" fill="#475569" text-anchor="middle">3.0</text>
+
+        {/* Y Axis Ticks (0 to 1.2, 50px = 0.2 units) */}
+        <text x="40" y="353" font-size="10" fill="#475569" text-anchor="end">0.0</text>
+        <text x="40" y="303" font-size="10" fill="#475569" text-anchor="end">0.2</text>
+        <text x="40" y="253" font-size="10" fill="#475569" text-anchor="end">0.4</text>
+        <text x="40" y="203" font-size="10" fill="#475569" text-anchor="end">0.6</text>
+        <text x="40" y="153" font-size="10" fill="#475569" text-anchor="end">0.8</text>
+        <text x="40" y="103" font-size="10" fill="#475569" text-anchor="end">1.0</text>
+        <text x="40" y="53" font-size="10" fill="#475569" text-anchor="end">1.2</text>
+
+        {/* Pre-plotted Points: (0.3, 1.10), (1.45, 0.64), (2.35, 0.28), (2.925, 0.05) */}
+        <path d="M 76 71 L 84 79 M 76 79 L 84 71" stroke="#0284c7" stroke-width="2" />
+        <path d="M 191 186 L 199 194 M 191 194 L 199 186" stroke="#0284c7" stroke-width="2" />
+        <path d="M 281 276 L 289 284 M 281 284 L 289 276" stroke="#0284c7" stroke-width="2" />
+        <path d="M 338.5 333.5 L 346.5 341.5 M 338.5 341.5 L 346.5 333.5" stroke="#0284c7" stroke-width="2" />
+      </svg>
+    </div>
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)**
+    <Steps>
+      1. **X-axis scale:** One major block is $0.5$ units, split into $10$ small squares. $0.5 \div 10 = \mathbf{0.05}$ minutes per square.
+      2. **Y-axis scale:** One major block is $0.2$ units, split into $10$ small squares. $0.2 \div 10 = \mathbf{0.02}$ grams per square.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. **For $(0.825, 0.89)$:** * X-axis: $0.825 \div 0.05 = 16.5$ squares. Move exactly $16$ and a half squares right (between the 16th and 17th line).
+         * Y-axis: $0.89 \div 0.02 = 44.5$ squares. Move exactly $44$ and a half squares up (between the 44th and 45th line). Plot the cross precisely at this intersection.
+      2. **For $(1.875, 0.47)$:**
+         * X-axis: $1.875 \div 0.05 = 37.5$ squares right.
+         * Y-axis: $0.47 \div 0.02 = 23.5$ squares up.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Enter the coordinates precisely into your GDC Lists & Spreadsheet.
+      2. Run the **Linear Regression (mx+b)** calculation.
+      3. The calculator outputs $m = -0.4$ and $b = 1.22$ perfectly.
+      4. Equation: **$y = -0.4x + 1.22$**
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Substitute $x = 2.1$ into the equation.
+      2. $y = -0.4(2.1) + 1.22$
+      3. $y = -0.84 + 1.22 = 0.38$
+      4. The fitted mass is **$0.38$ g**.
+    </Steps>
+
+    **e)**
+    <Steps>
+      1. Yes, the estimate is **reliable**.
+      2. **Reason:** The heating time $x = 2.1$ falls comfortably within our collected data range ($0.3$ to $2.925$). This is an example of **interpolation**.
+    </Steps>
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 380 420" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q11_sol_smallGrid" width="5" height="5" patternUnits="userSpaceOnUse" x="50" y="50">
+            <path d="M 5 0 L 0 0 0 5" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q11_sol_majorGrid" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="50">
+            <rect width="50" height="50" fill="url(#q11_sol_smallGrid)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+        <rect x="50" y="50" width="300" height="300" fill="url(#q11_sol_majorGrid)" stroke="#94a3b8" stroke-width="1.5" />
+        
+        <text x="200" y="395" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Heating Time (minutes)</text>
+        <text x="15" y="200" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 200)">Remaining Mass (g)</text>
+
+        <text x="50" y="370" font-size="10" fill="#475569" text-anchor="middle">0.0</text>
+        <text x="100" y="370" font-size="10" fill="#475569" text-anchor="middle">0.5</text>
+        <text x="150" y="370" font-size="10" fill="#475569" text-anchor="middle">1.0</text>
+        <text x="200" y="370" font-size="10" fill="#475569" text-anchor="middle">1.5</text>
+        <text x="250" y="370" font-size="10" fill="#475569" text-anchor="middle">2.0</text>
+        <text x="300" y="370" font-size="10" fill="#475569" text-anchor="middle">2.5</text>
+        <text x="350" y="370" font-size="10" fill="#475569" text-anchor="middle">3.0</text>
+
+        <text x="40" y="353" font-size="10" fill="#475569" text-anchor="end">0.0</text>
+        <text x="40" y="303" font-size="10" fill="#475569" text-anchor="end">0.2</text>
+        <text x="40" y="253" font-size="10" fill="#475569" text-anchor="end">0.4</text>
+        <text x="40" y="203" font-size="10" fill="#475569" text-anchor="end">0.6</text>
+        <text x="40" y="153" font-size="10" fill="#475569" text-anchor="end">0.8</text>
+        <text x="40" y="103" font-size="10" fill="#475569" text-anchor="end">1.0</text>
+        <text x="40" y="53" font-size="10" fill="#475569" text-anchor="end">1.2</text>
+
+        {/* Existing Points */}
+        <path d="M 76 71 L 84 79 M 76 79 L 84 71" stroke="#0284c7" stroke-width="2" />
+        <path d="M 191 186 L 199 194 M 191 194 L 199 186" stroke="#0284c7" stroke-width="2" />
+        <path d="M 281 276 L 289 284 M 281 284 L 289 276" stroke="#0284c7" stroke-width="2" />
+        <path d="M 338.5 333.5 L 346.5 341.5 M 338.5 341.5 L 346.5 333.5" stroke="#0284c7" stroke-width="2" />
+
+        {/* New Student Plotted Points */}
+        <path d="M 128.5 123.5 L 136.5 131.5 M 128.5 131.5 L 136.5 123.5" stroke="#ef4444" stroke-width="2" />
+        <path d="M 233.5 228.5 L 241.5 236.5 M 233.5 236.5 L 241.5 228.5" stroke="#ef4444" stroke-width="2" />
+        <text x="145" y="125" font-size="10" font-weight="bold" fill="#ef4444">(0.825, 0.89)</text>
+        <text x="250" y="230" font-size="10" font-weight="bold" fill="#ef4444">(1.875, 0.47)</text>
+
+        {/* Line of best fit drawn across graph from x=0 to x=3. y intercepts are 1.22 and 0.02 */}
+        <line x1="50" y1="45" x2="350" y2="345" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5" />
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>

@@ -5,6 +5,11 @@ description: Learn how to clearly distinguish between discrete and continuous qu
 
 In statistics, quantitative (numerical) data is split into two very distinct categories: **discrete** and **continuous**. Knowing which type of data you are working with is crucial, as it entirely changes how the data is grouped in tables and which types of graphs you are allowed to draw.
 
+
+
+[Image of discrete versus continuous data in statistics]
+
+
 <Aside type="tip" title="The Golden Rule">
 * If you **count** it, it is **discrete**.
 * If you **measure** it, it is **continuous**.
@@ -25,14 +30,12 @@ In statistics, quantitative (numerical) data is split into two very distinct cat
   <svg viewBox="0 0 600 150" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
     <line x1="50" y1="100" x2="550" y2="100" stroke="#94a3b8" stroke-width="2" />
     
-    <circle cx="150" cy="100" r="6" fill="#3b82f6" />
-    <text x="150" y="130" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">1 goal</text>
-    
-    <circle cx="300" cy="100" r="6" fill="#3b82f6" />
-    <text x="300" y="130" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">2 goals</text>
-    
-    <circle cx="450" cy="100" r="6" fill="#3b82f6" />
-    <text x="450" y="130" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">3 goals</text>
+    {[1, 2, 3].map((val, i) => (
+      <g key={`goal-${i}`}>
+        <circle cx={150 + i * 150} cy="100" r="8" fill="#3b82f6" />
+        <text x={150 + i * 150} y="130" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">{val} goals</text>
+      </g>
+    ))}
 
     {/* Dashed line to show impossibility in between */}
     <line x1="150" y1="100" x2="300" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
@@ -47,10 +50,12 @@ In statistics, quantitative (numerical) data is split into two very distinct cat
 **Continuous data** can take *any* value within a given range. It is not restricted to specific steps. The only limit to how exact continuous data can be is the accuracy of your measuring instrument. 
 
 **Examples of continuous data:**
-* **Height:** A plant might be $15\text{cm}$ tall, or $15.2\text{cm}$, or $15.247\text{cm}$ if you have a precise enough laser.
-* **Weight/Mass:** A bag of sugar weighing $1\text{kg}$ might actually be $1.002\text{kg}$.
+* **Height:** A plant might be $15\text{ cm}$ tall, or $15.2\text{ cm}$, or $15.247\text{ cm}$ if you have a precise enough laser.
+* **Weight/Mass:** A bag of sugar weighing $1\text{ kg}$ might actually be $1.002\text{ kg}$.
 * **Time:** The time it takes to run a race ($10.45$ seconds).
 * **Temperature:** The temperature outside ($22.4^\circ\text{C}$).
+
+
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 600 150" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
@@ -95,7 +100,7 @@ For discrete data, we use simple ranges because there is no confusion about what
 *If a team scores $2$ goals, they go in the first row. If they score $3$, they go in the second. There is no such thing as $2.5$ goals, so there is no gap in our data collection.*
 
 ### Grouping Continuous Data
-For continuous data, using "$0 - 10$" and "$11 - 20$" creates a massive problem. What happens if a plant is $10.4\text{cm}$ tall? It wouldn't fit in either group! 
+For continuous data, using "$0 - 10$" and "$11 - 20$" creates a massive problem. What happens if a plant is $10.4\text{ cm}$ tall? It wouldn't fit in either group! 
 
 Therefore, for continuous data, we **must** use inequality symbols ($\le$ and $<$).
 
@@ -105,7 +110,7 @@ Therefore, for continuous data, we **must** use inequality symbols ($\le$ and $<
 | $10 < h \le 20$ | $15$ |
 | $20 < h \le 30$ | $7$ |
 
-*Notice how $10$ is the boundary for both rows. The inequality signs tell us exactly where a plant measuring exactly $10\text{cm}$ goes. Because of the $\le$ sign, it goes into the **first** row. A plant that is $10.1\text{cm}$ goes into the **second** row.*
+*Notice how $10$ is the boundary for both rows. The inequality signs tell us exactly where a plant measuring exactly $10\text{ cm}$ goes. Because of the $\le$ sign, it goes into the **first** row. A plant that is $10.1\text{ cm}$ goes into the **second** row.*
 
 <SteveTip title="Graphing the Data">
 Later in the syllabus, you will learn to graph these. Remember this strict pairing: 
@@ -119,17 +124,29 @@ Later in the syllabus, you will learn to graph these. Remember this strict pairi
     <text x="150" y="30" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">Bar Chart (Discrete)</text>
     <line x1="40" y1="200" x2="260" y2="200" stroke="#333" stroke-width="2" />
     <line x1="40" y1="50" x2="40" y2="200" stroke="#333" stroke-width="2" />
-    <rect x="60" y="100" width="40" height="100" fill="#3b82f6" />
-    <rect x="120" y="60" width="40" height="140" fill="#3b82f6" />
-    <rect x="180" y="130" width="40" height="70" fill="#3b82f6" />
+    
+    {/* Plot discrete bars using an array map */}
+    {[
+      { x: 60, h: 100 },
+      { x: 120, h: 140 },
+      { x: 180, h: 70 }
+    ].map((bar, i) => (
+      <rect key={`bar-${i}`} x={bar.x} y={200 - bar.h} width="40" height={bar.h} fill="#3b82f6" />
+    ))}
     
     {/* Right: Histogram */}
     <text x="450" y="30" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#1e293b">Histogram (Continuous)</text>
     <line x1="340" y1="200" x2="560" y2="200" stroke="#333" stroke-width="2" />
     <line x1="340" y1="50" x2="340" y2="200" stroke="#333" stroke-width="2" />
-    <rect x="360" y="100" width="40" height="100" fill="#10b981" stroke="#f8fafc" stroke-width="1" />
-    <rect x="400" y="60" width="40" height="140" fill="#10b981" stroke="#f8fafc" stroke-width="1" />
-    <rect x="440" y="130" width="60" height="70" fill="#10b981" stroke="#f8fafc" stroke-width="1" />
+    
+    {/* Plot continuous histogram bars touching each other using an array map */}
+    {[
+      { x: 360, w: 40, h: 100 },
+      { x: 400, w: 40, h: 140 },
+      { x: 440, w: 60, h: 70 }
+    ].map((hist, i) => (
+      <rect key={`hist-${i}`} x={hist.x} y={200 - hist.h} width={hist.w} height={hist.h} fill="#10b981" stroke="#f8fafc" stroke-width="1" />
+    ))}
   </svg>
 </div>
 
@@ -141,46 +158,284 @@ Later in the syllabus, you will learn to graph these. Remember this strict pairi
   <TabItem label="📝 Question 1: Categorising Data">
     Categorise each of the following variables as either **Discrete** or **Continuous**:
     
-    1. The number of cars parked in a car park.
-    2. The volume of water in a swimming pool.
-    3. The number of pages in a book.
-    4. The distance travelled by a train.
-    5. The number of teeth a dog has.
-    6. The speed of a cyclist.
+    a) The number of cars parked in a car park.
+
+    b) The volume of water in a swimming pool.
+
+    c) The number of pages in a book.
+
+    d) The distance travelled by a train.
+
+    e) The number of teeth a dog has.
+
+    f) The speed of a cyclist.
   </TabItem>
   <TabItem label="✅ Solution 1">
+
     <Steps>
-      1. **Number of cars:** Discrete (you count cars; you cannot have half a car).
-      2. **Volume of water:** Continuous (you measure volume; it can be $2000.5$ litres).
-      3. **Number of pages:** Discrete (you count pages).
-      4. **Distance travelled:** Continuous (you measure distance; it can be $14.56\text{km}$).
-      5. **Number of teeth:** Discrete (you count teeth).
-      6. **Speed:** Continuous (you measure speed; it can be $12.3\text{m/s}$).
+      1. **a)** Number of cars: **Discrete** (you count cars; you cannot have half a car).
+      2. **b)** Volume of water: **Continuous** (you measure volume; it can be exact decimals).
+      3. **c)** Number of pages: **Discrete** (you count pages).
+      4. **d)** Distance travelled: **Continuous** (you measure distance).
+      5. **e)** Number of teeth: **Discrete** (you count teeth).
+      6. **f)** Speed: **Continuous** (you measure speed).
     </Steps>
+
   </TabItem>
 </Tabs>
 
-<AIGenerator topic="Classifying real-world variables as discrete or continuous" difficulty="IGCSE Core" client:load />
+<SmartAIGenerator topic="Classifying real-world variables as discrete or continuous" />
 
 <Tabs>
   <TabItem label="📝 Question 2: Grouping Continuous Data">
     A botanist measures the lengths of $40$ leaves to the nearest millimetre. 
-    One leaf is exactly $30\text{mm}$ long. Another is $30.5\text{mm}$ long.
+    One leaf is exactly $30\text{ mm}$ long. Another is $30.5\text{ mm}$ long, and a third is $39.9\text{ mm}$ long.
     
     Which of the following classes does each leaf belong to?
     
-    **Class A:** $10 < L \le 20$  
-    **Class B:** $20 < L \le 30$  
-    **Class C:** $30 < L \le 40$
+    * **Class A:** $10 < L \le 20$  
+    * **Class B:** $20 < L \le 30$  
+    * **Class C:** $30 < L \le 40$
+
+    a) Which class for the $30\text{ mm}$ leaf?
+
+    b) Which class for the $30.5\text{ mm}$ leaf?
+
+    c) Which class for the $39.9\text{ mm}$ leaf?
   </TabItem>
   <TabItem label="✅ Solution 2">
+
     <Steps>
-      1. Look at the $30\text{mm}$ leaf. The boundary $30$ appears in both Class B and Class C.
-      2. Class B uses $\le 30$, which means "less than or **equal to** $30$". Therefore, the $30\text{mm}$ leaf goes into **Class B**.
-      3. Look at the $30.5\text{mm}$ leaf. 
-      4. $30.5$ is strictly greater than $30$. Class C uses $30 < L$, which means "$L$ is strictly greater than $30$". Therefore, the $30.5\text{mm}$ leaf goes into **Class C**.
+      1. **a)** Look at the $30\text{ mm}$ leaf. The boundary $30$ appears in both Class B and Class C. Class B uses $\le 30$, which means "less than or **equal to** $30$". Therefore, the $30\text{ mm}$ leaf goes into **Class B**.
+      2. **b)** Look at the $30.5\text{ mm}$ leaf. $30.5$ is strictly greater than $30$. Class C uses $30 < L$, which means "$L$ is strictly greater than $30$". Therefore, it goes into **Class C**.
+      3. **c)** The $39.9\text{ mm}$ leaf is less than $40$, fitting cleanly into **Class C** ($30 < L \le 40$).
     </Steps>
+
   </TabItem>
 </Tabs>
 
-<AIGenerator topic="Placing continuous data values into correct inequality groups" difficulty="IGCSE Extended" client:load />
+<SmartAIGenerator topic="Placing continuous data values into correct inequality groups" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Tabulating Shoe Sizes">
+    A shoe shop records the sizes of shoes sold in one hour:
+    `6, 6.5, 7, 6, 8, 7.5, 8.5, 7, 7, 6.5`
+
+    a) Explain why shoe sizes are considered **discrete** data, even though they contain decimals like $.5$.
+
+    b) Construct a simple frequency table for this data.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+
+    <Steps>
+      1. Discrete data takes exact, specific values with impossible gaps between them. 
+      2. Even though there are decimals, a shoe size can only be a half or whole number ($6, 6.5, 7$). You cannot buy a shoe of size $6.27$. Thus, it is counted, not measured.
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. Set up columns for "Shoe Size" and "Frequency".
+      2. Count the occurrences of each size.
+      3. Size 6: $2$, Size 6.5: $2$, Size 7: $3$, Size 7.5: $1$, Size 8: $1$, Size 8.5: $1$.
+    </Steps>
+
+    | Shoe Size | Frequency |
+    | :--- | :--- |
+    | $6$ | $2$ |
+    | $6.5$ | $2$ |
+    | $7$ | $3$ |
+    | $7.5$ | $1$ |
+    | $8$ | $1$ |
+    | $8.5$ | $1$ |
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Creating frequency tables for discrete data with decimals" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: The Money Exception">
+    A company calculates the annual salaries of its employees. The lowest salary is $25,000 \text{ USD}$ and the highest is $110,000 \text{ USD}$.
+
+    a) For statistical grouping and graphing, should this salary data be treated as discrete or continuous?
+
+    b) An employee earns exactly $40,000 \text{ USD}$. Which grouped class interval should they be placed in?
+       * $20,000 < S < 40,000$
+       * $40,000 \le S < 60,000$
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+
+    <Steps>
+      1. Although money is technically discrete (counted in cents/pennies), large ranges of money are treated as **continuous** in statistics because there are so many possible precise values.
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. Check the inequality signs for the exact value of $40,000$.
+      2. The first class is strictly less than $40,000$ ($<$). 
+      3. The second class is greater than or **equal to** $40,000$ ($\le$).
+      4. The employee belongs in the **$40,000 \le S < 60,000$** class.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Handling money as continuous data in statistics" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Identifying Grouping Errors">
+    A student is asked to group the ages of people attending a concert. They create the following classes:
+    * $0 - 10 \text{ years}$
+    * $10 - 20 \text{ years}$
+    * $20 - 30 \text{ years}$
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 400 120" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="50" y1="80" x2="350" y2="80" stroke="#94a3b8" stroke-width="2" />
+        
+        {/* Plotting overlapping intervals */}
+        <line x1="100" y1="70" x2="200" y2="70" stroke="#ef4444" stroke-width="4" />
+        <line x1="200" y1="90" x2="300" y2="90" stroke="#ef4444" stroke-width="4" />
+        
+        <line x1="200" y1="60" x2="200" y2="100" stroke="#1e293b" stroke-width="2" stroke-dasharray="2 2" />
+        
+        <text x="150" y="55" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#ef4444">0 - 10</text>
+        <text x="250" y="115" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#ef4444">10 - 20</text>
+        
+        <circle cx="200" cy="80" r="6" fill="#f59e0b" />
+        <text x="200" y="45" text-anchor="middle" font-family="sans-serif" font-weight="bold" fill="#f59e0b">Exact age 10?</text>
+      </svg>
+    </div>
+
+    a) Explain the major mathematical error in the student's grouping method.
+
+    b) Rewrite the classes using proper inequality notation, assuming age $A$ is continuous.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+
+    <Steps>
+      1. Look at the boundary values. The number $10$ appears in both the first and second groups.
+      2. If a person is exactly $10$ years old, it is impossible to know which group they belong to. The classes are overlapping.
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. We must use inequalities to clearly define boundaries.
+      2. $0 \le A < 10$
+      3. $10 \le A < 20$
+      4. $20 \le A < 30$
+      5. *(Note: Using $0 < A \le 10$ is also acceptable, as long as the overlapping boundary is resolved).*
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Fixing overlapping intervals and grouping errors" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Continuous Boundaries">
+    The weights of parcels at a post office are recorded in kilograms ($w$). 
+
+    | Weight ($w$ kg) | Frequency |
+    | :--- | :--- |
+    | $0 < w \le 2$ | $14$ |
+    | $2 < w \le 5$ | $21$ |
+    | $5 < w \le 10$ | $8$ |
+
+    a) How many parcels weighed exactly $2 \text{ kg}$ or less?
+
+    b) If a parcel weighs $5.001 \text{ kg}$, which frequency group does it belong to?
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+
+    <Steps>
+      1. The group for "$2\text{ kg}$ or less" is the one containing $\le 2$. 
+      2. This is the first row ($0 < w \le 2$). 
+      3. The frequency is **$14$ parcels**.
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. Look at the boundary of $5\text{ kg}$.
+      2. The second row covers up to exactly $5\text{ kg}$ ($\le 5$). 
+      3. Because $5.001$ is strictly greater than $5$, it falls into the third row: **$5 < w \le 10$**.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting inequalities at class boundaries" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Interpreting a Continuous Table">
+    The time, $t$ minutes, taken by $50$ students to complete a math puzzle is recorded in the table below.
+
+    | Time ($t$ minutes) | Frequency |
+    | :--- | :--- |
+    | $0 < t \le 5$ | $3$ |
+    | $5 < t \le 10$ | $15$ |
+    | $10 < t \le 15$ | $22$ |
+    | $15 < t \le 20$ | $10$ |
+
+    a) Which class interval contains the median student (the $25^{\text{th}}$ student)?
+
+    b) How many students took strictly more than $10$ minutes?
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+
+    <Steps>
+      1. To find the median student, count a running total of frequencies until you reach $25$.
+      2. First class: $3$ students. Total so far = $3$.
+      3. Second class: $15$ students. Total so far = $3 + 15 = 18$.
+      4. Third class: $22$ students. Total so far = $18 + 22 = 40$.
+      5. The $25^{\text{th}}$ student falls inside the third group. 
+      6. The interval is **$10 < t \le 15$**.
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. "Strictly more than 10 minutes" covers the last two rows ($10 < t \le 15$ and $15 < t \le 20$).
+      2. Add their frequencies: $22 + 10$.
+      3. The answer is **$32$ students**.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Extracting running totals and medians from grouped continuous tables" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Mixed Scenarios">
+    Read the following real-world scenarios and classify the data collected as **Discrete** or **Continuous**.
+
+    a) The number of goals scored by a team over a 38-game season.
+
+    b) The exact finish times of sprinters in a $100\text{m}$ final.
+
+    c) The number of seats available in different cinemas.
+
+    d) The volume of paint needed to cover a large mural.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+
+    <Steps>
+      1. **a)** Number of goals: **Discrete**. Goals are counted in whole numbers.
+      2. **b)** Exact finish times: **Continuous**. Time is measured and can be any decimal precision.
+      3. **c)** Number of seats: **Discrete**. Seats are counted as individual physical items.
+      4. **d)** Volume of paint: **Continuous**. Volume is measured and can take any value depending on the container.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying discrete and continuous data in real-world scenarios" />

@@ -1,11 +1,12 @@
 ---
 title: 9.3 Probability of Combined Events
-description: Calculate the probability of combined events using sample space diagrams, tree diagrams, and Venn diagrams, including conditional probabilities for IGCSE 0607.
+description: Calculate the probability of combined events using two-way tables, sample space diagrams, tree diagrams, and Venn diagrams, including conditional probabilities for IGCSE 0607.
 ---
 
 In the real world, we rarely look at just one event in isolation. We often want to find the probability of multiple things happening together, like flipping a coin *and* rolling a dice, or picking two consecutive winning lottery tickets.
 
 <Aside type="note" title="The Golden Rules of Probability">
+
 When dealing with combined events, ask yourself if you are dealing with an "AND" situation or an "OR" situation.
 
 1. **The AND Rule (Multiplication):** For **independent events** (where one event does not affect the other), you multiply the probabilities.
@@ -17,11 +18,60 @@ When dealing with combined events, ask yourself if you are dealing with an "AND"
    $$
    P(A \text{ or } B) = P(A) + P(B)
    $$
+
 </Aside>
 
 ---
 
-## 1. Sample Space Diagrams
+## 1. Probability Two-Way Tables
+
+A **two-way table** is a fantastic way to display categorical data across two different variables. It helps calculate both simple probabilities and conditional probabilities by organising frequencies into rows and columns.
+
+To find a probability from a two-way table, you usually take the number in a specific cell and divide it by the grand total, or a specific row/column total if a condition is given.
+
+**Example:** A group of 100 students were asked whether they prefer Maths or Science, and their responses were recorded by gender.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 200" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <g stroke="#e2e8f0" stroke-width="2">
+      {/* Horizontal Lines */}
+      {[0, 1, 2, 3].map((i) => <line key={`h-${i}`} x1="50" y1={40 + i*40} x2="450" y2={40 + i*40} />)}
+      {/* Vertical Lines */}
+      {[0, 1, 2, 3, 4].map((i) => <line key={`v-${i}`} x1={50 + i*100} y1="40" x2={50 + i*100} y2="160" />)}
+    </g>
+
+    {/* Header styling */}
+    <rect x="50" y="40" width="400" height="40" fill="#e2e8f0" fill-opacity="0.5" />
+    <rect x="50" y="40" width="100" height="120" fill="#e2e8f0" fill-opacity="0.5" />
+
+    {/* Text Labels - Headers */}
+    <text x="100" y="55" font-weight="bold" font-size="12" fill="#1e293b" text-anchor="middle">Subject /</text>
+    <text x="100" y="70" font-weight="bold" font-size="12" fill="#1e293b" text-anchor="middle">Gender</text>
+    
+    <text x="200" y="65" font-weight="bold" fill="#3b82f6" text-anchor="middle">Boys</text>
+    <text x="300" y="65" font-weight="bold" fill="#ec4899" text-anchor="middle">Girls</text>
+    <text x="400" y="65" font-weight="bold" fill="#1e293b" text-anchor="middle">Total</text>
+
+    {/* Text Labels - Rows */}
+    <text x="100" y="105" font-weight="bold" fill="#1e293b" text-anchor="middle">Maths</text>
+    <text x="100" y="145" font-weight="bold" fill="#1e293b" text-anchor="middle">Science</text>
+
+    {/* Text Labels - Data */}
+    <text x="200" y="105" font-weight="normal" fill="#1e293b" text-anchor="middle">24</text>
+    <text x="300" y="105" font-weight="normal" fill="#1e293b" text-anchor="middle">18</text>
+    <text x="400" y="105" font-weight="bold" fill="#1e293b" text-anchor="middle">42</text>
+
+    <text x="200" y="145" font-weight="normal" fill="#1e293b" text-anchor="middle">31</text>
+    <text x="300" y="145" font-weight="normal" fill="#1e293b" text-anchor="middle">27</text>
+    <text x="400" y="145" font-weight="bold" fill="#1e293b" text-anchor="middle">58</text>
+  </svg>
+</div>
+
+If a student is chosen at random, the probability they are a boy who prefers Maths is $\frac{24}{100}$.
+
+---
+
+## 2. Sample Space Diagrams
 
 A **sample space diagram** is a 2D grid used to show all the possible outcomes of two events happening at the same time. It is highly visual and guarantees you won't miss any combinations!
 
@@ -54,23 +104,21 @@ A **sample space diagram** is a 2D grid used to show all the possible outcomes o
       <text key={`s-${num}`} x="70" y={115 + i*40} font-weight="bold" fill="#ef4444" text-anchor="middle">{num}</text>
     ))}
 
-    {/* Outcomes (Sums) */}
+    {/* Outcomes (Sums) & Highlight Circles */}
     {[1, 2, 3, 4].map((row, r) => (
       [1, 2, 3, 4].map((col, c) => {
         const sum = row + col;
         const isSix = sum === 6;
         return (
-          <text key={`cell-${r}-${c}`} x={110 + c*40} y={115 + r*40} font-weight="bold" fill={isSix ? "#10b981" : "#1e293b"} text-anchor="middle">
-            {sum}
-          </text>
+          <g key={`cell-${r}-${c}`}>
+            <text x={110 + c*40} y={115 + r*40} font-weight="bold" fill={isSix ? "#10b981" : "#1e293b"} text-anchor="middle">
+              {sum}
+            </text>
+            {isSix && <circle cx={110 + c*40} cy={110 + r*40} r="14" fill="none" stroke="#10b981" stroke-width="2" />}
+          </g>
         );
       })
     ))}
-    
-    {/* Highlight circles for sum of 6. Coords: r=1,c=3 -> x=230,y=155; r=2,c=2 -> x=190,y=195; r=3,c=1 -> x=150,y=235 */}
-    <circle cx="230" cy="110" r="14" fill="none" stroke="#10b981" stroke-width="2" />
-    <circle cx="190" cy="150" r="14" fill="none" stroke="#10b981" stroke-width="2" />
-    <circle cx="150" cy="190" r="14" fill="none" stroke="#10b981" stroke-width="2" />
   </svg>
 </div>
 
@@ -84,7 +132,15 @@ $$
 
 ---
 
-## 2. Tree Diagrams: Replacement vs. No Replacement
+## 3. Venn Diagrams and Set Notation
+
+We can also represent the probability of combined events using Venn diagrams and set notation.
+* **Intersection (AND):** $P(A \cap B)$ is the probability of choosing something that belongs to BOTH event $A$ and event $B$ (the overlapping middle section).
+* **Union (OR):** $P(A \cup B)$ is the probability of choosing something that belongs to event $A$, event $B$, or BOTH (the entirety of both circles).
+
+---
+
+## 4. Tree Diagrams: Replacement vs. No Replacement
 
 Tree diagrams map out sequential events (one thing happening after another). 
 * **Outcomes** are written at the very end of the branches.
@@ -92,93 +148,97 @@ Tree diagrams map out sequential events (one thing happening after another).
 * To find a combined probability at the end of a path, **multiply** along the branches.
 
 <Aside type="caution" title="The Replacement Trap">
+
 * **With Replacement (Independent):** If you take an item from a bag and put it back, the probabilities for the second pick stay exactly the same.
-* **Without Replacement (Dependent):** If you eat a sweet or keep a card, the total number of items left decreases by $1$. The probability denominators for the second branch MUST decrease by $1$.
+* **Without Replacement (Dependent):** If you eat a sweet or keep a card, the total number of items left decreases by $1$. The probability denominators for the second branch MUST decrease by $1$. Notice the perfectly centred yellow highlights below.
+
 </Aside>
 
 Below is a visual comparison of picking two balls from a bag containing **3 Red balls and 2 Blue balls** (Total 5).
 
-<div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', justifyContent: 'center', margin: '2rem 0' }}>
-  {/* WITH REPLACEMENT */}
-  <div style={{ flex: '1 1 300px', minWidth: '300px' }}>
-    <h4 style={{ textAlign: 'center', marginBottom: '1rem', color: '#1e293b' }}>With Replacement</h4>
-    <svg viewBox="0 0 350 250" width="100%" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-      {/* First pick branches */}
-      <line x1="20" y1="125" x2="100" y2="60" stroke="#1e293b" stroke-width="2" />
-      <line x1="20" y1="125" x2="100" y2="190" stroke="#1e293b" stroke-width="2" />
-      <text x="50" y="80" font-weight="bold" fill="#ef4444" text-anchor="middle" font-size="12">3/5</text>
-      <text x="50" y="180" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-size="12">2/5</text>
-      <text x="120" y="65" font-weight="bold" fill="#ef4444" text-anchor="middle">R</text>
-      <text x="120" y="195" font-weight="bold" fill="#3b82f6" text-anchor="middle">B</text>
-
-      {/* Second pick branches from Red */}
-      <line x1="140" y1="60" x2="220" y2="30" stroke="#1e293b" stroke-width="2" />
-      <line x1="140" y1="60" x2="220" y2="90" stroke="#1e293b" stroke-width="2" />
-      <text x="175" y="35" font-weight="bold" fill="#ef4444" text-anchor="middle" font-size="10">3/5</text>
-      <text x="175" y="95" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-size="10">2/5</text>
-      <text x="240" y="35" font-weight="bold" fill="#ef4444" text-anchor="middle">R</text>
-      <text x="240" y="95" font-weight="bold" fill="#3b82f6" text-anchor="middle">B</text>
-
-      {/* Second pick branches from Blue */}
-      <line x1="140" y1="190" x2="220" y2="160" stroke="#1e293b" stroke-width="2" />
-      <line x1="140" y1="190" x2="220" y2="220" stroke="#1e293b" stroke-width="2" />
-      <text x="175" y="165" font-weight="bold" fill="#ef4444" text-anchor="middle" font-size="10">3/5</text>
-      <text x="175" y="225" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-size="10">2/5</text>
-      <text x="240" y="165" font-weight="bold" fill="#ef4444" text-anchor="middle">R</text>
-      <text x="240" y="225" font-weight="bold" fill="#3b82f6" text-anchor="middle">B</text>
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 300" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* With Replacement Group */}
+    <g transform="translate(0, 0)">
+      <text x="150" y="30" font-weight="bold" fill="#1e293b" text-anchor="middle">With Replacement</text>
       
-      {/* End Probs */}
-      <text x="290" y="35" font-size="10" fill="#1e293b" text-anchor="middle">9/25</text>
-      <text x="290" y="95" font-size="10" fill="#1e293b" text-anchor="middle">6/25</text>
-      <text x="290" y="165" font-size="10" fill="#1e293b" text-anchor="middle">6/25</text>
-      <text x="290" y="225" font-size="10" fill="#1e293b" text-anchor="middle">4/25</text>
-    </svg>
-  </div>
+      {/* 1st Pick */}
+      <line x1="50" y1="150" x2="120" y2="100" stroke="#94a3b8" stroke-width="2" />
+      <line x1="50" y1="150" x2="120" y2="200" stroke="#94a3b8" stroke-width="2" />
+      <text x="70" y="115" font-size="12" fill="#ef4444" font-weight="bold">3/5</text>
+      <text x="70" y="195" font-size="12" fill="#3b82f6" font-weight="bold">2/5</text>
+      <circle cx="130" cy="100" r="10" fill="#ef4444" />
+      <circle cx="130" cy="200" r="10" fill="#3b82f6" />
 
-  {/* WITHOUT REPLACEMENT */}
-  <div style={{ flex: '1 1 300px', minWidth: '300px' }}>
-    <h4 style={{ textAlign: 'center', marginBottom: '1rem', color: '#1e293b' }}>Without Replacement</h4>
-    <svg viewBox="0 0 350 250" width="100%" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-      {/* First pick branches */}
-      <line x1="20" y1="125" x2="100" y2="60" stroke="#1e293b" stroke-width="2" />
-      <line x1="20" y1="125" x2="100" y2="190" stroke="#1e293b" stroke-width="2" />
-      <text x="50" y="80" font-weight="bold" fill="#ef4444" text-anchor="middle" font-size="12">3/5</text>
-      <text x="50" y="180" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-size="12">2/5</text>
-      <text x="120" y="65" font-weight="bold" fill="#ef4444" text-anchor="middle">R</text>
-      <text x="120" y="195" font-weight="bold" fill="#3b82f6" text-anchor="middle">B</text>
+      {/* 2nd Pick (Top) */}
+      <line x1="140" y1="100" x2="210" y2="70" stroke="#94a3b8" stroke-width="2" />
+      <line x1="140" y1="100" x2="210" y2="130" stroke="#94a3b8" stroke-width="2" />
+      <text x="170" y="75" font-size="12" fill="#ef4444" font-weight="bold">3/5</text>
+      <text x="170" y="135" font-size="12" fill="#3b82f6" font-weight="bold">2/5</text>
+      <circle cx="220" cy="70" r="10" fill="#ef4444" />
+      <circle cx="220" cy="130" r="10" fill="#3b82f6" />
 
-      {/* Second pick branches from Red (Total now 4, Red now 2) */}
-      <line x1="140" y1="60" x2="220" y2="30" stroke="#1e293b" stroke-width="2" />
-      <line x1="140" y1="60" x2="220" y2="90" stroke="#1e293b" stroke-width="2" />
-      <text x="175" y="35" font-weight="bold" fill="#ef4444" text-anchor="middle" font-size="10">2/4</text>
-      <text x="175" y="95" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-size="10">2/4</text>
-      <text x="240" y="35" font-weight="bold" fill="#ef4444" text-anchor="middle">R</text>
-      <text x="240" y="95" font-weight="bold" fill="#3b82f6" text-anchor="middle">B</text>
+      {/* 2nd Pick (Bottom) */}
+      <line x1="140" y1="200" x2="210" y2="170" stroke="#94a3b8" stroke-width="2" />
+      <line x1="140" y1="200" x2="210" y2="230" stroke="#94a3b8" stroke-width="2" />
+      <text x="170" y="175" font-size="12" fill="#ef4444" font-weight="bold">3/5</text>
+      <text x="170" y="235" font-size="12" fill="#3b82f6" font-weight="bold">2/5</text>
+      <circle cx="220" cy="170" r="10" fill="#ef4444" />
+      <circle cx="220" cy="230" r="10" fill="#3b82f6" />
+    </g>
 
-      {/* Second pick branches from Blue (Total now 4, Blue now 1) */}
-      <line x1="140" y1="190" x2="220" y2="160" stroke="#1e293b" stroke-width="2" />
-      <line x1="140" y1="190" x2="220" y2="220" stroke="#1e293b" stroke-width="2" />
-      <text x="175" y="165" font-weight="bold" fill="#ef4444" text-anchor="middle" font-size="10">3/4</text>
-      <text x="175" y="225" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-size="10">1/4</text>
-      <text x="240" y="165" font-weight="bold" fill="#ef4444" text-anchor="middle">R</text>
-      <text x="240" y="225" font-weight="bold" fill="#3b82f6" text-anchor="middle">B</text>
+    {/* Divider */}
+    <line x1="300" y1="10" x2="300" y2="290" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,5" />
+
+    {/* Without Replacement Group */}
+    <g transform="translate(300, 0)">
+      <text x="150" y="30" font-weight="bold" fill="#1e293b" text-anchor="middle">Without Replacement</text>
       
-      {/* End Probs */}
-      <text x="290" y="35" font-size="10" fill="#1e293b" text-anchor="middle">6/20</text>
-      <text x="290" y="95" font-size="10" fill="#1e293b" text-anchor="middle">6/20</text>
-      <text x="290" y="165" font-size="10" fill="#1e293b" text-anchor="middle">6/20</text>
-      <text x="290" y="225" font-size="10" fill="#1e293b" text-anchor="middle">2/20</text>
-    </svg>
-  </div>
+      {/* 1st Pick */}
+      <line x1="50" y1="150" x2="120" y2="100" stroke="#94a3b8" stroke-width="2" />
+      <line x1="50" y1="150" x2="120" y2="200" stroke="#94a3b8" stroke-width="2" />
+      <text x="70" y="115" font-size="12" fill="#ef4444" font-weight="bold">3/5</text>
+      <text x="70" y="195" font-size="12" fill="#3b82f6" font-weight="bold">2/5</text>
+      <circle cx="130" cy="100" r="10" fill="#ef4444" />
+      <circle cx="130" cy="200" r="10" fill="#3b82f6" />
+
+      {/* Centred Highlights for changed probabilities */}
+      <rect x="153" y="63" width="30" height="16" fill="#fef08a" rx="4" />
+      <rect x="153" y="123" width="30" height="16" fill="#fef08a" rx="4" />
+      <rect x="153" y="163" width="30" height="16" fill="#fef08a" rx="4" />
+      <rect x="153" y="223" width="30" height="16" fill="#fef08a" rx="4" />
+
+      {/* 2nd Pick (Top) - Lost a Red */}
+      <line x1="140" y1="100" x2="210" y2="70" stroke="#94a3b8" stroke-width="2" />
+      <line x1="140" y1="100" x2="210" y2="130" stroke="#94a3b8" stroke-width="2" />
+      <text x="168" y="75" font-size="12" fill="#b91c1c" font-weight="bold" text-anchor="middle">2/4</text>
+      <text x="168" y="135" font-size="12" fill="#1d4ed8" font-weight="bold" text-anchor="middle">2/4</text>
+      <circle cx="220" cy="70" r="10" fill="#ef4444" />
+      <circle cx="220" cy="130" r="10" fill="#3b82f6" />
+
+      {/* 2nd Pick (Bottom) - Lost a Blue */}
+      <line x1="140" y1="200" x2="210" y2="170" stroke="#94a3b8" stroke-width="2" />
+      <line x1="140" y1="200" x2="210" y2="230" stroke="#94a3b8" stroke-width="2" />
+      <text x="168" y="175" font-size="12" fill="#b91c1c" font-weight="bold" text-anchor="middle">3/4</text>
+      <text x="168" y="235" font-size="12" fill="#1d4ed8" font-weight="bold" text-anchor="middle">1/4</text>
+      <circle cx="220" cy="170" r="10" fill="#ef4444" />
+      <circle cx="220" cy="230" r="10" fill="#3b82f6" />
+      
+      {/* Callout text */}
+      <text x="150" y="270" font-size="12" fill="#ca8a04" font-weight="bold" text-anchor="middle">Denominators & totals decrease!</text>
+    </g>
+  </svg>
 </div>
 
 <SteveTip title="Adding the Ends">
+
 A brilliant way to check if your tree diagram is correct in an exam is to add up all the final probabilities on the far right. They MUST add up exactly to $1$ (e.g., in the Without Replacement tree: $\frac{6}{20} + \frac{6}{20} + \frac{6}{20} + \frac{2}{20} = \frac{20}{20} = 1$).
+
 </SteveTip>
 
 ---
 
-## 3. The "At Least One" Trick (Using the Complement)
+## 5. The "At Least One" Trick (Using the Complement)
 
 Sometimes calculating the probability of a combined event directly is exhausting because there are too many paths. A classic example is finding the probability of getting **"at least one"** of something.
 
@@ -202,7 +262,7 @@ $$
 
 ---
 
-## 4. Complex Conditional Events (Box to Box)
+## 6. Complex Conditional Events (Box to Box)
 
 At the Extended level, you may encounter problems where an item is moved from one container to another *before* a second draw takes place. This alters the denominators AND the numerators of the second container!
 
@@ -229,152 +289,205 @@ $$
 
 ---
 
-## 5. Venn Diagrams and Set Notation
-
-We can also represent the probability of combined events using Venn diagrams and set notation.
-* **Intersection (AND):** $P(A \cap B)$ is the probability of choosing something that belongs to BOTH event $A$ and event $B$ (the overlapping middle section).
-* **Union (OR):** $P(A \cup B)$ is the probability of choosing something that belongs to event $A$, event $B$, or BOTH (the entirety of both circles).
-
----
-
 ## Practice Questions
 
 <Tabs>
-  <TabItem label="📝 Question 1: At Least One (Complement)">
-    A bag contains $4$ red sweets and $6$ yellow sweets. Two sweets are selected at random **without replacement**.
+  <TabItem label="📝 Question 1: Basic Two-Way Table Probabilities">
+
+    A school organises a trip and students can choose to go to a Museum or a Zoo.
+    The table below shows the choices made by 80 students, split by Year 10 and Year 11.
     
-    Calculate the probability that **at least one** of the sweets is red.
+    | | Museum | Zoo | Total |
+    |---|---|---|---|
+    | **Year 10** | 18 | 22 | 40 |
+    | **Year 11** | 25 | 15 | 40 |
+    | **Total** | 43 | 37 | 80 |
+
+    a) A student is chosen at random. Find the probability that they are in Year 10.
     
+    b) A student is chosen at random. Find the probability that they chose the Museum.
+    
+    c) A student is chosen at random. Find the probability that they are in Year 10 AND chose the Zoo.
+    
+    d) A student is chosen at random. Find the probability that they are in Year 11 AND chose the Museum.
+
   </TabItem>
   <TabItem label="✅ Solution 1">
+
+    **a)**
+    
     <Steps>
-      1. "At least one red" includes (Red, Red), (Red, Yellow), and (Yellow, Red). The only outcome it does *not* include is (Yellow, Yellow).
-      2. It is faster to calculate $P(\text{None are red})$, which is $P(\text{Yellow, Yellow})$.
-      3. First yellow sweet: $\frac{6}{10}$.
-      4. Second yellow sweet (without replacement): $\frac{5}{9}$.
-      5. Calculate $P(Y, Y)$:
-         $$
-         \begin{aligned}
-         P(Y, Y) &= \frac{6}{10} \times \frac{5}{9} \\
-         &= \frac{30}{90} \\
-         &= \frac{1}{3}
-         \end{aligned}
-         $$
-      6. Use the complement rule for "at least one":
-         $$
-         \begin{aligned}
-         P(\text{At least one red}) &= 1 - P(Y, Y) \\
-         &= 1 - \frac{1}{3} \\
-         &= \frac{2}{3}
-         \end{aligned}
-         $$
+      1. The total number of Year 10 students is 40. The grand total is 80.
+      2. $$P(\text{Year 10}) = \frac{40}{80} = \frac{1}{2}$$
     </Steps>
+
+    **b)**
+    
+    <Steps>
+      1. The total number of students who chose the Museum is 43.
+      2. $$P(\text{Museum}) = \frac{43}{80}$$
+    </Steps>
+
+    **c)**
+    
+    <Steps>
+      1. Locate the intersection of "Year 10" and "Zoo" in the table. There are 22 students in this category.
+      2. $$P(\text{Year 10 and Zoo}) = \frac{22}{80} = \frac{11}{40}$$
+    </Steps>
+
+    **d)**
+    
+    <Steps>
+      1. Locate the intersection of "Year 11" and "Museum". There are 25 students here.
+      2. $$P(\text{Year 11 and Museum}) = \frac{25}{80} = \frac{5}{16}$$
+    </Steps>
+
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Calculating 'at least one' probabilities using the complement rule for tree diagrams" />
+<SmartAIGenerator topic="Extracting basic probabilities from a two-way table" />
 
 <Tabs>
-  <TabItem label="📝 Question 2: Venn Diagram Notation">
-    In a group of $40$ tourists:
-    * $24$ speak Spanish ($S$)
-    * $18$ speak French ($F$)
-    * $6$ speak neither Spanish nor French.
-    
-    A tourist is chosen at random. Find $P(S \cap F)$.
+  <TabItem label="📝 Question 2: Conditional Probabilities in Context">
 
-    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-      <svg viewBox="0 0 300 200" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-        <rect x="10" y="10" width="280" height="180" fill="none" stroke="#1e293b" stroke-width="2" />
-        <text x="20" y="30" font-weight="bold" fill="#1e293b" font-size="16">U = 40</text>
-        <circle cx="110" cy="100" r="60" fill="none" stroke="#3b82f6" stroke-width="2" />
-        <text x="70" y="60" font-weight="bold" fill="#3b82f6">S</text>
-        <circle cx="190" cy="100" r="60" fill="none" stroke="#10b981" stroke-width="2" />
-        <text x="220" y="60" font-weight="bold" fill="#10b981">F</text>
-        <text x="40" y="170" font-weight="bold" fill="#1e293b" text-anchor="middle">6</text>
+    A company cafeteria offers two lunch choices: a Hot Meal or Sandwiches. 
+    A survey was conducted on 100 people, comprising both Staff and Students. 
+    
+    * There are 20 Staff members in total, and 15 of them chose a Hot Meal.
+    * Out of the 80 Students, 35 chose Sandwiches.
+
+    a) Construct a two-way table to represent this information, then find the probability that a randomly chosen person had a Hot Meal.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 500 240" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <g stroke="#e2e8f0" stroke-width="2">
+          {/* Horizontal Lines */}
+          {[0, 1, 2, 3, 4].map((i) => <line key={`qh-${i}`} x1="50" y1={40 + i*40} x2="450" y2={40 + i*40} />)}
+          {/* Vertical Lines */}
+          {[0, 1, 2, 3, 4].map((i) => <line key={`qv-${i}`} x1={50 + i*100} y1="40" x2={50 + i*100} y2="200" />)}
+        </g>
+
+        {/* Header styling */}
+        <rect x="50" y="40" width="400" height="40" fill="#e2e8f0" fill-opacity="0.5" />
+        <rect x="50" y="40" width="100" height="160" fill="#e2e8f0" fill-opacity="0.5" />
+
+        {/* Text Labels - Headers */}
+        <text x="100" y="55" font-weight="bold" font-size="12" fill="#1e293b" text-anchor="middle">Role /</text>
+        <text x="100" y="70" font-weight="bold" font-size="12" fill="#1e293b" text-anchor="middle">Lunch</text>
+        
+        <text x="200" y="65" font-weight="bold" fill="#3b82f6" text-anchor="middle">Hot Meal</text>
+        <text x="300" y="65" font-weight="bold" fill="#ec4899" text-anchor="middle">Sandwiches</text>
+        <text x="400" y="65" font-weight="bold" fill="#1e293b" text-anchor="middle">Total</text>
+
+        {/* Text Labels - Rows */}
+        <text x="100" y="105" font-weight="bold" fill="#1e293b" text-anchor="middle">Staff</text>
+        <text x="100" y="145" font-weight="bold" fill="#1e293b" text-anchor="middle">Students</text>
+        <text x="100" y="185" font-weight="bold" fill="#1e293b" text-anchor="middle">Total</text>
       </svg>
     </div>
     
+    b) A student is chosen at random. Find the probability they chose Sandwiches.
+    
+    c) Given that a randomly chosen person had a Hot Meal, what is the probability they are Staff?
+    
+    d) Find $P(\text{Staff} \cap \text{Sandwiches})$.
+
   </TabItem>
   <TabItem label="✅ Solution 2">
+
+    **a)**
+
     <Steps>
-      1. First, find how many tourists speak at least one of the languages by subtracting the "neither" group from the universal set: $40 - 6 = 34$.
-      2. The simple sum of the Spanish speakers and French speakers is $24 + 18 = 42$.
-      3. Because $42$ is greater than the $34$ tourists available, the difference must be the people who were counted twice (the intersection).
-      4. Number of people who speak both $= 42 - 34 = 8$. This means $n(S \cap F) = 8$.
-      5. The probability of picking someone from the intersection out of the whole group is $\frac{8}{40}$.
-         $$
-         \begin{aligned}
-         P(S \cap F) &= \frac{8}{40} \\
-         &= \frac{1}{5}
-         \end{aligned}
-         $$
+      1. First, complete the missing values. Staff Sandwiches = 20 - 15 = 5. Student Hot Meals = 80 - 35 = 45. Total Hot Meals = 15 + 45 = 60.
     </Steps>
-    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-      <svg viewBox="0 0 300 200" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-        <rect x="10" y="10" width="280" height="180" fill="none" stroke="#1e293b" stroke-width="2" />
-        <circle cx="110" cy="100" r="60" fill="#3b82f6" fill-opacity="0.1" stroke="#3b82f6" stroke-width="2" />
-        <circle cx="190" cy="100" r="60" fill="#10b981" fill-opacity="0.1" stroke="#10b981" stroke-width="2" />
-        <text x="80" y="105" font-weight="bold" fill="#1e293b" text-anchor="middle">16</text>
-        <text x="150" y="105" font-weight="bold" fill="#1e293b" text-anchor="middle">8</text>
-        <text x="220" y="105" font-weight="bold" fill="#1e293b" text-anchor="middle">10</text>
-        <text x="40" y="170" font-weight="bold" fill="#1e293b" text-anchor="middle">6</text>
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 500 240" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <g stroke="#e2e8f0" stroke-width="2">
+          {/* Horizontal Lines */}
+          {[0, 1, 2, 3, 4].map((i) => <line key={`sh-${i}`} x1="50" y1={40 + i*40} x2="450" y2={40 + i*40} />)}
+          {/* Vertical Lines */}
+          {[0, 1, 2, 3, 4].map((i) => <line key={`sv-${i}`} x1={50 + i*100} y1="40" x2={50 + i*100} y2="200" />)}
+        </g>
+
+        {/* Header styling */}
+        <rect x="50" y="40" width="400" height="40" fill="#e2e8f0" fill-opacity="0.5" />
+        <rect x="50" y="40" width="100" height="160" fill="#e2e8f0" fill-opacity="0.5" />
+
+        {/* Text Labels - Headers */}
+        <text x="100" y="55" font-weight="bold" font-size="12" fill="#1e293b" text-anchor="middle">Role /</text>
+        <text x="100" y="70" font-weight="bold" font-size="12" fill="#1e293b" text-anchor="middle">Lunch</text>
+        
+        <text x="200" y="65" font-weight="bold" fill="#3b82f6" text-anchor="middle">Hot Meal</text>
+        <text x="300" y="65" font-weight="bold" fill="#ec4899" text-anchor="middle">Sandwiches</text>
+        <text x="400" y="65" font-weight="bold" fill="#1e293b" text-anchor="middle">Total</text>
+
+        {/* Text Labels - Rows */}
+        <text x="100" y="105" font-weight="bold" fill="#1e293b" text-anchor="middle">Staff</text>
+        <text x="100" y="145" font-weight="bold" fill="#1e293b" text-anchor="middle">Students</text>
+        <text x="100" y="185" font-weight="bold" fill="#1e293b" text-anchor="middle">Total</text>
+
+        {/* Text Labels - Data */}
+        <text x="200" y="105" font-weight="bold" fill="#10b981" text-anchor="middle">15</text>
+        <text x="300" y="105" font-weight="normal" fill="#1e293b" text-anchor="middle">5</text>
+        <text x="400" y="105" font-weight="bold" fill="#10b981" text-anchor="middle">20</text>
+
+        <text x="200" y="145" font-weight="normal" fill="#1e293b" text-anchor="middle">45</text>
+        <text x="300" y="145" font-weight="bold" fill="#10b981" text-anchor="middle">35</text>
+        <text x="400" y="145" font-weight="bold" fill="#10b981" text-anchor="middle">80</text>
+
+        <text x="200" y="185" font-weight="bold" fill="#1e293b" text-anchor="middle">60</text>
+        <text x="300" y="185" font-weight="bold" fill="#1e293b" text-anchor="middle">40</text>
+        <text x="400" y="185" font-weight="bold" fill="#10b981" text-anchor="middle">100</text>
       </svg>
     </div>
-  </TabItem>
-</Tabs>
 
-<SmartAIGenerator topic="Using Venn diagrams to find intersection and union probabilities" />
-
-<Tabs>
-  <TabItem label="📝 Question 3: Box Transfer (Extended)">
-    Box X contains $2$ white tokens and $3$ black tokens.
-    Box Y contains $4$ white tokens and $1$ black token.
-    
-    A token is selected at random from Box X and moved into Box Y. Then, a token is selected at random from Box Y.
-    
-    Calculate the probability that the token selected from Box Y is **white**.
-    
-  </TabItem>
-  <TabItem label="✅ Solution 3">
     <Steps>
-      1. There are two ways the final token can be white. We must track both paths and add them together.
-      2. **Path 1: White from X, then White from Y**
-         * $P(\text{White from X}) = \frac{2}{5}$
-         * Box Y now gains a white token. It has $5$ White and $1$ Black ($6$ total).
-         * $P(\text{White from updated Y}) = \frac{5}{6}$
-         * Path 1 Probability $= \frac{2}{5} \times \frac{5}{6} = \frac{10}{30}$
-      3. **Path 2: Black from X, then White from Y**
-         * $P(\text{Black from X}) = \frac{3}{5}$
-         * Box Y now gains a black token. It has $4$ White and $2$ Black ($6$ total).
-         * $P(\text{White from updated Y}) = \frac{4}{6}$
-         * Path 2 Probability $= \frac{3}{5} \times \frac{4}{6} = \frac{12}{30}$
-      4. Add the valid paths together:
-         $$
-         \begin{aligned}
-         P(\text{White from Box Y}) &= \frac{10}{30} + \frac{12}{30} \\
-         &= \frac{22}{30} \\
-         &= \frac{11}{15}
-         \end{aligned}
-         $$
+      2. $$P(\text{Hot Meal}) = \frac{60}{100} = \frac{3}{5}$$
     </Steps>
+
+    **b)**
+
+    <Steps>
+      1. The condition is "a student is chosen". The denominator is the total number of students (80). 
+      2. $$P(\text{Sandwiches} \mid \text{Student}) = \frac{35}{80} = \frac{7}{16}$$
+    </Steps>
+
+    **c)**
+
+    <Steps>
+      1. The condition is "given they had a Hot Meal". The new denominator is the total Hot Meals (60). Out of those, 15 are Staff.
+      2. $$P(\text{Staff} \mid \text{Hot Meal}) = \frac{15}{60} = \frac{1}{4}$$
+    </Steps>
+
+    **d)**
+
+    <Steps>
+      1. $P(\text{Staff} \cap \text{Sandwiches})$ asks for the probability of being both Staff AND choosing Sandwiches out of the whole group.
+      2. $$P(\text{Staff} \cap \text{Sandwiches}) = \frac{5}{100} = \frac{1}{20}$$
+    </Steps>
+
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Complex conditional probability involving transferring items between containers" />
+<SmartAIGenerator topic="Calculating conditional probabilities from a two-way table" />
 
 <Tabs>
-  <TabItem label="📝 Question 4: Sample Space with Coins and Spinners">
+  <TabItem label="📝 Question 3: Sample Space with Coins and Spinners">
+
     A fair coin is flipped (Heads or Tails) and a fair 3-sided spinner (numbered 1, 2, 3) is spun.
     
     a) Draw a sample space diagram to show all possible outcomes.
-    
+
     b) Calculate the probability of getting Heads and an even number.
-    
+
   </TabItem>
-  <TabItem label="✅ Solution 4">
+  <TabItem label="✅ Solution 3">
+
+    **a)**
+
     <Steps>
-      1. **Part a)** Create a grid with the coin outcomes on one axis and the spinner outcomes on the other.
+      1. Create a grid with the coin outcomes on one axis and the spinner outcomes on the other.
       2. The total number of outcomes is $2 \times 3 = 6$.
     </Steps>
 
@@ -404,31 +517,160 @@ We can also represent the probability of combined events using Venn diagrams and
       </svg>
     </div>
 
+    **b)**
+
     <Steps>
-      3. **Part b)** From the diagram, the only outcome that is Heads AND an even number is highlighted in green (H, 2).
-      4. There is $1$ successful outcome out of $6$ total outcomes.
-      5. $P(\text{Heads and Even}) = \frac{1}{6}$
+      1. From the diagram, the only outcome that is Heads AND an even number is highlighted in green (H, 2).
+      2. There is $1$ successful outcome out of $6$ total outcomes.
+      3. $$P(\text{Heads and Even}) = \frac{1}{6}$$
     </Steps>
+
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Drawing sample space diagrams for mixed independent events" />
 
 <Tabs>
-  <TabItem label="📝 Question 5: Without Replacement">
-    A box contains $5$ green apples and $4$ red apples.
-    Two apples are taken out at random, **without replacement**.
+  <TabItem label="📝 Question 4: Venn Diagram Notation">
+
+    In a group of $40$ tourists:
+    * $24$ speak Spanish ($S$)
+    * $18$ speak French ($F$)
+    * $6$ speak neither Spanish nor French.
     
-    a) Calculate the probability that both apples are green.
-    
-    b) Calculate the probability that the two apples are different colours.
+    A tourist is chosen at random. Find $P(S \cap F)$.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 200" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <rect x="10" y="10" width="280" height="180" fill="none" stroke="#1e293b" stroke-width="2" />
+        <text x="20" y="30" font-weight="bold" fill="#1e293b" font-size="16">U = 40</text>
+        <circle cx="110" cy="100" r="60" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="70" y="60" font-weight="bold" fill="#3b82f6">S</text>
+        <circle cx="190" cy="100" r="60" fill="none" stroke="#10b981" stroke-width="2" />
+        <text x="220" y="60" font-weight="bold" fill="#10b981">F</text>
+        <text x="40" y="170" font-weight="bold" fill="#1e293b" text-anchor="middle">6</text>
+      </svg>
+    </div>
     
   </TabItem>
-  <TabItem label="✅ Solution 5">
+  <TabItem label="✅ Solution 4">
+
     <Steps>
-      1. **Part a)** The probability of the first apple being green is $\frac{5}{9}$.
+      1. First, find how many tourists speak at least one of the languages by subtracting the "neither" group from the universal set: $40 - 6 = 34$.
+      2. The simple sum of the Spanish speakers and French speakers is $24 + 18 = 42$.
+      3. Because $42$ is greater than the $34$ tourists available, the difference must be the people who were counted twice (the intersection).
+      4. Number of people who speak both $= 42 - 34 = 8$. This means $n(S \cap F) = 8$.
+      5. The probability of picking someone from the intersection out of the whole group is $\frac{8}{40}$.
+         $$
+         \begin{aligned}
+         P(S \cap F) &= \frac{8}{40} \\
+         &= \frac{1}{5}
+         \end{aligned}
+         $$
+    </Steps>
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 200" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <rect x="10" y="10" width="280" height="180" fill="none" stroke="#1e293b" stroke-width="2" />
+        <circle cx="110" cy="100" r="60" fill="#3b82f6" fill-opacity="0.1" stroke="#3b82f6" stroke-width="2" />
+        <circle cx="190" cy="100" r="60" fill="#10b981" fill-opacity="0.1" stroke="#10b981" stroke-width="2" />
+        <text x="80" y="105" font-weight="bold" fill="#1e293b" text-anchor="middle">16</text>
+        <text x="150" y="105" font-weight="bold" fill="#1e293b" text-anchor="middle">8</text>
+        <text x="220" y="105" font-weight="bold" fill="#1e293b" text-anchor="middle">10</text>
+        <text x="40" y="170" font-weight="bold" fill="#1e293b" text-anchor="middle">6</text>
+      </svg>
+    </div>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using Venn diagrams to find intersection and union probabilities" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Without Replacement">
+
+    A box contains $5$ green apples and $4$ red apples.
+    
+    Two apples are taken out at random, **without replacement**.
+    
+    *Use the blank tree diagram below to map out the probabilities before answering the questions.*
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* 1st Pick */}
+        <text x="90" y="30" font-weight="bold" fill="#1e293b" text-anchor="middle">1st Apple</text>
+        <line x1="20" y1="125" x2="80" y2="70" stroke="#94a3b8" stroke-width="2" />
+        <line x1="20" y1="125" x2="80" y2="180" stroke="#94a3b8" stroke-width="2" />
+        <rect x="35" y="80" width="30" height="20" fill="white" stroke="#cbd5e1" rx="4" />
+        <rect x="35" y="150" width="30" height="20" fill="white" stroke="#cbd5e1" rx="4" />
+        <text x="95" y="75" font-weight="bold" fill="#10b981">G</text>
+        <text x="95" y="185" font-weight="bold" fill="#ef4444">R</text>
+
+        {/* 2nd Pick Top */}
+        <text x="250" y="30" font-weight="bold" fill="#1e293b" text-anchor="middle">2nd Apple</text>
+        <line x1="110" y1="70" x2="170" y2="40" stroke="#94a3b8" stroke-width="2" />
+        <line x1="110" y1="70" x2="170" y2="100" stroke="#94a3b8" stroke-width="2" />
+        <rect x="125" y="40" width="30" height="20" fill="white" stroke="#cbd5e1" rx="4" />
+        <rect x="125" y="85" width="30" height="20" fill="white" stroke="#cbd5e1" rx="4" />
+        <text x="185" y="45" font-weight="bold" fill="#10b981">G</text>
+        <text x="185" y="105" font-weight="bold" fill="#ef4444">R</text>
+
+        {/* 2nd Pick Bottom */}
+        <line x1="110" y1="180" x2="170" y2="150" stroke="#94a3b8" stroke-width="2" />
+        <line x1="110" y1="180" x2="170" y2="210" stroke="#94a3b8" stroke-width="2" />
+        <rect x="125" y="150" width="30" height="20" fill="white" stroke="#cbd5e1" rx="4" />
+        <rect x="125" y="195" width="30" height="20" fill="white" stroke="#cbd5e1" rx="4" />
+        <text x="185" y="155" font-weight="bold" fill="#10b981">G</text>
+        <text x="185" y="215" font-weight="bold" fill="#ef4444">R</text>
+      </svg>
+    </div>
+
+    a) Calculate the probability that both apples are green.
+
+    b) Calculate the probability that the two apples are different colours.
+
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+
+    **a)**
+
+    <Steps>
+      1. The probability of the first apple being green is $\frac{5}{9}$.
       2. After removing one green apple, there are $4$ green apples left out of a total of $8$ apples.
       3. The probability of the second apple being green is $\frac{4}{8} = \frac{1}{2}$.
+    </Steps>
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* 1st Pick */}
+        <text x="90" y="30" font-weight="bold" fill="#1e293b" text-anchor="middle">1st Apple</text>
+        <line x1="20" y1="125" x2="80" y2="70" stroke="#94a3b8" stroke-width="2" />
+        <line x1="20" y1="125" x2="80" y2="180" stroke="#94a3b8" stroke-width="2" />
+        <text x="50" y="93" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle">5/9</text>
+        <text x="50" y="163" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">4/9</text>
+        <text x="95" y="75" font-weight="bold" fill="#10b981">G</text>
+        <text x="95" y="185" font-weight="bold" fill="#ef4444">R</text>
+
+        {/* 2nd Pick Top */}
+        <text x="250" y="30" font-weight="bold" fill="#1e293b" text-anchor="middle">2nd Apple</text>
+        <line x1="110" y1="70" x2="170" y2="40" stroke="#94a3b8" stroke-width="2" />
+        <line x1="110" y1="70" x2="170" y2="100" stroke="#94a3b8" stroke-width="2" />
+        <text x="140" y="53" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle">4/8</text>
+        <text x="140" y="98" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">4/8</text>
+        <text x="185" y="45" font-weight="bold" fill="#10b981">G</text>
+        <text x="185" y="105" font-weight="bold" fill="#ef4444">R</text>
+
+        {/* 2nd Pick Bottom */}
+        <line x1="110" y1="180" x2="170" y2="150" stroke="#94a3b8" stroke-width="2" />
+        <line x1="110" y1="180" x2="170" y2="210" stroke="#94a3b8" stroke-width="2" />
+        <text x="140" y="163" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle">5/8</text>
+        <text x="140" y="208" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">3/8</text>
+        <text x="185" y="155" font-weight="bold" fill="#10b981">G</text>
+        <text x="185" y="215" font-weight="bold" fill="#ef4444">R</text>
+      </svg>
+    </div>
+
+    <Steps>
       4. Multiply along the branches:
          $$
          \begin{aligned}
@@ -436,10 +678,15 @@ We can also represent the probability of combined events using Venn diagrams and
          &= \frac{5}{18}
          \end{aligned}
          $$
-      5. **Part b)** "Different colours" means picking (Green, Red) OR (Red, Green).
-      6. Path 1: $P(G, R) = \frac{5}{9} \times \frac{4}{8} = \frac{20}{72}$.
-      7. Path 2: $P(R, G) = \frac{4}{9} \times \frac{5}{8} = \frac{20}{72}$.
-      8. Add the probabilities of these mutually exclusive paths:
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. "Different colours" means picking (Green, Red) OR (Red, Green).
+      2. Path 1: $P(G, R) = \frac{5}{9} \times \frac{4}{8} = \frac{20}{72}$.
+      3. Path 2: $P(R, G) = \frac{4}{9} \times \frac{5}{8} = \frac{20}{72}$.
+      4. Add the probabilities of these mutually exclusive paths:
          $$
          \begin{aligned}
          P(\text{Different colours}) &= \frac{20}{72} + \frac{20}{72} \\
@@ -448,56 +695,97 @@ We can also represent the probability of combined events using Venn diagrams and
          \end{aligned}
          $$
     </Steps>
+
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Calculating probabilities of drawing items without replacement" />
 
 <Tabs>
-  <TabItem label="📝 Question 6: Venn Diagrams and Conditional Logic">
-    In a class of $30$ students:
-    * $20$ play Football ($F$)
-    * $12$ play Basketball ($B$)
-    * $5$ play neither sport.
-    
-    a) Find the number of students who play both sports, $n(F \cap B)$.
-    
-    b) A student is chosen at random. Given that they play Football, find the probability that they also play Basketball.
-    
-  </TabItem>
-  <TabItem label="✅ Solution 6">
-    <Steps>
-      1. **Part a)** Total playing at least one sport = $30 - 5 = 25$.
-      2. Sum of Football and Basketball players = $20 + 12 = 32$.
-      3. Number of students playing both = $32 - 25 = 7$.
-      4. $n(F \cap B) = 7$.
-      5. **Part b)** We are given that the student plays Football, so our new denominator is the total number of Football players ($20$).
-      6. The number of those Football players who *also* play Basketball is the intersection ($7$).
-      7. The conditional probability is therefore:
-         $$
-         P(B \mid F) = \frac{7}{20}
-         $$
-    </Steps>
-  </TabItem>
-</Tabs>
+  <TabItem label="📝 Question 6: Multiple Independent Events">
 
-<SmartAIGenerator topic="Using Venn diagrams for conditional probability" />
-
-<Tabs>
-  <TabItem label="📝 Question 7: Multiple Independent Events">
     The probability that a morning bus is late is $0.15$.
+    
     The probability that an evening train is late is $0.2$.
     
+    *Complete the blank tree diagram to map out the probabilities before attempting the questions.*
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* 1st Pick */}
+        <text x="90" y="30" font-weight="bold" fill="#1e293b" text-anchor="middle">Bus</text>
+        <line x1="20" y1="125" x2="80" y2="70" stroke="#94a3b8" stroke-width="2" />
+        <line x1="20" y1="125" x2="80" y2="180" stroke="#94a3b8" stroke-width="2" />
+        <rect x="35" y="80" width="30" height="20" fill="white" stroke="#cbd5e1" rx="4" />
+        <rect x="35" y="150" width="30" height="20" fill="white" stroke="#cbd5e1" rx="4" />
+        <text x="95" y="75" font-weight="bold" font-size="12" fill="#ef4444">Late</text>
+        <text x="95" y="185" font-weight="bold" font-size="12" fill="#10b981">On Time</text>
+
+        {/* 2nd Pick Top */}
+        <text x="250" y="30" font-weight="bold" fill="#1e293b" text-anchor="middle">Train</text>
+        <line x1="140" y1="70" x2="200" y2="40" stroke="#94a3b8" stroke-width="2" />
+        <line x1="140" y1="70" x2="200" y2="100" stroke="#94a3b8" stroke-width="2" />
+        <rect x="155" y="40" width="30" height="20" fill="white" stroke="#cbd5e1" rx="4" />
+        <rect x="155" y="85" width="30" height="20" fill="white" stroke="#cbd5e1" rx="4" />
+        <text x="215" y="45" font-weight="bold" font-size="12" fill="#ef4444">Late</text>
+        <text x="215" y="105" font-weight="bold" font-size="12" fill="#10b981">On Time</text>
+
+        {/* 2nd Pick Bottom */}
+        <line x1="140" y1="180" x2="200" y2="150" stroke="#94a3b8" stroke-width="2" />
+        <line x1="140" y1="180" x2="200" y2="210" stroke="#94a3b8" stroke-width="2" />
+        <rect x="155" y="150" width="30" height="20" fill="white" stroke="#cbd5e1" rx="4" />
+        <rect x="155" y="195" width="30" height="20" fill="white" stroke="#cbd5e1" rx="4" />
+        <text x="215" y="155" font-weight="bold" font-size="12" fill="#ef4444">Late</text>
+        <text x="215" y="215" font-weight="bold" font-size="12" fill="#10b981">On Time</text>
+      </svg>
+    </div>
+
     a) Calculate the probability that both the bus and the train are on time.
-    
+
     b) Calculate the probability that exactly one of the services is late.
-    
+
   </TabItem>
-  <TabItem label="✅ Solution 7">
+  <TabItem label="✅ Solution 6">
+
+    **a)**
+
     <Steps>
-      1. **Part a)** Find the probabilities of being on time using the complement rule.
+      1. Find the probabilities of being on time using the complement rule.
       2. $P(\text{Bus on time}) = 1 - 0.15 = 0.85$.
       3. $P(\text{Train on time}) = 1 - 0.2 = 0.8$.
+    </Steps>
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        {/* 1st Pick */}
+        <text x="90" y="30" font-weight="bold" fill="#1e293b" text-anchor="middle">Bus</text>
+        <line x1="20" y1="125" x2="80" y2="70" stroke="#94a3b8" stroke-width="2" />
+        <line x1="20" y1="125" x2="80" y2="180" stroke="#94a3b8" stroke-width="2" />
+        <text x="50" y="93" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">0.15</text>
+        <text x="50" y="163" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle">0.85</text>
+        <text x="95" y="75" font-weight="bold" font-size="12" fill="#ef4444">Late</text>
+        <text x="95" y="185" font-weight="bold" font-size="12" fill="#10b981">On Time</text>
+
+        {/* 2nd Pick Top */}
+        <text x="250" y="30" font-weight="bold" fill="#1e293b" text-anchor="middle">Train</text>
+        <line x1="140" y1="70" x2="200" y2="40" stroke="#94a3b8" stroke-width="2" />
+        <line x1="140" y1="70" x2="200" y2="100" stroke="#94a3b8" stroke-width="2" />
+        <text x="170" y="53" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">0.2</text>
+        <text x="170" y="98" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle">0.8</text>
+        <text x="215" y="45" font-weight="bold" font-size="12" fill="#ef4444">Late</text>
+        <text x="215" y="105" font-weight="bold" font-size="12" fill="#10b981">On Time</text>
+
+        {/* 2nd Pick Bottom */}
+        <line x1="140" y1="180" x2="200" y2="150" stroke="#94a3b8" stroke-width="2" />
+        <line x1="140" y1="180" x2="200" y2="210" stroke="#94a3b8" stroke-width="2" />
+        <text x="170" y="163" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">0.2</text>
+        <text x="170" y="208" font-size="12" font-weight="bold" fill="#10b981" text-anchor="middle">0.8</text>
+        <text x="215" y="155" font-weight="bold" font-size="12" fill="#ef4444">Late</text>
+        <text x="215" y="215" font-weight="bold" font-size="12" fill="#10b981">On Time</text>
+      </svg>
+    </div>
+
+    <Steps>
       4. Multiply the independent probabilities:
          $$
          \begin{aligned}
@@ -505,10 +793,15 @@ We can also represent the probability of combined events using Venn diagrams and
          &= 0.68
          \end{aligned}
          $$
-      5. **Part b)** "Exactly one is late" means (Bus Late AND Train On Time) OR (Bus On Time AND Train Late).
-      6. $P(\text{Bus Late, Train On Time}) = 0.15 \times 0.8 = 0.12$.
-      7. $P(\text{Bus On Time, Train Late}) = 0.85 \times 0.2 = 0.17$.
-      8. Add the two mutually exclusive paths together:
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. "Exactly one is late" means (Bus Late AND Train On Time) OR (Bus On Time AND Train Late).
+      2. $P(\text{Bus Late, Train On Time}) = 0.15 \times 0.8 = 0.12$.
+      3. $P(\text{Bus On Time, Train Late}) = 0.85 \times 0.2 = 0.17$.
+      4. Add the two mutually exclusive paths together:
          $$
          \begin{aligned}
          P(\text{Exactly one is late}) &= 0.12 + 0.17 \\
@@ -516,25 +809,68 @@ We can also represent the probability of combined events using Venn diagrams and
          \end{aligned}
          $$
     </Steps>
+
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Calculating probabilities of independent events" />
 
 <Tabs>
+  <TabItem label="📝 Question 7: At Least One (Complement)">
+
+    A bag contains $4$ red sweets and $6$ yellow sweets. Two sweets are selected at random **without replacement**.
+    
+    Calculate the probability that **at least one** of the sweets is red.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+
+    <Steps>
+      1. "At least one red" includes (Red, Red), (Red, Yellow), and (Yellow, Red). The only outcome it does *not* include is (Yellow, Yellow).
+      2. It is faster to calculate $P(\text{None are red})$, which is $P(\text{Yellow, Yellow})$.
+      3. First yellow sweet: $\frac{6}{10}$.
+      4. Second yellow sweet (without replacement): $\frac{5}{9}$.
+      5. Calculate $P(Y, Y)$:
+         $$
+         \begin{aligned}
+         P(Y, Y) &= \frac{6}{10} \times \frac{5}{9} \\
+         &= \frac{30}{90} \\
+         &= \frac{1}{3}
+         \end{aligned}
+         $$
+      6. Use the complement rule for "at least one":
+         $$
+         \begin{aligned}
+         P(\text{At least one red}) &= 1 - P(Y, Y) \\
+         &= 1 - \frac{1}{3} \\
+         &= \frac{2}{3}
+         \end{aligned}
+         $$
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating 'at least one' probabilities using the complement rule for tree diagrams" />
+
+<Tabs>
   <TabItem label="📝 Question 8: The 'At Least One' Strategy with Prizemoney">
-    A carnival game costs GBP 2 to play. The probability of winning the top prize of GBP 50 is $0.05$.
+
+    A carnival game costs 2 GBP to play. The probability of winning the top prize of 50 GBP is $0.05$.
     
     A player decides to play the game $3$ times.
     
     a) Calculate the probability that the player wins absolutely nothing.
-    
+
     b) Calculate the probability that the player wins the top prize at least once.
-    
+
   </TabItem>
   <TabItem label="✅ Solution 8">
+
+    **a)**
+
     <Steps>
-      1. **Part a)** The probability of losing a single game is $1 - 0.05 = 0.95$.
+      1. The probability of losing a single game is $1 - 0.05 = 0.95$.
       2. Since the $3$ games are independent, we multiply the probability of losing $3$ times in a row.
          $$
          \begin{aligned}
@@ -542,8 +878,13 @@ We can also represent the probability of combined events using Venn diagrams and
          &= 0.857375
          \end{aligned}
          $$
-      3. **Part b)** Use the complement rule for "at least one".
-      4. "At least one win" is the exact opposite of "winning nothing".
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. Use the complement rule for "at least one".
+      2. "At least one win" is the exact opposite of "winning nothing".
          $$
          \begin{aligned}
          P(\text{At least one win}) &= 1 - P(\text{Lose all 3}) \\
@@ -552,6 +893,7 @@ We can also represent the probability of combined events using Venn diagrams and
          \end{aligned}
          $$
     </Steps>
+
   </TabItem>
 </Tabs>
 
@@ -559,34 +901,45 @@ We can also represent the probability of combined events using Venn diagrams and
 
 <Tabs>
   <TabItem label="📝 Question 9: Multi-Stage Box Transfer">
+
     Container A holds $4$ blue tokens and $2$ yellow tokens.
+    
     Container B holds $3$ blue tokens and $5$ yellow tokens.
     
     One token is drawn at random from Container A and placed into Container B.
+    
     Then, a token is drawn at random from Container B.
     
     a) Given that a yellow token was transferred, state the new probability of drawing a blue token from Container B.
-    
+
     b) Calculate the overall probability that the token finally drawn from Container B is blue.
-    
+
   </TabItem>
   <TabItem label="✅ Solution 9">
+
+    **a)**
+
     <Steps>
-      1. **Part a)** If a yellow token is transferred, Container B gains $1$ yellow token.
+      1. If a yellow token is transferred, Container B gains $1$ yellow token.
       2. Container B originally had $8$ tokens ($3$ blue, $5$ yellow). It now has $9$ tokens ($3$ blue, $6$ yellow).
       3. The new probability of drawing a blue token is $\frac{3}{9}$ or $\frac{1}{3}$.
-      4. **Part b)** We must calculate both paths that result in drawing a blue token from B.
-      5. **Path 1:** (Blue transferred) THEN (Blue drawn from B)
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. We must calculate both paths that result in drawing a blue token from B.
+      2. **Path 1:** (Blue transferred) THEN (Blue drawn from B)
          * $P(\text{Blue from A}) = \frac{4}{6}$
          * B now has $4$ Blue, $5$ Yellow (Total $9$).
          * $P(\text{Blue from B}) = \frac{4}{9}$
          * Path 1 probability = $\frac{4}{6} \times \frac{4}{9} = \frac{16}{54}$
-      6. **Path 2:** (Yellow transferred) THEN (Blue drawn from B)
+      3. **Path 2:** (Yellow transferred) THEN (Blue drawn from B)
          * $P(\text{Yellow from A}) = \frac{2}{6}$
          * B now has $3$ Blue, $6$ Yellow (Total $9$).
          * $P(\text{Blue from B}) = \frac{3}{9}$
          * Path 2 probability = $\frac{2}{6} \times \frac{3}{9} = \frac{6}{54}$
-      7. Add the valid paths together:
+      4. Add the valid paths together:
          $$
          \begin{aligned}
          P(\text{Blue from Container B}) &= \frac{16}{54} + \frac{6}{54} \\
@@ -595,6 +948,7 @@ We can also represent the probability of combined events using Venn diagrams and
          \end{aligned}
          $$
     </Steps>
+
   </TabItem>
 </Tabs>
 
@@ -602,18 +956,22 @@ We can also represent the probability of combined events using Venn diagrams and
 
 <Tabs>
   <TabItem label="📝 Question 10: Sequential Events Until Success">
+
     An archer shoots arrows at a target. The probability that she hits the bullseye on any single shot is $0.4$.
     
     She will keep shooting until she hits the bullseye, but she will take a **maximum of 3 shots**.
     
     a) Calculate the probability that she hits the bullseye on her 2nd shot.
-    
+
     b) Calculate the probability that she fails to hit the bullseye entirely.
-    
+
   </TabItem>
   <TabItem label="✅ Solution 10">
+
+    **a)**
+
     <Steps>
-      1. **Part a)** Hitting on the 2nd shot means she must Miss on the 1st shot, then Hit on the 2nd shot.
+      1. Hitting on the 2nd shot means she must Miss on the 1st shot, then Hit on the 2nd shot.
       2. $P(\text{Miss}) = 1 - 0.4 = 0.6$.
       3. $P(\text{Hit}) = 0.4$.
       4. Multiply the probabilities:
@@ -623,9 +981,14 @@ We can also represent the probability of combined events using Venn diagrams and
          &= 0.24
          \end{aligned}
          $$
-      5. **Part b)** Failing to hit the bullseye entirely means she must miss all 3 shots.
-      6. We need to calculate $P(\text{Miss, Miss, Miss})$.
-      7. Multiply the probability of missing $3$ times:
+    </Steps>
+
+    **b)**
+
+    <Steps>
+      1. Failing to hit the bullseye entirely means she must miss all 3 shots.
+      2. We need to calculate $P(\text{Miss, Miss, Miss})$.
+      3. Multiply the probability of missing $3$ times:
          $$
          \begin{aligned}
          P(\text{Miss 3 times}) &= 0.6 \times 0.6 \times 0.6 \\
@@ -633,6 +996,7 @@ We can also represent the probability of combined events using Venn diagrams and
          \end{aligned}
          $$
     </Steps>
+
   </TabItem>
 </Tabs>
 

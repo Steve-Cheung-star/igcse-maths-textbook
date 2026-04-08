@@ -44,62 +44,90 @@ When comparing two different groups (e.g., Boys and Girls), we use more advanced
 * **Dual Bar Chart:** Places the bars for each category side-by-side. Excellent for directly comparing groups.
 * **Composite (Stacked) Bar Chart:** Stacks the bars on top of each other. Excellent for showing the *total* frequency while still showing the breakdown.
 
-<div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', margin: '2rem 0', flexWrap: 'wrap' }}>
-  {/* Dual Bar Chart */}
-  <div style={{ textAlign: 'center' }}>
-    <h4 style={{ marginBottom: '1rem', color: '#1e293b' }}>Dual Bar Chart</h4>
-    <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-      {/* Grid */}
-      <line x1="40" y1="50" x2="280" y2="50" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
-      <line x1="40" y1="100" x2="280" y2="100" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
-      <line x1="40" y1="150" x2="280" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
-      {/* Axes */}
-      <path d="M 40 20 L 40 200 L 280 200" fill="none" stroke="#334155" stroke-width="2" />
-      
-      {/* Category A */}
-      <rect x="60" y="100" width="20" height="100" fill="#3b82f6" stroke="#1e40af" stroke-width="1" />
-      <rect x="80" y="140" width="20" height="60" fill="#f43f5e" stroke="#9f1239" stroke-width="1" />
-      
-      {/* Category B */}
-      <rect x="140" y="60" width="20" height="140" fill="#3b82f6" stroke="#1e40af" stroke-width="1" />
-      <rect x="160" y="100" width="20" height="100" fill="#f43f5e" stroke="#9f1239" stroke-width="1" />
+<div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 300" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Simple Bar Chart */}
+    <g stroke="#e2e8f0" stroke-width="1">
+      {Array.from({ length: 6 }, (_, i) => (
+        <line key={'grid-simple-'+i} x1="50" y1={250 - i*40} x2="450" y2={250 - i*40} />
+      ))}
+    </g>
 
-      {/* Category C */}
-      <rect x="220" y="150" width="20" height="50" fill="#3b82f6" stroke="#1e40af" stroke-width="1" />
-      <rect x="240" y="120" width="20" height="80" fill="#f43f5e" stroke="#9f1239" stroke-width="1" />
+    <g font-size="12" fill="#64748b" font-family="sans-serif" text-anchor="end">
+      {Array.from({ length: 6 }, (_, i) => (
+        <text key={'label-simple-'+i} x="40" y={254 - i*40}>{i*10}</text>
+      ))}
+    </g>
 
-      {/* Key */}
-      <rect x="50" y="220" width="10" height="10" fill="#3b82f6" />
-      <text x="65" y="230" font-size="10" fill="#475569" font-family="sans-serif">Boys</text>
-      <rect x="110" y="220" width="10" height="10" fill="#f43f5e" />
-      <text x="125" y="230" font-size="10" fill="#475569" font-family="sans-serif">Girls</text>
-    </svg>
-  </div>
+    <g stroke="#94a3b8" stroke-width="2">
+      <line x1="50" y1="250" x2="450" y2="250" />
+      <line x1="50" y1="250" x2="50" y2="30" />
+    </g>
 
-  {/* Composite Bar Chart */}
-  <div style={{ textAlign: 'center' }}>
-    <h4 style={{ marginBottom: '1rem', color: '#1e293b' }}>Composite (Stacked) Chart</h4>
-    <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-      {/* Grid */}
-      <line x1="40" y1="50" x2="280" y2="50" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
-      <line x1="40" y1="100" x2="280" y2="100" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
-      <line x1="40" y1="150" x2="280" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4" />
-      {/* Axes */}
-      <path d="M 40 20 L 40 200 L 280 200" fill="none" stroke="#334155" stroke-width="2" />
-      
-      {/* Category A (Total 160: Blue 100, Red 60) -> Scaled to chart */}
-      <rect x="70" y="100" width="30" height="100" fill="#3b82f6" stroke="#1e40af" stroke-width="1" />
-      <rect x="70" y="40" width="30" height="60" fill="#f43f5e" stroke="#9f1239" stroke-width="1" />
-      
-      {/* Category B */}
-      <rect x="140" y="60" width="30" height="140" fill="#3b82f6" stroke="#1e40af" stroke-width="1" />
-      <rect x="140" y="20" width="30" height="40" fill="#f43f5e" stroke="#9f1239" stroke-width="1" />
+    <rect x="80" y="90" width="40" height="160" fill="#3b82f6" />
+    <rect x="160" y="130" width="40" height="120" fill="#3b82f6" />
+    <rect x="240" y="50" width="40" height="200" fill="#3b82f6" />
+    <rect x="320" y="170" width="40" height="80" fill="#3b82f6" />
+    <rect x="400" y="210" width="40" height="40" fill="#3b82f6" />
 
-      {/* Category C */}
-      <rect x="210" y="150" width="30" height="50" fill="#3b82f6" stroke="#1e40af" stroke-width="1" />
-      <rect x="210" y="70" width="30" height="80" fill="#f43f5e" stroke="#9f1239" stroke-width="1" />
-    </svg>
-  </div>
+    <g font-size="12" fill="#64748b" font-family="sans-serif" text-anchor="middle">
+      <text x="100" y="270">Apples</text>
+      <text x="180" y="270">Bananas</text>
+      <text x="260" y="270">Cherries</text>
+      <text x="340" y="270">Dates</text>
+      <text x="420" y="270">Figs</text>
+    </g>
+
+    <text x="250" y="295" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif" text-anchor="middle">Fruit Type</text>
+    <text x="15" y="140" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif" text-anchor="middle" transform="rotate(-90 15,140)">Frequency</text>
+    <text x="250" y="25" font-size="14" font-weight="bold" fill="#334155" font-family="sans-serif" text-anchor="middle">Simple Bar Chart</text>
+  </svg>
+
+  <svg viewBox="0 0 500 300" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Stacked Bar Chart */}
+    <g stroke="#e2e8f0" stroke-width="1">
+      {Array.from({ length: 6 }, (_, i) => (
+        <line key={'grid-stacked-'+i} x1="50" y1={250 - i*40} x2="450" y2={250 - i*40} />
+      ))}
+    </g>
+
+    <g font-size="12" fill="#64748b" font-family="sans-serif" text-anchor="end">
+      {Array.from({ length: 6 }, (_, i) => (
+        <text key={'label-stacked-'+i} x="40" y={254 - i*40}>{i*50}</text>
+      ))}
+    </g>
+
+    <g stroke="#94a3b8" stroke-width="2">
+      <line x1="50" y1="250" x2="450" y2="250" />
+      <line x1="50" y1="250" x2="50" y2="30" />
+    </g>
+
+    {/* Bars - Adults (Bottom) */}
+    <rect x="90" y="154" width="60" height="96" fill="#3b82f6" />
+    <rect x="220" y="130" width="60" height="120" fill="#3b82f6" />
+    <rect x="350" y="178" width="60" height="72" fill="#3b82f6" />
+
+    {/* Bars - Children (Top) */}
+    <rect x="90" y="90" width="60" height="64" fill="#f59e0b" />
+    <rect x="220" y="50" width="60" height="80" fill="#f59e0b" />
+    <rect x="350" y="130" width="60" height="48" fill="#f59e0b" />
+
+    <g font-size="12" fill="#64748b" font-family="sans-serif" text-anchor="middle">
+      <text x="120" y="270">Friday</text>
+      <text x="250" y="270">Saturday</text>
+      <text x="380" y="270">Sunday</text>
+    </g>
+
+    <text x="250" y="295" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif" text-anchor="middle">Day</text>
+    <text x="15" y="140" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif" text-anchor="middle" transform="rotate(-90 15,140)">Tickets Sold</text>
+    <text x="250" y="25" font-size="14" font-weight="bold" fill="#334155" font-family="sans-serif" text-anchor="middle">Composite (Stacked) Bar Chart</text>
+
+    {/* Legend */}
+    <rect x="370" y="40" width="12" height="12" fill="#f59e0b" />
+    <text x="390" y="50" font-size="12" fill="#334155" font-family="sans-serif">Children</text>
+    <rect x="370" y="60" width="12" height="12" fill="#3b82f6" />
+    <text x="390" y="70" font-size="12" fill="#334155" font-family="sans-serif">Adults</text>
+  </svg>
 </div>
 
 ---
@@ -112,11 +140,9 @@ A pie chart uses sectors of a circle to show the relative sizes of data. The who
 To draw a pie chart, you must convert frequencies into angles.
 
 <Aside type="tip" title="The Angle Formula">
-
 $$
 \text{Angle} = \frac{\text{Frequency}}{\text{Total Frequency}} \times 360^\circ
 $$
-
 </Aside>
 
 **Example:**
@@ -129,18 +155,29 @@ A shop sells 60 ice creams: 30 Vanilla, 20 Chocolate, and 10 Strawberry.
 *(Always check that your angles add up to exactly $360^\circ$!)*
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 300 300" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    {/* Vanilla 180 deg (top half) */}
-    <path d="M 150 150 L 50 150 A 100 100 0 0 1 250 150 Z" fill="#fef08a" stroke="#ca8a04" stroke-width="2" />
-    {/* Chocolate 120 deg (bottom right-ish) */}
-    <path d="M 150 150 L 250 150 A 100 100 0 0 1 100 236 Z" fill="#78350f" stroke="#451a03" stroke-width="2" />
-    {/* Strawberry 60 deg (bottom left-ish) */}
-    <path d="M 150 150 L 100 236 A 100 100 0 0 1 50 150 Z" fill="#fca5a5" stroke="#b91c1c" stroke-width="2" />
+  <svg viewBox="0 0 400 400" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+    {/* Background Circle */}
+    <circle cx="200" cy="200" r="150" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="2" />
     
+    {/* Sectors: Vanilla 180deg (30/60), Chocolate 120deg (20/60), Strawberry 60deg (10/60) */}
+    {/* Vanilla: 0 to 180 */}
+    <path d="M 200 200 L 200 50 A 150 150 0 0 1 200 350 Z" fill="#fef3c7" stroke="#fbbf24" stroke-width="2" />
+    
+    {/* Chocolate: 180 to 300 */}
+    <path d="M 200 200 L 200 350 A 150 150 0 0 1 70.1 125 Z" fill="#8b5cf6" stroke="#6d28d9" stroke-width="2" />
+    
+    {/* Strawberry: 300 to 360 */}
+    <path d="M 200 200 L 70.1 125 A 150 150 0 0 1 200 50 Z" fill="#fecdd3" stroke="#f43f5e" stroke-width="2" />
+
     {/* Labels */}
-    <text x="150" y="100" font-size="14" font-weight="bold" fill="#854d0e" text-anchor="middle" font-family="sans-serif">Vanilla (180°)</text>
-    <text x="200" y="200" font-size="12" font-weight="bold" fill="#fcd34d" text-anchor="middle" font-family="sans-serif">Choc (120°)</text>
-    <text x="90" y="190" font-size="12" font-weight="bold" fill="#7f1d1d" text-anchor="middle" font-family="sans-serif">Straw (60°)</text>
+    <text x="270" y="200" font-size="16" font-weight="bold" fill="#b45309" text-anchor="middle">Vanilla</text>
+    <text x="270" y="220" font-size="14" fill="#d97706" text-anchor="middle">180°</text>
+
+    <text x="130" y="260" font-size="16" font-weight="bold" fill="#4c1d95" text-anchor="middle">Chocolate</text>
+    <text x="130" y="280" font-size="14" fill="#6d28d9" text-anchor="middle">120°</text>
+
+    <text x="130" y="110" font-size="16" font-weight="bold" fill="#9f1239" text-anchor="middle">Strawberry</text>
+    <text x="130" y="130" font-size="14" fill="#e11d48" text-anchor="middle">60°</text>
   </svg>
 </div>
 
@@ -274,6 +311,7 @@ When asked for the mode, students often just write down the leaf. If the most co
     * Winter: 30
 
     Calculate the sector angle for Summer.
+    
   </TabItem>
   <TabItem label="✅ Solution 1">
     <Steps>
@@ -295,12 +333,14 @@ When asked for the mode, students often just write down the leaf. If the most co
     </Steps>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Calculating pie chart sector angles from frequency data" />
 
 <Tabs>
   <TabItem label="📝 Q2: Working Backwards with Pie Charts">
     In a pie chart showing the favourite sports of a school, the sector for Football has an angle of $144^\circ$. 
     If 80 students chose Football, calculate the total number of students in the school.
+    
   </TabItem>
   <TabItem label="✅ Solution 2">
     <Steps>
@@ -331,6 +371,7 @@ When asked for the mode, students often just write down the leaf. If the most co
     </Steps>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Using pie chart angles to find total frequencies by setting up algebraic equations" />
 
 <Tabs>
@@ -346,19 +387,21 @@ When asked for the mode, students often just write down the leaf. If the most co
     
     Key: $2 | 0$ represents 20 marks.
 
-    Find:
-    a) The range of the marks
-    b) The mode
-    c) The median
+    a) Find the range of the marks.
+    
+    b) Find the mode.
+    
+    c) Find the median.
+    
   </TabItem>
   <TabItem label="✅ Solution 3">
     <Steps>
-      1. **Range:** Maximum mark - Minimum mark. 
+      1. **Part a: Range:** Maximum mark - Minimum mark. 
          Max = $54$, Min = $20$.
          Range = $54 - 20 = 34$.
-      2. **Mode:** Look for the most repeated leaf in a single row. In the '4' row, the leaf '5' appears three times.
+      2. **Part b: Mode:** Look for the most repeated leaf in a single row. In the '4' row, the leaf '5' appears three times.
          Mode = $45$.
-      3. **Median:** With 15 students, the middle position is $\frac{15 + 1}{2} = 8$th value.
+      3. **Part c: Median:** With 15 students, the middle position is $\frac{15 + 1}{2} = 8$th value.
          Count 8 leaves from the top:
          Row 2: 20 (1), 25 (2), 28 (3)
          Row 3: 31 (4), 32 (5), 32 (6), 34 (7), **39 (8)**.
@@ -366,6 +409,7 @@ When asked for the mode, students often just write down the leaf. If the most co
     </Steps>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Extracting range, mode, median, and quartiles from an ordered stem-and-leaf diagram" />
 
 <Tabs>
@@ -374,6 +418,7 @@ When asked for the mode, students often just write down the leaf. If the most co
     The Friday bar reaches a total height of 200. The bottom section of the Friday bar (Adults) reaches up to 120. The top section is for Children.
     
     Calculate the number of Child tickets sold on Friday.
+    
   </TabItem>
   <TabItem label="✅ Solution 4">
     <Steps>
@@ -386,8 +431,241 @@ When asked for the mode, students often just write down the leaf. If the most co
          200 - 120 = 80
          $$
          
-      5. 80 Child tickets were sold.
+      5. Answer: 80 Child tickets were sold.
     </Steps>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Interpreting heights and segments of composite and dual bar charts" />
+
+<Tabs>
+  <TabItem label="📝 Q5: Drawing a Frequency Table">
+    A teacher asked her class of 20 students how many pets they own. The results were:
+    0, 1, 1, 2, 0, 3, 1, 2, 1, 0, 4, 2, 1, 0, 1, 2, 3, 1, 0, 1
+
+    a) Construct a frequency table for this data.
+    
+    b) Identify the mode of the data.
+    
+    c) Calculate the total number of pets owned by the class.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    <Steps>
+      1. Count the occurrences of each number.
+      2. 0 pets: 5 times
+      3. 1 pet: 8 times
+      4. 2 pets: 4 times
+      5. 3 pets: 2 times
+      6. 4 pets: 1 time
+      7. Verify the total frequency is $5 + 8 + 4 + 2 + 1 = 20$.
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Look for the highest frequency.
+      2. The highest frequency is 8, which corresponds to 1 pet.
+      3. Mode = 1 pet.
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Multiply each number of pets by its frequency and sum the results.
+      2. $(0 \times 5) + (1 \times 8) + (2 \times 4) + (3 \times 2) + (4 \times 1)$
+      3. $0 + 8 + 8 + 6 + 4 = 26$
+      4. Answer: 26 pets.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Constructing frequency tables and finding the mode and mean from raw discrete data" />
+
+<Tabs>
+  <TabItem label="📝 Q6: Pie Chart Proportions">
+    A farmer has an orchard with 360 trees. The pie chart representing the types of trees has a sector for Apple trees with an angle of $150^\circ$.
+
+    a) What fraction of the trees in the orchard are Apple trees? Give your answer in its simplest form.
+    
+    b) Calculate the exact number of Apple trees in the orchard.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+      1. **Part a:** The fraction is the sector angle divided by the total degrees in a circle ($360^\circ$).
+      2. Fraction = $\frac{150}{360}$.
+      3. Simplify by dividing the numerator and denominator by 30: $\frac{5}{12}$.
+      4. Answer: $\frac{5}{12}$.
+      5. **Part b:** Multiply the fraction by the total number of trees.
+      6. Number of Apple trees = $\frac{5}{12} \times 360$.
+      7. $\frac{360}{12} = 30$, and $5 \times 30 = 150$.
+      8. Answer: 150 trees.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating fractions and exact frequencies from pie chart sector angles" />
+
+<Tabs>
+  <TabItem label="📝 Q7: Working Backwards with Pie Charts (Advanced)">
+    In a pie chart showing the favorite subjects of a group of students, the angle for Mathematics is $72^\circ$. 
+    If 45 students chose Mathematics, and the angle for Science is $120^\circ$:
+
+    a) Calculate the total number of students in the group.
+    
+    b) Calculate the number of students who chose Science.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+      1. **Part a:** Set up the relationship for Mathematics.
+      2. $\frac{\text{Math Students}}{\text{Total}} \times 360 = \text{Math Angle}$
+      3. $\frac{45}{\text{Total}} \times 360 = 72$
+      4. Rearrange: $\text{Total} = \frac{45 \times 360}{72}$
+      5. Simplify: $\frac{360}{72} = 5$. Total = $45 \times 5 = 225$.
+      6. Answer: 225 students.
+      7. **Part b:** Use the total to find the number of Science students.
+      8. $\text{Science Students} = \frac{120}{360} \times 225$
+      9. Simplify the fraction: $\frac{120}{360} = \frac{1}{3}$.
+      10. $\frac{1}{3} \times 225 = 75$.
+      11. Answer: 75 students.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Multi-step calculations using pie chart angles to find missing frequencies" />
+
+<Tabs>
+  <TabItem label="📝 Q8: Dual Bar Chart Interpretation">
+    A survey asked students in Year 10 and Year 11 about their preferred mode of transport to school. The dual bar chart below shows the results.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 400 250" width="100%" maxWidth="400px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+        <g stroke="#e2e8f0" stroke-width="1">
+          {Array.from({ length: 6 }, (_, i) => (
+            <line key={'grid'+i} x1="40" y1={200 - i*30} x2="380" y2={200 - i*30} />
+          ))}
+        </g>
+        <g font-size="10" fill="#64748b" font-family="sans-serif" text-anchor="end">
+          {Array.from({ length: 6 }, (_, i) => (
+            <text key={'label'+i} x="35" y={204 - i*30}>{i*10}</text>
+          ))}
+        </g>
+        <g stroke="#94a3b8" stroke-width="2">
+          <line x1="40" y1="200" x2="380" y2="200" />
+          <line x1="40" y1="200" x2="40" y2="20" />
+        </g>
+        {/* Bus */}
+        <rect x="70" y="80" width="20" height="120" fill="#3b82f6" />
+        <rect x="90" y="50" width="20" height="150" fill="#f59e0b" />
+        {/* Walk */}
+        <rect x="150" y="110" width="20" height="90" fill="#3b82f6" />
+        <rect x="170" y="140" width="20" height="60" fill="#f59e0b" />
+        {/* Car */}
+        <rect x="230" y="140" width="20" height="60" fill="#3b82f6" />
+        <rect x="250" y="110" width="20" height="90" fill="#f59e0b" />
+        {/* Cycle */}
+        <rect x="310" y="170" width="20" height="30" fill="#3b82f6" />
+        <rect x="330" y="140" width="20" height="60" fill="#f59e0b" />
+
+        <g font-size="12" fill="#64748b" font-family="sans-serif" text-anchor="middle">
+          <text x="90" y="215">Bus</text>
+          <text x="170" y="215">Walk</text>
+          <text x="250" y="215">Car</text>
+          <text x="330" y="215">Cycle</text>
+        </g>
+
+        {/* Legend */}
+        <rect x="280" y="30" width="10" height="10" fill="#3b82f6" />
+        <text x="295" y="40" font-size="10" fill="#334155" font-family="sans-serif">Year 10</text>
+        <rect x="330" y="30" width="10" height="10" fill="#f59e0b" />
+        <text x="345" y="40" font-size="10" fill="#334155" font-family="sans-serif">Year 11</text>
+      </svg>
+    </div>
+
+    a) How many Year 10 students preferred walking to school?
+    
+    b) Which mode of transport was most popular among Year 11 students?
+    
+    c) Calculate the total number of students surveyed in Year 10.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    <Steps>
+      1. **Part a:** Look at the 'Walk' category. The blue bar (Year 10) reaches a height of 30.
+      2. Answer: 30 students.
+      3. **Part b:** Look for the highest orange bar (Year 11). The highest orange bar is for the 'Bus', reaching a height of 50.
+      4. Answer: Bus.
+      5. **Part c:** Add the heights of all the blue bars (Year 10): Bus = 40, Walk = 30, Car = 20, Cycle = 10.
+      6. $40 + 30 + 20 + 10 = 100$.
+      7. Answer: 100 students.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting dual bar charts and extracting category frequencies" />
+
+<Tabs>
+  <TabItem label="📝 Q9: Pictogram Interpretation">
+    A charity raised money over four days. They represented the funds raised using a pictogram. The key indicates that 1 star symbol represents 200 USD.
+    
+    * **Thursday:** 2 full stars
+    * **Friday:** 3.5 stars
+    * **Saturday:** 5 stars
+    * **Sunday:** 1.25 stars
+    
+    a) Calculate the exact amount raised on Friday in USD.
+    
+    b) Calculate the total amount raised over the four days in USD.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    <Steps>
+      1. **Part a:** Friday has 3.5 stars. 
+      2. Since 1 star = 200 USD, multiply: $3.5 \times 200 = 700$.
+      3. Answer: 700 USD.
+      4. **Part b:** Calculate the total number of stars: $2 + 3.5 + 5 + 1.25 = 11.75$ stars.
+      5. Multiply the total stars by the key: $11.75 \times 200$.
+      6. $11.75 \times 200 = 2350$.
+      7. Answer: 2350 USD.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using a key to calculate total values from a pictogram" />
+
+<Tabs>
+  <TabItem label="📝 Q10: Comparing Data using Stem-and-Leaf Diagrams">
+    The stem-and-leaf diagram below shows the masses, in kg, of 12 parcels.
+
+    | Stem | Leaf |
+    | :--- | :--- |
+    | **1** | $1 \ \ \ 4 \ \ \ 8$ |
+    | **2** | $0 \ \ \ 2 \ \ \ 5 \ \ \ 5 \ \ \ 9$ |
+    | **3** | $3 \ \ \ 6$ |
+    | **4** | $1 \ \ \ 2$ |
+
+    Key: $1 | 4$ represents $14$ kg.
+
+    a) Find the median mass of the parcels.
+    
+    b) Calculate the percentage of parcels that have a mass greater than 25 kg.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    <Steps>
+      1. **Part a:** There are 12 parcels. The median position is $\frac{12 + 1}{2} = 6.5$th value.
+      2. The median is the average of the 6th and 7th values.
+      3. Counting the leaves: 11, 14, 18, 20, 22, **25**, **25**...
+      4. The 6th value is 25 and the 7th value is 25.
+      5. Answer: 25 kg.
+      6. **Part b:** Count the number of parcels with a mass strictly greater than 25 kg.
+      7. The values are: 29, 33, 36, 41, 42. There are 5 parcels.
+      8. Calculate the percentage: $\frac{5}{12} \times 100$.
+      9. $\frac{5}{12} \times 100 \approx 41.67\%$.
+      10. Answer: 41.67%
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating medians and percentages from a stem-and-leaf diagram" />

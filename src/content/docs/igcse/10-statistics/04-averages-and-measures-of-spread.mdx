@@ -46,6 +46,36 @@ $$
 \text{Mean} = \frac{2 + 3 + 4 + 7 + 7 + 9 + 10}{7} = \frac{42}{7} = 6
 $$
 
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 150" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Fulcrum (Balance point at the mean) */}
+    <polygon points="250,110 240,140 260,140" fill="#94a3b8" />
+    
+    {/* Beam */}
+    <line x1="50" y1="110" x2="450" y2="110" stroke="#475569" stroke-width="4" />
+    
+    {/* Data points as weights, distributed based on their values mapped to coordinates */}
+    {/* Values: 2, 3, 4, 7, 7, 9, 10 -> mapped across 50 to 450 (Mean 6 maps to 250) */}
+    {[
+      { val: 2, x: 50 },
+      { val: 3, x: 100 },
+      { val: 4, x: 150 },
+      { val: 7, x: 300, yOff: 0 },
+      { val: 7, x: 300, yOff: -32 },
+      { val: 9, x: 400 },
+      { val: 10, x: 450 }
+    ].map((pt, i) => (
+      <g key={`weight-${i}`}>
+        <rect x={pt.x - 15} y={pt.yOff ? 80 + pt.yOff : 80} width="30" height="30" fill="#3b82f6" rx="4" />
+        <text x={pt.x} y={pt.yOff ? 100 + pt.yOff : 100} font-size="12" fill="#ffffff" font-weight="bold" text-anchor="middle" font-family="sans-serif">{pt.val}</text>
+      </g>
+    ))}
+    
+    <text x="250" y="40" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">The Mean is the Balance Point</text>
+    <line x1="250" y1="50" x2="250" y2="110" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+  </svg>
+</div>
+
 ---
 
 ## 2. Measures of Spread: Range and Quartiles
@@ -85,38 +115,37 @@ $$
   <svg viewBox="0 0 600 200" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     {/* Number Line */}
     <line x1="50" y1="140" x2="550" y2="140" stroke="#64748b" stroke-width="2" />
-    <text x="50" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">2</text>
-    <text x="133" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">4</text>
-    <text x="216" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">6</text>
-    <text x="300" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">8</text>
-    <text x="383" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">10</text>
-    <text x="466" y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">12</text>
+    
+    {/* Array Loop for Number Line Ticks */}
+    {[2, 4, 6, 8, 10, 12].map((val, i) => (
+      <text key={`tick-${i}`} x={50 + i * 83.2} y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">{val}</text>
+    ))}
 
     {/* Box Plot Elements */}
     {/* Whiskers */}
-    <line x1="50" y1="90" x2="91" y2="90" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 4" />
-    <line x1="341" y1="90" x2="383" y2="90" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 4" />
+    <line x1="50" y1="90" x2="91.6" y2="90" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 4" />
+    <line x1="341.2" y1="90" x2="382.8" y2="90" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 4" />
     
     {/* Whiskers end caps */}
     <line x1="50" y1="75" x2="50" y2="105" stroke="#0284c7" stroke-width="3" />
-    <line x1="383" y1="75" x2="383" y2="105" stroke="#0284c7" stroke-width="3" />
+    <line x1="382.8" y1="75" x2="382.8" y2="105" stroke="#0284c7" stroke-width="3" />
 
     {/* The Box (Q1 to Q3) */}
-    <rect x="91" y="60" width="250" height="60" fill="#bae6fd" stroke="#0284c7" stroke-width="3" />
+    <rect x="91.6" y="60" width="249.6" height="60" fill="#bae6fd" stroke="#0284c7" stroke-width="3" />
     
     {/* Median Line */}
     <line x1="258" y1="60" x2="258" y2="120" stroke="#0369a1" stroke-width="4" />
 
     {/* Labels */}
     <text x="50" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Min</text>
-    <text x="91" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Q1 (3)</text>
+    <text x="91.6" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Q1 (3)</text>
     <text x="258" y="45" font-size="14" font-weight="bold" fill="#0369a1" text-anchor="middle" font-family="sans-serif">Median (7)</text>
-    <text x="341" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Q3 (9)</text>
-    <text x="383" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Max</text>
+    <text x="341.2" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Q3 (9)</text>
+    <text x="382.8" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Max</text>
     
     {/* IQR Indicator */}
-    <path d="M 91 180 L 91 190 L 341 190 L 341 180" fill="none" stroke="#ef4444" stroke-width="2" />
-    <text x="216" y="185" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif" background="white">IQR = 6</text>
+    <path d="M 91.6 180 L 91.6 190 L 341.2 190 L 341.2 180" fill="none" stroke="#ef4444" stroke-width="2" />
+    <text x="216.4" y="185" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">IQR = 6</text>
   </svg>
 </div>
 
@@ -230,25 +259,9 @@ $$
 A student's mean score across $4$ tests is $75$. What must they score on their $5$th test to raise their mean to $80$?
 
 <Steps>
-  1. Find the total sum of the first 4 tests:  
-     
-     $$
-     4 \times 75 = 300
-     $$
-     
-  2. Find the total sum needed for 5 tests to have a mean of 80:  
-     
-     $$
-     5 \times 80 = 400
-     $$
-     
-  3. The 5th test must make up the difference:  
-     
-     $$
-     400 - 300 = 100
-     $$
-     
-     *They must score $100$ on their 5th test.*
+  1. Find the total sum of the first 4 tests: $4 \times 75 = 300$
+  2. Find the total sum needed for 5 tests to have a mean of 80: $5 \times 80 = 400$
+  3. The 5th test must make up the difference: $400 - 300 = 100$
 </Steps>
 
 ### Removing Data from the Mean
@@ -258,37 +271,10 @@ The same logic applies when data is removed. Find the original total, subtract t
 A group of $6$ friends has a mean height of $160 \text{ cm}$. One friend, who is $180 \text{ cm}$ tall, leaves the group. Calculate the new mean height of the remaining $5$ friends.
 
 <Steps>
-  1. Original total height of 6 friends:  
-     
-     $$
-     6 \times 160 = 960 \text{ cm}
-     $$
-     
-  2. Subtract the friend who left:  
-     
-     $$
-     960 - 180 = 780 \text{ cm}
-     $$
-     
-  3. Divide by the new number of friends (5):  
-     
-     $$
-     \text{New Mean} = \frac{780}{5} = 156 \text{ cm}
-     $$
-     
+  1. Original total height of 6 friends: $6 \times 160 = 960 \text{ cm}$
+  2. Subtract the friend who left: $960 - 180 = 780 \text{ cm}$
+  3. Divide by the new number of friends (5): $\text{New Mean} = \frac{780}{5} = 156 \text{ cm}$
 </Steps>
-
-### Changing the Median and Mode
-Adding or removing extreme values often drastically shifts the mean, but its effect on the median and mode can be different.
-
-**Example:**
-Consider the data: $2, 4, 4, 5, 8$.
-* **Mode** = $4$
-* **Median** = $4$
-
-If we add two new data points, $8$ and $8$, the new list is: $2, 4, 4, 5, 8, 8, 8$.
-* The **New Mode** is $8$ (it now appears three times).
-* The **New Median** is $5$ (the new middle value).
 
 ### Finding a Missing Frequency
 If you are *given* the mean but a frequency is missing from a grouped table, set up a simple linear equation to solve for the missing frequency.
@@ -303,37 +289,11 @@ The table shows the time taken to solve a puzzle. The estimated mean time is $14
 | $20 < t \le 30$ | $3$ | $25$ | $75$ |
 
 <Steps>
-  1. **Express total frequency ($\sum f$) algebraically:** 
-     $$
-     \sum f = 5 + y + 3 = 8 + y
-     $$
-     
-  2. **Express total $fx$ ($\sum fx$) algebraically:**
-     $$
-     \sum fx = 25 + 15y + 75 = 100 + 15y
-     $$
-     
-  3. **Set up the mean equation and solve for $y$:**
-     $$
-     \frac{100 + 15y}{8 + y} = 14
-     $$
-     
-     Multiply both sides by $(8 + y)$:  
-     
-     $$
-     100 + 15y = 14(8 + y)
-     $$
-     
-     $$
-     100 + 15y = 112 + 14y
-     $$
-     
-     Subtract $14y$ and subtract $100$ from both sides:  
-     
-     $$
-     y = 12
-     $$
-     
+  1. **Express total frequency ($\sum f$) algebraically:** $\sum f = 5 + y + 3 = 8 + y$
+  2. **Express total $fx$ ($\sum fx$) algebraically:** $\sum fx = 25 + 15y + 75 = 100 + 15y$
+  3. **Set up the mean equation and solve for $y$:** $\frac{100 + 15y}{8 + y} = 14$
+  4. Multiply both sides by $(8 + y)$: $100 + 15y = 112 + 14y$
+  5. Subtract $14y$ and subtract $100$ from both sides: $y = 12$
 </Steps>
 
 ---
@@ -341,47 +301,59 @@ The table shows the time taken to solve a puzzle. The estimated mean time is $14
 ## Practice Questions
 
 <Tabs>
-  <TabItem label="📝 Q1: Individual Data Basics">
+  <TabItem label="📝 Question 1: Individual Data Basics">
     The goals scored by a team in 7 matches are: $1, 0, 3, 2, 2, 0, 2$.
     
-    Calculate:
-    a) The mode
-    b) The median
-    c) The mean
-    d) The range
+    a) Calculate the mode.
+
+    b) Calculate the median.
+
+    c) Calculate the mean.
+
+    d) Calculate the range.
   </TabItem>
   <TabItem label="✅ Solution 1">
+
     <Steps>
-      1. **Sort the data:** $0, 0, 1, 2, 2, 2, 3$
-      2. **Mode:** $2$ (appears three times).
-      3. **Median:** The middle value is the 4th number. Median = $2$.
-      4. **Mean:** Sum = $0+0+1+2+2+2+3 = 10$.  
-         Mean = $10 \div 7 = 1.43$ (to 2 d.p.).
-      5. **Range:** Max - Min = $3 - 0 = 3$.
+      1. **a)** Sort the data: $0, 0, 1, 2, 2, 2, 3$. The mode is the most frequent value, which is **$2$**.
+      2. **b)** The median is the middle value of the sorted data (the 4th number). The median is **$2$**.
+      3. **c)** The mean is the sum divided by the count. Sum = $0+0+1+2+2+2+3 = 10$. Mean = $10 \div 7 = \mathbf{1.43}$ (to 2 d.p.).
+      4. **d)** The range is the maximum minus the minimum. Range = $3 - 0 = \mathbf{3}$.
     </Steps>
+
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Calculating mean, median, mode, and range from a raw list of data" />
 
 <Tabs>
-  <TabItem label="📝 Q2: Finding Quartiles and IQR">
+  <TabItem label="📝 Question 2: Finding Quartiles and IQR">
     A runner's sprint times (in seconds) are: $11.2, 12.0, 10.9, 11.5, 12.1, 11.8, 11.5$.
-    Find the lower quartile, upper quartile, and interquartile range (IQR).
+    
+    a) Find the median time.
+
+    b) Find the lower quartile ($Q_1$).
+
+    c) Find the upper quartile ($Q_3$).
+
+    d) Calculate the interquartile range (IQR).
   </TabItem>
   <TabItem label="✅ Solution 2">
+
     <Steps>
-      1. **Sort data:** $10.9, 11.2, 11.5, 11.5, 11.8, 12.0, 12.1$
-      2. **Median ($Q_2$):** $11.5$ (the middle number).
-      3. **Lower Quartile ($Q_1$):** Median of the lower half ($10.9, 11.2, 11.5$) = $11.2$.
-      4. **Upper Quartile ($Q_3$):** Median of the upper half ($11.8, 12.0, 12.1$) = $12.0$.
-      5. **IQR:** $Q_3 - Q_1 = 12.0 - 11.2 = 0.8$ seconds.
+      1. **a)** Sort data: $10.9, 11.2, 11.5, 11.5, 11.8, 12.0, 12.1$. The median ($Q_2$) is **$11.5$** (the middle number).
+      2. **b)** The Lower Quartile ($Q_1$) is the median of the lower half ($10.9, 11.2, 11.5$). $Q_1 =$ **$11.2$**.
+      3. **c)** The Upper Quartile ($Q_3$) is the median of the upper half ($11.8, 12.0, 12.1$). $Q_3 =$ **$12.0$**.
+      4. **d)** The IQR is $Q_3 - Q_1 = 12.0 - 11.2 =$ **$0.8$ seconds**.
     </Steps>
+
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Finding quartiles and IQR from a small data set" />
 
 <Tabs>
-  <TabItem label="📝 Q3: Grouped Discrete Data">
+  <TabItem label="📝 Question 3: Grouped Discrete Data">
     A survey of 40 families asked how many cars they own.
     
     | Cars | Frequency |
@@ -392,28 +364,25 @@ The table shows the time taken to solve a puzzle. The estimated mean time is $14
     | $3$ | $5$ |
 
     a) State the mode.
+
     b) Calculate the mean number of cars.
   </TabItem>
   <TabItem label="✅ Solution 3">
+
     <Steps>
-      1. **Mode:** The highest frequency is $18$, corresponding to **$1$ car**.
-      2. **Find $\sum fx$:** * $0 \times 5 = 0$  
-         * $1 \times 18 = 18$  
-         * $2 \times 12 = 24$  
-         * $3 \times 5 = 15$  
-         * $\sum fx = 0 + 18 + 24 + 15 = 57$
-      3. **Calculate Mean:**
-         $$
-         \text{Mean} = \frac{57}{40} = 1.425 \ \text{cars}
-         $$
-         
+      1. **a)** The highest frequency is $18$, which corresponds to a mode of **$1$ car**.
+      2. **b)** Multiply to find $fx$: $(0 \times 5) + (1 \times 18) + (2 \times 12) + (3 \times 5)$.
+      3. Sum the $fx$ values: $0 + 18 + 24 + 15 = 57$.
+      4. Divide by the total frequency ($40$): $\text{Mean} = 57 \div 40 =$ **$1.425$ cars**.
     </Steps>
+
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Calculating the mean and identifying the mode from a grouped discrete frequency table" />
 
 <Tabs>
-  <TabItem label="📝 Q4: Grouped Continuous Data">
+  <TabItem label="📝 Question 4: Grouped Continuous Data">
     The weights ($w$ kg) of 30 suitcases are recorded.
 
     | Weight ($w$ kg) | Frequency |
@@ -423,175 +392,51 @@ The table shows the time taken to solve a puzzle. The estimated mean time is $14
     | $20 < w \le 25$ | $10$ |
 
     a) Write down the modal class.
+
     b) Calculate an estimate for the mean weight.
   </TabItem>
   <TabItem label="✅ Solution 4">
+
     <Steps>
-      1. **Modal class:** Highest frequency is $14$, so the modal class is **$15 < w \le 20$**.
-      2. **Find midpoints ($x$):** $12.5, 17.5, 22.5$.
-      3. **Calculate $fx$:** * $6 \times 12.5 = 75$  
-         * $14 \times 17.5 = 245$  
-         * $10 \times 22.5 = 225$  
-         * $\sum fx = 75 + 245 + 225 = 545$
-      4. **Estimated Mean:**
-         $$
-         \text{Mean} = \frac{545}{30} = 18.17 \text{ kg (2 d.p.)}
-         $$
-         
+      1. **a)** The highest frequency is $14$, so the modal class is **$15 < w \le 20$**.
+      2. **b)** Find the midpoints ($x$) for each class: $12.5, 17.5, 22.5$.
+      3. Multiply frequency by midpoint ($fx$): $(6 \times 12.5) + (14 \times 17.5) + (10 \times 22.5)$.
+      4. Sum the $fx$ values: $75 + 245 + 225 = 545$.
+      5. Divide by the total frequency ($30$): $\text{Mean} = 545 \div 30 =$ **$18.17 \text{ kg}$** (to 2 d.p.).
     </Steps>
+
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Estimating the mean and identifying the modal class from continuous frequency tables" />
 
 <Tabs>
-  <TabItem label="📝 Q5: Adding Data to Mean">
-    A batsman has a mean score of $42$ runs across $5$ innings. 
-    In his 6th innings, he scores $78$ runs. 
-    Calculate his new mean score.
+  <TabItem label="📝 Question 5: Modifying Data (Adding & Removing)">
+    a) A batsman has a mean score of $42$ runs across $5$ innings. In his 6th innings, he scores $78$ runs. Calculate his new mean score.
+
+    b) The mean weight of $8$ boxes is $15 \text{ kg}$. One box weighing $29 \text{ kg}$ is removed. Calculate the new mean weight of the remaining $7$ boxes.
   </TabItem>
   <TabItem label="✅ Solution 5">
+
     <Steps>
-      1. Calculate original total runs:  
-         
-         $$
-         5 \times 42 = 210
-         $$
-         
-      2. Add the 6th innings score to find the new total:  
-         
-         $$
-         210 + 78 = 288
-         $$
-         
-      3. Divide by the new number of innings ($6$):  
-         
-         $$
-         \text{New Mean} = \frac{288}{6} = 48 \text{ runs}
-         $$
-         
+      1. **a)** Calculate original total runs: $5 \times 42 = 210$.
+      2. Add the 6th innings score to find the new total: $210 + 78 = 288$.
+      3. Divide by the new number of innings ($6$): New Mean $= 288 \div 6 =$ **$48$ runs**.
+      4. **b)** Calculate original total weight: $8 \times 15 = 120 \text{ kg}$.
+      5. Subtract the removed box: $120 - 29 = 91 \text{ kg}$.
+      6. Divide by the remaining number of boxes ($7$): New Mean $= 91 \div 7 =$ **$13 \text{ kg}$**.
     </Steps>
+
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Calculating the new mean when additional data is added" />
+
+<SmartAIGenerator topic="Calculating the new mean when additional data is added or removed" />
 
 <Tabs>
-  <TabItem label="📝 Q6: Removing Data from Mean">
-    The mean weight of $8$ boxes is $15 \text{ kg}$. 
-    One box weighing $29 \text{ kg}$ is removed. 
-    Calculate the new mean weight of the remaining $7$ boxes.
-  </TabItem>
-  <TabItem label="✅ Solution 6">
-    <Steps>
-      1. Calculate original total weight:  
-         
-         $$
-         8 \times 15 = 120 \text{ kg}
-         $$
-         
-      2. Subtract the removed box:  
-         
-         $$
-         120 - 29 = 91 \text{ kg}
-         $$
-         
-      3. Divide by the remaining number of boxes ($7$):  
-         
-         $$
-         \text{New Mean} = \frac{91}{7} = 13 \text{ kg}
-         $$
-         
-    </Steps>
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Calculating the new mean when data is removed" />
+  <TabItem label="📝 Question 6: Missing Target and Frequencies">
+    a) A student's scores on $3$ math tests are $65$, $70$, and $82$. What must she score on her $4$th test to achieve a mean score of $75$ overall?
 
-<Tabs>
-  <TabItem label="📝 Q7: Changing Median and Mode">
-    A set of data is: $3, 3, 5, 7, 9$.
-    Two new numbers, $9$ and $9$, are added to the data set.
-    State the new median and the new mode.
-  </TabItem>
-  <TabItem label="✅ Solution 7">
-    <Steps>
-      1. The original set is $3, 3, 5, 7, 9$. (Median = $5$, Mode = $3$).
-      2. Add the two new numbers and sort: $3, 3, 5, 7, 9, 9, 9$.
-      3. **New Mode:** The number $9$ now appears three times, making it the most frequent. Mode = **$9$**.
-      4. **New Median:** With 7 numbers, the 4th number is the middle. Median = **$7$**.
-    </Steps>
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Analyzing changes to median and mode when specific data points are added" />
-
-<Tabs>
-  <TabItem label="📝 Q8: Missing Target (Individual Data)">
-    A student's scores on $3$ math tests are $65$, $70$, and $82$. 
-    What must she score on her $4$th test to achieve a mean score of $75$ overall?
-  </TabItem>
-  <TabItem label="✅ Solution 8">
-    <Steps>
-      1. Calculate the target total for 4 tests:  
-         
-         $$
-         4 \times 75 = 300
-         $$
-         
-      2. Calculate the sum of the 3 tests already taken:  
-         
-         $$
-         65 + 70 + 82 = 217
-         $$
-         
-      3. Subtract to find the required 4th score:  
-         
-         $$
-         300 - 217 = 83
-         $$
-         
-    </Steps>
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Working backwards to find a specific data value needed to reach a target mean" />
-
-<Tabs>
-  <TabItem label="📝 Q9: Combining Two Means (Extended)">
-    Class A has $20$ students with a mean test score of $60\%$.
-    Class B has $30$ students with a mean test score of $70\%$.
-    Calculate the overall mean test score for all $50$ students.
-  </TabItem>
-  <TabItem label="✅ Solution 9">
-    <Steps>
-      1. Find the total marks for Class A:  
-         
-         $$
-         20 \times 60 = 1200
-         $$
-         
-      2. Find the total marks for Class B:  
-         
-         $$
-         30 \times 70 = 2100
-         $$
-         
-      3. Add to find the grand total of marks:  
-         
-         $$
-         1200 + 2100 = 3300
-         $$
-         
-      4. Divide by the total number of students ($50$):  
-         
-         $$
-         \text{Overall Mean} = \frac{3300}{50} = 66\%
-         $$
-         
-    </Steps>
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Calculating a combined mean from two different groups" />
-
-<Tabs>
-  <TabItem label="📝 Q10: Missing Frequency Equation (Extended)">
-    The table shows the lengths, $L$ cm, of some fish.
+    b) The table below shows the lengths of some fish. The estimated mean length is $13 \text{ cm}$. Find the exact value of $k$.
 
     | Length ($L$ cm) | Frequency |
     | :--- | :--- |
@@ -599,70 +444,45 @@ The table shows the time taken to solve a puzzle. The estimated mean time is $14
     | $10 < L \le 20$ | $k$ |
     | $20 < L \le 30$ | $4$ |
 
-    The estimated mean length is $13 \text{ cm}$. Find the exact value of $k$.
   </TabItem>
-  <TabItem label="✅ Solution 10">
+  <TabItem label="✅ Solution 6">
+
     <Steps>
-      1. **Midpoints ($x$):** $5, 15, 25$.
-      2. **Calculate $fx$:** * $8 \times 5 = 40$
-         * $k \times 15 = 15k$
-         * $4 \times 25 = 100$
-      3. **Algebraic totals:** * $\sum f = 12 + k$
-         * $\sum fx = 140 + 15k$
-      4. **Set up equation:**
-         $$
-         \frac{140 + 15k}{12 + k} = 13
-         $$
-         
-      5. **Solve for $k$:**
-         $$
-         140 + 15k = 13(12 + k)
-         $$
-         
-         $$
-         140 + 15k = 156 + 13k
-         $$
-         
-         $$
-         2k = 16
-         $$
-         
-         $$
-         k = 8
-         $$
-         
+      1. **a)** Calculate the target total for 4 tests: $4 \times 75 = 300$.
+      2. Calculate the sum of the 3 tests already taken: $65 + 70 + 82 = 217$.
+      3. Subtract to find the required 4th score: $300 - 217 =$ **$83$**.
+      4. **b)** Find midpoints: $5, 15, 25$.
+      5. Create an expression for total $\sum fx$: $(8 \times 5) + (k \times 15) + (4 \times 25) = 140 + 15k$.
+      6. Create an expression for total $\sum f$: $8 + k + 4 = 12 + k$.
+      7. Set up the equation using the mean: $\frac{140 + 15k}{12 + k} = 13$.
+      8. Multiply both sides by $(12 + k)$: $140 + 15k = 156 + 13k$.
+      9. Solve for $k$: $2k = 16$, which gives **$k = 8$**.
     </Steps>
+
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Setting up and solving algebraic equations for missing frequencies in a grouped mean table" />
+
+<SmartAIGenerator topic="Setting up and solving algebraic equations for missing targets and frequencies" />
 
 <Tabs>
-  <TabItem label="📝 Q11: Understanding Spread (Concepts)">
-    Two machines fill bags of sugar. 
-    Machine A produces bags with a mean of $1000\text{g}$ and an IQR of $15\text{g}$.
-    Machine B produces bags with a mean of $1000\text{g}$ and an IQR of $4\text{g}$.
-    Which machine is more reliable? Give a reason.
-  </TabItem>
-  <TabItem label="✅ Solution 11">
-    <Steps>
-      1. **Answer:** Machine B is more reliable.
-      2. **Reason:** Although both have the same mean, Machine B has a much smaller Interquartile Range ($4\text{g}$ compared to $15\text{g}$). A smaller spread indicates that the data is more consistent and clustered tightly around the mean.
-    </Steps>
-  </TabItem>
-</Tabs>
-<SmartAIGenerator topic="Comparing and interpreting measures of spread like Range and IQR" />
+  <TabItem label="📝 Question 7: Comparing Datasets and Concepts">
+    a) Class A has $20$ students with a mean test score of $60\%$. Class B has $30$ students with a mean test score of $70\%$. Calculate the overall mean test score for all $50$ students.
 
-<Tabs>
-  <TabItem label="📝 Q12: Choosing the Best Average">
-    A small company pays 6 employees $20,000 a year, and the CEO is paid $250,000 a year.
-    The CEO claims the "average salary" is very high. 
-    Explain why the median would be a better average to use than the mean in this scenario.
+    b) Two machines fill bags of sugar. Machine A produces bags with a mean of $1000\text{g}$ and an IQR of $15\text{g}$. Machine B produces bags with a mean of $1000\text{g}$ and an IQR of $4\text{g}$. Which machine is more reliable? Give a reason.
+
+    c) A small company pays $6$ employees $20,000 \text{ USD}$ a year, and the CEO is paid $250,000 \text{ USD}$ a year. Explain why the median would be a better average to use than the mean in this scenario.
   </TabItem>
-  <TabItem label="✅ Solution 12">
+  <TabItem label="✅ Solution 7">
+
     <Steps>
-      1. The CEO is using the **mean**. Because his salary ($250,000) is an extreme outlier, it drags the mean upwards dramatically, making it unrepresentative of what the standard employee actually earns.
-      2. The **median** is a better average because it is not distorted by extreme outliers. It would correctly point to $20,000, which accurately represents the centre of the typical employees' salaries.
+      1. **a)** Find total marks for Class A: $20 \times 60 = 1200$. 
+      2. Find total marks for Class B: $30 \times 70 = 2100$.
+      3. Add to find the grand total of marks ($3300$) and divide by all $50$ students: Overall Mean = $3300 \div 50 =$ **$66\%$**.
+      4. **b)** **Machine B** is more reliable. Although both have the same mean, Machine B has a much smaller Interquartile Range ($4\text{g}$ compared to $15\text{g}$). A smaller spread indicates that the filling process is more consistent.
+      5. **c)** The CEO's extremely high salary of $250,000 \text{ USD}$ is an **outlier**. It will drag the mean upwards drastically, making the average seem much higher than what standard employees earn. The median is not heavily distorted by extreme outliers, so it better reflects the typical employee's salary.
     </Steps>
+
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Justifying the choice between mean, median, and mode for different real-world scenarios" />
+
+<SmartAIGenerator topic="Calculating combined means and justifying statistical choices conceptually" />

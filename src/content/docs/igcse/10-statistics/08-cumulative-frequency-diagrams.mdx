@@ -54,34 +54,45 @@ Just like with scatter diagrams, the exam board has strict rules for drawing the
     <text x="200" y="320" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Time Taken (minutes)</text>
     <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Frequency</text>
 
-    {/* X Axis Ticks & Text */}
-    <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
-    <text x="100" y="290" font-size="10" fill="#475569" text-anchor="middle">10</text>
-    <text x="150" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
-    <text x="200" y="290" font-size="10" fill="#475569" text-anchor="middle">30</text>
-    <text x="250" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
-    <text x="300" y="290" font-size="10" fill="#475569" text-anchor="middle">50</text>
-    <text x="350" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
+    {/* X Axis Ticks & Text mapped using array */}
+    { [0, 10, 20, 30, 40, 50, 60].map((val, i) => (
+      <text key={`x-${val}`} x={50 + i * 50} y="290" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
+    ))}
 
-    {/* Y Axis Ticks & Text */}
-    <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
-    <text x="40" y="224" font-size="10" fill="#475569" text-anchor="end">20</text>
-    <text x="40" y="174" font-size="10" fill="#475569" text-anchor="end">40</text>
-    <text x="40" y="124" font-size="10" fill="#475569" text-anchor="end">60</text>
-    <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">80</text>
-    <text x="40" y="24" font-size="10" fill="#475569" text-anchor="end">100</text>
+    {/* Y Axis Ticks & Text mapped using array */}
+    { [0, 20, 40, 60, 80, 100].map((val, i) => (
+      <text key={`y-${val}`} x="40" y={274 - i * 50} font-size="10" fill="#475569" text-anchor="end">{val}</text>
+    ))}
 
-    {/* Perfectly Smooth Cubic Bezier Path (Aligned Tangents) */}
-    <path d="M 50 270 C 70 270, 80 268, 100 260 C 120 252, 130 250, 150 230 C 170 210, 180 185, 200 160 C 220 135, 230 121, 250 105 C 270 89, 280 87, 300 80 C 320 73, 330 70, 350 70" fill="none" stroke="#2563eb" stroke-width="2.5" />
+    {/* Smooth Curve plotted using an array loop of dense samples to avoid dipping and ensure precision */}
+    { [[0,0], [5,1], [10,4], [15,9], [20,16], [25,28], [30,44], [35,56], [40,66], [45,72], [50,76], [55,79], [60,80]].map((pt, i, arr) => (
+      i < arr.length - 1 && (
+        <line
+          key={`line-${i}`}
+          x1={50 + pt[0] * 5}
+          y1={270 - pt[1] * 2.5}
+          x2={50 + arr[i+1][0] * 5}
+          y2={270 - arr[i+1][1] * 2.5}
+          stroke="#2563eb"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        />
+      )
+    ))}
 
-    {/* Plotted Points (Crosses) */}
-    <path d="M 46 266 L 54 274 M 46 274 L 54 266" stroke="#1e40af" stroke-width="2" />
-    <path d="M 96 256 L 104 264 M 96 264 L 104 256" stroke="#1e40af" stroke-width="2" />
-    <path d="M 146 226 L 154 234 M 146 234 L 154 226" stroke="#1e40af" stroke-width="2" />
-    <path d="M 196 156 L 204 164 M 196 164 L 204 156" stroke="#1e40af" stroke-width="2" />
-    <path d="M 246 101 L 254 109 M 246 109 L 254 101" stroke="#1e40af" stroke-width="2" />
-    <path d="M 296 76 L 304 84 M 296 84 L 304 76" stroke="#1e40af" stroke-width="2" />
-    <path d="M 346 66 L 354 74 M 346 74 L 354 66" stroke="#1e40af" stroke-width="2" />
+    {/* Plotted Points (Crosses) using array map */}
+    { [[10,4], [20,16], [30,44], [40,66], [50,76], [60,80]].map((pt, i) => {
+      const cx = 50 + pt[0] * 5;
+      const cy = 270 - pt[1] * 2.5;
+      return (
+        <path
+          key={`cross-${i}`}
+          d={`M ${cx-4} ${cy-4} L ${cx+4} ${cy+4} M ${cx-4} ${cy+4} L ${cx+4} ${cy-4}`}
+          stroke="#1e40af"
+          stroke-width="2"
+        />
+      );
+    })}
   </svg>
 </div>
 
@@ -109,13 +120,13 @@ A percentile simply tells you the value below which a given percentage of data f
 Let's use our graph of the 80 students to find the Median and IQR.
 
 <Steps>
-  1. **Median:** Half of 80 is 40. Read across from 40 on the y-axis, hit the curve, and go down. The median is roughly **28 minutes**.
+  1. **Median:** Half of 80 is 40. Read across from 40 on the y-axis, hit the curve, and go down. The median is roughly **28.5 minutes**.
   2. **Lower Quartile ($Q_1$):** A quarter of 80 is 20. Read across from 20 on the y-axis and down. $Q_1$ is roughly **21.5 minutes**.
-  3. **Upper Quartile ($Q_3$):** Three-quarters of 80 is 60. Read across from 60 on the y-axis and down. $Q_3$ is roughly **37.5 minutes**.
+  3. **Upper Quartile ($Q_3$):** Three-quarters of 80 is 60. Read across from 60 on the y-axis and down. $Q_3$ is roughly **37 minutes**.
   4. **IQR:** Subtract $Q_1$ from $Q_3$.
-     $$
-     \text{IQR} = 37.5 - 21.5 = 16 \text{ minutes}
-     $$
+      $$
+      \text{IQR} = 37 - 21.5 = 15.5 \text{ minutes}
+      $$
 </Steps>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
@@ -132,40 +143,46 @@ Let's use our graph of the 80 students to find the Median and IQR.
     <text x="200" y="320" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Time Taken (minutes)</text>
     <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Frequency</text>
 
-    {/* X Axis Ticks & Text */}
-    <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
-    <text x="100" y="290" font-size="10" fill="#475569" text-anchor="middle">10</text>
-    <text x="150" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
-    <text x="200" y="290" font-size="10" fill="#475569" text-anchor="middle">30</text>
-    <text x="250" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
-    <text x="300" y="290" font-size="10" fill="#475569" text-anchor="middle">50</text>
-    <text x="350" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
+    {/* X Axis Ticks & Text using Map */}
+    { [0, 10, 20, 30, 40, 50, 60].map((val, i) => (
+      <text key={`rx-${val}`} x={50 + i * 50} y="290" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
+    ))}
 
-    {/* Y Axis Ticks & Text */}
-    <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
-    <text x="40" y="224" font-size="10" fill="#475569" text-anchor="end">20</text>
-    <text x="40" y="174" font-size="10" fill="#475569" text-anchor="end">40</text>
-    <text x="40" y="124" font-size="10" fill="#475569" text-anchor="end">60</text>
-    <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">80</text>
-    <text x="40" y="24" font-size="10" fill="#475569" text-anchor="end">100</text>
+    {/* Y Axis Ticks & Text using Map */}
+    { [0, 20, 40, 60, 80, 100].map((val, i) => (
+      <text key={`ry-${val}`} x="40" y={274 - i * 50} font-size="10" fill="#475569" text-anchor="end">{val}</text>
+    ))}
 
-    {/* Smooth Curve */}
-    <path d="M 50 270 C 70 270, 80 268, 100 260 C 120 252, 130 250, 150 230 C 170 210, 180 185, 200 160 C 220 135, 230 121, 250 105 C 270 89, 280 87, 300 80 C 320 73, 330 70, 350 70" fill="none" stroke="#2563eb" stroke-width="2.5" />
+    {/* Array loop rendered curve for perfect precision */}
+    { [[0,0], [5,1], [10,4], [15,9], [20,16], [25,28], [30,44], [35,56], [40,66], [45,72], [50,76], [55,79], [60,80]].map((pt, i, arr) => (
+      i < arr.length - 1 && (
+        <line
+          key={`rline-${i}`}
+          x1={50 + pt[0] * 5}
+          y1={270 - pt[1] * 2.5}
+          x2={50 + arr[i+1][0] * 5}
+          y2={270 - arr[i+1][1] * 2.5}
+          stroke="#2563eb"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        />
+      )
+    ))}
 
-    {/* Median Lines */}
-    <path d="M 50 170 L 190 170 L 190 270" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="5 5" />
+    {/* Median Lines (CF=40 -> X=28.5) */}
+    <path d="M 50 170 L 192.5 170 L 192.5 270" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="5 5" />
     <text x="54" y="166" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="start">40</text>
-    <text x="198" y="260" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="start" transform="rotate(-90 198 260)">Median (28)</text>
+    <text x="196" y="260" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="start" transform="rotate(-90 196 260)">Median (28.5)</text>
 
-    {/* Lower Quartile Lines */}
-    <path d="M 50 220 L 158 220 L 158 270" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="5 5" />
+    {/* Lower Quartile Lines (CF=20 -> X=21.5) */}
+    <path d="M 50 220 L 157.5 220 L 157.5 270" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="5 5" />
     <text x="54" y="216" font-size="10" font-weight="bold" fill="#10b981" text-anchor="start">20</text>
-    <text x="166" y="260" font-size="12" font-weight="bold" fill="#10b981" text-anchor="start" transform="rotate(-90 166 260)">LQ (21.5)</text>
+    <text x="161.5" y="260" font-size="12" font-weight="bold" fill="#10b981" text-anchor="start" transform="rotate(-90 161.5 260)">LQ (21.5)</text>
 
-    {/* Upper Quartile Lines */}
-    <path d="M 50 120 L 237 120 L 237 270" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5" />
+    {/* Upper Quartile Lines (CF=60 -> X=37) */}
+    <path d="M 50 120 L 235 120 L 235 270" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5" />
     <text x="54" y="116" font-size="10" font-weight="bold" fill="#f59e0b" text-anchor="start">60</text>
-    <text x="245" y="260" font-size="12" font-weight="bold" fill="#f59e0b" text-anchor="start" transform="rotate(-90 245 260)">UQ (37.5)</text>
+    <text x="239" y="260" font-size="12" font-weight="bold" fill="#f59e0b" text-anchor="start" transform="rotate(-90 239 260)">UQ (37)</text>
   </svg>
 </div>
 
@@ -208,21 +225,25 @@ Using our puzzle times graph, **what is the probability that a randomly selected
     | $30 < d \le 40$ | $c$ | $50$ |
     | $40 < d \le 50$ | $10$ | $d$ |
     
-    Work backwards to find the values of $a, b, c$, and $d$.
+    a) Work backwards to find the values of $a$ and $b$.
+
+    b) Find the values of $c$ and $d$.
+
+    c) State the total number of students in the survey.
+
+    d) Estimate the probability that a randomly chosen student travels more than $30$ km.
+
   </TabItem>
   <TabItem label="✅ Solution 1">
     <Steps>
-      1. **Find $a$:** The CF jumps from 5 to 17. The difference is the frequency for that class. 
-         $a = 17 - 5 = \mathbf{12}$.
-      2. **Find $b$:** The previous CF is 17. Add the next frequency (15). 
-         $b = 17 + 15 = \mathbf{32}$.
-      3. **Find $c$:** The CF jumps from 32 to 50. 
-         $c = 50 - 32 = \mathbf{18}$.
-      4. **Find $d$:** The previous CF is 50. Add the final frequency (10). 
-         $d = 50 + 10 = \mathbf{60}$.
+      1. **a) Find $a$ and $b$:** The CF jumps from $5$ to $17$. The difference is the frequency for that class. $a = 17 - 5 = \mathbf{12}$. For $b$, the previous CF is $17$. Add the next frequency ($15$). $b = 17 + 15 = \mathbf{32}$.
+      2. **b) Find $c$ and $d$:** The CF jumps from $32$ to $50$. $c = 50 - 32 = \mathbf{18}$. For $d$, the previous CF is $50$. Add the final frequency ($10$). $d = 50 + 10 = \mathbf{60}$.
+      3. **c) Total students:** The final cumulative frequency gives the total. There are **$60$ students**.
+      4. **d) Probability > 30 km:** Students traveling $30$ km or less is given by the CF at $30$, which is $b = 32$. Students traveling more than $30$ km $= 60 - 32 = 28$. Probability $= \frac{28}{60} = \mathbf{\frac{7}{15}}$.
     </Steps>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Completing missing values in frequency and cumulative frequency tables by working backwards" />
 
 <Tabs>
@@ -237,90 +258,107 @@ Using our puzzle times graph, **what is the probability that a randomly selected
     | $m \le 80$ | $52$ |
     | $m \le 100$ | $60$ |
     
-    Plot this data on the empty grid below and draw a smooth cumulative frequency curve.
-    
+    a) Plot this data on the empty grid below and draw a smooth cumulative frequency curve.
+
+    b) Use your curve to estimate the median mass.
+
+    c) Use your curve to estimate the interquartile range (IQR).
+
+    d) Apples with a mass greater than $70$ g are classified as "Large". Estimate how many Large apples there are.
+
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 450 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
         <defs>
-          <pattern id="q2grid_s" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="20">
-            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          <pattern id="q2grid_s" width="12" height="8" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 12 0 L 0 0 0 8" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
           </pattern>
-          <pattern id="q2grid_m" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
-            <rect width="50" height="50" fill="url(#q2grid_s)" />
-            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          <pattern id="q2grid_m" width="60" height="40" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="60" height="40" fill="url(#q2grid_s)" />
+            <path d="M 60 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="1.5" />
           </pattern>
         </defs>
-        <rect x="50" y="20" width="300" height="250" fill="url(#q2grid_m)" stroke="#94a3b8" stroke-width="1.5" />
-        <path d="M 50 20 L 50 270 L 350 270" fill="none" stroke="#334155" stroke-width="2" />
-        <text x="200" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Mass (grams)</text>
-        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Freq.</text>
+        {/* Width: 300px (100 units = 3px/u). Height: 240px (60 units = 4px/u). */}
+        <rect x="50" y="20" width="300" height="240" fill="url(#q2grid_m)" stroke="#94a3b8" stroke-width="1.5" />
+        <path d="M 50 20 L 50 260 L 350 260" fill="none" stroke="#334155" stroke-width="2" />
+        <text x="200" y="300" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Mass (grams)</text>
+        <text x="15" y="140" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 140)">Cumulative Freq.</text>
         {/* X Axis */}
-        <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
-        <text x="110" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
-        <text x="170" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
-        <text x="230" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
-        <text x="290" y="290" font-size="10" fill="#475569" text-anchor="middle">80</text>
-        <text x="350" y="290" font-size="10" fill="#475569" text-anchor="middle">100</text>
+        { [0, 20, 40, 60, 80, 100].map((val, i) => (
+          <text key={`q2x-${val}`} x={50 + i * 60} y="280" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
+        ))}
         {/* Y Axis */}
-        <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
-        <text x="40" y="234" font-size="10" fill="#475569" text-anchor="end">10</text>
-        <text x="40" y="194" font-size="10" fill="#475569" text-anchor="end">20</text>
-        <text x="40" y="154" font-size="10" fill="#475569" text-anchor="end">30</text>
-        <text x="40" y="114" font-size="10" fill="#475569" text-anchor="end">40</text>
-        <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">50</text>
-        <text x="40" y="34" font-size="10" fill="#475569" text-anchor="end">60</text>
+        { [0, 10, 20, 30, 40, 50, 60].map((val, i) => (
+          <text key={`q2y-${val}`} x="40" y={264 - i * 40} font-size="10" fill="#475569" text-anchor="end">{val}</text>
+        ))}
       </svg>
     </div>
   </TabItem>
   <TabItem label="✅ Solution 2">
     <Steps>
-      1. Remember to plot against the **upper bound** of each mass interval.
-      2. Plot small crosses at: $(20, 4)$, $(40, 14)$, $(60, 34)$, $(80, 52)$, and $(100, 60)$. Also plot $(0,0)$.
-      3. Draw a smooth curve passing through the crosses.
+      1. **a) Plotting:** Plot against the **upper bound** of each mass interval. Crosses at $(20, 4)$, $(40, 14)$, $(60, 34)$, $(80, 52)$, and $(100, 60)$. Also plot $(0,0)$ and draw a smooth curve.
+      2. **b) Median:** Total $n = 60$. Read across from $60 \div 2 = 30$ on the y-axis, yielding **$56$ g**.
+      3. **c) IQR:** Lower Quartile ($n=15$) $\approx 41$ g. Upper Quartile ($n=45$) $\approx 72$ g. IQR $= 72 - 41 =$ **$31$ g**. *(Estimates may vary slightly).*
+      4. **d) Large Apples:** Read up from $70$ g on the x-axis. CF is $44$. Apples $\le 70$ g is $44$. Apples $> 70$ g $= 60 - 44 =$ **$16$ apples**.
     </Steps>
+
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 450 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
         <defs>
-          <pattern id="q2grid_s2" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="20">
-            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          <pattern id="q2grid_s2" width="12" height="8" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 12 0 L 0 0 0 8" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
           </pattern>
-          <pattern id="q2grid_m2" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
-            <rect width="50" height="50" fill="url(#q2grid_s2)" />
-            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          <pattern id="q2grid_m2" width="60" height="40" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="60" height="40" fill="url(#q2grid_s2)" />
+            <path d="M 60 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="1.5" />
           </pattern>
         </defs>
-        <rect x="50" y="20" width="300" height="250" fill="url(#q2grid_m2)" stroke="#94a3b8" stroke-width="1.5" />
-        <path d="M 50 20 L 50 270 L 350 270" fill="none" stroke="#334155" stroke-width="2" />
-        <text x="200" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Mass (grams)</text>
-        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Freq.</text>
-        <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
-        <text x="110" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
-        <text x="170" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
-        <text x="230" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
-        <text x="290" y="290" font-size="10" fill="#475569" text-anchor="middle">80</text>
-        <text x="350" y="290" font-size="10" fill="#475569" text-anchor="middle">100</text>
-        <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
-        <text x="40" y="234" font-size="10" fill="#475569" text-anchor="end">10</text>
-        <text x="40" y="194" font-size="10" fill="#475569" text-anchor="end">20</text>
-        <text x="40" y="154" font-size="10" fill="#475569" text-anchor="end">30</text>
-        <text x="40" y="114" font-size="10" fill="#475569" text-anchor="end">40</text>
-        <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">50</text>
-        <text x="40" y="34" font-size="10" fill="#475569" text-anchor="end">60</text>
-
-        {/* Perfectly Smoothed Cubic Bezier Curve */}
-        <path d="M 50 270 C 70 270, 90 262, 110 254 C 130 246, 150 226, 170 214 C 190 202, 210 166, 230 134 C 250 102, 270 74, 290 62 C 310 50, 330 30, 350 30" fill="none" stroke="#2563eb" stroke-width="2.5" />
+        <rect x="50" y="20" width="300" height="240" fill="url(#q2grid_m2)" stroke="#94a3b8" stroke-width="1.5" />
+        <path d="M 50 20 L 50 260 L 350 260" fill="none" stroke="#334155" stroke-width="2" />
+        <text x="200" y="300" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Mass (grams)</text>
+        <text x="15" y="140" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 140)">Cumulative Freq.</text>
         
-        {/* Crosses */}
-        <path d="M 46 266 L 54 274 M 46 274 L 54 266" stroke="#1e40af" stroke-width="2" />
-        <path d="M 106 250 L 114 258 M 106 258 L 114 250" stroke="#1e40af" stroke-width="2" />
-        <path d="M 166 210 L 174 218 M 166 218 L 174 210" stroke="#1e40af" stroke-width="2" />
-        <path d="M 226 130 L 234 138 M 226 138 L 234 130" stroke="#1e40af" stroke-width="2" />
-        <path d="M 286 58 L 294 66 M 286 66 L 294 58" stroke="#1e40af" stroke-width="2" />
-        <path d="M 346 26 L 354 34 M 346 34 L 354 26" stroke="#1e40af" stroke-width="2" />
+        { [0, 20, 40, 60, 80, 100].map((val, i) => (
+          <text key={`s2x-${val}`} x={50 + i * 60} y="280" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
+        ))}
+        
+        { [0, 10, 20, 30, 40, 50, 60].map((val, i) => (
+          <text key={`s2y-${val}`} x="40" y={264 - i * 40} font-size="10" fill="#475569" text-anchor="end">{val}</text>
+        ))}
+
+        {/* Dense loop plotted exact curve */}
+        { [[0,0], [10,1], [20,4], [30,8], [40,14], [50,23], [60,34], [70,44], [80,52], [90,57], [100,60]].map((pt, i, arr) => (
+          i < arr.length - 1 && (
+            <line
+              key={`q2line-${i}`}
+              x1={50 + pt[0] * 3}
+              y1={260 - pt[1] * 4}
+              x2={50 + arr[i+1][0] * 3}
+              y2={260 - arr[i+1][1] * 4}
+              stroke="#2563eb"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+          )
+        ))}
+        
+        {/* Plotted Crosses mapped */}
+        { [[20,4], [40,14], [60,34], [80,52], [100,60]].map((pt, i) => {
+          const cx = 50 + pt[0] * 3;
+          const cy = 260 - pt[1] * 4;
+          return (
+            <path
+              key={`q2cross-${i}`}
+              d={`M ${cx-4} ${cy-4} L ${cx+4} ${cy+4} M ${cx-4} ${cy+4} L ${cx+4} ${cy-4}`}
+              stroke="#1e40af"
+              stroke-width="2"
+            />
+          );
+        })}
       </svg>
     </div>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Plotting and drawing a smooth cumulative frequency curve from a table" />
 
 <Tabs>
@@ -333,61 +371,90 @@ Using our puzzle times graph, **what is the probability that a randomly selected
     | $40 < h \le 50$ | $25$ |
     | $50 < h \le 60$ | $15$ |
 
-    Work out the missing cumulative frequencies and plot the rest of the curve.
-    
+    a) Work out the missing cumulative frequencies.
+
+    b) Plot the rest of the curve on the grid.
+
+    c) Estimate the $90$th percentile for the plant heights.
+
+    d) Estimate the probability that a randomly selected plant is shorter than $45$ cm.
+
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 450 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
         <defs>
-          <pattern id="q3grid" width="50" height="25" patternUnits="userSpaceOnUse" x="50" y="20">
-            <rect width="50" height="25" fill="none" stroke="#e2e8f0" stroke-width="1" />
+          <pattern id="q3grid" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q3grid_m" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="50" fill="url(#q3grid)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
           </pattern>
         </defs>
-        <rect x="50" y="20" width="300" height="250" fill="url(#q3grid)" stroke="#94a3b8" stroke-width="1.5" />
+        {/* Width: 300px (60 units = 5px/u). Height: 250px (100 units = 2.5px/u). */}
+        <rect x="50" y="20" width="300" height="250" fill="url(#q3grid_m)" stroke="#94a3b8" stroke-width="1.5" />
         <path d="M 50 20 L 50 270 L 350 270" fill="none" stroke="#334155" stroke-width="2" />
         <text x="200" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Height (cm)</text>
         <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Freq.</text>
         
         {/* X Axis */}
-        <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
-        <text x="100" y="290" font-size="10" fill="#475569" text-anchor="middle">10</text>
-        <text x="150" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
-        <text x="200" y="290" font-size="10" fill="#475569" text-anchor="middle">30</text>
-        <text x="250" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
-        <text x="300" y="290" font-size="10" fill="#475569" text-anchor="middle">50</text>
-        <text x="350" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
+        { [0, 10, 20, 30, 40, 50, 60].map((val, i) => (
+          <text key={`q3x-${val}`} x={50 + i * 50} y="290" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
+        ))}
         
         {/* Y Axis */}
-        <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
-        <text x="40" y="224" font-size="10" fill="#475569" text-anchor="end">20</text>
-        <text x="40" y="174" font-size="10" fill="#475569" text-anchor="end">40</text>
-        <text x="40" y="124" font-size="10" fill="#475569" text-anchor="end">60</text>
-        <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">80</text>
-        <text x="40" y="24" font-size="10" fill="#475569" text-anchor="end">100</text>
+        { [0, 20, 40, 60, 80, 100].map((val, i) => (
+          <text key={`q3y-${val}`} x="40" y={274 - i * 50} font-size="10" fill="#475569" text-anchor="end">{val}</text>
+        ))}
 
-        {/* Smoothed Incomplete Curve */}
-        <path d="M 50 270 C 70 270, 85 262.5, 100 257.5 C 115 252.5, 135 242.5, 150 232.5 C 165 222.5, 185 200, 200 182.5 C 215 165, 235 140, 250 120" fill="none" stroke="#2563eb" stroke-width="2.5" />
+        {/* Array Loop Plotted Incomplete Curve */}
+        { [[0,0], [10,4], [20,15], [30,35], [40,60]].map((pt, i, arr) => (
+          i < arr.length - 1 && (
+            <line
+              key={`q3line-${i}`}
+              x1={50 + pt[0] * 5}
+              y1={270 - pt[1] * 2.5}
+              x2={50 + arr[i+1][0] * 5}
+              y2={270 - arr[i+1][1] * 2.5}
+              stroke="#2563eb"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+          )
+        ))}
         
-        {/* Crosses */}
-        <path d="M 46 266 L 54 274 M 46 274 L 54 266" stroke="#1e40af" stroke-width="2" />
-        <path d="M 96 253.5 L 104 261.5 M 96 261.5 L 104 253.5" stroke="#1e40af" stroke-width="2" />
-        <path d="M 146 228.5 L 154 236.5 M 146 236.5 L 154 228.5" stroke="#1e40af" stroke-width="2" />
-        <path d="M 196 178.5 L 204 186.5 M 196 186.5 L 204 178.5" stroke="#1e40af" stroke-width="2" />
-        <path d="M 246 116 L 254 124 M 246 124 L 254 116" stroke="#1e40af" stroke-width="2" />
+        {/* Array Plotted Crosses */}
+        { [[10,4], [20,15], [30,35], [40,60]].map((pt, i) => {
+          const cx = 50 + pt[0] * 5;
+          const cy = 270 - pt[1] * 2.5;
+          return (
+            <path
+              key={`q3cross-${i}`}
+              d={`M ${cx-4} ${cy-4} L ${cx+4} ${cy+4} M ${cx-4} ${cy+4} L ${cx+4} ${cy-4}`}
+              stroke="#1e40af"
+              stroke-width="2"
+            />
+          );
+        })}
       </svg>
     </div>
   </TabItem>
   <TabItem label="✅ Solution 3">
     <Steps>
-      1. The current curve ends at a cumulative frequency of $60$ (at height $40$cm).
-      2. Add the next frequency ($25$) to find the CF for height $50$cm: $60 + 25 = \mathbf{85}$. Plot $(50, 85)$.
-      3. Add the final frequency ($15$) to find the CF for height $60$cm: $85 + 15 = \mathbf{100}$. Plot $(60, 100)$.
-      4. Extend the smooth curve through these new points.
+      1. **a) Missing Frequencies:** The current curve ends at a cumulative frequency of $60$. Add the next frequency ($25$) to find the CF for height $50$ cm: $60 + 25 = \mathbf{85}$. Add the final frequency ($15$) to find the CF for height $60$ cm: $85 + 15 = \mathbf{100}$.
+      2. **b) Plotting:** Plot $(50, 85)$ and $(60, 100)$, then extend the smooth curve through these new points.
+      3. **c) $90$th Percentile:** Calculate $90\%$ of $100$ plants $= 90$. Read across from $90$ on the y-axis, yielding roughly **$53$ cm**.
+      4. **d) Probability:** Read up from $45$ cm on the x-axis. The CF is $74$. The probability is $\frac{74}{100} = \mathbf{\frac{37}{50}}$ (or $74\%$).
     </Steps>
+
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 450 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
         <defs>
-          <pattern id="q3grid_2" width="50" height="25" patternUnits="userSpaceOnUse" x="50" y="20">
-            <rect width="50" height="25" fill="none" stroke="#e2e8f0" stroke-width="1" />
+          <pattern id="q3grid_2_s" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q3grid_2" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="50" fill="url(#q3grid_2_s)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
           </pattern>
         </defs>
         <rect x="50" y="20" width="300" height="250" fill="url(#q3grid_2)" stroke="#94a3b8" stroke-width="1.5" />
@@ -395,144 +462,335 @@ Using our puzzle times graph, **what is the probability that a randomly selected
         <text x="200" y="310" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Height (cm)</text>
         <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Freq.</text>
         
-        <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
-        <text x="100" y="290" font-size="10" fill="#475569" text-anchor="middle">10</text>
-        <text x="150" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
-        <text x="200" y="290" font-size="10" fill="#475569" text-anchor="middle">30</text>
-        <text x="250" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
-        <text x="300" y="290" font-size="10" fill="#475569" text-anchor="middle">50</text>
-        <text x="350" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
+        { [0, 10, 20, 30, 40, 50, 60].map((val, i) => (
+          <text key={`s3x-${val}`} x={50 + i * 50} y="290" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
+        ))}
         
-        <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
-        <text x="40" y="224" font-size="10" fill="#475569" text-anchor="end">20</text>
-        <text x="40" y="174" font-size="10" fill="#475569" text-anchor="end">40</text>
-        <text x="40" y="124" font-size="10" fill="#475569" text-anchor="end">60</text>
-        <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">80</text>
-        <text x="40" y="24" font-size="10" fill="#475569" text-anchor="end">100</text>
+        { [0, 20, 40, 60, 80, 100].map((val, i) => (
+          <text key={`s3y-${val}`} x="40" y={274 - i * 50} font-size="10" fill="#475569" text-anchor="end">{val}</text>
+        ))}
 
-        {/* Smoothed Full Curve */}
-        <path d="M 50 270 C 70 270, 85 262.5, 100 257.5 C 115 252.5, 135 242.5, 150 232.5 C 165 222.5, 185 200, 200 182.5 C 215 165, 235 140, 250 120 C 265 100, 285 75, 300 57.5 C 315 40, 335 20, 350 20" fill="none" stroke="#2563eb" stroke-width="2.5" />
+        {/* Complete Array Loop Plotted Curve */}
+        { [[0,0], [10,4], [20,15], [30,35], [40,60], [45,74], [50,85], [55,94], [60,100]].map((pt, i, arr) => (
+          i < arr.length - 1 && (
+            <line
+              key={`q3fline-${i}`}
+              x1={50 + pt[0] * 5}
+              y1={270 - pt[1] * 2.5}
+              x2={50 + arr[i+1][0] * 5}
+              y2={270 - arr[i+1][1] * 2.5}
+              stroke="#2563eb"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+          )
+        ))}
         
         {/* Original Crosses */}
-        <path d="M 46 266 L 54 274 M 46 274 L 54 266" stroke="#1e40af" stroke-width="2" />
-        <path d="M 96 253.5 L 104 261.5 M 96 261.5 L 104 253.5" stroke="#1e40af" stroke-width="2" />
-        <path d="M 146 228.5 L 154 236.5 M 146 236.5 L 154 228.5" stroke="#1e40af" stroke-width="2" />
-        <path d="M 196 178.5 L 204 186.5 M 196 186.5 L 204 178.5" stroke="#1e40af" stroke-width="2" />
-        <path d="M 246 116 L 254 124 M 246 124 L 254 116" stroke="#1e40af" stroke-width="2" />
+        { [[10,4], [20,15], [30,35], [40,60]].map((pt, i) => {
+          const cx = 50 + pt[0] * 5;
+          const cy = 270 - pt[1] * 2.5;
+          return (
+            <path
+              key={`q3ocross-${i}`}
+              d={`M ${cx-4} ${cy-4} L ${cx+4} ${cy+4} M ${cx-4} ${cy+4} L ${cx+4} ${cy-4}`}
+              stroke="#1e40af"
+              stroke-width="2"
+            />
+          );
+        })}
         
         {/* New Added Crosses (Red) */}
-        <path d="M 296 53.5 L 304 61.5 M 296 61.5 L 304 53.5" stroke="#ef4444" stroke-width="2" />
-        <path d="M 346 16 L 354 24 M 346 24 L 354 16" stroke="#ef4444" stroke-width="2" />
+        { [[50,85], [60,100]].map((pt, i) => {
+          const cx = 50 + pt[0] * 5;
+          const cy = 270 - pt[1] * 2.5;
+          return (
+            <path
+              key={`q3ncross-${i}`}
+              d={`M ${cx-4} ${cy-4} L ${cx+4} ${cy+4} M ${cx-4} ${cy+4} L ${cx+4} ${cy-4}`}
+              stroke="#ef4444"
+              stroke-width="2"
+            />
+          );
+        })}
       </svg>
     </div>
   </TabItem>
 </Tabs>
+
 <SmartAIGenerator topic="Completing a cumulative frequency graph by adding calculated points" />
 
-### Test Results Graph (For Questions 4, 5, and 6)
-The graph below shows the marks scored out of 80 by 120 students in a final exam. Use this graph to answer the remaining practice questions.
-
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 450 350" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
-    <defs>
-      <pattern id="q4grid_s" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="30">
-        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
-      </pattern>
-      <pattern id="q4grid_m" width="40" height="40" patternUnits="userSpaceOnUse" x="50" y="30">
-        <rect width="40" height="40" fill="url(#q4grid_s)" />
-        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="1.5" />
-      </pattern>
-    </defs>
-
-    {/* Grid Area: x=50 to 370 (320px = 80 marks). y=30 to 270 (240px = 120 CF). */}
-    <rect x="50" y="30" width="320" height="240" fill="url(#q4grid_m)" stroke="#94a3b8" stroke-width="1.5" />
-    <path d="M 50 30 L 50 270 L 370 270" fill="none" stroke="#334155" stroke-width="2" />
-    
-    <text x="210" y="315" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Marks Scored</text>
-    <text x="15" y="150" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 150)">Cumulative Frequency</text>
-
-    {/* X Axis */}
-    <text x="50" y="290" font-size="10" fill="#475569" text-anchor="middle">0</text>
-    <text x="90" y="290" font-size="10" fill="#475569" text-anchor="middle">10</text>
-    <text x="130" y="290" font-size="10" fill="#475569" text-anchor="middle">20</text>
-    <text x="170" y="290" font-size="10" fill="#475569" text-anchor="middle">30</text>
-    <text x="210" y="290" font-size="10" fill="#475569" text-anchor="middle">40</text>
-    <text x="250" y="290" font-size="10" fill="#475569" text-anchor="middle">50</text>
-    <text x="290" y="290" font-size="10" fill="#475569" text-anchor="middle">60</text>
-    <text x="330" y="290" font-size="10" fill="#475569" text-anchor="middle">70</text>
-    <text x="370" y="290" font-size="10" fill="#475569" text-anchor="middle">80</text>
-
-    {/* Y Axis (1 unit = 2px) */}
-    <text x="40" y="274" font-size="10" fill="#475569" text-anchor="end">0</text>
-    <text x="40" y="234" font-size="10" fill="#475569" text-anchor="end">20</text>
-    <text x="40" y="194" font-size="10" fill="#475569" text-anchor="end">40</text>
-    <text x="40" y="154" font-size="10" fill="#475569" text-anchor="end">60</text>
-    <text x="40" y="114" font-size="10" fill="#475569" text-anchor="end">80</text>
-    <text x="40" y="74" font-size="10" fill="#475569" text-anchor="end">100</text>
-    <text x="40" y="34" font-size="10" fill="#475569" text-anchor="end">120</text>
-
-    {/* Smoothed Cubic Bezier Curve */}
-    <path d="M 50 270 C 80 270, 115 255, 130 250 C 145 245, 155 230, 170 220 C 185 210, 195 190, 210 170 C 225 150, 235 130, 250 110 C 265 90, 275 75, 290 60 C 305 45, 315 47.5, 330 40 C 345 32.5, 355 30, 370 30" fill="none" stroke="#2563eb" stroke-width="2.5" />
-    
-    {/* Points (Optional, but good for clarity) */}
-    <path d="M 126 246 L 134 254 M 126 254 L 134 246" stroke="#1e40af" stroke-width="2" />
-    <path d="M 166 216 L 174 224 M 166 224 L 174 216" stroke="#1e40af" stroke-width="2" />
-    <path d="M 206 166 L 214 174 M 206 174 L 214 166" stroke="#1e40af" stroke-width="2" />
-    <path d="M 246 106 L 254 114 M 246 114 L 254 106" stroke="#1e40af" stroke-width="2" />
-    <path d="M 286 56 L 294 64 M 286 64 L 294 56" stroke="#1e40af" stroke-width="2" />
-    <path d="M 326 36 L 334 44 M 326 44 L 334 36" stroke="#1e40af" stroke-width="2" />
-    <path d="M 366 26 L 374 34 M 366 34 L 374 26" stroke="#1e40af" stroke-width="2" />
-  </svg>
-</div>
-
 <Tabs>
-  <TabItem label="📝 Q4: Extracting IQR">
-    Using the Test Results Graph above, estimate:
-    a) The median mark
-    b) The interquartile range (IQR)
+  <TabItem label="📝 Q4: Comprehensive Test Analysis">
+    The graph below shows the marks scored out of 80 by 120 students in a final exam. Use this graph to answer the following multipart question.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 450 350" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q4grid_s" width="8" height="8" patternUnits="userSpaceOnUse" x="50" y="30">
+            <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q4grid_m" width="40" height="40" patternUnits="userSpaceOnUse" x="50" y="30">
+            <rect width="40" height="40" fill="url(#q4grid_s)" />
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+
+        {/* Grid Area: x=50 to 370 (320px = 80 marks). y=30 to 270 (240px = 120 CF). */}
+        <rect x="50" y="30" width="320" height="240" fill="url(#q4grid_m)" stroke="#94a3b8" stroke-width="1.5" />
+        <path d="M 50 30 L 50 270 L 370 270" fill="none" stroke="#334155" stroke-width="2" />
+        
+        <text x="210" y="315" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Marks Scored</text>
+        <text x="15" y="150" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 150)">Cumulative Frequency</text>
+
+        {/* X Axis */}
+        { [0, 10, 20, 30, 40, 50, 60, 70, 80].map((val, i) => (
+          <text key={`q4x-${val}`} x={50 + i * 40} y="290" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
+        ))}
+
+        {/* Y Axis (1 unit = 2px) */}
+        { [0, 20, 40, 60, 80, 100, 120].map((val, i) => (
+          <text key={`q4y-${val}`} x="40" y={274 - i * 40} font-size="10" fill="#475569" text-anchor="end">{val}</text>
+        ))}
+
+        {/* Dense Loop Plotted Curve */}
+        { [[0,0], [5,0], [10,2], [15,5], [20,10], [25,16], [30,24], [35,34], [40,48], [45,62], [50,78], [55,93], [60,105], [65,112], [70,116], [75,119], [80,120]].map((pt, i, arr) => (
+          i < arr.length - 1 && (
+            <line
+              key={`q4line-${i}`}
+              x1={50 + pt[0] * 4}
+              y1={270 - pt[1] * 2}
+              x2={50 + arr[i+1][0] * 4}
+              y2={270 - arr[i+1][1] * 2}
+              stroke="#2563eb"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+          )
+        ))}
+        
+        {/* Array Plotted Points */}
+        { [[10,2], [20,10], [30,24], [40,48], [50,78], [60,105], [70,116], [80,120]].map((pt, i) => {
+          const cx = 50 + pt[0] * 4;
+          const cy = 270 - pt[1] * 2;
+          return (
+            <path
+              key={`q4cross-${i}`}
+              d={`M ${cx-4} ${cy-4} L ${cx+4} ${cy+4} M ${cx-4} ${cy+4} L ${cx+4} ${cy-4}`}
+              stroke="#1e40af"
+              stroke-width="2"
+            />
+          );
+        })}
+      </svg>
+    </div>
+
+    a) Estimate the median mark.
+
+    b) Estimate the interquartile range (IQR).
+
+    c) The pass mark for the exam was $35$. Estimate the number of students who failed.
+
+    d) Students who scored more than $60$ marks received an A grade. Estimate the number of students who received an A grade.
+
+    e) A student is chosen at random. Estimate the probability that they scored less than $20$ marks.
+
+    f) Estimate the $90$th percentile mark.
+
+    g) Estimate the mark required to be in the top $10\%$ of students.
+
   </TabItem>
   <TabItem label="✅ Solution 4">
     <Steps>
-      1. **Median:** Total frequency $n = 120$. Half is 60. Read across from 60 on the y-axis, down to the x-axis. 
-         Median $\approx \mathbf{43}$ marks.
-      2. **Lower Quartile ($Q_1$):** Quarter of 120 is 30. Read across from 30 on the y-axis. 
-         $Q_1 \approx \mathbf{32}$ marks.
-      3. **Upper Quartile ($Q_3$):** Three-quarters of 120 is 90. Read across from 90 on the y-axis.
-         $Q_3 \approx \mathbf{54}$ marks.
-      4. **IQR:** $Q_3 - Q_1 = 54 - 32 = \mathbf{22}$ marks. *(Note: Small variations in estimates like $\pm 1$ mark are accepted in exams).*
+      1. **a) Median:** Total frequency $n = 120$. Half is $60$. Read across from $60$ on the y-axis, down to the x-axis. Median $\approx \mathbf{44}$ marks.
+      2. **b) IQR:** Lower Quartile ($Q_1$ at $30$) $\approx 33$. Upper Quartile ($Q_3$ at $90$) $\approx 54$. IQR $= 54 - 33 = \mathbf{21}$ marks. *(Note: Small variations in estimates like $\pm 1$ mark are accepted in exams).*
+      3. **c) Failed Students:** Find $35$ on the x-axis. Read up to the curve and across to the y-axis. The cumulative frequency is exactly $34$. So, **$34$ students** failed (scored $35$ or less).
+      4. **d) A Grade Students:** Find $60$ on the x-axis. Read up and across. The cumulative frequency is exactly $105$. This means $105$ students scored $60$ or less. Subtract from total ($120$). $120 - 105 = \mathbf{15}$ students.
+      5. **e) Probability:** Find $20$ on the x-axis. Read up and across. The cumulative frequency is exactly $10$. Probability $= \frac{10}{120} = \mathbf{\frac{1}{12}}$.
+      6. **f) $90$th Percentile:** Calculate $90\%$ of the total frequency $120$. $0.9 \times 120 = 108$. Read across from $108$ on the y-axis and down. $90$th percentile $\approx \mathbf{62}$ marks.
+      7. **g) Top $10\%$:** The top $10\%$ is equivalent to the $90$th percentile (since $90\%$ score below this mark). Therefore, the mark required is $\approx \mathbf{62}$ marks.
     </Steps>
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Extracting median and quartiles to calculate IQR from a cumulative frequency curve" />
+
+<SmartAIGenerator topic="Comprehensive cumulative frequency analysis including median, IQR, percentiles, and probability" />
 
 <Tabs>
-  <TabItem label="📝 Q5: Percentiles">
-    Using the Test Results Graph, estimate the mark corresponding to the 90th percentile.
+  <TabItem label="📝 Q5: Grouped Data Distributions">
+    The table shows the weekly wages ($w$ in USD) earned by $40$ part-time workers.
+    
+    | Wage ($w$ in USD) | Frequency |
+    | :--- | :--- |
+    | $0 < w \le 50$ | $4$ |
+    | $50 < w \le 100$ | $8$ |
+    | $100 < w \le 150$ | $16$ |
+    | $150 < w \le 200$ | $10$ |
+    | $200 < w \le 250$ | $2$ |
+    
+    a) Construct a cumulative frequency table for this data.
+
+    b) State the upper class boundary of the median interval.
+
+    c) A worker is chosen at random. What is the probability they earn $150$ USD or less?
+
+    d) Estimate the number of workers earning between $100$ USD and $200$ USD.
+
   </TabItem>
   <TabItem label="✅ Solution 5">
     <Steps>
-      1. Find $90\%$ of the total frequency ($120$).
-         $0.90 \times 120 = 108$
-      2. Draw a line across from **108** on the y-axis to the curve, and drop down to the x-axis.
-      3. The line hits the x-axis at roughly **63 marks**. This is the 90th percentile.
+      1. **a) Cumulative Frequency Table:** Add the frequencies successively.
+         - $w \le 50$: **$4$**
+         - $w \le 100$: $4 + 8 =$ **$12$**
+         - $w \le 150$: $12 + 16 =$ **$28$**
+         - $w \le 200$: $28 + 10 =$ **$38$**
+         - $w \le 250$: $38 + 2 =$ **$40$**
+      2. **b) Median Interval:** Half of total frequency ($40$) is $20$. Looking at the cumulative frequencies, the $20$th worker falls in the $100 < w \le 150$ interval (since the previous interval ends at $12$ and this one ends at $28$). The upper class boundary is **$150$ USD**.
+      3. **c) Probability:** The cumulative frequency up to $150$ USD is $28$. So the probability is $\frac{28}{40} = \mathbf{\frac{7}{10}}$.
+      4. **d) Workers between 100 and 200:** Workers up to $200$ USD is $38$. Workers up to $100$ USD is $12$. The number between them is $38 - 12 =$ **$26$ workers**. *(Alternatively, just sum the middle two frequencies: $16 + 10 = 26$)*.
     </Steps>
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Calculating and locating percentiles on a cumulative frequency graph" />
+
+<SmartAIGenerator topic="Constructing cumulative frequency tables and extracting intervals" />
 
 <Tabs>
-  <TabItem label="📝 Q6: Finding 'k' (Top Performers)">
-    To achieve a Distinction in the exam, a student must be in the top 15 of the class. 
-    Using the Test Results Graph, estimate the minimum mark required to receive a Distinction.
+  <TabItem label="📝 Q6: Comparing Two Data Sets">
+    A company tests the battery life ($h$ hours) of two phone models, A and B, using $80$ phones of each model. The cumulative frequency graphs are drawn on the same grid. 
+    
+    Model A has a median battery life of $14$ hours and an IQR of $3$ hours.
+    Model B has a median battery life of $16$ hours and an IQR of $5$ hours.
+    
+    a) Which phone model generally has a longer battery life? Give a statistical reason.
+
+    b) Which phone model's battery life is more consistent? Give a statistical reason.
+
+    c) Model A's lower quartile is $11$ hours. Estimate the number of Model A phones that needed replacing before $11$ hours.
+
+    d) If Model B has an upper quartile of $18.5$ hours, calculate its lower quartile.
+
   </TabItem>
   <TabItem label="✅ Solution 6">
     <Steps>
-      1. The "top 15" students are the highest scorers. Since the graph totals 120, these students represent the cumulative frequency from $105$ to $120$.
-         ($120 - 15 = 105$)
-      2. The minimum mark to be in this group is found by reading the mark at a cumulative frequency of exactly **105**.
-      3. Draw a horizontal line from 105 on the y-axis to the curve, and read down to the x-axis.
-      4. The value on the x-axis is exactly **60 marks**.
+      1. **a) Longer Battery Life:** **Model B** generally lasts longer because its median ($16$ hours) is higher than Model A's median ($14$ hours).
+      2. **b) Consistency:** **Model A** is more consistent because its interquartile range ($3$ hours) is smaller than Model B's IQR ($5$ hours), meaning the middle $50\%$ of data is less spread out.
+      3. **c) Replacing Model A:** The lower quartile represents the bottom $25\%$ of the data. For $80$ phones, $25\%$ is $0.25 \times 80 =$ **$20$ phones**.
+      4. **d) Model B Lower Quartile:** For Model B, $\text{IQR} = Q_3 - Q_1$. We know $\text{IQR} = 5$ and $Q_3 = 18.5$. Therefore, $5 = 18.5 - Q_1$, which means $Q_1 = 18.5 - 5 =$ **$13.5$ hours**.
     </Steps>
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Solving 'top k' and 'more than' threshold problems using a CF graph" />
+
+<SmartAIGenerator topic="Comparing median and interquartile range to analyze different data sets" />
+
+<Tabs>
+  <TabItem label="📝 Q7: Working Backwards from Averages">
+    The cumulative frequency curve below shows the reaction times of $50$ athletes. The median reaction time is $0.24$ seconds. 
+    
+    a) At what cumulative frequency would you read the median?
+
+    b) If the lower quartile is $0.21$ seconds, estimate the number of athletes whose reaction time is between $0.21$ and $0.24$ seconds.
+
+    c) If the upper quartile is $0.28$ seconds, calculate the interquartile range.
+
+    d) Estimate the number of athletes whose reaction time is slower (greater) than $0.28$ seconds.
+
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+      1. **a) Median CF:** Total athletes $n = 50$. The median is read at $50 \div 2$. Cumulative frequency = **$25$**.
+      2. **b) Number of Athletes between LQ and Median:** The lower quartile is read at $25\%$ of $50$, which is $12.5$. The median is at $25$. The number of athletes between these two values is the difference in their cumulative frequencies. $25 - 12.5 = \mathbf{12.5}$ (or approximately **$12$ or $13$ athletes**).
+      3. **c) Interquartile Range:** $\text{IQR} = Q_3 - Q_1 = 0.28 - 0.21 =$ **$0.07$ seconds**.
+      4. **d) Athletes slower than UQ:** The upper quartile ($0.28$s) marks the $75$th percentile. Slower times are above this value, representing the top $25\%$ of the graph. $25\%$ of $50$ athletes $=$ **$12.5$ athletes** (or approx. $12$ or $13$).
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using quartiles and median cumulative frequencies to find data ranges" />
+
+<Tabs>
+  <TabItem label="📝 Q8: Production Lifespan Application">
+    The cumulative frequency graph below shows the lifespans (in hours) of $200$ lightbulbs tested from a factory line.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 450 350" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <defs>
+          <pattern id="q8grid_s" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="20">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          </pattern>
+          <pattern id="q8grid_m" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
+            <rect width="50" height="50" fill="url(#q8grid_s)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          </pattern>
+        </defs>
+
+        {/* Width: 300px (600 units = 0.5px/u). Height: 250px (200 units = 1.25px/u). */}
+        <rect x="50" y="20" width="300" height="250" fill="url(#q8grid_m)" stroke="#94a3b8" stroke-width="1.5" />
+        <path d="M 50 20 L 50 270 L 350 270" fill="none" stroke="#334155" stroke-width="2" />
+        
+        <text x="200" y="315" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Lifespan (hours)</text>
+        <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Frequency</text>
+
+        {/* X Axis: Ticks every 100 units (50px) */}
+        { [0, 100, 200, 300, 400, 500, 600].map((val, i) => (
+          <text key={`q8x-${val}`} x={50 + i * 50} y="290" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
+        ))}
+
+        {/* Y Axis: Ticks every 40 units (50px) */}
+        { [0, 40, 80, 120, 160, 200].map((val, i) => (
+          <text key={`q8y-${val}`} x="40" y={274 - i * 50} font-size="10" fill="#475569" text-anchor="end">{val}</text>
+        ))}
+
+        {/* Dense Loop Plotted Exact Curve */}
+        { [[0,0], [50, 8], [100, 20], [150, 36], [175, 50], [200, 60], [250, 78], [300, 100], [350, 130], [383, 150], [400, 160], [450, 180], [500, 190], [550, 197], [600, 200]].map((pt, i, arr) => (
+          i < arr.length - 1 && (
+            <line
+              key={`q8line-${i}`}
+              x1={50 + pt[0] * 0.5}
+              y1={270 - pt[1] * 1.25}
+              x2={50 + arr[i+1][0] * 0.5}
+              y2={270 - arr[i+1][1] * 1.25}
+              stroke="#2563eb"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+          )
+        ))}
+
+        {/* Array Plotted Exact Crosses */}
+        { [[100,20], [200,60], [300,100], [400,160], [500,190], [600,200]].map((pt, i) => {
+          const cx = 50 + pt[0] * 0.5;
+          const cy = 270 - pt[1] * 1.25;
+          return (
+            <path
+              key={`q8cross-${i}`}
+              d={`M ${cx-4} ${cy-4} L ${cx+4} ${cy+4} M ${cx-4} ${cy+4} L ${cx+4} ${cy-4}`}
+              stroke="#1e40af"
+              stroke-width="2"
+            />
+          );
+        })}
+      </svg>
+    </div>
+
+    a) Estimate the median lifespan of the lightbulbs.
+
+    b) Estimate the number of lightbulbs that lasted longer than $400$ hours.
+
+    c) The manufacturer claims that $10\%$ of all bulbs last longer than $450$ hours. Use the graph to determine if this claim is supported.
+
+    d) Any bulb lasting less than $150$ hours is considered "defective". Estimate the percentage of defective bulbs.
+
+    e) Estimate the interquartile range (IQR) for the lightbulb lifespans.
+
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    <Steps>
+      1. **a) Median Lifespan:** Half of $200$ is $100$. Find $100$ on the y-axis, read across to the curve and down. The median is exactly **$300$ hours**.
+      2. **b) Bulbs longer than 400h:** Locate $400$ on the x-axis. Read up to the curve and across to the y-axis to find the cumulative frequency. It is exactly $160$. This means $160$ bulbs lasted less than $400$ hours. Subtracting from the total ($200$): $200 - 160 = \mathbf{40 \text{ bulbs}}$.
+      3. **c) Manufacturer's Claim:** First, calculate $10\%$ of $200$, which is $20$ bulbs. The claim states $20$ bulbs last *longer* than $450$ hours. On the graph, reading up from $450$ hours, the cumulative frequency is exactly $180$. This means $180$ bulbs lasted *less* than $450$ hours, leaving $200 - 180 = 20$ bulbs lasting *longer*. Since the graph exactly supports $20$ bulbs, the claim is **supported**.
+      4. **d) Defective Percentage:** Find $150$ on the x-axis (halfway between $100$ and $200$). Reading up to the curve and across gives a CF of exactly $36$. This means $36$ bulbs are defective. Percentage $= \frac{36}{200} \times 100 = \mathbf{18\%}$.
+      5. **e) IQR:** Lower Quartile ($n=50$) is exactly $175$ hours. Upper Quartile ($n=150$) is approximately $383$ hours. IQR $= 383 - 175 =$ **$208$ hours**. *(Visual estimates varying slightly, e.g., $\pm 5$ hours, are entirely acceptable).*
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Interpreting claims and probabilities from a cumulative frequency curve" />

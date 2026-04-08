@@ -13,6 +13,10 @@ By entering your data into the calculator's spreadsheet, it will instantly gener
 * **The Minimum, Lower Quartile ($Q_1$), Median, Upper Quartile ($Q_3$), and Maximum.**
 </Aside>
 
+<Aside type="caution" title="What Your Calculator CANNOT Do">
+Your GDC does **not** explicitly state the **Mode** or the **Modal Class**. You must always find this manually by scanning your data or table for the value with the highest frequency!
+</Aside>
+
 ---
 
 ## 1. Entering Data into the GDC
@@ -41,36 +45,36 @@ We will use the **TI-Nspire** as our primary example, as it is the most commonly
     <text x="20" y="57" font-size="12" fill="#0284c7" font-weight="bold">score</text>
     <text x="120" y="57" font-size="12" fill="#0284c7" font-weight="bold">freq</text>
 
-    {/* Data Rows */}
-    <line x1="10" y1="65" x2="490" y2="65" stroke="#cbd5e1" stroke-width="1" />
+    {/* Data Rows via Loop */}
+    <g stroke="#cbd5e1" stroke-width="1">
+      {Array.from({ length: 6 }).map((_, i) => (
+        <line key={i} x1="10" y1={65 + i * 25} x2="490" y2={65 + i * 25} />
+      ))}
+    </g>
+
     <text x="20" y="82" font-size="12" fill="#334155">1</text>
     <text x="120" y="82" font-size="12" fill="#334155">5</text>
     <text x="210" y="82" font-size="12" fill="#334155">Title</text>
     <text x="330" y="82" font-size="12" fill="#334155">One-Var</text>
 
-    <line x1="10" y1="90" x2="490" y2="90" stroke="#cbd5e1" stroke-width="1" />
     <text x="20" y="107" font-size="12" fill="#334155">2</text>
     <text x="120" y="107" font-size="12" fill="#334155">8</text>
     <text x="210" y="107" font-size="12" fill="#334155" font-weight="bold">x̄</text>
     <text x="330" y="107" font-size="12" fill="#334155">2.35</text>
 
-    <line x1="10" y1="115" x2="490" y2="115" stroke="#cbd5e1" stroke-width="1" />
     <text x="20" y="132" font-size="12" fill="#334155">3</text>
     <text x="120" y="132" font-size="12" fill="#334155">4</text>
     <text x="210" y="132" font-size="12" fill="#334155">Σx</text>
     <text x="330" y="132" font-size="12" fill="#334155">47</text>
 
-    <line x1="10" y1="140" x2="490" y2="140" stroke="#cbd5e1" stroke-width="1" />
     <text x="20" y="157" font-size="12" fill="#334155">4</text>
     <text x="120" y="157" font-size="12" fill="#334155">3</text>
     <text x="210" y="157" font-size="12" fill="#334155">n</text>
     <text x="330" y="157" font-size="12" fill="#334155">20</text>
     
-    <line x1="10" y1="165" x2="490" y2="165" stroke="#cbd5e1" stroke-width="1" />
     <text x="210" y="182" font-size="12" fill="#334155" font-weight="bold">MedianX</text>
     <text x="330" y="182" font-size="12" fill="#334155">2</text>
 
-    <line x1="10" y1="190" x2="490" y2="190" stroke="#cbd5e1" stroke-width="1" />
     <text x="210" y="207" font-size="12" fill="#334155" font-weight="bold">Q₃X</text>
     <text x="330" y="207" font-size="12" fill="#334155">3</text>
     
@@ -178,38 +182,44 @@ Look at the **$\bar{x}$** value.
 The calculator gives $\bar{x} = 16$. 
 Therefore, the **estimated mean** is $16\text{ cm}$.
 
-<Aside type="tip" title="Why is it an Estimate?">
-Remember from earlier sections: whenever you use grouped data, the mean is only an *estimate*. The calculator is doing the exact same $\frac{\sum fx}{\sum f}$ formula you learned to do manually, using the midpoints as assumptions for the exact values.
-</Aside>
-
 ---
 
 ## Practice Questions
 
-*Note: For these questions, you must use your Graphic Display Calculator. Do not calculate these manually.*
+*Note: For these questions, you must use your Graphic Display Calculator. Do not calculate these manually unless asked for working backwards or the mode.*
 
 <Tabs>
   <TabItem label="📝 Q1: Raw Data List">
     A runner's sprint times (in seconds) are: 
     $11.2, 12.0, 10.9, 11.5, 12.1, 11.8, 11.5$
     
-    Use your GDC to find:
-    a) The mean time
-    b) The median time
-    c) The interquartile range (IQR)
+    Find the following statistical measures:
+    
+    a) The mode
+    
+    b) The mean time
+    
+    c) The median time
+    
+    d) The interquartile range (IQR)
+    
   </TabItem>
   <TabItem label="✅ Solution 1">
+
     <Steps>
-      1. Enter the 7 numbers straight down column A (name it `times`).
-      2. Run 1-Var Stats. Set X1 List = `times` and **leave Frequency List as 1**.
-      3. **Mean ($\bar{x}$):** $11.57$ seconds (to 2 d.p.).
-      4. **Median (MedianX):** $11.5$ seconds.
-      5. **Quartiles:** $Q_1X = 11.2$, $Q_3X = 12.0$.
-      6. **IQR:** $12.0 - 11.2 = 0.8$ seconds.
+      1. **a)** Find the mode manually by looking for the most frequent number. **Mode = $11.5$ seconds**.
+      2. Enter the 7 numbers straight down column A (name it `times`).
+      3. Run 1-Var Stats. Set X1 List = `times` and **leave Frequency List as 1**.
+      4. **b) Mean ($\bar{x}$):** **$11.57$ seconds** (to 2 d.p.).
+      5. **c) Median (MedianX):** **$11.5$ seconds**.
+      6. Quartiles: $Q_1X = 11.2$, $Q_3X = 12.0$.
+      7. **d) IQR:** $12.0 - 11.2 =$ **$0.8$ seconds**.
     </Steps>
+
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Using a GDC to find statistical measures from a raw data list" />
+
+<SmartAIGenerator topic="Using a GDC to find statistical measures and identifying the mode from a raw data list" />
 
 <Tabs>
   <TabItem label="📝 Q2: Discrete Data with GDC">
@@ -224,25 +234,32 @@ Remember from earlier sections: whenever you use grouped data, the mean is only 
     | $9$ | $6$ |
     | $10$ | $2$ |
 
-    Use your GDC to find:
-    a) The mean score
-    b) The median score
+    Find:
+    
+    a) The mode score
+    
+    b) The mean score
+    
     c) The lower and upper quartiles
+    
     d) The interquartile range
+    
   </TabItem>
   <TabItem label="✅ Solution 2">
+
     <Steps>
-      1. Enter the scores in column A (`score`) and frequencies in column B (`freq`).
-      2. Run 1-Var Stats with X1 List = `score` and Frequency List = `freq`.
-      3. **Mean ($\bar{x}$):** $7.54$ (to 3 sig figs).
-      4. **Median (MedianX):** $8$.
-      5. **Lower Quartile ($Q_1X$):** $7$.
-      6. **Upper Quartile ($Q_3X$):** $8$.
-      7. **Interquartile Range:** $Q_3 - Q_1 = 8 - 7 = 1$.
+      1. **a)** The highest frequency is 11, which corresponds to a score of 7. **Mode = $7$**.
+      2. Enter the scores in column A (`score`) and frequencies in column B (`freq`).
+      3. Run 1-Var Stats with X1 List = `score` and Frequency List = `freq`.
+      4. **b) Mean ($\bar{x}$):** **$7.54$** (to 3 sig figs).
+      5. **c) Lower Quartile ($Q_1X$):** **$7$**. **Upper Quartile ($Q_3X$):** **$8$**.
+      6. **d) Interquartile Range:** $Q_3 - Q_1 = 8 - 7 =$ **$1$**.
     </Steps>
+
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Using a GDC to find mean, median, and quartiles from a discrete frequency table" />
+
+<SmartAIGenerator topic="Using a GDC to find mean and quartiles from a discrete frequency table, and identifying mode" />
 
 <Tabs>
   <TabItem label="📝 Q3: Grouped Data with GDC">
@@ -256,37 +273,245 @@ Remember from earlier sections: whenever you use grouped data, the mean is only 
     | $16 \le t < 18$ | $10$ |
     | $18 \le t < 20$ | $3$ |
 
-    Use your GDC to calculate an estimate for the mean time.
+    a) Write down the modal class.
+    
+    b) Use your GDC to calculate an estimate for the mean time.
+    
   </TabItem>
   <TabItem label="✅ Solution 3">
+
     <Steps>
-      1. Find the midpoints (mid-interval values) for each class: $11, 13, 15, 17, 19$.
-      2. Enter the midpoints into column A (`mid`) and frequencies into column B (`f`).
-      3. Run 1-Var Stats with X1 List = `mid` and Frequency List = `f`.
-      4. Look at the $\bar{x}$ output.
-      5. **Estimated Mean ($\bar{x}$):** $14.6$ seconds.
+      1. **a)** The highest frequency is 24. **Modal class = $14 \le t < 16$**.
+      2. Find the midpoints (mid-interval values) for each class: $11, 13, 15, 17, 19$.
+      3. Enter the midpoints into column A (`mid`) and frequencies into column B (`f`).
+      4. Run 1-Var Stats with X1 List = `mid` and Frequency List = `f`.
+      5. Look at the $\bar{x}$ output.
+      6. **b) Estimated Mean ($\bar{x}$):** **$14.6$ seconds**.
     </Steps>
+
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Using a GDC with midpoints to estimate the mean of grouped continuous data" />
+
+<SmartAIGenerator topic="Identifying modal class and using midpoints on a GDC to estimate the mean" />
 
 <Tabs>
-  <TabItem label="📝 Q4: Large Raw Data List (Extended)">
-    The daily temperatures (in $^\circ\text{C}$) over two weeks are recorded:
-    $22.4, 23.1, 24.0, 21.8, 22.9, 23.5, 25.1, 24.8, 26.0, 25.5, 24.2, 23.8, 22.7, 21.5$
+  <TabItem label="📝 Q4: Working Backwards (Raw Data)">
+    The mean weight of 5 backpacks is 4.2 kg. 
     
-    Use your GDC to find the mean, median, and interquartile range.
+    Four of the backpacks have weights of 3.8 kg, 4.5 kg, 4.1 kg, and 4.0 kg. 
+    
+    Find the weight of the 5th backpack.
+    
   </TabItem>
   <TabItem label="✅ Solution 4">
+
     <Steps>
-      1. This is a raw list, so you do not need a frequency column.
-      2. Enter the 14 numbers straight down column A (`temp`).
-      3. Run 1-Var Stats. **Crucial:** Keep the "Frequency List" set to **1** this time!
-      4. **Mean ($\bar{x}$):** $23.66^\circ\text{C}$ (to 4 sig figs).
-      5. **Median (MedianX):** $23.65^\circ\text{C}$.
-      6. **Quartiles:** $Q_1X = 22.7$, $Q_3X = 24.8$.
-      7. **IQR:** $24.8 - 22.7 = 2.1^\circ\text{C}$.
+      1. We know the formula for the mean: $\text{Mean} = \frac{\text{Sum of values}}{\text{Number of values}}$.
+      2. Substitute the knowns: $4.2 = \frac{3.8 + 4.5 + 4.1 + 4.0 + x}{5}$.
+      3. Multiply both sides by 5: $21 = 16.4 + x$.
+      4. Subtract 16.4 from 21: $x = 21 - 16.4 = 4.6$.
+      5. **The 5th backpack weighs 4.6 kg.**
     </Steps>
+
   </TabItem>
 </Tabs>
-<SmartAIGenerator topic="Using a GDC to find statistical measures from a large raw data list" />
+
+<SmartAIGenerator topic="Solving for an unknown raw data value given the mean" />
+
+<Tabs>
+  <TabItem label="📝 Q5: Working Backwards (Frequency Table)">
+    A survey asked students how many siblings they have. The mean number of siblings is exactly 2.4.
+    
+    | Siblings ($x$) | Frequency ($f$) |
+    | :--- | :--- |
+    | $1$ | $3$ |
+    | $2$ | $5$ |
+    | $3$ | $k$ |
+    | $4$ | $2$ |
+
+    Find the missing frequency, $k$.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+
+    <Steps>
+      1. Set up the mean formula for a frequency table: $\bar{x} = \frac{\sum fx}{\sum f}$.
+      2. Find the sum of frequencies ($\sum f$): $3 + 5 + k + 2 = 10 + k$.
+      3. Find the sum of $fx$ ($\sum fx$): $1(3) + 2(5) + 3(k) + 4(2) = 3 + 10 + 3k + 8 = 21 + 3k$.
+      4. Set up the equation: $\frac{21 + 3k}{10 + k} = 2.4$.
+      5. Multiply both sides by $(10 + k)$: $21 + 3k = 2.4(10 + k)$.
+      6. Expand the bracket: $21 + 3k = 24 + 2.4k$.
+      7. Rearrange to solve for $k$: $3k - 2.4k = 24 - 21$.
+      8. $0.6k = 3$.
+      9. Divide by 0.6: $k = \frac{3}{0.6} = 5$.
+      10. **The missing frequency $k$ is 5.**
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Algebraically solving for an unknown frequency given the mean in a discrete table" />
+
+<Tabs>
+  <TabItem label="📝 Q6: Data from a Bar Chart">
+    The bar chart below shows the daily pocket money for a group of students.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+      <svg viewBox="0 0 400 250" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+        <g stroke="#e2e8f0" stroke-width="1">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <line key={'grid-y-' + i} x1="40" y1={200 - i * 30} x2="380" y2={200 - i * 30} />
+          ))}
+        </g>
+        <g stroke="#94a3b8" stroke-width="2">
+          <line x1="40" y1="200" x2="380" y2="200" />
+          <line x1="40" y1="200" x2="40" y2="40" />
+        </g>
+        <text x="210" y="240" font-size="12" fill="#64748b" text-anchor="middle">Pocket Money (USD)</text>
+        <text x="15" y="120" font-size="12" fill="#64748b" transform="rotate(-90 15 120)" text-anchor="middle">Frequency</text>
+        
+        {/* Y-axis labels */}
+        {Array.from({ length: 6 }).map((_, i) => (
+          <text key={'label-y-' + i} x="30" y={204 - i * 30} font-size="10" fill="#64748b" text-anchor="end">{i * 2}</text>
+        ))}
+        
+        {/* Bars */}
+        <rect x="70" y="155" width="40" height="45" fill="#10b981" />
+        <text x="90" y="215" font-size="10" fill="#64748b" text-anchor="middle">5</text>
+        
+        <rect x="130" y="110" width="40" height="90" fill="#10b981" />
+        <text x="150" y="215" font-size="10" fill="#64748b" text-anchor="middle">10</text>
+        
+        <rect x="190" y="80" width="40" height="120" fill="#10b981" />
+        <text x="210" y="215" font-size="10" fill="#64748b" text-anchor="middle">15</text>
+        
+        <rect x="250" y="140" width="40" height="60" fill="#10b981" />
+        <text x="270" y="215" font-size="10" fill="#64748b" text-anchor="middle">20</text>
+        
+        <rect x="310" y="170" width="40" height="30" fill="#10b981" />
+        <text x="330" y="215" font-size="10" fill="#64748b" text-anchor="middle">25</text>
+      </svg>
+    </div>
+    
+    a) Create a frequency table for this data.
+    
+    b) Write down the mode.
+    
+    c) Use your GDC to calculate the mean pocket money.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+
+    <Steps>
+      1. **a)** Read the heights of the bars to form the table:
+         * Money = 5 USD, Frequency = 3
+         * Money = 10 USD, Frequency = 6
+         * Money = 15 USD, Frequency = 8
+         * Money = 20 USD, Frequency = 4
+         * Money = 25 USD, Frequency = 2
+      2. **b)** The tallest bar is 15 USD. **Mode = 15 USD**.
+      3. Enter `money` in column A and `freq` in column B.
+      4. Run 1-Var Stats with X1 List = `money` and Frequency List = `freq`.
+      5. **c) Mean ($\bar{x}$):** **13.48 USD** (to 4 sig figs).
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Extracting data from a bar chart to find mode and compute the mean via GDC" />
+
+<Tabs>
+  <TabItem label="📝 Q7: Comparing Two Groups">
+    The test scores (out of 50) for two different classes are recorded.
+    
+    **Class A:** 34, 45, 23, 38, 41, 45, 30, 29, 48, 35
+    
+    **Class B:** 28, 30, 32, 35, 36, 38, 40, 42, 45, 46
+    
+    a) Find the mean and median for Class A.
+    
+    b) Find the mean and median for Class B.
+    
+    c) Calculate the interquartile range (IQR) for both classes.
+    
+    d) Which class has more consistent scores? Give a reason for your answer based on the IQR.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+
+    <Steps>
+      1. For Class A, enter the 10 values into list `classa`. Run 1-Var Stats with Frequency List = 1.
+      2. **a) Class A:** Mean = 36.8, Median = 36.5.
+      3. For Class B, enter the 10 values into list `classb`. Run 1-Var Stats with Frequency List = 1.
+      4. **b) Class B:** Mean = 37.2, Median = 37.
+      5. **c) Class A IQR:** $45 - 29 = 16$. **Class B IQR:** $42 - 32 = 10$.
+      6. **d) Class B** is more consistent because it has a smaller interquartile range, meaning the middle 50% of the scores are closer together.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Comparing measures of central tendency and spread using a GDC" />
+
+<Tabs>
+  <TabItem label="📝 Q8: Missing Frequency in Grouped Data">
+    A factory measures the lengths ($L$ cm) of manufactured parts. The estimated mean length is exactly 16 cm.
+    
+    | Length ($L$ cm) | Frequency | Midpoint |
+    | :--- | :--- | :--- |
+    | $0 < L \le 10$ | $4$ | $5$ |
+    | $10 < L \le 20$ | $x$ | $15$ |
+    | $20 < L \le 30$ | $6$ | $25$ |
+
+    Find the value of $x$.
+    
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+
+    <Steps>
+      1. Set up the grouped mean formula: $\bar{x} \approx \frac{\sum f \times \text{midpoint}}{\sum f}$.
+      2. Find the total frequency ($\sum f$): $4 + x + 6 = 10 + x$.
+      3. Find the sum of (frequency $\times$ midpoint): $4(5) + x(15) + 6(25) = 20 + 15x + 150 = 170 + 15x$.
+      4. Create the equation using the given mean (16): $\frac{170 + 15x}{10 + x} = 16$.
+      5. Multiply by $(10 + x)$: $170 + 15x = 16(10 + x)$.
+      6. Expand: $170 + 15x = 160 + 16x$.
+      7. Rearrange to isolate $x$: $170 - 160 = 16x - 15x$.
+      8. $10 = x$.
+      9. **The missing frequency $x$ is 10.**
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Algebraically solving for an unknown frequency in grouped data given the estimated mean" />
+
+<Tabs>
+  <TabItem label="📝 Q9: Large Raw Data (Currency)">
+    A local business records its daily profits (in EUR) over a two-week period (14 days).
+    
+    120 EUR, 150 EUR, 135 EUR, 140 EUR, 160 EUR, 155 EUR, 130 EUR, 145 EUR, 125 EUR, 140 EUR, 170 EUR, 135 EUR, 140 EUR, 180 EUR
+    
+    a) Write down the mode.
+    
+    b) Calculate the mean daily profit.
+    
+    c) Find the median daily profit.
+    
+    d) Determine the interquartile range (IQR).
+    
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+
+    <Steps>
+      1. **a)** Looking at the raw list, 140 EUR appears three times, which is more than any other value. **Mode = 140 EUR**.
+      2. Enter the 14 numerical values into a single list named `profit`.
+      3. Run 1-Var Stats with X1 List = `profit` and Frequency List = 1.
+      4. **b) Mean:** **144.64 EUR** (to 2 d.p.).
+      5. **c) Median:** **140 EUR**.
+      6. **d) IQR:** $Q_3 (155) - Q_1 (135) = $ **20 EUR**.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating statistics and identifying the mode for a raw list of currency data using a GDC" />

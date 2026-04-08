@@ -5,6 +5,43 @@ description: Learn how to classify, collect, and tabulate statistical data using
 
 Before we can analyse data, draw graphs, or calculate averages, we need to know what kind of data we are dealing with and how to organise it cleanly. Raw data (just a messy list of numbers or words) is very difficult to read. 
 
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
+  <svg viewBox="0 0 500 300" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Qualitative */}
+    <rect x="20" y="20" width="140" height="260" rx="8" fill="#e0f2fe" stroke="#38bdf8" stroke-width="2" />
+    <text x="90" y="50" font-size="16" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Qualitative</text>
+    <text x="90" y="70" font-size="12" fill="#0369a1" text-anchor="middle" font-family="sans-serif">(Categories / Words)</text>
+    <circle cx="60" cy="120" r="15" fill="#ef4444" />
+    <circle cx="120" cy="120" r="15" fill="#3b82f6" />
+    <circle cx="90" cy="160" r="15" fill="#10b981" />
+    <text x="90" y="220" font-size="14" fill="#0c4a6e" text-anchor="middle" font-family="sans-serif">Colours, Brands,</text>
+    <text x="90" y="240" font-size="14" fill="#0c4a6e" text-anchor="middle" font-family="sans-serif">Names</text>
+
+    {/* Quantitative - Discrete */}
+    <rect x="180" y="20" width="140" height="260" rx="8" fill="#dcfce7" stroke="#34d399" stroke-width="2" />
+    <text x="250" y="50" font-size="16" font-weight="bold" fill="#059669" text-anchor="middle" font-family="sans-serif">Discrete</text>
+    <text x="250" y="70" font-size="12" fill="#047857" text-anchor="middle" font-family="sans-serif">(Counted / Exact)</text>
+    {Array.from({ length: 3 }, (_, i) => (
+      <circle key={`person-${i}`} cx={220 + i * 30} cy="140" r="10" fill="#10b981" />
+    ))}
+    <text x="250" y="220" font-size="14" fill="#064e3b" text-anchor="middle" font-family="sans-serif">Number of Siblings,</text>
+    <text x="250" y="240" font-size="14" fill="#064e3b" text-anchor="middle" font-family="sans-serif">Shoe Size</text>
+
+    {/* Quantitative - Continuous */}
+    <rect x="340" y="20" width="140" height="260" rx="8" fill="#fef08a" stroke="#facc15" stroke-width="2" />
+    <text x="410" y="50" font-size="16" font-weight="bold" fill="#ca8a04" text-anchor="middle" font-family="sans-serif">Continuous</text>
+    <text x="410" y="70" font-size="12" fill="#a16207" text-anchor="middle" font-family="sans-serif">(Measured / Range)</text>
+    <line x1="370" y1="160" x2="370" y2="100" stroke="#ca8a04" stroke-width="4" />
+    <line x1="365" y1="100" x2="375" y2="100" stroke="#ca8a04" stroke-width="2" />
+    <line x1="365" y1="120" x2="375" y2="120" stroke="#ca8a04" stroke-width="2" />
+    <line x1="365" y1="140" x2="375" y2="140" stroke="#ca8a04" stroke-width="2" />
+    <line x1="365" y1="160" x2="375" y2="160" stroke="#ca8a04" stroke-width="2" />
+    <path d="M 410 160 A 20 20 0 0 1 450 160" fill="none" stroke="#ca8a04" stroke-width="4" />
+    <text x="410" y="220" font-size="14" fill="#713f12" text-anchor="middle" font-family="sans-serif">Height, Weight,</text>
+    <text x="410" y="240" font-size="14" fill="#713f12" text-anchor="middle" font-family="sans-serif">Time</text>
+  </svg>
+</div>
+
 <Aside type="note" title="Types of Data">
 Data generally falls into two main categories:
 1. **Qualitative (Categorical) Data:** Data that is described in words (e.g., eye colour, favourite car brand, blood type).
@@ -22,6 +59,7 @@ When collecting raw data, a **tally chart** is the most efficient way to record 
 We use the "five-bar gate" method to keep track of numbers easily. You draw four vertical lines, and the fifth line crosses diagonally through them. This makes it incredibly easy to count up the final frequencies in multiples of five.
 
 ### Example: Ungrouped Data
+
 A teacher asks $20$ students how many pets they own. The raw data is:
 `0, 1, 1, 2, 0, 3, 1, 0, 4, 1, 2, 1, 0, 2, 1, 5, 0, 1, 2, 1`
 
@@ -57,11 +95,9 @@ The most important rule of a two-way table is that **the rows and columns must s
 | **Year 11** | $25$ | $31$ | **56** |
 | **Total** | **66** | **69** | **135** |
 
-<SteveTip title="The Grand Total Check">
+<Aside type="tip" title="The Grand Total Check">
 The bottom-right corner cell is the "Grand Total". It is the total number of people surveyed. The bottom row totals ($66 + 69$) MUST equal the far-right column totals ($79 + 56$). Both paths must lead to exactly $135$. If they don't, you've made an addition error!
-</SteveTip>
-
-In the exam, you will frequently be given a partially completed two-way table and asked to fill in the missing numbers using basic subtraction.
+</Aside>
 
 ---
 
@@ -82,15 +118,15 @@ In the exam, you will frequently be given a partially completed two-way table an
     e) The weight of apples harvested from an orchard.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    a) **Quantitative Continuous:** Time is measured and can take any decimal value within a range.
 
-    b) **Quantitative Discrete:** Shoe sizes take specific values (e.g., $7, 7.5, 8$) and you cannot have a shoe size of $7.342$.
+    <Steps>
+      1. **a) Quantitative Continuous:** Time is measured and can take any decimal value within a range.
+      2. **b) Quantitative Discrete:** Shoe sizes take specific values (e.g., $7, 7.5, 8$) and you cannot have a shoe size of $7.342$.
+      3. **c) Qualitative:** Colours are descriptive categories, not numbers.
+      4. **d) Quantitative Discrete:** You count the number of pages; it must be a whole integer.
+      5. **e) Quantitative Continuous:** Weight is measured and can take any value depending on the precision of the scales.
+    </Steps>
 
-    c) **Qualitative:** Colours are descriptive categories, not numbers.
-
-    d) **Quantitative Discrete:** You count the number of pages; it must be a whole integer.
-
-    e) **Quantitative Continuous:** Weight is measured and can take any value depending on the precision of the scales.
   </TabItem>
 </Tabs>
 
@@ -145,21 +181,32 @@ In the exam, you will frequently be given a partially completed two-way table an
     c) How many students have strictly *more* than $1$ sibling?
   </TabItem>
   <TabItem label="✅ Solution 3">
-    **a)** Convert the tallies to numerical frequencies:
-    * $0$ siblings: $5$
-    * $1$ sibling: $12$
-    * $2$ siblings: $6$
-    * $3$ siblings: $3$
-    * $4$ or more: $1$
-    * **Total:** $5 + 12 + 6 + 3 + 1 = 27$ students.
+    **a)**
+
+    <Steps>
+      1. Convert the tallies to numerical frequencies.
+      2. $0$ siblings: $5$
+      3. $1$ sibling: $12$
+      4. $2$ siblings: $6$
+      5. $3$ siblings: $3$
+      6. $4$ or more: $1$
+      7. **Total:** $5 + 12 + 6 + 3 + 1 = 27$ students.
+    </Steps>
     
-    **b)** The most common number of siblings is the one with the highest frequency. This is **$1$ sibling** (with a frequency of $12$).
+    **b)**
+
+    <Steps>
+      1. The most common number of siblings is the one with the highest frequency. 
+      2. This is **$1$ sibling** (with a frequency of $12$).
+    </Steps>
     
-    **c)** "More than 1" means $2, 3$, or $4+$ siblings. 
-    
-    $$
-    6 + 3 + 1 = 10 \text{ students}
-    $$
+    **c)**
+
+    <Steps>
+      1. "More than 1" means $2, 3$, or $4+$ siblings. 
+      2. Add the corresponding frequencies: $6 + 3 + 1 = \mathbf{10 \text{ students}}$
+    </Steps>
+
   </TabItem>
 </Tabs>
 
@@ -171,12 +218,26 @@ In the exam, you will frequently be given a partially completed two-way table an
     
     `3, 6, 1, 2, 4, 3, 5, 6, 2, 1, 3, 3, 4, 5, 2, 1, 6, 3, 4, 2, 5, 3, 1, 6, 3`
     
-    a) Construct a frequency table for this data (you may include a tally column if it helps you count).
+    a) Copy and complete the frequency table for this data (you may include a tally if it helps you count).
+
+    | Score | Tally | Frequency |
+    | :--- | :--- | :--- |
+    | $1$ | | |
+    | $2$ | | |
+    | $3$ | | |
+    | $4$ | | |
+    | $5$ | | |
+    | $6$ | | |
+    | **Total** | | |
 
     b) How many times did an even number appear?
   </TabItem>
   <TabItem label="✅ Solution 4">
-    **a)** Set up a table with the possible dice scores ($1$ to $6$).
+    **a)**
+
+    <Steps>
+      1. Systematically count each score from the raw data.
+    </Steps>
     
     | Score | Tally | Frequency |
     | :--- | :--- | :--- |
@@ -188,14 +249,17 @@ In the exam, you will frequently be given a partially completed two-way table an
     | $6$ | IIII | $4$ |
     | **Total** | | **25** |
     
-    **b)** The even numbers on a standard dice are $2, 4$, and $6$. We add their frequencies together:
-    * Score of $2$: $4$ times
-    * Score of $4$: $3$ times
-    * Score of $6$: $4$ times
-    
-    $$
-    4 + 3 + 4 = 11 \text{ times}
-    $$
+    **b)**
+
+    <Steps>
+      1. The even numbers on a standard dice are $2, 4$, and $6$. 
+      2. Add their frequencies together.
+      3. Score of $2$: $4$ times
+      4. Score of $4$: $3$ times
+      5. Score of $6$: $4$ times
+      6. Total: $4 + 3 + 4 = \mathbf{11 \text{ times}}$
+    </Steps>
+
   </TabItem>
 </Tabs>
 
@@ -209,27 +273,30 @@ In the exam, you will frequently be given a partially completed two-way table an
     * $25$ members play Badminton, of which $15$ are male.
     * $38$ members play Tennis in total.
     
-    a) Construct and complete a two-way table to show this information.
+    a) Copy and complete the two-way table below to show this information.
+
+    | | Tennis | Badminton | Squash | Total |
+    | :--- | :--- | :--- | :--- | :--- |
+    | **Male** | | | | |
+    | **Female** | | | | |
+    | **Total** | | | | |
 
     b) If a member is chosen at random, what is the probability that they are a male who plays Tennis?
 
     c) If a **female** member is chosen at random, what is the probability that she plays Badminton?
   </TabItem>
   <TabItem label="✅ Solution 5">
-    **a) Completing the Table:**
+    **a)**
 
     <Steps>
-    1. First, set up a blank table with Gender as the rows and Sport as the columns (don't forget the Total row and column).
-    2. Fill in the absolute facts given in the text: Total members = $100$. Total males = $45$. Female Squash = $12$. Total Badminton = $25$. Male Badminton = $15$. Total Tennis = $38$.
-    3. Calculate total females: $100 - 45 = 55$.
-    4. Calculate female Badminton: $25 - 15 = 10$.
-    5. Calculate total Squash: $100 - (38 + 25) = 100 - 63 = 37$.
-    6. Calculate male Squash: Total Squash ($37$) - Female Squash ($12$) = $25$.
-    7. Calculate male Tennis: Total males ($45$) - Male Badminton ($15$) - Male Squash ($25$) = $5$.
-    8. Calculate female Tennis: Total Tennis ($38$) - Male Tennis ($5$) = $33$.
+      1. Fill in the absolute facts given in the text: Total members = $100$. Total males = $45$. Female Squash = $12$. Total Badminton = $25$. Male Badminton = $15$. Total Tennis = $38$.
+      2. Calculate total females: $100 - 45 = 55$.
+      3. Calculate female Badminton: $25 - 15 = 10$.
+      4. Calculate total Squash: $100 - (38 + 25) = 100 - 63 = 37$.
+      5. Calculate male Squash: Total Squash ($37$) - Female Squash ($12$) = $25$.
+      6. Calculate male Tennis: Total males ($45$) - Male Badminton ($15$) - Male Squash ($25$) = $5$.
+      7. Calculate female Tennis: Total Tennis ($38$) - Male Tennis ($5$) = $33$.
     </Steps>
-
-    **Final Completed Table:**
     
     | | Tennis | Badminton | Squash | Total |
     | :--- | :--- | :--- | :--- | :--- |
@@ -237,24 +304,246 @@ In the exam, you will frequently be given a partially completed two-way table an
     | **Female** | $33$ | $10$ | $12$ | **55** |
     | **Total** | **38** | **25** | **37** | **100** |
 
-    **b) Probability of Male and Tennis:**
-    Look for the specific intersection cell for Male and Tennis. The number is $5$. The total number of members is $100$.
+    **b)**
+
+    <Steps>
+      1. Look for the specific intersection cell for Male and Tennis. The number is $5$. 
+      2. The total number of members is $100$.
+      3. $P(\text{Male and Tennis}) = \frac{5}{100} = \mathbf{\frac{1}{20}}$
+    </Steps>
     
-    $$
-    \begin{aligned}
-    P(\text{Male and Tennis}) &= \frac{5}{100} = \frac{1}{20}
-    \end{aligned}
-    $$
-    
-    **c) Conditional Probability (Given Female):**
-    Because we are told a female member is chosen, the denominator is no longer the grand total ($100$); it is only the total number of females ($55$). Out of those $55$ females, the number who play Badminton is $10$.
-    
-    $$
-    \begin{aligned}
-    P(\text{Badminton given Female}) &= \frac{10}{55} = \frac{2}{11}
-    \end{aligned}
-    $$
+    **c)**
+
+    <Steps>
+      1. Because we are told a female member is chosen, the denominator is no longer the grand total ($100$); it is only the total number of females ($55$). 
+      2. Out of those $55$ females, the number who play Badminton is $10$.
+      3. $P(\text{Badminton given Female}) = \frac{10}{55} = \mathbf{\frac{2}{11}}$
+    </Steps>
+
   </TabItem>
 </Tabs>
 
 <SmartAIGenerator topic="Completing two-way tables and extracting basic and conditional probabilities" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Travel Two-Way Table">
+    A school records how $120$ students travel to school. They can Walk, take the Bus, or Cycle.
+    
+    * $50$ students are in Year 7, and the rest are in Year 8.
+    * $30$ students walk in total.
+    * $15$ Year 7 students Walk.
+    * $45$ Year 8 students take the Bus.
+    * $20$ students Cycle in total.
+    
+    a) Copy and complete the two-way table displaying this data.
+
+    | | Walk | Bus | Cycle | Total |
+    | :--- | :--- | :--- | :--- | :--- |
+    | **Year 7** | | | | |
+    | **Year 8** | | | | |
+    | **Total** | | | | |
+
+    b) How many Year 7 students Cycle to school?
+
+    c) What is the total number of students who take the Bus?
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+
+    <Steps>
+      1. Input given data: Grand total = $120$. Total Year 7 = $50$. Total Walk = $30$. Year 7 Walk = $15$. Year 8 Bus = $45$. Total Cycle = $20$.
+      2. Total Year 8 = $120 - 50 = 70$.
+      3. Total Bus = $120 - (30 + 20) = 70$.
+      4. Year 8 Walk = Total Walk ($30$) - Year 7 Walk ($15$) = $15$.
+      5. Year 8 Cycle = Total Year 8 ($70$) - Year 8 Walk ($15$) - Year 8 Bus ($45$) = $10$.
+      6. Year 7 Cycle = Total Cycle ($20$) - Year 8 Cycle ($10$) = $10$.
+      7. Year 7 Bus = Total Bus ($70$) - Year 8 Bus ($45$) = $25$.
+    </Steps>
+
+    | | Walk | Bus | Cycle | Total |
+    | :--- | :--- | :--- | :--- | :--- |
+    | **Year 7** | $15$ | $25$ | $10$ | **50** |
+    | **Year 8** | $15$ | $45$ | $10$ | **70** |
+    | **Total** | **30** | **70** | **20** | **120** |
+
+    **b)**
+
+    <Steps>
+      1. Look at the intersection of Year 7 and Cycle.
+      2. The answer is **$10$ students**.
+    </Steps>
+
+    **c)**
+
+    <Steps>
+      1. Look at the total for the Bus column.
+      2. The answer is **$70$ students**.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Constructing and evaluating travel method two-way tables" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Identifying Data Sets">
+    A librarian is compiling statistics about the local library. Determine whether the following data points collected are qualitative, quantitative discrete, or quantitative continuous.
+    
+    a) The genres of books borrowed (e.g., Sci-Fi, Mystery).
+
+    b) The number of pages in each borrowed book.
+
+    c) The exact duration of time a student spends studying in the library.
+
+    d) The amount of late fees collected in a day, rounded to the nearest integer.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+
+    <Steps>
+      1. **a) Qualitative:** Genres are descriptive categories, not numbers.
+      2. **b) Quantitative Discrete:** Number of pages can only take exact whole number values.
+      3. **c) Quantitative Continuous:** Time is measured and can take any value depending on precision.
+      4. **d) Quantitative Discrete:** Although money can be continuous, because it is rounded to the nearest integer, it is counted in exact fixed amounts.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Categorising mixed real-world data types" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Grouped Tally Chart">
+    The heights (in cm) of $20$ plants are measured and recorded as follows:
+    
+    `12.5, 8.4, 15.0, 19.2, 5.1, 14.3, 11.8, 9.9, 17.5, 10.1, 13.4, 6.7, 18.8, 14.9, 16.2, 11.0, 7.3, 15.5, 12.1, 19.9`
+    
+    a) Complete the grouped frequency table below.
+    
+    | Height ($h$ cm) | Tally | Frequency |
+    | :--- | :--- | :--- |
+    | $0 < h \le 5$ | | |
+    | $5 < h \le 10$ | | |
+    | $10 < h \le 15$ | | |
+    | $15 < h \le 20$ | | |
+    | **Total** | | |
+
+    b) Which class interval contains the most plants?
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+
+    <Steps>
+      1. Carefully allocate each decimal value into its corresponding inequality bracket.
+      2. For $5.1, 8.4, 9.9, 6.7, 7.3$, place in $5 < h \le 10$.
+      3. For $12.5, 15.0, 14.3, 11.8, 10.1, 13.4, 14.9, 11.0, 12.1$, place in $10 < h \le 15$. (Note: $15.0$ goes in this bracket because of $\le 15$).
+      4. For $19.2, 17.5, 18.8, 16.2, 15.5, 19.9$, place in $15 < h \le 20$.
+    </Steps>
+
+    | Height ($h$ cm) | Tally | Frequency |
+    | :--- | :--- | :--- |
+    | $0 < h \le 5$ | | $0$ |
+    | $5 < h \le 10$ | 卌 | $5$ |
+    | $10 < h \le 15$ | 卌 IIII | $9$ |
+    | $15 < h \le 20$ | 卌 I | $6$ |
+    | **Total** | | **20** |
+
+    **b)**
+
+    <Steps>
+      1. The class interval with the highest frequency is the mode group.
+      2. The highest frequency is $9$.
+      3. The class interval is **$10 < h \le 15$**.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Completing grouped frequency tables for continuous data" />
+
+<Tabs>
+  <TabItem label="📝 Question 9: Missing Values in Two-Way Table">
+    A car dealership sells Petrol, Diesel, and Electric cars. They track sales over a month, split by New and Used cars.
+    
+    | | Petrol | Diesel | Electric | Total |
+    | :--- | :--- | :--- | :--- | :--- |
+    | **New** | $18$ | | $14$ | $42$ |
+    | **Used** | | $22$ | $6$ | |
+    | **Total** | $45$ | $32$ | | |
+    
+    a) Copy and complete the two-way table.
+
+    b) Calculate the total amount of revenue generated by all Used cars if the average price of a Used car is $12,500$ USD.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)**
+
+    <Steps>
+      1. Find New Diesel: Total New ($42$) - New Petrol ($18$) - New Electric ($14$) = $10$.
+      2. Find Used Petrol: Total Petrol ($45$) - New Petrol ($18$) = $27$.
+      3. Find Total Electric: New Electric ($14$) + Used Electric ($6$) = $20$.
+      4. Find Total Used: Used Petrol ($27$) + Used Diesel ($22$) + Used Electric ($6$) = $55$.
+      5. Find Grand Total: Total New ($42$) + Total Used ($55$) = $97$.
+    </Steps>
+
+    | | Petrol | Diesel | Electric | Total |
+    | :--- | :--- | :--- | :--- | :--- |
+    | **New** | $18$ | $10$ | $14$ | **42** |
+    | **Used** | $27$ | $22$ | $6$ | **55** |
+    | **Total** | **45** | **32** | **20** | **97** |
+
+    **b)**
+
+    <Steps>
+      1. Identify the total number of Used cars sold: $55$.
+      2. Multiply by the average price per car: $55 \times 12,500$.
+      3. Revenue = **$687,500$ USD**
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating missing values and applying costs in two-way tables" />
+
+<Tabs>
+  <TabItem label="📝 Question 10: Tally Interpretation and Percentages">
+    A bakery records the types of bread sold in the first hour of opening.
+    
+    * Sourdough: 卌 卌 III
+    * Baguette: 卌 II
+    * Ciabatta: 卌 卌 卌
+    
+    a) Construct a frequency table for this data.
+
+    b) What percentage of the total bread sold was Sourdough?
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    **a)**
+
+    <Steps>
+      1. Convert the tallies into numerical frequencies.
+      2. Sourdough: $5 + 5 + 3 = 13$
+      3. Baguette: $5 + 2 = 7$
+      4. Ciabatta: $5 + 5 + 5 = 15$
+      5. Calculate the total frequency: $13 + 7 + 15 = 35$
+    </Steps>
+    
+    | Bread Type | Frequency |
+    | :--- | :--- |
+    | Sourdough | $13$ |
+    | Baguette | $7$ |
+    | Ciabatta | $15$ |
+    | **Total** | **35** |
+
+    **b)**
+
+    <Steps>
+      1. Write the number of Sourdough sold as a fraction of the total: $\frac{13}{35}$.
+      2. Convert the fraction to a percentage: $\frac{13}{35} \times 100$.
+      3. $\approx 37.14\%$
+      4. Answer: **$37.1\%$** (to 1 d.p.)
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Converting tallies to frequencies and calculating percentages" />
