@@ -33,6 +33,9 @@
       <div class="divider"></div>
 
       <div class="tool-group">
+        <button id="btn-palm-reject" class="tool-btn action" data-action="toggle-palm" title="Palm Rejection (Stylus Only) (P)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a2 2 0 00-2-2 2 2 0 00-2 2v2a2 2 0 00-2-2 2 2 0 00-2 2v2a2 2 0 00-2-2 2 2 0 00-2 2v5a5 5 0 005 5h2a5 5 0 005-5V8z"/><line x1="3" y1="3" x2="21" y2="21" /></svg>
+        </button>
         <button class="tool-btn action" data-action="undo" title="Undo (Ctrl+Z)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"/></svg></button>
         <button class="tool-btn action" data-action="redo" title="Redo (Ctrl+Shift+Z)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 019-9 9 9 0 016 2.3l3 2.7"/></svg></button>
         <button class="tool-btn action clear" data-action="clear" title="Clear All (C)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></button>
@@ -45,10 +48,12 @@
   /* STRICT HIDE RULE when not in bento mode */
   html:not([data-mode="bento"]) [data-bento-portal] { display: none !important; }
 
-  /* Stop fast-drawing text selection highlights on iPad */
+  /* STOP APPLE WEBKIT NATIVE TOUCH INTERRUPTIONS */
   :global(html[data-mode="bento"]) {
     user-select: none;
     -webkit-user-select: none;
+    -webkit-touch-callout: none; /* Kills long-press magnifier */
+    -webkit-tap-highlight-color: transparent; /* Kills gray flash on tap */
   }
 
   /* Canvas */
@@ -113,6 +118,9 @@
   .tool-btn:hover { background: var(--sl-color-hairline); }
   .tool-btn.active { background: var(--sl-color-text-accent); border-color: var(--sl-color-text-accent); color: var(--sl-color-bg); }
   .tool-btn.clear:hover { background: rgba(255,0,0,0.2); color: #ff4444; }
+  
+  #btn-palm-reject.active { background: #3b82f6; border-color: #3b82f6; color: white; }
+
   .color-btn { width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); cursor: pointer; transition: transform 0.2s; }
   .color-btn:hover { transform: scale(1.2); }
   .color-btn.active { border-color: var(--sl-color-text); transform: scale(1.1); }
@@ -130,12 +138,22 @@
     if (!portal || portal.dataset.initialized) return;
     portal.dataset.initialized = 'true';
 
-    // --- Local Canvas State ---
+    // --- Local Canvas & Palm Rejection State ---
     const localState = { strokes: [], redoStack: [], currentStroke: null, isDrawing: false };
+    let palmRejectionEnabled = localStorage.getItem('wb-palm-reject') === 'true';
     let canvas, ctx;
 
     const savedStrokes = sessionStorage.getItem(`wb-strokes-${window.location.pathname}`);
     if (savedStrokes) { try { localState.strokes = JSON.parse(savedStrokes); } catch(e){} }
+
+    function updatePalmRejectUI() {
+      const btn = document.getElementById('btn-palm-reject');
+      if (btn) {
+        if (palmRejectionEnabled) btn.classList.add('active');
+        else btn.classList.remove('active');
+      }
+    }
+    updatePalmRejectUI();
 
     // --- Canvas Setup ---
     function setupCanvas() {
@@ -155,8 +173,9 @@
       window.addEventListener('resize', resizeCanvas);
       setTimeout(resizeCanvas, 500); 
 
-      canvas.addEventListener('pointerdown', startDrawing);
-      canvas.addEventListener('pointermove', draw);
+      // THE FIX FOR DROPPED STROKES: passive: false guarantees Safari respects e.preventDefault()
+      canvas.addEventListener('pointerdown', startDrawing, { passive: false });
+      canvas.addEventListener('pointermove', draw, { passive: false });
       canvas.addEventListener('pointerup', stopDrawing);
       canvas.addEventListener('pointercancel', stopDrawing); 
       canvas.addEventListener('pointerout', stopDrawing);
@@ -167,8 +186,10 @@
       const globalState = projectorStore.get();
       if (globalState.tool !== 'pen' && globalState.tool !== 'eraser') return;
       
+      // PALM REJECTION: Ignore fingers entirely if setting is on
+      if (palmRejectionEnabled && e.pointerType === 'touch') return;
+
       e.preventDefault(); 
-      
       try { canvas.setPointerCapture(e.pointerId); } catch(err) {}
       
       localState.isDrawing = true; localState.redoStack = []; 
@@ -218,6 +239,12 @@
     function redo() { if (localState.redoStack.length > 0) { localState.strokes.push(localState.redoStack.pop()); redrawAll(); saveStrokes(); } }
     function clear() { localState.strokes = []; localState.redoStack = []; redrawAll(); saveStrokes(); }
 
+    function togglePalmRejection() {
+      palmRejectionEnabled = !palmRejectionEnabled;
+      localStorage.setItem('wb-palm-reject', palmRejectionEnabled.toString());
+      updatePalmRejectUI();
+    }
+
     // --- UI Interactions ---
     portal.addEventListener('click', (e) => {
       const btn = e.target.closest('button');
@@ -232,7 +259,8 @@
         projectorStore.setKey('colorName', val);
         projectorStore.setKey('colorValue', toolsConfig.colors[val]);
         projectorStore.setKey('tool', 'pen');
-      } else if (action === 'undo') undo();
+      } else if (action === 'toggle-palm') togglePalmRejection();
+      else if (action === 'undo') undo();
       else if (action === 'redo') redo();
       else if (action === 'clear') clear();
       else if (action === 'toggle-projector') {
@@ -262,7 +290,6 @@
         isDragging = true; 
         hasDragged = false;
         
-        // Record starting positions
         initialPointerX = e.clientX;
         initialPointerY = e.clientY;
 
@@ -345,7 +372,7 @@
     projectorStore.subscribe(state => {
       document.documentElement.setAttribute('data-tool', state.tool);
 
-      document.querySelectorAll('.tool-btn, .color-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tool-btn:not(#btn-palm-reject), .color-btn').forEach(btn => btn.classList.remove('active'));
       const activeToolBtn = document.querySelector(`[data-val="${state.tool}"]`);
       if (activeToolBtn) {
         activeToolBtn.classList.add('active');
@@ -398,6 +425,8 @@
       if (e.key === '3') projectorStore.setKey('tool', 'pen');
       if (e.key === '4') projectorStore.setKey('tool', 'eraser');
 
+      if (e.key.toLowerCase() === 'p') togglePalmRejection();
+      
       if (e.key.toLowerCase() === 'q') { projectorStore.setKey('colorName', 'cyan'); projectorStore.setKey('colorValue', toolsConfig.colors.cyan); projectorStore.setKey('tool', 'pen'); }
       if (e.key.toLowerCase() === 'w') { projectorStore.setKey('colorName', 'magenta'); projectorStore.setKey('colorValue', toolsConfig.colors.magenta); projectorStore.setKey('tool', 'pen'); }
       if (e.key.toLowerCase() === 'e') { projectorStore.setKey('colorName', 'yellow'); projectorStore.setKey('colorValue', toolsConfig.colors.yellow); projectorStore.setKey('tool', 'pen'); }
