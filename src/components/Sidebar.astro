@@ -1,7 +1,9 @@
 ---
+// src/components/Sidebar.astro
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/Sidebar.astro';
 import { getRandomGreeting, filterSidebar } from '../utils/sidebarHelpers';
+import ExamTimer from './ExamTimer.jsx'; // <-- Added Timer Import
 
 const randomGreeting = getRandomGreeting();
 const isTeacher = import.meta.env.PUBLIC_TEACHER_MODE === 'true';
@@ -20,13 +22,17 @@ const newProps = { ...Astro.props, sidebar: filteredSidebar };
   <div class="sidebar-sticky-wrapper">
     <div id="dynamic-greeting" class="sidebar-header-hint">{randomGreeting}</div>
   </div>
+  
   <div class="sidebar-content">
     <Default {...newProps}><slot /></Default>
+  </div>
+
+  <div class="global-timer-container">
+    <ExamTimer client:load />
   </div>
 </div>
 
 <style>
-  /* Removed height: 100% and flex-direction so the container stretches to the full height of the links */
   .sidebar-container { 
     position: relative; 
   }
@@ -54,5 +60,13 @@ const newProps = { ...Astro.props, sidebar: filteredSidebar };
     white-space: nowrap; 
     overflow: hidden; 
     text-overflow: ellipsis; 
+  }
+
+  /* Added Timer Styles */
+  .global-timer-container {
+    padding: 1rem;
+    border-top: 1px solid var(--sl-color-gray-5);
+    background: var(--sl-color-bg-nav);
+    margin-top: auto; /* Pushes the timer to the bottom if there's extra vertical space */
   }
 </style>

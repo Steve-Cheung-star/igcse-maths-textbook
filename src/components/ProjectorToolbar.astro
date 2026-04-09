@@ -431,6 +431,7 @@
     // --- Keybinds ---
     window.addEventListener('keydown', (e) => {
       if (!projectorStore.get().isBento) return;
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
       if (e.key === 'Escape') { projectorStore.setKey('isBento', false); localStorage.setItem('whiteboard-mode', 'normal'); return; }
       if ((e.ctrlKey || e.metaKey) && e.key === 'z') { if (e.shiftKey) redo(); else undo(); e.preventDefault(); }
       
