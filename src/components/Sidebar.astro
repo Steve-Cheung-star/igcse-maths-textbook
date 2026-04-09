@@ -26,15 +26,33 @@ const newProps = { ...Astro.props, sidebar: filteredSidebar };
 </div>
 
 <style>
-  .sidebar-container { height: 100%; display: flex; flex-direction: column; position: relative; }
+  /* Removed height: 100% and flex-direction so the container stretches to the full height of the links */
+  .sidebar-container { 
+    position: relative; 
+  }
+  
   .sidebar-sticky-wrapper { 
-    position: sticky; top: 0; z-index: 10; height: 3rem; display: flex; align-items: center; 
+    position: sticky; 
+    top: 0; 
+    z-index: 10; 
+    height: 3rem; 
+    display: flex; 
+    align-items: center; 
     background: var(--sl-color-bg-sidebar, var(--sl-color-bg));
     border-bottom: 1px solid var(--sl-color-hairline); 
   }
+  
   .sidebar-header-hint { 
-    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05rem; font-weight: bold; 
-    color: var(--sl-color-gray-3); padding: 0 1rem; opacity: 0.8; font-family: var(--__sl-font-mono); 
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 
+    font-size: 0.65rem; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05rem; 
+    font-weight: bold; 
+    color: var(--sl-color-gray-3); 
+    padding: 0 1rem; 
+    opacity: 0.8; 
+    font-family: var(--__sl-font-mono); 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
   }
 </style>

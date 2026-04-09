@@ -55,34 +55,8 @@ export default defineConfig({
             rel: 'stylesheet',
             href: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css',
           },
-        },
-        // --- POWERPOINT MODE TOGGLE SCRIPT ---
-        {
-          tag: 'script',
-          content: `
-            (function() {
-              const toggleBento = () => {
-                const isBento = document.documentElement.getAttribute('data-mode') === 'bento';
-                const newState = isBento ? 'normal' : 'bento';
-                document.documentElement.setAttribute('data-mode', newState);
-                localStorage.setItem('whiteboard-layout', newState);
-              };
-
-              // Persistent state on page change
-              if (localStorage.getItem('whiteboard-layout') === 'bento') {
-                document.documentElement.setAttribute('data-mode', 'bento');
-              }
-
-              window.addEventListener('keydown', (e) => {
-                // Mac Shortcut: Control + Option + P
-                if (e.ctrlKey && e.altKey && e.code === 'KeyP') {
-                  e.preventDefault();
-                  toggleBento();
-                }
-              });
-            })();
-          `,
-        },
+        }
+        // POWERPOINT MODE TOGGLE SCRIPT successfully deleted from here!
       ],
       sidebar: [
         {
