@@ -157,26 +157,6 @@
     }
     updatePalmRejectUI();
 
-    // --- Helper: Fullscreen Toggler ---
-    function toggleFullScreen(shouldEnter) {
-      const elem = document.documentElement;
-      if (shouldEnter) {
-        if (elem.requestFullscreen) {
-          elem.requestFullscreen().catch(e => console.warn("Fullscreen blocked:", e));
-        } else if (elem.webkitRequestFullscreen) { /* Safari/iPad */
-          elem.webkitRequestFullscreen();
-        }
-      } else {
-        if (document.fullscreenElement || document.webkitFullscreenElement) {
-          if (document.exitFullscreen) {
-            document.exitFullscreen();
-          } else if (document.webkitExitFullscreen) { /* Safari/iPad */
-            document.webkitExitFullscreen();
-          }
-        }
-      }
-    }
-
     // --- Canvas Setup ---
     function setupCanvas() {
       if (document.getElementById('wb-canvas')) return;
@@ -206,6 +186,7 @@
       canvas.addEventListener('touchstart', preventTouchWhenDrawing, { passive: false });
       canvas.addEventListener('touchmove', preventTouchWhenDrawing, { passive: false });
 
+      // Ensure pointer events are marked passive: false to lock the OS
       canvas.addEventListener('pointerdown', startDrawing, { passive: false });
       canvas.addEventListener('pointermove', draw, { passive: false });
       canvas.addEventListener('pointerup', stopDrawing);
@@ -301,17 +282,8 @@
       else if (action === 'clear') clear();
       else if (action === 'toggle-projector') {
         const isCurrentlyBento = projectorStore.get().isBento;
-        const nextState = !isCurrentlyBento;
-        
-        projectorStore.setKey('isBento', nextState);
-        localStorage.setItem('whiteboard-mode', nextState ? 'bento' : 'normal');
-        
-        toggleFullScreen(nextState);
-
-        // Force browser layout recalculation after closing fullscreen/header
-        setTimeout(() => {
-          window.dispatchEvent(new Event('resize'));
-        }, 50);
+        projectorStore.setKey('isBento', !isCurrentlyBento);
+        localStorage.setItem('whiteboard-mode', !isCurrentlyBento ? 'bento' : 'normal');
       }
     });
 
@@ -338,7 +310,9 @@
         initialY = e.clientY;
 
         const rect = wrapper.getBoundingClientRect();
-        startX = e.clientX - rect.left; startY = e.clientY - rect.top;
+        startX = e.clientX - rect.left; 
+        startY = e.clientY - rect.top;
+        
         wrapper.style.transform = 'none'; wrapper.style.bottom = 'auto';
         wrapper.style.left = `${rect.left}px`; wrapper.style.top = `${rect.top}px`;
       });
@@ -353,20 +327,24 @@
           if (dx > 5 || dy > 5) {
             hasDragged = true;
           } else {
-            return; 
+            return; // Don't move the toolbar yet
           }
         }
 
         let newX = e.clientX - startX; let newY = e.clientY - startY;
+        
         newX = Math.max(10, Math.min(newX, window.innerWidth - wrapper.offsetWidth - 10));
         newY = Math.max(10, Math.min(newY, window.innerHeight - wrapper.offsetHeight - 10));
         
         wrapper.style.left = `${newX}px`; wrapper.style.top = `${newY}px`;
       });
 
+      // Handle all exit states (up, cancel, leave) safely
       const handleDragEnd = (e) => {
         if (isDragging) {
            try { fab.releasePointerCapture(e.pointerId); } catch(err) {}
+           
+           // Only save position if we actually dragged
            if (hasDragged) {
              const rect = wrapper.getBoundingClientRect();
              localStorage.setItem('wb-toolbar-pos', JSON.stringify({ x: rect.left, y: rect.top }));
@@ -411,8 +389,10 @@
 
     // --- Store Subscription for UI Updates ---
     projectorStore.subscribe(state => {
+      // Vital CSS trigger: Push the current tool state to the HTML tag so :global() pointers activate properly
       document.documentElement.setAttribute('data-tool', state.tool);
 
+      // Note: Added :not(#btn-palm-reject) so it isn't cleared when clicking other tools
       document.querySelectorAll('.tool-btn:not(#btn-palm-reject), .color-btn').forEach(btn => btn.classList.remove('active'));
       const activeToolBtn = document.querySelector(`[data-val="${state.tool}"]`);
       if (activeToolBtn) {
@@ -451,13 +431,7 @@
     // --- Keybinds ---
     window.addEventListener('keydown', (e) => {
       if (!projectorStore.get().isBento) return;
-      if (e.key === 'Escape') { 
-        projectorStore.setKey('isBento', false); 
-        localStorage.setItem('whiteboard-mode', 'normal'); 
-        toggleFullScreen(false);
-        setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
-        return; 
-      }
+      if (e.key === 'Escape') { projectorStore.setKey('isBento', false); localStorage.setItem('whiteboard-mode', 'normal'); return; }
       if ((e.ctrlKey || e.metaKey) && e.key === 'z') { if (e.shiftKey) redo(); else undo(); e.preventDefault(); }
       
       if (e.key === '0') {
