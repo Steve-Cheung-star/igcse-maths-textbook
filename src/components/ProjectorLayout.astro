@@ -1,0 +1,166 @@
+---
+// src/components/ProjectorLayout.astro
+import ProjectorToolbar from './ProjectorToolbar.astro';
+---
+
+<button id="wb-enter-projector" title="Enter Projector Mode (Ctrl+Alt+P)">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+    <line x1="8" y1="21" x2="16" y2="21"></line>
+    <line x1="12" y1="17" x2="12" y2="21"></line>
+  </svg>
+</button>
+
+<style is:global>
+  /* =========================================
+     0. ENTRY BUTTON STYLING (Header Integration)
+     ========================================= */
+  #wb-enter-projector {
+    position: fixed;
+    top: 1rem;  /* Centers it vertically in the standard Starlight header */
+    right: 8.5rem; /* ~32px left of the theme toggle (adjust slightly if you have social icons) */
+    z-index: 90;
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    color: var(--sl-color-text-subtle, #9ca3af);
+    border: none;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+  
+  #wb-enter-projector:hover {
+    color: var(--sl-color-white, #fff);
+    background-color: var(--sl-color-bg-nav, rgba(255,255,255,0.05));
+  }
+
+  /* Hide the entry button when projector mode is ACTIVE */
+  html[data-mode="bento"] #wb-enter-projector {
+    display: none !important;
+  }
+
+  /* =========================================
+     1. UI HIDING & CLEANUP
+     ========================================= */
+  html[data-mode="bento"] .sidebar, 
+  html[data-mode="bento"] .right-sidebar, 
+  html[data-mode="bento"] header, 
+  html[data-mode="bento"] footer,
+  html[data-mode="bento"] .pagination { display: none !important; }
+  
+  html[data-mode="bento"] .main-frame { padding: 0 !important; min-height: 100vh; }
+  html[data-mode="bento"] .sl-container { max-width: 95vw !important; margin: 4rem auto !important; }
+  html[data-mode="bento"] .sl-markdown-content { font-size: 1.8rem !important; line-height: 1.6; }
+  html[data-mode="bento"] .katex-display { margin: 2.5rem 0 !important; font-size: 1.3em !important; }
+
+  /* =========================================
+     2. STANDARDIZED WIDTHS & SPACING
+     ========================================= */
+  html[data-mode="bento"] .sl-markdown-content > * { max-width: 850px !important; margin-left: 0 !important; margin-right: auto !important; box-sizing: border-box; }
+  html[data-mode="bento"] .sl-markdown-content canvas,
+  html[data-mode="bento"] .sl-markdown-content .sim-root { max-width: 100% !important; }
+
+  /* Removed the dashed border-top from headings */
+  html[data-mode="bento"] .sl-markdown-content h2,
+  html[data-mode="bento"] .sl-markdown-content h3 { margin-top: 70vh !important; padding-top: 2rem !important; border-top: none !important; }
+  
+  /* Removed the dashed border-top from horizontal rules */
+  html[data-mode="bento"] .sl-markdown-content hr { display: block !important; margin-top: 70vh !important; margin-bottom: 2rem !important; padding: 0 !important; height: 0 !important; border: none !important; background: transparent !important; clear: both !important; }
+  
+  html[data-mode="bento"] .sl-markdown-content h2:first-of-type { margin-top: 2rem !important; }
+  html[data-mode="bento"] .sl-markdown-content { padding-bottom: 80vh !important; }
+  
+  /* =========================================
+     3. NATIVE HARDWARE-ACCELERATED CURSORS
+     ========================================= */
+  html[data-mode="bento"][data-tool="laser"], 
+  html[data-mode="bento"][data-tool="laser"] body,
+  html[data-mode="bento"][data-tool="laser"] * { cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="7" fill="%23ff0000" stroke="white" stroke-width="2.5" box-shadow="0 0 10px red"/></svg>') 12 12, auto !important; }
+  
+  html[data-mode="bento"][data-tool="pen"] body { cursor: crosshair !important; }
+  html[data-mode="bento"][data-tool="eraser"] body { cursor: cell !important; }
+
+  /* =========================================
+     4. OPTIMAL TYPOGRAPHY (Asides & Callouts)
+     ========================================= */
+  html[data-mode="bento"] .sl-markdown-content aside,
+  html[data-mode="bento"] .sl-markdown-content .starlight-aside {
+    /* Kill any side-floating behavior */
+    float: none !important;
+    clear: both !important;
+    position: relative !important;
+    
+    /* Force horizontal flow */
+    display: block !important;
+    width: 100% !important;
+    
+    /* The magic reading-width cap (~65 characters) */
+    max-width: 50ch !important; 
+    
+    /* Give it breathing room and align it with the text */
+    margin-top: 2.5rem !important;
+    margin-bottom: 2.5rem !important;
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+
+  /* Optional: If you want ALL standard paragraph text to also obey the 65ch rule for perfect reading */
+  html[data-mode="bento"] .sl-markdown-content p,
+  html[data-mode="bento"] .sl-markdown-content ul,
+  html[data-mode="bento"] .sl-markdown-content ol {
+    max-width: 50ch !important;
+  }
+</style>
+
+<ProjectorToolbar />
+
+<script>
+  import { projectorStore } from '../store/projectorStore.js';
+
+  function initLayout() {
+    // Prevent duplicate listeners on hot-reloads
+    if (document.documentElement.dataset.layoutInit) return;
+    document.documentElement.dataset.layoutInit = 'true';
+
+    // Hydrate store from local storage
+    const savedMode = localStorage.getItem('whiteboard-mode') === 'bento';
+    if (savedMode) projectorStore.setKey('isBento', true);
+
+    // Wire up the new Entry Button
+    const enterBtn = document.getElementById('wb-enter-projector');
+    if (enterBtn) {
+      enterBtn.addEventListener('click', () => {
+        projectorStore.setKey('isBento', true);
+        localStorage.setItem('whiteboard-mode', 'bento');
+      });
+    }
+
+    // Subscribe to state changes to toggle CSS classes
+    projectorStore.subscribe((state) => {
+      if (state.isBento) {
+        document.documentElement.setAttribute('data-mode', 'bento');
+        document.documentElement.setAttribute('data-tool', state.tool);
+      } else {
+        document.documentElement.removeAttribute('data-mode');
+        document.documentElement.removeAttribute('data-tool');
+      }
+    });
+
+    // Global Hotkey (Ctrl+Alt+P)
+    window.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && e.altKey && (e.key?.toLowerCase() === 'p' || e.code === 'KeyP')) {
+        e.preventDefault(); 
+        const isCurrentlyBento = projectorStore.get().isBento;
+        projectorStore.setKey('isBento', !isCurrentlyBento);
+        localStorage.setItem('whiteboard-mode', !isCurrentlyBento ? 'bento' : 'normal');
+      }
+    }, true);
+  }
+
+  initLayout();
+  document.addEventListener('astro:page-load', initLayout);
+</script>

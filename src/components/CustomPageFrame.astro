@@ -2,10 +2,10 @@
 // src/components/CustomPageFrame.astro
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/PageFrame.astro';
-import ProjectorMode from './ProjectorMode.astro';
+import ProjectorLayout from './ProjectorLayout.astro'; 
 ---
 
-<ProjectorMode />
+<ProjectorLayout />
 
 <Default {...Astro.props}>
   <slot name="header" slot="header" />
