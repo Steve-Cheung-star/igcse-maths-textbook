@@ -10,8 +10,7 @@
   <div id="wb-toolbar-wrapper" class="horizontal maximized">
     <button id="wb-fab-toggle" title="Minimize / Drag">
        <svg class="icon-min" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-       <div class="icon-drag" id="wb-dynamic-icon">
-         </div>
+       <div class="icon-drag" id="wb-dynamic-icon"></div>
     </button>
     
     <div id="wb-toolbar" class="toolbar-panel">
@@ -47,10 +46,17 @@
   html:not([data-mode="bento"]) [data-bento-portal] { display: none !important; }
 
   /* Canvas */
-  :global(#wb-canvas) { position: absolute; top: 0; left: 0; z-index: 999998; pointer-events: none; display: none; }
+  :global(#wb-canvas) { 
+    position: absolute; top: 0; left: 0; z-index: 999998; 
+    pointer-events: none; display: none; 
+    touch-action: none; /* Critical for iPad drawing */
+  }
   :global(html[data-mode="bento"] #wb-canvas) { display: block; }
   :global(html[data-mode="bento"][data-tool="pen"] #wb-canvas),
-  :global(html[data-mode="bento"][data-tool="eraser"] #wb-canvas) { pointer-events: auto; touch-action: none; }
+  :global(html[data-mode="bento"][data-tool="eraser"] #wb-canvas) { 
+    pointer-events: auto; 
+    touch-action: none; 
+  }
 
   /* Subtle Exit Button */
   #wb-exit { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 9999999; display: flex; width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--sl-color-bg-nav, rgba(0,0,0,0.5)); color: var(--sl-color-text, #fff); align-items: center; justify-content: center; cursor: pointer; opacity: 0.2; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.2); backdrop-filter: blur(4px); }
@@ -62,6 +68,7 @@
     z-index: 9999999; display: flex; align-items: center; background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline); border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3); backdrop-filter: blur(12px);
+    touch-action: none; /* Critical for iPad drag */
   }
 
   /* Minimized State */
@@ -108,16 +115,21 @@
   .yellow { background: #ffff00; box-shadow: 0 0 8px #ffff0088; }
   .lime { background: #39ff14; box-shadow: 0 0 8px #39ff1488; }
   
-  @media (max-width: 600px) { #wb-toolbar-wrapper, #wb-exit { display: none !important; } }
+  /* Kill for Mobile entirely */
+  @media (max-width: 768px) { 
+    #wb-portal, #wb-exit, #wb-toolbar-wrapper { display: none !important; }
+    :global(#wb-canvas) { display: none !important; pointer-events: none !important; }
+  }
 </style>
 
 <script>
   import { projectorStore, toolsConfig } from '../store/projectorStore.js';
 
   function initWhiteboard() {
+    // Escape hatch for mobile views - strictly prevent initialization
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return;
+
     const portal = document.getElementById('wb-portal');
-    
-    // Check if the DOM exists AND hasn't been initialized yet
     if (!portal || portal.dataset.initialized) return;
     portal.dataset.initialized = 'true';
 
@@ -149,15 +161,21 @@
       canvas.addEventListener('pointerdown', startDrawing);
       canvas.addEventListener('pointermove', draw);
       canvas.addEventListener('pointerup', stopDrawing);
-      canvas.addEventListener('pointercancel', stopDrawing);
+      canvas.addEventListener('pointercancel', stopDrawing); 
       canvas.addEventListener('pointerout', stopDrawing);
     }
 
     // --- Drawing Logic ---
     function startDrawing(e) {
+      if (window.innerWidth < 768) return; // double-check guard
       const globalState = projectorStore.get();
       if (globalState.tool !== 'pen' && globalState.tool !== 'eraser') return;
+      
       e.preventDefault(); 
+      
+      // iPad Fix: Lock pointer to canvas to prevent drops
+      try { canvas.setPointerCapture(e.pointerId); } catch(err) {}
+      
       localState.isDrawing = true; localState.redoStack = []; 
       const x = e.pageX; const y = e.pageY;
       localState.currentStroke = { tool: globalState.tool, color: globalState.tool === 'eraser' ? 'rgba(0,0,0,1)' : globalState.colorValue, points: [{x, y}] };
@@ -177,6 +195,10 @@
     function stopDrawing(e) {
       if (!localState.isDrawing) return;
       e.preventDefault();
+      
+      // Release pointer lock
+      try { canvas.releasePointerCapture(e.pointerId); } catch(err) {}
+
       localState.isDrawing = false;
       if (localState.currentStroke && localState.currentStroke.points.length > 0) {
         localState.strokes.push(localState.currentStroke); saveStrokes();
@@ -227,7 +249,6 @@
     });
 
     // --- Drag Logic ---
-    // --- Drag Logic ---
     function initDragLogic() {
       const wrapper = document.getElementById('wb-toolbar-wrapper');
       const fab = document.getElementById('wb-fab-toggle');
@@ -238,6 +259,10 @@
       fab.addEventListener('pointerdown', (e) => {
         if (!projectorStore.get().isToolbarMinimized) return; 
         e.preventDefault(); 
+        
+        // iPad Fix: Capture pointer to prevent drag dropping on touch move
+        try { fab.setPointerCapture(e.pointerId); } catch(err) {}
+
         isDragging = true; hasDragged = false;
         const rect = wrapper.getBoundingClientRect();
         startX = e.clientX - rect.left; startY = e.clientY - rect.top;
@@ -250,21 +275,24 @@
         hasDragged = true; 
         let newX = e.clientX - startX; let newY = e.clientY - startY;
         
-        // Immediate bumping while dragging
         newX = Math.max(10, Math.min(newX, window.innerWidth - wrapper.offsetWidth - 10));
         newY = Math.max(10, Math.min(newY, window.innerHeight - wrapper.offsetHeight - 10));
         
         wrapper.style.left = `${newX}px`; wrapper.style.top = `${newY}px`;
       });
 
-      document.addEventListener('pointerup', () => { 
+      // Handle all exit states (up, cancel, leave) safely
+      const handleDragEnd = (e) => {
         if (isDragging) {
+           try { fab.releasePointerCapture(e.pointerId); } catch(err) {}
            const rect = wrapper.getBoundingClientRect();
-           // NEW MATH: Save absolute exact pixels instead of percentages
            localStorage.setItem('wb-toolbar-pos', JSON.stringify({ x: rect.left, y: rect.top }));
         }
         isDragging = false; 
-      });
+      };
+
+      document.addEventListener('pointerup', handleDragEnd);
+      document.addEventListener('pointercancel', handleDragEnd);
 
       fab.addEventListener('click', () => {
         if (hasDragged) return; 
@@ -281,7 +309,6 @@
       if (savedPos) {
         try {
           const pos = JSON.parse(savedPos);
-          // NEW MATH: Use the absolute pixels, but bump them inward if the window shrank
           let newX = Math.max(10, Math.min(pos.x, window.innerWidth - wrapper.offsetWidth - 10));
           let newY = Math.max(10, Math.min(pos.y, window.innerHeight - wrapper.offsetHeight - 10));
           
@@ -291,7 +318,6 @@
           wrapper.style.transform = 'none';
         } catch(e) {}
       } else {
-        // Default position if they never dragged it
         wrapper.style.left = '50%';
         wrapper.style.top = 'auto';
         wrapper.style.bottom = '2rem';
@@ -301,6 +327,9 @@
 
     // --- Store Subscription for UI Updates ---
     projectorStore.subscribe(state => {
+      // Vital CSS trigger: Push the current tool state to the HTML tag so :global() pointers activate properly
+      document.documentElement.setAttribute('data-tool', state.tool);
+
       document.querySelectorAll('.tool-btn, .color-btn').forEach(btn => btn.classList.remove('active'));
       const activeToolBtn = document.querySelector(`[data-val="${state.tool}"]`);
       if (activeToolBtn) {
@@ -371,7 +400,6 @@
     window.addEventListener('resize', clampToolbarPosition);
   }
 
-  // Run immediately AND on page load, guaranteeing it fires correctly
   initWhiteboard();
   document.addEventListener('astro:page-load', initWhiteboard);
 </script>
