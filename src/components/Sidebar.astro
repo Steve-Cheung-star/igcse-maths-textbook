@@ -2,27 +2,14 @@
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/Sidebar.astro';
 import ExamTimer from './ExamTimer.jsx'; 
+import ProjectorMode from './ProjectorMode.astro';
+import { getRandomGreeting, filterSidebar } from '../utils/sidebarHelpers';
 
-const greetings = [
-  "Not another maths page...", "Calculations & Egg Tarts", "The Variable Graveyard",
-  "𝜋: Tasty, but Infinite", "Solve for Why?", "Keep Calm and Carry One",
-  "Warning: High Logic Zone", "𝑥 is missing. Call the police.",
-  "Square Roots & Salty Tears", "Fancy a bit of Algebra?",
-  "Please mind the gap.", "Humidity: 99%. Brain: 1%."
-];
-
-const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
-
-const isIB = Astro.url.pathname.includes('/ib-aisl');
+const randomGreeting = getRandomGreeting();
 const isTeacher = import.meta.env.PUBLIC_TEACHER_MODE === 'true';
 const currentSidebar = Astro.locals.starlightRoute?.sidebar || Astro.props.sidebar || [];
 
-const filteredSidebar = currentSidebar.filter(item => {
-  if (isTeacher) return true;
-  const folderName = item.label || '';
-  if (isIB) return folderName.includes('IB Mathematics AI SL');
-  return folderName.includes('IGCSE Mathematics');
-});
+const filteredSidebar = filterSidebar(currentSidebar, Astro.url, isTeacher);
 
 if (Astro.locals.starlightRoute) {
   Astro.locals.starlightRoute.sidebar = filteredSidebar;
@@ -31,83 +18,7 @@ if (Astro.locals.starlightRoute) {
 const newProps = { ...Astro.props, sidebar: filteredSidebar };
 ---
 
-<script is:inline>
-  (function() {
-    // 1. STATE SYNC
-    const syncBentoState = () => {
-      const mode = localStorage.getItem('whiteboard-mode');
-      if (mode === 'bento') {
-        document.documentElement.setAttribute('data-mode', 'bento');
-        document.body.classList.add('bento-active');
-      } else {
-        document.documentElement.removeAttribute('data-mode');
-        document.body.classList.remove('bento-active');
-      }
-    };
-
-    window.toggleWhiteboard = function() {
-      const isCurrentlyBento = localStorage.getItem('whiteboard-mode') === 'bento';
-      const nextMode = isCurrentlyBento ? 'normal' : 'bento';
-      localStorage.setItem('whiteboard-mode', nextMode);
-      
-      // IMMEDIATE KILL SWITCH: 
-      // This forces the laser to vanish even if the mouse doesn't move.
-      const laser = document.getElementById('laser-pointer');
-      if (laser && nextMode !== 'bento') {
-        laser.style.display = 'none';
-      }
-      
-      syncBentoState();
-    };
-
-    // 2. SHORTCUT (Ctrl+Alt+P) + SMART SCROLL
-    if (!window.wbShortcutAttached) {
-      window.addEventListener('keydown', (e) => {
-        const isP = e.key?.toLowerCase() === 'p' || e.code === 'KeyP';
-        const isBento = document.documentElement.getAttribute('data-mode') === 'bento';
-
-        if ((e.ctrlKey || e.metaKey) && e.altKey && isP) {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-          window.toggleWhiteboard();
-          return;
-        }
-
-        if (isBento) {
-          const scrollAmount = window.innerHeight * 0.8;
-          if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(e.key)) {
-            e.preventDefault();
-            window.scrollBy({ top: scrollAmount, behavior: 'smooth' });
-          }
-          if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) {
-            e.preventDefault();
-            window.scrollBy({ top: -scrollAmount, behavior: 'smooth' });
-          }
-        }
-      }, true); 
-      window.wbShortcutAttached = true;
-    }
-
-    // 3. ZERO-LAG LASER TRACKER
-    const handleMouseMove = (e) => {
-      const laser = document.getElementById('laser-pointer');
-      if (laser && document.documentElement.getAttribute('data-mode') === 'bento') {
-        laser.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-        laser.style.display = 'block';
-      } else if (laser) {
-        laser.style.display = 'none';
-      }
-    };
-
-    window.removeEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-
-    syncBentoState();
-    document.addEventListener('astro:after-swap', syncBentoState);
-    document.addEventListener('astro:page-load', syncBentoState);
-  })();
-</script>
-
+<ProjectorMode />
 <ExamTimer client:only="react" />
 
 <div class="sidebar-container">
@@ -120,99 +31,8 @@ const newProps = { ...Astro.props, sidebar: filteredSidebar };
 </div>
 
 <style>
+  /* Only sidebar-specific styles remain */
   .sidebar-container { height: 100%; display: flex; flex-direction: column; position: relative; }
   .sidebar-sticky-wrapper { position: sticky; top: 0; z-index: 10; background: var(--sl-color-bg-sidebar, var(--sl-color-bg)); height: 3rem; display: flex; align-items: center; border-bottom: 1px solid var(--sl-color-hairline); }
   .sidebar-header-hint { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05rem; font-weight: bold; color: var(--sl-color-gray-3); padding: 0 1rem; opacity: 0.8; font-family: var(--__sl-font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-
-  /* BENTO MODE LAYOUT */
-  :global(html[data-mode="bento"] .sidebar), 
-  :global(html[data-mode="bento"] .right-sidebar), 
-  :global(html[data-mode="bento"] header), 
-  :global(html[data-mode="bento"] footer),
-  :global(html[data-mode="bento"] .pagination) { 
-    display: none !important; 
-  }
-
-  /* CRITICAL: Cursor Hiding */
-  :global(html[data-mode="bento"]), 
-  :global(html[data-mode="bento"] body),
-  :global(html[data-mode="bento"] *) {
-    cursor: none !important;
-  }
-
-  /* Laser Visual Polish */
-  #laser-pointer {
-    pointer-events: none;
-    will-change: transform;
-  }
-
-  :global(html[data-mode="bento"] .main-frame) { padding: 0 !important; min-height: 100vh; }
-  :global(html[data-mode="bento"] .sl-container) { max-width: 85vw !important; margin: 4rem auto !important; }
-  :global(html[data-mode="bento"] .sl-markdown-content) { font-size: 1.8rem !important; line-height: 1.6; }
-  :global(html[data-mode="bento"] .katex-display) { margin: 2.5rem 0 !important; font-size: 1.3em !important; }
 </style>
-
-<script is:inline>
-  function injectProjectorUI() {
-    if (!document.getElementById('laser-pointer')) {
-      const laser = document.createElement('div');
-      laser.id = 'laser-pointer';
-      laser.setAttribute('style', `
-        position: fixed; top: 0; left: 0; width: 16px; height: 16px;
-        background: #ff0000; border-radius: 50%; pointer-events: none;
-        z-index: 2147483647; display: none;
-        box-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000;
-        border: 2px solid white; margin-left: -8px; margin-top: -8px;
-      `);
-      document.documentElement.appendChild(laser);
-    }
-
-    if (document.getElementById('wb-portal')) return;
-    const portal = document.createElement('div');
-    portal.id = 'wb-portal';
-    portal.innerHTML = `
-      <button id="wb-toggle" class="projector-btn" title="Toggle Projector Mode (Ctrl+Alt+P)">
-        <svg class="icon-projector" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
-          <path d="M5 3h14M12 3v2M4 5h16v12H4zM12 17v4M9 21h6" />
-          <path d="M8 8h8M8 12h5" opacity="0.4" />
-        </svg>
-        <svg class="icon-exit" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round">
-          <path d="M18 6L6 18M6 6l12 12" />
-        </svg>
-      </button>
-      <style>
-        #wb-portal { position: fixed; top: 0.8rem; right: 8.5rem; z-index: 9999999; pointer-events: none; }
-        .projector-btn { 
-          pointer-events: auto; cursor: auto !important; display: flex; align-items: center; justify-content: center;
-          width: 36px; height: 36px; border-radius: 8px; 
-          border: 1px solid var(--sl-color-hairline);
-          background-color: var(--sl-color-bg-nav);
-          color: var(--sl-color-text);
-          transition: opacity 0.3s ease;
-        }
-
-        @media (max-width: 50rem) {
-          #wb-portal {
-            display: none !important;
-          }
-        }
-          
-        :global([data-theme='dark']) .projector-btn { color: #ffffff !important; border-color: var(--sl-color-hairline) !important; background-color: var(--sl-color-bg-nav) !important; }
-        .icon-exit { display: none; }
-        html[data-mode="bento"] .projector-btn { background: transparent !important; border: none !important; opacity: 0.15; position: relative; right: -7.5rem; }
-        html[data-mode="bento"] .icon-projector { display: none; }
-        html[data-mode="bento"] .icon-exit { display: block; }
-      </style>
-    `;
-    document.body.appendChild(portal);
-    document.getElementById('wb-toggle').onclick = () => window.toggleWhiteboard();
-  }
-
-  const initEverything = () => {
-    injectProjectorUI();
-  };
-
-  initEverything();
-  document.addEventListener('astro:after-swap', initEverything);
-  document.addEventListener('astro:page-load', initEverything);
-</script>
