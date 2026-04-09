@@ -121,6 +121,26 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
 <script>
   import { projectorStore } from '../store/projectorStore.js';
 
+  // --- Helper: Fullscreen Toggler ---
+  function toggleFullScreen(shouldEnter) {
+    const elem = document.documentElement;
+    if (shouldEnter) {
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen().catch(e => console.warn("Fullscreen blocked:", e));
+      } else if (elem.webkitRequestFullscreen) { /* Safari/iPad */
+        elem.webkitRequestFullscreen();
+      }
+    } else {
+      if (document.fullscreenElement || document.webkitFullscreenElement) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) { /* Safari/iPad */
+          document.webkitExitFullscreen();
+        }
+      }
+    }
+  }
+
   function initLayout() {
     // Prevent duplicate listeners on hot-reloads
     if (document.documentElement.dataset.layoutInit) return;
@@ -136,6 +156,10 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
       enterBtn.addEventListener('click', () => {
         projectorStore.setKey('isBento', true);
         localStorage.setItem('whiteboard-mode', 'bento');
+        
+        // Trigger Fullscreen & force layout recalculation
+        toggleFullScreen(true);
+        setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
       });
     }
 
@@ -155,8 +179,14 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
       if ((e.ctrlKey || e.metaKey) && e.altKey && (e.key?.toLowerCase() === 'p' || e.code === 'KeyP')) {
         e.preventDefault(); 
         const isCurrentlyBento = projectorStore.get().isBento;
-        projectorStore.setKey('isBento', !isCurrentlyBento);
-        localStorage.setItem('whiteboard-mode', !isCurrentlyBento ? 'bento' : 'normal');
+        const nextState = !isCurrentlyBento;
+        
+        projectorStore.setKey('isBento', nextState);
+        localStorage.setItem('whiteboard-mode', nextState ? 'bento' : 'normal');
+        
+        // Trigger Fullscreen & force layout recalculation
+        toggleFullScreen(nextState);
+        setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
       }
     }, true);
   }
