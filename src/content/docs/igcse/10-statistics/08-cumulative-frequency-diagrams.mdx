@@ -172,17 +172,17 @@ Let's use our graph of the 80 students to find the Median and IQR.
     {/* Median Lines (CF=40 -> X=28.5) */}
     <path d="M 50 170 L 192.5 170 L 192.5 270" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="5 5" />
     <text x="54" y="166" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="start">40</text>
-    <text x="196" y="260" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="start" transform="rotate(-90 196 260)">Median (28.5)</text>
+    <text x="196" y="268" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="start" transform="rotate(-90 196 260)">Median (28.5)</text>
 
     {/* Lower Quartile Lines (CF=20 -> X=21.5) */}
     <path d="M 50 220 L 157.5 220 L 157.5 270" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="5 5" />
     <text x="54" y="216" font-size="10" font-weight="bold" fill="#10b981" text-anchor="start">20</text>
-    <text x="161.5" y="260" font-size="12" font-weight="bold" fill="#10b981" text-anchor="start" transform="rotate(-90 161.5 260)">LQ (21.5)</text>
+    <text x="161.5" y="268" font-size="12" font-weight="bold" fill="#10b981" text-anchor="start" transform="rotate(-90 161.5 260)">LQ (21.5)</text>
 
     {/* Upper Quartile Lines (CF=60 -> X=37) */}
     <path d="M 50 120 L 235 120 L 235 270" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5" />
     <text x="54" y="116" font-size="10" font-weight="bold" fill="#f59e0b" text-anchor="start">60</text>
-    <text x="239" y="260" font-size="12" font-weight="bold" fill="#f59e0b" text-anchor="start" transform="rotate(-90 239 260)">UQ (37)</text>
+    <text x="239" y="268" font-size="12" font-weight="bold" fill="#f59e0b" text-anchor="start" transform="rotate(-90 239 260)">UQ (37)</text>
   </svg>
 </div>
 
@@ -789,7 +789,7 @@ Using our puzzle times graph, **what is the probability that a randomly selected
       3. **c) Manufacturer's Claim:** First, calculate $10\%$ of $200$, which is $20$ bulbs. The claim states $20$ bulbs last *longer* than $450$ hours. On the graph, reading up from $450$ hours, the cumulative frequency is exactly $180$. This means $180$ bulbs lasted *less* than $450$ hours, leaving $200 - 180 = 20$ bulbs lasting *longer*. Since the graph exactly supports $20$ bulbs, the claim is **supported**.
       4. **d) Defective Percentage:** Find $150$ on the x-axis (halfway between $100$ and $200$). Reading up to the curve and across gives a CF of exactly $36$. This means $36$ bulbs are defective. Percentage $= \frac{36}{200} \times 100 = \mathbf{18\%}$.
       5. **e) IQR:** Lower Quartile ($n=50$) is exactly $175$ hours. Upper Quartile ($n=150$) is approximately $383$ hours. IQR $= 383 - 175 =$ **$208$ hours**. *(Visual estimates varying slightly, e.g., $\pm 5$ hours, are entirely acceptable).*
-    </Steps>
+    </Steps>  
   </TabItem>
 </Tabs>
 
