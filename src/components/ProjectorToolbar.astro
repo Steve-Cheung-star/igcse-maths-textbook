@@ -48,12 +48,17 @@
   /* STRICT HIDE RULE when not in bento mode */
   html:not([data-mode="bento"]) [data-bento-portal] { display: none !important; }
 
-  /* STOP APPLE WEBKIT NATIVE TOUCH INTERRUPTIONS */
-  :global(html[data-mode="bento"]) {
+  /* STOP APPLE WEBKIT INTERRUPTIONS *ONLY* WHEN DRAWING */
+  /* This ensures your underlying app works perfectly when the 'Mouse' tool is selected */
+  :global(html[data-mode="bento"][data-tool="pen"]),
+  :global(html[data-mode="bento"][data-tool="eraser"]),
+  :global(html[data-mode="bento"][data-tool="pen"] body),
+  :global(html[data-mode="bento"][data-tool="eraser"] body) {
     user-select: none;
     -webkit-user-select: none;
-    -webkit-touch-callout: none; /* Kills long-press magnifier */
-    -webkit-tap-highlight-color: transparent; /* Kills gray flash on tap */
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
   }
 
   /* Canvas */
@@ -173,7 +178,19 @@
       window.addEventListener('resize', resizeCanvas);
       setTimeout(resizeCanvas, 500); 
 
-      // THE FIX FOR DROPPED STROKES: passive: false guarantees Safari respects e.preventDefault()
+      // CONDITIONAL TOUCH TRAP: Only hijack raw touch events when the user is actually drawing.
+      // This allows underlying apps to function perfectly when the Mouse tool is selected.
+      const preventTouchWhenDrawing = (e) => {
+        const tool = projectorStore.get().tool;
+        if (tool === 'pen' || tool === 'eraser') {
+          e.preventDefault();
+        }
+      };
+
+      canvas.addEventListener('touchstart', preventTouchWhenDrawing, { passive: false });
+      canvas.addEventListener('touchmove', preventTouchWhenDrawing, { passive: false });
+
+      // Our actual drawing logic using pointer events
       canvas.addEventListener('pointerdown', startDrawing, { passive: false });
       canvas.addEventListener('pointermove', draw, { passive: false });
       canvas.addEventListener('pointerup', stopDrawing);
