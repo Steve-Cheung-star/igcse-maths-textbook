@@ -45,6 +45,7 @@ export default defineConfig({
         SiteTitle: './src/components/SiteTitle.astro',
         Sidebar: './src/components/Sidebar.astro',
         PageTitle: './src/components/PageHeader.astro',
+        PageFrame: './src/components/CustomPageFrame.astro',
       },
       head: [
         {

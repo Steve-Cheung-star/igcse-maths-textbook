@@ -55,7 +55,6 @@ export default function CircleSimulator({ category = 'angles' }) {
             };
         }
 
-        // Event handler references for cleanup
         const onResize = () => resize();
         const onMouseDown = e => startDrag(e);
         const onMouseMove = e => drag(e);
@@ -70,7 +69,6 @@ export default function CircleSimulator({ category = 'angles' }) {
             window.addEventListener('resize', onResize);
             resize();
 
-            // Clear old tabs in case of re-render
             tabsContainer.innerHTML = '';
             THEOREMS.forEach(t => {
                 const btn = document.createElement('button');
@@ -94,15 +92,27 @@ export default function CircleSimulator({ category = 'angles' }) {
             switchBtn.addEventListener('click', onSwitch);
             randomBtn.addEventListener('click', onRandom);
 
-            animId = requestAnimationFrame(draw);
+            animId = requestAnimationFrame(animateLoop);
+        }
+        
+        function animateLoop() {
+            draw();
+            animId = requestAnimationFrame(animateLoop);
         }
 
         function resize() {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-            centreX = canvas.width / 2;
-            centreY = canvas.height / 2;
-            radius = Math.min(canvas.width, canvas.height) / 2.5 - 20;
+            const rect = canvas.getBoundingClientRect();
+            const dpr = window.devicePixelRatio || 1;
+            
+            canvas.width = rect.width * dpr;
+            canvas.height = rect.height * dpr;
+            
+            ctx.resetTransform();
+            ctx.scale(dpr, dpr);
+            
+            centreX = rect.width / 2;
+            centreY = rect.height / 2;
+            radius = Math.min(rect.width, rect.height) / 2.5 - 20;
             resetPoints();
         }
 
@@ -131,6 +141,8 @@ export default function CircleSimulator({ category = 'angles' }) {
                 switchBtn.textContent = `Show: ${activeVariant === 0 ? 'Bisector' : 'Perpendicular'} ⟳`;
             } else if (currentTheorem === 'ext-tangents') {
                 switchBtn.textContent = `Focus: ${activeVariant === 0 ? 'Tangent Length' : 'Kite Angles'} ⟳`;
+            } else if (currentTheorem === 'unit-circle') {
+                switchBtn.textContent = `Mode: ${activeVariant === 0 ? 'Values' : 'Quadrants'} ⟳`;
             }
         }
 
@@ -148,7 +160,9 @@ export default function CircleSimulator({ category = 'angles' }) {
                 points.forEach((p, i) => { p.x = centreX + Math.cos(angs[i]) * rad; p.y = centreY + Math.sin(angs[i]) * rad; });
             } else if (currentTheorem === 'ext-tangents') {
                 const ang = Math.random() * Math.PI * 2;
-                const dist = rad * (1.3 + Math.random());
+                // Ensures randomize doesn't push the point out of the canvas bounds
+                const maxDist = Math.min(centreX, centreY) - 20; 
+                const dist = (rad + 15) + Math.random() * (maxDist - (rad + 15));
                 points[0].x = centreX + Math.cos(ang) * dist;
                 points[0].y = centreY + Math.sin(ang) * dist;
             } else {
@@ -206,8 +220,10 @@ export default function CircleSimulator({ category = 'angles' }) {
                     { x: centreX + Math.cos(2.3) * rad, y: centreY + Math.sin(2.3) * rad, type: 'circle', label: 'B' }
                 ];
             } else if (currentTheorem === 'ext-tangents') {
+                // Ensure the initial spawn point is comfortably within the canvas bounds
+                const safeDist = Math.min(rad * 1.5, centreX - 25);
                 points = [
-                    { x: centreX + rad * 1.8, y: centreY, type: 'free', label: 'P' }
+                    { x: centreX + safeDist, y: centreY, type: 'free', label: 'P' }
                 ];
             } else if (currentTheorem === 'unit-circle') {
                 points = [
@@ -222,30 +238,36 @@ export default function CircleSimulator({ category = 'angles' }) {
 
         function startDrag(e) {
             const rect = canvas.getBoundingClientRect();
-            const mx = e.clientX - rect.left, my = e.clientY - rect.top;
-            points.forEach(p => { if (p.type !== 'fixed' && Math.hypot(p.x - mx, p.y - my) < 30) draggingPoint = p; });
+            const mx = e.clientX - rect.left;
+            const my = e.clientY - rect.top;
+            points.forEach(p => { 
+                if (p.type !== 'fixed' && Math.hypot(p.x - mx, p.y - my) < 30) draggingPoint = p; 
+            });
         }
 
         function drag(e) {
             if (!draggingPoint) return;
             const rect = canvas.getBoundingClientRect();
-            const mx = e.clientX - rect.left, my = e.clientY - rect.top;
+            const mx = e.clientX - rect.left;
+            const my = e.clientY - rect.top;
 
             if (currentTheorem === 'ext-tangents' && draggingPoint.label === 'P') {
                 let dx = mx - centreX;
                 let dy = my - centreY;
                 let dist = Math.hypot(dx, dy);
-                if (dist < radius + 15) {
-                    dist = radius + 15;
-                    draggingPoint.x = centreX + (dx / dist) * dist;
-                    draggingPoint.y = centreY + (dy / dist) * dist;
-                } else {
-                    draggingPoint.x = mx;
-                    draggingPoint.y = my;
-                }
+                
+                // Keep P within canvas walls and outside the main circle
+                let maxBounds = Math.min(centreX, centreY) - 15;
+                if (dist < radius + 15) dist = radius + 15;
+                if (dist > maxBounds) dist = maxBounds;
+                
+                draggingPoint.x = centreX + (dx / dist) * dist;
+                draggingPoint.y = centreY + (dy / dist) * dist;
+                
             } else if (draggingPoint.type === 'free') {
-                draggingPoint.x = mx;
-                draggingPoint.y = my;
+                // Keep strictly inside the canvas
+                draggingPoint.x = Math.max(15, Math.min(rect.width - 15, mx));
+                draggingPoint.y = Math.max(15, Math.min(rect.height - 15, my));
             } else {
                 const angle = Math.atan2(my - centreY, mx - centreX);
                 draggingPoint.x = centreX + Math.cos(angle) * radius;
@@ -280,13 +302,15 @@ export default function CircleSimulator({ category = 'angles' }) {
         }
 
         function drawValueLabel(x, y, text, color, theme) {
-            ctx.save(); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.font = 'bold 14px sans-serif';
+            ctx.save(); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; 
+            ctx.font = 'bold 14px system-ui, -apple-system, sans-serif';
             ctx.strokeStyle = theme.bg; ctx.lineWidth = 5; ctx.strokeText(text, x, y);
             ctx.fillStyle = color; ctx.fillText(text, x, y); ctx.restore();
         }
 
         function drawPointLabel(x, y, text, theme) {
-            ctx.save(); ctx.font = 'bold 16px sans-serif';
+            ctx.save(); 
+            ctx.font = 'bold 16px system-ui, -apple-system, sans-serif';
             ctx.strokeStyle = theme.bg; ctx.lineWidth = 4; ctx.strokeText(text, x, y);
             ctx.fillStyle = theme.text; ctx.fillText(text, x, y);
             ctx.restore();
@@ -318,9 +342,12 @@ export default function CircleSimulator({ category = 'angles' }) {
         function lineSide(A, B, P) { return Math.sign((B.x - A.x) * (P.y - A.y) - (B.y - A.y) * (P.x - A.x)); }
 
         function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const rect = canvas.getBoundingClientRect();
+            ctx.clearRect(0, 0, rect.width, rect.height);
+            
             const theme = getThemeColors();
 
+            // Draw center point O and main circle
             ctx.beginPath(); ctx.strokeStyle = theme.line; ctx.lineWidth = 3;
             ctx.arc(centreX, centreY, radius, 0, Math.PI * 2); ctx.stroke();
             ctx.beginPath(); ctx.fillStyle = theme.muted; ctx.arc(centreX, centreY, 5, 0, Math.PI * 2); ctx.fill();
@@ -328,6 +355,7 @@ export default function CircleSimulator({ category = 'angles' }) {
 
             mathOutput.innerHTML = ''; ctx.lineWidth = 2.5;
 
+            // ... Theorem specific drawings
             if (currentTheorem === 'semicircle') {
                 const [A, B, C] = points;
                 ctx.setLineDash([5, 5]); ctx.strokeStyle = theme.muted; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke(); ctx.setLineDash([]);
@@ -457,6 +485,7 @@ export default function CircleSimulator({ category = 'angles' }) {
                 drawRightAngle(midAB, centreX, centreY, A.x, A.y, 10, theme.line);
                 drawRightAngle(midCD, centreX, centreY, C.x, C.y, 10, theme.line);
 
+                // explicitly draw dependent point D
                 ctx.beginPath(); ctx.fillStyle = theme.accent2; ctx.arc(D.x, D.y, 8, 0, Math.PI * 2); ctx.fill();
                 ctx.lineWidth = 2; ctx.strokeStyle = theme.bg; ctx.stroke();
                 drawPointLabel(D.x + 12, D.y - 12, D.label, theme);
@@ -478,6 +507,7 @@ export default function CircleSimulator({ category = 'angles' }) {
 
                 drawRightAngle(mid, centreX, centreY, A.x, A.y, 12, theme.line);
 
+                // explicitly draw calculated mid point M
                 ctx.beginPath(); ctx.fillStyle = theme.muted; ctx.arc(mid.x, mid.y, 5, 0, Math.PI * 2); ctx.fill();
                 drawPointLabel(mid.x + 10, mid.y + 15, 'M', theme);
 
@@ -512,6 +542,7 @@ export default function CircleSimulator({ category = 'angles' }) {
                 drawRightAngle(T1, P.x, P.y, centreX, centreY, 12, theme.line);
                 drawRightAngle(T2, P.x, P.y, centreX, centreY, 12, theme.line);
 
+                // Explicitly draw dependent tangent points
                 [T1, T2].forEach(pt => {
                     ctx.beginPath(); ctx.fillStyle = theme.pointFixed; ctx.arc(pt.x, pt.y, 6, 0, Math.PI * 2); ctx.fill();
                     ctx.lineWidth = 2; ctx.strokeStyle = theme.bg; ctx.stroke();
@@ -529,9 +560,6 @@ export default function CircleSimulator({ category = 'angles' }) {
                 }
             } else if (currentTheorem === 'unit-circle') {
                 const P = points[0];
-
-                // 1. Calculate angle in standard math position (0 to 2π)
-                // We negate (P.y - centreY) because Canvas Y is inverted
                 let angleRad = Math.atan2(-(P.y - centreY), P.x - centreX);
                 if (angleRad < 0) angleRad += Math.PI * 2;
 
@@ -539,36 +567,26 @@ export default function CircleSimulator({ category = 'angles' }) {
                 const cosVal = Math.cos(angleRad);
                 const sinVal = Math.sin(angleRad);
 
-                // 2. Draw the Angle Arc (FIX: Always starts at 0 and goes counter-clockwise)
                 ctx.beginPath();
                 ctx.strokeStyle = theme.text;
                 ctx.lineWidth = 2;
-                // Parameters: x, y, radius, startAngle, endAngle, counterClockwise
-                // In Canvas, to go counter-clockwise mathematically, we use -angleRad 
                 ctx.arc(centreX, centreY, 40, 0, -angleRad, true);
                 ctx.stroke();
 
-                // 3. Draw Triangle/Projection Components
                 ctx.setLineDash([5, 5]);
-                // Cosine Line (Horizontal)
                 ctx.strokeStyle = theme.accent1;
                 ctx.beginPath(); ctx.moveTo(centreX, centreY); ctx.lineTo(P.x, centreY); ctx.stroke();
-                // Sine Line (Vertical)
                 ctx.strokeStyle = theme.accent2;
                 ctx.beginPath(); ctx.moveTo(P.x, centreY); ctx.lineTo(P.x, P.y); ctx.stroke();
                 ctx.setLineDash([]);
 
-                // 4. Case Specific Logic
                 if (activeVariant === 0) {
-                    // --- CASE 1: BASIC SIN/COS ---
                     mathOutput.innerHTML = `
             θ = ${angleDeg}°<br>
             <span style="color:${theme.accent1}">cos θ = ${cosVal.toFixed(3)}</span><br>
             <span style="color:${theme.accent2}">sin θ = ${sinVal.toFixed(3)}</span>
         `;
-                }
-                else if (activeVariant === 1) {
-                    // --- CASE 2: QUADRANTS (CAST) ---
+                } else if (activeVariant === 1) {
                     let quad = "I";
                     if (angleRad > Math.PI / 2) quad = "II";
                     if (angleRad > Math.PI) quad = "III";
@@ -576,99 +594,70 @@ export default function CircleSimulator({ category = 'angles' }) {
 
                     mathOutput.innerHTML = `
             Quadrant ${quad}<br>
-            x (cos): ${cosVal.toFixed(2)}<br>
-            y (sin): ${sinVal.toFixed(2)}
+            <span style="color:${theme.accent1}">cos θ = ${cosVal.toFixed(3)}</span><br>
+            <span style="color:${theme.accent2}">sin θ = ${sinVal.toFixed(3)}</span>
         `;
                 }
-                else if (activeVariant === 2) {
-                    // --- CASE 3: TANGENT LINE ---
-                    const tanVal = Math.tan(angleRad);
-
-                    // Draw the vertical "Tangent Wall" at x = 1 (Radius distance)
-                    ctx.strokeStyle = theme.muted;
-                    ctx.setLineDash([2, 2]);
-                    ctx.beginPath();
-                    ctx.moveTo(centreX + radius, centreY - radius * 1.5);
-                    ctx.lineTo(centreX + radius, centreY + radius * 1.5);
-                    ctx.stroke();
-                    ctx.setLineDash([]);
-
-                    // Only draw the tangent segment if it's within a reasonable range (avoid 90/270 infinite lines)
-                    if (Math.abs(cosVal) > 0.05) {
-                        ctx.strokeStyle = '#a855f7'; // Purple for Tangent
-                        ctx.lineWidth = 3;
-                        ctx.beginPath();
-                        ctx.moveTo(centreX + radius, centreY);
-                        // Height is -radius * tan because Y is inverted in canvas
-                        ctx.lineTo(centreX + radius, centreY - (radius * tanVal));
-                        ctx.stroke();
-
-                        // Optional: Draw a line from centre through P to hit the wall
-                        ctx.setLineDash([2, 2]);
-                        ctx.beginPath();
-                        ctx.moveTo(centreX, centreY);
-                        ctx.lineTo(centreX + radius, centreY - (radius * tanVal));
-                        ctx.stroke();
-                        ctx.setLineDash([]);
-                    }
-
-                        mathOutput.innerHTML = `
-                        θ = ${angleDeg}°<br>
-                        <span style="color:#a855f7">tan θ = ${Math.abs(tanVal) > 20 ? 'undefined' : tanVal.toFixed(3)}</span>
-                    `;
-                }
-
-                // 5. Draw the Main Radius Line
-                ctx.strokeStyle = theme.line;
-                ctx.lineWidth = 3;
-                ctx.beginPath();
-                ctx.moveTo(centreX, centreY);
-                ctx.lineTo(P.x, P.y);
-                ctx.stroke();
             }
 
-            // Draw interactive points (only if they aren't 'dependent')
+            // Universal loop to draw explicit nodes for all interactive points!
             points.forEach(p => {
-                if (p.type === 'dependent') return;
                 ctx.beginPath();
-                ctx.fillStyle = p.type === 'fixed' ? theme.pointFixed : (draggingPoint === p ? '#f59e0b' : theme.accent1);
-                ctx.arc(p.x, p.y, 8, 0, Math.PI * 2);
-                ctx.fill(); ctx.strokeStyle = theme.bg; ctx.lineWidth = 2; ctx.stroke();
-                drawPointLabel(p.x + 12, p.y - 12, p.label, theme);
-            });
+                // Draggable points look interactive, fixed points look muted
+                ctx.fillStyle = p.type === 'fixed' ? theme.pointFixed : theme.accent1;
+                ctx.arc(p.x, p.y, p.type === 'fixed' ? 6 : 8, 0, Math.PI * 2);
+                ctx.fill();
+                
+                ctx.lineWidth = 2;
+                ctx.strokeStyle = theme.bg;
+                ctx.stroke();
 
-            animId = requestAnimationFrame(draw);
+                // Intelligently position labels so they don't clip into the nodes
+                if (p.label) {
+                    let lx = p.x; 
+                    let ly = p.y;
+                    if (p.type === 'circle' || p.type === 'tangent-point') {
+                        const ang = Math.atan2(p.y - centreY, p.x - centreX);
+                        lx += Math.cos(ang) * 22;
+                        ly += Math.sin(ang) * 22;
+                    } else {
+                        lx += 15; 
+                        ly -= 15;
+                    }
+                    drawPointLabel(lx, ly, p.label, theme);
+                }
+            });
         }
 
         init();
 
         return () => {
             window.removeEventListener('resize', onResize);
-            canvas.removeEventListener('mousedown', onMouseDown);
-            canvas.removeEventListener('mousemove', onMouseMove);
-            canvas.removeEventListener('mouseup', onMouseUp);
-            canvas.removeEventListener('mouseleave', onMouseUp);
-            canvas.removeEventListener('touchstart', onTouchStart);
-            canvas.removeEventListener('touchmove', onTouchMove);
-            canvas.removeEventListener('touchend', onTouchEnd);
-            switchBtn.removeEventListener('click', onSwitch);
-            randomBtn.removeEventListener('click', onRandom);
-            cancelAnimationFrame(animId);
+            if (canvas) {
+                canvas.removeEventListener('mousedown', onMouseDown);
+                canvas.removeEventListener('mousemove', onMouseMove);
+                canvas.removeEventListener('mouseup', onMouseUp);
+                canvas.removeEventListener('mouseleave', onMouseUp);
+                canvas.removeEventListener('touchstart', onTouchStart);
+                canvas.removeEventListener('touchmove', onTouchMove);
+                canvas.removeEventListener('touchend', onTouchEnd);
+            }
+            if (switchBtn) switchBtn.removeEventListener('click', onSwitch);
+            if (randomBtn) randomBtn.removeEventListener('click', onRandom);
+            if (animId) cancelAnimationFrame(animId);
         };
-    }, [category]); // Re-run effect safely if the category prop changes
+    }, [category]);
 
     return (
-        <div ref={containerRef} className="sim-root">
-            <div id="simTabs" className="sim-tabs"></div>
-
+        <div className="sim-root" ref={containerRef}>
+            <div className="sim-tabs" id="simTabs"></div>
             <div className="sim-canvas-container">
                 <canvas id="simCanvas" className="sim-canvas"></canvas>
-
                 <div className="sim-overlay">
-                    <div id="mathOutput" className="sim-math-readout"></div>
+                    <div className="sim-math-readout" id="mathOutput"></div>
                     <div className="sim-controls">
-                        <button id="switchBtn" className="sim-action-btn">Switch Case ⟳</button>
-                        <button id="randomBtn" className="sim-action-btn">Random 🎲</button>
+                        <button className="sim-action-btn" id="switchBtn">Switch ⟳</button>
+                        <button className="sim-action-btn" id="randomBtn">Random</button>
                     </div>
                 </div>
             </div>

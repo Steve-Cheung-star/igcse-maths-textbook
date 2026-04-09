@@ -1,8 +1,6 @@
 ---
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/Sidebar.astro';
-import ExamTimer from './ExamTimer.jsx'; 
-import ProjectorMode from './ProjectorMode.astro';
 import { getRandomGreeting, filterSidebar } from '../utils/sidebarHelpers';
 
 const randomGreeting = getRandomGreeting();
@@ -18,9 +16,6 @@ if (Astro.locals.starlightRoute) {
 const newProps = { ...Astro.props, sidebar: filteredSidebar };
 ---
 
-<ProjectorMode />
-<ExamTimer client:only="react" />
-
 <div class="sidebar-container">
   <div class="sidebar-sticky-wrapper">
     <div id="dynamic-greeting" class="sidebar-header-hint">{randomGreeting}</div>
@@ -31,8 +26,15 @@ const newProps = { ...Astro.props, sidebar: filteredSidebar };
 </div>
 
 <style>
-  /* Only sidebar-specific styles remain */
   .sidebar-container { height: 100%; display: flex; flex-direction: column; position: relative; }
-  .sidebar-sticky-wrapper { position: sticky; top: 0; z-index: 10; background: var(--sl-color-bg-sidebar, var(--sl-color-bg)); height: 3rem; display: flex; align-items: center; border-bottom: 1px solid var(--sl-color-hairline); }
-  .sidebar-header-hint { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05rem; font-weight: bold; color: var(--sl-color-gray-3); padding: 0 1rem; opacity: 0.8; font-family: var(--__sl-font-mono); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sidebar-sticky-wrapper { 
+    position: sticky; top: 0; z-index: 10; height: 3rem; display: flex; align-items: center; 
+    background: var(--sl-color-bg-sidebar, var(--sl-color-bg));
+    border-bottom: 1px solid var(--sl-color-hairline); 
+  }
+  .sidebar-header-hint { 
+    font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05rem; font-weight: bold; 
+    color: var(--sl-color-gray-3); padding: 0 1rem; opacity: 0.8; font-family: var(--__sl-font-mono); 
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; 
+  }
 </style>
