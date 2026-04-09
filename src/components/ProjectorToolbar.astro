@@ -293,25 +293,44 @@
       const fab = document.getElementById('wb-fab-toggle');
       if (!wrapper || !fab) return;
 
-      let isDragging = false; let hasDragged = false; let startX, startY;
+      let isDragging = false; 
+      let hasDragged = false; 
+      let startX, startY;
+      let initialX, initialY; // Track starting point for the deadzone
 
       fab.addEventListener('pointerdown', (e) => {
         if (!projectorStore.get().isToolbarMinimized) return; 
         e.preventDefault(); 
         
-        // iPad Fix: Capture pointer to prevent drag dropping on touch move
         try { fab.setPointerCapture(e.pointerId); } catch(err) {}
 
-        isDragging = true; hasDragged = false;
+        isDragging = true; 
+        hasDragged = false;
+        initialX = e.clientX;
+        initialY = e.clientY;
+
         const rect = wrapper.getBoundingClientRect();
-        startX = e.clientX - rect.left; startY = e.clientY - rect.top;
+        startX = e.clientX - rect.left; 
+        startY = e.clientY - rect.top;
+        
         wrapper.style.transform = 'none'; wrapper.style.bottom = 'auto';
         wrapper.style.left = `${rect.left}px`; wrapper.style.top = `${rect.top}px`;
       });
 
       document.addEventListener('pointermove', (e) => {
         if (!isDragging) return;
-        hasDragged = true; 
+        
+        // 5-PIXEL DEADZONE: Ignore micro-jitters from styluses
+        if (!hasDragged) {
+          const dx = Math.abs(e.clientX - initialX);
+          const dy = Math.abs(e.clientY - initialY);
+          if (dx > 5 || dy > 5) {
+            hasDragged = true;
+          } else {
+            return; // Don't move the toolbar yet
+          }
+        }
+
         let newX = e.clientX - startX; let newY = e.clientY - startY;
         
         newX = Math.max(10, Math.min(newX, window.innerWidth - wrapper.offsetWidth - 10));
@@ -324,8 +343,12 @@
       const handleDragEnd = (e) => {
         if (isDragging) {
            try { fab.releasePointerCapture(e.pointerId); } catch(err) {}
-           const rect = wrapper.getBoundingClientRect();
-           localStorage.setItem('wb-toolbar-pos', JSON.stringify({ x: rect.left, y: rect.top }));
+           
+           // Only save position if we actually dragged
+           if (hasDragged) {
+             const rect = wrapper.getBoundingClientRect();
+             localStorage.setItem('wb-toolbar-pos', JSON.stringify({ x: rect.left, y: rect.top }));
+           }
         }
         isDragging = false; 
       };
