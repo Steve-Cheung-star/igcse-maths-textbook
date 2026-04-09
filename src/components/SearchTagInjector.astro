@@ -5,14 +5,22 @@ import Default from '@astrojs/starlight/components/ContentPanel.astro';
 
 const { slug } = Astro.props;
 
-// This detects if the file is in the 'ib-aisl' or 'igcse' folder
-const isIB = slug.startsWith('ib-aisl');
-const curriculum = isIB ? 'IB AISL' : 'IGCSE';
+// 1. Safe check: If there is no slug (like on the home page), 
+// we just set a default or leave it empty.
+const curriculum = slug && slug.startsWith('ib-aisl') 
+  ? 'IB AISL' 
+  : slug && slug.startsWith('igcse') 
+    ? 'IGCSE' 
+    : 'General';
+
+// 2. Only apply weighting if it's actually one of your books
+const isBookPage = curriculum !== 'General';
 ---
 
-<div data-pagefind-filter="curriculum" data-pagefind-meta={`curriculum:${curriculum}`} style="display:none;"></div>
-
-<div data-pagefind-weight="10" style="display:none;"></div>
+{isBookPage && (
+  <div data-pagefind-filter="curriculum" data-pagefind-meta={`curriculum:${curriculum}`} style="display:none;"></div>
+  <div data-pagefind-weight="10" style="display:none;"></div>
+)}
 
 <Default {...Astro.props}>
   <slot />
