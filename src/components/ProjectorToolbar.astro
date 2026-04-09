@@ -42,14 +42,20 @@
 </div>
 
 <style>
-  /* STRICT HIDE RULE */
+  /* STRICT HIDE RULE when not in bento mode */
   html:not([data-mode="bento"]) [data-bento-portal] { display: none !important; }
+
+  /* Stop fast-drawing text selection highlights on iPad */
+  :global(html[data-mode="bento"]) {
+    user-select: none;
+    -webkit-user-select: none;
+  }
 
   /* Canvas */
   :global(#wb-canvas) { 
     position: absolute; top: 0; left: 0; z-index: 999998; 
     pointer-events: none; display: none; 
-    touch-action: none; /* Critical for iPad drawing */
+    touch-action: none; 
   }
   :global(html[data-mode="bento"] #wb-canvas) { display: block; }
   :global(html[data-mode="bento"][data-tool="pen"] #wb-canvas),
@@ -68,7 +74,7 @@
     z-index: 9999999; display: flex; align-items: center; background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline); border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3); backdrop-filter: blur(12px);
-    touch-action: none; /* Critical for iPad drag */
+    touch-action: none; 
   }
 
   /* Minimized State */
@@ -114,21 +120,12 @@
   .magenta { background: #ff00ff; box-shadow: 0 0 8px #ff00ff88; }
   .yellow { background: #ffff00; box-shadow: 0 0 8px #ffff0088; }
   .lime { background: #39ff14; box-shadow: 0 0 8px #39ff1488; }
-  
-  /* Kill for Mobile entirely */
-  @media (max-width: 768px) { 
-    #wb-portal, #wb-exit, #wb-toolbar-wrapper { display: none !important; }
-    :global(#wb-canvas) { display: none !important; pointer-events: none !important; }
-  }
 </style>
 
 <script>
   import { projectorStore, toolsConfig } from '../store/projectorStore.js';
 
   function initWhiteboard() {
-    // Escape hatch for mobile views - strictly prevent initialization
-    if (typeof window !== 'undefined' && window.innerWidth < 768) return;
-
     const portal = document.getElementById('wb-portal');
     if (!portal || portal.dataset.initialized) return;
     portal.dataset.initialized = 'true';
@@ -167,13 +164,11 @@
 
     // --- Drawing Logic ---
     function startDrawing(e) {
-      if (window.innerWidth < 768) return; // double-check guard
       const globalState = projectorStore.get();
       if (globalState.tool !== 'pen' && globalState.tool !== 'eraser') return;
       
       e.preventDefault(); 
       
-      // iPad Fix: Lock pointer to canvas to prevent drops
       try { canvas.setPointerCapture(e.pointerId); } catch(err) {}
       
       localState.isDrawing = true; localState.redoStack = []; 
@@ -196,7 +191,6 @@
       if (!localState.isDrawing) return;
       e.preventDefault();
       
-      // Release pointer lock
       try { canvas.releasePointerCapture(e.pointerId); } catch(err) {}
 
       localState.isDrawing = false;
@@ -254,25 +248,46 @@
       const fab = document.getElementById('wb-fab-toggle');
       if (!wrapper || !fab) return;
 
-      let isDragging = false; let hasDragged = false; let startX, startY;
+      let isDragging = false; 
+      let hasDragged = false; 
+      let startX, startY;
+      let initialPointerX, initialPointerY; // Used for threshold check
 
       fab.addEventListener('pointerdown', (e) => {
         if (!projectorStore.get().isToolbarMinimized) return; 
         e.preventDefault(); 
         
-        // iPad Fix: Capture pointer to prevent drag dropping on touch move
         try { fab.setPointerCapture(e.pointerId); } catch(err) {}
 
-        isDragging = true; hasDragged = false;
+        isDragging = true; 
+        hasDragged = false;
+        
+        // Record starting positions
+        initialPointerX = e.clientX;
+        initialPointerY = e.clientY;
+
         const rect = wrapper.getBoundingClientRect();
-        startX = e.clientX - rect.left; startY = e.clientY - rect.top;
+        startX = e.clientX - rect.left; 
+        startY = e.clientY - rect.top;
+        
         wrapper.style.transform = 'none'; wrapper.style.bottom = 'auto';
         wrapper.style.left = `${rect.left}px`; wrapper.style.top = `${rect.top}px`;
       });
 
       document.addEventListener('pointermove', (e) => {
         if (!isDragging) return;
-        hasDragged = true; 
+        
+        // 5-pixel Deadzone/Threshold to fix tap-vs-drag issue
+        if (!hasDragged) {
+          const dx = Math.abs(e.clientX - initialPointerX);
+          const dy = Math.abs(e.clientY - initialPointerY);
+          if (dx > 5 || dy > 5) {
+            hasDragged = true;
+          } else {
+            return; // Wait until they move out of the deadzone
+          }
+        }
+        
         let newX = e.clientX - startX; let newY = e.clientY - startY;
         
         newX = Math.max(10, Math.min(newX, window.innerWidth - wrapper.offsetWidth - 10));
@@ -281,12 +296,13 @@
         wrapper.style.left = `${newX}px`; wrapper.style.top = `${newY}px`;
       });
 
-      // Handle all exit states (up, cancel, leave) safely
       const handleDragEnd = (e) => {
         if (isDragging) {
            try { fab.releasePointerCapture(e.pointerId); } catch(err) {}
-           const rect = wrapper.getBoundingClientRect();
-           localStorage.setItem('wb-toolbar-pos', JSON.stringify({ x: rect.left, y: rect.top }));
+           if (hasDragged) {
+               const rect = wrapper.getBoundingClientRect();
+               localStorage.setItem('wb-toolbar-pos', JSON.stringify({ x: rect.left, y: rect.top }));
+           }
         }
         isDragging = false; 
       };
@@ -327,7 +343,6 @@
 
     // --- Store Subscription for UI Updates ---
     projectorStore.subscribe(state => {
-      // Vital CSS trigger: Push the current tool state to the HTML tag so :global() pointers activate properly
       document.documentElement.setAttribute('data-tool', state.tool);
 
       document.querySelectorAll('.tool-btn, .color-btn').forEach(btn => btn.classList.remove('active'));
