@@ -1,0 +1,19 @@
+---
+// src/components/SearchTagInjector.astro
+import type { Props } from '@astrojs/starlight/props';
+import Default from '@astrojs/starlight/components/ContentPanel.astro';
+
+const { slug } = Astro.props;
+
+// This detects if the file is in the 'ib-aisl' or 'igcse' folder
+const isIB = slug.startsWith('ib-aisl');
+const curriculum = isIB ? 'IB AISL' : 'IGCSE';
+---
+
+<div data-pagefind-filter="curriculum" data-pagefind-meta={`curriculum:${curriculum}`} style="display:none;"></div>
+
+<div data-pagefind-weight="10" style="display:none;"></div>
+
+<Default {...Astro.props}>
+  <slot />
+</Default>

@@ -46,6 +46,7 @@ export default defineConfig({
         Sidebar: './src/components/Sidebar.astro',
         PageTitle: './src/components/PageHeader.astro',
         PageFrame: './src/components/CustomPageFrame.astro',
+        ContentPanel: './src/components/SearchTagInjector.astro',
       },
       head: [
         {
