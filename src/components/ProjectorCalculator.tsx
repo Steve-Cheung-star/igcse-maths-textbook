@@ -9,9 +9,9 @@ export default function ProjectorCalculator() {
   const [isDeg, setIsDeg] = useState(true);
   const [lastResult, setLastResult] = useState<number | null>(null);
   const [justCalculated, setJustCalculated] = useState(false);
-  
+
   // Mobile check state
-  const [isMobile, setIsMobile] = useState(() => 
+  const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   );
 
@@ -128,7 +128,7 @@ export default function ProjectorCalculator() {
 
   const handlePress = (val: string, action?: string) => {
     let currentInput = inputStr;
-    
+
     // Only trigger focus on desktop to keep cursor alive
     if (inputRef.current && !isTouch) inputRef.current.focus();
 
@@ -215,11 +215,11 @@ export default function ProjectorCalculator() {
 
       if (secretMessages[currentInput]) {
         setInputStr(secretMessages[currentInput]);
-        setLastResult(null); 
+        setLastResult(null);
         setJustCalculated(true);
         setHistory(prev => [...prev, currentInput]);
         setHistoryIndex(-1);
-        return; 
+        return;
       }
 
       try {
@@ -468,16 +468,19 @@ export default function ProjectorCalculator() {
           border: none;
           color: white;
           cursor: pointer;
-          font-size: 0.8rem;
           display: flex;
           align-items: center;
           justify-content: center;
-          /* Force standard font to prevent iPad emoji conversion */
-          font-family: "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
+        }
+        
+        .d-pad-btn svg {
+          fill: white;
+          width: 12px;
+          height: 12px;
         }
         
         .d-pad-btn:hover {
-          text-shadow: 0 0 5px rgba(255,255,255,0.8);
+          filter: brightness(1.2);
         }
         
         .d-pad-up { grid-column: 2; grid-row: 1; }
@@ -536,10 +539,18 @@ export default function ProjectorCalculator() {
           <button className="calc-btn btn-green" onClick={() => handlePress('', 'delete')}>del</button>
 
           <div className="d-pad-wrapper">
-            <button id="btn-hist-up" className="d-pad-btn d-pad-up" onClick={() => handlePress('', 'history-up')}>&#9650;</button>
-            <button className="d-pad-btn d-pad-left" onClick={() => handlePress('', 'cursor-left')}>&#9664;</button>
-            <button className="d-pad-btn d-pad-right" onClick={() => handlePress('', 'cursor-right')}>&#9654;</button>
-            <button id="btn-hist-down" className="d-pad-btn d-pad-down" onClick={() => handlePress('', 'history-down')}>&#9660;</button>
+            <button id="btn-hist-up" className="d-pad-btn d-pad-up" onClick={() => handlePress('', 'history-up')}>
+              <svg viewBox="0 0 100 100"><path d="M50 20 L80 80 L20 80 Z" /></svg>
+            </button>
+            <button className="d-pad-btn d-pad-left" onClick={() => handlePress('', 'cursor-left')}>
+              <svg viewBox="0 0 100 100"><path d="M20 50 L80 20 L80 80 Z" /></svg>
+            </button>
+            <button className="d-pad-btn d-pad-right" onClick={() => handlePress('', 'cursor-right')}>
+              <svg viewBox="0 0 100 100"><path d="M80 50 L20 20 L20 80 Z" /></svg>
+            </button>
+            <button id="btn-hist-down" className="d-pad-btn d-pad-down" onClick={() => handlePress('', 'history-down')}>
+              <svg viewBox="0 0 100 100"><path d="M50 80 L80 20 L20 20 Z" /></svg>
+            </button>
           </div>
 
           <button className="calc-btn btn-green" onClick={() => handlePress(isSecond ? '10^(' : 'log(')}>{isSecond ? '10^x' : 'log'}</button>
@@ -581,7 +592,12 @@ export default function ProjectorCalculator() {
           <button className="calc-btn btn-white" onClick={() => handlePress('2')}>2</button>
           <button className="calc-btn btn-white" onClick={() => handlePress('3')}>3</button>
 
-          <button className="calc-btn btn-white-blue" style={{ fontSize: '0.8rem' }} onClick={() => handlePress('', 'sd')}>◀▶</button>
+          <button className="calc-btn btn-white-blue" style={{ fontSize: '0.8rem' }} onClick={() => handlePress('', 'sd')}>
+            <svg viewBox="0 0 100 100" style={{ fill: '#006bc2', width: '20px', height: '20px' }}>
+              {/* Balanced version: 10-unit center gap, symmetrical 30-unit width for each triangle */}
+              <path d="M15 50 L45 22 L45 78 Z M85 50 L55 22 L55 78 Z" />
+            </svg>
+          </button>
 
           <button className="calc-btn btn-green" onClick={() => setIsVisible(false)}>off</button>
           <button className="calc-btn btn-white" onClick={() => handlePress('0')}>0</button>
