@@ -16,7 +16,20 @@ export async function GET() {
     text += `\n\n`;
   });
 
-  return new Response(text, {
-    headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+  const html = `
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <title>IGCSE Syllabus Context</title>
+        <meta charset="UTF-8">
+      </head>
+      <body>
+        <pre style="word-wrap: break-word; white-space: pre-wrap; font-family: monospace;">${text}</pre>
+      </body>
+    </html>
+  `;
+
+  return new Response(html, {
+    headers: { 'Content-Type': 'text/html; charset=utf-8' }
   });
 }
