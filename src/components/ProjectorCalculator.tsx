@@ -3,19 +3,21 @@ import React, { useState, useRef, useEffect } from 'react';
 export default function ProjectorCalculator() {
   const [isVisible, setIsVisible] = useState(false);
   const [inputStr, setInputStr] = useState('');
-  const [history, setHistory] = useState<string[]>([]);
+  
+  const [history, setHistory] = useState<{ expr: string, res: string, isSecret?: boolean }[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const [selectionMode, setSelectionMode] = useState<'expr' | 'res'>('expr');
+  
   const [isSecond, setIsSecond] = useState(false);
   const [isDeg, setIsDeg] = useState(true);
-  const [lastResult, setLastResult] = useState<number | null>(null);
+  
+  const [lastResult, setLastResult] = useState<string | null>(null);
   const [justCalculated, setJustCalculated] = useState(false);
 
-  // Mobile check state
   const [isMobile, setIsMobile] = useState(() =>
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   );
 
-  // New state to specifically detect iPads/Tablets (touch capability)
   const [isTouch, setIsTouch] = useState(false);
 
   const calcRef = useRef<HTMLDivElement>(null);
@@ -24,11 +26,9 @@ export default function ProjectorCalculator() {
   const dragStart = useRef({ x: 0, y: 0 });
   const initialPos = useRef({ x: 0, y: 0 });
 
-  // Handle Window Resizing to block on mobile
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
-      // This is the most reliable way to detect iPad/Tablets to block keyboard
       setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
     };
     handleResize();
@@ -36,43 +36,80 @@ export default function ProjectorCalculator() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // Auto-focus when the calculator is opened
   useEffect(() => {
-    // Only auto-focus if it is NOT a touch device
-    if (isVisible && inputRef.current && !isTouch) {
+    if (isVisible && !isMobile && !isTouch) {
       setTimeout(() => inputRef.current?.focus(), 100);
     }
-  }, [isVisible, isTouch]);
+  }, [isVisible, isMobile, isTouch]);
 
+  // Handle global keyboard inputs robustly
   useEffect(() => {
     if (!isVisible || isMobile) return;
 
     const handleGlobalKey = (e: KeyboardEvent) => {
-      if (calcRef.current && calcRef.current.contains(e.target as Node)) {
-        e.stopImmediatePropagation();
+      const target = e.target as HTMLElement;
+      if ((target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') && target !== inputRef.current) {
+        return;
+      }
 
-        if (e.key === 'ArrowUp') {
+      const keyMap: Record<string, string> = { '*': '×', '/': '÷', '-': '−' };
+
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        handlePress('', 'history-up');
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        handlePress('', 'history-down');
+      } else if (e.key === 'Enter' || e.key === '=') {
+        e.preventDefault();
+        handlePress('', 'calculate');
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        setIsVisible(false);
+      } else if (e.key === 'Backspace') {
+        if (document.activeElement !== inputRef.current || justCalculated || historyIndex !== -1) {
           e.preventDefault();
-          document.getElementById('btn-hist-up')?.click();
-        } else if (e.key === 'ArrowDown') {
+          handlePress('', 'delete');
+        }
+      } else if (e.key === 'ArrowLeft') {
+        if (document.activeElement !== inputRef.current || historyIndex !== -1) {
           e.preventDefault();
-          document.getElementById('btn-hist-down')?.click();
-        } else if (e.key === 'Enter' || e.key === '=') {
+          handlePress('', 'cursor-left');
+        }
+      } else if (e.key === 'ArrowRight') {
+        if (document.activeElement !== inputRef.current || historyIndex !== -1) {
           e.preventDefault();
-          document.getElementById('btn-calc-enter')?.click();
-        } else if (e.key === 'Escape') {
+          handlePress('', 'cursor-right');
+        }
+      } else if (e.key.length === 1 && /[0-9\.+\-*/^()]/.test(e.key)) {
+        if (document.activeElement !== inputRef.current || justCalculated || historyIndex !== -1) {
           e.preventDefault();
-          setIsVisible(false);
+          handlePress(keyMap[e.key] || e.key);
         }
       }
     };
 
     window.addEventListener('keydown', handleGlobalKey, { capture: true });
     return () => window.removeEventListener('keydown', handleGlobalKey, { capture: true });
-  }, [isVisible, isMobile]);
+  }, [isVisible, isMobile, inputStr, lastResult, justCalculated, historyIndex, history, selectionMode, isSecond, isDeg]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (justCalculated) setJustCalculated(false);
-    setInputStr(e.target.value);
+    const newVal = e.target.value;
+    if (justCalculated) {
+      setJustCalculated(false);
+      const lastChar = newVal.slice(-1);
+      const operators = ['+', '-', '*', '/', '^', '−', '×', '÷'];
+      
+      if (operators.includes(lastChar) && lastResult !== null && lastResult !== 'Syntax Error') {
+        setInputStr(lastResult + lastChar);
+      } else {
+        setInputStr(lastChar);
+      }
+      setLastResult(null);
+      return;
+    }
+    setInputStr(newVal);
   };
 
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
@@ -129,39 +166,57 @@ export default function ProjectorCalculator() {
   const handlePress = (val: string, action?: string) => {
     let currentInput = inputStr;
 
-    // Only trigger focus on desktop to keep cursor alive
-    if (inputRef.current && !isTouch) inputRef.current.focus();
+    if (!isTouch && action !== 'calculate' && action !== 'history-up' && action !== 'history-down') {
+      inputRef.current?.focus();
+    }
 
     if (action === 'second') return setIsSecond(!isSecond);
 
     if (action === 'history-up') {
-      setJustCalculated(false);
+      inputRef.current?.blur(); 
       if (history.length === 0) return;
-      const newIndex = historyIndex + 1 < history.length ? historyIndex + 1 : historyIndex;
-      setHistoryIndex(newIndex);
-      setInputStr(history[history.length - 1 - newIndex] || '');
+      if (historyIndex === -1) {
+        setHistoryIndex(0);
+        setSelectionMode('res');
+      } else if (selectionMode === 'res') {
+        setSelectionMode('expr');
+      } else if (historyIndex + 1 < history.length) {
+        setHistoryIndex(historyIndex + 1);
+        setSelectionMode('res');
+      }
       return;
     }
 
     if (action === 'history-down') {
-      setJustCalculated(false);
-      if (historyIndex <= 0) {
-        setHistoryIndex(-1);
-        setInputStr('');
+      if (historyIndex === -1) {
+        // Acts like clear if pressing down on the current input line
+        handlePress('', 'clear');
+        setTimeout(() => inputRef.current?.focus(), 0);
         return;
       }
-      const newIndex = historyIndex - 1;
-      setHistoryIndex(newIndex);
-      setInputStr(history[history.length - 1 - newIndex]);
+      
+      inputRef.current?.blur();
+      if (selectionMode === 'expr') {
+        setSelectionMode('res');
+      } else {
+        if (historyIndex === 0) {
+          setHistoryIndex(-1);
+          setSelectionMode('expr');
+          setTimeout(() => inputRef.current?.focus(), 0);
+        } else {
+          setHistoryIndex(historyIndex - 1);
+          setSelectionMode('expr');
+        }
+      }
       return;
     }
 
     if (action === 'cursor-left' || action === 'cursor-right') {
-      setJustCalculated(false);
+      if (historyIndex !== -1) return; 
       if (!inputRef.current) return;
       const pos = inputRef.current.selectionStart || 0;
       const newPos = action === 'cursor-left' ? Math.max(0, pos - 1) : pos + 1;
-      inputRef.current.setSelectionRange(newPos, newPos);
+      setTimeout(() => inputRef.current?.setSelectionRange(newPos, newPos), 0);
       return;
     }
 
@@ -170,7 +225,20 @@ export default function ProjectorCalculator() {
     }
 
     if (action === 'delete') {
-      setJustCalculated(false);
+      if (historyIndex !== -1) {
+        setHistoryIndex(-1); setInputStr(''); setLastResult(null); setJustCalculated(false); return;
+      }
+      if (justCalculated) {
+        if (lastResult === 'Syntax Error') {
+          // Keep the expression, just clear the error and restore focus
+          setLastResult(null); 
+          setJustCalculated(false);
+          setTimeout(() => inputRef.current?.focus(), 0);
+        } else {
+          setInputStr(''); setLastResult(null); setJustCalculated(false);
+        }
+        return;
+      }
       if (inputRef.current && !isTouch) {
         const pos = inputRef.current.selectionStart || 0;
         if (pos > 0) {
@@ -183,21 +251,63 @@ export default function ProjectorCalculator() {
       return;
     }
 
-    if (action === 'sd' && lastResult !== null) {
-      setJustCalculated(false);
+    if (action === 'sd' && lastResult !== null && lastResult !== 'Syntax Error') {
+      const numRes = parseFloat(lastResult);
+      if (isNaN(numRes)) return; 
+      
       if (currentInput.includes('/')) {
-        setInputStr(parseFloat(lastResult.toPrecision(10)).toString());
+        setInputStr(numRes.toPrecision(10).toString());
       } else {
-        const frac = dec2frac(lastResult);
+        const frac = dec2frac(numRes);
         if (frac) setInputStr(frac);
       }
       return;
     }
 
     if (action === 'calculate') {
+      if (historyIndex !== -1) {
+         const entry = history[history.length - 1 - historyIndex];
+         const copyText = selectionMode === 'res' ? entry.res : entry.expr;
+         
+         let newStr = '';
+         let newPos = 0;
+
+         // If we just solved a math problem, treat the copied history as a fresh start. 
+         // Otherwise, append it seamlessly.
+         if (justCalculated) {
+           newStr = copyText;
+           newPos = newStr.length;
+         } else {
+           if (inputRef.current && !isTouch) {
+             const pos = inputRef.current.selectionStart || 0;
+             newStr = currentInput.slice(0, pos) + copyText + currentInput.slice(pos);
+             newPos = pos + copyText.length;
+           } else {
+             newStr = currentInput + copyText;
+             newPos = newStr.length;
+           }
+         }
+
+         setInputStr(newStr);
+         setLastResult(null);
+         setHistoryIndex(-1);
+         setSelectionMode('expr');
+         setJustCalculated(false);
+         
+         // Keep the calculator actively focused so the cursor blinks instantly
+         setTimeout(() => {
+           if (inputRef.current) {
+             inputRef.current.focus();
+             inputRef.current.setSelectionRange(newPos, newPos);
+           }
+         }, 0);
+         return;
+      }
+
       if (!currentInput) return;
 
       const secretMessages: Record<string, string> = {
+        '67': '⁶🤷‍♂️⁷',
         '80085': 'Naughty naughty',
         '5318008': 'Get your head out of the gutter already',
         '0.7734': 'hELLO',
@@ -205,19 +315,30 @@ export default function ProjectorCalculator() {
         '69': 'Nice.',
         '1337': 'LEET HAX0R',
         'Abi': 'Hi Abi! ⸜(｡˃ ᵕ ˂ )⸝♡',
-        'Henry': 'Put that rubics cube away',
+        'Henry': 'Put that Rubik\'s cube away!',
         'Kanna': 'My comfy chair thief, get her!',
         'Kiichi': 'derp',
-        'Karley': 'meow',
-        'Bartlett': 'Stop Cheunging me',
-        'Laszlo': '',
+        'Karley': 'meow ₍^. .^₎⟆',
+        'Bartlett': 'Cheung, Cheung, what, whhhhhatttt?!!',
+        'Tsuki': '⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆',
+        'Chenia': '做乜唔識啊？',
+        'Kaya': 'Living a good life, thx!',
+        'Hannah': 'Banana!',
+        'Cameron': 'Work harder, eh?',
+        'William': '🤪✌︎︎',
+        'Kyle': '(ง •̀_•́)ง',
+        'Douglas': 'ඞ',
+        'Manly': 'What inspires you?',
+        'Vincent': 'STOP PLAYING 𝗥⟐𝗕𝗟◘𝗫',
+        'Ella': '*ੈ✩‧₊˚༺𝓔𝓵𝓵𝒂༻*ੈ✩‧₊˚',
       };
 
       if (secretMessages[currentInput]) {
-        setInputStr(secretMessages[currentInput]);
-        setLastResult(null);
+        const msg = secretMessages[currentInput];
+        setLastResult(msg); // Output to answer line
         setJustCalculated(true);
-        setHistory(prev => [...prev, currentInput]);
+        inputRef.current?.blur(); 
+        setHistory(prev => [...prev, { expr: currentInput, res: msg, isSecret: true }]);
         setHistoryIndex(-1);
         return;
       }
@@ -231,7 +352,6 @@ export default function ProjectorCalculator() {
           expr += ')'.repeat(openBrackets - closeBrackets);
         }
 
-        // Translates A ˣ√ B  into (B)**(1/A) using the superscript x
         expr = expr.replace(/(\d+\.?\d*)\s*ˣ√\s*(\d+\.?\d*|\([^)]+\))/g, '(($2)**(1/($1)))');
 
         expr = expr
@@ -265,35 +385,47 @@ export default function ProjectorCalculator() {
 
         let result = evaluate();
         if (!isFinite(result)) throw new Error('Math Error');
-        result = parseFloat(result.toPrecision(12));
+        const resStr = parseFloat(result.toPrecision(12)).toString();
 
-        setHistory(prev => [...prev, currentInput]);
+        setHistory(prev => [...prev, { expr: currentInput, res: resStr }]);
         setHistoryIndex(-1);
-        setLastResult(result);
-        setInputStr(result.toString());
+        setLastResult(resStr);
         setJustCalculated(true);
+        inputRef.current?.blur(); 
       } catch (err) {
-        setInputStr('Syntax Error');
-        setLastResult(null);
-        setJustCalculated(false);
+        setLastResult('Syntax Error'); // Output to answer line
+        setJustCalculated(true);
+        inputRef.current?.blur();
       }
       return;
     }
 
     if (val) {
+      if (historyIndex !== -1) {
+        setInputStr(val);
+        setLastResult(null);
+        setHistoryIndex(-1);
+        setSelectionMode('expr');
+        setJustCalculated(false);
+        return;
+      }
+
+      const operators = ['+', '−', '×', '÷', '^', '^-1', '²', 'ˣ√'];
       let targetInput = currentInput;
 
       if (justCalculated) {
         setJustCalculated(false);
-        const operators = ['+', '−', '×', '÷', '^', '^-1', '²', 'ˣ√'];
-        if (operators.includes(val) && lastResult !== null) {
-          targetInput = lastResult.toString();
+        if (operators.includes(val) && lastResult !== null && lastResult !== 'Syntax Error') {
+          targetInput = lastResult + val;
         } else {
-          targetInput = '';
+          targetInput = val;
         }
+        setInputStr(targetInput);
+        setLastResult(null);
+        setTimeout(() => inputRef.current?.setSelectionRange(targetInput.length, targetInput.length), 0);
+        return;
       }
 
-      // Cursor support logic only runs if we are NOT on a tablet/touch device
       if (inputRef.current && !justCalculated && !isTouch) {
         const pos = inputRef.current.selectionStart || 0;
         setInputStr(targetInput.slice(0, pos) + val + targetInput.slice(pos));
@@ -305,150 +437,109 @@ export default function ProjectorCalculator() {
     }
   };
 
-  // If the screen is mobile, return absolutely nothing.
+  let displayInput = inputStr;
+  let displayResult = lastResult;
+  if (historyIndex !== -1) {
+    const entry = history[history.length - 1 - historyIndex];
+    displayInput = entry.expr;
+    displayResult = entry.res;
+  }
+
+  const isInputHighlighted = historyIndex !== -1 && selectionMode === 'expr';
+  const isResultHighlighted = historyIndex !== -1 && selectionMode === 'res';
+
   if (isMobile) return null;
 
   return (
     <>
       <style>{`
         #wb-calculator.ti-30xb {
-          position: fixed;
-          bottom: 1rem; 
-          right: 1rem;  
-          z-index: 9999;
-          
-          background-color: #6fb048; 
-          border: 1px solid rgba(255, 255, 255, 0.2);
+          position: fixed; bottom: 1rem; right: 1rem; z-index: 9999;
+          background-color: #6fb048; border: 1px solid rgba(255, 255, 255, 0.2);
           box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 20px rgba(111, 176, 72, 0.4);
-          
-          border-radius: 1.5rem 1.5rem 2rem 2rem;
-          padding: 1rem;
-          width: 320px;
-          user-select: none;
-          
-          opacity: 0;
-          visibility: hidden;
-          pointer-events: none;
+          border-radius: 1.5rem 1.5rem 2rem 2rem; padding: 1rem; width: 320px;
+          user-select: none; opacity: 0; visibility: hidden; pointer-events: none;
           transform: translateY(20px) scale(0.95);
           transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.25s;
         }
         
         #wb-calculator.ti-30xb.open {
-          opacity: 1;
-          visibility: visible;
-          pointer-events: auto;
-          transform: translateY(0) scale(1);
+          opacity: 1; visibility: visible; pointer-events: auto; transform: translateY(0) scale(1);
         }
 
         .calc-toggle-fab {
-          position: fixed;
-          bottom: 1.5rem;
-          right: 1.5rem;
-          z-index: 9998;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          
-          background: var(--sl-color-bg-nav, rgba(20, 20, 20, 0.65));
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          color: white;
-          
-          cursor: pointer;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+          position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9998; display: flex;
+          align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%;
+          background: var(--sl-color-bg-nav, rgba(20, 20, 20, 0.65)); backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); color: white;
+          cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
           transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
         }
         
         .calc-toggle-fab:hover {
-          transform: scale(1.15);
-          background: #5a8e3a; 
+          transform: scale(1.15); background: #5a8e3a; 
           box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 15px rgba(90, 142, 58, 0.6);
         }
         
         #calc-screen-wrapper {
-          background-color: #a9bca1;
-          border-radius: 8px;
-          padding: 10px;
-          margin-bottom: 15px;
+          background-color: #a9bca1; border-radius: 8px; padding: 10px; margin-bottom: 15px;
           box-shadow: inset 0 2px 5px rgba(0,0,0,0.2), 0 0 10px rgba(169, 188, 161, 0.1);
-          border: 2px solid #333;
-          height: 80px;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
+          border: 2px solid #333; height: 125px; display: flex; flex-direction: column;
         }
 
         .screen-header {
-          display: flex;
-          justify-content: space-between;
-          font-size: 0.7rem;
-          color: #333;
-          font-family: monospace;
-          margin-bottom: 5px;
+          display: flex; justify-content: space-between; font-size: 0.7rem; color: #333;
+          font-family: monospace; margin-bottom: 5px; flex-shrink: 0;
+        }
+
+        .screen-content {
+          display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between;
+          width: 100%; font-family: monospace; overflow: hidden;
         }
 
         #calc-input {
-          background: transparent;
-          border: none;
-          outline: none;
-          font-size: 1.5rem;
-          font-family: monospace;
-          text-align: right;
-          width: 100%;
-          color: #111;
+          background: transparent; border: none; outline: none; font-size: 1.2rem;
+          font-family: monospace; text-align: left; color: #111; padding: 2px 4px;
+          border-radius: 3px; width: 100%;
         }
 
-        .ti-grid-5 {
-          display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          gap: 6px 8px;
+        .calc-history-expr {
+          font-size: 1.2rem; font-family: monospace; text-align: left; color: #111;
+          padding: 2px 4px; font-style: italic; white-space: pre; border-radius: 3px;
         }
+
+        .calc-result-display {
+          font-size: 1.2rem; font-weight: bold; color: #111;
+          padding: 2px 4px; border-radius: 3px; display: inline-block;
+          white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+
+        .highlight-side {
+          background: rgba(0,0,0,0.15) !important;
+        }
+
+        .ti-grid-5 { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px 8px; }
 
         .calc-btn {
-          border-radius: 20px;
-          height: 34px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-weight: bold;
-          font-size: 0.85rem;
-          border: none;
-          box-shadow: 0 3px 0 rgba(0,0,0,0.4);
-          cursor: pointer;
-          color: white;
-          transition: filter 0.1s;
+          border-radius: 20px; height: 34px; display: flex; align-items: center; justify-content: center;
+          font-weight: bold; font-size: 0.85rem; border: none; box-shadow: 0 3px 0 rgba(0,0,0,0.4);
+          cursor: pointer; color: white; transition: filter 0.1s;
         }
 
-        .calc-btn:active {
-          transform: translateY(3px);
-          box-shadow: none;
-        }
-
-        .calc-btn:hover {
-          filter: brightness(1.2);
-        }
+        .calc-btn:active { transform: translateY(3px); box-shadow: none; }
+        .calc-btn:hover { filter: brightness(1.2); }
 
         .btn-gray { background-color: #444; }
         .btn-green { background-color: #4a752f; }
         .btn-blue { background-color: #006bc2; }
         
         .btn-white { 
-          background-color: #ddd; 
-          color: #000; 
-          box-shadow: 0 3px 0 rgba(0,0,0,0.2); 
-          font-size: 1.2rem;
-          font-weight: 900;
+          background-color: #ddd; color: #000; box-shadow: 0 3px 0 rgba(0,0,0,0.2); 
+          font-size: 1.2rem; font-weight: 900;
         }
         
         .btn-white-blue { 
-          background-color: #ddd; 
-          color: #006bc2; 
-          font-weight: 900; 
-          box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+          background-color: #ddd; color: #006bc2; font-weight: 900; box-shadow: 0 3px 0 rgba(0,0,0,0.2);
         }
         
         .d-pad-wrapper {
@@ -464,30 +555,17 @@ export default function ProjectorCalculator() {
         }
 
         .d-pad-btn {
-          background: transparent;
-          border: none;
-          color: white;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          background: transparent; border: none; color: white; cursor: pointer;
+          font-size: 0.8rem; display: flex; align-items: center; justify-content: center;
         }
         
-        .d-pad-btn svg {
-          fill: white;
-          width: 12px;
-          height: 12px;
-        }
-        
-        .d-pad-btn:hover {
-          filter: brightness(1.2);
-        }
+        .d-pad-btn:hover { text-shadow: 0 0 5px rgba(255,255,255,0.8); }
+        .d-pad-btn:active { transform: scale(0.9); }
         
         .d-pad-up { grid-column: 2; grid-row: 1; }
         .d-pad-down { grid-column: 2; grid-row: 2; }
         .d-pad-left { grid-column: 1; grid-row: 1 / span 2; }
         .d-pad-right { grid-column: 3; grid-row: 1 / span 2; }
-
       `}</style>
 
       {!isVisible && (
@@ -519,18 +597,33 @@ export default function ProjectorCalculator() {
             <span>{isSecond ? '2ND' : ''}</span>
             <span onClick={() => setIsDeg(!isDeg)} style={{ cursor: 'pointer' }}>{isDeg ? 'DEG' : 'RAD'}</span>
           </div>
-          <input
-            ref={inputRef}
-            id="calc-input"
-            type="text"
-            value={inputStr}
-            onChange={handleInputChange}
-            placeholder="0"
-            autoComplete="off"
-            spellCheck="false"
-            // FIX: Set readOnly on touch devices to block the virtual keyboard
-            readOnly={isTouch}
-          />
+          <div className="screen-content">
+            <div style={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
+              {historyIndex !== -1 ? (
+                <span className={`calc-history-expr ${isInputHighlighted ? 'highlight-side' : ''}`}>
+                  {displayInput || ' '}
+                </span>
+              ) : (
+                <input
+                  ref={inputRef}
+                  id="calc-input"
+                  type="text"
+                  value={displayInput}
+                  onChange={handleInputChange}
+                  autoComplete="off"
+                  spellCheck="false"
+                  readOnly={isTouch}
+                />
+              )}
+            </div>
+            {displayResult !== null && (
+              <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+                <span className={`calc-result-display ${isResultHighlighted ? 'highlight-side' : ''}`}>
+                  {displayResult}
+                </span>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="ti-grid-5">
@@ -540,16 +633,16 @@ export default function ProjectorCalculator() {
 
           <div className="d-pad-wrapper">
             <button id="btn-hist-up" className="d-pad-btn d-pad-up" onClick={() => handlePress('', 'history-up')}>
-              <svg viewBox="0 0 100 100"><path d="M50 20 L80 80 L20 80 Z" /></svg>
+              <svg viewBox="0 0 100 100" style={{ width: '12px', height: '12px', fill: 'white' }}><path d="M50 20 L80 80 L20 80 Z" /></svg>
             </button>
             <button className="d-pad-btn d-pad-left" onClick={() => handlePress('', 'cursor-left')}>
-              <svg viewBox="0 0 100 100"><path d="M20 50 L80 20 L80 80 Z" /></svg>
+              <svg viewBox="0 0 100 100" style={{ width: '12px', height: '12px', fill: 'white' }}><path d="M20 50 L80 20 L80 80 Z" /></svg>
             </button>
             <button className="d-pad-btn d-pad-right" onClick={() => handlePress('', 'cursor-right')}>
-              <svg viewBox="0 0 100 100"><path d="M80 50 L20 20 L20 80 Z" /></svg>
+              <svg viewBox="0 0 100 100" style={{ width: '12px', height: '12px', fill: 'white' }}><path d="M80 50 L20 20 L20 80 Z" /></svg>
             </button>
             <button id="btn-hist-down" className="d-pad-btn d-pad-down" onClick={() => handlePress('', 'history-down')}>
-              <svg viewBox="0 0 100 100"><path d="M50 80 L80 20 L20 20 Z" /></svg>
+              <svg viewBox="0 0 100 100" style={{ width: '12px', height: '12px', fill: 'white' }}><path d="M50 80 L80 20 L20 20 Z" /></svg>
             </button>
           </div>
 
@@ -592,9 +685,8 @@ export default function ProjectorCalculator() {
           <button className="calc-btn btn-white" onClick={() => handlePress('2')}>2</button>
           <button className="calc-btn btn-white" onClick={() => handlePress('3')}>3</button>
 
-          <button className="calc-btn btn-white-blue" style={{ fontSize: '0.8rem' }} onClick={() => handlePress('', 'sd')}>
+          <button className="calc-btn btn-white-blue" onClick={() => handlePress('', 'sd')}>
             <svg viewBox="0 0 100 100" style={{ fill: '#006bc2', width: '20px', height: '20px' }}>
-              {/* Balanced version: 10-unit center gap, symmetrical 30-unit width for each triangle */}
               <path d="M15 50 L45 22 L45 78 Z M85 50 L55 22 L55 78 Z" />
             </svg>
           </button>
