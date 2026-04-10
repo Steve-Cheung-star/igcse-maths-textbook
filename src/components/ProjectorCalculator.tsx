@@ -24,7 +24,7 @@ export default function ProjectorCalculator() {
   const dragStart = useRef({ x: 0, y: 0 });
   const initialPos = useRef({ x: 0, y: 0 });
 
-  // Handle Window Resizing
+  // Handle Window Resizing to block on mobile
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -472,6 +472,8 @@ export default function ProjectorCalculator() {
           display: flex;
           align-items: center;
           justify-content: center;
+          /* Force standard font to prevent iPad emoji conversion */
+          font-family: "Segoe UI Symbol", "Arial Unicode MS", sans-serif;
         }
         
         .d-pad-btn:hover {
@@ -534,10 +536,10 @@ export default function ProjectorCalculator() {
           <button className="calc-btn btn-green" onClick={() => handlePress('', 'delete')}>del</button>
 
           <div className="d-pad-wrapper">
-            <button id="btn-hist-up" className="d-pad-btn d-pad-up" onClick={() => handlePress('', 'history-up')}>▲</button>
-            <button className="d-pad-btn d-pad-left" onClick={() => handlePress('', 'cursor-left')}>◀</button>
-            <button className="d-pad-btn d-pad-right" onClick={() => handlePress('', 'cursor-right')}>▶</button>
-            <button id="btn-hist-down" className="d-pad-btn d-pad-down" onClick={() => handlePress('', 'history-down')}>▼</button>
+            <button id="btn-hist-up" className="d-pad-btn d-pad-up" onClick={() => handlePress('', 'history-up')}>&#9650;</button>
+            <button className="d-pad-btn d-pad-left" onClick={() => handlePress('', 'cursor-left')}>&#9664;</button>
+            <button className="d-pad-btn d-pad-right" onClick={() => handlePress('', 'cursor-right')}>&#9654;</button>
+            <button id="btn-hist-down" className="d-pad-btn d-pad-down" onClick={() => handlePress('', 'history-down')}>&#9660;</button>
           </div>
 
           <button className="calc-btn btn-green" onClick={() => handlePress(isSecond ? '10^(' : 'log(')}>{isSecond ? '10^x' : 'log'}</button>
