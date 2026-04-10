@@ -1,18 +1,52 @@
 ---
 // src/pages/api/igcse.astro
 import { getCollection } from 'astro:content';
+
 export const prerender = true;
 
+// Fetch only the IGCSE docs
 const docs = await getCollection('docs', ({ id }) => id.startsWith('igcse/'));
-let text = `=== IGCSE KNOWLEDGE BASE ===\nTotal: ${docs.length}\n\n`;
+
+let text = `=== IGCSE KNOWLEDGE BASE ===\n`;
+text += `Total lessons: ${docs.length}\n\n`;
+
 docs.forEach(doc => {
-  text += `TOPIC: ${doc.data.title}\n${'='.repeat(20)}\n${doc.body}\n\n`;
+  text += `\n\n========================================\n`;
+  text += `TOPIC: ${doc.data.title}\n`;
+  text += `========================================\n\n`;
+  text += doc.body; 
+  text += `\n\n`;
 });
 ---
+
 <!DOCTYPE html>
-<html>
-  <head><title>IGCSE Context</title></head>
-  <body>
-    <pre style="white-space: pre-wrap;">{text}</pre>
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IGCSE Syllabus Context</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    pre {
+      word-wrap: break-word; 
+      white-space: pre-wrap; 
+      font-family: 'Courier New', Courier, monospace;
+      background: white;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>IGCSE Raw Data Export</h1>
+  <p>This page is optimized for AI consumption.</p>
+  <hr />
+  <pre>{text}</pre>
+</body>
 </html>
