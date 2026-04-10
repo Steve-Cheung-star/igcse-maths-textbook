@@ -3,6 +3,8 @@
 ---
 
 <div id="wb-portal" data-bento-portal>
+  <div id="wb-laser-dot"></div>
+
   <button id="wb-exit" data-action="toggle-projector" title="Exit Projector Mode (Esc)">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
   </button>
@@ -45,10 +47,8 @@
 </div>
 
 <style>
-  /* STRICT HIDE RULE */
   html:not([data-mode="bento"]) [data-bento-portal] { display: none !important; }
 
-  /* Canvas */
   :global(#wb-canvas) { 
     position: absolute; top: 0; left: 0; z-index: 999998; 
     pointer-events: none; display: none; 
@@ -56,41 +56,36 @@
   }
   :global(html[data-mode="bento"] #wb-canvas) { display: block; }
   
-  /* ---> NEW FIX: Disable text selection globally while using drawing tools <--- */
   :global(html[data-mode="bento"][data-tool="pen"] body),
-  :global(html[data-mode="bento"][data-tool="eraser"] body) {
+  :global(html[data-mode="bento"][data-tool="eraser"] body),
+  :global(html[data-mode="bento"][data-tool="laser"] body) {
     user-select: none !important;
     -webkit-user-select: none !important;
   }
 
-  /* Default Pen/Eraser state (Palm Rejection OFF) */
   :global(html[data-mode="bento"][data-tool="pen"] #wb-canvas),
-  :global(html[data-mode="bento"][data-tool="eraser"] #wb-canvas) { 
+  :global(html[data-mode="bento"][data-tool="eraser"] #wb-canvas),
+  :global(html[data-mode="bento"][data-tool="laser"] #wb-canvas) { 
     pointer-events: auto; 
     touch-action: none; 
     overscroll-behavior: none; 
   }
 
-  /* ---> NEW FIX: Allow touch panning ONLY when Palm Rejection is ON <--- */
   :global(html[data-mode="bento"][data-tool="pen"][data-palm-reject="true"] #wb-canvas),
   :global(html[data-mode="bento"][data-tool="eraser"][data-palm-reject="true"] #wb-canvas) {
     touch-action: pan-x pan-y;
   }
 
-  /* Subtle Exit Button */
+  #wb-laser-dot {
+    position: fixed; width: 14px; height: 14px; background: #ff0000;
+    border-radius: 50%; box-shadow: 0 0 10px 4px rgba(255, 0, 0, 0.6);
+    pointer-events: none; z-index: 9999999; display: none; transform: translate(-50%, -50%);
+  }
+
   #wb-exit { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 9999999; display: flex; width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--sl-color-bg-nav, rgba(0,0,0,0.5)); color: var(--sl-color-text, #fff); align-items: center; justify-content: center; cursor: pointer; opacity: 0.2; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.2); backdrop-filter: blur(4px); }
   #wb-exit:hover { opacity: 1; transform: scale(1.1); background: rgba(255,50,50,0.8); color: white; }
 
-  /* Toolbar Wrapper */
-  #wb-toolbar-wrapper { 
-    position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
-    z-index: 9999999; display: flex; align-items: center; background: var(--sl-color-bg-nav);
-    border: 1px solid var(--sl-color-hairline); border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3); backdrop-filter: blur(12px);
-    touch-action: none; 
-  }
-
-  /* Minimized State */
+  #wb-toolbar-wrapper { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 9999999; display: flex; align-items: center; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); backdrop-filter: blur(12px); touch-action: none; }
   #wb-toolbar-wrapper.minimized { width: 48px; height: 48px; border-radius: 50%; padding: 0; overflow: hidden; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline); display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(0,0,0,0.25); }
   #wb-toolbar-wrapper.minimized #wb-toolbar { display: none; }
   #wb-toolbar-wrapper.minimized #wb-fab-toggle { position: relative; width: 100%; height: 100%; margin: 0; padding: 0; cursor: grab; background: transparent; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
@@ -99,16 +94,11 @@
   #wb-toolbar-wrapper.minimized .icon-drag { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
   #wb-dynamic-icon { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
   #wb-dynamic-icon svg { width: 20px; height: 20px; transition: stroke 0.3s ease; display: block; margin: 0; padding: 0; }
-
-  /* Maximized State */
   #wb-toolbar-wrapper.maximized #wb-fab-toggle { cursor: pointer; color: var(--sl-color-text); background: var(--sl-color-hairline); border-radius: 8px; padding: 0.4rem; margin: 0.5rem; transition: background 0.2s, color 0.2s; display: flex; align-items: center; justify-content: center; }
   #wb-toolbar-wrapper.maximized #wb-fab-toggle:hover { background: var(--sl-color-text-accent); color: var(--sl-color-bg); }
   #wb-toolbar-wrapper.maximized .icon-min { display: block; }
   #wb-toolbar-wrapper.maximized .icon-drag { display: none; }
-
   #wb-fab-toggle { background: transparent; border: none; display: flex; align-items: center; justify-content: center; color: var(--sl-color-text); }
-
-  /* Orientation Logic */
   #wb-toolbar-wrapper.horizontal { flex-direction: row; padding-right: 0.5rem; }
   #wb-toolbar-wrapper.vertical { flex-direction: column; padding-bottom: 0.5rem; }
   .toolbar-panel { display: flex; align-items: center; padding: 0.5rem; gap: 0.5rem; }
@@ -120,15 +110,11 @@
   .divider { background: var(--sl-color-hairline); }
   #wb-toolbar-wrapper.horizontal .divider { width: 1px; height: 24px; margin: 0 0.25rem; }
   #wb-toolbar-wrapper.vertical .divider { width: 24px; height: 1px; margin: 0.25rem 0; }
-
-  /* Buttons */
   .tool-btn { color: var(--sl-color-text); background: transparent; border: 1px solid transparent; border-radius: 6px; padding: 0.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
   .tool-btn:hover { background: var(--sl-color-hairline); }
   .tool-btn.active { background: var(--sl-color-text-accent); border-color: var(--sl-color-text-accent); color: var(--sl-color-bg); }
   .tool-btn.clear:hover { background: rgba(255,0,0,0.2); color: #ff4444; }
-  
   #btn-palm-reject.active { background: #3b82f6; border-color: #3b82f6; color: white; }
-
   .color-btn { width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); cursor: pointer; transition: transform 0.2s; }
   .color-btn:hover { transform: scale(1.2); }
   .color-btn.active { border-color: var(--sl-color-text); transform: scale(1.1); }
@@ -137,7 +123,6 @@
   .yellow { background: #ffff00; box-shadow: 0 0 8px #ffff0088; }
   .lime { background: #39ff14; box-shadow: 0 0 8px #39ff1488; }
   
-  /* Kill for Mobile entirely */
   @media (max-width: 768px) { 
     #wb-portal, #wb-exit, #wb-toolbar-wrapper { display: none !important; }
     :global(#wb-canvas) { display: none !important; pointer-events: none !important; }
@@ -148,7 +133,6 @@
   // @ts-nocheck
   import { projectorStore, toolsConfig } from '../store/projectorStore.js';
 
-  // Astro View Transitions cleanup to prevent memory leaks / duplicate events
   let globalAborter = new AbortController();
 
   document.addEventListener('astro:before-preparation', () => {
@@ -178,7 +162,7 @@
       projectorStore.setKey('colorValue', savedColorVal);
     }
 
-    const localState = { strokes: [], redoStack: [], currentStroke: null, isDrawing: false };
+    const localState = { strokes: [], redoStack: [], currentStroke: null, isDrawing: false, isLasering: false };
     let palmRejectionEnabled = localStorage.getItem('wb-palm-reject') === 'true';
     let canvas, ctx;
 
@@ -190,11 +174,9 @@
       if (btn) {
         if (palmRejectionEnabled) {
           btn.classList.add('active');
-          // Tell CSS that palm rejection is ON
           document.documentElement.setAttribute('data-palm-reject', 'true');
         } else {
           btn.classList.remove('active');
-          // Tell CSS that palm rejection is OFF
           document.documentElement.setAttribute('data-palm-reject', 'false');
         }
       }
@@ -215,18 +197,29 @@
         redrawAll(); 
       };
       
-      // Hook up with signal for cleanup!
       window.addEventListener('resize', resizeCanvas, { signal: globalAborter.signal });
       setTimeout(resizeCanvas, 500); 
 
-      // FIX: Check cancelable before preventDefault to stop Safari/Chrome warnings
+      // === THE IPAD STYLUS FIX ===
       const preventTouchWhenDrawing = (e) => {
         const tool = projectorStore.get().tool;
-        if (tool === 'pen' || tool === 'eraser') {
-            // Allow native touch scrolling if palm rejection is ON and it's a touch event
-            if (palmRejectionEnabled && e.touches) {
-               return; // Let the browser scroll
+        if (tool === 'pen' || tool === 'eraser' || tool === 'laser') {
+            
+            if (palmRejectionEnabled && e.touches && tool !== 'laser') {
+               // Check if any touch on the screen belongs to the Apple Pencil
+               let isStylus = false;
+               for (let i = 0; i < e.touches.length; i++) {
+                 // Apple Pencil fires touchType 'stylus'
+                 if (e.touches[i].touchType === 'stylus' || e.touches[i].touchType === 'pen') {
+                   isStylus = true;
+                   break;
+                 }
+               }
+               // If it's strictly just your fingers, let the browser scroll naturally
+               if (!isStylus) return; 
             }
+            
+            // If it's a stylus, or if Palm Rejection is OFF, we explicitly BLOCK the scroll!
             if (e.cancelable) e.preventDefault();
         }
       };
@@ -244,13 +237,25 @@
     function startDrawing(e) {
       if (window.innerWidth < 768) return; 
       const globalState = projectorStore.get();
-      if (globalState.tool !== 'pen' && globalState.tool !== 'eraser') return;
+      if (globalState.tool !== 'pen' && globalState.tool !== 'eraser' && globalState.tool !== 'laser') return;
       
-      if (palmRejectionEnabled && e.pointerType === 'touch') return;
+      if (palmRejectionEnabled && e.pointerType === 'touch' && globalState.tool !== 'laser') return;
 
       if (e.cancelable) e.preventDefault(); 
-      
       try { canvas.setPointerCapture(e.pointerId); } catch(err) {}
+      
+      if (globalState.tool === 'laser') {
+        localState.isLasering = true;
+        if (e.pointerType !== 'mouse') {
+          const laserDot = document.getElementById('wb-laser-dot');
+          if (laserDot) {
+            laserDot.style.display = 'block';
+            laserDot.style.left = e.clientX + 'px';
+            laserDot.style.top = e.clientY + 'px';
+          }
+        }
+        return;
+      }
       
       localState.isDrawing = true; localState.redoStack = []; 
       const x = e.pageX; const y = e.pageY;
@@ -264,6 +269,18 @@
     }
 
     function draw(e) {
+      if (localState.isLasering) {
+        if (e.cancelable) e.preventDefault();
+        if (e.pointerType !== 'mouse') {
+          const laserDot = document.getElementById('wb-laser-dot');
+          if (laserDot) {
+            laserDot.style.left = e.clientX + 'px';
+            laserDot.style.top = e.clientY + 'px';
+          }
+        }
+        return;
+      }
+
       if (!localState.isDrawing || !localState.currentStroke) return;
       if (e.cancelable) e.preventDefault();
       const x = e.pageX; const y = e.pageY;
@@ -272,6 +289,14 @@
     }
 
     function stopDrawing(e) {
+      if (localState.isLasering) {
+        localState.isLasering = false;
+        const laserDot = document.getElementById('wb-laser-dot');
+        if (laserDot) laserDot.style.display = 'none';
+        try { canvas.releasePointerCapture(e.pointerId); } catch(err) {}
+        return;
+      }
+
       if (!localState.isDrawing) return;
       if (e.cancelable) e.preventDefault();
       
