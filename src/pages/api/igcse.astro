@@ -1,0 +1,18 @@
+---
+// src/pages/api/igcse.astro
+import { getCollection } from 'astro:content';
+export const prerender = true;
+
+const docs = await getCollection('docs', ({ id }) => id.startsWith('igcse/'));
+let text = `=== IGCSE KNOWLEDGE BASE ===\nTotal: ${docs.length}\n\n`;
+docs.forEach(doc => {
+  text += `TOPIC: ${doc.data.title}\n${'='.repeat(20)}\n${doc.body}\n\n`;
+});
+---
+<!DOCTYPE html>
+<html>
+  <head><title>IGCSE Context</title></head>
+  <body>
+    <pre style="white-space: pre-wrap;">{text}</pre>
+  </body>
+</html>
