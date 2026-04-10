@@ -15,24 +15,33 @@ export default function ProjectorCalculator() {
     typeof window !== 'undefined' ? window.innerWidth <= 768 : false
   );
 
+  // New state to specifically detect iPads/Tablets (touch capability)
+  const [isTouch, setIsTouch] = useState(false);
+
   const calcRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const isDragging = useRef(false);
   const dragStart = useRef({ x: 0, y: 0 });
   const initialPos = useRef({ x: 0, y: 0 });
 
-  // Handle Window Resizing to block on mobile
+  // Handle Window Resizing
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+      // This is the most reliable way to detect iPad/Tablets to block keyboard
+      setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    };
+    handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
-    if (isVisible && inputRef.current) {
+    // Only auto-focus if it is NOT a touch device
+    if (isVisible && inputRef.current && !isTouch) {
       setTimeout(() => inputRef.current?.focus(), 100);
     }
-  }, [isVisible]);
+  }, [isVisible, isTouch]);
 
   useEffect(() => {
     if (!isVisible || isMobile) return;
@@ -119,7 +128,9 @@ export default function ProjectorCalculator() {
 
   const handlePress = (val: string, action?: string) => {
     let currentInput = inputStr;
-    if (inputRef.current) inputRef.current.focus();
+    
+    // Only trigger focus on desktop to keep cursor alive
+    if (inputRef.current && !isTouch) inputRef.current.focus();
 
     if (action === 'second') return setIsSecond(!isSecond);
 
@@ -160,7 +171,7 @@ export default function ProjectorCalculator() {
 
     if (action === 'delete') {
       setJustCalculated(false);
-      if (inputRef.current) {
+      if (inputRef.current && !isTouch) {
         const pos = inputRef.current.selectionStart || 0;
         if (pos > 0) {
           setInputStr(currentInput.slice(0, pos - 1) + currentInput.slice(pos));
@@ -282,7 +293,8 @@ export default function ProjectorCalculator() {
         }
       }
 
-      if (inputRef.current && !justCalculated) {
+      // Cursor support logic only runs if we are NOT on a tablet/touch device
+      if (inputRef.current && !justCalculated && !isTouch) {
         const pos = inputRef.current.selectionStart || 0;
         setInputStr(targetInput.slice(0, pos) + val + targetInput.slice(pos));
         setTimeout(() => inputRef.current?.setSelectionRange(pos + val.length, pos + val.length), 0);
@@ -396,7 +408,6 @@ export default function ProjectorCalculator() {
           gap: 6px 8px;
         }
 
-        /* Enforcing strict uniform height and centering using flexbox */
         .calc-btn {
           border-radius: 20px;
           height: 34px;
@@ -425,7 +436,6 @@ export default function ProjectorCalculator() {
         .btn-green { background-color: #4a752f; }
         .btn-blue { background-color: #006bc2; }
         
-        /* Number pad remains larger and bolder, but won't warp the button sizes anymore */
         .btn-white { 
           background-color: #ddd; 
           color: #000; 
@@ -513,6 +523,8 @@ export default function ProjectorCalculator() {
             placeholder="0"
             autoComplete="off"
             spellCheck="false"
+            // FIX: Set readOnly on touch devices to block the virtual keyboard
+            readOnly={isTouch}
           />
         </div>
 
