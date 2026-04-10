@@ -1,27 +1,88 @@
 ---
-// src/components/SearchTagInjector.astro
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/ContentPanel.astro';
 
 const { slug } = Astro.props;
 
-// 1. Safe check: If there is no slug (like on the home page), 
-// we just set a default or leave it empty.
+// 1. Determine curriculum context
 const curriculum = slug && slug.startsWith('ib-aisl') 
   ? 'IB AISL' 
   : slug && slug.startsWith('igcse') 
     ? 'IGCSE' 
     : 'General';
 
-// 2. Only apply weighting if it's actually one of your books
 const isBookPage = curriculum !== 'General';
 ---
 
+{/* Keep meta for potential future filtering, but removed static weighting */}
 {isBookPage && (
   <div data-pagefind-filter="curriculum" data-pagefind-meta={`curriculum:${curriculum}`} style="display:none;"></div>
-  <div data-pagefind-weight="10" style="display:none;"></div>
 )}
 
 <Default {...Astro.props}>
   <slot />
 </Default>
+
+<script>
+  function setupSearchSorter() {
+    // 1. Find the current book directory from the URL (e.g., 'ib-aisl' or 'igcse')
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    if (pathParts.length === 0) return;
+    const currentBook = pathParts[0]; 
+
+    // Only apply sorting logic if we are inside one of the books
+    if (currentBook !== 'ib-aisl' && currentBook !== 'igcse') return;
+
+    // 2. Watch the document for Starlight's Pagefind UI injecting search results
+    const observer = new MutationObserver((mutations) => {
+      const resultsList = document.querySelector('.pagefind-ui__results');
+      if (!resultsList) return;
+
+      const results = Array.from(resultsList.querySelectorAll('.pagefind-ui__result'));
+      if (results.length <= 1) return;
+
+      // Check if the list is out of order (a non-book result is appearing before a book result)
+      let needsSorting = false;
+      for (let i = 1; i < results.length; i++) {
+        const prevLink = results[i-1].querySelector('.pagefind-ui__result-link')?.getAttribute('href') || '';
+        const currLink = results[i].querySelector('.pagefind-ui__result-link')?.getAttribute('href') || '';
+        
+        const prevIsCurrent = prevLink.includes(`/${currentBook}/`);
+        const currIsCurrent = currLink.includes(`/${currentBook}/`);
+        
+        if (!prevIsCurrent && currIsCurrent) {
+          needsSorting = true;
+          break;
+        }
+      }
+
+      // 3. If out of order, sort them and update the DOM
+      if (needsSorting) {
+        observer.disconnect(); // Briefly pause observer to prevent an infinite loop
+        
+        results.sort((a, b) => {
+          const aHref = a.querySelector('.pagefind-ui__result-link')?.getAttribute('href') || '';
+          const bHref = b.querySelector('.pagefind-ui__result-link')?.getAttribute('href') || '';
+
+          const aIsCurrent = aHref.includes(`/${currentBook}/`);
+          const bIsCurrent = bHref.includes(`/${currentBook}/`);
+
+          if (aIsCurrent && !bIsCurrent) return -1; // Push current book UP
+          if (!aIsCurrent && bIsCurrent) return 1;  // Push other books DOWN
+          return 0; // Maintain Pagefind's natural relevance score for ties
+        });
+
+        // Re-append children in the new sorted order
+        results.forEach(res => resultsList.appendChild(res));
+        
+        observer.observe(document.body, { childList: true, subtree: true }); // Reconnect
+      }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+  }
+
+  // Initialize on direct page loads and Astro view transitions
+  setupSearchSorter();
+  document.addEventListener('astro:page-load', setupSearchSorter);
+</script>
