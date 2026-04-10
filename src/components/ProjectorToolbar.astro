@@ -55,11 +55,26 @@
     touch-action: none; 
   }
   :global(html[data-mode="bento"] #wb-canvas) { display: block; }
+  
+  /* ---> NEW FIX: Disable text selection globally while using drawing tools <--- */
+  :global(html[data-mode="bento"][data-tool="pen"] body),
+  :global(html[data-mode="bento"][data-tool="eraser"] body) {
+    user-select: none !important;
+    -webkit-user-select: none !important;
+  }
+
+  /* Default Pen/Eraser state (Palm Rejection OFF) */
   :global(html[data-mode="bento"][data-tool="pen"] #wb-canvas),
   :global(html[data-mode="bento"][data-tool="eraser"] #wb-canvas) { 
     pointer-events: auto; 
     touch-action: none; 
     overscroll-behavior: none; 
+  }
+
+  /* ---> NEW FIX: Allow touch panning ONLY when Palm Rejection is ON <--- */
+  :global(html[data-mode="bento"][data-tool="pen"][data-palm-reject="true"] #wb-canvas),
+  :global(html[data-mode="bento"][data-tool="eraser"][data-palm-reject="true"] #wb-canvas) {
+    touch-action: pan-x pan-y;
   }
 
   /* Subtle Exit Button */
@@ -173,8 +188,15 @@
     function updatePalmRejectUI() {
       const btn = document.getElementById('btn-palm-reject');
       if (btn) {
-        if (palmRejectionEnabled) btn.classList.add('active');
-        else btn.classList.remove('active');
+        if (palmRejectionEnabled) {
+          btn.classList.add('active');
+          // Tell CSS that palm rejection is ON
+          document.documentElement.setAttribute('data-palm-reject', 'true');
+        } else {
+          btn.classList.remove('active');
+          // Tell CSS that palm rejection is OFF
+          document.documentElement.setAttribute('data-palm-reject', 'false');
+        }
       }
     }
     updatePalmRejectUI();
@@ -197,7 +219,7 @@
       window.addEventListener('resize', resizeCanvas, { signal: globalAborter.signal });
       setTimeout(resizeCanvas, 500); 
 
-      // FIX: Only prevent touch if palm rejection is OFF or if it's the pencil
+      // FIX: Check cancelable before preventDefault to stop Safari/Chrome warnings
       const preventTouchWhenDrawing = (e) => {
         const tool = projectorStore.get().tool;
         if (tool === 'pen' || tool === 'eraser') {
@@ -205,7 +227,7 @@
             if (palmRejectionEnabled && e.touches) {
                return; // Let the browser scroll
             }
-            e.preventDefault();
+            if (e.cancelable) e.preventDefault();
         }
       };
       
@@ -226,7 +248,7 @@
       
       if (palmRejectionEnabled && e.pointerType === 'touch') return;
 
-      e.preventDefault(); 
+      if (e.cancelable) e.preventDefault(); 
       
       try { canvas.setPointerCapture(e.pointerId); } catch(err) {}
       
@@ -243,7 +265,7 @@
 
     function draw(e) {
       if (!localState.isDrawing || !localState.currentStroke) return;
-      e.preventDefault();
+      if (e.cancelable) e.preventDefault();
       const x = e.pageX; const y = e.pageY;
       localState.currentStroke.points.push({x, y});
       ctx.lineTo(x, y); ctx.stroke();
@@ -251,7 +273,7 @@
 
     function stopDrawing(e) {
       if (!localState.isDrawing) return;
-      e.preventDefault();
+      if (e.cancelable) e.preventDefault();
       
       try { canvas.releasePointerCapture(e.pointerId); } catch(err) {}
 
@@ -322,7 +344,7 @@
 
       fab.addEventListener('pointerdown', (e) => {
         if (!projectorStore.get().isToolbarMinimized) return; 
-        e.preventDefault(); 
+        if (e.cancelable) e.preventDefault(); 
         
         try { fab.setPointerCapture(e.pointerId); } catch(err) {}
 
@@ -481,7 +503,7 @@
       const scrollAmount = window.innerHeight * 0.8;
       if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(e.key)) { e.preventDefault(); window.scrollBy({ top: scrollAmount, behavior: 'smooth' }); }
       if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); window.scrollBy({ top: -scrollAmount, behavior: 'smooth' }); }
-    }, { capture: true, signal: globalAborter.signal }); // <-- Handled cleanup here
+    }, { capture: true, signal: globalAborter.signal });
 
     setupCanvas();
     initDragLogic();
