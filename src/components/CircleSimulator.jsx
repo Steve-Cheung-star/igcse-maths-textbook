@@ -32,7 +32,6 @@ export default function CircleSimulator({ category = 'angles' }) {
             { id: 'unit-circle', title: 'The Unit Circle', cat: 'trig' }
         ];
 
-        // Filter based on the prop passed to the component
         const THEOREMS = ALL_THEOREMS.filter(t => t.cat === category);
 
         let currentTheorem = THEOREMS.length > 0 ? THEOREMS[0].id : '';
@@ -55,7 +54,6 @@ export default function CircleSimulator({ category = 'angles' }) {
             };
         }
 
-        const onResize = () => resize();
         const onMouseDown = e => startDrag(e);
         const onMouseMove = e => drag(e);
         const onMouseUp = () => endDrag();
@@ -65,10 +63,32 @@ export default function CircleSimulator({ category = 'angles' }) {
         const onSwitch = () => toggleVariant();
         const onRandom = () => randomize();
 
-        function init() {
-            window.addEventListener('resize', onResize);
-            resize();
+        // CRITICAL FIX: Replaced window.resize with ResizeObserver. 
+        // This ensures the canvas draws correctly even if Astro loads CSS late, 
+        // or if Projector Mode scales the layout without resizing the browser window.
+        const resizeObserver = new ResizeObserver(() => {
+            if (!canvas || canvas.offsetWidth === 0) return; // Wait until CSS is actually applied
+            
+            const width = canvas.offsetWidth;
+            const height = canvas.offsetHeight;
+            const dpr = window.devicePixelRatio || 1;
+            
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            
+            ctx.resetTransform();
+            ctx.scale(dpr, dpr);
+            
+            centreX = width / 2;
+            centreY = height / 2;
+            radius = Math.min(width, height) / 2.5 - 20;
+            
+            // Only reset points if they haven't been initialized yet, 
+            // otherwise just scale them to the new layout so user doesn't lose their drag position
+            resetPoints();
+        });
 
+        function init() {
             tabsContainer.innerHTML = '';
             THEOREMS.forEach(t => {
                 const btn = document.createElement('button');
@@ -92,6 +112,7 @@ export default function CircleSimulator({ category = 'angles' }) {
             switchBtn.addEventListener('click', onSwitch);
             randomBtn.addEventListener('click', onRandom);
 
+            resizeObserver.observe(container); // Start watching for layout changes!
             animId = requestAnimationFrame(animateLoop);
         }
         
@@ -100,27 +121,6 @@ export default function CircleSimulator({ category = 'angles' }) {
             animId = requestAnimationFrame(animateLoop);
         }
 
-        // CRITICAL FIX 1: Use offsetWidth/Height instead of getBoundingClientRect
-        // offsetWidth ignores CSS scaling, giving us the pure logical dimensions.
-        function resize() {
-            const width = canvas.offsetWidth;
-            const height = canvas.offsetHeight;
-            const dpr = window.devicePixelRatio || 1;
-            
-            canvas.width = width * dpr;
-            canvas.height = height * dpr;
-            
-            ctx.resetTransform();
-            ctx.scale(dpr, dpr);
-            
-            centreX = width / 2;
-            centreY = height / 2;
-            radius = Math.min(width, height) / 2.5 - 20;
-            resetPoints();
-        }
-
-        // CRITICAL FIX 2: A perfect coordinate mapper
-        // This takes the physical screen click and unscales it back to canvas logic.
         function getMousePos(e) {
             const rect = canvas.getBoundingClientRect();
             const scaleX = canvas.offsetWidth / rect.width;
@@ -190,6 +190,7 @@ export default function CircleSimulator({ category = 'angles' }) {
         }
 
         function resetPoints() {
+            if (!centreX || !centreY) return; // Guard clause against premature firing
             const rad = radius;
             points = [];
             if (currentTheorem === 'semicircle') {
@@ -249,7 +250,6 @@ export default function CircleSimulator({ category = 'angles' }) {
             }
         }
 
-        // CRITICAL FIX 3: Apply the unscaled mouse position directly!
         function startDrag(e) {
             const pos = getMousePos(e);
             points.forEach(p => { 
@@ -257,7 +257,6 @@ export default function CircleSimulator({ category = 'angles' }) {
             });
         }
 
-        // CRITICAL FIX 4: Apply the unscaled mouse position to the drag limits
         function drag(e) {
             if (!draggingPoint) return;
             const pos = getMousePos(e);
@@ -353,6 +352,7 @@ export default function CircleSimulator({ category = 'angles' }) {
         function lineSide(A, B, P) { return Math.sign((B.x - A.x) * (P.y - A.y) - (B.y - A.y) * (P.x - A.x)); }
 
         function draw() {
+            if (canvas.offsetWidth === 0) return; // Don't draw until layout is established
             const rect = canvas.getBoundingClientRect();
             ctx.clearRect(0, 0, rect.width, rect.height);
             
@@ -368,6 +368,7 @@ export default function CircleSimulator({ category = 'angles' }) {
 
             if (currentTheorem === 'semicircle') {
                 const [A, B, C] = points;
+                if(!A || !B || !C) return;
                 ctx.setLineDash([5, 5]); ctx.strokeStyle = theme.muted; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke(); ctx.setLineDash([]);
                 ctx.strokeStyle = theme.accent1; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(C.x, C.y); ctx.lineTo(B.x, B.y); ctx.stroke();
                 drawRightAngle(C, A.x, A.y, B.x, B.y, 18, theme.accent1);
@@ -375,6 +376,7 @@ export default function CircleSimulator({ category = 'angles' }) {
 
             } else if (currentTheorem === 'tangent') {
                 const P = points[0];
+                if(!P) return;
                 ctx.strokeStyle = theme.accent2; ctx.beginPath(); ctx.moveTo(centreX, centreY); ctx.lineTo(P.x, P.y); ctx.stroke();
 
                 const angP = Math.atan2(P.y - centreY, P.x - centreX);
@@ -387,6 +389,7 @@ export default function CircleSimulator({ category = 'angles' }) {
 
             } else if (currentTheorem === 'centre') {
                 const [A, B, C] = points;
+                if(!A || !B || !C) return;
                 ctx.strokeStyle = theme.accent1; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(centreX, centreY); ctx.lineTo(B.x, B.y); ctx.stroke();
                 ctx.strokeStyle = theme.accent2; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(C.x, C.y); ctx.lineTo(B.x, B.y); ctx.stroke();
 
@@ -406,6 +409,7 @@ export default function CircleSimulator({ category = 'angles' }) {
                 mathOutput.innerHTML = `Center (${cleanCenter}°) = 2 × Circumference (${cleanCircum.toFixed(1)}°)`;
 
             } else if (currentTheorem === 'segment') {
+                if(points.length < 4) return;
                 const sorted = [...points].sort((a, b) => Math.atan2(a.y - centreY, a.x - centreX) - Math.atan2(b.y - centreY, b.x - centreX));
                 const [P0, P1, P2, P3] = sorted;
 
@@ -428,6 +432,7 @@ export default function CircleSimulator({ category = 'angles' }) {
                 }
 
             } else if (currentTheorem === 'cyclic') {
+                if(points.length < 4) return;
                 const sorted = [...points].sort((a, b) => Math.atan2(a.y - centreY, a.x - centreX) - Math.atan2(b.y - centreY, b.x - centreX));
                 const [P0, P1, P2, P3] = sorted;
 
@@ -450,6 +455,7 @@ export default function CircleSimulator({ category = 'angles' }) {
 
             } else if (currentTheorem === 'alt') {
                 const [P, A, B] = points;
+                if(!P || !A || !B) return;
                 const angP = Math.atan2(P.y - centreY, P.x - centreX);
                 const t1 = { x: P.x - Math.sin(angP) * 200, y: P.y + Math.cos(angP) * 200 };
                 const t2 = { x: P.x + Math.sin(angP) * 200, y: P.y - Math.cos(angP) * 200 };
@@ -474,6 +480,7 @@ export default function CircleSimulator({ category = 'angles' }) {
 
             } else if (currentTheorem === 'equal-chords') {
                 const [A, B, C] = points;
+                if(!A || !B || !C) return;
                 const angA = Math.atan2(A.y - centreY, A.x - centreX);
                 const angB = Math.atan2(B.y - centreY, B.x - centreX);
                 const diff = angB - angA;
@@ -506,6 +513,7 @@ export default function CircleSimulator({ category = 'angles' }) {
 
             } else if (currentTheorem === 'perp-bisector') {
                 const [A, B] = points;
+                if(!A || !B) return;
                 const mid = { x: (A.x + B.x) / 2, y: (A.y + B.y) / 2 };
 
                 ctx.strokeStyle = theme.accent1; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke();
@@ -530,6 +538,7 @@ export default function CircleSimulator({ category = 'angles' }) {
 
             } else if (currentTheorem === 'ext-tangents') {
                 const P = points[0];
+                if(!P) return;
                 let dx = P.x - centreX, dy = P.y - centreY;
                 let dist = Math.hypot(dx, dy);
                 let angBase = Math.atan2(dy, dx);
@@ -567,6 +576,7 @@ export default function CircleSimulator({ category = 'angles' }) {
                 }
             } else if (currentTheorem === 'unit-circle') {
                 const P = points[0];
+                if(!P) return;
                 let angleRad = Math.atan2(-(P.y - centreY), P.x - centreX);
                 if (angleRad < 0) angleRad += Math.PI * 2;
 
@@ -636,7 +646,7 @@ export default function CircleSimulator({ category = 'angles' }) {
         init();
 
         return () => {
-            window.removeEventListener('resize', onResize);
+            resizeObserver.disconnect();
             if (canvas) {
                 canvas.removeEventListener('mousedown', onMouseDown);
                 canvas.removeEventListener('mousemove', onMouseMove);
