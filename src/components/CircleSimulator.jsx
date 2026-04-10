@@ -100,20 +100,35 @@ export default function CircleSimulator({ category = 'angles' }) {
             animId = requestAnimationFrame(animateLoop);
         }
 
+        // CRITICAL FIX 1: Use offsetWidth/Height instead of getBoundingClientRect
+        // offsetWidth ignores CSS scaling, giving us the pure logical dimensions.
         function resize() {
-            const rect = canvas.getBoundingClientRect();
+            const width = canvas.offsetWidth;
+            const height = canvas.offsetHeight;
             const dpr = window.devicePixelRatio || 1;
             
-            canvas.width = rect.width * dpr;
-            canvas.height = rect.height * dpr;
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
             
             ctx.resetTransform();
             ctx.scale(dpr, dpr);
             
-            centreX = rect.width / 2;
-            centreY = rect.height / 2;
-            radius = Math.min(rect.width, rect.height) / 2.5 - 20;
+            centreX = width / 2;
+            centreY = height / 2;
+            radius = Math.min(width, height) / 2.5 - 20;
             resetPoints();
+        }
+
+        // CRITICAL FIX 2: A perfect coordinate mapper
+        // This takes the physical screen click and unscales it back to canvas logic.
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.offsetWidth / rect.width;
+            const scaleY = canvas.offsetHeight / rect.height;
+            return {
+                x: (e.clientX - rect.left) * scaleX,
+                y: (e.clientY - rect.top) * scaleY
+            };
         }
 
         function selectTheorem(id) {
@@ -160,7 +175,6 @@ export default function CircleSimulator({ category = 'angles' }) {
                 points.forEach((p, i) => { p.x = centreX + Math.cos(angs[i]) * rad; p.y = centreY + Math.sin(angs[i]) * rad; });
             } else if (currentTheorem === 'ext-tangents') {
                 const ang = Math.random() * Math.PI * 2;
-                // Ensures randomize doesn't push the point out of the canvas bounds
                 const maxDist = Math.min(centreX, centreY) - 20; 
                 const dist = (rad + 15) + Math.random() * (maxDist - (rad + 15));
                 points[0].x = centreX + Math.cos(ang) * dist;
@@ -220,7 +234,6 @@ export default function CircleSimulator({ category = 'angles' }) {
                     { x: centreX + Math.cos(2.3) * rad, y: centreY + Math.sin(2.3) * rad, type: 'circle', label: 'B' }
                 ];
             } else if (currentTheorem === 'ext-tangents') {
-                // Ensure the initial spawn point is comfortably within the canvas bounds
                 const safeDist = Math.min(rad * 1.5, centreX - 25);
                 points = [
                     { x: centreX + safeDist, y: centreY, type: 'free', label: 'P' }
@@ -236,27 +249,26 @@ export default function CircleSimulator({ category = 'angles' }) {
             }
         }
 
+        // CRITICAL FIX 3: Apply the unscaled mouse position directly!
         function startDrag(e) {
-            const rect = canvas.getBoundingClientRect();
-            const mx = e.clientX - rect.left;
-            const my = e.clientY - rect.top;
+            const pos = getMousePos(e);
             points.forEach(p => { 
-                if (p.type !== 'fixed' && Math.hypot(p.x - mx, p.y - my) < 30) draggingPoint = p; 
+                if (p.type !== 'fixed' && Math.hypot(p.x - pos.x, p.y - pos.y) < 30) draggingPoint = p; 
             });
         }
 
+        // CRITICAL FIX 4: Apply the unscaled mouse position to the drag limits
         function drag(e) {
             if (!draggingPoint) return;
-            const rect = canvas.getBoundingClientRect();
-            const mx = e.clientX - rect.left;
-            const my = e.clientY - rect.top;
+            const pos = getMousePos(e);
+            const mx = pos.x;
+            const my = pos.y;
 
             if (currentTheorem === 'ext-tangents' && draggingPoint.label === 'P') {
                 let dx = mx - centreX;
                 let dy = my - centreY;
                 let dist = Math.hypot(dx, dy);
                 
-                // Keep P within canvas walls and outside the main circle
                 let maxBounds = Math.min(centreX, centreY) - 15;
                 if (dist < radius + 15) dist = radius + 15;
                 if (dist > maxBounds) dist = maxBounds;
@@ -265,9 +277,8 @@ export default function CircleSimulator({ category = 'angles' }) {
                 draggingPoint.y = centreY + (dy / dist) * dist;
                 
             } else if (draggingPoint.type === 'free') {
-                // Keep strictly inside the canvas
-                draggingPoint.x = Math.max(15, Math.min(rect.width - 15, mx));
-                draggingPoint.y = Math.max(15, Math.min(rect.height - 15, my));
+                draggingPoint.x = Math.max(15, Math.min(canvas.offsetWidth - 15, mx));
+                draggingPoint.y = Math.max(15, Math.min(canvas.offsetHeight - 15, my));
             } else {
                 const angle = Math.atan2(my - centreY, mx - centreX);
                 draggingPoint.x = centreX + Math.cos(angle) * radius;
@@ -355,7 +366,6 @@ export default function CircleSimulator({ category = 'angles' }) {
 
             mathOutput.innerHTML = ''; ctx.lineWidth = 2.5;
 
-            // ... Theorem specific drawings
             if (currentTheorem === 'semicircle') {
                 const [A, B, C] = points;
                 ctx.setLineDash([5, 5]); ctx.strokeStyle = theme.muted; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke(); ctx.setLineDash([]);
@@ -485,7 +495,6 @@ export default function CircleSimulator({ category = 'angles' }) {
                 drawRightAngle(midAB, centreX, centreY, A.x, A.y, 10, theme.line);
                 drawRightAngle(midCD, centreX, centreY, C.x, C.y, 10, theme.line);
 
-                // explicitly draw dependent point D
                 ctx.beginPath(); ctx.fillStyle = theme.accent2; ctx.arc(D.x, D.y, 8, 0, Math.PI * 2); ctx.fill();
                 ctx.lineWidth = 2; ctx.strokeStyle = theme.bg; ctx.stroke();
                 drawPointLabel(D.x + 12, D.y - 12, D.label, theme);
@@ -507,7 +516,6 @@ export default function CircleSimulator({ category = 'angles' }) {
 
                 drawRightAngle(mid, centreX, centreY, A.x, A.y, 12, theme.line);
 
-                // explicitly draw calculated mid point M
                 ctx.beginPath(); ctx.fillStyle = theme.muted; ctx.arc(mid.x, mid.y, 5, 0, Math.PI * 2); ctx.fill();
                 drawPointLabel(mid.x + 10, mid.y + 15, 'M', theme);
 
@@ -542,7 +550,6 @@ export default function CircleSimulator({ category = 'angles' }) {
                 drawRightAngle(T1, P.x, P.y, centreX, centreY, 12, theme.line);
                 drawRightAngle(T2, P.x, P.y, centreX, centreY, 12, theme.line);
 
-                // Explicitly draw dependent tangent points
                 [T1, T2].forEach(pt => {
                     ctx.beginPath(); ctx.fillStyle = theme.pointFixed; ctx.arc(pt.x, pt.y, 6, 0, Math.PI * 2); ctx.fill();
                     ctx.lineWidth = 2; ctx.strokeStyle = theme.bg; ctx.stroke();
@@ -600,10 +607,8 @@ export default function CircleSimulator({ category = 'angles' }) {
                 }
             }
 
-            // Universal loop to draw explicit nodes for all interactive points!
             points.forEach(p => {
                 ctx.beginPath();
-                // Draggable points look interactive, fixed points look muted
                 ctx.fillStyle = p.type === 'fixed' ? theme.pointFixed : theme.accent1;
                 ctx.arc(p.x, p.y, p.type === 'fixed' ? 6 : 8, 0, Math.PI * 2);
                 ctx.fill();
@@ -612,7 +617,6 @@ export default function CircleSimulator({ category = 'angles' }) {
                 ctx.strokeStyle = theme.bg;
                 ctx.stroke();
 
-                // Intelligently position labels so they don't clip into the nodes
                 if (p.label) {
                     let lx = p.x; 
                     let ly = p.y;

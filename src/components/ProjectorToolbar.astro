@@ -52,14 +52,14 @@
   :global(#wb-canvas) { 
     position: absolute; top: 0; left: 0; z-index: 999998; 
     pointer-events: none; display: none; 
-    touch-action: none; /* Critical for iPad drawing */
+    touch-action: none; 
   }
   :global(html[data-mode="bento"] #wb-canvas) { display: block; }
   :global(html[data-mode="bento"][data-tool="pen"] #wb-canvas),
   :global(html[data-mode="bento"][data-tool="eraser"] #wb-canvas) { 
     pointer-events: auto; 
     touch-action: none; 
-    overscroll-behavior: none; /* Prevents iPad bounce specifically when drawing */
+    overscroll-behavior: none; 
   }
 
   /* Subtle Exit Button */
@@ -72,7 +72,7 @@
     z-index: 9999999; display: flex; align-items: center; background: var(--sl-color-bg-nav);
     border: 1px solid var(--sl-color-hairline); border-radius: 12px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.3); backdrop-filter: blur(12px);
-    touch-action: none; /* Critical for iPad drag */
+    touch-action: none; 
   }
 
   /* Minimized State */
@@ -133,15 +133,21 @@
   // @ts-nocheck
   import { projectorStore, toolsConfig } from '../store/projectorStore.js';
 
+  // Astro View Transitions cleanup to prevent memory leaks / duplicate events
+  let globalAborter = new AbortController();
+
+  document.addEventListener('astro:before-preparation', () => {
+    globalAborter.abort();
+    globalAborter = new AbortController();
+  });
+
   function initWhiteboard() {
-    // Escape hatch for mobile views - strictly prevent initialization
     if (typeof window !== 'undefined' && window.innerWidth < 768) return;
 
     const portal = document.getElementById('wb-portal');
     if (!portal || portal.dataset.initialized) return;
     portal.dataset.initialized = 'true';
 
-    // --- RESTORE SAVED STATE ON LOAD ---
     const savedMinState = localStorage.getItem('wb-toolbar-minimized');
     if (savedMinState !== null) {
       projectorStore.setKey('isToolbarMinimized', savedMinState === 'true');
@@ -156,9 +162,7 @@
       projectorStore.setKey('colorName', savedColorName);
       projectorStore.setKey('colorValue', savedColorVal);
     }
-    // -----------------------------------
 
-    // --- Local Canvas & Palm Rejection State ---
     const localState = { strokes: [], redoStack: [], currentStroke: null, isDrawing: false };
     let palmRejectionEnabled = localStorage.getItem('wb-palm-reject') === 'true';
     let canvas, ctx;
@@ -175,7 +179,6 @@
     }
     updatePalmRejectUI();
 
-    // --- Canvas Setup ---
     function setupCanvas() {
       if (document.getElementById('wb-canvas')) return;
       canvas = document.createElement('canvas');
@@ -190,20 +193,25 @@
         redrawAll(); 
       };
       
-      window.addEventListener('resize', resizeCanvas);
+      // Hook up with signal for cleanup!
+      window.addEventListener('resize', resizeCanvas, { signal: globalAborter.signal });
       setTimeout(resizeCanvas, 500); 
 
-      // CONDITIONAL TOUCH TRAP
+      // FIX: Only prevent touch if palm rejection is OFF or if it's the pencil
       const preventTouchWhenDrawing = (e) => {
         const tool = projectorStore.get().tool;
         if (tool === 'pen' || tool === 'eraser') {
-          e.preventDefault();
+            // Allow native touch scrolling if palm rejection is ON and it's a touch event
+            if (palmRejectionEnabled && e.touches) {
+               return; // Let the browser scroll
+            }
+            e.preventDefault();
         }
       };
+      
       canvas.addEventListener('touchstart', preventTouchWhenDrawing, { passive: false });
       canvas.addEventListener('touchmove', preventTouchWhenDrawing, { passive: false });
 
-      // Ensure pointer events are marked passive: false to lock the OS
       canvas.addEventListener('pointerdown', startDrawing, { passive: false });
       canvas.addEventListener('pointermove', draw, { passive: false });
       canvas.addEventListener('pointerup', stopDrawing);
@@ -211,18 +219,15 @@
       canvas.addEventListener('pointerout', stopDrawing);
     }
 
-    // --- Drawing Logic ---
     function startDrawing(e) {
-      if (window.innerWidth < 768) return; // double-check guard
+      if (window.innerWidth < 768) return; 
       const globalState = projectorStore.get();
       if (globalState.tool !== 'pen' && globalState.tool !== 'eraser') return;
       
-      // PALM REJECTION CHECK
       if (palmRejectionEnabled && e.pointerType === 'touch') return;
 
       e.preventDefault(); 
       
-      // iPad Fix: Lock pointer to canvas to prevent drops
       try { canvas.setPointerCapture(e.pointerId); } catch(err) {}
       
       localState.isDrawing = true; localState.redoStack = []; 
@@ -231,6 +236,9 @@
       ctx.beginPath(); ctx.moveTo(x, y); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
       ctx.lineWidth = globalState.tool === 'eraser' ? 40 : 6; ctx.strokeStyle = localState.currentStroke.color;
       ctx.globalCompositeOperation = globalState.tool === 'eraser' ? 'destination-out' : 'source-over';
+      
+      ctx.lineTo(x, y);
+      ctx.stroke();
     }
 
     function draw(e) {
@@ -278,7 +286,6 @@
       updatePalmRejectUI();
     }
 
-    // --- UI Interactions ---
     portal.addEventListener('click', (e) => {
       const btn = e.target.closest('button');
       if (!btn) return;
@@ -303,7 +310,6 @@
       }
     });
 
-    // --- Drag Logic ---
     function initDragLogic() {
       const wrapper = document.getElementById('wb-toolbar-wrapper');
       const fab = document.getElementById('wb-fab-toggle');
@@ -400,9 +406,7 @@
       }
     }
 
-    // --- Store Subscription for UI Updates ---
     projectorStore.subscribe(state => {
-      // SAVE STATE TO LOCAL STORAGE ON ANY CHANGE
       localStorage.setItem('wb-toolbar-minimized', state.isToolbarMinimized.toString());
       localStorage.setItem('wb-active-tool', state.tool);
       if (state.colorName && state.colorValue) {
@@ -447,7 +451,6 @@
       }
     });
 
-    // --- Keybinds ---
     window.addEventListener('keydown', (e) => {
       if (!projectorStore.get().isBento) return;
       if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
@@ -478,11 +481,11 @@
       const scrollAmount = window.innerHeight * 0.8;
       if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(e.key)) { e.preventDefault(); window.scrollBy({ top: scrollAmount, behavior: 'smooth' }); }
       if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); window.scrollBy({ top: -scrollAmount, behavior: 'smooth' }); }
-    }, true);
+    }, { capture: true, signal: globalAborter.signal }); // <-- Handled cleanup here
 
     setupCanvas();
     initDragLogic();
-    window.addEventListener('resize', clampToolbarPosition);
+    window.addEventListener('resize', clampToolbarPosition, { signal: globalAborter.signal });
   }
 
   initWhiteboard();
