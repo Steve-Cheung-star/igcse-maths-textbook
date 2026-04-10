@@ -26,10 +26,10 @@
       <div class="divider"></div>
       
       <div class="tool-group colors">
-        <button class="color-btn cyan active" data-action="set-color" data-val="cyan" title="Cyan (Q)"></button>
-        <button class="color-btn magenta" data-action="set-color" data-val="magenta" title="Magenta (W)"></button>
-        <button class="color-btn yellow" data-action="set-color" data-val="yellow" title="Yellow (E)"></button>
-        <button class="color-btn lime" data-action="set-color" data-val="lime" title="Lime (R)"></button>
+        <button class="color-btn color1 active" data-action="set-color" data-val="color1" title="Color 1 (Q)"></button>
+        <button class="color-btn color2" data-action="set-color" data-val="color2" title="Color 2 (W)"></button>
+        <button class="color-btn color3" data-action="set-color" data-val="color3" title="Color 3 (E)"></button>
+        <button class="color-btn color4" data-action="set-color" data-val="color4" title="Color 4 (R)"></button>
       </div>
 
       <div class="divider"></div>
@@ -47,6 +47,22 @@
 </div>
 
 <style>
+  :root {
+    /* SMART PALETTE: LIGHT MODE (Projector Safe) */
+    --wb-c1: #1d4ed8; /* Navy Blue */
+    --wb-c2: #b91c1c; /* Crimson Red */
+    --wb-c3: #15803d; /* Forest Green */
+    --wb-c4: #7e22ce; /* Dark Purple */
+  }
+
+  :root[data-theme="dark"] {
+    /* SMART PALETTE: DARK MODE (Neon Glow) */
+    --wb-c1: #00ffff; /* Cyan */
+    --wb-c2: #ff00ff; /* Magenta */
+    --wb-c3: #ffff00; /* Yellow */
+    --wb-c4: #39ff14; /* Lime */
+  }
+
   html:not([data-mode="bento"]) [data-bento-portal] { display: none !important; }
 
   :global(#wb-canvas) { 
@@ -115,13 +131,15 @@
   .tool-btn.active { background: var(--sl-color-text-accent); border-color: var(--sl-color-text-accent); color: var(--sl-color-bg); }
   .tool-btn.clear:hover { background: rgba(255,0,0,0.2); color: #ff4444; }
   #btn-palm-reject.active { background: #3b82f6; border-color: #3b82f6; color: white; }
+  
   .color-btn { width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); cursor: pointer; transition: transform 0.2s; }
   .color-btn:hover { transform: scale(1.2); }
   .color-btn.active { border-color: var(--sl-color-text); transform: scale(1.1); }
-  .cyan { background: #00ffff; box-shadow: 0 0 8px #00ffff88; }
-  .magenta { background: #ff00ff; box-shadow: 0 0 8px #ff00ff88; }
-  .yellow { background: #ffff00; box-shadow: 0 0 8px #ffff0088; }
-  .lime { background: #39ff14; box-shadow: 0 0 8px #39ff1488; }
+  
+  .color1 { background: var(--wb-c1); box-shadow: 0 0 8px var(--wb-c1); }
+  .color2 { background: var(--wb-c2); box-shadow: 0 0 8px var(--wb-c2); }
+  .color3 { background: var(--wb-c3); box-shadow: 0 0 8px var(--wb-c3); }
+  .color4 { background: var(--wb-c4); box-shadow: 0 0 8px var(--wb-c4); }
   
   @media (max-width: 768px) { 
     #wb-portal, #wb-exit, #wb-toolbar-wrapper { display: none !important; }
@@ -131,7 +149,7 @@
 
 <script>
   // @ts-nocheck
-  import { projectorStore, toolsConfig } from '../store/projectorStore.js';
+  import { projectorStore } from '../store/projectorStore.js';
 
   let globalAborter = new AbortController();
 
@@ -147,27 +165,52 @@
     if (!portal || portal.dataset.initialized) return;
     portal.dataset.initialized = 'true';
 
-    const savedMinState = localStorage.getItem('wb-toolbar-minimized');
-    if (savedMinState !== null) {
-      projectorStore.setKey('isToolbarMinimized', savedMinState === 'true');
+    // SMART PALETTE ENGINE
+    const themeMap = {
+      dark: { color1: '#00ffff', color2: '#ff00ff', color3: '#ffff00', color4: '#39ff14' },
+      light: { color1: '#1d4ed8', color2: '#b91c1c', color3: '#15803d', color4: '#7e22ce' }
+    };
+
+    function getThemeColor(colorName) {
+      if (colorName === 'eraser') return 'rgba(0,0,0,1)';
+      const isDark = document.documentElement.dataset.theme === 'dark' || (!document.documentElement.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      return themeMap[isDark ? 'dark' : 'light'][colorName] || colorName;
     }
+
+    // Safely upgrade legacy colors from old cache
+    let savedColorName = localStorage.getItem('wb-active-color-name');
+    if (savedColorName === 'cyan') savedColorName = 'color1';
+    if (savedColorName === 'magenta') savedColorName = 'color2';
+    if (savedColorName === 'yellow') savedColorName = 'color3';
+    if (savedColorName === 'lime') savedColorName = 'color4';
+    if (!savedColorName) savedColorName = 'color1';
+
+    projectorStore.setKey('colorName', savedColorName);
+
+    const savedMinState = localStorage.getItem('wb-toolbar-minimized');
+    if (savedMinState !== null) projectorStore.setKey('isToolbarMinimized', savedMinState === 'true');
 
     const savedTool = localStorage.getItem('wb-active-tool');
     if (savedTool) projectorStore.setKey('tool', savedTool);
-
-    const savedColorName = localStorage.getItem('wb-active-color-name');
-    const savedColorVal = localStorage.getItem('wb-active-color-val');
-    if (savedColorName && savedColorVal) {
-      projectorStore.setKey('colorName', savedColorName);
-      projectorStore.setKey('colorValue', savedColorVal);
-    }
 
     const localState = { strokes: [], redoStack: [], currentStroke: null, isDrawing: false, isLasering: false };
     let palmRejectionEnabled = localStorage.getItem('wb-palm-reject') === 'true';
     let canvas, ctx;
 
     const savedStrokes = sessionStorage.getItem(`wb-strokes-${window.location.pathname}`);
-    if (savedStrokes) { try { localState.strokes = JSON.parse(savedStrokes); } catch(e){} }
+    if (savedStrokes) { 
+      try { 
+        localState.strokes = JSON.parse(savedStrokes); 
+        // Migrate old strokes to semantic colors if they used hex
+        localState.strokes.forEach(s => {
+          if (s.color === toolsConfig?.colors?.cyan || s.color === '#00ffff') s.colorName = 'color1';
+          if (s.color === toolsConfig?.colors?.magenta || s.color === '#ff00ff') s.colorName = 'color2';
+          if (s.color === toolsConfig?.colors?.yellow || s.color === '#ffff00') s.colorName = 'color3';
+          if (s.color === toolsConfig?.colors?.lime || s.color === '#39ff14') s.colorName = 'color4';
+          if (!s.colorName) s.colorName = s.color; // Fallback
+        });
+      } catch(e){} 
+    }
 
     function updatePalmRejectUI() {
       const btn = document.getElementById('btn-palm-reject');
@@ -200,26 +243,38 @@
       window.addEventListener('resize', resizeCanvas, { signal: globalAborter.signal });
       setTimeout(resizeCanvas, 500); 
 
-      // === THE IPAD STYLUS FIX ===
+      // Observer to automatically redraw strokes when Astro Theme changes!
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.attributeName === 'data-theme') {
+            redrawAll();
+            // Update dynamic icon color
+            const state = projectorStore.get();
+            if (state.tool === 'pen') {
+               const dynamicIcon = document.getElementById('wb-dynamic-icon');
+               if (dynamicIcon) {
+                  const svgPath = dynamicIcon.querySelector('path');
+                  if (svgPath) svgPath.style.stroke = getThemeColor(state.colorName);
+               }
+            }
+          }
+        });
+      });
+      observer.observe(document.documentElement, { attributes: true });
+
       const preventTouchWhenDrawing = (e) => {
         const tool = projectorStore.get().tool;
         if (tool === 'pen' || tool === 'eraser' || tool === 'laser') {
-            
             if (palmRejectionEnabled && e.touches && tool !== 'laser') {
-               // Check if any touch on the screen belongs to the Apple Pencil
                let isStylus = false;
                for (let i = 0; i < e.touches.length; i++) {
-                 // Apple Pencil fires touchType 'stylus'
                  if (e.touches[i].touchType === 'stylus' || e.touches[i].touchType === 'pen') {
                    isStylus = true;
                    break;
                  }
                }
-               // If it's strictly just your fingers, let the browser scroll naturally
                if (!isStylus) return; 
             }
-            
-            // If it's a stylus, or if Palm Rejection is OFF, we explicitly BLOCK the scroll!
             if (e.cancelable) e.preventDefault();
         }
       };
@@ -259,9 +314,17 @@
       
       localState.isDrawing = true; localState.redoStack = []; 
       const x = e.pageX; const y = e.pageY;
-      localState.currentStroke = { tool: globalState.tool, color: globalState.tool === 'eraser' ? 'rgba(0,0,0,1)' : globalState.colorValue, points: [{x, y}] };
+      
+      // Store semantic colorName instead of fixed hex
+      localState.currentStroke = { 
+        tool: globalState.tool, 
+        colorName: globalState.tool === 'eraser' ? 'eraser' : globalState.colorName, 
+        points: [{x, y}] 
+      };
+      
       ctx.beginPath(); ctx.moveTo(x, y); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-      ctx.lineWidth = globalState.tool === 'eraser' ? 40 : 6; ctx.strokeStyle = localState.currentStroke.color;
+      ctx.lineWidth = globalState.tool === 'eraser' ? 40 : 6; 
+      ctx.strokeStyle = getThemeColor(localState.currentStroke.colorName);
       ctx.globalCompositeOperation = globalState.tool === 'eraser' ? 'destination-out' : 'source-over';
       
       ctx.lineTo(x, y);
@@ -315,7 +378,11 @@
       localState.strokes.forEach(stroke => {
         if (stroke.points.length === 0) return;
         ctx.beginPath(); ctx.moveTo(stroke.points[0].x, stroke.points[0].y); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-        ctx.lineWidth = stroke.tool === 'eraser' ? 40 : 6; ctx.strokeStyle = stroke.color;
+        ctx.lineWidth = stroke.tool === 'eraser' ? 40 : 6; 
+        
+        // Dynamically resolve colors at draw time!
+        ctx.strokeStyle = getThemeColor(stroke.colorName || stroke.color);
+        
         ctx.globalCompositeOperation = stroke.tool === 'eraser' ? 'destination-out' : 'source-over';
         stroke.points.forEach(pt => ctx.lineTo(pt.x, pt.y)); ctx.stroke();
       });
@@ -344,7 +411,6 @@
         projectorStore.setKey('tool', val);
       } else if (action === 'set-color') {
         projectorStore.setKey('colorName', val);
-        projectorStore.setKey('colorValue', toolsConfig.colors[val]);
         projectorStore.setKey('tool', 'pen');
       } else if (action === 'toggle-palm') togglePalmRejection();
       else if (action === 'undo') undo();
@@ -456,10 +522,7 @@
     projectorStore.subscribe(state => {
       localStorage.setItem('wb-toolbar-minimized', state.isToolbarMinimized.toString());
       localStorage.setItem('wb-active-tool', state.tool);
-      if (state.colorName && state.colorValue) {
-        localStorage.setItem('wb-active-color-name', state.colorName);
-        localStorage.setItem('wb-active-color-val', state.colorValue);
-      }
+      localStorage.setItem('wb-active-color-name', state.colorName);
 
       document.documentElement.setAttribute('data-tool', state.tool);
 
@@ -472,7 +535,7 @@
           dynamicIcon.innerHTML = activeToolBtn.innerHTML;
           if (state.tool === 'pen') {
             const svgPath = dynamicIcon.querySelector('path');
-            if (svgPath) svgPath.style.stroke = state.colorValue;
+            if (svgPath) svgPath.style.stroke = getThemeColor(state.colorName);
           }
         }
       }
@@ -518,10 +581,10 @@
 
       if (e.key.toLowerCase() === 'p') togglePalmRejection();
 
-      if (e.key.toLowerCase() === 'q') { projectorStore.setKey('colorName', 'cyan'); projectorStore.setKey('colorValue', toolsConfig.colors.cyan); projectorStore.setKey('tool', 'pen'); }
-      if (e.key.toLowerCase() === 'w') { projectorStore.setKey('colorName', 'magenta'); projectorStore.setKey('colorValue', toolsConfig.colors.magenta); projectorStore.setKey('tool', 'pen'); }
-      if (e.key.toLowerCase() === 'e') { projectorStore.setKey('colorName', 'yellow'); projectorStore.setKey('colorValue', toolsConfig.colors.yellow); projectorStore.setKey('tool', 'pen'); }
-      if (e.key.toLowerCase() === 'r') { projectorStore.setKey('colorName', 'lime'); projectorStore.setKey('colorValue', toolsConfig.colors.lime); projectorStore.setKey('tool', 'pen'); }
+      if (e.key.toLowerCase() === 'q') { projectorStore.setKey('colorName', 'color1'); projectorStore.setKey('tool', 'pen'); }
+      if (e.key.toLowerCase() === 'w') { projectorStore.setKey('colorName', 'color2'); projectorStore.setKey('tool', 'pen'); }
+      if (e.key.toLowerCase() === 'e') { projectorStore.setKey('colorName', 'color3'); projectorStore.setKey('tool', 'pen'); }
+      if (e.key.toLowerCase() === 'r') { projectorStore.setKey('colorName', 'color4'); projectorStore.setKey('tool', 'pen'); }
       if (e.key.toLowerCase() === 'c') clear();
 
       if (localState.isDrawing) return;
