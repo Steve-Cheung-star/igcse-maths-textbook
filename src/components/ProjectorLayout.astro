@@ -13,12 +13,12 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
 
 <style is:global>
   /* =========================================
-     0. ENTRY BUTTON STYLING (Header Integration)
+     0. ENTRY BUTTON STYLING
      ========================================= */
   #wb-enter-projector {
     position: fixed;
-    top: 1rem;  /* Centers it vertically in the standard Starlight header */
-    right: 8.5rem; /* ~32px left of the theme toggle (adjust slightly if you have social icons) */
+    top: 1rem;
+    right: 8.5rem;
     z-index: 90;
     width: 32px;
     height: 32px;
@@ -38,9 +38,15 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
     background-color: var(--sl-color-bg-nav, rgba(255,255,255,0.05));
   }
 
-  /* Hide the entry button when projector mode is ACTIVE */
   html[data-mode="bento"] #wb-enter-projector {
     display: none !important;
+  }
+
+  /* STRICT MOBILE HIDE: Completely remove entry point for mobile */
+  @media (max-width: 768px) {
+    #wb-enter-projector {
+      display: none !important;
+    }
   }
 
   /* =========================================
@@ -64,11 +70,9 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
   html[data-mode="bento"] .sl-markdown-content canvas,
   html[data-mode="bento"] .sl-markdown-content .sim-root { max-width: 100% !important; }
 
-  /* Removed the dashed border-top from headings */
   html[data-mode="bento"] .sl-markdown-content h2,
   html[data-mode="bento"] .sl-markdown-content h3 { margin-top: 70vh !important; padding-top: 2rem !important; border-top: none !important; }
   
-  /* Removed the dashed border-top from horizontal rules */
   html[data-mode="bento"] .sl-markdown-content hr { display: block !important; margin-top: 70vh !important; margin-bottom: 2rem !important; padding: 0 !important; height: 0 !important; border: none !important; background: transparent !important; clear: both !important; }
   
   html[data-mode="bento"] .sl-markdown-content h2:first-of-type { margin-top: 2rem !important; }
@@ -89,26 +93,18 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
      ========================================= */
   html[data-mode="bento"] .sl-markdown-content aside,
   html[data-mode="bento"] .sl-markdown-content .starlight-aside {
-    /* Kill any side-floating behavior */
     float: none !important;
     clear: both !important;
     position: relative !important;
-    
-    /* Force horizontal flow */
     display: block !important;
     width: 100% !important;
-    
-    /* The magic reading-width cap (~65 characters) */
     max-width: 50ch !important; 
-    
-    /* Give it breathing room and align it with the text */
     margin-top: 2.5rem !important;
     margin-bottom: 2.5rem !important;
     margin-left: 0 !important;
     margin-right: auto !important;
   }
 
-  /* Optional: If you want ALL standard paragraph text to also obey the 65ch rule for perfect reading */
   html[data-mode="bento"] .sl-markdown-content p,
   html[data-mode="bento"] .sl-markdown-content ul,
   html[data-mode="bento"] .sl-markdown-content ol {
@@ -122,24 +118,20 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
   import { projectorStore } from '../store/projectorStore.js';
 
   function initLayout() {
-    // Prevent duplicate listeners on hot-reloads
     if (document.documentElement.dataset.layoutInit) return;
     document.documentElement.dataset.layoutInit = 'true';
 
-    // Hydrate store from local storage
-    const savedMode = localStorage.getItem('whiteboard-mode') === 'bento';
-    if (savedMode) projectorStore.setKey('isBento', true);
+    // REMOVED: Hydrating global mode from localStorage. 
+    // It will always start false (normal mode) on fresh load.
 
-    // Wire up the new Entry Button
     const enterBtn = document.getElementById('wb-enter-projector');
     if (enterBtn) {
       enterBtn.addEventListener('click', () => {
+        if (window.innerWidth < 768) return; // Strict mobile block
         projectorStore.setKey('isBento', true);
-        localStorage.setItem('whiteboard-mode', 'bento');
       });
     }
 
-    // Subscribe to state changes to toggle CSS classes
     projectorStore.subscribe((state) => {
       if (state.isBento) {
         document.documentElement.setAttribute('data-mode', 'bento');
@@ -152,11 +144,14 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
 
     // Global Hotkey (Ctrl+Alt+P)
     window.addEventListener('keydown', (e) => {
+      // Strictly prevent activating on mobile
+      if (window.innerWidth < 768) return; 
+
       if ((e.ctrlKey || e.metaKey) && e.altKey && (e.key?.toLowerCase() === 'p' || e.code === 'KeyP')) {
         e.preventDefault(); 
         const isCurrentlyBento = projectorStore.get().isBento;
         projectorStore.setKey('isBento', !isCurrentlyBento);
-        localStorage.setItem('whiteboard-mode', !isCurrentlyBento ? 'bento' : 'normal');
+        // REMOVED: Saving mode to localStorage
       }
     }, true);
   }

@@ -130,6 +130,7 @@
 </style>
 
 <script>
+  // @ts-nocheck
   import { projectorStore, toolsConfig } from '../store/projectorStore.js';
 
   function initWhiteboard() {
@@ -139,6 +140,23 @@
     const portal = document.getElementById('wb-portal');
     if (!portal || portal.dataset.initialized) return;
     portal.dataset.initialized = 'true';
+
+    // --- RESTORE SAVED STATE ON LOAD ---
+    const savedMinState = localStorage.getItem('wb-toolbar-minimized');
+    if (savedMinState !== null) {
+      projectorStore.setKey('isToolbarMinimized', savedMinState === 'true');
+    }
+
+    const savedTool = localStorage.getItem('wb-active-tool');
+    if (savedTool) projectorStore.setKey('tool', savedTool);
+
+    const savedColorName = localStorage.getItem('wb-active-color-name');
+    const savedColorVal = localStorage.getItem('wb-active-color-val');
+    if (savedColorName && savedColorVal) {
+      projectorStore.setKey('colorName', savedColorName);
+      projectorStore.setKey('colorValue', savedColorVal);
+    }
+    // -----------------------------------
 
     // --- Local Canvas & Palm Rejection State ---
     const localState = { strokes: [], redoStack: [], currentStroke: null, isDrawing: false };
@@ -175,8 +193,7 @@
       window.addEventListener('resize', resizeCanvas);
       setTimeout(resizeCanvas, 500); 
 
-      // CONDITIONAL TOUCH TRAP: Prevents Safari from eating fast strokes, 
-      // but only activates when actively holding the Pen or Eraser.
+      // CONDITIONAL TOUCH TRAP
       const preventTouchWhenDrawing = (e) => {
         const tool = projectorStore.get().tool;
         if (tool === 'pen' || tool === 'eraser') {
@@ -217,7 +234,7 @@
     }
 
     function draw(e) {
-      if (!localState.isDrawing) return;
+      if (!localState.isDrawing || !localState.currentStroke) return;
       e.preventDefault();
       const x = e.pageX; const y = e.pageY;
       localState.currentStroke.points.push({x, y});
@@ -228,7 +245,6 @@
       if (!localState.isDrawing) return;
       e.preventDefault();
       
-      // Release pointer lock
       try { canvas.releasePointerCapture(e.pointerId); } catch(err) {}
 
       localState.isDrawing = false;
@@ -296,7 +312,7 @@
       let isDragging = false; 
       let hasDragged = false; 
       let startX, startY;
-      let initialX, initialY; // Track starting point for the deadzone
+      let initialX, initialY;
 
       fab.addEventListener('pointerdown', (e) => {
         if (!projectorStore.get().isToolbarMinimized) return; 
@@ -320,14 +336,13 @@
       document.addEventListener('pointermove', (e) => {
         if (!isDragging) return;
         
-        // 5-PIXEL DEADZONE: Ignore micro-jitters from styluses
         if (!hasDragged) {
           const dx = Math.abs(e.clientX - initialX);
           const dy = Math.abs(e.clientY - initialY);
           if (dx > 5 || dy > 5) {
             hasDragged = true;
           } else {
-            return; // Don't move the toolbar yet
+            return; 
           }
         }
 
@@ -339,12 +354,10 @@
         wrapper.style.left = `${newX}px`; wrapper.style.top = `${newY}px`;
       });
 
-      // Handle all exit states (up, cancel, leave) safely
       const handleDragEnd = (e) => {
         if (isDragging) {
            try { fab.releasePointerCapture(e.pointerId); } catch(err) {}
            
-           // Only save position if we actually dragged
            if (hasDragged) {
              const rect = wrapper.getBoundingClientRect();
              localStorage.setItem('wb-toolbar-pos', JSON.stringify({ x: rect.left, y: rect.top }));
@@ -389,10 +402,16 @@
 
     // --- Store Subscription for UI Updates ---
     projectorStore.subscribe(state => {
-      // Vital CSS trigger: Push the current tool state to the HTML tag so :global() pointers activate properly
+      // SAVE STATE TO LOCAL STORAGE ON ANY CHANGE
+      localStorage.setItem('wb-toolbar-minimized', state.isToolbarMinimized.toString());
+      localStorage.setItem('wb-active-tool', state.tool);
+      if (state.colorName && state.colorValue) {
+        localStorage.setItem('wb-active-color-name', state.colorName);
+        localStorage.setItem('wb-active-color-val', state.colorValue);
+      }
+
       document.documentElement.setAttribute('data-tool', state.tool);
 
-      // Note: Added :not(#btn-palm-reject) so it isn't cleared when clicking other tools
       document.querySelectorAll('.tool-btn:not(#btn-palm-reject), .color-btn').forEach(btn => btn.classList.remove('active'));
       const activeToolBtn = document.querySelector(`[data-val="${state.tool}"]`);
       if (activeToolBtn) {

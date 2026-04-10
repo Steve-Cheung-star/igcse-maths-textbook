@@ -9,6 +9,11 @@ export default function ProjectorCalculator() {
   const [isDeg, setIsDeg] = useState(true);
   const [lastResult, setLastResult] = useState<number | null>(null);
   const [justCalculated, setJustCalculated] = useState(false);
+  
+  // Mobile check state
+  const [isMobile, setIsMobile] = useState(() => 
+    typeof window !== 'undefined' ? window.innerWidth <= 768 : false
+  );
 
   const calcRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -16,16 +21,21 @@ export default function ProjectorCalculator() {
   const dragStart = useRef({ x: 0, y: 0 });
   const initialPos = useRef({ x: 0, y: 0 });
 
-  // Focus input when opened (with slight delay for the CSS transition)
+  // Handle Window Resizing to block on mobile
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   useEffect(() => {
     if (isVisible && inputRef.current) {
       setTimeout(() => inputRef.current?.focus(), 100);
     }
   }, [isVisible]);
 
-  // Aggressive Global Hotkey Blocker
   useEffect(() => {
-    if (!isVisible) return;
+    if (!isVisible || isMobile) return;
 
     const handleGlobalKey = (e: KeyboardEvent) => {
       if (calcRef.current && calcRef.current.contains(e.target as Node)) {
@@ -49,14 +59,13 @@ export default function ProjectorCalculator() {
 
     window.addEventListener('keydown', handleGlobalKey, { capture: true });
     return () => window.removeEventListener('keydown', handleGlobalKey, { capture: true });
-  }, [isVisible]);
+  }, [isVisible, isMobile]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (justCalculated) setJustCalculated(false);
     setInputStr(e.target.value);
   };
 
-  // Drag Logic
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if ((e.target as HTMLElement).closest('button') || (e.target as HTMLElement).tagName === 'INPUT') return;
 
@@ -93,7 +102,6 @@ export default function ProjectorCalculator() {
     isDragging.current = false;
   };
 
-  // Math Helpers
   const dec2frac = (d: number) => {
     if (!d || Number.isInteger(d) || isNaN(d)) return null;
     let sign = d < 0 ? "-" : "";
@@ -178,7 +186,6 @@ export default function ProjectorCalculator() {
     if (action === 'calculate') {
       if (!currentInput) return;
 
-      // 🤫 SECRET MESSAGES DICTIONARY! Add your own here:
       const secretMessages: Record<string, string> = {
         '80085': 'Naughty naughty',
         '5318008': 'Get your head out of the gutter already',
@@ -197,14 +204,13 @@ export default function ProjectorCalculator() {
 
       if (secretMessages[currentInput]) {
         setInputStr(secretMessages[currentInput]);
-        setLastResult(null); // Clear result so they can't do math on letters
+        setLastResult(null); 
         setJustCalculated(true);
         setHistory(prev => [...prev, currentInput]);
         setHistoryIndex(-1);
-        return; // Stop right here so it doesn't throw a Syntax Error
+        return; 
       }
 
-      // Normal Math Evaluation
       try {
         let expr = currentInput;
 
@@ -213,6 +219,9 @@ export default function ProjectorCalculator() {
         if (openBrackets > closeBrackets) {
           expr += ')'.repeat(openBrackets - closeBrackets);
         }
+
+        // Translates A ˣ√ B  into (B)**(1/A) using the superscript x
+        expr = expr.replace(/(\d+\.?\d*)\s*ˣ√\s*(\d+\.?\d*|\([^)]+\))/g, '(($2)**(1/($1)))');
 
         expr = expr
           .replace(/×/g, '*')
@@ -265,7 +274,7 @@ export default function ProjectorCalculator() {
 
       if (justCalculated) {
         setJustCalculated(false);
-        const operators = ['+', '−', '×', '÷', '^', '^-1', '²'];
+        const operators = ['+', '−', '×', '÷', '^', '^-1', '²', 'ˣ√'];
         if (operators.includes(val) && lastResult !== null) {
           targetInput = lastResult.toString();
         } else {
@@ -284,23 +293,27 @@ export default function ProjectorCalculator() {
     }
   };
 
+  // If the screen is mobile, return absolutely nothing.
+  if (isMobile) return null;
+
   return (
     <>
       <style>{`
-        /* Smooth Open/Close Animation */
         #wb-calculator.ti-30xb {
           position: fixed;
           bottom: 1rem; 
           right: 1rem;  
           z-index: 9999;
+          
           background-color: #6fb048; 
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 20px rgba(111, 176, 72, 0.4);
+          
           border-radius: 1.5rem 1.5rem 2rem 2rem;
           padding: 1rem;
           width: 320px;
-          box-shadow: 0 10px 25px rgba(0,0,0,0.5);
           user-select: none;
           
-          /* The Transition Magic */
           opacity: 0;
           visibility: hidden;
           pointer-events: none;
@@ -326,17 +339,22 @@ export default function ProjectorCalculator() {
           width: 50px;
           height: 50px;
           border-radius: 50%;
-          background: #5a8e3a;
+          
+          background: var(--sl-color-bg-nav, rgba(20, 20, 20, 0.65));
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.1);
           color: white;
-          border: none;
+          
           cursor: pointer;
           box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-          transition: transform 0.2s, background 0.2s;
+          transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
         }
         
         .calc-toggle-fab:hover {
-          transform: scale(1.1);
-          background: #4a752f;
+          transform: scale(1.15);
+          background: #5a8e3a; 
+          box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 15px rgba(90, 142, 58, 0.6);
         }
         
         #calc-screen-wrapper {
@@ -344,8 +362,8 @@ export default function ProjectorCalculator() {
           border-radius: 8px;
           padding: 10px;
           margin-bottom: 15px;
-          box-shadow: inset 0 2px 5px rgba(0,0,0,0.2);
-          border: 2px solid #5a8e3a;
+          box-shadow: inset 0 2px 5px rgba(0,0,0,0.2), 0 0 10px rgba(169, 188, 161, 0.1);
+          border: 2px solid #333;
           height: 80px;
           display: flex;
           flex-direction: column;
@@ -378,13 +396,17 @@ export default function ProjectorCalculator() {
           gap: 6px 8px;
         }
 
+        /* Enforcing strict uniform height and centering using flexbox */
         .calc-btn {
           border-radius: 20px;
-          padding: 8px 0;
+          height: 34px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           font-weight: bold;
           font-size: 0.85rem;
           border: none;
-          box-shadow: 0 3px 0 rgba(0,0,0,0.2);
+          box-shadow: 0 3px 0 rgba(0,0,0,0.4);
           cursor: pointer;
           color: white;
           transition: filter 0.1s;
@@ -396,31 +418,39 @@ export default function ProjectorCalculator() {
         }
 
         .calc-btn:hover {
-          filter: brightness(1.1);
+          filter: brightness(1.2);
         }
 
-        .btn-gray { background-color: #555; }
-        .btn-green { background-color: #5a8e3a; }
-        .btn-blue { background-color: #0078d7; }
-        .btn-white { background-color: #fff; color: #000; }
+        .btn-gray { background-color: #444; }
+        .btn-green { background-color: #4a752f; }
+        .btn-blue { background-color: #006bc2; }
         
-        /* New Custom Class for White buttons with Blue Text */
+        /* Number pad remains larger and bolder, but won't warp the button sizes anymore */
+        .btn-white { 
+          background-color: #ddd; 
+          color: #000; 
+          box-shadow: 0 3px 0 rgba(0,0,0,0.2); 
+          font-size: 1.2rem;
+          font-weight: 900;
+        }
+        
         .btn-white-blue { 
-          background-color: #fff; 
-          color: #0078d7; 
+          background-color: #ddd; 
+          color: #006bc2; 
           font-weight: 900; 
+          box-shadow: 0 3px 0 rgba(0,0,0,0.2);
         }
         
         .d-pad-wrapper {
           grid-column: 4 / span 2;
           grid-row: 1 / span 2;
-          background-color: #0078d7;
+          background-color: #006bc2;
           border-radius: 30px;
           padding: 4px;
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           grid-template-rows: 1fr 1fr;
-          box-shadow: 0 3px 0 rgba(0,0,0,0.3);
+          box-shadow: 0 3px 0 rgba(0,0,0,0.5);
         }
 
         .d-pad-btn {
@@ -434,6 +464,10 @@ export default function ProjectorCalculator() {
           justify-content: center;
         }
         
+        .d-pad-btn:hover {
+          text-shadow: 0 0 5px rgba(255,255,255,0.8);
+        }
+        
         .d-pad-up { grid-column: 2; grid-row: 1; }
         .d-pad-down { grid-column: 2; grid-row: 2; }
         .d-pad-left { grid-column: 1; grid-row: 1 / span 2; }
@@ -441,13 +475,8 @@ export default function ProjectorCalculator() {
 
       `}</style>
 
-      <button className="calc-toggle-fab" onClick={() => setIsVisible(!isVisible)} title="Toggle Calculator">
-        {isVisible ? (
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-            <line x1="18" y1="6" x2="6" y2="18"></line>
-            <line x1="6" y1="6" x2="18" y2="18"></line>
-          </svg>
-        ) : (
+      {!isVisible && (
+        <button className="calc-toggle-fab" onClick={() => setIsVisible(true)} title="Open Calculator">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
             <line x1="8" y1="6" x2="16" y2="6"></line>
@@ -461,13 +490,13 @@ export default function ProjectorCalculator() {
             <line x1="12" y1="18" x2="12" y2="18.01"></line>
             <line x1="8" y1="18" x2="8" y2="18.01"></line>
           </svg>
-        )}
-      </button>
+        </button>
+      )}
 
       <div id="wb-calculator" className={`ti-30xb ${isVisible ? 'open' : ''}`} ref={calcRef}>
 
-        <div id="calc-header" onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerUp} onPointerCancel={handlePointerUp} style={{ cursor: 'move', display: 'flex', justifyContent: 'center', marginBottom: '10px', color: 'white', fontWeight: 'bold' }}>
-          <span>TI-30XB Web</span>
+        <div id="calc-header" onPointerDown={handlePointerDown} onPointerMove={handlePointerMove} onPointerUp={handlePointerUp} onPointerCancel={handlePointerUp} style={{ cursor: 'move', display: 'flex', justifyContent: 'center', marginBottom: '10px', color: 'rgba(255,255,255,0.9)', fontWeight: 'bold', letterSpacing: '1px' }}>
+          <span>TI-30XB 𓃵</span>
         </div>
 
         <div id="calc-screen-wrapper">
@@ -515,7 +544,7 @@ export default function ProjectorCalculator() {
           <button className="calc-btn btn-green" onClick={() => handlePress(isSecond ? 'atan(' : 'tan(')}>{isSecond ? 'tan⁻¹' : 'tan'}</button>
           <button className="calc-btn btn-blue" onClick={() => handlePress('÷')}>÷</button>
 
-          <button className="calc-btn btn-green" onClick={() => handlePress('^')}>^</button>
+          <button className="calc-btn btn-green" onClick={() => handlePress(isSecond ? 'ˣ√' : '^')}>{isSecond ? 'ˣ√' : '^'}</button>
           <button className="calc-btn btn-green" onClick={() => handlePress('^-1')}>x⁻¹</button>
           <button className="calc-btn btn-green" onClick={() => handlePress('(')}>(</button>
           <button className="calc-btn btn-green" onClick={() => handlePress(')')}>)</button>
@@ -538,7 +567,6 @@ export default function ProjectorCalculator() {
           <button className="calc-btn btn-white" onClick={() => handlePress('2')}>2</button>
           <button className="calc-btn btn-white" onClick={() => handlePress('3')}>3</button>
 
-          {/* s=d uses the new white/blue style */}
           <button className="calc-btn btn-white-blue" style={{ fontSize: '0.8rem' }} onClick={() => handlePress('', 'sd')}>◀▶</button>
 
           <button className="calc-btn btn-green" onClick={() => setIsVisible(false)}>off</button>
@@ -546,7 +574,6 @@ export default function ProjectorCalculator() {
           <button className="calc-btn btn-white" onClick={() => handlePress('.')}>.</button>
           <button className="calc-btn btn-white" onClick={() => handlePress('-')}>(-)</button>
 
-          {/* enter uses the new white/blue style */}
           <button id="btn-calc-enter" className="calc-btn btn-white-blue" onClick={() => handlePress('', 'calculate')}>enter</button>
         </div>
       </div>
