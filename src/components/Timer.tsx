@@ -18,7 +18,6 @@ export default function Timer() {
   const originalTitle = useRef(typeof document !== 'undefined' ? document.title : '');
   const audioCtx = useRef<AudioContext | null>(null);
   
-  // Ref for the physical element to check its screen coordinates
   const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -54,6 +53,35 @@ export default function Timer() {
 
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  useEffect(() => {
+    if (!mounted || !wrapperRef.current) return;
+    
+    const rescueTimer = () => {
+      if (!wrapperRef.current) return;
+      const rect = wrapperRef.current.getBoundingClientRect();
+      const MARGIN = 50; 
+
+      const isLost = 
+        rect.top > window.innerHeight - MARGIN || 
+        rect.bottom < MARGIN || 
+        rect.left > window.innerWidth - MARGIN || 
+        rect.right < MARGIN;
+
+      if (isLost) {
+        setDragPos({ x: 0, y: 0 }); 
+        localStorage.removeItem('exam_timer_pos');
+      }
+    };
+
+    const timeout = setTimeout(rescueTimer, 100);
+    window.addEventListener('resize', rescueTimer);
+    
+    return () => {
+      clearTimeout(timeout);
+      window.removeEventListener('resize', rescueTimer);
+    };
+  }, [mounted, isMinimized]); 
 
   useEffect(() => {
     if (mounted) {
@@ -159,42 +187,59 @@ export default function Timer() {
   };
 
   const handleDragEnd = (_e: any, info: any) => {
-    const newPos = { 
-      x: dragPos.x + info.offset.x, 
-      y: dragPos.y + info.offset.y 
-    };
+    let targetX = dragPos.x + info.offset.x;
+    let targetY = dragPos.y + info.offset.y;
+
+    if (wrapperRef.current) {
+      const rect = wrapperRef.current.getBoundingClientRect();
+      const MARGIN = 20;
+
+      const overflowTop = MARGIN - rect.top;
+      const overflowBottom = rect.bottom - (window.innerHeight - MARGIN);
+      const overflowLeft = MARGIN - rect.left;
+      const overflowRight = rect.right - (window.innerWidth - MARGIN);
+
+      if (overflowTop > 0) targetY += overflowTop;
+      else if (overflowBottom > 0) targetY -= overflowBottom;
+
+      if (overflowLeft > 0) targetX += overflowLeft;
+      else if (overflowRight > 0) targetX -= overflowRight;
+    }
+
+    const newPos = { x: targetX, y: targetY };
     setDragPos(newPos);
     localStorage.setItem('exam_timer_pos', JSON.stringify(newPos));
   };
 
-  // SMART EXPAND: Ensure component doesn't clip out of the top/left of the screen
-  const handleExpand = () => {
-    setIsMinimized(false);
-    setIsAlarming(false);
-    initAudio();
-
+  const toggleSize = (minimize: boolean) => {
     if (wrapperRef.current) {
       const rect = wrapperRef.current.getBoundingClientRect();
-      
-      // Calculate how far up and left the panel will grow
-      // Width grows 56px -> 220px (delta 164)
-      // Height grows ~56px -> ~210px (delta ~154)
-      const expectedTop = rect.top - 160; 
-      const expectedLeft = rect.left - 170;
+      const MARGIN = 20;
+      let targetX = dragPos.x;
+      let targetY = dragPos.y;
 
-      let newX = dragPos.x;
-      let newY = dragPos.y;
-
-      // If it will clip, push it exactly 20px away from the screen edge
-      if (expectedTop < 20) newY += (20 - expectedTop);
-      if (expectedLeft < 20) newX += (20 - expectedLeft);
-
-      // If an adjustment was made, smoothly update position
-      if (newX !== dragPos.x || newY !== dragPos.y) {
-        const newPos = { x: newX, y: newY };
-        setDragPos(newPos);
-        localStorage.setItem('exam_timer_pos', JSON.stringify(newPos));
+      if (!minimize) {
+        // Updated logic for Top-Right anchoring. Expands downward and leftward.
+        const predictedBottom = rect.top + 200; // rough height estimate of expanded panel
+        const predictedLeft = rect.left - 172; // 220px expanded width - 48px mini width
+        
+        if (predictedBottom > window.innerHeight - MARGIN) {
+          targetY -= (predictedBottom - (window.innerHeight - MARGIN));
+        }
+        if (predictedLeft < MARGIN) {
+          targetX += (MARGIN - predictedLeft);
+        }
       }
+
+      if (targetX !== dragPos.x || targetY !== dragPos.y) {
+        setDragPos({ x: targetX, y: targetY });
+      }
+    }
+
+    setIsMinimized(minimize);
+    if (!minimize) {
+      setIsAlarming(false);
+      initAudio();
     }
   };
 
@@ -207,7 +252,7 @@ export default function Timer() {
     return '#00ffff'; 
   };
 
-  const radius = 22;
+  const radius = 19; 
   const circumference = 2 * Math.PI * radius;
   const strokeDashoffset = totalTime > 0 ? circumference - (seconds / totalTime) * circumference : 0;
 
@@ -215,6 +260,7 @@ export default function Timer() {
     <>
       <motion.div
         ref={wrapperRef}
+        layout 
         drag 
         dragMomentum={false}
         onDragEnd={handleDragEnd}
@@ -222,8 +268,8 @@ export default function Timer() {
         className={`ghost-timer-wrapper ${isMinimized ? 'is-mini' : 'is-expanded'} ${isAlarming ? 'alarm-active' : ''}`}
         style={{ 
           position: 'fixed', 
-          right: 'calc(2rem + 56px + 1rem)', 
-          bottom: '2rem', 
+          right: 'calc(2rem + 48px + 1rem)', 
+          top: '2rem', // Now anchored to the top
           zIndex: 99999, 
           touchAction: 'none' 
         }}
@@ -233,17 +279,17 @@ export default function Timer() {
             <motion.div 
               key="mini" 
               className="mini-icon-trigger"
-              onTap={handleExpand}
-              initial={{ opacity: 0, scale: 0.8 }} 
-              animate={{ opacity: 1, scale: 1 }} 
-              exit={{ opacity: 0, scale: 0.8 }}
+              onTap={(e) => { e.stopPropagation(); toggleSize(false); }}
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1 }} 
+              exit={{ opacity: 0 }}
             >
               {isActive || seconds > 0 ? (
                 <div className="mini-running-state">
-                  <svg className="mini-ring" width="56" height="56">
-                    <circle cx="28" cy="28" r={radius} stroke="rgba(255,255,255,0.1)" strokeWidth="3" fill="none" />
+                  <svg className="mini-ring" viewBox="0 0 48 48" width="48" height="48">
+                    <circle cx="24" cy="24" r={radius} stroke="rgba(255,255,255,0.1)" strokeWidth="3" fill="none" />
                     <circle 
-                      cx="28" cy="28" r={radius} 
+                      cx="24" cy="24" r={radius} 
                       stroke={getStatusColor()} 
                       strokeWidth="3" fill="none" 
                       strokeDasharray={circumference}
@@ -259,7 +305,7 @@ export default function Timer() {
               ) : (
                 <div className="mini-txt" style={{ color: isAlarming ? '#ff4444' : '#888' }}>
                   {isAlarming ? '!' : 
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{width:'1.6rem', height:'1.6rem'}}>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{width:'1.5rem', height:'1.5rem'}}>
                       <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
                     </svg>
                   }
@@ -267,11 +313,17 @@ export default function Timer() {
               )}
             </motion.div>
           ) : (
-            <motion.div key="expanded" className="timer-panel" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <motion.div 
+              key="expanded" 
+              className="timer-panel" 
+              initial={{ opacity: 0 }} 
+              animate={{ opacity: 1, transition: { delay: 0.1 } }} 
+              exit={{ opacity: 0, transition: { duration: 0.1 } }}
+            >
               <div className="timer-header-area">
-                 <button className="min-btn" onClick={(e) => { e.stopPropagation(); setIsMinimized(true); }}>
+                 <motion.button className="min-btn" onTap={(e) => { e.stopPropagation(); toggleSize(true); }}>
                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                 </button>
+                 </motion.button>
                  <motion.div className="time-display-wrapper" onTap={() => { setShowControls(!showControls); setIsAlarming(false); }}>
                     <span className="big-time-text" style={{ color: getStatusColor(), textShadow: `0 0 12px ${getStatusColor()}40` }}>
                       {isAlarming ? "TIME'S UP" : seconds > 0 ? "FOCUSING" : "READY"}
@@ -281,7 +333,7 @@ export default function Timer() {
 
               <AnimatePresence>
                 {showControls && (
-                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0 }} className="controls-section">
+                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="controls-section">
                     <div className="grid-presets">
                       {[1, 5, 10, 25, 45].map(m => ( 
                         <button key={m} className="preset-btn" onClick={() => startTimer(m)}>{m}m</button> 
@@ -312,22 +364,49 @@ export default function Timer() {
 
       <style>{`
         .ghost-timer-wrapper { 
-            background: transparent; 
+            background: rgba(20, 20, 20, 0.85); 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             font-family: var(--__sl-font), system-ui, sans-serif; 
             overflow: hidden;
             cursor: grab;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-sizing: border-box; 
         }
         .ghost-timer-wrapper:active { cursor: grabbing; }
 
-        .is-mini { width: 56px; height: 56px; border-radius: 50%; }
+        .is-mini { width: 48px; height: 48px; border-radius: 50%; }
         .is-expanded { width: 220px; border-radius: 16px; }
         
-        .mini-icon-trigger { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; position: relative; }
-        .mini-txt { font-weight: 800; font-size: 0.9rem; position: absolute; z-index: 2; transition: color 0.2s; }
+        .mini-icon-trigger { width: 48px; height: 48px; display: block; position: relative; cursor: pointer; }
+        
+        .mini-txt { 
+            font-weight: 800; 
+            font-size: 0.85rem; 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            z-index: 2; 
+            transition: color 0.2s; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
         .mini-icon-trigger:hover .mini-txt { color: white !important; } 
         
-        .mini-running-state { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; position: relative; }
-        .mini-ring { position: absolute; top: 0; left: 0; z-index: 1; filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.3)); }
+        .mini-running-state { display: block; width: 100%; height: 100%; position: relative; pointer-events: none;}
+        
+        .mini-ring { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            z-index: 1; 
+            filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.3)); 
+            display: block;
+        }
 
         .timer-header-area { position: relative; padding: 20px 10px 10px 10px; }
         .min-btn { position: absolute; top: 10px; right: 12px; background: none; border: none; color: rgba(255,255,255,0.4); cursor: pointer; display: flex; transition: color 0.2s; }
