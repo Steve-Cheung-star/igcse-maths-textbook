@@ -3,14 +3,14 @@ import React, { useState, useRef, useEffect } from 'react';
 export default function ProjectorCalculator() {
   const [isVisible, setIsVisible] = useState(false);
   const [inputStr, setInputStr] = useState('');
-  
+
   const [history, setHistory] = useState<{ expr: string, res: string, isSecret?: boolean }[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [selectionMode, setSelectionMode] = useState<'expr' | 'res'>('expr');
-  
+
   const [isSecond, setIsSecond] = useState(false);
   const [isDeg, setIsDeg] = useState(true);
-  
+
   const [lastResult, setLastResult] = useState<string | null>(null);
   const [justCalculated, setJustCalculated] = useState(false);
 
@@ -43,47 +43,75 @@ export default function ProjectorCalculator() {
     }
   }, [isVisible, isMobile, isTouch]);
 
-  // Handle global keyboard inputs robustly
+  // Handle global keyboard inputs without stealing Astro's shortcuts
   useEffect(() => {
     if (!isVisible || isMobile) return;
 
     const handleGlobalKey = (e: KeyboardEvent) => {
+      // 1. Ignore if typing in another standard input on the page
       const target = e.target as HTMLElement;
-      if ((target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') && target !== inputRef.current) {
+      if ((target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) && target !== inputRef.current) {
         return;
+      }
+
+      // 2. Escape puts the calculator away
+      if (e.key === 'Escape') {
+        setIsVisible(false);
+        return;
+      }
+
+      // 3. If we clicked the whiteboard, completely ignore the keys so Astro can use "1", "2" and arrow keys scroll the page
+      if (!isCalcAwake) return;
+
+      // --- WE ARE AWAKE. TRAP THE KEYS. ---
+      const isArrowKey = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key);
+      const validKeys = ['Enter', '=', 'Backspace'];
+      const isMathKey = e.key.length === 1 && /[0-9\.+\-*/^()]/.test(e.key);
+
+      if (isArrowKey || validKeys.includes(e.key) || isMathKey) {
+        e.stopPropagation(); // Block Astro from seeing this key
+      } else {
+        return; // Let random keys (like letters) pass through natively
       }
 
       const keyMap: Record<string, string> = { '*': '×', '/': '÷', '-': '−' };
 
-      if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        handlePress('', 'history-up');
-      } else if (e.key === 'ArrowDown') {
-        e.preventDefault();
-        handlePress('', 'history-down');
-      } else if (e.key === 'Enter' || e.key === '=') {
+      // STRICT ARROW TRAPPING
+      if (isArrowKey) {
+        // ALWAYS prevent default on arrows when awake so the presentation NEVER scrolls
+        // unless it's Left/Right moving the native text cursor
+        if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          if (e.key === 'ArrowUp') handlePress('', 'history-up');
+          if (e.key === 'ArrowDown') handlePress('', 'history-down');
+        }
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+          // If we are interacting with history, we manually control the cursor
+          if (historyIndex !== -1) {
+            e.preventDefault();
+            handlePress('', e.key === 'ArrowLeft' ? 'cursor-left' : 'cursor-right');
+          } else {
+            // We are just typing normally. Make sure the input is focused so native left/right works without scrolling the page!
+            if (document.activeElement !== inputRef.current) {
+              e.preventDefault();
+              inputRef.current?.focus();
+            }
+          }
+        }
+        return;
+      }
+
+      // HANDLE MATH & ACTIONS
+      if (e.key === 'Enter' || e.key === '=') {
         e.preventDefault();
         handlePress('', 'calculate');
-      } else if (e.key === 'Escape') {
-        e.preventDefault();
-        setIsVisible(false);
       } else if (e.key === 'Backspace') {
-        if (document.activeElement !== inputRef.current || justCalculated || historyIndex !== -1) {
+        if (justCalculated || historyIndex !== -1) {
           e.preventDefault();
           handlePress('', 'delete');
         }
-      } else if (e.key === 'ArrowLeft') {
-        if (document.activeElement !== inputRef.current || historyIndex !== -1) {
-          e.preventDefault();
-          handlePress('', 'cursor-left');
-        }
-      } else if (e.key === 'ArrowRight') {
-        if (document.activeElement !== inputRef.current || historyIndex !== -1) {
-          e.preventDefault();
-          handlePress('', 'cursor-right');
-        }
-      } else if (e.key.length === 1 && /[0-9\.+\-*/^()]/.test(e.key)) {
-        if (document.activeElement !== inputRef.current || justCalculated || historyIndex !== -1) {
+      } else if (isMathKey) {
+        if (justCalculated || historyIndex !== -1) {
           e.preventDefault();
           handlePress(keyMap[e.key] || e.key);
         }
@@ -92,7 +120,7 @@ export default function ProjectorCalculator() {
 
     window.addEventListener('keydown', handleGlobalKey, { capture: true });
     return () => window.removeEventListener('keydown', handleGlobalKey, { capture: true });
-  }, [isVisible, isMobile, inputStr, lastResult, justCalculated, historyIndex, history, selectionMode, isSecond, isDeg]);
+  }, [isVisible, isMobile, inputStr, lastResult, justCalculated, historyIndex, history, selectionMode, isSecond, isDeg, isCalcAwake]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVal = e.target.value;
@@ -100,7 +128,7 @@ export default function ProjectorCalculator() {
       setJustCalculated(false);
       const lastChar = newVal.slice(-1);
       const operators = ['+', '-', '*', '/', '^', '−', '×', '÷'];
-      
+
       if (operators.includes(lastChar) && lastResult !== null && lastResult !== 'Syntax Error') {
         setInputStr(lastResult + lastChar);
       } else {
@@ -173,7 +201,7 @@ export default function ProjectorCalculator() {
     if (action === 'second') return setIsSecond(!isSecond);
 
     if (action === 'history-up') {
-      inputRef.current?.blur(); 
+      inputRef.current?.blur();
       if (history.length === 0) return;
       if (historyIndex === -1) {
         setHistoryIndex(0);
@@ -194,7 +222,7 @@ export default function ProjectorCalculator() {
         setTimeout(() => inputRef.current?.focus(), 0);
         return;
       }
-      
+
       inputRef.current?.blur();
       if (selectionMode === 'expr') {
         setSelectionMode('res');
@@ -212,7 +240,7 @@ export default function ProjectorCalculator() {
     }
 
     if (action === 'cursor-left' || action === 'cursor-right') {
-      if (historyIndex !== -1) return; 
+      if (historyIndex !== -1) return;
       if (!inputRef.current) return;
       const pos = inputRef.current.selectionStart || 0;
       const newPos = action === 'cursor-left' ? Math.max(0, pos - 1) : pos + 1;
@@ -231,7 +259,7 @@ export default function ProjectorCalculator() {
       if (justCalculated) {
         if (lastResult === 'Syntax Error') {
           // Keep the expression, just clear the error and restore focus
-          setLastResult(null); 
+          setLastResult(null);
           setJustCalculated(false);
           setTimeout(() => inputRef.current?.focus(), 0);
         } else {
@@ -253,8 +281,8 @@ export default function ProjectorCalculator() {
 
     if (action === 'sd' && lastResult !== null && lastResult !== 'Syntax Error') {
       const numRes = parseFloat(lastResult);
-      if (isNaN(numRes)) return; 
-      
+      if (isNaN(numRes)) return;
+
       if (currentInput.includes('/')) {
         setInputStr(numRes.toPrecision(10).toString());
       } else {
@@ -266,42 +294,42 @@ export default function ProjectorCalculator() {
 
     if (action === 'calculate') {
       if (historyIndex !== -1) {
-         const entry = history[history.length - 1 - historyIndex];
-         const copyText = selectionMode === 'res' ? entry.res : entry.expr;
-         
-         let newStr = '';
-         let newPos = 0;
+        const entry = history[history.length - 1 - historyIndex];
+        const copyText = selectionMode === 'res' ? entry.res : entry.expr;
 
-         // If we just solved a math problem, treat the copied history as a fresh start. 
-         // Otherwise, append it seamlessly.
-         if (justCalculated) {
-           newStr = copyText;
-           newPos = newStr.length;
-         } else {
-           if (inputRef.current && !isTouch) {
-             const pos = inputRef.current.selectionStart || 0;
-             newStr = currentInput.slice(0, pos) + copyText + currentInput.slice(pos);
-             newPos = pos + copyText.length;
-           } else {
-             newStr = currentInput + copyText;
-             newPos = newStr.length;
-           }
-         }
+        let newStr = '';
+        let newPos = 0;
 
-         setInputStr(newStr);
-         setLastResult(null);
-         setHistoryIndex(-1);
-         setSelectionMode('expr');
-         setJustCalculated(false);
-         
-         // Keep the calculator actively focused so the cursor blinks instantly
-         setTimeout(() => {
-           if (inputRef.current) {
-             inputRef.current.focus();
-             inputRef.current.setSelectionRange(newPos, newPos);
-           }
-         }, 0);
-         return;
+        // If we just solved a math problem, treat the copied history as a fresh start. 
+        // Otherwise, append it seamlessly.
+        if (justCalculated) {
+          newStr = copyText;
+          newPos = newStr.length;
+        } else {
+          if (inputRef.current && !isTouch) {
+            const pos = inputRef.current.selectionStart || 0;
+            newStr = currentInput.slice(0, pos) + copyText + currentInput.slice(pos);
+            newPos = pos + copyText.length;
+          } else {
+            newStr = currentInput + copyText;
+            newPos = newStr.length;
+          }
+        }
+
+        setInputStr(newStr);
+        setLastResult(null);
+        setHistoryIndex(-1);
+        setSelectionMode('expr');
+        setJustCalculated(false);
+
+        // Keep the calculator actively focused so the cursor blinks instantly
+        setTimeout(() => {
+          if (inputRef.current) {
+            inputRef.current.focus();
+            inputRef.current.setSelectionRange(newPos, newPos);
+          }
+        }, 0);
+        return;
       }
 
       if (!currentInput) return;
@@ -337,7 +365,7 @@ export default function ProjectorCalculator() {
         const msg = secretMessages[currentInput];
         setLastResult(msg); // Output to answer line
         setJustCalculated(true);
-        inputRef.current?.blur(); 
+        inputRef.current?.blur();
         setHistory(prev => [...prev, { expr: currentInput, res: msg, isSecret: true }]);
         setHistoryIndex(-1);
         return;
@@ -391,7 +419,7 @@ export default function ProjectorCalculator() {
         setHistoryIndex(-1);
         setLastResult(resStr);
         setJustCalculated(true);
-        inputRef.current?.blur(); 
+        inputRef.current?.blur();
       } catch (err) {
         setLastResult('Syntax Error'); // Output to answer line
         setJustCalculated(true);
