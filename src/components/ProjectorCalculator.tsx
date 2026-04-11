@@ -635,6 +635,16 @@ export default function ProjectorCalculator() {
         .d-pad-down { grid-column: 2; grid-row: 2; }
         .d-pad-left { grid-column: 1; grid-row: 1 / span 2; }
         .d-pad-right { grid-column: 3; grid-row: 1 / span 2; }
+        
+        /* 🔥 HIDE ON MOBILE */
+        @media (max-width: 768px) {
+          .calc-toggle-fab {
+            display: none !important;
+          }
+          #wb-calculator.ti-30xb {
+            display: none !important;
+          }
+        }
       `}</style>
 
       {!isVisible && (
