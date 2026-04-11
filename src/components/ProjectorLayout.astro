@@ -52,6 +52,12 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
   /* =========================================
      1. UI HIDING & CLEANUP
      ========================================= */
+     
+  /* CRITICAL: Override Starlight's sticky nav offset so it doesn't cause chopped text! */
+  html[data-mode="bento"] {
+    scroll-padding-top: 0 !important; 
+  }
+
   html[data-mode="bento"] .sidebar, 
   html[data-mode="bento"] .right-sidebar, 
   html[data-mode="bento"] header, 
@@ -70,13 +76,32 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
   html[data-mode="bento"] .sl-markdown-content canvas,
   html[data-mode="bento"] .sl-markdown-content .sim-root { max-width: 100% !important; }
 
+  /* Set margin-top to 90vh to push previous content away, and scroll-margin to snap cleanly */
   html[data-mode="bento"] .sl-markdown-content h2,
-  html[data-mode="bento"] .sl-markdown-content h3 { margin-top: 70vh !important; padding-top: 2rem !important; border-top: none !important; }
+  html[data-mode="bento"] .sl-markdown-content h3 { 
+    margin-top: 90vh !important; 
+    padding-top: 0 !important; 
+    scroll-margin-top: 2rem !important; /* Perfect 2rem gap from monitor edge */
+    border-top: none !important; 
+  }
   
-  html[data-mode="bento"] .sl-markdown-content hr { display: block !important; margin-top: 70vh !important; margin-bottom: 2rem !important; padding: 0 !important; height: 0 !important; border: none !important; background: transparent !important; clear: both !important; }
+  html[data-mode="bento"] .sl-markdown-content hr { 
+    display: block !important; 
+    margin-top: 90vh !important; 
+    margin-bottom: 2rem !important; 
+    padding: 0 !important; 
+    height: 0 !important; 
+    border: none !important; 
+    background: transparent !important; 
+    clear: both !important; 
+  }
   
-  html[data-mode="bento"] .sl-markdown-content h2:first-of-type { margin-top: 2rem !important; }
-  html[data-mode="bento"] .sl-markdown-content { padding-bottom: 80vh !important; }
+  html[data-mode="bento"] .sl-markdown-content h2:first-of-type { 
+    margin-top: 2rem !important; 
+  }
+  html[data-mode="bento"] .sl-markdown-content { 
+    padding-bottom: 80vh !important; 
+  }
   
   /* =========================================
      3. NATIVE HARDWARE-ACCELERATED CURSORS
@@ -115,43 +140,90 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
 <ProjectorToolbar />
 
 <script>
+  // @ts-nocheck
   import { projectorStore } from '../store/projectorStore.js';
 
   function initLayout() {
     if (document.documentElement.dataset.layoutInit) return;
     document.documentElement.dataset.layoutInit = 'true';
 
-    // REMOVED: Hydrating global mode from localStorage. 
-    // It will always start false (normal mode) on fresh load.
+    let previousBentoState = false;
+
+    // Helper: Safely grab the closest heading section
+    function getActiveAnchor() {
+      const headers = Array.from(document.querySelectorAll('.sl-markdown-content h2, .sl-markdown-content h3'));
+      if (headers.length === 0) return null;
+      
+      let activeAnchor = headers[0]; // Default to the first section
+      
+      for (const header of headers) {
+        const rect = header.getBoundingClientRect();
+        
+        // BUG FIX: Instead of checking the whole top half of the screen,
+        // we only care about headers that have reached the top reading area (~120px).
+        // This prevents short, stacked sections from overwriting the correct anchor.
+        if (rect.top <= 120) {
+          activeAnchor = header;
+        } else {
+          // As soon as we see a header below our top reading threshold, we stop.
+          // The previous header in the loop is guaranteed to be our active section.
+          break; 
+        }
+      }
+      return activeAnchor;
+    }
 
     const enterBtn = document.getElementById('wb-enter-projector');
     if (enterBtn) {
       enterBtn.addEventListener('click', () => {
-        if (window.innerWidth < 768) return; // Strict mobile block
+        if (window.innerWidth < 768) return; 
         projectorStore.setKey('isBento', true);
       });
     }
 
     projectorStore.subscribe((state) => {
-      if (state.isBento) {
-        document.documentElement.setAttribute('data-mode', 'bento');
-        document.documentElement.setAttribute('data-tool', state.tool);
+      // Detect if we are toggling on/off
+      if (state.isBento !== previousBentoState) {
+        
+        // Step A: Check if they are at the very top of the article
+        const isAtTop = window.scrollY < 100;
+        const anchor = getActiveAnchor();
+
+        // Step B: Apply CSS changes
+        if (state.isBento) {
+          document.documentElement.setAttribute('data-mode', 'bento');
+          document.documentElement.setAttribute('data-tool', state.tool);
+        } else {
+          document.documentElement.removeAttribute('data-mode');
+          document.documentElement.removeAttribute('data-tool');
+        }
+
+        // Step C: Force exact alignment after a tiny delay to let CSS update
+        setTimeout(() => {
+          if (isAtTop) {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+          } else if (anchor) {
+            anchor.scrollIntoView({ behavior: 'instant', block: 'start' });
+          }
+        }, 30); 
+        
+        previousBentoState = state.isBento;
       } else {
-        document.documentElement.removeAttribute('data-mode');
-        document.documentElement.removeAttribute('data-tool');
+        // If it was just a tool change
+        if (state.isBento) {
+          document.documentElement.setAttribute('data-tool', state.tool);
+        }
       }
     });
 
     // Global Hotkey (Ctrl+Alt+P)
     window.addEventListener('keydown', (e) => {
-      // Strictly prevent activating on mobile
       if (window.innerWidth < 768) return; 
 
       if ((e.ctrlKey || e.metaKey) && e.altKey && (e.key?.toLowerCase() === 'p' || e.code === 'KeyP')) {
         e.preventDefault(); 
         const isCurrentlyBento = projectorStore.get().isBento;
         projectorStore.setKey('isBento', !isCurrentlyBento);
-        // REMOVED: Saving mode to localStorage
       }
     }, true);
   }
