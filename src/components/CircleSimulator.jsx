@@ -584,12 +584,23 @@ export default function CircleSimulator({ category = 'angles' }) {
                 const cosVal = Math.cos(angleRad);
                 const sinVal = Math.sin(angleRad);
 
+                // --- ADDED: Draw the terminal arm (radius/hypotenuse) ---
+                ctx.beginPath();
+                ctx.strokeStyle = theme.line; 
+                ctx.lineWidth = 2;
+                ctx.moveTo(centreX, centreY);
+                ctx.lineTo(P.x, P.y);
+                ctx.stroke();
+                // --------------------------------------------------------
+
+                // Draw the angle arc
                 ctx.beginPath();
                 ctx.strokeStyle = theme.text;
                 ctx.lineWidth = 2;
                 ctx.arc(centreX, centreY, 40, 0, -angleRad, true);
                 ctx.stroke();
 
+                // Draw the dashed x (cosine) and y (sine) lines
                 ctx.setLineDash([5, 5]);
                 ctx.strokeStyle = theme.accent1;
                 ctx.beginPath(); ctx.moveTo(centreX, centreY); ctx.lineTo(P.x, centreY); ctx.stroke();

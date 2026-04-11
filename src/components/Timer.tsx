@@ -6,14 +6,31 @@ export default function Timer() {
   const [totalTime, setTotalTime] = useState(0);
   const [isActive, setIsActive] = useState(false);
   
-  const [isMinimized, setIsMinimized] = useState(true);
+  // Synchronously grab the saved state on mount to prevent layout shifts
+  const [isMinimized, setIsMinimized] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedMini = localStorage.getItem('exam_timer_mini');
+      if (savedMini !== null) return savedMini === 'true';
+    }
+    return true;
+  });
+
   const [showControls, setShowControls] = useState(true);
   const [isAlarming, setIsAlarming] = useState(false);
   
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false); 
   
-  const [dragPos, setDragPos] = useState({ x: 0, y: 0 });
+  // Synchronously grab the saved position to prevent the slide-in animation
+  const [dragPos, setDragPos] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const savedPos = localStorage.getItem('exam_timer_pos');
+      if (savedPos) {
+        try { return JSON.parse(savedPos); } catch(e) {}
+      }
+    }
+    return { x: 0, y: 0 };
+  });
 
   const originalTitle = useRef(typeof document !== 'undefined' ? document.title : '');
   const audioCtx = useRef<AudioContext | null>(null);
@@ -29,14 +46,6 @@ export default function Timer() {
 
     const savedEnd = localStorage.getItem('exam_timer_end');
     const savedTotal = localStorage.getItem('exam_timer_total');
-    const savedMini = localStorage.getItem('exam_timer_mini');
-    const savedPos = localStorage.getItem('exam_timer_pos');
-
-    if (savedMini !== null) setIsMinimized(savedMini === 'true');
-    
-    if (savedPos) {
-      try { setDragPos(JSON.parse(savedPos)); } catch(e) {}
-    }
     
     if (savedEnd) {
       const remaining = Math.floor((parseInt(savedEnd) - Date.now()) / 1000);
@@ -44,7 +53,8 @@ export default function Timer() {
         setSeconds(remaining);
         setTotalTime(parseInt(savedTotal || remaining.toString()));
         setIsActive(true);
-        if (savedMini === null) setIsMinimized(false);
+        // If it was running, ensure it's not minimized unless explicitly saved as such
+        if (localStorage.getItem('exam_timer_mini') === null) setIsMinimized(false);
         setShowControls(false);
       } else {
         localStorage.removeItem('exam_timer_end');
@@ -219,9 +229,8 @@ export default function Timer() {
       let targetY = dragPos.y;
 
       if (!minimize) {
-        // Updated logic for Top-Right anchoring. Expands downward and leftward.
-        const predictedBottom = rect.top + 200; // rough height estimate of expanded panel
-        const predictedLeft = rect.left - 172; // 220px expanded width - 48px mini width
+        const predictedBottom = rect.top + 200; 
+        const predictedLeft = rect.left - 172; 
         
         if (predictedBottom > window.innerHeight - MARGIN) {
           targetY -= (predictedBottom - (window.innerHeight - MARGIN));
@@ -264,12 +273,13 @@ export default function Timer() {
         drag 
         dragMomentum={false}
         onDragEnd={handleDragEnd}
+        initial={{ x: dragPos.x, y: dragPos.y }} // Immediately forces the correct starting position
         animate={{ x: dragPos.x, y: dragPos.y }}
         className={`ghost-timer-wrapper ${isMinimized ? 'is-mini' : 'is-expanded'} ${isAlarming ? 'alarm-active' : ''}`}
         style={{ 
           position: 'fixed', 
           right: 'calc(2rem + 48px + 1rem)', 
-          top: '2rem', // Now anchored to the top
+          top: '2rem', 
           zIndex: 99999, 
           touchAction: 'none' 
         }}
