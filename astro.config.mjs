@@ -9,6 +9,7 @@ import vercel from '@astrojs/vercel';
 import AutoImport from 'astro-auto-import';
 
 export default defineConfig({
+  site: 'https://https://igcse-maths-textbook.vercel.app/',
   output: 'server',
   adapter: vercel(),
 
@@ -30,7 +31,7 @@ export default defineConfig({
     mermaid(),
     react(),
     starlight({
-      title: '∴ 6<7',
+      title: 'IGCSE IB Maths',
       logo: {
         light: './src/assets/logo-light.svg',
         dark: './src/assets/logo-dark.svg',
