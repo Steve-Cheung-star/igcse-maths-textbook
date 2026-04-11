@@ -182,11 +182,42 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
     </a>
     
     {/* Node 22: PLATFORM 9 3/4 (Secret) */}
-    <g className="station-link" onClick="alert('Nitwit! Blubber! Oddment! Tweak!')">
+    <g id="secret-node-trigger" className="station-link" style={{ cursor: 'pointer' }}>
       <circle id="station-22" cx="40" cy="2680" r="12" className="station platform-934" />
       <text x="65" y="2684" className="station-text" style={{fill: '#fcd34d'}}>Platform 9 ¾</text>
     </g>
   </svg>
+
+  {/* The RPG Dialogue Box */}
+  <div id="rpg-dialogue-box" style={{ 
+    display: 'flex', 
+    flexDirection: 'column', 
+    background: 'linear-gradient(135deg, #1e1e2f, #10101b)', 
+    border: '0px solid #d4af37', 
+    borderRadius: '8px', 
+    padding: '0', 
+    boxShadow: '0 10px 25px rgba(0,0,0,0.3)', 
+    maxWidth: '500px', 
+    margin: '0 auto 0 1.5rem', 
+    color: '#f8fafc', 
+    position: 'relative',
+    maxHeight: '0',
+    opacity: '0',
+    overflow: 'hidden',
+    transform: 'translateY(20px)',
+    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+    pointerEvents: 'none' 
+  }}>
+    
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', padding: '1.25rem 1.25rem 0' }}>
+      <div style={{ fontWeight: 'bold', color: '#d4af37', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '1rem', marginTop: '0.5rem' }}>Wise Headmaster</div>
+      <div id="wizard-portrait" style={{ width: '70px', height: '90px', border: '2px solid #64748b', borderRadius: '6px', background: '#2a2a3b', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', flexShrink: 0, boxShadow: 'inset 0 0 10px rgba(0,0,0,0.5)' }}>🧙‍♂️</div>
+    </div>
+    
+    <div id="rpg-text-content" style={{ fontSize: '1.1rem', lineHeight: '1.5', minHeight: '6em', fontFamily: 'monospace', padding: '0 1.25rem 1.25rem' }}></div>
+    
+    <style>{`@keyframes rpg-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }`}</style>
+  </div>
 </div>
 
 ## Syllabus Timeline
@@ -565,6 +596,131 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 
 
 <script>{`
+  function triggerFireworks() {
+    // Dynamically load confetti so it works natively inside the MDX script string
+    import('https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/+esm').then((module) => {
+      const confetti = module.default;
+      const duration = 2.5 * 1000;
+      const animationEnd = Date.now() + duration;
+      const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 9999 };
+
+      const randomInRange = (min, max) => Math.random() * (max - min) + min;
+
+      const interval = setInterval(function() {
+        const timeLeft = animationEnd - Date.now();
+        if (timeLeft <= 0) return clearInterval(interval);
+
+        const particleCount = 50 * (timeLeft / duration);
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+        confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+      }, 250);
+    });
+  }
+
+  function setupRPGDialog() {
+    const trigger = document.getElementById('secret-node-trigger');
+    const dialogBox = document.getElementById('rpg-dialogue-box');
+    const textContent = document.getElementById('rpg-text-content');
+
+    let isTyping = false;
+    let currentLineIndex = 0;
+    let timer = null;
+    let activeDialogue = [];
+
+    const defaultLine = ["'Nitwit! Blubber! Oddment! Tweak!'"];
+    const victoryLines = [
+      "'Nitwit! Blubber! Oddment! Tweak!' ...Wait, wrong speech.",
+      "By the ghost of Pythagoras! You've actually finished the entire syllabus.",
+      "May your exam papers be as completely filled as these checkboxes.",
+      "I'd award you the House Cup, but Cambridge insists on a written exam instead. 50 points to your overall grade!"
+    ];
+
+    function openBox() {
+      dialogBox.style.maxHeight = '500px';
+      dialogBox.style.opacity = '1';
+      dialogBox.style.borderWidth = '3px';
+      dialogBox.style.transform = 'translateY(0)';
+      dialogBox.style.margin = '2rem auto 2rem 1.5rem';
+      dialogBox.style.pointerEvents = 'auto';
+      dialogBox.style.cursor = 'pointer';
+    }
+
+    function closeBox() {
+      dialogBox.style.maxHeight = '0';
+      dialogBox.style.opacity = '0';
+      dialogBox.style.borderWidth = '0px';
+      dialogBox.style.transform = 'translateY(20px)';
+      dialogBox.style.margin = '0 auto 0 1.5rem';
+      dialogBox.style.pointerEvents = 'none';
+      textContent.innerHTML = ''; 
+    }
+
+    function finishTyping(text) {
+      clearInterval(timer);
+      textContent.innerHTML = text + '<span style="display:inline-block; margin-left:8px; color:#d4af37; animation:rpg-blink 1s step-end infinite">▼</span>';
+      isTyping = false;
+    }
+
+    function playLine(index) {
+      if (index >= activeDialogue.length) {
+        closeBox();
+        return;
+      }
+
+      isTyping = true;
+      const text = activeDialogue[index];
+      textContent.innerHTML = '';
+      let i = 0;
+
+      clearInterval(timer);
+      timer = setInterval(() => {
+        textContent.textContent = text.slice(0, i + 1);
+        i++;
+        if (i === text.length) finishTyping(text);
+      }, 60); 
+    }
+
+    if (trigger && dialogBox && textContent) {
+      // Logic for clicking the Platform 9 3/4 node
+      trigger.addEventListener('click', () => {
+        const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
+        const allCompleted = checkboxes.length > 0 && checkboxes.every(cb => cb.checked);
+        activeDialogue = allCompleted ? victoryLines : defaultLine;
+        
+        openBox();
+        
+        setTimeout(() => {
+          dialogBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 300);
+
+        currentLineIndex = 0;
+        playLine(currentLineIndex);
+      });
+
+      // Logic for clicking anywhere in the box to advance
+      dialogBox.addEventListener('click', () => {
+        if (isTyping) {
+          finishTyping(activeDialogue[currentLineIndex]);
+        } else {
+          currentLineIndex++;
+          playLine(currentLineIndex);
+        }
+      });
+    }
+  }
+
+  // Update your existing listeners to include the new setup
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeChecklists();
+    teleportTrackToSidebar();
+    setupRPGDialog(); // Added
+  });
+  document.addEventListener('astro:page-load', () => {
+    initializeChecklists();
+    teleportTrackToSidebar();
+    setupRPGDialog(); // Added
+  });
+
   function initializeChecklists() {
     const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
     const pagePath = window.location.pathname;
@@ -576,7 +732,7 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
         const trackBgGroup = document.getElementById('track-bg-' + i);
         const trackProgGroup = document.getElementById('track-prog-' + i);
         const station = document.getElementById('station-' + i);
-        
+
         if (section && trackBgGroup && trackProgGroup) {
           const sectionBoxes = Array.from(section.querySelectorAll('input[type="checkbox"]'));
           const total = sectionBoxes.length;
@@ -584,12 +740,12 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
           
           trackBgGroup.innerHTML = '';
           trackProgGroup.innerHTML = '';
-          
+
           if (total > 0) {
-            const gap = 3; 
+            const gap = 3;
             const totalGapSpace = gap * (total - 1);
             const segmentLength = (120 - totalGapSpace) / total;
-            
+
             for (let j = 0; j < total; j++) {
               let yStart = 40 + (i * 120) + (j * (segmentLength + gap));
               let yEnd = yStart + segmentLength;
@@ -630,9 +786,13 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 
       const plat934 = document.getElementById('station-22');
       if (plat934) {
-        const allChecked = checkboxes.every(cb => cb.checked);
-        if (allChecked && checkboxes.length > 0) {
-          plat934.classList.add('station-complete');
+        const allChecked = checkboxes.length > 0 && checkboxes.every(cb => cb.checked);
+        if (allChecked) {
+          // Prevent fireworks from triggering on every subsequent page load
+          if (!plat934.classList.contains('station-complete')) {
+             plat934.classList.add('station-complete');
+             triggerFireworks();
+          }
         } else {
           plat934.classList.remove('station-complete');
         }
@@ -698,13 +858,16 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
     }
   }
 
+  // Initialize both the tracker and the RPG box logic
   document.addEventListener('DOMContentLoaded', () => {
     initializeChecklists();
     teleportTrackToSidebar();
+    setupRPGDialog();
   });
   
   document.addEventListener('astro:page-load', () => {
     initializeChecklists();
     teleportTrackToSidebar();
+    setupRPGDialog();
   });
 `}</script>
