@@ -1,0 +1,89 @@
+---
+title: 2.2 Simple and Compound Interest
+description: Learn to calculate financial growth over time and use technology to model interest and depreciation.
+---
+
+## 1. Inquiry: The Power of Time
+**Inquiry Questions:** *How does debt grow if left unpaid? Why do savings accounts earn more over long periods? How can we use technology to predict our financial future?*
+
+In financial mathematics, **Interest** is the cost of borrowing money or the reward for saving it. The way that interest is applied—either only on the start amount or on the growing balance—makes a massive difference over time.
+
+---
+
+## 2. Simple Interest
+Simple interest is calculated only on the **original amount** (the Principal) invested or borrowed. It is a linear growth pattern.
+
+
+
+[Image of simple interest vs compound interest graph]
+
+
+**Formula:**
+$$I = P \times r \times t$$
+
+* **$I$**: Interest earned
+* **$P$**: Principal (starting amount)
+* **$r$**: Interest rate (as a decimal, e.g., $5\% = 0.05$)
+* **$t$**: Time (usually in years)
+
+---
+
+## 3. Compound Interest
+Compound interest is calculated on the principal **plus** any interest already earned. This creates an exponential growth pattern—the "interest on interest" effect.
+
+**To calculate Year-by-Year:**
+1. Calculate interest for Year 1.
+2. Add it to the principal to get a new balance.
+3. Calculate interest for Year 2 using the *new* balance.
+
+**The Multiplier Method:**
+To find the total value after $n$ years:
+$$\text{Total} = P \times (\text{Multiplier})^n$$
+*Example: 500 HKD at $4\%$ compound interest for $3$ years:*
+$500 \times (1.04)^3 = \mathbf{562.43}$ **HKD**
+
+---
+
+## 4. Depreciation and Technology
+**Depreciation** is the opposite of interest; it is when an item (like a car or laptop) loses value over time. We use the same compound formula but with a multiplier *less than 1*.
+*Example: $10\%$ depreciation means a multiplier of $0.90$.*
+
+**Using Technology:**
+In Year 9, we use spreadsheets (Excel/Sheets) or financial calculators to model these connections. By changing the interest rate or the time in a cell, we can instantly see how it affects the final total.
+
+---
+
+## 5. Practice & Homework (20 Minutes)
+
+### Q1: Simple Interest
+<Tabs>
+  <TabItem label="📝 Question">
+    Invest 3000 HKD at $5\%$ simple interest for $4$ years. How much **interest** is earned?
+  </TabItem>
+  <TabItem label="✅ Solution">
+    $I = 3000 \times 0.05 \times 4$
+    $I = \mathbf{600}$ **HKD**
+  </TabItem>
+</Tabs>
+
+### Q2: Compound Interest
+<Tabs>
+  <TabItem label="📝 Question">
+    Invest 2000 HKD at $3\%$ compound interest for $2$ years. What is the **total value** of the investment?
+  </TabItem>
+  <TabItem label="✅ Solution">
+    Year 1: $2000 \times 1.03 = 2060$ HKD
+    Year 2: $2060 \times 1.03 = \mathbf{2121.80}$ **HKD**
+  </TabItem>
+</Tabs>
+
+### Q3: Depreciation
+<Tabs>
+  <TabItem label="📝 Question">
+    A computer worth 1200 HKD depreciates at $20\%$ per year. What is it worth after $2$ years?
+  </TabItem>
+  <TabItem label="✅ Solution">
+    Multiplier: $100\% - 20\% = 80\% = 0.8$
+    $1200 \times 0.8 \times 0.8 = \mathbf{768}$ **HKD**
+  </TabItem>
+</Tabs>

@@ -2,25 +2,42 @@
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/SiteTitle.astro';
 
-// Check if the current URL path is inside the IB section
+// Check the current URL path to determine the section
 const isIB = Astro.url.pathname.startsWith('/ib-aisl');
+const isYear9 = Astro.url.pathname.startsWith('/year-9');
+const isYear8 = Astro.url.pathname.startsWith('/year-8');
+const isYear7 = Astro.url.pathname.startsWith('/year-7');
 ---
 
 {isIB ? (
   /* --- CUSTOM IB LOGO & LINK --- */
   <a href="/ib-aisl/" style="display: flex; align-items: center; text-decoration: none; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;">
-    
-    {/* Option A: Text-based Logo (Matching your landing page theme) */}
     <span style="background: linear-gradient(135deg, #10b981, #047857); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
       AI SL
     </span>
-
-    {/* Option B: If you have an image, delete the span above and uncomment below! */}
-    {/* <img src="/src/assets/ib-logo-light.svg" alt="IB Logo" style="height: 2rem;" /> */}
-    
+  </a>
+) : isYear9 ? (
+  /* --- CUSTOM YEAR 9 LOGO & LINK --- */
+  <a href="/year-9/" style="display: flex; align-items: center; text-decoration: none; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;">
+    <span style="background: linear-gradient(135deg, #f59e0b, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+      9
+    </span>
+  </a>
+) : isYear8 ? (
+  /* --- CUSTOM YEAR 8 LOGO & LINK --- */
+  <a href="/year-8/" style="display: flex; align-items: center; text-decoration: none; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;">
+    <span style="background: linear-gradient(135deg, #a855f7, #6d28d9); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+      8
+    </span>
+  </a>
+) : isYear7 ? (
+  /* --- CUSTOM YEAR 7 LOGO & LINK --- */
+  <a href="/year-7/" style="display: flex; align-items: center; text-decoration: none; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;">
+    <span style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+      7
+    </span>
   </a>
 ) : (
-  /* --- DEFAULT IGCSE LOGO --- */
-  /* This pulls your default light/dark SVGs right from your astro.config.mjs */
+  /* --- DEFAULT LOGO --- */
   <Default {...Astro.props} />
 )}

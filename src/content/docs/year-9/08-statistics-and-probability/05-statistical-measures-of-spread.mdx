@@ -1,0 +1,62 @@
+---
+title: 8.5 Statistical Measures of Spread
+description: Calculate quartiles, the interquartile range (IQR), and the mean for grouped continuous data.
+---
+
+## 1. Inquiry: Beyond the Average
+**Inquiry Question:** *If two classes have the same average test score, does it mean they performed the same? How do we measure the "gap" between the top and bottom students?*
+
+The **Mean** only tells you the center. To understand the whole story, we need to look at the **Spread** (how far apart the data points are).
+
+---
+
+## 2. The Five-Number Summary and Quartiles
+For large data sets, we divide the data into four equal parts (quartiles):
+* **Lower Quartile (Q1):** The value at the 25% mark.
+* **Median (Q2):** The middle value or 50% mark.
+* **Upper Quartile (Q3):** The value at the 75% mark.
+* **Interquartile Range (IQR):** $Q3 - Q1$. This measures the spread of the middle 50% of the data and is less affected by extreme outliers than the total range.
+
+
+
+---
+
+## 3. Calculating the Mean for Grouped Data
+When data is grouped into intervals (e.g., $10 < x \le 20$), we don't know the exact values. To estimate the mean, we use the **midpoint** of each interval:
+1.  **Find Midpoints ($x$):** The center of each range.
+2.  **Multiply ($f \times x$):** Multiply the frequency of each group by its midpoint.
+3.  **Sum and Divide:** $\frac{\text{Total } (f \times x)}{\text{Total Frequency}}$.
+
+[Image showing a grouped frequency table with a midpoint column and f times x column]
+
+---
+
+## 4. The Effect of Outliers
+An **outlier** is a value significantly different from the rest. 
+* **The Mean:** Highly sensitive. One very high score will "drag" the mean up significantly.
+* **The Median:** Very resistant. Changing an extreme value usually has little to no effect on the middle position.
+
+---
+
+## 5. Practice & Homework (20 Minutes)
+
+### Q1: Calculating IQR
+<Tabs>
+  <TabItem label="📝 Question">
+    In a data set, the Lower Quartile ($Q1$) is 15 and the Upper Quartile ($Q3$) is 42. Calculate the Interquartile Range.
+  </TabItem>
+  <TabItem label="✅ Solution">
+    $IQR = Q3 - Q1$
+    $IQR = 42 - 15 = \mathbf{27}$.
+  </TabItem>
+</Tabs>
+
+### Q2: Outlier Analysis
+<Tabs>
+  <TabItem label="📝 Question">
+    A small company has 5 employees earning 30,000 HKD and a CEO earning 500,000 HKD. Which measure of average (Mean or Median) would be more "misleading" for a new job seeker?
+  </TabItem>
+  <TabItem label="✅ Solution">
+    The **Mean**. The CEO's high salary (outlier) will make the "average" salary look much higher than what most employees actually earn.
+  </TabItem>
+</Tabs>

@@ -4,12 +4,18 @@ import Default from '@astrojs/starlight/components/ContentPanel.astro';
 
 const { slug } = Astro.props;
 
-// 1. Determine curriculum context
+// 1. Determine curriculum context - Added Year 9
 const curriculum = slug && slug.startsWith('ib-aisl') 
   ? 'IB AISL' 
   : slug && slug.startsWith('igcse') 
     ? 'IGCSE' 
-    : 'General';
+    : slug && slug.startsWith('year-9')
+      ? 'Year 9'
+      : slug && slug.startsWith('year-8')
+        ? 'Year 8'
+        : slug && slug.startsWith('year-7')
+          ? 'Year 7'
+          : 'General';
 
 const isBookPage = curriculum !== 'General';
 ---
@@ -25,13 +31,14 @@ const isBookPage = curriculum !== 'General';
 
 <script>
   function setupSearchSorter() {
-    // 1. Find the current book directory from the URL (e.g., 'ib-aisl' or 'igcse')
+    // 1. Find the current book directory from the URL (Included year-9)
     const pathParts = window.location.pathname.split('/').filter(Boolean);
     if (pathParts.length === 0) return;
     const currentBook = pathParts[0]; 
 
-    // Only apply sorting logic if we are inside one of the books
-    if (currentBook !== 'ib-aisl' && currentBook !== 'igcse') return;
+    // Only apply sorting logic if we are inside one of the curriculum books
+    const validBooks = ['ib-aisl', 'igcse', 'year-7', 'year-8', 'year-9'];
+    if (!validBooks.includes(currentBook)) return;
 
     // 2. Watch the document for Starlight's Pagefind UI injecting search results
     const observer = new MutationObserver((mutations) => {

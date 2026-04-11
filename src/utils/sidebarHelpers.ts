@@ -14,11 +14,22 @@ export const getRandomGreeting = () => {
 
 export const filterSidebar = (currentSidebar: any[], url: URL, isTeacherMode: boolean) => {
   const isIB = url.pathname.includes('/ib-aisl');
+  const isYear9 = url.pathname.includes('/year-9'); // <-- Added Year 9 check
+  const isYear8 = url.pathname.includes('/year-8'); 
+  const isYear7 = url.pathname.includes('/year-7'); 
   
   return currentSidebar.filter(item => {
     if (isTeacherMode) return true;
+    
     const folderName = item.label || '';
+    
+    // Check which section we are in and return the matching sidebar
+    if (isYear9) return folderName.includes('Year 9'); // <-- Route to Year 9
+    if (isYear8) return folderName.includes('Year 8'); 
+    if (isYear7) return folderName.includes('Year 7'); 
     if (isIB) return folderName.includes('IB Mathematics AI SL');
+    
+    // Default fallback
     return folderName.includes('IGCSE Mathematics');
   });
 };

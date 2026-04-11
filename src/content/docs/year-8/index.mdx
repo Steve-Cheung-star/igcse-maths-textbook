@@ -1,0 +1,76 @@
+---
+title: "Year 8 Maths"
+description: "Master the Year 8 Maths syllabus with curated content by Steve Cheung."
+template: splash
+hero:
+  tagline: "Advance your mathematical reasoning with interactive patterns, algebra, and geometry."
+  image:
+    html: '<div class="hero-math-icon" style="background: linear-gradient(135deg, #a855f7, #6d28d9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border-color: #a855f7;">Year 8</div>'
+  actions:
+    - text: Start Learning
+      link: /year-8/01a-fractions-decimals-percentages/01-advanced-decimal-operations/
+      icon: right-arrow
+      variant: primary
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import ResumeBanner from '../../../components/ResumeBanner.astro';
+
+<style>{`
+  site-search { display: none !important; }
+  html, body, .page, .main-frame, .main-pane, .content-panel, .sl-container, main, article {
+    background-color: transparent !important;
+  }
+  .main-pane, .content-panel { isolation: auto !important; }
+
+  /* YEAR 8 THEME: Deep Slate & Royal Purple */
+  #yr8-hero-bg {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -100; pointer-events: none;
+    background-color: #0f172a; /* Midnight Slate */
+    transition: background-color 0.3s ease; 
+  }
+  
+  /* Light Mode: Soft Lavender background */
+  html[data-theme="light"] #yr8-hero-bg { background-color: #faf5ff; }
+
+  /* Grid lines using Purple accents */
+  #yr8-hero-bg::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(rgba(168, 85, 247, 0.1) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(168, 85, 247, 0.1) 1.5px, transparent 1.5px);
+    background-size: 60px 60px;
+  }
+
+  html[data-theme="light"] #yr8-hero-bg::before {
+    background-image: 
+      linear-gradient(rgba(109, 40, 217, 0.1) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(109, 40, 217, 0.1) 1.5px, transparent 1.5px);
+  }
+
+  /* Custom styling for the primary action button to match Year 8 Purple */
+  .action.primary {
+    background: linear-gradient(135deg, #a855f7, #7c3aed) !important;
+    border: none !important;
+  }
+`}</style>
+
+<div id="yr8-hero-bg"></div>
+
+## The Year 8 Learning Experience
+
+<CardGrid stagger>
+    <Card title="Syllabus Mastery" icon="approve-check">
+        Comprehensive content tailored to the **Year 8 Key Stage 3** curriculum, focusing on proportional reasoning and geometric proof.
+    </Card>
+    <Card title="Advanced Algebra" icon="pencil">
+        Master equations with variables on both sides, expand binomials, and find the $n^{th}$ term of linear sequences.
+    </Card>
+    <Card title="Spatial Reasoning" icon="document">
+        Utilize **Pythagoras Theorem**, calculate circle areas, and investigate 3D prisms and cylinders.
+    </Card>
+    <Card title="Data & Modeling" icon="rocket">
+        Explore coordinate geometry, plot linear functions, and interpret real-world distance-time relationships.
+    </Card>
+</CardGrid>

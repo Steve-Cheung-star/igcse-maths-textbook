@@ -1,0 +1,65 @@
+---
+title: "Year 7 Maths"
+description: "Master the Year 7 Maths syllabus with curated content by Steve Cheung."
+template: splash
+hero:
+  tagline: "Build a strong mathematical foundation with interactive practice and clear explanations."
+  image:
+    html: '<div class="hero-math-icon" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border-color: #3b82f6;">Year 7</div>'
+  actions:
+    - text: Start Learning
+      link: /year-7/01-working-mathematically/01-working-mathematically/
+      icon: right-arrow
+      variant: primary
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import ResumeBanner from '../../../components/ResumeBanner.astro';
+
+<style>{`
+  site-search { display: none !important; }
+  html, body, .page, .main-frame, .main-pane, .content-panel, .sl-container, main, article {
+    background-color: transparent !important;
+  }
+  .main-pane, .content-panel { isolation: auto !important; }
+
+  #yr7-hero-bg {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -100; pointer-events: none;
+    background-color: #0f172a; /* A deep navy blue theme */
+    transition: background-color 0.3s ease; 
+  }
+  html[data-theme="light"] #yr7-hero-bg { background-color: #eff6ff; }
+
+  #yr7-hero-bg::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.08) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1.5px, transparent 1.5px);
+    background-size: 80px 80px;
+  }
+  html[data-theme="light"] #yr7-hero-bg::before {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.15) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.15) 1.5px, transparent 1.5px);
+  }
+`}</style>
+
+<div id="yr7-hero-bg"></div>
+
+## The Year 7 Learning Experience
+
+<CardGrid stagger>
+    <Card title="Curational Excellence" icon="approve-check">
+        Authoritative content specifically developed for the **Year 7 Maths** curriculum by Steve Cheung.
+    </Card>
+    <Card title="Core Fundamentals" icon="pencil">
+        Heavy focus on building essential skills in number, algebra, geometry, and statistics.
+    </Card>
+    <Card title="Real-World Application" icon="document">
+        Develop problem-solving skills by connecting mathematical concepts to everyday life.
+    </Card>
+    <Card title="Step-by-Step Practice" icon="rocket">
+        Work through carefully structured exercises designed to build confidence and mastery.
+    </Card>
+</CardGrid>

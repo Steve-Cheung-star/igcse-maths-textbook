@@ -1,0 +1,76 @@
+---
+title: 5.2 Solving 2-D Problems with Pythagoras
+description: Apply the Pythagorean relationship to calculate missing side lengths in various 2-D shapes and real-world scenarios.
+---
+
+## 1. Inquiry: The Shortcut
+**Inquiry Questions:** *If you know the diagonal distance across a field, how can you find its width? How does Pythagoras help us find the height of a ladder reaching a window?* 
+
+While the theorem is $a^2 + b^2 = c^2$, we don't always need to find the longest side ($c$). Sometimes we know the hypotenuse and need to find one of the shorter legs ($a$ or $b$). This requires a bit of algebraic rearrangement.
+
+---
+
+## 2. Finding a Shorter Side
+If you are looking for a leg rather than the hypotenuse, you **subtract** the squares instead of adding them:
+* $a^2 = c^2 - b^2$
+* $b^2 = c^2 - a^2$
+
+**Step-by-Step Strategy:**
+1. **Identify the Hypotenuse:** Locate the side opposite the right angle ($c$).
+2. **Substitute:** Plug the values into the rearranged formula.
+3. **Subtract and Root:** Subtract the smaller square from the larger one, then take the square root.
+
+
+
+**Example:** A 5m ladder is leaning against a wall. The base of the ladder is 3m from the wall. How high up the wall does the ladder reach?
+* Here, the ladder is the hypotenuse ($c = 5$) and the distance from the wall is a leg ($a = 3$).
+* $b^2 = 5^2 - 3^2$
+* $b^2 = 25 - 9 = 16$
+* $b = \sqrt{16} = \mathbf{4m}$
+
+---
+
+## 3. Pythagoras in Other Shapes
+Many shapes contain "hidden" right triangles.
+* **Rectangles:** The diagonal of a rectangle creates two right triangles.
+* **Isosceles Triangles:** Drawing a line from the top point to the base creates two right triangles.
+
+---
+
+## 4. Practice & Homework (20 Minutes)
+
+### Q1: The TV Screen
+<Tabs>
+  <TabItem label="📝 Question">
+    A computer monitor is 40cm wide and 30cm high. Calculate the length of the diagonal.
+  </TabItem>
+  <TabItem label="✅ Solution">
+    1. Finding hypotenuse: $40^2 + 30^2 = c^2$ 
+    2. $1600 + 900 = 2500$
+    3. $\sqrt{2500} = \mathbf{50cm}$
+  </TabItem>
+</Tabs>
+
+### Q2: Finding the Height
+<Tabs>
+  <TabItem label="📝 Question">
+    A right-angled triangle has a hypotenuse of 13cm and a base of 12cm. Find its height.
+  </TabItem>
+  <TabItem label="✅ Solution">
+    1. Finding a leg: $13^2 - 12^2 = h^2$
+    2. $169 - 144 = 25$
+    3. $\sqrt{25} = \mathbf{5cm}$
+  </TabItem>
+</Tabs>
+
+### Q3: Real-World Diagonal
+<Tabs>
+  <TabItem label="📝 Question">
+    You want to take a shortcut across a rectangular park that is 60m long and 80m wide. How much shorter is the diagonal path compared to walking along the two sides?
+  </TabItem>
+  <TabItem label="✅ Solution">
+    1. Diagonal: $\sqrt{60^2 + 80^2} = \sqrt{3600 + 6400} = \sqrt{10000} = 100m$.
+    2. Walking the sides: $60 + 80 = 140m$.
+    3. Difference: $140 - 100 = \mathbf{40m}$ shorter.
+  </TabItem>
+</Tabs>

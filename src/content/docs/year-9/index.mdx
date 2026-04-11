@@ -1,0 +1,75 @@
+---
+title: "Year 9 Maths"
+description: "Master the Year 9 Maths syllabus with curated content by Steve Cheung."
+template: splash
+hero:
+  tagline: "Unlocking advanced mathematical structures through exponents, simultaneous logic, and spatial similarity."
+  image:
+    html: '<div class="hero-math-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border-color: #f59e0b;">Year 9</div>'
+  actions:
+    - text: Start Learning
+      link: /year-9/01-exponents-and-roots/01-accuracy-and-index-notation/
+      icon: right-arrow
+      variant: primary
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<style>{`
+  site-search { display: none !important; }
+  html, body, .page, .main-frame, .main-pane, .content-panel, .sl-container, main, article {
+    background-color: transparent !important;
+  }
+  .main-pane, .content-panel { isolation: auto !important; }
+
+  /* YEAR 9 THEME: Deep Charcoal & Amber Orange */
+  #yr9-hero-bg {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -100; pointer-events: none;
+    background-color: #0c0a09; /* Stone Black */
+    transition: background-color 0.3s ease; 
+  }
+  
+  /* Light Mode: Soft Cream background */
+  html[data-theme="light"] #yr9-hero-bg { background-color: #fffbeb; }
+
+  /* Grid lines using Amber accents */
+  #yr9-hero-bg::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(rgba(245, 158, 11, 0.1) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(245, 158, 11, 0.1) 1.5px, transparent 1.5px);
+    background-size: 60px 60px;
+  }
+
+  html[data-theme="light"] #yr9-hero-bg::before {
+    background-image: 
+      linear-gradient(rgba(217, 119, 6, 0.1) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(217, 119, 6, 0.1) 1.5px, transparent 1.5px);
+  }
+
+  /* Custom styling for the primary action button to match Year 9 Amber */
+  .action.primary {
+    background: linear-gradient(135deg, #f59e0b, #ea580c) !important;
+    border: none !important;
+  }
+`}</style>
+
+<div id="yr9-hero-bg"></div>
+
+## The Year 9 Learning Experience
+
+<CardGrid stagger>
+    <Card title="Structural Number Power" icon="approve-check">
+        Move beyond basics into **Standard Index Form**, negative exponents, and rounding to significant figures for scientific accuracy.
+    </Card>
+    <Card title="Simultaneous Systems" icon="pencil">
+        Solve complex relationships using **Simultaneous Equations** (substitution and elimination) and algebraic fractions.
+    </Card>
+    <Card title="Similarity & Scale" icon="document">
+        Investigate 2D and 3D **Similarity**, understanding how area and volume scale by $k^2$ and $k^3$ factors.
+    </Card>
+    <Card title="Bivariate Statistics" icon="rocket">
+        Analyze large data sets using **Scatter Plots**, identify correlation vs. causation, and model trends with lines of best fit.
+    </Card>
+</CardGrid>
