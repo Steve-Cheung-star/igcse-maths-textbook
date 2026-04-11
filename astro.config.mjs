@@ -9,7 +9,7 @@ import vercel from '@astrojs/vercel';
 import AutoImport from 'astro-auto-import';
 
 export default defineConfig({
-  site: 'https://https://igcse-maths-textbook.vercel.app/',
+  site: 'https://igcse-maths-textbook.vercel.app',
   output: 'server',
   adapter: vercel(),
 

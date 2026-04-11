@@ -721,11 +721,13 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
     setupRPGDialog(); // Added
   });
 
-  function initializeChecklists() {
+function initializeChecklists() {
     const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
     const pagePath = window.location.pathname;
+    const storageKey = 'checklist-state-' + pagePath; // ONE single key per page
     let lastCheckedIndex = null;
 
+    // --- (Keep your existing updateProgressTracks function exactly as is here) ---
     function updateProgressTracks() {
       for (let i = 0; i < 22; i++) {
         const section = document.querySelector('[data-section="' + i + '"]');
@@ -788,7 +790,6 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
       if (plat934) {
         const allChecked = checkboxes.length > 0 && checkboxes.every(cb => cb.checked);
         if (allChecked) {
-          // Prevent fireworks from triggering on every subsequent page load
           if (!plat934.classList.contains('station-complete')) {
              plat934.classList.add('station-complete');
              triggerFireworks();
@@ -798,45 +799,60 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
         }
       }
     }
+    // --- (End of updateProgressTracks) ---
+
+    // 1. Load the single array from localStorage
+    let savedState = [];
+    try {
+      savedState = JSON.parse(localStorage.getItem(storageKey)) || [];
+    } catch (e) {
+      savedState = []; // Fallback if data is corrupted
+    }
     
+    // 2. Apply states and set up listeners
     checkboxes.forEach((cb, index) => {
-      const storageKey = 'checklist-' + pagePath + '-' + index;
-      
       cb.disabled = false;
-      if (localStorage.getItem(storageKey) === 'true') {
+      
+      // Check if this specific index was saved as true
+      if (savedState[index] === true) {
         cb.checked = true;
       }
       
       cb.addEventListener('click', (e) => {
+        // Handle shift-click for multiple selections [cite: 272, 273]
         if (e.shiftKey && lastCheckedIndex !== null) {
           const start = Math.min(lastCheckedIndex, index);
           const end = Math.max(lastCheckedIndex, index);
           
           for (let i = start; i <= end; i++) {
             checkboxes[i].checked = cb.checked;
-            localStorage.setItem('checklist-' + pagePath + '-' + i, cb.checked);
           }
-        } else {
-          localStorage.setItem(storageKey, cb.checked);
         }
+        
+        // Save the entire array state at once
+        const currentState = checkboxes.map(box => box.checked);
+        localStorage.setItem(storageKey, JSON.stringify(currentState));
         
         lastCheckedIndex = index;
         updateProgressTracks();
       });
     });
 
+    // 3. Teacher Reset Shortcut [cite: 275]
     const secretResetTarget = document.querySelector('h2');
     if (secretResetTarget) {
-      secretResetTarget.style.cursor = 'context-menu'; 
+      secretResetTarget.style.cursor = 'context-menu';
       secretResetTarget.title = "Double-click to reset all progress";
       
       secretResetTarget.addEventListener('dblclick', (e) => {
         e.preventDefault();
         if (confirm('Teacher Shortcut: Reset all syllabus progress?')) {
-          checkboxes.forEach((cb, i) => {
-            cb.checked = false;
-            localStorage.removeItem('checklist-' + pagePath + '-' + i);
-          });
+          // Uncheck all boxes
+          checkboxes.forEach(cb => cb.checked = false);
+          
+          // Delete the single key 
+          localStorage.removeItem(storageKey); 
+          
           lastCheckedIndex = null;
           updateProgressTracks();
         }
