@@ -203,10 +203,10 @@
         localState.strokes = JSON.parse(savedStrokes); 
         // Migrate old strokes to semantic colors if they used hex
         localState.strokes.forEach(s => {
-          if (s.color === toolsConfig?.colors?.cyan || s.color === '#00ffff') s.colorName = 'color1';
-          if (s.color === toolsConfig?.colors?.magenta || s.color === '#ff00ff') s.colorName = 'color2';
-          if (s.color === toolsConfig?.colors?.yellow || s.color === '#ffff00') s.colorName = 'color3';
-          if (s.color === toolsConfig?.colors?.lime || s.color === '#39ff14') s.colorName = 'color4';
+          if (s.color === '#00ffff') s.colorName = 'color1';
+          if (s.color === '#ff00ff') s.colorName = 'color2';
+          if (s.color === '#ffff00') s.colorName = 'color3';
+          if (s.color === '#39ff14') s.colorName = 'color4';
           if (!s.colorName) s.colorName = s.color; // Fallback
         });
       } catch(e){} 
@@ -375,24 +375,51 @@
     function redrawAll() {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      localState.strokes.forEach(stroke => {
-        if (stroke.points.length === 0) return;
-        ctx.beginPath(); ctx.moveTo(stroke.points[0].x, stroke.points[0].y); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      
+      // 1. Find where the last 'clear' happened
+      let startIndex = 0;
+      for (let i = localState.strokes.length - 1; i >= 0; i--) {
+        if (localState.strokes[i].type === 'clear') {
+          startIndex = i + 1;
+          break;
+        }
+      }
+
+      // 2. Draw only the strokes that happened after the last 'clear'
+      for (let i = startIndex; i < localState.strokes.length; i++) {
+        const stroke = localState.strokes[i];
+        if (!stroke.points || stroke.points.length === 0) continue;
+        
+        ctx.beginPath(); 
+        ctx.moveTo(stroke.points[0].x, stroke.points[0].y); 
+        ctx.lineCap = 'round'; 
+        ctx.lineJoin = 'round';
         ctx.lineWidth = stroke.tool === 'eraser' ? 40 : 6; 
         
         // Dynamically resolve colors at draw time!
         ctx.strokeStyle = getThemeColor(stroke.colorName || stroke.color);
         
         ctx.globalCompositeOperation = stroke.tool === 'eraser' ? 'destination-out' : 'source-over';
-        stroke.points.forEach(pt => ctx.lineTo(pt.x, pt.y)); ctx.stroke();
-      });
+        stroke.points.forEach(pt => ctx.lineTo(pt.x, pt.y)); 
+        ctx.stroke();
+      }
       ctx.globalCompositeOperation = 'source-over'; 
     }
 
     function saveStrokes() { sessionStorage.setItem(`wb-strokes-${window.location.pathname}`, JSON.stringify(localState.strokes)); }
     function undo() { if (localState.strokes.length > 0) { localState.redoStack.push(localState.strokes.pop()); redrawAll(); saveStrokes(); } }
     function redo() { if (localState.redoStack.length > 0) { localState.strokes.push(localState.redoStack.pop()); redrawAll(); saveStrokes(); } }
-    function clear() { localState.strokes = []; localState.redoStack = []; redrawAll(); saveStrokes(); }
+    
+    function clear() { 
+      // Don't do anything if there's nothing to clear, or if we just cleared
+      if (localState.strokes.length === 0 || localState.strokes[localState.strokes.length - 1].type === 'clear') return;
+      
+      // Push a clear action instead of emptying the array
+      localState.strokes.push({ type: 'clear' }); 
+      localState.redoStack = []; 
+      redrawAll(); 
+      saveStrokes(); 
+    }
     
     function togglePalmRejection() {
       palmRejectionEnabled = !palmRejectionEnabled;
