@@ -74,6 +74,7 @@ export default defineConfig({
             { label: '8. Transformations & Vectors', autogenerate: { directory: 'igcse/08-transformations-vectors' } },
             { label: '9. Probability', autogenerate: { directory: 'igcse/09-probability' } },
             { label: '10. Statistics', autogenerate: { directory: 'igcse/10-statistics' } },
+            { label: 'Course Outline', link: 'igcse/course-outline' },
           ],
         },
         {

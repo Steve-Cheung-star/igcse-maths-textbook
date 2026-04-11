@@ -1,0 +1,510 @@
+---
+title: Scheme of Work
+description: Scheme of Work to IGCSE Syllabus Mapping and Timeline
+tableOfContents: false
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+{/* --- LAYOUT AND ANIMATION STYLES --- */}
+<style>{`
+  /* Hide sidebar completely on mobile/tablets */
+  .sidebar-wrapper {
+    display: none;
+  }
+  
+  /* On large screens, float the map EXACTLY where the ToC normally goes */
+  @media (min-width: 1200px) {
+    .sidebar-wrapper {
+      display: block;
+      position: fixed;
+      top: 100px;
+      /* This pins it to the right, matching standard ToC placement */
+      right: max(2rem, calc(50vw - 42rem)); 
+      width: 320px; 
+      z-index: 50;
+      
+      /* Control Panel styles */
+      padding: 1.5rem 1rem;
+      background: var(--sl-color-bg-nav, #1e293b);
+      border: 1px solid var(--sl-color-hairline, #334155);
+      border-radius: 1rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      
+      /* Ensure it never overflows the viewport vertically */
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+  }
+
+  /* SVG Map Styles */
+  .station-link {
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .station {
+    fill: #1e293b;
+    stroke: #3b82f6;
+    stroke-width: 4px;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .station-text {
+    fill: currentColor;
+    transition: all 0.3s ease;
+  }
+  
+  /* Station Completion Glow */
+  .station-complete {
+    fill: #3b82f6;
+    stroke: #93c5fd;
+    stroke-width: 5px;
+    filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.9));
+    transform: scale(1.15);
+  }
+
+  /* Hover Effects */
+  .station-link:hover .station {
+    stroke: #60a5fa;
+    transform: scale(1.25);
+  }
+  .station-link:hover .station-text {
+    fill: #60a5fa;
+  }
+
+  /* Segmented Glowing Tracks */
+  .glow-track {
+    transition: all 0.3s ease-out;
+    filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.8));
+    animation: pulse-glow 2s infinite alternate;
+  }
+
+  @keyframes pulse-glow {
+    0% { filter: drop-shadow(0 0 4px rgba(96, 165, 250, 0.6)); }
+    100% { filter: drop-shadow(0 0 10px rgba(96, 165, 250, 1)); }
+  }
+
+  /* Platform 9 3/4 Styles */
+  .plat934 {
+    fill: #450a0a;
+    stroke: #b45309;
+  }
+  .plat934.station-complete {
+    fill: #ef4444;
+    stroke: #fde047;
+    filter: drop-shadow(0 0 20px #fde047) drop-shadow(0 0 40px #ef4444);
+    transform: scale(1.4);
+  }
+`}</style>
+
+
+<h2 id="teacher-reset-btn" style={{ userSelect: 'none', marginTop: 0 }}>Syllabus Timeline</h2>
+
+{/* Section 0 */}
+<div data-section="0">
+  <h3 id="prior-learning">Prior Learning & Surds</h3>
+  <CardGrid stagger>
+      <Card title="Types of Numbers & HCF/LCM" icon="list-format">
+          - [ ] Number types include prime numbers, square, cube, triangle, irrational, reciprocals
+          - [ ] HCF and LCM
+          <br/>
+          **Lesson:** [1.1 Types of Numbers](https://igcse-maths-textbook.vercel.app/igcse/01-number/01-types-of-numbers/)
+      </Card>
+      <Card title="Operations & Estimation" icon="approve-check">
+          - [ ] Use of operations, ordering, estimation and rounding
+          <br/>
+          **Lessons:** [1.5 Ordering](https://igcse-maths-textbook.vercel.app/igcse/01-number/05-ordering-and-inequalities/), [1.6 Operations](https://igcse-maths-textbook.vercel.app/igcse/01-number/06-the-four-operations/), [1.9 Estimation](https://igcse-maths-textbook.vercel.app/igcse/01-number/09-estimation-and-rounding/)
+      </Card>
+      <Card title="Rates, Speed & Time" icon="rocket">
+          - [ ] Rate; currency conversion; problems involving speed, distance and time
+          <br/>
+          **Lessons:** [1.11 Rates and Speed](https://igcse-maths-textbook.vercel.app/igcse/01-number/11-rates/), [1.14 Time](https://igcse-maths-textbook.vercel.app/igcse/01-number/14-time/), [1.15 Money](https://igcse-maths-textbook.vercel.app/igcse/01-number/15-money/)
+      </Card>
+      <Card title="Percentages & Proportions" icon="document">
+          - [ ] Number equivalents, reverse percentage, interest and depreciation
+          <br/>
+          **Lessons:** [1.4 Fractions/Decimals/%](https://igcse-maths-textbook.vercel.app/igcse/01-number/04-fractions-decimals-and-percentages/), [1.10 Ratio](https://igcse-maths-textbook.vercel.app/igcse/01-number/10-ratio-and-proportion/), [1.12 Percentages](https://igcse-maths-textbook.vercel.app/igcse/01-number/12-percentages/)
+      </Card>
+      <Card title="Indices & Standard Form" icon="laptop">
+          - [ ] Powers and roots calculations; Index laws, standard form
+          <br/>
+          **Lessons:** [1.3 Roots & Powers](https://igcse-maths-textbook.vercel.app/igcse/01-number/03-power-and-roots/), [1.7 Indices](https://igcse-maths-textbook.vercel.app/igcse/01-number/07-indices-i/), [1.8 Standard Form](https://igcse-maths-textbook.vercel.app/igcse/01-number/08-standard-form/)
+      </Card>
+      <Card title="Surds" icon="pen">
+          - [ ] Properties of surds; simplifying, rationalization of denominators
+          <br/>
+          **Lesson:** [1.17 Radicals and Surds](https://igcse-maths-textbook.vercel.app/igcse/01-number/17-surds/)
+      </Card>
+  </CardGrid>
+</div>
+
+{/* Section 1 */}
+<div data-section="1">
+  <h3 id="algebra">Algebra I & II</h3>
+  <CardGrid stagger>
+      <Card title="Equations & Formulae" icon="pen">
+          - [ ] Solution of linear and simultaneous equations
+          - [ ] Derivation, rearrangement and evaluation of formulae
+          <br/>
+          **Lessons:** [2.5 Equations](https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/), [2.2 Manipulation](https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/)
+      </Card>
+      <Card title="Expansion & Factorization" icon="rocket">
+          - [ ] Expansion of brackets; distributive law; perfect squares
+          - [ ] Factorization: common factor, difference of squares, trinomial
+          <br/>
+          **Lessons:** [2.1 Intro to Algebra](https://igcse-maths-textbook.vercel.app/igcse/02-algebra/01-introduction-to-algebra/), [2.2 Manipulation](https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/)
+      </Card>
+      <Card title="Algebraic Fractions" icon="document">
+          - [ ] Algebraic fractions: simplifying, multiplying, dividing, adding, subtracting
+          <br/>
+          **Lesson:** [2.3 Algebraic Fractions](https://igcse-maths-textbook.vercel.app/igcse/02-algebra/03-algebraic-fractions/)
+      </Card>
+      <Card title="Quadratics & GDC Solving" icon="laptop">
+          - [ ] Quadratic equations: factorization, quadratic formula, GDC
+          <br/>
+          **Lessons:** [2.5 Equations](https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/), [3.2 GDC Calculator](https://igcse-maths-textbook.vercel.app/igcse/03-functions/02-sketching-graphs-on-a-calculator/)
+      </Card>
+      <Card title="Inequalities" icon="approve-check">
+          - [ ] Interpretation of inequalities, real number line
+          - [ ] Solution of linear and quadratic inequalities using a GDC
+          <br/>
+          **Lesson:** [2.6 Inequalities](https://igcse-maths-textbook.vercel.app/igcse/02-algebra/06-inequalities/)
+      </Card>
+  </CardGrid>
+</div>
+
+{/* Section 2 */}
+<div data-section="2">
+  <h3 id="geometry">Geometry & Coordinates</h3>
+  <CardGrid stagger>
+      <Card title="Lines, Angles and Polygons" icon="list-format">
+          - [ ] Geometrical terms; vocabulary of triangles, quadrilaterals, polygons
+          - [ ] Measure lines/angles; calculate interior and exterior angles
+          <br/>
+          **Lessons:** [5.1 Geometrical terms](https://igcse-maths-textbook.vercel.app/igcse/05-geometry/01-geometrical-terms/), [5.5 Angles](https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/)
+      </Card>
+      <Card title="Similarity & Symmetry" icon="approve-check">
+          - [ ] Line symmetry, rotational symmetry, planes of symmetry
+          - [ ] Similarity; lengths, area and volume scale factors
+          <br/>
+          **Lessons:** [5.4 Symmetry](https://igcse-maths-textbook.vercel.app/igcse/05-geometry/04-symmetry/), [5.3 Similarity](https://igcse-maths-textbook.vercel.app/igcse/05-geometry/03-similarity/)
+      </Card>
+      <Card title="Coordinate Geometry" icon="laptop">
+          - [ ] Distance, midpoint, gradient, parallel and perpendicular lines
+          - [ ] Equation of a straight line as $y = mx + c$ and $ax + by = d$
+          - [ ] Linear inequalities on Cartesian plane; regions
+          <br/>
+          **Lessons:** [4.1 Coordinates](https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/01-coordinates/), [4.4 Equations](https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/), [2.6 Inequalities](https://igcse-maths-textbook.vercel.app/igcse/02-algebra/06-inequalities/)
+      </Card>
+      <Card title="Pythagoras' Theorem" icon="rocket">
+          - [ ] Pythagoras’ Theorem and its converse in 2-D and 3-D
+          <br/>
+          **Lessons:** [7.1 Pythagoras](https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/01-pythagoras-theorem/), [7.6 Pythagoras 3D](https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/06-3d-pythagoras-and-trig/)
+      </Card>
+      <Card title="Circle Geometry" icon="pen">
+          - [ ] Vocabulary: arc, chord, tangent. Properties: tangent to radius
+          - [ ] Angle in a semicircle, angles in same segment, cyclic quad
+          <br/>
+          **Lessons:** [5.6 Circle Theorems I](https://igcse-maths-textbook.vercel.app/igcse/05-geometry/06-circle-theorems-i/), [5.7 Circle Theorems II](https://igcse-maths-textbook.vercel.app/igcse/05-geometry/07-circle-theorems-ii/)
+      </Card>
+  </CardGrid>
+</div>
+
+{/* Section 3 */}
+<div data-section="3">
+  <h3 id="functions">Sequences & Functions</h3>
+  <CardGrid stagger>
+      <Card title="Sequences" icon="list-format">
+          - [ ] Continue a pattern, notation $T_n$; linear, quadratic, cubic
+          - [ ] Use difference method to find the nth term
+          <br/>
+          **Lesson:** [2.7 Sequences](https://igcse-maths-textbook.vercel.app/igcse/02-algebra/07-sequences/)
+      </Card>
+      <Card title="Functions & Graphs" icon="laptop">
+          - [ ] Function notation; domain and range; Composite/Inverse functions
+          - [ ] Asymptotes; Recognition of linear, quadratic, cubic, reciprocal
+          - [ ] Use of a GDC to sketch, find zeros, local maxima/minima
+          <br/>
+          **Lessons:** [3.3 Functions](https://igcse-maths-textbook.vercel.app/igcse/03-functions/03-functions/), [3.5 Asymptotes](https://igcse-maths-textbook.vercel.app/igcse/03-functions/05-asymptotes/), [3.2 GDC Sketching](https://igcse-maths-textbook.vercel.app/igcse/03-functions/02-sketching-graphs-on-a-calculator/)
+      </Card>
+      <Card title="Logarithms" icon="rocket">
+          - [ ] Logarithms in base $a$; $y = a^x \iff x = \log_a y$
+          - [ ] Exponential and logarithmic equations; growth and decay
+          <br/>
+          **Lessons:** [3.7 Logarithms](https://igcse-maths-textbook.vercel.app/igcse/03-functions/07-logarithmic-function/), [1.16 Exponential Growth](https://igcse-maths-textbook.vercel.app/igcse/01-number/16-exponential-growth-and-decay/)
+      </Card>
+  </CardGrid>
+</div>
+
+{/* Section 4 */}
+<div data-section="4">
+  <h3 id="statistics">Statistics & Sets</h3>
+  <CardGrid stagger>
+      <Card title="Correlation & Data" icon="document">
+          - [ ] Scatter diagrams; line of best fit; linear regression (GDC)
+          - [ ] Discrete vs continuous data; tables, charts, stem and leaf
+          <br/>
+          **Lessons:** [10.7 Scatter Diagrams](https://igcse-maths-textbook.vercel.app/igcse/10-statistics/07-scatter-diagrams/), [10.3 Discrete/Continuous](https://igcse-maths-textbook.vercel.app/igcse/10-statistics/03-discrete-and-continuous-data/)
+      </Card>
+      <Card title="Averages" icon="laptop">
+          - [ ] Calculate mean, median, mode and spread; GDC quartiles
+          - [ ] Draw cumulative frequency curve; inter-quartile range
+          <br/>
+          **Lessons:** [10.4 Averages](https://igcse-maths-textbook.vercel.app/igcse/10-statistics/04-averages-and-measures-of-spread/), [10.8 Cumulative Frequency](https://igcse-maths-textbook.vercel.app/igcse/10-statistics/08-cumulative-frequency-diagrams/)
+      </Card>
+      <Card title="Sets" icon="approve-check">
+          - [ ] Set notation; intersection and union; Venn diagrams
+          <br/>
+          **Lesson:** [1.2 Sets and Venn Diagrams](https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/)
+      </Card>
+  </CardGrid>
+</div>
+
+{/* Section 5 */}
+<div data-section="5">
+  <h3 id="measures">Measures & Trigonometry</h3>
+  <CardGrid stagger>
+      <Card title="Measures" icon="document">
+          - [ ] Unit conversion; Perimeter and area (compound shapes, circles)
+          - [ ] Surface area and volume (prisms, pyramids, cones, spheres)
+          <br/>
+          **Lessons:** [6.1 Units](https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/01-units-of-measure/), [6.4 3D Shapes](https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/)
+      </Card>
+      <Card title="Trigonometry Basics" icon="pen">
+          - [ ] Right-angled triangles; Exact values for $30^\circ, 45^\circ, 60^\circ$
+          - [ ] 3D problem solving; elevation and depression
+          <br/>
+          **Lessons:** [7.2 Right-Angle Trig](https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/02-right-angle-trigonometry/), [7.3 Exact Values](https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/03-exact-trig-ratios/)
+      </Card>
+      <Card title="Advanced Trigonometry" icon="laptop">
+          - [ ] Sine rule; cosine rule; Area of a triangle
+          - [ ] Solve trig equations; sketch $y = \sin x$, $\cos x$, $\tan x$
+          <br/>
+          **Lessons:** [7.5 Non-Right-Angled Trig](https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/05-non-right-angle-trigonometry/), [7.4 Trig Functions](https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/04-trigonometric-functions/)
+      </Card>
+  </CardGrid>
+</div>
+
+{/* Section 6 */}
+<div data-section="6">
+  <h3 id="transformations">Transformations & Probability</h3>
+  <CardGrid stagger>
+      <Card title="Transformations & Variation" icon="approve-check">
+          - [ ] Translation, reflection, rotation, enlargement; Functions $f(x) + k$
+          - [ ] Direct and Inverse variation (square, cube roots)
+          <br/>
+          **Lessons:** [8.1 Transformations](https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/01-transformations/), [2.8 Proportion](https://igcse-maths-textbook.vercel.app/igcse/02-algebra/08-proportion/)
+      </Card>
+      <Card title="Vectors" icon="rocket">
+          - [ ] Vectors in component form; addition, subtraction, magnitude
+          <br/>
+          **Lessons:** [8.2 Vectors 2D](https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/), [8.3 Magnitude](https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/03-magnitude-of-a-vector/)
+      </Card>
+      <Card title="Probability" icon="document">
+          - [ ] Mutually exclusive events; relative vs expected frequency
+          - [ ] Compound events; Tree diagrams; Probabilities from Venn diagrams
+          <br/>
+          **Lessons:** [9.1 Intro to Probability](https://igcse-maths-textbook.vercel.app/igcse/09-probability/01-introduction-to-probability/), [9.3 Combined Events](https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/)
+      </Card>
+  </CardGrid>
+</div>
+
+
+{/* ========================================== */}
+{/* RIGHT COLUMN: THE MAP SIDEBAR PANEL        */}
+{/* ========================================== */}
+<div className="sidebar-wrapper">
+  {/* SVG Viewbox widened to 300 to perfectly fit the full header titles */}
+  <svg viewBox="0 0 300 580" className="w-full h-auto font-sans overflow-visible">
+    
+    {/* Background tracks (Rendered dynamically by JS) */}
+    <g id="track-bg-0"></g>
+    <g id="track-bg-1"></g>
+    <g id="track-bg-2"></g>
+    <g id="track-bg-3"></g>
+    <g id="track-bg-4"></g>
+    <g id="track-bg-5"></g>
+    <g id="track-bg-6"></g>
+
+    {/* Progress Glowing Tracks (Rendered dynamically by JS) */}
+    <g id="track-prog-0"></g>
+    <g id="track-prog-1"></g>
+    <g id="track-prog-2"></g>
+    <g id="track-prog-3"></g>
+    <g id="track-prog-4"></g>
+    <g id="track-prog-5"></g>
+    <g id="track-prog-6"></g>
+
+    {/* Stations updated with exact header labels */}
+    <a href="#prior-learning" className="station-link">
+      <circle id="station-0" cx="40" cy="40" r="10" className="station" style={{transformOrigin: '40px 40px'}} />
+      <text x="70" y="45" fontSize="14" fontWeight="700" className="station-text">Prior Learning & Surds</text>
+    </a>
+
+    <a href="#algebra" className="station-link">
+      <circle id="station-1" cx="40" cy="110" r="10" className="station" style={{transformOrigin: '40px 110px'}} />
+      <text x="70" y="115" fontSize="14" fontWeight="700" className="station-text">Algebra I & II</text>
+    </a>
+
+    <a href="#geometry" className="station-link">
+      <circle id="station-2" cx="40" cy="180" r="10" className="station" style={{transformOrigin: '40px 180px'}} />
+      <text x="70" y="185" fontSize="14" fontWeight="700" className="station-text">Geometry & Coordinates</text>
+    </a>
+
+    <a href="#functions" className="station-link">
+      <circle id="station-3" cx="40" cy="250" r="10" className="station" style={{transformOrigin: '40px 250px'}} />
+      <text x="70" y="255" fontSize="14" fontWeight="700" className="station-text">Sequences & Functions</text>
+    </a>
+
+    <a href="#statistics" className="station-link">
+      <circle id="station-4" cx="40" cy="320" r="10" className="station" style={{transformOrigin: '40px 320px'}} />
+      <text x="70" y="325" fontSize="14" fontWeight="700" className="station-text">Statistics & Sets</text>
+    </a>
+
+    <a href="#measures" className="station-link">
+      <circle id="station-5" cx="40" cy="390" r="10" className="station" style={{transformOrigin: '40px 390px'}} />
+      <text x="70" y="395" fontSize="14" fontWeight="700" className="station-text">Measures & Trigonometry</text>
+    </a>
+
+    <a href="#transformations" className="station-link">
+      <circle id="station-6" cx="40" cy="460" r="10" className="station" style={{transformOrigin: '40px 460px'}} />
+      <text x="70" y="465" fontSize="14" fontWeight="700" className="station-text">Transformations & Probability</text>
+    </a>
+
+    {/* The Secret Final Destination */}
+    <a href="#teacher-reset-btn" className="station-link" title="Syllabus Complete!">
+      <circle id="station-7" cx="40" cy="530" r="12" className="station plat934" style={{transformOrigin: '40px 530px'}} />
+      <text x="70" y="535" fontSize="15" fontWeight="800" className="station-text" style={{ fill: '#b45309' }}>Platform 9 ¾</text>
+    </a>
+
+  </svg>
+</div>
+
+<script>{`
+  function initializeChecklists() {
+    const checkboxes = Array.from(document.querySelectorAll('input[type="checkbox"]'));
+    const pagePath = window.location.pathname;
+    let lastCheckedIndex = null;
+
+    function updateProgressTracks() {
+      for (let i = 0; i < 7; i++) {
+        const section = document.querySelector('[data-section="' + i + '"]');
+        const trackBgGroup = document.getElementById('track-bg-' + i);
+        const trackProgGroup = document.getElementById('track-prog-' + i);
+        const station = document.getElementById('station-' + i);
+        
+        if (section && trackBgGroup && trackProgGroup) {
+          const sectionBoxes = Array.from(section.querySelectorAll('input[type="checkbox"]'));
+          const total = sectionBoxes.length;
+          const checked = sectionBoxes.filter(cb => cb.checked).length;
+          
+          // Clear old drawn tracks
+          trackBgGroup.innerHTML = '';
+          trackProgGroup.innerHTML = '';
+          
+          if (total > 0) {
+            const gap = 3; // 3px gap between visual segments
+            const totalGapSpace = gap * (total - 1);
+            const segmentLength = (70 - totalGapSpace) / total;
+            
+            // Dynamically draw the dashed line segments!
+            for (let j = 0; j < total; j++) {
+              let yStart = 40 + (i * 70) + (j * (segmentLength + gap));
+              let yEnd = yStart + segmentLength;
+              
+              // Base dull track
+              let bgLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+              bgLine.setAttribute('x1', '40');
+              bgLine.setAttribute('y1', yStart);
+              bgLine.setAttribute('x2', '40');
+              bgLine.setAttribute('y2', yEnd);
+              bgLine.setAttribute('stroke', '#334155');
+              bgLine.setAttribute('stroke-width', '6');
+              bgLine.setAttribute('stroke-linecap', 'round');
+              trackBgGroup.appendChild(bgLine);
+
+              // Glowing progress track (only drawn if checkbox is checked)
+              if (j < checked) {
+                let progLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                progLine.setAttribute('x1', '40');
+                progLine.setAttribute('y1', yStart);
+                progLine.setAttribute('x2', '40');
+                progLine.setAttribute('y2', yEnd);
+                progLine.setAttribute('stroke', '#60a5fa'); /* Brighter neon blue */
+                progLine.setAttribute('stroke-width', '6');
+                progLine.setAttribute('stroke-linecap', 'round');
+                progLine.classList.add('glow-track');
+                trackProgGroup.appendChild(progLine);
+              }
+            }
+          }
+
+          const percentage = total > 0 ? checked / total : 0;
+          if (percentage === 1 && station) {
+             station.classList.add('station-complete');
+          } else if (station) {
+             station.classList.remove('station-complete');
+          }
+        }
+      }
+
+      const plat934 = document.getElementById('station-7');
+      if (plat934) {
+        const allChecked = checkboxes.every(cb => cb.checked);
+        if (allChecked && checkboxes.length > 0) {
+          plat934.classList.add('station-complete');
+        } else {
+          plat934.classList.remove('station-complete');
+        }
+      }
+    }
+    
+    checkboxes.forEach((cb, index) => {
+      const storageKey = 'checklist-' + pagePath + '-' + index;
+      
+      cb.disabled = false;
+      if (localStorage.getItem(storageKey) === 'true') {
+        cb.checked = true;
+      }
+      
+      cb.addEventListener('click', (e) => {
+        if (e.shiftKey && lastCheckedIndex !== null) {
+          const start = Math.min(lastCheckedIndex, index);
+          const end = Math.max(lastCheckedIndex, index);
+          
+          for (let i = start; i <= end; i++) {
+            checkboxes[i].checked = cb.checked;
+            localStorage.setItem('checklist-' + pagePath + '-' + i, cb.checked);
+          }
+        } else {
+          localStorage.setItem(storageKey, cb.checked);
+        }
+        
+        lastCheckedIndex = index;
+        updateProgressTracks();
+      });
+    });
+
+    const secretResetTarget = document.getElementById('teacher-reset-btn');
+    if (secretResetTarget) {
+      secretResetTarget.style.cursor = 'context-menu'; 
+      secretResetTarget.title = "Double-click to reset all progress";
+      
+      secretResetTarget.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        if (confirm('Teacher Shortcut: Reset all syllabus progress?')) {
+          checkboxes.forEach((cb, i) => {
+            cb.checked = false;
+            localStorage.removeItem('checklist-' + pagePath + '-' + i);
+          });
+          lastCheckedIndex = null;
+          updateProgressTracks();
+        }
+      });
+    }
+
+    updateProgressTracks();
+  }
+
+  document.addEventListener('DOMContentLoaded', initializeChecklists);
+  document.addEventListener('astro:page-load', initializeChecklists);
+`}</script>
