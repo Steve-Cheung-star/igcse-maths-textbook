@@ -16,6 +16,7 @@
     </button>
     
     <div id="wb-toolbar" class="toolbar-panel">
+      
       <div class="tool-group">
         <button class="tool-btn active" data-action="set-tool" data-val="mouse" title="Mouse (1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg></button>
         <button class="tool-btn" data-action="set-tool" data-val="laser" title="Laser (2)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></button>
@@ -67,36 +68,31 @@
 
   :global(#wb-canvas) { 
     position: absolute; top: 0; left: 0; z-index: 999998; 
-    pointer-events: none; display: none; 
-    touch-action: none; 
+    pointer-events: none; display: none; touch-action: none; 
   }
   :global(html[data-mode="bento"] #wb-canvas) { display: block; }
   
   :global(html[data-mode="bento"][data-tool="pen"] body),
   :global(html[data-mode="bento"][data-tool="eraser"] body),
   :global(html[data-mode="bento"][data-tool="laser"] body) {
-    user-select: none !important;
-    -webkit-user-select: none !important;
+    user-select: none !important; -webkit-user-select: none !important;
   }
 
   :global(html[data-mode="bento"][data-tool="pen"] #wb-canvas),
   :global(html[data-mode="bento"][data-tool="eraser"] #wb-canvas),
   :global(html[data-mode="bento"][data-tool="laser"] #wb-canvas) { 
-    pointer-events: auto; 
-    touch-action: none; 
+    pointer-events: auto; touch-action: none; 
     overscroll-behavior: none; 
   }
 
   :global(html[data-mode="bento"][data-tool="pen"][data-palm-reject="true"] #wb-canvas),
   :global(html[data-mode="bento"][data-tool="eraser"][data-palm-reject="true"] #wb-canvas) {
-    touch-action: pan-x pan-y;
-  }
+    touch-action: pan-x pan-y; }
 
   #wb-laser-dot {
     position: fixed; width: 14px; height: 14px; background: #ff0000;
     border-radius: 50%; box-shadow: 0 0 10px 4px rgba(255, 0, 0, 0.6);
-    pointer-events: none; z-index: 9999999; display: none; transform: translate(-50%, -50%);
-  }
+    pointer-events: none; z-index: 9999999; display: none; transform: translate(-50%, -50%); }
 
   #wb-exit { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 9999999; display: flex; width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--sl-color-bg-nav, rgba(0,0,0,0.5)); color: var(--sl-color-text, #fff); align-items: center; justify-content: center; cursor: pointer; opacity: 0.2; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.2); backdrop-filter: blur(4px); }
   #wb-exit:hover { opacity: 1; transform: scale(1.1); background: rgba(255,50,50,0.8); color: white; }
@@ -152,12 +148,11 @@
   import { projectorStore } from '../store/projectorStore.js';
 
   let globalAborter = new AbortController();
-
   document.addEventListener('astro:before-preparation', () => {
     globalAborter.abort();
     globalAborter = new AbortController();
   });
-
+  
   function initWhiteboard() {
     if (typeof window !== 'undefined' && window.innerWidth < 768) return;
 
@@ -170,7 +165,6 @@
       dark: { color1: '#00ffff', color2: '#ff00ff', color3: '#ffff00', color4: '#39ff14' },
       light: { color1: '#1d4ed8', color2: '#b91c1c', color3: '#15803d', color4: '#7e22ce' }
     };
-
     function getThemeColor(colorName) {
       if (colorName === 'eraser') return 'rgba(0,0,0,1)';
       const isDark = document.documentElement.dataset.theme === 'dark' || (!document.documentElement.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
@@ -184,7 +178,6 @@
     if (savedColorName === 'yellow') savedColorName = 'color3';
     if (savedColorName === 'lime') savedColorName = 'color4';
     if (!savedColorName) savedColorName = 'color1';
-
     projectorStore.setKey('colorName', savedColorName);
 
     const savedMinState = localStorage.getItem('wb-toolbar-minimized');
@@ -193,14 +186,14 @@
     const savedTool = localStorage.getItem('wb-active-tool');
     if (savedTool) projectorStore.setKey('tool', savedTool);
 
-    const localState = { strokes: [], redoStack: [], currentStroke: null, isDrawing: false, isLasering: false };
+    const localState = { strokes: [], redoStack: [], currentStroke: null, isDrawing: false, isLasering: false, startedViaShift: false };
     let palmRejectionEnabled = localStorage.getItem('wb-palm-reject') === 'true';
     let canvas, ctx;
 
     const savedStrokes = sessionStorage.getItem(`wb-strokes-${window.location.pathname}`);
     if (savedStrokes) { 
       try { 
-        localState.strokes = JSON.parse(savedStrokes); 
+        localState.strokes = JSON.parse(savedStrokes);
         // Migrate old strokes to semantic colors if they used hex
         localState.strokes.forEach(s => {
           if (s.color === '#00ffff') s.colorName = 'color1';
@@ -241,7 +234,7 @@
       };
       
       window.addEventListener('resize', resizeCanvas, { signal: globalAborter.signal });
-      setTimeout(resizeCanvas, 500); 
+      setTimeout(resizeCanvas, 500);
 
       // Observer to automatically redraw strokes when Astro Theme changes!
       const observer = new MutationObserver((mutations) => {
@@ -273,7 +266,7 @@
                    break;
                  }
                }
-               if (!isStylus) return; 
+               if (!isStylus) return;
             }
             if (e.cancelable) e.preventDefault();
         }
@@ -281,7 +274,6 @@
       
       canvas.addEventListener('touchstart', preventTouchWhenDrawing, { passive: false });
       canvas.addEventListener('touchmove', preventTouchWhenDrawing, { passive: false });
-
       canvas.addEventListener('pointerdown', startDrawing, { passive: false });
       canvas.addEventListener('pointermove', draw, { passive: false });
       canvas.addEventListener('pointerup', stopDrawing);
@@ -290,10 +282,9 @@
     }
 
     function startDrawing(e) {
-      if (window.innerWidth < 768) return; 
+      if (window.innerWidth < 768) return;
       const globalState = projectorStore.get();
       if (globalState.tool !== 'pen' && globalState.tool !== 'eraser' && globalState.tool !== 'laser') return;
-      
       if (palmRejectionEnabled && e.pointerType === 'touch' && globalState.tool !== 'laser') return;
 
       if (e.cancelable) e.preventDefault(); 
@@ -312,7 +303,7 @@
         return;
       }
       
-      localState.isDrawing = true; localState.redoStack = []; 
+      localState.isDrawing = true; localState.redoStack = [];
       const x = e.pageX; const y = e.pageY;
       
       // Store semantic colorName instead of fixed hex
@@ -321,9 +312,8 @@
         colorName: globalState.tool === 'eraser' ? 'eraser' : globalState.colorName, 
         points: [{x, y}] 
       };
-      
       ctx.beginPath(); ctx.moveTo(x, y); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
-      ctx.lineWidth = globalState.tool === 'eraser' ? 40 : 6; 
+      ctx.lineWidth = globalState.tool === 'eraser' ? 40 : 6;
       ctx.strokeStyle = getThemeColor(localState.currentStroke.colorName);
       ctx.globalCompositeOperation = globalState.tool === 'eraser' ? 'destination-out' : 'source-over';
       
@@ -344,9 +334,27 @@
         return;
       }
 
+      const globalState = projectorStore.get();
+      const isShiftDrawing = e.shiftKey && (globalState.tool === 'pen' || globalState.tool === 'eraser');
+
+      // 1. START drawing if Shift is pressed while moving
+      if (isShiftDrawing && !localState.isDrawing) {
+         localState.startedViaShift = true;
+         startDrawing(e); 
+         return;
+      }
+
+      // 2. STOP drawing if Shift is released while moving
+      if (!e.shiftKey && localState.isDrawing && localState.startedViaShift) {
+         localState.startedViaShift = false;
+         stopDrawing(e);
+         return;
+      }
+
       if (!localState.isDrawing || !localState.currentStroke) return;
       if (e.cancelable) e.preventDefault();
-      const x = e.pageX; const y = e.pageY;
+      const x = e.pageX;
+      const y = e.pageY;
       localState.currentStroke.points.push({x, y});
       ctx.lineTo(x, y); ctx.stroke();
     }
@@ -413,9 +421,8 @@
     function clear() { 
       // Don't do anything if there's nothing to clear, or if we just cleared
       if (localState.strokes.length === 0 || localState.strokes[localState.strokes.length - 1].type === 'clear') return;
-      
       // Push a clear action instead of emptying the array
-      localState.strokes.push({ type: 'clear' }); 
+      localState.strokes.push({ type: 'clear' });
       localState.redoStack = []; 
       redrawAll(); 
       saveStrokes(); 
@@ -472,6 +479,7 @@
         initialY = e.clientY;
 
         const rect = wrapper.getBoundingClientRect();
+  
         startX = e.clientX - rect.left; 
         startY = e.clientY - rect.top;
         
@@ -509,7 +517,7 @@
              localStorage.setItem('wb-toolbar-pos', JSON.stringify({ x: rect.left, y: rect.top }));
            }
         }
-        isDragging = false; 
+        isDragging = false;
       };
 
       document.addEventListener('pointerup', handleDragEnd);
@@ -525,14 +533,13 @@
     function clampToolbarPosition() {
       const wrapper = document.getElementById('wb-toolbar-wrapper');
       if (!wrapper) return;
-      
+
       const savedPos = localStorage.getItem('wb-toolbar-pos');
       if (savedPos) {
         try {
           const pos = JSON.parse(savedPos);
           let newX = Math.max(10, Math.min(pos.x, window.innerWidth - wrapper.offsetWidth - 10));
           let newY = Math.max(10, Math.min(pos.y, window.innerHeight - wrapper.offsetHeight - 10));
-          
           wrapper.style.left = `${newX}px`; 
           wrapper.style.top = `${newY}px`; 
           wrapper.style.bottom = 'auto'; 
@@ -558,6 +565,7 @@
       if (activeToolBtn) {
         activeToolBtn.classList.add('active');
         const dynamicIcon = document.getElementById('wb-dynamic-icon');
+        
         if (dynamicIcon) {
           dynamicIcon.innerHTML = activeToolBtn.innerHTML;
           if (state.tool === 'pen') {
@@ -579,7 +587,8 @@
           wrapper.classList.add('maximized');
           const rect = wrapper.getBoundingClientRect();
           if (rect.left < window.innerWidth * 0.2 || rect.left > window.innerWidth * 0.8) {
-            wrapper.classList.remove('horizontal'); wrapper.classList.add('vertical');
+            wrapper.classList.remove('horizontal');
+            wrapper.classList.add('vertical');
           } else {
             wrapper.classList.remove('vertical'); wrapper.classList.add('horizontal');
           }
@@ -596,6 +605,7 @@
       
       if (e.key === '0') {
          e.preventDefault();
+        
          localStorage.removeItem('wb-toolbar-pos');
          const wrapper = document.getElementById('wb-toolbar-wrapper');
          if (wrapper) { wrapper.style.left = '50%'; wrapper.style.top = 'auto'; wrapper.style.bottom = '2rem'; wrapper.style.transform = 'translateX(-50%)'; clampToolbarPosition(); }
@@ -605,7 +615,6 @@
       if (e.key === '2') projectorStore.setKey('tool', 'laser');
       if (e.key === '3') projectorStore.setKey('tool', 'pen');
       if (e.key === '4') projectorStore.setKey('tool', 'eraser');
-
       if (e.key.toLowerCase() === 'p') togglePalmRejection();
 
       if (e.key.toLowerCase() === 'q') { projectorStore.setKey('colorName', 'color1'); projectorStore.setKey('tool', 'pen'); }
