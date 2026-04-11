@@ -7,9 +7,11 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import vercel from '@astrojs/vercel';
 import AutoImport from 'astro-auto-import';
+import sitemap from '@astrojs/sitemap'; // [1] Add this import
 
 export default defineConfig({
-  site: 'https://igcse-maths-textbook.vercel.app',
+  // [2] Fixed the double https:// and removed the trailing slash
+  site: 'https://igcse-maths-textbook.vercel.app', 
   output: 'server',
   adapter: vercel(),
 
@@ -39,7 +41,7 @@ export default defineConfig({
       },
       customCss: [
         './src/assets/custom.css',
-        './src/assets/bento-mode.css', // Added Bento Styles
+        './src/assets/bento-mode.css',
       ],
       components: {
         SocialIcons: './src/components/Tracker.astro',
@@ -57,48 +59,47 @@ export default defineConfig({
             href: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css',
           },
         }
-        // POWERPOINT MODE TOGGLE SCRIPT successfully deleted from here!
       ],
       sidebar: [
         {
           label: 'Year 7',
           collapsed: true,
           items: [
-            { label: '1. Working Mathematically', autogenerate: { directory: 'year-7/01-working-mathematically' } }, // [cite: 1, 2, 3]
-            { label: '2. Special Numbers', autogenerate: { directory: 'year-7/02-special-numbers' } }, // [cite: 18, 20, 21]
-            { label: '3. Integers', autogenerate: { directory: 'year-7/03-integers' } }, // [cite: 35, 37, 38]
-            { label: '4. Number Representations', autogenerate: { directory: 'year-7/04-number-representations' } }, // [cite: 54, 55, 56]
-            { label: '5. Proportional Relationships', autogenerate: { directory: 'year-7/05-proportional-relationships' } }, // [cite: 79, 81, 82]
-            { label: '6. Introduction to Algebra', autogenerate: { directory: 'year-7/06-introduction-to-algebra' } }, // [cite: 99, 101, 104]
-            { label: '7. Lines, Angles & Polygons', autogenerate: { directory: 'year-7/07-lines-angles-and-polygons' } }, // [cite: 120, 122, 123]
+            { label: '1. Working Mathematically', autogenerate: { directory: 'year-7/01-working-mathematically' } },
+            { label: '2. Special Numbers', autogenerate: { directory: 'year-7/02-special-numbers' } },
+            { label: '3. Integers', autogenerate: { directory: 'year-7/03-integers' } },
+            { label: '4. Number Representations', autogenerate: { directory: 'year-7/04-number-representations' } },
+            { label: '5. Proportional Relationships', autogenerate: { directory: 'year-7/05-proportional-relationships' } },
+            { label: '6. Introduction to Algebra', autogenerate: { directory: 'year-7/06-introduction-to-algebra' } },
+            { label: '7. Lines, Angles & Polygons', autogenerate: { directory: 'year-7/07-lines-angles-and-polygons' } },
           ],
         },
         {
           label: 'Year 8',
           collapsed: true,
           items: [
-            { label: '1A. Fractions, Decimals & %ages', autogenerate: { directory: 'year-8/01a-fractions-decimals-percentages' } }, // [cite: 446]
-            { label: '1B. Ratio & Proportion', autogenerate: { directory: 'year-8/01b-ratio-proportion' } }, // [cite: 467]
-            { label: '2. Intro to Probability', autogenerate: { directory: 'year-8/02-intro-to-probability' } }, // [cite: 488]
-            { label: '3. Patterning & Algebra', autogenerate: { directory: 'year-8/03-patterning-algebra' } }, // [cite: 507]
-            { label: '4. Coordinate Geometry', autogenerate: { directory: 'year-8/04-coordinate-geometry' } }, // [cite: 526]
-            { label: '5. Pythagoras Theorem', autogenerate: { directory: 'year-8/05-pythagoras-theorem' } }, // [cite: 548]
-            { label: '6. Mensuration', autogenerate: { directory: 'year-8/06-mensuration' } }, // [cite: 563]
-            { label: '7. Constructions & Transformations', autogenerate: { directory: 'year-8/07-constructions-transformations' } }, // [cite: 600]
+            { label: '1A. Fractions, Decimals & %ages', autogenerate: { directory: 'year-8/01a-fractions-decimals-percentages' } },
+            { label: '1B. Ratio & Proportion', autogenerate: { directory: 'year-8/01b-ratio-proportion' } },
+            { label: '2. Intro to Probability', autogenerate: { directory: 'year-8/02-intro-to-probability' } },
+            { label: '3. Patterning & Algebra', autogenerate: { directory: 'year-8/03-patterning-algebra' } },
+            { label: '4. Coordinate Geometry', autogenerate: { directory: 'year-8/04-coordinate-geometry' } },
+            { label: '5. Pythagoras Theorem', autogenerate: { directory: 'year-8/05-pythagoras-theorem' } },
+            { label: '6. Mensuration', autogenerate: { directory: 'year-8/06-mensuration' } },
+            { label: '7. Constructions & Transformations', autogenerate: { directory: 'year-8/07-constructions-transformations' } },
           ],
         },
         {
           label: 'Year 9',
           collapsed: true,
           items: [
-            { label: '1. Exponents and Roots', autogenerate: { directory: 'year-9/01-exponents-and-roots' } }, // 
-            { label: '2. Advanced Percentages', autogenerate: { directory: 'year-9/02-advanced-percentages' } }, // 
-            { label: '3. Algebraic Manipulation', autogenerate: { directory: 'year-9/03-algebraic-manipulation' } }, // 
-            { label: '4. Patterns and Sequences', autogenerate: { directory: 'year-9/04-patterns-and-sequences' } }, // 
-            { label: '5. Intro to Linear Functions', autogenerate: { directory: 'year-9/05-intro-to-linear-functions' } }, // 
-            { label: '6. Geometry of 2-D and 3-D Shapes', autogenerate: { directory: 'year-9/06-geometry-2d-3d-shapes' } }, // 
-            { label: '7. Similarity', autogenerate: { directory: 'year-9/07-similarity' } }, // 
-            { label: '8. Statistics & Probability', autogenerate: { directory: 'year-9/08-statistics-and-probability' } }, // 
+            { label: '1. Exponents and Roots', autogenerate: { directory: 'year-9/01-exponents-and-roots' } },
+            { label: '2. Advanced Percentages', autogenerate: { directory: 'year-9/02-advanced-percentages' } },
+            { label: '3. Algebraic Manipulation', autogenerate: { directory: 'year-9/03-algebraic-manipulation' } },
+            { label: '4. Patterns and Sequences', autogenerate: { directory: 'year-9/04-patterns-and-sequences' } },
+            { label: '5. Intro to Linear Functions', autogenerate: { directory: 'year-9/05-intro-to-linear-functions' } },
+            { label: '6. Geometry of 2-D and 3-D Shapes', autogenerate: { directory: 'year-9/06-geometry-2d-3d-shapes' } },
+            { label: '7. Similarity', autogenerate: { directory: 'year-9/07-similarity' } },
+            { label: '8. Statistics & Probability', autogenerate: { directory: 'year-9/08-statistics-and-probability' } },
           ],
         },
         {
@@ -133,6 +134,7 @@ export default defineConfig({
         },
       ],
     }),
+    sitemap(), // [3] Add this integration
     mdx(),
   ],
   markdown: {
