@@ -1,0 +1,37 @@
+---
+// src/pages/api/year-7.astro
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
+
+const docs = await getCollection('docs', ({ id }) => id.startsWith('year-7/'));
+
+let text = `=== YEAR 7 MATHS KNOWLEDGE BASE ===\n`;
+text += `Total lessons: ${docs.length}\n\n`;
+
+docs.forEach(doc => {
+  text += `\n\n========================================\n`;
+  text += `TOPIC: ${doc.data.title}\n`;
+  text += `========================================\n\n`;
+  text += doc.body; 
+  text += `\n\n`;
+});
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Year 7 Syllabus Context</title>
+  <style>
+    body { margin: 0; padding: 20px; background-color: #f4f4f4; color: #333; }
+    pre { word-wrap: break-word; white-space: pre-wrap; font-family: monospace; background: white; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h1>Year 7 Raw Data Export</h1>
+  <p>Optimized for AI context injection.</p>
+  <hr />
+  <pre>{text}</pre>
+</body>
+</html>
