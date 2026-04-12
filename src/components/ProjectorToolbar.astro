@@ -695,12 +695,35 @@
       document.body.appendChild(canvas);
       ctx = canvas.getContext("2d");
 
+      // Inside setupCanvas() ...
+      
+      let lastWidth = 0;
+      let lastHeight = 0;
+
       const resizeCanvas = () => {
         if (!canvas) return;
-        canvas.width = document.documentElement.scrollWidth;
-        canvas.height = document.documentElement.scrollHeight;
+        
+        const newWidth = document.documentElement.scrollWidth;
+        const newHeight = document.documentElement.scrollHeight;
+
+        // CRITICAL FIX: Do not clear the canvas if we are in the middle of drawing!
+        if (localState.isDrawing) return;
+        
+        // CRITICAL FIX: iPad zoom triggers resize, but the layout size doesn't change. 
+        // Only resize if the actual document dimensions changed.
+        if (newWidth === lastWidth && newHeight === lastHeight) return;
+
+        lastWidth = newWidth;
+        lastHeight = newHeight;
+
+        canvas.width = newWidth;
+        canvas.height = newHeight;
         redrawAll();
       };
+
+      window.addEventListener("resize", resizeCanvas, { signal: globalAborter.signal });
+      // Call it once safely
+      setTimeout(resizeCanvas, 50);
 
       window.addEventListener("resize", resizeCanvas, { signal: globalAborter.signal });
       setTimeout(resizeCanvas, 500);
@@ -1069,46 +1092,31 @@
     }
 
     // ==========================================
-    // VISUAL VIEWPORT CLAMP & SCALE
+    // ROCK-SOLID TOOLBAR CLAMP (NO SCALING)
     // ==========================================
     function clampToolbarPosition() {
       const wrapper = document.getElementById("wb-toolbar-wrapper");
       if (!wrapper) return;
 
-      let scale = 1;
-      let offsetBottom = 0;
-      let offsetLeft = 0;
-      let offsetTop = 0;
-
-      // Calculate Visual Viewport values if supported and active
-      if (window.visualViewport) {
-        scale = 1 / window.visualViewport.scale;
-        offsetBottom = window.innerHeight - window.visualViewport.height - window.visualViewport.offsetTop;
-        offsetLeft = window.visualViewport.offsetLeft;
-        offsetTop = window.visualViewport.offsetTop;
-      }
-
       const savedPos = localStorage.getItem("wb-toolbar-pos");
       if (savedPos) {
         try {
           const pos = JSON.parse(savedPos);
+          // Keep it on screen, but don't do any inverse scale math
           let newX = Math.max(10, Math.min(pos.x, window.innerWidth - wrapper.offsetWidth - 10));
           let newY = Math.max(10, Math.min(pos.y, window.innerHeight - wrapper.offsetHeight - 10));
           
-          // Apply scale and absolute coordinates relative to the visual zoom window
-          wrapper.style.left = `${newX + offsetLeft}px`;
-          wrapper.style.top = `${newY + offsetTop}px`;
+          wrapper.style.left = `${newX}px`;
+          wrapper.style.top = `${newY}px`;
           wrapper.style.bottom = "auto";
-          wrapper.style.transform = `scale(${scale})`;
-          wrapper.style.transformOrigin = "top left";
+          wrapper.style.transform = "none"; 
         } catch (e) {}
       } else {
-        // Apply inverse scaling to the default centered bottom placement
+        // Default centered position
         wrapper.style.left = "50%";
         wrapper.style.top = "auto";
-        wrapper.style.bottom = `${offsetBottom + 32}px`; // 32px = 2rem margin
-        wrapper.style.transform = `translateX(-50%) scale(${scale})`;
-        wrapper.style.transformOrigin = "bottom center";
+        wrapper.style.bottom = "2rem";
+        wrapper.style.transform = "translateX(-50%)";
       }
     }
 
@@ -1231,11 +1239,6 @@
     // Bind regular resize listener
     window.addEventListener("resize", clampToolbarPosition, { signal: globalAborter.signal });
     
-    // Bind Visual Viewport listeners for pinch-to-zoom offsets
-    if (window.visualViewport) {
-      window.visualViewport.addEventListener("resize", clampToolbarPosition, { signal: globalAborter.signal });
-      window.visualViewport.addEventListener("scroll", clampToolbarPosition, { signal: globalAborter.signal });
-    }
   }
 
   initWhiteboard();
