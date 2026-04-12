@@ -576,6 +576,8 @@
       }
     }
 
+    let prevBentoState = projectorStore.get()?.isBento; // Track state for Safari repaint hack
+
     projectorStore.subscribe(state => {
       localStorage.setItem('wb-toolbar-minimized', state.isToolbarMinimized.toString());
       localStorage.setItem('wb-active-tool', state.tool);
@@ -616,6 +618,26 @@
         }
         setTimeout(clampToolbarPosition, 0);
       }
+
+      // ==========================================
+      // iPAD TOP BAR FIX (SAFARI REPAINT HACK)
+      // ==========================================
+      if (prevBentoState === true && state.isBento === false) {
+        setTimeout(() => {
+          window.dispatchEvent(new Event('scroll'));
+          window.scrollBy(0, 1);
+          window.scrollBy(0, -1);
+          
+          const header = document.querySelector('header');
+          if (header) {
+            const oldDisplay = header.style.display;
+            header.style.display = 'none';
+            header.offsetHeight; 
+            header.style.display = oldDisplay;
+          }
+        }, 50);
+      }
+      prevBentoState = state.isBento; 
     });
 
     window.addEventListener('keydown', (e) => {
