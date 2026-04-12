@@ -5,218 +5,42 @@
 <div id="wb-portal" data-bento-portal>
   <div id="wb-laser-dot"></div>
 
-  <button
-    id="wb-exit"
-    data-action="toggle-projector"
-    title="Exit Projector Mode (Esc)"
-  >
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      stroke-width="2"><path d="M18 6L6 18M6 6l12 12"></path></svg
-    >
+  <button id="wb-exit" data-action="toggle-projector" title="Exit Projector Mode (Esc)">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
   </button>
 
   <div id="wb-toolbar-wrapper" class="horizontal maximized">
     <button id="wb-fab-toggle" title="Minimize / Drag">
-      <svg
-        class="icon-min"
-        width="18"
-        height="18"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2.5"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        ><line x1="5" y1="12" x2="19" y2="12"></line></svg
-      >
-      <div class="icon-drag" id="wb-dynamic-icon"></div>
+       <svg class="icon-min" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+       <div class="icon-drag" id="wb-dynamic-icon"></div>
     </button>
-
+    
     <div id="wb-toolbar" class="toolbar-panel">
       <div class="tool-group">
-        <button
-          class="tool-btn active"
-          data-action="set-tool"
-          data-val="mouse"
-          title="Mouse (1)"
-          ><svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"></path><path
-               d="M13 13l6 6"></path></svg
-          ></button
-        >
-        <button
-          class="tool-btn"
-          data-action="set-tool"
-          data-val="laser"
-          title="Laser (2)"
-          ><svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><circle cx="12" cy="12" r="10"></circle><circle
-              cx="12"
-              cy="12"
-              r="3"></circle></svg
-          ></button
-        >
-        <button
-          class="tool-btn"
-          data-action="set-tool"
-          data-val="pen"
-          title="Pen (3)"
-          ><svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"
-            ></path></svg
-          ></button
-        >
-        <button
-          class="tool-btn"
-          data-action="set-tool"
-          data-val="eraser"
-          title="Eraser (4)"
-          ><svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><path
-              d="M20 20H7L3 16C2.5 15.5 2.5 14.5 3 14L13 4C13.5 3.5 14.5 3.5 15 4L20 9C20.5 9.5 20.5 10.5 20 11L11 20H20V20Z"
-            ></path><path d="M17 14L7 20"></path></svg
-          ></button
-        >
+        <button class="tool-btn active" data-action="set-tool" data-val="mouse" title="Mouse (1)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg></button>
+        <button class="tool-btn" data-action="set-tool" data-val="laser" title="Laser (2)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg></button>
+        <button class="tool-btn" data-action="set-tool" data-val="pen" title="Pen (3)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></button>
+        <button class="tool-btn" data-action="set-tool" data-val="eraser" title="Eraser (4)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20H7L3 16C2.5 15.5 2.5 14.5 3 14L13 4C13.5 3.5 14.5 3.5 15 4L20 9C20.5 9.5 20.5 10.5 20 11L11 20H20V20Z"/><path d="M17 14L7 20"/></svg></button>
       </div>
-
+      
       <div class="divider"></div>
-
+      
       <div class="tool-group colors">
-        <button
-          class="color-btn color1 active"
-          data-action="set-color"
-          data-val="color1"
-          title="Color 1 (Q)"></button>
-        <button
-          class="color-btn color2"
-          data-action="set-color"
-          data-val="color2"
-          title="Color 2 (W)"></button>
-        <button
-          class="color-btn color3"
-          data-action="set-color"
-          data-val="color3"
-          title="Color 3 (E)"></button>
-        <button
-          class="color-btn color4"
-          data-action="set-color"
-          data-val="color4"
-          title="Color 4 (R)"></button>
+        <button class="color-btn color1 active" data-action="set-color" data-val="color1" title="Color 1 (Q)"></button>
+        <button class="color-btn color2" data-action="set-color" data-val="color2" title="Color 2 (W)"></button>
+        <button class="color-btn color3" data-action="set-color" data-val="color3" title="Color 3 (E)"></button>
+        <button class="color-btn color4" data-action="set-color" data-val="color4" title="Color 4 (R)"></button>
       </div>
 
       <div class="divider"></div>
 
       <div class="tool-group">
-        <button
-          id="btn-palm-reject"
-          class="tool-btn action"
-          data-action="toggle-palm"
-          title="Palm Rejection (Stylus Only) (P)"
-        >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><path
-              d="M18 8a2 2 0 00-2-2 2 2 0 00-2 2v2a2 2 0 00-2-2 2 2 0 00-2 2v2a2 2 0 00-2-2 2 2 0 00-2 2v5a5 5 0 005 5h2a5 5 0 005-5V8z"
-            ></path><line x1="3" y1="3" x2="21" y2="21"></line></svg
-          >
+        <button id="btn-palm-reject" class="tool-btn action" data-action="toggle-palm" title="Palm Rejection (Stylus Only) (P)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a2 2 0 00-2-2 2 2 0 00-2 2v2a2 2 0 00-2-2 2 2 0 00-2 2v2a2 2 0 00-2-2 2 2 0 00-2 2v5a5 5 0 005 5h2a5 5 0 005-5V8z"/><line x1="3" y1="3" x2="21" y2="21" /></svg>
         </button>
-        <button class="tool-btn action" data-action="undo" title="Undo (Ctrl+Z)"
-          ><svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><path d="M3 7v6h6"></path><path
-              d="M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"></path></svg
-          ></button
-        >
-        <button
-          class="tool-btn action"
-          data-action="redo"
-          title="Redo (Ctrl+Shift+Z)"
-          ><svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><path d="M21 7v6h-6"></path><path
-              d="M3 17a9 9 0 019-9 9 9 0 016 2.3l3 2.7"></path></svg
-          ></button
-        >
-        <button
-          class="tool-btn action clear"
-          data-action="clear"
-          title="Clear All (C)"
-          ><svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            ><polyline points="3 6 5 6 21 6"></polyline><path
-              d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"
-            ></path><line x1="10" y1="11" x2="10" y2="17"></line><line
-              x1="14"
-              y1="11"
-              x2="14"
-              y2="17"></line></svg
-          ></button
-        >
+        <button class="tool-btn action" data-action="undo" title="Undo (Ctrl+Z)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"/></svg></button>
+        <button class="tool-btn action" data-action="redo" title="Redo (Ctrl+Shift+Z)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 7v6h-6"/><path d="M3 17a9 9 0 019-9 9 9 0 016 2.3l3 2.7"/></svg></button>
+        <button class="tool-btn action clear" data-action="clear" title="Clear All (C)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></button>
       </div>
     </div>
   </div>
@@ -239,23 +63,15 @@
     --wb-c4: #39ff14; /* Lime */
   }
 
-  html:not([data-mode="bento"]) [data-bento-portal] {
-    display: none !important;
-  }
+  html:not([data-mode="bento"]) [data-bento-portal] { display: none !important; }
 
-  :global(#wb-canvas) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 999998;
-    pointer-events: none;
-    display: none;
-    touch-action: none;
+  :global(#wb-canvas) { 
+    position: absolute; top: 0; left: 0; z-index: 999998; 
+    pointer-events: none; display: none; 
+    touch-action: none; 
   }
-  :global(html[data-mode="bento"] #wb-canvas) {
-    display: block;
-  }
-
+  :global(html[data-mode="bento"] #wb-canvas) { display: block; }
+  
   :global(html[data-mode="bento"][data-tool="pen"] body),
   :global(html[data-mode="bento"][data-tool="eraser"] body),
   :global(html[data-mode="bento"][data-tool="laser"] body) {
@@ -265,452 +81,194 @@
 
   :global(html[data-mode="bento"][data-tool="pen"] #wb-canvas),
   :global(html[data-mode="bento"][data-tool="eraser"] #wb-canvas),
-  :global(html[data-mode="bento"][data-tool="laser"] #wb-canvas) {
-    pointer-events: auto;
-    touch-action: none;
-    overscroll-behavior: none;
+  :global(html[data-mode="bento"][data-tool="laser"] #wb-canvas) { 
+    pointer-events: auto; 
+    touch-action: none; 
+    overscroll-behavior: none; 
   }
 
-  /* Lock zoom/scroll when Palm Rejection is toggled ON */
-  :global(html[data-mode="bento"][data-palm-reject="true"] body) {
-    touch-action: none;
-    overscroll-behavior: none;
-    -webkit-text-size-adjust: none;
-  }
-
-  /* Allow normal iPad behavior when Palm Rejection is OFF */
-  :global(html[data-mode="bento"][data-palm-reject="false"] body) {
-    touch-action: auto;
-  }
-  
-  :global(
-    html[data-mode="bento"][data-tool="eraser"][data-palm-reject="true"]
-      #wb-canvas
-  ) {
+  :global(html[data-mode="bento"][data-tool="pen"][data-palm-reject="true"] #wb-canvas),
+  :global(html[data-mode="bento"][data-tool="eraser"][data-palm-reject="true"] #wb-canvas) {
     touch-action: pan-x pan-y;
   }
 
   #wb-laser-dot {
-    position: fixed;
-    width: 14px;
-    height: 14px;
-    background: #ff0000;
-    border-radius: 50%;
-    box-shadow: 0 0 10px 4px rgba(255, 0, 0, 0.6);
-    pointer-events: none;
-    z-index: 9999999;
-    display: none;
-    transform: translate(-50%, -50%);
+    position: fixed; width: 14px; height: 14px; background: #ff0000;
+    border-radius: 50%; box-shadow: 0 0 10px 4px rgba(255, 0, 0, 0.6);
+    pointer-events: none; z-index: 9999999; display: none; transform: translate(-50%, -50%);
   }
 
-  #wb-exit {
-    position: fixed;
-    top: 1.5rem;
-    right: 1.5rem;
-    z-index: 9999999;
-    display: flex;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: none;
-    background: var(--sl-color-bg-nav, rgba(0, 0, 0, 0.5));
-    color: var(--sl-color-text, #fff);
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    opacity: 0.2;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(4px);
-  }
-  #wb-exit:hover {
-    opacity: 1;
-    transform: scale(1.1);
-    background: rgba(255, 50, 50, 0.8);
-    color: white;
-  }
+  #wb-exit { position: fixed; top: 1.5rem; right: 1.5rem; z-index: 9999999; display: flex; width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--sl-color-bg-nav, rgba(0,0,0,0.5)); color: var(--sl-color-text, #fff); align-items: center; justify-content: center; cursor: pointer; opacity: 0.2; transition: all 0.3s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.2); backdrop-filter: blur(4px); }
+  #wb-exit:hover { opacity: 1; transform: scale(1.1); background: rgba(255,50,50,0.8); color: white; }
 
-  #wb-toolbar-wrapper {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999999;
-    display: flex;
-    align-items: center;
-    background: var(--sl-color-bg-nav);
-    border: 1px solid var(--sl-color-hairline);
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(12px);
-    touch-action: none;
-  }
-  #wb-toolbar-wrapper.minimized {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    padding: 0;
-    overflow: hidden;
-    background: var(--sl-color-bg-nav);
-    border: 1px solid var(--sl-color-hairline);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
-  }
-  #wb-toolbar-wrapper.minimized #wb-toolbar {
-    display: none;
-  }
-  #wb-toolbar-wrapper.minimized #wb-fab-toggle {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    cursor: grab;
-    background: transparent;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  #wb-toolbar-wrapper.minimized #wb-fab-toggle:active {
-    cursor: grabbing;
-  }
-  #wb-toolbar-wrapper.minimized .icon-min {
-    display: none;
-  }
-  #wb-toolbar-wrapper.minimized .icon-drag {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  #wb-dynamic-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-  }
-  #wb-dynamic-icon svg {
-    width: 20px;
-    height: 20px;
-    transition: stroke 0.3s ease;
-    display: block;
-    margin: 0;
-    padding: 0;
-  }
-  #wb-toolbar-wrapper.maximized #wb-fab-toggle {
-    cursor: pointer;
-    color: var(--sl-color-text);
-    background: var(--sl-color-hairline);
-    border-radius: 8px;
-    padding: 0.4rem;
-    margin: 0.5rem;
-    transition:
-      background 0.2s,
-      color 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  #wb-toolbar-wrapper.maximized #wb-fab-toggle:hover {
-    background: var(--sl-color-text-accent);
-    color: var(--sl-color-bg);
-  }
-  #wb-toolbar-wrapper.maximized .icon-min {
-    display: block;
-  }
-  #wb-toolbar-wrapper.maximized .icon-drag {
-    display: none;
-  }
-  #wb-fab-toggle {
-    background: transparent;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--sl-color-text);
-  }
-  #wb-toolbar-wrapper.horizontal {
-    flex-direction: row;
-    padding-right: 0.5rem;
-  }
-  #wb-toolbar-wrapper.vertical {
-    flex-direction: column;
-    padding-bottom: 0.5rem;
-  }
-  .toolbar-panel {
-    display: flex;
-    align-items: center;
-    padding: 0.5rem;
-    gap: 0.5rem;
-  }
-  #wb-toolbar-wrapper.horizontal .toolbar-panel {
-    flex-direction: row;
-    padding-left: 0;
-  }
-  #wb-toolbar-wrapper.vertical .toolbar-panel {
-    flex-direction: column;
-    padding-top: 0;
-  }
-  .tool-group {
-    display: flex;
-    gap: 0.25rem;
-  }
-  #wb-toolbar-wrapper.horizontal .tool-group {
-    flex-direction: row;
-  }
-  #wb-toolbar-wrapper.vertical .tool-group {
-    flex-direction: column;
-  }
-  .divider {
-    background: var(--sl-color-hairline);
-  }
-  #wb-toolbar-wrapper.horizontal .divider {
-    width: 1px;
-    height: 24px;
-    margin: 0 0.25rem;
-  }
-  #wb-toolbar-wrapper.vertical .divider {
-    width: 24px;
-    height: 1px;
-    margin: 0.25rem 0;
-  }
-  .tool-btn {
-    color: var(--sl-color-text);
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    padding: 0.4rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s;
-  }
-  .tool-btn:hover {
-    background: var(--sl-color-hairline);
-  }
-  .tool-btn.active {
-    background: var(--sl-color-text-accent);
-    border-color: var(--sl-color-text-accent);
-    color: var(--sl-color-bg);
-  }
-  .tool-btn.clear:hover {
-    background: rgba(255, 0, 0, 0.2);
-    color: #ff4444;
-  }
-  #btn-palm-reject.active {
-    background: #3b82f6;
-    border-color: #3b82f6;
-    color: white;
-  }
-
-  .color-btn {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-    transition: transform 0.2s;
-  }
-  .color-btn:hover {
-    transform: scale(1.2);
-  }
-  .color-btn.active {
-    border-color: var(--sl-color-text);
-    transform: scale(1.1);
-  }
-
-  .color1 {
-    background: var(--wb-c1);
-    box-shadow: 0 0 8px var(--wb-c1);
-  }
-  .color2 {
-    background: var(--wb-c2);
-    box-shadow: 0 0 8px var(--wb-c2);
-  }
-  .color3 {
-    background: var(--wb-c3);
-    box-shadow: 0 0 8px var(--wb-c3);
-  }
-  .color4 {
-    background: var(--wb-c4);
-    box-shadow: 0 0 8px var(--wb-c4);
-  }
-
-  @media (max-width: 768px) {
-    #wb-portal,
-    #wb-exit,
-    #wb-toolbar-wrapper {
-      display: none !important;
-    }
-    :global(#wb-canvas) {
-      display: none !important;
-      pointer-events: none !important;
-    }
+  #wb-toolbar-wrapper { position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 9999999; display: flex; align-items: center; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline); border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.3); backdrop-filter: blur(12px); touch-action: none; }
+  #wb-toolbar-wrapper.minimized { width: 48px; height: 48px; border-radius: 50%; padding: 0; overflow: hidden; background: var(--sl-color-bg-nav); border: 1px solid var(--sl-color-hairline); display: flex; justify-content: center; align-items: center; box-shadow: 0 0 20px rgba(0,0,0,0.25); }
+  #wb-toolbar-wrapper.minimized #wb-toolbar { display: none; }
+  #wb-toolbar-wrapper.minimized #wb-fab-toggle { position: relative; width: 100%; height: 100%; margin: 0; padding: 0; cursor: grab; background: transparent; border-radius: 50%; display: flex; justify-content: center; align-items: center; }
+  #wb-toolbar-wrapper.minimized #wb-fab-toggle:active { cursor: grabbing; }
+  #wb-toolbar-wrapper.minimized .icon-min { display: none; }
+  #wb-toolbar-wrapper.minimized .icon-drag { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+  #wb-dynamic-icon { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; }
+  #wb-dynamic-icon svg { width: 20px; height: 20px; transition: stroke 0.3s ease; display: block; margin: 0; padding: 0; }
+  #wb-toolbar-wrapper.maximized #wb-fab-toggle { cursor: pointer; color: var(--sl-color-text); background: var(--sl-color-hairline); border-radius: 8px; padding: 0.4rem; margin: 0.5rem; transition: background 0.2s, color 0.2s; display: flex; align-items: center; justify-content: center; }
+  #wb-toolbar-wrapper.maximized #wb-fab-toggle:hover { background: var(--sl-color-text-accent); color: var(--sl-color-bg); }
+  #wb-toolbar-wrapper.maximized .icon-min { display: block; }
+  #wb-toolbar-wrapper.maximized .icon-drag { display: none; }
+  #wb-fab-toggle { background: transparent; border: none; display: flex; align-items: center; justify-content: center; color: var(--sl-color-text); }
+  #wb-toolbar-wrapper.horizontal { flex-direction: row; padding-right: 0.5rem; }
+  #wb-toolbar-wrapper.vertical { flex-direction: column; padding-bottom: 0.5rem; }
+  .toolbar-panel { display: flex; align-items: center; padding: 0.5rem; gap: 0.5rem; }
+  #wb-toolbar-wrapper.horizontal .toolbar-panel { flex-direction: row; padding-left: 0; }
+  #wb-toolbar-wrapper.vertical .toolbar-panel { flex-direction: column; padding-top: 0; }
+  .tool-group { display: flex; gap: 0.25rem; }
+  #wb-toolbar-wrapper.horizontal .tool-group { flex-direction: row; }
+  #wb-toolbar-wrapper.vertical .tool-group { flex-direction: column; }
+  .divider { background: var(--sl-color-hairline); }
+  #wb-toolbar-wrapper.horizontal .divider { width: 1px; height: 24px; margin: 0 0.25rem; }
+  #wb-toolbar-wrapper.vertical .divider { width: 24px; height: 1px; margin: 0.25rem 0; }
+  .tool-btn { color: var(--sl-color-text); background: transparent; border: 1px solid transparent; border-radius: 6px; padding: 0.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s; }
+  .tool-btn:hover { background: var(--sl-color-hairline); }
+  .tool-btn.active { background: var(--sl-color-text-accent); border-color: var(--sl-color-text-accent); color: var(--sl-color-bg); }
+  .tool-btn.clear:hover { background: rgba(255,0,0,0.2); color: #ff4444; }
+  #btn-palm-reject.active { background: #3b82f6; border-color: #3b82f6; color: white; }
+  
+  .color-btn { width: 24px; height: 24px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.2); cursor: pointer; transition: transform 0.2s; }
+  .color-btn:hover { transform: scale(1.2); }
+  .color-btn.active { border-color: var(--sl-color-text); transform: scale(1.1); }
+  
+  .color1 { background: var(--wb-c1); box-shadow: 0 0 8px var(--wb-c1); }
+  .color2 { background: var(--wb-c2); box-shadow: 0 0 8px var(--wb-c2); }
+  .color3 { background: var(--wb-c3); box-shadow: 0 0 8px var(--wb-c3); }
+  .color4 { background: var(--wb-c4); box-shadow: 0 0 8px var(--wb-c4); }
+  
+  @media (max-width: 768px) { 
+    #wb-portal, #wb-exit, #wb-toolbar-wrapper { display: none !important; }
+    :global(#wb-canvas) { display: none !important; pointer-events: none !important; }
   }
 </style>
 
 <script>
   // @ts-nocheck
-  import { projectorStore } from "../store/projectorStore.js";
+  import { projectorStore } from '../store/projectorStore.js';
 
   let globalAborter = new AbortController();
-  document.addEventListener("astro:before-preparation", () => {
+
+  document.addEventListener('astro:before-preparation', () => {
     globalAborter.abort();
     globalAborter = new AbortController();
   });
-  
-  function initWhiteboard() {
-    if (typeof window !== "undefined" && window.innerWidth < 768) return;
 
-    const portal = document.getElementById("wb-portal");
+  function initWhiteboard() {
+    if (typeof window !== 'undefined' && window.innerWidth < 768) return;
+
+    const portal = document.getElementById('wb-portal');
     if (!portal || portal.dataset.initialized) return;
-    portal.dataset.initialized = "true";
+    portal.dataset.initialized = 'true';
+
+    // ==========================================
+    // AGGRESSIVE ZOOM LOCK (BLOCKS PINCH & DOUBLE TAP)
+    // ==========================================
+    document.addEventListener(
+      "gesturestart",
+      (e) => {
+        if (projectorStore.get()?.isBento) {
+          e.preventDefault();
+        }
+      },
+      { passive: false, signal: globalAborter.signal }
+    );
+
+    let lastTouchEnd = 0;
+    document.addEventListener(
+      "touchend",
+      (e) => {
+        if (!projectorStore.get()?.isBento) return;
+        const now = Date.now();
+        if (now - lastTouchEnd <= 300) {
+          e.preventDefault(); // Blocks double-tap to zoom
+        }
+        lastTouchEnd = now;
+      },
+      { passive: false, signal: globalAborter.signal }
+    );
+    // ==========================================
 
     // SMART PALETTE ENGINE
     const themeMap = {
-      dark: {
-        color1: "#00ffff",
-        color2: "#ff00ff",
-        color3: "#ffff00",
-        color4: "#39ff14",
-      },
-      light: {
-        color1: "#1d4ed8",
-        color2: "#b91c1c",
-        color3: "#15803d",
-        color4: "#7e22ce",
-      },
+      dark: { color1: '#00ffff', color2: '#ff00ff', color3: '#ffff00', color4: '#39ff14' },
+      light: { color1: '#1d4ed8', color2: '#b91c1c', color3: '#15803d', color4: '#7e22ce' }
     };
-    
+
     function getThemeColor(colorName) {
-      if (colorName === "eraser") return "rgba(0,0,0,1)";
-      const isDark =
-        document.documentElement.dataset.theme === "dark" ||
-        (!document.documentElement.hasAttribute("data-theme") &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches);
-      return themeMap[isDark ? "dark" : "light"][colorName] || colorName;
+      if (colorName === 'eraser') return 'rgba(0,0,0,1)';
+      const isDark = document.documentElement.dataset.theme === 'dark' || (!document.documentElement.hasAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      return themeMap[isDark ? 'dark' : 'light'][colorName] || colorName;
     }
 
-    // Safely upgrade legacy colors from old cache
-    let savedColorName = localStorage.getItem("wb-active-color-name");
-    if (savedColorName === "cyan") savedColorName = "color1";
-    if (savedColorName === "magenta") savedColorName = "color2";
-    if (savedColorName === "yellow") savedColorName = "color3";
-    if (savedColorName === "lime") savedColorName = "color4";
-    if (!savedColorName) savedColorName = "color1";
-    projectorStore.setKey("colorName", savedColorName);
+    let savedColorName = localStorage.getItem('wb-active-color-name');
+    if (savedColorName === 'cyan') savedColorName = 'color1';
+    if (savedColorName === 'magenta') savedColorName = 'color2';
+    if (savedColorName === 'yellow') savedColorName = 'color3';
+    if (savedColorName === 'lime') savedColorName = 'color4';
+    if (!savedColorName) savedColorName = 'color1';
 
-    const savedMinState = localStorage.getItem("wb-toolbar-minimized");
-    if (savedMinState !== null)
-      projectorStore.setKey("isToolbarMinimized", savedMinState === "true");
-    
-    const savedTool = localStorage.getItem("wb-active-tool");
-    if (savedTool) projectorStore.setKey("tool", savedTool);
+    projectorStore.setKey('colorName', savedColorName);
 
-    const localState = {
-      strokes: [],
-      redoStack: [],
-      currentStroke: null,
-      isDrawing: false,
-      isLasering: false,
-      startedViaShift: false,
-    };
-    
-    let palmRejectionEnabled = localStorage.getItem("wb-palm-reject") === "true";
+    const savedMinState = localStorage.getItem('wb-toolbar-minimized');
+    if (savedMinState !== null) projectorStore.setKey('isToolbarMinimized', savedMinState === 'true');
+
+    const savedTool = localStorage.getItem('wb-active-tool');
+    if (savedTool) projectorStore.setKey('tool', savedTool);
+
+    const localState = { strokes: [], redoStack: [], currentStroke: null, isDrawing: false, isLasering: false };
+    let palmRejectionEnabled = localStorage.getItem('wb-palm-reject') === 'true';
     let canvas, ctx;
-    
+
     const savedStrokes = sessionStorage.getItem(`wb-strokes-${window.location.pathname}`);
-    if (savedStrokes) {
-      try {
-        localState.strokes = JSON.parse(savedStrokes);
-        // Migrate old strokes to semantic colors if they used hex
-        localState.strokes.forEach((s) => {
-          if (s.color === "#00ffff") s.colorName = "color1";
-          if (s.color === "#ff00ff") s.colorName = "color2";
-          if (s.color === "#ffff00") s.colorName = "color3";
-          if (s.color === "#39ff14") s.colorName = "color4";
-          if (!s.colorName) s.colorName = s.color; // Fallback
+    if (savedStrokes) { 
+      try { 
+        localState.strokes = JSON.parse(savedStrokes); 
+        localState.strokes.forEach(s => {
+          if (s.color === '#00ffff') s.colorName = 'color1';
+          if (s.color === '#ff00ff') s.colorName = 'color2';
+          if (s.color === '#ffff00') s.colorName = 'color3';
+          if (s.color === '#39ff14') s.colorName = 'color4';
+          if (!s.colorName) s.colorName = s.color;
         });
-      } catch (e) {}
+      } catch(e){} 
     }
 
     function updatePalmRejectUI() {
-      const btn = document.getElementById("btn-palm-reject");
+      const btn = document.getElementById('btn-palm-reject');
       if (btn) {
         if (palmRejectionEnabled) {
-          btn.classList.add("active");
-          document.documentElement.setAttribute("data-palm-reject", "true");
+          btn.classList.add('active');
+          document.documentElement.setAttribute('data-palm-reject', 'true');
         } else {
-          btn.classList.remove("active");
-          document.documentElement.setAttribute("data-palm-reject", "false");
+          btn.classList.remove('active');
+          document.documentElement.setAttribute('data-palm-reject', 'false');
         }
       }
     }
     updatePalmRejectUI();
 
-    // ==========================================
-    // ZOOM AND GESTURE LOCKING
-    // ==========================================
-    function setupSmartZoom() {
-      // 1. Prevent Pinch-to-Zoom
-      document.addEventListener(
-        "gesturestart",
-        (e) => {
-          if (palmRejectionEnabled) {
-            e.preventDefault(); 
-          }
-        },
-        { passive: false, signal: globalAborter.signal },
-      );
-
-      // 2. Prevent Double-Tap-to-Zoom
-      let lastTouchEnd = 0;
-      document.addEventListener(
-        "touchend",
-        (e) => {
-          const now = Date.now();
-          if (now - lastTouchEnd <= 300 && palmRejectionEnabled) {
-            e.preventDefault(); 
-          }
-          lastTouchEnd = now;
-        },
-        { passive: false, signal: globalAborter.signal },
-      );
-    }
-    setupSmartZoom();
-
     function setupCanvas() {
-      if (document.getElementById("wb-canvas")) return;
-      canvas = document.createElement("canvas");
-      canvas.id = "wb-canvas";
+      if (document.getElementById('wb-canvas')) return;
+      canvas = document.createElement('canvas');
+      canvas.id = 'wb-canvas';
       document.body.appendChild(canvas);
-      ctx = canvas.getContext("2d");
+      ctx = canvas.getContext('2d');
 
-      // Inside setupCanvas() ...
-      
       let lastWidth = 0;
       let lastHeight = 0;
 
       const resizeCanvas = () => {
         if (!canvas) return;
-        
         const newWidth = document.documentElement.scrollWidth;
         const newHeight = document.documentElement.scrollHeight;
-
-        // CRITICAL FIX: Do not clear the canvas if we are in the middle of drawing!
-        if (localState.isDrawing) return;
         
-        // CRITICAL FIX: iPad zoom triggers resize, but the layout size doesn't change. 
-        // Only resize if the actual document dimensions changed.
+        // Fix: Do not clear canvas if we are mid-draw or if document hasn't actually grown
+        if (localState.isDrawing) return;
         if (newWidth === lastWidth && newHeight === lastHeight) return;
 
         lastWidth = newWidth;
@@ -718,30 +276,23 @@
 
         canvas.width = newWidth;
         canvas.height = newHeight;
-        redrawAll();
+        redrawAll(); 
       };
+      
+      window.addEventListener('resize', resizeCanvas, { signal: globalAborter.signal });
+      setTimeout(resizeCanvas, 500); 
 
-      window.addEventListener("resize", resizeCanvas, { signal: globalAborter.signal });
-      // Call it once safely
-      setTimeout(resizeCanvas, 50);
-
-      window.addEventListener("resize", resizeCanvas, { signal: globalAborter.signal });
-      setTimeout(resizeCanvas, 500);
-
-      // Observer to automatically redraw strokes when Astro Theme changes!
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
-          if (mutation.attributeName === "data-theme") {
+          if (mutation.attributeName === 'data-theme') {
             redrawAll();
-            // Update dynamic icon color
             const state = projectorStore.get();
-            if (state.tool === "pen") {
-              const dynamicIcon = document.getElementById("wb-dynamic-icon");
-              if (dynamicIcon) {
-                const svgPath = dynamicIcon.querySelector("path");
-                if (svgPath)
-                  svgPath.style.stroke = getThemeColor(state.colorName);
-              }
+            if (state.tool === 'pen') {
+               const dynamicIcon = document.getElementById('wb-dynamic-icon');
+               if (dynamicIcon) {
+                  const svgPath = dynamicIcon.querySelector('path');
+                  if (svgPath) svgPath.style.stroke = getThemeColor(state.colorName);
+               }
             }
           }
         });
@@ -750,86 +301,68 @@
 
       const preventTouchWhenDrawing = (e) => {
         const tool = projectorStore.get().tool;
-        if (tool === "pen" || tool === "eraser" || tool === "laser") {
-          if (palmRejectionEnabled && e.touches && tool !== "laser") {
-            let isStylus = false;
-            for (let i = 0; i < e.touches.length; i++) {
-              if (
-                e.touches[i].touchType === "stylus" ||
-                e.touches[i].touchType === "pen"
-              ) {
-                isStylus = true;
-                break;
-              }
+        if (tool === 'pen' || tool === 'eraser' || tool === 'laser') {
+            if (palmRejectionEnabled && e.touches && tool !== 'laser') {
+               let isStylus = false;
+               for (let i = 0; i < e.touches.length; i++) {
+                 if (e.touches[i].touchType === 'stylus' || e.touches[i].touchType === 'pen') {
+                   isStylus = true;
+                   break;
+                 }
+               }
+               if (!isStylus) return; 
             }
-            if (!isStylus) return;
-          }
-          if (e.cancelable) e.preventDefault();
+            if (e.cancelable) e.preventDefault();
         }
       };
       
-      canvas.addEventListener("touchstart", preventTouchWhenDrawing, { passive: false });
-      canvas.addEventListener("touchmove", preventTouchWhenDrawing, { passive: false });
-      canvas.addEventListener("pointerdown", startDrawing, { passive: false });
-      canvas.addEventListener("pointermove", draw, { passive: false });
-      canvas.addEventListener("pointerup", stopDrawing);
-      canvas.addEventListener("pointercancel", stopDrawing);
-      canvas.addEventListener("pointerout", stopDrawing);
+      canvas.addEventListener('touchstart', preventTouchWhenDrawing, { passive: false });
+      canvas.addEventListener('touchmove', preventTouchWhenDrawing, { passive: false });
+
+      canvas.addEventListener('pointerdown', startDrawing, { passive: false });
+      canvas.addEventListener('pointermove', draw, { passive: false });
+      canvas.addEventListener('pointerup', stopDrawing);
+      canvas.addEventListener('pointercancel', stopDrawing); 
+      canvas.addEventListener('pointerout', stopDrawing);
     }
 
     function startDrawing(e) {
-      if (window.innerWidth < 768) return;
+      if (window.innerWidth < 768) return; 
       const globalState = projectorStore.get();
-      if (
-        globalState.tool !== "pen" &&
-        globalState.tool !== "eraser" &&
-        globalState.tool !== "laser"
-      )
-        return;
-      if (
-        palmRejectionEnabled &&
-        e.pointerType === "touch" &&
-        globalState.tool !== "laser"
-      )
-        return;
-      if (e.cancelable) e.preventDefault();
-      try {
-        canvas.setPointerCapture(e.pointerId);
-      } catch (err) {}
+      if (globalState.tool !== 'pen' && globalState.tool !== 'eraser' && globalState.tool !== 'laser') return;
+      
+      if (palmRejectionEnabled && e.pointerType === 'touch' && globalState.tool !== 'laser') return;
 
-      if (globalState.tool === "laser") {
+      if (e.cancelable) e.preventDefault(); 
+      try { canvas.setPointerCapture(e.pointerId); } catch(err) {}
+      
+      if (globalState.tool === 'laser') {
         localState.isLasering = true;
-        if (e.pointerType !== "mouse") {
-          const laserDot = document.getElementById("wb-laser-dot");
+        if (e.pointerType !== 'mouse') {
+          const laserDot = document.getElementById('wb-laser-dot');
           if (laserDot) {
-            laserDot.style.display = "block";
-            laserDot.style.left = e.clientX + "px";
-            laserDot.style.top = e.clientY + "px";
+            laserDot.style.display = 'block';
+            laserDot.style.left = e.clientX + 'px';
+            laserDot.style.top = e.clientY + 'px';
           }
         }
         return;
       }
-
-      localState.isDrawing = true;
-      localState.redoStack = [];
-      const x = e.pageX;
-      const y = e.pageY;
       
-      // Store semantic colorName instead of fixed hex
-      localState.currentStroke = {
-        tool: globalState.tool,
-        colorName: globalState.tool === "eraser" ? "eraser" : globalState.colorName,
-        points: [{ x, y }],
+      localState.isDrawing = true; localState.redoStack = []; 
+      const x = e.pageX; const y = e.pageY;
+      
+      localState.currentStroke = { 
+        tool: globalState.tool, 
+        colorName: globalState.tool === 'eraser' ? 'eraser' : globalState.colorName, 
+        points: [{x, y}] 
       };
       
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
-      ctx.lineWidth = globalState.tool === "eraser" ? 40 : 6;
+      ctx.beginPath(); ctx.moveTo(x, y); ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.lineWidth = globalState.tool === 'eraser' ? 40 : 6; 
       ctx.strokeStyle = getThemeColor(localState.currentStroke.colorName);
-      ctx.globalCompositeOperation =
-        globalState.tool === "eraser" ? "destination-out" : "source-over";
+      ctx.globalCompositeOperation = globalState.tool === 'eraser' ? 'destination-out' : 'source-over';
+      
       ctx.lineTo(x, y);
       ctx.stroke();
     }
@@ -837,68 +370,40 @@
     function draw(e) {
       if (localState.isLasering) {
         if (e.cancelable) e.preventDefault();
-        if (e.pointerType !== "mouse") {
-          const laserDot = document.getElementById("wb-laser-dot");
+        if (e.pointerType !== 'mouse') {
+          const laserDot = document.getElementById('wb-laser-dot');
           if (laserDot) {
-            laserDot.style.left = e.clientX + "px";
-            laserDot.style.top = e.clientY + "px";
+            laserDot.style.left = e.clientX + 'px';
+            laserDot.style.top = e.clientY + 'px';
           }
         }
         return;
       }
 
-      const globalState = projectorStore.get();
-      const isShiftDrawing =
-        e.shiftKey &&
-        (globalState.tool === "pen" || globalState.tool === "eraser");
-        
-      // 1. START drawing if Shift is pressed while moving
-      if (isShiftDrawing && !localState.isDrawing) {
-        localState.startedViaShift = true;
-        startDrawing(e);
-        return;
-      }
-
-      // 2. STOP drawing if Shift is released while moving
-      if (!e.shiftKey && localState.isDrawing && localState.startedViaShift) {
-        localState.startedViaShift = false;
-        stopDrawing(e);
-        return;
-      }
-
       if (!localState.isDrawing || !localState.currentStroke) return;
       if (e.cancelable) e.preventDefault();
-      const x = e.pageX;
-      const y = e.pageY;
-      localState.currentStroke.points.push({ x, y });
-      ctx.lineTo(x, y);
-      ctx.stroke();
+      const x = e.pageX; const y = e.pageY;
+      localState.currentStroke.points.push({x, y});
+      ctx.lineTo(x, y); ctx.stroke();
     }
 
     function stopDrawing(e) {
       if (localState.isLasering) {
         localState.isLasering = false;
-        const laserDot = document.getElementById("wb-laser-dot");
-        if (laserDot) laserDot.style.display = "none";
-        try {
-          canvas.releasePointerCapture(e.pointerId);
-        } catch (err) {}
+        const laserDot = document.getElementById('wb-laser-dot');
+        if (laserDot) laserDot.style.display = 'none';
+        try { canvas.releasePointerCapture(e.pointerId); } catch(err) {}
         return;
       }
 
       if (!localState.isDrawing) return;
       if (e.cancelable) e.preventDefault();
-      try {
-        canvas.releasePointerCapture(e.pointerId);
-      } catch (err) {}
+      
+      try { canvas.releasePointerCapture(e.pointerId); } catch(err) {}
 
       localState.isDrawing = false;
-      if (
-        localState.currentStroke &&
-        localState.currentStroke.points.length > 0
-      ) {
-        localState.strokes.push(localState.currentStroke);
-        saveStrokes();
+      if (localState.currentStroke && localState.currentStroke.points.length > 0) {
+        localState.strokes.push(localState.currentStroke); saveStrokes();
       }
       localState.currentStroke = null;
     }
@@ -906,341 +411,250 @@
     function redrawAll() {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // 1. Find where the last 'clear' happened
+      
       let startIndex = 0;
       for (let i = localState.strokes.length - 1; i >= 0; i--) {
-        if (localState.strokes[i].type === "clear") {
+        if (localState.strokes[i].type === 'clear') {
           startIndex = i + 1;
           break;
         }
       }
 
-      // 2. Draw only the strokes that happened after the last 'clear'
       for (let i = startIndex; i < localState.strokes.length; i++) {
         const stroke = localState.strokes[i];
         if (!stroke.points || stroke.points.length === 0) continue;
-
-        ctx.beginPath();
-        ctx.moveTo(stroke.points[0].x, stroke.points[0].y);
-        ctx.lineCap = "round";
-        ctx.lineJoin = "round";
-        ctx.lineWidth = stroke.tool === "eraser" ? 40 : 6;
-
-        // Dynamically resolve colors at draw time!
+        
+        ctx.beginPath(); 
+        ctx.moveTo(stroke.points[0].x, stroke.points[0].y); 
+        ctx.lineCap = 'round'; 
+        ctx.lineJoin = 'round';
+        ctx.lineWidth = stroke.tool === 'eraser' ? 40 : 6; 
+        
         ctx.strokeStyle = getThemeColor(stroke.colorName || stroke.color);
-
-        ctx.globalCompositeOperation =
-          stroke.tool === "eraser" ? "destination-out" : "source-over";
-        stroke.points.forEach((pt) => ctx.lineTo(pt.x, pt.y));
+        
+        ctx.globalCompositeOperation = stroke.tool === 'eraser' ? 'destination-out' : 'source-over';
+        stroke.points.forEach(pt => ctx.lineTo(pt.x, pt.y)); 
         ctx.stroke();
       }
-      ctx.globalCompositeOperation = "source-over";
+      ctx.globalCompositeOperation = 'source-over'; 
     }
 
-    function saveStrokes() {
-      sessionStorage.setItem(
-        `wb-strokes-${window.location.pathname}`,
-        JSON.stringify(localState.strokes),
-      );
+    function saveStrokes() { sessionStorage.setItem(`wb-strokes-${window.location.pathname}`, JSON.stringify(localState.strokes)); }
+    function undo() { if (localState.strokes.length > 0) { localState.redoStack.push(localState.strokes.pop()); redrawAll(); saveStrokes(); } }
+    function redo() { if (localState.redoStack.length > 0) { localState.strokes.push(localState.redoStack.pop()); redrawAll(); saveStrokes(); } }
+    
+    function clear() { 
+      if (localState.strokes.length === 0 || localState.strokes[localState.strokes.length - 1].type === 'clear') return;
+      localState.strokes.push({ type: 'clear' }); 
+      localState.redoStack = []; 
+      redrawAll(); 
+      saveStrokes(); 
     }
     
-    function undo() {
-      if (localState.strokes.length > 0) {
-        localState.redoStack.push(localState.strokes.pop());
-        redrawAll();
-        saveStrokes();
-      }
-    }
-    function redo() {
-      if (localState.redoStack.length > 0) {
-        localState.strokes.push(localState.redoStack.pop());
-        redrawAll();
-        saveStrokes();
-      }
-    }
-
-    function clear() {
-      if (
-        localState.strokes.length === 0 ||
-        localState.strokes[localState.strokes.length - 1].type === "clear"
-      )
-        return;
-        
-      localState.strokes.push({ type: "clear" });
-      localState.redoStack = [];
-      redrawAll();
-      saveStrokes();
-    }
-
     function togglePalmRejection() {
       palmRejectionEnabled = !palmRejectionEnabled;
-      localStorage.setItem("wb-palm-reject", palmRejectionEnabled.toString());
+      localStorage.setItem('wb-palm-reject', palmRejectionEnabled.toString());
       updatePalmRejectUI();
     }
 
-    portal.addEventListener("click", (e) => {
-      const btn = e.target.closest("button");
+    portal.addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
       if (!btn) return;
-
+      
       const action = btn.dataset.action;
       const val = btn.dataset.val;
 
-      if (action === "set-tool") {
-        projectorStore.setKey("tool", val);
-      } else if (action === "set-color") {
-        projectorStore.setKey("colorName", val);
-        projectorStore.setKey("tool", "pen");
-      } else if (action === "toggle-palm") togglePalmRejection();
-      else if (action === "undo") undo();
-      else if (action === "redo") redo();
-      else if (action === "clear") clear();
-      else if (action === "toggle-projector") {
+      if (action === 'set-tool') {
+        projectorStore.setKey('tool', val);
+      } else if (action === 'set-color') {
+        projectorStore.setKey('colorName', val);
+        projectorStore.setKey('tool', 'pen');
+      } else if (action === 'toggle-palm') togglePalmRejection();
+      else if (action === 'undo') undo();
+      else if (action === 'redo') redo();
+      else if (action === 'clear') clear();
+      else if (action === 'toggle-projector') {
         const isCurrentlyBento = projectorStore.get().isBento;
-        projectorStore.setKey("isBento", !isCurrentlyBento);
-        localStorage.setItem(
-          "whiteboard-mode",
-          !isCurrentlyBento ? "bento" : "normal",
-        );
+        projectorStore.setKey('isBento', !isCurrentlyBento);
+        localStorage.setItem('whiteboard-mode', !isCurrentlyBento ? 'bento' : 'normal');
       }
     });
-    
+
     function initDragLogic() {
-      const wrapper = document.getElementById("wb-toolbar-wrapper");
-      const fab = document.getElementById("wb-fab-toggle");
+      const wrapper = document.getElementById('wb-toolbar-wrapper');
+      const fab = document.getElementById('wb-fab-toggle');
       if (!wrapper || !fab) return;
 
-      let isDragging = false;
-      let hasDragged = false;
+      let isDragging = false; 
+      let hasDragged = false; 
       let startX, startY;
       let initialX, initialY;
-      
-      fab.addEventListener("pointerdown", (e) => {
-        if (!projectorStore.get().isToolbarMinimized) return;
-        if (e.cancelable) e.preventDefault();
 
-        try {
-          fab.setPointerCapture(e.pointerId);
-        } catch (err) {}
+      fab.addEventListener('pointerdown', (e) => {
+        if (!projectorStore.get().isToolbarMinimized) return; 
+        if (e.cancelable) e.preventDefault(); 
+        
+        try { fab.setPointerCapture(e.pointerId); } catch(err) {}
 
-        isDragging = true;
+        isDragging = true; 
         hasDragged = false;
         initialX = e.clientX;
         initialY = e.clientY;
 
         const rect = wrapper.getBoundingClientRect();
-
-        startX = e.clientX - rect.left;
+        startX = e.clientX - rect.left; 
         startY = e.clientY - rect.top;
-
-        wrapper.style.transform = "none";
-        wrapper.style.bottom = "auto";
-        wrapper.style.left = `${rect.left}px`;
-        wrapper.style.top = `${rect.top}px`;
+        
+        wrapper.style.transform = 'none'; wrapper.style.bottom = 'auto';
+        wrapper.style.left = `${rect.left}px`; wrapper.style.top = `${rect.top}px`;
       });
-      
-      document.addEventListener("pointermove", (e) => {
-        if (!isDragging) return;
 
+      document.addEventListener('pointermove', (e) => {
+        if (!isDragging) return;
+        
         if (!hasDragged) {
           const dx = Math.abs(e.clientX - initialX);
           const dy = Math.abs(e.clientY - initialY);
           if (dx > 5 || dy > 5) {
             hasDragged = true;
           } else {
-            return;
+            return; 
           }
         }
 
-        let newX = e.clientX - startX;
-        let newY = e.clientY - startY;
-
+        let newX = e.clientX - startX; let newY = e.clientY - startY;
+        
         newX = Math.max(10, Math.min(newX, window.innerWidth - wrapper.offsetWidth - 10));
         newY = Math.max(10, Math.min(newY, window.innerHeight - wrapper.offsetHeight - 10));
-
-        wrapper.style.left = `${newX}px`;
-        wrapper.style.top = `${newY}px`;
+        
+        wrapper.style.left = `${newX}px`; wrapper.style.top = `${newY}px`;
       });
-      
+
       const handleDragEnd = (e) => {
         if (isDragging) {
-          try {
-            fab.releasePointerCapture(e.pointerId);
-          } catch (err) {}
-
-          if (hasDragged) {
-            const rect = wrapper.getBoundingClientRect();
-            localStorage.setItem(
-              "wb-toolbar-pos",
-              JSON.stringify({ x: rect.left, y: rect.top }),
-            );
-            // Re-apply scale scaling for dropped positions
-            clampToolbarPosition(); 
-          }
+           try { fab.releasePointerCapture(e.pointerId); } catch(err) {}
+           
+           if (hasDragged) {
+             const rect = wrapper.getBoundingClientRect();
+             localStorage.setItem('wb-toolbar-pos', JSON.stringify({ x: rect.left, y: rect.top }));
+           }
         }
-        isDragging = false;
+        isDragging = false; 
       };
-      
-      document.addEventListener("pointerup", handleDragEnd);
-      document.addEventListener("pointercancel", handleDragEnd);
 
-      fab.addEventListener("click", () => {
-        if (hasDragged) return;
+      document.addEventListener('pointerup', handleDragEnd);
+      document.addEventListener('pointercancel', handleDragEnd);
+
+      fab.addEventListener('click', () => {
+        if (hasDragged) return; 
         const currentMin = projectorStore.get().isToolbarMinimized;
-        projectorStore.setKey("isToolbarMinimized", !currentMin);
+        projectorStore.setKey('isToolbarMinimized', !currentMin);
       });
     }
 
-    // ==========================================
-    // ROCK-SOLID TOOLBAR CLAMP (NO SCALING)
-    // ==========================================
     function clampToolbarPosition() {
-      const wrapper = document.getElementById("wb-toolbar-wrapper");
+      const wrapper = document.getElementById('wb-toolbar-wrapper');
       if (!wrapper) return;
-
-      const savedPos = localStorage.getItem("wb-toolbar-pos");
+      
+      const savedPos = localStorage.getItem('wb-toolbar-pos');
       if (savedPos) {
         try {
           const pos = JSON.parse(savedPos);
-          // Keep it on screen, but don't do any inverse scale math
           let newX = Math.max(10, Math.min(pos.x, window.innerWidth - wrapper.offsetWidth - 10));
           let newY = Math.max(10, Math.min(pos.y, window.innerHeight - wrapper.offsetHeight - 10));
           
-          wrapper.style.left = `${newX}px`;
-          wrapper.style.top = `${newY}px`;
-          wrapper.style.bottom = "auto";
-          wrapper.style.transform = "none"; 
-        } catch (e) {}
+          wrapper.style.left = `${newX}px`; 
+          wrapper.style.top = `${newY}px`; 
+          wrapper.style.bottom = 'auto'; 
+          wrapper.style.transform = 'none';
+        } catch(e) {}
       } else {
-        // Default centered position
-        wrapper.style.left = "50%";
-        wrapper.style.top = "auto";
-        wrapper.style.bottom = "2rem";
-        wrapper.style.transform = "translateX(-50%)";
+        wrapper.style.left = '50%';
+        wrapper.style.top = 'auto';
+        wrapper.style.bottom = '2rem';
+        wrapper.style.transform = 'translateX(-50%)';
       }
     }
 
-    projectorStore.subscribe((state) => {
-      localStorage.setItem("wb-toolbar-minimized", state.isToolbarMinimized.toString());
-      localStorage.setItem("wb-active-tool", state.tool);
-      localStorage.setItem("wb-active-color-name", state.colorName);
+    projectorStore.subscribe(state => {
+      localStorage.setItem('wb-toolbar-minimized', state.isToolbarMinimized.toString());
+      localStorage.setItem('wb-active-tool', state.tool);
+      localStorage.setItem('wb-active-color-name', state.colorName);
 
-      document.documentElement.setAttribute("data-tool", state.tool);
+      document.documentElement.setAttribute('data-tool', state.tool);
 
-      document
-        .querySelectorAll(".tool-btn:not(#btn-palm-reject), .color-btn")
-        .forEach((btn) => btn.classList.remove("active"));
-        
+      document.querySelectorAll('.tool-btn:not(#btn-palm-reject), .color-btn').forEach(btn => btn.classList.remove('active'));
       const activeToolBtn = document.querySelector(`[data-val="${state.tool}"]`);
       if (activeToolBtn) {
-        activeToolBtn.classList.add("active");
-        const dynamicIcon = document.getElementById("wb-dynamic-icon");
-
+        activeToolBtn.classList.add('active');
+        const dynamicIcon = document.getElementById('wb-dynamic-icon');
         if (dynamicIcon) {
           dynamicIcon.innerHTML = activeToolBtn.innerHTML;
-          if (state.tool === "pen") {
-            const svgPath = dynamicIcon.querySelector("path");
+          if (state.tool === 'pen') {
+            const svgPath = dynamicIcon.querySelector('path');
             if (svgPath) svgPath.style.stroke = getThemeColor(state.colorName);
           }
         }
       }
-      
       const activeColorBtn = document.querySelector(`.color-btn.${state.colorName}`);
-      if (activeColorBtn) activeColorBtn.classList.add("active");
+      if (activeColorBtn) activeColorBtn.classList.add('active');
 
-      const wrapper = document.getElementById("wb-toolbar-wrapper");
+      const wrapper = document.getElementById('wb-toolbar-wrapper');
       if (wrapper) {
         if (state.isToolbarMinimized) {
-          wrapper.classList.remove("maximized", "horizontal", "vertical");
-          wrapper.classList.add("minimized");
+          wrapper.classList.remove('maximized', 'horizontal', 'vertical');
+          wrapper.classList.add('minimized');
         } else {
-          wrapper.classList.remove("minimized");
-          wrapper.classList.add("maximized");
+          wrapper.classList.remove('minimized');
+          wrapper.classList.add('maximized');
           const rect = wrapper.getBoundingClientRect();
-          if (
-            rect.left < window.innerWidth * 0.2 ||
-            rect.left > window.innerWidth * 0.8
-          ) {
-            wrapper.classList.remove("horizontal");
-            wrapper.classList.add("vertical");
+          if (rect.left < window.innerWidth * 0.2 || rect.left > window.innerWidth * 0.8) {
+            wrapper.classList.remove('horizontal'); wrapper.classList.add('vertical');
           } else {
-            wrapper.classList.remove("vertical");
-            wrapper.classList.add("horizontal");
+            wrapper.classList.remove('vertical'); wrapper.classList.add('horizontal');
           }
         }
         setTimeout(clampToolbarPosition, 0);
       }
     });
 
-    window.addEventListener(
-      "keydown",
-      (e) => {
-        if (!projectorStore.get().isBento) return;
-        if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")
-          return;
-        if (e.key === "Escape") {
-          projectorStore.setKey("isBento", false);
-          localStorage.setItem("whiteboard-mode", "normal");
-          return;
-        }
-        if ((e.ctrlKey || e.metaKey) && e.key === "z") {
-          if (e.shiftKey) redo();
-          else undo();
-          e.preventDefault();
-        }
+    window.addEventListener('keydown', (e) => {
+      if (!projectorStore.get().isBento) return;
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      if (e.key === 'Escape') { projectorStore.setKey('isBento', false); localStorage.setItem('whiteboard-mode', 'normal'); return; }
+      if ((e.ctrlKey || e.metaKey) && e.key === 'z') { if (e.shiftKey) redo(); else undo(); e.preventDefault(); }
+      
+      if (e.key === '0') {
+         e.preventDefault();
+         localStorage.removeItem('wb-toolbar-pos');
+         const wrapper = document.getElementById('wb-toolbar-wrapper');
+         if (wrapper) { wrapper.style.left = '50%'; wrapper.style.top = 'auto'; wrapper.style.bottom = '2rem'; wrapper.style.transform = 'translateX(-50%)'; clampToolbarPosition(); }
+      }
 
-        if (e.key === "0") {
-          e.preventDefault();
-          localStorage.removeItem("wb-toolbar-pos");
-          clampToolbarPosition();
-        }
+      if (e.key === '1') projectorStore.setKey('tool', 'mouse');
+      if (e.key === '2') projectorStore.setKey('tool', 'laser');
+      if (e.key === '3') projectorStore.setKey('tool', 'pen');
+      if (e.key === '4') projectorStore.setKey('tool', 'eraser');
 
-        if (e.key === "1") projectorStore.setKey("tool", "mouse");
-        if (e.key === "2") projectorStore.setKey("tool", "laser");
-        if (e.key === "3") projectorStore.setKey("tool", "pen");
-        if (e.key === "4") projectorStore.setKey("tool", "eraser");
-        if (e.key.toLowerCase() === "p") togglePalmRejection();
+      if (e.key.toLowerCase() === 'p') togglePalmRejection();
 
-        if (e.key.toLowerCase() === "q") {
-          projectorStore.setKey("colorName", "color1");
-          projectorStore.setKey("tool", "pen");
-        }
-        if (e.key.toLowerCase() === "w") {
-          projectorStore.setKey("colorName", "color2");
-          projectorStore.setKey("tool", "pen");
-        }
-        if (e.key.toLowerCase() === "e") {
-          projectorStore.setKey("colorName", "color3");
-          projectorStore.setKey("tool", "pen");
-        }
-        if (e.key.toLowerCase() === "r") {
-          projectorStore.setKey("colorName", "color4");
-          projectorStore.setKey("tool", "pen");
-        }
-        if (e.key.toLowerCase() === "c") clear();
+      if (e.key.toLowerCase() === 'q') { projectorStore.setKey('colorName', 'color1'); projectorStore.setKey('tool', 'pen'); }
+      if (e.key.toLowerCase() === 'w') { projectorStore.setKey('colorName', 'color2'); projectorStore.setKey('tool', 'pen'); }
+      if (e.key.toLowerCase() === 'e') { projectorStore.setKey('colorName', 'color3'); projectorStore.setKey('tool', 'pen'); }
+      if (e.key.toLowerCase() === 'r') { projectorStore.setKey('colorName', 'color4'); projectorStore.setKey('tool', 'pen'); }
+      if (e.key.toLowerCase() === 'c') clear();
 
-        if (localState.isDrawing) return;
-        const scrollAmount = window.innerHeight * 0.8;
-        if (["ArrowRight", "ArrowDown", "PageDown"].includes(e.key)) {
-          e.preventDefault();
-          window.scrollBy({ top: scrollAmount, behavior: "smooth" });
-        }
-        if (["ArrowLeft", "ArrowUp", "PageUp"].includes(e.key)) {
-          e.preventDefault();
-          window.scrollBy({ top: -scrollAmount, behavior: "smooth" });
-        }
-      },
-      { capture: true, signal: globalAborter.signal },
-    );
+      if (localState.isDrawing) return;
+      const scrollAmount = window.innerHeight * 0.8;
+      if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(e.key)) { e.preventDefault(); window.scrollBy({ top: scrollAmount, behavior: 'smooth' }); }
+      if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); window.scrollBy({ top: -scrollAmount, behavior: 'smooth' }); }
+    }, { capture: true, signal: globalAborter.signal });
 
     setupCanvas();
     initDragLogic();
-    
-    // Bind regular resize listener
-    window.addEventListener("resize", clampToolbarPosition, { signal: globalAborter.signal });
-    
+    window.addEventListener('resize', clampToolbarPosition, { signal: globalAborter.signal });
   }
 
   initWhiteboard();
-  document.addEventListener("astro:page-load", initWhiteboard);
+  document.addEventListener('astro:page-load', initWhiteboard);
 </script>
