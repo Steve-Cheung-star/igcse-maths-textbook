@@ -396,26 +396,43 @@ You can plug an $x$-value into the $y = ax + b$ line to predict $y$. **However, 
 <SmartAIGenerator topic="Calculating the mean point of a bivariate dataset for a line of best fit" />
 
 <Tabs>
-  <TabItem label="📝 Question 5: Interpreting Parameters">
-    Haile runs a small bakery. She tracks the daily temperature ($x^\circ\text{C}$) and the number of iced coffees sold ($y$). 
-    The regression line for her data is calculated as:
+  <TabItem label="📝 Question 5: Bakery Pricing (Negative Regression)">
+    Haile runs a small bakery. She experiments with the price of her new specialty cake ($x$, in dollars) and tracks the number of cakes sold that week ($y$). She collects data over 7 weeks to find the optimum price point:
     
-    $$
-    y = 4.2x - 12
-    $$
+    | Price, $x$ (\$) | 10 | 15 | 20 | 25 | 30 | 35 | 40 |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | Cakes sold, $y$ | 45 | 39 | 31 | 25 | 18 | 12 | 5 |
+
+    **a)** Use your TI-Nspire GDC to find the equation of the linear regression line $y = ax + b$.
     
-    **a)** Interpret the meaning of the parameter $4.2$ in the context of this problem.
+    **b)** Interpret the meaning of the parameter $a$ in the context of this problem.
     
-    **b)** Explain why the $y$-intercept of this model does not make logical sense in the real world.
+    **c)** Haile decides to price the cake at \$22 next week. Predict how many cakes she will sell.
+    
+    **d)** Haile uses the model to predict how many cakes she would sell if she priced them at \$60. State, with a reason, whether this prediction is reliable.
   </TabItem>
   <TabItem label="✅ Solution 5">
-    **a)** $4.2$ is the gradient ($a$). In context: **For every $1^\circ\text{C}$ increase in temperature, the bakery is predicted to sell 4.2 more iced coffees.**
+    **a)** Enter the data into a `Lists & Spreadsheet` page. Run `Linear Regression (mx+b)` with $x$ as Price and $y$ as Cakes sold.
     
-    **b)** The $y$-intercept ($b$) is $-12$. This implies that if the temperature is $0^\circ\text{C}$, the bakery will sell $-12$ iced coffees. It is physically impossible to sell a negative amount of coffees, which shows the limitations of the linear model at extremes.
+    $$
+    y = -1.34x + 58.4 \text{ (coefficients to 3 s.f.)}
+    $$
+    
+    **b)** $-1.34$ is the gradient ($a$). In context: **For every \$1 increase in the price of the cake, Haile is predicted to sell 1.34 fewer cakes.**
+    
+    **c)** Substitute $x = 22$ into the regression equation.
+    
+    $$
+    y = -1.34(22) + 58.4 = 28.92
+    $$
+    
+    She is predicted to sell approximately **29 cakes**.
+    
+    **d)** The prediction is **unreliable**. \$60 is far outside the original data range (\$10 to \$40). This is an **extrapolation**. If you plug $x=60$ into the model, you get a negative value ($-22$), which is physically impossible as she cannot sell a negative number of cakes.
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Interpreting the gradient and y-intercept of a regression line in real-world contexts" />
+<SmartAIGenerator topic="Finding negative linear regression equations using GDC and interpreting the gradient in real-world contexts" />
 
 <Tabs>
   <TabItem label="📝 Question 6: Spurious Correlation (Mr. Cheung's Matcha Habit)">
@@ -453,24 +470,24 @@ You can plug an $x$-value into the $y = ax + b$ line to predict $y$. **However, 
 
 <Tabs>
   <TabItem label="📝 Question 8: Interpolation vs Extrapolation Boundaries">
-    A fitness coach records the number of weeks a client has been training ($x$) and their maximum deadlift weight ($y$, in kg). The data is recorded from week 2 to week 12.
-    The regression line equation is $y = 2.5x + 40$.
+    A scuba diving instructor records the depth of a dive ($x$, in metres) and the maximum safe bottom time ($y$, in minutes) for a group of divers. The data is recorded for depths from 10m to 30m.
+    The regression line equation is $y = -2.1x + 95$.
     
-    The coach uses the equation to make two predictions:
-    * **Prediction A:** Client's deadlift at week 8.
-    * **Prediction B:** Client's deadlift at week 52 (one year later).
+    The instructor uses the equation to make two predictions regarding safe bottom times:
+    * **Prediction A:** Safe time at a depth of 22m.
+    * **Prediction B:** Safe time at a depth of 55m.
     
-    Classify each prediction as interpolation or extrapolation, and state which is more mathematically reliable.
+    Classify each prediction as interpolation or extrapolation, and state which is mathematically reliable.
   </TabItem>
   <TabItem label="✅ Solution 8">
-    * **Prediction A (Week 8):** This is **interpolation** because 8 falls within the measured data range of 2 to 12 weeks.
-    * **Prediction B (Week 52):** This is **extrapolation** because 52 is far outside the measured data range.
+    * **Prediction A (Depth of 22m):** This is **interpolation** because 22 falls within the measured data range of 10 to 30 metres.
+    * **Prediction B (Depth of 55m):** This is **extrapolation** because 55 is far outside the measured data range.
     
-    **Prediction A is much more mathematically reliable.** A person's strength cannot increase linearly forever; they will eventually hit a biological plateau, rendering Prediction B invalid.
+    **Prediction A is mathematically reliable.** A diver's safe bottom time cannot decrease linearly forever. At 55m, the model would predict a safe bottom time of $-20.5$ minutes, which is impossible!
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Distinguishing between interpolation and extrapolation and evaluating reliability" />
+<SmartAIGenerator topic="Distinguishing between interpolation and extrapolation in negative correlation models" />
 
 <Tabs>
   <TabItem label="📝 Question 9: Invalid Predictions (Predicting x from y)">
