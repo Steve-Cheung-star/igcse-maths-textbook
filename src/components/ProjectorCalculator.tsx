@@ -369,7 +369,7 @@ export default function ProjectorCalculator() {
         'Chenia': '做乜唔識啊？',
         'Kaya': 'Living a good life, thx!',
         'Hannah': 'Banana!',
-        'Cameron': 'Work harder, eh?',
+        'Cameron': 'ᕙ(  •̀ ᗜ •́  )ᕗง',
         'William': '🤪✌︎︎',
         'Kyle': '(ง •̀_•́)ง',
         'Douglas': 'ඞ',
@@ -381,6 +381,9 @@ export default function ProjectorCalculator() {
         'Mr. Cheung': 'Americans and Canadians spell it this way. Which are you?',
         'Steve Cheung': 'Congratulations, you know who I am!',
         'Steven Cheung': 'I hate it when people call me that',
+        'Ewan': 'Hey buddy.',
+        'Anson': 'Man, always working hard!',
+        'Théo': 'You actually typed the accent aigu LOL.',
       };
 
       if (secretMessages[currentInput]) {
