@@ -1,0 +1,909 @@
+---
+title: MAI SL Syllabus Outline
+description: Interactive IB Math AI SL Syllabus Mapping and Timeline
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+{/* Track Wrapper: Hidden initially, then teleported under the ToC */}
+<div id="sidebar-track-container" style={{ display: 'none', marginTop: '2rem', borderTop: '1px solid var(--sl-color-hairline)', paddingTop: '1.5rem' }}>
+  <span style={{ fontSize: 'var(--sl-text-h5)', fontWeight: '600', display: 'block', marginBottom: '1rem' }}>Syllabus Express</span>
+  
+  <svg viewBox="0 0 240 720" class="w-full h-auto font-sans overflow-visible">
+    <style>{`
+      .station-link { cursor: pointer; outline: none; text-decoration: none; }
+      
+      .station { 
+        fill: var(--sl-color-bg, #1e293b); stroke: #3b82f6; stroke-width: 4px; 
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transform-origin: center; transform-box: fill-box; 
+      }
+      
+      .station-text { 
+        fill: var(--sl-color-text, #e2e8f0); font-size: 13px; font-weight: 600; text-anchor: start;
+        transition: all 0.3s ease;
+        transform-origin: left center; transform-box: fill-box;
+      }
+      
+      /* New Arrow Styles */
+      .station-arrow {
+        fill: #60a5fa; font-size: 18px; font-weight: bold;
+        opacity: 0;
+        transition: all 0.3s ease;
+        transform-origin: center; transform-box: fill-box;
+        transform: translateX(-10px);
+      }
+      
+      .station-complete {
+        fill: #3b82f6; stroke: #93c5fd; stroke-width: 5px;
+        filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.7)); transform: scale(1.15);
+      }
+      
+      /* --- OPTION 2: SLIDE & ARROW HOVER EFFECTS --- */
+      .station-link:hover .station:not(.sleep-central) { 
+        stroke: #60a5fa; 
+        transform: scale(1.3); 
+      }
+      .station-link:hover .station-text:not(.sleep-text) { 
+        fill: #60a5fa; 
+        text-decoration: underline;
+        transform: translateX(6px);
+      }
+      .station-link:hover .station-arrow:not(.sleep-arrow) {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      /* Sleep Central Custom Colors & Hover */
+      .sleep-central { fill: #2e1065 !important; stroke: #8b5cf6 !important; } 
+      .sleep-central.station-complete {
+        fill: #4c1d95 !important; stroke: #ddd6fe !important; 
+        filter: drop-shadow(0 0 15px #c4b5fd) drop-shadow(0 0 30px #8b5cf6) !important; 
+        transform: scale(1.4) !important;
+      }
+      .sleep-arrow { fill: #c4b5fd; }
+      
+      .station-link:hover .sleep-central { 
+        stroke: #c4b5fd !important; 
+        transform: scale(1.3) !important;
+      }
+      .station-link:hover .sleep-text { 
+        fill: #c4b5fd !important; 
+        text-decoration: underline;
+        transform: translateX(6px);
+      }
+      .station-link:hover .sleep-arrow {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      
+      /* --- TRACK LINES --- */
+      .path-line { stroke: var(--sl-color-hairline, #334155); stroke-width: 4px; stroke-linecap: round; }
+      .path-line-active { stroke: #3b82f6; stroke-width: 6px; }
+      
+      .glow-track {
+        transition: all 0.3s ease-out; filter: drop-shadow(0 0 5px rgba(96, 165, 250, 0.6));
+        animation: pulse-glow 2s infinite alternate;
+      }
+      @keyframes pulse-glow {
+        0% { filter: drop-shadow(0 0 3px rgba(96, 165, 250, 0.4)); }
+        100% { filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.9)); }
+      }
+    `}</style>
+
+    {/* Background tracks (Explicitly defined to guarantee JS targeting) */}
+    <g id="track-bg-0"></g><g id="track-prog-0"></g>
+    <g id="track-bg-1"></g><g id="track-prog-1"></g>
+    <g id="track-bg-2"></g><g id="track-prog-2"></g>
+    <g id="track-bg-3"></g><g id="track-prog-3"></g>
+    <g id="track-bg-4"></g><g id="track-prog-4"></g>
+
+    {/* 5 Main Unit Nodes aligned left with large invisible hitboxes and slide-in arrows */}
+    <a href="#generalization-and-representation" class="station-link">
+      <rect x="10" y="0" width="220" height="80" fill="transparent" />
+      <circle id="station-0" cx="40" cy="40" r="10" class="station" />
+      <text x="65" y="40" class="station-text">
+        <tspan x="65" dy="-4">Generalization and</tspan>
+        <tspan x="65" dy="18">Representation</tspan>
+      </text>
+      <text x="210" y="46" class="station-arrow">→</text>
+    </a>
+    
+    <a href="#quantity-and-validity" class="station-link">
+      <rect x="10" y="120" width="220" height="80" fill="transparent" />
+      <circle id="station-1" cx="40" cy="160" r="10" class="station" />
+      <text x="65" y="160" class="station-text">
+        <tspan x="65" dy="-4">Quantity and</tspan>
+        <tspan x="65" dy="18">Validity</tspan>
+      </text>
+      <text x="210" y="166" class="station-arrow">→</text>
+    </a>
+    
+    <a href="#approximation-and-validity" class="station-link">
+      <rect x="10" y="240" width="220" height="80" fill="transparent" />
+      <circle id="station-2" cx="40" cy="280" r="10" class="station" />
+      <text x="65" y="280" class="station-text">
+        <tspan x="65" dy="-4">Approximation and</tspan>
+        <tspan x="65" dy="18">Validity</tspan>
+      </text>
+      <text x="210" y="286" class="station-arrow">→</text>
+    </a>
+    
+    <a href="#space-and-generalization" class="station-link">
+      <rect x="10" y="360" width="220" height="80" fill="transparent" />
+      <circle id="station-3" cx="40" cy="400" r="10" class="station" />
+      <text x="65" y="400" class="station-text">
+        <tspan x="65" dy="-4">Space and</tspan>
+        <tspan x="65" dy="18">Generalization</tspan>
+      </text>
+      <text x="210" y="406" class="station-arrow">→</text>
+    </a>
+    
+    <a href="#change-and-modelling" class="station-link">
+      <rect x="10" y="480" width="220" height="80" fill="transparent" />
+      <circle id="station-4" cx="40" cy="520" r="10" class="station" />
+      <text x="65" y="520" class="station-text">
+        <tspan x="65" dy="-4">Change and</tspan>
+        <tspan x="65" dy="18">Modelling</tspan>
+      </text>
+      <text x="210" y="526" class="station-arrow">→</text>
+    </a>
+
+    {/* Node 6: SLEEP CENTRAL (Secret) */}
+    <g id="secret-node-trigger" class="station-link" style={{ cursor: 'pointer' }}>
+      <rect x="10" y="600" width="220" height="80" fill="transparent" />
+      <circle id="station-5" cx="40" cy="640" r="12" class="station sleep-central" />
+      <text x="65" y="640" class="station-text sleep-text" style={{fill: '#a78bfa'}}>
+        <tspan x="65" dy="-4">Station Zzz:</tspan>
+        <tspan x="65" dy="18">Sleep Central</tspan>
+      </text>
+      <text x="210" y="646" class="station-arrow sleep-arrow">→</text>
+    </g>
+  </svg>
+
+  {/* The RPG Dialogue Box */}
+  <div id="rpg-dialogue-box" style={{ 
+    display: 'flex', flexDirection: 'column', background: 'linear-gradient(135deg, #1e1e2f, #10101b)', 
+    borderRadius: '8px', padding: '0', boxShadow: '0 10px 25px rgba(0,0,0,0.3)', 
+    maxWidth: '500px', margin: '0 auto 0 1.5rem', color: '#f8fafc', position: 'relative',
+    maxHeight: '0', opacity: '0', overflow: 'hidden', transform: 'translateY(20px)',
+    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)', pointerEvents: 'none' 
+  }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', padding: '1.25rem 1.25rem 0' }}>
+      <div style={{ fontWeight: 'bold', color: '#a78bfa', textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: '1rem', marginTop: '0.5rem' }}>Coordinator of Dreams</div>
+      <div id="wizard-portrait" style={{ width: '70px', height: '90px', border: '2px solid #64748b', borderRadius: '6px', background: '#2a2a3b', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '3rem', flexShrink: 0, boxShadow: 'inset 0 0 10px rgba(0,0,0,0.5)' }}>😴</div>
+    </div>
+    <div id="rpg-text-content" style={{ fontSize: '1.1rem', lineHeight: '1.5', minHeight: '6em', fontFamily: 'monospace', padding: '0 1.25rem 1.25rem' }}></div>
+    <style>{`@keyframes rpg-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }`}</style>
+  </div>
+</div>
+
+<div className="content-wrapper">
+
+## Generalization and Representation <span id="generalization-and-representation" className="scroll-anchor"></span>
+<div data-section="0">
+<CardGrid stagger>
+  <Card id="sl-1-1" title="SL 1.1: Standard Form" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Operations with numbers in the form $a \times 10^k$ where $1 \le a < 10$ and $k$ is an integer.</li>
+    </ul>
+    **Guidance:** Calculator or computer notation is not acceptable (e.g., `5.2E30` should be written as $5.2 \times 10^{30}$).
+    <br/>
+    **Lessons:** [Standard Form](https://igcse-maths-textbook.vercel.app/ib-aisl/01-number-and-algebra/01-standard-form/)
+  </Card>
+
+  <Card id="sl-1-6" title="SL 1.6: Approximation" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Approximation: decimal places and significant figures.</li>
+      <li className="task-list-item"><input type="checkbox" /> Upper and lower bounds of rounded numbers.</li>
+      <li className="task-list-item"><input type="checkbox" /> Percentage errors and Estimation.</li>
+    </ul>
+    **Guidance:** Be able to find the maximum percentage error in scenarios like the area of a circle with a rounded radius.
+    <br/>
+    **Lessons:** [Approximation, Bounds & Estimation](https://igcse-maths-textbook.vercel.app/ib-aisl/01-number-and-algebra/06-approximation-bounds-estimation/)
+  </Card>
+
+  <Card id="sl-1-2" title="SL 1.2: Arithmetic Sequences" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Arithmetic sequences and series.</li>
+      <li className="task-list-item"><input type="checkbox" /> Use of the formulae for the $n$-th term and the sum of the first $n$ terms.</li>
+      <li className="task-list-item"><input type="checkbox" /> Use of sigma notation for sums of arithmetic sequences.</li>
+    </ul>
+    **Guidance:** Examples include simple interest over a number of years. Students will need to approximate common differences in imperfect real-world models.
+    <br/>
+    **Lessons:** [Arithmetic Sequences & Series](https://igcse-maths-textbook.vercel.app/ib-aisl/01-number-and-algebra/02-arithmetic-sequences-and-series/)
+  </Card>
+
+  <Card id="sl-1-3" title="SL 1.3: Geometric Sequences" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Geometric sequences and series.</li>
+      <li className="task-list-item"><input type="checkbox" /> Use of the formulae for the $n$-th term and the sum of the first $n$ terms.</li>
+      <li className="task-list-item"><input type="checkbox" /> Use of sigma notation for sums of geometric sequences.</li>
+    </ul>
+    **Guidance:** Applications include the spread of disease, salary increases/decreases, and population growth.
+    <br/>
+    **Lessons:** [Geometric Sequences & Series](https://igcse-maths-textbook.vercel.app/ib-aisl/01-number-and-algebra/03-geometric-sequences-and-series/)
+  </Card>
+
+  <Card id="sl-1-4" title="SL 1.4: Financial Math" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Financial applications of geometric sequences and series: compound interest.</li>
+      <li className="task-list-item"><input type="checkbox" /> Annual depreciation.</li>
+    </ul>
+    **Guidance:** You should be able to calculate the real value of an investment factoring in interest and inflation rates.
+    <br/>
+    **Lessons:** [Financial Mathematics](https://igcse-maths-textbook.vercel.app/ib-aisl/01-number-and-algebra/04-finanicial-mathematics/)
+  </Card>
+
+  <Card id="sl-1-5" title="SL 1.5: Exponents" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Laws of exponents with integer exponents.</li>
+      <li className="task-list-item"><input type="checkbox" /> Introduction to logarithms with base 10 and $e$.</li>
+      <li className="task-list-item"><input type="checkbox" /> Numerical evaluation of logarithms using technology.</li>
+    </ul>
+    <br/>
+    **Lessons:** [Exponents & Logarithms](https://igcse-maths-textbook.vercel.app/ib-aisl/01-number-and-algebra/05-exponents-and-logarithms/)
+  </Card>
+
+  <Card id="sl-1-7" title="SL 1.7: Amortization" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Amortization and annuities using technology.</li>
+    </ul>
+    **Guidance:** In examinations, the payments will be assumed to be made at the end of the period. Built-in GDC packages will be used.
+    <br/>
+    **Lessons:** [Amortisation & Annuities](https://igcse-maths-textbook.vercel.app/ib-aisl/01-number-and-algebra/07-amortisation-and-annuities/)
+  </Card>
+
+  <Card id="sl-1-8" title="SL 1.8: System of Equations" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Use of technology to solve systems of linear equations in up to 3 variables.</li>
+      <li className="task-list-item"><input type="checkbox" /> Use of technology to solve polynomial equations.</li>
+    </ul>
+    **Guidance:** No specific method of solution will be requested. In exams, there will always be a unique solution to the system.
+    <br/>
+    **Lessons:** [System of Equations & Polynomials](https://igcse-maths-textbook.vercel.app/ib-aisl/01-number-and-algebra/08-system-of-equations-and-polynomials/)
+  </Card>
+
+  <Card id="sl-2-1" title="SL 2.1: Straight Lines" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Different forms of the equation of a straight line, gradient, and intercepts.</li>
+      <li className="task-list-item"><input type="checkbox" /> Parallel and perpendicular lines.</li>
+    </ul>
+    **Guidance:** Equations can be written in $y = mx+c$ or $ax+by+d=0$ forms.
+    <br/>
+    **Lessons:** [Linear Models & Straight Lines](https://igcse-maths-textbook.vercel.app/ib-aisl/02-functions/01-linear-models-and-equations-of-straight-lines/)
+  </Card>
+
+  <Card id="sl-2-2" title="SL 2.2: Functions" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Concept of a function, domain, range and graph.</li>
+      <li className="task-list-item"><input type="checkbox" /> Function notation, for example $f(x)$, $v(t)$, $C(n)$.</li>
+      <li className="task-list-item"><input type="checkbox" /> Concept of a function as a mathematical model.</li>
+    </ul>
+    **Guidance:** Domain and range should be understood in mathematical and real-world contexts.
+    <br/>
+    **Lessons:** [Functions, Domain, Range](https://igcse-maths-textbook.vercel.app/ib-aisl/02-functions/02-functions-domain-range-inverses/)
+  </Card>
+
+  <Card id="sl-2-3" title="SL 2.3: Graphing" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> The graph of a function; its equation $y = f(x)$.</li>
+      <li className="task-list-item"><input type="checkbox" /> Creating a sketch from information given or a context, including transferring a graph from a GDC.</li>
+    </ul>
+    <br/>
+    **Lessons:** [Graphing Functions & Technology](https://igcse-maths-textbook.vercel.app/ib-aisl/02-functions/03-graphing-functions-and-using-technology/)
+  </Card>
+
+  <Card id="sl-2-4" title="SL 2.4: Graph Features" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Determine maximum and minimum values, intercepts, symmetry, and vertex.</li>
+      <li className="task-list-item"><input type="checkbox" /> Determine zeros of functions or roots of equations.</li>
+      <li className="task-list-item"><input type="checkbox" /> Determine vertical and horizontal asymptotes.</li>
+    </ul>
+    **Guidance:** Use technology to find these features.
+    <br/>
+    **Lessons:** [Key Features of Graphs](https://igcse-maths-textbook.vercel.app/ib-aisl/02-functions/04-key-features-of-graphs/)
+  </Card>
+
+  <Card id="sl-2-5" title="SL 2.5: Modelling" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Mathematical models: linear, quadratic, exponential, and cubic models.</li>
+      <li className="task-list-item"><input type="checkbox" /> Direct and inverse variation.</li>
+      <li className="task-list-item"><input type="checkbox" /> Modelling skills and testing models for reasonableness.</li>
+    </ul>
+    **Guidance:** Linear models include piecewise functions (e.g. mobile phone charges).
+    <br/>
+    **Lessons:** <br/>
+    [5.1 Linear Models](https://igcse-maths-textbook.vercel.app/ib-aisl/02-functions/05-1-linear-models/) <br/>
+    [5.2 Quadratic Models](https://igcse-maths-textbook.vercel.app/ib-aisl/02-functions/05-2-quadratic-models/) <br/>
+    [5.3 Exponential Models](https://igcse-maths-textbook.vercel.app/ib-aisl/02-functions/05-3-exponential-growth-and-decay-models/) <br/>
+    [5.4 Direct/Inverse Models](https://igcse-maths-textbook.vercel.app/ib-aisl/02-functions/05-4-direct-and-inverse-variation-models/) <br/>
+    [5.5 Cubic Models](https://igcse-maths-textbook.vercel.app/ib-aisl/02-functions/05-5-cubic-models/) <br/>
+    [Mathematical Modelling](https://igcse-maths-textbook.vercel.app/ib-aisl/02-functions/06-mathematical-modelling/)
+  </Card>
+</CardGrid>
+</div>
+
+---
+
+## Quantity and Validity <span id="quantity-and-validity" className="scroll-anchor"></span>
+<div data-section="1">
+<CardGrid stagger>
+  <Card id="sl-4-1" title="SL 4.1: Data Concepts" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Concepts of population, sample, random sample, discrete and continuous data.</li>
+      <li className="task-list-item"><input type="checkbox" /> Reliability of data sources and bias in sampling.</li>
+    </ul>
+    **Guidance:** Understand the differences between qualitative and quantitative data.
+    <br/>
+    **Lessons:** [Data, Sampling & Outliers](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/01-data-sampling-outliers/)
+  </Card>
+
+  <Card id="sl-4-2" title="SL 4.2: Presentation" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Presentation of data: frequency distributions (tables) and histograms.</li>
+      <li className="task-list-item"><input type="checkbox" /> Cumulative frequency graphs, and using them to find median, quartiles, percentiles.</li>
+      <li className="task-list-item"><input type="checkbox" /> Production and understanding of box and whisker diagrams.</li>
+    </ul>
+    **Guidance:** Outliers in box plots should be indicated with a cross. Use box plots to compare distributions.
+    <br/>
+    **Lessons:** [Presentation of Data](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/02-presentation-of-data/)
+  </Card>
+
+  <Card id="sl-4-3" title="SL 4.3: Data Analysis" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Measures of central tendency (mean, median and mode).</li>
+      <li className="task-list-item"><input type="checkbox" /> Measures of dispersion (interquartile range, standard deviation and variance).</li>
+      <li className="task-list-item"><input type="checkbox" /> Effect of constant changes on the original data.</li>
+    </ul>
+    **Guidance:** Ensure correct calculation from raw data or frequency tables.
+    <br/>
+    **Lessons:** [Central Tendency & Dispersion](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/03-central-tendency-and-dispersion/)
+  </Card>
+
+  <Card id="sl-4-4" title="SL 4.4: Correlation" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Linear correlation of bivariate data.</li>
+      <li className="task-list-item"><input type="checkbox" /> Pearson's product-moment correlation coefficient, $r$.</li>
+      <li className="task-list-item"><input type="checkbox" /> Scatter diagrams and lines of best fit (Equation of the regression line of $y$ on $x$).</li>
+    </ul>
+    **Guidance:** Extrapolation is dangerous; be aware of the limitations of predictions.
+    <br/>
+    **Lessons:** [Linear Regression](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/04-linear-regression/)
+  </Card>
+
+  <Card id="sl-4-10" title="SL 4.10: Spearman's Rank" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Spearman's rank correlation coefficient, $r_s$.</li>
+      <li className="task-list-item"><input type="checkbox" /> Awareness of the appropriateness and limitations of Pearson’s $r$ vs Spearman’s $r_s$.</li>
+    </ul>
+    **Guidance:** Derivation and proof of the coefficient is not required.
+    <br/>
+    **Lessons:** [Spearman's Rank](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/10-spearmans-rank/)
+  </Card>
+
+  <Card id="sl-4-11" title="SL 4.11: Hypothesis Testing" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Formulation of null and alternative hypotheses, $H_0$ and $H_1$, significance levels, and $p$-values.</li>
+      <li className="task-list-item"><input type="checkbox" /> Expected frequencies and the $\chi^2$ test for independence.</li>
+      <li className="task-list-item"><input type="checkbox" /> The $t$-test.</li>
+    </ul>
+    **Guidance:** In examinations, assume the variance of two groups is equal (use the pooled two-sample $t$-test).
+    <br/>
+    **Lessons:** <br/>
+    [11.1 Test for Independence](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/11-1-test-for-independence/) <br/>
+    [11.2 Goodness of Fit Test](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/11-2-goodness-of-fit-test/) <br/>
+    [11.3 Two Sample t-test](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/11-3-two-sample-t-test/)
+  </Card>
+</CardGrid>
+</div>
+
+---
+
+## Approximation and Validity <span id="approximation-and-validity" className="scroll-anchor"></span>
+<div data-section="2">
+<CardGrid stagger>
+  <Card id="sl-4-5" title="SL 4.5: Prob Basics" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Concepts of trial, outcome, equally likely outcomes, relative frequency, sample space ($U$) and event.</li>
+      <li className="task-list-item"><input type="checkbox" /> The probability of an event $A$ is $P(A) = n(A) / n(U)$.</li>
+      <li className="task-list-item"><input type="checkbox" /> Expected number of occurrences.</li>
+    </ul>
+    <br/>
+    **Lessons:** [Introduction to Probability](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/05-introduction-to-probability/)
+  </Card>
+
+  <Card id="sl-4-6" title="SL 4.6: Prob Models" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Use of Venn diagrams, tree diagrams, sample space diagrams and tables of outcomes.</li>
+      <li className="task-list-item"><input type="checkbox" /> Combined events: $P(A \cup B) = P(A) + P(B) - P(A \cap B)$.</li>
+      <li className="task-list-item"><input type="checkbox" /> Mutually exclusive events: $P(A \cap B) = 0$.</li>
+      <li className="task-list-item"><input type="checkbox" /> Conditional probability and Independent events.</li>
+    </ul>
+    <br/>
+    **Lessons:** [Combined Events](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/06-combined-events/)
+  </Card>
+
+  <Card id="sl-4-7" title="SL 4.7: Discrete RV" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Concept of discrete random variables and their probability distributions.</li>
+      <li className="task-list-item"><input type="checkbox" /> Expected value (mean), for discrete data.</li>
+      <li className="task-list-item"><input type="checkbox" /> Applications including expected outcome of fair games.</li>
+    </ul>
+    <br/>
+    **Lessons:** [Discrete Random Variables](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/07-discrete-random-variables/)
+  </Card>
+
+  <Card id="sl-4-8" title="SL 4.8: Binomial" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Binomial distribution.</li>
+      <li className="task-list-item"><input type="checkbox" /> Mean and variance of the binomial distribution.</li>
+    </ul>
+    **Guidance:** Calculate probabilities using GDC binomial probability functions.
+    <br/>
+    **Lessons:** [Binomial Distribution](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/08-binomial-distribution/)
+  </Card>
+
+  <Card id="sl-4-9" title="SL 4.9: Normal Dist" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> The normal distribution and curve; properties of the distribution.</li>
+      <li className="task-list-item"><input type="checkbox" /> Normal probability calculations.</li>
+      <li className="task-list-item"><input type="checkbox" /> Inverse normal calculations.</li>
+    </ul>
+    **Guidance:** Use inverse normal calculations to find unknown values.
+    <br/>
+    **Lessons:** [Normal Distribution](https://igcse-maths-textbook.vercel.app/ib-aisl/04-statistics-and-probability/09-normal-distribution/)
+  </Card>
+</CardGrid>
+</div>
+
+---
+
+## Space and Generalization <span id="space-and-generalization" className="scroll-anchor"></span>
+<div data-section="3">
+<CardGrid stagger>
+  <Card id="sl-3-1" title="SL 3.1: 3D Geometry" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> The distance between two points in three-dimensional space, and their midpoint.</li>
+      <li className="task-list-item"><input type="checkbox" /> Volume and surface area of three-dimensional solids (pyramid, cone, sphere, hemisphere).</li>
+      <li className="task-list-item"><input type="checkbox" /> The size of an angle between two intersecting lines or a line and a plane.</li>
+    </ul>
+    **Guidance:** Formulas for volumes and surface areas of common 3D solids will be provided in the formula booklet.
+    <br/>
+    **Lessons:** [3D Geometry](https://igcse-maths-textbook.vercel.app/ib-aisl/03-geometry-and-trigonometry/01-3d-geometry/)
+  </Card>
+
+  <Card id="sl-3-2" title="SL 3.2: Right Trig" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Use of sine, cosine and tangent ratios to find sides and angles of right-angled triangles.</li>
+      <li className="task-list-item"><input type="checkbox" /> Angles of elevation and depression.</li>
+    </ul>
+    <br/>
+    **Lessons:** [Trigonometry](https://igcse-maths-textbook.vercel.app/ib-aisl/03-geometry-and-trigonometry/02-trigonometry/)
+  </Card>
+
+  <Card id="sl-3-3" title="SL 3.3: Non-Right Trig" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Use of the sine rule, cosine rule, and area of a triangle formula.</li>
+      <li className="task-list-item"><input type="checkbox" /> Applications of right and non-right angled trigonometry.</li>
+    </ul>
+    **Guidance:** Includes the ambiguous case for the sine rule.
+    <br/>
+    **Lessons:** [Applications of Trigonometry](https://igcse-maths-textbook.vercel.app/ib-aisl/03-geometry-and-trigonometry/03-applications-of-trigonometry/)
+  </Card>
+
+  <Card id="sl-2-6" title="SL 2.5: Sinusoidal" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Mathematical models using sinusoidal functions.</li>
+    </ul>
+    **Guidance:** Set up and solve equations using technology. Be aware of the dangers of extrapolation.
+    <br/>
+    **Lessons:** [5.6 Sinusoidal Models](https://igcse-maths-textbook.vercel.app/ib-aisl/02-functions/05-6-sinusoidal-models/)
+  </Card>
+
+  <Card id="sl-3-4" title="SL 3.4: Circle Geometry" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> The circle: length of an arc and area of a sector.</li>
+    </ul>
+    **Guidance:** Radians are not required at SL. All calculations should be in degrees.
+    <br/>
+    **Lessons:** [Arc and Sector](https://igcse-maths-textbook.vercel.app/ib-aisl/03-geometry-and-trigonometry/04-arc-and-sector/)
+  </Card>
+
+  <Card id="sl-3-5" title="SL 3.5: Perpendiculars" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Equations of perpendicular bisectors.</li>
+    </ul>
+    **Guidance:** Focus on geometric applications, like finding the boundary between two objects.
+    <br/>
+    **Lessons:** [Perpendicular Bisectors](https://igcse-maths-textbook.vercel.app/ib-aisl/03-geometry-and-trigonometry/05-perpendicular-bisectors/)
+  </Card>
+
+  <Card id="sl-3-6" title="SL 3.6: Voronoi" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Voronoi diagrams: sites, vertices, edges, cells.</li>
+      <li className="task-list-item"><input type="checkbox" /> Addition of a site to an existing Voronoi diagram.</li>
+      <li className="task-list-item"><input type="checkbox" /> Nearest neighbour interpolation.</li>
+    </ul>
+    **Guidance:** In examinations, coordinates of sites will be given; you will not be required to manually construct perpendicular bisectors.
+    <br/>
+    **Lessons:** [Voronoi Diagrams](https://igcse-maths-textbook.vercel.app/ib-aisl/03-geometry-and-trigonometry/06-voronoi-diagrams/)
+  </Card>
+</CardGrid>
+</div>
+
+---
+
+## Change and Modelling <span id="change-and-modelling" className="scroll-anchor"></span>
+<div data-section="4">
+<CardGrid stagger>
+  <Card id="sl-5-1" title="SL 5.1: Limits" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Introduction to the concept of a limit.</li>
+      <li className="task-list-item"><input type="checkbox" /> Derivative interpreted as gradient function and as rate of change.</li>
+    </ul>
+    **Guidance:** Estimation of the value of a limit from a table or graph. Formal analytic methods are not required.
+    <br/>
+    **Lessons:** [Limits & Derivatives](https://igcse-maths-textbook.vercel.app/ib-aisl/05-calculus/01-limits-and-derivatives/)
+  </Card>
+
+  <Card id="sl-5-2" title="SL 5.2: Inc/Dec Func" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Increasing and decreasing functions.</li>
+      <li className="task-list-item"><input type="checkbox" /> Graphical interpretation of $f'(x) > 0$, $f'(x) < 0$, and $f'(x) = 0$.</li>
+    </ul>
+    <br/>
+    **Lessons:** [Increasing & Decreasing Functions](https://igcse-maths-textbook.vercel.app/ib-aisl/05-calculus/02-increasing-and-decreasing-functions/)
+  </Card>
+
+  <Card id="sl-5-3" title="SL 5.3: Power Rule" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Derivative of $f(x) = ax^n$.</li>
+      <li className="task-list-item"><input type="checkbox" /> The derivative of functions of the form $f(x) = ax^n + bx^{n-1} + \dots$</li>
+    </ul>
+    <br/>
+    **Lessons:** [Power Rule](https://igcse-maths-textbook.vercel.app/ib-aisl/05-calculus/03-power-rule/)
+  </Card>
+
+  <Card id="sl-5-4" title="SL 5.4: Tangents" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Tangents and normals at a given point, and their equations.</li>
+    </ul>
+    **Guidance:** Find the equations algebraically using the derivative.
+    <br/>
+    **Lessons:** [Tangents & Normals](https://igcse-maths-textbook.vercel.app/ib-aisl/05-calculus/04-tangents-and-normals/)
+  </Card>
+
+  <Card id="sl-5-5" title="SL 5.5: Integration" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Introduction to integration as anti-differentiation of functions.</li>
+      <li className="task-list-item"><input type="checkbox" /> Finding a function $f(x)$ given $f'(x)$ and initial conditions.</li>
+      <li className="task-list-item"><input type="checkbox" /> Definite integrals using technology.</li>
+      <li className="task-list-item"><input type="checkbox" /> Area of a region enclosed by a curve $y = f(x)$ and the x-axis.</li>
+    </ul>
+    <br/>
+    **Lessons:** [Introduction to Integration](https://igcse-maths-textbook.vercel.app/ib-aisl/05-calculus/05-introduction-to-integration/)
+  </Card>
+
+  <Card id="sl-5-6" title="SL 5.6: Stationary Pts" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Values of $x$ where the gradient of a curve is zero.</li>
+      <li className="task-list-item"><input type="checkbox" /> Solution of $f'(x) = 0$.</li>
+      <li className="task-list-item"><input type="checkbox" /> Local maximum and minimum points.</li>
+    </ul>
+    **Guidance:** Find the solution manually or via technology.
+    <br/>
+    **Lessons:** [Local Max & Min Points](https://igcse-maths-textbook.vercel.app/ib-aisl/05-calculus/06-local-max-min-points/)
+  </Card>
+
+  <Card id="sl-5-7" title="SL 5.7: Optimisation" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Optimisation problems in context.</li>
+    </ul>
+    **Guidance:** Using calculus to maximize volume, minimize cost, maximize profit, etc.
+    <br/>
+    **Lessons:** [Optimisation](https://igcse-maths-textbook.vercel.app/ib-aisl/05-calculus/07-optimisation/)
+  </Card>
+
+  <Card id="sl-5-8" title="SL 5.8: Trapezoidal" icon="setting">
+    <ul className="contains-task-list">
+      <li className="task-list-item"><input type="checkbox" /> Approximating areas using the trapezoidal rule.</li>
+    </ul>
+    **Guidance:** Apply the rule to find approximate areas under curves where functions cannot be easily integrated.
+    <br/>
+    **Lessons:** [Trapezoidal Rule](https://igcse-maths-textbook.vercel.app/ib-aisl/05-calculus/08-trapezoidal-rule/)
+  </Card>
+</CardGrid>
+</div>
+
+</div>
+
+<script>{`
+  function setupRPGDialog() {
+    const dialogBox = document.getElementById('rpg-dialogue-box');
+    const textContent = document.getElementById('rpg-text-content');
+    
+    if (!dialogBox || !textContent) return;
+
+    let isTyping = false;
+    let timer = null;
+    let activeDialogue = [];
+    
+    const defaultLine = ["'Functions, Integrals, Probability... zzz... so many numbers...'"];
+    const victoryLines = [
+      "*Yawn*... Wait, you're telling me you actually finished the ENTIRE syllabus?",
+      "That's... incredibly exhausting just to think about. Good job, though.",
+      "Your brain must be fried. Come join me at Station Zzz... you've earned a very long nap. 💤"
+    ];
+
+    function openBox() {
+      dialogBox.style.maxHeight = '500px';
+      dialogBox.style.opacity = '1';
+      dialogBox.style.borderWidth = '3px';
+      dialogBox.style.transform = 'translateY(0)';
+      dialogBox.style.margin = '2rem auto 2rem 1.5rem';
+      dialogBox.style.pointerEvents = 'auto';
+      dialogBox.style.cursor = 'pointer';
+      
+      setTimeout(() => {
+        dialogBox.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      }, 250);
+    }
+
+    function closeBox() {
+      dialogBox.style.maxHeight = '0';
+      dialogBox.style.opacity = '0';
+      dialogBox.style.borderWidth = '0px';
+      dialogBox.style.transform = 'translateY(20px)';
+      dialogBox.style.margin = '0 auto 0 1.5rem';
+      dialogBox.style.pointerEvents = 'none';
+      textContent.innerHTML = '';
+    }
+
+    function finishTyping(text) {
+      clearInterval(timer);
+      textContent.innerHTML = text + '<span style="display:inline-block; margin-left:8px; color:#a78bfa; animation:rpg-blink 1s step-end infinite">▼</span>';
+      isTyping = false;
+    }
+
+    function playLine(index) {
+      if (index >= activeDialogue.length) {
+        closeBox();
+        return;
+      }
+      isTyping = true;
+      const text = activeDialogue[index];
+      textContent.innerHTML = '';
+      let i = 0;
+      clearInterval(timer);
+      timer = setInterval(() => {
+        textContent.textContent = text.slice(0, i + 1);
+        i++;
+        if (i === text.length) finishTyping(text);
+      }, 50);
+
+      dialogBox.onclick = () => {
+        if (isTyping) {
+          finishTyping(text);
+        } else {
+          playLine(index + 1);
+        }
+      };
+    }
+
+    function triggerDialogue(lines) {
+      activeDialogue = lines;
+      openBox();
+      playLine(0);
+    }
+
+    window.triggerRPGVictory = () => triggerDialogue(victoryLines);
+    window.triggerRPGDefault = () => triggerDialogue(defaultLine);
+    
+    const sleepNode = document.getElementById('secret-node-trigger');
+    if (sleepNode) {
+      sleepNode.addEventListener('click', (e) => {
+        e.preventDefault();
+        const allBoxes = document.querySelectorAll('input[type="checkbox"]');
+        const checkedBoxes = document.querySelectorAll('input[type="checkbox"]:checked');
+        if (allBoxes.length === checkedBoxes.length && allBoxes.length > 0) {
+           window.triggerRPGVictory();
+        } else {
+           triggerDialogue(["You haven't checked all the boxes yet... No sleeping on the job! Wake up! ☕"]);
+        }
+      });
+    }
+
+    const closeBtn = document.createElement('div');
+    closeBtn.innerHTML = '×';
+    closeBtn.style.cssText = 'position:absolute; top:8px; right:12px; font-size:24px; cursor:pointer; color:#64748b; font-family:sans-serif; line-height:1; z-index:10;';
+    closeBtn.onclick = (e) => { e.stopPropagation(); closeBox(); };
+    dialogBox.appendChild(closeBtn);
+  }
+
+  function setupSmoothScrolling() {
+    document.querySelectorAll('a.station-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+            history.pushState(null, null, href);
+          }
+        }
+      });
+    });
+  }
+
+  function updateProgressTracks() {
+    let allComplete = true;
+    
+    for (let i = 0; i < 5; i++) {
+      const section = document.querySelector('[data-section="' + i + '"]');
+      const trackBgGroup = document.getElementById('track-bg-' + i);
+      const trackProgGroup = document.getElementById('track-prog-' + i);
+      const station = document.getElementById('station-' + i);
+      
+      if (section && trackBgGroup && trackProgGroup && station) {
+        const sectionBoxes = Array.from(section.querySelectorAll('input[type="checkbox"]'));
+        const total = sectionBoxes.length;
+        const checked = sectionBoxes.filter(cb => cb.checked).length;
+        
+        trackBgGroup.innerHTML = '';
+        trackProgGroup.innerHTML = '';
+        
+        if (total > 0) {
+          const gap = 3;
+          const totalGapSpace = gap * (total - 1);
+          const segmentLength = (120 - totalGapSpace) / total;
+          
+          for (let j = 0; j < total; j++) {
+            let yStart = 40 + (i * 120) + (j * (segmentLength + gap));
+            let yEnd = yStart + segmentLength;
+            
+            let bgLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            bgLine.setAttribute('x1', '40');
+            bgLine.setAttribute('y1', yStart);
+            bgLine.setAttribute('x2', '40');
+            bgLine.setAttribute('y2', yEnd);
+            bgLine.setAttribute('class', 'path-line');
+            trackBgGroup.appendChild(bgLine);
+            
+            if (j < checked) {
+              let progLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+              progLine.setAttribute('x1', '40');
+              progLine.setAttribute('y1', yStart);
+              progLine.setAttribute('x2', '40');
+              progLine.setAttribute('y2', yEnd);
+              progLine.setAttribute('class', 'path-line path-line-active glow-track');
+              trackProgGroup.appendChild(progLine);
+            }
+          }
+          
+          if (checked === total) {
+            station.classList.add('station-complete');
+          } else {
+            station.classList.remove('station-complete');
+            allComplete = false;
+          }
+        } else {
+            allComplete = false;
+        }
+      } else {
+          allComplete = false;
+      }
+    }
+
+    const sleepStation = document.getElementById('station-5');
+    if (sleepStation) {
+      if (allComplete) {
+        sleepStation.classList.add('station-complete');
+      } else {
+        sleepStation.classList.remove('station-complete');
+      }
+    }
+
+    if (allComplete && window.triggerRPGVictory && window.hasJustFinished) {
+      window.hasJustFinished = false; 
+      window.triggerRPGVictory();
+    }
+  }
+
+  function initializeChecklists() {
+    const storageKey = 'mai-syllabus-progress';
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    
+    let savedProgress = JSON.parse(localStorage.getItem(storageKey)) || {};
+    
+    let lastCheckedIndex = null;
+    let initialLoadComplete = false;
+
+    checkboxes.forEach((cb, index) => {
+      const label = cb.parentElement;
+      if (label && !cb.id) {
+         cb.id = 'mai-checkbox-' + index;
+         label.setAttribute('for', cb.id);
+      }
+
+      cb.checked = savedProgress[index] === true;
+      
+      cb.addEventListener('click', (e) => {
+        
+        if (window.getSelection) {
+          window.getSelection().removeAllRanges();
+        } else if (document.selection) {
+          document.selection.empty();
+        }
+
+        if (e.shiftKey && lastCheckedIndex !== null) {
+          const start = Math.min(lastCheckedIndex, index);
+          const end = Math.max(lastCheckedIndex, index);
+          for (let i = start; i <= end; i++) {
+            checkboxes[i].checked = cb.checked;
+            savedProgress[i] = cb.checked;
+          }
+        } else {
+            savedProgress[index] = cb.checked;
+        }
+        
+        localStorage.setItem(storageKey, JSON.stringify(savedProgress));
+        lastCheckedIndex = index;
+        
+        const allCompleteNow = document.querySelectorAll('input[type="checkbox"]:checked').length === checkboxes.length;
+        if (allCompleteNow && initialLoadComplete) {
+           window.hasJustFinished = true;
+        }
+
+        updateProgressTracks();
+      });
+    });
+
+    initialLoadComplete = true;
+
+    const secretResetTarget = document.querySelector('h2');
+    if (secretResetTarget) {
+      secretResetTarget.style.cursor = 'context-menu';
+      secretResetTarget.title = "Double-click to reset all progress";
+      
+      secretResetTarget.addEventListener('dblclick', (e) => {
+        e.preventDefault();
+        if (confirm('Teacher Shortcut: Reset all syllabus progress?')) {
+          checkboxes.forEach(cb => cb.checked = false);
+          localStorage.removeItem(storageKey); 
+          lastCheckedIndex = null;
+          updateProgressTracks();
+        }
+      });
+    }
+
+    updateProgressTracks();
+  }
+
+  function teleportTrackToSidebar() {
+    const track = document.getElementById('sidebar-track-container');
+    const toc = document.querySelector('starlight-toc');
+    
+    if (track && toc && toc.parentElement && !toc.parentElement.contains(track)) {
+      track.style.display = 'block'; 
+      toc.parentElement.appendChild(track); 
+    } else if (track && !toc) {
+      track.style.display = 'block';
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeChecklists();
+    teleportTrackToSidebar();
+    setupRPGDialog();
+    setupSmoothScrolling();
+  });
+  
+  document.addEventListener('astro:page-load', () => {
+    initializeChecklists();
+    teleportTrackToSidebar();
+    setupRPGDialog();
+    setupSmoothScrolling();
+  });
+`}</script>

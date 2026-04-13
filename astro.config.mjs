@@ -11,7 +11,7 @@ import sitemap from '@astrojs/sitemap'; // [1] Add this import
 
 export default defineConfig({
   // [2] Fixed the double https:// and removed the trailing slash
-  site: 'https://igcse-maths-textbook.vercel.app', 
+  site: 'https://igcse-maths-textbook.vercel.app',
   output: 'server',
   adapter: vercel(),
 
@@ -107,6 +107,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             { label: '⭐ My Revision', link: '/igcse/my-revision/' },
+            { label: 'Course Outline', link: 'igcse/course-outline' },
             { label: '1. Number', autogenerate: { directory: 'igcse/01-number' } },
             { label: '2. Algebra', autogenerate: { directory: 'igcse/02-algebra' } },
             { label: '3. Functions', autogenerate: { directory: 'igcse/03-functions' } },
@@ -117,7 +118,6 @@ export default defineConfig({
             { label: '8. Transformations & Vectors', autogenerate: { directory: 'igcse/08-transformations-vectors' } },
             { label: '9. Probability', autogenerate: { directory: 'igcse/09-probability' } },
             { label: '10. Statistics', autogenerate: { directory: 'igcse/10-statistics' } },
-            { label: 'Course Outline', link: 'igcse/course-outline' },
           ],
         },
         {
@@ -125,11 +125,13 @@ export default defineConfig({
           collapsed: true,
           items: [
             { label: '⭐ My Revision', link: '/ib-aisl/my-revision/' },
+            { label: 'Course Outline', link: 'ib-aisl/course-outline' },
             { label: '1. Number & Algebra', autogenerate: { directory: 'ib-aisl/01-number-and-algebra' } },
             { label: '2. Functions', autogenerate: { directory: 'ib-aisl/02-functions' } },
             { label: '3. 3D Geometry & Trigonometry', autogenerate: { directory: 'ib-aisl/03-geometry-and-trigonometry' } },
             { label: '4. Statistics & Probability', autogenerate: { directory: 'ib-aisl/04-statistics-and-probability' } },
             { label: '5. Calculus', autogenerate: { directory: 'ib-aisl/05-calculus' } },
+
           ],
         },
       ],

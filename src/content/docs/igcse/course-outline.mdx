@@ -9,182 +9,261 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 <div id="sidebar-track-container" style={{ display: 'none', marginTop: '2rem', borderTop: '1px solid var(--sl-color-hairline)', paddingTop: '1.5rem' }}>
   <span style={{ fontSize: 'var(--sl-text-h5)', fontWeight: '600', display: 'block', marginBottom: '1rem' }}>Syllabus Express</span>
   
-  <svg viewBox="0 0 240 2760" className="w-full h-auto font-sans overflow-visible">
-    <style>{`
-      .station-link { cursor: pointer; text-decoration: none; }
-      .station { 
-        fill: var(--sl-color-bg, #1e293b); stroke: #3b82f6; stroke-width: 4px; 
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        transform-origin: center; transform-box: fill-box; 
-      }
-      .station-text { fill: var(--sl-color-text, #e2e8f0); font-size: 14px; font-weight: 600; text-anchor: start; }
-      .station-complete {
-        fill: #3b82f6; stroke: #93c5fd; stroke-width: 5px;
-        filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.7)); transform: scale(1.15);
-      }
-      .platform-934 { fill: #7c2d12; stroke: #fcd34d; } 
-      .platform-934.station-complete {
-        fill: #ef4444; stroke: #fde047; filter: drop-shadow(0 0 15px #fde047) drop-shadow(0 0 30px #ef4444); transform: scale(1.4);
-      }
-      .station-link:hover .station { stroke: #60a5fa; transform: scale(1.3); }
-      .station-link:hover .station-text { fill: #60a5fa; }
-      .glow-track {
-        transition: all 0.3s ease-out; filter: drop-shadow(0 0 5px rgba(96, 165, 250, 0.6));
-        animation: pulse-glow 2s infinite alternate;
-      }
-      @keyframes pulse-glow {
-        0% { filter: drop-shadow(0 0 3px rgba(96, 165, 250, 0.4)); }
-        100% { filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.9)); }
-      }
-    `}</style>
+  {/* Moved Style outside of SVG so Astro doesn't strip it on soft reloads */}
+  <style>{`
+    .station-link { cursor: pointer; outline: none; text-decoration: none; }
+    
+    .station { 
+      fill: var(--sl-color-bg, #1e293b); stroke: #3b82f6; stroke-width: 4px; 
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform-origin: center; transform-box: fill-box; 
+    }
+    
+    .station-text { 
+      fill: var(--sl-color-text, #e2e8f0); font-size: 14px; font-weight: 600; text-anchor: start;
+      transition: all 0.3s ease;
+      transform-origin: left center; transform-box: fill-box;
+    }
+    
+    .station-complete {
+      fill: #3b82f6; stroke: #93c5fd; stroke-width: 5px;
+      filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.7)); transform: scale(1.15);
+    }
+    
+    /* --- OPTION 3: NEON MAGNET LEVITATING EFFECTS --- */
+    @keyframes levitate {
+      0%, 100% { transform: translateY(0) scale(1.35); }
+      50% { transform: translateY(-4px) scale(1.35); }
+    }
+    @keyframes levitate-text {
+      0%, 100% { transform: translateY(0) translateX(6px); }
+      50% { transform: translateY(-4px) translateX(6px); }
+    }
+    
+    @keyframes neon-glow-blue {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.8)) drop-shadow(0 0 15px rgba(59, 130, 246, 0.4)); }
+      50% { filter: drop-shadow(0 0 12px rgba(59, 130, 246, 1)) drop-shadow(0 0 20px rgba(59, 130, 246, 0.6)); }
+    }
+    
+    @keyframes neon-glow-yellow {
+      0%, 100% { filter: drop-shadow(0 0 8px rgba(252, 211, 77, 0.8)) drop-shadow(0 0 15px rgba(252, 211, 77, 0.4)); }
+      50% { filter: drop-shadow(0 0 12px rgba(252, 211, 77, 1)) drop-shadow(0 0 20px rgba(252, 211, 77, 0.6)); }
+    }
 
+    /* Standard Station Hover */
+    .station-link:hover .station:not(.platform-934) { 
+      stroke: #60a5fa; 
+      animation: levitate 1.5s ease-in-out infinite, neon-glow-blue 1.5s ease-in-out infinite;
+    }
+    .station-link:hover .station-text:not(.platform-text) { 
+      fill: #60a5fa; 
+      text-shadow: 0 0 8px rgba(96, 165, 250, 0.6);
+      animation: levitate-text 1.5s ease-in-out infinite;
+    }
+    
+    /* Platform 9 3/4 Custom Colors & Hover */
+    .platform-934 { fill: #7c2d12 !important; stroke: #fcd34d !important; } 
+    .platform-934.station-complete {
+      fill: #ef4444 !important; stroke: #fde047 !important; 
+      filter: drop-shadow(0 0 15px #fde047) drop-shadow(0 0 30px #ef4444) !important; 
+      transform: scale(1.4) !important;
+    }
+    
+    .station-link:hover .platform-934 { 
+      stroke: #fde047 !important; 
+      animation: levitate 1.5s ease-in-out infinite, neon-glow-yellow 1.5s ease-in-out infinite !important;
+    }
+    .station-link:hover .platform-text { 
+      fill: #fde047 !important; 
+      text-shadow: 0 0 8px rgba(253, 224, 71, 0.6);
+      animation: levitate-text 1.5s ease-in-out infinite;
+    }
+    
+    /* --- TRACK LINES --- */
+    .path-line { stroke: var(--sl-color-hairline, #334155); stroke-width: 4px; stroke-linecap: round; }
+    .path-line-active { stroke: #3b82f6; stroke-width: 6px; }
+    
+    .glow-track {
+      transition: all 0.3s ease-out; filter: drop-shadow(0 0 5px rgba(96, 165, 250, 0.6));
+      animation: pulse-glow 2s infinite alternate;
+    }
+    @keyframes pulse-glow {
+      0% { filter: drop-shadow(0 0 3px rgba(96, 165, 250, 0.4)); }
+      100% { filter: drop-shadow(0 0 8px rgba(96, 165, 250, 0.9)); }
+    }
+  `}</style>
+
+  <svg viewBox="0 0 240 2760" class="w-full h-auto font-sans overflow-visible">
     {/* Background tracks (Rendered dynamically by JS) */}
     {Array.from({ length: 22 }).map((_, i) => <g key={`bg-${i}`} id={`track-bg-${i}`}></g>)}
     {Array.from({ length: 22 }).map((_, i) => <g key={`prog-${i}`} id={`track-prog-${i}`}></g>)}
 
-    {/* All Nodes aligned left (cx=40) to give text maximum width space */}
-    <a href="#prior-learning" className="station-link">
-      <circle id="station-0" cx="40" cy="40" r="10" className="station" />
-      <text x="65" y="44" className="station-text">Prior Learning</text>
+    {/* All Nodes aligned left (cx=40) with large transparent hitboxes to stabilize hover */}
+    <a href="#prior-learning" class="station-link">
+      <rect x="10" y="0" width="220" height="80" fill="transparent" />
+      <circle id="station-0" cx="40" cy="40" r="10" class="station" />
+      <text x="65" y="44" class="station-text">Prior Learning</text>
     </a>
     
-    <a href="#surds" className="station-link">
-      <circle id="station-1" cx="40" cy="160" r="10" className="station" />
-      <text x="65" y="164" className="station-text">Surds</text>
+    <a href="#surds" class="station-link">
+      <rect x="10" y="120" width="220" height="80" fill="transparent" />
+      <circle id="station-1" cx="40" cy="160" r="10" class="station" />
+      <text x="65" y="164" class="station-text">Surds</text>
     </a>
     
-    <a href="#algebra-i" className="station-link">
-      <circle id="station-2" cx="40" cy="280" r="10" className="station" />
-      <text x="65" y="284" className="station-text">Algebra I</text>
+    <a href="#algebra-i" class="station-link">
+      <rect x="10" y="240" width="220" height="80" fill="transparent" />
+      <circle id="station-2" cx="40" cy="280" r="10" class="station" />
+      <text x="65" y="284" class="station-text">Algebra I</text>
     </a>
     
-    <a href="#algebra-ii" className="station-link">
-      <circle id="station-3" cx="40" cy="400" r="10" className="station" />
-      <text x="65" y="404" className="station-text">Algebra II</text>
+    <a href="#algebra-ii" class="station-link">
+      <rect x="10" y="360" width="220" height="80" fill="transparent" />
+      <circle id="station-3" cx="40" cy="400" r="10" class="station" />
+      <text x="65" y="404" class="station-text">Algebra II</text>
     </a>
     
-    <a href="#lines-angles-and-polygons" className="station-link">
-      <circle id="station-4" cx="40" cy="520" r="10" className="station" />
-      <text x="65" y="516" className="station-text">
+    <a href="#lines-angles-and-polygons" class="station-link">
+      <rect x="10" y="480" width="220" height="80" fill="transparent" />
+      <circle id="station-4" cx="40" cy="520" r="10" class="station" />
+      <text x="65" y="516" class="station-text">
         <tspan x="65" dy="0">Lines, Angles</tspan>
         <tspan x="65" dy="16">&amp; Polygons</tspan>
       </text>
     </a>
     
-    <a href="#coordinate-geometry" className="station-link">
-      <circle id="station-5" cx="40" cy="640" r="10" className="station" />
-      <text x="65" y="636" className="station-text">
+    <a href="#coordinate-geometry" class="station-link">
+      <rect x="10" y="600" width="220" height="80" fill="transparent" />
+      <circle id="station-5" cx="40" cy="640" r="10" class="station" />
+      <text x="65" y="636" class="station-text">
         <tspan x="65" dy="0">Coordinate</tspan>
         <tspan x="65" dy="16">Geometry</tspan>
       </text>
     </a>
     
-    <a href="#pythagoras-theorem" className="station-link">
-      <circle id="station-6" cx="40" cy="760" r="10" className="station" />
-      <text x="65" y="756" className="station-text">
+    <a href="#pythagoras-theorem" class="station-link">
+      <rect x="10" y="720" width="220" height="80" fill="transparent" />
+      <circle id="station-6" cx="40" cy="760" r="10" class="station" />
+      <text x="65" y="756" class="station-text">
         <tspan x="65" dy="0">Pythagoras'</tspan>
         <tspan x="65" dy="16">Theorem</tspan>
       </text>
     </a>
     
-    <a href="#circle-geometry" className="station-link">
-      <circle id="station-7" cx="40" cy="880" r="10" className="station" />
-      <text x="65" y="876" className="station-text">
+    <a href="#circle-geometry" class="station-link">
+      <rect x="10" y="840" width="220" height="80" fill="transparent" />
+      <circle id="station-7" cx="40" cy="880" r="10" class="station" />
+      <text x="65" y="876" class="station-text">
         <tspan x="65" dy="0">Circle</tspan>
         <tspan x="65" dy="16">Geometry</tspan>
       </text>
     </a>
     
-    <a href="#sequences" className="station-link">
-      <circle id="station-8" cx="40" cy="1000" r="10" className="station" />
-      <text x="65" y="1004" className="station-text">Sequences</text>
+    <a href="#sequences" class="station-link">
+      <rect x="10" y="960" width="220" height="80" fill="transparent" />
+      <circle id="station-8" cx="40" cy="1000" r="10" class="station" />
+      <text x="65" y="1004" class="station-text">Sequences</text>
     </a>
     
-    <a href="#statistics-i-correlation" className="station-link">
-      <circle id="station-9" cx="40" cy="1120" r="10" className="station" />
-      <text x="65" y="1116" className="station-text">
+    <a href="#statistics-i-correlation" class="station-link">
+      <rect x="10" y="1080" width="220" height="80" fill="transparent" />
+      <circle id="station-9" cx="40" cy="1120" r="10" class="station" />
+      <text x="65" y="1116" class="station-text">
         <tspan x="65" dy="0">Statistics I</tspan>
         <tspan x="65" dy="16">(Correlation)</tspan>
       </text>
     </a>
     
-    <a href="#statistics-ii-discrete-and-continuous-data" className="station-link">
-      <circle id="station-10" cx="40" cy="1240" r="10" className="station" />
-      <text x="65" y="1228" className="station-text">
+    <a href="#statistics-ii-discrete-and-continuous-data" class="station-link">
+      <rect x="10" y="1200" width="220" height="80" fill="transparent" />
+      <circle id="station-10" cx="40" cy="1240" r="10" class="station" />
+      <text x="65" y="1228" class="station-text">
         <tspan x="65" dy="0">Statistics II</tspan>
         <tspan x="65" dy="16">(Discrete &amp;</tspan>
         <tspan x="65" dy="16">Continuous)</tspan>
       </text>
     </a>
     
-    <a href="#measures" className="station-link">
-      <circle id="station-11" cx="40" cy="1360" r="10" className="station" />
-      <text x="65" y="1364" className="station-text">Measures</text>
+    <a href="#measures" class="station-link">
+      <rect x="10" y="1320" width="220" height="80" fill="transparent" />
+      <circle id="station-11" cx="40" cy="1360" r="10" class="station" />
+      <text x="65" y="1364" class="station-text">Measures</text>
     </a>
     
-    <a href="#trigonometry-i" className="station-link">
-      <circle id="station-12" cx="40" cy="1480" r="10" className="station" />
-      <text x="65" y="1484" className="station-text">Trigonometry I</text>
+    <a href="#trigonometry-i" class="station-link">
+      <rect x="10" y="1440" width="220" height="80" fill="transparent" />
+      <circle id="station-12" cx="40" cy="1480" r="10" class="station" />
+      <text x="65" y="1484" class="station-text">Trigonometry I</text>
     </a>
     
-    <a href="#sets" className="station-link">
-      <circle id="station-13" cx="40" cy="1600" r="10" className="station" />
-      <text x="65" y="1604" className="station-text">Sets</text>
+    <a href="#sets" class="station-link">
+      <rect x="10" y="1560" width="220" height="80" fill="transparent" />
+      <circle id="station-13" cx="40" cy="1600" r="10" class="station" />
+      <text x="65" y="1604" class="station-text">Sets</text>
     </a>
     
-    <a href="#introduction-to-functions" className="station-link">
-      <circle id="station-14" cx="40" cy="1720" r="10" className="station" />
-      <text x="65" y="1716" className="station-text">
+    <a href="#introduction-to-functions" class="station-link">
+      <rect x="10" y="1680" width="220" height="80" fill="transparent" />
+      <circle id="station-14" cx="40" cy="1720" r="10" class="station" />
+      <text x="65" y="1716" class="station-text">
         <tspan x="65" dy="0">Introduction to</tspan>
         <tspan x="65" dy="16">Functions</tspan>
       </text>
     </a>
     
-    <a href="#trigonometry-ii" className="station-link">
-      <circle id="station-15" cx="40" cy="1840" r="10" className="station" />
-      <text x="65" y="1844" className="station-text">Trigonometry II</text>
+    <a href="#trigonometry-ii" class="station-link">
+      <rect x="10" y="1800" width="220" height="80" fill="transparent" />
+      <circle id="station-15" cx="40" cy="1840" r="10" class="station" />
+      <text x="65" y="1844" class="station-text">Trigonometry II</text>
     </a>
     
-    <a href="#logarithms" className="station-link">
-      <circle id="station-16" cx="40" cy="1960" r="10" className="station" />
-      <text x="65" y="1964" className="station-text">Logarithms</text>
+    <a href="#logarithms" class="station-link">
+      <rect x="10" y="1920" width="220" height="80" fill="transparent" />
+      <circle id="station-16" cx="40" cy="1960" r="10" class="station" />
+      <text x="65" y="1964" class="station-text">Logarithms</text>
     </a>
     
-    <a href="#transforming-shapes" className="station-link">
-      <circle id="station-17" cx="40" cy="2080" r="10" className="station" />
-      <text x="65" y="2076" className="station-text">
+    <a href="#transforming-shapes" class="station-link">
+      <rect x="10" y="2040" width="220" height="80" fill="transparent" />
+      <circle id="station-17" cx="40" cy="2080" r="10" class="station" />
+      <text x="65" y="2076" class="station-text">
         <tspan x="65" dy="0">Transforming</tspan>
         <tspan x="65" dy="16">Shapes</tspan>
       </text>
     </a>
     
-    <a href="#transforming-functions" className="station-link">
-      <circle id="station-18" cx="40" cy="2200" r="10" className="station" />
-      <text x="65" y="2196" className="station-text">
+    <a href="#transforming-functions" class="station-link">
+      <rect x="10" y="2160" width="220" height="80" fill="transparent" />
+      <circle id="station-18" cx="40" cy="2200" r="10" class="station" />
+      <text x="65" y="2196" class="station-text">
         <tspan x="65" dy="0">Transforming</tspan>
         <tspan x="65" dy="16">Functions</tspan>
       </text>
     </a>
     
-    <a href="#variation" className="station-link">
-      <circle id="station-19" cx="40" cy="2320" r="10" className="station" />
-      <text x="65" y="2324" className="station-text">Variation</text>
+    <a href="#variation" class="station-link">
+      <rect x="10" y="2280" width="220" height="80" fill="transparent" />
+      <circle id="station-19" cx="40" cy="2320" r="10" class="station" />
+      <text x="65" y="2324" class="station-text">Variation</text>
     </a>
     
-    <a href="#vectors" className="station-link">
-      <circle id="station-20" cx="40" cy="2440" r="10" className="station" />
-      <text x="65" y="2444" className="station-text">Vectors</text>
+    <a href="#vectors" class="station-link">
+      <rect x="10" y="2400" width="220" height="80" fill="transparent" />
+      <circle id="station-20" cx="40" cy="2440" r="10" class="station" />
+      <text x="65" y="2444" class="station-text">Vectors</text>
     </a>
     
-    <a href="#probability" className="station-link">
-      <circle id="station-21" cx="40" cy="2560" r="10" className="station" />
-      <text x="65" y="2564" className="station-text">Probability</text>
+    <a href="#probability" class="station-link">
+      <rect x="10" y="2520" width="220" height="80" fill="transparent" />
+      <circle id="station-21" cx="40" cy="2560" r="10" class="station" />
+      <text x="65" y="2564" class="station-text">Probability</text>
     </a>
     
     {/* Node 22: PLATFORM 9 3/4 (Secret) */}
-    <g id="secret-node-trigger" className="station-link" style={{ cursor: 'pointer' }}>
-      <circle id="station-22" cx="40" cy="2680" r="12" className="station platform-934" />
-      <text x="65" y="2684" className="station-text" style={{fill: '#fcd34d'}}>Platform 9 ¾</text>
+    <g id="secret-node-trigger" class="station-link" style={{ cursor: 'pointer' }}>
+      <rect x="10" y="2640" width="220" height="80" fill="transparent" />
+      <circle id="station-22" cx="40" cy="2680" r="12" class="station platform-934" />
+      <text x="65" y="2684" class="station-text platform-text" style={{fill: '#fcd34d'}}>Platform 9 ¾</text>
     </g>
   </svg>
 
