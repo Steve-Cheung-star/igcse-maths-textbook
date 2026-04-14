@@ -1,6 +1,5 @@
 ---
 import Default from '@astrojs/starlight/components/PageSidebar.astro';
-import LocalTimer from './LocalTimer.jsx';
 const { slug } = Astro.params;
 ---
 <LocalTimer sectionId={slug} client:load />
