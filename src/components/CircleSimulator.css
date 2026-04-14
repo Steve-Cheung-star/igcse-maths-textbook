@@ -20,20 +20,22 @@
 
 /* Shared styling for Tabs AND Action Buttons */
 .sim-tab-btn, .sim-action-btn {
-  background: transparent;
-  border: 1px solid var(--sl-color-gray-5);
+  /* Using standard Starlight backgrounds for better theme toggling */
+  background: var(--sl-color-bg-nav); 
+  border: 1px solid var(--sl-color-hairline);
   color: var(--sl-color-text);
   padding: 0.4rem 0.8rem;
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: background-color 0.2s, border-color 0.2s;
   white-space: nowrap;
 }
 
 .sim-tab-btn:hover, .sim-action-btn:hover {
   background: var(--sl-color-gray-6);
+  border-color: var(--sl-color-gray-5);
 }
 
 .sim-tab-btn.active {
@@ -43,7 +45,6 @@
 }
 
 .sim-action-btn {
-  background: var(--sl-color-gray-6);
   font-size: 0.75rem;
   text-transform: uppercase;
 }
@@ -55,6 +56,9 @@
   flex-shrink: 0; 
   touch-action: none;
   overflow: hidden; /* Prevents anything from spilling out */
+  border-radius: 12px;
+  border: 1px solid var(--sl-color-hairline);
+  background: var(--sl-color-bg);
 }
 
 .sim-canvas {
@@ -70,9 +74,9 @@
 /* Floating overlay for math and controls */
 .sim-overlay {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -83,20 +87,23 @@
   background: var(--sl-color-bg);
   opacity: 0.95;
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   border: 1px solid var(--sl-color-hairline);
-  /* Changed from monospace to system UI sans-serif */
   font-family: var(--__sl-font-sans, system-ui, -apple-system, sans-serif);
   font-size: 0.85rem;
   font-weight: bold;
   color: var(--sl-color-text);
   pointer-events: auto;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  /* Softened the shadow slightly so it doesn't look harsh on pure white backgrounds */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); 
 }
 
 .sim-controls {
   pointer-events: auto;
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
+  align-items: flex-end;
 }

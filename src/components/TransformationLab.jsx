@@ -52,9 +52,9 @@ export default function TransformationLab({ category = 'translation' }) {
         toolPoints = [{ x: 6, y: 2, type: 'vector' }];
       } else if (currentMode === 'reflection') {
         toolPoints = [
-          { x: 0, y: 6, type: 'line-end' }, 
+          { x: 0, y: 6, type: 'line-end' },
           { x: 0, y: -6, type: 'line-end' },
-          { x: 0, y: 0, type: 'line-centre' } 
+          { x: 0, y: 0, type: 'line-centre' }
         ];
       } else {
         toolPoints = [{ x: 0, y: 0, type: 'centre', label: 'C' }];
@@ -88,12 +88,12 @@ export default function TransformationLab({ category = 'translation' }) {
           }
         } else if (currentMode === 'rotation') {
           rotationDegree += 90;
-          if (rotationDegree > 360) rotationDegree = -270; // Cycle back around within slider bounds
+          if (rotationDegree > 360) rotationDegree = -270;
           if (rotSlider) rotSlider.value = rotationDegree;
           if (rotOut) rotOut.textContent = rotationDegree;
         } else if (currentMode === 'enlargement') {
           scaleFactor += 0.5;
-          if (scaleFactor > 4) scaleFactor = -2; // Cycle back to a negative scale factor
+          if (scaleFactor > 4) scaleFactor = -2;
           if (scaleSlider) scaleSlider.value = scaleFactor;
           if (scaleOut) scaleOut.textContent = scaleFactor;
         }
@@ -103,12 +103,13 @@ export default function TransformationLab({ category = 'translation' }) {
     let draggingPoint = null;
     let centreX, centreY;
 
+    // Updated Theme Colors for Starlight Light/Dark mode
     function getThemeColors() {
       const isDark = document.documentElement.dataset.theme === 'dark' ||
-        window.matchMedia('(prefers-color-scheme: dark)').matches;
+        (!document.documentElement.dataset.theme && window.matchMedia('(prefers-color-scheme: dark)').matches);
       return {
         text: isDark ? '#f8fafc' : '#0f172a',
-        grid: isDark ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)',
+        grid: isDark ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 0, 0, 0.15)',
         axis: isDark ? '#94a3b8' : '#64748b',
         object: '#3b82f6',
         image: '#ef4444',
@@ -118,8 +119,8 @@ export default function TransformationLab({ category = 'translation' }) {
     }
 
     const cleanupResize = observeCanvasResize(container, canvas, ctx, (width, height) => {
-      centreX = Math.floor(width / 2 / gridSpacing) * gridSpacing;
-      centreY = Math.floor(height / 2 / gridSpacing) * gridSpacing;
+      centreX = width / 2;
+      centreY = height / 2;
     });
 
     const toScreen = (p) => ({ x: centreX + p.x * gridSpacing, y: centreY - p.y * gridSpacing });
@@ -129,7 +130,7 @@ export default function TransformationLab({ category = 'translation' }) {
     });
 
     const drawArrow = (x1, y1, x2, y2, color, label) => {
-      const headlen = 16; 
+      const headlen = 16;
       const angle = Math.atan2(y2 - y1, x2 - x1);
       ctx.beginPath();
       ctx.moveTo(x1, y1);
@@ -151,6 +152,11 @@ export default function TransformationLab({ category = 'translation' }) {
     };
 
     const draw = () => {
+      // Calculate logical CSS dimensions so Retina displays don't throw off our math
+      const logicalWidth = centreX * 2;
+      const logicalHeight = centreY * 2;
+
+      // Keep canvas.width/height here to fully clear the high-res buffer
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       const theme = getThemeColors();
 
@@ -158,12 +164,17 @@ export default function TransformationLab({ category = 'translation' }) {
       ctx.beginPath();
       ctx.strokeStyle = theme.grid;
       ctx.lineWidth = 1;
-      for (let x = 0; x <= canvas.width; x += gridSpacing) { ctx.moveTo(x, 0); ctx.lineTo(x, canvas.height); }
-      for (let y = 0; y <= canvas.height; y += gridSpacing) { ctx.moveTo(0, y); ctx.lineTo(canvas.width, y); }
+      
+      const startX = centreX % gridSpacing;
+      const startY = centreY % gridSpacing;
+
+      for (let x = startX; x <= logicalWidth; x += gridSpacing) { ctx.moveTo(x, 0); ctx.lineTo(x, logicalHeight); }
+      for (let y = startY; y <= logicalHeight; y += gridSpacing) { ctx.moveTo(0, y); ctx.lineTo(logicalWidth, y); }
       ctx.stroke();
 
-      drawArrow(10, centreY, canvas.width - 10, centreY, theme.axis, 'x');
-      drawArrow(centreX, canvas.height - 10, centreX, 10, theme.axis, 'y');
+      // Use logicalWidth and logicalHeight to perfectly anchor the arrows
+      drawArrow(10, centreY, logicalWidth - 25, centreY, theme.axis, 'x');
+      drawArrow(centreX, logicalHeight - 10, centreX, 25, theme.axis, 'y');
 
       ctx.font = "10px sans-serif";
       ctx.textAlign = "center";
@@ -174,11 +185,13 @@ export default function TransformationLab({ category = 'translation' }) {
         if (i === 0) continue;
         const pX = toScreen({ x: i, y: 0 });
         const pY = toScreen({ x: 0, y: i });
-        if (pX.x > 20 && pX.x < canvas.width - 20) {
+        
+        // Added some extra padding (40 and 35) so the numbers no longer crash into the new arrows!
+        if (pX.x > 20 && pX.x < logicalWidth - 40) {
           ctx.fillText(i, pX.x, centreY + 14);
           ctx.fillRect(pX.x - 0.5, centreY - 3, 1, 6);
         }
-        if (pY.y > 20 && pY.y < canvas.height - 20) {
+        if (pY.y > 35 && pY.y < logicalHeight - 20) {
           ctx.fillText(i, centreX - 14, pY.y);
           ctx.fillRect(centreX - 3, pY.y - 0.5, 6, 1);
         }
@@ -192,18 +205,18 @@ export default function TransformationLab({ category = 'translation' }) {
         const v = toolPoints[0];
         imagePoints = points.map(p => ({ x: p.x + v.x, y: p.y + v.y }));
         displayMath = `Translation Vector: (${v.x}, ${v.y})`;
-        
+
         const sStart = toScreen(points[0]);
         const sEnd = toScreen(imagePoints[0]);
         ctx.setLineDash([4, 4]);
         drawArrow(sStart.x, sStart.y, sEnd.x, sEnd.y, theme.tool, 'v');
         ctx.setLineDash([]);
-        
+
       } else if (currentMode === 'reflection') {
         const [p1, p2, pCentre] = toolPoints;
         const dx = p2.x - p1.x, dy = p2.y - p1.y, d2 = dx * dx + dy * dy;
         imagePoints = points.map(p => {
-          if(d2 === 0) return p; 
+          if (d2 === 0) return p;
           const t = ((p.x - p1.x) * dx + (p.y - p1.y) * dy) / d2;
           const px = p1.x + t * dx, py = p1.y + t * dy;
           return { x: 2 * px - p.x, y: 2 * py - p.y };
@@ -220,7 +233,7 @@ export default function TransformationLab({ category = 'translation' }) {
           const yInt = p1.y - m * p1.x;
           const val = Math.abs(Math.round(yInt));
           const interceptStr = val === 0 ? '' : ` ${yInt > 0 ? '+' : '-'} ${val}`;
-          
+
           if (Math.abs(m - 1) < 0.01) {
             eq = `y = x${interceptStr}`;
           } else if (Math.abs(m + 1) < 0.01) {
@@ -235,7 +248,7 @@ export default function TransformationLab({ category = 'translation' }) {
         const s2 = toScreen({ x: p2.x + dx * 20, y: p2.y + dy * 20 });
         ctx.beginPath(); ctx.strokeStyle = theme.tool; ctx.setLineDash([5, 5]); ctx.lineWidth = 2;
         ctx.moveTo(s1.x, s1.y); ctx.lineTo(s2.x, s2.y); ctx.stroke(); ctx.setLineDash([]);
-        
+
       } else if (currentMode === 'rotation') {
         const c = toolPoints[0];
         const angleInRads = rotationDegree * (Math.PI / 180);
@@ -247,15 +260,15 @@ export default function TransformationLab({ category = 'translation' }) {
         let normalisedDeg = rotationDegree % 360;
         let absDeg = Math.abs(normalisedDeg);
         if (absDeg === 0 || absDeg === 360) {
-            displayMath = `Rotation around (${c.x}, ${c.y}) by 0°`;
+          displayMath = `Rotation around (${c.x}, ${c.y}) by 0°`;
         } else if (absDeg === 180) {
-            displayMath = `Rotation around (${c.x}, ${c.y}) by 180°`;
+          displayMath = `Rotation around (${c.x}, ${c.y}) by 180°`;
         } else if (normalisedDeg > 0) {
-            displayMath = `Rotation around (${c.x}, ${c.y}): ${normalisedDeg}° anticlockwise (or ${360 - normalisedDeg}° clockwise)`;
+          displayMath = `Rotation around (${c.x}, ${c.y}): ${normalisedDeg}° anticlockwise (or ${360 - normalisedDeg}° clockwise)`;
         } else {
-            displayMath = `Rotation around (${c.x}, ${c.y}): ${absDeg}° clockwise (or ${360 - absDeg}° anticlockwise)`;
+          displayMath = `Rotation around (${c.x}, ${c.y}): ${absDeg}° clockwise (or ${360 - absDeg}° anticlockwise)`;
         }
-        
+
       } else if (currentMode === 'enlargement') {
         const c = toolPoints[0];
         imagePoints = points.map(p => ({ x: c.x + scaleFactor * (p.x - c.x), y: c.y + scaleFactor * (p.y - c.y) }));
@@ -298,9 +311,9 @@ export default function TransformationLab({ category = 'translation' }) {
 
       handles.forEach(p => {
         const s = toScreen(p);
-        ctx.beginPath(); 
+        ctx.beginPath();
         ctx.fillStyle = p.type === 'line-centre' ? theme.toolAlt : theme.tool;
-        ctx.arc(s.x, s.y, 6, 0, Math.PI * 2); 
+        ctx.arc(s.x, s.y, 6, 0, Math.PI * 2);
         ctx.fill();
       });
 
@@ -310,23 +323,23 @@ export default function TransformationLab({ category = 'translation' }) {
 
     const onDown = (e) => {
       const { x: mx, y: my } = getScaledPointerPos(canvas, e);
-      
+
       if (currentMode === 'translation') {
         const sTip = toScreen({ x: points[0].x + toolPoints[0].x, y: points[0].y + toolPoints[0].y });
         if (Math.hypot(sTip.x - mx, sTip.y - my) < 20) { draggingPoint = toolPoints[0]; return; }
       }
 
       draggingPoint = toolPoints.find(p => Math.hypot(toScreen(p).x - mx, toScreen(p).y - my) < 20) ||
-                      points.find(p => Math.hypot(toScreen(p).x - mx, toScreen(p).y - my) < 20);
+        points.find(p => Math.hypot(toScreen(p).x - mx, toScreen(p).y - my) < 20);
     };
 
     const onMove = (e) => {
       if (!draggingPoint) return;
       const { x: mx, y: my } = getScaledPointerPos(canvas, e);
       const pos = fromScreen({ x: mx, y: my });
-      
+
       if (draggingPoint.type === 'vector') {
-        draggingPoint.x = pos.x - points[0].x; 
+        draggingPoint.x = pos.x - points[0].x;
         draggingPoint.y = pos.y - points[0].y;
       } else if (draggingPoint.type === 'line-centre') {
         const dx = pos.x - draggingPoint.x;
@@ -335,9 +348,9 @@ export default function TransformationLab({ category = 'translation' }) {
         toolPoints[1].x += dx; toolPoints[1].y += dy;
         toolPoints[2].x += dx; toolPoints[2].y += dy;
       } else {
-        draggingPoint.x = pos.x; 
+        draggingPoint.x = pos.x;
         draggingPoint.y = pos.y;
-        
+
         if (draggingPoint.type === 'line-end' && toolPoints.length === 3) {
           toolPoints[2].x = (toolPoints[0].x + toolPoints[1].x) / 2;
           toolPoints[2].y = (toolPoints[0].y + toolPoints[1].y) / 2;
@@ -353,9 +366,9 @@ export default function TransformationLab({ category = 'translation' }) {
     window.addEventListener('touchend', () => draggingPoint = null);
 
     draw();
-    return () => { 
-      cancelAnimationFrame(animId); 
-      cleanupResize(); 
+    return () => {
+      cancelAnimationFrame(animId);
+      cleanupResize();
       canvas.removeEventListener('mousedown', onDown);
       canvas.removeEventListener('touchstart', onDown);
       window.removeEventListener('mousemove', onMove);
@@ -364,30 +377,32 @@ export default function TransformationLab({ category = 'translation' }) {
   }, [category]);
 
   return (
-    <div ref={containerRef} className="sim-root" style={{ margin: '2rem 0' }}>
-      <div className="sim-canvas-container" style={{ position: 'relative', height: '500px', background: 'var(--sl-color-bg)', borderRadius: '12px', border: '1px solid var(--sl-color-hairline)', overflow: 'hidden' }}>
-        <canvas className="sim-canvas" style={{ width: '100%', height: '100%', display: 'block' }}></canvas>
-        <div className="sim-overlay" style={{ position: 'absolute', top: '10px', left: '10px', pointerEvents: 'none' }}>
-          <div className="sim-math-readout" style={{ fontWeight: '600', marginBottom: '10px', color: 'var(--sl-color-text)' }}></div>
-          <div className="sim-controls" style={{ pointerEvents: 'auto', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            
-            <button id="switchBtn" style={{ padding: '6px 12px', cursor: 'pointer', display: 'block', background: 'var(--sl-color-bg-nav)', border: '1px solid var(--sl-color-hairline)', borderRadius: '6px', color: 'var(--sl-color-text)' }}></button>
+    <div ref={containerRef} className="sim-root">
+      <div className="sim-canvas-container">
+        <canvas className="sim-canvas"></canvas>
+        <div className="sim-overlay">
+          <div className="sim-math-readout"></div>
+          <div className="sim-controls">
 
+            {/* Swapped inline styles for the .sim-action-btn CSS class */}
+            <button id="switchBtn" className="sim-action-btn"></button>
+
+            {/* Kept minimal inline styles here since these act as small standalone cards for the sliders */}
             {category === 'rotation' && (
-              <div style={{ background: 'var(--sl-color-bg)', padding: '10px', borderRadius: '8px', border: '1px solid var(--sl-color-hairline)', color: 'var(--sl-color-text)' }}>
-                <label style={{ display: 'block', fontSize: '14px', marginBottom: '6px' }}>
+              <div style={{ background: 'var(--sl-color-bg)', padding: '0.5rem', borderRadius: '0.5rem', border: '1px solid var(--sl-color-hairline)', color: 'var(--sl-color-text)' }}>
+                <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.25rem', fontWeight: 'bold' }}>
                   Angle: <span id="rotOut">0</span>°
                 </label>
-                <input type="range" id="rotSlider" min="-360" max="360" defaultValue="0" step="1" style={{ width: '150px' }} />
+                <input type="range" id="rotSlider" min="-360" max="360" defaultValue="0" step="1" style={{ width: '120px' }} />
               </div>
             )}
 
             {category === 'enlargement' && (
-              <div style={{ background: 'var(--sl-color-bg)', padding: '10px', borderRadius: '8px', border: '1px solid var(--sl-color-hairline)', color: 'var(--sl-color-text)' }}>
-                <label style={{ display: 'block', fontSize: '14px', marginBottom: '6px' }}>
+              <div style={{ background: 'var(--sl-color-bg)', padding: '0.5rem', borderRadius: '0.5rem', border: '1px solid var(--sl-color-hairline)', color: 'var(--sl-color-text)' }}>
+                <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.25rem', fontWeight: 'bold' }}>
                   Scale Factor: <span id="scaleOut">2</span>
                 </label>
-                <input type="range" id="scaleSlider" min="-5" max="5" defaultValue="2" step="0.5" style={{ width: '150px' }} />
+                <input type="range" id="scaleSlider" min="-5" max="5" defaultValue="2" step="0.5" style={{ width: '120px' }} />
               </div>
             )}
 

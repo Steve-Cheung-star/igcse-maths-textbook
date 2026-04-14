@@ -78,6 +78,14 @@ To find the gradient of a parallel line, you must first identify the gradient of
 
 Usually, exam questions will give you an original line and a specific coordinate point, asking you to find the equation of a *new* parallel line that passes through that point.
 
+import PerpendicularLab from '../../../../components/PerpendicularLab.jsx';
+
+<div className="not-content" style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <div style={{ width: '100%', maxWidth: '600px' }}>
+    <PerpendicularLab mode="parallel" client:only="react" />
+  </div>
+</div>
+
 <Aside type="tip" title="The Parallel Line Method">
 <Steps>
 1. **Find the original gradient:** Identify $m$ from the given equation (rearrange if necessary).
