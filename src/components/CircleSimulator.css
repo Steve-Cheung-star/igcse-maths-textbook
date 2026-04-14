@@ -51,15 +51,19 @@
 .sim-canvas-container {
   position: relative;
   width: 100%;
-  height: auto; /* Removed fixed height */
-  aspect-ratio: 1 / 1; /* Forces the canvas to ALWAYS be a perfect square */
-  flex-shrink: 0; /* Tells flexbox/grid not to squish this container */
+  aspect-ratio: 1 / 1; /* Forces the container to ALWAYS be a perfect square */
+  flex-shrink: 0; 
   touch-action: none;
+  overflow: hidden; /* Prevents anything from spilling out */
 }
 
 .sim-canvas {
+  position: absolute; /* Removes canvas from document flow */
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  display: block; /* Removes the invisible inline text gap */
   cursor: crosshair;
 }
 

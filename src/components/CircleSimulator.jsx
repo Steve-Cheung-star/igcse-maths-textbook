@@ -10,6 +10,7 @@ export default function CircleSimulator({ category = 'angles' }) {
         if (!container) return;
 
         const canvas = container.querySelector('#simCanvas');
+        const canvasContainer = container.querySelector('.sim-canvas-container');
         const ctx = canvas.getContext('2d');
         const mathOutput = container.querySelector('#mathOutput');
         const switchBtn = container.querySelector('#switchBtn');
@@ -39,6 +40,11 @@ export default function CircleSimulator({ category = 'angles' }) {
         let points = [];
         let draggingPoint = null;
         let centreX, centreY, radius;
+        
+        // Cache variables to prevent layout thrashing and infinite loops
+        let cachedWidth = 0;
+        let cachedHeight = 0;
+        let lastOutput = '';
 
         function getThemeColors() {
             const isDark = document.documentElement.dataset.theme === 'dark' ||
@@ -63,16 +69,21 @@ export default function CircleSimulator({ category = 'angles' }) {
         const onSwitch = () => toggleVariant();
         const onRandom = () => randomize();
 
-        // CRITICAL FIX: Replaced window.resize with ResizeObserver. 
-        // This ensures the canvas draws correctly even if Astro loads CSS late, 
-        // or if Projector Mode scales the layout without resizing the browser window.
-        const resizeObserver = new ResizeObserver(() => {
-            if (!canvas || canvas.offsetWidth === 0) return; // Wait until CSS is actually applied
+        // FIXED: Cache dimensions and read from entry.contentRect to prevent infinite loops
+        const resizeObserver = new ResizeObserver((entries) => {
+            if (!canvas) return;
             
-            const width = canvas.offsetWidth;
-            const height = canvas.offsetHeight;
+            const entry = entries[0];
+            const width = entry.contentRect.width;
+            const height = entry.contentRect.height;
+            
+            // Break the infinite loop: only update if dimensions actually changed
+            if (width === 0 || (width === cachedWidth && height === cachedHeight)) return;
+            
+            cachedWidth = width;
+            cachedHeight = height;
+            
             const dpr = window.devicePixelRatio || 1;
-            
             canvas.width = width * dpr;
             canvas.height = height * dpr;
             
@@ -83,8 +94,6 @@ export default function CircleSimulator({ category = 'angles' }) {
             centreY = height / 2;
             radius = Math.min(width, height) / 2.5 - 20;
             
-            // Only reset points if they haven't been initialized yet, 
-            // otherwise just scale them to the new layout so user doesn't lose their drag position
             resetPoints();
         });
 
@@ -112,7 +121,8 @@ export default function CircleSimulator({ category = 'angles' }) {
             switchBtn.addEventListener('click', onSwitch);
             randomBtn.addEventListener('click', onRandom);
 
-            resizeObserver.observe(container); // Start watching for layout changes!
+            // FIXED: Observe the canvas container, not the root container
+            resizeObserver.observe(canvasContainer); 
             animId = requestAnimationFrame(animateLoop);
         }
         
@@ -123,8 +133,8 @@ export default function CircleSimulator({ category = 'angles' }) {
 
         function getMousePos(e) {
             const rect = canvas.getBoundingClientRect();
-            const scaleX = canvas.offsetWidth / rect.width;
-            const scaleY = canvas.offsetHeight / rect.height;
+            const scaleX = cachedWidth / rect.width;
+            const scaleY = cachedHeight / rect.height;
             return {
                 x: (e.clientX - rect.left) * scaleX,
                 y: (e.clientY - rect.top) * scaleY
@@ -276,8 +286,8 @@ export default function CircleSimulator({ category = 'angles' }) {
                 draggingPoint.y = centreY + (dy / dist) * dist;
                 
             } else if (draggingPoint.type === 'free') {
-                draggingPoint.x = Math.max(15, Math.min(canvas.offsetWidth - 15, mx));
-                draggingPoint.y = Math.max(15, Math.min(canvas.offsetHeight - 15, my));
+                draggingPoint.x = Math.max(15, Math.min(cachedWidth - 15, mx));
+                draggingPoint.y = Math.max(15, Math.min(cachedHeight - 15, my));
             } else {
                 const angle = Math.atan2(my - centreY, mx - centreX);
                 draggingPoint.x = centreX + Math.cos(angle) * radius;
@@ -352,11 +362,14 @@ export default function CircleSimulator({ category = 'angles' }) {
         function lineSide(A, B, P) { return Math.sign((B.x - A.x) * (P.y - A.y) - (B.y - A.y) * (P.x - A.x)); }
 
         function draw() {
-            if (canvas.offsetWidth === 0) return; // Don't draw until layout is established
-            const rect = canvas.getBoundingClientRect();
-            ctx.clearRect(0, 0, rect.width, rect.height);
+            // FIXED: Removed DOM reads and rely on cached dimensions
+            if (!cachedWidth || !cachedHeight) return; 
+            ctx.clearRect(0, 0, cachedWidth, cachedHeight);
             
             const theme = getThemeColors();
+            
+            // FIXED: Batch DOM writes using a local string variable
+            let currentMathHTML = '';
 
             // Draw center point O and main circle
             ctx.beginPath(); ctx.strokeStyle = theme.line; ctx.lineWidth = 3;
@@ -364,7 +377,7 @@ export default function CircleSimulator({ category = 'angles' }) {
             ctx.beginPath(); ctx.fillStyle = theme.muted; ctx.arc(centreX, centreY, 5, 0, Math.PI * 2); ctx.fill();
             drawPointLabel(centreX + 10, centreY - 10, 'O', theme);
 
-            mathOutput.innerHTML = ''; ctx.lineWidth = 2.5;
+            ctx.lineWidth = 2.5;
 
             if (currentTheorem === 'semicircle') {
                 const [A, B, C] = points;
@@ -372,7 +385,7 @@ export default function CircleSimulator({ category = 'angles' }) {
                 ctx.setLineDash([5, 5]); ctx.strokeStyle = theme.muted; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(B.x, B.y); ctx.stroke(); ctx.setLineDash([]);
                 ctx.strokeStyle = theme.accent1; ctx.beginPath(); ctx.moveTo(A.x, A.y); ctx.lineTo(C.x, C.y); ctx.lineTo(B.x, B.y); ctx.stroke();
                 drawRightAngle(C, A.x, A.y, B.x, B.y, 18, theme.accent1);
-                mathOutput.innerHTML = 'Angle in a Semicircle = 90°';
+                currentMathHTML = 'Angle in a Semicircle = 90°';
 
             } else if (currentTheorem === 'tangent') {
                 const P = points[0];
@@ -385,7 +398,7 @@ export default function CircleSimulator({ category = 'angles' }) {
                 ctx.strokeStyle = theme.accent1; ctx.beginPath(); ctx.moveTo(t1.x, t1.y); ctx.lineTo(t2.x, t2.y); ctx.stroke();
 
                 drawRightAngle(P, centreX, centreY, t1.x, t1.y, 18, theme.muted);
-                mathOutput.innerHTML = 'Radius is Perpendicular (⟂) to Tangent = 90°';
+                currentMathHTML = 'Radius is Perpendicular (⟂) to Tangent = 90°';
 
             } else if (currentTheorem === 'centre') {
                 const [A, B, C] = points;
@@ -406,7 +419,7 @@ export default function CircleSimulator({ category = 'angles' }) {
                 const cleanCenter = (cleanCircum * 2).toFixed(1);
                 drawInteriorArc({ x: centreX, y: centreY }, start, end, theme.accent1, 35, val > Math.PI, theme, `${cleanCenter}°`);
 
-                mathOutput.innerHTML = `Center (${cleanCenter}°) = 2 × Circumference (${cleanCircum.toFixed(1)}°)`;
+                currentMathHTML = `Center (${cleanCenter}°) = 2 × Circumference (${cleanCircum.toFixed(1)}°)`;
 
             } else if (currentTheorem === 'segment') {
                 if(points.length < 4) return;
@@ -420,7 +433,7 @@ export default function CircleSimulator({ category = 'angles' }) {
                     const a1 = drawInteriorArc(P2, P1, P0, theme.accent1, 40, false, theme);
                     const cleanAngle = a1.toFixed(1);
                     drawInteriorArc(P3, P1, P0, theme.accent2, 40, false, theme, `${cleanAngle}°`);
-                    mathOutput.innerHTML = `∠${P2.label} = ∠${P3.label} = ${cleanAngle}°`;
+                    currentMathHTML = `∠${P2.label} = ∠${P3.label} = ${cleanAngle}°`;
                 } else {
                     ctx.strokeStyle = theme.accent1; ctx.beginPath(); ctx.moveTo(P1.x, P1.y); ctx.lineTo(P3.x, P3.y); ctx.lineTo(P2.x, P2.y); ctx.stroke();
                     ctx.strokeStyle = theme.accent2; ctx.beginPath(); ctx.moveTo(P1.x, P1.y); ctx.lineTo(P0.x, P0.y); ctx.lineTo(P2.x, P2.y); ctx.stroke();
@@ -428,7 +441,7 @@ export default function CircleSimulator({ category = 'angles' }) {
                     const a1 = drawInteriorArc(P3, P2, P1, theme.accent1, 40, false, theme);
                     const cleanAngle = a1.toFixed(1);
                     drawInteriorArc(P0, P2, P1, theme.accent2, 40, false, theme, `${cleanAngle}°`);
-                    mathOutput.innerHTML = `∠${P3.label} = ∠${P0.label} = ${cleanAngle}°`;
+                    currentMathHTML = `∠${P3.label} = ∠${P0.label} = ${cleanAngle}°`;
                 }
 
             } else if (currentTheorem === 'cyclic') {
@@ -444,13 +457,13 @@ export default function CircleSimulator({ category = 'angles' }) {
                     const cleanA = parseFloat(a.toFixed(1));
                     const cleanC = (180 - cleanA).toFixed(1);
                     drawInteriorArc(P2, P3, P1, theme.accent1, 40, false, theme, `${cleanC}°`);
-                    mathOutput.innerHTML = `∠${P0.label} + ∠${P2.label} = ${cleanA.toFixed(1)}° + ${cleanC}° = 180°`;
+                    currentMathHTML = `∠${P0.label} + ∠${P2.label} = ${cleanA.toFixed(1)}° + ${cleanC}° = 180°`;
                 } else {
                     const b = drawInteriorArc(P1, P2, P0, theme.accent2, 40, false, theme);
                     const cleanB = parseFloat(b.toFixed(1));
                     const cleanD = (180 - cleanB).toFixed(1);
                     drawInteriorArc(P3, P0, P2, theme.accent2, 40, false, theme, `${cleanD}°`);
-                    mathOutput.innerHTML = `∠${P1.label} + ∠${P3.label} = ${cleanB.toFixed(1)}° + ${cleanD}° = 180°`;
+                    currentMathHTML = `∠${P1.label} + ∠${P3.label} = ${cleanB.toFixed(1)}° + ${cleanD}° = 180°`;
                 }
 
             } else if (currentTheorem === 'alt') {
@@ -469,13 +482,13 @@ export default function CircleSimulator({ category = 'angles' }) {
                     const aAlt = drawInteriorArc(B, P, A, theme.accent1, 40, false, theme);
                     const cleanAlt = aAlt.toFixed(1);
                     drawInteriorArc(P, activeTan, A, theme.accent1, 40, false, theme, `${cleanAlt}°`);
-                    mathOutput.innerHTML = `∠ABP = ∠AP${activeTan === t1 ? 'T1' : 'T2'} = ${cleanAlt}°`;
+                    currentMathHTML = `∠ABP = ∠AP${activeTan === t1 ? 'T1' : 'T2'} = ${cleanAlt}°`;
                 } else {
                     const activeTan = lineSide(P, B, A) !== lineSide(P, B, t1) ? t1 : t2;
                     const aAlt = drawInteriorArc(A, B, P, theme.accent2, 40, false, theme);
                     const cleanAlt = aAlt.toFixed(1);
                     drawInteriorArc(P, B, activeTan, theme.accent2, 40, false, theme, `${cleanAlt}°`);
-                    mathOutput.innerHTML = `∠BAP = ∠BP${activeTan === t1 ? 'T1' : 'T2'} = ${cleanAlt}°`;
+                    currentMathHTML = `∠BAP = ∠BP${activeTan === t1 ? 'T1' : 'T2'} = ${cleanAlt}°`;
                 }
 
             } else if (currentTheorem === 'equal-chords') {
@@ -509,7 +522,7 @@ export default function CircleSimulator({ category = 'angles' }) {
                 const chordLen = Math.hypot(A.x - B.x, A.y - B.y) / 15;
                 const distToCenter = Math.hypot(midAB.x - centreX, midAB.y - centreY) / 15;
 
-                mathOutput.innerHTML = `Chords: AB = CD = ${chordLen.toFixed(1)}cm<br>Distance to Centre = ${distToCenter.toFixed(1)}cm`;
+                currentMathHTML = `Chords: AB = CD = ${chordLen.toFixed(1)}cm<br>Distance to Centre = ${distToCenter.toFixed(1)}cm`;
 
             } else if (currentTheorem === 'perp-bisector') {
                 const [A, B] = points;
@@ -531,9 +544,9 @@ export default function CircleSimulator({ category = 'angles' }) {
                 if (activeVariant === 0) {
                     drawTick(A, mid, theme.line);
                     drawTick(mid, B, theme.line);
-                    mathOutput.innerHTML = `Bisects Chord: AM = MB = ${AM.toFixed(1)}cm`;
+                    currentMathHTML = `Bisects Chord: AM = MB = ${AM.toFixed(1)}cm`;
                 } else {
-                    mathOutput.innerHTML = `Passes through Centre: ∠OMA = ∠OMB = 90°`;
+                    currentMathHTML = `Passes through Centre: ∠OMA = ∠OMB = 90°`;
                 }
 
             } else if (currentTheorem === 'ext-tangents') {
@@ -568,11 +581,11 @@ export default function CircleSimulator({ category = 'angles' }) {
                 if (activeVariant === 0) {
                     const tanLen = Math.hypot(P.x - T1.x, P.y - T1.y) / 15;
                     drawTick(P, T1, theme.line); drawTick(P, T2, theme.line);
-                    mathOutput.innerHTML = `Equal Lengths: PT₁ = PT₂ = ${tanLen.toFixed(1)}cm`;
+                    currentMathHTML = `Equal Lengths: PT₁ = PT₂ = ${tanLen.toFixed(1)}cm`;
                 } else {
                     const a1 = drawInteriorArc(P, { x: centreX, y: centreY }, T1, theme.accent1, 35, false, theme);
                     const a2 = drawInteriorArc(P, T2, { x: centreX, y: centreY }, theme.accent2, 35, false, theme);
-                    mathOutput.innerHTML = `Kite Symmetry: ∠OPT₁ = ∠OPT₂ = ${a1.toFixed(1)}°`;
+                    currentMathHTML = `Kite Symmetry: ∠OPT₁ = ∠OPT₂ = ${a1.toFixed(1)}°`;
                 }
             } else if (currentTheorem === 'unit-circle') {
                 const P = points[0];
@@ -584,23 +597,19 @@ export default function CircleSimulator({ category = 'angles' }) {
                 const cosVal = Math.cos(angleRad);
                 const sinVal = Math.sin(angleRad);
 
-                // --- ADDED: Draw the terminal arm (radius/hypotenuse) ---
                 ctx.beginPath();
                 ctx.strokeStyle = theme.line; 
                 ctx.lineWidth = 2;
                 ctx.moveTo(centreX, centreY);
                 ctx.lineTo(P.x, P.y);
                 ctx.stroke();
-                // --------------------------------------------------------
 
-                // Draw the angle arc
                 ctx.beginPath();
                 ctx.strokeStyle = theme.text;
                 ctx.lineWidth = 2;
                 ctx.arc(centreX, centreY, 40, 0, -angleRad, true);
                 ctx.stroke();
 
-                // Draw the dashed x (cosine) and y (sine) lines
                 ctx.setLineDash([5, 5]);
                 ctx.strokeStyle = theme.accent1;
                 ctx.beginPath(); ctx.moveTo(centreX, centreY); ctx.lineTo(P.x, centreY); ctx.stroke();
@@ -609,7 +618,7 @@ export default function CircleSimulator({ category = 'angles' }) {
                 ctx.setLineDash([]);
 
                 if (activeVariant === 0) {
-                    mathOutput.innerHTML = `
+                    currentMathHTML = `
             θ = ${angleDeg}°<br>
             <span style="color:${theme.accent1}">cos θ = ${cosVal.toFixed(3)}</span><br>
             <span style="color:${theme.accent2}">sin θ = ${sinVal.toFixed(3)}</span>
@@ -620,12 +629,18 @@ export default function CircleSimulator({ category = 'angles' }) {
                     if (angleRad > Math.PI) quad = "III";
                     if (angleRad > 1.5 * Math.PI) quad = "IV";
 
-                    mathOutput.innerHTML = `
+                    currentMathHTML = `
             Quadrant ${quad}<br>
             <span style="color:${theme.accent1}">cos θ = ${cosVal.toFixed(3)}</span><br>
             <span style="color:${theme.accent2}">sin θ = ${sinVal.toFixed(3)}</span>
         `;
                 }
+            }
+
+            // FIXED: Only touch the actual DOM if the text has changed
+            if (lastOutput !== currentMathHTML) {
+                mathOutput.innerHTML = currentMathHTML;
+                lastOutput = currentMathHTML;
             }
 
             points.forEach(p => {
