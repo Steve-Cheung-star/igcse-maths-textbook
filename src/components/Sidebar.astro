@@ -3,7 +3,7 @@
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/Sidebar.astro';
 import { getRandomGreeting, filterSidebar } from '../utils/sidebarHelpers';
-// import ExamTimer from './Timer.js'; // <-- Added Timer Import
+//import ExamTimer from './Timer.js'; // <-- Added Timer Import
 
 const randomGreeting = getRandomGreeting();
 const isTeacher = import.meta.env.PUBLIC_TEACHER_MODE === 'true';

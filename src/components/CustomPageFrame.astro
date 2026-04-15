@@ -5,7 +5,7 @@ import ProjectorLayout from './ProjectorLayout.astro';
 
 // Import the React components
 import ProjectorCalculator from './ProjectorCalculator.tsx';
-//import Timer from './Timer.tsx'; // Ensure this matches your path!
+import Timer from './Timer.tsx'; // Ensure this matches your path!
 ---
 
 <Default {...Astro.props}>
@@ -16,6 +16,7 @@ import ProjectorCalculator from './ProjectorCalculator.tsx';
   <ProjectorLayout />
   
   <ProjectorCalculator client:load />
+  <Timer client:only="react" />
 </Default>
 
 <style is:global>

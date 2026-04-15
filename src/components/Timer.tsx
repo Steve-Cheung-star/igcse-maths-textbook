@@ -5,8 +5,8 @@ export default function Timer() {
   const [seconds, setSeconds] = useState(0);
   const [totalTime, setTotalTime] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [isVisible, setIsVisible] = useState(false); // New visibility state
   
-  // Synchronously grab the saved state on mount to prevent layout shifts
   const [isMinimized, setIsMinimized] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedMini = localStorage.getItem('exam_timer_mini');
@@ -21,7 +21,6 @@ export default function Timer() {
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false); 
   
-  // Synchronously grab the saved position to prevent the slide-in animation
   const [dragPos, setDragPos] = useState(() => {
     if (typeof window !== 'undefined') {
       const savedPos = localStorage.getItem('exam_timer_pos');
@@ -34,8 +33,33 @@ export default function Timer() {
 
   const originalTitle = useRef(typeof document !== 'undefined' ? document.title : '');
   const audioCtx = useRef<AudioContext | null>(null);
-  
   const wrapperRef = useRef<HTMLDivElement>(null);
+
+  // Keyboard Shortcut Listener
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Listens for Option + C (Mac) or Alt + C (Windows)
+      // We use e.code === 'KeyC' to be layout-agnostic
+      if (e.altKey && (e.code === 'KeyC' || e.key.toLowerCase() === 'c')) {
+        e.preventDefault(); // Prevents typing characters in inputs
+        setIsVisible(prev => !prev);
+      }
+      
+      // Keep Alt + T as a secondary backup
+      if (e.altKey && (e.code === 'KeyT' || e.key.toLowerCase() === 't')) {
+        e.preventDefault();
+        setIsVisible(prev => !prev);
+      }
+
+      // Hide with Escape
+      if (e.key === 'Escape') {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   useEffect(() => {
     setMounted(true);
@@ -53,7 +77,7 @@ export default function Timer() {
         setSeconds(remaining);
         setTotalTime(parseInt(savedTotal || remaining.toString()));
         setIsActive(true);
-        // If it was running, ensure it's not minimized unless explicitly saved as such
+        setIsVisible(true); // Automatically show if a timer is already running
         if (localStorage.getItem('exam_timer_mini') === null) setIsMinimized(false);
         setShowControls(false);
       } else {
@@ -91,7 +115,7 @@ export default function Timer() {
       clearTimeout(timeout);
       window.removeEventListener('resize', rescueTimer);
     };
-  }, [mounted, isMinimized]); 
+  }, [mounted, isMinimized, isVisible]); 
 
   useEffect(() => {
     if (mounted) {
@@ -161,7 +185,8 @@ export default function Timer() {
     return () => { if (interval) clearInterval(interval); };
   }, [isActive, isMobile]);
 
-  if (!mounted || isMobile) return null;
+  // Don't render if not visible
+  if (!mounted || isMobile || !isVisible) return null;
 
   const startTimer = (mins: number) => {
     initAudio();
@@ -273,7 +298,7 @@ export default function Timer() {
         drag 
         dragMomentum={false}
         onDragEnd={handleDragEnd}
-        initial={{ x: dragPos.x, y: dragPos.y }} // Immediately forces the correct starting position
+        initial={{ x: dragPos.x, y: dragPos.y }} 
         animate={{ x: dragPos.x, y: dragPos.y }}
         className={`ghost-timer-wrapper ${isMinimized ? 'is-mini' : 'is-expanded'} ${isAlarming ? 'alarm-active' : ''}`}
         style={{ 
@@ -331,9 +356,18 @@ export default function Timer() {
               exit={{ opacity: 0, transition: { duration: 0.1 } }}
             >
               <div className="timer-header-area">
+                 {/* Close Button */}
+                 <button 
+                   onClick={() => setIsVisible(false)}
+                   style={{ position: 'absolute', top: 10, left: 12, background: 'none', border: 'none', color: 'rgba(255,255,255,0.4)', cursor: 'pointer' }}
+                 >
+                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                 </button>
+
                  <motion.button className="min-btn" onTap={(e) => { e.stopPropagation(); toggleSize(true); }}>
                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                  </motion.button>
+                 
                  <motion.div className="time-display-wrapper" onTap={() => { setShowControls(!showControls); setIsAlarming(false); }}>
                     <span className="big-time-text" style={{ color: getStatusColor(), textShadow: `0 0 12px ${getStatusColor()}40` }}>
                       {isAlarming ? "TIME'S UP" : seconds > 0 ? "FOCUSING" : "READY"}
@@ -377,7 +411,7 @@ export default function Timer() {
             background: rgba(20, 20, 20, 0.85); 
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: var(--__sl-font), system-ui, sans-serif; 
+            font-family: system-ui, sans-serif; 
             overflow: hidden;
             cursor: grab;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
@@ -404,7 +438,6 @@ export default function Timer() {
             justify-content: center;
             width: 100%;
         }
-        .mini-icon-trigger:hover .mini-txt { color: white !important; } 
         
         .mini-running-state { display: block; width: 100%; height: 100%; position: relative; pointer-events: none;}
         
