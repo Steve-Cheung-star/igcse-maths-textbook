@@ -5,14 +5,14 @@ export default function ProjectorCalculator() {
   const [isCalcAwake, setIsCalcAwake] = useState(true);
 
   const [inputStr, setInputStr] = useState('');
-  
+
   const [history, setHistory] = useState<{ expr: string, res: string, isSecret?: boolean }[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
   const [selectionMode, setSelectionMode] = useState<'expr' | 'res'>('expr');
-  
+
   const [isSecond, setIsSecond] = useState(false);
   const [isDeg, setIsDeg] = useState(true);
-  
+
   const [lastResult, setLastResult] = useState<string | null>(null);
   const [justCalculated, setJustCalculated] = useState(false);
 
@@ -42,7 +42,7 @@ export default function ProjectorCalculator() {
     const handleClickOutside = (e: MouseEvent | TouchEvent) => {
       if (calcRef.current && !calcRef.current.contains(e.target as Node)) {
         setIsCalcAwake(false);
-        inputRef.current?.blur(); 
+        inputRef.current?.blur();
       } else if (calcRef.current && calcRef.current.contains(e.target as Node)) {
         setIsCalcAwake(true);
         if (document.activeElement !== inputRef.current) {
@@ -79,29 +79,29 @@ export default function ProjectorCalculator() {
         return;
       }
 
-      if (!isCalcAwake) return; 
+      if (!isCalcAwake) return;
 
       const isArrowKey = ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key);
       const validKeys = ['Enter', '=', 'Backspace'];
       const isMathKey = e.key.length === 1 && /[0-9\.+\-*/^()]/.test(e.key);
 
       if (isArrowKey || validKeys.includes(e.key) || isMathKey) {
-          e.stopPropagation(); 
+        e.stopPropagation();
       } else {
-          return; 
+        return;
       }
 
       const keyMap: Record<string, string> = { '*': '×', '/': '÷', '-': '−' };
 
       if (isArrowKey) {
         if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
-          e.preventDefault(); 
+          e.preventDefault();
           if (e.key === 'ArrowUp') handlePress('', 'history-up');
           if (e.key === 'ArrowDown') handlePress('', 'history-down');
-        } 
+        }
         else if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
           if (historyIndex !== -1) {
-            e.preventDefault(); 
+            e.preventDefault();
             handlePress('', e.key === 'ArrowLeft' ? 'cursor-left' : 'cursor-right');
           } else {
             if (document.activeElement !== inputRef.current) {
@@ -135,7 +135,7 @@ export default function ProjectorCalculator() {
       setJustCalculated(false);
       const lastChar = newVal.slice(-1);
       const operators = ['+', '-', '*', '/', '^', '−', '×', '÷'];
-      
+
       if (operators.includes(lastChar) && lastResult !== null && lastResult !== 'Syntax Error') {
         setInputStr(lastResult + lastChar);
       } else {
@@ -150,7 +150,7 @@ export default function ProjectorCalculator() {
   const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if ((e.target as HTMLElement).closest('button') || (e.target as HTMLElement).tagName === 'INPUT') return;
 
-    e.preventDefault(); 
+    e.preventDefault();
     isDragging.current = true;
     setIsCalcAwake(true);
     dragStart.current = { x: e.clientX, y: e.clientY };
@@ -224,7 +224,7 @@ export default function ProjectorCalculator() {
         handlePress('', 'clear');
         return;
       }
-      
+
       if (selectionMode === 'expr') {
         setSelectionMode('res');
       } else {
@@ -243,7 +243,7 @@ export default function ProjectorCalculator() {
       if (historyIndex !== -1) {
         setSelectionMode(prev => prev === 'expr' ? 'res' : 'expr');
         return;
-      } 
+      }
       if (!inputRef.current) return;
       const pos = inputRef.current.selectionStart || 0;
       const newPos = action === 'cursor-left' ? Math.max(0, pos - 1) : pos + 1;
@@ -261,7 +261,7 @@ export default function ProjectorCalculator() {
       }
       if (justCalculated) {
         if (lastResult === 'Syntax Error') {
-          setLastResult(null); 
+          setLastResult(null);
           setJustCalculated(false);
         } else {
           setInputStr(''); setLastResult(null); setJustCalculated(false);
@@ -283,7 +283,7 @@ export default function ProjectorCalculator() {
     if (action === 'sd') {
       const toggleValue = (valStr: string | null) => {
         if (!valStr || valStr === 'Syntax Error' || valStr === 'Error' || valStr === 'Unlocked') return valStr;
-        
+
         if (valStr.includes('/')) {
           const parts = valStr.split('/');
           if (parts.length === 2) {
@@ -304,14 +304,14 @@ export default function ProjectorCalculator() {
         const actualIndex = history.length - 1 - historyIndex;
         const item = history[actualIndex];
         if (item.isSecret) return;
-        
+
         const newRes = toggleValue(item.res);
         if (newRes && newRes !== item.res) {
           const newHistory = [...history];
           newHistory[actualIndex] = { ...item, res: newRes };
           setHistory(newHistory);
         }
-      } 
+      }
       else {
         const newRes = toggleValue(lastResult);
         if (newRes && newRes !== lastResult) {
@@ -323,30 +323,30 @@ export default function ProjectorCalculator() {
 
     if (action === 'calculate') {
       if (historyIndex !== -1) {
-         const entry = history[history.length - 1 - historyIndex];
-         const copyText = selectionMode === 'res' ? entry.res : entry.expr;
-         
-         let newStr = '';
+        const entry = history[history.length - 1 - historyIndex];
+        const copyText = selectionMode === 'res' ? entry.res : entry.expr;
 
-         if (justCalculated) {
-           newStr = copyText;
-         } else {
-           newStr = currentInput + copyText;
-         }
+        let newStr = '';
 
-         setInputStr(newStr);
-         setLastResult(null);
-         setHistoryIndex(-1);
-         setSelectionMode('expr');
-         setJustCalculated(false);
-         
-         setTimeout(() => {
-           if (inputRef.current) {
-             inputRef.current.focus();
-             inputRef.current.setSelectionRange(newStr.length, newStr.length);
-           }
-         }, 0);
-         return;
+        if (justCalculated) {
+          newStr = copyText;
+        } else {
+          newStr = currentInput + copyText;
+        }
+
+        setInputStr(newStr);
+        setLastResult(null);
+        setHistoryIndex(-1);
+        setSelectionMode('expr');
+        setJustCalculated(false);
+
+        setTimeout(() => {
+          if (inputRef.current) {
+            inputRef.current.focus();
+            inputRef.current.setSelectionRange(newStr.length, newStr.length);
+          }
+        }, 0);
+        return;
       }
 
       if (!currentInput) return;
@@ -388,7 +388,7 @@ export default function ProjectorCalculator() {
 
       if (secretMessages[currentInput]) {
         const msg = secretMessages[currentInput];
-        setLastResult(msg); 
+        setLastResult(msg);
         setJustCalculated(true);
         setHistory(prev => [...prev, { expr: currentInput, res: msg, isSecret: true }]);
         setHistoryIndex(-1);
@@ -422,10 +422,10 @@ export default function ProjectorCalculator() {
         // --- NEW UNARY MINUS FIXES ---
         // 1. Wrap negative exponents to avoid precedence errors (2^-3 -> 2^(-3))
         expr = expr.replace(/\^\s*-\s*([a-zA-Z0-9_.]+|\([^)]+\))/g, '^(-$1)');
-        
+
         // 2. Prevent JS SyntaxError for consecutive subtractions (9--2 -> 9 - -2)
         expr = expr.replace(/--/g, '- -');
-        
+
         // 3. Prevent JS SyntaxError for Unary minus/plus before JS exponentiation
         // Maps e.g. -3^2 -> (0-1)*3^2  which cleanly evaluates to -9
         expr = expr.replace(/(^|[+\-*/(])\s*-/g, '$1(0-1)*');
@@ -446,9 +446,19 @@ export default function ProjectorCalculator() {
         const evaluate = new Function(`
           const d = x => x * (Math.PI / 180);
           const r = x => x * (180 / Math.PI);
-          const sin = x => Math.sin(${isDeg} ? d(x) : x);
-          const cos = x => Math.cos(${isDeg} ? d(x) : x);
-          const tan = x => Math.tan(${isDeg} ? d(x) : x);
+          const sin = x => {
+            let res = Math.sin(${isDeg} ? d(x) : x);
+            return Math.abs(res) < 1e-15 ? 0 : res;
+          };
+          const cos = x => {
+            let res = Math.cos(${isDeg} ? d(x) : x);
+            return Math.abs(res) < 1e-15 ? 0 : res;
+          };
+          const tan = x => {
+            const c = cos(x);
+            if (c === 0) return Infinity; // Handle Tan 90/270/etc.
+            return sin(x) / c;
+          };
           const asin = x => ${isDeg} ? r(Math.asin(x)) : Math.asin(x);
           const acos = x => ${isDeg} ? r(Math.acos(x)) : Math.acos(x);
           const atan = x => ${isDeg} ? r(Math.atan(x)) : Math.atan(x);
@@ -456,15 +466,25 @@ export default function ProjectorCalculator() {
         `);
 
         let result = evaluate();
-        if (!isFinite(result)) throw new Error('Math Error');
-        const resStr = parseFloat(result.toPrecision(12)).toString();
-
-        setHistory(prev => [...prev, { expr: currentInput, res: resStr }]);
-        setHistoryIndex(-1);
-        setLastResult(resStr);
+        if (isNaN(result)) {
+          setLastResult('Domain Error'); // e.g., ln(-1)
+        } else if (!isFinite(result)) {
+          // Check if the user actually typed a division by zero
+          if (currentInput.includes('/0') || currentInput.includes('÷0')) {
+            setLastResult('Divide by 0');
+          } else {
+            setLastResult('Overflow Error'); // e.g., 8^999
+          }
+        } else {
+          const resStr = parseFloat(result.toPrecision(12)).toString();
+          setHistory(prev => [...prev, { expr: currentInput, res: resStr }]);
+          setLastResult(resStr);
+        }
         setJustCalculated(true);
+        setHistoryIndex(-1);
+
       } catch (err) {
-        setLastResult('Syntax Error'); 
+        setLastResult('Syntax Error'); // Actual typos in expression
         setJustCalculated(true);
       }
       return;
@@ -668,9 +688,9 @@ export default function ProjectorCalculator() {
         </button>
       )}
 
-      <div 
-        id="wb-calculator" 
-        className={`ti-30xb ${isVisible ? 'open' : ''}`} 
+      <div
+        id="wb-calculator"
+        className={`ti-30xb ${isVisible ? 'open' : ''}`}
         ref={calcRef}
         onMouseDown={(e) => {
           if (e.target !== inputRef.current) e.preventDefault();
@@ -679,8 +699,8 @@ export default function ProjectorCalculator() {
           border: isCalcAwake ? '2px solid rgba(255,255,255,0.4)' : '1px solid rgba(255,255,255,0.1)',
           opacity: isCalcAwake ? 1 : 0.45,
           filter: isCalcAwake ? 'none' : 'grayscale(100%)',
-          boxShadow: isCalcAwake 
-            ? '0 15px 40px rgba(0,0,0,0.6), 0 0 0 4px #4ade80, 0 0 20px rgba(74, 222, 128, 0.8)' 
+          boxShadow: isCalcAwake
+            ? '0 15px 40px rgba(0,0,0,0.6), 0 0 0 4px #4ade80, 0 0 20px rgba(74, 222, 128, 0.8)'
             : '0 15px 40px rgba(0,0,0,0.6), 0 0 20px rgba(111, 176, 72, 0.2)',
           transition: 'opacity 0.25s ease, filter 0.25s ease, box-shadow 0.25s ease, transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.25s'
         }}

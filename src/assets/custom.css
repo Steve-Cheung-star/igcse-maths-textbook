@@ -113,20 +113,3 @@
   filter: none !important;
   color: inherit !important;
 }
-
-/* --- TARGET SVGS INSIDE TABS ONLY --- */
-/* This shrinks only the practice question/solution SVGs to 50% */
-[data-sl-tab-panel] svg {
-  width: 50% !important;
-  height: auto !important;
-  margin: 1.5rem auto !important; /* Centers the SVG and adds spacing */
-  display: block !important;
-  max-width: 500px; /* Prevents it from getting too large on huge monitors */
-}
-
-/* Optional: Keep the SVG full width on small mobile screens so they are readable */
-@media (max-width: 600px) {
-  [data-sl-tab-panel] svg {
-    width: 100% !important;
-  }
-}
