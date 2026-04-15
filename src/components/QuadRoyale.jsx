@@ -295,7 +295,7 @@ export default function QuadRoyale() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2rem', padding: '2rem 0' }}>
             <div style={{ transform: 'rotate(-3deg)', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
               <h1 style={{ color: '#ffffff', textShadow: '0 4px 0 #0f172a', margin: 0, fontSize: 'clamp(3rem, 10vw, 5rem)', lineHeight: 1.1 }}>QUAD</h1>
-              <h1 style={{ color: '#8b5cf6', textShadow: '0 6px 0 #4c1d95', margin: 0, fontSize: 'clamp(3.5rem, 12vw, 6rem)', lineHeight: 1.1 }}>ROYALE! MR CHEUNG MADE THIS</h1>
+              <h1 style={{ color: '#8b5cf6', textShadow: '0 6px 0 #4c1d95', margin: 0, fontSize: 'clamp(3.5rem, 12vw, 6rem)', lineHeight: 1.1 }}>ROYALE!</h1>
             </div>
             <p style={{ backgroundColor: 'rgba(15, 23, 42, 0.8)', border: '2px solid #1e293b', color: '#e2e8f0', margin: '0 auto', padding: '1.5rem', borderRadius: '1.5rem', fontSize: 'clamp(1rem, 4vw, 1.25rem)', maxWidth: '90%', textAlign: 'center' }}>
               Read the riddle or look at the shape, and guess the quadrilateral before the timer runs out!

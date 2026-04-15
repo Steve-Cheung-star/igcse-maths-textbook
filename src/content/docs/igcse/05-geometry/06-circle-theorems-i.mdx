@@ -242,7 +242,7 @@ To identify this in an exam:
 3. The angle between the tangent line and one side of the triangle equals the angle *inside* the triangle on the opposite (alternate) side.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 300 250" width="100%" maxWidth="450px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+  <svg viewBox="0 0 300 250" width="100%" maxWidth="350px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <circle cx="150" cy="120" r="80" fill="#f1f5f9" stroke="#1e293b" stroke-width="2" />
     
     {/* Tangent Line at the bottom P(150, 200) */}
@@ -329,33 +329,37 @@ To identify this in an exam:
 </Tabs>
 
 <Tabs>
-  <TabItem label="📝 Question 2: Cyclic Quadrilateral vs Kite">
+  <TabItem label="📝 Question 2: Cyclic Quad vs Kite">
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
       <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
         <circle cx="150" cy="120" r="100" fill="none" stroke="#1e293b" stroke-width="2" />
         
-        {/* Mathematically pristine points for reflex 248° and inscribed 124° */}
-        <polygon points="150,220 67.1,64.1 150,120 232.9,64.1" fill="none" stroke="#3b82f6" stroke-width="2" stroke-linejoin="round" />
-        <circle cx="150" cy="120" r="3" fill="#ef4444" />
-        <text x="145" y="110" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">O</text>
+        {/* Points for reflex 248° and inscribed 124° */}
+        <polygon points="150,20 67.1,64.1 150,120 232.9,64.1" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linejoin="round" />
         
-        {/* Reflex Angle at Top */}
-        <path d="M 133.4 108.8 A 20 20 0 1 1 166.6 108.8" fill="none" stroke="#1e293b" stroke-width="2" />
-        <text x="150" y="75" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">248°</text>
-
-        {/* Bottom Inscribed Angle */}
-        <path d="M 138.3 197.9 A 25 25 0 0 1 161.7 197.9" fill="none" stroke="#1e293b" stroke-width="2" />
-        <text x="150" y="188" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">w</text>
+        <circle cx="150" cy="120" r="3" fill="#ef4444" />
+        
+        {/* Reflex Angle at Center */}
+        <path d="M 175.9 126.9 A 27 27 0 1 0 124.1 126.9" fill="none" stroke="#ef4444" stroke-width="2" />
+        <text x="150" y="85" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">248°</text>
+        
+        {/* Correctly Aligned Inscribed Angle w at Top Minor Arc */}
+        {/* Vertex is at 150,20. Drawing an arc from the left edge to the right edge of the angle */}
+        <path d="M 135 28 A 20 20 0 0 0 165 28" fill="none" stroke="#1e293b" stroke-width="2" />
+        <text x="150" y="48" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">w</text>
+        
+        <text x="150" y="145" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">O</text>
       </svg>
     </div>
-    $O$ is the centre of the circle. Three points lie on the circumference, forming the shape shown above. 
-    
-    a) Identify whether the highlighted shape is a cyclic quadrilateral and explain why or why not.
 
-    b) Calculate the angle $w$.
+    A quadrilateral is constructed using three points on the circumference and the centre point $O$. 
+    The reflex angle at the centre is $248^\circ$.
 
-    c) State the formal geometric reason for your calculation in part (b).
+    a) Is this shape a cyclic quadrilateral? Give a reason for your answer.
 
+    b) Calculate the size of the inscribed angle $w$.
+
+    c) State the geometric reason for your calculation in part (b).
   </TabItem>
   <TabItem label="✅ Solution 2">
     **a)**
@@ -783,7 +787,7 @@ To identify this in an exam:
 
     c) Calculate the interior angle $ABC$.
 
-    d) Calculate the interior angle $DAB$ in the quadrilateral $ABCD$.
+    d) Calculate the interior angle $DAB$.
 
   </TabItem>
   <TabItem label="✅ Solution 9">
@@ -809,11 +813,9 @@ To identify this in an exam:
 
     **d)**
     <Steps>
-      1. $ABCD$ is a completely enclosed cyclic quadrilateral because all four points sit mathematically on the circumference.
-      2. Opposite internal angles sum precisely to $180^\circ$.
-      3. Angle $DAB$ is strictly opposite to angle $BCD$ ($25^\circ$).
-      4. Angle $DAB = 180^\circ - 25^\circ$.
-      5. **Angle $DAB = 155^\circ$.** *(Alternative method: Isosceles trapezium formed by parallel lines inside a circle leads to the same result).*
+      1. Angles in the same segment subtended by the same arc are equal. 
+      2. Since we found the corresponding angle in the alternate segment (or using the properties of the isosceles triangle/chords previously established), the angle is equivalent.
+      3. **Angle $DAB = 25^\circ$.**
     </Steps>
   </TabItem>
 </Tabs>
@@ -955,8 +957,8 @@ To identify this in an exam:
 
     **c)**
     <Steps>
-      1. Angles subtended by the identical arc ($QR$) are equal.
-      2. Angle $SPR$ and angle $SQR$ (which is exactly angle $RQS$) both subtend the minor arc $QR$.
+      1. Angles subtended by the identical arc ($SR$) are equal.
+      2. Angle $SPR$ and angle $SQR$ (which is exactly angle $RQS$) both subtend the minor arc $SR$.
       3. **Angle $SPR = 44^\circ$.**
     </Steps>
 
