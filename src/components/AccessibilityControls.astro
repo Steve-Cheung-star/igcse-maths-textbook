@@ -1,0 +1,129 @@
+---
+/* src/components/AccessibilityControls.astro */
+import Default from '@astrojs/starlight/components/SocialIcons.astro';
+import type { Props } from '@astrojs/starlight/props';
+---
+
+<div class="custom-header-controls">
+  <div class="acc-button-group">
+    <button id="sepia-toggle" class="icon-btn" title="Reading Mode (Sepia)">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+      </svg>
+    </button>
+
+    <button id="dys-toggle" class="icon-btn" title="Dyslexic Font">
+      <span class="abc-icon">Ab</span>
+    </button>
+
+    <button id="wb-enter-projector" class="icon-btn" title="Enter Projector Mode (Ctrl+Alt+P)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+        <line x1="8" y1="21" x2="16" y2="21"></line>
+        <line x1="12" y1="17" x2="12" y2="21"></line>
+      </svg>
+    </button>
+  </div>
+
+  <Default {...Astro.props} />
+</div>
+
+<script is:inline>
+  // This function must be globally accessible for both scripts to use
+  window.__applyAccThemes = function() {
+    const isSepia = localStorage.getItem('sepia-mode') === 'true';
+    const isDyslexic = localStorage.getItem('dyslexic-mode') === 'true';
+    
+    document.documentElement.classList.toggle('sepia-mode', isSepia);
+    document.documentElement.classList.toggle('dyslexic-mode', isDyslexic);
+  };
+
+  // Immediate execution to prevent blink
+  window.__applyAccThemes();
+  document.addEventListener('astro:after-swap', window.__applyAccThemes);
+</script>
+
+<script>
+  // @ts-nocheck
+  import { projectorStore } from '../store/projectorStore.js';
+
+  function initHeaderControls() {
+    // 1. Sync the UI state immediately on page load
+    if (window.__applyAccThemes) window.__applyAccThemes();
+
+    const sepiaBtn = document.getElementById('sepia-toggle');
+    const dysBtn = document.getElementById('dys-toggle');
+    const projectorBtn = document.getElementById('wb-enter-projector');
+
+    // --- SEPIA TOGGLE ---
+    if (sepiaBtn) {
+      const newSepia = sepiaBtn.cloneNode(true);
+      sepiaBtn.parentNode.replaceChild(newSepia, sepiaBtn);
+      newSepia.addEventListener('click', () => {
+        const currentlyOn = localStorage.getItem('sepia-mode') === 'true';
+        const newState = !currentlyOn;
+        
+        localStorage.setItem('sepia-mode', newState.toString());
+        document.documentElement.classList.toggle('sepia-mode', newState);
+        window.dispatchEvent(new Event('theme-changed'));
+      });
+    }
+
+    // --- DYSLEXIC TOGGLE ---
+    if (dysBtn) {
+      const newDys = dysBtn.cloneNode(true);
+      dysBtn.parentNode.replaceChild(newDys, dysBtn);
+      newDys.addEventListener('click', () => {
+        const currentlyOn = localStorage.getItem('dyslexic-mode') === 'true';
+        const newState = !currentlyOn;
+        
+        localStorage.setItem('dyslexic-mode', newState.toString());
+        document.documentElement.classList.toggle('dyslexic-mode', newState);
+      });
+    }
+
+    // --- PROJECTOR TOGGLE ---
+    if (projectorBtn) {
+      const newProj = projectorBtn.cloneNode(true);
+      projectorBtn.parentNode.replaceChild(newProj, projectorBtn);
+      newProj.addEventListener('click', () => {
+        if (window.innerWidth < 768) return; 
+        projectorStore.setKey('isBento', true);
+      });
+    }
+  }
+
+  // Handle initialization
+  initHeaderControls();
+  document.addEventListener('astro:page-load', initHeaderControls);
+</script>
+
+<style>
+  /* Styles remain the same as previous version */
+  .custom-header-controls { display: flex; align-items: center; }
+  .acc-button-group { display: flex; align-items: center; gap: 0.25rem; }
+  .icon-btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 2rem; height: 2rem; border: 1px solid transparent;
+    background: transparent; color: var(--sl-color-gray-3);
+    cursor: pointer; border-radius: 0.25rem; transition: all 0.2s ease;
+  }
+  .icon-btn:hover {
+    color: var(--sl-color-accent);
+    background-color: var(--sl-color-accent-low);
+    border-color: var(--sl-color-accent);
+  }
+  .abc-icon { font-family: 'OpenDyslexic', sans-serif; font-weight: bold; font-size: 0.9rem; }
+
+  /* Active states - IMPORTANT: these must match the class toggle */
+  :root.sepia-mode #sepia-toggle,
+  :root.dyslexic-mode #dys-toggle {
+    color: var(--sl-color-accent) !important;
+    background-color: var(--sl-color-accent-low) !important;
+    border-color: var(--sl-color-accent) !important;
+  }
+
+  html[data-mode="bento"] #wb-enter-projector { display: none !important; }
+  @media (max-width: 768px) { #wb-enter-projector { display: none !important; } }
+</style>

@@ -4,6 +4,7 @@ import Default from '@astrojs/starlight/components/SiteTitle.astro';
 
 // Check the current URL path to determine the section
 const isIB = Astro.url.pathname.startsWith('/ib-aisl');
+const isIGCSE = Astro.url.pathname.startsWith('/igcse');
 const isYear9 = Astro.url.pathname.startsWith('/year-9');
 const isYear8 = Astro.url.pathname.startsWith('/year-8');
 const isYear7 = Astro.url.pathname.startsWith('/year-7');
@@ -14,6 +15,13 @@ const isYear7 = Astro.url.pathname.startsWith('/year-7');
   <a href="/ib-aisl/" style="display: flex; align-items: center; text-decoration: none; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;">
     <span style="background: linear-gradient(135deg, #10b981, #047857); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
       AI SL
+    </span>
+  </a>
+) : isIGCSE ? (
+  /* --- CUSTOM IGCSE LOGO & LINK --- */
+  <a href="/" style="display: flex; align-items: center; text-decoration: none; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;">
+    <span style="background: linear-gradient(to right, #7684f1, #a056eb, #d9528d); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+      IGCSE 0607
     </span>
   </a>
 ) : isYear9 ? (
@@ -39,5 +47,9 @@ const isYear7 = Astro.url.pathname.startsWith('/year-7');
   </a>
 ) : (
   /* --- DEFAULT LOGO --- */
-  <Default {...Astro.props} />
+  <a href="/" style="display: flex; align-items: center; text-decoration: none; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;">
+    <span style="background: linear-gradient(to right, #7684f1, #a056eb, #d9528d); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+      IGCSE 0607
+    </span>
+  </a>
 )}

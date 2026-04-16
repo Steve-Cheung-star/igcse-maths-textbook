@@ -247,8 +247,10 @@ SOLUTION:
           padding: 0.2rem 0.5rem;
           border-radius: 4px;
           text-transform: uppercase;
+          /* Using accent colors to make the badge pop */
           color: var(--sl-color-accent-high);
-          border: 1px solid var(--sl-color-accent-low);
+          background-color: var(--sl-color-accent-low);
+          border: 1px solid var(--sl-color-accent);
         }
 
         .ai-card-body { padding: 1.5rem; }
@@ -271,7 +273,7 @@ SOLUTION:
 
         .ai-refresh-btn {
           background: var(--sl-color-accent);
-          color: var(--sl-color-black);
+          color: var(--sl-color-text-invert, var(--sl-color-black));
           border: none;
           padding: 0.6rem 1.2rem;
           border-radius: 6px;
@@ -282,12 +284,16 @@ SOLUTION:
           transition: transform 0.1s, opacity 0.2s;
         }
         
+        .ai-refresh-btn:hover {
+          filter: brightness(1.1);
+        }
+
         .ai-refresh-btn:active { transform: scale(0.98); }
         .ai-refresh-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
         .ai-export-btn {
           background: transparent;
-          color: var(--sl-color-gray-2);
+          color: var(--sl-color-text);
           border: 1px solid var(--sl-color-gray-4);
           padding: 0.6rem 1rem;
           border-radius: 6px;
@@ -302,8 +308,8 @@ SOLUTION:
         
         .ai-export-btn:hover {
           background: var(--sl-color-gray-6);
-          border-color: var(--sl-color-gray-3);
-          color: var(--sl-color-white);
+          border-color: var(--sl-color-accent);
+          color: var(--sl-color-accent);
         }
         
         .ai-export-btn:active { transform: scale(0.98); }
@@ -314,7 +320,7 @@ SOLUTION:
           align-items: center;
           gap: 0.8rem;
           font-size: 0.85rem;
-          color: var(--sl-color-gray-3);
+          color: var(--sl-color-gray-2);
         }
 
         .ai-pulse-dot {
@@ -336,6 +342,7 @@ SOLUTION:
           padding: 1.5rem;
           border-left: 4px solid var(--sl-color-accent);
           animation: slideIn 0.4s ease-out;
+          color: var(--sl-color-text);
         }
 
         @keyframes slideIn {
@@ -350,7 +357,8 @@ SOLUTION:
           height: auto;
           display: block;
           margin: 1.5rem auto;
-          background-color: white !important; 
+          /* Changed from white to gray-6 to match Sepia/Dark theme */
+          background-color: var(--sl-color-gray-6) !important; 
           border-radius: 8px;
           padding: 1rem;
           box-shadow: inset 0 0 0 1px var(--sl-color-gray-4);
@@ -377,7 +385,7 @@ SOLUTION:
         }
 
         .math-renderer :global(th) {
-          background: var(--sl-color-gray-6);
+          background: var(--sl-color-bg-nav);
           font-weight: 600;
           border-bottom: 2px solid var(--sl-color-gray-4);
           padding: 0.75rem;
@@ -393,7 +401,7 @@ SOLUTION:
       <div className="ai-card-header">
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
           <span>🤖</span>
-          <span style={{ fontWeight: 600, fontSize: '0.9rem' }}>{topic}</span>
+          <span style={{ fontWeight: 600, fontSize: '0.9rem', color: 'var(--sl-color-text)' }}>{topic}</span>
         </div>
         <span className="ai-badge">{course} | {difficulty}</span>
       </div>
@@ -417,7 +425,7 @@ SOLUTION:
                 <button
                   className="ai-export-btn"
                   onClick={handleAutoPaste}
-                  style={{ borderStyle: 'dashed', borderColor: 'var(--sl-color-accent-low)' }}
+                  style={{ borderStyle: 'dashed', borderColor: 'var(--sl-color-accent)' }}
                 >
                   {problem ? '📥 Paste Another' : '📥 Auto-Paste Result'}
                 </button>
@@ -433,14 +441,23 @@ SOLUTION:
           )}
 
           {!loading && !problem && !showQuickPaste && (
-            <span style={{ fontSize: '0.8rem', color: 'var(--sl-color-gray-4)' }}>
+            <span style={{ fontSize: '0.8rem', color: 'var(--sl-color-gray-3)' }}>
               Generate a unique exam-style question with diagrams
             </span>
           )}
         </div>
 
         {error && (
-          <div style={{ background: 'var(--sl-color-red-low)', color: 'var(--sl-color-red-high)', padding: '0.8rem', borderRadius: '6px', fontSize: '0.85rem', fontWeight: 'bold', marginBottom: '1rem', border: '1px solid var(--sl-color-red-high)' }}>
+          <div style={{ 
+            background: 'var(--sl-color-red-low)', 
+            color: 'var(--sl-color-red-high)', 
+            padding: '0.8rem', 
+            borderRadius: '6px', 
+            fontSize: '0.85rem', 
+            fontWeight: 'bold', 
+            marginBottom: '1rem', 
+            border: '1px solid var(--sl-color-red)' 
+          }}>
             {error}
           </div>
         )}
@@ -448,13 +465,13 @@ SOLUTION:
         {saveMsg && (
           <div style={{ 
             padding: '0.6rem 1rem', 
-            background: 'rgba(16, 185, 129, 0.1)', 
-            color: '#10b981', 
+            background: 'var(--sl-color-green-low)', 
+            color: 'var(--sl-color-green-high)', 
             borderRadius: '6px', 
             fontSize: '0.85rem', 
             fontWeight: '600',
             marginBottom: '1rem', 
-            border: '1px solid rgba(16, 185, 129, 0.3)', 
+            border: '1px solid var(--sl-color-green)', 
             animation: 'slideIn 0.3s ease-out' 
           }}>
             {saveMsg}
@@ -476,7 +493,7 @@ SOLUTION:
                 width: '100%',
                 height: '80px',
                 background: 'var(--sl-color-bg-nav)',
-                color: 'var(--sl-color-accent-high)',
+                color: 'var(--sl-color-text)',
                 border: '1px solid var(--sl-color-gray-5)',
                 borderRadius: '6px',
                 padding: '0.8rem',
@@ -503,7 +520,7 @@ SOLUTION:
             </div>
 
             {solution && (
-              <details style={{ marginTop: '1.5rem', borderTop: '1px dashed var(--sl-color-gray-5)', paddingTop: '1rem' }}>
+              <details style={{ marginTop: '1.5rem', borderTop: '1px dashed var(--sl-color-gray-4)', paddingTop: '1rem' }}>
                 <summary style={{ cursor: 'pointer', fontSize: '0.85rem', fontWeight: '700', color: 'var(--sl-color-accent-high)', listStyle: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                   <span>▶</span> Reveal Detailed Solution
                 </summary>

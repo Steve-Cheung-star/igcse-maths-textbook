@@ -562,15 +562,23 @@ export default function ProjectorCalculator() {
         .calc-toggle-fab {
           position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 9998; display: flex;
           align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%;
-          background: var(--sl-color-bg-nav, rgba(20, 20, 20, 0.65)); backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); color: white;
-          cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+          /* Use Starlight background */
+          background: var(--sl-color-bg-nav); 
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px); 
+          /* Adapt border to light/dark mode */
+          border: 1px solid var(--sl-color-gray-5); 
+          /* Adapt icon stroke to light/dark mode (Black in light, White in dark) */
+          color: var(--sl-color-text); 
+          cursor: pointer; 
+          box-shadow: var(--sl-shadow-md);
           transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
         }
         
         .calc-toggle-fab:hover {
-          transform: scale(1.15); background: #5a8e3a; 
-          box-shadow: 0 8px 20px rgba(0,0,0,0.4), 0 0 15px rgba(90, 142, 58, 0.6);
+          transform: scale(1.15); background: #6fb048; 
+          color: var(--sl-color-text-invert, #fff);
+          box-shadow: var(--sl-shadow-lg);
         }
         
         #calc-screen-wrapper {

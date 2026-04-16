@@ -45,6 +45,7 @@ export default defineConfig({
       ],
       components: {
         SocialIcons: './src/components/Tracker.astro',
+        SocialIcons: './src/components/AccessibilityControls.astro',
         SiteTitle: './src/components/SiteTitle.astro',
         Sidebar: './src/components/Sidebar.astro',
         PageTitle: './src/components/PageHeader.astro',

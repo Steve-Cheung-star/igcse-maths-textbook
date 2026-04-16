@@ -1,11 +1,29 @@
 // src/utils/sidebarHelpers.ts
 
 const greetings = [
-  "Not another maths page...", "Calculations & Egg Tarts", "The Variable Graveyard",
-  "𝜋: Tasty, but Infinite", "Solve for Why?", "Keep Calm and Carry One",
-  "Warning: High Logic Zone", "𝑥 is missing. Call the police.",
-  "Square Roots & Salty Tears", "Fancy a bit of Algebra?",
-  "Please mind the gap.", "Humidity: 99%. Brain: 1%."
+  /* --- The Classics --- */
+  "Not another maths page...", 
+  "Calculations & Egg Tarts", 
+  "The Variable Graveyard",
+  "𝜋: Tasty, but Infinite", 
+  "Solve for Why?", 
+  "Keep Calm and Carry One",
+  "𝑥 is missing. Call the Police.", 
+  "Square Roots & Salty Tears", 
+  "Please mind the gap.", 
+  "Humidity: 99%. Brain: 1%.",
+
+  /* --- Short Math Horror & Teacher-Speak --- */
+  "Cyclic dread.", 
+  "nth term of pain.", 
+  "Reject the Null.", 
+  "p < 0.05. Cry.", 
+  "Show working!", 
+  "Units please.", 
+  "Read the Question.", 
+  "GDC ≠ Crystal Ball.",
+  "Paper 4 vibes.",
+  "Milk Tea logic."
 ];
 
 export const getRandomGreeting = () => {

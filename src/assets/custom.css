@@ -112,4 +112,130 @@
 .katex, .katex * {
   filter: none !important;
   color: inherit !important;
+  /* Protect numbers in equations from OpenDyslexic */
+  font-family: KaTeX_Main, 'Times New Roman', serif !important;
+}
+
+/* --- 6. ACCESSIBILITY: OPENDYSLEXIC FONT --- */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('/fonts/OpenDyslexic-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Toggle Class applied to <html> or <body> */
+:root.dyslexic-mode {
+  --sl-font-system: 'OpenDyslexic', sans-serif !important;
+  --sl-font-mono: 'OpenDyslexic', monospace !important;
+}
+
+/* Optional: Slightly increase line spacing for dyslexic mode */
+:root.dyslexic-mode .sl-markdown-content {
+  line-height: 1.8 !important;
+  letter-spacing: 0.05ch !important;
+}
+
+/* =========================================
+   SEPIA READING MODE (ACCESSIBILITY)
+   ========================================= */
+
+/* --- 1. CORE SEPIA VARIABLES --- */
+:root.sepia-mode {
+  --sl-color-bg: #f4ecd8 !important;
+  --sl-color-text: #5b4636 !important;
+  --sl-color-accent-low: #dfd4b8 !important;
+  --sl-color-accent: #8b4513 !important;
+  --sl-color-accent-high: #5d2e0d !important;
+  --sl-color-white: #2e231b !important;
+  --sl-color-gray-1: #3d2f25 !important;
+  --sl-color-gray-2: #5b4636 !important;
+  --sl-color-gray-5: #dfd4b8 !important;
+  --sl-color-gray-6: #f4ecd8 !important;
+}
+
+/* --- 2. ASIDE (CALLOUT) NUCLEAR FIX --- */
+:root.sepia-mode .starlight-aside,
+:root.sepia-mode aside.starlight-aside {
+  /* Overwrite Starlight's internal variables */
+  --sl-color-asides-bg: #eaddc5 !important;
+  --sl-color-asides-border: #8b4513 !important;
+  --sl-color-asides-text: #8b4513 !important;
+  
+  /* Hard fallback */
+  background-color: #eaddc5 !important;
+  border-color: #8b4513 !important;
+  color: #5b4636 !important;
+}
+
+:root.sepia-mode .starlight-aside .title,
+:root.sepia-mode .starlight-aside .starlight-aside__title,
+:root.sepia-mode .starlight-aside p.title,
+:root.sepia-mode .starlight-aside svg {
+  color: var(--sl-color-asides-text) !important;
+}
+
+:root.sepia-mode .starlight-aside p,
+:root.sepia-mode .starlight-aside a,
+:root.sepia-mode .starlight-aside li,
+:root.sepia-mode .starlight-aside strong {
+  color: #5b4636 !important;
+}
+
+/* --- 3. SEARCH BAR FIX --- */
+:root.sepia-mode site-search > button {
+  background-color: #eaddc5 !important; 
+  color: #5b4636 !important; 
+  border: 1px solid #8b4513 !important; 
+}
+
+:root.sepia-mode site-search > button:hover {
+  background-color: #dfd4b8 !important; 
+  border-color: #5d2e0d !important;
+}
+
+:root.sepia-mode site-search > button svg,
+:root.sepia-mode site-search > button kbd {
+  color: #8b4513 !important;
+  border-color: #8b4513 !important;
+}
+
+/* --- 10. SEPIA CARD FIX --- */
+:root.sepia-mode .card,
+:root.sepia-mode [role="listitem"] {
+  background-color: #eaddc5 !important; /* Tan box */
+  border: 1px solid #8b4513 !important; /* Brown border */
+  color: #5b4636 !important; /* Brown text */
+}
+
+/* Fix icons and titles inside cards */
+:root.sepia-mode .card .title,
+:root.sepia-mode .card svg,
+:root.sepia-mode .card .icon {
+  color: #8b4513 !important;
+}
+
+/* Fix checklists/bullets inside cards */
+:root.sepia-mode .card li,
+:root.sepia-mode .card p {
+  color: #5b4636 !important;
+}
+
+/* If you are using a custom component for those "Prior Learning" boxes */
+:root.sepia-mode .custom-card-class { 
+  background-color: #eaddc5 !important;
+  color: #5b4636 !important;
+}
+
+/* --- 11. TOP BAR / HEADER FIX --- */
+:root.sepia-mode body,
+:root.sepia-mode header,
+:root.sepia-mode .header {
+  background-color: #f4ecd8 !important;
+}
+
+/* Specifically target the sticky header container in Starlight */
+:root.sepia-mode .page {
+  background-color: #f4ecd8 !important;
 }

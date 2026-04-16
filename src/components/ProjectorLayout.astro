@@ -3,44 +3,7 @@
 import ProjectorToolbar from './ProjectorToolbar.astro';
 ---
 
-<button id="wb-enter-projector" title="Enter Projector Mode (Ctrl+Alt+P)">
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-    <line x1="8" y1="21" x2="16" y2="21"></line>
-    <line x1="12" y1="17" x2="12" y2="21"></line>
-  </svg>
-</button>
-
 <style is:global>
-  /* =========================================
-     0. ENTRY BUTTON STYLING
-     ========================================= */
-  #wb-enter-projector {
-    position: fixed;
-    top: 1rem;
-    right: 8.5rem;
-    z-index: 90;
-    width: 32px;
-    height: 32px;
-    background: transparent;
-    color: var(--sl-color-text-subtle, #9ca3af);
-    border: none;
-    border-radius: 0.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: color 0.2s ease, background-color 0.2s ease;
-  }
-  
-  #wb-enter-projector:hover {
-    color: var(--sl-color-white, #fff);
-    background-color: var(--sl-color-bg-nav, rgba(255,255,255,0.05));
-  }
-
-  html[data-mode="bento"] #wb-enter-projector {
-    display: none !important;
-  }
 
   /* STRICT MOBILE HIDE: Completely remove entry point for mobile */
   @media (max-width: 768px) {
