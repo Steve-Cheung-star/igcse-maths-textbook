@@ -239,3 +239,72 @@
 :root.sepia-mode .page {
   background-color: #f4ecd8 !important;
 }
+
+@media print {
+  /* 1. THE TRICK: Reset the counter to  */
+  /* This compensates for the hidden element pushing everything forward */
+  body { 
+    counter-reset: q-num 0; 
+  }
+
+  /* 2. Hide everything else */
+  header, .sidebar, .right-sidebar, footer, 
+  .acc-button-group, .calc-toggle-fab, 
+  .ai-container-card, button, .no-print,
+  starlight-tabs [role="tablist"] {
+    display: none !important;
+  }
+
+  /* 3. Force Panels to show */
+  starlight-tabs [role="tabpanel"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    margin-bottom: 2rem !important;
+  }
+
+  /* 4. THE OFFSET LOGIC */
+
+  /* If your Solution 0 was showing on the 1st Question,
+     it means the browser thinks the Question is EVEN. */
+
+  /* This targets what the browser thinks is ODD (The hidden element + Solutions) */
+  starlight-tabs [role="tabpanel"]:nth-of-type(odd) {
+    /* We don't increment here to keep it synced */
+  }
+
+  starlight-tabs [role="tabpanel"]:nth-of-type(odd)::before {
+    content: "Solution " counter(q-num);
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #666;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    border-left: 3px solid #eee;
+  }
+
+  /* This targets what the browser thinks is EVEN (The Questions) */
+  starlight-tabs [role="tabpanel"]:nth-of-type(even) {
+    counter-increment: q-num 1; /* Add 1 to -1 to get Question 1 */
+    border-top: 2px solid #000 !important;
+    padding-top: 1rem !important;
+  }
+
+  starlight-tabs [role="tabpanel"]:nth-of-type(even)::before {
+    content: "QUESTION " counter(q-num);
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+  }
+
+  /* 5. Cleanup & Reveal Details */
+  details { display: block !important; }
+  details summary { display: none !important; }
+  details > div { display: block !important; }
+  .main-frame, .content-panel { padding: 0 !important; margin: 0 !important; max-width: 100% !important; }
+  :root { --sl-color-bg: #ffffff !important; --sl-color-text: #000000 !important; }
+}

@@ -221,7 +221,7 @@ SOLUTION:
   };
 
   return (
-    <div className="ai-container-card">
+    <div className="ai-container-card no-print">
       <style>{`
         .ai-container-card {
           margin: 3rem 0;
