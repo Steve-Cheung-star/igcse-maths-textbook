@@ -3,6 +3,10 @@
 import RevisionLayout from "../../layouts/RevisionLayout.astro";
 import FlashcardEngine from "../../components/FlashcardEngine.jsx";
 
+// Import data statically to assist Vite's build crawler
+import igcseData from "../../data/flashcards/igcse.json";
+import ibData from "../../data/flashcards/ib-aisl.json";
+
 export const prerender = true;
 export async function getStaticPaths() {
   return [{ params: { course: "igcse" } }, { params: { course: "ib-aisl" } }];
@@ -21,28 +25,28 @@ const current = courseMeta[course] || {
   icon: "📚",
 };
 
+// Selection logic instead of dynamic await import
+const dataMap = {
+  igcse: igcseData,
+  "ib-aisl": ibData
+};
+
 let allCards = [];
-try {
-  const cardData = await import(`../../data/flashcards/${course}.json`);
-  
-  // Use import.meta.env.SITE if configured, otherwise fallback to localhost for dev
-  // If you haven't set 'site' in astro.config.mjs, we can check the DEV mode:
+const selectedData = dataMap[course];
+
+if (selectedData) {
   const isDev = import.meta.env.DEV;
   const baseUrl = isDev 
     ? "http://localhost:4321" 
     : "https://igcse-maths-textbook.vercel.app";
   
-  allCards = cardData.default.map(card => ({
+  // Use the data directly from the static import
+  allCards = selectedData.map(card => ({
     ...card,
-    // Prepend baseUrl only if lesson_url is a relative path (starts with /)
     lesson_url: card.lesson_url.startsWith('/') 
       ? `${baseUrl}${card.lesson_url}` 
       : card.lesson_url
   }));
-  
-} catch (e) {
-  console.error("Could not find flashcard data", e);
-  allCards = [];
 }
 ---
 
