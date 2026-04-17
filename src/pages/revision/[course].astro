@@ -3,9 +3,8 @@
 import RevisionLayout from "../../layouts/RevisionLayout.astro";
 import FlashcardEngine from "../../components/FlashcardEngine.jsx";
 
-// Import data statically to assist Vite's build crawler
+// 1. Static import for the file that DOES exist
 import igcseData from "../../data/flashcards/igcse.json";
-import ibData from "../../data/flashcards/ib-aisl.json";
 
 export const prerender = true;
 export async function getStaticPaths() {
@@ -13,6 +12,12 @@ export async function getStaticPaths() {
 }
 
 const { course } = Astro.params;
+
+// 2. Map the data. We use a placeholder empty array for ib-aisl.
+const dataMap = {
+  igcse: igcseData,
+  "ib-aisl": [] // Placeholder until you create the file
+};
 
 const courseMeta = {
   igcse: { name: "IGCSE Maths", color: "#f97316", icon: "🎓" },
@@ -25,12 +30,6 @@ const current = courseMeta[course] || {
   icon: "📚",
 };
 
-// Selection logic instead of dynamic await import
-const dataMap = {
-  igcse: igcseData,
-  "ib-aisl": ibData
-};
-
 let allCards = [];
 const selectedData = dataMap[course];
 
@@ -40,7 +39,6 @@ if (selectedData) {
     ? "http://localhost:4321" 
     : "https://igcse-maths-textbook.vercel.app";
   
-  // Use the data directly from the static import
   allCards = selectedData.map(card => ({
     ...card,
     lesson_url: card.lesson_url.startsWith('/') 
