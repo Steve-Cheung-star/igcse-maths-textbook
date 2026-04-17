@@ -23,9 +23,23 @@ const current = courseMeta[course] || {
 
 let allCards = [];
 try {
-  // Use import.meta.glob or a standard dynamic import
   const cardData = await import(`../../data/flashcards/${course}.json`);
-  allCards = cardData.default;
+  
+  // Use import.meta.env.SITE if configured, otherwise fallback to localhost for dev
+  // If you haven't set 'site' in astro.config.mjs, we can check the DEV mode:
+  const isDev = import.meta.env.DEV;
+  const baseUrl = isDev 
+    ? "http://localhost:4321" 
+    : "https://igcse-maths-textbook.vercel.app";
+  
+  allCards = cardData.default.map(card => ({
+    ...card,
+    // Prepend baseUrl only if lesson_url is a relative path (starts with /)
+    lesson_url: card.lesson_url.startsWith('/') 
+      ? `${baseUrl}${card.lesson_url}` 
+      : card.lesson_url
+  }));
+  
 } catch (e) {
   console.error("Could not find flashcard data", e);
   allCards = [];
@@ -69,7 +83,6 @@ try {
 </RevisionLayout>
 
 <style>
-  /* Your existing styles are great, just making sure container is centered */
   .rev-container {
     display: flex;
     flex-direction: column;

@@ -3,2383 +3,2383 @@
     "id": "ig-num-01", "topic": "Number", "subtopic": "Types of Numbers", "type": "Concept",
     "front": "What defines a **Rational Number**?",
     "back": "Any number that can be written as a fraction $\\frac{a}{b}$ where $a$ and $b$ are integers and $b \\neq 0$. This includes terminating and recurring decimals.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/01-types-of-numbers/"
+    "lesson_url": "/igcse/01-number/01-types-of-numbers/"
   },
   {
     "id": "ig-num-02", "topic": "Number", "subtopic": "Types of Numbers", "type": "Concept",
     "front": "Give two examples of **Irrational Numbers**.",
     "back": "$\\pi$, and non-perfect square roots like $\\sqrt{2}$ or $\\sqrt{7}$. They are decimals that go on forever without repeating.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/01-types-of-numbers/"
+    "lesson_url": "/igcse/01-number/01-types-of-numbers/"
   },
   {
     "id": "ig-num-03", "topic": "Number", "subtopic": "Prime Factorisation", "type": "Method",
     "front": "How do you find the **LCM** of two numbers using their prime factor trees?",
     "back": "Multiply the highest power of every prime factor that appears in either number's tree.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/01-types-of-numbers/"
+    "lesson_url": "/igcse/01-number/01-types-of-numbers/"
   },
   {
     "id": "ig-num-04", "topic": "Number", "subtopic": "Prime Factorisation", "type": "Method",
     "front": "How do you find the **HCF** of two numbers using their prime factor trees?",
     "back": "Multiply only the lowest power of the prime factors that the numbers **share**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/01-types-of-numbers/"
+    "lesson_url": "/igcse/01-number/01-types-of-numbers/"
   },
   {
     "id": "ig-set-01", "topic": "Sets", "subtopic": "Set Notation", "type": "Notation",
     "front": "What does **$A \\cup B$** mean?",
     "back": "The **Union**. It means all elements that are in A, OR in B, OR in both.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-set-02", "topic": "Sets", "subtopic": "Set Notation", "type": "Notation",
     "front": "What does **$A \\cap B$** mean?",
     "back": "The **Intersection**. It means only the elements that are in BOTH A and B.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-set-03", "topic": "Sets", "subtopic": "Set Notation", "type": "Notation",
     "front": "What does **$A'$** mean?",
     "back": "The **Complement** of A. It means everything in the universal set that is NOT inside A.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-set-04", "topic": "Sets", "subtopic": "Set Notation", "type": "Notation",
     "front": "What does **$n(A)$** mean?",
     "back": "The **Number of elements** inside set A.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-set-05", "topic": "Sets", "subtopic": "Set Notation", "type": "Notation",
     "front": "What does the symbol **$\\mathscr{E}$** or **$U$** represent in sets?",
     "back": "The **Universal Set**. The set containing all possible elements being considered in the problem.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-set-06", "topic": "Sets", "subtopic": "Set Notation", "type": "Notation",
     "front": "What does the symbol **$\\subset$** mean? (e.g., $A \\subset B$)",
     "back": "It means **\"is a proper subset of.\"** Every element in set A is also entirely contained within set B.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-set-07", "topic": "Sets", "subtopic": "Set Notation", "type": "Notation",
     "front": "What does the symbol **$\\in$** mean? (e.g., $x \\in A$)",
     "back": "It means **\"is an element of.\"** It states that $x$ lives inside set A.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-set-08", "topic": "Sets", "subtopic": "Set Notation", "type": "Notation",
     "front": "What do the symbols **$\\emptyset$** or **$\\{\\}$** represent?",
     "back": "The **Empty Set** (a set containing absolutely no elements).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-pct-01", "topic": "Number", "subtopic": "Percentages", "type": "Method",
     "front": "How do you calculate a **Percentage Change** (increase or decrease)?",
     "back": "Divide the actual change (difference) by the **original** amount, then multiply by 100.",
     "formula": "\\frac{\\text{Change}}{\\text{Original}} \\times 100",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/12-percentages/"
+    "lesson_url": "/igcse/01-number/12-percentages/"
   },
   {
     "id": "ig-pct-02", "topic": "Number", "subtopic": "Percentages", "type": "Method",
     "front": "If a jacket costs $80$ after a $20\\%$ discount, how do you find the **original price** (Reverse Percentage)?",
     "back": "The $80$ represents $80\\%$ of the original. Divide by $0.80$ to find $100\\%$. ($80 \\div 0.8 = 100$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/12-percentages/"
+    "lesson_url": "/igcse/01-number/12-percentages/"
   },
   {
     "id": "ig-pct-03", "topic": "Number", "subtopic": "Finance", "type": "Formula",
     "front": "What is the formula for calculating **Compound Interest**?",
     "back": "Principal multiplied by the multiplier raised to the power of the number of years.",
     "formula": "A = P \\left(1 + \\frac{r}{100}\\right)^n",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/15-money/"
+    "lesson_url": "/igcse/01-number/15-money/"
   },
   {
     "id": "ig-pct-04", "topic": "Number", "subtopic": "Finance", "type": "Formula",
     "front": "What is the formula for **Simple Interest**?",
     "back": "Principal $\\times$ Rate $\\times$ Time (in years), usually divided by 100 depending on how the rate is written.",
     "formula": "I = \\frac{P R T}{100}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/15-money/"
+    "lesson_url": "/igcse/01-number/15-money/"
   },
   {
     "id": "ig-pct-05", "topic": "Number", "subtopic": "Exponential Decay", "type": "Formula",
     "front": "What is the multiplier for a car's value **depreciating** by $3\\%$ every year?",
     "back": "Since it is decreasing, subtract $3\\%$ from $100\\%$ to get $97\\%$. The multiplier is **$0.97$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/16-exponential-growth-and-decay/"
+    "lesson_url": "/igcse/01-number/16-exponential-growth-and-decay/"
   },
   {
     "id": "ig-num-05", "topic": "Number", "subtopic": "Standard Form", "type": "Method",
     "front": "How do you **multiply** two numbers in standard form? $(A \\times 10^a) \\times (B \\times 10^b)$",
     "back": "Multiply the numbers ($A \\times B$) and add the powers ($a + b$). Then adjust if the new number is not between $1$ and $10$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/08-standard-form/"
+    "lesson_url": "/igcse/01-number/08-standard-form/"
   },
   {
     "id": "ig-num-06", "topic": "Number", "subtopic": "Standard Form", "type": "Concept",
     "front": "What is the rule for writing a number in **Standard Form**?",
     "back": "It must be written as $A \\times 10^n$, where $A$ is greater than or equal to 1, but strictly less than 10.",
     "formula": "1 \\le A < 10",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/08-standard-form/"
+    "lesson_url": "/igcse/01-number/08-standard-form/"
   },
   {
     "id": "ig-num-07", "topic": "Number", "subtopic": "Using a Calculator", "type": "Misconception",
     "front": "When writing answers from your calculator, what is the standard IGCSE accuracy rule if not specified?",
     "back": "Round to **3 significant figures** (or 1 decimal place for angles).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/13-using-a-calculator/"
+    "lesson_url": "/igcse/01-number/13-using-a-calculator/"
   },
   {
     "id": "ig-num-08", "topic": "Number", "subtopic": "Fractions", "type": "Method",
     "front": "How do you **divide** two fractions: $\\frac{a}{b} \\div \\frac{c}{d}$?",
     "back": "Keep the first fraction, flip the division to multiply, and find the reciprocal of the second fraction (Keep, Change, Flip).",
     "formula": "\\frac{a}{b} \\times \\frac{d}{c}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/04-fractions-decimals-and-percentages/"
+    "lesson_url": "/igcse/01-number/04-fractions-decimals-and-percentages/"
   },
   {
     "id": "ig-num-09", "topic": "Number", "subtopic": "Fractions", "type": "Misconception",
     "front": "True or False: $\\frac{1}{a} + \\frac{1}{b} = \\frac{1}{a+b}$",
     "back": "**False!** You cannot just add denominators. You must find a common denominator.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/04-fractions-decimals-and-percentages/"
+    "lesson_url": "/igcse/01-number/04-fractions-decimals-and-percentages/"
   },
   {
     "id": "ig-surd-01", "topic": "Surds", "subtopic": "Working with Surds", "type": "Method",
     "front": "How do you **rationalise the denominator** of $\\frac{a}{\\sqrt{b}}$?",
     "back": "Multiply both the numerator and the denominator by $\\sqrt{b}$.",
     "formula": "\\frac{a\\sqrt{b}}{b}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/17-surds/"
+    "lesson_url": "/igcse/01-number/17-surds/"
   },
   {
     "id": "ig-surd-02", "topic": "Surds", "subtopic": "Working with Surds", "type": "Rule",
     "front": "Simplify exactly: $\\sqrt{x} \\times \\sqrt{x}$",
     "back": "Multiplying a square root by itself cancels the root.",
     "formula": "x",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/17-surds/"
+    "lesson_url": "/igcse/01-number/17-surds/"
   },
   {
     "id": "ig-surd-03", "topic": "Surds", "subtopic": "Working with Surds", "type": "Method",
     "front": "How do you fully simplify a surd like $\\sqrt{50}$?",
     "back": "Find the largest square number that divides into it ($25$), split the root, and simplify.",
     "formula": "\\sqrt{25 \\times 2} = 5\\sqrt{2}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/17-surds/"
+    "lesson_url": "/igcse/01-number/17-surds/"
   },
   {
     "id": "ig-surd-04", "topic": "Surds", "subtopic": "Misconceptions", "type": "Fact",
     "front": "True or False: $\\sqrt{a} + \\sqrt{b} = \\sqrt{a+b}$",
     "back": "**False!** You can only add surds if the number inside the square root is exactly the same (e.g., $2\\sqrt{3} + 4\\sqrt{3} = 6\\sqrt{3}$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/17-surds/"
+    "lesson_url": "/igcse/01-number/17-surds/"
   },
   {
     "id": "ig-alg-01", "topic": "Indices", "subtopic": "Index Laws", "type": "Rule",
     "front": "What is any non-zero number to the **power of zero**? $x^0 = ?$",
     "back": "It always equals **1**.",
     "formula": "1",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/07-indices-i/"
+    "lesson_url": "/igcse/01-number/07-indices-i/"
   },
   {
     "id": "ig-alg-02", "topic": "Indices", "subtopic": "Negative Powers", "type": "Rule",
     "front": "What does a **negative index** do, e.g., $x^{-n}$?",
     "back": "It creates a reciprocal (flips it to the denominator).",
     "formula": "\\frac{1}{x^n}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/07-indices-i/"
+    "lesson_url": "/igcse/01-number/07-indices-i/"
   },
   {
     "id": "ig-alg-03", "topic": "Indices", "subtopic": "Fractional Powers", "type": "Rule",
     "front": "How do you evaluate a power with a numerator AND denominator, like $x^{\\frac{a}{b}}$?",
     "back": "The denominator $b$ is the root, and the numerator $a$ is the power.",
     "formula": "(\\sqrt[b]{x})^a",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/04-indices-ii/"
+    "lesson_url": "/igcse/02-algebra/04-indices-ii/"
   },
   {
     "id": "ig-alg-04", "topic": "Indices", "subtopic": "Index Laws", "type": "Rule",
     "front": "How do you simplify $(x^a)^b$?",
     "back": "Multiply the powers together.",
     "formula": "x^{ab}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/07-indices-i/"
+    "lesson_url": "/igcse/01-number/07-indices-i/"
   },
   {
     "id": "ig-alg-05", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Concept",
     "front": "What is the **Difference of Two Squares** formula?",
     "back": "A squared term minus another squared term factorises into two brackets: one with a plus, one with a minus.",
     "formula": "a^2 - b^2 = (a+b)(a-b)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-alg-06", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "How do you **factorise** a quadratic like $x^2 + 5x + 6$?",
     "back": "Find two numbers that **multiply** to the last number (6) and **add** to the middle number (5). (In this case, 2 and 3).",
     "formula": "(x+2)(x+3)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-alg-07", "topic": "Algebra", "subtopic": "Equations", "type": "Formula",
     "front": "What is the **Quadratic Formula** used to solve $ax^2 + bx + c = 0$?",
     "back": "Used when a quadratic cannot be factorised easily.",
     "formula": "x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-alg-08", "topic": "Algebra", "subtopic": "Equations", "type": "Concept",
     "front": "In the quadratic formula, what does it mean if the **discriminant** ($b^2 - 4ac$) is **negative**?",
     "back": "It means the equation has **no real solutions** (the graph does not cross the x-axis), because you cannot take the square root of a negative number in real numbers.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-alg-09", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "How do you expand three brackets, e.g., $(x+1)(x+2)(x+3)$?",
     "back": "Expand the first two brackets together to get a quadratic. Then multiply that entire quadratic by the third bracket.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-alg-10", "topic": "Algebra", "subtopic": "Equations", "type": "Method",
     "front": "When solving simultaneous equations using **Substitution**, what is the first step?",
     "back": "Rearrange one of the linear equations to make either $x$ or $y$ the subject, then substitute that expression into the other equation.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-alg-11", "topic": "Algebra", "subtopic": "Inequalities", "type": "Rule",
     "front": "What is the golden rule when you **multiply or divide an inequality by a negative number**?",
     "back": "You MUST **flip the inequality sign**. (e.g., $-2x < 6$ becomes $x > -3$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/06-inequalities/"
+    "lesson_url": "/igcse/02-algebra/06-inequalities/"
   },
   {
     "id": "ig-alg-12", "topic": "Algebra", "subtopic": "Inequalities", "type": "Notation",
     "front": "On a number line, what is the difference between an **open circle** $\\circ$ and a **closed circle** $\\bullet$?",
     "back": "An open circle means strictly less/greater than ($<$ or $>$). A closed circle means less/greater than OR EQUAL TO ($\\le$ or $\\ge$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/06-inequalities/"
+    "lesson_url": "/igcse/02-algebra/06-inequalities/"
   },
   {
     "id": "ig-alg-13", "topic": "Algebra", "subtopic": "Sequences", "type": "Formula",
     "front": "What is the formula for the $n$th term of a **Linear (Arithmetic) Sequence**?",
     "back": "$dn + c$ (where $d$ is the common difference, and $c$ is the 'zero term' found by subtracting $d$ from the first term).",
     "formula": "n^{th} \\text{ term} = dn + c",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/07-sequences/"
+    "lesson_url": "/igcse/02-algebra/07-sequences/"
   },
   {
     "id": "ig-alg-14", "topic": "Algebra", "subtopic": "Sequences", "type": "Concept",
     "front": "How do you identify if a sequence is **Quadratic**?",
     "back": "The FIRST differences between terms are changing, but the **SECOND differences are constant**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/07-sequences/"
+    "lesson_url": "/igcse/02-algebra/07-sequences/"
   },
   {
     "id": "ig-alg-15", "topic": "Algebra", "subtopic": "Sequences", "type": "Method",
     "front": "If the constant second difference of a quadratic sequence is $6$, what is the $n^2$ term?",
     "back": "The coefficient of $n^2$ is always **half of the second difference**. So it starts with $3n^2$.",
     "formula": "3n^2",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/07-sequences/"
+    "lesson_url": "/igcse/02-algebra/07-sequences/"
   },
   {
     "id": "ig-alg-16", "topic": "Algebra", "subtopic": "Sequences", "type": "Concept",
     "front": "What is a **Geometric Sequence**?",
     "back": "A sequence where you multiply (or divide) by the same constant ratio to get from one term to the next (e.g., $2, 6, 18, 54...$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/07-sequences/"
+    "lesson_url": "/igcse/02-algebra/07-sequences/"
   },
   {
     "id": "ig-alg-17", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "What does it mean to **Complete the Square** for $x^2 + bx + c$?",
     "back": "You rewrite it in the form $(x + \\frac{b}{2})^2 - (\\frac{b}{2})^2 + c$. This helps find the turning point of a parabola.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-alg-18", "topic": "Algebra", "subtopic": "Misconceptions", "type": "Fact",
     "front": "True or False: $(a + b)^2 = a^2 + b^2$",
     "back": "**False!** This is the most common mistake in IGCSE. You must expand the brackets: $(a+b)(a+b)$, which gives a middle term of $2ab$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/01-introduction-to-algebra/"
+    "lesson_url": "/igcse/02-algebra/01-introduction-to-algebra/"
   },
   {
     "id": "ig-alg-19", "topic": "Algebra", "subtopic": "Misconceptions", "type": "Fact",
     "front": "What is the difference between $-3^2$ and $(-3)^2$?",
     "back": "$-3^2 = -9$ (the negative is applied after squaring). <br/> $(-3)^2 = 9$ (the negative is squared too). Always use brackets in your GDC!",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/06-the-four-operations/"
+    "lesson_url": "/igcse/01-number/06-the-four-operations/"
   },
   {
     "id": "ig-fun-05", "topic": "Functions", "subtopic": "Asymptotes", "type": "Concept",
     "front": "What is an **asymptote** on a graph?",
     "back": "A line that a curve approaches indefinitely but never actually touches or crosses.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/05-asymptotes/"
+    "lesson_url": "/igcse/03-functions/05-asymptotes/"
   },
   {
     "id": "ig-fun-06", "topic": "Functions", "subtopic": "Transformations", "type": "Rule",
     "front": "How does the transformation **$f(x) + a$** affect the graph of a function?",
     "back": "It shifts (translates) the graph **vertically** up by $a$ units.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/06-transforming-graphs-of-functions/"
+    "lesson_url": "/igcse/03-functions/06-transforming-graphs-of-functions/"
   },
   {
     "id": "ig-fun-07", "topic": "Functions", "subtopic": "Transformations", "type": "Rule",
     "front": "How does the transformation **$f(x + a)$** affect the graph of a function?",
     "back": "It shifts (translates) the graph **horizontally** to the left by $a$ units (it does the opposite of what you might expect).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/06-transforming-graphs-of-functions/"
+    "lesson_url": "/igcse/03-functions/06-transforming-graphs-of-functions/"
   },
   {
     "id": "ig-fun-08", "topic": "Functions", "subtopic": "Logarithms", "type": "Rule",
     "front": "What is the logarithm addition rule: **$\\log(A) + \\log(B)$**?",
     "back": "Adding two logs with the same base is the same as multiplying their insides.",
     "formula": "\\log(A \\times B)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/07-logarithmic-function/"
+    "lesson_url": "/igcse/03-functions/07-logarithmic-function/"
   },
   {
     "id": "ig-fun-09", "topic": "Functions", "subtopic": "Logarithms", "type": "Rule",
     "front": "What is the logarithm power rule: **$\\log(A^n)$**?",
     "back": "The power can be brought down to the front to multiply the logarithm.",
     "formula": "n \\log(A)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/07-logarithmic-function/"
+    "lesson_url": "/igcse/03-functions/07-logarithmic-function/"
   },
   {
     "id": "ig-cg-01", "topic": "Coordinate Geometry", "subtopic": "Gradient", "type": "Formula",
     "front": "What is the formula for the **Gradient** ($m$) between two points $(x_1, y_1)$ and $(x_2, y_2)$?",
     "back": "Change in $y$ divided by the change in $x$ (Rise over Run).",
     "formula": "m = \\frac{y_2 - y_1}{x_2 - x_1}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/02-gradient-of-linear-graphs/"
+    "lesson_url": "/igcse/04-coordinate-geometry/02-gradient-of-linear-graphs/"
   },
   {
     "id": "ig-cg-02", "topic": "Coordinate Geometry", "subtopic": "Length & Midpoint", "type": "Formula",
     "front": "What is the formula for the **Midpoint** between two points?",
     "back": "Find the average of the $x$-coordinates and the average of the $y$-coordinates.",
     "formula": "\\left( \\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2} \\right)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/03-length-and-midpoint/"
+    "lesson_url": "/igcse/04-coordinate-geometry/03-length-and-midpoint/"
   },
   {
     "id": "ig-cg-03", "topic": "Coordinate Geometry", "subtopic": "Length & Midpoint", "type": "Formula",
     "front": "What is the formula for the **Distance (Length)** between two points?",
     "back": "This is just Pythagoras' Theorem applied to a coordinate grid.",
     "formula": "\\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/03-length-and-midpoint/"
+    "lesson_url": "/igcse/04-coordinate-geometry/03-length-and-midpoint/"
   },
   {
     "id": "ig-cg-04", "topic": "Coordinate Geometry", "subtopic": "Parallel Lines", "type": "Rule",
     "front": "What is true about the gradients of two **Parallel Lines**?",
     "back": "They have the **exact same gradient**.",
     "formula": "m_1 = m_2",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/05-parallel-lines/"
+    "lesson_url": "/igcse/04-coordinate-geometry/05-parallel-lines/"
   },
   {
     "id": "ig-cg-05", "topic": "Coordinate Geometry", "subtopic": "Perpendicular Lines", "type": "Rule",
     "front": "What is the relationship between the gradients of two **Perpendicular Lines**?",
     "back": "They are **negative reciprocals** of each other. If you multiply them together, they equal $-1$.",
     "formula": "m_1 \\times m_2 = -1",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/06-perpendicular-lines/"
+    "lesson_url": "/igcse/04-coordinate-geometry/06-perpendicular-lines/"
   },
   {
     "id": "ig-cg-06", "topic": "Coordinate Geometry", "subtopic": "Perpendicular Lines", "type": "Method",
     "front": "How do you find the equation of a **Perpendicular Bisector** between points A and B?",
     "back": "1. Find the midpoint of AB. <br/> 2. Find the gradient of AB. <br/> 3. Find the negative reciprocal of that gradient. <br/> 4. Substitute the midpoint and new gradient into $y=mx+c$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/06-perpendicular-lines/"
+    "lesson_url": "/igcse/04-coordinate-geometry/06-perpendicular-lines/"
   },
   {
     "id": "ig-geo-01", "topic": "Geometry", "subtopic": "Angles", "type": "Rule",
     "front": "What is the sum of the **Interior Angles** of an $n$-sided polygon?",
     "back": "Subtract $2$ from the number of sides, then multiply by $180^\\circ$.",
     "formula": "(n - 2) \\times 180^\\circ",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-geo-02", "topic": "Geometry", "subtopic": "Angles", "type": "Rule",
     "front": "What is the sum of the **Exterior Angles** of ANY polygon?",
     "back": "They always add up to exactly **$360^\\circ$**, regardless of how many sides it has.",
     "formula": "360^\\circ",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-geo-03", "topic": "Geometry", "subtopic": "Angles", "type": "Formula",
     "front": "How do you find a single **exterior angle** of a regular $n$-sided polygon?",
     "back": "Divide $360^\\circ$ by the number of sides.",
     "formula": "\\frac{360^\\circ}{n}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-geo-04", "topic": "Geometry", "subtopic": "Similarity", "type": "Rule",
     "front": "If the length scale factor between two similar shapes is **$k$**, what is the **Area scale factor**?",
     "back": "The area scale factor is the square of the length scale factor.",
     "formula": "k^2",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/03-similarity/"
+    "lesson_url": "/igcse/05-geometry/03-similarity/"
   },
   {
     "id": "ig-geo-05", "topic": "Geometry", "subtopic": "Similarity", "type": "Rule",
     "front": "If the length scale factor between two similar solids is **$k$**, what is the **Volume scale factor**?",
     "back": "The volume scale factor is the cube of the length scale factor.",
     "formula": "k^3",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/03-similarity/"
+    "lesson_url": "/igcse/05-geometry/03-similarity/"
   },
   {
     "id": "ig-cir-01", "topic": "Geometry", "subtopic": "Circle Theorems I", "type": "Rule",
     "front": "Circle Theorem: What is the angle in a **semicircle**?",
     "back": "A triangle drawn from the diameter to the circumference always makes a **$90^\\circ$ (right angle)**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/06-circle-theorems-i/"
+    "lesson_url": "/igcse/05-geometry/06-circle-theorems-i/"
   },
   {
     "id": "ig-cir-02", "topic": "Geometry", "subtopic": "Circle Theorems I", "type": "Rule",
     "front": "Circle Theorem: What is the relationship between the angle at the **centre** and the angle at the **circumference**?",
     "back": "The angle at the centre is always **twice** the angle at the circumference (when both are subtended by the same arc).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/06-circle-theorems-i/"
+    "lesson_url": "/igcse/05-geometry/06-circle-theorems-i/"
   },
   {
     "id": "ig-cir-03", "topic": "Geometry", "subtopic": "Circle Theorems I", "type": "Rule",
     "front": "Circle Theorem: Angles in the **same segment** are...",
     "back": "...**equal**. (Also known as the 'bowtie' or 'butterfly' theorem).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/06-circle-theorems-i/"
+    "lesson_url": "/igcse/05-geometry/06-circle-theorems-i/"
   },
   {
     "id": "ig-cir-04", "topic": "Geometry", "subtopic": "Circle Theorems I", "type": "Rule",
     "front": "Circle Theorem: What is true about the opposite angles in a **Cyclic Quadrilateral**?",
     "back": "They add up to **$180^\\circ$**.",
     "formula": "A + C = 180^\\circ",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/06-circle-theorems-i/"
+    "lesson_url": "/igcse/05-geometry/06-circle-theorems-i/"
   },
   {
     "id": "ig-cir-05", "topic": "Geometry", "subtopic": "Circle Theorems II", "type": "Rule",
     "front": "Circle Theorem: What angle is formed where a **tangent** meets a **radius**?",
     "back": "They always meet at exactly **$90^\\circ$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/07-circle-theorems-ii/"
+    "lesson_url": "/igcse/05-geometry/07-circle-theorems-ii/"
   },
   {
     "id": "ig-cir-06", "topic": "Geometry", "subtopic": "Circle Theorems II", "type": "Rule",
     "front": "Circle Theorem: What does the **Alternate Segment Theorem** state?",
     "back": "The angle between a tangent and a chord is equal to the angle in the alternate segment (the interior angle opposite to the chord).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/07-circle-theorems-ii/"
+    "lesson_url": "/igcse/05-geometry/07-circle-theorems-ii/"
   },
   {
     "id": "ig-cir-07", "topic": "Geometry", "subtopic": "Circle Theorems II", "type": "Rule",
     "front": "Circle Theorem: If two tangents are drawn from the same external point to a circle, what is true about their lengths?",
     "back": "They are exactly **equal in length**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/07-circle-theorems-ii/"
+    "lesson_url": "/igcse/05-geometry/07-circle-theorems-ii/"
   },
   {
     "id": "ig-cir-08", "topic": "Geometry", "subtopic": "Circle Theorems II", "type": "Rule",
     "front": "Circle Theorem: A perpendicular line drawn from the **centre** of a circle to a chord...",
     "back": "...always **bisects** the chord (cuts it perfectly in half).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/07-circle-theorems-ii/"
+    "lesson_url": "/igcse/05-geometry/07-circle-theorems-ii/"
   },
   {
     "id": "ig-men-01", "topic": "Mensuration", "subtopic": "Area and Perimeter", "type": "Formula",
     "front": "What is the formula for the area of a **Trapezium**?",
     "back": "Half the sum of the parallel sides, multiplied by the perpendicular height.",
     "formula": "\\frac{1}{2}(a+b)h",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/02-area-and-perimeter/"
+    "lesson_url": "/igcse/06-mensuration/02-area-and-perimeter/"
   },
   {
     "id": "ig-men-02", "topic": "Mensuration", "subtopic": "Units of Measure", "type": "Rule",
     "front": "How do you convert an Area from **cm²** to **m²**?",
     "back": "Divide by $10,000$ (because $100 \\times 100$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/01-units-of-measure/"
+    "lesson_url": "/igcse/06-mensuration/01-units-of-measure/"
   },
   {
     "id": "ig-men-03", "topic": "Mensuration", "subtopic": "Circles, Arcs & Sectors", "type": "Formula",
     "front": "Formula for the **Arc Length** of a sector with angle $\\theta$?",
     "back": "The fraction of the circle multiplied by the full circumference ($2\\pi r$).",
     "formula": "\\frac{\\theta}{360} \\times 2\\pi r",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/03-circles-arcs-and-sectors/"
+    "lesson_url": "/igcse/06-mensuration/03-circles-arcs-and-sectors/"
   },
   {
     "id": "ig-men-04", "topic": "Mensuration", "subtopic": "Circles, Arcs & Sectors", "type": "Formula",
     "front": "Formula for the **Area of a Sector** with angle $\\theta$?",
     "back": "The fraction of the circle multiplied by the full area ($\\pi r^2$).",
     "formula": "\\frac{\\theta}{360} \\times \\pi r^2",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/03-circles-arcs-and-sectors/"
+    "lesson_url": "/igcse/06-mensuration/03-circles-arcs-and-sectors/"
   },
   {
     "id": "ig-men-05", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Formula",
     "front": "What is the formula for the **Volume of a Cylinder**?",
     "back": "Area of the circular base multiplied by the height.",
     "formula": "\\pi r^2 h",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-men-06", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Formula",
     "front": "What is the formula for the **Curved Surface Area of a Cylinder**?",
     "back": "The circumference of the base multiplied by the height. (Don't forget to add $2\\pi r^2$ if the cylinder is solid/closed!).",
     "formula": "2\\pi rh",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-men-07", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Formula",
     "front": "What is the formula for the **Volume of a Prism**?",
     "back": "The area of the cross-section multiplied by its length.",
     "formula": "\\text{Area of cross-section} \\times \\text{length}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-trig-01", "topic": "Trigonometry", "subtopic": "Right-Angle Trigonometry", "type": "Concept",
     "front": "What does **SOH CAH TOA** stand for?",
     "back": "$\\sin = \\frac{\\text{Opp}}{\\text{Hyp}}$, $\\cos = \\frac{\\text{Adj}}{\\text{Hyp}}$, $\\tan = \\frac{\\text{Opp}}{\\text{Adj}}$",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/02-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/02-right-angle-trigonometry/"
   },
   {
     "id": "ig-trig-02", "topic": "Trigonometry", "subtopic": "Right-Angle Trigonometry", "type": "Method",
     "front": "How do you find a missing **Angle** using SOH CAH TOA on your calculator?",
     "back": "You must use the **inverse** trigonometric functions: $\\sin^{-1}$, $\\cos^{-1}$, or $\\tan^{-1}$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/02-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/02-right-angle-trigonometry/"
   },
   {
     "id": "ig-trig-03", "topic": "Trigonometry", "subtopic": "Exact Trig Ratios", "type": "Fact",
     "front": "What is the exact value of **$\\sin(30^\\circ)$**?",
     "back": "It is exactly a half.",
     "formula": "\\frac{1}{2}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/03-exact-trig-ratios/"
+    "lesson_url": "/igcse/07-trigonometry/03-exact-trig-ratios/"
   },
   {
     "id": "ig-trig-04", "topic": "Trigonometry", "subtopic": "Exact Trig Ratios", "type": "Fact",
     "front": "What is the exact value of **$\\cos(60^\\circ)$**?",
     "back": "It is exactly a half (the same as $\\sin(30^\\circ)$).",
     "formula": "\\frac{1}{2}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/03-exact-trig-ratios/"
+    "lesson_url": "/igcse/07-trigonometry/03-exact-trig-ratios/"
   },
   {
     "id": "ig-trig-05", "topic": "Trigonometry", "subtopic": "Exact Trig Ratios", "type": "Fact",
     "front": "What is the exact value of **$\\tan(45^\\circ)$**?",
     "back": "Because the opposite and adjacent sides of a $45^\\circ$ right triangle are equal, the ratio is exactly 1.",
     "formula": "1",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/03-exact-trig-ratios/"
+    "lesson_url": "/igcse/07-trigonometry/03-exact-trig-ratios/"
   },
   {
     "id": "ig-trig-06", "topic": "Trigonometry", "subtopic": "Exact Trig Ratios", "type": "Fact",
     "front": "What are the exact values of **$\\sin(60^\\circ)$** and **$\\cos(30^\\circ)$**?",
     "back": "They both equal root 3 over 2.",
     "formula": "\\frac{\\sqrt{3}}{2}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/03-exact-trig-ratios/"
+    "lesson_url": "/igcse/07-trigonometry/03-exact-trig-ratios/"
   },
   {
     "id": "ig-trig-07", "topic": "Trigonometry", "subtopic": "Non Right-Angle Trigonometry", "type": "Formula",
     "front": "What is the formula for the **Area of a Triangle** using Trigonometry?",
     "back": "You need two sides and the included angle (the angle sandwiched between them).",
     "formula": "\\frac{1}{2}ab \\sin(C)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
   },
   {
     "id": "ig-trig-08", "topic": "Trigonometry", "subtopic": "Non Right-Angle Trigonometry", "type": "Formula",
     "front": "What is the **Sine Rule** for finding a missing SIDE?",
     "back": "Put the sides (lowercase letters) on the top of the fraction.",
     "formula": "\\frac{a}{\\sin(A)} = \\frac{b}{\\sin(B)}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
   },
   {
     "id": "ig-trig-09", "topic": "Trigonometry", "subtopic": "Non Right-Angle Trigonometry", "type": "Formula",
     "front": "What is the **Sine Rule** for finding a missing ANGLE?",
     "back": "Put the angles ($\\sin(A)$) on the top of the fraction to make the algebra easier.",
     "formula": "\\frac{\\sin(A)}{a} = \\frac{\\sin(B)}{b}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
   },
   {
     "id": "ig-trig-10", "topic": "Trigonometry", "subtopic": "Non Right-Angle Trigonometry", "type": "Formula",
     "front": "What is the **Cosine Rule** for finding a missing SIDE?",
     "back": "Used when you have two sides and the included angle (SAS).",
     "formula": "a^2 = b^2 + c^2 - 2bc \\cos(A)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
   },
   {
     "id": "ig-trig-11", "topic": "Trigonometry", "subtopic": "Non Right-Angle Trigonometry", "type": "Formula",
     "front": "What is the rearranged **Cosine Rule** for finding a missing ANGLE?",
     "back": "Used when you know all three sides (SSS).",
     "formula": "\\cos(A) = \\frac{b^2 + c^2 - a^2}{2bc}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
   },
   {
     "id": "ig-trig-12", "topic": "Trigonometry", "subtopic": "3D Pythagoras & Trig", "type": "Formula",
     "front": "Formula for the **3D distance** between two points $(x_1, y_1, z_1)$ and $(x_2, y_2, z_2)$?",
     "back": "It's an extended version of Pythagoras' Theorem for 3 dimensions.",
     "formula": "\\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/06-3d-pythagoras-and-trig/"
+    "lesson_url": "/igcse/07-trigonometry/06-3d-pythagoras-and-trig/"
   },
   {
     "id": "ig-trig-13", "topic": "Trigonometry", "subtopic": "3D Pythagoras & Trig", "type": "Method",
     "front": "How do you find the angle between a **line and a plane** in 3D geometry?",
     "back": "Drop a perpendicular line from the point to the plane to form a right-angled triangle, then use standard SOH CAH TOA.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/06-3d-pythagoras-and-trig/"
+    "lesson_url": "/igcse/07-trigonometry/06-3d-pythagoras-and-trig/"
   },
   {
     "id": "ig-trig-14", "topic": "Trigonometry", "subtopic": "Trigonometric Functions", "type": "Concept",
     "front": "On a graph, what is the **period** of the $\\sin(x)$ and $\\cos(x)$ functions?",
     "back": "The graph repeats itself every **$360^\\circ$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/04-trigonometric-functions/"
+    "lesson_url": "/igcse/07-trigonometry/04-trigonometric-functions/"
   },
   {
     "id": "ig-trig-15", "topic": "Trigonometry", "subtopic": "Trigonometric Functions", "type": "Concept",
     "front": "On a graph, what is the **period** of the $\\tan(x)$ function?",
     "back": "The graph repeats itself every **$180^\\circ$**, and has vertical asymptotes at $90^\\circ, 270^\\circ$, etc.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/04-trigonometric-functions/"
+    "lesson_url": "/igcse/07-trigonometry/04-trigonometric-functions/"
   },
   {
     "id": "ig-vec-01", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Concept",
     "front": "What is the difference between a **scalar** and a **vector**?",
     "back": "A scalar only has magnitude (size). A vector has both magnitude AND direction.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-vec-02", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Notation",
     "front": "In a column vector $\\begin{pmatrix} x \\\\ y \\end{pmatrix}$, what do $x$ and $y$ represent?",
     "back": "$x$ is the horizontal movement (right is positive, left is negative). <br/> $y$ is the vertical movement (up is positive, down is negative).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-vec-03", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Rule",
     "front": "How do you know if two vectors are **parallel**?",
     "back": "One vector is a scalar multiple of the other (e.g., $\\mathbf{a}$ and $3\\mathbf{a}$ are parallel).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-vec-04", "topic": "Vectors & Transformations", "subtopic": "Magnitude of a Vector", "type": "Formula",
     "front": "What is the formula for the **magnitude** (length) of a vector $\\begin{pmatrix} x \\\\ y \\end{pmatrix}$?",
     "back": "Use Pythagoras' Theorem on the components.",
     "formula": "|\\mathbf{v}| = \\sqrt{x^2 + y^2}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/03-magnitude-of-a-vector/"
+    "lesson_url": "/igcse/08-transformations-vectors/03-magnitude-of-a-vector/"
   },
   {
     "id": "ig-vec-05", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Method",
     "front": "How do you find the vector $\\vec{AB}$ if you know the position vectors of $A$ and $B$?",
     "back": "Subtract the position vector of $A$ from the position vector of $B$.",
     "formula": "\\vec{AB} = \\mathbf{b} - \\mathbf{a}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-tra-01", "topic": "Vectors & Transformations", "subtopic": "Transformations", "type": "Method",
     "front": "What **two** pieces of information must you give to fully describe a **Translation**?",
     "back": "1. The word 'Translation'. <br/> 2. The column vector $\\begin{pmatrix} x \\\\ y \\end{pmatrix}$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/01-transformations/"
+    "lesson_url": "/igcse/08-transformations-vectors/01-transformations/"
   },
   {
     "id": "ig-tra-02", "topic": "Vectors & Transformations", "subtopic": "Transformations", "type": "Method",
     "front": "What **three** pieces of information must you give to fully describe a **Rotation**?",
     "back": "1. The angle (e.g., $90^\\circ$). <br/> 2. The direction (Clockwise or Anticlockwise). <br/> 3. The **centre of rotation** $(x, y)$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/01-transformations/"
+    "lesson_url": "/igcse/08-transformations-vectors/01-transformations/"
   },
   {
     "id": "ig-tra-03", "topic": "Vectors & Transformations", "subtopic": "Transformations", "type": "Method",
     "front": "What **two** pieces of information must you give to fully describe a **Reflection**?",
     "back": "1. The word 'Reflection'. <br/> 2. The equation of the **mirror line** (e.g., $y = x$, or $x = 3$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/01-transformations/"
+    "lesson_url": "/igcse/08-transformations-vectors/01-transformations/"
   },
   {
     "id": "ig-tra-04", "topic": "Vectors & Transformations", "subtopic": "Transformations", "type": "Method",
     "front": "What **three** pieces of information must you give to fully describe an **Enlargement**?",
     "back": "1. The word 'Enlargement'. <br/> 2. The **scale factor**. <br/> 3. The **centre of enlargement** $(x, y)$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/01-transformations/"
+    "lesson_url": "/igcse/08-transformations-vectors/01-transformations/"
   },
   {
     "id": "ig-tra-05", "topic": "Vectors & Transformations", "subtopic": "Transformations", "type": "Concept",
     "front": "What happens if an enlargement has a **negative scale factor**?",
     "back": "The shape is inverted (turned upside down) AND appears on the opposite side of the centre of enlargement.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/01-transformations/"
+    "lesson_url": "/igcse/08-transformations-vectors/01-transformations/"
   },
   {
     "id": "ig-tra-06", "topic": "Vectors & Transformations", "subtopic": "Transformations", "type": "Concept",
     "front": "What is an **Invariant Point**?",
     "back": "A point that does not move or change position after a transformation is applied.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/01-transformations/"
+    "lesson_url": "/igcse/08-transformations-vectors/01-transformations/"
   },
   {
     "id": "ig-prob-01", "topic": "Probability", "subtopic": "Introduction to Probability", "type": "Rule",
     "front": "What is the sum of the probabilities of all possible mutually exclusive outcomes?",
     "back": "They always add up to exactly **1**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/01-introduction-to-probability/"
+    "lesson_url": "/igcse/09-probability/01-introduction-to-probability/"
   },
   {
     "id": "ig-prob-02", "topic": "Probability", "subtopic": "Relative and Expected Frequencies", "type": "Formula",
     "front": "How do you calculate the **Expected Frequency** of an event happening?",
     "back": "Multiply the probability of the event by the total number of trials.",
     "formula": "P(\\text{event}) \\times \\text{Number of trials}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/02-relative-and-expected-frequencies/"
+    "lesson_url": "/igcse/09-probability/02-relative-and-expected-frequencies/"
   },
   {
     "id": "ig-prob-03", "topic": "Probability", "subtopic": "Combined Events", "type": "Concept",
     "front": "What does it mean if two events are **Mutually Exclusive**?",
     "back": "They cannot happen at the same time (e.g., rolling a 2 and a 3 on a single die).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-prob-04", "topic": "Probability", "subtopic": "Combined Events", "type": "Rule",
     "front": "If two events A and B are mutually exclusive, how do you find **$P(A \\text{ or } B)$**?",
     "back": "You **add** their probabilities.",
     "formula": "P(A) + P(B)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-prob-05", "topic": "Probability", "subtopic": "Combined Events", "type": "Concept",
     "front": "What does it mean if two events are **Independent**?",
     "back": "The outcome of one event does not affect the outcome of the other (e.g., flipping a coin and rolling a die).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-prob-06", "topic": "Probability", "subtopic": "Combined Events", "type": "Rule",
     "front": "If two events A and B are independent, how do you find **$P(A \\text{ and } B)$**?",
     "back": "You **multiply** their probabilities.",
     "formula": "P(A) \\times P(B)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-prob-07", "topic": "Probability", "subtopic": "Combined Events", "type": "Rule",
     "front": "When using a **Tree Diagram**, what do you do when moving **along** the branches?",
     "back": "You **multiply** the probabilities (representing 'AND').",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-prob-08", "topic": "Probability", "subtopic": "Combined Events", "type": "Rule",
     "front": "When using a **Tree Diagram**, what do you do with the final probabilities at the ends of the branches?",
     "back": "You **add** the successful outcomes together (representing 'OR').",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-prob-09", "topic": "Probability", "subtopic": "Combined Events", "type": "Concept",
     "front": "What is the difference between picking items **With Replacement** vs **Without Replacement**?",
     "back": "With replacement: probabilities stay the same. <br/> Without replacement: the total number of items decreases by 1 for the next pick (denominators change!).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-stat-01", "topic": "Statistics", "subtopic": "Discrete and Continuous Data", "type": "Concept",
     "front": "What is the difference between **Discrete** and **Continuous** data?",
     "back": "Discrete data can only take specific values (e.g., shoe size, number of people). Continuous data can take any value within a range and is measured (e.g., height, time).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/03-discrete-and-continuous-data/"
+    "lesson_url": "/igcse/10-statistics/03-discrete-and-continuous-data/"
   },
   {
     "id": "ig-stat-02", "topic": "Statistics", "subtopic": "Averages and Measures of Spread", "type": "Concept",
     "front": "Define the **Mode**.",
     "back": "The value or item that appears most frequently in a data set.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/04-averages-and-measures-of-spread/"
+    "lesson_url": "/igcse/10-statistics/04-averages-and-measures-of-spread/"
   },
   {
     "id": "ig-stat-03", "topic": "Statistics", "subtopic": "Averages and Measures of Spread", "type": "Concept",
     "front": "Define the **Median**.",
     "back": "The exact middle value when the data is arranged in ordered size from smallest to largest.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/04-averages-and-measures-of-spread/"
+    "lesson_url": "/igcse/10-statistics/04-averages-and-measures-of-spread/"
   },
   {
     "id": "ig-stat-04", "topic": "Statistics", "subtopic": "Averages and Measures of Spread", "type": "Formula",
     "front": "How do you calculate the **Mean** from a frequency table?",
     "back": "Multiply each value ($x$) by its frequency ($f$), add them all up, and divide by the total frequency.",
     "formula": "\\frac{\\sum fx}{\\sum f}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/04-averages-and-measures-of-spread/"
+    "lesson_url": "/igcse/10-statistics/04-averages-and-measures-of-spread/"
   },
   {
     "id": "ig-stat-05", "topic": "Statistics", "subtopic": "Averages and Measures of Spread", "type": "Method",
     "front": "How do you estimate the Mean for **grouped continuous data**?",
     "back": "Find the **midpoint** of each class interval, multiply it by the frequency, sum them up, and divide by the total frequency.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/04-averages-and-measures-of-spread/"
+    "lesson_url": "/igcse/10-statistics/04-averages-and-measures-of-spread/"
   },
   {
     "id": "ig-stat-06", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Method",
     "front": "How do you calculate the **angle for a sector in a Pie Chart**?",
     "back": "Divide the frequency by the total frequency, then multiply by $360^\\circ$.",
     "formula": "\\frac{\\text{Frequency}}{\\text{Total}} \\times 360^\\circ",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   },
   {
     "id": "ig-stat-07", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Formula",
     "front": "What goes on the vertical y-axis of a **Histogram**?",
     "back": "Frequency Density (NOT Frequency!).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   },
   {
     "id": "ig-stat-08", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Formula",
     "front": "What is the formula for **Frequency Density** in a histogram?",
     "back": "Frequency divided by the Class Width.",
     "formula": "\\text{FD} = \\frac{\\text{Frequency}}{\\text{Class Width}}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   },
   {
     "id": "ig-stat-09", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Concept",
     "front": "In a histogram, what does the **Area** of a bar represent?",
     "back": "The Area of the bar represents the **Frequency**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   },
   {
     "id": "ig-stat-10", "topic": "Statistics", "subtopic": "Cumulative Frequency Diagrams", "type": "Concept",
     "front": "What is **Cumulative Frequency**?",
     "back": "A running total of the frequencies. You add each frequency to the sum of the ones before it.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/08-cumulative-frequency-diagrams/"
+    "lesson_url": "/igcse/10-statistics/08-cumulative-frequency-diagrams/"
   },
   {
     "id": "ig-stat-11", "topic": "Statistics", "subtopic": "Cumulative Frequency Diagrams", "type": "Method",
     "front": "When plotting a Cumulative Frequency curve, which value of the class interval do you plot against?",
     "back": "Always plot against the **Upper Class Boundary** of the interval.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/08-cumulative-frequency-diagrams/"
+    "lesson_url": "/igcse/10-statistics/08-cumulative-frequency-diagrams/"
   },
   {
     "id": "ig-stat-12", "topic": "Statistics", "subtopic": "Cumulative Frequency Diagrams", "type": "Formula",
     "front": "What is the formula for the **Interquartile Range (IQR)**?",
     "back": "The Upper Quartile minus the Lower Quartile. It measures the spread of the middle 50% of the data.",
     "formula": "\\text{IQR} = UQ - LQ",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/08-cumulative-frequency-diagrams/"
+    "lesson_url": "/igcse/10-statistics/08-cumulative-frequency-diagrams/"
   },
   {
     "id": "ig-stat-13", "topic": "Statistics", "subtopic": "Interpreting Data", "type": "Method",
     "front": "If asked to **compare two distributions** (e.g., test scores of Class A vs Class B), what two things must you mention?",
     "back": "1. Compare an average (usually the **Median**). <br/> 2. Compare the spread (usually the **Interquartile Range** or Range).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/02-interpreting-data/"
+    "lesson_url": "/igcse/10-statistics/02-interpreting-data/"
   },
   {
     "id": "ig-stat-14", "topic": "Statistics", "subtopic": "Scatter Diagrams", "type": "Concept",
     "front": "What are the three types of **Correlation** on a scatter diagram?",
     "back": "Positive (both increase), Negative (one increases, one decreases), and None.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/07-scatter-diagrams/"
+    "lesson_url": "/igcse/10-statistics/07-scatter-diagrams/"
   },
   {
     "id": "ig-stat-15", "topic": "Statistics", "subtopic": "Scatter Diagrams", "type": "Rule",
     "front": "What specific point MUST a **Line of Best Fit** pass through?",
     "back": "The mean point: the coordinate made up of the mean of the x-values and the mean of the y-values.",
     "formula": "(\\bar{x}, \\bar{y})",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/07-scatter-diagrams/"
+    "lesson_url": "/igcse/10-statistics/07-scatter-diagrams/"
   },
   {
     "id": "ig-cg-07", "topic": "Coordinate Geometry", "subtopic": "Equations of Linear Graphs", "type": "Formula",
     "front": "What do $m$ and $c$ represent in the equation of a straight line, $y = mx + c$?",
     "back": "$m$ is the **gradient** and $c$ is the **y-intercept** (where the line crosses the y-axis).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
+    "lesson_url": "/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
   },
   {
     "id": "ig-cg-08", "topic": "Coordinate Geometry", "subtopic": "Equations of Linear Graphs", "type": "Method",
     "front": "How do you find the **y-intercept** ($c$) of a line if you know the gradient ($m$) and one point $(x, y)$?",
     "back": "Substitute the gradient and the coordinates of the point into $y = mx + c$, then solve for $c$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
+    "lesson_url": "/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
   },
   {
     "id": "ig-cg-09", "topic": "Coordinate Geometry", "subtopic": "Equations of Linear Graphs", "type": "Method",
     "front": "What is the alternative formula for finding the equation of a straight line if you have the gradient $m$ and a point $(x_1, y_1)$?",
     "back": "The point-gradient formula. Substitute your values and expand.",
     "formula": "y - y_1 = m(x - x_1)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
+    "lesson_url": "/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
   },
   {
     "id": "ig-geo-06", "topic": "Geometry", "subtopic": "Geometrical Terms", "type": "Fact",
     "front": "What are the names of polygons with **5, 6, 7, and 8** sides?",
     "back": "5 = Pentagon, 6 = Hexagon, 7 = Heptagon (or Septagon), 8 = Octagon.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/01-geometrical-terms/"
+    "lesson_url": "/igcse/05-geometry/01-geometrical-terms/"
   },
   {
     "id": "ig-geo-07", "topic": "Geometry", "subtopic": "Geometrical Terms", "type": "Fact",
     "front": "What are the names of polygons with **9 and 10** sides?",
     "back": "9 = Nonagon, 10 = Decagon.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/01-geometrical-terms/"
+    "lesson_url": "/igcse/05-geometry/01-geometrical-terms/"
   },
   {
     "id": "ig-geo-08", "topic": "Geometry", "subtopic": "Geometrical Terms", "type": "Definition",
     "front": "Define an **Acute**, **Obtuse**, and **Reflex** angle.",
     "back": "Acute: Less than $90^\\circ$. <br/> Obtuse: Between $90^\\circ$ and $180^\\circ$. <br/> Reflex: Between $180^\\circ$ and $360^\\circ$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/01-geometrical-terms/"
+    "lesson_url": "/igcse/05-geometry/01-geometrical-terms/"
   },
   {
     "id": "ig-geo-09", "topic": "Geometry", "subtopic": "Geometrical Terms", "type": "Concept",
     "front": "What is the difference between an **Isosceles** and a **Scalene** triangle?",
     "back": "Isosceles: Two sides are equal, and two base angles are equal. <br/> Scalene: All three sides and angles are different.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/01-geometrical-terms/"
+    "lesson_url": "/igcse/05-geometry/01-geometrical-terms/"
   },
   {
     "id": "ig-geo-10", "topic": "Geometry", "subtopic": "Geometrical Terms", "type": "Concept",
     "front": "What is a **Rhombus**?",
     "back": "A quadrilateral where all four sides are equal length. Its diagonals bisect each other exactly at $90^\\circ$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/01-geometrical-terms/"
+    "lesson_url": "/igcse/05-geometry/01-geometrical-terms/"
   },
   {
     "id": "ig-geo-11", "topic": "Geometry", "subtopic": "Geometrical Terms", "type": "Concept",
     "front": "What are the properties of a **Parallelogram**?",
     "back": "Opposite sides are parallel and equal. Opposite angles are equal. The diagonals bisect each other.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/01-geometrical-terms/"
+    "lesson_url": "/igcse/05-geometry/01-geometrical-terms/"
   },
   {
     "id": "ig-geo-12", "topic": "Geometry", "subtopic": "Geometrical Terms", "type": "Concept",
     "front": "What defines a **Trapezium**?",
     "back": "A quadrilateral with exactly one pair of parallel sides.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/01-geometrical-terms/"
+    "lesson_url": "/igcse/05-geometry/01-geometrical-terms/"
   },
   {
     "id": "ig-geo-13", "topic": "Geometry", "subtopic": "Symmetry", "type": "Concept",
     "front": "What is the **Order of Rotational Symmetry**?",
     "back": "The number of times a shape fits exactly onto itself during one complete $360^\\circ$ turn.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/04-symmetry/"
+    "lesson_url": "/igcse/05-geometry/04-symmetry/"
   },
   {
     "id": "ig-geo-14", "topic": "Geometry", "subtopic": "Symmetry", "type": "Fact",
     "front": "What is the order of rotational symmetry for a **Parallelogram**?",
     "back": "Order **2** (it fits onto itself upside down and right-side up).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/04-symmetry/"
+    "lesson_url": "/igcse/05-geometry/04-symmetry/"
   },
   {
     "id": "ig-geo-15", "topic": "Geometry", "subtopic": "Symmetry", "type": "Fact",
     "front": "How many **Planes of Symmetry** does a cube have?",
     "back": "**9** planes of symmetry (3 parallel to the faces, and 6 cutting diagonally through the edges).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/04-symmetry/"
+    "lesson_url": "/igcse/05-geometry/04-symmetry/"
   },
   {
     "id": "ig-geo-16", "topic": "Geometry", "subtopic": "Angles", "type": "Rule",
     "front": "What do **Corresponding Angles** look like, and are they equal?",
     "back": "They make an 'F' shape on parallel lines, and they are **equal**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-geo-17", "topic": "Geometry", "subtopic": "Angles", "type": "Rule",
     "front": "What do **Alternate Angles** look like, and are they equal?",
     "back": "They make a 'Z' shape on parallel lines, and they are **equal**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-geo-18", "topic": "Geometry", "subtopic": "Angles", "type": "Rule",
     "front": "What do **Co-interior Angles** look like, and what is their rule?",
     "back": "They make a 'C' or 'U' shape inside parallel lines. They are NOT equal; they **add up to $180^\\circ$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-rate-01", "topic": "Number", "subtopic": "Rates", "type": "Formula",
     "front": "What is the formula triangle for **Speed, Distance, and Time**?",
     "back": "Distance is on top. Speed and Time are on the bottom.",
     "formula": "S = \\frac{D}{T}, \\quad T = \\frac{D}{S}, \\quad D = S \\times T",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/11-rates/"
+    "lesson_url": "/igcse/01-number/11-rates/"
   },
   {
     "id": "ig-rate-02", "topic": "Number", "subtopic": "Rates", "type": "Method",
     "front": "How do you convert a speed from **km/h to m/s**?",
     "back": "Divide by $3.6$ (because you multiply by 1000 for metres, and divide by 3600 for seconds).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/11-rates/"
+    "lesson_url": "/igcse/01-number/11-rates/"
   },
   {
     "id": "ig-rate-03", "topic": "Number", "subtopic": "Rates", "type": "Method",
     "front": "How do you convert a speed from **m/s to km/h**?",
     "back": "Multiply by $3.6$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/11-rates/"
+    "lesson_url": "/igcse/01-number/11-rates/"
   },
   {
     "id": "ig-time-01", "topic": "Number", "subtopic": "Time", "type": "Misconception",
     "front": "How many minutes is **$1.5$ hours**?",
     "back": "**90 minutes**. (Do not say 1 hour and 50 minutes! $0.5$ of an hour is half an hour, which is 30 minutes).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/14-time/"
+    "lesson_url": "/igcse/01-number/14-time/"
   },
   {
     "id": "ig-time-02", "topic": "Number", "subtopic": "Time", "type": "Method",
     "front": "How do you convert a **decimal time** (e.g., $3.4$ hours) into hours and minutes?",
     "back": "Keep the whole number as hours (3 hours). Multiply the decimal part by 60 to get minutes ($0.4 \\times 60 = 24$ minutes).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/14-time/"
+    "lesson_url": "/igcse/01-number/14-time/"
   },
   {
     "id": "ig-num-10", "topic": "Number", "subtopic": "Power and Roots", "type": "Concept",
     "front": "What does a **Cube Root** $\\sqrt[3]{x}$ mean?",
     "back": "It asks: 'What number multiplied by itself THREE times equals $x$?' (e.g., $\\sqrt[3]{8} = 2$ because $2 \\times 2 \\times 2 = 8$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/03-power-and-roots/"
+    "lesson_url": "/igcse/01-number/03-power-and-roots/"
   },
   {
     "id": "ig-num-11", "topic": "Number", "subtopic": "Power and Roots", "type": "Fact",
     "front": "What are the first five **Cube Numbers**?",
     "back": "$1, 8, 27, 64, 125$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/03-power-and-roots/"
+    "lesson_url": "/igcse/01-number/03-power-and-roots/"
   },
   {
     "id": "ig-num-12", "topic": "Number", "subtopic": "Fractions, Decimals, and Percentages", "type": "Method",
     "front": "How do you convert a **recurring decimal** like $0.\\dot{7}$ into a fraction?",
     "back": "Let $x = 0.777...$, then $10x = 7.777...$. Subtract the two equations to get $9x = 7$, so the fraction is $\\frac{7}{9}$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/04-fractions-decimals-and-percentages/"
+    "lesson_url": "/igcse/01-number/04-fractions-decimals-and-percentages/"
   },
   {
     "id": "ig-alg-20", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "How do you **factorise by grouping** for an expression with four terms, e.g., $ax + ay + bx + by$?",
     "back": "Split it in half. Factorise the first two terms, then factorise the last two terms. You should end up with a matching bracket.",
     "formula": "a(x+y) + b(x+y) = (a+b)(x+y)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-alg-21", "topic": "Algebra", "subtopic": "Algebraic Fractions", "type": "Method",
     "front": "What must you do before you can **add or subtract** algebraic fractions?",
     "back": "You MUST find a **Common Denominator**, usually by multiplying the two denominators together.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/03-algebraic-fractions/"
+    "lesson_url": "/igcse/02-algebra/03-algebraic-fractions/"
   },
   {
     "id": "ig-alg-22", "topic": "Algebra", "subtopic": "Algebraic Fractions", "type": "Method",
     "front": "How do you **simplify** a complex algebraic fraction like $\\frac{x^2 - 9}{x^2 + 4x + 3}$?",
     "back": "Factorise the numerator completely. Factorise the denominator completely. Then cancel the matching brackets.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/03-algebraic-fractions/"
+    "lesson_url": "/igcse/02-algebra/03-algebraic-fractions/"
   },
   {
     "id": "ig-alg-23", "topic": "Algebra", "subtopic": "Equations", "type": "Method",
     "front": "When solving an equation with a fraction equal to another fraction (e.g., $\\frac{x}{3} = \\frac{x+1}{5}$), what is the fastest first step?",
     "back": "**Cross-multiply**. Multiply the numerator of each side by the denominator of the opposite side.",
     "formula": "5x = 3(x+1)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-fun-10", "topic": "Functions", "subtopic": "Finding a Quadratic", "type": "Formula",
     "front": "If a quadratic curve cuts the x-axis at $a$ and $b$, what is the **root form** of its equation?",
     "back": "It will have two brackets based on the roots, multiplied by some constant $k$.",
     "formula": "y = k(x-a)(x-b)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/04-finding-a-quadratic/"
+    "lesson_url": "/igcse/03-functions/04-finding-a-quadratic/"
   },
   {
     "id": "ig-fun-11", "topic": "Functions", "subtopic": "Finding a Quadratic", "type": "Formula",
     "front": "If a quadratic curve has a turning point (vertex) at $(h, k)$, what is the **vertex form** of its equation?",
     "back": "This is related to 'completing the square'.",
     "formula": "y = a(x-h)^2 + k",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/04-finding-a-quadratic/"
+    "lesson_url": "/igcse/03-functions/04-finding-a-quadratic/"
   },
   {
     "id": "ig-fun-12", "topic": "Functions", "subtopic": "Graphs of Functions", "type": "Concept",
     "front": "On a graph, what are the **roots** of an equation?",
     "back": "The roots are the **x-intercepts** (the exact points where the curve crosses the horizontal x-axis, meaning $y=0$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/01-graphs-of-functons/"
+    "lesson_url": "/igcse/03-functions/01-graphs-of-functons/"
   },
   {
     "id": "ig-fun-13", "topic": "Functions", "subtopic": "Sketching Graphs on a Calculator", "type": "Method",
     "front": "How do you find the **y-intercept** of any function algebraically?",
     "back": "Substitute $x = 0$ into the equation and solve for $y$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/02-sketching-graphs-on-a-calculator/"
+    "lesson_url": "/igcse/03-functions/02-sketching-graphs-on-a-calculator/"
   },
   {
     "id": "ig-fun-14", "topic": "Functions", "subtopic": "Graphs of Functions", "type": "Formula",
     "front": "What is the formula to find the **Axis of Symmetry** (the exact middle x-coordinate) of a quadratic $y = ax^2 + bx + c$?",
     "back": "This is the first part of the quadratic formula.",
     "formula": "x = \\frac{-b}{2a}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/01-graphs-of-functons/"
+    "lesson_url": "/igcse/03-functions/01-graphs-of-functons/"
   },
   {
     "id": "ig-men-08", "topic": "Mensuration", "subtopic": "Compound Shapes", "type": "Method",
     "front": "How do you find the area of a **Compound Shape**?",
     "back": "Split the complex shape into simpler, standard shapes (like rectangles and triangles). Calculate their areas separately, then add them together.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/05-compound-shapes/"
+    "lesson_url": "/igcse/06-mensuration/05-compound-shapes/"
   },
   {
     "id": "ig-stat-16", "topic": "Statistics", "subtopic": "Classifying Data", "type": "Definition",
     "front": "What is **Categorical Data**?",
     "back": "Data that describes categories or groups, rather than numbers (e.g., eye colour, car brands, favourite subjects).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/01-classifying-data/"
+    "lesson_url": "/igcse/10-statistics/01-classifying-data/"
   },
   {
     "id": "ig-geo-19", "topic": "Geometry", "subtopic": "Angles", "type": "Rule",
     "front": "What are the three strict rules for writing a **Bearing**?",
     "back": "1. Always measure from the **North** line. <br/> 2. Always measure **clockwise**. <br/> 3. Always write it as **three digits** (e.g., $045^\\circ$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-geo-20", "topic": "Geometry", "subtopic": "Angles", "type": "Method",
     "front": "If the bearing of $B$ from $A$ is $070^\\circ$, how do you find the bearing of $A$ from $B$ (the reciprocal bearing)?",
     "back": "Add $180^\\circ$ if the original is less than $180^\\circ$, or subtract $180^\\circ$ if the original is more than $180^\\circ$. ($070 + 180 = 250^\\circ$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-trig-16", "topic": "Trigonometry", "subtopic": "Right-Angle Trigonometry", "type": "Definition",
     "front": "What is the difference between the **Angle of Elevation** and the **Angle of Depression**?",
     "back": "Elevation is looking UP from the horizontal. Depression is looking DOWN from the horizontal. (Thanks to alternate angles, they are equal!).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/02-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/02-right-angle-trigonometry/"
   },
   {
     "id": "ig-set-09", "topic": "Sets", "subtopic": "Set Notation", "type": "Method",
     "front": "In a Venn diagram, what region do you shade for **$A \\cap B'$**?",
     "back": "You shade the part of circle A that does NOT overlap with circle B. (It means 'In A, AND NOT in B').",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-set-10", "topic": "Sets", "subtopic": "Set Notation", "type": "Method",
     "front": "In a Venn diagram, what region do you shade for **$(A \\cup B)'$**?",
     "back": "You shade everything on the OUTSIDE of both circles. (It means 'NOT in the union of A and B').",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-set-11", "topic": "Sets", "subtopic": "Set Notation", "type": "Concept",
     "front": "How do you draw a Venn diagram if it is stated that $A \\cap B = \\emptyset$?",
     "back": "You draw two separate circles that **do not overlap** at all (they are mutually exclusive).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-num-13", "topic": "Number", "subtopic": "Ratio and Proportion", "type": "Method",
     "front": "How do you share an amount into a given **Ratio** (e.g., Share $40$ in the ratio $3:5$)?",
     "back": "1. Add the ratio parts to find the total parts ($3+5=8$). <br/> 2. Divide the total amount by total parts to find 1 part ($40 \\div 8 = 5$). <br/> 3. Multiply by the original ratio numbers.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/10-ratio-and-proportion/"
+    "lesson_url": "/igcse/01-number/10-ratio-and-proportion/"
   },
   {
     "id": "ig-num-14", "topic": "Number", "subtopic": "Ratio and Proportion", "type": "Method",
     "front": "A map scale is $1 : 50,000$. How do you convert $1$ cm on the map to **kilometres** in real life?",
     "back": "The $50,000$ is in cm. Divide by $100$ to get metres ($500$ m), then divide by $1000$ to get kilometres ($0.5$ km).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/10-ratio-and-proportion/"
+    "lesson_url": "/igcse/01-number/10-ratio-and-proportion/"
   },
   {
     "id": "ig-num-15", "topic": "Number", "subtopic": "Ratio and Proportion", "type": "Rule",
     "front": "If the linear scale of a map is $1 : n$, what is the **Area Scale Factor**?",
     "back": "You must square the linear scale. The area scale is **$1 : n^2$**.",
     "formula": "1^2 : n^2",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/10-ratio-and-proportion/"
+    "lesson_url": "/igcse/01-number/10-ratio-and-proportion/"
   },
   {
     "id": "ig-alg-24", "topic": "Algebra", "subtopic": "Equations", "type": "Concept",
     "front": "What does the solution to a pair of **Simultaneous Linear Equations** represent on a graph?",
     "back": "It represents the exact $(x, y)$ coordinate where the two straight lines **intersect**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-alg-25", "topic": "Algebra", "subtopic": "Equations", "type": "Method",
     "front": "When using the **Elimination** method for simultaneous equations, what must you do if the coefficients of $x$ (or $y$) do not match?",
     "back": "Multiply one or both entire equations by a constant so that the coefficients of $x$ (or $y$) become the same number.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-alg-26", "topic": "Algebra", "subtopic": "Indices II", "type": "Rule",
     "front": "How do you evaluate a **negative fractional index**, e.g., $x^{-\\frac{1}{2}}$?",
     "back": "Deal with the negative first by flipping it to the denominator, then apply the root. It becomes $\\frac{1}{\\sqrt{x}}$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/04-indices-ii/"
+    "lesson_url": "/igcse/02-algebra/04-indices-ii/"
   },
   {
     "id": "ig-fun-15", "topic": "Functions", "subtopic": "Functions", "type": "Notation",
     "front": "What is the difference between $f(x)$ and $f(3)$?",
     "back": "$f(x)$ is the algebraic rule. $f(3)$ means you must substitute the number $3$ in place of every $x$ and evaluate the answer.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/03-functions/"
+    "lesson_url": "/igcse/03-functions/03-functions/"
   },
   {
     "id": "ig-fun-16", "topic": "Functions", "subtopic": "Functions", "type": "Method",
     "front": "How do you solve an equation like $f(x) = 10$?",
     "back": "Take the algebraic expression for $f(x)$, set it equal to $10$, and use algebra to solve for $x$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/03-functions/"
+    "lesson_url": "/igcse/03-functions/03-functions/"
   },
   {
     "id": "ig-stat-17", "topic": "Statistics", "subtopic": "Cumulative Frequency Diagrams", "type": "Method",
     "front": "How do you find the **Median** from a Cumulative Frequency graph?",
     "back": "1. Find $50\\%$ (half) of the total cumulative frequency on the y-axis. <br/> 2. Draw a horizontal line to the curve. <br/> 3. Read straight down to the x-axis.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/08-cumulative-frequency-diagrams/"
+    "lesson_url": "/igcse/10-statistics/08-cumulative-frequency-diagrams/"
   },
   {
     "id": "ig-stat-18", "topic": "Statistics", "subtopic": "Cumulative Frequency Diagrams", "type": "Method",
     "front": "How do you find the **Upper Quartile (UQ)** from a Cumulative Frequency graph?",
     "back": "1. Find $75\\%$ (three-quarters) of the total cumulative frequency on the y-axis. <br/> 2. Draw across to the curve and down to the x-axis.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/08-cumulative-frequency-diagrams/"
+    "lesson_url": "/igcse/10-statistics/08-cumulative-frequency-diagrams/"
   },
   {
     "id": "ig-stat-19", "topic": "Statistics", "subtopic": "Scatter Diagrams", "type": "Definition",
     "front": "What is the danger of **Extrapolation** on a scatter diagram?",
     "back": "Extrapolation means predicting a value outside the range of your plotted data. It is unreliable because the trend might not continue.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/07-scatter-diagrams/"
+    "lesson_url": "/igcse/10-statistics/07-scatter-diagrams/"
   },
   {
     "id": "ig-prob-10", "topic": "Probability", "subtopic": "Introduction to Probability", "type": "Rule",
     "front": "If the probability of an event happening is $P(A)$, what is the probability of it **NOT happening**?",
     "back": "One minus the probability of it happening.",
     "formula": "1 - P(A)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/01-introduction-to-probability/"
+    "lesson_url": "/igcse/09-probability/01-introduction-to-probability/"
   },
   {
     "id": "ig-prob-11", "topic": "Probability", "subtopic": "Relative and Expected Frequencies", "type": "Definition",
     "front": "What is the difference between **Theoretical Probability** and **Relative Frequency** (Experimental Probability)?",
     "back": "Theoretical is what *should* happen based on math (e.g., $1/6$ for a die). Relative frequency is based on the results of an actual experiment.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/02-relative-and-expected-frequencies/"
+    "lesson_url": "/igcse/09-probability/02-relative-and-expected-frequencies/"
   },
   {
     "id": "ig-prob-12", "topic": "Probability", "subtopic": "Combined Events", "type": "Method",
     "front": "How do you calculate the probability of getting **'At least one'** success in multiple trials?",
     "back": "Find the probability of getting ZERO successes, and subtract it from 1. This is much faster than adding up all the other branches.",
     "formula": "1 - P(\\text{None})",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-alg-27", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "How do you expand double brackets: $(a+b)(c+d)$?",
     "back": "Multiply everything in the first bracket by everything in the second bracket. (Often remembered as **FOIL**: First, Outside, Inside, Last).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-num-16", "topic": "Number", "subtopic": "Order of Operations", "type": "Rule",
     "front": "What is the correct **Order of Operations** for calculations?",
     "back": "Brackets, Indices (Powers/Roots), Division & Multiplication, Addition & Subtraction. (BIDMAS / BODMAS).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/06-the-four-operations/"
+    "lesson_url": "/igcse/01-number/06-the-four-operations/"
   },
   {
     "id": "ig-cg-10", "topic": "Coordinate Geometry", "subtopic": "Equations of Linear Graphs", "type": "Rule",
     "front": "What is the equation of the **x-axis**?",
     "back": "The equation is **$y = 0$**, because every coordinate on the horizontal axis has a y-value of zero.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
+    "lesson_url": "/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
   },
   {
     "id": "ig-cg-11", "topic": "Coordinate Geometry", "subtopic": "Equations of Linear Graphs", "type": "Rule",
     "front": "What is the equation of the **y-axis**?",
     "back": "The equation is **$x = 0$**, because every coordinate on the vertical axis has an x-value of zero.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
+    "lesson_url": "/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
   },
   {
     "id": "ig-alg-28", "topic": "Algebra", "subtopic": "Inequalities", "type": "Method",
     "front": "How do you solve a **double inequality** like $3 < 2x + 1 \\le 9$?",
     "back": "Whatever you do to the middle to isolate $x$, you must simultaneously do to BOTH the left and the right sides.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/06-inequalities/"
+    "lesson_url": "/igcse/02-algebra/06-inequalities/"
   },
   {
     "id": "ig-fun-17", "topic": "Functions", "subtopic": "Graphs of Functions", "type": "Concept",
     "front": "For a quadratic $y = ax^2 + bx + c$, what happens to the shape of the parabola if $a$ is **negative**?",
     "back": "The parabola is inverted into a 'hill' or 'n-shape' (it has a maximum turning point instead of a minimum).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/01-graphs-of-functons/"
+    "lesson_url": "/igcse/03-functions/01-graphs-of-functons/"
   },
   {
     "id": "ig-geo-21", "topic": "Geometry", "subtopic": "Angles", "type": "Rule",
     "front": "What is the angle rule for angles meeting at a **point**?",
     "back": "Angles around a full point always add up to exactly **$360^\\circ$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-geo-22", "topic": "Geometry", "subtopic": "Angles", "type": "Rule",
     "front": "What is the angle rule for angles on a **straight line**?",
     "back": "Angles on a straight line always add up to exactly **$180^\\circ$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-geo-23", "topic": "Geometry", "subtopic": "Angles", "type": "Rule",
     "front": "What is the angle rule for **Vertically Opposite** angles?",
     "back": "When two straight lines cross, the angles opposite each other are exactly **equal**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-men-09", "topic": "Mensuration", "subtopic": "Area and Perimeter", "type": "Formula",
     "front": "What is the formula for the area of a **Parallelogram**?",
     "back": "Base multiplied by the **perpendicular** height (not the slanted side).",
     "formula": "b \\times h",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/02-area-and-perimeter/"
+    "lesson_url": "/igcse/06-mensuration/02-area-and-perimeter/"
   },
   {
     "id": "ig-men-10", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Formula",
     "front": "What is the formula for the **Volume of a Cone**?",
     "back": "One-third of the area of the circular base multiplied by the vertical height.",
     "formula": "\\frac{1}{3} \\pi r^2 h",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-men-11", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Formula",
     "front": "What is the formula for the **Volume of a Sphere**?",
     "back": "Four-thirds pi r cubed.",
     "formula": "\\frac{4}{3} \\pi r^3",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-men-12", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Formula",
     "front": "What is the formula for the **Surface Area of a Sphere**?",
     "back": "Four times the area of a circle.",
     "formula": "4 \\pi r^2",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-vec-06", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Method",
     "front": "How do you **multiply a vector by a scalar**?",
     "back": "Multiply both the top number ($x$) and the bottom number ($y$) by that scalar.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-vec-07", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Concept",
     "front": "What does the vector **$-\\mathbf{a}$** mean compared to vector $\\mathbf{a}$?",
     "back": "It has the exact same magnitude (length) but points in the **completely opposite direction**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-stat-20", "topic": "Statistics", "subtopic": "Averages and Measures of Spread", "type": "Formula",
     "front": "What is the formula for the **Range**?",
     "back": "The highest value minus the lowest value in a data set.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/04-averages-and-measures-of-spread/"
+    "lesson_url": "/igcse/10-statistics/04-averages-and-measures-of-spread/"
   },
   {
     "id": "ig-alg-29", "topic": "Algebra", "subtopic": "Proportion", "type": "Concept",
     "front": "What does the symbol **$\\propto$** mean?",
     "back": "It means **'is proportional to'**. It is replaced by '$= k$' when forming an algebraic equation.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/08-proportion/"
+    "lesson_url": "/igcse/02-algebra/08-proportion/"
   },
   {
     "id": "ig-alg-30", "topic": "Algebra", "subtopic": "Equations", "type": "Method",
     "front": "How do you solve a quadratic equation of the form $x^2 - A = 0$?",
     "back": "Rearrange to get $x^2 = A$, then take the square root. Always remember the answer will be **plus or minus** ($\\pm \\sqrt{A}$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-alg-31", "topic": "Algebra", "subtopic": "Equations", "type": "Method",
     "front": "If an equation has a fraction across the whole side, e.g., $\\frac{x+2}{4} = 5$, what is the first step?",
     "back": "Multiply both sides by the denominator ($4$) to clear the fraction ($x+2 = 20$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-alg-32", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Fact",
     "front": "When factorising, what must you ALWAYS look for first before trying double brackets or difference of two squares?",
     "back": "A **common factor** to take out into a single bracket (e.g., $2x^2 + 4x$ becomes $2x(x + 2)$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-num-17", "topic": "Number", "subtopic": "Estimation and Rounding", "type": "Method",
     "front": "How do you **Estimate** the answer to a complex calculation?",
     "back": "Round every single number in the calculation to **1 significant figure** BEFORE doing any math.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/09-estimation-and-rounding/"
+    "lesson_url": "/igcse/01-number/09-estimation-and-rounding/"
   },
   {
     "id": "ig-num-18", "topic": "Number", "subtopic": "Fractions, Decimals, Percentages", "type": "Method",
     "front": "How do you turn a fraction into a **percentage** without a calculator?",
     "back": "Find an equivalent fraction with a denominator of $100$. The numerator is your percentage.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/04-fractions-decimals-and-percentages/"
+    "lesson_url": "/igcse/01-number/04-fractions-decimals-and-percentages/"
   },
   {
     "id": "ig-fun-18", "topic": "Functions", "subtopic": "Transformations", "type": "Rule",
     "front": "What does the transformation **$-f(x)$** do to a graph?",
     "back": "It reflects the entire graph in the **x-axis** (it flips it vertically).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/06-transforming-graphs-of-functions/"
+    "lesson_url": "/igcse/03-functions/06-transforming-graphs-of-functions/"
   },
   {
     "id": "ig-fun-19", "topic": "Functions", "subtopic": "Transformations", "type": "Rule",
     "front": "What does the transformation **$f(-x)$** do to a graph?",
     "back": "It reflects the entire graph in the **y-axis** (it flips it horizontally).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/06-transforming-graphs-of-functions/"
+    "lesson_url": "/igcse/03-functions/06-transforming-graphs-of-functions/"
   },
   {
     "id": "ig-trig-17", "topic": "Trigonometry", "subtopic": "3D Pythagoras & Trig", "type": "Method",
     "front": "To find the length of the longest diagonal in a 3D cuboid, what theorem do you use?",
     "back": "You use Pythagoras' theorem twice, or the 3D version: $\\sqrt{l^2 + w^2 + h^2}$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/06-3d-pythagoras-and-trig/"
+    "lesson_url": "/igcse/07-trigonometry/06-3d-pythagoras-and-trig/"
   },
   {
     "id": "ig-geo-24", "topic": "Geometry", "subtopic": "Similarity", "type": "Concept",
     "front": "What does it mean if two triangles are **Congruent**?",
     "back": "They are exactly the same size and shape. All corresponding sides and angles are equal.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/03-similarity/"
+    "lesson_url": "/igcse/05-geometry/03-similarity/"
   },
   {
     "id": "ig-geo-25", "topic": "Geometry", "subtopic": "Similarity", "type": "Rule",
     "front": "What does the congruence criterion **SSS** stand for?",
     "back": "Side, Side, Side. If all three sides of one triangle are equal to all three sides of another, they are congruent.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/03-similarity/"
+    "lesson_url": "/igcse/05-geometry/03-similarity/"
   },
   {
     "id": "ig-geo-26", "topic": "Geometry", "subtopic": "Similarity", "type": "Rule",
     "front": "What does the congruence criterion **SAS** stand for?",
     "back": "Side, Angle, Side. Two sides and the INCLUDED angle must be equal.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/03-similarity/"
+    "lesson_url": "/igcse/05-geometry/03-similarity/"
   },
   {
     "id": "ig-geo-27", "topic": "Geometry", "subtopic": "Similarity", "type": "Rule",
     "front": "What does the congruence criterion **ASA** stand for?",
     "back": "Angle, Side, Angle. Two angles and the INCLUDED side must be equal.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/03-similarity/"
+    "lesson_url": "/igcse/05-geometry/03-similarity/"
   },
   {
     "id": "ig-geo-28", "topic": "Geometry", "subtopic": "Similarity", "type": "Rule",
     "front": "What does the congruence criterion **RHS** stand for?",
     "back": "Right-angle, Hypotenuse, Side. Specifically for right-angled triangles.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/03-similarity/"
+    "lesson_url": "/igcse/05-geometry/03-similarity/"
   },
   {
     "id": "ig-alg-33", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "When changing the subject of a formula, what is the rule if the new subject appears in **two different terms** (e.g., $ax + bx = y$)?",
     "back": "You must move all terms with the new subject to one side, **factorise** it out into a single bracket, and then divide.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-alg-34", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "How do you change the subject of $y = \\sqrt{x + 2}$ to make $x$ the subject?",
     "back": "Square both sides first ($y^2 = x + 2$), then subtract 2.",
     "formula": "x = y^2 - 2",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-alg-35", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "How do you change the subject of $y = \\frac{1}{x}$ to make $x$ the subject?",
     "back": "Multiply both sides by $x$, then divide by $y$. (They simply swap places).",
     "formula": "x = \\frac{1}{y}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-fun-20", "topic": "Functions", "subtopic": "Functions", "type": "Definition",
     "front": "In the context of functions, what is the **Domain**?",
     "back": "The set of all possible **input values** (the x-values) that a function can accept.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/03-functions/"
+    "lesson_url": "/igcse/03-functions/03-functions/"
   },
   {
     "id": "ig-fun-21", "topic": "Functions", "subtopic": "Functions", "type": "Definition",
     "front": "In the context of functions, what is the **Range**?",
     "back": "The set of all possible **output values** (the y-values) that a function can produce.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/03-functions/"
+    "lesson_url": "/igcse/03-functions/03-functions/"
   },
   {
     "id": "ig-stat-21", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Concept",
     "front": "What **five** values are shown on a Box-and-Whisker Plot?",
     "back": "1. Minimum, 2. Lower Quartile, 3. Median, 4. Upper Quartile, 5. Maximum.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   },
   {
     "id": "ig-stat-22", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Method",
     "front": "How do you find the **Interquartile Range (IQR)** from a Box Plot?",
     "back": "Subtract the value at the start of the box (Lower Quartile) from the value at the end of the box (Upper Quartile).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   },
   {
     "id": "ig-stat-23", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Concept",
     "front": "In a Box Plot, what percentage of the data is contained inside the 'box'?",
     "back": "Exactly **$50\\%$** of the data lies between the Lower and Upper Quartiles.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   },
   {
     "id": "ig-trig-18", "topic": "Trigonometry", "subtopic": "Exact Trig Ratios", "type": "Fact",
     "front": "What is the exact value of **$\\sin(0^\\circ)$** and **$\\cos(90^\\circ)$**?",
     "back": "They both equal **0**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/03-exact-trig-ratios/"
+    "lesson_url": "/igcse/07-trigonometry/03-exact-trig-ratios/"
   },
   {
     "id": "ig-trig-19", "topic": "Trigonometry", "subtopic": "Exact Trig Ratios", "type": "Fact",
     "front": "What is the exact value of **$\\cos(0^\\circ)$** and **$\\sin(90^\\circ)$**?",
     "back": "They both equal **1**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/03-exact-trig-ratios/"
+    "lesson_url": "/igcse/07-trigonometry/03-exact-trig-ratios/"
   },
   {
     "id": "ig-trig-20", "topic": "Trigonometry", "subtopic": "Exact Trig Ratios", "type": "Fact",
     "front": "What is the exact value of **$\\tan(30^\\circ)$**?",
     "back": "One over root 3 (or root 3 over 3 if rationalised).",
     "formula": "\\frac{1}{\\sqrt{3}} \\text{ or } \\frac{\\sqrt{3}}{3}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/03-exact-trig-ratios/"
+    "lesson_url": "/igcse/07-trigonometry/03-exact-trig-ratios/"
   },
   {
     "id": "ig-trig-21", "topic": "Trigonometry", "subtopic": "Exact Trig Ratios", "type": "Fact",
     "front": "What is the exact value of **$\\tan(60^\\circ)$**?",
     "back": "Root 3.",
     "formula": "\\sqrt{3}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/03-exact-trig-ratios/"
+    "lesson_url": "/igcse/07-trigonometry/03-exact-trig-ratios/"
   },
   {
     "id": "ig-men-13", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Formula",
     "front": "What is the formula for the **Volume of a Pyramid**?",
     "back": "One-third of the base area multiplied by the vertical height.",
     "formula": "\\frac{1}{3} \\times \\text{Base Area} \\times h",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-men-14", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Formula",
     "front": "What is the formula for the **Curved Surface Area of a Cone**?",
     "back": "Pi times radius times the *slant* height ($l$).",
     "formula": "\\pi r l",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-men-15", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Formula",
     "front": "What is the formula for the **Volume of a Hemisphere**?",
     "back": "Half the volume of a sphere.",
     "formula": "\\frac{2}{3} \\pi r^3",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-men-16", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Formula",
     "front": "What is the formula for the **Total Surface Area of a SOLID Hemisphere**?",
     "back": "The curved part ($2\\pi r^2$) plus the flat circular base ($\\pi r^2$).",
     "formula": "3 \\pi r^2",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-num-19", "topic": "Number", "subtopic": "Finance", "type": "Concept",
     "front": "What is the main difference between **Simple** and **Compound** interest?",
     "back": "Simple interest is calculated only on the original principal. Compound interest is calculated on the principal PLUS all previously accumulated interest.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/15-money/"
+    "lesson_url": "/igcse/01-number/15-money/"
   },
   {
     "id": "ig-alg-36", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "How do you fully factorise $3x^2 - 12$?",
     "back": "Take out the common factor of 3 first: $3(x^2 - 4)$. Then use Difference of Two Squares on the bracket.",
     "formula": "3(x-2)(x+2)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-alg-37", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "How do you factorise a quadratic where $a > 1$, like $2x^2 + 7x + 3$?",
     "back": "Find two numbers that multiply to $a \\times c$ ($2 \\times 3 = 6$) and add to $b$ ($7$). Split the middle term and factorise by grouping.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-num-20", "topic": "Number", "subtopic": "Indices I", "type": "Rule",
     "front": "Simplify the expression: $x^a \\div x^b$",
     "back": "When dividing with the same base, you subtract the powers.",
     "formula": "x^{a - b}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/07-indices-i/"
+    "lesson_url": "/igcse/01-number/07-indices-i/"
   },
   {
     "id": "ig-cg-12", "topic": "Coordinate Geometry", "subtopic": "Length & Midpoint", "type": "Formula",
     "front": "How do you find the distance of a point $(x, y)$ from the **Origin** $(0,0)$?",
     "back": "Use Pythagoras' theorem with the coordinates.",
     "formula": "\\sqrt{x^2 + y^2}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/03-length-and-midpoint/"
+    "lesson_url": "/igcse/04-coordinate-geometry/03-length-and-midpoint/"
   },
   {
     "id": "ig-prob-13", "topic": "Probability", "subtopic": "Combined Events", "type": "Concept",
     "front": "On a probability tree diagram, what must the branches from any single point add up to?",
     "back": "They must always add up to exactly **1** (or $100\\%$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-prob-14", "topic": "Probability", "subtopic": "Combined Events", "type": "Method",
     "front": "If there are 5 red balls and 3 blue balls, what is the probability of picking 2 red balls **without replacement**?",
     "back": "The first pick is $\\frac{5}{8}$. The second pick is $\\frac{4}{7}$. Multiply them together.",
     "formula": "\\frac{5}{8} \\times \\frac{4}{7} = \\frac{20}{56}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-geo-29", "topic": "Geometry", "subtopic": "Angles", "type": "Method",
     "front": "If an interior angle of a regular polygon is $140^\\circ$, how do you find the number of sides?",
     "back": "1. Find the exterior angle ($180^\\circ - 140^\\circ = 40^\\circ$). <br/> 2. Divide $360^\\circ$ by the exterior angle ($360 \\div 40 = 9$ sides).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-geo-30", "topic": "Geometry", "subtopic": "Angles", "type": "Concept",
     "front": "What is the relationship between an interior angle and an exterior angle at the same vertex?",
     "back": "They sit on a straight line, so they always add up to **$180^\\circ$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-stat-24", "topic": "Statistics", "subtopic": "Averages and Measures of Spread", "type": "Method",
     "front": "How do you find the **Median** from a list of numbers?",
     "back": "1. Put the numbers in order of size. <br/> 2. Find the middle value. If there are two middle numbers, find the average of those two.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/04-averages-and-measures-of-spread/"
+    "lesson_url": "/igcse/10-statistics/04-averages-and-measures-of-spread/"
   },
   {
     "id": "ig-stat-25", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Concept",
     "front": "What is the difference between a **Bar Chart** and a **Histogram**?",
     "back": "Bar charts have gaps and display categorical/discrete data. Histograms have NO gaps, display continuous data, and represent frequency by area (not just height).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   },
   {
     "id": "ig-num-21", "topic": "Number", "subtopic": "Percentages", "type": "Method",
     "front": "How do you calculate a **Percentage Profit**?",
     "back": "Divide the profit by the original cost price, then multiply by $100$.",
     "formula": "\\frac{\\text{Profit}}{\\text{Cost}} \\times 100",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/12-percentages/"
+    "lesson_url": "/igcse/01-number/12-percentages/"
   },
   {
     "id": "ig-num-22", "topic": "Number", "subtopic": "The Four Operations", "type": "Rule",
     "front": "What happens when you multiply or divide two **negative** numbers?",
     "back": "The result is always a **positive** number.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/06-the-four-operations/"
+    "lesson_url": "/igcse/01-number/06-the-four-operations/"
   },
   {
     "id": "ig-alg-38", "topic": "Algebra", "subtopic": "Equations", "type": "Method",
     "front": "What does it mean to solve an equation **graphically**?",
     "back": "Plot the graphs of both sides of the equation. The solutions are the x-coordinates of the points where the graphs intersect.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-geo-31", "topic": "Geometry", "subtopic": "Symmetry", "type": "Fact",
     "front": "What is the order of rotational symmetry of a **Regular Hexagon**?",
     "back": "Order **6**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/04-symmetry/"
+    "lesson_url": "/igcse/05-geometry/04-symmetry/"
   },
   {
     "id": "ig-geo-32", "topic": "Geometry", "subtopic": "Symmetry", "type": "Fact",
     "front": "How many lines of symmetry does a **Rectangle** have?",
     "back": "Exactly **2** (vertical and horizontal). The diagonals are NOT lines of symmetry.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/04-symmetry/"
+    "lesson_url": "/igcse/05-geometry/04-symmetry/"
   },
   {
     "id": "ig-alg-39", "topic": "Algebra", "subtopic": "Sequences", "type": "Method",
     "front": "How do you test if a number (e.g., $150$) is in a sequence with $n^{th}$ term $4n + 2$?",
     "back": "Set $4n + 2 = 150$ and solve for $n$. If $n$ is a positive whole integer, it is in the sequence.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/07-sequences/"
+    "lesson_url": "/igcse/02-algebra/07-sequences/"
   },
   {
     "id": "ig-fun-22", "topic": "Functions", "subtopic": "Graphs of Functions", "type": "Concept",
     "front": "What does the graph of $y = \\frac{k}{x}$ look like?",
     "back": "It is a **Reciprocal** graph (a hyperbola). It has two separate curves in diagonally opposite quadrants and asymptotes at the axes.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/01-graphs-of-functons/"
+    "lesson_url": "/igcse/03-functions/01-graphs-of-functons/"
   },
   {
     "id": "ig-fun-23", "topic": "Functions", "subtopic": "Graphs of Functions", "type": "Concept",
     "front": "What does the graph of $y = x^3$ look like?",
     "back": "It is a **Cubic** graph. It has a continuous 'S' shape passing through the origin (if no other terms are present).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/01-graphs-of-functons/"
+    "lesson_url": "/igcse/03-functions/01-graphs-of-functons/"
   },
   {
     "id": "ig-alg-40", "topic": "Algebra", "subtopic": "Algebraic Fractions", "type": "Method",
     "front": "How do you **multiply** two algebraic fractions: $\\frac{a}{b} \\times \\frac{c}{d}$?",
     "back": "Multiply the numerators together, and multiply the denominators together. Then simplify if possible.",
     "formula": "\\frac{ac}{bd}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/03-algebraic-fractions/"
+    "lesson_url": "/igcse/02-algebra/03-algebraic-fractions/"
   },
   {
     "id": "ig-trig-22", "topic": "Trigonometry", "subtopic": "Non Right-Angle Trigonometry", "type": "Concept",
     "front": "When using the Sine Rule to find an angle, what is the **Ambiguous Case**?",
     "back": "When your calculator gives you an acute angle (e.g., $40^\\circ$), but an obtuse angle is also possible. You find it by doing $180^\\circ - 40^\\circ = 140^\\circ$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
   },
   {
     "id": "ig-set-12", "topic": "Sets", "subtopic": "Set Notation", "type": "Notation",
     "front": "What does $A \\not\\subset B$ mean?",
     "back": "It means A is **not a proper subset** of B (some elements of A are outside of B).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-num-23", "topic": "Number", "subtopic": "Ordering and Inequalities", "type": "Method",
     "front": "How do you correctly **order** a mix of fractions, decimals, and percentages?",
     "back": "Convert all of them into **decimals** or **percentages** first to compare them easily.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/05-ordering-and-inequalities/"
+    "lesson_url": "/igcse/01-number/05-ordering-and-inequalities/"
   },
   {
     "id": "ig-vec-08", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Method",
     "front": "How do you calculate the vector $\\mathbf{a} + \\mathbf{b}$?",
     "back": "Add the top number of $\\mathbf{a}$ to the top number of $\\mathbf{b}$, and the bottom number to the bottom number.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-alg-41", "topic": "Algebra", "subtopic": "Equations", "type": "Method",
     "front": "How do you solve **Simultaneous Equations** where one is linear (e.g., $y = x + 2$) and one is quadratic (e.g., $y = x^2$)?",
     "back": "Use substitution. Replace the $y$ in the quadratic equation with the expression from the linear equation (e.g., $x + 2 = x^2$), then solve the new quadratic.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-alg-42", "topic": "Algebra", "subtopic": "Equations", "type": "Concept",
     "front": "What does the solution to a linear and a quadratic simultaneous equation represent graphically?",
     "back": "The $(x, y)$ coordinates where the straight line intersects the parabola (curve). There can be 2, 1, or 0 points of intersection.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-alg-43", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Rule",
     "front": "How do you factorise $x^4 - y^4$?",
     "back": "Use the Difference of Two Squares twice. First it becomes $(x^2 - y^2)(x^2 + y^2)$. Then factorise the first bracket again to get $(x-y)(x+y)(x^2+y^2)$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-geo-33", "topic": "Geometry", "subtopic": "Geometrical Terms", "type": "Concept",
     "front": "What are the key properties of a **Kite**?",
     "back": "Two pairs of adjacent equal sides. One pair of opposite angles are equal. The diagonals cross at exactly $90^\\circ$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/01-geometrical-terms/"
+    "lesson_url": "/igcse/05-geometry/01-geometrical-terms/"
   },
   {
     "id": "ig-geo-34", "topic": "Geometry", "subtopic": "Geometrical Terms", "type": "Fact",
     "front": "What is the sum of the interior angles of a **Regular Hexagon**?",
     "back": "A hexagon has 6 sides. Using $(6-2) \\times 180^\\circ$, the sum is **$720^\\circ$**.",
     "formula": "720^\\circ",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-geo-35", "topic": "Geometry", "subtopic": "Geometrical Terms", "type": "Fact",
     "front": "What is the sum of the interior angles of a **Regular Octagon**?",
     "back": "An octagon has 8 sides. Using $(8-2) \\times 180^\\circ$, the sum is **$1080^\\circ$**.",
     "formula": "1080^\\circ",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/05-angles/"
+    "lesson_url": "/igcse/05-geometry/05-angles/"
   },
   {
     "id": "ig-men-17", "topic": "Mensuration", "subtopic": "Circles, Arcs & Sectors", "type": "Method",
     "front": "If you know the **Area of a Sector** and the radius, how do you find the angle $\\theta$?",
     "back": "Rearrange the sector area formula. Multiply the Area by 360, then divide by $\\pi r^2$.",
     "formula": "\\theta = \\frac{\\text{Area} \\times 360}{\\pi r^2}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/03-circles-arcs-and-sectors/"
+    "lesson_url": "/igcse/06-mensuration/03-circles-arcs-and-sectors/"
   },
   {
     "id": "ig-men-18", "topic": "Mensuration", "subtopic": "Circles, Arcs & Sectors", "type": "Method",
     "front": "If you know the **Arc Length** and the radius, how do you find the angle $\\theta$?",
     "back": "Rearrange the arc length formula. Multiply the Arc Length by 360, then divide by $2\\pi r$.",
     "formula": "\\theta = \\frac{\\text{Arc} \\times 360}{2\\pi r}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/03-circles-arcs-and-sectors/"
+    "lesson_url": "/igcse/06-mensuration/03-circles-arcs-and-sectors/"
   },
   {
     "id": "ig-stat-26", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Formula",
     "front": "How do you rearrange the Histogram formula to find the **Frequency**?",
     "back": "Frequency is equal to the Area of the bar. Multiply Frequency Density by the Class Width.",
     "formula": "\\text{Frequency} = \\text{FD} \\times \\text{CW}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   },
   {
     "id": "ig-stat-27", "topic": "Statistics", "subtopic": "Cumulative Frequency Diagrams", "type": "Method",
     "front": "How do you find the **90th Percentile** on a Cumulative Frequency Graph?",
     "back": "Find $90\\%$ of the total cumulative frequency on the y-axis, draw across to the curve, and read down to the x-axis.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/08-cumulative-frequency-diagrams/"
+    "lesson_url": "/igcse/10-statistics/08-cumulative-frequency-diagrams/"
   },
   {
     "id": "ig-trig-23", "topic": "Trigonometry", "subtopic": "Right-Angle Trigonometry", "type": "Tip",
     "front": "What is the most crucial first step when solving a **Bearings** problem involving multiple points?",
     "back": "Draw a **North line** (pointing straight up) at EVERY single point mentioned in the question.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/02-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/02-right-angle-trigonometry/"
   },
   {
     "id": "ig-trig-24", "topic": "Trigonometry", "subtopic": "Right-Angle Trigonometry", "type": "Concept",
     "front": "What geometric rule proves that the Angle of Elevation from A to B is exactly equal to the Angle of Depression from B to A?",
     "back": "They are **Alternate Angles** (the 'Z' shape) formed between two parallel horizontal lines.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/02-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/02-right-angle-trigonometry/"
   },
   {
     "id": "ig-num-24", "topic": "Number", "subtopic": "Rates", "type": "Formula",
     "front": "What is the formula for **Population Density**?",
     "back": "Total Population divided by Total Area.",
     "formula": "\\text{Density} = \\frac{\\text{Population}}{\\text{Area}}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/11-rates/"
+    "lesson_url": "/igcse/01-number/11-rates/"
   },
   {
     "id": "ig-num-25", "topic": "Number", "subtopic": "Rates", "type": "Method",
     "front": "How do you convert a currency (e.g., changing $500 to Euros when the exchange rate is $1 = €0.85)?",
     "back": "Multiply by the exchange rate. ($500 \\times 0.85 = €425$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/15-money/"
+    "lesson_url": "/igcse/01-number/15-money/"
   },
   {
     "id": "ig-num-26", "topic": "Number", "subtopic": "Rates", "type": "Method",
     "front": "How do you convert a currency BACK to the original (e.g., changing €425 back to Dollars when $1 = €0.85)?",
     "back": "Divide by the exchange rate. ($425 \\div 0.85 = $500$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/15-money/"
+    "lesson_url": "/igcse/01-number/15-money/"
   },
   {
     "id": "ig-prob-15", "topic": "Probability", "subtopic": "Combined Events", "type": "Method",
     "front": "If $P(A) = 0.3$ and $P(B) = 0.4$, and they are **Independent**, what is $P(A \\text{ and } B)$?",
     "back": "Multiply them. $0.3 \\times 0.4 = 0.12$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-fun-24", "topic": "Functions", "subtopic": "Composite Functions", "type": "Fact",
     "front": "True or False: $f(g(x))$ is always exactly the same as $g(f(x))$.",
     "back": "**False!** The order matters immensely. Substituting $g$ into $f$ almost always gives a completely different result than substituting $f$ into $g$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/03-functions/"
+    "lesson_url": "/igcse/03-functions/03-functions/"
   },
   {
     "id": "ig-cg-13", "topic": "Coordinate Geometry", "subtopic": "Equations of Linear Graphs", "type": "Method",
     "front": "How do you determine if a specific point (e.g., $(3, 10)$) lies on a given line (e.g., $y = 2x + 4$)?",
     "back": "Substitute the x-coordinate into the equation. If the calculated y-value matches the point's y-coordinate ($2(3) + 4 = 10$), the point is on the line.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
+    "lesson_url": "/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
   },
   {
     "id": "ig-alg-44", "topic": "Algebra", "subtopic": "Inequalities", "type": "Method",
     "front": "How do you represent the inequality $x \\ge 2$ and $y < 4$ on a graph?",
     "back": "Draw a solid line for $x = 2$ and shade out the area below it. Draw a dashed/dotted line for $y = 4$ and shade out the area above it.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/06-inequalities/"
+    "lesson_url": "/igcse/02-algebra/06-inequalities/"
   },
   {
     "id": "ig-set-13", "topic": "Sets", "subtopic": "Set Notation", "type": "Notation",
     "front": "What does $(A \\cap B) \\cup C$ mean in a Venn diagram?",
     "back": "The region that is either the intersection of A and B, OR is anywhere inside circle C.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-num-27", "topic": "Number", "subtopic": "Ordering and Inequalities", "type": "Definition",
     "front": "What is an **Integer**?",
     "back": "A whole number. It can be positive, negative, or zero (e.g., $-5, 0, 12$), but it cannot have decimal or fractional parts.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/05-ordering-and-inequalities/"
+    "lesson_url": "/igcse/01-number/05-ordering-and-inequalities/"
   },
   {
     "id": "ig-geo-36", "topic": "Geometry", "subtopic": "Angles", "type": "Rule",
     "front": "What is the angle between a **tangent** and a **chord** through the point of contact?",
     "back": "It is equal to the angle in the **alternate segment** (Alternate Segment Theorem).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/07-circle-theorems-ii/"
+    "lesson_url": "/igcse/05-geometry/07-circle-theorems-ii/"
   },
   {
     "id": "ig-trig-25", "topic": "Trigonometry", "subtopic": "Right-Angle Trigonometry", "type": "Method",
     "front": "If a question asks for the **shortest distance** from a point to a line, what angle does that path make with the line?",
     "back": "The shortest distance is always the **perpendicular** distance, meaning it meets the line at exactly $90^\\circ$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/02-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/02-right-angle-trigonometry/"
   },
   {
     "id": "ig-alg-45", "topic": "Algebra", "subtopic": "Algebraic Fractions", "type": "Method",
     "front": "How do you solve $\\frac{2}{x-1} + \\frac{3}{x+2} = 1$?",
     "back": "Multiply every single term by the common denominator $(x-1)(x+2)$ to completely clear the fractions, then expand and solve the resulting quadratic.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/03-algebraic-fractions/"
+    "lesson_url": "/igcse/02-algebra/03-algebraic-fractions/"
   },
   {
     "id": "ig-vec-09", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Method",
     "front": "If $\\vec{OA} = \\mathbf{a}$ and $\\vec{OB} = \\mathbf{b}$, what is the vector $\\vec{AB}$?",
     "back": "To go from A to B, you go backwards along $\\mathbf{a}$ and forwards along $\\mathbf{b}$. Result: **$\\mathbf{b} - \\mathbf{a}$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-vec-10", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Method",
     "front": "If point M is the **midpoint** of line AB, how do you find vector $\\vec{OM}$?",
     "back": "You travel from O to A, and then add half of vector AB. $\\vec{OM} = \\vec{OA} + \\frac{1}{2}\\vec{AB}$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-stat-28", "topic": "Statistics", "subtopic": "Averages and Measures of Spread", "type": "Concept",
     "front": "Why is the **Interquartile Range** often a better measure of spread than the Range?",
     "back": "Because the Interquartile Range ignores extreme outliers at the very top and bottom, giving a better picture of the 'typical' spread of the middle 50% of the data.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/04-averages-and-measures-of-spread/"
+    "lesson_url": "/igcse/10-statistics/04-averages-and-measures-of-spread/"
   },
   {
     "id": "ig-num-28", "topic": "Number", "subtopic": "Power and Roots", "type": "Concept",
     "front": "What does the instruction **'Leave your answer in exact form'** usually mean?",
     "back": "It means DO NOT write a rounded decimal from your calculator. Leave the answer containing $\\pi$, Surds ($\\sqrt{2}$), or as a fraction.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/03-power-and-roots/"
+    "lesson_url": "/igcse/01-number/03-power-and-roots/"
   },
   {
     "id": "ig-geo-37", "topic": "Geometry", "subtopic": "Symmetry", "type": "Concept",
     "front": "What is the line of symmetry of a **Parabola** called?",
     "back": "The **Axis of Symmetry**. It passes vertically exactly through the turning point (vertex).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/04-symmetry/"
+    "lesson_url": "/igcse/05-geometry/04-symmetry/"
   },
   {
     "id": "ig-fun-25", "topic": "Functions", "subtopic": "Finding a Quadratic", "type": "Method",
     "front": "If you are given the vertex $(h, k)$ and one other point on a quadratic curve, how do you find the equation?",
     "back": "Use the vertex form $y = a(x-h)^2 + k$. Substitute the coordinates of the other point for $x$ and $y$ to solve for the constant $a$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/04-finding-a-quadratic/"
+    "lesson_url": "/igcse/03-functions/04-finding-a-quadratic/"
   },
   {
     "id": "ig-alg-46", "topic": "Algebra", "subtopic": "Indices II", "type": "Method",
     "front": "How do you solve an equation where the unknown is in the power, like $2^x = 32$?",
     "back": "Express both sides with the exact same base (e.g., write 32 as $2^5$). Once the bases match, you can just equate the powers: $x = 5$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/04-indices-ii/"
+    "lesson_url": "/igcse/02-algebra/04-indices-ii/"
   },
   {
     "id": "ig-alg-47", "topic": "Algebra", "subtopic": "Indices II", "type": "Method",
     "front": "How do you solve $3^{x+1} = 27$?",
     "back": "Rewrite 27 as $3^3$. Since the bases match, equate the powers: $x + 1 = 3$, so $x = 2$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/04-indices-ii/"
+    "lesson_url": "/igcse/02-algebra/04-indices-ii/"
   },
   {
     "id": "ig-men-19", "topic": "Mensuration", "subtopic": "Area and Perimeter", "type": "Concept",
     "front": "If a question asks for the **Perimeter of a Sector**, what must you remember?",
     "back": "The perimeter is the Arc Length PLUS the two straight radii. Do not forget to add $2r$!",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/02-area-and-perimeter/"
+    "lesson_url": "/igcse/06-mensuration/02-area-and-perimeter/"
   },
   {
     "id": "ig-stat-29", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Method",
     "front": "How do you find the **Class Width** in a grouped frequency table?",
     "back": "Subtract the lower boundary of the class from the upper boundary.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   },
   {
     "id": "ig-prob-16", "topic": "Probability", "subtopic": "Combined Events", "type": "Method",
     "front": "What does a probability of **0** mean? What does a probability of **1** mean?",
     "back": "$0$ means the event is absolutely impossible. $1$ means the event is absolutely certain to happen.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-alg-48", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Rule",
     "front": "Expand $-(x - 4)$.",
     "back": "The negative outside the bracket flips the sign of EVERY term inside. Result: **$-x + 4$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-geo-38", "topic": "Geometry", "subtopic": "Similarity", "type": "Method",
     "front": "If two solid cones are similar and the Volume scale factor is $27$, what is the Area scale factor?",
     "back": "First, cube root $27$ to find the length scale factor ($3$). Then, square that to find the Area scale factor ($3^2 = 9$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/03-similarity/"
+    "lesson_url": "/igcse/05-geometry/03-similarity/"
   },
   {
     "id": "ig-geo-39", "topic": "Geometry", "subtopic": "Geometrical Terms", "type": "Concept",
     "front": "What does it mean if a triangle is an **Equilateral** triangle?",
     "back": "All three sides are equal length, and all three angles are exactly $60^\\circ$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/01-geometrical-terms/"
+    "lesson_url": "/igcse/05-geometry/01-geometrical-terms/"
   },
   {
     "id": "ig-cg-14", "topic": "Coordinate Geometry", "subtopic": "Equations of Linear Graphs", "type": "Concept",
     "front": "If a line has the equation $x = 5$, what does it look like?",
     "back": "It is a perfectly **vertical** line that passes through $5$ on the x-axis.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
+    "lesson_url": "/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
   },
   {
     "id": "ig-cg-15", "topic": "Coordinate Geometry", "subtopic": "Equations of Linear Graphs", "type": "Concept",
     "front": "If a line has the equation $y = -2$, what does it look like?",
     "back": "It is a perfectly **horizontal** line that passes through $-2$ on the y-axis.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
+    "lesson_url": "/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
   },
   {
     "id": "ig-fun-26", "topic": "Functions", "subtopic": "Logarithmic Function", "type": "Rule",
     "front": "What does a logarithm actually solve? (i.e. if $\\log_a(x) = b$)",
     "back": "It solves for the power. It means \"Base $a$ to the power of $b$ equals $x$\". ($a^b = x$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/07-logarithmic-function/"
+    "lesson_url": "/igcse/03-functions/07-logarithmic-function/"
   },
   {
     "id": "ig-fun-27", "topic": "Functions", "subtopic": "Logarithmic Function", "type": "Rule",
     "front": "What is the rule for subtracting logarithms: $\\log(A) - \\log(B)$?",
     "back": "Subtracting logs with the same base is the same as dividing their insides.",
     "formula": "\\log\\left(\\frac{A}{B}\\right)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/07-logarithmic-function/"
+    "lesson_url": "/igcse/03-functions/07-logarithmic-function/"
   },
   {
     "id": "ig-men-20", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Concept",
     "front": "What does the term **Cross-Section** mean?",
     "back": "The 2D shape revealed when you slice straight through a 3D prism. In a true prism, the cross-section is the same everywhere along its length.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-prob-17", "topic": "Probability", "subtopic": "Introduction to Probability", "type": "Definition",
     "front": "What is the **Sample Space**?",
     "back": "A complete list or diagram of all the possible outcomes of an experiment.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/01-introduction-to-probability/"
+    "lesson_url": "/igcse/09-probability/01-introduction-to-probability/"
   },
   {
     "id": "ig-stat-30", "topic": "Statistics", "subtopic": "Interpreting Data", "type": "Concept",
     "front": "If the mean of 5 numbers is 10, what is their total sum?",
     "back": "The total sum must be 50. (Since $\\text{Mean} = \\text{Sum} \\div \\text{Count}$, multiplying Mean by Count gives the Sum: $10 \\times 5 = 50$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/02-interpreting-data/"
+    "lesson_url": "/igcse/10-statistics/02-interpreting-data/"
   },
   {
     "id": "ig-alg-49", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "How do you factorise an expression like $4x^2 - 25$?",
     "back": "This is a Difference of Two Squares where the first term has a coefficient. Square root both parts to get $(2x - 5)(2x + 5)$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-alg-50", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "How do you completely factorise $x^4 - 16$?",
     "back": "First difference of two squares: $(x^2 - 4)(x^2 + 4)$. Then factorise the first bracket AGAIN: $(x - 2)(x + 2)(x^2 + 4)$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-alg-51", "topic": "Algebra", "subtopic": "Algebraic Fractions", "type": "Method",
     "front": "How do you simplify $\\frac{x^2 - x - 6}{x^2 - 9}$?",
     "back": "Factorise the top to $(x-3)(x+2)$ and the bottom to $(x-3)(x+3)$. Cancel the common $(x-3)$ bracket to leave $\\frac{x+2}{x+3}$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/03-algebraic-fractions/"
+    "lesson_url": "/igcse/02-algebra/03-algebraic-fractions/"
   },
   {
     "id": "ig-alg-52", "topic": "Algebra", "subtopic": "Equations", "type": "Concept",
     "front": "When completing the square to get $y = (x - h)^2 + k$, what are the coordinates of the turning point?",
     "back": "The turning point (vertex) is exactly at $(h, k)$. Notice the sign of $h$ flips from the bracket!",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-alg-53", "topic": "Algebra", "subtopic": "Equations", "type": "Method",
     "front": "How do you solve an equation like $x^3 = 64$?",
     "back": "Take the cube root of both sides. The answer is $x = 4$ (cube roots of positive numbers do not require a $\\pm$ sign).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-men-21", "topic": "Mensuration", "subtopic": "Units of Measure", "type": "Rule",
     "front": "How do you convert a Volume from **$cm^3$** to **$m^3$**?",
     "back": "Divide by $1,000,000$. (Because $100 \\times 100 \\times 100$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/01-units-of-measure/"
+    "lesson_url": "/igcse/06-mensuration/01-units-of-measure/"
   },
   {
     "id": "ig-men-22", "topic": "Mensuration", "subtopic": "Units of Measure", "type": "Fact",
     "front": "How many **$cm^3$** are in exactly $1$ Litre of capacity?",
     "back": "There are exactly $1000 \\text{ cm}^3$ in $1$ Litre.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/01-units-of-measure/"
+    "lesson_url": "/igcse/06-mensuration/01-units-of-measure/"
   },
   {
     "id": "ig-men-23", "topic": "Mensuration", "subtopic": "Units of Measure", "type": "Rule",
     "front": "How do you convert from **$mm^2$** to **$cm^2$**?",
     "back": "Divide by $100$. (Because $10 \\times 10$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/01-units-of-measure/"
+    "lesson_url": "/igcse/06-mensuration/01-units-of-measure/"
   },
   {
     "id": "ig-num-29", "topic": "Number", "subtopic": "Standard Form", "type": "Method",
     "front": "How do you **divide** two numbers in standard form? $\\frac{A \\times 10^a}{B \\times 10^b}$",
     "back": "Divide the leading numbers ($A \\div B$) and subtract the powers ($a - b$). Adjust the final answer so it is strictly between 1 and 10.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/08-standard-form/"
+    "lesson_url": "/igcse/01-number/08-standard-form/"
   },
   {
     "id": "ig-num-30", "topic": "Number", "subtopic": "Power and Roots", "type": "Method",
     "front": "How can you use prime factorisation to find the square root of a large number (e.g., $\\sqrt{144}$) without a calculator?",
     "back": "Write the prime factorisation in index form ($2^4 \\times 3^2$), then simply halve all the powers to get the square root ($2^2 \\times 3^1 = 12$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/03-power-and-roots/"
+    "lesson_url": "/igcse/01-number/03-power-and-roots/"
   },
   {
     "id": "ig-num-31", "topic": "Number", "subtopic": "Percentages", "type": "Method",
     "front": "If a question states 'A car's value includes $20\\%$ tax and costs $24,000', how do you find the price BEFORE tax?",
     "back": "This is a Reverse Percentage. The $24,000$ represents $120\\%$. Divide $24,000$ by $1.20$ to find the original $100\\%$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/12-percentages/"
+    "lesson_url": "/igcse/01-number/12-percentages/"
   },
   {
     "id": "ig-num-32", "topic": "Number", "subtopic": "The Four Operations", "type": "Concept",
     "front": "What is the **Reciprocal** of a fraction $\\frac{x}{y}$?",
     "back": "The reciprocal is the fraction flipped upside down: $\\frac{y}{x}$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/06-the-four-operations/"
+    "lesson_url": "/igcse/01-number/06-the-four-operations/"
   },
   {
     "id": "ig-num-33", "topic": "Number", "subtopic": "Using a Calculator", "type": "Concept",
     "front": "If a calculator displays `4.5E-3` or `4.5 x 10^-3`, what is this as an ordinary number?",
     "back": "Move the decimal point 3 places to the left to get **$0.0045$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/13-using-a-calculator/"
+    "lesson_url": "/igcse/01-number/13-using-a-calculator/"
   },
   {
     "id": "ig-fun-28", "topic": "Functions", "subtopic": "Graphs of Functions", "type": "Concept",
     "front": "What does the graph of an exponential function $y = 2^x$ look like?",
     "back": "It starts very close to the x-axis on the left, passes through $(0,1)$, and shoots upwards very steeply on the right.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/01-graphs-of-functons/"
+    "lesson_url": "/igcse/03-functions/01-graphs-of-functons/"
   },
   {
     "id": "ig-fun-29", "topic": "Functions", "subtopic": "Graphs of Functions", "type": "Concept",
     "front": "For the exponential graph $y = a^x$, what is the **y-intercept**?",
     "back": "The y-intercept is always $(0, 1)$, because any non-zero number to the power of 0 is 1.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/01-graphs-of-functons/"
+    "lesson_url": "/igcse/03-functions/01-graphs-of-functons/"
   },
   {
     "id": "ig-fun-30", "topic": "Functions", "subtopic": "Asymptotes", "type": "Fact",
     "front": "What is the equation of the horizontal asymptote for the graph $y = \\frac{1}{x}$?",
     "back": "The horizontal asymptote is the x-axis, which has the equation **$y = 0$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/05-asymptotes/"
+    "lesson_url": "/igcse/03-functions/05-asymptotes/"
   },
   {
     "id": "ig-trig-26", "topic": "Trigonometry", "subtopic": "Non Right-Angle Trigonometry", "type": "Concept",
     "front": "When using the Cosine Rule to find an angle, what does it mean if $\\cos(A)$ is a **negative** number?",
     "back": "It means the angle $A$ is **obtuse** (greater than $90^\\circ$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
   },
   {
     "id": "ig-trig-27", "topic": "Trigonometry", "subtopic": "Non Right-Angle Trigonometry", "type": "Method",
     "front": "How do you find the **Area of a Segment** of a circle?",
     "back": "Calculate the Area of the whole Sector ($\\frac{\\theta}{360} \\pi r^2$), and subtract the Area of the Triangle ($\\frac{1}{2}ab\\sin C$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
+    "lesson_url": "/igcse/07-trigonometry/05-non-right-angle-trigonometry/"
   },
   {
     "id": "ig-geo-40", "topic": "Geometry", "subtopic": "Similarity", "type": "Rule",
     "front": "If two solid spheres are made of the exact same metal, how does the **Volume Scale Factor** relate to their mass?",
     "back": "Since density is constant, the ratio of their masses is exactly the same as the **Volume Scale Factor** ($k^3$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/03-similarity/"
+    "lesson_url": "/igcse/05-geometry/03-similarity/"
   },
   {
     "id": "ig-geo-41", "topic": "Geometry", "subtopic": "Circle Theorems I", "type": "Definition",
     "front": "What defines a **Chord** of a circle?",
     "back": "A straight line segment whose endpoints both lie on the circumference of the circle.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/06-circle-theorems-i/"
+    "lesson_url": "/igcse/05-geometry/06-circle-theorems-i/"
   },
   {
     "id": "ig-geo-42", "topic": "Geometry", "subtopic": "Circle Theorems II", "type": "Definition",
     "front": "What defines a **Tangent** to a circle?",
     "back": "A straight line that touches the outside of the circle at exactly one point without crossing through it.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/07-circle-theorems-ii/"
+    "lesson_url": "/igcse/05-geometry/07-circle-theorems-ii/"
   },
   {
     "id": "ig-geo-43", "topic": "Geometry", "subtopic": "Circle Theorems I", "type": "Method",
     "front": "How can you prove a triangle inside a circle is a **right-angled triangle**?",
     "back": "Check if one of the sides of the triangle passes through the exact centre of the circle (forming the diameter). If so, the angle at the circumference is $90^\\circ$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/06-circle-theorems-i/"
+    "lesson_url": "/igcse/05-geometry/06-circle-theorems-i/"
   },
   {
     "id": "ig-stat-31", "topic": "Statistics", "subtopic": "Averages and Measures of Spread", "type": "Method",
     "front": "How do you identify the **Modal Class** from a grouped frequency table?",
     "back": "It is simply the class interval row that has the **highest frequency**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/04-averages-and-measures-of-spread/"
+    "lesson_url": "/igcse/10-statistics/04-averages-and-measures-of-spread/"
   },
   {
     "id": "ig-stat-32", "topic": "Statistics", "subtopic": "Averages and Measures of Spread", "type": "Concept",
     "front": "Why is the mean calculated from a grouped frequency table called an **Estimate**?",
     "back": "Because the exact original data values are lost in the groups. We have to assume every value lies exactly at the **midpoint** of its class.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/04-averages-and-measures-of-spread/"
+    "lesson_url": "/igcse/10-statistics/04-averages-and-measures-of-spread/"
   },
   {
     "id": "ig-stat-33", "topic": "Statistics", "subtopic": "Cumulative Frequency Diagrams", "type": "Concept",
     "front": "What general shape should a properly drawn **Cumulative Frequency Curve** have?",
     "back": "It should look like an elongated **'S' curve** (also known as an ogive), starting from the bottom left and flattening out at the top right.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/08-cumulative-frequency-diagrams/"
+    "lesson_url": "/igcse/10-statistics/08-cumulative-frequency-diagrams/"
   },
   {
     "id": "ig-stat-34", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Method",
     "front": "On a histogram, if the Frequency Density is $2$ and the Class Width is $15$, what is the frequency?",
     "back": "Frequency = Area. $2 \\times 15 = 30$.",
     "formula": "30",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   },
   {
     "id": "ig-prob-18", "topic": "Probability", "subtopic": "Combined Events", "type": "Method",
     "front": "If there are $x$ red balls and $y$ blue balls, what is the probability of picking a red ball AND THEN a blue ball **with replacement**?",
     "back": "Multiply the independent probabilities: $\\frac{x}{x+y} \\times \\frac{y}{x+y}$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-prob-19", "topic": "Probability", "subtopic": "Combined Events", "type": "Method",
     "front": "In a Tree Diagram, how do you find the probability of getting **exactly one success and one failure**?",
     "back": "Calculate the branch for (Success, Failure) AND the branch for (Failure, Success), then **add** those two final answers together.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-vec-11", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Concept",
     "front": "What does it mathematically mean if three points A, B, and C are **collinear**?",
     "back": "They lie on the exact same straight line. This is proven if vector $\\vec{AB}$ is a scalar multiple of vector $\\vec{BC}$ (meaning they are parallel AND share a common point B).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-vec-12", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Notation",
     "front": "What does a bold letter $\\mathbf{a}$ or an underlined letter $\\underline{a}$ represent in geometry?",
     "back": "They represent a **Vector**, meaning it has both a defined magnitude and direction.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-cg-16", "topic": "Coordinate Geometry", "subtopic": "Parallel Lines", "type": "Method",
     "front": "How do you check algebraically if three coordinates form a **straight line**?",
     "back": "Calculate the gradient between the 1st and 2nd points, and the gradient between the 2nd and 3rd points. If the gradients are identical, they are on the same straight line.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/05-parallel-lines/"
+    "lesson_url": "/igcse/04-coordinate-geometry/05-parallel-lines/"
   },
   {
     "id": "ig-cg-17", "topic": "Coordinate Geometry", "subtopic": "Equations of Linear Graphs", "type": "Method",
     "front": "How do you find the **x-intercept** of a straight line equation like $3x + 2y = 12$?",
     "back": "Substitute $y = 0$ into the equation and solve for $x$. ($3x = 12 \\rightarrow x = 4$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
+    "lesson_url": "/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
   },
   {
     "id": "ig-set-14", "topic": "Sets", "subtopic": "Set Notation", "type": "Formula",
     "front": "What is the addition rule formula connecting Union and Intersection for sets A and B?",
     "back": "The number in the union equals the sum of the sets minus the intersection (to avoid double-counting).",
     "formula": "n(A \\cup B) = n(A) + n(B) - n(A \\cap B)",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-set-15", "topic": "Sets", "subtopic": "Set Notation", "type": "Notation",
     "front": "How do you denote the set of all elements that are in **neither** A nor B?",
     "back": "The complement of their union.",
     "formula": "(A \\cup B)'",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-num-34", "topic": "Number", "subtopic": "Time", "type": "Method",
     "front": "If a train journey takes 2 hours and 45 minutes, how do you write this as a **decimal** to use in the $S = D/T$ formula?",
     "back": "Convert the 45 minutes to hours by dividing by 60 ($45 \\div 60 = 0.75$). The decimal time is **$2.75$ hours**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/14-time/"
+    "lesson_url": "/igcse/01-number/14-time/"
   },
   {
     "id": "ig-alg-54", "topic": "Algebra", "subtopic": "Proportion", "type": "Method",
     "front": "If a question states $y$ is inversely proportional to $x$, and gives you points on a table, how do you quickly find $k$?",
     "back": "Since $y = \\frac{k}{x}$, you can simply multiply an $x$-value by its corresponding $y$-value. $k = x \\times y$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/08-proportion/"
+    "lesson_url": "/igcse/02-algebra/08-proportion/"
   },
   {
     "id": "ig-alg-55", "topic": "Algebra", "subtopic": "Inequalities", "type": "Concept",
     "front": "What is the key difference between writing the solution to an equation vs an inequality?",
     "back": "An equation has a single answer ($x=5$). An inequality MUST include the inequality sign in the final answer (e.g., $x \\ge 5$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/06-inequalities/"
+    "lesson_url": "/igcse/02-algebra/06-inequalities/"
   },
   {
     "id": "ig-geo-44", "topic": "Geometry", "subtopic": "Symmetry", "type": "Fact",
     "front": "Does a **Trapezium** have any lines of symmetry?",
     "back": "Generally, NO. However, an *Isosceles Trapezium* has exactly **1** vertical line of symmetry.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/04-symmetry/"
+    "lesson_url": "/igcse/05-geometry/04-symmetry/"
   },
   {
     "id": "ig-fun-31", "topic": "Functions", "subtopic": "Composite Functions", "type": "Method",
     "front": "How do you evaluate $f^2(x)$ or $ff(x)$?",
     "back": "It means $f(f(x))$. You substitute the entire algebraic function $f(x)$ back into its own $x$ position.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/03-functions/"
+    "lesson_url": "/igcse/03-functions/03-functions/"
   },
   {
     "id": "ig-men-24", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Fact",
     "front": "Does the volume of a liquid change if you pour it from a cylinder into a sphere?",
     "back": "No! **Volume is conserved**. You can set the formula for the cylinder's volume equal to the formula for the sphere's volume to solve for missing dimensions.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-stat-35", "topic": "Statistics", "subtopic": "Averages and Measures of Spread", "type": "Method",
     "front": "If you have a set of continuous data, which average is usually the easiest and fastest to estimate visually from a histogram?",
     "back": "The **Mode** (or modal class), because it is simply the bar with the highest Frequency Density.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/04-averages-and-measures-of-spread/"
+    "lesson_url": "/igcse/10-statistics/04-averages-and-measures-of-spread/"
   },
   {
     "id": "ig-alg-56", "topic": "Algebra", "subtopic": "Equations", "type": "Concept",
     "front": "What does a quadratic equation look like when it has **two identical roots** (a repeated root)?",
     "back": "It factorises into a perfect square, e.g., $(x - 3)^2 = 0$. The parabola touches the x-axis at exactly one point.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-trig-28", "topic": "Trigonometry", "subtopic": "Trigonometric Functions", "type": "Concept",
     "front": "What is the maximum and minimum y-value of the standard graph $y = \\sin(x)$?",
     "back": "The maximum is $+1$ and the minimum is $-1$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/04-trigonometric-functions/"
+    "lesson_url": "/igcse/07-trigonometry/04-trigonometric-functions/"
   },
   {
     "id": "ig-prob-20", "topic": "Probability", "subtopic": "Relative and Expected Frequencies", "type": "Concept",
     "front": "If an experiment is repeated 500 times, why might the Relative Frequency not perfectly match the Theoretical Probability?",
     "back": "Because probability is based on chance. Theoretical probability only predicts what will happen over a mathematically infinite number of trials.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/02-relative-and-expected-frequencies/"
+    "lesson_url": "/igcse/09-probability/02-relative-and-expected-frequencies/"
   },
   {
     "id": "ig-geo-45", "topic": "Geometry", "subtopic": "Geometrical Terms", "type": "Definition",
     "front": "What is the difference between a **Regular** polygon and an **Irregular** polygon?",
     "back": "A regular polygon has all sides of equal length AND all interior angles of equal size. An irregular polygon does not.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/01-geometrical-terms/"
+    "lesson_url": "/igcse/05-geometry/01-geometrical-terms/"
   },
   {
     "id": "ig-rate-04", "topic": "Number", "subtopic": "Rates", "type": "Concept",
     "front": "On a **Distance-Time Graph**, what does the gradient (steepness) of the line represent?",
     "back": "The gradient represents the **Speed**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/11-rates/"
+    "lesson_url": "/igcse/01-number/11-rates/"
   },
   {
     "id": "ig-rate-05", "topic": "Number", "subtopic": "Rates", "type": "Concept",
     "front": "On a **Velocity-Time Graph** (or Speed-Time graph), what does the gradient of the line represent?",
     "back": "The gradient represents the **Acceleration**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/11-rates/"
+    "lesson_url": "/igcse/01-number/11-rates/"
   },
   {
     "id": "ig-rate-06", "topic": "Number", "subtopic": "Rates", "type": "Concept",
     "front": "On a **Velocity-Time Graph**, how do you calculate the total Distance Travelled?",
     "back": "Calculate the **Area under the graph** (usually by splitting it into triangles, rectangles, or trapeziums).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/11-rates/"
+    "lesson_url": "/igcse/01-number/11-rates/"
   },
   {
     "id": "ig-num-35", "topic": "Number", "subtopic": "Standard Form", "type": "Method",
     "front": "How do you **Add or Subtract** two numbers in standard form without a calculator?",
     "back": "You must rewrite one of the numbers so they both have the **exact same power of 10**, then add/subtract the front numbers.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/08-standard-form/"
+    "lesson_url": "/igcse/01-number/08-standard-form/"
   },
   {
     "id": "ig-num-36", "topic": "Number", "subtopic": "Prime Factorisation", "type": "Method",
     "front": "How can you use a Venn Diagram to find the **HCF and LCM** of two numbers?",
     "back": "Put the prime factors into a Venn Diagram. The **HCF** is the multiplication of the intersection. The **LCM** is the multiplication of all numbers in the entire diagram.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/01-types-of-numbers/"
+    "lesson_url": "/igcse/01-number/01-types-of-numbers/"
   },
   {
     "id": "ig-num-37", "topic": "Number", "subtopic": "Types of Numbers", "type": "Definition",
     "front": "What is the strict definition of a **Prime Number**?",
     "back": "A number that has exactly two distinct factors: $1$ and itself. (Note: $1$ is NOT a prime number!).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/01-types-of-numbers/"
+    "lesson_url": "/igcse/01-number/01-types-of-numbers/"
   },
   {
     "id": "ig-alg-57", "topic": "Algebra", "subtopic": "Inequalities", "type": "Method",
     "front": "How do you solve a **Quadratic Inequality** like $x^2 < 9$?",
     "back": "Square root both sides, but remember it splits into a range. The answer is **$-3 < x < 3$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/06-inequalities/"
+    "lesson_url": "/igcse/02-algebra/06-inequalities/"
   },
   {
     "id": "ig-alg-58", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Method",
     "front": "How do you use the Difference of Two Squares on an expression with two variables, like $9x^2 - 16y^2$?",
     "back": "Square root both the numbers and the letters. It becomes **$(3x - 4y)(3x + 4y)$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-alg-59", "topic": "Algebra", "subtopic": "Algebraic Manipulation", "type": "Fact",
     "front": "When factorising a quadratic $x^2 + bx + c$, if $c$ is a **negative** number, what do you know about the signs in the brackets?",
     "back": "One bracket MUST have a positive sign, and the other MUST have a negative sign (e.g., $(x+5)(x-2)$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/02-algebraic-manipulation/"
+    "lesson_url": "/igcse/02-algebra/02-algebraic-manipulation/"
   },
   {
     "id": "ig-fun-32", "topic": "Functions", "subtopic": "Graphs of Functions", "type": "Method",
     "front": "How do you find the **Gradient of a Curve** at a specific point?",
     "back": "You must draw a straight **Tangent line** that touches the curve exactly at that point, and then calculate the gradient ($m = \\frac{\\text{change in y}}{\\text{change in x}}$) of your tangent.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/01-graphs-of-functons/"
+    "lesson_url": "/igcse/03-functions/01-graphs-of-functons/"
   },
   {
     "id": "ig-fun-33", "topic": "Functions", "subtopic": "Functions", "type": "Notation",
     "front": "What does $f^{-1}(x)$ specifically mean?",
     "back": "It represents the **Inverse Function**. It is the algebraic rule that reverses whatever $f(x)$ did.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/03-functions/"
+    "lesson_url": "/igcse/03-functions/03-functions/"
   },
   {
     "id": "ig-cg-18", "topic": "Coordinate Geometry", "subtopic": "Equations of Linear Graphs", "type": "Rule",
     "front": "If a straight line equation has no '+ c' at the end (e.g., $y = 3x$), what does that tell you?",
     "back": "The y-intercept is $0$, meaning the line passes exactly through the **Origin** $(0,0)$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
+    "lesson_url": "/igcse/04-coordinate-geometry/04-equations-of-linear-graphs/"
   },
   {
     "id": "ig-geo-46", "topic": "Geometry", "subtopic": "Similarity", "type": "Concept",
     "front": "What is the crucial difference between **Congruent** and **Similar** shapes?",
     "back": "Congruent shapes are identical in size and shape. Similar shapes have identical angles and proportions, but are **scaled** (different sizes).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/03-similarity/"
+    "lesson_url": "/igcse/05-geometry/03-similarity/"
   },
   {
     "id": "ig-men-25", "topic": "Mensuration", "subtopic": "Surface Area & Volume", "type": "Method",
     "front": "How do you find the volume of a **Frustum** (a cone with the top chopped off)?",
     "back": "Calculate the volume of the entire large cone, and subtract the volume of the small \"chopped off\" cone at the top.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/04-surface-area-and-volume/"
+    "lesson_url": "/igcse/06-mensuration/04-surface-area-and-volume/"
   },
   {
     "id": "ig-men-26", "topic": "Mensuration", "subtopic": "Circles, Arcs & Sectors", "type": "Formula",
     "front": "What is the formula for the **Perimeter of a Semicircle**?",
     "back": "Half of the circumference PLUS the straight diameter across the bottom.",
     "formula": "\\frac{\\pi d}{2} + d",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/06-mensuration/03-circles-arcs-and-sectors/"
+    "lesson_url": "/igcse/06-mensuration/03-circles-arcs-and-sectors/"
   },
   {
     "id": "ig-trig-29", "topic": "Trigonometry", "subtopic": "Trigonometric Functions", "type": "Rule",
     "front": "Due to the symmetry of the sine graph, $\\sin(x)$ is always exactly equal to...",
     "back": "...$\\sin(180^\\circ - x)$. (e.g., $\\sin(30^\\circ) = \\sin(150^\\circ)$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/04-trigonometric-functions/"
+    "lesson_url": "/igcse/07-trigonometry/04-trigonometric-functions/"
   },
   {
     "id": "ig-trig-30", "topic": "Trigonometry", "subtopic": "Trigonometric Functions", "type": "Rule",
     "front": "Due to the symmetry of the cosine graph, $\\cos(x)$ is always exactly equal to...",
     "back": "...$\\cos(360^\\circ - x)$. (e.g., $\\cos(60^\\circ) = \\cos(300^\\circ)$).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/04-trigonometric-functions/"
+    "lesson_url": "/igcse/07-trigonometry/04-trigonometric-functions/"
   },
   {
     "id": "ig-trig-31", "topic": "Trigonometry", "subtopic": "Trigonometric Functions", "type": "Formula",
     "front": "What trigonometric identity links sine, cosine, and tangent?",
     "back": "Tangent is equal to Sine divided by Cosine.",
     "formula": "\\tan(x) = \\frac{\\sin(x)}{\\cos(x)}",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/07-trigonometry/04-trigonometric-functions/"
+    "lesson_url": "/igcse/07-trigonometry/04-trigonometric-functions/"
   },
   {
     "id": "ig-vec-13", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Definition",
     "front": "What is a **Position Vector**?",
     "back": "A vector that describes the exact position of a point starting strictly from the **Origin $(0,0)$**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-vec-14", "topic": "Vectors & Transformations", "subtopic": "Vectors", "type": "Method",
     "front": "How do you add two vectors **graphically**?",
     "back": "Place them **tip-to-tail**. The resultant vector is the straight line drawn from the start of the first vector to the end of the second.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/08-transformations-vectors/02-vectors/"
+    "lesson_url": "/igcse/08-transformations-vectors/02-vectors/"
   },
   {
     "id": "ig-prob-21", "topic": "Probability", "subtopic": "Introduction to Probability", "type": "Concept",
     "front": "What does it mean if a set of events is **Exhaustive**?",
     "back": "It means the list covers every single possible outcome, meaning their probabilities must add up to exactly **1**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/01-introduction-to-probability/"
+    "lesson_url": "/igcse/09-probability/01-introduction-to-probability/"
   },
   {
     "id": "ig-prob-22", "topic": "Probability", "subtopic": "Combined Events", "type": "Concept",
     "front": "Summarise the difference between **Independent** and **Mutually Exclusive**.",
     "back": "Independent: Outcomes don't affect each other (Multiply them for 'AND'). <br/> Mutually Exclusive: Outcomes cannot happen at the same time (Add them for 'OR').",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/03-combined-events/"
+    "lesson_url": "/igcse/09-probability/03-combined-events/"
   },
   {
     "id": "ig-stat-36", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Method",
     "front": "How do you calculate the angle for a pie chart sector if a table gives you the frequencies?",
     "back": "Divide $360^\\circ$ by the Total Frequency to find the 'multiplier' (how many degrees 1 person is worth). Then multiply each frequency by that multiplier.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   },
   {
     "id": "ig-stat-37", "topic": "Statistics", "subtopic": "Interpreting Data", "type": "Concept",
     "front": "If Class A has an Interquartile Range of 12 and Class B has an IQR of 5, what does this tell you?",
     "back": "Class B's results are much more **consistent** (less spread out) than Class A's.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/02-interpreting-data/"
+    "lesson_url": "/igcse/10-statistics/02-interpreting-data/"
   },
   {
     "id": "ig-stat-38", "topic": "Statistics", "subtopic": "Averages and Measures of Spread", "type": "Concept",
     "front": "When estimating the mean from grouped data, why might your answer not be the true mean?",
     "back": "Because we use the **midpoints**, which assumes the data is perfectly evenly spread within each class interval. In reality, it might be skewed.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/04-averages-and-measures-of-spread/"
+    "lesson_url": "/igcse/10-statistics/04-averages-and-measures-of-spread/"
   },
   {
     "id": "ig-stat-39", "topic": "Statistics", "subtopic": "Scatter Diagrams", "type": "Rule",
     "front": "What are the rules for drawing a perfect **Line of Best Fit**?",
     "back": "1. It must be a single straight line. <br/> 2. It must pass through the mean point $(\\bar{x}, \\bar{y})$. <br/> 3. It should have roughly an equal number of points above and below the line.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/07-scatter-diagrams/"
+    "lesson_url": "/igcse/10-statistics/07-scatter-diagrams/"
   },
   {
     "id": "ig-stat-40", "topic": "Statistics", "subtopic": "Cumulative Frequency Diagrams", "type": "Concept",
     "front": "What is the primary purpose of drawing a **Cumulative Frequency Curve**?",
     "back": "To estimate the Median, Lower Quartile, Upper Quartile, and Interquartile Range of grouped continuous data.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/08-cumulative-frequency-diagrams/"
+    "lesson_url": "/igcse/10-statistics/08-cumulative-frequency-diagrams/"
   },
   {
     "id": "ig-alg-60", "topic": "Algebra", "subtopic": "Equations", "type": "Method",
     "front": "When creating an equation from a word problem involving a rectangle's area, what shape does the equation usually take?",
     "back": "It almost always forms a **Quadratic Equation** that you must rearrange to equal zero before solving.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/05-equations/"
+    "lesson_url": "/igcse/02-algebra/05-equations/"
   },
   {
     "id": "ig-fun-34", "topic": "Functions", "subtopic": "Functions", "type": "Method",
     "front": "If $f(x) = 2x - 3$, what is $f(-5)$?",
     "back": "Substitute $-5$ wherever there is an $x$. <br/> $2(-5) - 3 = -10 - 3 = -13$.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/03-functions/"
+    "lesson_url": "/igcse/03-functions/03-functions/"
   },
   {
     "id": "ig-geo-47", "topic": "Geometry", "subtopic": "Similarity", "type": "Rule",
     "front": "If you multiply the Length Scale Factor by itself THREE times ($k \\times k \\times k$), what do you get?",
     "back": "The **Volume Scale Factor**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/03-similarity/"
+    "lesson_url": "/igcse/05-geometry/03-similarity/"
   },
   {
     "id": "ig-geo-48", "topic": "Geometry", "subtopic": "Circle Theorems I", "type": "Fact",
     "front": "What is the name of the quadrilateral where all four corners touch the circumference of a circle?",
     "back": "A **Cyclic Quadrilateral**.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/06-circle-theorems-i/"
+    "lesson_url": "/igcse/05-geometry/06-circle-theorems-i/"
   },
   {
     "id": "ig-num-38", "topic": "Number", "subtopic": "Types of Numbers", "type": "Fact",
     "front": "What are the first five **Square Numbers**?",
     "back": "$1, 4, 9, 16, 25$. (Always remember $1 \\times 1 = 1$!).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/01-types-of-numbers/"
+    "lesson_url": "/igcse/01-number/01-types-of-numbers/"
   },
   {
     "id": "ig-var-05", "topic": "Algebra", "subtopic": "Proportion", "type": "Concept",
     "front": "If $y$ is inversely proportional to $x$, what happens to $y$ if you double $x$?",
     "back": "$y$ will be **halved** (divided by 2).",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/08-proportion/"
+    "lesson_url": "/igcse/02-algebra/08-proportion/"
   },
   {
     "id": "ig-set-16", "topic": "Sets", "subtopic": "Set Notation", "type": "Concept",
     "front": "If $n(A) = 10$, $n(B) = 8$, and $n(A \\cap B) = 3$, what is $n(A \\cup B)$?",
     "back": "Use the formula: $10 + 8 - 3 = 15$.",
     "formula": "15",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-set-17", "topic": "Sets", "subtopic": "Set Notation", "type": "Definition",
     "front": "What is the **Universal Set** ($\\mathscr{E}$)?",
     "back": "The entire rectangle in a Venn diagram. It contains absolutely every element being considered in the specific problem.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/01-number/02-sets-and-venn-diagrams/"
+    "lesson_url": "/igcse/01-number/02-sets-and-venn-diagrams/"
   },
   {
     "id": "ig-alg-61", "topic": "Algebra", "subtopic": "Inequalities", "type": "Method",
     "front": "How do you represent the inequality $-2 < x \\le 5$ on a number line?",
     "back": "An **open circle** at $-2$, a **closed circle** at $5$, with a straight line connecting them.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/02-algebra/06-inequalities/"
+    "lesson_url": "/igcse/02-algebra/06-inequalities/"
   },
   {
     "id": "ig-fun-35", "topic": "Functions", "subtopic": "Asymptotes", "type": "Fact",
     "front": "Why does the graph of $y = \\frac{1}{x}$ have a vertical asymptote at $x = 0$?",
     "back": "Because dividing by zero is **mathematically undefined**. The curve can never touch the y-axis.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/03-functions/05-asymptotes/"
+    "lesson_url": "/igcse/03-functions/05-asymptotes/"
   },
   {
     "id": "ig-geo-49", "topic": "Geometry", "subtopic": "Symmetry", "type": "Concept",
     "front": "Does a circle have rotational symmetry?",
     "back": "Yes, it has an **infinite** order of rotational symmetry because it looks identical at every possible tiny rotation.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/05-geometry/04-symmetry/"
+    "lesson_url": "/igcse/05-geometry/04-symmetry/"
   },
   {
     "id": "ig-prob-23", "topic": "Probability", "subtopic": "Relative and Expected Frequencies", "type": "Method",
     "front": "If the probability of rain is $0.2$, how many days of rain do you EXPECT in a $30$-day month?",
     "back": "Multiply the probability by the number of trials. $0.2 \\times 30 = 6$ days.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/09-probability/02-relative-and-expected-frequencies/"
+    "lesson_url": "/igcse/09-probability/02-relative-and-expected-frequencies/"
   },
   {
     "id": "ig-stat-41", "topic": "Statistics", "subtopic": "Charts and Diagrams", "type": "Rule",
     "front": "What MUST you always include when drawing a Histogram to get full marks?",
     "back": "A perfectly labelled y-axis (Frequency Density) and x-axis (with units), and completely accurate, straight lines.",
-    "lesson_url": "https://igcse-maths-textbook.vercel.app/igcse/10-statistics/06-charts-and-diagrams/"
+    "lesson_url": "/igcse/10-statistics/06-charts-and-diagrams/"
   }
 ]
