@@ -12,27 +12,31 @@ const STYLES = `
     flex-direction: column; 
     align-items: center; 
     justify-content: center;
-    overflow-x: hidden; 
     box-sizing: border-box;
-    padding: 0 1rem;
+    overflow-x: hidden; 
+    padding: 1rem 0; 
+  }
+  
+  /* Bulletproof constraint: Safe margin on mobile, max 640px on desktop */
+  .fc-header, 
+  .progress-track, 
+  .card-scene, 
+  .button-row {
+    width: min(calc(100% - 1rem), 640px);
+    box-sizing: border-box;
   }
   
   .fc-header { 
     display: flex; 
     justify-content: space-between; 
-    width: 100%; 
-    max-width: 640px; 
     margin-bottom: 0.5rem; 
     align-items: center; 
-    box-sizing: border-box; 
   }
   
   .topic-select { background: transparent; border: 1px solid var(--sl-color-hairline); color: var(--sl-color-text); padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; max-width: 70%; }
   .counter { font-size: 0.8rem; font-weight: bold; opacity: 0.5; }
   
   .progress-track { 
-    width: 100%; 
-    max-width: 640px; 
     height: 4px; 
     background: rgba(128,128,128,0.2); 
     border-radius: 10px; 
@@ -41,10 +45,8 @@ const STYLES = `
   }
   .progress-bar { height: 100%; background: #f97316; transition: width 0.4s ease; }
   
-  /* CARD SIZING: FLUID ON MOBILE, FIXED ON DESKTOP */
+  /* CARD SIZING */
   .card-scene { 
-    width: 100%; 
-    max-width: 640px; 
     height: 420px; 
     perspective: 1200px; 
     cursor: pointer; 
@@ -59,9 +61,9 @@ const STYLES = `
   .face-back { transform: rotateY(180deg) translateZ(1px); }
   
   /* Themes */
-  .light-theme .face { background: #ffffff; color: #000000; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
-  .dark-theme .face { background: #23262f; color: #ffffff; box-shadow: 0 15px 45px rgba(0,0,0,0.6); }
-  .sepia-mode .face { background: #fdf6e3; color: #5b4636; box-shadow: 0 8px 25px rgba(91, 70, 54, 0.1); }
+  .light-theme .face { background: #ffffff; color: #000000; }
+  .dark-theme .face { background: #23262f; color: #ffffff; }
+  .sepia-mode .face { background: #fdf6e3; color: #5b4636; }
   
   /* Dyslexic Font Toggle for Cards */
   .dyslexic-mode .content,
@@ -93,8 +95,6 @@ const STYLES = `
     display: grid; 
     grid-template-columns: repeat(3, 1fr); 
     gap: 0.75rem; 
-    width: 100%; 
-    max-width: 640px; 
     margin-top: 1.5rem; 
   }
   .btn { padding: 0.9rem; border-radius: 1rem; border: none; color: white; font-weight: 800; cursor: pointer; transition: transform 0.1s; text-transform: uppercase; font-size: 0.8rem; }
@@ -102,7 +102,7 @@ const STYLES = `
   .btn-red { background: #ef4444; } .btn-yellow { background: #f59e0b; } .btn-green { background: #10b981; }
 
   /* ==========================================
-     LATEX FIXES (CLEANED UP TO FIX PMATRIX)
+     LATEX FIXES
      ========================================== */
   .katex { font-size: 1.15em !important; }
   .katex-display { margin: 1em 0; overflow-x: auto; overflow-y: hidden; padding: 5px 0; }
@@ -113,7 +113,6 @@ const STYLES = `
   .results-scene { height: auto; min-height: 480px; cursor: default; }
   .tc-card { padding: 0 !important; transform: none !important; position: relative; overflow: hidden; display: flex; flex-direction: column; }
   
-  /* The Holographic Shimmer Animation */
   @keyframes holoShimmer {
     0% { background-position: 0% 0%; }
     50% { background-position: 100% 100%; }
@@ -127,7 +126,6 @@ const STYLES = `
     mix-blend-mode: hard-light;
   }
 
-  /* Inner Frame */
   .tc-inner-border {
     flex: 1; width: calc(100% - 24px); margin: 12px; padding: 12px;
     border: 4px solid var(--rank-color); border-radius: 12px;
@@ -136,12 +134,10 @@ const STYLES = `
     box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
   }
 
-  /* Card Header */
   .tc-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 2px solid var(--rank-color); margin-bottom: 12px; }
   .tc-name { font-size: 1.1rem; font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sl-color-text); }
   .tc-hp { font-size: 1rem; font-weight: 900; color: #ef4444; }
 
-  /* Card Art Window (Where Rank Goes) */
   .tc-art-window {
     background: radial-gradient(circle at center, rgba(128,128,128,0.1) 0%, rgba(128,128,128,0.3) 100%);
     height: 160px; border-radius: 8px; margin-bottom: 12px;
@@ -157,7 +153,6 @@ const STYLES = `
   }
   @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
 
-  /* Stats Attack Box */
   .tc-stats-box { flex: 1; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
   .tc-stat-row { display: flex; align-items: center; padding: 4px 0; border-bottom: 1px solid rgba(128,128,128,0.2); }
   .tc-stat-cost { width: 24px; font-size: 1.1rem; opacity: 0.7; }
@@ -165,7 +160,6 @@ const STYLES = `
   .tc-stat-dmg { font-weight: 900; font-size: 1.2rem; }
   .tc-flavor-text { font-style: italic; font-size: 0.7rem; opacity: 0.6; text-align: center; margin-top: auto; padding-top: 8px; }
 
-  /* Actions */
   .tc-actions { display: flex; gap: 8px; width: 100%; }
   .tc-btn { flex: 1; padding: 10px; border-radius: 8px; font-weight: 800; font-size: 0.85rem; text-align: center; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box; }
   .tc-btn-primary { background: var(--rank-color); color: white; border: none; }
@@ -187,7 +181,46 @@ export default function FlashcardEngine({ cards, course }) {
   const cardRef = useRef(null);
 
   const topics = useMemo(() => {
-    return ['All', ...new Set(cards.map(c => c.topic))];
+    const rawTopics = ['All', ...new Set(cards.map(c => c.topic))];
+    
+    // The master list of the exact Syllabus Express order
+    const syllabusOrder = [
+      "All",
+      "Prior Learning",
+      "Surds",
+      "Algebra I",
+      "Algebra II",
+      "Lines, Angles & Polygons",
+      "Coordinate Geometry",
+      "Pythagoras' Theorem",
+      "Circle Geometry",
+      "Sequences",
+      "Statistics I (Correlation)",
+      "Statistics II (Discrete & Continuous)",
+      "Measures",
+      "Trigonometry I",
+      "Sets",
+      "Introduction to Functions",
+      "Trigonometry II",
+      "Logarithms",
+      "Transforming Shapes",
+      "Transforming Functions",
+      "Variation",
+      "Vectors",
+      "Probability"
+    ];
+
+    // Sort the topics based on the master list
+    return rawTopics.sort((a, b) => {
+      const indexA = syllabusOrder.indexOf(a);
+      const indexB = syllabusOrder.indexOf(b);
+      
+      // If a topic isn't found in the array (fallback), put it at the bottom
+      if (indexA === -1) return 1;
+      if (indexB === -1) return -1;
+      
+      return indexA - indexB;
+    });
   }, [cards]);
 
   useEffect(() => {
@@ -258,7 +291,6 @@ export default function FlashcardEngine({ cards, course }) {
     }, 250);
   };
 
-  // --- RESULTS SCREEN ---
   if (isFinished) {
     const syllabusPath = course ? `/${course}/course-outline` : '/';
     const total = activeCards.length;
@@ -279,19 +311,15 @@ export default function FlashcardEngine({ cards, course }) {
         <div className={`flashcard-container ${themeClass}`}>
           <div className="card-scene results-scene">
             <div className="face results-card tc-card" style={{ '--rank-color': rankColor }}>
-              
               {isHolo && <div className="tc-holo-overlay"></div>}
-              
               <div className="tc-inner-border">
                 <div className="tc-header">
                   <h1 className="tc-name">{filter}</h1>
                   <div className="tc-hp">HP {rawScore}</div>
                 </div>
-
                 <div className="tc-art-window">
                   <div className="tc-rank-badge">{rank}</div>
                 </div>
-
                 <div className="tc-stats-box">
                   <div className="tc-stat-row">
                     <span className="tc-stat-cost">⚡</span>
@@ -312,14 +340,9 @@ export default function FlashcardEngine({ cards, course }) {
                     "Mastery is not a destination, but a continuous journey of refinement."
                   </p>
                 </div>
-
                 <div className="tc-actions">
-                  <button onClick={() => setCurrentIndex(0)} className="tc-btn tc-btn-ghost">
-                    Replay Deck
-                  </button>
-                  <a href={syllabusPath} className="tc-btn tc-btn-primary">
-                    Return to Outline
-                  </a>
+                  <button onClick={() => setCurrentIndex(0)} className="tc-btn tc-btn-ghost">Replay Deck</button>
+                  <a href={syllabusPath} className="tc-btn tc-btn-primary">Return to Outline</a>
                 </div>
               </div>
             </div>
@@ -329,7 +352,6 @@ export default function FlashcardEngine({ cards, course }) {
     );
   }
 
-  // --- LOADING STATE ---
   if (!currentCard || !isReady) {
     return (
       <>
@@ -345,7 +367,6 @@ export default function FlashcardEngine({ cards, course }) {
     );
   }
 
-  // --- MAIN FLASHCARD UI ---
   return (
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
