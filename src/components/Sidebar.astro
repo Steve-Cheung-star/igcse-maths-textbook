@@ -2,10 +2,9 @@
 // src/components/Sidebar.astro
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/Sidebar.astro';
-import { getRandomGreeting, filterSidebar } from '../utils/sidebarHelpers';
+import { filterSidebar } from '../utils/sidebarHelpers';
 //import ExamTimer from './Timer.js'; // <-- Added Timer Import
 
-const randomGreeting = getRandomGreeting();
 const isTeacher = import.meta.env.PUBLIC_TEACHER_MODE === 'true';
 const currentSidebar = Astro.locals.starlightRoute?.sidebar || Astro.props.sidebar || [];
 
@@ -20,7 +19,7 @@ const newProps = { ...Astro.props, sidebar: filteredSidebar };
 
 <div class="sidebar-container">
   <div class="sidebar-sticky-wrapper">
-    <div id="dynamic-greeting" class="sidebar-header-hint">{randomGreeting}</div>
+    <div id="dynamic-greeting" class="sidebar-header-hint"></div>
   </div>
   
   <div class="sidebar-content">
@@ -57,5 +56,19 @@ const newProps = { ...Astro.props, sidebar: filteredSidebar };
     overflow: hidden; 
     text-overflow: ellipsis; 
   }
-
 </style>
+
+<script>
+  import { getRandomGreeting } from '../utils/sidebarHelpers';
+
+  const setGreeting = () => {
+    const el = document.querySelector('#dynamic-greeting');
+    if (el) el.textContent = getRandomGreeting();
+  };
+
+  // Run on initial load
+  setGreeting();
+
+  // Run on navigation if using View Transitions
+  document.addEventListener('astro:after-swap', setGreeting);
+</script>

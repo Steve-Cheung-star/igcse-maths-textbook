@@ -1,0 +1,309 @@
+import React, { useState, useEffect, useRef, useMemo } from 'react';
+import katex from 'katex';
+import 'katex/dist/katex.min.css';
+
+// 1. PULL ALL CSS TO THE TOP SO IT NEVER GETS DELETED
+const STYLES = `
+  /* BASE STYLES */
+  .flashcard-container { width: 100%; max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
+  .fc-header { display: flex; justify-content: space-between; width: 100%; margin-bottom: 0.5rem; align-items: center; }
+  .topic-select { background: transparent; border: 1px solid var(--sl-color-hairline); color: var(--sl-color-text); padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; max-width: 70%; }
+  .counter { font-size: 0.8rem; font-weight: bold; opacity: 0.5; }
+  
+  .progress-track { width: 100%; height: 4px; background: rgba(128,128,128,0.2); border-radius: 10px; margin-bottom: 1rem; overflow: hidden; }
+  .progress-bar { height: 100%; background: #f97316; transition: width 0.4s ease; }
+  
+  .card-scene { width: 100%; height: 340px; perspective: 1200px; cursor: pointer; }
+  .card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
+  .is-flipped { transform: rotateY(180deg); }
+  .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2.25rem; border-radius: 1.5rem; border: 2.5px solid transparent; overflow: hidden; }
+  .face-front { transform: rotateY(0deg) translateZ(1px); z-index: 2; }
+  .face-back { transform: rotateY(180deg) translateZ(1px); }
+  
+  /* Themes */
+  .light-theme .face { background: #ffffff; color: #000000; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
+  .dark-theme .face { background: #23262f; color: #ffffff; box-shadow: 0 15px 45px rgba(0,0,0,0.6); }
+  .sepia-mode .face { background: #fdf6e3; color: #5b4636; box-shadow: 0 8px 25px rgba(91, 70, 54, 0.1); }
+  
+  .content { font-size: 1.4rem; text-align: center; line-height: 1.5; color: inherit; z-index: 10; }
+  .content b { font-weight: 800; }
+  .type-badge { position: absolute; top: 1.5rem; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; color: #f97316; letter-spacing: 0.1em; }
+  .lesson-link { margin-top: 1rem; font-size: 0.8rem; color: #f97316; text-decoration: none; font-weight: 800; padding: 5px 12px; border: 1.5px solid #f97316; border-radius: 20px; z-index: 10;}
+  .footer-hint { position: absolute; bottom: 1.5rem; font-size: 0.75rem; opacity: 0.5; }
+  
+  .button-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; width: 100%; margin-top: 2rem; }
+  .btn { padding: 0.9rem; border-radius: 1rem; border: none; color: white; font-weight: 800; cursor: pointer; transition: transform 0.1s; text-transform: uppercase; font-size: 0.8rem; }
+  .btn-red { background: #ef4444; } .btn-yellow { background: #f59e0b; } .btn-green { background: #10b981; }
+
+  /* ==========================================
+     HOLO-FOIL TRADING CARD CSS
+     ========================================== */
+  .results-scene { height: auto; min-height: 480px; cursor: default; }
+  .tc-card { padding: 0 !important; transform: none !important; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+  
+  /* The Holographic Shimmer Animation */
+  @keyframes holoShimmer {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+  .tc-holo-overlay {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.35;
+    background: linear-gradient(125deg, rgba(255,0,0,0.4) 0%, rgba(255,154,0,0.4) 10%, rgba(208,222,33,0.4) 20%, rgba(79,220,74,0.4) 30%, rgba(63,218,216,0.4) 40%, rgba(47,201,226,0.4) 50%, rgba(28,127,238,0.4) 60%, rgba(95,21,242,0.4) 70%, rgba(186,12,248,0.4) 80%, rgba(251,7,217,0.4) 90%, rgba(255,0,0,0.4) 100%);
+    background-size: 300% 300%;
+    animation: holoShimmer 6s linear infinite;
+    mix-blend-mode: hard-light;
+  }
+
+  /* Inner Frame */
+  .tc-inner-border {
+    flex: 1; width: calc(100% - 24px); margin: 12px; padding: 12px;
+    border: 4px solid var(--rank-color); border-radius: 12px;
+    background: var(--sl-color-bg); 
+    z-index: 2; display: flex; flex-direction: column;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  /* Card Header */
+  .tc-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 2px solid var(--rank-color); margin-bottom: 12px; }
+  .tc-name { font-size: 1.1rem; font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sl-color-text); }
+  .tc-hp { font-size: 1rem; font-weight: 900; color: #ef4444; }
+
+  /* Card Art Window (Where Rank Goes) */
+  .tc-art-window {
+    background: radial-gradient(circle at center, rgba(128,128,128,0.1) 0%, rgba(128,128,128,0.3) 100%);
+    height: 160px; border-radius: 8px; margin-bottom: 12px;
+    border: 2px solid rgba(128,128,128,0.4);
+    display: flex; justify-content: center; align-items: center;
+    box-shadow: inset 0 4px 15px rgba(0,0,0,0.15);
+    position: relative; overflow: hidden;
+  }
+  .tc-rank-badge {
+    font-size: 5rem; font-weight: 900; font-family: Impact, sans-serif; font-style: italic;
+    color: var(--rank-color); text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+  /* Stats Attack Box */
+  .tc-stats-box { flex: 1; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
+  .tc-stat-row { display: flex; align-items: center; padding: 4px 0; border-bottom: 1px solid rgba(128,128,128,0.2); }
+  .tc-stat-cost { width: 24px; font-size: 1.1rem; opacity: 0.7; }
+  .tc-stat-name { flex: 1; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; color: var(--sl-color-text); }
+  .tc-stat-dmg { font-weight: 900; font-size: 1.2rem; }
+  .tc-flavor-text { font-style: italic; font-size: 0.7rem; opacity: 0.6; text-align: center; margin-top: auto; padding-top: 8px; }
+
+  /* Actions */
+  .tc-actions { display: flex; gap: 8px; width: 100%; }
+  .tc-btn { flex: 1; padding: 10px; border-radius: 8px; font-weight: 800; font-size: 0.85rem; text-align: center; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box; }
+  .tc-btn-primary { background: var(--rank-color); color: white; border: none; }
+  .tc-btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); }
+  .tc-btn-ghost { background: transparent; color: inherit; border: 2px solid rgba(128,128,128,0.3); }
+  .tc-btn-ghost:hover { background: rgba(128,128,128,0.1); transform: translateY(-2px); }
+`;
+
+export default function FlashcardEngine({ cards, course }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [activeCards, setActiveCards] = useState([]);
+  const [filter, setFilter] = useState('All');
+  const [ratings, setRatings] = useState({});
+  const [isReady, setIsReady] = useState(false);
+  const [theme, setTheme] = useState('dark');
+  const [isSepia, setIsSepia] = useState(false);
+  const cardRef = useRef(null);
+
+  const topics = useMemo(() => {
+    return ['All', ...new Set(cards.map(c => c.topic))];
+  }, [cards]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem(`progress_${course}`);
+    if (saved) setRatings(JSON.parse(saved));
+
+    const activeTheme = localStorage.getItem('starlight-theme') || 'dark';
+    const activeSepia = localStorage.getItem('sepia-mode') === 'true';
+    setTheme(activeTheme);
+    setIsSepia(activeSepia);
+
+    let filtered = filter === 'All' ? [...cards] : cards.filter(c => c.topic === filter);
+    for (let i = filtered.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
+    }
+
+    setActiveCards(filtered);
+    setCurrentIndex(0);
+    setIsFlipped(false);
+
+    if (cardRef.current) void cardRef.current.offsetHeight;
+    
+    setIsReady(false);
+    const timer = setTimeout(() => setIsReady(true), 150);
+    return () => clearTimeout(timer);
+  }, [course, filter, cards]);
+
+  const currentCard = activeCards[currentIndex];
+  const isFinished = activeCards.length > 0 && currentIndex >= activeCards.length;
+  const themeClass = isSepia ? 'sepia-mode' : `${theme}-theme`;
+
+  const renderContent = (text) => {
+    if (!text) return "";
+    return text
+      .replace(/\$([^$]+)\$/g, (match, formula) => {
+        try {
+          return katex.renderToString(formula, { throwOnError: false });
+        } catch (e) { return formula; }
+      })
+      .replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
+  };
+
+  const handleRate = (e, status) => {
+    e.stopPropagation();
+    const nextRatings = { ...ratings, [currentCard.id]: status };
+    setRatings(nextRatings);
+    localStorage.setItem(`progress_${course}`, JSON.stringify(nextRatings));
+    setIsFlipped(false);
+    setTimeout(() => {
+      setCurrentIndex((prev) => prev + 1);
+    }, 250);
+  };
+
+  // --- RESULTS SCREEN ---
+  if (isFinished) {
+    const syllabusPath = course ? `/${course}/course-outline` : '/';
+    const total = activeCards.length;
+    const easyCount = activeCards.filter(c => ratings[c.id] === 'green').length;
+    const hardCount = activeCards.filter(c => ratings[c.id] === 'yellow').length;
+    const againCount = activeCards.filter(c => ratings[c.id] === 'red').length;
+    
+    const rawScore = total > 0 ? Math.round(((easyCount * 1) + (hardCount * 0.5)) / total * 100) : 0;
+
+    let rank = 'C'; let rankColor = '#ef4444'; let isHolo = false;
+    if (rawScore >= 95) { rank = 'S'; rankColor = '#a855f7'; isHolo = true; } 
+    else if (rawScore >= 80) { rank = 'A'; rankColor = '#10b981'; isHolo = true; } 
+    else if (rawScore >= 60) { rank = 'B'; rankColor = '#f59e0b'; }
+
+    return (
+      <>
+        {/* ADDED STYLES HERE SO THEY SURVIVE THE RETURN */}
+        <style dangerouslySetInnerHTML={{ __html: STYLES }} />
+        <div className={`flashcard-container ${themeClass}`}>
+          <div className="card-scene results-scene">
+            <div className="face results-card tc-card" style={{ '--rank-color': rankColor }}>
+              
+              {isHolo && <div className="tc-holo-overlay"></div>}
+              
+              <div className="tc-inner-border">
+                <div className="tc-header">
+                  <h1 className="tc-name">{filter}</h1>
+                  <div className="tc-hp">HP {rawScore}</div>
+                </div>
+
+                <div className="tc-art-window">
+                  <div className="tc-rank-badge">{rank}</div>
+                </div>
+
+                <div className="tc-stats-box">
+                  <div className="tc-stat-row">
+                    <span className="tc-stat-cost">⚡</span>
+                    <span className="tc-stat-name">Perfect Recall</span>
+                    <span className="tc-stat-dmg">{easyCount}</span>
+                  </div>
+                  <div className="tc-stat-row">
+                    <span className="tc-stat-cost">❂</span>
+                    <span className="tc-stat-name">Good Grasp</span>
+                    <span className="tc-stat-dmg">{hardCount}</span>
+                  </div>
+                  <div className="tc-stat-row">
+                    <span className="tc-stat-cost">✖</span>
+                    <span className="tc-stat-name">Missed Marks</span>
+                    <span className="tc-stat-dmg">{againCount}</span>
+                  </div>
+                  <p className="tc-flavor-text">
+                    "Mastery is not a destination, but a continuous journey of refinement."
+                  </p>
+                </div>
+
+                <div className="tc-actions">
+                  <button onClick={() => setCurrentIndex(0)} className="tc-btn tc-btn-ghost">
+                    Replay Deck
+                  </button>
+                  <a href={syllabusPath} className="tc-btn tc-btn-primary">
+                    Return to Outline
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  // --- LOADING STATE ---
+  if (!currentCard || !isReady) {
+    return (
+      <>
+        <style dangerouslySetInnerHTML={{ __html: STYLES }} />
+        <div className={`flashcard-container ${themeClass}`}>
+           <div className="card-scene">
+             <div className="face face-front">
+               <p className="footer-hint">Initializing Deck...</p>
+             </div>
+           </div>
+        </div>
+      </>
+    );
+  }
+
+  // --- MAIN FLASHCARD UI ---
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{ __html: STYLES }} />
+      <div className={`flashcard-container ${themeClass}`}>
+        <div className="fc-header">
+          <select className="topic-select" value={filter} onChange={(e) => setFilter(e.target.value)}>
+            {topics.map(t => <option key={t} value={t}>{t}</option>)}
+          </select>
+          <span className="counter">{currentIndex + 1} / {activeCards.length}</span>
+        </div>
+
+        <div className="progress-track">
+          <div className="progress-bar" style={{ width: `${((currentIndex + 1) / activeCards.length) * 100}%` }} />
+        </div>
+
+        <div className="card-scene" onClick={() => setIsFlipped(!isFlipped)}>
+          <div
+            ref={cardRef}
+            className={`card-inner ${isFlipped ? 'is-flipped' : ''}`}
+            style={{ transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)' }}
+          >
+            <div className="face face-front">
+              <span className="type-badge">{currentCard.type}</span>
+              <div className="content" dangerouslySetInnerHTML={{ __html: renderContent(currentCard.front) }} />
+              <p className="footer-hint">Tap to flip</p>
+            </div>
+
+            <div className="face face-back">
+              <div className="content" dangerouslySetInnerHTML={{ __html: renderContent(currentCard.back) }} />
+              {currentCard.formula && (
+                <div className="math-block" dangerouslySetInnerHTML={{ __html: katex.renderToString(currentCard.formula, { displayMode: true }) }} />
+              )}
+              <a href={currentCard.lesson_url} className="lesson-link" onClick={(e) => e.stopPropagation()}>
+                Review Lesson →
+              </a>
+              <p className="footer-hint">Rate to continue</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="button-row">
+          <button onClick={(e) => handleRate(e, 'red')} className="btn btn-red">Again</button>
+          <button onClick={(e) => handleRate(e, 'yellow')} className="btn btn-yellow">Hard</button>
+          <button onClick={(e) => handleRate(e, 'green')} className="btn btn-green">Easy</button>
+        </div>
+      </div>
+    </>
+  );
+}

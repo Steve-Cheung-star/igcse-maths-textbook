@@ -308,3 +308,25 @@
   .main-frame, .content-panel { padding: 0 !important; margin: 0 !important; max-width: 100% !important; }
   :root { --sl-color-bg: #ffffff !important; --sl-color-text: #000000 !important; }
 }
+
+/* 3D Flip Utilities */
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Ensure the back of the card is invisible until flipped */
+.invisible {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible;
+}

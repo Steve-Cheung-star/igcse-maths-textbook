@@ -44,7 +44,6 @@ export default defineConfig({
         './src/assets/bento-mode.css',
       ],
       components: {
-        SocialIcons: './src/components/Tracker.astro',
         SocialIcons: './src/components/AccessibilityControls.astro',
         SiteTitle: './src/components/SiteTitle.astro',
         Sidebar: './src/components/Sidebar.astro',
@@ -108,7 +107,8 @@ export default defineConfig({
           collapsed: true,
           items: [
             { label: '⭐ My Revision', link: '/igcse/my-revision/' },
-            { label: 'Course Outline', link: 'igcse/course-outline' },
+            { label: 'Course Outline', link: '/igcse/course-outline' },
+            { label: 'IGCSE Flashcards', link: '/revision/igcse' },
             { label: '1. Number', autogenerate: { directory: 'igcse/01-number' } },
             { label: '2. Algebra', autogenerate: { directory: 'igcse/02-algebra' } },
             { label: '3. Functions', autogenerate: { directory: 'igcse/03-functions' } },
@@ -126,7 +126,7 @@ export default defineConfig({
           collapsed: true,
           items: [
             { label: '⭐ My Revision', link: '/ib-aisl/my-revision/' },
-            { label: 'Course Outline', link: 'ib-aisl/course-outline' },
+            { label: 'Course Outline', link: '/ib-aisl/course-outline' },
             { label: '1. Number & Algebra', autogenerate: { directory: 'ib-aisl/01-number-and-algebra' } },
             { label: '2. Functions', autogenerate: { directory: 'ib-aisl/02-functions' } },
             { label: '3. 3D Geometry & Trigonometry', autogenerate: { directory: 'ib-aisl/03-geometry-and-trigonometry' } },

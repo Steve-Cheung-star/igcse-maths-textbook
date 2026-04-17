@@ -1,0 +1,73 @@
+---
+import '../assets/custom.css';
+const { title } = Astro.props;
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <script is:inline>
+      // This function ensures the theme persists across refreshes
+      function syncTheme() {
+        const theme = localStorage.getItem('starlight-theme') || 'dark';
+        const isSepia = localStorage.getItem('sepia-mode') === 'true';
+        
+        // Apply classes to HTML so CSS selectors like .dark-theme work
+        document.documentElement.className = ''; 
+        document.documentElement.classList.add(`${theme}-theme`);
+        if (isSepia) document.documentElement.classList.add('sepia-mode');
+        
+        // Starlight specifically looks for data-theme
+        document.documentElement.dataset.theme = theme;
+      }
+      syncTheme();
+      
+      // Listen for theme changes while the page is open
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'starlight-theme' || e.key === 'sepia-mode') syncTheme();
+      });
+    </script>
+  </head>
+  <body class="revision-body">
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  /* Ensure the body takes up full height and centers content */
+  .revision-body { 
+    margin: 0; 
+    min-height: 100vh; 
+    font-family: var(--sl-font-system, system-ui, -apple-system, sans-serif); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease;
+  }
+
+  /* Theme Backgrounds - Using !important to override any Starlight defaults */
+  html.dark-theme .revision-body { 
+    background-color: #17181c !important; 
+    color: #ffffff; 
+    --sl-color-bg: #17181c; /* Pass variable to components */
+  }
+  
+  html.light-theme .revision-body { 
+    background-color: #f6f7f9 !important; 
+    color: #17181c; 
+    --sl-color-bg: #f6f7f9;
+  }
+  
+  html.sepia-mode .revision-body { 
+    background-color: #f4ecd8 !important; 
+    color: #5b4636; 
+    --sl-color-bg: #f4ecd8;
+  }
+
+  /* Ensure KaTeX math doesn't overflow on small phone screens */
+  .katex-display {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
