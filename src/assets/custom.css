@@ -101,7 +101,7 @@
   vertical-align: middle !important;
 }
 
-/* --- 5. LATEX MATH (Kept separate to avoid conflicts) --- */
+/* --- 5. LATEX MATH --- */
 .katex-display {
   overflow-x: auto;
   max-width: 100%;
@@ -109,10 +109,16 @@
   font-size: 1.05em !important; 
 }
 
-.katex, .katex * {
+/* 1. Only apply filter and color safely */
+.katex {
   filter: none !important;
   color: inherit !important;
-  /* Protect numbers in equations from OpenDyslexic */
+}
+
+/* 2. Target ONLY the normal numbers/text to protect from Dyslexic font, 
+      leaving the structural brackets and delimiters alone! */
+.katex .mord, 
+.katex .text {
   font-family: KaTeX_Main, 'Times New Roman', serif !important;
 }
 

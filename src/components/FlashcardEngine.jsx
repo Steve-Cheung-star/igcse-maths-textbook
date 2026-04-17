@@ -5,34 +5,53 @@ import 'katex/dist/katex.min.css';
 
 // 1. PULL ALL CSS TO THE TOP SO IT NEVER GETS DELETED
 const STYLES = `
-  /* BASE STYLES & MOBILE SCROLL FIXES */
+  /* BASE STYLES & RESPONSIVE CENTERING */
   .flashcard-container { 
     width: 100%; 
-    max-width: 480px; 
-    margin: 0 auto; 
     display: flex; 
     flex-direction: column; 
     align-items: center; 
-    overflow-x: hidden; /* Prevents the horizontal wiggle */
+    justify-content: center;
+    overflow-x: hidden; 
     box-sizing: border-box;
+    padding: 0 1rem;
   }
-  .fc-header { display: flex; justify-content: space-between; width: 100%; margin-bottom: 0.5rem; align-items: center; padding: 0 4vw; box-sizing: border-box; max-width: 380px; }
+  
+  .fc-header { 
+    display: flex; 
+    justify-content: space-between; 
+    width: 100%; 
+    max-width: 640px; 
+    margin-bottom: 0.5rem; 
+    align-items: center; 
+    box-sizing: border-box; 
+  }
+  
   .topic-select { background: transparent; border: 1px solid var(--sl-color-hairline); color: var(--sl-color-text); padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; max-width: 70%; }
   .counter { font-size: 0.8rem; font-weight: bold; opacity: 0.5; }
   
-  .progress-track { width: 100%; max-width: 380px; height: 4px; background: rgba(128,128,128,0.2); border-radius: 10px; margin-bottom: 1rem; overflow: hidden; }
+  .progress-track { 
+    width: 100%; 
+    max-width: 640px; 
+    height: 4px; 
+    background: rgba(128,128,128,0.2); 
+    border-radius: 10px; 
+    margin-bottom: 1rem; 
+    overflow: hidden; 
+  }
   .progress-bar { height: 100%; background: #f97316; transition: width 0.4s ease; }
   
-  /* CARD SIZING FOR MOBILE */
+  /* CARD SIZING: FLUID ON MOBILE, FIXED ON DESKTOP */
   .card-scene { 
-    width: 92vw; /* Responsive width */
-    max-width: 380px; /* Caps out on larger screens */
-    height: 400px; 
+    width: 100%; 
+    max-width: 640px; 
+    height: 420px; 
     perspective: 1200px; 
     cursor: pointer; 
-    margin: 0 auto;
-    touch-action: pan-y; /* Prevents horizontal swipe scrolling */
+    margin: 0 auto; 
+    touch-action: pan-y; 
   }
+  
   .card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
   .is-flipped { transform: rotateY(180deg); }
   .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; border-radius: 1.5rem; border: 2.5px solid transparent; overflow: hidden; box-sizing: border-box; }
@@ -43,6 +62,16 @@ const STYLES = `
   .light-theme .face { background: #ffffff; color: #000000; box-shadow: 0 8px 30px rgba(0,0,0,0.12); }
   .dark-theme .face { background: #23262f; color: #ffffff; box-shadow: 0 15px 45px rgba(0,0,0,0.6); }
   .sepia-mode .face { background: #fdf6e3; color: #5b4636; box-shadow: 0 8px 25px rgba(91, 70, 54, 0.1); }
+  
+  /* Dyslexic Font Toggle for Cards */
+  .dyslexic-mode .content,
+  .dyslexic-mode .face {
+    font-family: 'OpenDyslexic', 'Lexend', sans-serif !important;
+  }
+  .dyslexic-mode .content {
+    letter-spacing: 0.05em;
+    word-spacing: 0.1em;
+  }
   
   .content { 
     font-size: 1.25rem; 
@@ -60,18 +89,23 @@ const STYLES = `
   .lesson-link:hover { background: #f97316; color: white; }
   .footer-hint { position: absolute; bottom: 1.5rem; font-size: 0.75rem; opacity: 0.5; }
   
-  .button-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; width: 92vw; max-width: 380px; margin-top: 1.5rem; }
+  .button-row { 
+    display: grid; 
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 0.75rem; 
+    width: 100%; 
+    max-width: 640px; 
+    margin-top: 1.5rem; 
+  }
   .btn { padding: 0.9rem; border-radius: 1rem; border: none; color: white; font-weight: 800; cursor: pointer; transition: transform 0.1s; text-transform: uppercase; font-size: 0.8rem; }
   .btn:active { transform: scale(0.95); }
   .btn-red { background: #ef4444; } .btn-yellow { background: #f59e0b; } .btn-green { background: #10b981; }
 
   /* ==========================================
-     LATEX & VECTOR FIXES
+     LATEX FIXES (CLEANED UP TO FIX PMATRIX)
      ========================================== */
-  .katex { font-size: 1.15em !important; line-height: normal; }
+  .katex { font-size: 1.15em !important; }
   .katex-display { margin: 1em 0; overflow-x: auto; overflow-y: hidden; padding: 5px 0; }
-  .katex .mtable { line-height: 1.2; margin: 0.5rem 0; }
-  .katex .delimsizing.size1 { font-family: KaTeX_Main; }
 
   /* ==========================================
      HOLO-FOIL TRADING CARD CSS
@@ -149,6 +183,7 @@ export default function FlashcardEngine({ cards, course }) {
   const [isReady, setIsReady] = useState(false);
   const [theme, setTheme] = useState('dark');
   const [isSepia, setIsSepia] = useState(false);
+  const [isDyslexic, setIsDyslexic] = useState(false);
   const cardRef = useRef(null);
 
   const topics = useMemo(() => {
@@ -159,10 +194,20 @@ export default function FlashcardEngine({ cards, course }) {
     const saved = localStorage.getItem(`progress_${course}`);
     if (saved) setRatings(JSON.parse(saved));
 
-    const activeTheme = localStorage.getItem('starlight-theme') || 'dark';
-    const activeSepia = localStorage.getItem('sepia-mode') === 'true';
-    setTheme(activeTheme);
-    setIsSepia(activeSepia);
+    const updateTheme = () => {
+      const isDark = document.documentElement.classList.contains('theme-dark') || localStorage.getItem('starlight-theme') === 'dark';
+      const sepiaActive = document.documentElement.classList.contains('sepia-mode') || localStorage.getItem('sepia-mode') === 'true';
+      const dyslexicActive = document.documentElement.classList.contains('dyslexic-mode') || localStorage.getItem('dyslexic-mode') === 'true';
+
+      setTheme(isDark ? 'dark' : 'light');
+      setIsSepia(sepiaActive);
+      setIsDyslexic(dyslexicActive);
+    };
+
+    updateTheme();
+    
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
     let filtered = filter === 'All' ? [...cards] : cards.filter(c => c.topic === filter);
     for (let i = filtered.length - 1; i > 0; i--) {
@@ -178,12 +223,18 @@ export default function FlashcardEngine({ cards, course }) {
     
     setIsReady(false);
     const timer = setTimeout(() => setIsReady(true), 150);
-    return () => clearTimeout(timer);
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, [course, filter, cards]);
 
   const currentCard = activeCards[currentIndex];
   const isFinished = activeCards.length > 0 && currentIndex >= activeCards.length;
-  const themeClass = isSepia ? 'sepia-mode' : `${theme}-theme`;
+  
+  let themeClass = `${theme}-theme`;
+  if (isSepia) themeClass = 'sepia-mode';
+  if (isDyslexic) themeClass += ' dyslexic-mode';
 
   const renderContent = (text) => {
     if (!text) return "";
