@@ -330,3 +330,10 @@
 .visible {
   visibility: visible;
 }
+
+/* Hide social icons on mobile to clean up the header */
+@media (max-width: 50rem) {
+  .social-icons {
+    display: none !important;
+  }
+}
