@@ -1,22 +1,41 @@
+// src/components/FlashcardEngine.jsx
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import katex from 'katex';
 import 'katex/dist/katex.min.css';
 
 // 1. PULL ALL CSS TO THE TOP SO IT NEVER GETS DELETED
 const STYLES = `
-  /* BASE STYLES */
-  .flashcard-container { width: 100%; max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; }
-  .fc-header { display: flex; justify-content: space-between; width: 100%; margin-bottom: 0.5rem; align-items: center; }
+  /* BASE STYLES & MOBILE SCROLL FIXES */
+  .flashcard-container { 
+    width: 100%; 
+    max-width: 480px; 
+    margin: 0 auto; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    overflow-x: hidden; /* Prevents the horizontal wiggle */
+    box-sizing: border-box;
+  }
+  .fc-header { display: flex; justify-content: space-between; width: 100%; margin-bottom: 0.5rem; align-items: center; padding: 0 4vw; box-sizing: border-box; max-width: 380px; }
   .topic-select { background: transparent; border: 1px solid var(--sl-color-hairline); color: var(--sl-color-text); padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; max-width: 70%; }
   .counter { font-size: 0.8rem; font-weight: bold; opacity: 0.5; }
   
-  .progress-track { width: 100%; height: 4px; background: rgba(128,128,128,0.2); border-radius: 10px; margin-bottom: 1rem; overflow: hidden; }
+  .progress-track { width: 100%; max-width: 380px; height: 4px; background: rgba(128,128,128,0.2); border-radius: 10px; margin-bottom: 1rem; overflow: hidden; }
   .progress-bar { height: 100%; background: #f97316; transition: width 0.4s ease; }
   
-  .card-scene { width: 100%; height: 340px; perspective: 1200px; cursor: pointer; }
+  /* CARD SIZING FOR MOBILE */
+  .card-scene { 
+    width: 92vw; /* Responsive width */
+    max-width: 380px; /* Caps out on larger screens */
+    height: 400px; 
+    perspective: 1200px; 
+    cursor: pointer; 
+    margin: 0 auto;
+    touch-action: pan-y; /* Prevents horizontal swipe scrolling */
+  }
   .card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
   .is-flipped { transform: rotateY(180deg); }
-  .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2.25rem; border-radius: 1.5rem; border: 2.5px solid transparent; overflow: hidden; }
+  .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; border-radius: 1.5rem; border: 2.5px solid transparent; overflow: hidden; box-sizing: border-box; }
   .face-front { transform: rotateY(0deg) translateZ(1px); z-index: 2; }
   .face-back { transform: rotateY(180deg) translateZ(1px); }
   
@@ -25,15 +44,34 @@ const STYLES = `
   .dark-theme .face { background: #23262f; color: #ffffff; box-shadow: 0 15px 45px rgba(0,0,0,0.6); }
   .sepia-mode .face { background: #fdf6e3; color: #5b4636; box-shadow: 0 8px 25px rgba(91, 70, 54, 0.1); }
   
-  .content { font-size: 1.4rem; text-align: center; line-height: 1.5; color: inherit; z-index: 10; }
+  .content { 
+    font-size: 1.25rem; 
+    text-align: center; 
+    line-height: 1.5; 
+    color: inherit; 
+    z-index: 10; 
+    word-wrap: break-word; 
+    overflow-wrap: break-word; 
+    width: 100%; 
+  }
   .content b { font-weight: 800; }
   .type-badge { position: absolute; top: 1.5rem; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; color: #f97316; letter-spacing: 0.1em; }
-  .lesson-link { margin-top: 1rem; font-size: 0.8rem; color: #f97316; text-decoration: none; font-weight: 800; padding: 5px 12px; border: 1.5px solid #f97316; border-radius: 20px; z-index: 10;}
+  .lesson-link { margin-top: 1.5rem; font-size: 0.8rem; color: #f97316; text-decoration: none; font-weight: 800; padding: 6px 14px; border: 1.5px solid #f97316; border-radius: 20px; z-index: 10; transition: all 0.2s; }
+  .lesson-link:hover { background: #f97316; color: white; }
   .footer-hint { position: absolute; bottom: 1.5rem; font-size: 0.75rem; opacity: 0.5; }
   
-  .button-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; width: 100%; margin-top: 2rem; }
+  .button-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; width: 92vw; max-width: 380px; margin-top: 1.5rem; }
   .btn { padding: 0.9rem; border-radius: 1rem; border: none; color: white; font-weight: 800; cursor: pointer; transition: transform 0.1s; text-transform: uppercase; font-size: 0.8rem; }
+  .btn:active { transform: scale(0.95); }
   .btn-red { background: #ef4444; } .btn-yellow { background: #f59e0b; } .btn-green { background: #10b981; }
+
+  /* ==========================================
+     LATEX & VECTOR FIXES
+     ========================================== */
+  .katex { font-size: 1.15em !important; line-height: normal; }
+  .katex-display { margin: 1em 0; overflow-x: auto; overflow-y: hidden; padding: 5px 0; }
+  .katex .mtable { line-height: 1.2; margin: 0.5rem 0; }
+  .katex .delimsizing.size1 { font-family: KaTeX_Main; }
 
   /* ==========================================
      HOLO-FOIL TRADING CARD CSS
@@ -186,7 +224,6 @@ export default function FlashcardEngine({ cards, course }) {
 
     return (
       <>
-        {/* ADDED STYLES HERE SO THEY SURVIVE THE RETURN */}
         <style dangerouslySetInnerHTML={{ __html: STYLES }} />
         <div className={`flashcard-container ${themeClass}`}>
           <div className="card-scene results-scene">
@@ -290,9 +327,11 @@ export default function FlashcardEngine({ cards, course }) {
               {currentCard.formula && (
                 <div className="math-block" dangerouslySetInnerHTML={{ __html: katex.renderToString(currentCard.formula, { displayMode: true }) }} />
               )}
-              <a href={currentCard.lesson_url} className="lesson-link" onClick={(e) => e.stopPropagation()}>
-                Review Lesson →
-              </a>
+              {currentCard.lesson_url && (
+                <a href={currentCard.lesson_url} className="lesson-link" onClick={(e) => e.stopPropagation()}>
+                  Review Lesson →
+                </a>
+              )}
               <p className="footer-hint">Rate to continue</p>
             </div>
           </div>
