@@ -2470,7 +2470,7 @@
     "topic": "Prior Learning",
     "subtopic": "Rates",
     "type": "Method",
-    "front": "How do you convert a currency (e.g., changing $500 to Euros when the exchange rate is $1 = €0.85)?",
+    "front": "How do you convert a currency (e.g., changing \\$500 to Euros when the exchange rate is \\$1 = €0.85)?",
     "back": "Multiply by the exchange rate. ($500 \\times 0.85 = €425$).",
     "lesson_url": "/igcse/01-number/15-money/"
   },

@@ -18,7 +18,7 @@ const STYLES = `
   }
   
   /* Bulletproof constraint: Safe margin on mobile, max 640px on desktop */
-  .fc-header, 
+  .fc-header-container, 
   .progress-track, 
   .card-scene, 
   .button-row {
@@ -29,11 +29,31 @@ const STYLES = `
   .fc-header { 
     display: flex; 
     justify-content: space-between; 
-    margin-bottom: 0.5rem; 
+    margin-bottom: 0.4rem; 
     align-items: center; 
   }
+
+  .fc-header-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+    position: relative; /* For the dropdown menu */
+  }
   
-  .topic-select { background: transparent; border: 1px solid var(--sl-color-hairline); color: var(--sl-color-text); padding: 4px 8px; border-radius: 6px; font-size: 0.8rem; max-width: 70%; }
+  /* CUSTOM DECK BUILDER MENU */
+  .filter-btn { background: transparent; border: 1px solid var(--sl-color-hairline); color: var(--sl-color-text); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; font-weight: bold; }
+  .filter-btn:hover { background: rgba(128,128,128,0.1); }
+  .filter-panel { 
+    position: absolute; top: 2.5rem; left: 0; right: 0; 
+    background: var(--sl-color-bg); border: 1px solid var(--sl-color-hairline); 
+    border-radius: 8px; padding: 1rem; z-index: 100; 
+    display: flex; flex-wrap: wrap; gap: 0.5rem; 
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
+    max-height: 300px; overflow-y: auto; 
+  }
+  .topic-pill { padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; cursor: pointer; border: 1px solid var(--sl-color-hairline); background: transparent; color: var(--sl-color-text); transition: all 0.2s; }
+  .topic-pill.active { background: #f97316; color: white; border-color: #f97316; }
+
   .counter { font-size: 0.8rem; font-weight: bold; opacity: 0.5; }
   
   .progress-track { 
@@ -135,7 +155,7 @@ const STYLES = `
   }
 
   .tc-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 2px solid var(--rank-color); margin-bottom: 12px; }
-  .tc-name { font-size: 1.1rem; font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sl-color-text); }
+  .tc-name { font-size: 1.1rem; font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sl-color-text); line-height: 1.2; }
   .tc-hp { font-size: 1rem; font-weight: 900; color: #ef4444; }
 
   .tc-art-window {
@@ -172,7 +192,12 @@ export default function FlashcardEngine({ cards, course }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [activeCards, setActiveCards] = useState([]);
-  const [filter, setFilter] = useState('All');
+
+  // NEW: Multi-select array instead of single string
+  const [selectedTopics, setSelectedTopics] = useState(['All']);
+  const [isFilterOpen, setIsFilterOpen] = useState(false);
+
+  const [isCramMode, setIsCramMode] = useState(false);
   const [ratings, setRatings] = useState({});
   const [isReady, setIsReady] = useState(false);
   const [theme, setTheme] = useState('dark');
@@ -182,67 +207,80 @@ export default function FlashcardEngine({ cards, course }) {
 
   const topics = useMemo(() => {
     const rawTopics = ['All', ...new Set(cards.map(c => c.topic))];
-    
-    // The master list of the exact Syllabus Express order
     const syllabusOrder = [
-      "All",
-      "Prior Learning",
-      "Surds",
-      "Algebra I",
-      "Algebra II",
-      "Lines, Angles & Polygons",
-      "Coordinate Geometry",
-      "Pythagoras' Theorem",
-      "Circle Geometry",
-      "Sequences",
-      "Statistics I (Correlation)",
-      "Statistics II (Discrete & Continuous)",
-      "Measures",
-      "Trigonometry I",
-      "Sets",
-      "Introduction to Functions",
-      "Trigonometry II",
-      "Logarithms",
-      "Transforming Shapes",
-      "Transforming Functions",
-      "Variation",
-      "Vectors",
-      "Probability"
+      "All", "Prior Learning", "Surds", "Algebra I", "Algebra II", "Lines, Angles & Polygons",
+      "Coordinate Geometry", "Pythagoras' Theorem", "Circle Geometry", "Sequences",
+      "Statistics I (Correlation)", "Statistics II (Discrete & Continuous)", "Measures",
+      "Trigonometry I", "Sets", "Introduction to Functions", "Trigonometry II", "Logarithms",
+      "Transforming Shapes", "Transforming Functions", "Variation", "Vectors", "Probability"
     ];
-
-    // Sort the topics based on the master list
     return rawTopics.sort((a, b) => {
       const indexA = syllabusOrder.indexOf(a);
       const indexB = syllabusOrder.indexOf(b);
-      
-      // If a topic isn't found in the array (fallback), put it at the bottom
       if (indexA === -1) return 1;
       if (indexB === -1) return -1;
-      
       return indexA - indexB;
     });
   }, [cards]);
 
+  // Handle Multi-Select Toggles
+  const toggleTopic = (topic) => {
+    if (topic === 'All') {
+      setSelectedTopics(['All']);
+    } else {
+      let newTopics = selectedTopics.filter(t => t !== 'All'); // Remove 'All' if selecting specifics
+      if (newTopics.includes(topic)) {
+        newTopics = newTopics.filter(t => t !== topic); // Uncheck
+        if (newTopics.length === 0) newTopics = ['All']; // Default back to All if empty
+      } else {
+        newTopics = [...newTopics, topic]; // Check
+      }
+      setSelectedTopics(newTopics);
+    }
+  };
+
   useEffect(() => {
     const saved = localStorage.getItem(`progress_${course}`);
-    if (saved) setRatings(JSON.parse(saved));
+    const currentRatings = saved ? JSON.parse(saved) : {};
+    setRatings(currentRatings);
 
     const updateTheme = () => {
       const isDark = document.documentElement.classList.contains('theme-dark') || localStorage.getItem('starlight-theme') === 'dark';
       const sepiaActive = document.documentElement.classList.contains('sepia-mode') || localStorage.getItem('sepia-mode') === 'true';
       const dyslexicActive = document.documentElement.classList.contains('dyslexic-mode') || localStorage.getItem('dyslexic-mode') === 'true';
-
       setTheme(isDark ? 'dark' : 'light');
       setIsSepia(sepiaActive);
       setIsDyslexic(dyslexicActive);
     };
 
     updateTheme();
-    
     const observer = new MutationObserver(updateTheme);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
-    let filtered = filter === 'All' ? [...cards] : cards.filter(c => c.topic === filter);
+    // 1. Filter by Selected Topics (Array)
+    const isGlobalReview = selectedTopics.includes('All') && selectedTopics.length === 1;
+    let filtered = isGlobalReview ? [...cards] : cards.filter(c => selectedTopics.includes(c.topic));
+
+    // 2. Filter by SRS due date OR Cram Mode OR "Unlocked" status
+    const now = Date.now();
+    filtered = filtered.filter(card => {
+      const cardData = currentRatings[card.id];
+      const hasBeenSeen = !!cardData;
+
+      // CRAM MODE
+      if (isCramMode) {
+        return isGlobalReview ? hasBeenSeen : true;
+      }
+
+      // STANDARD MODE
+      if (isGlobalReview) {
+        return hasBeenSeen && (!cardData.nextReview || cardData.nextReview <= now);
+      } else {
+        return !hasBeenSeen || !cardData.nextReview || cardData.nextReview <= now;
+      }
+    });
+
+    // 3. Shuffle
     for (let i = filtered.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
@@ -253,18 +291,18 @@ export default function FlashcardEngine({ cards, course }) {
     setIsFlipped(false);
 
     if (cardRef.current) void cardRef.current.offsetHeight;
-    
+
     setIsReady(false);
     const timer = setTimeout(() => setIsReady(true), 150);
     return () => {
       clearTimeout(timer);
       observer.disconnect();
     };
-  }, [course, filter, cards]);
+  }, [course, selectedTopics, cards, isCramMode]); // Using selectedTopics array now
 
   const currentCard = activeCards[currentIndex];
   const isFinished = activeCards.length > 0 && currentIndex >= activeCards.length;
-  
+
   let themeClass = `${theme}-theme`;
   if (isSepia) themeClass = 'sepia-mode';
   if (isDyslexic) themeClass += ' dyslexic-mode';
@@ -273,36 +311,138 @@ export default function FlashcardEngine({ cards, course }) {
     if (!text) return "";
     return text
       .replace(/\$([^$]+)\$/g, (match, formula) => {
-        try {
-          return katex.renderToString(formula, { throwOnError: false });
-        } catch (e) { return formula; }
+        try { return katex.renderToString(formula, { throwOnError: false }); }
+        catch (e) { return formula; }
       })
       .replace(/\*\*([^*]+)\*\*/g, '<b>$1</b>');
   };
 
+  const getStatus = (id) => typeof ratings[id] === 'string' ? ratings[id] : ratings[id]?.status;
+
   const handleRate = (e, status) => {
     e.stopPropagation();
-    const nextRatings = { ...ratings, [currentCard.id]: status };
+    const now = Date.now();
+
+    const cardData = ratings[currentCard.id] || { box: 0 };
+    let nextBox = typeof cardData.box === 'number' ? cardData.box : 0;
+    let intervalDays = 0;
+
+    if (status === 'green') {
+      nextBox += 1;
+      const intervals = [1, 3, 7, 14, 30, 90];
+      intervalDays = intervals[Math.min(nextBox, intervals.length - 1)];
+    } else if (status === 'yellow') {
+      intervalDays = 1;
+    } else {
+      nextBox = 0;
+      intervalDays = 0;
+    }
+
+    const nextRatings = {
+      ...ratings,
+      [currentCard.id]: {
+        status: status,
+        box: nextBox,
+        nextReview: now + (intervalDays * 24 * 60 * 60 * 1000)
+      }
+    };
+
     setRatings(nextRatings);
     localStorage.setItem(`progress_${course}`, JSON.stringify(nextRatings));
     setIsFlipped(false);
+
     setTimeout(() => {
       setCurrentIndex((prev) => prev + 1);
     }, 250);
   };
 
+  // UI helper for deck name
+  const deckName = selectedTopics.includes('All')
+    ? 'All'
+    : selectedTopics.length > 2
+      ? 'Custom Deck'
+      : selectedTopics.join(' & ');
+
+  // ALL CAUGHT UP SCREEN
+  const isGlobalReview = selectedTopics.includes('All') && selectedTopics.length === 1;
+  const totalCardsInSelection = isGlobalReview ? cards.length : cards.filter(c => selectedTopics.includes(c.topic)).length;
+
+  if (isReady && totalCardsInSelection > 0 && activeCards.length === 0) {
+    return (
+      <>
+        <style dangerouslySetInnerHTML={{ __html: STYLES }} />
+        <div className={`flashcard-container ${themeClass}`}>
+          <div className="fc-header-container">
+            <div className="fc-header">
+              <button
+                className="filter-btn"
+                onClick={() => setIsFilterOpen(!isFilterOpen)}
+                style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="4" y="6" width="12" height="16" rx="2" />
+                  <path d="M8 2h10a2 2 0 0 1 2 2v14" />
+                </svg>
+                Deck: {deckName}
+              </button>
+            </div>
+
+            {/* The Dropdown Panel */}
+            {isFilterOpen && (
+              <div className="filter-panel">
+                {topics.map(t => (
+                  <button
+                    key={t}
+                    className={`topic-pill ${selectedTopics.includes(t) ? 'active' : ''}`}
+                    onClick={() => toggleTopic(t)}
+                  >
+                    {t}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <div className="card-scene results-scene" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center' }} onClick={() => setIsFilterOpen(false)}>
+            <h2>🎉 All Caught Up!</h2>
+            <p style={{ opacity: 0.8, marginTop: '0.5rem' }}>You've reviewed all due cards for <b>{deckName}</b>.</p>
+
+            {isGlobalReview ? (
+              <p style={{ fontSize: '0.85rem', opacity: 0.7, marginBottom: '2rem', padding: '0 1rem' }}>
+                <i>"All" only shows cards you have previously unlocked. To learn new cards, click "Deck" and select specific topics!</i>
+              </p>
+            ) : (
+              <p style={{ fontSize: '0.8rem', opacity: 0.5, marginBottom: '2rem' }}>Check back tomorrow.</p>
+            )}
+
+            <button onClick={() => setIsCramMode(true)} className="btn btn-yellow" style={{ width: '80%', marginBottom: '1rem' }}>
+              Study Anyway (Cram Mode)
+            </button>
+
+            {!isGlobalReview && (
+              <button onClick={() => setSelectedTopics(['All'])} className="btn btn-green" style={{ width: '80%' }}>
+                Review All Topics
+              </button>
+            )}
+          </div>
+        </div>
+      </>
+    );
+  }
+
+  // Trading Card Results Screen
   if (isFinished) {
     const syllabusPath = course ? `/${course}/course-outline` : '/';
     const total = activeCards.length;
-    const easyCount = activeCards.filter(c => ratings[c.id] === 'green').length;
-    const hardCount = activeCards.filter(c => ratings[c.id] === 'yellow').length;
-    const againCount = activeCards.filter(c => ratings[c.id] === 'red').length;
-    
+    const easyCount = activeCards.filter(c => getStatus(c.id) === 'green').length;
+    const hardCount = activeCards.filter(c => getStatus(c.id) === 'yellow').length;
+    const againCount = activeCards.filter(c => getStatus(c.id) === 'red').length;
+
     const rawScore = total > 0 ? Math.round(((easyCount * 1) + (hardCount * 0.5)) / total * 100) : 0;
 
     let rank = 'C'; let rankColor = '#ef4444'; let isHolo = false;
-    if (rawScore >= 95) { rank = 'S'; rankColor = '#a855f7'; isHolo = true; } 
-    else if (rawScore >= 80) { rank = 'A'; rankColor = '#10b981'; isHolo = true; } 
+    if (rawScore >= 95) { rank = 'S'; rankColor = '#a855f7'; isHolo = true; }
+    else if (rawScore >= 80) { rank = 'A'; rankColor = '#10b981'; isHolo = true; }
     else if (rawScore >= 60) { rank = 'B'; rankColor = '#f59e0b'; }
 
     return (
@@ -314,7 +454,7 @@ export default function FlashcardEngine({ cards, course }) {
               {isHolo && <div className="tc-holo-overlay"></div>}
               <div className="tc-inner-border">
                 <div className="tc-header">
-                  <h1 className="tc-name">{filter}</h1>
+                  <h1 className="tc-name">{deckName} {isCramMode && "(Cram)"}</h1>
                   <div className="tc-hp">HP {rawScore}</div>
                 </div>
                 <div className="tc-art-window">
@@ -357,11 +497,11 @@ export default function FlashcardEngine({ cards, course }) {
       <>
         <style dangerouslySetInnerHTML={{ __html: STYLES }} />
         <div className={`flashcard-container ${themeClass}`}>
-           <div className="card-scene">
-             <div className="face face-front">
-               <p className="footer-hint">Initializing Deck...</p>
-             </div>
-           </div>
+          <div className="card-scene">
+            <div className="face face-front">
+              <p className="footer-hint">Initializing Deck...</p>
+            </div>
+          </div>
         </div>
       </>
     );
@@ -371,25 +511,60 @@ export default function FlashcardEngine({ cards, course }) {
     <>
       <style dangerouslySetInnerHTML={{ __html: STYLES }} />
       <div className={`flashcard-container ${themeClass}`}>
-        <div className="fc-header">
-          <select className="topic-select" value={filter} onChange={(e) => setFilter(e.target.value)}>
-            {topics.map(t => <option key={t} value={t}>{t}</option>)}
-          </select>
-          <span className="counter">{currentIndex + 1} / {activeCards.length}</span>
+
+        <div className="fc-header-container">
+          <div className="fc-header">
+            <button
+              className="filter-btn"
+              onClick={() => setIsFilterOpen(!isFilterOpen)}
+              style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="4" y="6" width="12" height="16" rx="2" />
+                <path d="M8 2h10a2 2 0 0 1 2 2v14" />
+              </svg>
+              Deck: {deckName}
+            </button>
+            <span className="counter">{currentIndex + 1} / {activeCards.length}</span>
+          </div>
+
+          {isFilterOpen && (
+            <div className="filter-panel">
+              {topics.map(t => (
+                <button
+                  key={t}
+                  className={`topic-pill ${selectedTopics.includes(t) ? 'active' : ''}`}
+                  onClick={() => toggleTopic(t)}
+                >
+                  {t}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <label style={{ fontSize: '0.75rem', opacity: 0.7, display: 'flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none', marginTop: '0.2rem' }}>
+            <input
+              type="checkbox"
+              checked={isCramMode}
+              onChange={(e) => setIsCramMode(e.target.checked)}
+              style={{ marginRight: '0.4rem', accentColor: '#f97316' }}
+            />
+            Cram Mode (Ignore due dates)
+          </label>
         </div>
 
-        <div className="progress-track">
+        <div className="progress-track" onClick={() => setIsFilterOpen(false)}>
           <div className="progress-bar" style={{ width: `${((currentIndex + 1) / activeCards.length) * 100}%` }} />
         </div>
 
-        <div className="card-scene" onClick={() => setIsFlipped(!isFlipped)}>
+        <div className="card-scene" onClick={() => { setIsFlipped(!isFlipped); setIsFilterOpen(false); }}>
           <div
             ref={cardRef}
             className={`card-inner ${isFlipped ? 'is-flipped' : ''}`}
             style={{ transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)' }}
           >
             <div className="face face-front">
-              <span className="type-badge">{currentCard.type}</span>
+              <span className="type-badge">{currentCard.topic}</span>
               <div className="content" dangerouslySetInnerHTML={{ __html: renderContent(currentCard.front) }} />
               <p className="footer-hint">Tap to flip</p>
             </div>
@@ -409,7 +584,7 @@ export default function FlashcardEngine({ cards, course }) {
           </div>
         </div>
 
-        <div className="button-row">
+        <div className="button-row" onClick={() => setIsFilterOpen(false)}>
           <button onClick={(e) => handleRate(e, 'red')} className="btn btn-red">Again</button>
           <button onClick={(e) => handleRate(e, 'yellow')} className="btn btn-yellow">Hard</button>
           <button onClick={(e) => handleRate(e, 'green')} className="btn btn-green">Easy</button>
