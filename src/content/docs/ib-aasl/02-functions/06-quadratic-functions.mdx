@@ -1,0 +1,349 @@
+---
+title: 2.6 Quadratic Functions
+description: Master the three forms of a quadratic function, understand the geometry of parabolas, and learn to seamlessly convert between equations.
+---
+
+Quadratic functions represent one of the most important families of curves in mathematics. Unlike straight lines, quadratics accelerate; their rate of change is constantly changing, forming a perfect, symmetrical U-shape known as a **parabola**. From the arc of a thrown basketball to the reflective surface of a satellite dish, quadratics model the physical world with astonishing accuracy.
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Math vs. Other Areas of Knowledge:** Are there fundamental differences between mathematics and other areas of knowledge (like the natural sciences or humanities)? In physics, we test a projectile's path by dropping it and measuring the results (empiricism). In mathematics, we use a quadratic equation to prove exactly where it will land without ever having to drop it (rationalism). If so, are these differences more than just methodological? Does mathematics discover universal truths, or merely invent logical frameworks?
+</Aside>
+
+---
+
+## 1. The Anatomy of a Parabola
+
+Every quadratic graph (parabola) has a few defining geometric features:
+* **The Vertex:** The absolute maximum or minimum turning point of the curve.
+* **The Axis of Symmetry:** A perfectly vertical line that passes straight through the vertex, cutting the parabola into two mirrored halves.
+* **The $y$-intercept:** Where the curve crosses the $y$-axis (always exactly one).
+* **The $x$-intercepts (Roots/Zeros):** Where the curve crosses the $x$-axis (can be two, one, or none).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 350" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid Lines */}
+    <g stroke="#f8fafc" stroke-width="1">
+      <line x1="0" y1="50" x2="400" y2="50" />
+      <line x1="0" y1="100" x2="400" y2="100" />
+      <line x1="0" y1="150" x2="400" y2="150" />
+      <line x1="0" y1="200" x2="400" y2="200" />
+      <line x1="0" y1="250" x2="400" y2="250" />
+      <line x1="0" y1="300" x2="400" y2="300" />
+      <line x1="50" y1="0" x2="50" y2="350" />
+      <line x1="100" y1="0" x2="100" y2="350" />
+      <line x1="150" y1="0" x2="150" y2="350" />
+      <line x1="200" y1="0" x2="200" y2="350" />
+      <line x1="250" y1="0" x2="250" y2="350" />
+      <line x1="300" y1="0" x2="300" y2="350" />
+      <line x1="350" y1="0" x2="350" y2="350" />
+    </g>
+
+    {/* Axes (Origin at 100, 250) */}
+    <line x1="100" y1="20" x2="100" y2="330" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="20" y1="250" x2="380" y2="250" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="370" y="240" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">x</text>
+    <text x="110" y="30" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">y</text>
+
+    {/* Axis of Symmetry */}
+    <line x1="200" y1="20" x2="200" y2="330" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" />
+    <text x="210" y="45" font-size="14" font-weight="bold" fill="#94a3b8" font-family="sans-serif">Axis of Symmetry</text>
+
+    {/* The Parabola (Vertex at 200, 300; roots at 150, 250 and 250, 250; y-int at 100, 100) */}
+    <path d="M 50 -100 Q 200 500 350 -100" fill="transparent" stroke="#3b82f6" stroke-width="3" />
+    <text x="320" y="80" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">f(x)</text>
+
+    {/* Key Points */}
+    <circle cx="200" cy="300" r="5" fill="#8b5cf6" />
+    <text x="145" y="325" font-size="14" font-weight="bold" fill="#8b5cf6" font-family="sans-serif">Vertex (h, k)</text>
+
+    <circle cx="100" cy="100" r="5" fill="#f59e0b" />
+    <text x="25" y="105" font-size="14" font-weight="bold" fill="#f59e0b" font-family="sans-serif">(0, c)</text>
+
+    <circle cx="150" cy="250" r="5" fill="#ef4444" />
+    <text x="125" y="235" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">(p, 0)</text>
+
+    <circle cx="250" cy="250" r="5" fill="#ef4444" />
+    <text x="255" y="235" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">(q, 0)</text>
+
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+---
+
+## 2. The Three Forms of a Quadratic
+
+To fully master quadratics, you must be able to move fluidly between three different algebraic forms. Each form is a different lens that highlights a specific geometric feature of the parabola.
+
+### 1. Standard Form
+$$
+f(x) = ax^2 + bx + c
+$$
+This is the default expanded form. 
+* The constant $c$ reveals the **$y$-intercept** at $(0, c)$.
+* If $a > 0$, the parabola opens **upwards** (like a smile $\cup$).
+* If $a < 0$, the parabola opens **downwards** (like a frown $\cap$).
+
+<FormulaBox title="2.6 Axis of symmetry of the graph of a quadratic function">
+
+If $f(x) = ax^2 + bx + c \Rightarrow$ axis of symmetry is $x = -\dfrac{b}{2a}$
+
+</FormulaBox>
+
+### 2. Factored Form (Intercept Form)
+$$
+f(x) = a(x - p)(x - q)
+$$
+This form is built by factorising the quadratic. 
+* It instantly reveals the **$x$-intercepts**, which are located at $(p, 0)$ and $(q, 0)$.
+* Because a parabola is perfectly symmetrical, the axis of symmetry lies exactly halfway between the two roots: $x = \dfrac{p + q}{2}$.
+
+### 3. Vertex Form
+$$
+f(x) = a(x - h)^2 + k
+$$
+This form is achieved by "completing the square".
+* It instantly reveals the coordinates of the **vertex** as $(h, k)$.
+* The axis of symmetry is simply the vertical line $x = h$.
+
+<Aside type="danger" title="Common Pitfall: The negative sign in Vertex Form">
+Pay close attention to the minus sign inside the brackets of $a(x - h)^2 + k$. 
+If your equation is $f(x) = 2(x - 3)^2 + 5$, the vertex is $(3, 5)$. 
+If your equation is $f(x) = 2(x + 3)^2 + 5$, the $x$-coordinate is negative, so the vertex is $(-3, 5)$.
+</Aside>
+
+---
+
+## 3. Converting Between Forms
+
+The IB will frequently ask you to change a quadratic from one form to another. 
+
+**Standard to Factored:** Factorise the quadratic expression.
+**Standard to Vertex:** Use the method of "completing the square" (or find the vertex using $x = -\dfrac{b}{2a}$ and substitute it back in to find $y$).
+**Vertex/Factored to Standard:** Simply expand the brackets and simplify.
+
+<Tabs>
+  <TabItem label="Worked Example: Converting to Vertex Form">
+    Express the quadratic $f(x) = 2x^2 - 12x + 11$ in the form $a(x - h)^2 + k$.
+  </TabItem>
+  <TabItem label="Algebraic Method (Completing the Square)">
+    <Steps>
+    1. **Factor out $a$ from the first two terms only:**
+       $$ f(x) = 2(x^2 - 6x) + 11 $$
+    2. **Complete the square inside the bracket:** Take half of the $x$-coefficient ($-6 \to -3$), square it ($9$), and add/subtract it inside.
+       $$ f(x) = 2(x^2 - 6x + 9 - 9) + 11 $$
+    3. **Rewrite the perfect square and kick out the extra term:** Remember to multiply the $-9$ by the $2$ on the outside!
+       $$ f(x) = 2((x - 3)^2 - 9) + 11 $$
+       $$ f(x) = 2(x - 3)^2 - 18 + 11 $$
+    4. **Simplify the constants:**
+       $$ f(x) = 2(x - 3)^2 - 7 $$
+    </Steps>
+  </TabItem>
+  <TabItem label="Formula Method (The Shortcut)">
+    <Steps>
+    1. **Identify $a, b, c$:**
+       $a = 2$, $b = -12$, $c = 11$.
+    2. **Find the axis of symmetry ($h$):**
+       $$ h = -\dfrac{b}{2a} = -\dfrac{-12}{2(2)} = \dfrac{12}{4} = 3 $$
+    3. **Substitute $x = 3$ back into $f(x)$ to find the $y$-coordinate of the vertex ($k$):**
+       $$ k = f(3) = 2(3)^2 - 12(3) + 11 $$
+       $$ k = 18 - 36 + 11 = -7 $$
+    4. **Construct the vertex form:** We know $a = 2$, $h = 3$, $k = -7$.
+       $$ f(x) = a(x - h)^2 + k $$
+       $$ f(x) = 2(x - 3)^2 - 7 $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Expanding to Standard Form">
+    A quadratic function is given by $f(x) = -3(x + 2)^2 + 15$.
+    
+    Express $f(x)$ in the form $ax^2 + bx + c$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Expand the perfect square first:** Remember BEDMAS/BIDMAS. Do not multiply the $-3$ in until the exponent is resolved.
+       $$ f(x) = -3(x^2 + 4x + 4) + 15 $$
+    2. **Distribute the $-3$:**
+       $$ f(x) = -3x^2 - 12x - 12 + 15 $$
+    3. **Simplify the constants:**
+       $$ f(x) = -3x^2 - 12x + 3 $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 2: Finding the Vertex">
+    Consider the function $g(x) = -x^2 + 8x - 5$.
+    
+    Find the coordinates of the absolute maximum point of this function.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Recognise the request:** The "absolute maximum point" of a downward-facing parabola ($a = -1$) is its vertex.
+    2. **Use the axis of symmetry formula:** Here, $a = -1$ and $b = 8$.
+       $$ x = -\dfrac{b}{2a} = -\dfrac{8}{2(-1)} = \dfrac{-8}{-2} = 4 $$
+       The $x$-coordinate of the vertex is $4$.
+    3. **Find the $y$-coordinate:** Substitute $x = 4$ into $g(x)$.
+       $$ g(4) = -(4)^2 + 8(4) - 5 $$
+       $$ g(4) = -16 + 32 - 5 $$
+       $$ g(4) = 11 $$
+    4. **Final Answer:** The coordinates of the maximum point are **$(4, 11)$**.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Building from Intercepts">
+    A parabola passes through the $x$-axis at the points $(-2, 0)$ and $(5, 0)$. 
+    It also crosses the $y$-axis at $(0, -30)$.
+    
+    Find the equation of the parabola, giving your answer in the form $f(x) = ax^2 + bx + c$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **Use the Factored Form:** We know the roots are $p = -2$ and $q = 5$.
+       $$ f(x) = a(x - (-2))(x - 5) $$
+       $$ f(x) = a(x + 2)(x - 5) $$
+    2. **Find the stretch factor $a$:** Use the known coordinate $(0, -30)$. Substitute $x = 0$ and $y = -30$.
+       $$ -30 = a(0 + 2)(0 - 5) $$
+       $$ -30 = a(2)(-5) $$
+       $$ -30 = -10a $$
+       $$ a = 3 $$
+    3. **Substitute $a$ back in and expand:**
+       $$ f(x) = 3(x + 2)(x - 5) $$
+       $$ f(x) = 3(x^2 - 5x + 2x - 10) $$
+       $$ f(x) = 3(x^2 - 3x - 10) $$
+       $$ f(x) = 3x^2 - 9x - 30 $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding quadratic equations from given coordinates and intercepts" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Unknowns in Vertex Form">
+    A quadratic function is given by $f(x) = a(x - h)^2 + k$. 
+    The vertex of the graph is $(-3, 4)$, and the graph passes through the point $(-1, 12)$.
+    
+    Find the values of $a$, $h$, and $k$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Input the vertex:** The vertex is $(h, k)$, so $h = -3$ and $k = 4$.
+       Substitute these into the vertex form:
+       $$ f(x) = a(x - (-3))^2 + 4 $$
+       $$ f(x) = a(x + 3)^2 + 4 $$
+    2. **Find $a$:** Substitute the coordinate $x = -1, y = 12$ to solve for $a$.
+       $$ 12 = a(-1 + 3)^2 + 4 $$
+       $$ 12 = a(2)^2 + 4 $$
+       $$ 12 = 4a + 4 $$
+       $$ 8 = 4a $$
+       $$ a = 2 $$
+    3. **Final Answer:** $a = 2$, $h = -3$, $k = 4$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Intersection with a Line">
+    Find the exact coordinates of the points of intersection between the parabola $y = x^2 - 3x - 4$ and the line $y = 2x + 2$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+    1. **Set the equations equal to each other:**
+       $$ x^2 - 3x - 4 = 2x + 2 $$
+    2. **Rearrange into a standard quadratic equal to zero:** Subtract $2x$ and $2$ from both sides.
+       $$ x^2 - 5x - 6 = 0 $$
+    3. **Factorise to solve for $x$:** Find two numbers that multiply to $-6$ and add to $-5$.
+       $$ (x - 6)(x + 1) = 0 $$
+       So, $x = 6$ or $x = -1$.
+    4. **Find the corresponding $y$-coordinates:** Substitute the $x$-values back into the linear equation (it's much easier than the quadratic).
+       For $x = 6$: $y = 2(6) + 2 = 14$
+       For $x = -1$: $y = 2(-1) + 2 = 0$
+    5. **State the coordinates:** The points of intersection are **$(6, 14)$** and **$(-1, 0)$**.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: The Unknown Axis">
+    The quadratic function $f(x) = -2x^2 + px + 7$ has an axis of symmetry at $x = 3$.
+    
+    Find the exact value of $p$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+    1. **State the formula:** The axis of symmetry is $x = -\dfrac{b}{2a}$.
+    2. **Substitute known values:** We know $x = 3$, $a = -2$, and $b = p$.
+       $$ 3 = -\dfrac{p}{2(-2)} $$
+    3. **Solve for $p$:**
+       $$ 3 = -\dfrac{p}{-4} $$
+       $$ 3 = \dfrac{p}{4} $$
+       $$ p = 12 $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Kinematics Context">
+    A toy rocket is launched from a platform. Its height above the ground, $h$ metres, at time $t$ seconds, is modelled by the function:
+    $$ h(t) = -4.9t^2 + 14.7t + 2 $$
+    
+    **a)** State the height of the platform.
+    
+    **b)** Calculate the maximum height reached by the rocket.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+    1. **Part a:** The height of the platform is the initial height, which occurs at $t = 0$. 
+       This is the $y$-intercept ($c$-value) of the standard form.
+       Height = $2$ metres.
+    2. **Part b:** The maximum height occurs at the vertex of the parabola. First, find the time it takes to reach the maximum height using the axis of symmetry formula:
+       $$ t = -\dfrac{b}{2a} = -\dfrac{14.7}{2(-4.9)} = -\dfrac{14.7}{-9.8} = 1.5 \text{ seconds} $$
+    3. **Find the height:** Substitute $t = 1.5$ back into $h(t)$.
+       $$ h(1.5) = -4.9(1.5)^2 + 14.7(1.5) + 2 $$
+       $$ h(1.5) = -4.9(2.25) + 22.05 + 2 $$
+       $$ h(1.5) = -11.025 + 22.05 + 2 = 13.025 $$
+       The maximum height is $13.025$ metres.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Optimisation (Classic Extension)">
+    A farmer wants to enclose a rectangular garden using a straight stone wall for one side and $60$ metres of wire fencing for the other three sides.
+    
+    Let the width of the garden extending away from the wall be $x$ metres.
+    
+    **a)** Show that the area of the garden, $A$, can be written as $A(x) = 60x - 2x^2$.
+    
+    **b)** Find the dimensions of the garden that will maximise the enclosed area.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    <Steps>
+    1. **Part a:** If the two widths are $x$, they use up $2x$ metres of fencing. 
+       The length running parallel to the wall will be whatever fencing is left over: $L = 60 - 2x$.
+       Area of a rectangle is width $\times$ length:
+       $$ A(x) = x(60 - 2x) $$
+       $$ A(x) = 60x - 2x^2 $$
+       *(Note: This is a downward-facing quadratic, meaning it has a maximum peak!)*
+    2. **Part b:** To find the maximum area, find the $x$-coordinate of the vertex of $A(x) = -2x^2 + 60x$.
+       $$ x = -\dfrac{b}{2a} = -\dfrac{60}{2(-2)} = \dfrac{-60}{-4} = 15 $$
+       The width that maximises area is $x = 15$ metres.
+    3. **Find the other dimension:** The length is $60 - 2(15) = 30$ metres.
+    4. **Final Answer:** The dimensions are $15\text{m}$ by $30\text{m}$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving word problems using quadratic optimization" />

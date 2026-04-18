@@ -1,0 +1,57 @@
+---
+// src/pages/api/ib-aasl.astro
+import { getCollection } from 'astro:content';
+
+export const prerender = true;
+
+// Fetch only the IB-AASL docs
+const docs = await getCollection('docs', ({ id }) => id.startsWith('ib-aasl/'));
+
+let text = `=== IB-AASL KNOWLEDGE BASE ===\n`;
+text += `Total lessons: ${docs.length}\n\n`;
+
+docs.forEach(doc => {
+  text += `\n\n========================================\n`;
+  text += `TOPIC: ${doc.data.title}\n`;
+  text += `========================================\n\n`;
+  text += doc.body; 
+  text += `\n\n`;
+});
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IB-AASL Syllabus Context</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #f0f9ff; /* Light blue background for AA */
+      color: #0f172a;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    h1 {
+      color: #1d4ed8;
+    }
+    pre {
+      word-wrap: break-word; 
+      white-space: pre-wrap; 
+      font-family: 'Courier New', Courier, monospace;
+      background: white;
+      padding: 20px;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>IB-AASL Raw Data Export</h1>
+  <p>This page is optimized for AI consumption (Analysis & Approaches SL).</p>
+  <hr style="border: 0; border-top: 1px solid #bae6fd; margin: 20px 0;" />
+  <pre>{text}</pre>
+</body>
+</html>

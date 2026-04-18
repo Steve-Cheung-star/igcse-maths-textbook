@@ -1,0 +1,418 @@
+---
+title: 1.6 Simple Deductive Proof
+description: Master the logic and layout of simple deductive proofs, including LHS to RHS transformations, algebraic generalisation, and mathematical notation for IB Maths AA SL.
+---
+
+Mathematics is unique among the sciences because it does not rely on experiments to find the truth; it relies on **proof**. In a scientific experiment, observing a pattern 100 times might lead to a strong theory. In mathematics, observing a pattern 1,000,000 times is still not enough—we must use algebra to prove it is logically inescapable.
+
+In the AA SL course, you are introduced to the formal structure of **deductive proof**. This is the process of starting with known mathematical facts and using step-by-step algebra to arrive at a guaranteed conclusion. 
+
+---
+
+## 1. Equality vs. Identity
+
+Before constructing a proof, we must distinguish between two fundamental mathematical concepts: an equation and an identity.
+
+* **Equality ($=$):** An equation is only true for *specific* values. For example, $2x = 10$ is an equality. It is only true when $x = 5$.
+* **Identity ($\equiv$):** An identity is true for *all possible values* of the variable. For example, $2(x + 3) \equiv 2x + 6$. It does not matter what number you substitute for $x$; the left side will always perfectly match the right side.
+
+<Aside type="note" title="IB Syllabus Guidance">
+
+**From the IB AA SL Guide (Topic 1.6):**
+* Simple deductive proof, numerical and algebraic.
+* How to lay out a left-hand side to right-hand side (LHS to RHS) proof.
+* The symbols and notation for equality ($=$) and identity ($\equiv$).
+* Students will be expected to show how they can check a result, including a check of their own results.
+
+</Aside>
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+
+**Is mathematical reasoning different from scientific reasoning?** In science, we observe $1,000$ white swans and inductively conclude "all swans are white"—until we discover a black swan in Australia. In mathematics, deductive proof guarantees that a conclusion is universally true without needing to check every single case. Does this make mathematical knowledge more certain than scientific knowledge?
+
+</Aside>
+
+---
+
+## 2. Laying out an LHS to RHS Proof
+
+In a deductive proof (often phrased as "Show that..."), you are given an identity and asked to prove it is true. The most critical rule of proof is that **you cannot treat an identity like an equation**. You cannot move terms across the equals sign by adding, subtracting, multiplying, or dividing both sides.
+
+Instead, you must build a "wall" between the Left-Hand Side (LHS) and the Right-Hand Side (RHS). You choose one side, apply algebraic manipulations (expanding, factorising, finding common denominators), and force it to match the other side.
+
+<Aside type="tip" title="The Structure of a Formal Proof">
+
+$$
+\begin{aligned}
+\text{LHS} &= \text{[starting expression]} \\
+&= \text{[algebraic step 1]} \\
+&= \text{[algebraic step 2]} \\
+&= \text{RHS}
+\end{aligned}
+$$
+
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 220" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* LHS Box */}
+    <rect x="50" y="40" width="180" height="120" rx="8" fill="#f8fafc" stroke="#3b82f6" stroke-width="2" />
+    <text x="140" y="70" font-size="18" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">LHS</text>
+    <text x="140" y="100" font-size="16" fill="#0f172a" text-anchor="middle" font-family="monospace">(x - 3)² + 5</text>
+    <text x="140" y="140" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">(Start with the</text>
+    <text x="140" y="155" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">complex side)</text>
+
+    {/* The Wall */}
+    <line x1="300" y1="20" x2="300" y2="200" stroke="#ef4444" stroke-width="4" stroke-dasharray="8 4" />
+    <text x="300" y="215" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">DO NOT CROSS</text>
+
+    {/* RHS Box */}
+    <rect x="370" y="40" width="180" height="120" rx="8" fill="#f8fafc" stroke="#10b981" stroke-width="2" />
+    <text x="460" y="70" font-size="18" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">RHS</text>
+    <text x="460" y="100" font-size="16" fill="#0f172a" text-anchor="middle" font-family="monospace">x² - 6x + 14</text>
+    <text x="460" y="140" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">(The target to</text>
+    <text x="460" y="155" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">reach)</text>
+
+    {/* Arrows showing allowed movement inside LHS */}
+    <path d="M 140 170 Q 180 200 230 170" fill="none" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow-proof)"/>
+    <text x="185" y="195" font-size="12" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Algebraic Steps</text>
+
+    <defs>
+      <marker id="arrow-proof" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+<Aside type="danger" title="The Cardinal Sin of Proofs">
+
+If you are asked to prove that $A \equiv B$, you will receive **zero marks** if you start your working out by writing $A = B$ and rearranging terms across the equals sign. You are assuming the statement is true before you have actually proved it! Always write `LHS = ...` on its own line.
+
+</Aside>
+
+<SteveTip title="The Golden Rule of 'Show That' Questions">
+
+In an exam, when asked to "Show that" an expression equals another, the final answer is technically already given to you. Therefore, the IB examiner awards marks *entirely* for the intermediate steps. If you skip an expansion or a simplification step, you will lose the method mark!
+
+</SteveTip>
+
+---
+
+## 3. Generalisation and Checking Results
+
+A common theme in IB proofs is starting with a numerical example and moving to an algebraic **generalisation**. 
+
+For example, observe the numerical fraction addition:
+
+$$
+\frac{1}{4} + \frac{1}{12} = \frac{3}{12} + \frac{1}{12} = \frac{4}{12} = \frac{1}{3}
+$$
+
+We can observe a pattern here involving $m=3$. The denominator $4$ is $(3+1)$, and $12$ is $(3^2 + 3)$. The IB will ask you to prove this algebraic generalisation:
+
+$$
+\frac{1}{m+1} + \frac{1}{m^2+m} \equiv \frac{1}{m}
+$$
+
+<Aside type="caution" title="Checking Your Results">
+
+To check if an algebraic identity or generalisation is correct, simply substitute a random integer (like $m=2$ or $m=5$) into both the LHS and the RHS. If both sides evaluate to the exact same numerical value, your algebra is highly likely to be correct! However, remember that verifying with one number is a *check*, not a *proof*.
+
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Expanding Quadratics">
+    Show that $(x - 3)^2 + 5 \equiv x^2 - 6x + 14$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    Start with the Left-Hand Side (LHS) because it has brackets to expand.
+
+    $$
+    \begin{aligned}
+    \text{LHS} &= (x - 3)^2 + 5 \\
+    &= (x - 3)(x - 3) + 5 \\
+    &= (x^2 - 3x - 3x + 9) + 5 \\
+    &= x^2 - 6x + 9 + 5 \\
+    &= x^2 - 6x + 14
+    \end{aligned}
+    $$
+
+    State clearly that you have reached the target:
+
+    $$
+    \text{LHS} = \text{RHS}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Proof by expanding and simplifying quadratic expressions" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Algebraic Fractions">
+    Show that the generalisation $\dfrac{1}{m+1} + \dfrac{1}{m^2+m} \equiv \dfrac{1}{m}$ is true for all $m \neq 0, -1$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    Start with the LHS, as it requires combining two fractions.
+
+    $$
+    \text{LHS} = \frac{1}{m+1} + \frac{1}{m^2+m}
+    $$
+
+    Factorise the denominator of the second fraction to find a common denominator:
+
+    $$
+    \text{LHS} = \frac{1}{m+1} + \frac{1}{m(m+1)}
+    $$
+
+    Multiply the numerator and denominator of the first fraction by $m$:
+
+    $$
+    \text{LHS} = \frac{m}{m(m+1)} + \frac{1}{m(m+1)}
+    $$
+
+    Combine the numerators over the common denominator:
+
+    $$
+    \text{LHS} = \frac{m+1}{m(m+1)}
+    $$
+
+    Cancel the common factor $(m+1)$ from top and bottom:
+
+    $$
+    \text{LHS} = \frac{1}{m}
+    $$
+
+    $$
+    \text{LHS} = \text{RHS}
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Checking Results Numerically">
+    A student claims that $(a + b)^2 \equiv a^2 + b^2$.
+    
+    By choosing appropriate numerical values for $a$ and $b$, check this result and show that the student's claim is false.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    Choose two simple integers, for example, $a = 2$ and $b = 3$.
+
+    Evaluate the LHS:
+
+    $$
+    \text{LHS} = (2 + 3)^2 = (5)^2 = 25
+    $$
+
+    Evaluate the RHS:
+
+    $$
+    \text{RHS} = 2^2 + 3^2 = 4 + 9 = 13
+    $$
+
+    Since $25 \neq 13$, the LHS does not equal the RHS. Therefore, the identity is false.
+    *(Note: The correct expansion is $(a+b)^2 \equiv a^2 + 2ab + b^2$)*.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Proving or disproving identities using numerical substitution" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Difference of Two Squares">
+    Show that $(n+1)^2 - (n-1)^2 \equiv 4n$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    Start with the LHS and expand both brackets carefully. Keep the second expansion in a bracket to avoid sign errors!
+
+    $$
+    \text{LHS} = (n^2 + 2n + 1) - (n^2 - 2n + 1)
+    $$
+
+    Distribute the negative sign across the second bracket:
+
+    $$
+    \text{LHS} = n^2 + 2n + 1 - n^2 + 2n - 1
+    $$
+
+    Group like terms:
+    * $n^2 - n^2 = 0$
+    * $2n + 2n = 4n$
+    * $1 - 1 = 0$
+
+    $$
+    \text{LHS} = 4n
+    $$
+
+    $$
+    \text{LHS} = \text{RHS}
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Proofs with Consecutive Integers">
+    Show that the sum of any three consecutive integers is always a multiple of $3$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    First, define three consecutive integers algebraically.
+    Let the first integer be $n$.
+    The next consecutive integers are $(n+1)$ and $(n+2)$.
+
+    Set up the sum as the LHS:
+
+    $$
+    \text{LHS} = n + (n+1) + (n+2)
+    $$
+
+    Simplify by collecting like terms:
+
+    $$
+    \text{LHS} = 3n + 3
+    $$
+
+    To prove it is a multiple of $3$, factorise out a $3$:
+
+    $$
+    \text{LHS} = 3(n + 1)
+    $$
+
+    Because $(n+1)$ is an integer, $3(n+1)$ must be a multiple of $3$. The proof is complete.
+  </TabItem>
+</Tabs>
+
+<Aside type="note" title="Defining Odd and Even Numbers">
+
+In proofs involving number properties, you must formally define the numbers algebraically to earn marks:
+* An **even** number is defined as $2k$ (where $k$ is an integer).
+* An **odd** number is defined as $2k + 1$ (or $2k - 1$).
+
+</Aside>
+
+<Tabs>
+  <TabItem label="📝 Question 6: Odd Number Properties">
+    Prove that the square of any odd integer is always an odd integer.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    Let an odd integer be $2k + 1$, where $k$ is an integer.
+    
+    Set up the expression to square the odd number:
+
+    $$
+    \text{LHS} = (2k + 1)^2
+    $$
+
+    Expand the bracket:
+
+    $$
+    \text{LHS} = (2k + 1)(2k + 1)
+    $$
+
+    $$
+    \text{LHS} = 4k^2 + 2k + 2k + 1
+    $$
+
+    $$
+    \text{LHS} = 4k^2 + 4k + 1
+    $$
+
+    To prove this final expression is odd, we must show it fits the form of an even number plus one ($2 \times \text{integer} + 1$). Factorise out a $2$ from the first two terms:
+
+    $$
+    \text{LHS} = 2(2k^2 + 2k) + 1
+    $$
+
+    Since $k$ is an integer, $(2k^2 + 2k)$ is also an integer. Therefore, the expression is exactly $2 \times (\text{integer}) + 1$, which is the formal definition of an odd number.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Proving algebraic properties of consecutive, odd, and even integers" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: More Complex Algebraic Fractions">
+    Prove that $\dfrac{x}{x-3} - \dfrac{9}{x^2-3x} \equiv \dfrac{x+3}{x}$
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    Start with the LHS, as it requires combining terms over a common denominator.
+
+    $$
+    \text{LHS} = \frac{x}{x-3} - \frac{9}{x(x-3)}
+    $$
+
+    To create the common denominator, multiply the numerator and denominator of the first fraction by $x$:
+
+    $$
+    \text{LHS} = \frac{x^2}{x(x-3)} - \frac{9}{x(x-3)}
+    $$
+
+    Combine the numerators over the common denominator:
+
+    $$
+    \text{LHS} = \frac{x^2 - 9}{x(x-3)}
+    $$
+
+    Recognise the difference of two squares on the top and factorise:
+
+    $$
+    \text{LHS} = \frac{(x-3)(x+3)}{x(x-3)}
+    $$
+
+    Cancel the common $(x-3)$ bracket from the top and bottom:
+
+    $$
+    \text{LHS} = \frac{x+3}{x}
+    $$
+
+    $$
+    \text{LHS} = \text{RHS}
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Proofs with Exponents">
+    Show that $3^{n+2} - 3^n \equiv 8 \times 3^n$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    Start with the LHS and use the reverse of the exponent multiplication law ($a^{m+n} = a^m \times a^n$):
+
+    $$
+    \text{LHS} = (3^n \times 3^2) - 3^n
+    $$
+
+    Evaluate $3^2$:
+
+    $$
+    \text{LHS} = (3^n \times 9) - 3^n
+    $$
+
+    Rewrite for clarity:
+
+    $$
+    \text{LHS} = 9(3^n) - 1(3^n)
+    $$
+
+    Treat $3^n$ as a common factor and factorise it out:
+
+    $$
+    \text{LHS} = 3^n(9 - 1)
+    $$
+
+    $$
+    \text{LHS} = 3^n(8)
+    $$
+
+    $$
+    \text{LHS} = 8 \times 3^n
+    $$
+
+    $$
+    \text{LHS} = \text{RHS}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Deductive proof using algebraic fractions and laws of exponents" />

@@ -1,0 +1,272 @@
+---
+title: 2.8 Reciprocal and Rational Functions
+description: Explore the behavior of functions with variable denominators, understand asymptotes, and learn how to sketch rational curves accurately.
+---
+
+We now move away from polynomials (like lines and parabolas) and introduce a new family of curves where the independent variable, $x$, appears in the denominator of a fraction. This fundamental shift introduces "breaks" in our graphs, leading to the concept of **asymptotes**—invisible boundary lines that a curve approaches infinitely closely but never actually touches.
+
+<Aside type="note" title="International-Mindedness & TOK">
+**The Evolution of Functions:** The formal concept of a "function" wasn't established overnight. It developed over centuries through the collaborative (and sometimes competitive) work of mathematicians like René Descartes, Gottfried Wilhelm Leibniz, and Leonhard Euler. 
+
+**Theory of Knowledge:** What are the implications of accepting that mathematical knowledge changes over time? If our definitions and notations continuously evolve, is mathematics a set of timeless truths we *discover*, or an ever-improving human language we *invent* to describe the world?
+</Aside>
+
+---
+
+## 1. The Reciprocal Function
+
+The simplest form of a rational function is the **reciprocal function**:
+$$
+f(x) = \dfrac{1}{x}, \quad x \neq 0
+$$
+
+### Key Features of $f(x) = \dfrac{1}{x}$
+* **The Shape:** The graph is a **rectangular hyperbola** consisting of two separate branches in opposite quadrants.
+* **Vertical Asymptote (VA):** Because we cannot divide by zero, $x$ cannot equal $0$. The $y$-axis ($x = 0$) forms a vertical barrier.
+* **Horizontal Asymptote (HA):** As $x$ gets infinitely large (e.g., $1/1000000$), $y$ gets infinitely close to $0$. The $x$-axis ($y = 0$) forms a horizontal barrier.
+* **Self-Inverse Nature:** An interesting property of the reciprocal function is that it is its own inverse. If you reflect the graph of $y = \dfrac{1}{x}$ across the line $y = x$, it lands exactly on itself.
+    * *Algebraic proof:* Let $y = \dfrac{1}{x}$. Swap $x$ and $y$ to find the inverse: $x = \dfrac{1}{y}$. Rearranging for $y$ gives $y = \dfrac{1}{x}$. Therefore, $f^{-1}(x) = f(x)$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 400" width="100%" maxWidth="400px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid Lines */}
+    <g stroke="#f8fafc" stroke-width="1">
+      <line x1="0" y1="100" x2="400" y2="100" />
+      <line x1="0" y1="300" x2="400" y2="300" />
+      <line x1="100" y1="0" x2="100" y2="400" />
+      <line x1="300" y1="0" x2="300" y2="400" />
+    </g>
+
+    {/* Axes (also Asymptotes) */}
+    <line x1="200" y1="20" x2="200" y2="380" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="20" y1="200" x2="380" y2="200" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="370" y="190" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">x</text>
+    <text x="210" y="30" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">y</text>
+
+    {/* The Hyperbola f(x) = 1/x */}
+    {/* Top Right Branch */}
+    <path d="M 210 380 Q 220 220 380 210" fill="transparent" stroke="#3b82f6" stroke-width="3" />
+    {/* Bottom Left Branch */}
+    <path d="M 190 20 Q 180 180 20 190" fill="transparent" stroke="#3b82f6" stroke-width="3" />
+
+    {/* Self-Inverse Line y=x */}
+    <line x1="40" y1="360" x2="360" y2="40" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <text x="320" y="70" font-size="14" font-weight="bold" fill="#94a3b8" font-family="sans-serif">y = x</text>
+    <text x="260" y="270" font-size="16" font-weight="bold" fill="#3b82f6" font-family="sans-serif">f(x) = 1/x</text>
+  </svg>
+</div>
+
+---
+
+## 2. Rational Functions
+
+A rational function is a ratio of two linear polynomials. The general form you need to know is:
+$$
+f(x) = \dfrac{ax + b}{cx + d}
+$$
+
+Because the denominator cannot be zero, these functions will feature translations and stretches of the basic $1/x$ hyperbola. The IB expects you to be able to state the equations of the asymptotes directly from the function parameters.
+
+**Equations of Asymptotes:**
+* **Vertical Asymptote:** Occurs where the denominator is zero. Set $cx + d = 0$ to get $x = -\dfrac{d}{c}$.
+* **Horizontal Asymptote:** Found by comparing the leading coefficients of $x$ as $x$ becomes extremely large. The horizontal asymptote is $y = \dfrac{a}{c}$.
+
+### Finding the Intercepts
+To sketch the graph accurately, you also need the points where the curve crosses the axes:
+* **$y$-intercept:** Set $x = 0$. The equation simplifies instantly to $y = \dfrac{b}{d}$.
+* **$x$-intercept:** Set $y = 0$. For a fraction to equal zero, its *numerator* must equal zero. Set $ax + b = 0$ to get $x = -\dfrac{b}{a}$.
+
+---
+
+## 3. Technology & Sketching: Using the TI-Nspire
+
+When solving rational function problems on Paper 2 or Paper 3, your TI-Nspire is a powerful tool to verify your algebraic work and visualize the asymptotes.
+
+<SteveTip title="TI-Nspire Tips for Rational Functions">
+* **Entering the Function:** Always use the fraction template (`Ctrl` + `÷`) when entering rational functions to avoid order-of-operations errors.
+* **Finding the $x$-intercept:** Press **[Menu] > 6: Analyze Graph > 1: Zero** and set your bounds around the intercept.
+* **Spotting Vertical Asymptotes:** Look for the visual break in the graph. You can confirm it by pressing `Ctrl` + `T` to bring up the Table. Scroll to the suspected $x$-value; the table will say **#UNDEF**.
+* **Finding Intersections:** If asked to find where a rational function meets a line, graph both. Press **[Menu] > 6: Analyze Graph > 4: Intersection** to let the calculator find the exact coordinates.
+</SteveTip>
+
+To sketch a rational function by hand, follow a strict checklist:
+1.  **Draw the Asymptotes:** Calculate the VA and HA. Draw them as **dashed lines** on your axes and label them with their equations (e.g., $x = 2$, $y = -3$).
+2.  **Plot the Intercepts:** Calculate the $x$-intercept and $y$-intercept. Mark their coordinates clearly.
+3.  **Draw the Curves:** Smoothly draw the two hyperbolic branches approaching the asymptotes, ensuring you pass through your marked intercepts.
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Key Features and Sketching (Rational Functions)">
+    Consider the rational function $f(x) = \dfrac{2x - 8}{x + 3}$.
+    
+    a) Write down the equation of the vertical asymptote.  
+    b) Write down the equation of the horizontal asymptote.  
+    c) Find the coordinates of the $x$-intercept and $y$-intercept.  
+    d) Sketch the graph of $f$, clearly labelling the asymptotes and intercepts.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** The vertical asymptote occurs where the denominator is zero:
+    $$
+    \begin{aligned}
+    x + 3 &= 0 \\
+    x &= -3
+    \end{aligned}
+    $$
+    
+    **b)** The horizontal asymptote is the ratio of the leading $x$-coefficients:
+    $$
+    \begin{aligned}
+    y &= \dfrac{2}{1} \\
+    y &= 2
+    \end{aligned}
+    $$
+    
+    **c)** *For the $y$-intercept*, set $x = 0$:
+    $$
+    \begin{aligned}
+    y &= \dfrac{2(0) - 8}{0 + 3} \\
+    y &= -\dfrac{8}{3}
+    \end{aligned}
+    $$
+    The $y$-intercept is **$(0, -\frac{8}{3})$** (or approx $(0, -2.67)$).
+    
+    *For the $x$-intercept*, set the numerator to zero:
+    $$
+    \begin{aligned}
+    2x - 8 &= 0 \\
+    2x &= 8 \\
+    x &= 4
+    \end{aligned}
+    $$
+    The $x$-intercept is **$(4, 0)$**.
+
+    **d)** 
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 300 300" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        {/* Grid and Axes */}
+        <line x1="20" y1="200" x2="280" y2="200" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="150" y1="20" x2="150" y2="280" stroke="#cbd5e1" stroke-width="2" />
+        <text x="270" y="190" font-size="12" fill="#64748b" font-family="sans-serif">x</text>
+        <text x="160" y="30" font-size="12" fill="#64748b" font-family="sans-serif">y</text>
+
+        {/* Asymptotes */}
+        <line x1="90" y1="20" x2="90" y2="280" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="95" y="40" font-size="10" fill="#ef4444" font-family="sans-serif">x = -3</text>
+        <line x1="20" y1="120" x2="280" y2="120" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="30" y="110" font-size="10" fill="#ef4444" font-family="sans-serif">y = 2</text>
+
+        {/* Rational Curve Branches */}
+        {/* Bottom Right Branch */}
+        <path d="M 95 280 Q 110 135 280 125" fill="none" stroke="#3b82f6" stroke-width="2" />
+        {/* Top Left Branch */}
+        <path d="M 85 20 Q 70 105 20 115" fill="none" stroke="#3b82f6" stroke-width="2" />
+
+        {/* Intercepts */}
+        <circle cx="230" cy="200" r="4" fill="#10b981" />
+        <text x="225" y="215" font-size="10" font-weight="bold" fill="#10b981" font-family="sans-serif">(4, 0)</text>
+        <circle cx="150" cy="253" r="4" fill="#10b981" />
+        <text x="160" y="260" font-size="10" font-weight="bold" fill="#10b981" font-family="sans-serif">(0, -2.67)</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Sketching rational functions and identifying asymptotes and intercepts" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Algebraic Intersection & GDC Verification">
+    Let $h(x) = \dfrac{3x + 1}{x - 2}$ and $k(x) = x + 4$.
+    
+    a) Find the exact coordinates of the points of intersection of the graphs of $h$ and $k$ algebraically.  
+    b) Explain the sequence of steps to verify your answer using a TI-Nspire calculator.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** Set the equations equal to each other to find the intersection points:
+    $$
+    \begin{aligned}
+    \dfrac{3x + 1}{x - 2} &= x + 4 \\
+    3x + 1 &= (x + 4)(x - 2) \\
+    3x + 1 &= x^2 + 2x - 8 \\
+    0 &= x^2 - x - 9
+    \end{aligned}
+    $$
+    
+    This does not factorise easily, so we apply the quadratic formula ($a = 1, b = -1, c = -9$):
+    $$
+    \begin{aligned}
+    x &= \dfrac{-(-1) \pm \sqrt{(-1)^2 - 4(1)(-9)}}{2(1)} \\
+    x &= \dfrac{1 \pm \sqrt{37}}{2}
+    \end{aligned}
+    $$
+    
+    Substitute back into the simpler linear equation, $k(x) = x + 4$, to find the $y$-coordinates:
+    $$
+    \begin{aligned}
+    y &= \left( \dfrac{1 \pm \sqrt{37}}{2} \right) + 4 \\
+    y &= \dfrac{1 \pm \sqrt{37}}{2} + \dfrac{8}{2} \\
+    y &= \dfrac{9 \pm \sqrt{37}}{2}
+    \end{aligned}
+    $$
+    
+    The exact coordinates are **$(\frac{1 + \sqrt{37}}{2}, \frac{9 + \sqrt{37}}{2})$** and **$(\frac{1 - \sqrt{37}}{2}, \frac{9 - \sqrt{37}}{2})$**.
+
+    **b)** To verify on the TI-Nspire:
+    1. Open a **Graph** page.
+    2. Enter $f_1(x) = \dfrac{3x + 1}{x - 2}$ (use `Ctrl` + `÷` for the fraction template) and $f_2(x) = x + 4$.
+    3. Press **[Menu] > 6: Analyze Graph > 4: Intersection**.
+    4. Click and drag the shaded region to cover the first intersection point, then repeat for the second. The GDC will output the decimal equivalents of your exact surd coordinates.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving systems involving rational and linear functions algebraically and with a GDC" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Contextual Modelling (Average Cost)">
+    A manufacturer determines that the average cost, $A$ in dollars, of producing $x$ reusable water bottles is modelled by the rational function:
+    
+    $$
+    A(x) = \dfrac{1500 + 3.5x}{x}, \quad x > 0
+    $$
+    
+    a) Calculate the exact average cost of producing $50$ bottles.  
+    b) Find the number of bottles that must be produced for the average cost to drop to $\$4.00$.  
+    c) Write down the equation of the horizontal asymptote for the graph of $y = A(x)$.  
+    d) Interpret the meaning of the horizontal asymptote in the context of this manufacturing model.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Substitute $x = 50$ into the function:
+    $$
+    \begin{aligned}
+    A(50) &= \dfrac{1500 + 3.5(50)}{50} \\
+    A(50) &= \dfrac{1500 + 175}{50} \\
+    A(50) &= \dfrac{1675}{50} \\
+    A(50) &= 33.5
+    \end{aligned}
+    $$
+    The average cost is **$\$33.50$**.
+
+    **b)** Set the function equal to $4$ and solve for $x$:
+    $$
+    \begin{aligned}
+    4 &= \dfrac{1500 + 3.5x}{x} \\
+    4x &= 1500 + 3.5x \\
+    0.5x &= 1500 \\
+    x &= 3000
+    \end{aligned}
+    $$
+    They must produce **$3000$ bottles**. *(You can also solve this quickly using `nSolve(4 = (1500 + 3.5x)/x, x)` on your TI-Nspire).*
+
+    **c)** Rewrite the equation in the standard $\frac{ax+b}{cx+d}$ format:
+    $$
+    A(x) = \dfrac{3.5x + 1500}{1x + 0}
+    $$
+    The horizontal asymptote is $y = \frac{a}{c}$, so the equation is **$y = 3.5$**.
+
+    **d)** As the number of bottles produced ($x$) becomes extremely large, the average cost approaches $\$3.50$. In context, this means the absolute minimum average cost per bottle is **$\$3.50$**. This likely represents the fixed raw material cost to make one bottle, which remains after the initial $\$1500$ overhead is diluted across thousands of units.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying rational functions to economic and contextual average cost models" />

@@ -1,0 +1,69 @@
+---
+title: "IB Math Analysis & Approaches SL"
+description: "Master the IB Math AA SL Syllabus with curated content by Steve Cheung."
+template: splash
+hero:
+  tagline: "Rigorous proofs, algebraic mastery, and calculus-driven practice for IB."
+  image:
+    html: '<div class="hero-math-icon" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; border-color: #3b82f6;">AA SL</div>'
+  actions:
+    - text: Start Learning IB
+      link: /ib-aasl/01-number-and-algebra/01-standard-form/
+      icon: right-arrow
+      variant: primary
+    - text: AA SL Revision
+      link: /ib-aasl/my-revision/
+      icon: rocket
+      variant: minimal
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+import ResumeBanner from '../../../components/ResumeBanner.astro';
+
+<style>{`
+  site-search { display: none !important; }
+  html, body, .page, .main-frame, .main-pane, .content-panel, .sl-container, main, article {
+    background-color: transparent !important;
+  }
+  .main-pane, .content-panel { isolation: auto !important; }
+
+  #ib-hero-bg {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -100; pointer-events: none;
+    background-color: #020617; /* A deep navy theme for AA SL */
+    transition: background-color 0.3s ease; 
+  }
+  html[data-theme="light"] #ib-hero-bg { background-color: #f0f9ff; }
+
+  #ib-hero-bg::before {
+    content: ""; position: absolute; inset: 0;
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.08) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.08) 1.5px, transparent 1.5px);
+    background-size: 80px 80px;
+  }
+  html[data-theme="light"] #ib-hero-bg::before {
+    background-image: 
+      linear-gradient(rgba(59, 130, 246, 0.15) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(59, 130, 246, 0.15) 1.5px, transparent 1.5px);
+  }
+`}</style>
+
+<div id="ib-hero-bg"></div>
+
+## The IB AA Learning Experience
+
+<CardGrid stagger>
+    <Card title="Analytical Rigour" icon="approve-check">
+        Authoritative content specifically developed for the **IB Math AA SL** curriculum by Steve Cheung.
+    </Card>
+    <Card title="Calculus & Theory" icon="pencil">
+        Deep dives into differentiation, integration, and trigonometric identities with a focus on non-calculator precision.
+    </Card>
+    <Card title="Logical Proofs" icon="document">
+        Develop the deductive reasoning skills required to tackle complex Paper 1 and Paper 2 multi-step problems.
+    </Card>
+    <Card title="Infinite AA Practice" icon="rocket">
+        Utilise our bespoke prompt engine to generate exam-style questions focusing on algebra and functions.
+    </Card>
+</CardGrid>

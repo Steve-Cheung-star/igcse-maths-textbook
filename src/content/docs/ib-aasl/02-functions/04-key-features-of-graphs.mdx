@@ -1,0 +1,266 @@
+---
+title: 2.4 Key Features of Graphs and Intersections
+description: Master the identification of key graphical features like asymptotes, roots, and vertices, and learn to find intersections using graphing technology.
+---
+
+Throughout the 20th century, a fierce debate raged in the mathematical community. The famous French "Bourbaki group" argued that mathematics should be strictly analytical and algebraic, entirely devoid of pictures. Conversely, mathematicians like Benoit Mandelbrot championed the visual approach, using early computers to generate fractals and prove that graphs could reveal truths hidden in the algebra. Today, the IB syllabus embraces both: you must understand the pure algebra, but you must also master graphing technology to uncover key features instantly.
+
+<Aside type="note" title="International-Mindedness & Connections">
+**Modelling the World:** Identifying the key features of graphs is universal. In geography, maximums represent topographical peaks; in economics, intersections represent market equilibrium (where supply equals demand); in physics, intercepts can represent the starting time or ground level of a moving object.
+</Aside>
+
+---
+
+## 1. Anatomy of a Graph: The Key Features
+
+Whether you are looking at a parabola, an exponential decay curve, or a complex rational function, examiners will repeatedly ask you to identify specific anatomical features of the graph.
+
+### A. The Intercepts (Roots and Zeros)
+* **$x$-intercepts:** Where the graph crosses the horizontal axis. Algebraically, this is where $f(x) = 0$. These are frequently called the **zeros** of the function, or the **roots** of the equation.
+* **$y$-intercept:** Where the graph crosses the vertical axis. Algebraically, this is the value of $f(0)$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid Lines */}
+    <g stroke="#f8fafc" stroke-width="1">
+      <line x1="0" y1="50" x2="400" y2="50" />
+      <line x1="0" y1="100" x2="400" y2="100" />
+      <line x1="0" y1="150" x2="400" y2="150" />
+      <line x1="0" y1="200" x2="400" y2="200" />
+      <line x1="0" y1="250" x2="400" y2="250" />
+    </g>
+
+    {/* Axes */}
+    <line x1="40" y1="20" x2="40" y2="280" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="10" y1="150" x2="380" y2="150" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="370" y="140" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">x</text>
+    <text x="50" y="30" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">y</text>
+
+    {/* Parabola: Exact Math Curve */}
+    <path d="M 0 350 Q 200 -250 400 350" fill="transparent" stroke="#3b82f6" stroke-width="3" />
+
+    {/* Perfectly Aligned Nodes */}
+    {/* y-intercept at x=40 */}
+    <circle cx="40" cy="242" r="6" fill="#10b981" />
+    <text x="55" y="250" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">y-intercept</text>
+
+    {/* x-intercepts (Roots) at exact algebraic intersections of the Bezier Q curve */}
+    <circle cx="84.53" cy="150" r="6" fill="#f59e0b" />
+    <text x="60" y="130" font-size="14" font-weight="bold" fill="#f59e0b" font-family="sans-serif">Root (Zero)</text>
+
+    <circle cx="315.47" cy="150" r="6" fill="#f59e0b" />
+    <text x="290" y="130" font-size="14" font-weight="bold" fill="#f59e0b" font-family="sans-serif">Root (Zero)</text>
+
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+### B. Maximum and Minimum Values (Extrema)
+A turning point is where a graph switches from increasing to decreasing (or vice versa).
+* **Local Maximum:** A "peak" or the top of a hill on the graph. The $y$-value is strictly greater than the points immediately surrounding it.
+* **Local Minimum:** A "valley" or the bottom of a dip on the graph. The $y$-value is strictly less than the points immediately surrounding it.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 300" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid Lines */}
+    <g stroke="#f8fafc" stroke-width="1">
+      <line x1="0" y1="50" x2="400" y2="50" />
+      <line x1="0" y1="100" x2="400" y2="100" />
+      <line x1="0" y1="150" x2="400" y2="150" />
+      <line x1="0" y1="200" x2="400" y2="200" />
+      <line x1="0" y1="250" x2="400" y2="250" />
+    </g>
+
+    {/* Axes */}
+    <line x1="50" y1="20" x2="50" y2="280" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="10" y1="200" x2="380" y2="200" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="370" y="190" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">x</text>
+    <text x="60" y="30" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">y</text>
+
+    {/* Cubic Wave: Exact Math Curve */}
+    <path d="M 50 200 Q 125 50 200 200 T 350 200" fill="transparent" stroke="#8b5cf6" stroke-width="3" />
+
+    {/* Perfectly Aligned Nodes derived from Bezier control tangents */}
+    {/* Local Maximum (Peak) */}
+    <circle cx="125" cy="125" r="6" fill="#ef4444" />
+    <text x="95" y="110" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">Local Maximum</text>
+
+    {/* Local Minimum (Valley) */}
+    <circle cx="275" cy="275" r="6" fill="#ef4444" />
+    <text x="245" y="295" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">Local Minimum</text>
+
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+### C. Asymptotes
+An asymptote is an invisible line that a curve approaches infinitely closely, but never actually touches.
+* **Vertical Asymptotes:** Occur when the function is undefined (e.g., dividing by zero). You label these as $x = k$.
+* **Horizontal Asymptotes:** Show the end-behavior of a function as $x$ gets infinitely massive (positive or negative). You label these as $y = c$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 400" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Subtle Grid */}
+    <g stroke="#f8fafc" stroke-width="1">
+      <line x1="0" y1="100" x2="500" y2="100" />
+      <line x1="0" y1="200" x2="500" y2="200" />
+      <line x1="0" y1="300" x2="500" y2="300" />
+      <line x1="100" y1="0" x2="100" y2="400" />
+      <line x1="200" y1="0" x2="200" y2="400" />
+      <line x1="300" y1="0" x2="300" y2="400" />
+      <line x1="400" y1="0" x2="400" y2="400" />
+    </g>
+
+    {/* Axes */}
+    <line x1="150" y1="20" x2="150" y2="380" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="20" y1="250" x2="480" y2="250" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="470" y="240" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">x</text>
+    <text x="160" y="30" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">y</text>
+
+    {/* Asymptotes */}
+    {/* Vertical Asymptote */}
+    <line x1="250" y1="0" x2="250" y2="400" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,6" />
+    <text x="260" y="380" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">Vertical Asymptote (x = 2)</text>
+
+    {/* Horizontal Asymptote */}
+    <line x1="0" y1="200" x2="500" y2="200" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,6" />
+    <text x="20" y="190" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">Horizontal Asymptote (y = 1)</text>
+
+    {/* Rational Curve Branches */}
+    {/* Left Branch - Adjusted to hug x=250 and y=200 */}
+    <path d="M 20 210 Q 235 215, 240 380" fill="transparent" stroke="#3b82f6" stroke-width="3" />
+    {/* Right Branch - Adjusted to hug x=250 and y=200 */}
+    <path d="M 260 20 Q 265 185, 480 190" fill="transparent" stroke="#3b82f6" stroke-width="3" />
+
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+---
+
+## 2. Intersections Using Graphing Technology
+
+In Paper 2, you will often need to find exactly where two functions collide. If the equations are complex (e.g., an exponential intersecting a quadratic), you are **not expected to solve them algebraically**. You must use your TI-Nspire.
+
+<SteveTip title="TI-Nspire Mastery: Finding Intersections Efficiently">
+Don't guess coordinates by just looking at the screen! Use the built-in intersection tool to secure full marks.
+
+<Steps>
+1. Open a **Graphs** page.
+2. Graph your first equation in `f1(x)` and your second in `f2(x)`.
+3. Press **Menu > 6: Analyze Graph > 4: Intersection**.
+4. A vertical shaded line will appear. Click once to the **left** of the intersection point (Lower Bound).
+5. Swipe to the **right** of the intersection point (Upper Bound) and click again. The exact coordinates will be locked on your screen.
+</Steps>
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Extracting Key Features">
+    Let $f(x) = \frac{2x - 6}{x + 2}$.
+    
+    Using your Graphic Display Calculator:
+    **a)** Find the coordinates of the $x$-intercept.
+    
+    **b)** Find the coordinates of the $y$-intercept.
+    
+    **c)** State the equation of the vertical asymptote.
+    
+    **d)** State the equation of the horizontal asymptote.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Part a ($x$-intercept):**
+       Algebraically, this is where the numerator equals 0: $2x - 6 = 0 \implies x = 3$.
+       On the TI-Nspire: **Menu > 6: Analyze Graph > 1: Zero**.
+       Coordinate: $(3, 0)$.
+
+    2. **Part b ($y$-intercept):**
+       Substitute $x = 0$ into the function: $f(0) = \frac{-6}{2} = -3$.
+       On the TI-Nspire: **Menu > 5: Trace > 1: Graph Trace**, type `0`.
+       Coordinate: $(0, -3)$.
+
+    3. **Part c (Vertical Asymptote):**
+       The graph explodes where the denominator equals 0. 
+       $x + 2 = 0 \implies x = -2$.
+       The equation of the vertical asymptote is $x = -2$. *(You must write the "x =" part!)*
+
+    4. **Part d (Horizontal Asymptote):**
+       As $x$ becomes massive, the constant terms $-6$ and $+2$ matter less and less. The function behaves like $\frac{2x}{x} = 2$.
+       The equation of the horizontal asymptote is $y = 2$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Identifying rational function asymptotes and intercepts" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Technology for Complex Intersections">
+    Consider the functions $g(x) = x^2 - 3x$ and $h(x) = e^x - 4$.
+    
+    Find the coordinates of the points where the graphs of $g$ and $h$ intersect. Give your answers correct to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. Do not attempt to solve $x^2 - 3x = e^x - 4$ by hand. This requires numerical approximation methods that are built into your calculator.
+    2. Open your TI-Nspire Graphs page.
+    3. Graph `f1(x) = x^2 - 3x`
+    4. Graph `f2(x) = e^x - 4`
+    5. Press **Menu > 6: Analyze Graph > 4: Intersection**.
+    6. Use the Lower Bound/Upper Bound tool on the first intersection point on the left.
+       **Point 1:** $(-0.932, 3.66)$
+    7. Repeat the process for the second intersection point on the right.
+       **Point 2:** $(2.40, -1.45)$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Economics Context (Market Equilibrium)">
+    In a local market, the weekly supply function for premium coffee beans is modelled by $S(p) = 2p^2 + 10p$, where $p$ is the price per kilogram in USD.
+    The weekly demand function is modelled by $D(p) = -5p^2 + 800$.
+    
+    Market equilibrium occurs when supply perfectly matches demand ($S = D$).
+    
+    **a)** Using your TI-Nspire, find the equilibrium price per kilogram.
+    
+    **b)** Calculate the total quantity of coffee beans supplied at this price.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **Part a:** We need to find the intersection of the two functions for $p > 0$ (price must be positive).
+       Graph `f1(x) = 2x^2 + 10x` and `f2(x) = -5x^2 + 800`.
+       Adjust your Window Settings so you can see large $y$-values (up to at least 1000).
+       Use the Intersection tool on the TI-Nspire.
+       The graphs intersect at $x = 10$, $y = 300$.
+       Therefore, the equilibrium price is 10 USD.
+
+    2. **Part b:** The $y$-coordinate of the intersection point represents the quantity. 
+       We already found it from the intersection point: $y = 300$.
+       Alternatively, substitute $p = 10$ into either function to verify:
+       $$
+       \begin{aligned}
+       S(10) &= 2(10)^2 + 10(10) \\
+       S(10) &= 2(100) + 100 \\
+       S(10) &= 300
+       \end{aligned}
+       $$
+       The total quantity supplied is 300 kilograms.
+    </Steps>
+  </TabItem>
+</Tabs>

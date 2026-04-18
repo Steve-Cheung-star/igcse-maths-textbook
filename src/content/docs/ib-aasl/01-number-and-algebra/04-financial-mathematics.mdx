@@ -1,0 +1,441 @@
+---
+title: 1.4 Financial Mathematics
+description: Apply geometric sequences to real-world financial mathematics, including compound interest, annual depreciation, and the use of technology for IB Maths AA SL.
+---
+
+Money rarely sits still. When invested, it grows; when borrowed, it accumulates debt; and when spent on assets like cars or machinery, its value depreciates over time. Because these changes happen by a constant percentage multiplier over equal time periods, financial mathematics is simply a real-world application of **geometric sequences**.
+
+In the AA SL course, you will transition from abstract geometric series to calculating compound interest and depreciation. While Paper 1 may test your ability to set up these equations in exact algebraic form, Paper 2 will heavily test your ability to solve for unknown variables like time ($n$) using logarithms or the financial solver on your Graphic Display Calculator (GDC).
+
+---
+
+## 1. Compound Interest
+
+Unlike simple interest (which adds a fixed amount every year and forms an *arithmetic* sequence), **compound interest** calculates interest on both the initial principal and the accumulated interest from previous periods. This causes the value to grow exponentially.
+
+<Aside type="note" title="IB Syllabus Guidance">
+**From the IB AA SL Guide (Topic 1.4):**
+* Financial applications of geometric sequences and series: compound interest and annual depreciation.
+* You must understand how to use the compound interest formula and apply it to different compounding periods (e.g., monthly, quarterly).
+</Aside>
+
+The formula booklet provides the compound interest formula, which is simply a real-world modification of the geometric sequence formula $u_n = u_1 r^{n-1}$.
+
+<FormulaBox title="1.4 Compound interest">
+
+$$
+FV = PV \times \left(1 + \frac{r}{100k}\right)^{kn}
+$$
+
+</FormulaBox>
+
+Where:
+* $FV$ is the **Future Value** (the final amount).
+* $PV$ is the **Present Value** (the initial investment or loan).
+* $r$ is the **nominal annual interest rate** (as a percentage, not a decimal).
+* $n$ is the **number of years**.
+* $k$ is the **compounding periods per year** (e.g., annually $k=1$, quarterly $k=4$, monthly $k=12$).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 250" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Axes */}
+    <path d="M 50 200 L 550 200" fill="none" stroke="#64748b" stroke-width="2" />
+    <path d="M 50 200 L 50 20" fill="none" stroke="#64748b" stroke-width="2" />
+    <text x="540" y="220" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">Time (years)</text>
+    <text x="30" y="30" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif" transform="rotate(-90, 30, 30)">Value ($)</text>
+
+    {/* Simple Interest Line (Arithmetic) */}
+    <path d="M 50 180 L 500 100" fill="none" stroke="#3b82f6" stroke-width="3" stroke-dasharray="5,5" />
+    <text x="490" y="90" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="end" font-family="sans-serif">Simple Interest (Linear)</text>
+
+    {/* Compound Interest Curve (Geometric) */}
+    <path d="M 50 180 Q 350 160 500 40" fill="none" stroke="#10b981" stroke-width="3" />
+    <text x="490" y="30" font-size="14" font-weight="bold" fill="#10b981" text-anchor="end" font-family="sans-serif">Compound Interest (Exponential)</text>
+
+    {/* Principal Starting Point */}
+    <circle cx="50" cy="180" r="5" fill="#0f172a" />
+    <text x="65" y="190" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="start" font-family="sans-serif">PV</text>
+  </svg>
+</div>
+
+<Aside type="tip" title="Translating 'k' from Word Problems">
+Examiners will rarely give you the value of $k$ directly. You must translate the phrasing in the question:
+* **"Compounded annually"** $\rightarrow k = 1$
+* **"Compounded half-yearly"** $\rightarrow k = 2$
+* **"Compounded quarterly"** $\rightarrow k = 4$
+* **"Compounded monthly"** $\rightarrow k = 12$
+</Aside>
+
+<Aside type="caution" title="Standard Rounding Rules">
+In IB Mathematics, almost all final answers must be given to 3 significant figures. **However, financial mathematics is the major exception.** Unless the question specifically states otherwise, always round currency values to **two decimal places** to represent cents/pence.
+</Aside>
+
+---
+
+## 2. Annual Depreciation
+
+Depreciation works on the exact same geometric principle as compound interest, but the multiplier represents a percentage *decrease* rather than an increase. 
+
+Because the formula booklet does not explicitly provide a separate depreciation formula, you must adapt the compound interest formula by changing the addition sign to a subtraction sign.
+
+<FormulaBox title="Annual Depreciation (Not in booklet)">
+
+$$
+FV = PV \times \left(1 - \frac{r}{100}\right)^n
+$$
+
+</FormulaBox>
+
+*(Note: Depreciation is almost always calculated annually in IB questions, so $k=1$ is assumed).*
+
+<Aside type="danger" title="The Subtraction Trap">
+A common error is to accidentally use the standard compound interest formula and end up with a car that is worth *more* after 10 years of use! Always double-check your final answer logically: if an asset is depreciating, your $FV$ must be smaller than your $PV$.
+</Aside>
+
+<Aside type="note" title="Aim 8: Social and Ethical Implications">
+**The Ethics of Interest:** The mathematics of compound interest governs global wealth. While investments compound to build retirement funds, high compounding interest rates on payday loans or credit cards can trap vulnerable populations in cycles of debt. Does the mathematical community have a responsibility to ensure financial literacy is accessible to everyone? 
+</Aside>
+
+---
+
+## 3. Solving for Unknowns ($n$ or $r$)
+
+While finding the Future Value ($FV$) is a simple substitution exercise, the true algebraic challenge in AA SL is solving for an unknown time ($n$) or interest rate ($r$).
+
+* **Solving for $r$:** Requires rearranging the formula, isolating the bracket, and taking the $n^{\text{th}}$ root of both sides.
+* **Solving for $n$:** Because $n$ is trapped in the exponent, you must use **logarithms** (SL Topic 1.5) to bring the exponent down mathematically.
+
+<SteveTip title="Paper 1 vs Paper 2 Strategies">
+In **Paper 1** (no calculator), you will be asked to set up equations and solve for $n$ algebraically using exact logarithmic values (e.g., $n = \frac{\ln(2)}{\ln(1.05)}$). 
+  
+In **Paper 2**, you are highly encouraged to use the **Finance App (TVM Solver)** on your GDC. It bypasses the complex algebra completely. If you use the TVM solver, you **must** write down your exact screen inputs (N, I%, PV, PMT, FV, P/Y, C/Y) on your exam paper to earn method marks.
+</SteveTip>
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+Money is entirely a human construct—a piece of paper or a digital number on a screen has no intrinsic physical value. Yet, it rigorously obeys the mathematical laws of geometric sequences. Does mathematics describe reality, or does humanity structure its reality (like the global economy) to fit mathematical models?
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Basic Annual Compounding">
+    Samuel invests $£8,000$ in a savings account that pays a nominal annual interest rate of $4.5\%$, compounded annually.
+    
+    **a)** Write down an expression for the value of Samuel's investment after $n$ years.
+    
+    **b)** Calculate the value of the investment after $7$ years.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a:**
+    Identify the variables: $PV = 8000$, $r = 4.5$, and $k = 1$ (compounded annually).
+
+    $$
+    FV = 8000 \times \left(1 + \frac{4.5}{100 \times 1}\right)^{1 \times n}
+    $$
+
+    $$
+    FV = 8000(1.045)^n
+    $$
+
+    **Part b:**
+    Substitute $n = 7$ into the expression:
+
+    $$
+    FV = 8000(1.045)^7
+    $$
+
+    $$
+    FV = 8000(1.36086...) = 10886.89...
+    $$
+
+    Rounding to two decimal places for currency: **$£10,886.89$**
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating future value with annual compound interest" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Adjusting Compounding Periods">
+    Maya takes out a loan of $\$15,000$ to start a business. The bank charges a nominal annual interest rate of $6.2\%$, compounded **quarterly**.
+    
+    Find the total amount Maya owes the bank after $4$ years if no repayments are made.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    Identify the variables. Because interest is compounded quarterly, there are $4$ compounding periods in a year, so **$k = 4$**.
+    * $PV = 15000$
+    * $r = 6.2$
+    * $n = 4$
+    * $k = 4$
+
+    Substitute into the formula:
+
+    $$
+    FV = 15000 \times \left(1 + \frac{6.2}{100 \times 4}\right)^{4 \times 4}
+    $$
+
+    Simplify the bracket and the exponent:
+
+    $$
+    FV = 15000 \times \left(1 + \frac{6.2}{400}\right)^{16}
+    $$
+
+    $$
+    FV = 15000(1.0155)^{16}
+    $$
+
+    $$
+    FV = 19185.80...
+    $$
+
+    Maya owes **$\$19,185.80$**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Annual Depreciation">
+    A manufacturing company buys a piece of machinery for $£120,000$. The value of the machinery depreciates at a rate of $18\%$ per year.
+    
+    **a)** Find the value of the machinery after $5$ years.
+    
+    **b)** Find the total amount of value lost over this $5$-year period.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part a:**
+    Since this is depreciation, we use a subtraction in our multiplier.
+    * $PV = 120000$
+    * $r = 18$
+    * $n = 5$
+
+    $$
+    FV = 120000 \times \left(1 - \frac{18}{100}\right)^5
+    $$
+
+    $$
+    FV = 120000(0.82)^5
+    $$
+
+    $$
+    FV = 120000(0.370739...) = 44488.78...
+    $$
+
+    The machinery is worth **$£44,488.78$**.
+
+    **Part b:**
+    The value lost is the initial value minus the future value.
+
+    $$
+    \text{Value Lost} = 120000 - 44488.78 = 75511.22
+    $$
+
+    The total depreciation is **$£75,511.22$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying geometric sequences to depreciation of assets" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Finding the Present Value (PV)">
+    Elias wants to have exactly $\$50,000$ in a savings account in $10$ years' time to use as a deposit for a house. The account pays a nominal annual rate of $3.8\%$, compounded **monthly**.
+    
+    Calculate the exact amount Elias needs to deposit today to achieve his goal.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    We know the Future Value ($FV = 50000$) and need to solve backwards for the Present Value ($PV$).
+    Because it is compounded monthly, $k = 12$.
+
+    $$
+    50000 = PV \times \left(1 + \frac{3.8}{100 \times 12}\right)^{12 \times 10}
+    $$
+
+    $$
+    50000 = PV \times \left(1 + \frac{3.8}{1200}\right)^{120}
+    $$
+
+    To solve for $PV$, divide $50000$ by the entire exponent block:
+
+    $$
+    PV = \frac{50000}{\left(1 + \frac{3.8}{1200}\right)^{120}}
+    $$
+
+    $$
+    PV = \frac{50000}{(1.003166...)^{120}}
+    $$
+
+    $$
+    PV = 34208.83...
+    $$
+
+    Elias must deposit **$\$34,208.83$**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Solving for the Interest Rate (r)">
+    An antique painting was purchased for $£15,000$. Exactly $8$ years later, it was valued at $£24,500$. 
+    
+    Assuming the value of the painting increased by a constant nominal annual percentage rate compounded annually, calculate this rate, $r$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+    1. **Set up the equation:** We know $FV = 24500$, $PV = 15000$, and $n = 8$.
+       $$
+       24500 = 15000 \times \left(1 + \frac{r}{100}\right)^8
+       $$
+    2. **Isolate the bracket:** Divide both sides by $15000$.
+       $$
+       \frac{24500}{15000} = \left(1 + \frac{r}{100}\right)^8
+       $$
+       $$
+       1.6333... = \left(1 + \frac{r}{100}\right)^8
+       $$
+    3. **Remove the exponent:** Take the $8^{\text{th}}$ root of both sides (or raise to the power of $\frac{1}{8}$).
+       $$
+       \sqrt[8]{1.6333...} = 1 + \frac{r}{100}
+       $$
+       $$
+       1.0632... = 1 + \frac{r}{100}
+       $$
+    4. **Solve for r:** Subtract $1$ and multiply by $100$.
+       $$
+       0.0632... = \frac{r}{100}
+       $$
+       $$
+       r = 6.32
+       $$
+    </Steps>
+
+    The nominal annual interest rate is **$6.32\%$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for the interest rate or present value in compound growth models" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Solving for Time using Logarithms (Paper 1 Style)">
+    An initial investment of $£2,500$ is placed in a fund paying $5\%$ interest, compounded annually.
+    
+    Using logarithms, show the algebraic steps to find the exact number of years it will take for the investment to double in value.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+    1. **Set up the equation:** If the investment doubles, the Future Value ($FV$) is $£5,000$.
+       $$
+       5000 = 2500(1.05)^n
+       $$
+    2. **Isolate the exponential term:** Divide both sides by $2500$.
+       $$
+       2 = (1.05)^n
+       $$
+    3. **Take the natural logarithm ($\ln$) of both sides:**
+       $$
+       \ln(2) = \ln(1.05^n)
+       $$
+    4. **Apply the power rule of logarithms:** Bring the $n$ down to the front.
+       $$
+       \ln(2) = n \ln(1.05)
+       $$
+    5. **Solve for $n$:**
+       $$
+       n = \frac{\ln(2)}{\ln(1.05)}
+       $$
+    6. **Evaluate (if on Paper 2):**
+       $$
+       n \approx 14.206...
+       $$
+    </Steps>
+
+    Because interest is compounded annually, the investment will officially register as "doubled" at the end of the **$15^{\text{th}}$ year**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Comparison of Compounding Periods">
+    Bank A offers a nominal annual interest rate of $4.8\%$, compounded half-yearly.
+    Bank B offers a nominal annual interest rate of $4.7\%$, compounded monthly.
+    
+    If Chloe wishes to invest $\$10,000$ for $5$ years, determine which bank will yield the highest return, and state the exact difference in the final amounts.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **Bank A Calculation:**
+    Compounded half-yearly means $k = 2$.
+    
+    $$
+    FV_A = 10000 \times \left(1 + \frac{4.8}{100 \times 2}\right)^{2 \times 5}
+    $$
+    
+    $$
+    FV_A = 10000(1.024)^{10} = 12676.506...
+    $$
+
+    **Bank B Calculation:**
+    Compounded monthly means $k = 12$.
+    
+    $$
+    FV_B = 10000 \times \left(1 + \frac{4.7}{100 \times 12}\right)^{12 \times 5}
+    $$
+    
+    $$
+    FV_B = 10000\left(1 + \frac{4.7}{1200}\right)^{60} = 12645.192...
+    $$
+
+    **Conclusion:**
+    Bank A yields the higher return. The difference is:
+    
+    $$
+    12676.51 - 12645.19 = 31.32
+    $$
+    
+    Chloe will earn **$\$31.32$** more with Bank A.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Depreciation using Inequalities">
+    A high-end camera is purchased for $£3,200$. Its value depreciates at a rate of $12.5\%$ each year.
+    
+    Find the minimum number of full years it will take for the camera's value to drop below $£1,000$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    Set up the depreciation inequality:
+    
+    $$
+    3200 \times \left(1 - \frac{12.5}{100}\right)^n < 1000
+    $$
+
+    $$
+    3200(0.875)^n < 1000
+    $$
+
+    Divide by $3200$:
+    
+    $$
+    (0.875)^n < \frac{1000}{3200}
+    $$
+    
+    $$
+    (0.875)^n < 0.3125
+    $$
+
+    Take the natural logarithm of both sides:
+    
+    $$
+    n \ln(0.875) < \ln(0.3125)
+    $$
+
+    *Crucial step:* Because $\ln(0.875)$ is a negative number (since $0.875 < 1$), dividing both sides by it will **flip the inequality sign**.
+    
+    $$
+    n > \frac{\ln(0.3125)}{\ln(0.875)}
+    $$
+    
+    $$
+    n > 8.706...
+    $$
+
+    Therefore, it will take a minimum of **$9$ full years** for the value to drop below $£1,000$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using logarithms to solve inequalities involving depreciation and half-life" />

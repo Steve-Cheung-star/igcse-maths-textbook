@@ -1,0 +1,245 @@
+---
+title: 2.10 Solving Equations and Real-Life Applications
+description: Learn to solve complex equations analytically using substitutions, and harness technology to solve equations that have no algebraic solution.
+---
+
+We have studied various families of functions—linear, quadratic, rational, exponential, and logarithmic. In SL 2.10, we bring all these tools together to solve mixed equations. While some equations can be manipulated algebraically into familiar forms (like quadratics), others mix incompatible functions and strictly require technology to solve.
+
+<Aside type="note" title="Connections & TOK">
+**Cross-curricular Links:** Solving equations is the backbone of the sciences. You will use these skills to find intersection points in Economics (Production Possibility Curves), predict collision times in Physics (projectile motion), or determine equilibrium points in Chemistry.
+
+**Theory of Knowledge:** What assumptions do mathematicians make when they apply mathematics to real-life situations? When we model population growth with an exponential curve, we assume infinite space and resources. Are mathematical models ever a *perfect* representation of reality, or just useful approximations?
+</Aside>
+
+---
+
+## 1. Analytic Methods: Disguised Quadratics
+
+Sometimes, an equation looks exponential or logarithmic but is actually a quadratic equation in disguise. The key to solving these is **substitution**.
+
+Consider the syllabus example: $e^{2x} - 5e^x + 4 = 0$
+
+Notice that $e^{2x} = (e^x)^2$. If we let a dummy variable, say $u$, equal $e^x$, the equation transforms into something highly familiar:
+
+$$
+\begin{aligned}
+u^2 - 5u + 4 &= 0
+\end{aligned}
+$$
+
+From here, you factorise and solve for $u$, and then swap $e^x$ back in to find the final values for $x$. *(You will see the full working for this in Question 1 below).*
+
+---
+
+## 2. Using Technology: When Algebra Fails
+
+Algebra has limits. If an equation mixes a polynomial with an exponential, or an exponential with a trigonometric function, there is generally **no analytic approach** to solve it. 
+
+Examples of equations requiring a GDC:
+* $e^x = \sin(x)$
+* $x^4 + 5x - 6 = 0$ (while some higher-order polynomials can be factored, most require tech).
+* $2^x = x + 3$
+
+<SteveTip title="TI-Nspire Tips for Solving Equations">
+There are two main ways to solve complex equations on your GDC:
+
+**Method 1: The Graphing Intersection Method (Highly Recommended)**
+1. Open a **Graph** page.
+2. Enter the left side of the equation as $f_1(x)$.
+3. Enter the right side of the equation as $f_2(x)$.
+4. Press **[Menu] > 6: Analyze Graph > 4: Intersection**.
+5. The $x$-coordinates of the intersection points are your solutions.
+
+**Method 2: Numerical Solve**
+1. Open a **Calculator** page.
+2. Press **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)**.
+3. Type your equation followed by a comma and the variable: `nSolve(e^x = sin(x), x)`.
+*Note: nSolve only gives ONE solution at a time. If there are multiple solutions, Method 1 is much safer to ensure you don't miss any.*
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Disguised Quadratics">
+    Solve the equation $e^{2x} - 5e^x + 4 = 0$ analytically. Show all your working.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    Recognise that $e^{2x}$ is the square of $e^x$. We can use a substitution.
+    
+    Let $u = e^x$.
+    
+    Substitute $u$ into the equation:
+    $$
+    \begin{aligned}
+    u^2 - 5u + 4 &= 0
+    \end{aligned}
+    $$
+    
+    Factorise the quadratic:
+    $$
+    \begin{aligned}
+    (u - 4)(u - 1) &= 0
+    \end{aligned}
+    $$
+    
+    This gives two possible values for $u$:
+    $$
+    \begin{aligned}
+    u &= 4 \quad \text{or} \quad u &= 1
+    \end{aligned}
+    $$
+    
+    Substitute $e^x$ back in for $u$:
+    $$
+    \begin{aligned}
+    e^x &= 4 \quad &\text{or} \quad e^x &= 1
+    \end{aligned}
+    $$
+    
+    Take the natural logarithm ($\ln$) of both sides for each case:
+    $$
+    \begin{aligned}
+    x &= \ln(4) \quad &\text{or} \quad x &= \ln(1)
+    \end{aligned}
+    $$
+    
+    Since $\ln(1) = 0$, the exact solutions are:
+    **$x = \ln(4)$** and **$x = 0$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving disguised quadratic exponential equations analytically" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Solving with Technology">
+    Consider the equation $e^x = \sin(x)$.
+    
+    a) Explain why this equation cannot be solved using standard algebraic techniques.  
+    b) Using your GDC, find all solutions for $x$ in the domain $-4 \le x \le 2$. Give your answers to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** The equation mixes an exponential function ($e^x$) with a circular trigonometric function ($\sin(x)$). There are no inverse operations or algebraic properties that can isolate $x$ when it is trapped inside two fundamentally different mathematical transcendental functions.
+
+    **b)** We must use a GDC.
+    1. Set your GDC to **Radians** mode (always default to radians when graphing trig functions unless degrees are explicitly stated).
+    2. Graph $f_1(x) = e^x$.
+    3. Graph $f_2(x) = \sin(x)$.
+    4. Adjust the window settings so the x-axis goes from $-4$ to $2$.
+    5. Find the intersections using **[Menu] > 6: Analyze Graph > 4: Intersection**.
+    
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1.5rem 0' }}>
+      <svg viewBox="0 0 350 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        {/* Axes */}
+        <line x1="20" y1="125" x2="330" y2="125" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="220" y1="20" x2="220" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        <text x="320" y="115" font-size="12" fill="#64748b" font-family="sans-serif">x</text>
+        <text x="230" y="30" font-size="12" fill="#64748b" font-family="sans-serif">y</text>
+
+        {/* sin(x) approximation */}
+        <path d="M 20 80 Q 50 20, 80 80 T 140 180 T 200 80 T 260 180 T 320 80" fill="none" stroke="#f59e0b" stroke-width="2" />
+        <text x="30" y="60" font-size="12" font-weight="bold" fill="#d97706" font-family="sans-serif">y = sin(x)</text>
+
+        {/* e^x approximation */}
+        <path d="M 20 120 Q 180 115, 230 20" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="180" y="40" font-size="12" font-weight="bold" fill="#3b82f6" font-family="sans-serif">y = e^x</text>
+
+        {/* Intersection point (approximated for visual) */}
+        <circle cx="163" cy="118" r="4" fill="#ef4444" />
+        <text x="163" y="140" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">x = -3.18</text>
+      </svg>
+    </div>
+
+    Reading the coordinates from the GDC, there is only one intersection point in the specified domain.
+    The solution is **$x = -3.18$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving mixed function equations using the intersection method on a GDC" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Real-Life Application (Finance)">
+    Two competing investments are being monitored over time, $t$, in years. 
+    
+    * **Investment A** starts with a high capital but grows linearly: $V_A(t) = 15000 + 1200t$
+    * **Investment B** starts with lower capital but grows continuously: $V_B(t) = 8000 e^{0.08t}$
+    
+    a) Find the initial value of Investment B.  
+    b) Calculate the value of Investment A after $10$ years.  
+    c) Using your GDC, find the exact time it takes for the value of Investment B to catch up and equal Investment A. State the time in years (to 3 s.f.) and the value at which they are equal.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Set $t = 0$ for Investment B:
+    $$
+    \begin{aligned}
+    V_B(0) &= 8000 e^{0.08(0)} \\
+    V_B(0) &= 8000 e^0 \\
+    V_B(0) &= 8000 \times 1
+    \end{aligned}
+    $$
+    The initial value is **8000 EUR**.
+
+    **b)** Set $t = 10$ for Investment A:
+    $$
+    \begin{aligned}
+    V_A(10) &= 15000 + 1200(10) \\
+    V_A(10) &= 15000 + 12000 \\
+    V_A(10) &= 27000
+    \end{aligned}
+    $$
+    After 10 years, Investment A is worth **27000 EUR**.
+
+    **c)** We need to solve $V_A(t) = V_B(t)$, which means:
+    $$
+    \begin{aligned}
+    15000 + 1200t &= 8000 e^{0.08t}
+    \end{aligned}
+    $$
+    This mixes a linear polynomial with an exponential, so it requires a GDC.
+    
+    1. Graph $f_1(x) = 15000 + 1200x$.
+    2. Graph $f_2(x) = 8000 \cdot e^{0.08x}$.
+    3. Adjust your window. We know from part (b) that at 10 years, the values are around 27000. Try setting $x$ from $0$ to $30$, and $y$ from $0$ to $50000$.
+    4. Press **[Menu] > 6: Analyze Graph > 4: Intersection**.
+    
+    The GDC yields the coordinate point $(17.808..., 36369.94...)$.
+    
+    * It will take **17.8 years**.
+    * The investments will be equal at **36400 EUR** (rounded to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using technology to solve real-world investment intersection models" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Higher-Order Polynomials (Kinematics)">
+    A drone's vertical displacement, $s$, in metres above a launch pad at time $t$ seconds is modelled by the polynomial:
+    $$
+    s(t) = t^4 - 6t^3 + 11t^2 - 6t
+    $$
+    
+    Use your GDC to find all the times during the flight when the drone is exactly at ground level ($s = 0$).
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    We need to solve the equation:
+    $$
+    \begin{aligned}
+    t^4 - 6t^3 + 11t^2 - 6t &= 0
+    \end{aligned}
+    $$
+    While you *could* factorise an $t$ out, the resulting cubic is difficult to solve by hand. This is a perfect candidate for the GDC.
+    
+    1. Graph $f_1(x) = x^4 - 6x^3 + 11x^2 - 6x$.
+    2. We are looking for the $x$-intercepts (roots).
+    3. Press **[Menu] > 6: Analyze Graph > 1: Zero**.
+    
+    The graph crosses the horizontal axis multiple times. By repeating the "Zero" function for each intercept, the GDC gives:
+    
+    **$t = 0$, $t = 1$, $t = 2$, and $t = 3$**.
+    
+    The drone is at ground level exactly at **0, 1, 2, and 3 seconds**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving higher-order polynomial roots using a GDC for kinematics" />

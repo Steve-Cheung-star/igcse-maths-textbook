@@ -1,0 +1,292 @@
+---
+title: 2.9 Exponential and Logarithmic Functions
+description: Understand the behavior, graphs, and inverse relationships of exponential and logarithmic functions, and apply them to real-world growth and decay models.
+---
+
+We now explore functions where the variable sits in the exponent, and their inverse counterparts, logarithms. These functions are the mathematical engines behind modelling everything from compound interest and population explosions to radioactive decay. 
+
+<Aside type="note" title="Connections & TOK">
+**Cross-curricular Links:** You will see these functions constantly in other IB subjects: modelling radioactive decay and charging capacitors in Physics, calculating first-order reactions and activation energy in Chemistry, and studying population growth curves in Biology.
+
+**Aim 8 & TOK:** The phrase "exponential growth" is often used in the media to simply mean "growing very fast." Is this a misleading use of a mathematical term? Furthermore, what role do "models" play in mathematics? Do they represent literal reality, or are they just useful fictions that play a different role compared to their counterparts in other areas of knowledge?
+</Aside>
+
+---
+
+## 1. Exponential Functions
+
+An exponential function has a constant base raised to a variable power. The two standard forms you must know are $f(x) = a^x$ (where $a > 0, a \neq 1$) and the natural exponential $f(x) = e^x$. Euler's number, $e \approx 2.718$, is the standard base for continuous growth.
+
+### Key Features of $f(x) = a^x$ and $f(x) = e^x$
+* **Domain:** All real numbers, $x \in \mathbb{R}$.
+* **Range:** Strictly positive values, $f(x) > 0$.
+* **Horizontal Asymptote:** The $x$-axis ($y = 0$). The graph flattens out to the left (for $a > 1$) but never touches zero.
+* **$y$-intercept:** Passes through $(0, 1)$ because any non-zero number to the power of $0$ is $1$.
+
+---
+
+## 2. Logarithmic Functions
+
+The logarithmic function is the inverse of the exponential function. The standard forms are $f(x) = \log_a x$ and the natural logarithm $f(x) = \ln x$ (which means $\log_e x$).
+
+### Key Features of $f(x) = \log_a x$ and $f(x) = \ln x$
+* **Domain:** Strictly positive values, $x > 0$. You cannot take the log of zero or a negative number.
+* **Range:** All real numbers, $y \in \mathbb{R}$.
+* **Vertical Asymptote:** The $y$-axis ($x = 0$). The graph plunges downwards as $x$ approaches zero.
+* **$x$-intercept:** Passes through $(1, 0)$ because $\log_a 1 = 0$.
+
+Because they are inverses, reflecting the graph of $y = e^x$ across the line $y = x$ perfectly produces the graph of $y = \ln x$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 300 300" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid & Axes */}
+    <line x1="20" y1="200" x2="280" y2="200" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="100" y1="20" x2="100" y2="280" stroke="#cbd5e1" stroke-width="2" />
+    <text x="270" y="190" font-size="12" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="110" y="30" font-size="12" fill="#64748b" font-family="sans-serif">y</text>
+
+    {/* Line y = x */}
+    <line x1="20" y1="280" x2="280" y2="20" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="250" y="40" font-size="10" fill="#94a3b8" font-family="sans-serif">y = x</text>
+
+    {/* Exponential Graph e^x */}
+    <path d="M 20 195 Q 100 190 140 20" fill="none" stroke="#ef4444" stroke-width="2" />
+    <text x="150" y="60" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">y = e^x</text>
+    <circle cx="100" cy="170" r="4" fill="#ef4444" />
+    <text x="60" y="175" font-size="10" fill="#ef4444" font-family="sans-serif">(0, 1)</text>
+
+    {/* Logarithmic Graph ln x */}
+    <path d="M 105 280 Q 110 200 280 160" fill="none" stroke="#3b82f6" stroke-width="2" />
+    <text x="230" y="150" font-size="12" font-weight="bold" fill="#3b82f6" font-family="sans-serif">y = ln x</text>
+    <circle cx="130" cy="200" r="4" fill="#3b82f6" />
+    <text x="120" y="215" font-size="10" fill="#3b82f6" font-family="sans-serif">(1, 0)</text>
+  </svg>
+</div>
+
+---
+
+## 3. Relationships and Conversions
+
+To solve equations, you must be able to convert between exponential and logarithmic forms fluidly.
+
+**The Base Conversion Rule:**
+Any exponential function can be rewritten using base $e$:
+$$ a^x = e^{x \ln a} $$
+
+**The Inverse Properties:**
+Applying a log to its matching exponential base (or vice versa) cancels them out:
+$$ \log_a(a^x) = x $$
+$$ a^{\log_a x} = x $$
+$$ \ln(e^x) = x $$
+$$ e^{\ln x} = x $$
+
+---
+
+## Technology: TI-Nspire Tips for Logs and Exponents
+
+* **Natural Base ($e^x$):** Always use the dedicated $e^x$ key on the keypad, not the letter 'e' on the alphabet keyboard. The calculator will treat the letter 'e' as an undefined variable.
+* **Logarithms:** Use `Ctrl` + $10^x$ to bring up the $\log_a(x)$ template. For natural logs, use `Ctrl` + $e^x$ for the $\ln(x)$ function.
+* **Solving Equations:** You can use `Menu` > `3: Algebra` > `1: Solve` for exact values, or graph both sides of the equation and find the intersection for decimal approximations.
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Key Features and Inverses">
+    Let $f(x) = e^{x-2} + 3$.
+    
+    a) Write down the equation of the horizontal asymptote of $f$.  
+    b) Find the exact coordinates of the $y$-intercept.  
+    c) Find an expression for $f^{-1}(x)$, and state its domain.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** The base function $e^x$ has an asymptote at $y = 0$. The "+3" at the end translates the entire graph vertically upwards by 3 units.
+    The horizontal asymptote is **$y = 3$**.
+
+    **b)** To find the $y$-intercept, set $x = 0$:
+    $$
+    \begin{aligned}
+    y &= e^{0-2} + 3 \\
+    y &= e^{-2} + 3
+    \end{aligned}
+    $$
+    The exact coordinates are **$(0, e^{-2} + 3)$** or **$(0, \frac{1}{e^2} + 3)$**.
+
+    **c)** To find the inverse, set $f(x) = y$, swap $x$ and $y$, and solve for $y$:
+    $$
+    \begin{aligned}
+    x &= e^{y-2} + 3 \\
+    x - 3 &= e^{y-2}
+    \end{aligned}
+    $$
+    Take the natural logarithm ($\ln$) of both sides to remove the base $e$:
+    $$
+    \begin{aligned}
+    \ln(x - 3) &= y - 2 \\
+    y &= \ln(x - 3) + 2
+    \end{aligned}
+    $$
+    So, $f^{-1}(x) = \ln(x - 3) + 2$.
+    The domain of the inverse is the range of the original function. Since $f(x) > 3$, the domain of $f^{-1}(x)$ is **$x > 3$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the inverse of exponential and logarithmic functions" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Solving Equations Algebraically">
+    Solve the following equations for $x$:
+    
+    a) $3^{2x} = 27^{x-1}$  
+    b) $\ln(x+2) + \ln(x) = \ln(8)$
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** Express both sides using the same base. We know that $27 = 3^3$.
+    $$
+    \begin{aligned}
+    3^{2x} &= (3^3)^{x-1} \\
+    3^{2x} &= 3^{3x-3}
+    \end{aligned}
+    $$
+    Since the bases are equal, we can equate the exponents:
+    $$
+    \begin{aligned}
+    2x &= 3x - 3 \\
+    -x &= -3 \\
+    x &= 3
+    \end{aligned}
+    $$
+
+    **b)** Use the laws of logarithms ($\ln a + \ln b = \ln(ab)$) to combine the left side:
+    $$
+    \begin{aligned}
+    \ln(x(x+2)) &= \ln(8) \\
+    \ln(x^2 + 2x) &= \ln(8)
+    \end{aligned}
+    $$
+    Since we have a single natural log on both sides, their arguments must be equal (or raise $e$ to the power of both sides):
+    $$
+    \begin{aligned}
+    x^2 + 2x &= 8 \\
+    x^2 + 2x - 8 &= 0 \\
+    (x + 4)(x - 2) &= 0
+    \end{aligned}
+    $$
+    So $x = -4$ or $x = 2$.
+    **Check the domain:** You cannot take the logarithm of a negative number. If $x = -4$, then $\ln(x)$ becomes $\ln(-4)$, which is undefined. 
+    Therefore, the only valid solution is **$x = 2$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving exponential and logarithmic equations using properties and base conversion" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Financial Modelling (Continuous Growth)">
+    An entrepreneur invests **5000 EUR** into an account that pays a nominal annual interest rate of $4.5\%$, compounded continuously. 
+    The formula for continuous compounding is $V = Pe^{rt}$.
+    
+    a) Find the exact value of the investment after $5$ years. Give your answer to 2 decimal places.  
+    b) Using algebraic methods, find the exact time it will take for the investment to double to **10000 EUR**.  
+    c) Verify your answer to part (b) using your GDC.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** We have $P = 5000$, $r = 0.045$, and $t = 5$.
+    $$
+    \begin{aligned}
+    V &= 5000 e^{0.045 \times 5} \\
+    V &= 5000 e^{0.225}
+    \end{aligned}
+    $$
+    Using a calculator, $V = 6261.611...$
+    The value is **6261.61 EUR**.
+
+    **b)** We want the final value $V = 10000$.
+    $$
+    \begin{aligned}
+    10000 &= 5000 e^{0.045t}
+    \end{aligned}
+    $$
+    Divide both sides by $5000$:
+    $$
+    \begin{aligned}
+    2 &= e^{0.045t}
+    \end{aligned}
+    $$
+    Take the natural logarithm of both sides to isolate the exponent:
+    $$
+    \begin{aligned}
+    \ln(2) &= \ln(e^{0.045t}) \\
+    \ln(2) &= 0.045t \\
+    t &= \dfrac{\ln(2)}{0.045}
+    \end{aligned}
+    $$
+    The exact time is $\mathbf{\frac{\ln(2)}{0.045}}$ **years** (approx $15.4$ years).
+
+    **b)** To verify on the TI-Nspire:
+    1. Open a **Calculator** page.
+    2. Press **[Menu] > 3: Algebra > 1: Numerical Solve (nSolve)**.
+    3. Type `nSolve(10000 = 5000 * e^(0.045 * t), t)`.
+    4. The calculator will return $15.40327...$, confirming your exact algebraic answer.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying exponential functions to compound interest and continuous growth models" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Scientific Modelling (Radioactive Decay)">
+    The mass, $M$, in grams, of a radioactive isotope remaining after $t$ days is modelled by the function:
+    $$
+    M(t) = 150 e^{-0.02t}
+    $$
+    
+    a) Write down the initial mass of the isotope.  
+    b) Find the mass remaining after 30 days.  
+    c) The *half-life* is the time required for the mass to reduce to exactly half of its initial amount. Determine the half-life of this isotope.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** The initial mass occurs at $t = 0$.
+    $$
+    \begin{aligned}
+    M(0) &= 150 e^{-0.02(0)} \\
+    M(0) &= 150 e^0 \\
+    M(0) &= 150 \times 1
+    \end{aligned}
+    $$
+    The initial mass is **$150$ grams**.
+
+    **b)** Substitute $t = 30$ into the model:
+    $$
+    \begin{aligned}
+    M(30) &= 150 e^{-0.02(30)} \\
+    M(30) &= 150 e^{-0.6}
+    \end{aligned}
+    $$
+    Using a calculator, $M(30) = 82.321...$
+    The remaining mass is **$82.3$ grams** (to 3 s.f.).
+
+    **c)** The initial mass is $150$, so half of that is $75$. We need to solve for $t$ when $M(t) = 75$.
+    $$
+    \begin{aligned}
+    75 &= 150 e^{-0.02t}
+    \end{aligned}
+    $$
+    Divide by $150$:
+    $$
+    \begin{aligned}
+    0.5 &= e^{-0.02t}
+    \end{aligned}
+    $$
+    Take the natural logarithm of both sides:
+    $$
+    \begin{aligned}
+    \ln(0.5) &= -0.02t \\
+    t &= \dfrac{\ln(0.5)}{-0.02}
+    \end{aligned}
+    $$
+    $t = 34.657...$
+    The half-life is approximately **$34.7$ days**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving decay models and finding half-life using logarithmic properties" />

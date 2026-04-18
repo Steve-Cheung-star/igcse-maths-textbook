@@ -1,0 +1,181 @@
+---
+title: 2.11 Transformations of Graphs
+description: Learn how to shift, reflect, and stretch functions across the coordinate plane, and understand the critical importance of transformation order.
+---
+
+Functions are not static; they can be moved and resized. By applying specific algebraic changes to a base function $f(x)$, we can transform its graph. This is a vital skill for modelling real-world phenomena, such as shifts in Economic supply and demand curves or the phase shifts in Physics for simple harmonic motion.
+
+<Aside type="note" title="Connections & TOK">
+**Cross-curricular Links:** In Economics, a change in consumer income might result in a horizontal translation of the demand curve. In Physics, the vertical stretch of a sine wave represents an increase in amplitude (volume or brightness).
+
+**Mathematical Language:** We often use the word "transformation" in everyday life to mean a total change. In mathematics, transformations are rigid and predictable. Does the precision of mathematical language help or hinder our ability to describe a messy, non-linear world?
+</Aside>
+
+---
+
+## 1. Translations and Reflections
+
+Translations move the graph without changing its shape or orientation, while reflections "flip" the graph across an axis.
+
+### Translations
+* **Vertical Translation:** $y = f(x) + b$  
+  Shifts the graph **up** by $b$ units (or down if $b$ is negative).
+* **Horizontal Translation:** $y = f(x - a)$  
+  Shifts the graph **right** by $a$ units. 
+  *Note: The sign is counter-intuitive. $f(x - 3)$ moves 3 units to the right.*
+
+### Reflections
+* **Reflection in the $x$-axis:** $y = -f(x)$  
+  The $y$-values change sign. The graph flips upside down.
+* **Reflection in the $y$-axis:** $y = f(-x)$  
+  The $x$-values change sign. The graph flips horizontally.
+
+---
+
+## 2. Stretches
+
+Stretches pull the graph away from or push it toward the axes.
+
+* **Vertical Stretch:** $y = p \cdot f(x)$  
+  The graph is stretched vertically by a **scale factor of $p$**. 
+  * Points on the $x$-axis (where $y=0$) stay fixed.
+* **Horizontal Stretch:** $y = f(q \cdot x)$  
+  The graph is stretched horizontally by a **scale factor of $\frac{1}{q}$**.
+  * Points on the $y$-axis (where $x=0$) stay fixed.
+  * *Note: Like horizontal translations, this is counter-intuitive. $f(2x)$ is a horizontal compression by a factor of $0.5$.*
+
+
+
+---
+
+## 3. Composite Transformations and Order
+
+When multiple transformations are applied to a base function, the **order matters**. Generally, you should follow the order of operations (PEMDAS/BODMAS) or work from the "inside" out:
+
+1.  **Horizontal Transformations** (inside the brackets).
+2.  **Stretches/Reflections.**
+3.  **Vertical Translations** (outside the brackets).
+
+**Example:** To transform $y = x^2$ into $y = 3x^2 + 2$:
+1.  **Vertical Stretch** by scale factor 3.
+2.  **Vertical Translation** up by 2 units.
+
+*Note: For the SL syllabus, you are not required to perform transformations of the form $f(ax + b)$—you only need to handle them one at a time or in clear composite steps.*
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Identifying Transformations">
+    The graph of $y = f(x)$ is transformed to the graph of $g(x) = -2f(x + 4)$.
+    
+    Describe the three transformations that have been applied to $f(x)$ to obtain $g(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    Following the order of operations and the transformation rules:
+
+    1.  **Horizontal Translation:** The $(x + 4)$ term indicates a shift **4 units to the left**.
+    2.  **Reflection:** The negative sign in front of the 2 indicates a **reflection in the $x$-axis**.
+    3.  **Vertical Stretch:** The coefficient 2 indicates a **vertical stretch with a scale factor of 2**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Describing sequences of graph transformations" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Transforming Coordinates">
+    A function $f(x)$ passes through the point $(3, 10)$. 
+    
+    Find the new coordinates of this point after the following transformations:
+    a) $y = f(x - 5) - 2$  
+    b) $y = f(2x) + 7$  
+    c) $y = -3f(x)$
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** $y = f(x - 5) - 2$
+    * Horizontal shift: $x \to 3 + 5 = 8$
+    * Vertical shift: $y \to 10 - 2 = 8$
+    * New Point: **$(8, 8)$**
+
+    **b)** $y = f(2x) + 7$
+    * Horizontal stretch (SF $\frac{1}{2}$): $x \to 3 \times 0.5 = 1.5$
+    * Vertical shift: $y \to 10 + 7 = 17$
+    * New Point: **$(1.5, 17)$**
+
+    **c)** $y = -3f(x)$
+    * Vertical stretch (SF 3): $y \to 10 \times 3 = 30$
+    * Reflection in $x$-axis: $y \to -30$
+    * New Point: **$(3, -30)$**
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating coordinate changes under transformations" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Transforming Asymptotes">
+    The rational function $h(x) = \dfrac{1}{x}$ has a vertical asymptote at $x = 0$ and a horizontal asymptote at $y = 0$.
+    
+    Find the equations of the new asymptotes for the function $g(x) = \dfrac{4}{x - 3} + 5$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    The function $g(x)$ is a transformed version of $h(x)$:
+    $$ g(x) = 4 \cdot h(x - 3) + 5 $$
+
+    **Vertical Asymptote:**
+    * The original VA is $x = 0$.
+    * The horizontal translation $(x - 3)$ moves the graph 3 units right.
+    * New VA: **$x = 3$**.
+
+    **Horizontal Asymptote:**
+    * The original HA is $y = 0$.
+    * The vertical stretch (factor 4) affects $y$, but $0 \times 4 = 0$, so it remains at 0.
+    * The vertical translation $(+ 5)$ moves the graph up 5 units.
+    * New HA: **$y = 5$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Determining new asymptotes after function transformations" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Mapping Graphs">
+    The graph of $f(x) = x^2$ is stretched vertically by a scale factor of $0.5$, reflected in the $y$-axis, and then translated **3 units down**.
+    
+    a) Write the equation of the resulting function $g(x)$.  
+    b) Use your GDC to sketch $f(x)$ and $g(x)$ on the same set of axes.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** Let's apply the transformations step-by-step:
+    1.  Vertical stretch (SF 0.5): $\to 0.5x^2$
+    2.  Reflection in $y$-axis: $\to 0.5(-x)^2$. Since $(-x)^2 = x^2$, the reflection of a symmetric parabola in the $y$-axis results in the same equation: $0.5x^2$.
+    3.  Translation 3 units down: $\to 0.5x^2 - 3$.
+    
+    The resulting function is **$g(x) = 0.5x^2 - 3$**.
+
+    **b)** To sketch on the TI-Nspire:
+    1.  Open a **Graph** page.
+    2.  Enter $f_1(x) = x^2$ and $f_2(x) = 0.5x^2 - 3$.
+    3.  Observe that $f_2$ is wider (compressed vertically) and its vertex has moved from $(0,0)$ to $(0,-3)$.
+
+    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+      <svg viewBox="0 0 300 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+        <line x1="20" y1="180" x2="280" y2="180" stroke="#cbd5e1" stroke-width="2" />
+        <line x1="150" y1="20" x2="150" y2="230" stroke="#cbd5e1" stroke-width="2" />
+        
+        {/* Original f(x) = x^2 */}
+        <path d="M 90 20 Q 150 340 210 20" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
+        <text x="70" y="40" font-size="10" fill="#94a3b8" font-family="sans-serif">f(x) = x²</text>
+
+        {/* Transformed g(x) = 0.5x^2 - 3 */}
+        <path d="M 70 20 Q 150 320 230 20" fill="none" stroke="#3b82f6" stroke-width="2" />
+        <text x="210" y="40" font-size="10" font-weight="bold" fill="#3b82f6" font-family="sans-serif">g(x) = 0.5x² - 3</text>
+        
+        {/* Vertex of g(x) */}
+        <circle cx="150" cy="210" r="4" fill="#ef4444" />
+        <text x="160" y="225" font-size="10" font-weight="bold" fill="#ef4444" font-family="sans-serif">(0, -3)</text>
+      </svg>
+    </div>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Constructing function equations from a series of geometric transformations" />

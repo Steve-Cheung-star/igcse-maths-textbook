@@ -1,0 +1,492 @@
+---
+title: 1.7 Laws of Exponents and Logarithms
+description: Master the algebraic laws of logarithms and rational exponents, including the change of base formula and solving complex exponential equations for IB Maths AA SL.
+---
+
+In Topic 1.5, we explored integer exponents and the fundamental definition of a logarithm. Now, we must elevate our algebraic toolkit. What happens when an exponent is a fraction? How do we algebraically manipulate logarithms to combine them or change their base?
+
+In **AA SL**, you will be expected to fluently transform expressions using the laws of exponents and logarithms. These laws are not just abstract puzzles; they are the mathematical machinery required to solve exponential equations where the unknown variable is trapped in the power.
+
+---
+
+## 1. Rational Exponents
+
+A **rational exponent** is simply an exponent that is a fraction. While integer exponents represent repeated multiplication, fractional exponents represent **roots**.
+
+<Aside type="tip" title="Prior Knowledge: Fractional Indices">
+
+While not explicitly in the SL formula booklet, you must know that:
+$$
+a^{\frac{1}{m}} = \sqrt[m]{a} \quad \text{and} \quad a^{\frac{n}{m}} = (\sqrt[m]{a})^n = \sqrt[m]{a^n}
+$$
+
+</Aside>
+
+<Aside type="caution" title="The Even Root Rule">
+
+When you take an even root (such as a square root $m=2$, or a fourth root $m=4$), the syllabus strictly notes that a fractional exponent refers to the **positive root only**. For example, $16^{\frac{1}{2}} = 4$, not $\pm 4$. 
+
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 200" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <text x="300" y="40" font-size="18" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="sans-serif">Deconstructing a Rational Exponent</text>
+    
+    <text x="150" y="120" font-size="36" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">16</text>
+    <text x="180" y="95" font-size="20" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="monospace">3</text>
+    <line x1="170" y1="102" x2="190" y2="102" stroke="#0f172a" stroke-width="2" />
+    <text x="180" y="120" font-size="20" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">4</text>
+
+    <path d="M 220 110 L 260 110" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-rat)"/>
+    <path d="M 400 110 L 440 110" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-rat)"/>
+
+    <text x="300" y="125" font-size="40" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">√</text>
+    <text x="285" y="100" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">4</text>
+    <text x="315" y="120" font-size="28" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">16</text>
+    
+    <text x="270" y="125" font-size="40" fill="#0f172a" text-anchor="middle" font-family="sans-serif">(</text>
+    <text x="350" y="125" font-size="40" fill="#0f172a" text-anchor="middle" font-family="sans-serif">)</text>
+    <text x="365" y="90" font-size="20" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="monospace">3</text>
+
+    <text x="470" y="125" font-size="40" fill="#0f172a" text-anchor="middle" font-family="sans-serif">(</text>
+    <text x="490" y="120" font-size="28" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">2</text>
+    <text x="510" y="125" font-size="40" fill="#0f172a" text-anchor="middle" font-family="sans-serif">)</text>
+    <text x="525" y="90" font-size="20" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="monospace">3</text>
+    <text x="560" y="120" font-size="28" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="monospace">= 8</text>
+
+    <text x="180" y="65" font-size="14" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Power</text>
+    <text x="180" y="145" font-size="14" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Root</text>
+
+    <defs>
+      <marker id="arrow-rat" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+<SteveTip title="Root First, Power Second">
+
+When evaluating fractional indices without a calculator (Paper 1), **always evaluate the root (the denominator) first**, and then apply the power (the numerator). If you try to calculate $16^3$ first, you will end up trying to find the fourth root of $4096$ in your head! Taking the fourth root of $16$ first gives a manageable $2$, which is then easily cubed to get $8$.
+
+</SteveTip>
+
+---
+
+## 2. The Laws of Logarithms
+
+Because logarithms are the mathematical inverses of exponents, every law of exponents has a direct logarithmic analogue. When you multiply terms with the same base, you *add* the exponents. Therefore, the logarithm of a product becomes the *sum* of the logarithms.
+
+<FormulaBox title="1.7 Laws of logarithms">
+
+$$
+\begin{aligned}
+\log_a (xy) &= \log_a x + \log_a y \\
+\log_a \left(\frac{x}{y}\right) &= \log_a x - \log_a y \\
+\log_a (x^m) &= m \log_a x
+\end{aligned}
+$$
+
+</FormulaBox>
+
+<Aside type="danger" title="The Most Common Algebraic Traps">
+
+Do not invent your own logarithmic laws! The IB examiner will actively try to trick you into making these fatal errors:
+1. $\log_a(x + y)$ is **NOT** equal to $\log_a x + \log_a y$. You cannot "expand" a log into a bracket!
+2. $(\log_a x)^2$ is **NOT** equal to $2 \log_a x$. The power rule only applies when the power is *inside* the log argument: $\log_a(x^2) = 2 \log_a x$.
+
+</Aside>
+
+---
+
+## 3. Exponent and Logarithm Identities
+
+The formula booklet also provides specific identities showing how exponents and logarithms interact with one another, particularly useful for converting any base into base $e$.
+
+<FormulaBox title="1.7 Exponents and logarithms">
+
+$$
+a^x = e^{x \ln a} 
+$$
+$$
+\log_a a^x = x = a^{\log_a x}
+$$
+*(where $a, x > 0$ and $a \neq 1$)*
+
+</FormulaBox>
+
+The identity $a^x = e^{x \ln a}$ is incredibly powerful because it allows us to rewrite *any* exponential function into base $e$, which is heavily utilized in calculus later in the course. 
+
+If you need to change the base of a logarithm entirely, you can use the Change of Base formula:
+
+<FormulaBox title="1.7 Change of base">
+
+$$
+\log_a x = \frac{\log_b x}{\log_b a}
+$$
+
+</FormulaBox>
+
+---
+
+## 4. Solving Exponential Equations
+
+The ultimate goal of learning these laws is to solve **exponential equations** where the unknown variable $x$ is trapped in the power. There are two primary strategies.
+
+### Strategy 1: Making the bases equal (Paper 1)
+If both sides of the equation can be written as powers of the exact same base, you can simply equate the exponents. 
+
+> **Example:** Solve $9^x = 27^{x-1}$
+> 1. Recognize that both $9$ and $27$ are powers of $3$. 
+> 2. Rewrite: $(3^2)^x = (3^3)^{x-1}$
+> 3. Apply exponent laws: $3^{2x} = 3^{3x - 3}$
+> 4. Drop the bases and solve: $2x = 3x - 3 \implies x = 3$.
+
+### Strategy 2: Using logarithms (Paper 1 and Paper 2)
+If the bases cannot be made equal (e.g., $2^{x-1} = 10$), you must "take the log" of both sides. This allows you to use the power law ($\log_a(x^m) = m \log_a x$) to pull the variable $x$ out of the exponent and bring it down to ground level.
+
+> **Example:** Solve $5 \times 2^x = 35$ for exact values of $x$.
+> 1. Isolate the exponential part: $2^x = 7$
+> 2. Take the natural logarithm ($\ln$) of both sides: $\ln(2^x) = \ln(7)$
+> 3. Use the power law to bring down the $x$: $x \ln(2) = \ln(7)$
+> 4. Divide to isolate $x$: $x = \dfrac{\ln(7)}{\ln(2)}$
+
+<Aside type="note" title="Connections">
+
+**Links to other subjects:** The laws of logarithms are not just abstract algebra. In Chemistry, they are essential for calculating **pH levels** (where $\text{pH} = -\log_{10}[H^+]$), determining buffer solutions using the Henderson-Hasselbalch equation, and finding activation energy from experimental data.
+
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Rational Exponents">
+
+    Evaluate the following without using a calculator:
+    
+    **a)** $27^{\frac{2}{3}}$
+    
+    **b)** $\left(\dfrac{16}{81}\right)^{-\frac{3}{4}}$
+
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+
+    **Part a:** Evaluate the root (the denominator) first, then the power.
+    
+    $$
+    27^{\frac{2}{3}} = (\sqrt[3]{27})^2
+    $$
+
+    $$
+    = (3)^2 = 9
+    $$
+
+    **Part b:** First, deal with the negative sign by flipping (taking the reciprocal of) the fraction.
+
+    $$
+    \left(\frac{81}{16}\right)^{\frac{3}{4}}
+    $$
+
+    Next, take the fourth root of both the numerator and the denominator:
+
+    $$
+    = \left(\frac{\sqrt[4]{81}}{\sqrt[4]{16}}\right)^3
+    $$
+
+    $$
+    = \left(\frac{3}{2}\right)^3
+    $$
+
+    Finally, apply the cube:
+
+    $$
+    = \frac{27}{8}
+    $$
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating rational and negative exponents without a calculator" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Expanding Logarithms">
+
+    Write $\ln \left( \dfrac{x^3 \sqrt{y}}{z} \right)$ as a sum and difference of individual logarithms.
+
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+
+    First, use the quotient law to separate the numerator and the denominator:
+
+    $$
+    \ln(x^3 \sqrt{y}) - \ln(z)
+    $$
+
+    Next, use the product law to separate the $x$ and $y$ terms:
+
+    $$
+    \ln(x^3) + \ln(\sqrt{y}) - \ln(z)
+    $$
+
+    Rewrite the square root as a rational exponent ($y^{\frac{1}{2}}$):
+
+    $$
+    \ln(x^3) + \ln(y^{\frac{1}{2}}) - \ln(z)
+    $$
+
+    Finally, use the power law to bring the exponents down as coefficients:
+
+    $$
+    3\ln(x) + \frac{1}{2}\ln(y) - \ln(z)
+    $$
+
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Combining Logarithms">
+
+    Express $2\log_a(3) + \log_a(4) - \log_a(6)$ as a single logarithm in the form $\log_a(k)$.
+
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+
+    Before you can combine logarithms, you must remove any coefficients using the power law in reverse.
+    
+    $$
+    \log_a(3^2) + \log_a(4) - \log_a(6)
+    $$
+
+    $$
+    \log_a(9) + \log_a(4) - \log_a(6)
+    $$
+
+    Use the product law to combine the addition:
+
+    $$
+    \log_a(9 \times 4) - \log_a(6)
+    $$
+
+    $$
+    \log_a(36) - \log_a(6)
+    $$
+
+    Use the quotient law to combine the subtraction:
+
+    $$
+    \log_a \left(\frac{36}{6}\right)
+    $$
+
+    $$
+    \log_a(6)
+    $$
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Combining and expanding logarithmic expressions using log laws" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Exponent and Logarithm Identities">
+
+    Given the identity $a^x = e^{x \ln a}$, rewrite the expression $7^{4x}$ entirely in base $e$.
+
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+
+    Using the given formula $a^x = e^{x \ln a}$, we can assign our values:
+    * The base $a = 7$
+    * The exponent $x = 4x$
+
+    Substitute these directly into the identity:
+
+    $$
+    7^{4x} = e^{4x \ln(7)}
+    $$
+
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Solving Exponential Equations (Different Bases)">
+
+    Solve the equation $5^{2x} = 3^{x+1}$. Give your answer in exact algebraic form.
+
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+
+    Since $5$ and $3$ do not share a common integer base, we must take the logarithm of both sides. We can use the natural logarithm ($\ln$).
+
+    $$
+    \ln(5^{2x}) = \ln(3^{x+1})
+    $$
+
+    Use the power law to bring the exponents to the front. **Always use brackets for compound expressions!**
+
+    $$
+    2x \ln(5) = (x+1) \ln(3)
+    $$
+
+    Expand the right-hand side:
+
+    $$
+    2x \ln(5) = x \ln(3) + \ln(3)
+    $$
+
+    Gather all terms containing $x$ on one side of the equation:
+
+    $$
+    2x \ln(5) - x \ln(3) = \ln(3)
+    $$
+
+    Factorise out the common $x$:
+
+    $$
+    x(2\ln 5 - \ln 3) = \ln 3
+    $$
+
+    Isolate $x$ by dividing:
+
+    $$
+    x = \frac{\ln 3}{2\ln 5 - \ln 3}
+    $$
+    
+    *(Note: This is a perfectly acceptable exact answer in IB. You could also simplify the denominator to $\ln(\frac{25}{3})$ using log laws).*
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving exponential equations algebraically using logarithms" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Change of Base Formula">
+
+    Given that $\log_2(x) = y$, write down an expression for $\log_8(x)$ in terms of $y$.
+
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+
+    We need to change the base of $\log_8(x)$ from $8$ to $2$ so we can substitute $y$.
+    
+    Apply the change of base formula:
+
+    $$
+    \log_8(x) = \frac{\log_2(x)}{\log_2(8)}
+    $$
+
+    We know that $\log_2(x) = y$. We also know that $2^3 = 8$, therefore $\log_2(8) = 3$. 
+    
+    Substitute these values into the fraction:
+
+    $$
+    \log_8(x) = \frac{y}{3}
+    $$
+
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Algebraic Log Manipulation (Show That)">
+
+    Given that $a = \ln(x)$ and $b = \ln(y)$, show that $\ln \left( \dfrac{e^3 x^2}{\sqrt{y}} \right) \equiv 3 + 2a - \dfrac{1}{2}b$.
+
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+
+    Start with the Left-Hand Side (LHS) and use the laws of logarithms to expand it.
+
+    $$
+    \text{LHS} = \ln(e^3 x^2) - \ln(\sqrt{y})
+    $$
+
+    Split the product:
+
+    $$
+    \text{LHS} = \ln(e^3) + \ln(x^2) - \ln(y^{\frac{1}{2}})
+    $$
+
+    Apply the power law to bring down the exponents:
+
+    $$
+    \text{LHS} = 3\ln(e) + 2\ln(x) - \frac{1}{2}\ln(y)
+    $$
+
+    We know two critical identities here. First, $\ln(e) = 1$. Second, substitute the given definitions $a = \ln(x)$ and $b = \ln(y)$:
+
+    $$
+    \text{LHS} = 3(1) + 2(a) - \frac{1}{2}(b)
+    $$
+
+    $$
+    \text{LHS} = 3 + 2a - \frac{1}{2}b
+    $$
+
+    $$
+    \text{LHS} = \text{RHS}
+    $$
+
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Simultaneous Equations with Logarithms">
+
+    Solve the following system of simultaneous equations for $x$ and $y$:
+    
+    $$
+    \log_3(x) + \log_3(y) = 2
+    $$
+    
+    $$
+    \log_3(x) - \log_3(y) = 4
+    $$
+
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+
+    We can treat this like a standard system of linear simultaneous equations where our "variables" are $\log_3(x)$ and $\log_3(y)$. 
+    
+    Add the two equations together to eliminate $\log_3(y)$:
+
+    $$
+    (\log_3(x) + \log_3(y)) + (\log_3(x) - \log_3(y)) = 2 + 4
+    $$
+
+    $$
+    2\log_3(x) = 6
+    $$
+
+    $$
+    \log_3(x) = 3
+    $$
+
+    Convert this back to exponential form to solve for $x$:
+
+    $$
+    x = 3^3 = 27
+    $$
+
+    Now, substitute $\log_3(x) = 3$ back into the first equation:
+
+    $$
+    3 + \log_3(y) = 2
+    $$
+
+    $$
+    \log_3(y) = -1
+    $$
+
+    Convert this back to exponential form to solve for $y$:
+
+    $$
+    y = 3^{-1} = \frac{1}{3}
+    $$
+
+    Final Answer: **$x = 27, \ y = \dfrac{1}{3}$**
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving simultaneous equations involving logarithmic expressions" />

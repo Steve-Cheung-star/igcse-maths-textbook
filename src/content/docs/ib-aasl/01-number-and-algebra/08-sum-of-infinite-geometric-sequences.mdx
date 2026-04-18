@@ -1,0 +1,447 @@
+---
+title: 1.8 Infinite Convergent Geometric Sequences
+description: Understand the concept of infinity in mathematics, learn the condition for convergence using modulus notation, and calculate the sum to infinity of geometric series for IB Maths AA SL.
+---
+
+In Topic 1.3, we learned how to find the sum of the first $n$ terms of a geometric sequence. But what happens if we decide to never stop adding? What happens if $n$ approaches infinity? 
+
+Common sense might suggest that if you add an infinite number of positive terms together, the sum must eventually become infinitely large. However, mathematics shows us that under specific conditions, an infinite sum can actually equal a finite, exact number. 
+
+---
+
+## 1. Divergence vs. Convergence
+
+To understand infinite sums, we must distinguish between two types of geometric sequences:
+
+**1. Divergent Sequences**
+If the common ratio $r$ is greater than $1$ (or less than $-1$), the terms keep getting larger in magnitude. 
+For example, if $u_1 = 2$ and $r = 2$, the sequence is: $2, 4, 8, 16, 32 \dots$
+If you try to sum this infinitely, the total will literally explode to infinity ($\infty$). We cannot calculate a numerical sum for this.
+
+**2. Convergent Sequences**
+If the common ratio $r$ is a fraction strictly between $-1$ and $1$, the terms get progressively smaller, eventually approaching zero. 
+For example, if $u_1 = 8$ and $r = 0.5$, the sequence is: $8, 4, 2, 1, 0.5, 0.25 \dots$
+Because the terms shrink so rapidly, the sum of the sequence will actually "settle" or **converge** on a specific numerical limit. 
+
+<Aside type="tip" title="The Condition for Convergence">
+
+A geometric series will only have a finite sum to infinity if its common ratio $r$ satisfies the condition:
+$$
+-1 < r < 1
+$$
+In the IB formula booklet and mark schemes, this is often written using **modulus notation**:
+$$
+|r| < 1
+$$
+
+</Aside>
+
+---
+
+## 2. The Sum to Infinity Formula
+
+If a sequence meets the convergence condition ($|r| < 1$), we can calculate the exact value that the infinite sum approaches using a surprisingly simple formula.
+
+<FormulaBox title="1.8 Sum of an infinite geometric sequence">
+
+$$
+S_\infty = \frac{u_1}{1 - r}, \quad |r| < 1
+$$
+
+</FormulaBox>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 200" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <text x="300" y="30" font-size="18" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="sans-serif">Visualising an Infinite Sum</text>
+    <text x="300" y="55" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">A square of area 1 is halved infinitely</text>
+
+    {/* Main Square Container */}
+    <rect x="100" y="80" width="400" height="80" fill="none" stroke="#0f172a" stroke-width="2" />
+    
+    {/* 1/2 */}
+    <rect x="100" y="80" width="200" height="80" fill="#bfdbfe" stroke="#3b82f6" stroke-width="2" />
+    <text x="200" y="125" font-size="16" font-weight="bold" fill="#1e3a8a" text-anchor="middle" font-family="monospace">1/2</text>
+    
+    {/* 1/4 */}
+    <rect x="300" y="80" width="100" height="80" fill="#93c5fd" stroke="#3b82f6" stroke-width="2" />
+    <text x="350" y="125" font-size="14" font-weight="bold" fill="#1e3a8a" text-anchor="middle" font-family="monospace">1/4</text>
+    
+    {/* 1/8 */}
+    <rect x="400" y="80" width="50" height="80" fill="#60a5fa" stroke="#3b82f6" stroke-width="1" />
+    <text x="425" y="125" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle" font-family="monospace">1/8</text>
+
+    {/* 1/16 */}
+    <rect x="450" y="80" width="25" height="80" fill="#3b82f6" stroke="#2563eb" stroke-width="1" />
+    <text x="462.5" y="125" font-size="10" fill="#ffffff" text-anchor="middle" font-family="monospace">...</text>
+
+    {/* 1/32 and beyond just filled */}
+    <rect x="475" y="80" width="25" height="80" fill="#1d4ed8" />
+
+    {/* Labels */}
+    <path d="M 505 120 L 530 120" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#arrow-limit)"/>
+    <text x="560" y="125" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Limit = 1</text>
+
+    <defs>
+      <marker id="arrow-limit" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+<SteveTip title="The Power of the Formula">
+
+The formula $S_\infty = \frac{u_1}{1-r}$ is incredibly satisfying. It takes an infinitely long, impossible-to-calculate process and collapses it into a single, straightforward fraction. Whenever an exam question mentions the "sum to infinity" or "convergent", immediately write this formula down and state that $|r| < 1$ for a quick method mark!
+
+</SteveTip>
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+
+**The Reality of Infinity:** Our physical universe appears to be finite. We cannot hold an infinite number of apples, nor can we measure a truly infinite distance. If all human empirical knowledge is derived from observing a finite universe, how is it possible for mathematics to discover absolute truths about infinity? Is it possible to know about things of which we can have no actual experience?
+
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Basic Evaluation">
+    Consider the geometric sequence: $18, 6, 2, \dots$
+    
+    **a)** Show that the sequence is convergent.
+    
+    **b)** Find the sum to infinity of the sequence.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a:** First, find the common ratio $r$ by dividing the second term by the first term:
+    
+    $$
+    r = \frac{6}{18} = \frac{1}{3}
+    $$
+    
+    To show it is convergent, you must explicitly state the convergence condition:
+    Since $| \frac{1}{3} | < 1$, the sequence is convergent.
+
+    **Part b:** Use the sum to infinity formula with $u_1 = 18$ and $r = \frac{1}{3}$.
+    
+    $$
+    S_\infty = \frac{u_1}{1 - r}
+    $$
+
+    $$
+    S_\infty = \frac{18}{1 - \frac{1}{3}}
+    $$
+
+    $$
+    S_\infty = \frac{18}{\frac{2}{3}}
+    $$
+
+    $$
+    S_\infty = 18 \times \frac{3}{2} = 27
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the sum to infinity of basic geometric sequences" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Working Backwards">
+    The sum to infinity of a geometric sequence is $64$. The common ratio is $\frac{3}{4}$. 
+    
+    Find the exact value of the first term, $u_1$, of the sequence.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    Set up the formula using the given information: $S_\infty = 64$ and $r = 0.75$.
+    
+    $$
+    64 = \frac{u_1}{1 - 0.75}
+    $$
+
+    $$
+    64 = \frac{u_1}{0.25}
+    $$
+
+    Multiply both sides by $0.25$ (which is the same as dividing by $4$):
+
+    $$
+    u_1 = 64 \times 0.25
+    $$
+
+    $$
+    u_1 = 16
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Algebraic Convergence">
+    A geometric sequence has a first term $u_1 = 5$ and a common ratio $r = 2x - 1$.
+    
+    Find the range of values for $x$ for which the sum to infinity of this sequence exists.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    For the sum to infinity to exist, the sequence must converge. The condition for convergence is:
+    
+    $$
+    -1 < r < 1
+    $$
+
+    Substitute the algebraic expression for $r$:
+
+    $$
+    -1 < 2x - 1 < 1
+    $$
+
+    Solve the compound inequality. First, add $1$ to all parts:
+
+    $$
+    0 < 2x < 2
+    $$
+
+    Divide all parts by $2$:
+
+    $$
+    0 < x < 1
+    $$
+
+    The sum to infinity exists strictly when $0 < x < 1$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the range of an algebraic ratio for convergence" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Simultaneous Equations">
+    The second term of a convergent geometric sequence is $-2.4$. The sum to infinity is $10$.
+    
+    Find the two possible values of the common ratio, $r$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    We are given two pieces of information, which means we need to set up two equations.
+
+    **Equation 1 (from the second term):**
+    $$
+    u_2 = u_1 r = -2.4 \implies u_1 = \frac{-2.4}{r}
+    $$
+
+    **Equation 2 (from the sum to infinity):**
+    $$
+    S_\infty = \frac{u_1}{1 - r} = 10 \implies u_1 = 10(1 - r)
+    $$
+
+    Set the two expressions for $u_1$ equal to each other:
+
+    $$
+    \frac{-2.4}{r} = 10 - 10r
+    $$
+
+    Multiply through by $r$ to remove the fraction:
+
+    $$
+    -2.4 = 10r - 10r^2
+    $$
+
+    Rearrange into a standard quadratic form ($ax^2 + bx + c = 0$):
+
+    $$
+    10r^2 - 10r - 2.4 = 0
+    $$
+
+    Divide by $2$ to simplify:
+
+    $$
+    5r^2 - 5r - 1.2 = 0
+    $$
+
+    Using the quadratic formula or a GDC polynomial solver:
+
+    $$
+    r = 1.2 \quad \text{or} \quad r = -0.2
+    $$
+
+    **Crucial Final Step:** The question states the sequence is *convergent*. Therefore, $|r| < 1$. We must reject $r = 1.2$. 
+    
+    The only valid answer is **$r = -0.2$**. 
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Bouncing Ball Application">
+    A rubber ball is dropped from a height of $10\text{ m}$. After each bounce, it rebounds to $80\%$ of its previous height. 
+    
+    Find the total vertical distance the ball travels before it completely comes to rest.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    This is a classic trap question! The ball travels *down* and then *up*, meaning every distance except the initial drop is travelled twice.
+
+    **Step 1: Map the motion**
+    * Drop 1: $10\text{ m}$ (down only)
+    * Bounce 1: $10 \times 0.8 = 8\text{ m}$ (up and down $\implies 2 \times 8 = 16\text{ m}$)
+    * Bounce 2: $8 \times 0.8 = 6.4\text{ m}$ (up and down $\implies 2 \times 6.4 = 12.8\text{ m}$)
+
+    **Step 2: Set up the infinite series**
+    The total distance is the initial drop plus an infinite series of bounces:
+    $$
+    \text{Distance} = 10 + [16 + 12.8 + 10.24 + \dots]
+    $$
+
+    **Step 3: Calculate the infinite sum of the bounces**
+    The bracketed part is a geometric series where $u_1 = 16$ and $r = 0.8$.
+    $$
+    S_\infty = \frac{16}{1 - 0.8}
+    $$
+    $$
+    S_\infty = \frac{16}{0.2} = 80\text{ m}
+    $$
+
+    **Step 4: Add the initial drop**
+    $$
+    \text{Total Distance} = 10 + 80 = 90\text{ m}
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: Infinite Sigma Notation">
+    Evaluate the following infinite series:
+    
+    $$
+    \sum_{k=1}^{\infty} 4\left(\frac{1}{4}\right)^{k-1}
+    $$
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+    1. **Identify the parameters:** The expression inside the sigma notation is in the form $u_1 r^{k-1}$.
+       * The first term is $u_1 = 4$.
+       * The common ratio is $r = \frac{1}{4}$.
+    2. **Check for convergence:** Since $|r| = 0.25 < 1$, the series converges and we can find a sum.
+    3. **Apply the formula:**
+       $$
+       S_\infty = \frac{4}{1 - \frac{1}{4}}
+       $$
+       $$
+       S_\infty = \frac{4}{\frac{3}{4}}
+       $$
+       $$
+       S_\infty = 4 \times \frac{4}{3} = \frac{16}{3}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Repeating Decimals as Fractions (Paper 1 Classic)">
+    Express the repeating decimal $0.272727...$ as a fraction in its simplest form using the concept of infinite geometric series.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    First, split the repeating decimal into an infinite sum of its repeating parts:
+
+    $$
+    0.272727... = 0.27 + 0.0027 + 0.000027 + \dots
+    $$
+
+    Write these as fractions to clearly see the geometric sequence:
+
+    $$
+    \frac{27}{100} + \frac{27}{10000} + \frac{27}{1000000} + \dots
+    $$
+
+    This is an infinite geometric series where:
+    * $u_1 = \frac{27}{100}$
+    * $r = \frac{1}{100}$
+
+    Apply the sum to infinity formula:
+
+    $$
+    S_\infty = \frac{\frac{27}{100}}{1 - \frac{1}{100}}
+    $$
+
+    $$
+    S_\infty = \frac{\frac{27}{100}}{\frac{99}{100}}
+    $$
+
+    The denominators cancel out:
+
+    $$
+    S_\infty = \frac{27}{99}
+    $$
+
+    Simplify the fraction by dividing top and bottom by 9:
+
+    $$
+    S_\infty = \frac{3}{11}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Converting repeating decimals to exact fractions using sum to infinity" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Algebraic Proof with Infinity">
+    The sum to infinity of a convergent geometric series is denoted by $S$. 
+    The sum of the first two terms is equal to $\frac{8}{9} S$.
+    
+    Find the two possible exact values of the common ratio, $r$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    We must translate the English statements into algebra.
+    Let the first term be $u_1$.
+
+    **Fact 1:** The sum to infinity is $S$.
+    $$
+    S = \frac{u_1}{1 - r}
+    $$
+
+    **Fact 2:** The sum of the first two terms is $\frac{8}{9} S$.
+    The first two terms are $u_1$ and $u_1 r$.
+    $$
+    u_1 + u_1 r = \frac{8}{9} S
+    $$
+    Factorise the left side:
+    $$
+    u_1(1 + r) = \frac{8}{9} S
+    $$
+
+    **Combine the equations:** Substitute the expression for $S$ into Fact 2.
+    $$
+    u_1(1 + r) = \frac{8}{9} \left( \frac{u_1}{1 - r} \right)
+    $$
+
+    Since $u_1 \neq 0$ (otherwise there is no sequence), we can divide both sides by $u_1$ to cancel it entirely:
+    $$
+    1 + r = \frac{8}{9(1 - r)}
+    $$
+
+    Multiply both sides by $9(1 - r)$ to clear the fraction:
+    $$
+    9(1 - r)(1 + r) = 8
+    $$
+
+    Recognise the difference of two squares:
+    $$
+    9(1 - r^2) = 8
+    $$
+
+    $$
+    9 - 9r^2 = 8
+    $$
+
+    $$
+    1 = 9r^2
+    $$
+
+    $$
+    r^2 = \frac{1}{9}
+    $$
+
+    Square root both sides:
+    $$
+    r = \pm \frac{1}{3}
+    $$
+
+    *(Since both $1/3$ and $-1/3$ satisfy $|r| < 1$, both answers are valid).*
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving complex algebraic proofs involving sum to infinity" />

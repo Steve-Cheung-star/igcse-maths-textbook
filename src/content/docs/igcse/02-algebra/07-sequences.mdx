@@ -309,7 +309,7 @@ Sometimes you will be given a rational sequence (a sequence of fractions).
 The trick here is **not to divide them**, but to **completely separate the numerators (tops) and the denominators (bottoms)**. Treat them as two entirely independent sequences, figure out their formulas separately, and finally stack them back into a single fraction.
 
 ### Example 1: Standard Rational Sequence
-Find the $n$th term of the sequence: $\frac{3}{2}, \frac{5}{6}, \frac{7}{12}, \frac{9}{20}, \dots$
+Find the $n$th term of the sequence: $\dfrac{3}{2}, \dfrac{5}{6}, \dfrac{7}{12}, \dfrac{9}{20}, \dots$
 
 **Step 1: The Numerators (Tops)**
 The top numbers are: $3, 5, 7, 9, \dots$
@@ -352,23 +352,23 @@ Using our equations:
 **Step 3: Recombine**
 Stack your two formulas back into a fraction.
 $$
-T_n = \frac{2n + 1}{n^2 + n}
+T_n = \dfrac{2n + 1}{n^2 + n}
 $$
 
 ### Example 2: Disguised (Simplified) Fractions
 Sometimes, fractions are simplified by the examiner to hide the true underlying pattern. If a sequence of fractions seems to have a broken pattern—or contains random whole numbers—try **"un-simplifying"** them to reveal consistent differences.
 
-Find the $n$th term of the sequence: $\frac{2}{3}, 1, \frac{6}{5}, \frac{4}{3}, \frac{10}{7}, \dots$
+Find the $n$th term of the sequence: $\dfrac{2}{3}, 1, \dfrac{6}{5}, \dfrac{4}{3}, \dfrac{10}{7}, \dots$
 
-This looks chaotic. Let's convert the whole number $1$ and the fraction $\frac{4}{3}$ into equivalent fractions that fit the flow of the other numerators and denominators.
+This looks chaotic. Let's convert the whole number $1$ and the fraction $\dfrac{4}{3}$ into equivalent fractions that fit the flow of the other numerators and denominators.
 
-* $T_1 = \frac{2}{3}$
-* $T_2 = 1$ *(Let's write this as $\frac{4}{4}$ to bridge the gap between 2 and 6)*
-* $T_3 = \frac{6}{5}$
-* $T_4 = \frac{4}{3}$ *(Multiply top and bottom by 2 to get $\frac{8}{6}$)*
-* $T_5 = \frac{10}{7}$
+* $T_1 = \dfrac{2}{3}$
+* $T_2 = 1$ *(Let's write this as $\dfrac{4}{4}$ to bridge the gap between 2 and 6)*
+* $T_3 = \dfrac{6}{5}$
+* $T_4 = \dfrac{4}{3}$ *(Multiply top and bottom by 2 to get $\dfrac{8}{6}$)*
+* $T_5 = \dfrac{10}{7}$
 
-Now look at our un-simplified sequence: **$\frac{2}{3}, \frac{4}{4}, \frac{6}{5}, \frac{8}{6}, \frac{10}{7}, \dots$**
+Now look at our un-simplified sequence: **$\dfrac{2}{3}, \dfrac{4}{4}, \dfrac{6}{5}, \dfrac{8}{6}, \dfrac{10}{7}, \dots$**
 
 The hidden patterns are now incredibly obvious!
 * **Numerators:** $2, 4, 6, 8, 10 \dots$ (Linear, going up by $2$. Formula: **$2n$**)
@@ -376,7 +376,7 @@ The hidden patterns are now incredibly obvious!
 
 **Final Recombined Formula:**
 $$
-T_n = \frac{2n}{n + 2}
+T_n = \dfrac{2n}{n + 2}
 $$
 
 ---
@@ -404,8 +404,8 @@ $3, 6, 12, 24, 48, \dots$
 #### Example 2: Fractional Ratios (Decay)
 $80, 40, 20, 10, \dots$
 * 1st term ($a$) = $80$
-* Multiplier ($r$) = $\textcolor{#ea580c}{\times \frac{1}{2}}$ (or $\textcolor{#ea580c}{0.5}$)
-* $n$th term: **$T_n = 80 \times \left(\textcolor{#ea580c}{\frac{1}{2}}\right)^{n-1}$**
+* Multiplier ($r$) = $\textcolor{#ea580c}{\times \dfrac{1}{2}}$ (or $\textcolor{#ea580c}{0.5}$)
+* $n$th term: **$T_n = 80 \times \left(\textcolor{#ea580c}{\dfrac{1}{2}}\right)^{n-1}$**
 
 #### Example 3: Negative Ratios (Alternating Signs)
 $2, -6, 18, -54, \dots$
@@ -1160,17 +1160,17 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
   <TabItem label="📝 4. Rational Practice">
     Find the $n$th term of the following sequences of fractions. Look out for disguised sequences!
     
-    a) $\frac{2}{5}, \frac{4}{12}, \frac{6}{23}, \frac{8}{38}, \dots$
+    a) $\dfrac{2}{5}, \dfrac{4}{12}, \dfrac{6}{23}, \dfrac{8}{38}, \dots$
 
-    b) $\frac{1}{2}, \frac{4}{5}, \frac{9}{10}, \frac{16}{17}, \dots$
+    b) $\dfrac{1}{2}, \dfrac{4}{5}, \dfrac{9}{10}, \dfrac{16}{17}, \dots$
 
-    c) $\frac{3}{4}, \frac{6}{5}, \frac{3}{2}, \frac{12}{7}, \dots$
+    c) $\dfrac{3}{4}, \dfrac{6}{5}, \dfrac{3}{2}, \dfrac{12}{7}, \dots$
 
-    d) $\frac{1}{3}, \frac{2}{5}, \frac{3}{7}, \frac{4}{9}, \dots$
+    d) $\dfrac{1}{3}, \dfrac{2}{5}, \dfrac{3}{7}, \dfrac{4}{9}, \dots$
 
-    e) $\frac{2}{1}, \frac{3}{4}, \frac{4}{9}, \frac{5}{16}, \dots$
+    e) $\dfrac{2}{1}, \dfrac{3}{4}, \dfrac{4}{9}, \dfrac{5}{16}, \dots$
 
-    f) $\frac{2}{5}, \frac{1}{2}, \frac{6}{11}, \frac{4}{7}, \dots$
+    f) $\dfrac{2}{5}, \dfrac{1}{2}, \dfrac{6}{11}, \dfrac{4}{7}, \dots$
   </TabItem>
   <TabItem label="✅ Solution">
     **a)**
@@ -1206,38 +1206,38 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
       </Steps>
       *Bottom formula:* $2n^2 + n + 2$
       
-    $$\boldsymbol{T_n = \frac{2n}{2n^2 + n + 2}}$$
+    $$\boldsymbol{T_n = \dfrac{2n}{2n^2 + n + 2}}$$
 
     **b)**
     * **Tops:** $1, 4, 9, 16 \dots$ These are perfect square numbers $\implies n^2$
     * **Bottoms:** $2, 5, 10, 17 \dots$ Notice these are exactly one more than the top numbers! $\implies n^2 + 1$
-    $$\boldsymbol{T_n = \frac{n^2}{n^2 + 1}}$$
+    $$\boldsymbol{T_n = \dfrac{n^2}{n^2 + 1}}$$
 
     **c)**
-    This is a disguised sequence. Let's un-simplify the third term to find the hidden pattern. Let's rewrite $\frac{3}{2}$ by multiplying the top and bottom by $3$ to get $\frac{9}{6}$.
-    New sequence: $\frac{3}{4}, \frac{6}{5}, \frac{9}{6}, \frac{12}{7}, \dots$
+    This is a disguised sequence. Let's un-simplify the third term to find the hidden pattern. Let's rewrite $\dfrac{3}{2}$ by multiplying the top and bottom by $3$ to get $\dfrac{9}{6}$.
+    New sequence: $\dfrac{3}{4}, \dfrac{6}{5}, \dfrac{9}{6}, \dfrac{12}{7}, \dots$
     * **Tops:** $3, 6, 9, 12 \dots \implies 3n$
     * **Bottoms:** $4, 5, 6, 7 \dots \implies n + 3$
-    $$\boldsymbol{T_n = \frac{3n}{n + 3}}$$
+    $$\boldsymbol{T_n = \dfrac{3n}{n + 3}}$$
 
     **d)**
     * **Tops:** $1, 2, 3, 4 \dots \implies n$
     * **Bottoms:** $3, 5, 7, 9 \dots$ This is a linear sequence going up by 2.
       * 1st diff: $+2 \implies 2n$
       * 0th term: $3 - 2 = 1 \implies 2n + 1$
-    $$\boldsymbol{T_n = \frac{n}{2n + 1}}$$
+    $$\boldsymbol{T_n = \dfrac{n}{2n + 1}}$$
 
     **e)**
     * **Tops:** $2, 3, 4, 5 \dots \implies n + 1$
     * **Bottoms:** $1, 4, 9, 16 \dots$ These are perfect square numbers $\implies n^2$
-    $$\boldsymbol{T_n = \frac{n + 1}{n^2}}$$
+    $$\boldsymbol{T_n = \dfrac{n + 1}{n^2}}$$
 
     **f)**
-    This is a disguised sequence. Let's un-simplify the second and fourth terms. Multiply the top and bottom of $\frac{1}{2}$ by $2$ to get $\frac{4}{8}$, and multiply $\frac{4}{7}$ by $2$ to get $\frac{8}{14}$.
-    New sequence: $\frac{2}{5}, \frac{4}{8}, \frac{6}{11}, \frac{8}{14}, \dots$
+    This is a disguised sequence. Let's un-simplify the second and fourth terms. Multiply the top and bottom of $\dfrac{1}{2}$ by $2$ to get $\dfrac{4}{8}$, and multiply $\dfrac{4}{7}$ by $2$ to get $\dfrac{8}{14}$.
+    New sequence: $\dfrac{2}{5}, \dfrac{4}{8}, \dfrac{6}{11}, \dfrac{8}{14}, \dots$
     * **Tops:** $2, 4, 6, 8 \dots \implies 2n$
     * **Bottoms:** $5, 8, 11, 14 \dots \implies 3n + 2$
-    $$\boldsymbol{T_n = \frac{2n}{3n + 2}}$$
+    $$\boldsymbol{T_n = \dfrac{2n}{3n + 2}}$$
   </TabItem>
 </Tabs>
 <SmartAIGenerator topic="Finding the nth term of a rational sequence with fractions" />
@@ -1271,8 +1271,8 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
 
     **c)**
     1. Check the 1st term ($a$): $162$
-    2. Find the common multiplier ($r$): $54 \div 162 = \textcolor{#ea580c}{\frac{1}{3}}$. The sequence is decaying.
-    $$\boldsymbol{T_n = 162 \times \left(\textcolor{#ea580c}{\frac{1}{3}}\right)^{n-1}}$$
+    2. Find the common multiplier ($r$): $54 \div 162 = \textcolor{#ea580c}{\dfrac{1}{3}}$. The sequence is decaying.
+    $$\boldsymbol{T_n = 162 \times \left(\textcolor{#ea580c}{\dfrac{1}{3}}\right)^{n-1}}$$
 
     **d)**
     1. Check the 1st term ($a$): $3$
@@ -1281,7 +1281,7 @@ And if you expand $(n+2)^2$, you get $n^2 + 4n + 4$. The formulas prove each oth
 
     **e)**
     1. Check the 1st term ($a$): $100$
-    2. Find the common multiplier ($r$): $10 \div 100 = \textcolor{#ea580c}{0.1}$ (or $\frac{1}{10}$). The sequence is decaying.
+    2. Find the common multiplier ($r$): $10 \div 100 = \textcolor{#ea580c}{0.1}$ (or $\dfrac{1}{10}$). The sequence is decaying.
     $$\boldsymbol{T_n = 100 \times \textcolor{#ea580c}{0.1}^{n-1}}$$
 
     **f)**

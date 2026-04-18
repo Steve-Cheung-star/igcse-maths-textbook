@@ -1,0 +1,417 @@
+---
+title: 2.2 Functions, Domain, Range and Inverses
+description: Understand the concept of functions, master domain and range restrictions, and learn how to find and graph inverse functions in IB Maths AA SL.
+---
+
+The notation we use for functions today is the result of centuries of international collaboration. In the 17th and 18th centuries, mathematicians like René Descartes (France), Gottfried Wilhelm Leibniz (Germany), and Leonhard Euler (Switzerland) developed the foundational concepts of functions to model real-world relationships, from projectile motion in physics to cost functions in economics. 
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Math as a Language:** Function notation ($f(x)$) is universally understood across the globe, regardless of spoken language. Do you think mathematics or logic should be classified as a language? If so, is it discovered by humans, or invented by us to describe reality?
+</Aside>
+
+---
+
+## 1. The Concept of a Function
+
+A **function** is a mathematical rule or relationship that maps an input value to exactly one output value. You can think of it as a highly specific machine: you put a valid number in, the machine performs a strict set of operations, and it spits exactly one new number out.
+
+Instead of writing $y = 2x + 3$, we use **function notation**:
+$$
+f(x) = 2x + 3
+$$
+
+* **$f$** is the name of the function.
+* **$x$** is the input variable (the independent variable).
+* **$f(x)$** is the output (the dependent variable, equivalent to $y$).
+
+This notation is highly adaptable for mathematical modelling in the real world. By changing the letters, we can instantly give context to our equations:
+* $v(t)$: Velocity as a function of time.
+* $C(n)$: Cost as a function of the number of items produced.
+* $h(d)$: Height of a projectile as a function of distance travelled.
+
+---
+
+## 2. Domain and Range
+
+To fully define a function, we must understand its boundaries. Not every function can accept every number, and not every function can produce every number.
+
+* **Domain:** The set of all possible **input values** ($x$) for which the function is mathematically valid and defined.
+* **Range:** The set of all possible **output values** ($f(x)$ or $y$) that the function can possibly produce.
+
+### Common Domain Restrictions
+In the SL course, there are two major mathematical "crimes" you must avoid when finding a domain:
+1. **Dividing by zero:** For any rational function (a fraction with $x$ in the denominator), the denominator cannot equal $0$.
+2. **Square rooting a negative:** For any square root function, the expression inside the root must be $\ge 0$.
+
+<Aside type="danger" title="Visualizing the Range">
+Never try to guess the range of a complex function just by looking at its algebraic equation! The IB explicitly states that **"a graph is helpful in visualizing the range"**. Always sketch the function on your GDC to locate horizontal asymptotes or vertex maximums/minimums.
+</Aside>
+
+**Worked Example: Finding Domain and Range Algebraically** Find the domain and range of the function $f(x) = \sqrt{2 - x}$.
+<Steps>
+1. **Identify constraints for the Domain:**
+   You cannot take the square root of a negative number. Therefore, the expression inside the square root must be greater than or equal to zero.
+   $$
+   \begin{aligned}
+   2 - x &\ge 0 \\
+   2 &\ge x \\
+   x &\le 2
+   \end{aligned}
+   $$
+   The domain is $x \le 2$.
+2. **Visualize the Range:**
+   A principal square root function always produces a positive value (or zero). If we plug in the maximum domain value ($x = 2$), we get $f(2) = \sqrt{0} = 0$. For any smaller $x$ value, the output will grow increasingly positive. 
+   Therefore, the range is $f(x) \ge 0$.
+</Steps>
+
+---
+
+## 3. Inverse Functions
+
+An **inverse function** perfectly reverses, or "undoes", the effect of the original function. If the original function $f$ maps an input $x$ to an output $y$, the inverse function maps that $y$ right back to the original $x$.
+
+The inverse of $f(x)$ is denoted as **$f^{-1}(x)$**.
+
+<Aside type="caution" title="Important Constraints on Inverses">
+* **One-to-One Rule:** A function only has an inverse if it is "one-to-one" (meaning every unique input produces a unique output). If a function outputs the same $y$-value for two different $x$-values (like a quadratic parabola), the inverse wouldn't know which $x$ to map back to!
+* **Domain and Range Swap:** The domain of the inverse function $f^{-1}(x)$ is exactly equal to the range of the original function $f(x)$, and vice versa.
+</Aside>
+
+### Graphical Reflection
+Geometrically, the graph of an inverse function $f^{-1}(x)$ is a perfect reflection of the original function $f(x)$ across the diagonal line **$y = x$**. This happens because the coordinates literally swap places: a point $(a, b)$ on $f(x)$ becomes the point $(b, a)$ on $f^{-1}(x)$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 400" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid Lines */}
+    <g stroke="#f1f5f9" stroke-width="1">
+      <line x1="0" y1="40" x2="400" y2="40" />
+      <line x1="0" y1="120" x2="400" y2="120" />
+      <line x1="0" y1="280" x2="400" y2="280" />
+      <line x1="0" y1="360" x2="400" y2="360" />
+      
+      <line x1="40" y1="0" x2="40" y2="400" />
+      <line x1="120" y1="0" x2="120" y2="400" />
+      <line x1="280" y1="0" x2="280" y2="400" />
+      <line x1="360" y1="0" x2="360" y2="400" />
+    </g>
+
+    {/* Axes */}
+    <line x1="200" y1="0" x2="200" y2="400" stroke="#0f172a" stroke-width="2" />
+    <line x1="0" y1="200" x2="400" y2="200" stroke="#0f172a" stroke-width="2" />
+    <text x="380" y="190" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">x</text>
+    <text x="210" y="20" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">y</text>
+
+    {/* y = x Reflection Line */}
+    <line x1="0" y1="400" x2="400" y2="0" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8,8" />
+    <text x="350" y="40" font-size="14" font-weight="bold" fill="#94a3b8" font-family="sans-serif">y = x</text>
+
+    {/* Original Function f(x) = 2x - 4 */}
+    {/* Points: (0, -4) -> (200, 280), (4, 4) -> (280, 120) */}
+    <line x1="160" y1="360" x2="320" y2="40" stroke="#3b82f6" stroke-width="3" />
+    <text x="140" y="380" font-size="16" font-weight="bold" fill="#3b82f6" font-family="sans-serif">f(x)</text>
+    <circle cx="200" cy="280" r="5" fill="#3b82f6" />
+    <text x="215" y="285" font-size="12" font-weight="bold" fill="#3b82f6" font-family="sans-serif">(0, -4)</text>
+
+    {/* Inverse Function f^-1(x) = 0.5x + 2 */}
+    {/* Points: (-4, 0) -> (120, 200), (4, 4) -> (280, 120) */}
+    <line x1="40" y1="240" x2="360" y2="80" stroke="#ef4444" stroke-width="3" />
+    <text x="40" y="265" font-size="16" font-weight="bold" fill="#ef4444" font-family="sans-serif">f⁻¹(x)</text>
+    <circle cx="120" cy="200" r="5" fill="#ef4444" />
+    <text x="65" y="195" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">(-4, 0)</text>
+
+    {/* Intersection at (4,4) */}
+    <circle cx="280" cy="120" r="6" fill="#10b981" />
+    <text x="295" y="115" font-size="12" font-weight="bold" fill="#10b981" font-family="sans-serif">(4, 4)</text>
+  </svg>
+</div>
+
+**Worked Example: Finding an Inverse Function Algebraically** Find the inverse function $f^{-1}(x)$ for $f(x) = 3x - 4$.
+<Steps>
+1. Replace $f(x)$ with $y$:
+   $$
+   y = 3x - 4
+   $$
+2. Swap the $x$ and $y$ variables (this models the geometric reflection across $y = x$):
+   $$
+   x = 3y - 4
+   $$
+3. Rearrange the equation to isolate the new $y$:
+   $$
+   \begin{aligned}
+   x + 4 &= 3y \\
+   y &= \frac{x + 4}{3}
+   \end{aligned}
+   $$
+4. Replace $y$ with the inverse notation $f^{-1}(x)$:
+   $$
+   f^{-1}(x) = \frac{x + 4}{3}
+   $$
+</Steps>
+
+<SteveTip title="The Equivalence of Solving and Inverses">
+If an exam question asks you to "Solve $f(x) = 10$", you can literally just evaluate $f^{-1}(10)$. 
+Because the inverse function feeds the output back into the input, finding the unknown $x$-value that makes $f(x) = 10$ is mathematically identical to plugging $10$ into the inverse function!
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Function Notation in Context">
+    A business has a cost function $C(n) = 15n + 250$, where $C$ is the daily cost in EUR and $n$ is the number of units produced.
+    
+    **a)** Evaluate $C(40)$ and interpret its meaning in context.
+    
+    **b)** If the daily budget is $1000$ EUR, find the maximum number of full units the business can produce.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a:** Substitute $n = 40$ into the function.
+    $$
+    \begin{aligned}
+    C(40) &= 15(40) + 250 \\
+    C(40) &= 600 + 250 \\
+    C(40) &= 850
+    \end{aligned}
+    $$
+    **Interpretation:** The cost of producing $40$ units in one day is $850$ EUR.
+    
+    **Part b:** Set the cost function equal to the budget and solve for $n$.
+    $$
+    \begin{aligned}
+    15n + 250 &= 1000 \\
+    15n &= 750 \\
+    n &= 50
+    \end{aligned}
+    $$
+    The business can produce exactly $50$ units.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating functions in real-world contexts" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Finding Domains">
+    Find the largest possible domain for each of the following functions:
+    
+    **a)** $f(x) = \frac{5}{x - 3}$
+    
+    **b)** $g(x) = \sqrt{2x + 8}$
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Part a:** The denominator of a fraction cannot equal zero.
+       $$
+       \begin{aligned}
+       x - 3 &\neq 0 \\
+       x &\neq 3
+       \end{aligned}
+       $$
+       The domain is $x \in \mathbb{R}, x \neq 3$.
+
+    2. **Part b:** The expression inside a square root must be non-negative.
+       $$
+       \begin{aligned}
+       2x + 8 &\ge 0 \\
+       2x &\ge -8 \\
+       x &\ge -4
+       \end{aligned}
+       $$
+       The domain is $x \ge -4$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Determining the Inverse">
+    Given the function $h(x) = \frac{2x - 1}{5}$:
+    
+    **a)** Find $h^{-1}(x)$.
+    
+    **b)** Show that $h(3) = 1$ and verify that $h^{-1}(1) = 3$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **Part a:** Find the inverse by swapping variables.
+       Let $y = \frac{2x - 1}{5}$.
+       Swap $x$ and $y$:
+       $$
+       x = \frac{2y - 1}{5}
+       $$
+       Solve for $y$:
+       $$
+       \begin{aligned}
+       5x &= 2y - 1 \\
+       5x + 1 &= 2y \\
+       y &= \frac{5x + 1}{2}
+       \end{aligned}
+       $$
+       So, $h^{-1}(x) = \frac{5x + 1}{2}$.
+
+    2. **Part b:** Evaluate $h(3)$.
+       $$
+       \begin{aligned}
+       h(3) &= \frac{2(3) - 1}{5} \\
+       h(3) &= \frac{6 - 1}{5} \\
+       h(3) &= 1
+       \end{aligned}
+       $$
+       Now evaluate the inverse at $x = 1$.
+       $$
+       \begin{aligned}
+       h^{-1}(1) &= \frac{5(1) + 1}{2} \\
+       h^{-1}(1) &= \frac{6}{2} \\
+       h^{-1}(1) &= 3
+       \end{aligned}
+       $$
+       This perfectly demonstrates how the inverse function "undoes" the original mapping.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding and verifying inverse functions" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Coordinate Reflection">
+    The function $f(x)$ passes through the point $P(-4, 7)$. 
+    
+    **a)** State the coordinates of the corresponding point on the graph of $f^{-1}(x)$.
+    
+    **b)** Explain the geometric transformation that relates the graph of $f(x)$ to $f^{-1}(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **Part a:** Since inverse functions swap the $x$ and $y$ coordinates, the point on $f^{-1}(x)$ is $(7, -4)$.
+    
+    **Part b:** The graph of $f^{-1}(x)$ is a reflection of the graph of $f(x)$ across the diagonal line $y = x$.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Domain and Range Swap">
+    A function $f(x)$ has a domain of $-2 \le x \le 10$ and a range of $4 \le f(x) \le 25$.
+    
+    State the domain and range of its inverse function, $f^{-1}(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    The domain of the inverse is strictly the range of the original function, and the range of the inverse is strictly the domain of the original function.
+    
+    * **Domain of $f^{-1}(x)$:** $4 \le x \le 25$
+    * **Range of $f^{-1}(x)$:** $-2 \le f^{-1}(x) \le 10$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: Temperature Conversion (Real World)">
+    The function to convert temperature from degrees Celsius ($C$) to Fahrenheit ($F$) is given by:
+    $$
+    F(C) = \frac{9}{5}C + 32
+    $$
+    
+    **a)** Find the inverse function, $F^{-1}(C)$.
+    
+    **b)** Explain what the inverse function represents in this context.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+    1. **Part a:** Set $y = \frac{9}{5}x + 32$.
+       Swap $x$ and $y$:
+       $$
+       x = \frac{9}{5}y + 32
+       $$
+       Solve for $y$:
+       $$
+       \begin{aligned}
+       x - 32 &= \frac{9}{5}y \\
+       5(x - 32) &= 9y \\
+       y &= \frac{5}{9}(x - 32)
+       \end{aligned}
+       $$
+       So, $F^{-1}(x) = \frac{5}{9}(x - 32)$.
+
+    2. **Part b:** The inverse function represents the formula to convert a temperature from Fahrenheit back into degrees Celsius.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Currency Conversion and Inverses">
+    A tourist kiosk converts US Dollars ($x$) into Euros ($E$) using the function:
+    $$
+    E(x) = 0.92x - 5
+    $$
+    where $5$ EUR is a flat commission fee taken directly from the converted amount.
+    
+    **a)** Calculate $E(200)$ and explain what it means.
+    
+    **b)** Find $E^{-1}(x)$ and explain what it models.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+    1. **Part a:** Evaluate the function at $x = 200$.
+       $$
+       \begin{aligned}
+       E(200) &= 0.92(200) - 5 \\
+       E(200) &= 184 - 5 \\
+       E(200) &= 179
+       \end{aligned}
+       $$
+       **Meaning:** If a tourist exchanges $200$ USD, they will receive $179$ EUR after the commission is deducted.
+
+    2. **Part b:** Find the inverse. 
+       Let $y = 0.92x - 5$.
+       Swap variables:
+       $$
+       x = 0.92y - 5
+       $$
+       Solve for $y$:
+       $$
+       \begin{aligned}
+       x + 5 &= 0.92y \\
+       y &= \frac{x + 5}{0.92}
+       \end{aligned}
+       $$
+       $$
+       E^{-1}(x) = \frac{x + 5}{0.92}
+       $$
+       **Meaning:** The inverse function calculates how many US Dollars ($USD$) were originally handed to the cashier based on the final amount of Euros ($EUR$) received.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Projectile Motion Domain">
+    The height of a kicked football, $h(t)$, in meters, is modeled by the function $h(t) = -4.9t^2 + 14.7t$, where $t$ is the time in seconds after the kick. 
+    
+    The ball hits the ground when $h(t) = 0$.
+    
+    Determine the practical domain and range for this model.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    <Steps>
+    1. **Find the practical domain:**
+       The domain represents time ($t$). The model starts at $t = 0$.
+       The model ends when the ball hits the ground, so set $h(t) = 0$:
+       $$
+       \begin{aligned}
+       -4.9t^2 + 14.7t &= 0 \\
+       -4.9t(t - 3) &= 0
+       \end{aligned}
+       $$
+       This gives $t = 0$ (start) and $t = 3$ (hits the ground). 
+       Therefore, the practical domain is $0 \le t \le 3$.
+
+    2. **Find the practical range:**
+       The range represents the height. The lowest height is $0$ meters.
+       The maximum height occurs exactly halfway through the flight (due to the symmetry of parabolas), at $t = 1.5$.
+       Substitute $t = 1.5$ back into the function:
+       $$
+       \begin{aligned}
+       h(1.5) &= -4.9(1.5)^2 + 14.7(1.5) \\
+       h(1.5) &= -4.9(2.25) + 22.05 \\
+       h(1.5) &= -11.025 + 22.05 = 11.025
+       \end{aligned}
+       $$
+       Therefore, the practical range is $0 \le h(t) \le 11.025$.
+    </Steps>
+  </TabItem>
+</Tabs>

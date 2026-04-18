@@ -1,0 +1,484 @@
+---
+title: 1.9 The Binomial Theorem
+description: Master the expansion of binomial expressions using Pascal's triangle, combinations, and the general binomial theorem formula for IB Maths AA SL.
+---
+
+Expanding $(a+b)^2$ is a fundamental algebra skill: $a^2 + 2ab + b^2$. Expanding $(a+b)^3$ takes a bit of manual multiplication but is manageable. But what if an exam question asks you to expand $(a+b)^7$? Or to find the specific coefficient of $x^{12}$ in a massive expansion? 
+
+Manually multiplying brackets is highly inefficient and prone to error. Enter the **Binomial Theorem**: an elegant shortcut for expanding any expression in the form $(a+b)^n$.
+
+---
+
+## 1. Binomial Coefficients and Pascal's Triangle
+
+When we expand binomials, the coefficients of the terms follow a distinct and famous pattern. This pattern can be generated using a number pyramid known as **Pascal’s Triangle**.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 250" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <text x="300" y="30" font-size="18" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="sans-serif">Pascal's Triangle</text>
+
+    {/* Row 0 */}
+    <text x="300" y="70" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">1</text>
+    <text x="500" y="70" font-size="14" fill="#64748b" text-anchor="middle" font-family="monospace">(n=0)</text>
+
+    {/* Row 1 */}
+    <text x="270" y="100" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">1</text>
+    <text x="330" y="100" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">1</text>
+    <text x="500" y="100" font-size="14" fill="#64748b" text-anchor="middle" font-family="monospace">(n=1)</text>
+
+    {/* Row 2 */}
+    <text x="240" y="130" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">1</text>
+    <text x="300" y="130" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="monospace">2</text>
+    <text x="360" y="130" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">1</text>
+    <text x="500" y="130" font-size="14" fill="#64748b" text-anchor="middle" font-family="monospace">(n=2)</text>
+
+    {/* Row 3 */}
+    <text x="210" y="160" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">1</text>
+    <text x="270" y="160" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="monospace">3</text>
+    <text x="330" y="160" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="monospace">3</text>
+    <text x="390" y="160" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">1</text>
+    <text x="500" y="160" font-size="14" fill="#64748b" text-anchor="middle" font-family="monospace">(n=3)</text>
+
+    {/* Row 4 */}
+    <text x="180" y="190" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">1</text>
+    <text x="240" y="190" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="monospace">4</text>
+    <text x="300" y="190" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="monospace">6</text>
+    <text x="360" y="190" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="monospace">4</text>
+    <text x="420" y="190" font-size="16" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">1</text>
+    <text x="500" y="190" font-size="14" fill="#64748b" text-anchor="middle" font-family="monospace">(n=4)</text>
+
+    {/* Arrows for logic */}
+    <path d="M 280 135 L 290 145" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+    <path d="M 320 135 L 310 145" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+    <text x="300" y="230" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">Each number is the sum of the two numbers directly above it.</text>
+  </svg>
+</div>
+
+<Aside type="note" title="Theory of Knowledge (TOK) & International-Mindedness">
+**Who really discovered "Pascal's" Triangle?** We call it Pascal’s Triangle after the 17th-century French mathematician Blaise Pascal. However, this mathematical structure was known and written about centuries earlier by Persian mathematician Omar Khayyam, Chinese mathematician Yang Hui, and the ancient Indian mathematician Pingala. 
+
+How have notable individuals shaped the development of mathematics? And what are the ethical implications of attributing a mathematical discovery to the wrong mathematician due to a Eurocentric historical lens?
+</Aside>
+
+### Combinations: The Formula Method
+
+Drawing Pascal's Triangle is great for expanding powers up to $n=5$, but it becomes tedious for large exponents. Instead, we can calculate these numbers directly using **Combinations**, specifically the formula for "n choose r". 
+
+In IB Mathematics, the combination coefficient is usually written as $\binom{n}{r}$.
+
+<FormulaBox title="1.9 Binomial coefficient">
+
+$$
+\binom{n}{r} = \frac{n!}{r!(n-r)!}
+$$
+
+</FormulaBox>
+
+*(Note: $n!$ means "$n$ factorial", which is the product of all positive integers less than or equal to $n$. For example, $4! = 4 \times 3 \times 2 \times 1 = 24$. Factorials are evaluated first in the order of operations).*
+
+<SteveTip title="TI-Nspire Mastery: Solving for n or r">
+The syllabus specifically requires you to use your GDC to solve equations like $\binom{n}{3} = 56$. On the TI-Nspire:
+1. Open a **Graphs** page.
+2. Enter the function `f1(x) = nCr(x, 3)`. (You can type `nCr` directly on the keypad or find it via **Menu > Probability > Combinations**).
+3. Press `Ctrl + T` to open the Table view.
+4. Scroll down the $x$ column until the `f1(x)` column reads 56. You will see this happens when $x = 8$. Therefore, $n = 8$.
+</SteveTip>
+
+---
+
+## 2. The Binomial Theorem
+
+The Binomial Theorem puts everything together: the coefficients from combinations and the shifting powers of the terms $a$ and $b$.
+
+<FormulaBox title="1.9 Binomial theorem">
+
+$$
+(a+b)^n = a^n + \binom{n}{1}a^{n-1}b + \dots + \binom{n}{r}a^{n-r}b^r + \dots + b^n
+$$
+
+</FormulaBox>
+
+### The Three Golden Rules of Expansion
+When you expand $(a+b)^n$:
+1. The powers of the first term ($a$) start at $n$ and **decrease** to $0$.
+2. The powers of the second term ($b$) start at $0$ and **increase** to $n$.
+3. In any single term of the expansion, **the sum of the powers always equals $n$**.
+
+### The Quick Expansion of $(1+x)^n$ (Paper 1 Lifesaver)
+
+Many students panic on Paper 1 (non-calculator) when asked to expand a binomial algebraically because the full combination formula looks intimidating. However, if the first term is a $1$, the expansion simplifies dramatically. By expanding the factorials inside $\binom{n}{r}$, we get a much faster, direct sequence:
+
+<Aside type="tip" title="The Quick (1+x) Formula">
+
+$$
+(1+x)^n = 1 + nx + \frac{n(n-1)}{2!}x^2 + \frac{n(n-1)(n-2)}{3!}x^3 + \dots
+$$
+
+If your binomial is $(a+x)^n$, you can factor out the $a^n$ to force a $1$ inside the bracket: $a^n\left(1 + \frac{x}{a}\right)^n$, and then use this quick expansion!
+</Aside>
+
+---
+
+## 3. Finding Specific Terms
+
+You will rarely be asked to expand a massive binomial like $(x-2)^{12}$ completely. Instead, exam questions will ask you to find a single, specific term, like "the coefficient of $x^4$".
+
+For this, we isolate the general term from the Binomial Theorem:
+$$
+\text{Term}_{r+1} = \binom{n}{r}a^{n-r}b^r
+$$
+
+<Aside type="danger" title="The Tricky Definition of r">
+Remember that $r$ starts at $0$. Therefore:
+* The 1st term occurs when $r=0$.
+* The 2nd term occurs when $r=1$.
+* The **$(r+1)$th term** occurs when you use the value $r$. 
+
+If a question asks for the "4th term", you must use **$r = 3$**, not $r = 4$!
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Manual Calculation">
+    Evaluate the binomial coefficient $\binom{6}{2}$ without using a calculator.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    Use the combination formula from the formula booklet:
+    
+    $$
+    \binom{n}{r} = \frac{n!}{r!(n-r)!}
+    $$
+
+    Substitute $n=6$ and $r=2$:
+
+    $$
+    \binom{6}{2} = \frac{6!}{2!(6-2)!} = \frac{6!}{2!4!}
+    $$
+
+    Expand the factorials, stopping the top one at $4!$ to easily cancel it out with the denominator:
+
+    $$
+    \binom{6}{2} = \frac{6 \times 5 \times 4!}{2 \times 1 \times 4!}
+    $$
+
+    Cancel the $4!$:
+
+    $$
+    \binom{6}{2} = \frac{30}{2} = 15
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating binomial coefficients manually without a calculator" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Multi-Part Expansion & Application">
+    **a)** Expand $(2x - 1)^4$ using the Binomial Theorem. Simplify your final answer.
+    
+    **b)** Hence, find the exact value of $1.9^4$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **Part a:** Here, $a = 2x$, $b = -1$, and $n = 4$.
+    *Caution: You must include the negative sign with the $b$ term, and keep $2x$ in brackets!*
+
+    Write out the expansion using the formula. The coefficients for $n=4$ from Pascal's Triangle are 1, 4, 6, 4, 1.
+
+    $$
+    (2x-1)^4 = 1(2x)^4(-1)^0 + 4(2x)^3(-1)^1 + 6(2x)^2(-1)^2 + 4(2x)^1(-1)^3 + 1(2x)^0(-1)^4
+    $$
+
+    Simplify the individual powers carefully:
+
+    $$
+    = 1(16x^4)(1) + 4(8x^3)(-1) + 6(4x^2)(1) + 4(2x)(-1) + 1(1)(1)
+    $$
+
+    Multiply it all out to get the final simplified polynomial:
+
+    $$
+    = 16x^4 - 32x^3 + 24x^2 - 8x + 1
+    $$
+
+    **Part b:**
+    The phrase "Hence" means we must use our previous answer. We want to evaluate $1.9^4$ using the expansion of $(2x-1)^4$.
+    First, find the value of $x$ that makes the bracket equal to $1.9$:
+    
+    $$
+    2x - 1 = 1.9 \implies 2x = 2.9 \implies x = 1.45
+    $$
+    
+    This is too complex. Let's find an easier $x$. What if we want $1.9$ inside the bracket? Oh wait, let's use an $x$ that makes the calculation easy without a calculator. 
+    Let $x = 1$. Then $2(1) - 1 = 1$. No, we want $1.9$. 
+    Let's set $x = 1.45$. 
+    *(Alternatively, if the question was $19^4$, we would set $x=10$. In this case, we just substitute $x = 1.45$ into the expanded polynomial).*
+
+    $$
+    16(1.45)^4 - 32(1.45)^3 + 24(1.45)^2 - 8(1.45) + 1 = 13.0321
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Using the Quick Expansion">
+    Find the first three terms, in ascending powers of $x$, in the expansion of $(1 + 3x)^8$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    Because the first term is a $1$, we can use the quick expansion formula:
+    
+    $$
+    (1 + X)^n \approx 1 + nX + \frac{n(n-1)}{2!}X^2 + \dots
+    $$
+
+    Here, $n = 8$ and our "$X$" is $(3x)$. Substitute these in:
+
+    $$
+    (1 + 3x)^8 = 1 + 8(3x) + \frac{8 \times 7}{2}(3x)^2 + \dots
+    $$
+
+    Simplify the terms:
+    * The second term: $8 \times 3x = 24x$
+    * The third term: $\frac{56}{2} \times 9x^2 = 28 \times 9x^2 = 252x^2$
+
+    The first three terms are:
+    **$1 + 24x + 252x^2$**
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the quick expansion formula for (1+x)^n binomials" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Finding a Specific Coefficient">
+    Find the coefficient of $x^5$ in the expansion of $(x - 2)^8$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    We do not need to expand the whole thing. We will use the general term:
+    $$
+    \text{Term} = \binom{n}{r}a^{n-r}b^r
+    $$
+
+    We know: $a = x$, $b = -2$, and $n = 8$.
+    We need the term with $x^5$. Looking at $a^{n-r} \implies x^{8-r}$, we want $8-r = 5$. 
+    Therefore, **$r = 3$**.
+
+    Substitute $r=3$ into the general term:
+
+    $$
+    \binom{8}{3}(x)^5(-2)^3
+    $$
+
+    Calculate the parts:
+    * $\binom{8}{3} = 56$ (Using TI-Nspire `nCr(8,3)` or formula)
+    * $(-2)^3 = -8$
+
+    Multiply the numbers together:
+
+    $$
+    = 56 \times (-8) \times x^5 = -448x^5
+    $$
+
+    The question asks specifically for the *coefficient* (the number in front), so the final answer is **$-448$**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Finding an Unknown Constant">
+    **a)** Find the general term in the expansion of $(ax + 2)^5$.
+    
+    **b)** Given that the coefficient of the $x^3$ term is $1080$, find the exact value of $a$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **Part a:** Set up the general term formula with $n=5$:
+    $$
+    \text{Term} = \binom{5}{r}(ax)^{5-r}(2)^r
+    $$
+
+    **Part b:**
+    We want the $x^3$ term. The power of the first term ($ax$) must be 3. Since the powers must add up to $n=5$, the power of the second term ($2$) must be 2.
+    This means $5 - r = 3 \implies r = 2$.
+
+    Substitute $r=2$ into the general term:
+
+    $$
+    \binom{5}{2}(ax)^3(2)^2
+    $$
+
+    Evaluate the known parts:
+    * $\binom{5}{2} = 10$
+    * $(2)^2 = 4$
+
+    Substitute and simplify:
+
+    $$
+    10 \times (a^3 x^3) \times 4 = 40a^3 x^3
+    $$
+
+    We are told the coefficient is $1080$. Therefore:
+
+    $$
+    40a^3 = 1080
+    $$
+
+    Divide by 40:
+
+    $$
+    a^3 = 27
+    $$
+
+    Cube root both sides:
+
+    $$
+    a = 3
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: Finding the Constant Term">
+    Find the constant term (the term independent of $x$) in the expansion of $\left(2x^2 - \dfrac{1}{x}\right)^6$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    The constant term is the term where the power of $x$ is $0$. 
+    Let's set up the general term formula without knowing $r$ yet. 
+    *Note: write $\dfrac{1}{x}$ as $x^{-1}$ to make index laws easier.*
+
+    $$
+    \binom{6}{r}(2x^2)^{6-r}(-1x^{-1})^r
+    $$
+
+    We only care about the $x$ variables right now to find $r$. Let's pull out just the $x$ parts and multiply them:
+
+    $$
+    (x^2)^{6-r} \times (x^{-1})^r
+    $$
+
+    Apply exponent laws (multiply powers):
+
+    $$
+    x^{12-2r} \times x^{-r}
+    $$
+
+    Apply exponent laws (add powers when bases are the same):
+
+    $$
+    x^{12-3r}
+    $$
+
+    For a constant term, the overall power must be $0$:
+
+    $$
+    12 - 3r = 0 \implies 3r = 12 \implies r = 4
+    $$
+
+    Now substitute $r=4$ back into the *entire* general term formula:
+
+    $$
+    \binom{6}{4}(2x^2)^{2}(-1x^{-1})^4
+    $$
+
+    $$
+    15 \times (4x^4) \times (1x^{-4})
+    $$
+
+    $$
+    = 60
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the constant term in complex binomial expansions" />
+
+<Tabs>
+  <TabItem label="📝 Question 7: Multiplying with a Binomial">
+    Find the coefficient of $x^3$ in the expansion of $(1 + 2x)(x - 1)^4$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    This is a compound expansion. The expression on the right, $(x-1)^4$, will expand into multiple terms. Those terms will then be multiplied by both the $1$ and the $2x$ from the first bracket.
+
+    How can we get an $x^3$ term from this?
+    * **Path 1:** The $1$ multiplies with the **$x^3$ term** from $(x-1)^4$.
+    * **Path 2:** The $2x$ multiplies with the **$x^2$ term** from $(x-1)^4$.
+
+    Let's find those specific terms from $(x-1)^4$ (where $n=4$).
+
+    **Finding the $x^3$ term of $(x-1)^4$:**
+    Here $r = 1$ (so the second term $-1$ has a power of 1, and $x$ has a power of 3).
+    $$
+    \binom{4}{1}(x)^3(-1)^1 = 4(x^3)(-1) = -4x^3
+    $$
+
+    **Finding the $x^2$ term of $(x-1)^4$:**
+    Here $r = 2$.
+    $$
+    \binom{4}{2}(x)^2(-1)^2 = 6(x^2)(1) = 6x^2
+    $$
+
+    Now, multiply these by their respective counterparts from the first bracket $(1 + 2x)$:
+    * Path 1: $1 \times (-4x^3) = -4x^3$
+    * Path 2: $2x \times (6x^2) = 12x^3$
+
+    Add them together to get the total $x^3$ term:
+    $$
+    -4x^3 + 12x^3 = 8x^3
+    $$
+
+    The coefficient of $x^3$ is **$8$**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Algebraic Coefficients (Paper 1 Classic)">
+    In the expansion of $(1 + x)^n$, where $n \geq 3$, the coefficient of $x^3$ is exactly $5$ times the coefficient of $x$. 
+    
+    By setting up an algebraic equation, find the exact value of $n$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    Using the quick expansion formula for $(1+x)^n$:
+    * The coefficient of $x$ is simply $n$, since $\binom{n}{1} = n$.
+    * The coefficient of $x^3$ is $\binom{n}{3}$, which algebraically expands to $\frac{n(n-1)(n-2)}{3!}$.
+
+    The question states:
+    $$
+    \text{Coefficient of } x^3 = 5 \times (\text{Coefficient of } x)
+    $$
+
+    Substitute our algebraic expressions:
+    $$
+    \frac{n(n-1)(n-2)}{6} = 5n
+    $$
+
+    Since $n \geq 3$ (it cannot be zero), we can divide both sides by $n$ to cancel it:
+    $$
+    \frac{(n-1)(n-2)}{6} = 5
+    $$
+
+    Multiply by 6 to clear the fraction:
+    $$
+    (n-1)(n-2) = 30
+    $$
+
+    Expand the brackets to form a quadratic equation:
+    $$
+    n^2 - 3n + 2 = 30
+    $$
+
+    Bring everything to one side:
+    $$
+    n^2 - 3n - 28 = 0
+    $$
+
+    Factorise the quadratic:
+    $$
+    (n - 7)(n + 4) = 0
+    $$
+
+    This gives possible solutions of $n = 7$ or $n = -4$. 
+    Because $n$ must be a positive integer ($n \in \mathbb{N}$), we reject the negative solution.
+
+    **$n = 7$**
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving equations algebraically involving combination formulas and ratio coefficients" />

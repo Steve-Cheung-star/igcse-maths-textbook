@@ -1,0 +1,513 @@
+---
+title: 2.1 Equations of Straight Lines
+description: Master the different forms of linear equations, understand gradients, intercepts, and parallel/perpendicular lines for IB Maths AA SL.
+---
+
+Before the 17th century, geometry and algebra were treated as completely separate mathematical disciplines. Geometry dealt with shapes and space, while algebra dealt with numbers and equations. René Descartes changed the world by fusing them together, allowing us to describe a geometric line using an exact algebraic equation.
+
+In this topic, we will explore linear functions—the simplest and most fundamental relationship between two variables, forming straight lines on a Cartesian plane.
+
+---
+
+## 1. The Gradient and Intercepts
+
+Every straight line (except a vertical one) has a constant slope, which mathematically is called the **gradient** ($m$). The gradient measures the rate of change: how much the $y$-value changes for every $1$ unit increase in the $x$-value.
+
+<Aside type="tip" title="Prior Learning: Gradient Formula">
+The gradient formula is not printed in the Topic 2 section of the formula booklet, as it is considered assumed prior knowledge:
+
+$$
+m = \frac{y_2 - y_1}{x_2 - x_1}
+$$
+</Aside>
+
+* A **positive** gradient means the line slopes upwards from left to right.
+* A **negative** gradient means the line slopes downwards from left to right.
+* A **zero** gradient ($m = 0$) means the line is perfectly horizontal.
+* An **undefined** gradient occurs when the line is perfectly vertical (since dividing by zero is mathematically impossible).
+
+### Intercepts
+* **$y$-intercept:** The exact coordinate where the line crosses the vertical $y$-axis. Here, **$x$ is always $0$**.
+* **$x$-intercept:** The exact coordinate where the line crosses the horizontal $x$-axis. Here, **$y$ is always $0$**.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 300" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid Lines */}
+    <g stroke="#f1f5f9" stroke-width="1">
+      <line x1="0" y1="50" x2="600" y2="50" />
+      <line x1="0" y1="100" x2="600" y2="100" />
+      <line x1="0" y1="150" x2="600" y2="150" />
+      <line x1="0" y1="200" x2="600" y2="200" />
+      <line x1="0" y1="250" x2="600" y2="250" />
+      
+      <line x1="100" y1="0" x2="100" y2="300" />
+      <line x1="200" y1="0" x2="200" y2="300" />
+      <line x1="300" y1="0" x2="300" y2="300" />
+      <line x1="400" y1="0" x2="400" y2="300" />
+      <line x1="500" y1="0" x2="500" y2="300" />
+    </g>
+
+    {/* Axes */}
+    <line x1="300" y1="0" x2="300" y2="300" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow-line)" />
+    <line x1="0" y1="150" x2="600" y2="150" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow-line)" />
+    <text x="580" y="140" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">x</text>
+    <text x="310" y="20" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">y</text>
+
+    {/* The Line */}
+    <line x1="100" y1="250" x2="500" y2="50" stroke="#3b82f6" stroke-width="3" />
+
+    {/* Intercepts */}
+    <circle cx="300" cy="150" r="4" fill="#0f172a" />
+    <circle cx="300" cy="200" r="5" fill="#ef4444" />
+    <text x="315" y="215" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">y-intercept (0, c)</text>
+
+    <circle cx="400" cy="150" r="5" fill="#ef4444" />
+    <text x="405" y="170" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">x-intercept</text>
+
+    {/* Gradient Triangle */}
+    <line x1="200" y1="200" x2="400" y2="200" stroke="#10b981" stroke-width="2" stroke-dasharray="5,5" />
+    <line x1="400" y1="200" x2="400" y2="100" stroke="#10b981" stroke-width="2" stroke-dasharray="5,5" />
+    
+    <text x="270" y="220" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">Run (Δx)</text>
+    <text x="410" y="155" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">Rise (Δy)</text>
+
+    <defs>
+      <marker id="arrow-line" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+**Worked Example: Finding Intercepts** Find the $x$ and $y$ intercepts of the line $3x - 2y = 12$.
+<Steps>
+1. **For the $y$-intercept:** Set $x = 0$.
+   $$
+   \begin{aligned}
+   3(0) - 2y &= 12 \\
+   -2y &= 12 \\
+   y &= -6
+   \end{aligned}
+   $$
+   The $y$-intercept coordinate is $(0, -6)$.
+2. **For the $x$-intercept:** Set $y = 0$.
+   $$
+   \begin{aligned}
+   3x - 2(0) &= 12 \\
+   3x &= 12 \\
+   x &= 4
+   \end{aligned}
+   $$
+   The $x$-intercept coordinate is $(4, 0)$.
+</Steps>
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Algebra vs. Geometry:** Descartes showed that geometric problems could be solved algebraically and vice versa. By translating a physical, visual line into the abstract equation $y=mx+c$, we can use pure logic to find absolute truths about it. What does this tell us about mathematical representation? Does the "line" actually exist, or is it merely a visual model of an algebraic reality?
+</Aside>
+
+---
+
+## 2. The Three Forms of a Straight Line
+
+The IB syllabus requires you to master three different ways to write the equation of a straight line. The formula booklet provides all three strictly as unannotated equations.
+
+<FormulaBox title="2.1 Equations of a straight line">
+
+$$
+y = mx + c
+$$
+$$
+ax + by + d = 0
+$$
+$$
+y - y_1 = m(x - x_1)
+$$
+
+</FormulaBox>
+
+Exam questions will often explicitly tell you which of these three forms to leave your final answer in. You must know how to translate between them.
+
+### 1. Gradient-Intercept Form ($y = mx + c$)
+This is the most intuitive form for visualising the graph. 
+* $m$ is the exact gradient.
+* $c$ is the exact $y$-intercept.
+
+### 2. General Form ($ax + by + d = 0$)
+This form is often requested to make final answers look clean and uniform.
+<Aside type="danger" title="General Form Constraints">
+In IB mark schemes, the General Form **must use integers**. You cannot have fractions or decimals in this form. You must multiply the entire equation by a common denominator to clear any fractions. Conventionally, the leading value ($a$) should also be positive.
+</Aside>
+
+### 3. Point-Gradient Form ($y - y_1 = m(x - x_1)$)
+This is arguably the most powerful algebraic tool in the SL course.
+* $m$ is the gradient.
+* $(x_1, y_1)$ is *any* known point on the line.
+
+**Worked Example: Translating Forms** A line has the equation $y - 3 = -\frac{1}{2}(x + 4)$. Convert this into the General Form.
+<Steps>
+1. Multiply the entire equation by $2$ to clear the fraction: 
+   $$
+   2(y - 3) = -1(x + 4)
+   $$
+2. Expand the brackets: 
+   $$
+   2y - 6 = -x - 4
+   $$
+3. Bring all terms to one side so the $x$ coefficient is positive:
+   $$
+   x + 2y - 2 = 0
+   $$
+</Steps>
+
+<SteveTip title="The Power of Point-Gradient Form">
+Never use $y = mx + c$ to find the equation of a line unless you already know the $y$-intercept! If you have a gradient and a random coordinate, plug them directly into $y - y_1 = m(x - x_1)$. It prevents you from having to do awkward algebra to solve for $c$, and if the question doesn't specify a final form, you can literally just stop right there and get full marks!
+</SteveTip>
+
+---
+
+## 3. Parallel and Perpendicular Lines
+
+Comparing the gradients of two lines tells us how they interact in 2D space. The syllabus expects you to know these relationships by heart, as they are **not** given in the formula booklet.
+
+<Aside type="caution" title="Parallel & Perpendicular Conditions">
+Given two straight lines with gradients $m_1$ and $m_2$:
+
+* **Parallel Lines:** The lines have identical steepness and will never intersect.
+  $$
+  m_1 = m_2
+  $$
+* **Perpendicular Lines:** The lines intersect at exactly $90^\circ$. Their gradients are the "negative reciprocals" of each other.
+  $$
+  m_1 \times m_2 = -1 \quad \text{or} \quad m_2 = -\frac{1}{m_1}
+  $$
+</Aside>
+
+**Worked Example: Perpendicular Gradients** If Line 1 has the equation $y = \frac{3}{5}x - 2$, what is the gradient of a line perpendicular to it?
+<Steps>
+1. Identify the gradient of Line 1:
+   $$
+   m_1 = \frac{3}{5}
+   $$
+2. Find the perpendicular gradient by taking the negative reciprocal. Flip the fraction and change the sign:
+   $$
+   m_2 = -\frac{5}{3}
+   $$
+</Steps>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding the Equation">
+    A straight line $L_1$ passes through the points $A(-2, 5)$ and $B(4, -7)$.
+    
+    **a)** Find the gradient of $L_1$.
+    
+    **b)** Find the equation of $L_1$, giving your answer in the form $y = mx + c$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a:** Use the gradient formula.
+    $$
+    \begin{aligned}
+    m &= \frac{y_2 - y_1}{x_2 - x_1} \\
+    m &= \frac{-7 - 5}{4 - (-2)} \\
+    m &= \frac{-12}{6} \\
+    m &= -2
+    \end{aligned}
+    $$
+    
+    **Part b:** Use the point-gradient form. Let's use $A(-2, 5)$.
+    $$
+    \begin{aligned}
+    y - y_1 &= m(x - x_1) \\
+    y - 5 &= -2(x - (-2)) \\
+    y - 5 &= -2(x + 2) \\
+    y - 5 &= -2x - 4 \\
+    y &= -2x + 1
+    \end{aligned}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the equation of a line between two given coordinates" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Parallel Lines & General Form">
+    Line $L_1$ has the equation $3x - 4y + 12 = 0$.
+    Line $L_2$ is parallel to $L_1$ and passes through the point $P(2, -3)$.
+    
+    **a)** State the gradient of $L_1$.
+    
+    **b)** Find the equation of $L_2$, leaving your answer in the general form $ax + by + d = 0$, where $a, b, d \in \mathbb{Z}$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Find the gradient of $L_1$:**
+       To find the gradient, we must rearrange $L_1$ into $y = mx + c$ form.
+       
+       $$
+       \begin{aligned}
+       3x - 4y + 12 &= 0 \\
+       3x + 12 &= 4y \\
+       y &= \frac{3}{4}x + 3
+       \end{aligned}
+       $$
+       
+       The gradient of $L_1$ is $m = \frac{3}{4}$.
+
+    2. **Find the gradient of $L_2$:**
+       Since $L_2$ is parallel to $L_1$, they share the same gradient: $m_2 = \frac{3}{4}$.
+
+    3. **Find the equation of $L_2$:**
+       Use point-gradient form with $m = \frac{3}{4}$ and point $(2, -3)$:
+       
+       $$
+       \begin{aligned}
+       y - (-3) &= \frac{3}{4}(x - 2) \\
+       y + 3 &= \frac{3}{4}(x - 2)
+       \end{aligned}
+       $$
+
+    4. **Convert to General Form:**
+       Multiply the entire equation by $4$ to clear the fraction, then arrange correctly:
+       
+       $$
+       \begin{aligned}
+       4(y + 3) &= 3(x - 2) \\
+       4y + 12 &= 3x - 6 \\
+       0 &= 3x - 4y - 18
+       \end{aligned}
+       $$
+       
+       **Final Answer:** $3x - 4y - 18 = 0$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Perpendicular Lines">
+    A straight line $L$ passes through the origin $(0,0)$ and is perpendicular to the line $y = -\frac{1}{5}x + 8$.
+    
+    **a)** State the gradient of line $L$.
+    
+    **b)** Write down the equation of line $L$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part a:** The given line has a gradient of $m_1 = -\frac{1}{5}$.
+    Since line $L$ is perpendicular, its gradient $m_2$ must be the negative reciprocal of $m_1$.
+    $$
+    m_2 = -\frac{1}{m_1} = -\left(\frac{1}{-1/5}\right) = 5
+    $$
+    
+    **Part b:** We know the gradient is $5$ and the line passes through the origin $(0,0)$, which means its $y$-intercept is exactly $0$.
+    $$
+    y = 5x
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving problems involving parallel and perpendicular lines" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Missing Coordinates">
+    A line passes through the coordinates $A(2, k)$ and $B(5, 8)$. The gradient of this line is exactly $3$.
+    
+    Find the exact value of $k$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    Substitute the known values into the gradient formula and solve for $k$:
+    
+    $$
+    \begin{aligned}
+    m &= \frac{y_2 - y_1}{x_2 - x_1} \\
+    3 &= \frac{8 - k}{5 - 2} \\
+    3 &= \frac{8 - k}{3} \\
+    9 &= 8 - k \\
+    k &= 8 - 9 \\
+    k &= -1
+    \end{aligned}
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Intersection of Two Lines">
+    Line $A$ has the equation $y = 2x - 5$.
+    Line $B$ passes through $(1, 8)$ and $(3, 2)$.
+    
+    **a)** Find the equation of Line $B$ in the form $y = mx+c$.
+    
+    **b)** Find the exact coordinates of the point of intersection between Line $A$ and Line $B$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+    1. **Find the equation of Line B:**
+       First, find the gradient:
+       
+       $$
+       m = \frac{2 - 8}{3 - 1} = \frac{-6}{2} = -3
+       $$
+       
+       Use point-gradient form with point $(1, 8)$:
+       
+       $$
+       \begin{aligned}
+       y - 8 &= -3(x - 1) \\
+       y &= -3x + 3 + 8 \\
+       y &= -3x + 11
+       \end{aligned}
+       $$
+
+    2. **Find the intersection algebraically:**
+       Set the equations of Line $A$ and Line $B$ equal to each other:
+       
+       $$
+       \begin{aligned}
+       2x - 5 &= -3x + 11 \\
+       5x - 5 &= 11 \\
+       5x &= 16 \\
+       x &= 3.2
+       \end{aligned}
+       $$
+       
+       Substitute $x = 3.2$ back into Line $A$:
+       
+       $$
+       \begin{aligned}
+       y &= 2(3.2) - 5 \\
+       y &= 6.4 - 5 \\
+       y &= 1.4
+       \end{aligned}
+       $$
+       
+       The coordinates of intersection are **$(3.2, 1.4)$**.
+    </Steps>
+
+    <SteveTip title="TI-Nspire Mastery: Solving Simultaneous Equations">
+    You can completely bypass the manual algebra of intersection on a Paper 2 exam!
+    <Steps>
+    1. Open a **Calculator** page.
+    2. Press **Menu > Algebra > Solve System of Linear Equations**.
+    3. Enter 2 equations with variables $x, y$.
+    4. Type the two equations exactly as you have them: `y = 2x - 5` and `y = -3x + 11`.
+    5. Press Enter. The GDC will instantly output `{16/5, 7/5}`, which is exactly `(3.2, 1.4)`.
+    </Steps>
+    </SteveTip>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: Real-World Incline Context">
+    A mountain road begins at a base camp with coordinates $(2, 500)$ and ends at a summit observation deck with coordinates $(14, 1340)$. 
+    The coordinates are mapped on a topographical grid where $x$ represents horizontal distance in kilometers and $y$ represents elevation in meters.
+    
+    **a)** Calculate the gradient of the mountain road.
+    
+    **b)** Explain what this gradient represents in the context of the problem.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **Part a:** Apply the gradient formula using $(2, 500)$ and $(14, 1340)$.
+    $$
+    \begin{aligned}
+    m &= \frac{1340 - 500}{14 - 2} \\
+    m &= \frac{840}{12} \\
+    m &= 70
+    \end{aligned}
+    $$
+    
+    **Part b:** The gradient is the rate of change of $y$ with respect to $x$. 
+    In this context, $y$ is elevation in meters and $x$ is horizontal distance in kilometers.
+    
+    **Explanation:** For every $1\text{ km}$ travelled horizontally, the elevation of the mountain road increases by $70\text{ m}$.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Economics Context (Demand Curve)">
+    In economics, a simple demand curve assumes a linear relationship between the price of a good ($p$) and the quantity demanded by consumers ($q$).
+    
+    When the price of a branded coffee is 4.00 USD, the daily quantity demanded is $200$ cups. 
+    When the price increases to 5.50 USD, the daily quantity demanded drops to $140$ cups.
+    
+    **a)** Write an equation for the quantity demanded ($q$) in terms of the price ($p$).
+    
+    **b)** Use your equation to estimate the quantity demanded if the price is lowered to 2.50 USD.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **Part a:** We have two coordinate points in the format $(p, q)$: $(4, 200)$ and $(5.5, 140)$.
+    
+    First, find the gradient $m$:
+    $$
+    m = \frac{140 - 200}{5.5 - 4} = \frac{-60}{1.5} = -40
+    $$
+    
+    Now use the point-gradient form using the point $(4, 200)$:
+    $$
+    \begin{aligned}
+    q - 200 &= -40(p - 4) \\
+    q - 200 &= -40p + 160 \\
+    q &= -40p + 360
+    \end{aligned}
+    $$
+    
+    **Part b:** Substitute $p = 2.50$ into the equation:
+    $$
+    \begin{aligned}
+    q &= -40(2.50) + 360 \\
+    q &= -100 + 360 \\
+    q &= 260
+    \end{aligned}
+    $$
+    
+    The estimated quantity demanded is **$260$ cups**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: The Perpendicular Bisector (Classic Extension)">
+    Line segment $[AB]$ connects the points $A(-4, 2)$ and $B(6, 8)$.
+    
+    **a)** Find the coordinates of the midpoint of $[AB]$.
+    
+    **b)** Find the equation of the perpendicular bisector of $[AB]$. Give your answer in the form $y = mx + c$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    <Steps>
+    1. **Find the midpoint:**
+       The midpoint is found by averaging the $x$ and $y$ coordinates:
+       
+       $$
+       \text{Midpoint} = \left( \frac{-4 + 6}{2}, \frac{2 + 8}{2} \right) = \left( \frac{2}{2}, \frac{10}{2} \right) = (1, 5)
+       $$
+
+    2. **Find the original gradient:**
+       The perpendicular bisector is a line that cuts through the midpoint at exactly $90^\circ$. First, find the gradient of the original line $[AB]$:
+       
+       $$
+       m_{AB} = \frac{8 - 2}{6 - (-4)} = \frac{6}{10} = \frac{3}{5}
+       $$
+
+    3. **Find the perpendicular gradient:**
+       Take the negative reciprocal of $m_{AB}$:
+       
+       $$
+       m_{\perp} = -\frac{5}{3}
+       $$
+
+    4. **Form the equation:**
+       Use the point-gradient form using the perpendicular gradient and the **midpoint** $(1, 5)$:
+       
+       $$
+       \begin{aligned}
+       y - 5 &= -\frac{5}{3}(x - 1) \\
+       y - 5 &= -\frac{5}{3}x + \frac{5}{3} \\
+       y &= -\frac{5}{3}x + \frac{5}{3} + \frac{15}{3} \\
+       y &= -\frac{5}{3}x + \frac{20}{3}
+       \end{aligned}
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the equation of a perpendicular bisector between two coordinates" />

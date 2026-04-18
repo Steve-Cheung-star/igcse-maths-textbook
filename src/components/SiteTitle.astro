@@ -3,15 +3,23 @@ import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/SiteTitle.astro';
 
 // Check the current URL path to determine the section
-const isIB = Astro.url.pathname.startsWith('/ib-aisl');
+const isAASL = Astro.url.pathname.startsWith('/ib-aasl');
+const isAISL = Astro.url.pathname.startsWith('/ib-aisl');
 const isIGCSE = Astro.url.pathname.startsWith('/igcse');
 const isYear9 = Astro.url.pathname.startsWith('/year-9');
 const isYear8 = Astro.url.pathname.startsWith('/year-8');
 const isYear7 = Astro.url.pathname.startsWith('/year-7');
 ---
 
-{isIB ? (
-  /* --- CUSTOM IB LOGO & LINK --- */
+{isAASL ? (
+  /* --- CUSTOM IB AA SL LOGO & LINK --- */
+  <a href="/ib-aasl/" style="display: flex; align-items: center; text-decoration: none; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;">
+    <span style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+      AA SL
+    </span>
+  </a>
+) : isAISL ? (
+  /* --- CUSTOM IB AI SL LOGO & LINK --- */
   <a href="/ib-aisl/" style="display: flex; align-items: center; text-decoration: none; font-weight: 700; font-size: 1.5rem; letter-spacing: -0.02em;">
     <span style="background: linear-gradient(135deg, #10b981, #047857); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
       AI SL

@@ -4,18 +4,20 @@ import Default from '@astrojs/starlight/components/ContentPanel.astro';
 
 const { slug } = Astro.props;
 
-// 1. Determine curriculum context - Added Year 9
-const curriculum = slug && slug.startsWith('ib-aisl') 
-  ? 'IB AISL' 
-  : slug && slug.startsWith('igcse') 
-    ? 'IGCSE' 
-    : slug && slug.startsWith('year-9')
-      ? 'Year 9'
-      : slug && slug.startsWith('year-8')
-        ? 'Year 8'
-        : slug && slug.startsWith('year-7')
-          ? 'Year 7'
-          : 'General';
+// 1. Determine curriculum context - Added AA SL
+const curriculum = slug && slug.startsWith('ib-aasl') 
+  ? 'IB AASL'
+  : slug && slug.startsWith('ib-aisl') 
+    ? 'IB AISL' 
+    : slug && slug.startsWith('igcse') 
+      ? 'IGCSE' 
+      : slug && slug.startsWith('year-9')
+        ? 'Year 9'
+        : slug && slug.startsWith('year-8')
+          ? 'Year 8'
+          : slug && slug.startsWith('year-7')
+            ? 'Year 7'
+            : 'General';
 
 const isBookPage = curriculum !== 'General';
 ---

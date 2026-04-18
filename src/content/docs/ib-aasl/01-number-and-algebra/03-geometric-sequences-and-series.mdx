@@ -1,0 +1,388 @@
+---
+title: 1.3 Geometric Sequences and Series
+description: Master geometric sequences and series, including finding the common ratio, summing finite series, and applying models to population growth and disease for IB Maths AA SL.
+---
+
+While arithmetic sequences grow by a constant addition, **geometric sequences** grow by a constant multiplication. This multiplicative nature leads to exponential growth or decay. 
+
+In the AA SL course, mastering geometric sequences requires strong algebraic skills, particularly the use of index laws and logarithms. You will apply these concepts to model dynamic, real-world phenomena such as the spread of disease, salary increases, and population growth.
+
+---
+
+## Syllabus Alignment & Context
+
+<Aside type="note" title="IB Syllabus Guidance">
+**From the IB AA SL Guide (Topic 1.3):**
+* Use of the formulae for the $n^{\text{th}}$ term and the sum of the first $n$ terms of the sequence.
+* Use of sigma notation for the sums of geometric sequences. 
+* If technology (GDC) is used in examinations to evaluate a sum, students will still be expected to identify and write down the first term ($u_1$) and the ratio ($r$) to earn method marks.
+* Spreadsheets, GDCs and graphing software may be used to generate and display sequences in several ways.
+* **Applications:** Examples include the spread of disease, salary increase and decrease, and population growth.
+</Aside>
+
+<Aside type="note" title="Connections">
+**Within Mathematics:** * Link to models and exponential functions in Topic 2.
+* Link to exponential regression in Topic 4.
+
+**Other Subjects:** * Radioactive decay, nuclear physics, and charging and discharging capacitors (Physics).
+* Cell division (Biology) and compound economic growth (Economics).
+</Aside>
+
+<Aside type="note" title="International-Mindedness & TOK">
+**International-mindedness:** The power of geometric growth is famously illustrated by the ancient Indian chess legend of Sissa ibn Dahir, who asked for a single grain of wheat on the first square of a chessboard, doubled on each subsequent square, resulting in an impossible sum.
+
+**Theory of Knowledge (TOK):** How do mathematicians reconcile the fact that some conclusions seem to conflict with our intuitions? Consider for instance that a finite area can be bounded by an infinite perimeter (such as the Koch snowflake fractal, which relies on infinite geometric series).
+</Aside>
+
+---
+
+## 1. Geometric Sequences (The $n^{\text{th}}$ Term)
+
+A geometric sequence is a sequence of numbers where the ratio of any term to the previous term is strictly constant. We call this the **common ratio**, denoted by $r$.
+
+* If $r > 1$, the sequence exhibits exponential growth.
+* If $0 < r < 1$, the sequence exhibits exponential decay.
+* If $r$ is negative, the sequence oscillates between positive and negative values.
+
+<FormulaBox title="1.3 The nth term of a geometric sequence">
+$$
+u_n = u_1 r^{n-1}
+$$
+</FormulaBox>
+
+Where:
+* $u_n$ is the value of the $n^{\text{th}}$ term.
+* $u_1$ is the first term.
+* $r$ is the common ratio, found by calculating $u_2 \div u_1$ or $u_n \div u_{n-1}$.
+* $n$ is the position of the term.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 150" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Terms */}
+    <text x="100" y="80" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">u₁</text>
+    <text x="233" y="80" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">u₂</text>
+    <text x="366" y="80" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">u₃</text>
+    <text x="500" y="80" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">u₄</text>
+
+    {/* Values (Example) */}
+    <text x="100" y="110" font-size="16" fill="#64748b" text-anchor="middle" font-family="sans-serif">3</text>
+    <text x="233" y="110" font-size="16" fill="#64748b" text-anchor="middle" font-family="sans-serif">6</text>
+    <text x="366" y="110" font-size="16" fill="#64748b" text-anchor="middle" font-family="sans-serif">12</text>
+    <text x="500" y="110" font-size="16" fill="#64748b" text-anchor="middle" font-family="sans-serif">24</text>
+
+    {/* Jumps (Common Ratio) */}
+    <path d="M 120 50 Q 166.5 20 213 50" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-geom)"/>
+    <text x="166.5" y="25" font-size="14" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">× r</text>
+
+    <path d="M 253 50 Q 299.5 20 346 50" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-geom)"/>
+    <text x="299.5" y="25" font-size="14" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">× r</text>
+
+    <path d="M 386 50 Q 433 20 480 50" fill="none" stroke="#10b981" stroke-width="2" marker-end="url(#arrow-geom)"/>
+    <text x="433" y="25" font-size="14" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif">× r</text>
+
+    {/* Arrow Definition */}
+    <defs>
+      <marker id="arrow-geom" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+---
+
+## 2. Finite Geometric Series & Sigma Notation
+
+A geometric **series** is the sum of the terms of a geometric sequence. Because the terms grow (or shrink) exponentially, the sums can become very large very quickly. 
+
+The formula booklet provides two equivalent versions of the sum formula.
+
+<FormulaBox title="1.3 The sum of n terms of a finite geometric sequence">
+$$
+S_n = \frac{u_1(r^n - 1)}{r - 1} = \frac{u_1(1 - r^n)}{1 - r}, \quad r \neq 1
+$$
+</FormulaBox>
+
+<SteveTip title="Which version of the formula should I use?">
+Both formulae will give you the exact same answer. However, you can make your algebra much easier to manage without a calculator (Paper 1) by choosing strategically:
+* Use the first version (with $r^n - 1$) when your ratio $r > 1$. This prevents the denominator from becoming negative.
+* Use the second version (with $1 - r^n$) when your ratio $r < 1$. This keeps the denominator positive!
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding a Specific Term">
+    Consider the geometric sequence: $5, 15, 45, 135, \dots$
+    
+    a) Write down the value of the first term, $u_1$, and the common ratio, $r$.
+    
+    b) Find the exact value of the $10^{\text{th}}$ term.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a:**
+    The first term is:
+    $$
+    u_1 = 5
+    $$
+    Calculate $r$ by dividing the second term by the first:
+    $$
+    r = \frac{15}{5} = 3
+    $$
+    
+    **Part b:**
+    Use the $n^{\text{th}}$ term formula with $n = 10$:
+    $$
+    \begin{aligned}
+    u_n &= u_1 r^{n-1} \\
+    u_{10} &= 5(3)^{10-1} \\
+    u_{10} &= 5(3)^9 \\
+    u_{10} &= 5(19683) = 98415
+    \end{aligned}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the common ratio and specific terms of a geometric sequence" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Negative Ratios (Oscillating Sequences)">
+    A geometric sequence begins $8, -4, 2, -1, \dots$
+    
+    a) Find the common ratio.
+    
+    b) Find the $8^{\text{th}}$ term as an exact fraction.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **Part a:**
+    Divide the second term by the first:
+    $$
+    r = \frac{-4}{8} = -\frac{1}{2}
+    $$
+
+    **Part b:**
+    Substitute into the formula, ensuring you place the negative ratio in brackets:
+    $$
+    \begin{aligned}
+    u_8 &= 8 \left(-\frac{1}{2}\right)^{8-1} \\
+    u_8 &= 8 \left(-\frac{1}{2}\right)^7
+    \end{aligned}
+    $$
+    Since the power (7) is odd, the result will be negative:
+    $$
+    \begin{aligned}
+    u_8 &= 8 \left(-\frac{1}{128}\right) \\
+    u_8 &= -\frac{8}{128} = -\frac{1}{16}
+    \end{aligned}
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Summing a Geometric Series">
+    Find the sum of the first $12$ terms of the geometric sequence $2, 6, 18, 54, \dots$
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    Identify the parameters: $u_1 = 2$, $r = 3$, and $n = 12$.
+    Because $r > 1$, we will use the first version of the sum formula:
+    $$
+    \begin{aligned}
+    S_n &= \frac{u_1(r^n - 1)}{r - 1} \\
+    S_{12} &= \frac{2(3^{12} - 1)}{3 - 1} \\
+    S_{12} &= \frac{2(531441 - 1)}{2}
+    \end{aligned}
+    $$
+    Notice the 2 in the numerator and denominator cancel out perfectly:
+    $$
+    S_{12} = 531440
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Calculating the sum of a finite geometric series" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Exam-Style Sigma Notation">
+    Evaluate the following series. You must show the first term and common ratio clearly.
+    $$
+    \sum_{k=1}^{8} 4(0.5)^{k-1}
+    $$
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Generate the first few terms** to confirm it is geometric and identify $u_1$ and $r$.
+       When $k = 1$:
+       $$ u_1 = 4(0.5)^0 = 4(1) = 4 $$
+       When $k = 2$:
+       $$ u_2 = 4(0.5)^1 = 2 $$
+    2. **Identify parameters:** This is a geometric series with $u_1 = 4$ and $r = 0.5$. There are $8 - 1 + 1 = 8$ terms.
+    3. **Apply the sum formula:** Because $r < 1$, use the second version of the formula:
+       $$
+       \begin{aligned}
+       S_n &= \frac{u_1(1 - r^n)}{1 - r} \\
+       S_8 &= \frac{4(1 - 0.5^8)}{1 - 0.5} \\
+       S_8 &= \frac{4(1 - 0.00390625)}{0.5}
+       \end{aligned}
+       $$
+    4. **Simplify:** Dividing by $0.5$ is the same as multiplying by 2:
+       $$
+       S_8 = 8(0.99609375) = 7.96875
+       $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Application - Population Growth">
+    A biologist is studying a bacterial infection. The initial population of bacteria is estimated to be $400$. The population increases by $15\%$ every hour.
+    
+    a) Write down the common ratio, $r$, for this geometric sequence.
+    
+    b) Calculate the expected bacterial population after $10$ full hours have elapsed.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **Part a:**
+    A $15\%$ increase means the new population is $115\%$ of the previous hour. Therefore, the multiplier (common ratio) is:
+    $$
+    r = 1.15
+    $$
+
+    **Part b:**
+    We want the population *after* 10 hours. 
+    * Initial (Time 0) = $u_1 = 400$
+    * After 1 hour = $u_2$
+    * After 10 hours = $u_{11}$
+    
+    Using the $n^{\text{th}}$ term formula where $n = 11$:
+    $$
+    \begin{aligned}
+    u_{11} &= 400(1.15)^{11-1} \\
+    u_{11} &= 400(1.15)^{10} \\
+    u_{11} &\approx 1618.22
+    \end{aligned}
+    $$
+    Therefore, the population is approximately 1618 bacteria.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying geometric sequences to population growth and salary increases" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Solving for n using Logarithms (Paper 2)">
+    A geometric sequence has a first term of 7 and a common ratio of 2.
+    Find the smallest value of $n$ for which the $n^{\text{th}}$ term exceeds $10,000$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    We need to set up an inequality: $u_n > 10000$.
+    $$
+    7(2)^{n-1} > 10000
+    $$
+    Divide by 7:
+    $$
+    2^{n-1} > 1428.57...
+    $$
+    To solve for an unknown exponent, take the natural logarithm ($\ln$) of both sides:
+    $$
+    \ln(2^{n-1}) > \ln(1428.57...)
+    $$
+    Use the power rule of logarithms to bring the exponent down:
+    $$
+    \begin{aligned}
+    (n-1) \ln(2) &> \ln(1428.57...) \\
+    n - 1 &> \frac{\ln(1428.57...)}{\ln(2)} \\
+    n - 1 &> 10.48... \\
+    n &> 11.48...
+    \end{aligned}
+    $$
+    Since $n$ must be a positive integer, the smallest number of terms is:
+    $$
+    n = 12
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Simultaneous Equations (Finding r)">
+    The $2^{\text{nd}}$ term of a geometric sequence is 12 and the $5^{\text{th}}$ term is 324.
+    Given that all terms in the sequence are positive, find the common ratio $r$ and the first term $u_1$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    Set up two equations using the $n^{\text{th}}$ term formula:
+    $$
+    u_1 r^1 = 12 \quad \text{--- (Equation 1)}
+    $$
+    $$
+    u_1 r^4 = 324 \quad \text{--- (Equation 2)}
+    $$
+    Unlike arithmetic sequences where we subtract, for geometric sequences we **divide** the equations to eliminate $u_1$:
+    $$
+    \begin{aligned}
+    \frac{u_1 r^4}{u_1 r} &= \frac{324}{12} \\
+    r^3 &= 27
+    \end{aligned}
+    $$
+    Cube root both sides:
+    $$
+    r = 3
+    $$
+    Substitute $r = 3$ back into Equation 1 to find $u_1$:
+    $$
+    \begin{aligned}
+    u_1(3) &= 12 \\
+    u_1 &= 4
+    \end{aligned}
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Algebraic Geometric Sequence (Show That)">
+    The first three terms of a geometric sequence are $x - 3$, $x + 1$, and $3x - 1$.
+    Given that $x > 0$, find the value of $x$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    In a geometric sequence, the ratio between consecutive terms must be equal. Therefore:
+    $$
+    \frac{u_2}{u_1} = \frac{u_3}{u_2}
+    $$
+    Substitute the algebraic expressions:
+    $$
+    \frac{x + 1}{x - 3} = \frac{3x - 1}{x + 1}
+    $$
+    Cross-multiply to clear the fractions:
+    $$
+    (x + 1)(x + 1) = (3x - 1)(x - 3)
+    $$
+    Expand both sides:
+    $$
+    \begin{aligned}
+    x^2 + 2x + 1 &= 3x^2 - 9x - x + 3 \\
+    x^2 + 2x + 1 &= 3x^2 - 10x + 3
+    \end{aligned}
+    $$
+    Bring all terms to one side to form a quadratic equation equal to zero:
+    $$
+    2x^2 - 12x + 2 = 0
+    $$
+    Divide by 2 to simplify:
+    $$
+    x^2 - 6x + 1 = 0
+    $$
+    This quadratic does not factorise cleanly, so use the quadratic formula:
+    $$
+    \begin{aligned}
+    x &= \frac{-(-6) \pm \sqrt{(-6)^2 - 4(1)(1)}}{2(1)} \\
+    x &= \frac{6 \pm \sqrt{36 - 4}}{2} \\
+    x &= \frac{6 \pm \sqrt{32}}{2}
+    \end{aligned}
+    $$
+    Simplify the surd ($\sqrt{32} = 4\sqrt{2}$):
+    $$
+    x = \frac{6 \pm 4\sqrt{2}}{2} = 3 \pm 2\sqrt{2}
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for an unknown variable by equating common ratios in a geometric sequence" />

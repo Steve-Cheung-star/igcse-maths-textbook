@@ -1,0 +1,361 @@
+---
+title: 2.5 Composite and Inverse Functions
+description: Master the algebra of combining functions, understanding one-to-one mappings, and visualizing inverse functions as reflections across the line y = x.
+---
+
+If standard functions are basic operations, composite and inverse functions are the advanced machinery of algebra. In this section, we look at how to feed one function into another, and how to mathematically "undo" a function.
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Math as a Language:** Do you think mathematics or logic should be classified as a language? Natural languages (like English or Mandarin) have nouns, verbs, and syntax. In mathematics, numbers and variables act as nouns, operators ($+$, $-$, $\times$, $\div$) act as conjunctions, and functions act as verbs (they *do* something to the input). If math is a language, does it suffer from the same ambiguities as spoken language, or is it fundamentally superior in its precision?
+</Aside>
+
+---
+
+## 1. Composite Functions: The Chain Reaction
+
+A composite function is created when you substitute one entire function into another. The output of the first function becomes the input for the second.
+
+The notation for a composite function is $(f \circ g)(x)$, which is read as "$f$ composed with $g$ of $x$", or more commonly, **$f$ of $g$ of $x$**.
+Mathematically, this is written as:
+$$
+(f \circ g)(x) = f(g(x))
+$$
+
+### How to Evaluate Composite Functions
+Always work from the **inside out**.
+If $f(x) = 2x + 3$ and $g(x) = x^2$:
+1. To find $f(g(3))$: First, calculate $g(3) = 3^2 = 9$. Then, substitute that result into $f(x)$: $f(9) = 2(9) + 3 = 21$.
+2. To find the general algebraic function $f(g(x))$: Replace every $x$ in the $f$ equation with the entire $g(x)$ equation.
+   $$
+   f(g(x)) = 2(x^2) + 3 = 2x^2 + 3
+   $$
+
+<Aside type="danger" title="Common Pitfall">
+Order matters! Function composition is **not commutative**. 
+$(f \circ g)(x)$ is almost never the same as $(g \circ f)(x)$. 
+Using the functions above, $g(f(x)) = (2x + 3)^2$, which expands to $4x^2 + 12x + 9$. This is very different from $2x^2 + 3$.
+</Aside>
+
+---
+
+## 2. The Identity Function and Inverse Functions
+
+### The Identity Function
+The simplest function in mathematics is the **Identity Function**, often denoted as $I(x)$. It is a function that returns exactly what you put into it:
+$$
+I(x) = x
+$$
+
+### Inverse Functions ($f^{-1}$)
+If a regular function $f(x)$ maps an input $x$ to an output $y$, then its **inverse function**, denoted as $f^{-1}(x)$, does the exact opposite. It maps $y$ back to $x$. It is the mathematical "undo" button.
+
+### The Ultimate Test of an Inverse
+Because a function and its inverse undo each other perfectly, composing them will always leave you with exactly what you started with (the identity function, $x$).
+This is a strict mathematical rule:
+$$
+(f \circ f^{-1})(x) = (f^{-1} \circ f)(x) = x
+$$
+
+### The Requirement: One-to-One Functions
+Not all functions have an inverse. For an inverse to exist, the original function must be **one-to-one** (also called an injective function). 
+* **The Horizontal Line Test:** If you draw a horizontal line across the graph of a function and it hits the curve more than once, the function is *not* one-to-one, and therefore does *not* have an inverse. 
+* *Example:* A full parabola $f(x) = x^2$ fails the horizontal line test. If you try to invert it, you get a $\pm$ square root, which is not a valid single-output function. To find the inverse of a parabola, you must artificially restrict its domain (e.g., only look at $x \ge 0$).
+
+---
+
+## 3. Graphical Connection: Reflection in the line $y = x$
+
+If you have the coordinates of a point on the original function $f(x)$, you can easily find the corresponding point on the inverse function $f^{-1}(x)$ by simply **swapping the $x$ and $y$ values**. 
+
+Because of this coordinate swap, the graph of an inverse function is always a perfect geometric **reflection of the original graph across the diagonal line $y = x$**.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 400" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid Lines */}
+    <g stroke="#f8fafc" stroke-width="1">
+      <line x1="0" y1="100" x2="400" y2="100" />
+      <line x1="0" y1="200" x2="400" y2="200" />
+      <line x1="0" y1="300" x2="400" y2="300" />
+      <line x1="100" y1="0" x2="100" y2="400" />
+      <line x1="200" y1="0" x2="200" y2="400" />
+      <line x1="300" y1="0" x2="300" y2="400" />
+    </g>
+
+    {/* Axes (Origin at 100, 300) */}
+    <line x1="100" y1="20" x2="100" y2="380" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)" />
+    <line x1="20" y1="300" x2="380" y2="300" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)" />
+    <text x="370" y="290" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">x</text>
+    <text x="110" y="30" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">y</text>
+
+    {/* The Identity Line y = x */}
+    <line x1="20" y1="380" x2="380" y2="20" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6,6" />
+    <text x="330" y="45" font-size="14" font-weight="bold" fill="#94a3b8" font-family="sans-serif">y = x</text>
+
+    {/* Original Function f(x) */}
+    {/* Starts at origin, curves up steeply. Path manually calculated for perfect reflection */}
+    <path d="M 100 300 Q 180 280 200 100" fill="transparent" stroke="#3b82f6" stroke-width="3" />
+    <text x="175" y="85" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">f(x)</text>
+
+    {/* Inverse Function f^-1(x) */}
+    {/* Exact mathematical reflection of the above bezier curve */}
+    <path d="M 100 300 Q 120 220 300 200" fill="transparent" stroke="#ef4444" stroke-width="3" />
+    <text x="310" y="205" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">f⁻¹(x)</text>
+
+    {/* Perfectly Aligned Mirrored Nodes */}
+    {/* Point A on f(x) at SVG (200, 100) -> which is 2 units right, 4 units up from origin */}
+    <circle cx="200" cy="100" r="6" fill="#3b82f6" />
+    <text x="215" y="105" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">(a, b)</text>
+
+    {/* Point A' on f^-1(x) at SVG (300, 200) -> exactly 4 units right, 2 units up from origin */}
+    <circle cx="300" cy="200" r="6" fill="#ef4444" />
+    <text x="295" y="225" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">(b, a)</text>
+
+    {/* Reflection Lines connecting the points perpendicularly across y=x */}
+    <line x1="200" y1="100" x2="300" y2="200" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4,4" />
+
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding an Inverse Algebraically">
+    Let $f(x) = \frac{3x - 1}{x + 2}$, for $x \neq -2$.
+    
+    Find an expression for $f^{-1}(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Set up the equation:** Let $y = f(x)$.
+       $$ y = \frac{3x - 1}{x + 2} $$
+    2. **Swap $x$ and $y$:** (This represents the reflection across $y = x$).
+       $$ x = \frac{3y - 1}{y + 2} $$
+    3. **Solve for $y$:** Multiply both sides by $(y + 2)$ to remove the fraction.
+       $$ x(y + 2) = 3y - 1 $$
+    4. **Expand the brackets:**
+       $$ xy + 2x = 3y - 1 $$
+    5. **Group all $y$ terms on one side:** Move $3y$ to the left, and $2x$ to the right.
+       $$ xy - 3y = -2x - 1 $$
+    6. **Factor out $y$:**
+       $$ y(x - 3) = -2x - 1 $$
+    7. **Divide to isolate $y$:**
+       $$ y = \frac{-2x - 1}{x - 3} $$
+    8. **Write in correct notation:**
+       $$ f^{-1}(x) = \frac{-2x - 1}{x - 3}, \text{ for } x \neq 3 $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SteveTip title="Exam Hack: The Rational Function Shortcut">
+For linear rational functions of the form $f(x) = \frac{ax + b}{cx + d}$, there is a brilliant shortcut to find the inverse instantly to check your work on Paper 1. 
+
+Simply swap the positions of $a$ and $d$, and flip their signs. 
+The inverse will always be: $f^{-1}(x) = \frac{-dx + b}{cx - a}$.
+
+*Look at Question 1:* $f(x) = \frac{3x - 1}{1x + 2}$. Swap the $3$ and the $2$, and make them negative. 
+Result: $f^{-1}(x) = \frac{-2x - 1}{x - 3}$. Magic!
+</SteveTip>
+
+<Tabs>
+  <TabItem label="📝 Question 2: Composite Functions">
+    Let $f(x) = \ln(x)$ for $x > 0$, and let $g(x) = e^{2x}$.
+    
+    **a)** Find $(f \circ g)(x)$.
+    
+    **b)** Find $(g \circ f)(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Part a:** Substitute $g(x)$ into $f(x)$.
+       $$
+       \begin{aligned}
+       (f \circ g)(x) &= f(g(x)) \\
+       &= f(e^{2x}) \\
+       &= \ln(e^{2x})
+       \end{aligned}
+       $$
+       Using the logarithm power rule ($\ln(e^k) = k$), this simplifies perfectly:
+       $$ (f \circ g)(x) = 2x $$
+
+    2. **Part b:** Substitute $f(x)$ into $g(x)$.
+       $$
+       \begin{aligned}
+       (g \circ f)(x) &= g(f(x)) \\
+       &= g(\ln(x)) \\
+       &= e^{2\ln(x)}
+       \end{aligned}
+       $$
+       Using exponent rules, move the $2$ inside the logarithm: $e^{\ln(x^2)}$. Because $e$ and $\ln$ are inverse operations, they cancel out:
+       $$ (g \circ f)(x) = x^2 $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating and simplifying composite functions" />
+
+<Tabs>
+  <TabItem label="📝 Question 3: Domain Restriction for Inverses">
+    Consider the quadratic function $f(x) = (x - 4)^2 + 3$.
+    
+    **a)** Explain why $f(x)$ does not have an inverse function in its current form.
+    
+    **b)** State the largest possible domain restriction $x \ge k$ such that an inverse function exists.
+    
+    **c)** Given this restricted domain, find $f^{-1}(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **Part a:** The function $f(x)$ is a full parabola. It fails the horizontal line test (it is a many-to-one function, not one-to-one). Therefore, its inverse would map one $x$-value to two different $y$-values, which violates the definition of a function.
+    2. **Part b:** To make it one-to-one, we must restrict it to just half of the parabola. The vertex of $(x - 4)^2 + 3$ is at $x = 4$. Therefore, the domain must be restricted to $x \ge 4$ (so $k = 4$).
+    3. **Part c:** Find the inverse algebraically.
+       $$ y = (x - 4)^2 + 3 $$
+       Swap variables:
+       $$ x = (y - 4)^2 + 3 $$
+       Solve for $y$:
+       $$ x - 3 = (y - 4)^2 $$
+       $$ \pm\sqrt{x - 3} = y - 4 $$
+       $$ y = 4 \pm\sqrt{x - 3} $$
+       Since our restricted domain was $x \ge 4$, the output of our inverse must be $\ge 4$. Therefore, we take the positive root.
+       $$ f^{-1}(x) = 4 + \sqrt{x - 3} $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 4: Unknowns in Compositions">
+    Let $f(x) = 2x + k$ and $g(x) = 3x - 5$, where $k$ is a constant.
+    
+    Given that $(f \circ g)(x) = (g \circ f)(x)$ for all values of $x$, find the value of $k$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Find an expression for $(f \circ g)(x)$:**
+       $$ f(g(x)) = 2(3x - 5) + k = 6x - 10 + k $$
+    2. **Find an expression for $(g \circ f)(x)$:**
+       $$ g(f(x)) = 3(2x + k) - 5 = 6x + 3k - 5 $$
+    3. **Equate the two expressions:**
+       $$ 6x - 10 + k = 6x + 3k - 5 $$
+    4. **Solve for $k$:**
+       Subtract $6x$ from both sides:
+       $$ -10 + k = 3k - 5 $$
+       Move $k$ terms to one side, constants to the other:
+       $$ -5 = 2k $$
+       $$ k = -2.5 $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Solving Composite Equations">
+    Let $f(x) = x^2 - 4x$ and $g(x) = x + 1$.
+    
+    Find the exact coordinates of the $x$-intercepts of the composite function $h(x) = (f \circ g)(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+    1. **Form the composite function $h(x)$:**
+       $$ h(x) = f(g(x)) = (x + 1)^2 - 4(x + 1) $$
+    2. **Expand and simplify:**
+       $$ h(x) = (x^2 + 2x + 1) - 4x - 4 $$
+       $$ h(x) = x^2 - 2x - 3 $$
+    3. **Find the $x$-intercepts (roots):**
+       Set $h(x) = 0$ and factorize the quadratic:
+       $$ x^2 - 2x - 3 = 0 $$
+       $$ (x - 3)(x + 1) = 0 $$
+       Therefore, $x = 3$ or $x = -1$.
+    4. **Write as coordinates:**
+       The coordinates are $(3, 0)$ and $(-1, 0)$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: Using Graphs for Inverses">
+    The function $f(x)$ passes through the points $A(-2, 5)$ and $B(4, 10)$. 
+    The function $g(x)$ is defined as $g(x) = f^{-1}(x) + 3$.
+    
+    Find the coordinates of the points corresponding to $A$ and $B$ on the graph of $g(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+    1. **Find the points on $f^{-1}(x)$:**
+       The inverse function reflects points across $y = x$. We simply swap the coordinates.
+       Point $A'$ on $f^{-1}(x)$ is $(5, -2)$.
+       Point $B'$ on $f^{-1}(x)$ is $(10, 4)$.
+    2. **Apply the transformation for $g(x)$:**
+       The $+3$ at the end of $g(x) = f^{-1}(x) + 3$ means the graph is shifted vertically upwards by $3$ units. We add $3$ to the $y$-coordinates.
+       New Point $A''$: $(5, -2 + 3) = (5, 1)$
+       New Point $B''$: $(10, 4 + 3) = (10, 7)$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Real-World Context (Currency Composition)">
+    At an international airport, an exchange kiosk uses the function $E(d) = 0.9d - 2$ to convert US Dollars ($d$) into Euros. The "- 2" represents a flat 2 Euro commission fee per transaction.
+    
+    A second kiosk converts Euros ($e$) into British Pounds using the function $P(e) = 0.85e$.
+    
+    **a)** Formulate a composite function $P(E(d))$ to convert US Dollars directly into British Pounds.
+    
+    **b)** A tourist has 500 USD. Use your composite function to calculate how many British Pounds they will receive if they do the double conversion.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+    1. **Part a:** Substitute $E(d)$ into $P(e)$.
+       $$
+       \begin{aligned}
+       P(E(d)) &= 0.85(0.9d - 2) \\
+       &= 0.765d - 1.70
+       \end{aligned}
+       $$
+       The direct conversion function is $P(d) = 0.765d - 1.70$.
+    2. **Part b:** Substitute $d = 500$ into the new composite function.
+       $$
+       \begin{aligned}
+       P(500) &= 0.765(500) - 1.70 \\
+       &= 382.5 - 1.70 \\
+       &= 380.80
+       \end{aligned}
+       $$
+       The tourist will receive 380.80 GBP.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Self-Inverse Functions (Classic Extension)">
+    A function is called "self-inverse" if $f(x) = f^{-1}(x)$ for all values in its domain. This means its graph is perfectly symmetrical across the line $y = x$.
+    
+    Consider the function $f(x) = \frac{ax + 5}{2x - a}$, where $a$ is a constant.
+    
+    Prove algebraically that $f(x)$ is a self-inverse function, regardless of the value of $a$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    <Steps>
+    1. **Set up to find the inverse:** Let $y = f(x)$.
+       $$ y = \frac{ax + 5}{2x - a} $$
+    2. **Swap $x$ and $y$:**
+       $$ x = \frac{ay + 5}{2y - a} $$
+    3. **Solve for $y$:** Multiply both sides by $(2y - a)$.
+       $$ x(2y - a) = ay + 5 $$
+       $$ 2xy - ax = ay + 5 $$
+    4. **Group $y$ terms together:** Move $ay$ to the left, $-ax$ to the right.
+       $$ 2xy - ay = ax + 5 $$
+    5. **Factor out $y$:**
+       $$ y(2x - a) = ax + 5 $$
+    6. **Divide to isolate $y$:**
+       $$ y = \frac{ax + 5}{2x - a} $$
+    7. **Conclusion:** The resulting inverse, $f^{-1}(x) = \frac{ax + 5}{2x - a}$, is completely identical to the original function $f(x)$. Therefore, the function is self-inverse for any valid constant $a$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving self-inverse functions and domain restrictions" />

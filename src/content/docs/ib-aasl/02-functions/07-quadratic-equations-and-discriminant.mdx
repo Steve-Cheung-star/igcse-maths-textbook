@@ -1,0 +1,274 @@
+---
+title: 2.7 Solving Quadratic Equations & The Discriminant
+description: Master the methods for solving quadratic equations, understand the nature of roots using the discriminant, and learn how to solve quadratic inequalities for IB Maths AA SL.
+---
+
+In the previous section, we explored the geometry of the parabola. Now, we zoom in on its most critical feature: the $x$-intercepts. In algebra, finding where a function crosses the $x$-axis means setting $y = 0$ and solving the resulting equation. 
+
+The solutions to a quadratic equation $ax^2 + bx + c = 0$ are often referred to as its **roots** or **zeros**. 
+
+<Aside type="note" title="International-Mindedness">
+The pursuit of solving quadratic equations is ancient and universal. The Babylonian method of multiplication indirectly dealt with them, while the *Sulba Sutras* in ancient India and the *Bakhshali Manuscript* contained explicit algebraic formulas for solving quadratic equations long before modern algebraic notation was standardized.
+</Aside>
+
+---
+
+## 1. Methods for Solving Quadratic Equations
+
+Depending on the complexity of the equation, you have three primary algebraic tools at your disposal.
+
+### Method 1: Factorisation
+This is the fastest method, but it only works if the roots are rational numbers. You look for two numbers that multiply to $c$ and add to $b$.
+If $(x - p)(x - q) = 0$, then by the Null Factor Law, either $x = p$ or $x = q$.
+
+### Method 2: Completing the Square
+If an equation cannot be factorised, you can manipulate it into Vertex Form: $a(x - h)^2 + k = 0$. From here, you can isolate $x$ by moving $k$, dividing by $a$, and taking the square root of both sides. This method always works, but can involve messy fractions.
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+**Building Blocks of Knowledge:** The quadratic formula (Method 3) is entirely derived by completing the square on the general equation $ax^2 + bx + c = 0$. What are the key concepts that provide the building blocks for mathematical knowledge? Does memorizing the final formula constitute knowledge, or is true knowledge understanding the derivation behind it?
+</Aside>
+
+### Method 3: The Quadratic Formula
+When all else fails, or if you need an exact answer containing surds (radicals), the quadratic formula is your ultimate safety net.
+
+<FormulaBox title="2.7 Solutions of a quadratic equation">
+
+$$
+ax^2 + bx + c = 0 \Rightarrow x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a}, a \neq 0
+$$
+
+</FormulaBox>
+
+---
+
+## 2. The Discriminant ($\Delta$)
+
+If you look closely at the quadratic formula, the expression underneath the square root is $b^2 - 4ac$. This small piece of algebra dictates the entire "nature" of the roots (how many solutions the equation has). We call this the **discriminant**, denoted by the Greek letter delta ($\Delta$).
+
+<FormulaBox title="2.7 Discriminant">
+
+$$
+\Delta = b^2 - 4ac
+$$
+
+</FormulaBox>
+
+Because you cannot take the real square root of a negative number, the value of $\Delta$ tells us instantly how many times the parabola crosses the $x$-axis.
+
+* **$\Delta > 0$ (Positive):** There are **two distinct real roots**. The parabola crosses the $x$-axis twice.
+* **$\Delta = 0$ (Zero):** There are **two equal real roots** (also called one repeated root). The vertex rests exactly on the $x$-axis, tangent to it.
+* **$\Delta < 0$ (Negative):** There are **no real roots**. The parabola floats entirely above or below the $x$-axis.
+
+<div style={{ display: 'flex', justifyContent: 'space-between', margin: '2rem 0', gap: '1rem' }}>
+  {/* Delta > 0 */}
+  <svg viewBox="0 0 200 200" width="30%" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <line x1="10" y1="150" x2="190" y2="150" stroke="#0f172a" stroke-width="2" />
+    <path d="M 40 40 Q 100 220 160 40" fill="transparent" stroke="#10b981" stroke-width="3" />
+    <circle cx="76" cy="150" r="4" fill="#10b981" />
+    <circle cx="124" cy="150" r="4" fill="#10b981" />
+    <text x="100" y="180" text-anchor="middle" font-size="16" font-weight="bold" fill="#10b981">Δ &gt; 0</text>
+    <text x="100" y="30" text-anchor="middle" font-size="12" fill="#475569">Two distinct roots</text>
+  </svg>
+
+  {/* Delta = 0 */}
+  <svg viewBox="0 0 200 200" width="30%" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <line x1="10" y1="150" x2="190" y2="150" stroke="#0f172a" stroke-width="2" />
+    <path d="M 40 40 Q 100 260 160 40" fill="transparent" stroke="#3b82f6" stroke-width="3" />
+    <circle cx="100" cy="150" r="4" fill="#3b82f6" />
+    <text x="100" y="180" text-anchor="middle" font-size="16" font-weight="bold" fill="#3b82f6">Δ = 0</text>
+    <text x="100" y="30" text-anchor="middle" font-size="12" fill="#475569">Two equal roots</text>
+  </svg>
+
+  {/* Delta < 0 */}
+  <svg viewBox="0 0 200 200" width="30%" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    <line x1="10" y1="150" x2="190" y2="150" stroke="#0f172a" stroke-width="2" />
+    <path d="M 40 20 Q 100 130 160 20" fill="transparent" stroke="#ef4444" stroke-width="3" />
+    <text x="100" y="180" text-anchor="middle" font-size="16" font-weight="bold" fill="#ef4444">Δ &lt; 0</text>
+    <text x="100" y="30" text-anchor="middle" font-size="12" fill="#475569">No real roots</text>
+  </svg>
+</div>
+
+---
+
+## 3. Quadratic Inequalities
+
+Sometimes you need to find where a quadratic is greater than zero ($ax^2 + bx + c > 0$) or less than zero. 
+
+<SteveTip title="The Golden Rule of Inequalities">
+**Never try to solve a quadratic inequality purely with algebra!** You will almost certainly mess up the inequality signs. 
+Always follow these three steps:
+1. Pretend it is an equation ($= 0$) and find the roots.
+2. **Sketch a quick graph** of the parabola marking the roots.
+3. Look at your sketch. If it's $> 0$, highlight the parts of the curve *above* the $x$-axis. If it's $< 0$, highlight the parts *below*. Write your domain based on the visual.
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Solving by Factorisation">
+    Solve the equation $2x^2 - x - 15 = 0$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    <Steps>
+    1. **Find factors:** We need two numbers that multiply to $2 \times -15 = -30$ and add to $-1$. These are $-6$ and $5$.
+    2. **Decompose the middle term:**
+       $$ 2x^2 - 6x + 5x - 15 = 0 $$
+    3. **Factor by grouping:**
+       $$ 2x(x - 3) + 5(x - 3) = 0 $$
+       $$ (2x + 5)(x - 3) = 0 $$
+    4. **Solve using the Null Factor Law:**
+       $$ 2x + 5 = 0 \Rightarrow x = -\dfrac{5}{2} $$
+       $$ x - 3 = 0 \Rightarrow x = 3 $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 2: The Quadratic Formula">
+    Solve the equation $x^2 + 4x - 7 = 0$. 
+    Give your answers in the exact form $a \pm \sqrt{b}$, where $a, b \in \mathbb{Z}$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    <Steps>
+    1. **Identify coefficients:** $a = 1$, $b = 4$, $c = -7$.
+    2. **Apply the quadratic formula:**
+       $$ x = \dfrac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$
+       $$ x = \dfrac{-4 \pm \sqrt{(4)^2 - 4(1)(-7)}}{2(1)} $$
+    3. **Simplify the discriminant:**
+       $$ x = \dfrac{-4 \pm \sqrt{16 + 28}}{2} $$
+       $$ x = \dfrac{-4 \pm \sqrt{44}}{2} $$
+    4. **Simplify the surd and divide:**
+       $\sqrt{44} = \sqrt{4 \times 11} = 2\sqrt{11}$
+       $$ x = \dfrac{-4 \pm 2\sqrt{11}}{2} $$
+       $$ x = -2 \pm \sqrt{11} $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Nature of Roots">
+    Without solving the equation, determine the nature of the roots for $3x^2 - 5x + 4 = 0$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    <Steps>
+    1. **Identify coefficients:** $a = 3$, $b = -5$, $c = 4$.
+    2. **Calculate the discriminant:**
+       $$ \Delta = b^2 - 4ac $$
+       $$ \Delta = (-5)^2 - 4(3)(4) $$
+       $$ \Delta = 25 - 48 $$
+       $$ \Delta = -23 $$
+    3. **Conclusion:** Since $\Delta < 0$, the equation has **no real roots**.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the quadratic formula and determining the nature of roots" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Unknowns in the Discriminant (Syllabus Example)">
+    For the equation $3kx^2 + 2x + k = 0$, find the possible exact values of $k$ which will give two equal real roots.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Steps>
+    1. **Set the condition:** For two equal real roots, $\Delta = 0$.
+    2. **Identify coefficients:** $a = 3k$, $b = 2$, $c = k$.
+    3. **Substitute into the discriminant formula:**
+       $$ b^2 - 4ac = 0 $$
+       $$ (2)^2 - 4(3k)(k) = 0 $$
+    4. **Solve for $k$:**
+       $$ 4 - 12k^2 = 0 $$
+       $$ 12k^2 = 4 $$
+       $$ k^2 = \dfrac{4}{12} = \dfrac{1}{3} $$
+       $$ k = \pm \sqrt{\dfrac{1}{3}} = \pm \dfrac{1}{\sqrt{3}} $$ 
+       *(Rationalising the denominator to $\pm \dfrac{\sqrt{3}}{3}$ is also fully acceptable).*
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Inequalities in the Discriminant">
+    Find the range of values for $m$ such that the equation $x^2 + mx + 9 = 0$ has two distinct real roots.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    <Steps>
+    1. **Set the condition:** For two distinct real roots, $\Delta > 0$.
+    2. **Identify coefficients:** $a = 1$, $b = m$, $c = 9$.
+    3. **Substitute into the inequality:**
+       $$ m^2 - 4(1)(9) > 0 $$
+       $$ m^2 - 36 > 0 $$
+    4. **Solve the quadratic inequality:** Set equal to zero to find the critical values: $m^2 = 36 \Rightarrow m = 6$ or $m = -6$.
+       Sketch the parabola $y = m^2 - 36$. It is an upward-facing parabola crossing at $-6$ and $6$.
+       We want where the parabola is *greater than 0* (above the axis).
+       This happens on the outer wings of the parabola.
+    5. **Final Answer:** $m < -6$ or $m > 6$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: Solving a Quadratic Inequality">
+    Find the set of values for $x$ that satisfy $10 - 3x - x^2 \ge 0$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    <Steps>
+    1. **Find the roots:** Set the equation to zero. Let's multiply by $-1$ to make factoring easier (remember this flips the inequality sign if you keep it, but we are just finding roots right now).
+       $$ x^2 + 3x - 10 = 0 $$
+       $$ (x + 5)(x - 2) = 0 $$
+       Roots are $x = -5$ and $x = 2$.
+    2. **Sketch the original graph:** The original expression is $10 - 3x - x^2$. Since $a = -1$, it is a **downward-facing** parabola. It crosses the $x$-axis at $-5$ and $2$.
+    3. **Determine the region:** The inequality asks where $10 - 3x - x^2 \ge 0$ (where the curve is above or on the $x$-axis).
+       Looking at the downward curve, it is above the axis *between* the two roots.
+    4. **Final Answer:** $-5 \le x \le 2$.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Physics Context (Projectile Motion)">
+    A stone is thrown vertically upwards from the edge of a cliff. Its height, $h$ metres, above the ground at the base of the cliff after $t$ seconds is given by:
+    $$ h(t) = -5t^2 + 15t + 50 $$
+    
+    Calculate the exact time it takes for the stone to hit the ground at the base of the cliff.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    <Steps>
+    1. **Set up the equation:** The stone hits the ground when its height $h = 0$.
+       $$ -5t^2 + 15t + 50 = 0 $$
+    2. **Simplify the equation:** Divide everything by $-5$.
+       $$ t^2 - 3t - 10 = 0 $$
+    3. **Factorise:**
+       $$ (t - 5)(t + 2) = 0 $$
+    4. **Solve for $t$:**
+       $t = 5$ or $t = -2$.
+    5. **Apply context:** Time cannot be negative in this context, so we reject $t = -2$.
+       The stone hits the ground after **$5$ seconds**.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: The Always Real Proof (Classic Extension)">
+    Consider the quadratic equation $x^2 + (k+2)x + 2k = 0$, where $k \in \mathbb{R}$.
+    
+    Prove algebraically that this equation will always have real roots, regardless of the value of $k$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    <Steps>
+    1. **Set the condition:** To have real roots (either two distinct or two equal), the discriminant must be greater than or equal to zero ($\Delta \ge 0$). We need to prove this is always true.
+    2. **Set up the discriminant:** $a = 1$, $b = (k+2)$, $c = 2k$.
+       $$ \Delta = (k+2)^2 - 4(1)(2k) $$
+    3. **Expand and simplify:**
+       $$ \Delta = (k^2 + 4k + 4) - 8k $$
+       $$ \Delta = k^2 - 4k + 4 $$
+    4. **Factorise the result:** Notice that this is a perfect square trinomial.
+       $$ \Delta = (k - 2)^2 $$
+    5. **Conclude the proof:** Any real number squared is always positive or zero. 
+       Since $(k - 2)^2 \ge 0$ for all real values of $k$, then $\Delta \ge 0$ always. 
+       Therefore, the equation will always have real roots.
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving discriminant problems with unknown coefficients and proofs" />

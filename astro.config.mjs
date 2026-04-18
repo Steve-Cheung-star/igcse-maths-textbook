@@ -122,6 +122,19 @@ export default defineConfig({
           ],
         },
         {
+          label: 'IB Mathematics AA SL',
+          collapsed: true,
+          items: [
+            { label: '⭐ My Revision', link: '/ib-aisl/my-revision/' },
+            { label: 'Course Outline', link: '/ib-aisl/course-outline' },
+            { label: '1. Number & Algebra', autogenerate: { directory: 'ib-aasl/01-number-and-algebra' } },
+            { label: '2. Functions', autogenerate: { directory: 'ib-aasl/02-functions' } },
+            { label: '3. 3D Geometry & Trigonometry', autogenerate: { directory: 'ib-aasl/03-geometry-and-trigonometry' } },
+            { label: '4. Statistics & Probability', autogenerate: { directory: 'ib-aasl/04-statistics-and-probability' } },
+            { label: '5. Calculus', autogenerate: { directory: 'ib-aasl/05-calculus' } },
+          ],
+        },
+        {
           label: 'IB Mathematics AI SL',
           collapsed: true,
           items: [
@@ -132,7 +145,6 @@ export default defineConfig({
             { label: '3. 3D Geometry & Trigonometry', autogenerate: { directory: 'ib-aisl/03-geometry-and-trigonometry' } },
             { label: '4. Statistics & Probability', autogenerate: { directory: 'ib-aisl/04-statistics-and-probability' } },
             { label: '5. Calculus', autogenerate: { directory: 'ib-aisl/05-calculus' } },
-
           ],
         },
       ],

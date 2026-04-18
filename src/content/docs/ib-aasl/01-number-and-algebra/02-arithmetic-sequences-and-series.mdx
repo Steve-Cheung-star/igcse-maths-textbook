@@ -1,0 +1,432 @@
+---
+title: 1.2 Arithmetic Sequences and Series
+description: Master the algebra of arithmetic sequences and series, including the use of sigma notation, simultaneous equations, and contextual problem-solving for IB Maths AA SL.
+---
+
+Mathematics is fundamentally the study of patterns. When a pattern consists of a list of numbers progressing by a constant addition or subtraction, we call it an **arithmetic sequence**. When we add those numbers together, it becomes an **arithmetic series**. 
+
+In the AA SL course, you are expected to move beyond simply identifying the next number in a pattern. You will use rigorous algebra to find the $100^{\text{th}}$ term, sum the first $n$ terms using quadratic equations, decode $\Sigma$ (sigma) notation, and apply these concepts to model discrete real-world phenomena.
+
+---
+
+## Syllabus Alignment & Context
+
+<Aside type="note" title="IB Syllabus Guidance">
+  **From the IB AA SL Guide (Topic 1.2):**
+  * Use of the formulae for the $n^{\text{th}}$ term and the sum of the first $n$ terms of the sequence.
+  * Use of sigma notation for sums of arithmetic sequences.
+  * Applications to real-world contexts (e.g., simple interest, structured arrangements).
+  * **Note:** $n$ must always be a positive integer ($n \in \mathbb{Z}^+$), as it represents a position in the sequence.
+</Aside>
+
+<Aside type="note" title="Connections">
+  **Within Mathematics:** Relates to linear functions (SL 2.1) where the common difference $d$ is analogous to the gradient $m$. Setting up equations to find $u_1$ and $d$ links directly to solving simultaneous linear equations.
+  **Other Subjects:** Physics (constant velocity kinematics), Economics (simple interest and linear depreciation).
+</Aside>
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+  Is mathematics invented or discovered? Did mathematicians *invent* the formula for the sum of an arithmetic sequence, or did they *discover* an inherent truth about the universe? The famous story of a young Carl Friedrich Gauss summing integers from 1 to 100 in seconds suggests an underlying, elegant architecture just waiting to be noticed.
+</Aside>
+
+---
+
+## 1. Arithmetic Sequences (The $n^{\text{th}}$ Term)
+
+An arithmetic sequence is an ordered list of terms where the difference between any two consecutive terms is strictly constant. We call this the **common difference**, denoted by $d$. 
+
+If the sequence is increasing, $d$ is positive. If the sequence is decreasing, $d$ is negative.
+
+<FormulaBox title="1.2 The nth term of an arithmetic sequence">
+  $$
+  u_n=u_1+(n-1)d
+  $$
+</FormulaBox>
+
+Where:
+* $u_n$ is the value of the $n^{\text{th}}$ term.
+* $u_1$ is the first term.
+* $n$ is the position of the term ($1^{\text{st}}, 2^{\text{nd}}, 3^{\text{rd}}$, etc.).
+* $d$ is the common difference, found by calculating $u_n - u_{n-1}$ (e.g., $u_2 - u_1$).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 150" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Terms */}
+    <text x="100" y="80" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">u₁</text>
+    <text x="233" y="80" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">u₂</text>
+    <text x="366" y="80" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">u₃</text>
+    <text x="500" y="80" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">u₄</text>
+
+    {/* Values (Example) */}
+    <text x="100" y="110" font-size="16" fill="#64748b" text-anchor="middle" font-family="sans-serif">5</text>
+    <text x="233" y="110" font-size="16" fill="#64748b" text-anchor="middle" font-family="sans-serif">8</text>
+    <text x="366" y="110" font-size="16" fill="#64748b" text-anchor="middle" font-family="sans-serif">11</text>
+    <text x="500" y="110" font-size="16" fill="#64748b" text-anchor="middle" font-family="sans-serif">14</text>
+
+    {/* Jumps (Common Difference) */}
+    <path d="M 120 50 Q 166.5 20 213 50" fill="none" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="166.5" y="25" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">+ d</text>
+
+    <path d="M 253 50 Q 299.5 20 346 50" fill="none" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="299.5" y="25" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">+ d</text>
+
+    <path d="M 386 50 Q 433 20 480 50" fill="none" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
+    <text x="433" y="25" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">+ d</text>
+
+    {/* Arrow Definition */}
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+<SteveTip title="The Simultaneous Equations Strategy">
+  In Paper 1, a classic IB exam question will give you two non-consecutive terms (e.g., "The $3^{\text{rd}}$ term is 12 and the $8^{\text{th}}$ term is 37"). Do not try to guess the pattern. Immediately write down two equations using $u_n = u_1 + (n-1)d$ and solve them simultaneously to find $u_1$ and $d$.
+</SteveTip>
+
+---
+
+## 2. Arithmetic Series & Sigma Notation
+
+An arithmetic **series** is formed when you add the terms of an arithmetic sequence together. The sum of the first $n$ terms is denoted by $S_n$.
+
+<FormulaBox title="1.2 The sum of n terms of an arithmetic sequence">
+  $$
+  S_n=\frac{n}{2}(2u_1+(n-1)d) \quad ; \quad S_n=\frac{n}{2}(u_1+u_n)
+  $$
+</FormulaBox>
+
+You must strategically choose which formula to use:
+1. Use the first version when you know the number of terms ($n$), the first term ($u_1$), and the common difference ($d$).
+2. Use the second version when you know the number of terms ($n$), the first term ($u_1$), and the **last term** ($u_n$).
+
+### Decoding Sigma ($\Sigma$) Notation
+Sigma notation is a concise way to represent a series. The Greek letter $\Sigma$ stands for "sum". 
+
+$$
+\sum_{r=1}^{n} (ar + b)
+$$
+
+* **Bottom ($r=1$):** The starting value of $r$ (the index). Substitute this into the expression to find $u_1$.
+* **Top ($n$):** The final value of $r$. Substitute this into the expression to find the last term $u_n$.
+* **Expression ($ar+b$):** The rule for the sequence. Because it is linear, it guarantees the sequence is arithmetic.
+
+<Aside type="note" title="Key Formula to Memorise">
+  $$
+  \text{Number of terms in a sigma series} = (\text{Top number}) - (\text{Bottom number}) + 1
+  $$
+  *(Note: This is not provided in your exam formula booklet! If a series goes from $r=5$ to $r=12$, there are $12 - 5 + 1 = 8$ terms, not 7!)*
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Finding a Specific Term">
+    Consider the arithmetic sequence: $17, 13, 9, 5, \dots$
+    
+    a) Write down the value of the first term, $u_1$, and the common difference, $d$.
+    
+    b) Find the value of the $35^{\text{th}}$ term.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **Part a:**
+    The first term is clearly stated:
+    $$
+    u_1 = 17
+    $$
+    Calculate $d$ by subtracting the first term from the second:
+    $$
+    d = 13 - 17 = -4
+    $$
+    
+    **Part b:**
+    Use the $n^{\text{th}}$ term formula with $n = 35$:
+    $$
+    u_n = u_1 + (n-1)d
+    $$
+    $$
+    u_{35} = 17 + (35-1)(-4)
+    $$
+    $$
+    u_{35} = 17 + (34)(-4)
+    $$
+    $$
+    u_{35} = 17 - 136 = -119
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding specific terms and the common difference in arithmetic sequences" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Finding the Sum">
+    An arithmetic sequence has a first term of $12$ and a common difference of $6$. 
+    Find the sum of the first $20$ terms.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    We are given $u_1 = 12$, $d = 6$, and $n = 20$. 
+    Because we do not know the last term, we use the first sum formula:
+    
+    $$
+    S_n = \frac{n}{2}(2u_1 + (n-1)d)
+    $$
+    $$
+    S_{20} = \frac{20}{2}(2(12) + (20-1)(6))
+    $$
+    $$
+    S_{20} = 10(24 + (19)(6))
+    $$
+    $$
+    S_{20} = 10(24 + 114)
+    $$
+    $$
+    S_{20} = 10(138) = 1380
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Finding 'n' given the last term">
+    Consider the finite arithmetic sequence: $-5, -1, 3, 7, \dots, 103$.
+    
+    a) Find the number of terms in this sequence.
+    
+    b) Calculate the sum of the sequence.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **Part a:**
+    We know $u_1 = -5$, $d = 4$, and the $n^{\text{th}}$ term is $u_n = 103$. We must solve for $n$:
+    $$
+    103 = -5 + (n-1)(4)
+    $$
+    $$
+    108 = 4(n-1)
+    $$
+    $$
+    27 = n - 1
+    $$
+    $$
+    n = 28
+    $$
+    There are 28 terms in the sequence.
+
+    **Part b:**
+    Since we know the first and last terms, we can use the shorter sum formula:
+    $$
+    S_n = \frac{n}{2}(u_1 + u_n)
+    $$
+    $$
+    S_{28} = \frac{28}{2}(-5 + 103)
+    $$
+    $$
+    S_{28} = 14(98) = 1372
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Finding the number of terms 'n' and calculating the sum of a finite arithmetic series" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Sigma Notation">
+    Evaluate the following expression:
+    $$
+    \sum_{r=1}^{15} (3r - 2)
+    $$
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    First, establish the key parameters by substituting values for $r$.
+    
+    Find the first term ($u_1$) by letting $r = 1$:
+    $$
+    u_1 = 3(1) - 2 = 1
+    $$
+    
+    Find the last term ($u_{15}$) by letting $r = 15$:
+    $$
+    u_{15} = 3(15) - 2 = 43
+    $$
+    
+    The number of terms $n$ is $15 - 1 + 1 = 15$.
+    
+    Now, use the sum formula $S_n = \frac{n}{2}(u_1 + u_n)$:
+    $$
+    S_{15} = \frac{15}{2}(1 + 43)
+    $$
+    $$
+    S_{15} = 7.5 \times 44 = 330
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Simultaneous Equations (Paper 1 Classic)">
+    In an arithmetic sequence, the $4^{\text{th}}$ term is $21$ and the $10^{\text{th}}$ term is $51$.
+    
+    a) Find the first term ($u_1$) and the common difference ($d$).
+    
+    b) Find the value of the $20^{\text{th}}$ term.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **Part a:**
+    Set up two equations using the $n^{\text{th}}$ term formula:
+    $$
+    u_4 = u_1 + 3d = 21 \quad \text{--- (Equation 1)}
+    $$
+    $$
+    u_{10} = u_1 + 9d = 51 \quad \text{--- (Equation 2)}
+    $$
+    
+    Subtract Equation 1 from Equation 2 to eliminate $u_1$:
+    $$
+    (u_1 + 9d) - (u_1 + 3d) = 51 - 21
+    $$
+    $$
+    6d = 30
+    $$
+    $$
+    d = 5
+    $$
+    
+    Substitute $d = 5$ back into Equation 1:
+    $$
+    u_1 + 3(5) = 21
+    $$
+    $$
+    u_1 + 15 = 21
+    $$
+    $$
+    u_1 = 6
+    $$
+    
+    **Part b:**
+    Now find $u_{20}$:
+    $$
+    u_{20} = 6 + (20-1)(5)
+    $$
+    $$
+    u_{20} = 6 + 19(5) = 6 + 95 = 101
+    $$
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving simultaneous equations to find the first term and common difference" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Solving a Quadratic for 'n'">
+    An arithmetic sequence is given by $8, 11, 14, 17, \dots$
+    The sum of the first $n$ terms is $440$. Find the value of $n$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    Identify the parameters: $u_1 = 8$, $d = 3$, and $S_n = 440$.
+    Substitute these into the sum formula:
+    $$
+    440 = \frac{n}{2}(2(8) + (n-1)(3))
+    $$
+    
+    Multiply both sides by 2 to clear the fraction:
+    $$
+    880 = n(16 + 3n - 3)
+    $$
+    $$
+    880 = n(13 + 3n)
+    $$
+    
+    Expand and rearrange into a standard quadratic equation ($ax^2 + bx + c = 0$):
+    $$
+    3n^2 + 13n - 880 = 0
+    $$
+    
+    Solve using the quadratic formula or by factorising (or GDC if Paper 2). Factorising gives:
+    $$
+    (3n + 55)(n - 16) = 0
+    $$
+    
+    So, $n = -\frac{55}{3}$ or $n = 16$.
+    Since $n$ represents the number of terms, it must be a positive integer ($n \in \mathbb{Z}^+$). Therefore, we reject the negative fraction.
+    
+    Final Answer:
+    $$
+    n = 16
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Contextual Application">
+    A theatre has 25 rows of seats. There are $14$ seats in the first row, $16$ seats in the second row, $18$ seats in the third row, and so on, following an arithmetic sequence.
+    
+    a) Find the number of seats in the $25^{\text{th}}$ row.
+    
+    b) Calculate the total seating capacity of the theatre.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **Part a:**
+    This is an arithmetic sequence where $u_1 = 14$, $d = 2$, and we want to find $u_{25}$.
+    $$
+    u_{25} = 14 + (25-1)(2)
+    $$
+    $$
+    u_{25} = 14 + 24(2)
+    $$
+    $$
+    u_{25} = 14 + 48 = 62 \text{ seats}
+    $$
+    
+    **Part b:**
+    We need the sum of all 25 rows ($S_{25}$). We can use the formula with the first and last term:
+    $$
+    S_{25} = \frac{25}{2}(14 + 62)
+    $$
+    $$
+    S_{25} = 12.5(76) = 950 \text{ total seats}
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Algebraic Sequence (Show That)">
+    The first three terms of an arithmetic sequence are $x$, $2x-5$, and $x+2$.
+    
+    a) Find the value of $x$.
+    
+    b) Hence, write down the first three terms of the sequence and state the common difference.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **Part a:**
+    Because it is an arithmetic sequence, the difference between consecutive terms must be equal. Therefore:
+    $$
+    u_2 - u_1 = u_3 - u_2
+    $$
+    
+    Substitute the algebraic expressions:
+    $$
+    (2x - 5) - x = (x + 2) - (2x - 5)
+    $$
+    
+    Simplify both sides:
+    $$
+    x - 5 = -x + 7
+    $$
+    
+    Solve for $x$:
+    $$
+    2x = 12
+    $$
+    $$
+    x = 6
+    $$
+    
+    **Part b:**
+    Substitute $x = 6$ back into the expressions:
+    * $u_1 = 6$
+    * $u_2 = 2(6) - 5 = 12 - 5 = 7$
+    * $u_3 = 6 + 2 = 8$
+    
+    The first three terms are $6, 7, 8$. The common difference is $d = 1$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving algebraic expressions in arithmetic sequences and setting up quadratics for the sum" />

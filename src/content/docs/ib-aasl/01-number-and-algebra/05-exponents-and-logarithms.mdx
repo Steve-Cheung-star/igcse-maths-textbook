@@ -1,0 +1,469 @@
+---
+title: 1.5 Laws of Exponents and Logarithms
+description: Master the laws of integer exponents, understand the fundamental definition of logarithms, and explore the natural base e in IB Maths AA SL.
+---
+
+Exponentials are the mathematical language of rapid change. Whether a population of bacteria is doubling every hour, or a radioactive isotope is decaying over millennia, exponential functions model phenomena that accelerate over time. But what happens when we need to work backwards? If we know the final population, how do we solve for the time it took to get there? 
+
+This is where **logarithms** come in. Logarithms are the mathematical inverse of exponentials. In this section, you will solidify your understanding of integer exponent laws and learn how to translate seamlessly between exponential and logarithmic forms.
+
+---
+
+## 1. The Laws of Exponents (Indices)
+
+Before diving into logarithms, you must be absolutely fluent in the algebraic laws of exponents. In this topic, we focus on **integer exponents** (positive and negative whole numbers). 
+
+<Aside type="note" title="IB Syllabus Guidance">
+
+**From the IB AA SL Guide (Topic 1.5):**
+* Laws of exponents with integer exponents.
+* You must be able to confidently simplify expressions such as $5^3 \times 5^{-6} = 5^{-3}$ and $\frac{6^4}{6^3} = 6$.
+* You must understand how exponents apply to algebraic terms, such as $(2x)^4 = 16x^4$ and $2x^{-3} = \frac{2}{x^3}$.
+
+</Aside>
+
+While these rules are fundamental, they are surprisingly easy to mix up under exam conditions.
+
+1. **Multiplication:** $a^m \times a^n = a^{m+n}$
+2. **Division:** $\frac{a^m}{a^n} = a^{m-n}$
+3. **Power of a Power:** $(a^m)^n = a^{m \times n}$
+4. **Negative Exponents:** $a^{-n} = \frac{1}{a^n}$
+5. **Zero Exponent:** $a^0 = 1$ (for $a \neq 0$)
+
+<Aside type="caution" title="The Distribution Trap">
+
+A very common mistake in Paper 1 is failing to apply a power to *every* element inside a bracket. 
+Remember that $(2x)^4 \neq 2x^4$. The power of 4 applies to the coefficient as well: $(2x)^4 = 2^4 \times x^4 = 16x^4$. 
+Similarly, $2x^{-3}$ is **not** $\frac{1}{2x^3}$. Only the $x$ has the negative exponent, so $2x^{-3} = \frac{2}{x^3}$.
+
+</Aside>
+
+---
+
+## 2. Introduction to Logarithms
+
+A logarithm simply answers the question: *"To what power must we raise the base to get this number?"*
+
+If we know that $2^3 = 8$, we can express this exact same relationship using a logarithm: $\log_2(8) = 3$. This translates directly as "the power that 2 must be raised to in order to get 8 is 3".
+
+<FormulaBox title="1.5 Definition of a logarithm">
+
+$$
+a^x = b \iff \log_a b = x
+$$
+
+</FormulaBox>
+
+*(Note: For a logarithm to be defined, the base $a$ must be positive and $a \neq 1$, and the argument $b$ must be strictly greater than zero ($b > 0$). You cannot take the logarithm of zero or a negative number!)*
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg view-box="0 0 600 220" width="100%" style="max-width: 600px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <text x="300" y="30" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="sans-serif">The Snail Method: aˣ = b  ⟺  logₐ(b) = x</text>
+    
+    <text x="120" y="120" font-size="32" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">a</text>
+    <text x="145" y="95" font-size="22" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="monospace">x</text>
+    <text x="180" y="120" font-size="32" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">=</text>
+    <text x="220" y="120" font-size="32" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="monospace">b</text>
+
+    <path d="M 120 135 Q 170 190 220 135" fill="none" stroke="#64748b" stroke-width="2" marker-end="url(#loop-arrow)"/>
+    <path d="M 225 100 Q 190 50 150 80" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4 2" marker-end="url(#loop-arrow)"/>
+
+    <text x="310" y="115" font-size="30" fill="#cbd5e1" text-anchor="middle">|</text>
+
+    <text x="380" y="120" font-size="28" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">log</text>
+    <text x="420" y="135" font-size="22" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="monospace">a</text>
+    <text x="460" y="120" font-size="32" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="monospace">(b)</text>
+    <text x="510" y="120" font-size="32" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">=</text>
+    <text x="550" y="120" font-size="32" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="monospace">x</text>
+
+    <defs>
+      <marker id="loop-arrow" view-box="0 0 10 10" ref-x="5" ref-y="5" marker-width="5" marker-height="5" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+<Aside type="tip" title="'The Base Stays the Base'">
+When converting between exponential and logarithmic forms, remember the golden rule: **The base of the exponent is always the base of the logarithm.** If you have $5^2 = 25$, the base is $5$. When rewriting it as a log, the $5$ drops down to become the subscript: $\log_5(25) = 2$.
+</Aside>
+
+---
+
+## 3. Base 10, Base e, and Real-World Connections
+
+While a logarithm can have any positive number as its base, two bases are so universally important that they get their own special notation on your calculator.
+
+1. **Common Logarithm (Base 10):** Often written simply as $\log(x)$ or $\lg(x)$. If you see a log without a base, it is universally understood to be base 10. Our entire number system is base 10, making this highly useful for scaling vast numbers.
+2. **Natural Logarithm (Base $e$):** Written as $\ln(x)$. The number $e$ (Euler's number, $\approx 2.718...$) is a naturally occurring constant that perfectly models continuous growth.
+
+<FormulaBox title="1.5 The Natural Logarithm">
+
+$$
+\log_e x = \ln x
+$$
+
+</FormulaBox>
+
+<Aside type="note" title="Connections: Scaling the Universe">
+
+**Why do we need logarithms?** They compress massive ranges of data into manageable numbers.
+* **Chemistry:** The pH scale measures the acidity of a liquid. A difference of 1 on the pH scale actually represents a 10-fold difference in hydrogen ion concentration!
+* **Physics:** The Richter scale (earthquakes) and the decibel scale (sound volume) are both logarithmic. An earthquake of magnitude 7 is 10 times more powerful than a magnitude 6.
+
+</Aside>
+
+<Aside type="note" title="Theory of Knowledge (TOK)">
+
+**Is mathematics invented or discovered?** Consider the number $e$ or the concept of logarithms. The Scottish mathematician John Napier published the first table of logarithms in 1614 to simplify complex astronomical calculations. Did Napier *invent* logarithms as a computational tool, or did he simply *discover* an underlying mathematical relationship that already existed in nature independently of human thought?
+
+</Aside>
+
+<SteveTip title="Numerical Evaluation using Technology (Paper 2)">
+
+The syllabus explicitly requires you to be able to evaluate logarithms numerically using your GDC. On most IB-approved calculators, there is a dedicated `log_a(b)` template. If your calculator only has `log` (base 10) and `ln` (base $e$) buttons, you can evaluate any logarithm using the change of base formula (covered in 1.7), or simply rely on the solver app. Always remember to check if your final answer makes logical sense!
+
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Simplifying Integer Exponents">
+
+    Simplify the following expressions completely, ensuring no negative indices remain in your final answer:
+    
+    **a)** $4^5 \times 4^{-3}$
+    
+    **b)** $\dfrac{y^2 \times y^5}{y^{10}}$
+    
+    **c)** $(3x^2)^{-2}$
+
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+
+    **Part a:** Use the multiplication law (add the exponents).
+
+    $$
+    4^{5 + (-3)} = 4^2 = 16
+    $$
+
+    **Part b:** Simplify the numerator first, then use the division law (subtract the exponents).
+
+    $$
+    \frac{y^7}{y^{10}} = y^{7 - 10} = y^{-3}
+    $$
+
+    To remove the negative index:
+
+    $$
+    = \frac{1}{y^3}
+    $$
+
+    **Part c:** Apply the power of $-2$ to **both** the coefficient and the variable.
+
+    $$
+    3^{-2} \times (x^2)^{-2}
+    $$
+
+    $$
+    \frac{1}{3^2} \times x^{-4}
+    $$
+
+    $$
+    \frac{1}{9} \times \frac{1}{x^4} = \frac{1}{9x^4}
+    $$
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Simplifying algebraic expressions using the laws of integer exponents" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Solving Exponential Equations with Common Bases">
+
+    Find the value of $x$ in the following equations:
+    
+    **a)** $2^{x-3} = 32$
+    
+    **b)** $9^x = \dfrac{1}{27}$
+
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+
+    **Part a:** Express $32$ as a power of the base $2$.
+
+    $$
+    2^{x-3} = 2^5
+    $$
+
+    Since the bases are identical, equate the exponents:
+
+    $$
+    x - 3 = 5
+    $$
+
+    $$
+    x = 8
+    $$
+
+    **Part b:** Express both $9$ and $27$ as powers of a common base, which is $3$.
+
+    $$
+    (3^2)^x = \frac{1}{3^3}
+    $$
+
+    Apply the exponent laws:
+
+    $$
+    3^{2x} = 3^{-3}
+    $$
+
+    Equate the exponents:
+
+    $$
+    2x = -3
+    $$
+
+    $$
+    x = -\frac{3}{2}
+    $$
+
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Converting Forms">
+
+    Write the following exponential equations in logarithmic form:
+    
+    **a)** $5^3 = 125$
+    
+    **b)** $e^x = 14$
+
+    Write the following logarithmic equations in exponential form:
+    
+    **c)** $\log_2(64) = 6$
+    
+    **d)** $\ln(y) = 4$
+
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+
+    **Part a:** The base is $5$.
+    
+    $$
+    \log_5(125) = 3
+    $$
+
+    **Part b:** The base is $e$, so we use the natural logarithm ($\ln$).
+    
+    $$
+    \ln(14) = x
+    $$
+
+    **Part c:** The base is $2$.
+    
+    $$
+    2^6 = 64
+    $$
+
+    **Part d:** Remember that $\ln$ means $\log_e$. The base is $e$.
+    
+    $$
+    e^4 = y
+    $$
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Converting equations between exponential and logarithmic forms" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: Evaluating Logarithms by Hand (Paper 1)">
+
+    Find the exact value of the following without using a calculator:
+    
+    **a)** $\log_3(81)$
+    
+    **b)** $\log_{10}(0.001)$
+    
+    **c)** $\log_7(1)$
+
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+
+    To evaluate a log by hand, ask yourself: *"The base to what power gives the bracketed number?"* Let the log equal $x$ and convert to exponential form.
+
+    **Part a:** Let $\log_3(81) = x$.
+    
+    $$
+    3^x = 81
+    $$
+
+    Since $3^4 = 81$, the answer is **$4$**.
+
+    **Part b:** Let $\log_{10}(0.001) = x$.
+    
+    $$
+    10^x = \frac{1}{1000}
+    $$
+
+    $$
+    10^x = 10^{-3}
+    $$
+
+    The answer is **$-3$**.
+
+    **Part c:** Let $\log_7(1) = x$.
+    
+    $$
+    7^x = 1
+    $$
+
+    Any non-zero number to the power of $0$ is $1$. Therefore, the answer is **$0$**.
+
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: The Inverse Nature of e and ln">
+
+    Simplify the following expressions:
+    
+    **a)** $\ln(e^5)$
+    
+    **b)** $e^{\ln(12)}$
+
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+
+    Because $e^x$ and $\ln(x)$ are exact inverse functions, they effectively "cancel" each other out when composed together.
+
+    **Part a:** $\ln(e^5)$ asks "To what power must I raise $e$ to get $e^5$?" 
+    The answer is simply **$5$**.
+
+    **Part b:** Raising $e$ to the power of the natural logarithm of $12$ directly undoes the operation.
+    The answer is simply **$12$**.
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Evaluating exact logarithmic expressions manually" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Numerical Evaluation (Paper 2)">
+
+    Use your Graphic Display Calculator to find the value of $x$ to $3$ significant figures.
+    
+    **a)** $\log_4(50) = x$
+    
+    **b)** $e^{2x} = 15$
+
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+
+    **Part a:** Use the $\log_a(b)$ template on your GDC.
+
+    $$
+    x = \log_4(50) \approx 2.8219...
+    $$
+
+    To $3$ s.f., **$x = 2.82$**.
+    *(Logical check: $4^2 = 16$ and $4^3 = 64$. Since $50$ is between $16$ and $64$, an exponent of $2.82$ makes perfect sense!)*
+
+    **Part b:** Convert to logarithmic form first.
+
+    $$
+    2x = \ln(15)
+    $$
+
+    $$
+    x = \frac{\ln(15)}{2}
+    $$
+
+    Type this directly into the GDC:
+
+    $$
+    x \approx 1.3540...
+    $$
+
+    To $3$ s.f., **$x = 1.35$**.
+
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Contextual Application (Richter Scale)">
+
+    The magnitude ($M$) of an earthquake on the Richter scale is defined by the formula $M = \log_{10} \left( \frac{I}{I_0} \right)$, where $I$ is the intensity of the earthquake and $I_0$ is a standard baseline intensity.
+    
+    An earthquake in Japan had a magnitude of $8.0$, and an earthquake in California had a magnitude of $6.0$. 
+    
+    Show that the Japanese earthquake was exactly $100$ times more intense than the Californian earthquake.
+
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+
+    <Steps>
+    1. **Convert both equations to exponential form:**
+       For Japan: 
+       $$ 8.0 = \log_{10} \left( \frac{I_J}{I_0} \right) \implies 10^8 = \frac{I_J}{I_0} \implies I_J = 10^8 \times I_0 $$
+
+       For California: 
+       $$ 6.0 = \log_{10} \left( \frac{I_C}{I_0} \right) \implies 10^6 = \frac{I_C}{I_0} \implies I_C = 10^6 \times I_0 $$
+
+    2. **Compare the intensities by finding their ratio:**
+       $$ \frac{I_J}{I_C} = \frac{10^8 \times I_0}{10^6 \times I_0} $$
+
+    3. **Simplify using exponent laws:**
+       The $I_0$ terms cancel out.
+       $$ \frac{10^8}{10^6} = 10^{8-6} = 10^2 = 100 $$
+
+       Therefore, $I_J = 100 \times I_C$, showing it is exactly $100$ times more intense.
+    </Steps>
+
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 8: Algebraic Logarithms (Show That)">
+
+    Given that $p = \log_a(x)$ and $q = \log_a(y)$, express $a^{2p - q}$ entirely in terms of $x$ and $y$.
+
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+
+    First, convert the given logarithmic equations into exponential form:
+    
+    $$
+    p = \log_a(x) \implies a^p = x
+    $$
+
+    $$
+    q = \log_a(y) \implies a^q = y
+    $$
+
+    Now, take the target expression and break it apart using the laws of exponents in reverse:
+
+    $$
+    a^{2p - q} = \frac{a^{2p}}{a^q}
+    $$
+
+    Rewrite the numerator using the power of a power law:
+
+    $$
+    \frac{(a^p)^2}{a^q}
+    $$
+
+    Finally, substitute $x$ and $y$ into the expression:
+
+    $$
+    = \frac{x^2}{y}
+    $$
+
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving word problems and algebraic identities using exponents and logarithms" />
