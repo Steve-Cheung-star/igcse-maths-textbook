@@ -6,180 +6,58 @@ import 'katex/dist/katex.min.css';
 // 1. PULL ALL CSS TO THE TOP SO IT NEVER GETS DELETED
 const STYLES = `
   /* BASE STYLES & RESPONSIVE CENTERING */
-  .flashcard-container { 
-    width: 100%; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    justify-content: center;
-    box-sizing: border-box;
-    overflow-x: hidden; 
-    padding: 1rem 0; 
-  }
-  
-  /* Bulletproof constraint: Safe margin on mobile, max 640px on desktop */
-  .fc-header-container, 
-  .progress-track, 
-  .card-scene, 
-  .button-row {
-    width: min(calc(100% - 1rem), 640px);
-    box-sizing: border-box;
-  }
-  
-  .fc-header { 
-    display: flex; 
-    justify-content: space-between; 
-    margin-bottom: 0.4rem; 
-    align-items: center; 
-  }
-
-  .fc-header-container {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 0.5rem;
-    position: relative; /* For the dropdown menu */
-  }
-  
-  /* CUSTOM DECK BUILDER MENU */
+  .flashcard-container { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: border-box; overflow-x: hidden; padding: 1rem 0; }
+  .fc-header-container, .progress-track, .card-scene, .button-row { width: min(calc(100% - 1rem), 640px); box-sizing: border-box; }
+  .fc-header { display: flex; justify-content: space-between; margin-bottom: 0.4rem; align-items: center; }
+  .fc-header-container { display: flex; flex-direction: column; margin-bottom: 0.5rem; position: relative; }
   .filter-btn { background: transparent; border: 1px solid var(--sl-color-hairline); color: var(--sl-color-text); padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; cursor: pointer; font-weight: bold; }
   .filter-btn:hover { background: rgba(128,128,128,0.1); }
-  .filter-panel { 
-    position: absolute; top: 2.5rem; left: 0; right: 0; 
-    background: var(--sl-color-bg); border: 1px solid var(--sl-color-hairline); 
-    border-radius: 8px; padding: 1rem; z-index: 100; 
-    display: flex; flex-wrap: wrap; gap: 0.5rem; 
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
-    max-height: 300px; overflow-y: auto; 
-  }
+  .filter-panel { position: absolute; top: 2.5rem; left: 0; right: 0; background: var(--sl-color-bg); border: 1px solid var(--sl-color-hairline); border-radius: 8px; padding: 1rem; z-index: 100; display: flex; flex-wrap: wrap; gap: 0.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.5); max-height: 300px; overflow-y: auto; }
   .topic-pill { padding: 6px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold; cursor: pointer; border: 1px solid var(--sl-color-hairline); background: transparent; color: var(--sl-color-text); transition: all 0.2s; }
   .topic-pill.active { background: #f97316; color: white; border-color: #f97316; }
-
   .counter { font-size: 0.8rem; font-weight: bold; opacity: 0.5; }
-  
-  .progress-track { 
-    height: 4px; 
-    background: rgba(128,128,128,0.2); 
-    border-radius: 10px; 
-    margin-bottom: 1rem; 
-    overflow: hidden; 
-  }
+  .progress-track { height: 4px; background: rgba(128,128,128,0.2); border-radius: 10px; margin-bottom: 1rem; overflow: hidden; }
   .progress-bar { height: 100%; background: #f97316; transition: width 0.4s ease; }
-  
-  /* CARD SIZING */
-  .card-scene { 
-    height: 420px; 
-    perspective: 1200px; 
-    cursor: pointer; 
-    margin: 0 auto; 
-    touch-action: pan-y; 
-  }
-  
+  .card-scene { height: 420px; perspective: 1200px; cursor: pointer; margin: 0 auto; touch-action: pan-y; }
   .card-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; }
   .is-flipped { transform: rotateY(180deg); }
   .face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 2rem; border-radius: 1.5rem; border: 2.5px solid transparent; overflow: hidden; box-sizing: border-box; }
   .face-front { transform: rotateY(0deg) translateZ(1px); z-index: 2; }
   .face-back { transform: rotateY(180deg) translateZ(1px); }
-  
-  /* Themes */
   .light-theme .face { background: #ffffff; color: #000000; }
   .dark-theme .face { background: #23262f; color: #ffffff; }
   .sepia-mode .face { background: #fdf6e3; color: #5b4636; }
-  
-  /* Dyslexic Font Toggle for Cards */
-  .dyslexic-mode .content,
-  .dyslexic-mode .face {
-    font-family: 'OpenDyslexic', 'Lexend', sans-serif !important;
-  }
-  .dyslexic-mode .content {
-    letter-spacing: 0.05em;
-    word-spacing: 0.1em;
-  }
-  
-  .content { 
-    font-size: 1.25rem; 
-    text-align: center; 
-    line-height: 1.5; 
-    color: inherit; 
-    z-index: 10; 
-    word-wrap: break-word; 
-    overflow-wrap: break-word; 
-    width: 100%; 
-  }
+  .dyslexic-mode .content, .dyslexic-mode .face { font-family: 'OpenDyslexic', 'Lexend', sans-serif !important; }
+  .dyslexic-mode .content { letter-spacing: 0.05em; word-spacing: 0.1em; }
+  .content { font-size: 1.25rem; text-align: center; line-height: 1.5; color: inherit; z-index: 10; word-wrap: break-word; overflow-wrap: break-word; width: 100%; }
   .content b { font-weight: 800; }
   .type-badge { position: absolute; top: 1.5rem; font-size: 0.7rem; font-weight: 900; text-transform: uppercase; color: #f97316; letter-spacing: 0.1em; }
   .lesson-link { margin-top: 1.5rem; font-size: 0.8rem; color: #f97316; text-decoration: none; font-weight: 800; padding: 6px 14px; border: 1.5px solid #f97316; border-radius: 20px; z-index: 10; transition: all 0.2s; }
   .lesson-link:hover { background: #f97316; color: white; }
   .footer-hint { position: absolute; bottom: 1.5rem; font-size: 0.75rem; opacity: 0.5; }
-  
-  .button-row { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 0.75rem; 
-    margin-top: 1.5rem; 
-  }
+  .button-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 1.5rem; }
   .btn { padding: 0.9rem; border-radius: 1rem; border: none; color: white; font-weight: 800; cursor: pointer; transition: transform 0.1s; text-transform: uppercase; font-size: 0.8rem; }
   .btn:active { transform: scale(0.95); }
   .btn-red { background: #ef4444; } .btn-yellow { background: #f59e0b; } .btn-green { background: #10b981; }
-
-  /* ==========================================
-     LATEX FIXES
-     ========================================== */
   .katex { font-size: 1.15em !important; }
   .katex-display { margin: 1em 0; overflow-x: auto; overflow-y: hidden; padding: 5px 0; }
-
-  /* ==========================================
-     HOLO-FOIL TRADING CARD CSS
-     ========================================== */
   .results-scene { height: auto; min-height: 480px; cursor: default; }
   .tc-card { padding: 0 !important; transform: none !important; position: relative; overflow: hidden; display: flex; flex-direction: column; }
-  
-  @keyframes holoShimmer {
-    0% { background-position: 0% 0%; }
-    50% { background-position: 100% 100%; }
-    100% { background-position: 0% 0%; }
-  }
-  .tc-holo-overlay {
-    position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.35;
-    background: linear-gradient(125deg, rgba(255,0,0,0.4) 0%, rgba(255,154,0,0.4) 10%, rgba(208,222,33,0.4) 20%, rgba(79,220,74,0.4) 30%, rgba(63,218,216,0.4) 40%, rgba(47,201,226,0.4) 50%, rgba(28,127,238,0.4) 60%, rgba(95,21,242,0.4) 70%, rgba(186,12,248,0.4) 80%, rgba(251,7,217,0.4) 90%, rgba(255,0,0,0.4) 100%);
-    background-size: 300% 300%;
-    animation: holoShimmer 6s linear infinite;
-    mix-blend-mode: hard-light;
-  }
-
-  .tc-inner-border {
-    flex: 1; width: calc(100% - 24px); margin: 12px; padding: 12px;
-    border: 4px solid var(--rank-color); border-radius: 12px;
-    background: var(--sl-color-bg); 
-    z-index: 2; display: flex; flex-direction: column;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
-  }
-
+  @keyframes holoShimmer { 0% { background-position: 0% 0%; } 50% { background-position: 100% 100%; } 100% { background-position: 0% 0%; } }
+  .tc-holo-overlay { position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.35; background: linear-gradient(125deg, rgba(255,0,0,0.4) 0%, rgba(255,154,0,0.4) 10%, rgba(208,222,33,0.4) 20%, rgba(79,220,74,0.4) 30%, rgba(63,218,216,0.4) 40%, rgba(47,201,226,0.4) 50%, rgba(28,127,238,0.4) 60%, rgba(95,21,242,0.4) 70%, rgba(186,12,248,0.4) 80%, rgba(251,7,217,0.4) 90%, rgba(255,0,0,0.4) 100%); background-size: 300% 300%; animation: holoShimmer 6s linear infinite; mix-blend-mode: hard-light; }
+  .tc-inner-border { flex: 1; width: calc(100% - 24px); margin: 12px; padding: 12px; border: 4px solid var(--rank-color); border-radius: 12px; background: var(--sl-color-bg); z-index: 2; display: flex; flex-direction: column; box-shadow: inset 0 0 10px rgba(0,0,0,0.1); }
   .tc-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 8px; border-bottom: 2px solid var(--rank-color); margin-bottom: 12px; }
   .tc-name { font-size: 1.1rem; font-weight: 900; margin: 0; text-transform: uppercase; letter-spacing: 0.05em; color: var(--sl-color-text); line-height: 1.2; }
   .tc-hp { font-size: 1rem; font-weight: 900; color: #ef4444; }
-
-  .tc-art-window {
-    background: radial-gradient(circle at center, rgba(128,128,128,0.1) 0%, rgba(128,128,128,0.3) 100%);
-    height: 160px; border-radius: 8px; margin-bottom: 12px;
-    border: 2px solid rgba(128,128,128,0.4);
-    display: flex; justify-content: center; align-items: center;
-    box-shadow: inset 0 4px 15px rgba(0,0,0,0.15);
-    position: relative; overflow: hidden;
-  }
-  .tc-rank-badge {
-    font-size: 5rem; font-weight: 900; font-family: Impact, sans-serif; font-style: italic;
-    color: var(--rank-color); text-shadow: 3px 3px 0 rgba(0,0,0,0.1);
-    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  }
+  .tc-art-window { background: radial-gradient(circle at center, rgba(128,128,128,0.1) 0%, rgba(128,128,128,0.3) 100%); height: 160px; border-radius: 8px; margin-bottom: 12px; border: 2px solid rgba(128,128,128,0.4); display: flex; justify-content: center; align-items: center; box-shadow: inset 0 4px 15px rgba(0,0,0,0.15); position: relative; overflow: hidden; }
+  .tc-rank-badge { font-size: 5rem; font-weight: 900; font-family: Impact, sans-serif; font-style: italic; color: var(--rank-color); text-shadow: 3px 3px 0 rgba(0,0,0,0.1); animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
   @keyframes popIn { 0% { transform: scale(0.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
-
   .tc-stats-box { flex: 1; display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
   .tc-stat-row { display: flex; align-items: center; padding: 4px 0; border-bottom: 1px solid rgba(128,128,128,0.2); }
   .tc-stat-cost { width: 24px; font-size: 1.1rem; opacity: 0.7; }
   .tc-stat-name { flex: 1; font-weight: 700; font-size: 0.9rem; text-transform: uppercase; color: var(--sl-color-text); }
   .tc-stat-dmg { font-weight: 900; font-size: 1.2rem; }
   .tc-flavor-text { font-style: italic; font-size: 0.7rem; opacity: 0.6; text-align: center; margin-top: auto; padding-top: 8px; }
-
   .tc-actions { display: flex; gap: 8px; width: 100%; }
   .tc-btn { flex: 1; padding: 10px; border-radius: 8px; font-weight: 800; font-size: 0.85rem; text-align: center; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box; }
   .tc-btn-primary { background: var(--rank-color); color: white; border: none; }
@@ -188,15 +66,18 @@ const STYLES = `
   .tc-btn-ghost:hover { background: rgba(128,128,128,0.1); transform: translateY(-2px); }
 `;
 
-export default function FlashcardEngine({ cards, course }) {
+export default function FlashcardEngine({ course }) {
+  // 1. SSR Guard State
+  const [isMounted, setIsMounted] = useState(false);
+  
+  // 2. The cards state (React will populate this via fetch)
+  const [cards, setCards] = useState([]); 
+  
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [activeCards, setActiveCards] = useState([]);
-
-  // NEW: Multi-select array instead of single string
   const [selectedTopics, setSelectedTopics] = useState(['All']);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-
   const [isCramMode, setIsCramMode] = useState(false);
   const [ratings, setRatings] = useState({});
   const [isReady, setIsReady] = useState(false);
@@ -205,7 +86,39 @@ export default function FlashcardEngine({ cards, course }) {
   const [isDyslexic, setIsDyslexic] = useState(false);
   const cardRef = useRef(null);
 
+  // 1. NEW FETCH EFFECT:
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const fetchCards = async () => {
+      try {
+        const res = await fetch(`/data/flashcards/${course}.json`);
+        if (!res.ok) throw new Error("Could not load deck");
+        const rawData = await res.json();
+
+        const baseUrl = window.location.origin;
+        const processedCards = rawData.map(card => ({
+          ...card,
+          lesson_url: card.lesson_url?.startsWith('/') ? `${baseUrl}${card.lesson_url}` : card.lesson_url
+        }));
+
+        setCards(processedCards);
+        setIsMounted(true);
+      } catch (err) {
+        console.error(err);
+        // Fallback for ib-aisl if file doesn't exist yet
+        setCards([]);
+        setIsMounted(true);
+      }
+    };
+
+    fetchCards();
+  }, [course]);
+
+  // NEW: Bypass heavy mapping during server-side render
   const topics = useMemo(() => {
+    if (typeof window === 'undefined' || cards.length === 0) return ['All'];
+
     const rawTopics = ['All', ...new Set(cards.map(c => c.topic))];
     const syllabusOrder = [
       "All", "Prior Learning", "Surds", "Algebra I", "Algebra II", "Lines, Angles & Polygons",
@@ -223,23 +136,26 @@ export default function FlashcardEngine({ cards, course }) {
     });
   }, [cards]);
 
-  // Handle Multi-Select Toggles
   const toggleTopic = (topic) => {
     if (topic === 'All') {
       setSelectedTopics(['All']);
     } else {
-      let newTopics = selectedTopics.filter(t => t !== 'All'); // Remove 'All' if selecting specifics
+      let newTopics = selectedTopics.filter(t => t !== 'All');
       if (newTopics.includes(topic)) {
-        newTopics = newTopics.filter(t => t !== topic); // Uncheck
-        if (newTopics.length === 0) newTopics = ['All']; // Default back to All if empty
+        newTopics = newTopics.filter(t => t !== topic);
+        if (newTopics.length === 0) newTopics = ['All'];
       } else {
-        newTopics = [...newTopics, topic]; // Check
+        newTopics = [...newTopics, topic];
       }
       setSelectedTopics(newTopics);
     }
   };
 
   useEffect(() => {
+    // NEW: Stop execution if we are not in the browser
+    if (typeof window === 'undefined') return;
+    setIsMounted(true);
+
     const saved = localStorage.getItem(`progress_${course}`);
     const currentRatings = saved ? JSON.parse(saved) : {};
     setRatings(currentRatings);
@@ -257,22 +173,18 @@ export default function FlashcardEngine({ cards, course }) {
     const observer = new MutationObserver(updateTheme);
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
 
-    // 1. Filter by Selected Topics (Array)
     const isGlobalReview = selectedTopics.includes('All') && selectedTopics.length === 1;
     let filtered = isGlobalReview ? [...cards] : cards.filter(c => selectedTopics.includes(c.topic));
 
-    // 2. Filter by SRS due date OR Cram Mode OR "Unlocked" status
     const now = Date.now();
     filtered = filtered.filter(card => {
       const cardData = currentRatings[card.id];
       const hasBeenSeen = !!cardData;
 
-      // CRAM MODE
       if (isCramMode) {
         return isGlobalReview ? hasBeenSeen : true;
       }
 
-      // STANDARD MODE
       if (isGlobalReview) {
         return hasBeenSeen && (!cardData.nextReview || cardData.nextReview <= now);
       } else {
@@ -280,7 +192,6 @@ export default function FlashcardEngine({ cards, course }) {
       }
     });
 
-    // 3. Shuffle
     for (let i = filtered.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [filtered[i], filtered[j]] = [filtered[j], filtered[i]];
@@ -298,7 +209,23 @@ export default function FlashcardEngine({ cards, course }) {
       clearTimeout(timer);
       observer.disconnect();
     };
-  }, [course, selectedTopics, cards, isCramMode]); // Using selectedTopics array now
+  }, [course, selectedTopics, cards, isCramMode]);
+
+  // NEW: Early return for Server-Side Rendering
+  if (!isMounted) {
+    return (
+      <>
+        <style dangerouslySetInnerHTML={{ __html: STYLES }} />
+        <div className="flashcard-container dark-theme">
+          <div className="card-scene">
+            <div className="face face-front">
+              <p className="footer-hint">Loading Deck...</p>
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
 
   const currentCard = activeCards[currentIndex];
   const isFinished = activeCards.length > 0 && currentIndex >= activeCards.length;
@@ -322,7 +249,6 @@ export default function FlashcardEngine({ cards, course }) {
   const handleRate = (e, status) => {
     e.stopPropagation();
     const now = Date.now();
-
     const cardData = ratings[currentCard.id] || { box: 0 };
     let nextBox = typeof cardData.box === 'number' ? cardData.box : 0;
     let intervalDays = 0;
@@ -356,14 +282,12 @@ export default function FlashcardEngine({ cards, course }) {
     }, 250);
   };
 
-  // UI helper for deck name
   const deckName = selectedTopics.includes('All')
     ? 'All'
     : selectedTopics.length > 2
       ? 'Custom Deck'
       : selectedTopics.join(' & ');
 
-  // ALL CAUGHT UP SCREEN
   const isGlobalReview = selectedTopics.includes('All') && selectedTopics.length === 1;
   const totalCardsInSelection = isGlobalReview ? cards.length : cards.filter(c => selectedTopics.includes(c.topic)).length;
 
@@ -387,15 +311,10 @@ export default function FlashcardEngine({ cards, course }) {
               </button>
             </div>
 
-            {/* The Dropdown Panel */}
             {isFilterOpen && (
               <div className="filter-panel">
                 {topics.map(t => (
-                  <button
-                    key={t}
-                    className={`topic-pill ${selectedTopics.includes(t) ? 'active' : ''}`}
-                    onClick={() => toggleTopic(t)}
-                  >
+                  <button key={t} className={`topic-pill ${selectedTopics.includes(t) ? 'active' : ''}`} onClick={() => toggleTopic(t)}>
                     {t}
                   </button>
                 ))}
@@ -430,14 +349,12 @@ export default function FlashcardEngine({ cards, course }) {
     );
   }
 
-  // Trading Card Results Screen
   if (isFinished) {
     const syllabusPath = course ? `/${course}/course-outline` : '/';
     const total = activeCards.length;
     const easyCount = activeCards.filter(c => getStatus(c.id) === 'green').length;
     const hardCount = activeCards.filter(c => getStatus(c.id) === 'yellow').length;
     const againCount = activeCards.filter(c => getStatus(c.id) === 'red').length;
-
     const rawScore = total > 0 ? Math.round(((easyCount * 1) + (hardCount * 0.5)) / total * 100) : 0;
 
     let rank = 'C'; let rankColor = '#ef4444'; let isHolo = false;
@@ -476,9 +393,7 @@ export default function FlashcardEngine({ cards, course }) {
                     <span className="tc-stat-name">Missed Marks</span>
                     <span className="tc-stat-dmg">{againCount}</span>
                   </div>
-                  <p className="tc-flavor-text">
-                    "Mastery is not a destination, but a continuous journey of refinement."
-                  </p>
+                  <p className="tc-flavor-text">"Mastery is not a destination, but a continuous journey of refinement."</p>
                 </div>
                 <div className="tc-actions">
                   <button onClick={() => setCurrentIndex(0)} className="tc-btn tc-btn-ghost">Replay Deck</button>
@@ -514,11 +429,7 @@ export default function FlashcardEngine({ cards, course }) {
 
         <div className="fc-header-container">
           <div className="fc-header">
-            <button
-              className="filter-btn"
-              onClick={() => setIsFilterOpen(!isFilterOpen)}
-              style={{ display: 'flex', alignItems: 'center', gap: '6px' }}
-            >
+            <button className="filter-btn" onClick={() => setIsFilterOpen(!isFilterOpen)} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect x="4" y="6" width="12" height="16" rx="2" />
                 <path d="M8 2h10a2 2 0 0 1 2 2v14" />
@@ -531,11 +442,7 @@ export default function FlashcardEngine({ cards, course }) {
           {isFilterOpen && (
             <div className="filter-panel">
               {topics.map(t => (
-                <button
-                  key={t}
-                  className={`topic-pill ${selectedTopics.includes(t) ? 'active' : ''}`}
-                  onClick={() => toggleTopic(t)}
-                >
+                <button key={t} className={`topic-pill ${selectedTopics.includes(t) ? 'active' : ''}`} onClick={() => toggleTopic(t)}>
                   {t}
                 </button>
               ))}
@@ -543,12 +450,7 @@ export default function FlashcardEngine({ cards, course }) {
           )}
 
           <label style={{ fontSize: '0.75rem', opacity: 0.7, display: 'flex', alignItems: 'center', cursor: 'pointer', userSelect: 'none', marginTop: '0.2rem' }}>
-            <input
-              type="checkbox"
-              checked={isCramMode}
-              onChange={(e) => setIsCramMode(e.target.checked)}
-              style={{ marginRight: '0.4rem', accentColor: '#f97316' }}
-            />
+            <input type="checkbox" checked={isCramMode} onChange={(e) => setIsCramMode(e.target.checked)} style={{ marginRight: '0.4rem', accentColor: '#f97316' }} />
             Cram Mode (Ignore due dates)
           </label>
         </div>
@@ -558,11 +460,7 @@ export default function FlashcardEngine({ cards, course }) {
         </div>
 
         <div className="card-scene" onClick={() => { setIsFlipped(!isFlipped); setIsFilterOpen(false); }}>
-          <div
-            ref={cardRef}
-            className={`card-inner ${isFlipped ? 'is-flipped' : ''}`}
-            style={{ transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)' }}
-          >
+          <div ref={cardRef} className={`card-inner ${isFlipped ? 'is-flipped' : ''}`} style={{ transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)' }}>
             <div className="face face-front">
               <span className="type-badge">{currentCard.topic}</span>
               <div className="content" dangerouslySetInnerHTML={{ __html: renderContent(currentCard.front) }} />
@@ -575,9 +473,7 @@ export default function FlashcardEngine({ cards, course }) {
                 <div className="math-block" dangerouslySetInnerHTML={{ __html: katex.renderToString(currentCard.formula, { displayMode: true }) }} />
               )}
               {currentCard.lesson_url && (
-                <a href={currentCard.lesson_url} className="lesson-link" onClick={(e) => e.stopPropagation()}>
-                  Review Lesson →
-                </a>
+                <a href={currentCard.lesson_url} className="lesson-link" onClick={(e) => e.stopPropagation()}>Review Lesson →</a>
               )}
               <p className="footer-hint">Rate to continue</p>
             </div>

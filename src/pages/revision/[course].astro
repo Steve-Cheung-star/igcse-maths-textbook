@@ -3,21 +3,12 @@
 import RevisionLayout from "../../layouts/RevisionLayout.astro";
 import FlashcardEngine from "../../components/FlashcardEngine.jsx";
 
-// 1. Static import for the file that DOES exist
-import igcseData from "../../data/flashcards/igcse.json";
-
 export const prerender = true;
 export async function getStaticPaths() {
   return [{ params: { course: "igcse" } }, { params: { course: "ib-aisl" } }];
 }
 
 const { course } = Astro.params;
-
-// 2. Map the data. We use a placeholder empty array for ib-aisl.
-const dataMap = {
-  igcse: igcseData,
-  "ib-aisl": [] // Placeholder until you create the file
-};
 
 const courseMeta = {
   igcse: { name: "IGCSE Maths", color: "#f97316", icon: "🎓" },
@@ -29,34 +20,13 @@ const current = courseMeta[course] || {
   color: "#f97316",
   icon: "📚",
 };
-
-let allCards = [];
-const selectedData = dataMap[course];
-
-if (selectedData) {
-  const isDev = import.meta.env.DEV;
-  const baseUrl = isDev 
-    ? "http://localhost:4321" 
-    : "https://igcse-maths-textbook.vercel.app";
-  
-  allCards = selectedData.map(card => ({
-    ...card,
-    lesson_url: card.lesson_url.startsWith('/') 
-      ? `${baseUrl}${card.lesson_url}` 
-      : card.lesson_url
-  }));
-}
 ---
 
 <RevisionLayout title={`${current.name} Revision`}>
   <div class="rev-container">
     <header class="rev-header">
       <div class="header-top">
-        <a
-          href={`/${course}/course-outline`}
-          class="exit-btn"
-          onclick="if(history.length > 1){ history.back(); return false; }"
-        >
+        <a href={`/${course}/course-outline`} class="exit-btn" onclick="if(history.length > 1){ history.back(); return false; }">
           ← Exit Session
         </a>
         <p class="status">Session Active</p>
@@ -69,71 +39,20 @@ if (selectedData) {
     </header>
 
     <main class="rev-main">
-      {
-        allCards.length > 0 ? (
-          <FlashcardEngine
-            client:only="react"
-            cards={allCards}
-            course={course}
-          />
-        ) : (
-          <p>Loading cards...</p>
-        )
-      }
+      <FlashcardEngine client:only="react" course={course} />
     </main>
   </div>
 </RevisionLayout>
 
 <style>
-  .rev-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    max-width: 480px;
-    margin: 0 auto;
-    padding: 1.5rem 1rem;
-    min-height: 100vh;
-  }
-
-  .rev-header {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-  .header-top {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.4rem;
-  }
-  .exit-btn {
-    text-decoration: none;
-    opacity: 0.6;
-    font-size: 0.75rem;
-    color: inherit;
-    font-weight: 700;
-  }
-  .status {
-    margin: 0;
-    opacity: 0.4;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-  .title-row {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-  .rev-icon {
-    font-size: 1.25rem;
-  }
-  .rev-header h1 {
-    margin: 0;
-    font-size: 1.1rem;
-    font-weight: 800;
-    text-transform: uppercase;
-  }
-  .rev-main {
-    width: 100%;
-  }
+  /* Keep all your original CSS here exactly as it was */
+  .rev-container { display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 480px; margin: 0 auto; padding: 1.5rem 1rem; min-height: 100vh; }
+  .rev-header { width: 100%; margin-bottom: 1rem; }
+  .header-top { display: flex; justify-content: space-between; margin-bottom: 0.4rem; }
+  .exit-btn { text-decoration: none; opacity: 0.6; font-size: 0.75rem; color: inherit; font-weight: 700; }
+  .status { margin: 0; opacity: 0.4; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .title-row { display: flex; align-items: center; gap: 0.5rem; }
+  .rev-icon { font-size: 1.25rem; }
+  .rev-header h1 { margin: 0; font-size: 1.1rem; font-weight: 800; text-transform: uppercase; }
+  .rev-main { width: 100%; }
 </style>
