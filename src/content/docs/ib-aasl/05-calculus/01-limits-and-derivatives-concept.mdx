@@ -1,6 +1,360 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 5.1 Introduction to Limits and the Derivative
+description: Explore the foundational concept of a limit, understand the derivative as a gradient function, and learn how it represents instantaneous rates of change.
 ---
 
-Content coming soon.
+Welcome to calculus! Up until now, the mathematics you have studied has mostly been static. You could find the gradient of a straight line, but what about the gradient of a curve that is constantly changing? Calculus is the mathematics of change, and it all begins with one remarkably powerful idea: **the limit**.
+
+<Aside type="note" title="Connections: History, TOK, and the Real World">
+  **Aim 8 (The Calculus Controversy):** The discovery of calculus in the 17th century sparked a fierce historical debate. Both Isaac Newton (in England) and Gottfried Wilhelm Leibniz (in Germany) developed the core concepts independently. Newton focused on physics (kinematics), while Leibniz focused on geometry. Today, we use notations from both! Furthermore, this breakthrough was delayed by centuries because ancient Greek mathematicians distrusted the concept of "zero" and "infinity"—preventing brilliant minds like Archimedes from fully formalising calculus.
+
+  **International-mindedness:** Long before Newton and Leibniz, Indian mathematicians (500–1000 CE) grappled with infinitesimals and division by zero. Scholars like Bhāskara II explored ideas that closely mirrored the modern concept of the derivative.
+
+  **TOK:** *What value does the knowledge of limits have? Is infinitesimal behaviour applicable to real life?* A limit tells us what a function is *trying* to do, even if it never actually gets there. Is this "intuition" a valid way of knowing in mathematics? We often treat continuous mathematical models as reality, but the physical universe (down to atoms and quantum physics) is actually discrete.
+
+  **Links to Other Subjects:** 
+  * **Economics:** The derivative represents "marginal" concepts (marginal cost, marginal revenue, marginal profit).
+  * **Physics:** Velocity is the rate of change of displacement; acceleration is the rate of change of velocity. Calculus is also central to induced emf and simple harmonic motion.
+  * **Chemistry:** Interpreting the gradient of a curve helps in finding reaction rates.
+</Aside>
+
+## 1. Introduction to the Concept of a Limit
+
+A limit asks a simple question: **"As the $x$-value gets closer and closer to a certain number, what value does the $y$-value get closer and closer to?"**
+
+Sometimes, you cannot directly substitute an $x$-value into a function because it breaks the rules of maths (like dividing by zero). Limits allow us to see what the function is *approaching* right up to that broken point.
+
+We denote the limit of $f(x)$ as $x$ approaches $a$ as:
+$$ \lim\limits_{x \to a} f(x) $$
+
+### Estimating Limits Numerically (Tables)
+Consider the function $f(x) = \dfrac{x^2 - 9}{x - 3}$. If we try to find $f(3)$, we get $\dfrac{0}{0}$, which is undefined. Let's see what happens as $x$ gets extremely close to $3$ using a table.
+
+| $x$ approaches from left $\rightarrow$ | $2.9$ | $2.99$ | $2.999$ | **$3$** | $3.001$ | $3.01$ | $3.1$ | $\leftarrow$ $x$ approaches from right |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :--- |
+| **$f(x)$ approaches $\rightarrow$** | $5.9$ | $5.99$ | $5.999$ | **Undefined** | $6.001$ | $6.01$ | $6.1$ | **$\leftarrow$ $f(x)$ approaches** |
+
+Even though the function does not exist at exactly $x = 3$, the table clearly shows that as $x$ approaches $3$, $f(x)$ is heading directly toward $6$. Therefore, we say $\lim\limits_{x \to 3} f(x) = 6$.
+
+### Estimating Limits Graphically
+We can also look at a graph to determine a limit. Look at the $y$-value the curve is aiming for as you trace your finger toward the $x$-value from both the left and the right.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="limit-graph-svg" viewBox="0 0 400 300" width="100%" style="max-width: 500px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;">
+    <line x1="50" y1="50" x2="350" y2="50" stroke="#e2e8f0" stroke-width="1" />
+    <line x1="50" y1="100" x2="350" y2="100" stroke="#e2e8f0" stroke-width="1" />
+    <line x1="50" y1="150" x2="350" y2="150" stroke="#e2e8f0" stroke-width="1" />
+    <line x1="50" y1="200" x2="350" y2="200" stroke="#e2e8f0" stroke-width="1" />
+    <line x1="100" y1="20" x2="100" y2="250" stroke="#e2e8f0" stroke-width="1" />
+    <line x1="150" y1="20" x2="150" y2="250" stroke="#e2e8f0" stroke-width="1" />
+    <line x1="200" y1="20" x2="200" y2="250" stroke="#e2e8f0" stroke-width="1" />
+    <line x1="250" y1="20" x2="250" y2="250" stroke="#e2e8f0" stroke-width="1" />
+    <line x1="300" y1="20" x2="300" y2="250" stroke="#e2e8f0" stroke-width="1" />
+    
+    <line x1="50" y1="250" x2="350" y2="250" stroke="#0f172a" stroke-width="2" />
+    <line x1="50" y1="20" x2="50" y2="250" stroke="#0f172a" stroke-width="2" />
+    
+    <text x="340" y="270" font-family="sans-serif" font-size="14" fill="#0f172a">x</text>
+    <text x="30" y="30" font-family="sans-serif" font-size="14" fill="#0f172a">y</text>
+    <text x="200" y="270" font-family="sans-serif" font-size="12" fill="#475569" text-anchor="middle">a</text>
+    <text x="30" y="100" font-family="sans-serif" font-size="12" fill="#475569">L</text>
+    
+    <line x1="200" y1="250" x2="200" y2="100" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4" />
+    <line x1="50" y1="100" x2="200" y2="100" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4" />
+    
+    <path d="M 160 260 L 180 260 L 175 255 M 180 260 L 175 265" fill="none" stroke="#ef4444" stroke-width="2" />
+    <path d="M 240 260 L 220 260 L 225 255 M 220 260 L 225 265" fill="none" stroke="#ef4444" stroke-width="2" />
+
+    <path d="M 50 200 Q 150 100 200 100 T 350 20" fill="none" stroke="#3b82f6" stroke-width="3" />
+    
+    <circle cx="200" cy="100" r="5" fill="#ffffff" stroke="#3b82f6" stroke-width="2" />
+  </svg>
+</div>
+
+*Notice the open circle (hole) on the graph. The function is undefined at $x=a$, but from both the left and right sides, the curve is approaching the height of $L$. Hence, $\lim\limits_{x \to a} f(x) = L$.*
+
+<SteveTip title="GDC Skills for Limits">
+  You can estimate limits efficiently on your TI-Nspire:
+  1. Go to the **Graphs** page and plot the function. Use the **Trace** feature to get infinitely close to the $x$-value from both sides.
+  2. Alternatively, go to the **Lists & Spreadsheet** page, type $x$-values getting closer to your target ($2.9$, $2.99$, etc.) in column A, and use a formula in column B to calculate the $y$-values.
+</SteveTip>
+
+---
+
+## 2. The Derivative as a Gradient Function
+
+Finding the gradient of a straight line is easy: $m = \dfrac{y_2 - y_1}{x_2 - x_1}$. 
+But curves don't have a constant gradient. Their steepness changes at every single point.
+
+To find the gradient of a curve at a specific point $P$, we want to find the gradient of the **tangent line** at $P$. A tangent line touches the curve at exactly one local point.
+
+### The Informal Limit of the Gradient
+We can estimate the tangent's gradient using a **secant line**—a line that cuts through the curve at two points, $P$ and $Q$.
+As we move point $Q$ closer and closer to point $P$, the secant line becomes a better and better estimation of the tangent line. 
+
+When the distance between $P$ and $Q$ shrinks towards zero (a limit!), the secant line *becomes* the tangent line.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="secant-tangent-svg" viewBox="0 0 500 350" width="100%" style="max-width: 550px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;">
+    <line x1="50" y1="300" x2="450" y2="300" stroke="#0f172a" stroke-width="2" />
+    <line x1="50" y1="50" x2="50" y2="300" stroke="#0f172a" stroke-width="2" />
+    
+    <path d="M 50 250 Q 250 250 400 50" fill="none" stroke="#2563eb" stroke-width="3" />
+    
+    <circle cx="200" cy="226" r="4" fill="#0f172a" />
+    <text x="180" y="220" font-family="sans-serif" font-size="14" font-weight="bold">P</text>
+    
+    <circle cx="350" cy="115" r="4" fill="#64748b" />
+    <text x="360" y="110" font-family="sans-serif" font-size="14">Q₁</text>
+
+    <circle cx="280" cy="177" r="4" fill="#64748b" />
+    <text x="290" y="170" font-family="sans-serif" font-size="14">Q₂</text>
+    
+    <line x1="120" y1="285" x2="400" y2="78" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4" />
+    <line x1="100" y1="275" x2="350" y2="142" stroke="#64748b" stroke-width="2" stroke-dasharray="4" />
+    
+    <line x1="50" y1="280" x2="350" y2="172" stroke="#ef4444" stroke-width="2" />
+    <text x="360" y="180" font-family="sans-serif" font-size="14" fill="#ef4444" font-weight="bold">Tangent</text>
+
+    <text x="100" y="80" font-family="sans-serif" font-size="12" fill="#475569">As Q moves closer to P,</text>
+    <text x="100" y="95" font-family="sans-serif" font-size="12" fill="#475569">the secant lines (dashed) approach</text>
+    <text x="100" y="110" font-family="sans-serif" font-size="12" fill="#475569">the tangent line (red).</text>
+  </svg>
+</div>
+
+The function that gives us the exact gradient of the tangent line at any point $x$ is called the **derivative**. 
+
+---
+
+## 3. The Derivative as a Rate of Change and Notation
+
+The gradient of a graph tells us how much $y$ changes for every $1$ unit change in $x$. Because of this, the derivative is fundamentally a **rate of change**. 
+
+When we calculate the derivative, we are finding the *instantaneous* rate of change at one specific split-second, rather than an *average* rate of change over a long period.
+
+### Common Notations
+Depending on the context, we use different symbols to represent the first derivative.
+
+* **$f'(x)$**: Pronounced "f prime of x". This is Lagrange's notation. It clearly shows that the derivative is itself a function of $x$. If the original curve is $f(x)$, the gradient function is $f'(x)$.
+* **$\dfrac{dy}{dx}$**: Pronounced "dee-y by dee-x". This is Leibniz's notation. It comes from the gradient formula $\dfrac{\Delta y}{\Delta x}$ (change in $y$ over change in $x$). As the change ($\Delta$) becomes infinitesimally small (a limit!), it becomes a $d$.
+* **$\dfrac{dV}{dr}$**: The rate of change of volume ($V$) with respect to the radius ($r$). E.g., How fast a balloon's volume grows as its radius increases.
+* **$\dfrac{ds}{dt}$**: The rate of change of displacement ($s$) with respect to time ($t$). In physics, this is the exact definition of **velocity**.
+
+<Aside type="caution" title="Common Mistake: Fractions">
+  Even though $\dfrac{dy}{dx}$ looks like a fraction, it is **not** a fraction. You cannot "cancel out" the $d$s. It is a single mathematical symbol representing the derivative of $y$ with respect to $x$.
+</Aside>
+
+### Worked Example: Interpreting Notation
+**Question:** The cost, $C$, in USD, of producing $x$ pairs of shoes in a factory is modelled by the function $C(x)$. Explain the real-world meaning of the statement $C'(500) = 45$.
+
+**Solution:**
+<Steps>
+  1. Identify what the prime notation $C'(x)$ represents in this context. It is the rate of change of cost with respect to the number of shoes produced ($x$). In economics, this is called the **marginal cost**.
+  2. Interpret the number inside the bracket ($500$). This is the current $x$-value (number of shoes currently being produced).
+  3. Interpret the output value ($45$). This is the rate of change.
+  4. Combine these into a real-world sentence:
+     "When the factory is producing $500$ pairs of shoes, the cost of producing one additional pair of shoes is approximately 45 USD."
+</Steps>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Numerical Limits">
+    Consider the function $f(x) = \dfrac{x^2 - 16}{x - 4}$.  
+    **a)** Explain why $f(4)$ cannot be calculated directly.  
+    **b)** By completing a table of values for $x = 3.9, 3.99, 4.01,$ and $4.1$, estimate the value of $\lim\limits_{x \to 4} f(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+    Substituting $x = 4$ into the denominator gives $4 - 4 = 0$. Division by zero is undefined in mathematics.
+
+    **b)**
+<Steps>
+  1. Substitute the $x$-values into the function to find the corresponding $y$-values.
+     $$
+     \begin{aligned}
+     f(3.9) &= \dfrac{3.9^2 - 16}{3.9 - 4} = 7.9 \\
+     f(3.99) &= 7.99 \\
+     f(4.01) &= 8.01 \\
+     f(4.1) &= 8.1
+     \end{aligned}
+     $$
+  2. Observe the trend in the $y$-values as $x$ gets closer to $4$ from both sides. The values $7.99$ and $8.01$ are converging.
+     $$ \lim\limits_{x \to 4} f(x) = 8 $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Graphical Limits">
+    The graph of a function $g(x)$ is shown below. It has a vertical asymptote at $x = -2$. As $x$ approaches $-2$ from the right, the curve shoots upwards. As $x$ approaches $5$, the curve approaches a $y$-value of $3$, but there is a hole at the coordinate $(5, 3)$.  
+
+    <div style="display: flex; justify-content: center; margin: 2rem 0;">
+      <svg class="practice-graph-svg" viewBox="0 0 400 300" width="100%" style="max-width: 500px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 8px;">
+        <line x1="240" y1="220" x2="240" y2="160" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4" />
+        <line x1="140" y1="160" x2="240" y2="160" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4" />
+        
+        <line x1="100" y1="20" x2="100" y2="280" stroke="#ef4444" stroke-width="2" stroke-dasharray="6" />
+        <text x="100" y="295" font-family="sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">x = -2</text>
+
+        <line x1="20" y1="220" x2="380" y2="220" stroke="#0f172a" stroke-width="2" /> 
+        <line x1="140" y1="20" x2="140" y2="280" stroke="#0f172a" stroke-width="2" /> 
+        
+        <text x="370" y="240" font-family="sans-serif" font-size="14" fill="#0f172a" font-style="italic">x</text>
+        <text x="120" y="30" font-family="sans-serif" font-size="14" fill="#0f172a" font-style="italic">y</text>
+        
+        <circle cx="140" cy="220" r="3" fill="#0f172a" /> 
+        <text x="125" y="235" font-family="sans-serif" font-size="12" fill="#475569">0</text>
+        
+        <circle cx="240" cy="220" r="3" fill="#0f172a" /> 
+        <text x="236" y="240" font-family="sans-serif" font-size="12" fill="#475569">5</text>
+        
+        <circle cx="140" cy="160" r="3" fill="#0f172a" /> 
+        <text x="125" y="164" font-family="sans-serif" font-size="12" fill="#475569">3</text>
+
+        <path d="M 105 20 C 105 100, 160 160, 235 160" fill="none" stroke="#3b82f6" stroke-width="3" />
+        <path d="M 245 160 C 300 160, 340 180, 360 200" fill="none" stroke="#3b82f6" stroke-width="3" />
+        
+        <path d="M 20 270 C 60 270, 95 280, 95 280" fill="none" stroke="#3b82f6" stroke-width="3" />
+
+        <circle cx="240" cy="160" r="5" fill="#ffffff" stroke="#3b82f6" stroke-width="3" />
+      </svg>
+    </div>
+
+    Write down the values of:  
+    **a)** $\lim\limits_{x \to 5} g(x)$  
+    **b)** $\lim\limits_{x \to -2} g(x)$ for $x > -2$
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+    Even though there is a hole at $x = 5$ (meaning $g(5)$ is undefined), the limit is only concerned with what $y$-value the curve is *approaching* from both the left and the right sides.
+    $$ \lim\limits_{x \to 5} g(x) = 3 $$
+
+    **b)**
+    The specification $x > -2$ means we are only looking as $x$ approaches the asymptote from the right side. The graph shows the curve shooting upwards without bound.
+    $$ \lim\limits_{x \to -2} g(x) = \infty $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Average vs Instantaneous">
+    The distance travelled by a cyclist, $s$ in metres, after $t$ seconds is given by $s(t) = 2t^2$.  
+    **a)** Calculate the average velocity of the cyclist between $t = 3$ and $t = 5$.  
+    **b)** Explain how you could use average velocities to estimate the *instantaneous* velocity exactly at $t = 3$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+  1. Find the total distance travelled at $t=3$ and $t=5$.
+     $$
+     \begin{aligned}
+     s(3) &= 2(3)^2 = 18\text{ m} \\
+     s(5) &= 2(5)^2 = 50\text{ m}
+     \end{aligned}
+     $$
+  2. Use the gradient formula (change in distance over change in time) to find average velocity.
+     $$
+     \begin{aligned}
+     \text{Average Velocity} &= \dfrac{s(5) - s(3)}{5 - 3} \\
+     &= \dfrac{50 - 18}{2} \\
+     &= \dfrac{32}{2} \\
+     &= 16\text{ m s}^{-1}
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+    You could calculate the average velocity over increasingly smaller time intervals starting at $t=3$. For example, calculate the average velocity between $t=3$ and $t=3.1$, then between $t=3$ and $t=3.01$. The limit that these average velocities approach, $\lim\limits_{t \to 3} \dfrac{\Delta s}{\Delta t}$, is the instantaneous velocity at $t=3$.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Understanding Notation">
+    A spherical balloon is being inflated. Its volume $V$ depends on its radius $r$.  
+    Write down the mathematical notation for "the instantaneous rate of change of the volume with respect to its radius".
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    Using Leibniz's notation for rate of change:
+    $$ \dfrac{dV}{dr} $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Translating Economics">
+    The profit, $P$, in EUR, made by a company selling $x$ televisions is given by $P(x)$.  
+    **a)** What does the notation $P'(x)$ represent in this context?  
+    **b)** If $P'(100) = 40$ and $P'(200) = -10$, interpret what is happening to the company's profit as production increases.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    $P'(x)$ represents the marginal profit. It is the rate at which profit changes for each additional television sold.
+
+    **b)**
+<Steps>
+  1. Interpret $P'(100) = 40$: When selling the 100th television, the company makes an additional 40 EUR profit on that specific unit. The overall profit is increasing.
+  2. Interpret $P'(200) = -10$: When selling the 200th television, the company actually loses 10 EUR on that specific unit (perhaps due to increased storage or labour costs). The total profit is now decreasing.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Physics Connections">
+    A particle moves along a straight line such that its displacement from an origin, $s$ in metres, at time $t$ in seconds is given by $s = f(t)$.  
+    State the physical meaning of $\dfrac{ds}{dt}$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    $\dfrac{ds}{dt}$ represents the instantaneous rate of change of displacement with respect to time. In physics, this is defined as the particle's **velocity**, $v$.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Graphical Interpretation">
+    Consider a curve defined by $y = f(x)$. The curve has a peak (maximum) at $x = -1$ and a valley (minimum) at $x = 4$.  
+    Determine whether $f'(x)$ is positive, negative, or zero for the following domains:  
+    **a)** $x = -1$  
+    **b)** $0 < x < 3$  
+    **c)** $x > 5$
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    At a peak, the tangent line is perfectly horizontal. A horizontal line has a gradient of $0$.
+    $$ f'(-1) = 0 $$
+
+    **b)**
+    Between the peak at $x = -1$ and the valley at $x = 4$, the curve must be travelling downwards. A downward-sloping curve has a negative gradient.
+    $$ f'(x) \text{ is negative.} $$
+
+    **c)**
+    After the valley at $x = 4$, the curve must start travelling upwards again. An upward-sloping curve has a positive gradient.
+    $$ f'(x) \text{ is positive.} $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Gradient Limit Concept">
+    The points $A(1, 1)$ and $B(1+h, y_B)$ lie on the curve $y = x^2$.  
+    **a)** Write down an expression for $y_B$ in terms of $h$.  
+    **b)** Write down an expression for the gradient of the secant line $AB$.  
+    **c)** Explain what happens to your expression in part (b) as $h \to 0$, and what this represents.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+    Substitute the $x$-coordinate of $B$ into the equation of the curve.
+    $$ y_B = (1+h)^2 $$
+
+    **b)**
+<Steps>
+  1. Use the gradient formula $m = \dfrac{y_2 - y_1}{x_2 - x_1}$.
+  2. Substitute the coordinates of $A(1, 1)$ and $B(1+h, (1+h)^2)$.
+     $$
+     \begin{aligned}
+     m_{AB} &= \dfrac{(1+h)^2 - 1}{(1+h) - 1} \\
+     &= \dfrac{(1+h)^2 - 1}{h}
+     \end{aligned}
+     $$
+</Steps>
+    **c)**
+    As $h$ approaches $0$ ($\lim\limits_{h \to 0}$), the horizontal distance between point $A$ and point $B$ shrinks to zero, meaning point $B$ slides perfectly on top of point $A$. The secant line becomes the tangent line at $x=1$. Therefore, the limit of this expression as $h \to 0$ gives the exact instantaneous gradient (derivative) of the curve at $x = 1$.
+  </TabItem>
+</Tabs>

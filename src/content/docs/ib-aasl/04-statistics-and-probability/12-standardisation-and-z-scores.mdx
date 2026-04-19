@@ -1,6 +1,348 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 4.12 Standardisation and the Normal Distribution
+description: Learn how to standardise normal variables, calculate z-values, and use technology to find unknown probabilities, means, and standard deviations.
 ---
 
-Content coming soon.
+The normal distribution is one of the most important probability distributions in statistics because it accurately models many naturally occurring phenomena. While every normal distribution has its own mean ($\mu$) and standard deviation ($\sigma$), we can map any normal distribution onto a single, universal "standard" normal distribution using a process called **standardisation**.
+
+<Aside type="note" title="Connections: Biology, Psychology, and TOK">
+  **Biology:** The normal distribution frequently appears in biology, from the heights of plants and wingspans of birds to human blood pressure. It naturally arises when traits are influenced by many small, independent genetic and environmental factors.  
+  
+  **Psychology:** In descriptive statistics for psychology, psychometric tests (like IQ tests or personality scales) are often designed and scaled so that the population's scores form a normal distribution.  
+
+  **Theory of Knowledge (TOK):** A mathematical model is a simplified representation of reality. Can human behaviour or biological traits ever be *perfectly* normally distributed, or is the normal curve simply a useful mathematical fiction? How does assuming a normal distribution shape our understanding of "abnormal" or "outlier" behaviour in society?
+</Aside>
+
+## 1. The Standard Normal Distribution and $z$-values
+
+The **standard normal distribution**, denoted by $Z \sim \text{N}(0, 1^2)$, is a special normal distribution with a mean of $0$ and a standard deviation of $1$.
+
+A **$z$-value** (or $z$-score) tells us exactly how many standard deviations a particular data point $x$ is from the mean $\mu$. 
+* If $z > 0$, the value is above the mean.
+* If $z < 0$, the value is below the mean.
+* If $z = 0$, the value is exactly the mean.
+
+<FormulaBox title="Standardized normal variable">
+$$ z = \dfrac{x - \mu}{\sigma} $$
+</FormulaBox>
+
+### Worked Example: Standardisation
+**Question:** The heights of adult males in a city are normally distributed with a mean of $175\text{ cm}$ and a standard deviation of $8\text{ cm}$. Calculate the $z$-value for a male who is $187\text{ cm}$ tall and explain what this value means.
+
+**Solution:**
+<Steps>
+  1. Identify the given parameters.
+     $$
+     \begin{aligned}
+     x &= 187 \\
+     \mu &= 175 \\
+     \sigma &= 8
+     \end{aligned}
+     $$
+  2. Substitute into the standardisation formula.
+     $$
+     \begin{aligned}
+     z &= \dfrac{187 - 175}{8} \\
+     &= \dfrac{12}{8} \\
+     &= 1.5
+     \end{aligned}
+     $$
+  3. Interpret the result.
+     This means a height of $187\text{ cm}$ is exactly $1.5$ standard deviations above the mean.
+</Steps>
+
+<SteveTip title="TI-Nspire Commands for the Normal Distribution">
+  Your TI-Nspire GDC is essential for this topic. Memorise where these are found (Menu $\rightarrow$ Probability $\rightarrow$ Distributions):
+  * **`normCdf(lower, upper, mu, sigma)`**: Use this to find a **probability** (area under the curve) when you are given the boundary values. Use `-9E999` for negative infinity and `9E999` for positive infinity.
+  * **`invNorm(area, mu, sigma)`**: Use this to find a **value** ($x$ or $z$) when you are already given the probability (the area to the *left* of the value).
+</SteveTip>
+
+---
+
+## 2. Finding Unknown Means and Standard Deviations
+
+If a question asks you to find an unknown mean ($\mu$) or standard deviation ($\sigma$), you cannot simply use the `invNorm` function with the unknown parameters. 
+
+Instead, you must **standardise the problem** by temporarily working in the $Z$-distribution where $\mu = 0$ and $\sigma = 1$.
+
+### Worked Example: Finding an Unknown Mean
+**Question:** The masses of a certain type of fruit are normally distributed with a standard deviation of $15\text{ g}$. Given that $20\%$ of the fruits have a mass less than $110\text{ g}$, find the mean mass of the fruits.
+
+**Solution:**
+<Steps>
+  1. Write the given information in probability notation.
+     $$ \text{P}(X < 110) = 0.20 $$
+     We know $\sigma = 15$, but $\mu$ is unknown.
+  2. Find the corresponding $z$-value using the standard normal distribution. Use your GDC's inverse normal function with the given area to the left, setting $\mu = 0$ and $\sigma = 1$.
+     $$
+     \begin{aligned}
+     z &= \text{invNorm}(0.20, 0, 1) \\
+     z &\approx -0.84162
+     \end{aligned}
+     $$
+  3. Use the standardisation formula to solve for the unknown $\mu$.
+     $$
+     \begin{aligned}
+     z &= \dfrac{x - \mu}{\sigma} \\
+     -0.84162 &= \dfrac{110 - \mu}{15} \\
+     -0.84162 \times 15 &= 110 - \mu \\
+     -12.624 &= 110 - \mu \\
+     \mu &= 110 + 12.624 \\
+     \mu &\approx 123\text{ g (to 3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+
+<Aside type="danger" title="Common Mistake: Which Area to Use?">
+  The `invNorm` function on many older calculators *always* requires the area to the **LEFT** of the boundary. If a question tells you $\text{P}(X > 50) = 0.15$ (area to the right), you must input $1 - 0.15 = 0.85$ into `invNorm(0.85, 0, 1)` to find the correct positive $z$-value. Newer TI-Nspires let you choose "Left", "Right", or "Center", but defaulting to "Left" is the safest habit!
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Basic Standardisation">
+    The variable $X$ is normally distributed with $X \sim \text{N}(65, 5^2)$.  
+    **a)** Find the $z$-value corresponding to $x = 53$.  
+    **b)** Find $\text{P}(X > 53)$.  
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+  1. Identify parameters: $\mu = 65$, $\sigma = 5$.
+  2. Substitute into the standardisation formula.
+     $$
+     \begin{aligned}
+     z &= \dfrac{x - \mu}{\sigma} \\
+     z &= \dfrac{53 - 65}{5} \\
+     z &= \dfrac{-12}{5} \\
+     z &= -2.4
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+<Steps>
+  1. Use your GDC to find the probability. You can use either the $X$ distribution or the $Z$ distribution.
+  2. Using $X$ distribution: `normCdf(53, 9E999, 65, 5)`.
+     $$
+     \begin{aligned}
+     \text{P}(X > 53) &\approx 0.9918 \\
+     &\approx 0.992 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+  3. (Alternative) Using $Z$ distribution: `normCdf(-2.4, 9E999, 0, 1)` gives the same result.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Inverse Normal Context">
+    The lifetimes of a particular brand of light bulb are normally distributed with a mean of $1200\text{ hours}$ and a standard deviation of $150\text{ hours}$.  
+    The manufacturer guarantees that the bulbs will last at least $k$ hours. If they want to ensure that no more than $5\%$ of the bulbs fail before $k$ hours, find the value of $k$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+<Steps>
+  1. Write the problem using probability notation. Let $X$ be the lifetime of a bulb.
+     $$ \text{P}(X < k) = 0.05 $$
+  2. We know $\mu = 1200$ and $\sigma = 150$. Since we have both parameters, we can use the inverse normal function directly on the $X$ distribution.
+     $$
+     \begin{aligned}
+     k &= \text{invNorm}(0.05, 1200, 150) \\
+     k &\approx 953.27
+     \end{aligned}
+     $$
+  3. State the final answer to 3 significant figures.
+     $$ k = 953\text{ hours} $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Finding Unknown Standard Deviation">
+    The variable $Y \sim \text{N}(80, \sigma^2)$. Given that $\text{P}(Y > 95) = 0.04$, find the value of the standard deviation, $\sigma$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+<Steps>
+  1. Find the area to the left to prepare for the inverse normal calculation.
+     $$ \text{P}(Y < 95) = 1 - 0.04 = 0.96 $$
+  2. Find the corresponding $z$-value using the standard normal distribution ($\mu=0, \sigma=1$).
+     $$
+     \begin{aligned}
+     z &= \text{invNorm}(0.96, 0, 1) \\
+     z &\approx 1.75068
+     \end{aligned}
+     $$
+  3. Substitute the values into the standardisation formula and solve for $\sigma$.
+     $$
+     \begin{aligned}
+     z &= \dfrac{y - \mu}{\sigma} \\
+     1.75068 &= \dfrac{95 - 80}{\sigma} \\
+     1.75068\sigma &= 15 \\
+     \sigma &= \dfrac{15}{1.75068} \\
+     \sigma &\approx 8.568 \\
+     \sigma &\approx 8.57 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Finding Unknown Mean">
+    The volume of liquid in bottles of a certain soft drink is normally distributed with a standard deviation of $8\text{ ml}$. It is known that $10\%$ of the bottles contain less than $490\text{ ml}$.  
+    **a)** Find the mean volume of the bottles.  
+    **b)** The manufacturer wants to adjust the filling machine so that only $2\%$ of bottles contain less than $490\text{ ml}$. Assuming the standard deviation remains $8\text{ ml}$, find the new target mean volume.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+<Steps>
+  1. We are given $\text{P}(X < 490) = 0.10$ and $\sigma = 8$.
+  2. Find the $z$-value using the standard normal distribution.
+     $$
+     \begin{aligned}
+     z &= \text{invNorm}(0.10, 0, 1) \\
+     z &\approx -1.28155
+     \end{aligned}
+     $$
+  3. Use the formula to find $\mu$.
+     $$
+     \begin{aligned}
+     -1.28155 &= \dfrac{490 - \mu}{8} \\
+     -10.2524 &= 490 - \mu \\
+     \mu &= 490 + 10.2524 \\
+     \mu &\approx 500\text{ ml (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+<Steps>
+  1. We now want $\text{P}(X < 490) = 0.02$.
+  2. Find the new $z$-value.
+     $$
+     \begin{aligned}
+     z_{new} &= \text{invNorm}(0.02, 0, 1) \\
+     z_{new} &\approx -2.05375
+     \end{aligned}
+     $$
+  3. Solve for the new $\mu$.
+     $$
+     \begin{aligned}
+     -2.05375 &= \dfrac{490 - \mu_{new}}{8} \\
+     -16.430 &= 490 - \mu_{new} \\
+     \mu_{new} &= 506.43 \\
+     \mu_{new} &\approx 506\text{ ml (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Simultaneous Equations (Both Unknown)">
+    The random variable $X$ is normally distributed with mean $\mu$ and standard deviation $\sigma$.  
+    It is given that $\text{P}(X < 25) = 0.15$ and $\text{P}(X > 45) = 0.10$.  
+    Find the value of $\mu$ and the value of $\sigma$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+<Steps>
+  1. Set up the first equation. We are given $\text{P}(X < 25) = 0.15$. Find the $z$-value for the lower tail.
+     $$
+     \begin{aligned}
+     z_1 &= \text{invNorm}(0.15, 0, 1) \approx -1.03643 \\
+     -1.03643 &= \dfrac{25 - \mu}{\sigma} \\
+     25 - \mu &= -1.03643\sigma \quad \text{--- (Equation 1)}
+     \end{aligned}
+     $$
+  2. Set up the second equation. $\text{P}(X > 45) = 0.10$ means $\text{P}(X < 45) = 0.90$. Find the $z$-value for the upper tail.
+     $$
+     \begin{aligned}
+     z_2 &= \text{invNorm}(0.90, 0, 1) \approx 1.28155 \\
+     1.28155 &= \dfrac{45 - \mu}{\sigma} \\
+     45 - \mu &= 1.28155\sigma \quad \text{--- (Equation 2)}
+     \end{aligned}
+     $$
+  3. Solve the system of simultaneous equations. Subtract Equation 1 from Equation 2:
+     $$
+     \begin{aligned}
+     (45 - \mu) - (25 - \mu) &= 1.28155\sigma - (-1.03643\sigma) \\
+     20 &= 2.31798\sigma \\
+     \sigma &= \dfrac{20}{2.31798} \\
+     \sigma &\approx 8.62819 \implies 8.63 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+  4. Substitute $\sigma$ back into Equation 1 to find $\mu$.
+     $$
+     \begin{aligned}
+     25 - \mu &= -1.03643(8.62819) \\
+     25 - \mu &= -8.9425 \\
+     \mu &= 25 + 8.9425 \\
+     \mu &\approx 33.9425 \implies 33.9 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Contextual Application with Costs">
+    A farmer produces watermelons whose masses, in kg, are normally distributed with mean $\mu$ and standard deviation $1.2\text{ kg}$.  
+    $12\%$ of the watermelons have a mass greater than $8\text{ kg}$.  
+    **a)** Find the mean mass of the watermelons.  
+    **b)** Watermelons with a mass between $6.5\text{ kg}$ and $8.5\text{ kg}$ are classified as "Premium" and sold for 15.00 USD each. Find the probability that a randomly chosen watermelon is classified as Premium.  
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+  1. We are given $\text{P}(X > 8) = 0.12$. This means the area to the left is $\text{P}(X < 8) = 0.88$.
+  2. Find the $z$-value.
+     $$
+     \begin{aligned}
+     z &= \text{invNorm}(0.88, 0, 1) \\
+     z &\approx 1.17499
+     \end{aligned}
+     $$
+  3. Substitute into the standardisation formula.
+     $$
+     \begin{aligned}
+     1.17499 &= \dfrac{8 - \mu}{1.2} \\
+     1.40998 &= 8 - \mu \\
+     \mu &= 8 - 1.40998 \\
+     \mu &\approx 6.590 \implies 6.59\text{ kg (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+<Steps>
+  1. We need to find $\text{P}(6.5 < X < 8.5)$ using the full parameters $\mu = 6.59002$ and $\sigma = 1.2$.
+  2. Use the GDC.
+     $$
+     \begin{aligned}
+     \text{P}(6.5 < X < 8.5) &= \text{normCdf}(6.5, 8.5, 6.59002, 1.2) \\
+     &\approx 0.47413 \\
+     &\approx 0.474 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Understanding Symmetry">
+    The random variable $T \sim \text{N}(\mu, \sigma^2)$.  
+    It is known that $\text{P}(T < 40) = 0.3$ and $\text{P}(T > 60) = 0.3$.  
+    By using the symmetry properties of the normal distribution, write down the value of $\mu$ without using simultaneous equations.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+<Steps>
+  1. Recognise that the areas in both the lower tail ($T < 40$) and upper tail ($T > 60$) are identical ($0.3$).
+  2. Because the normal distribution is perfectly symmetrical, the mean must lie exactly halfway between these two $x$-values.
+     $$
+     \begin{aligned}
+     \mu &= \dfrac{40 + 60}{2} \\
+     \mu &= 50
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>

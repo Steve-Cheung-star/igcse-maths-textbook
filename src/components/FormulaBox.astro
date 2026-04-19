@@ -11,7 +11,7 @@ const { title = "Key Formula", formula } = Astro.props;
 <div class="formula-container">
   <div class="formula-header">
     <span class="formula-icon">∑</span>
-    <span class="formula-title">{title}</span>
+    <span class="formula-title math-title" set:html={title} />
   </div>
   <div class="formula-content">
     {formula ? (
@@ -19,11 +19,32 @@ const { title = "Key Formula", formula } = Astro.props;
         $${formula}$$
       </div>
     ) : (
-      /* This slot captures everything you put between the <FormulaBox> tags */
       <slot />
     )}
   </div>
 </div>
+
+<script>
+  import renderMathInElement from 'katex/dist/contrib/auto-render.js';
+
+  function renderTitles() {
+    const titles = document.querySelectorAll('.math-title');
+    titles.forEach((el) => {
+      renderMathInElement(el as HTMLElement, {
+        delimiters: [
+          { left: '$', right: '$', display: false },
+          { left: '$$', right: '$$', display: true }
+        ],
+        throwOnError: false
+      });
+    });
+  }
+
+  // Run on initial load
+  renderTitles();
+  // Run on View Transitions (if you use them)
+  document.addEventListener('astro:after-swap', renderTitles);
+</script>
 
 <style>
   .formula-container {
@@ -48,6 +69,28 @@ const { title = "Key Formula", formula } = Astro.props;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     font-size: 0.85rem;
+  }
+
+  .formula-header {
+    background: #1e293b;
+    color: #f8fafc;
+    padding: 0.6rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    /* Keep this for the normal text */
+    text-transform: uppercase; 
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+  }
+
+  /* ADD THIS: Forces math inside the title to stay lowercase/normal */
+  .formula-title :global(.katex) {
+    text-transform: none !important;
+    /* Also ensure the font size isn't shrunk by the header font size */
+    font-size: 1.1rem; 
+    letter-spacing: normal;
   }
 
   .formula-icon {

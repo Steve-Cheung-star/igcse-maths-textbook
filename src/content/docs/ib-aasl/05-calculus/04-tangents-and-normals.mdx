@@ -1,6 +1,506 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 5.4 Equations of Tangents and Normals
+description: Learn how to find the equations of tangent and normal lines to a curve at a given point using both analytic algebraic methods and technology.
 ---
 
-Content coming soon.
+Now that we can find the gradient of a curve at any point using differentiation, we can use this information to construct the equations of specific straight lines associated with the curve. The two most important lines are the **tangent** and the **normal**.
+
+<Aside type="note" title="Connections: Other Subjects and TOK">
+  **Links to other subjects:** * **Physics:** The tangent to a displacement-time graph gives the instantaneous velocity. In optics, the **normal** line is crucial; the laws of reflection and refraction (Snell's Law) are always measured relative to the normal to the surface. Furthermore, electric field lines are always normal to equipotential surfaces.
+  * **Economics:** The concept of price elasticity of demand relies heavily on the gradient of the demand curve at a specific point, essentially using the tangent to analyse how consumer behaviour responds to marginal price changes.
+
+  **TOK:** *In what ways has technology impacted how knowledge is produced and shared in mathematics?* We will use Graphic Display Calculators (like the TI-Nspire) to instantly generate tangent lines. Does this technology simply allow us to arrange existing mathematical knowledge in new and faster ways, or does the algorithmic generation of this data constitute a new form of knowledge itself? If a machine performs the calculus, where does the "understanding" reside?
+</Aside>
+
+## 1. Tangents and Normals Defined
+
+* **Tangent:** A straight line that "just touches" the curve at a specific point, $P$. It has the exact same gradient as the curve at that point.
+* **Normal:** A straight line that passes through the exact same point $P$, but is **perpendicular** (at $90^{\circ}$) to the tangent line.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="tangent-normal-graph-svg" viewBox="0 0 500 400" width="100%" style="max-width: 600px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px;">
+    
+    <path d="M0 30H500 M0 70H500 M0 110H500 M0 150H500 M0 190H500 M0 230H500 M0 270H500 M0 310H500 M0 350H500 M0 390H500 M50 0V400 M90 0V400 M130 0V400 M170 0V400 M210 0V400 M250 0V400 M290 0V400 M330 0V400 M370 0V400 M410 0V400 M450 0V400 M490 0V400" stroke="#e2e8f0" stroke-width="1" />
+    
+    <line x1="0" y1="350" x2="500" y2="350" stroke="#0f172a" stroke-width="2" />
+    <line x1="250" y1="0" x2="250" y2="400" stroke="#0f172a" stroke-width="2" />
+    
+    <text x="480" y="340" font-family="sans-serif" font-size="14" fill="#0f172a">x</text>
+    <text x="260" y="20" font-family="sans-serif" font-size="14" fill="#0f172a">y</text>
+
+    <polyline 
+      points={[-4, -3.75, -3.5, -3.25, -3, -2.75, -2.5, -2.25, -2, -1.75, -1.5, -1.25, -1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4].map(x => (250 + 40 * x) + ',' + (350 - 20 * x * x)).join(' ')} 
+      fill="none" 
+      stroke="#2563eb" 
+      stroke-width="3" 
+    />
+    <text x="380" y="60" font-family="sans-serif" font-size="14" fill="#2563eb" font-weight="bold">y = f(x)</text>
+
+    <circle cx="330" cy="270" r="5" fill="#0f172a" />
+    <text x="340" y="265" font-family="sans-serif" font-size="14" fill="#0f172a" font-weight="bold">P(a, f(a))</text>
+
+    <line x1="280" y1="370" x2="430" y2="70" stroke="#ef4444" stroke-width="2" />
+    <text x="400" y="100" font-family="sans-serif" font-size="14" fill="#ef4444" font-weight="bold">Tangent</text>
+
+    <line x1="70" y1="140" x2="450" y2="330" stroke="#10b981" stroke-width="2" />
+    <text x="80" y="130" font-family="sans-serif" font-size="14" fill="#10b981" font-weight="bold">Normal</text>
+
+    <polyline points="323.29,283.42 336.71,290.13 343.42,276.71" fill="none" stroke="#0f172a" stroke-width="1.5" />
+    
+  </svg>
+</div>
+
+## 2. Analytic Approach: Finding the Equation
+
+Because both the tangent and the normal are straight lines, we use the standard equation of a straight line:
+$$ y - y_1 = m(x - x_1) $$
+To find this equation, you always need two pieces of information:
+1.  **A point $(x_1, y_1)$** on the line.
+2.  **The gradient $m$** of the line.
+
+### Finding the Equation of a Tangent
+The gradient of the tangent, $m_T$, is exactly equal to the value of the derivative at that specific $x$-coordinate.
+$$ m_T = f'(x_1) $$
+
+### Worked Example: Tangent Line
+**Question:** Find the equation of the tangent to the curve $y = x^2 - 4x + 5$ at the point where $x = 3$.
+
+**Solution:**
+<Steps>
+  1. Find the $y$-coordinate of the point by substituting $x = 3$ into the original equation.
+     $$
+     \begin{aligned}
+     y &= (3)^2 - 4(3) + 5 \\
+     y &= 9 - 12 + 5 \\
+     y &= 2
+     \end{aligned}
+     $$
+     The point is $(3, 2)$.
+  2. Find the derivative $\dfrac{dy}{dx}$ to get the general gradient function.
+     $$ \begin{aligned} \dfrac{dy}{dx} &= 2x - 4 \end{aligned} $$
+  3. Substitute $x = 3$ into the derivative to find the tangent gradient ($m_T$).
+     $$
+     \begin{aligned}
+     m_T &= 2(3) - 4 \\
+     m_T &= 2
+     \end{aligned}
+     $$
+  4. Use the straight line formula $y - y_1 = m_T(x - x_1)$ with the point $(3, 2)$ and gradient $m_T = 2$.
+     $$
+     \begin{aligned}
+     y - 2 &= 2(x - 3) \\
+     y - 2 &= 2x - 6 \\
+     y &= 2x - 4
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+### Finding the Equation of a Normal
+Because the normal is perpendicular to the tangent, its gradient ($m_N$) is the **negative reciprocal** of the tangent's gradient.
+$$ m_N = -\dfrac{1}{m_T} $$
+*(Recall from prior studies: perpendicular gradients multiply to give $-1$, so $m_T \times m_N = -1$).*
+
+### Worked Example: Normal Line
+**Question:** Find the equation of the normal to the curve $f(x) = 2x^3 - 5x$ at the point $(1, -3)$. Give your answer in the form $ax + by + c = 0$, where $a, b, c \in \mathbb{Z}$.
+
+**Solution:**
+<Steps>
+  1. The point $(1, -3)$ is already given. We need the gradient of the tangent first. Differentiate the function.
+     $$ \begin{aligned} f'(x) &= 6x^2 - 5 \end{aligned} $$
+  2. Substitute $x = 1$ into $f'(x)$ to find $m_T$.
+     $$
+     \begin{aligned}
+     m_T &= 6(1)^2 - 5 \\
+     m_T &= 1
+     \end{aligned}
+     $$
+  3. Calculate the gradient of the normal, $m_N$, by taking the negative reciprocal.
+     $$ \begin{aligned} m_N &= -\dfrac{1}{1} = -1 \end{aligned} $$
+  4. Use $y - y_1 = m_N(x - x_1)$ to find the equation.
+     $$
+     \begin{aligned}
+     y - (-3) &= -1(x - 1) \\
+     y + 3 &= -x + 1
+     \end{aligned}
+     $$
+  5. Rearrange into the required format $ax + by + c = 0$.
+     $$ \begin{aligned} x + y + 2 &= 0 \end{aligned} $$
+</Steps>
+
+<Aside type="danger" title="Common Pitfall: Confusing the Original and Derivative">
+  A very frequent exam error is substituting the $x$-value into the *derivative* to find the $y$-coordinate, or substituting the $x$-value into the *original function* to find the gradient. 
+  **Rule of thumb:**
+  * Original function $f(x)$ $\rightarrow$ gives you position (coordinates).
+  * Derivative function $f'(x)$ $\rightarrow$ gives you steepness (gradient).
+</Aside>
+
+---
+
+## 3. Using Technology (TI-Nspire)
+
+In Paper 2 exams, you are expected to use your Graphic Display Calculator to bypass tedious algebra when asked for the equation of a tangent or normal.
+
+<SteveTip title="GDC Skills: Instant Equations">
+  On the TI-Nspire Calculator page, you can find equations in seconds:
+  * **For a Tangent:** Press `Menu` > `4: Calculus` > `9: Tangent Line`. 
+      Syntax: `tangentLine(function, variable, value)`. 
+      Example: `tangentLine(x^2 - 4x + 5, x, 3)` returns `2x - 4`.
+  * **For a Normal:** Press `Menu` > `4: Calculus` > `A: Normal Line`.
+      Syntax: `normalLine(function, variable, value)`.
+      Example: `normalLine(2x^3 - 5x, x, 1)` returns `-x - 2`. *(Note: the GDC writes $y = -x - 2$, so you may need to rearrange manually if the question asks for $ax+by+c=0$ form).*
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Basic Tangent">
+    Consider the function $f(x) = x^2 + 6x - 2$.  
+    **a)** Find $f'(x)$.  
+    **b)** Find the gradient of the tangent to the curve at $x = -1$.  
+    **c)** Find the equation of the tangent at $x = -1$, in the form $y = mx + c$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+    $$ \begin{aligned} f'(x) &= 2x + 6 \end{aligned} $$
+
+    **b)**
+    Substitute $x = -1$ into the derivative.
+    $$
+    \begin{aligned}
+    f'(-1) &= 2(-1) + 6 \\
+    &= 4
+    \end{aligned}
+    $$
+
+    **c)**
+<Steps>
+  1. Find the $y$-coordinate by substituting $x = -1$ into the original function.
+     $$
+     \begin{aligned}
+     f(-1) &= (-1)^2 + 6(-1) - 2 \\
+     &= 1 - 6 - 2 \\
+     &= -7
+     \end{aligned}
+     $$
+     The point is $(-1, -7)$.
+  2. Use the point-gradient formula with $m = 4$.
+     $$
+     \begin{aligned}
+     y - (-7) &= 4(x - (-1)) \\
+     y + 7 &= 4(x + 1) \\
+     y &= 4x - 3
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Basic Normal">
+    A curve has the equation $y = x^3 - 2x^2 + 4$.  
+    **a)** Find the coordinates of the point on the curve where $x = 2$.  
+    **b)** Find the equation of the normal to the curve at $x = 2$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+    Substitute $x = 2$ into the original equation.
+    $$
+    \begin{aligned}
+    y &= (2)^3 - 2(2)^2 + 4 \\
+    y &= 8 - 8 + 4 \\
+    y &= 4
+    \end{aligned}
+    $$
+    The coordinates are $(2, 4)$.
+
+    **b)**
+<Steps>
+  1. Find the derivative to determine the gradient of the tangent.
+     $$ \begin{aligned} \dfrac{dy}{dx} &= 3x^2 - 4x \end{aligned} $$
+  2. Find $m_T$ at $x = 2$.
+     $$
+     \begin{aligned}
+     m_T &= 3(2)^2 - 4(2) \\
+     m_T &= 12 - 8 = 4
+     \end{aligned}
+     $$
+  3. Find the gradient of the normal, $m_N$.
+     $$ \begin{aligned} m_N &= -\dfrac{1}{4} \end{aligned} $$
+  4. Use the straight line equation with point $(2, 4)$.
+     $$
+     \begin{aligned}
+     y - 4 &= -\dfrac{1}{4}(x - 2) \\
+     y &= -\dfrac{1}{4}x + \dfrac{1}{2} + 4 \\
+     y &= -\dfrac{1}{4}x + \dfrac{9}{2}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Parallel Tangents">
+    The curve $C$ is given by $f(x) = \dfrac{1}{3}x^3 - x^2 - 2x + 5$.  
+    **a)** Find $f'(x)$.  
+    **b)** Find the $x$-coordinates of the points on $C$ where the tangent is parallel to the line $y = 6x - 1$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+    $$ \begin{aligned} f'(x) &= x^2 - 2x - 2 \end{aligned} $$
+
+    **b)**
+<Steps>
+  1. The line $y = 6x - 1$ has a gradient of $6$. Parallel tangents must also have a gradient of $6$.
+  2. Set the derivative equal to $6$.
+     $$
+     \begin{aligned}
+     x^2 - 2x - 2 &= 6 \\
+     x^2 - 2x - 8 &= 0
+     \end{aligned}
+     $$
+  3. Factorise and solve for $x$.
+     $$
+     \begin{aligned}
+     (x - 4)(x + 2) &= 0 \\
+     x &= 4 \text{ and } x = -2
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Intersection with Axes">
+    Find the equation of the tangent to the curve $y = 5 - \dfrac{4}{x}$ at the point where $x = 2$. Then, find the coordinates of the point where this tangent intersects the $x$-axis.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+<Steps>
+  1. Find the $y$-coordinate at $x = 2$.
+     $$
+     \begin{aligned}
+     y &= 5 - \dfrac{4}{2} = 3
+     \end{aligned}
+     $$
+     Point is $(2, 3)$.
+  2. Rewrite the function with a negative index and differentiate.
+     $$
+     \begin{aligned}
+     y &= 5 - 4x^{-1} \\
+     \dfrac{dy}{dx} &= 4x^{-2} = \dfrac{4}{x^2}
+     \end{aligned}
+     $$
+  3. Find the gradient $m_T$ at $x = 2$.
+     $$
+     \begin{aligned}
+     m_T &= \dfrac{4}{2^2} = \dfrac{4}{4} = 1
+     \end{aligned}
+     $$
+  4. Find the equation of the tangent.
+     $$
+     \begin{aligned}
+     y - 3 &= 1(x - 2) \\
+     y &= x + 1
+     \end{aligned}
+     $$
+  5. The tangent intersects the $x$-axis when $y = 0$.
+     $$
+     \begin{aligned}
+     0 &= x + 1 \\
+     x &= -1
+     \end{aligned}
+     $$
+     The coordinates are $(-1, 0)$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Economics Application">
+    A company's daily profit, $P$ in USD, from selling $x$ smartwatches is modelled by $P(x) = -0.1x^2 + 40x - 1500$.  
+    **a)** Find the equation of the tangent line to the profit curve when $x = 100$ watches are sold.  
+    **b)** In economic terms, what does the gradient of this tangent line represent?
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+<Steps>
+  1. Find the profit ($y$-coordinate) when $x = 100$.
+     $$
+     \begin{aligned}
+     P(100) &= -0.1(100)^2 + 40(100) - 1500 \\
+     &= -1000 + 4000 - 1500 \\
+     &= 1500 \text{ USD}
+     \end{aligned}
+     $$
+     Point is $(100, 1500)$.
+  2. Differentiate to find $P'(x)$.
+     $$ \begin{aligned} P'(x) &= -0.2x + 40 \end{aligned} $$
+  3. Evaluate $P'(100)$ to find the gradient $m_T$.
+     $$
+     \begin{aligned}
+     m_T &= -0.2(100) + 40 \\
+     m_T &= -20 + 40 = 20
+     \end{aligned}
+     $$
+  4. Write the equation of the tangent.
+     $$
+     \begin{aligned}
+     P - 1500 &= 20(x - 100) \\
+     P - 1500 &= 20x - 2000 \\
+     P &= 20x - 500
+     \end{aligned}
+     $$
+</Steps>
+
+    **b)**
+    The gradient of the tangent line ($20$ USD/watch) represents the **marginal profit**. It is the approximate additional profit the company will make from selling one additional smartwatch (the 101st watch).
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Normal at x-intercept">
+    Let $g(x) = x^2 - 9$.  
+    **a)** Find the positive $x$-intercept of the graph of $g$.  
+    **b)** Find the equation of the normal to the graph of $g$ at this $x$-intercept.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+  1. The $x$-intercept occurs where $g(x) = 0$.
+     $$
+     \begin{aligned}
+     x^2 - 9 &= 0 \\
+     x^2 &= 9 \\
+     x &= 3 \text{ or } x = -3
+     \end{aligned}
+     $$
+  2. The positive $x$-intercept is $x = 3$. The point is $(3, 0)$.
+</Steps>
+
+    **b)**
+<Steps>
+  1. Differentiate to find the gradient function.
+     $$ \begin{aligned} g'(x) &= 2x \end{aligned} $$
+  2. Find the gradient of the tangent at $x = 3$.
+     $$ \begin{aligned} m_T &= 2(3) = 6 \end{aligned} $$
+  3. Find the gradient of the normal.
+     $$ \begin{aligned} m_N &= -\dfrac{1}{6} \end{aligned} $$
+  4. Form the equation using point $(3, 0)$.
+     $$
+     \begin{aligned}
+     y - 0 &= -\dfrac{1}{6}(x - 3) \\
+     y &= -\dfrac{1}{6}x + \dfrac{1}{2}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Unknown Coefficients">
+    The curve $y = ax^2 + bx$ has a tangent at the point $(1, 4)$ with the equation $y = 6x - 2$.  
+    **a)** Use the fact that $(1, 4)$ lies on the curve to write down an equation in terms of $a$ and $b$.  
+    **b)** Find the values of $a$ and $b$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+    Substitute $x = 1$ and $y = 4$ into the curve equation.
+    $$
+    \begin{aligned}
+    4 &= a(1)^2 + b(1) \\
+    a + b &= 4
+    \end{aligned}
+    $$
+
+    **b)**
+<Steps>
+  1. The gradient of the tangent line $y = 6x - 2$ is $6$. This means the derivative at $x = 1$ must equal $6$.
+  2. Differentiate the curve equation.
+     $$ \begin{aligned} \dfrac{dy}{dx} &= 2ax + b \end{aligned} $$
+  3. Substitute $x = 1$ and set the derivative equal to $6$.
+     $$ \begin{aligned} 2a(1) + b &= 6 \\ 2a + b &= 6 \end{aligned} $$
+  4. Solve the system of simultaneous equations from part (a) and step 3.
+     Equation 1: $a + b = 4 \Rightarrow b = 4 - a$
+     Equation 2: $2a + b = 6$
+  5. Substitute Equation 1 into Equation 2.
+     $$
+     \begin{aligned}
+     2a + (4 - a) &= 6 \\
+     a + 4 &= 6 \\
+     a &= 2
+     \end{aligned}
+     $$
+  6. Substitute $a = 2$ back into Equation 1 to find $b$.
+     $$
+     \begin{aligned}
+     2 + b &= 4 \\
+     b &= 2
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Physics Context">
+    A particle moves such that its displacement $s$ metres from an origin at time $t$ seconds is given by $s(t) = t^3 - 2t^2 + t$.  
+    **a)** Find the velocity of the particle at $t = 2$ seconds.  
+    **b)** Find the equation of the tangent to the displacement-time graph at $t = 2$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+  1. Velocity is the derivative of displacement ($v = \dfrac{ds}{dt}$).
+     $$ \begin{aligned} v(t) &= 3t^2 - 4t + 1 \end{aligned} $$
+  2. Substitute $t = 2$.
+     $$
+     \begin{aligned}
+     v(2) &= 3(2)^2 - 4(2) + 1 \\
+     &= 12 - 8 + 1 \\
+     &= 5 \text{ m/s}
+     \end{aligned}
+     $$
+</Steps>
+
+    **b)**
+<Steps>
+  1. Find the coordinates of the point at $t = 2$.
+     $$
+     \begin{aligned}
+     s(2) &= (2)^3 - 2(2)^2 + 2 \\
+     &= 8 - 8 + 2 \\
+     &= 2
+     \end{aligned}
+     $$
+     The point is $(2, 2)$ on the $t$-$s$ plane.
+  2. The gradient of the tangent is the velocity we found in part (a), so $m = 5$.
+  3. Form the equation using variables $s$ and $t$ (instead of $y$ and $x$).
+     $$
+     \begin{aligned}
+     s - 2 &= 5(t - 2) \\
+     s - 2 &= 5t - 10 \\
+     s &= 5t - 8
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q9: GDC Usage (Paper 2 style)">
+    Let $f(x) = x^4 - 3x^3 + 2x - 1$.  
+    Using your Graphic Display Calculator, find the equation of the normal to the graph of $f$ at the point where $x = 1$. Give your answer in the form $y = mx + c$.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+<Steps>
+  1. On the TI-Nspire Calculator scratchpad or document, press `Menu` > `4: Calculus` > `A: Normal Line`.
+  2. Type the expression into the template: `normalLine(x^4 - 3x^3 + 2x - 1, x, 1)`.
+  3. Press Enter. The GDC outputs `y = \dfrac{1}{3}x - \dfrac{4}{3}`.
+  4. Write down the final answer as shown on the GDC.
+     $$ \begin{aligned} y &= \dfrac{1}{3}x - \dfrac{4}{3} \end{aligned} $$
+</Steps>
+  </TabItem>
+</Tabs>
