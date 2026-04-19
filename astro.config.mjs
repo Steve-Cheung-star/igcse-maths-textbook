@@ -15,6 +15,15 @@ export default defineConfig({
   output: 'server',
   adapter: vercel(),
 
+  vite: {
+    ssr: {
+      noExternal: ['katex'],
+    },
+    optimizeDeps: {
+      include: ['katex/dist/contrib/auto-render.js'],
+    },
+  },
+
   integrations: [
     AutoImport({
       imports: [
