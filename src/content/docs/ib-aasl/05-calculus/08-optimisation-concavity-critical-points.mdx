@@ -1,0 +1,663 @@
+---
+title: 5.8 Optimisation, Concavity, and Critical Points
+description: Learn to identify and classify local maximum and minimum points, understand concavity and points of inflexion, and apply calculus to solve real-world optimisation problems.
+---
+
+## 1. Local Maximum and Minimum Points
+
+The first derivative, $f'(x)$, represents the gradient (slope) of the curve. When $f'(x) = 0$, the tangent to the curve is horizontal. These points are called **stationary points**. A stationary point can be a local maximum, a local minimum, or a horizontal point of inflexion.
+
+To classify a stationary point, we can use the **First Derivative Test**:
+* **Local Maximum:** $f'(x)$ changes from positive (increasing) to negative (decreasing).
+* **Local Minimum:** $f'(x)$ changes from negative (decreasing) to positive (increasing).
+
+Alternatively, we can use the **Second Derivative Test**, which evaluates the concavity at the stationary point:
+* If $f''(x) > 0$, the curve is concave-up, implying a **local minimum**.
+* If $f''(x) < 0$, the curve is concave-down, implying a **local maximum**.
+
+<SteveTip title="GDC Skills: Finding Extrema">
+  Don't waste time doing this manually on Paper 2. Graph the function, then press `Menu > 6: Analyze Graph > 2: Minimum` or `3: Maximum`. Drag your lower and upper bounds around the turning point to instantly snap to the exact coordinates.
+</SteveTip>
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="extrema-graph" viewBox="0 0 500 350" width="100%" style="max-width: 500px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px;">
+    <defs>
+      <marker id="arrowhead-extrema" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+        <polygon points="0 0, 6 3, 0 6" fill="#64748b" />
+      </marker>
+      <pattern id="grid-extrema" width="50" height="50" patternUnits="userSpaceOnUse">
+        <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="500" height="350" fill="url(#grid-extrema)" />
+    
+    <line x1="50" y1="175" x2="450" y2="175" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead-extrema)" />
+    <line x1="250" y1="300" x2="250" y2="50" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead-extrema)" />
+    
+    <polyline 
+      points={Array.from({ length: 101 }).map((_, i) => {
+        const mathX = -2.5 + (i * 0.05);
+        const mathY = Math.pow(mathX, 3) - 3 * mathX;
+        const px = 250 + (mathX * 50);
+        const py = 175 - (mathY * 30);
+        return `${px},${py}`;
+      }).join(" ")}
+      fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" 
+    />
+    
+    <line x1="150" y1="115" x2="250" y2="115" stroke="#ef4444" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="250" y1="235" x2="350" y2="235" stroke="#16a34a" stroke-width="2" stroke-dasharray="4,4" />
+    
+    <circle cx="200" cy="115" r="5" fill="#ef4444" />
+    <text x="200" y="100" font-family="sans-serif" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="middle">Local Max</text>
+    
+    <circle cx="300" cy="235" r="5" fill="#16a34a" />
+    <text x="300" y="255" font-family="sans-serif" font-size="12" font-weight="bold" fill="#16a34a" text-anchor="middle">Local Min</text>
+  </svg>
+</div>
+
+### Worked Example 1
+Find the coordinates of the local maximum and minimum points of $f(x) = 2x^3 - 3x^2 - 12x + 5$.
+
+**Solution:**
+
+<Steps>
+  1. Find the first derivative and set it to zero to locate stationary points:
+     $$
+     \begin{aligned}
+     f'(x) &= 6x^2 - 6x - 12 \\
+     0 &= 6(x^2 - x - 2) \\
+     0 &= 6(x - 2)(x + 1)
+     \end{aligned}
+     $$
+     So, $x = 2$ or $x = -1$.
+  2. Use the second derivative to classify the points:
+     $$
+     \begin{aligned}
+     f''(x) &= 12x - 6
+     \end{aligned}
+     $$
+  3. Test each $x$-value:
+     * At $x = 2$: $f''(2) = 12(2) - 6 = 18 > 0$ (Local Minimum).
+     * At $x = -1$: $f''(-1) = 12(-1) - 6 = -18 < 0$ (Local Maximum).
+  4. Find the corresponding $y$-coordinates by substituting back into $f(x)$:
+     * $f(2) = 2(8) - 3(4) - 12(2) + 5 = -15 \implies (2, -15)$ is the local minimum.
+     * $f(-1) = 2(-1) - 3(1) - 12(-1) + 5 = 12 \implies (-1, 12)$ is the local maximum.
+</Steps>
+
+---
+
+## 2. Points of Inflexion and Concavity
+
+Concavity refers to the "bend" of the curve, governed by the second derivative, $f''(x)$.
+* **Concave-up:** $f''(x) > 0$. The curve looks like a smile. The gradient $f'(x)$ is increasing.
+* **Concave-down:** $f''(x) < 0$. The curve looks like a frown. The gradient $f'(x)$ is decreasing.
+
+A **point of inflexion** is where the concavity changes (e.g., from concave-up to concave-down). 
+
+<Aside type="danger" title="Crucial Condition">
+  At a point of inflexion, $f''(x) = 0$ **AND** $f''(x)$ must change sign. Simply setting $f''(x) = 0$ is a necessary, but not sufficient, condition!
+</Aside>
+
+Consider $y = x^4$. The second derivative is $y'' = 12x^2$. Setting $y'' = 0$ gives $x = 0$. However, checking the sign of $12x^2$ slightly before and slightly after $x = 0$ shows it is positive on both sides. The concavity does not change, so $(0,0)$ is **not** a point of inflexion; it's just a very flat local minimum.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="concavity-graph" viewBox="0 0 500 350" width="100%" style="max-width: 500px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px;">
+    <defs>
+      <marker id="arrowhead-concavity" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+        <polygon points="0 0, 6 3, 0 6" fill="#64748b" />
+      </marker>
+    </defs>
+    <rect width="500" height="350" fill="#f8fafc" />
+    
+    <line x1="50" y1="175" x2="450" y2="175" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead-concavity)" />
+    <line x1="250" y1="300" x2="250" y2="50" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrowhead-concavity)" />
+    
+    <polyline 
+      points={Array.from({ length: 101 }).map((_, i) => {
+        const mathX = -2 + (i * 0.04);
+        const mathY = Math.pow(mathX, 3);
+        const px = 250 + (mathX * 80);
+        const py = 175 - (mathY * 15);
+        return `${px},${py}`;
+      }).join(" ")}
+      fill="none" stroke="#d946ef" stroke-width="3" stroke-linejoin="round" 
+    />
+    
+    <circle cx="250" cy="175" r="6" fill="#eab308" />
+    <text x="265" y="195" font-family="sans-serif" font-size="12" font-weight="bold" fill="#0f172a">Point of Inflexion (0,0)</text>
+    <text x="120" y="100" font-family="sans-serif" font-size="12" fill="#64748b">Concave Down (f'' &lt; 0)</text>
+    <text x="320" y="250" font-family="sans-serif" font-size="12" fill="#64748b">Concave Up (f'' &gt; 0)</text>
+  </svg>
+</div>
+
+### Worked Example 2
+Find the coordinates of the point of inflexion for $f(x) = x^3 - 6x^2 + 9x + 2$.
+
+**Solution:**
+
+<Steps>
+  1. Find the first and second derivatives:
+     $$
+     \begin{aligned}
+     f'(x) &= 3x^2 - 12x + 9 \\
+     f''(x) &= 6x - 12
+     \end{aligned}
+     $$
+  2. Set the second derivative to zero to find potential points of inflexion:
+     $$
+     \begin{aligned}
+     0 &= 6x - 12 \\
+     x &= 2
+     \end{aligned}
+     $$
+  3. Verify the sign change of $f''(x)$ around $x = 2$:
+     * Test $x = 1$: $f''(1) = 6(1) - 12 = -6$ (Negative)
+     * Test $x = 3$: $f''(3) = 6(3) - 12 = 6$ (Positive)
+     * Since $f''(x)$ changes sign, a point of inflexion exists at $x = 2$.
+  4. Find the $y$-coordinate:
+     $$
+     \begin{aligned}
+     f(2) &= (2)^3 - 6(2)^2 + 9(2) + 2 \\
+     f(2) &= 8 - 24 + 18 + 2 = 4
+     \end{aligned}
+     $$
+     The point of inflexion is $(2, 4)$.
+</Steps>
+
+---
+
+## 3. Optimisation
+
+Optimisation involves translating a real-world problem into a mathematical function and finding its maximum or minimum value. This usually requires linking two variables, substituting one into the other to create a single-variable function, and applying the calculus techniques above.
+
+<Aside type="tip" title="Domain Restrictions">
+  Always check the physical domains. If you are optimising the side length of a box, $x$ must be strictly greater than $0$. Sometimes the global maximum or minimum occurs at the boundary of the domain rather than at a turning point.
+</Aside>
+
+### Worked Example 3
+A manufacturer produces cylindrical cans with a volume of $250 \text{ cm}^3$. Find the radius $r$ that minimises the surface area of the can, and calculate that minimum surface area.
+
+**Solution:**
+
+<Steps>
+  1. Set up the volume and surface area equations:
+     $$
+     \begin{aligned}
+     V &= \pi r^2 h = 250 \\
+     A &= 2\pi r^2 + 2\pi r h
+     \end{aligned}
+     $$
+  2. Express $h$ in terms of $r$ using the volume equation:
+     $$
+     \begin{aligned}
+     h &= \dfrac{250}{\pi r^2}
+     \end{aligned}
+     $$
+  3. Substitute $h$ into the surface area equation to create a function of one variable:
+     $$
+     \begin{aligned}
+     A(r) &= 2\pi r^2 + 2\pi r \left(\dfrac{250}{\pi r^2}\right) \\
+     A(r) &= 2\pi r^2 + 500r^{-1}
+     \end{aligned}
+     $$
+  4. Differentiate with respect to $r$ and set to zero:
+     $$
+     \begin{aligned}
+     A'(r) &= 4\pi r - 500r^{-2} \\
+     0 &= 4\pi r - \dfrac{500}{r^2} \\
+     4\pi r^3 &= 500 \\
+     r^3 &= \dfrac{125}{\pi} \implies r = \dfrac{5}{\sqrt[3]{\pi}} \approx 3.41 \text{ cm}
+     \end{aligned}
+     $$
+  5. Verify it's a minimum using the second derivative:
+     $$
+     \begin{aligned}
+     A''(r) &= 4\pi + 1000r^{-3}
+     \end{aligned}
+     $$
+     Since $r > 0$, $A''(r)$ is strictly positive, confirming a minimum. Minimum Area $\approx A(3.41) \approx 219.69 \text{ cm}^2$.
+</Steps>
+
+---
+
+## 4. Connections & Contexts
+
+<Aside type="note" title="Cross-Subject Links & TOK">
+  **Physics (Kinematics & SHM):** In a displacement-time graph, local extrema represent points where velocity is zero (the object turns around). A point of inflexion corresponds to a point of maximum or minimum velocity (acceleration is zero). In Simple Harmonic Motion, zero acceleration (inflexion) occurs precisely at the equilibrium position.
+  
+  **Economics:** Optimisation is the backbone of marginal analysis. Profit is maximised when Marginal Revenue equals Marginal Cost ($MR = MC$), which is conceptually identical to setting the derivative of the Profit function to zero. Allocative efficiency is achieved where the price equals the marginal cost, optimising societal surplus.
+
+  **Theory of Knowledge:** *When mathematicians and historians say that they have explained something, are they using the word “explain” in the same way?* In mathematics, an "explanation" is a rigorously deduced proof stemming from axioms. It is absolute and objective. In history, "explanation" involves interpreting evidence to construct a narrative of cause and effect. It is subjective and open to debate.
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Extrema and Concavity">
+    Given the function $f(x) = \dfrac{1}{3}x^3 - 4x + 2$:  
+    **a)** Find the coordinates of the local maximum and local minimum points.  
+    **b)** Determine the intervals where the function is concave-down.  
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+
+<Steps>
+  1. Find $f'(x)$ and set it to zero:
+     $$
+     \begin{aligned}
+     f'(x) &= x^2 - 4 \\
+     0 &= (x-2)(x+2) \implies x = 2, x = -2
+     \end{aligned}
+     $$
+  2. Find the $y$-coordinates:
+     $$
+     \begin{aligned}
+     f(2) &= \dfrac{8}{3} - 8 + 2 = -\dfrac{10}{3} \\
+     f(-2) &= -\dfrac{8}{3} + 8 + 2 = \dfrac{22}{3}
+     \end{aligned}
+     $$
+  3. Use the second derivative to classify:
+     $$
+     \begin{aligned}
+     f''(x) &= 2x
+     \end{aligned}
+     $$
+     * $f''(2) = 4 > 0 \implies (2, -\dfrac{10}{3})$ is a local minimum.
+     * $f''(-2) = -4 < 0 \implies (-2, \dfrac{22}{3})$ is a local maximum.
+</Steps>
+
+    **b)**
+
+<Steps>
+  1. A function is concave-down when $f''(x) < 0$. Set up the inequality:
+     $$
+     \begin{aligned}
+     2x &< 0 \\
+     x &< 0
+     \end{aligned}
+     $$
+     The interval is $x < 0$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Profit Optimisation">
+    A company’s profit, $P$, measured in currency, from selling $x$ thousand units of a product is modelled by $P(x) = -2x^3 + 15x^2 + 84x - 50$.  
+    **a)** Find the number of units that must be sold to maximise profit.  
+    **b)** Calculate the maximum profit, giving your answer in USD.  
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+
+<Steps>
+  1. Find $P'(x)$ and set it to zero:
+     $$
+     \begin{aligned}
+     P'(x) &= -6x^2 + 30x + 84 \\
+     0 &= -6(x^2 - 5x - 14) \\
+     0 &= -6(x - 7)(x + 2)
+     \end{aligned}
+     $$
+  2. Since $x$ represents thousand units, $x > 0$. Thus, $x = 7$.
+  3. Verify it's a maximum using the second derivative:
+     $$
+     \begin{aligned}
+     P''(x) &= -12x + 30 \\
+     P''(7) &= -84 + 30 = -54 < 0
+     \end{aligned}
+     $$
+     The profit is maximised when $7000$ units are sold.
+</Steps>
+
+    **b)**
+
+<Steps>
+  1. Substitute $x = 7$ into the original profit function:
+     $$
+     \begin{aligned}
+     P(7) &= -2(343) + 15(49) + 84(7) - 50 \\
+     P(7) &= -686 + 735 + 588 - 50 = 587
+     \end{aligned}
+     $$
+  2. Attach the appropriate units: $587 \text{ USD}$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Product Rule & Extrema">
+    Consider $g(x) = x \text{e}^{-x}$.  
+    **a)** Find the exact coordinates of the stationary point and determine its nature.  
+    **b)** Find the exact coordinates of the point of inflexion.  
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+
+<Steps>
+  1. Use the product rule to find $g'(x)$:
+     $$
+     \begin{aligned}
+     g'(x) &= (1)\text{e}^{-x} + x(-\text{e}^{-x}) \\
+     g'(x) &= \text{e}^{-x}(1 - x)
+     \end{aligned}
+     $$
+  2. Set $g'(x) = 0$. Since $\text{e}^{-x} \neq 0$, we have $1 - x = 0 \implies x = 1$.
+  3. Find the $y$-coordinate: 
+     $$
+     \begin{aligned}
+     g(1) &= 1\text{e}^{-1} = \dfrac{1}{\text{e}}
+     \end{aligned}
+     $$
+  4. Determine nature using $g''(x)$:
+     $$
+     \begin{aligned}
+     g''(x) &= -\text{e}^{-x}(1-x) + \text{e}^{-x}(-1) = \text{e}^{-x}(x - 2)
+     \end{aligned}
+     $$
+     $g''(1) = \text{e}^{-1}(1 - 2) = -\text{e}^{-1} < 0$. Therefore, $(1, \dfrac{1}{\text{e}})$ is a local maximum.
+</Steps>
+
+    **b)**
+
+<Steps>
+  1. Set $g''(x) = 0$ to find potential points of inflexion:
+     $$
+     \begin{aligned}
+     \text{e}^{-x}(x - 2) &= 0 \implies x = 2
+     \end{aligned}
+     $$
+  2. Verify the sign change for $g''(x)$:
+     * For $x < 2$ (e.g., $x=1$), $g''(1) < 0$.
+     * For $x > 2$ (e.g., $x=3$), $g''(3) > 0$.
+     Because concavity changes, it is a point of inflexion.
+  3. Find the $y$-coordinate: 
+     $$
+     \begin{aligned}
+     g(2) &= 2\text{e}^{-2} = \dfrac{2}{\text{e}^2}
+     \end{aligned}
+     $$
+     The point is $(2, \dfrac{2}{\text{e}^2})$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Area Optimisation">
+    A rectangular plot of land is to be enclosed by a fence. One side of the plot lies along a straight river, so no fencing is required along that side. The farmer has $800 \text{ m}$ of fencing available.  
+    **a)** Show that the area of the enclosure can be written as $A(x) = 800x - 2x^2$, where $x$ is the width of the rectangle.  
+    **b)** Find the dimensions that maximise the enclosed area.  
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+
+<Steps>
+  1. Let the width of the rectangle be $x$ and the length parallel to the river be $y$. The fencing is only used for three sides:
+     $$
+     \begin{aligned}
+     2x + y &= 800
+     \end{aligned}
+     $$
+  2. Solve for $y$: 
+     $$
+     \begin{aligned}
+     y &= 800 - 2x
+     \end{aligned}
+     $$
+  3. Substitute into the area formula $A = x \times y$:
+     $$
+     \begin{aligned}
+     A(x) &= x(800 - 2x) \\
+     A(x) &= 800x - 2x^2
+     \end{aligned}
+     $$
+</Steps>
+
+    **b)**
+
+<Steps>
+  1. Differentiate $A(x)$ and set to zero:
+     $$
+     \begin{aligned}
+     A'(x) &= 800 - 4x \\
+     0 &= 800 - 4x \implies x = 200
+     \end{aligned}
+     $$
+  2. Verify it's a maximum: $A''(x) = -4 < 0$, confirming a maximum.
+  3. Calculate the corresponding length $y$:
+     $$
+     \begin{aligned}
+     y &= 800 - 2(200) = 400
+     \end{aligned}
+     $$
+     The dimensions are $200 \text{ m}$ by $400 \text{ m}$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: The Inflexion Trap">
+    Let $h(x) = x^4 - 8x^3 + 24x^2 - 10$.  
+    **a)** Find all stationary points of $h(x)$.  
+    **b)** Show that $h(x)$ does not have any points of inflexion, despite having a point where $h''(x) = 0$.  
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+
+<Steps>
+  1. Find $h'(x)$ and set to zero:
+     $$
+     \begin{aligned}
+     h'(x) &= 4x^3 - 24x^2 + 48x \\
+     0 &= 4x(x^2 - 6x + 12) 
+     \end{aligned}
+     $$
+  2. The quadratic $x^2 - 6x + 12$ has a discriminant $\Delta = 36 - 48 = -12 < 0$, so it yields no real roots. The only stationary point occurs at $x = 0$.
+  3. Find the $y$-coordinate:
+     $$
+     \begin{aligned}
+     h(0) &= -10 
+     \end{aligned}
+     $$
+     The only stationary point is $(0, -10)$.
+</Steps>
+
+    **b)**
+
+<Steps>
+  1. Find the second derivative and set it to zero:
+     $$
+     \begin{aligned}
+     h''(x) &= 12x^2 - 48x + 48 \\
+     0 &= 12(x^2 - 4x + 4) \\
+     0 &= 12(x - 2)^2
+     \end{aligned}
+     $$
+     There is a potential point of inflexion at $x = 2$.
+  2. Verify the sign change of $h''(x)$ around $x = 2$:
+     $$
+     \begin{aligned}
+     \text{Since } (x - 2)^2 \ge 0 \text{ for all real } x, \text{ } h''(x) \ge 0 \text{ everywhere.}
+     \end{aligned}
+     $$
+  3. Because $h''(x)$ never changes from positive to negative, the concavity does not change. Therefore, there are no points of inflexion.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Kinematics Context">
+    The displacement $s$ metres of a particle at time $t$ seconds is given by $s(t) = t^3 - 9t^2 + 15t + 2$ for $t \geq 0$.  
+    **a)** Find the times when the particle is momentarily at rest.  
+    **b)** Find the maximum velocity of the particle in the interval $0 \leq t \leq 4$.  
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+
+<Steps>
+  1. Velocity is the first derivative of displacement. Find $v(t)$:
+     $$
+     \begin{aligned}
+     v(t) &= s'(t) = 3t^2 - 18t + 15
+     \end{aligned}
+     $$
+  2. Set $v(t) = 0$ to find when the particle is at rest:
+     $$
+     \begin{aligned}
+     0 &= 3(t^2 - 6t + 5) \\
+     0 &= 3(t - 1)(t - 5)
+     \end{aligned}
+     $$
+     The particle is at rest at $t = 1 \text{ s}$ and $t = 5 \text{ s}$.
+</Steps>
+
+    **b)**
+
+<Steps>
+  1. To find critical points for velocity, set acceleration $a(t)$ to zero:
+     $$
+     \begin{aligned}
+     a(t) &= v'(t) = 6t - 18 \\
+     0 &= 6t - 18 \implies t = 3
+     \end{aligned}
+     $$
+  2. Verify if $t=3$ is a maximum or minimum for velocity.
+     $$
+     \begin{aligned}
+     a'(t) = v''(t) = 6 > 0
+     \end{aligned}
+     $$
+     This means $t=3$ is a *local minimum* for velocity.
+  3. Since the only turning point is a minimum, the maximum velocity must occur at the boundaries of the interval $0 \leq t \leq 4$:
+     $$
+     \begin{aligned}
+     v(0) &= 15 \text{ m/s} \\
+     v(4) &= 3(16) - 18(4) + 15 = -9 \text{ m/s}
+     \end{aligned}
+     $$
+  4. The maximum velocity is $15 \text{ m/s}$, occurring at $t = 0$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Advanced Volume Optimisation">
+    A solid glass paperweight consists of a hemisphere of radius $r$ mounted on top of a cylinder of radius $r$ and height $h$. The total volume of the paperweight is $360 \text{ cm}^3$.  
+    **a)** Express the total surface area $S$ in terms of $r$ only.  
+    **b)** Find the value of $r$ that minimises the total surface area.  
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+
+<Steps>
+  1. Write the formulas for the total volume and total surface area.
+     $$
+     \begin{aligned}
+     V &= \dfrac{2}{3}\pi r^3 + \pi r^2 h = 360 \\
+     S &= 2\pi r^2 + 2\pi r h + \pi r^2 \\
+     S &= 3\pi r^2 + 2\pi r h
+     \end{aligned}
+     $$
+     *(Note: Surface area includes the hemisphere curved surface, cylinder curved surface, and the circular base).*
+  2. Isolate $h$ from the volume equation:
+     $$
+     \begin{aligned}
+     \pi r^2 h &= 360 - \dfrac{2}{3}\pi r^3 \\
+     h &= \dfrac{360}{\pi r^2} - \dfrac{2r}{3}
+     \end{aligned}
+     $$
+  3. Substitute $h$ into the surface area equation:
+     $$
+     \begin{aligned}
+     S(r) &= 3\pi r^2 + 2\pi r \left( \dfrac{360}{\pi r^2} - \dfrac{2r}{3} \right) \\
+     S(r) &= 3\pi r^2 + \dfrac{720}{r} - \dfrac{4\pi r^2}{3} \\
+     S(r) &= \dfrac{5\pi r^2}{3} + 720r^{-1}
+     \end{aligned}
+     $$
+</Steps>
+
+    **b)**
+
+<Steps>
+  1. Differentiate $S(r)$ and set to zero:
+     $$
+     \begin{aligned}
+     S'(r) &= \dfrac{10\pi r}{3} - 720r^{-2} \\
+     0 &= \dfrac{10\pi r}{3} - \dfrac{720}{r^2} \\
+     \dfrac{10\pi r^3}{3} &= 720 \\
+     r^3 &= \dfrac{2160}{10\pi} = \dfrac{216}{\pi}
+     \end{aligned}
+     $$
+  2. Solve for $r$:
+     $$
+     \begin{aligned}
+     r &= \dfrac{6}{\sqrt[3]{\pi}} \approx 4.09 \text{ cm}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Concavity of Logarithms">
+    Consider the function $f(x) = \ln(x^2 + 1)$.  
+    **a)** Find the coordinates of the local minimum point.  
+    **b)** Determine the exact values of $x$ for which the concavity of the graph changes.  
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+
+<Steps>
+  1. Find $f'(x)$ using the chain rule:
+     $$
+     \begin{aligned}
+     f'(x) &= \dfrac{1}{x^2 + 1} \cdot (2x) = \dfrac{2x}{x^2 + 1}
+     \end{aligned}
+     $$
+  2. Set $f'(x) = 0$ to find stationary points:
+     $$
+     \begin{aligned}
+     \dfrac{2x}{x^2 + 1} &= 0 \implies x = 0
+     \end{aligned}
+     $$
+  3. Verify it's a minimum using the first derivative test:
+     * For $x < 0$, $f'(x) < 0$
+     * For $x > 0$, $f'(x) > 0$
+     Since the gradient changes from negative to positive, it's a local minimum.
+  4. Find the $y$-coordinate: 
+     $$
+     \begin{aligned}
+     f(0) &= \ln(1) = 0
+     \end{aligned}
+     $$
+     The minimum is $(0, 0)$.
+</Steps>
+
+    **b)**
+
+<Steps>
+  1. Concavity changes at points of inflexion. Find $f''(x)$ using the quotient rule:
+     $$
+     \begin{aligned}
+     f''(x) &= \dfrac{(2)(x^2 + 1) - (2x)(2x)}{(x^2 + 1)^2} \\
+     f''(x) &= \dfrac{2x^2 + 2 - 4x^2}{(x^2 + 1)^2} = \dfrac{2 - 2x^2}{(x^2 + 1)^2}
+     \end{aligned}
+     $$
+  2. Set $f''(x) = 0$:
+     $$
+     \begin{aligned}
+     2 - 2x^2 &= 0 \\
+     x^2 &= 1 \implies x = 1, x = -1
+     \end{aligned}
+     $$
+  3. Verify the sign change of $f''(x)$. The denominator is always positive, so the sign depends on $2 - 2x^2$:
+     * $x < -1 \implies f''(x) < 0$
+     * $-1 < x < 1 \implies f''(x) > 0$
+     * $x > 1 \implies f''(x) < 0$
+     Concavity changes at exactly $x = 1$ and $x = -1$.
+</Steps>
+  </TabItem>
+</Tabs>

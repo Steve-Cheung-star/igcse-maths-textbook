@@ -1,5 +1,864 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 5.11 Definite Integrals and Area
+description: Learn to evaluate definite integrals using analytical methods, understand their connection to area under and between curves, and apply them using technology.
 ---
-Content coming soon.
+
+While an indefinite integral results in a family of functions (an algebraic expression with a $+ C$), a **definite integral** evaluates to a specific numerical value. This value represents the net accumulation of a quantity, most commonly visualised as the **signed area** between a curve and the $x$-axis over a given interval.
+
+The fundamental link between differentiation and calculating areas is known as the Fundamental Theorem of Calculus. If $g'(x)$ is the continuous rate of change of a function, the definite integral of $g'(x)$ from $x = a$ to $x = b$ is given by:
+
+$$
+\int_a^b g'(x) \, \text{d}x = g(b) - g(a)
+$$
+
+<Aside type="note" title="The Mechanics of Evaluation">
+  To evaluate a definite integral analytically, we first find the antiderivative (ignoring the $+ C$, as it cancels out during subtraction), place it in square brackets with the limits on the right, and then subtract the value of the lower limit from the value of the upper limit.
+</Aside>
+
+### Worked Example 1: Analytical Evaluation
+Evaluate the definite integral $\int_1^3 (3x^2 - 4x + 2) \, \text{d}x$.
+
+**Solution:**
+
+<Steps>
+  1. Find the antiderivative and place it in square brackets with the limits.
+     $$
+     \begin{aligned}
+     \int_1^3 (3x^2 - 4x + 2) \, \text{d}x &= \left[ x^3 - 2x^2 + 2x \right]_1^3
+     \end{aligned}
+     $$
+  2. Substitute the upper limit, then subtract the result of substituting the lower limit.
+     $$
+     \begin{aligned}
+     &= \left( (3)^3 - 2(3)^2 + 2(3) \right) - \left( (1)^3 - 2(1)^2 + 2(1) \right) \\
+     &= (27 - 18 + 6) - (1 - 2 + 2) \\
+     &= (15) - (1) \\
+     &= 14
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 1. Area Between a Curve and the $x$-axis
+
+The definite integral $\int_a^b f(x) \, \text{d}x$ calculates the **signed area**. This means any region enclosed *above* the $x$-axis contributes a positive value, while any region *below* the $x$-axis contributes a negative value. 
+
+If a question asks for the true geometric **area** of a region, we must ensure all parts are treated as positive.
+
+<FormulaBox title="Area of region enclosed by a curve and x-axis">
+  $$
+  A = \int_a^b |y| \, \text{d}x
+  $$
+</FormulaBox>
+
+Analytically, without a GDC, taking the absolute value means you must:
+1. Find the $x$-intercepts to determine where the graph crosses the $x$-axis.
+2. Split the integral into separate regions at these intercepts.
+3. Calculate the definite integral for each region.
+4. Take the absolute value of any negative results before summing them together.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="area-graphs" viewBox="0 0 600 300" width="100%" style="max-width: 600px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px;">
+    <defs>
+      <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+        <polygon points="0 0, 6 3, 0 6" fill="#64748b" />
+      </marker>
+      <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+        <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="600" height="300" fill="url(#grid)" />
+    
+    <g transform="translate(0, 0)">
+      <line x1="50" y1="150" x2="550" y2="150" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      <line x1="100" y1="280" x2="100" y2="20" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      
+      <text x="560" y="155" font-family="sans-serif" font-size="12" fill="#64748b">x</text>
+      <text x="110" y="20" font-family="sans-serif" font-size="12" fill="#64748b">y</text>
+      
+      <polygon 
+        points={`100,150 ${Array.from({ length: 31 }).map((_, i) => {
+          const mathX = i * (Math.PI / 30);
+          const x = 100 + (mathX * 60);
+          const y = 150 - (Math.sin(mathX) * 80);
+          return `${x},${y}`;
+        }).join(" ")} 288.5,150`}
+        fill="#bbf7d0" opacity="0.6"
+      />
+
+      <polygon 
+        points={`288.5,150 ${Array.from({ length: 31 }).map((_, i) => {
+          const mathX = Math.PI + i * (Math.PI / 30);
+          const x = 100 + (mathX * 60);
+          const y = 150 - (Math.sin(mathX) * 80);
+          return `${x},${y}`;
+        }).join(" ")} 477,150`}
+        fill="#fecaca" opacity="0.6"
+      />
+
+      <polyline 
+        points={Array.from({ length: 70 }).map((_, i) => {
+          const mathX = (i - 5) * (Math.PI / 30);
+          const x = 100 + (mathX * 60);
+          const y = 150 - (Math.sin(mathX) * 80);
+          return `${x},${y}`;
+        }).join(" ")}
+        fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" 
+      />
+
+      <text x="170" y="110" font-family="sans-serif" font-size="14" font-weight="bold" fill="#16a34a">Positive Area</text>
+      <text x="350" y="210" font-family="sans-serif" font-size="14" font-weight="bold" fill="#dc2626">Negative Area</text>
+      
+      <text x="95" y="170" font-family="sans-serif" font-size="12" fill="#64748b">a</text>
+      <text x="283" y="140" font-family="sans-serif" font-size="12" fill="#64748b">c</text>
+      <text x="472" y="140" font-family="sans-serif" font-size="12" fill="#64748b">b</text>
+    </g>
+  </svg>
+</div>
+
+<Aside type="caution" title="Area vs. Integral">
+  If you are asked to "evaluate the integral $\int_a^b f(x) \, \text{d}x$", you **do not** flip the negative regions. You just compute the single integration. You only split the integral and use absolute values if the question explicitly asks for the **"area"**.
+</Aside>
+
+### Worked Example 2: Area Crossing the $x$-axis
+Find the total geometric area enclosed by the curve $y = 3x^2 - 12$ and the $x$-axis.
+
+**Solution:**
+
+<Steps>
+  1. Find the bounds by setting $y = 0$ to find the $x$-intercepts.
+     $$
+     \begin{aligned}
+     3x^2 - 12 &= 0 \\
+     3(x^2 - 4) &= 0 \\
+     x &= -2, \quad x = 2
+     \end{aligned}
+     $$
+  2. Set up the definite integral for the area. Notice that substituting $x=0$ yields $y=-12$, meaning this entire region lies below the $x$-axis.
+     $$
+     \begin{aligned}
+     \text{Area} &= \left| \int_{-2}^{2} (3x^2 - 12) \, \text{d}x \right|
+     \end{aligned}
+     $$
+  3. Evaluate the integral.
+     $$
+     \begin{aligned}
+     \int_{-2}^{2} (3x^2 - 12) \, \text{d}x &= \left[ x^3 - 12x \right]_{-2}^{2} \\
+     &= \left( (2)^3 - 12(2) \right) - \left( (-2)^3 - 12(-2) \right) \\
+     &= (8 - 24) - (-8 + 24) \\
+     &= (-16) - (16) = -32
+     \end{aligned}
+     $$
+  4. Take the absolute value to state the geometric area.
+     $$
+     \begin{aligned}
+     \text{Total Area} &= |-32| = 32 \text{ units}^2
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 2. Area Between Two Curves
+
+To find the area bounded between two curves, $y = f(x)$ and $y = g(x)$, we integrate the difference between the "top" curve and the "bottom" curve over the interval $[a, b]$. 
+
+$$
+\text{Area} = \int_a^b \left( \text{Top Function} - \text{Bottom Function} \right) \, \text{d}x
+$$
+
+By always subtracting the bottom function from the top function, we guarantee a positive geometric area, regardless of whether the curves are above or below the $x$-axis.
+
+### Worked Example 3: Area Between Intersecting Curves
+Find the area of the region bounded between the graphs of $f(x) = 5 - x^2$ and $g(x) = x + 3$.
+
+**Solution:**
+
+<Steps>
+  1. Find the points of intersection to determine the limits of integration.
+     $$
+     \begin{aligned}
+     5 - x^2 &= x + 3 \\
+     x^2 + x - 2 &= 0 \\
+     (x + 2)(x - 1) &= 0 \implies x = -2, \text{ and } x = 1
+     \end{aligned}
+     $$
+  2. Determine which function is the "top" function in the interval $[-2, 1]$. We can test $x = 0$: $f(0) = 5$ and $g(0) = 3$. Therefore, $f(x)$ is on top.
+  3. Set up and simplify the integral.
+     $$
+     \begin{aligned}
+     \text{Area} &= \int_{-2}^{1} \left( (5 - x^2) - (x + 3) \right) \, \text{d}x \\
+     &= \int_{-2}^{1} (-x^2 - x + 2) \, \text{d}x
+     \end{aligned}
+     $$
+  4. Evaluate the definite integral.
+     $$
+     \begin{aligned}
+     &= \left[ -\dfrac{x^3}{3} - \dfrac{x^2}{2} + 2x \right]_{-2}^{1} \\
+     &= \left( -\dfrac{1}{3} - \dfrac{1}{2} + 2 \right) - \left( -\dfrac{-8}{3} - \dfrac{4}{2} - 4 \right) \\
+     &= \left( \dfrac{7}{6} \right) - \left( \dfrac{8}{3} - 6 \right) \\
+     &= \dfrac{7}{6} - \left( -\dfrac{10}{3} \right) \\
+     &= \dfrac{7}{6} + \dfrac{20}{6} = \dfrac{27}{6} = 4.5 \text{ units}^2
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 3. Definite Integrals and U-Substitution (Change of Variable)
+
+When using $u$-substitution to evaluate a definite integral, you have two distinct options for handling the upper and lower limits. Both are mathematically valid, but you must choose one and stick to it carefully.
+
+**Method A: Change the Limits (Recommended)**
+When you change the variable from $x$ to $u$, you also evaluate the boundaries $x=a$ and $x=b$ using your substitution equation to find new boundaries $u_1$ and $u_2$. You never have to substitute $x$ back into the equation!
+
+**Method B: Substitute Back to $x$ (The Safe Route)**
+If you forget to change your limits, your integral is mathematically broken. To avoid this, evaluate the integral as an *indefinite* integral first to find the antiderivative in terms of $x$. Then, apply your original $x$ limits.
+
+### Worked Example 4: Changing Limits vs Subbing Back
+Evaluate $\int_0^1 2x(x^2 + 1)^3 \, \text{d}x$ using $u$-substitution.
+
+**Solution using Method A (Change of Limits):**
+
+<Steps>
+  1. Let $u = x^2 + 1$. Then $\dfrac{\text{d}u}{\text{d}x} = 2x \implies \text{d}x = \dfrac{\text{d}u}{2x}$.
+  2. Change the bounds. When $x = 0$, $u = (0)^2 + 1 = 1$. When $x = 1$, $u = (1)^2 + 1 = 2$.
+  3. Substitute everything into the integral, using the new $u$-bounds:
+     $$
+     \begin{aligned}
+     \int_1^2 2x(u)^3 \dfrac{\text{d}u}{2x} &= \int_1^2 u^3 \, \text{d}u
+     \end{aligned}
+     $$
+  4. Evaluate the definite integral purely in terms of $u$:
+     $$
+     \begin{aligned}
+     &= \left[ \dfrac{u^4}{4} \right]_1^2 \\
+     &= \left( \dfrac{16}{4} \right) - \left( \dfrac{1}{4} \right) = \dfrac{15}{4} = 3.75
+     \end{aligned}
+     $$
+</Steps>
+
+**Solution using Method B (Substitute Back to x):**
+
+<Steps>
+  1. Perform the substitution, but drop the limits temporarily while you integrate with respect to $u$. Let $u = x^2 + 1$ and $\text{d}x = \dfrac{\text{d}u}{2x}$.
+     $$
+     \begin{aligned}
+     \int 2x(u)^3 \dfrac{\text{d}u}{2x} &= \int u^3 \, \text{d}u = \dfrac{u^4}{4} + C
+     \end{aligned}
+     $$
+  2. Substitute back the original $x$ expression:
+     $$
+     \begin{aligned}
+     \text{Antiderivative} = \dfrac{(x^2 + 1)^4}{4}
+     \end{aligned}
+     $$
+  3. Now apply the *original* $x$ limits ($0$ to $1$) to the $x$-based expression:
+     $$
+     \begin{aligned}
+     \left[ \dfrac{(x^2 + 1)^4}{4} \right]_0^1 &= \left( \dfrac{((1)^2 + 1)^4}{4} \right) - \left( \dfrac{((0)^2 + 1)^4}{4} \right) \\
+     &= \dfrac{2^4}{4} - \dfrac{1^4}{4} = \dfrac{16}{4} - \dfrac{1}{4} = \dfrac{15}{4} = 3.75
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 4. Connections & Contexts (Kinematics)
+
+Definite integrals are heavily applied in kinematics to move from velocity back to displacement and total distance.
+
+<FormulaBox title="Displacement from t_1 to t_2">
+  $$
+  \text{displacement} = \int_{t_1}^{t_2} v(t) \, \text{d}t
+  $$
+</FormulaBox>
+
+<FormulaBox title="Distance travelled from t_1 to t_2">
+  $$
+  \text{distance} = \int_{t_1}^{t_2} |v(t)| \, \text{d}t
+  $$
+</FormulaBox>
+
+Notice how distance mirrors the logic of finding geometric area—we integrate the absolute value because distance must accumulate positively, even if the particle is travelling backwards (negative velocity).
+
+### Worked Example 5: Kinematics (Displacement vs Distance)
+A particle moves along a straight line with velocity $v(t) = 3t^2 - 12 \, \text{m s}^{-1}$ for $t \ge 0$. Find the displacement and total distance travelled in the first $3$ seconds.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg viewBox="0 0 600 300" width="100%" style="max-width: 600px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px;">
+    <rect width="600" height="300" fill="url(#grid)" />
+    <g transform="translate(100, 150)">
+      <line x1="-20" y1="0" x2="400" y2="0" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      <line x1="0" y1="130" x2="0" y2="-130" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      
+      {/* v(t) = 3t^2 - 12 curve */}
+      <polyline 
+        points={Array.from({ length: 41 }).map((_, i) => {
+          const t = i * 0.1;
+          const x = t * 80;
+          const y = - (3 * Math.pow(t, 2) - 12) * 10;
+          return `${x},${y}`;
+        }).join(" ")}
+        fill="none" stroke="#2563eb" stroke-width="3"
+      />
+
+      {/* Shading distance */}
+      <polygon 
+        points={`0,0 ${Array.from({ length: 21 }).map((_, i) => {
+          const t = i * 0.1;
+          const x = t * 80;
+          const y = - (3 * Math.pow(t, 2) - 12) * 10;
+          return `${x},${y}`;
+        }).join(" ")} 160,0`}
+        fill="#fecaca" opacity="0.5"
+      />
+      <polygon 
+        points={`160,0 ${Array.from({ length: 11 }).map((_, i) => {
+          const t = 2 + i * 0.1;
+          const x = t * 80;
+          const y = - (3 * Math.pow(t, 2) - 12) * 10;
+          return `${x},${y}`;
+        }).join(" ")} 240,0`}
+        fill="#bbf7d0" opacity="0.5"
+      />
+
+      <text x="170" y="20" font-family="sans-serif" font-size="12" fill="#64748b">t = 2s</text>
+      <text x="250" y="20" font-family="sans-serif" font-size="12" fill="#64748b">t = 3s</text>
+      <text x="350" y="-80" font-family="sans-serif" font-size="14" fill="#2563eb" font-weight="bold">v(t)</text>
+    </g>
+  </svg>
+</div>
+
+**Solution:**
+
+<Steps>
+  1. Calculate the **displacement** by integrating directly from $t=0$ to $t=3$:
+     $$
+     \begin{aligned}
+     \int_0^3 (3t^2 - 12) \, \text{d}t &= \left[ t^3 - 12t \right]_0^3 \\
+     &= (27 - 36) - (0) = -9 \text{ m}
+     \end{aligned}
+     $$
+     The displacement is $-9 \text{ m}$ (the particle is $9 \text{ m}$ left of its starting point).
+  2. To calculate **total distance** manually, find where $v(t) = 0$:
+     $$
+     \begin{aligned}
+     3t^2 - 12 &= 0 \implies t^2 = 4 \implies t = 2 \text{ s}
+     \end{aligned}
+     $$
+  3. Split the integral into intervals $[0, 2]$ and $[2, 3]$ and sum their absolute values:
+     $$
+     \begin{aligned}
+     \text{Distance} &= \left| \int_0^2 (3t^2 - 12) \, \text{d}t \right| + \left| \int_2^3 (3t^2 - 12) \, \text{d}t \right| \\
+     &= \left| \left[ t^3 - 12t \right]_0^2 \right| + \left| \left[ t^3 - 12t \right]_2^3 \right| \\
+     &= \left| (8 - 24) - 0 \right| + \left| (27 - 36) - (8 - 24) \right| \\
+     &= |-16| + |-9 - (-16)| \\
+     &= 16 + 7 = 23 \text{ m}
+     \end{aligned}
+     $$
+</Steps>
+
+<Aside type="note" title="Theory of Knowledge: Infinite Area vs Finite Volume">
+  Consider the function $f(x) = \dfrac{1}{x}$ for the domain $x \ge 1$. If we calculate the area bounded by this curve and the $x$-axis out to infinity, it diverges—the area is infinitely large. However, if we revolve this exact same infinite 2D area around the $x$-axis to create a 3D shape (Gabriel's Horn), its volume converges to a finite number, $\pi$! Can this be reconciled with our intuition? Do emotion and intuition have a reliable role in mathematics, or must they be subordinated to rigorous proof?
+</Aside>
+
+<Aside type="note" title="International Mindedness: The Global Roots of Calculus">
+  While Newton and Leibniz formalised calculus, the groundwork for integration was laid globally. In the 3rd century, the Chinese mathematician **Liu Hui** used early limits to accurately calculate the volume of a cylinder. In the 11th century, the pioneering Arab mathematician **Ibn Al Haytham** became the first to calculate the integral of a function in order to find the volume of a paraboloid.
+</Aside>
+
+<SteveTip title="GDC Skills: Bounded Area on the TI-Nspire">
+  For Paper 2, **never** calculate definite integrals by hand unless it's a "Show that" question! 
+  * **Calculator App:** Press `Menu > Calculus > Numerical Integral`. You can directly type $\int_a^b |f(x)| \, \text{d}x$ to find areas without manually splitting limits.
+  * **Graphs App:** Graph your function(s). Press `Menu > Analyze Graph > Bounded Area`. Click your lower bound, then click your upper bound. The GDC will automatically split regions and shade the true positive area for you.
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Basic Polynomials">
+    **a)** Evaluate $\int_{-1}^{2} (3x^2 - 2x) \, \text{d}x$.  
+    **b)** Explain why the result in part (a) is less than the true geometric area enclosed by the curve and the $x$-axis between $x=-1$ and $x=2$.  
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+
+<Steps>
+  1. Find the antiderivative and evaluate.
+     $$
+     \begin{aligned}
+     \int_{-1}^{2} (3x^2 - 2x) \, \text{d}x &= \left[ x^3 - x^2 \right]_{-1}^2
+     \end{aligned}
+     $$
+  2. Substitute limits.
+     $$
+     \begin{aligned}
+     &= \left( (2)^3 - (2)^2 \right) - \left( (-1)^3 - (-1)^2 \right) \\
+     &= (8 - 4) - (-1 - 1) \\
+     &= (4) - (-2) = 6
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. The function $y = 3x^2 - 2x$ factors to $x(3x - 2) = 0$, meaning it has roots at $x = 0$ and $x = \dfrac{2}{3}$.
+  2. Between $x = 0$ and $x = \dfrac{2}{3}$, the graph dips below the $x$-axis, creating negative signed area.
+  3. The definite integral calculates the *net* signed area, meaning the negative portion subtracted from the positive portion. The true geometric area would be strictly larger as all areas would be treated as positive.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Trig & Exponentials">
+    Evaluate the exact values of the following definite integrals:  
+    **a)** $\int_{0}^{\frac{\pi}{4}} \cos(2x) \, \text{d}x$  
+    **b)** $\int_{0}^{\ln 2} \text{e}^{3x} \, \text{d}x$  
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+
+<Steps>
+  1. Find the antiderivative (remember to divide by the inner coefficient $2$).
+     $$
+     \begin{aligned}
+     \left[ \dfrac{1}{2}\sin(2x) \right]_0^{\frac{\pi}{4}}
+     \end{aligned}
+     $$
+  2. Substitute limits.
+     $$
+     \begin{aligned}
+     &= \dfrac{1}{2}\sin\left(2\left(\dfrac{\pi}{4}\right)\right) - \dfrac{1}{2}\sin(0) \\
+     &= \dfrac{1}{2}\sin\left(\dfrac{\pi}{2}\right) - 0 = \dfrac{1}{2}(1) = \dfrac{1}{2}
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. Find the antiderivative.
+     $$
+     \begin{aligned}
+     \left[ \dfrac{1}{3}\text{e}^{3x} \right]_0^{\ln 2}
+     \end{aligned}
+     $$
+  2. Substitute limits.
+     $$
+     \begin{aligned}
+     &= \dfrac{1}{3}\text{e}^{3\ln 2} - \dfrac{1}{3}\text{e}^0
+     \end{aligned}
+     $$
+  3. Use log laws to simplify $\text{e}^{3\ln 2} = \text{e}^{\ln(2^3)} = 8$.
+     $$
+     \begin{aligned}
+     &= \dfrac{1}{3}(8) - \dfrac{1}{3}(1) = \dfrac{7}{3}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Unknown Limits">
+    **a)** Given that $\int_{1}^{k} \dfrac{2}{x} \, \text{d}x = \ln 9$, where $k > 1$, find the exact value of $k$.  
+    **b)** Given that $\int_{0}^{c} (2x - 3) \, \text{d}x = 4$, and $c > 0$, find $c$.  
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+
+<Steps>
+  1. Integrate the expression.
+     $$
+     \begin{aligned}
+     \left[ 2\ln|x| \right]_1^k &= \ln 9
+     \end{aligned}
+     $$
+  2. Substitute the limits.
+     $$
+     \begin{aligned}
+     2\ln k - 2\ln 1 &= \ln 9 \\
+     2\ln k - 0 &= \ln 9
+     \end{aligned}
+     $$
+  3. Solve for $k$.
+     $$
+     \begin{aligned}
+     \ln(k^2) &= \ln 9 \\
+     k^2 &= 9 \implies k = 3 \text{ (since } k > 1)
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. Integrate and evaluate.
+     $$
+     \begin{aligned}
+     \left[ x^2 - 3x \right]_0^c &= 4 \\
+     (c^2 - 3c) - (0) &= 4
+     \end{aligned}
+     $$
+  2. Solve the quadratic equation.
+     $$
+     \begin{aligned}
+     c^2 - 3c - 4 &= 0 \\
+     (c - 4)(c + 1) &= 0
+     \end{aligned}
+     $$
+     Since $c > 0$, $c = 4$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Bounded by the x-axis">
+    Consider the function $f(x) = 4 - x^2$.  
+    **a)** Find the $x$-intercepts of the graph of $f$.  
+    **b)** Hence, calculate the exact area of the region enclosed by the graph of $f$ and the $x$-axis.  
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+
+<Steps>
+  1. Set $f(x) = 0$.
+     $$
+     \begin{aligned}
+     4 - x^2 &= 0 \\
+     (2 - x)(2 + x) &= 0 \implies x = -2, \, x = 2
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. Set up the integral between the roots. Since it is an upside-down parabola, the area is above the $x$-axis.
+     $$
+     \begin{aligned}
+     \text{Area} &= \int_{-2}^{2} (4 - x^2) \, \text{d}x
+     \end{aligned}
+     $$
+  2. Evaluate.
+     $$
+     \begin{aligned}
+     &= \left[ 4x - \dfrac{x^3}{3} \right]_{-2}^2 \\
+     &= \left( 8 - \dfrac{8}{3} \right) - \left( -8 - \dfrac{-8}{3} \right) \\
+     &= \left( \dfrac{16}{3} \right) - \left( -\dfrac{16}{3} \right) = \dfrac{32}{3} \text{ units}^2
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Areas Crossing the Axis">
+    Let $g(x) = x^3 - 4x$.  
+    **a)** Find the $x$-intercepts of $g(x)$.  
+    **b)** Calculate the total geometric area enclosed by the graph of $g$ and the $x$-axis.  
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+
+<Steps>
+  1. Set $g(x) = 0$ and factorise.
+     $$
+     \begin{aligned}
+     x(x^2 - 4) &= 0 \\
+     x(x - 2)(x + 2) &= 0 \implies x = -2, \, 0, \, 2
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. The curve crosses the axis at $x=0$, creating two regions. Region 1 is $[-2, 0]$ and Region 2 is $[0, 2]$. Calculate them separately.
+  2. Integral for Region 1:
+     $$
+     \begin{aligned}
+     \int_{-2}^{0} (x^3 - 4x) \, \text{d}x &= \left[ \dfrac{x^4}{4} - 2x^2 \right]_{-2}^0 \\
+     &= (0) - \left( \dfrac{16}{4} - 2(4) \right) \\
+     &= 0 - (4 - 8) = 4
+     \end{aligned}
+     $$
+  3. Integral for Region 2:
+     $$
+     \begin{aligned}
+     \int_{0}^{2} (x^3 - 4x) \, \text{d}x &= \left[ \dfrac{x^4}{4} - 2x^2 \right]_0^2 \\
+     &= (4 - 8) - (0) = -4
+     \end{aligned}
+     $$
+  4. Sum the absolute values.
+     $$
+     \begin{aligned}
+     \text{Total Area} &= |4| + |-4| = 8 \text{ units}^2
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Area Between Two Curves (Analytic)">
+    Let $f(x) = x^2$ and $g(x) = x + 2$.  
+    **a)** Find the coordinates of the points of intersection.  
+    **b)** Find the exact area of the region bounded by the two graphs.  
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+
+<Steps>
+  1. Set the functions equal to each other.
+     $$
+     \begin{aligned}
+     x^2 &= x + 2 \\
+     x^2 - x - 2 &= 0 \\
+     (x - 2)(x + 1) &= 0 \implies x = -1, \, x = 2
+     \end{aligned}
+     $$
+  2. Find corresponding $y$-values: $(-1, 1)$ and $(2, 4)$.
+</Steps>
+    **b)**
+
+<Steps>
+  1. Determine the top function. Between $x=-1$ and $x=2$, testing $x=0$ yields $f(0)=0$ and $g(0)=2$. Thus, $g(x)$ is the top function.
+  2. Set up the integral.
+     $$
+     \begin{aligned}
+     \text{Area} &= \int_{-1}^{2} \left( (x+2) - x^2 \right) \, \text{d}x
+     \end{aligned}
+     $$
+  3. Evaluate.
+     $$
+     \begin{aligned}
+     &= \left[ \dfrac{x^2}{2} + 2x - \dfrac{x^3}{3} \right]_{-1}^2 \\
+     &= \left( 2 + 4 - \dfrac{8}{3} \right) - \left( \dfrac{1}{2} - 2 - \dfrac{-1}{3} \right) \\
+     &= \left( \dfrac{10}{3} \right) - \left( -\dfrac{7}{6} \right) \\
+     &= \dfrac{20}{6} + \dfrac{7}{6} = \dfrac{27}{6} = 4.5 \text{ units}^2
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Area Between Curves (GDC)">
+    **(GDC Allowed)** Let $y_1 = x\sin(x)$ and $y_2 = x^2 - 1$.  
+    **a)** Find the $x$-coordinates of the points of intersection of the two curves.  
+    **b)** Calculate the area of the region enclosed by the two curves.  
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+
+<Steps>
+  1. Graph both functions on the GDC and use the intersection tool.
+     $$
+     \begin{aligned}
+     x &\approx -0.906 \\
+     x &\approx 1.571
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. The graph shows $y_1$ is above $y_2$ between the intersection points. Set up the definite integral on your calculator screen.
+     $$
+     \begin{aligned}
+     \text{Area} &= \int_{-0.906}^{1.571} \left( x\sin(x) - (x^2 - 1) \right) \, \text{d}x
+     \end{aligned}
+     $$
+  2. Evaluate using the numerical integral tool.
+     $$
+     \begin{aligned}
+     \text{Area} &\approx 2.05 \text{ units}^2 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: U-Substitution with Limits Change">
+    Evaluate $\int_{0}^{2} x\text{e}^{x^2} \, \text{d}x$ analytically by changing the limits of integration.  
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    <Steps>
+      1. Let $u = x^2$. Then $\dfrac{\text{d}u}{\text{d}x} = 2x \implies \text{d}x = \dfrac{\text{d}u}{2x}$.
+      2. Change the limits.
+         $$
+         \begin{aligned}
+         \text{When } x = 0, \quad &u = 0^2 = 0 \\
+         \text{When } x = 2, \quad &u = 2^2 = 4
+         \end{aligned}
+         $$
+      3. Substitute into the integral and cancel the $x$.
+         $$
+         \begin{aligned}
+         \int_{0}^{4} x\text{e}^u \dfrac{\text{d}u}{2x} &= \int_{0}^{4} \dfrac{1}{2}\text{e}^u \, \text{d}u
+         \end{aligned}
+         $$
+      4. Evaluate using the new $u$-limits.
+         $$
+         \begin{aligned}
+         &= \left[ \dfrac{1}{2}\text{e}^u \right]_0^4 \\
+         &= \dfrac{1}{2}\text{e}^4 - \dfrac{1}{2}\text{e}^0 = \dfrac{1}{2}(\text{e}^4 - 1)
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q9: U-Substitution (Trig)">
+    Evaluate the exact value of $\int_{0}^{\frac{\pi}{2}} \sin x \cos^2 x \, \text{d}x$.  
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    <Steps>
+      1. Let $u = \cos x$. Then $\dfrac{\text{d}u}{\text{d}x} = -\sin x \implies \text{d}x = \dfrac{\text{d}u}{-\sin x}$.
+      2. Change the limits.
+         $$
+         \begin{aligned}
+         \text{When } x = 0, \quad &u = \cos(0) = 1 \\
+         \text{When } x = \dfrac{\pi}{2}, \quad &u = \cos\left(\dfrac{\pi}{2}\right) = 0
+         \end{aligned}
+         $$
+      3. Substitute and cancel. Notice the limits are now from $1$ to $0$.
+         $$
+         \begin{aligned}
+         \int_{1}^{0} (\sin x) u^2 \left(\dfrac{\text{d}u}{-\sin x}\right) &= \int_{1}^{0} -u^2 \, \text{d}u
+         \end{aligned}
+         $$
+      4. Evaluate.
+         $$
+         \begin{aligned}
+         &= \left[ -\dfrac{u^3}{3} \right]_1^0 \\
+         &= (0) - \left( -\dfrac{1}{3} \right) = \dfrac{1}{3}
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q10: Kinematics Analytical">
+    A particle moves with velocity $v(t) = 3t^2 - 12 \, \text{m s}^{-1}$ for $t \ge 0$.  
+    **a)** Find the displacement of the particle from $t=0$ to $t=3$.  
+    **b)** Find the total distance travelled by the particle from $t=0$ to $t=3$.  
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    **a)**
+
+<Steps>
+  1. Displacement is the definite integral of velocity.
+     $$
+     \begin{aligned}
+     \int_0^3 (3t^2 - 12) \, \text{d}t &= \left[ t^3 - 12t \right]_0^3 \\
+     &= (27 - 36) - 0 = -9 \text{ m}
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. Find where velocity changes sign by setting $v(t) = 0$.
+     $$
+     \begin{aligned}
+     3t^2 - 12 &= 0 \implies t^2 = 4 \implies t = 2 \text{ s}
+     \end{aligned}
+     $$
+  2. Split the integral and sum the absolute values.
+     $$
+     \begin{aligned}
+     \text{Distance} &= \left| \int_0^2 (3t^2 - 12) \, \text{d}t \right| + \left| \int_2^3 (3t^2 - 12) \, \text{d}t \right| \\
+     &= \left| [t^3 - 12t]_0^2 \right| + \left| [t^3 - 12t]_2^3 \right| \\
+     &= | (8 - 24) - 0 | + | (27 - 36) - (8 - 24) | \\
+     &= |-16| + |-9 - (-16)| = 16 + 7 = 23 \text{ m}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q11: Kinematics GDC">
+    **(GDC Allowed)** The velocity of a drone is given by $v(t) = \text{e}^{0.2t}\sin(t) \, \text{m s}^{-1}$.  
+    **a)** Find the displacement in the first 5 seconds.  
+    **b)** Find the total distance travelled in the first 5 seconds.  
+  </TabItem>
+  <TabItem label="✅ Solution 11">
+    **a)**
+
+<Steps>
+  1. Enter the definite integral into the GDC exactly as given.
+     $$
+     \begin{aligned}
+     \text{Displacement} &= \int_0^5 \text{e}^{0.2t}\sin(t) \, \text{d}t \approx 0.655 \text{ m (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. Enter the integral of the absolute value of velocity into the GDC.
+     $$
+     \begin{aligned}
+     \text{Distance} &= \int_0^5 |\text{e}^{0.2t}\sin(t)| \, \text{d}t \approx 4.02 \text{ m (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q12: Economics & Properties of Integrals">
+    The marginal cost of producing $x$ units is given by $C'(x) = 100 - 0.5x$.  
+    **a)** Calculate the total cost to increase production from $10$ units to $40$ units.  
+    **b)** If the fixed cost (producing 0 units) is $500 \text{ USD}$, find the exact total cost to produce $40$ units.  
+  </TabItem>
+  <TabItem label="✅ Solution 12">
+    **a)**
+
+<Steps>
+  1. The cost increase is the definite integral of marginal cost over the interval.
+     $$
+     \begin{aligned}
+     \text{Increase} &= \int_{10}^{40} (100 - 0.5x) \, \text{d}x \\
+     &= \left[ 100x - 0.25x^2 \right]_{10}^{40}
+     \end{aligned}
+     $$
+  2. Evaluate limits.
+     $$
+     \begin{aligned}
+     &= (4000 - 0.25(1600)) - (1000 - 0.25(100)) \\
+     &= (4000 - 400) - (1000 - 25) \\
+     &= 3600 - 975 = 2625 \text{ USD}
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. The total cost to produce $40$ units is the fixed cost plus the integral of marginal cost from $0$ to $40$.
+     $$
+     \begin{aligned}
+     C(40) &= 500 + \int_{0}^{40} (100 - 0.5x) \, \text{d}x
+     \end{aligned}
+     $$
+  2. Evaluate the integral.
+     $$
+     \begin{aligned}
+     \int_{0}^{40} (100 - 0.5x) \, \text{d}x &= \left[ 100x - 0.25x^2 \right]_0^{40} \\
+     &= (4000 - 400) - 0 = 3600
+     \end{aligned}
+     $$
+  3. Add the fixed cost.
+     $$
+     \begin{aligned}
+     C(40) &= 500 + 3600 = 4100 \text{ USD}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>

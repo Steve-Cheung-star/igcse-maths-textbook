@@ -1,6 +1,552 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 5.9 Kinematics
+description: Apply calculus to kinematics, linking displacement, velocity, and acceleration, and distinguishing between total distance travelled and displacement.
 ---
 
-Content coming soon.
+## 1. Displacement, Velocity, and Acceleration
+
+Kinematics is the study of motion. In this topic, we model the motion of a particle moving along a straight line (1D motion) using calculus. We define three key vector quantities, which depend on time $t$:
+
+* **Displacement ($s$):** The position of the particle relative to a fixed origin.
+* **Velocity ($v$):** The rate of change of displacement. It tells us how fast the particle is moving and in which direction.
+* **Acceleration ($a$):** The rate of change of velocity.
+
+Because these represent rates of change, we can find velocity by differentiating displacement, and acceleration by differentiating velocity.
+
+<FormulaBox title="Acceleration">
+  $$
+  a = \dfrac{\text{d}v}{\text{d}t} = \dfrac{\text{d}^2s}{\text{d}t^2}
+  $$
+</FormulaBox>
+
+### Speed vs. Velocity
+Velocity is a vector, meaning it has both magnitude and direction (e.g., $v = -5 \text{ m/s}$ means moving left or backwards at $5 \text{ m/s}$). **Speed** is a scalar quantity; it is strictly the magnitude of the velocity.
+
+$$
+\text{Speed} = |v(t)|
+$$
+
+### Key Vocabulary for Kinematics
+When interpreting kinematic word problems, look for these mathematical translations:
+* **"Initially"**: Time $t = 0$.
+* **"At the origin"**: Displacement $s(t) = 0$.
+* **"Momentarily at rest" / "Changes direction"**: Velocity $v(t) = 0$.
+* **"Maximum or minimum velocity"**: Acceleration $a(t) = 0$.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="kinematics-graph" viewBox="0 0 600 500" width="100%" style="max-width: 600px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px;">
+    <defs>
+      <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+        <polygon points="0 0, 6 3, 0 6" fill="#64748b" />
+      </marker>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="600" height="500" fill="url(#grid)" />
+    
+    <g transform="translate(0, 30)">
+      <text x="20" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2563eb">Displacement s(t)</text>
+      <line x1="40" y1="100" x2="560" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      <text x="560" y="115" font-family="sans-serif" font-size="12" fill="#64748b">t</text>
+      
+      <polyline 
+        points={Array.from({ length: 41 }).map((_, i) => {
+          const t = i * 0.1; 
+          const s = Math.pow(t, 3) - 6 * Math.pow(t, 2) + 9 * t; 
+          return `${100 + t * 100},${100 - s * 15}`;
+        }).join(" ")}
+        fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" 
+      />
+      <line x1="200" y1="40" x2="200" y2="450" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,5" />
+      <line x1="400" y1="40" x2="400" y2="450" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,5" />
+      <line x1="300" y1="40" x2="300" y2="450" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,5" />
+      <circle cx="200" cy="40" r="5" fill="#ef4444" />
+      <circle cx="400" cy="100" r="5" fill="#ef4444" />
+      <circle cx="300" cy="70" r="5" fill="#eab308" />
+    </g>
+
+    <g transform="translate(0, 190)">
+      <text x="20" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#16a34a">Velocity v(t)</text>
+      <line x1="40" y1="80" x2="560" y2="80" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      <text x="560" y="95" font-family="sans-serif" font-size="12" fill="#64748b">t</text>
+      
+      <polyline 
+        points={Array.from({ length: 41 }).map((_, i) => {
+          const t = i * 0.1;
+          const v = 3 * Math.pow(t, 2) - 12 * t + 9;
+          return `${100 + t * 100},${80 - v * 8}`;
+        }).join(" ")}
+        fill="none" stroke="#16a34a" stroke-width="3" stroke-linejoin="round" 
+      />
+      <circle cx="200" cy="80" r="5" fill="#ef4444" />
+      <circle cx="400" cy="80" r="5" fill="#ef4444" />
+      <circle cx="300" cy="104" r="5" fill="#eab308" />
+    </g>
+
+    <g transform="translate(0, 340)">
+      <text x="20" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#d946ef">Acceleration a(t)</text>
+      <line x1="40" y1="80" x2="560" y2="80" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      <text x="560" y="95" font-family="sans-serif" font-size="12" fill="#64748b">t</text>
+      
+      <polyline 
+        points={Array.from({ length: 41 }).map((_, i) => {
+          const t = i * 0.1;
+          const a = 6 * t - 12;
+          return `${100 + t * 100},${80 - a * 4}`;
+        }).join(" ")}
+        fill="none" stroke="#d946ef" stroke-width="3" stroke-linejoin="round" 
+      />
+      <circle cx="300" cy="80" r="5" fill="#eab308" />
+    </g>
+  </svg>
+</div>
+
+### Worked Example 1
+A particle moves in a straight line such that its displacement, $s$ metres, from a fixed origin at time $t$ seconds is given by $s(t) = 2t^3 - 9t^2 + 12t$ for $t \ge 0$. Find the times when the particle is momentarily at rest, and determine its acceleration at those times.
+
+**Solution:**
+<Steps>
+  1. Find the velocity function by differentiating $s(t)$:
+     $$
+     \begin{aligned}
+     v(t) &= \dfrac{\text{d}s}{\text{d}t} = 6t^2 - 18t + 12
+     \end{aligned}
+     $$
+  2. Set $v(t) = 0$ to find when the particle is at rest:
+     $$
+     \begin{aligned}
+     0 &= 6(t^2 - 3t + 2) \\
+     0 &= 6(t - 1)(t - 2) \implies t = 1 \text{ or } t = 2
+     \end{aligned}
+     $$
+  3. Find the acceleration function by differentiating $v(t)$:
+     $$
+     \begin{aligned}
+     a(t) &= \dfrac{\text{d}v}{\text{d}t} = 12t - 18
+     \end{aligned}
+     $$
+  4. Evaluate the acceleration at $t = 1$ and $t = 2$:
+     * At $t = 1$: $a(1) = 12(1) - 18 = -6 \text{ m/s}^2$
+     * At $t = 2$: $a(2) = 12(2) - 18 = 6 \text{ m/s}^2$
+</Steps>
+
+---
+
+## 2. Distance vs. Displacement
+
+Because differentiating displacement yields velocity, the fundamental theorem of calculus dictates that **integrating** velocity yields displacement. However, we must be very careful to distinguish between *displacement* and *total distance travelled*.
+
+* **Displacement** is the net change in position. Moving $5 \text{ m}$ right and then $5 \text{ m}$ left results in a displacement of $0 \text{ m}$.
+* **Total distance travelled** is the actual ground covered. Moving $5 \text{ m}$ right and then $5 \text{ m}$ left results in a total distance of $10 \text{ m}$.
+
+<FormulaBox title="Displacement from t_1 to t_2">
+  $$
+  \text{displacement} = \int_{t_1}^{t_2} v(t) \text{d}t
+  $$
+</FormulaBox>
+
+To calculate distance, we must prevent negative velocity (moving backwards) from subtracting from positive velocity (moving forwards). We do this by integrating the **speed**—the absolute value of velocity.
+
+<FormulaBox title="Distance travelled from t_1 to t_2">
+  $$
+  \text{distance} = \int_{t_1}^{t_2} |v(t)| \text{d}t
+  $$
+</FormulaBox>
+
+<Aside type="caution" title="Manual Calculation of Distance">
+  If you must calculate total distance manually (on Paper 1 without a GDC), you cannot just put absolute value bars around the final answer. You must:
+  1. Find the roots of $v(t)$ to find where the particle changes direction.
+  2. Split the integral into intervals based on those roots.
+  3. Evaluate each definite integral separately.
+  4. Add the absolute values of the results together.
+</Aside>
+
+<SteveTip title="GDC Skills: Distance Integrals on TI-Nspire">
+  On Paper 2, calculating total distance is incredibly simple. Press `Shift` + `+` to open the definite integral template. Type your bounds. Then, inside the integral, open the absolute value template by pressing the `|a|` button in the maths palette (or type `abs()`), and type your velocity function inside it. The TI-Nspire will handle the splitting of the intervals automatically!
+</SteveTip>
+
+### Worked Example 2
+A particle moves with velocity $v(t) = 4 - 2t \text{ m/s}$ for $0 \le t \le 4$. Find:
+**a)** The displacement of the particle after 4 seconds.
+**b)** The total distance travelled in the first 4 seconds.
+
+**Solution:**
+**a)**
+<Steps>
+  1. Integrate $v(t)$ directly from $t=0$ to $t=4$:
+     $$
+     \begin{aligned}
+     \text{Displacement} &= \int_{0}^{4} (4 - 2t) \text{d}t \\
+     &= \left[ 4t - t^2 \right]_{0}^{4} \\
+     &= (16 - 16) - (0 - 0) = 0 \text{ m}
+     \end{aligned}
+     $$
+     The particle ends up exactly where it started.
+</Steps>
+
+**b)**
+<Steps>
+  1. To find total distance without a GDC, first find where $v(t) = 0$:
+     $$
+     \begin{aligned}
+     4 - 2t &= 0 \implies t = 2 \text{ s}
+     \end{aligned}
+     $$
+  2. Split the integral at $t=2$ and sum the absolute values of the areas:
+     $$
+     \begin{aligned}
+     \text{Distance} &= \left| \int_{0}^{2} (4 - 2t) \text{d}t \right| + \left| \int_{2}^{4} (4 - 2t) \text{d}t \right| \\
+     &= \left| \left[ 4t - t^2 \right]_{0}^{2} \right| + \left| \left[ 4t - t^2 \right]_{2}^{4} \right| \\
+     &= | (8 - 4) - 0 | + | (16 - 16) - (8 - 4) | \\
+     &= | 4 | + | -4 | = 8 \text{ m}
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 3. Connections & Contexts
+
+<Aside type="note" title="Cross-Subject Links & TOK">
+  **Physics (Kinematics):** This topic is a direct crossover with the IB Physics syllabus. However, while physics often relies on the "suvat" equations (which assume constant acceleration), calculus allows us to analyse motion where acceleration is varying over time.
+  
+  **International Mindedness:** Does the inclusion of kinematics as a core component of a mathematics curriculum reflect a specific cultural heritage? Classical mechanics was heavily developed in 17th-century Europe (Newton, Leibniz, Galileo). By mandating its study, curricula inadvertently elevate this European mechanical tradition as the "standard" application of calculus.
+  
+  **Theory of Knowledge:** *Is mathematics independent of culture?* While the theorem $\dfrac{\text{d}}{\text{d}t} (t^2) = 2t$ is objectively true regardless of geography, the *choice* of applying it specifically to physical motion (rather than, say, population dynamics or economic models) is heavily influenced by Western industrial and scientific history. To what extent are we aware of how culture dictates what we consider to be "useful" knowledge?
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Basic Differentiation">
+    The displacement of a particle moving in a straight line is given by $s(t) = \dfrac{1}{3}t^3 - 2t^2 + 3t + 4$, where $t \ge 0$ is in seconds and $s$ is in metres.
+    **a)** Find an expression for the velocity, $v(t)$.
+    **b)** Find an expression for the acceleration, $a(t)$.
+    **c)** Find the initial position of the particle.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+  1. Differentiate $s(t)$ with respect to $t$:
+     $$
+     \begin{aligned}
+     v(t) &= \dfrac{\text{d}s}{\text{d}t} = t^2 - 4t + 3
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+<Steps>
+  1. Differentiate $v(t)$ with respect to $t$:
+     $$
+     \begin{aligned}
+     a(t) &= \dfrac{\text{d}v}{\text{d}t} = 2t - 4
+     \end{aligned}
+     $$
+</Steps>
+    **c)**
+<Steps>
+  1. "Initial" means $t = 0$. Substitute into $s(t)$:
+     $$
+     \begin{aligned}
+     s(0) &= \dfrac{1}{3}(0) - 2(0) + 3(0) + 4 = 4 \text{ m}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Calculator Active Distances">
+    **(GDC Allowed)** The velocity of an object is modelled by $v(t) = \text{e}^{0.5t} \cos(2t)$ for $0 \le t \le 5$.
+    **a)** Calculate the displacement of the object over the first 5 seconds.
+    **b)** Calculate the total distance travelled by the object over the first 5 seconds.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+<Steps>
+  1. Set up the definite integral for displacement:
+     $$
+     \begin{aligned}
+     \text{Displacement} &= \int_{0}^{5} \text{e}^{0.5t} \cos(2t) \text{d}t
+     \end{aligned}
+     $$
+  2. Evaluate using your GDC:
+     $$
+     \begin{aligned}
+     \text{Displacement} &\approx -3.32 \text{ m} \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+<Steps>
+  1. Set up the definite integral for total distance using absolute value:
+     $$
+     \begin{aligned}
+     \text{Distance} &= \int_{0}^{5} |\text{e}^{0.5t} \cos(2t)| \text{d}t
+     \end{aligned}
+     $$
+  2. Evaluate using your GDC (this may take a few seconds to compute):
+     $$
+     \begin{aligned}
+     \text{Distance} &\approx 7.42 \text{ m} \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Particle at Rest">
+    A particle moves such that its displacement is $s(t) = t^3 - 12t + 5$ for $t \ge 0$.
+    **a)** Find the time at which the particle is momentarily at rest.
+    **b)** Determine the intervals where the particle is moving to the left.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+  1. Find $v(t)$ and set it to zero:
+     $$
+     \begin{aligned}
+     v(t) &= 3t^2 - 12 \\
+     0 &= 3(t^2 - 4) \\
+     0 &= 3(t - 2)(t + 2)
+     \end{aligned}
+     $$
+  2. Since $t \ge 0$, the particle is at rest at $t = 2 \text{ s}$.
+</Steps>
+    **b)**
+<Steps>
+  1. The particle moves to the left when velocity is negative ($v(t) < 0$):
+     $$
+     \begin{aligned}
+     3t^2 - 12 &< 0 \\
+     t^2 &< 4
+     \end{aligned}
+     $$
+  2. Since $t$ must be positive, this occurs when $0 \le t < 2$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Maximum Velocity">
+    The velocity of a dragster is given by $v(t) = 15t^2 - t^3 \text{ m/s}$ for $0 \le t \le 12$.
+    **a)** Find an expression for the acceleration of the dragster.
+    **b)** Find the maximum velocity of the dragster and the time at which it occurs.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+<Steps>
+  1. Differentiate velocity to find acceleration:
+     $$
+     \begin{aligned}
+     a(t) &= 30t - 3t^2
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+<Steps>
+  1. Maximum velocity occurs when acceleration (its derivative) is zero:
+     $$
+     \begin{aligned}
+     0 &= 30t - 3t^2 \\
+     0 &= 3t(10 - t) \implies t = 0 \text{ or } t = 10
+     \end{aligned}
+     $$
+  2. Use the second derivative of velocity (which is $a'(t)$) to verify the maximum:
+     $$
+     \begin{aligned}
+     a'(t) &= 30 - 6t \\
+     a'(10) &= 30 - 60 = -30 < 0 \text{ (Local Maximum)}
+     \end{aligned}
+     $$
+  3. Substitute $t = 10$ back into $v(t)$:
+     $$
+     \begin{aligned}
+     v(10) &= 15(100) - (1000) = 1500 - 1000 = 500 \text{ m/s}
+     \end{aligned}
+     $$
+     Maximum velocity is $500 \text{ m/s}$ at $t = 10 \text{ s}$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Manual Distance Integration">
+    A particle has velocity $v(t) = t^2 - 5t + 6 \text{ m/s}$.
+    **a)** Find the times when the particle changes direction.
+    **b)** Without using a calculator, find the total distance travelled by the particle between $t = 0$ and $t = 3$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+<Steps>
+  1. A particle changes direction when $v(t) = 0$ (and changes sign):
+     $$
+     \begin{aligned}
+     t^2 - 5t + 6 &= 0 \\
+     (t - 2)(t - 3) &= 0
+     \end{aligned}
+     $$
+     The particle changes direction at $t = 2$ and $t = 3$.
+</Steps>
+    **b)**
+<Steps>
+  1. Because the particle changes direction at $t=2$, we must split the integral for total distance:
+     $$
+     \begin{aligned}
+     \text{Distance} &= \int_{0}^{2} |v(t)| \text{d}t + \int_{2}^{3} |v(t)| \text{d}t
+     \end{aligned}
+     $$
+  2. Evaluate the integral function $S(t) = \int (t^2 - 5t + 6) \text{d}t$:
+     $$
+     \begin{aligned}
+     S(t) &= \dfrac{t^3}{3} - \dfrac{5t^2}{2} + 6t
+     \end{aligned}
+     $$
+  3. Evaluate the first interval $[0, 2]$:
+     $$
+     \begin{aligned}
+     S(2) - S(0) &= \left( \dfrac{8}{3} - 10 + 12 \right) - 0 = \dfrac{8}{3} + 2 = \dfrac{14}{3}
+     \end{aligned}
+     $$
+  4. Evaluate the second interval $[2, 3]$:
+     $$
+     \begin{aligned}
+     S(3) - S(2) &= \left( 9 - \dfrac{45}{2} + 18 \right) - \dfrac{14}{3} = \left( 27 - 22.5 \right) - \dfrac{14}{3} = \dfrac{9}{2} - \dfrac{14}{3} = \dfrac{27 - 28}{6} = -\dfrac{1}{6}
+     \end{aligned}
+     $$
+  5. Add the absolute values:
+     $$
+     \begin{aligned}
+     \text{Distance} &= \left| \dfrac{14}{3} \right| + \left| -\dfrac{1}{6} \right| = \dfrac{28}{6} + \dfrac{1}{6} = \dfrac{29}{6} \text{ m}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Finding Displacement from Acceleration">
+    A particle starts from the origin with an initial velocity of $4 \text{ m/s}$. Its acceleration is given by $a(t) = 6t - 2$.
+    **a)** Find an expression for the velocity, $v(t)$.
+    **b)** Find an expression for the displacement, $s(t)$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+  1. Integrate acceleration to find velocity:
+     $$
+     \begin{aligned}
+     v(t) &= \int (6t - 2) \text{d}t = 3t^2 - 2t + C
+     \end{aligned}
+     $$
+  2. Use the initial condition $v(0) = 4$ to find $C$:
+     $$
+     \begin{aligned}
+     4 &= 3(0)^2 - 2(0) + C \implies C = 4 \\
+     v(t) &= 3t^2 - 2t + 4
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+<Steps>
+  1. Integrate velocity to find displacement:
+     $$
+     \begin{aligned}
+     s(t) &= \int (3t^2 - 2t + 4) \text{d}t = t^3 - t^2 + 4t + D
+     \end{aligned}
+     $$
+  2. "Starts from the origin" means $s(0) = 0$. Use this to find $D$:
+     $$
+     \begin{aligned}
+     0 &= (0)^3 - (0)^2 + 4(0) + D \implies D = 0 \\
+     s(t) &= t^3 - t^2 + 4t
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Graphical Interpretation">
+    The velocity $v(t)$ of a particle is positive for $0 < t < 3$, zero at $t = 3$, and negative for $t > 3$. The area under the curve between $t=0$ and $t=3$ is $12$. The area between $t=3$ and $t=5$ is $8$.
+    **a)** State the total distance travelled by the particle in the first 5 seconds.
+    **b)** Calculate the final displacement of the particle at $t=5$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+<Steps>
+  1. Total distance is the sum of the absolute areas between the graph and the $t$-axis.
+     $$
+     \begin{aligned}
+     \text{Distance} &= |12| + |-8| = 12 + 8 = 20 \text{ m}
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+<Steps>
+  1. Displacement is the net signed area. Because velocity is negative after $t=3$, that area represents moving backwards.
+     $$
+     \begin{aligned}
+     \text{Displacement} &= \int_{0}^{5} v(t) \text{d}t = 12 - 8 = 4 \text{ m}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Optimisation in Kinematics">
+    The displacement of a drone from its controller is modelled by $s(t) = \dfrac{1}{4}t^4 - 2t^3 + 4t^2$ metres, for $0 \le t \le 4$.
+    **a)** Find the maximum distance the drone reaches from the controller during this time.
+    **b)** Justify why this is a maximum and not a minimum.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+  1. We need to find the local maximums of $s(t)$. First, find $v(t)$ and set it to zero:
+     $$
+     \begin{aligned}
+     v(t) &= t^3 - 6t^2 + 8t \\
+     0 &= t(t^2 - 6t + 8) \\
+     0 &= t(t - 2)(t - 4)
+     \end{aligned}
+     $$
+     Stationary points occur at $t=0$, $t=2$, and $t=4$.
+  2. Since $t=0$ and $t=4$ are boundaries, we test the value at the internal turning point $t=2$:
+     $$
+     \begin{aligned}
+     s(2) &= \dfrac{1}{4}(16) - 2(8) + 4(4) \\
+     &= 4 - 16 + 16 = 4 \text{ m}
+     \end{aligned}
+     $$
+  3. Check the boundary values to ensure $4 \text{ m}$ is the absolute maximum:
+     $$
+     \begin{aligned}
+     s(0) &= 0 \\
+     s(4) &= \dfrac{1}{4}(256) - 2(64) + 4(16) = 64 - 128 + 64 = 0 \text{ m}
+     \end{aligned}
+     $$
+     The maximum distance reached is $4 \text{ m}$.
+</Steps>
+    **b)**
+<Steps>
+  1. Find the second derivative (acceleration) to classify the stationary point at $t=2$:
+     $$
+     \begin{aligned}
+     a(t) &= 3t^2 - 12t + 8
+     \end{aligned}
+     $$
+  2. Evaluate at $t = 2$:
+     $$
+     \begin{aligned}
+     a(2) &= 3(4) - 12(2) + 8 = 12 - 24 + 8 = -4
+     \end{aligned}
+     $$
+     Because $a(2) < 0$, the curve is concave down, confirming $t=2$ is a local maximum.
+</Steps>
+  </TabItem>
+</Tabs>

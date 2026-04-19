@@ -1,0 +1,604 @@
+---
+title: 5.10 Indefinite Integration and Substitution
+description: Master the reverse process of differentiation, standard indefinite integrals, and techniques for integrating composite functions using inspection and substitution.
+---
+
+Integration is the reverse process of differentiation, often called anti-differentiation. When we find the **indefinite integral** of a function, we are finding the general family of functions that would differentiate to give our original function. 
+
+Because the derivative of any constant is zero, there are infinitely many anti-derivatives for a given function, all differing by a constant value. We represent this with the **constant of integration**, $+ C$.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="integration-family" viewBox="0 0 600 400" width="100%" style="max-width: 600px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px;">
+    <defs>
+      <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+        <polygon points="0 0, 6 3, 0 6" fill="#64748b" />
+      </marker>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="600" height="400" fill="url(#grid)" />
+    
+    <g transform="translate(0, 0)">
+      <line x1="40" y1="200" x2="560" y2="200" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      <line x1="300" y1="360" x2="300" y2="40" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      <text x="560" y="215" font-family="sans-serif" font-size="12" fill="#64748b">x</text>
+      <text x="310" y="40" font-family="sans-serif" font-size="12" fill="#64748b">y</text>
+      
+      <text x="30" y="30" font-family="sans-serif" font-size="14" font-weight="bold" fill="#334155">Family of curves: y = x² + C</text>
+      
+      <polyline 
+        points={Array.from({ length: 41 }).map((_, i) => {
+          const x = -4 + (i * 0.2);
+          const y = x * x;
+          return `${300 + x * 30},${200 - y * 15}`;
+        }).join(" ")}
+        fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" 
+      />
+      <text x="420" y="150" font-family="sans-serif" font-size="12" fill="#2563eb">C = 0</text>
+
+      <polyline 
+        points={Array.from({ length: 41 }).map((_, i) => {
+          const x = -4 + (i * 0.2);
+          const y = x * x + 4;
+          return `${300 + x * 30},${200 - y * 15}`;
+        }).join(" ")}
+        fill="none" stroke="#16a34a" stroke-width="2" stroke-dasharray="5,5" stroke-linejoin="round" 
+      />
+      <text x="420" y="80" font-family="sans-serif" font-size="12" fill="#16a34a">C = +4</text>
+
+      <polyline 
+        points={Array.from({ length: 41 }).map((_, i) => {
+          const x = -4 + (i * 0.2);
+          const y = x * x - 3;
+          return `${300 + x * 30},${200 - y * 15}`;
+        }).join(" ")}
+        fill="none" stroke="#d946ef" stroke-width="2" stroke-dasharray="5,5" stroke-linejoin="round" 
+      />
+      <text x="420" y="230" font-family="sans-serif" font-size="12" fill="#d946ef">C = -3</text>
+    </g>
+  </svg>
+</div>
+
+<Aside type="danger" title="The Forgotten Constant">
+  The most common mistake in indefinite integration is forgetting to write $+ C$. In IB exams, omitting the constant of integration on your final line can cost you an accuracy mark (A1). Make it a habit to write it immediately when the integral sign disappears!
+</Aside>
+
+---
+
+## 1. Standard Integrals
+
+The fundamental rule for polynomials is the **reverse power rule**. For any rational number $n \neq -1$:
+$$
+\int x^n \, \text{d}x = \dfrac{x^{n+1}}{n+1} + C
+$$
+
+For the specific cases that appear in the IB formula booklet, use the following rules:
+
+<FormulaBox title="The Logarithmic Integral">
+  $$
+  \int \dfrac{1}{x} \, \text{d}x = \ln|x| + C
+  $$
+</FormulaBox>
+
+<FormulaBox title="The Sine Antiderivative">
+  $$
+  \int \sin x \, \text{d}x = -\cos x + C
+  $$
+</FormulaBox>
+
+<FormulaBox title="The Cosine Antiderivative">
+  $$
+  \int \cos x \, \text{d}x = \sin x + C
+  $$
+</FormulaBox>
+
+<FormulaBox title="The Indestructible Exponential">
+  $$
+  \int \text{e}^x \, \text{d}x = \text{e}^x + C
+  $$
+</FormulaBox>
+
+<Aside type="caution" title="Absolute Value in Logarithms">
+  Notice the absolute value bars in $\ln|x|$. Because the natural logarithm is only defined for strictly positive domain values, we must ensure the argument is positive when integrating $\dfrac{1}{x}$.
+</Aside>
+
+### Worked Example 1: Basic Integration
+Find the indefinite integral: $\int \left( 4x^3 - \dfrac{2}{x} + 3\text{e}^x \right) \, \text{d}x$.
+
+**Solution:**
+
+<Steps>
+  1. Integrate term by term using the standard rules. Treat constants as multipliers:
+     $$
+     \begin{aligned}
+     \int \left( 4x^3 - \dfrac{2}{x} + 3\text{e}^x \right) \, \text{d}x &= 4\left(\dfrac{x^4}{4}\right) - 2\ln|x| + 3\text{e}^x + C
+     \end{aligned}
+     $$
+  2. Simplify the expression:
+     $$
+     \begin{aligned}
+     &= x^4 - 2\ln|x| + 3\text{e}^x + C
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 2. Integrating Composites with Linear Functions
+
+When the inner function is a simple linear function of the form $ax + b$, we can integrate by inspection. This is effectively the "reverse chain rule" for linear terms. 
+
+Because differentiating $f(ax+b)$ multiplies the result by $a$ (via the chain rule), integrating $f(ax+b)$ requires dividing the result by $a$ to cancel it out.
+
+If $\int f(x) \, \text{d}x = F(x) + C$, then:
+$$
+\int f(ax + b) \, \text{d}x = \dfrac{1}{a} F(ax + b) + C
+$$
+
+### Worked Example 2: Linear Composites
+Find the indefinite integral: $\int \cos(2x + 3) \, \text{d}x$.
+
+**Solution:**
+
+<Steps>
+  1. Identify the outer function $f(u) = \cos(u)$ and the inner linear function $u = 2x + 3$.
+  2. The integral of $\cos(u)$ is $\sin(u)$.
+  3. Divide by the derivative of the inner function (which is $2$):
+     $$
+     \begin{aligned}
+     \int \cos(2x + 3) \, \text{d}x &= \dfrac{1}{2} \sin(2x + 3) + C
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 3. Integration by Substitution and Balancing
+
+For more complex composite functions, we look for integrals of the form:
+$$
+\int k \cdot g'(x) \cdot f(g(x)) \, \text{d}x
+$$
+Here, the integrand contains a composite function $f(g(x))$, multiplied by the derivative of the inner function $g'(x)$ (or a scalar multiple of it, $k$). This is the direct result of the Chain Rule in reverse. You can solve these by **inspection (balancing)** or by **formal substitution**. 
+
+### Method 1: Inspection (Balancing the Constant)
+If you recognise that the integrand contains a composite function multiplied by something very close to the derivative of the inner function, you can write down the answer directly by adjusting a scalar constant.
+1. Identify the "inner" function $g(x)$.
+2. Differentiate it to find $g'(x)$.
+3. Compare $g'(x)$ to the "outside" factor in the integral. If they only differ by a constant multiplier, multiply or divide to "balance" the expression.
+4. Integrate the outer function, leaving the inner function untouched.
+
+### Method 2: Formal Substitution ($u$-substitution)
+1. Let $u = \text{inner function } g(x)$.
+2. Differentiate to find $\dfrac{\text{d}u}{\text{d}x} = g'(x)$.
+3. Rearrange to find an expression for $\text{d}x$ (e.g., $\text{d}x = \dfrac{\text{d}u}{g'(x)}$).
+4. Substitute $u$ and $\text{d}x$ into the integral, which should cancel out the $x$ terms entirely.
+5. Integrate with respect to $u$.
+6. Substitute the original expression for $x$ back in.
+
+### Worked Example 3: Balancing vs. Substitution
+Find the indefinite integral: $\int 4x \sin(x^2) \, \text{d}x$.
+
+**Method 1: By Inspection (Balancing)** 
+<Steps>
+  1. The inner function is $x^2$, and its exact derivative is $2x$.
+  2. We have $4x$ outside, which is exactly $2 \times (2x)$. We can pull the scalar $2$ out of the integral to perfectly balance it:
+     $$
+     \begin{aligned}
+     \int 2 \cdot (2x) \sin(x^2) \, \text{d}x
+     \end{aligned}
+     $$
+  3. Now we have exactly the form $\int k \cdot g'(x) f(g(x)) \, \text{d}x$. We integrate the outer function (sine becomes negative cosine) and keep the constant $2$:
+     $$
+     \begin{aligned}
+     &= -2\cos(x^2) + C
+     \end{aligned}
+     $$
+</Steps>
+
+**Method 2: Formal $u$-Substitution**
+<Steps>
+  1. Identify the inner function. Let $u = x^2$.
+  2. Differentiate $u$ with respect to $x$:
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}u}{\text{d}x} &= 2x \implies \text{d}x = \dfrac{\text{d}u}{2x}
+     \end{aligned}
+     $$
+  3. Substitute $u$ and $\text{d}x$ into the integral:
+     $$
+     \begin{aligned}
+     \int 4x \sin(u) \dfrac{\text{d}u}{2x} &= \int 2 \sin(u) \, \text{d}u
+     \end{aligned}
+     $$
+  4. Integrate with respect to $u$:
+     $$
+     \begin{aligned}
+     \int 2 \sin(u) \, \text{d}u &= -2\cos(u) + C
+     \end{aligned}
+     $$
+  5. Substitute $x^2$ back in for $u$:
+     $$
+     \begin{aligned}
+     &= -2\cos(x^2) + C
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 4. Connections & Contexts
+
+<Aside type="note" title="Theory of Knowledge: Is Mathematics Discovered or Invented?">
+  The integration symbol $\int$ is an elongated "S", chosen by Gottfried Wilhelm Leibniz because integration is fundamentally a process of *summation* (summa in Latin) of infinitesimally small rectangles. Does the fact that integration so perfectly reverses differentiation imply a discovered universal truth, or is it merely an invented logical game whose rules we carefully constructed to work backwards?
+</Aside>
+
+<SteveTip title="GDC Skills: Visually Checking Antiderivatives">
+While non-CAS TI-Nspires cannot output algebraic integrals, you can visually verify your work:
+
+1. **The Question:** Graph the original function you were asked to integrate in `f1(x)`.
+2. **The GDC Check:** Use the integral template (**menu** → **4** → **2**) to graph:
+   $$f2(x) = \int_{0}^{x} f1(t) \, \mathrm{d}t$$
+   *(Note: Using $t$ inside the integral avoids variable conflicts on the GDC).*
+3. **Your Answer:** Graph your hand-calculated antiderivative in `f3(x)`.
+
+**The Verdict:** If your answer is correct, the graph of `f3(x)` will perfectly overlap `f2(x)` (or be a vertical shift of it). If the shapes are different, check your integration steps!
+</SteveTip>
+
+<Aside type="note" title="Aim 8: Economics Context">
+  In business and economics, integration is used to find total amounts from marginal rates. If you know the marginal cost (the cost of producing the $x$-th unit), integrating it yields the total cost function. The constant of integration, $+ C$, in this context represents the **fixed costs** (costs incurred even when zero units are produced, like rent).
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Basic Power Rule">
+    Find the following indefinite integrals:  
+    **a)** $\int \left( 3x^2 - 4x + 5 \right) \, \text{d}x$  
+    **b)** $\int \left( \sqrt{x} + \dfrac{3}{x^3} \right) \, \text{d}x$  
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+
+<Steps>
+  1. Integrate each term using the power rule:
+     $$
+     \begin{aligned}
+     \int \left( 3x^2 - 4x + 5 \right) \, \text{d}x &= \dfrac{3x^3}{3} - \dfrac{4x^2}{2} + 5x + C \\
+     &= x^3 - 2x^2 + 5x + C
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. Rewrite the terms with fractional and negative indices:
+     $$
+     \begin{aligned}
+     \int \left( x^{\frac{1}{2}} + 3x^{-3} \right) \, \text{d}x
+     \end{aligned}
+     $$
+  2. Apply the power rule:
+     $$
+     \begin{aligned}
+     &= \dfrac{x^{\frac{3}{2}}}{\frac{3}{2}} + \dfrac{3x^{-2}}{-2} + C \\
+     &= \dfrac{2}{3}x^{\frac{3}{2}} - \dfrac{3}{2x^2} + C
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Standard Forms">
+    Evaluate the following integrals:  
+    **a)** $\int \left( \dfrac{4}{x} - 2\text{e}^x \right) \, \text{d}x$  
+    **b)** $\int \dfrac{2\sin x - 3\cos x}{2} \, \text{d}x$  
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+
+<Steps>
+  1. Use standard integrals for $1/x$ and exponential functions:
+     $$
+     \begin{aligned}
+     \int \left( 4 \cdot \dfrac{1}{x} - 2\text{e}^x \right) \, \text{d}x &= 4\ln|x| - 2\text{e}^x + C
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. Split the fraction and bring constants to the front:
+     $$
+     \begin{aligned}
+     \int \left( \sin x - \dfrac{3}{2}\cos x \right) \, \text{d}x
+     \end{aligned}
+     $$
+  2. Integrate using standard trigonometric rules:
+     $$
+     \begin{aligned}
+     &= -\cos x - \dfrac{3}{2}\sin x + C
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Linear Composites">
+    Find the following indefinite integrals:  
+    **a)** $\int (4x - 1)^5 \, \text{d}x$  
+    **b)** $\int \text{e}^{3x + 2} \, \text{d}x$  
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+
+<Steps>
+  1. Apply the reverse power rule to the outer function and divide by the inner coefficient ($4$):
+     $$
+     \begin{aligned}
+     \int (4x - 1)^5 \, \text{d}x &= \dfrac{1}{4} \cdot \dfrac{(4x - 1)^6}{6} + C \\
+     &= \dfrac{1}{24}(4x - 1)^6 + C
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. The integral of $\text{e}^u$ is $\text{e}^u$. Divide by the inner coefficient ($3$):
+     $$
+     \begin{aligned}
+     \int \text{e}^{3x + 2} \, \text{d}x &= \dfrac{1}{3}\text{e}^{3x + 2} + C
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Trigonometric Composites">
+    Evaluate:  
+    **a)** $\int \sin\left(\dfrac{x}{2} + \pi\right) \, \text{d}x$  
+    **b)** $\int \dfrac{5}{2x - 7} \, \text{d}x$  
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+
+<Steps>
+  1. The integral of $\sin$ is $-\cos$. The coefficient of $x$ is $1/2$. Dividing by $1/2$ is equivalent to multiplying by $2$:
+     $$
+     \begin{aligned}
+     \int \sin\left(\dfrac{x}{2} + \pi\right) \, \text{d}x &= -2\cos\left(\dfrac{x}{2} + \pi\right) + C
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. Recognise the form $1/u$ which integrates to $\ln|u|$. Divide by the inner coefficient ($2$):
+     $$
+     \begin{aligned}
+     \int \dfrac{5}{2x - 7} \, \text{d}x &= 5 \left( \dfrac{1}{2}\ln|2x - 7| \right) + C \\
+     &= \dfrac{5}{2}\ln|2x - 7| + C
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Substitution - Polynomials">
+    Use substitution to find $\int x^2(x^3 + 5)^4 \, \text{d}x$.  
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+<Steps>
+  1. Let $u = x^3 + 5$.
+  2. Differentiate $u$: $\dfrac{\text{d}u}{\text{d}x} = 3x^2 \implies \text{d}x = \dfrac{\text{d}u}{3x^2}$.
+  3. Substitute into the integral:
+     $$
+     \begin{aligned}
+     \int x^2 \cdot u^4 \cdot \dfrac{\text{d}u}{3x^2}
+     \end{aligned}
+     $$
+  4. Cancel the $x^2$ terms and integrate with respect to $u$:
+     $$
+     \begin{aligned}
+     \int \dfrac{1}{3} u^4 \, \text{d}u &= \dfrac{1}{3} \cdot \dfrac{u^5}{5} + C \\
+     &= \dfrac{1}{15}u^5 + C
+     \end{aligned}
+     $$
+  5. Substitute back $u = x^3 + 5$:
+     $$
+     \begin{aligned}
+     &= \dfrac{1}{15}(x^3 + 5)^5 + C
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Substitution - Trigonometric">
+    Find the indefinite integral $\int \dfrac{\sin x}{\cos^3 x} \, \text{d}x$.  
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+<Steps>
+  1. Let $u = \cos x$.
+  2. Differentiate $u$: $\dfrac{\text{d}u}{\text{d}x} = -\sin x \implies \text{d}x = \dfrac{\text{d}u}{-\sin x}$.
+  3. Substitute into the integral:
+     $$
+     \begin{aligned}
+     \int \dfrac{\sin x}{u^3} \cdot \dfrac{\text{d}u}{-\sin x}
+     \end{aligned}
+     $$
+  4. Cancel the $\sin x$ terms:
+     $$
+     \begin{aligned}
+     \int -u^{-3} \, \text{d}u &= -\left(\dfrac{u^{-2}}{-2}\right) + C \\
+     &= \dfrac{1}{2u^2} + C
+     \end{aligned}
+     $$
+  5. Substitute back $u = \cos x$:
+     $$
+     \begin{aligned}
+     &= \dfrac{1}{2\cos^2 x} + C
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Substitution - Exponential">
+    Find $\int 5\text{e}^{\sin x} \cos x \, \text{d}x$.  
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+<Steps>
+  1. Let $u = \sin x$.
+  2. Differentiate $u$: $\dfrac{\text{d}u}{\text{d}x} = \cos x \implies \text{d}x = \dfrac{\text{d}u}{\cos x}$.
+  3. Substitute into the integral:
+     $$
+     \begin{aligned}
+     \int 5\text{e}^u \cos x \dfrac{\text{d}u}{\cos x}
+     \end{aligned}
+     $$
+  4. Cancel the $\cos x$ terms:
+     $$
+     \begin{aligned}
+     \int 5\text{e}^u \, \text{d}u &= 5\text{e}^u + C
+     \end{aligned}
+     $$
+  5. Substitute back $u = \sin x$:
+     $$
+     \begin{aligned}
+     &= 5\text{e}^{\sin x} + C
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Finding the Constant of Integration">
+    A curve passes through the point $(1, 4)$. Its gradient function is given by $\dfrac{\text{d}y}{\text{d}x} = 3x^2 - \dfrac{2}{x^2}$. Find the equation of the curve.  
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+<Steps>
+  1. Integrate the gradient function to find $y$:
+     $$
+     \begin{aligned}
+     y &= \int \left( 3x^2 - 2x^{-2} \right) \, \text{d}x \\
+     y &= x^3 - \dfrac{2x^{-1}}{-1} + C \\
+     y &= x^3 + \dfrac{2}{x} + C
+     \end{aligned}
+     $$
+  2. Use the given point $(1, 4)$ to find $C$. Substitute $x = 1$ and $y = 4$:
+     $$
+     \begin{aligned}
+     4 &= (1)^3 + \dfrac{2}{1} + C \\
+     4 &= 1 + 2 + C \\
+     C &= 1
+     \end{aligned}
+     $$
+  3. Write the final equation:
+     $$
+     \begin{aligned}
+     y &= x^3 + \dfrac{2}{x} + 1
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q9: Aim 8 - Economics">
+    A company manufactures electronic components. The marginal cost, in EUR, of producing the $x$-th component is given by $C'(x) = 15\text{e}^{0.02x}$. The fixed costs of running the factory, incurred even if zero units are produced, are $500\text{ EUR}$. 
+    **a)** Find the total cost function, $C(x)$.  
+    **b)** Calculate the total cost of producing $100$ components.  
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)**
+
+<Steps>
+  1. Integrate the marginal cost to find the total cost function:
+     $$
+     \begin{aligned}
+     C(x) &= \int 15\text{e}^{0.02x} \, \text{d}x
+     \end{aligned}
+     $$
+  2. Apply the linear composite rule (divide by $0.02$):
+     $$
+     \begin{aligned}
+     C(x) &= \dfrac{15}{0.02}\text{e}^{0.02x} + C \\
+     C(x) &= 750\text{e}^{0.02x} + C
+     \end{aligned}
+     $$
+  3. Use the fixed costs to find $C$. When $x = 0$, $C(0) = 500$:
+     $$
+     \begin{aligned}
+     500 &= 750\text{e}^0 + C \\
+     500 &= 750(1) + C \\
+     C &= -250
+     \end{aligned}
+     $$
+  4. Write the final cost function:
+     $$
+     \begin{aligned}
+     C(x) &= 750\text{e}^{0.02x} - 250
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+
+<Steps>
+  1. Substitute $x = 100$ into the cost function:
+     $$
+     \begin{aligned}
+     C(100) &= 750\text{e}^{0.02(100)} - 250 \\
+     C(100) &= 750\text{e}^2 - 250
+     \end{aligned}
+     $$
+  2. Calculate the value:
+     $$
+     \begin{aligned}
+     C(100) &\approx 750(7.389) - 250 \\
+     C(100) &\approx 5541.80 - 250 \approx 5291.80\text{ EUR}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q10: Substitution with Natural Logarithms">
+    Find $\int \dfrac{3\ln x}{x} \, \text{d}x$.  
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+<Steps>
+  1. Let $u = \ln x$.
+  2. Differentiate $u$: $\dfrac{\text{d}u}{\text{d}x} = \dfrac{1}{x} \implies \text{d}x = x \, \text{d}u$.
+  3. Substitute into the integral:
+     $$
+     \begin{aligned}
+     \int \dfrac{3u}{x} \cdot x \, \text{d}u
+     \end{aligned}
+     $$
+  4. Cancel the $x$ terms and integrate:
+     $$
+     \begin{aligned}
+     \int 3u \, \text{d}u &= \dfrac{3u^2}{2} + C
+     \end{aligned}
+     $$
+  5. Substitute back $u = \ln x$:
+     $$
+     \begin{aligned}
+     &= \dfrac{3}{2}(\ln x)^2 + C
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>

@@ -1,0 +1,607 @@
+---
+title: 5.7 The Second Derivative and Graphical Behaviour
+description: Explore the second derivative, learn to interpret the relationship between a function and its derivatives graphically, and understand concavity.
+---
+
+Once we have found the derivative of a function, we have a new mathematical object: the gradient function, $f'(x)$. Because this is itself a function, we can differentiate it again. This process yields the **second derivative**, which tells us the *rate of change of the rate of change*. While the first derivative tells us whether a function is increasing or decreasing, the second derivative tells us about the curvature, or **concavity**, of the graph.
+
+<Aside type="note" title="Connections: Simple Harmonic Motion">
+  **Links to Physics:** The second derivative is the cornerstone of kinematics and dynamics. If $s(t)$ represents the displacement of an object, $s'(t)$ is its velocity, and $s''(t)$ is its acceleration. In Simple Harmonic Motion (SHM)—such as a pendulum swinging or a mass on a spring—the acceleration is directly proportional to the negative of the displacement. This is elegantly summarised by the differential equation $s''(t) = -\omega^2 s(t)$.
+</Aside>
+
+<Aside type="note" title="Aim 8: Economics and Marginal Analysis">
+  In economics, businesses analyse cost functions $C(x)$, where $x$ is the number of units produced. The first derivative, $C'(x)$, represents the *marginal cost* (the cost of producing one additional unit). The second derivative, $C''(x)$, tells us how the marginal cost is changing. If $C''(x) > 0$, the cost of producing each additional unit is increasing, often indicating diminishing returns. For instance, if production costs are scaling rapidly, intervention may be required to keep costs below 500 EUR per batch.
+</Aside>
+
+<Aside type="note" title="Theory of Knowledge: Mathematical Constructs">
+  Does the second derivative "exist" in nature, or is it merely a human mathematical construct we impose on motion? When we feel the "jerk" of a car accelerating, we are physically experiencing a third derivative. How do our physical senses map to abstract calculus concepts?
+</Aside>
+
+<Aside type="note" title="International Mindedness: The Calculus Wars">
+  The use of different notations—Leibniz $\dfrac{\text{d}^2y}{\text{d}x^2}$ (German), Newton $\ddot{y}$ (English), and Lagrange $f''(x)$ (Italian-French)—reflects the highly international, yet historically fiercely competitive, development of calculus across Europe in the 17th and 18th centuries.
+</Aside>
+
+---
+
+## 1. Notation and Calculation
+
+Calculating the second derivative is simply a matter of applying your differentiation rules (Power, Chain, Product, Quotient) twice in succession. 
+
+* **Lagrange Notation:** If the original function is $f(x)$, the first derivative is $f'(x)$, and the second derivative is written as **$f''(x)$**.
+* **Leibniz Notation:** If $y$ is given in terms of $x$, the first derivative is $\dfrac{\text{d}y}{\text{d}x}$, and the second derivative is written as **$\dfrac{\text{d}^2y}{\text{d}x^2}$**. 
+
+<Aside type="caution" title="Leibniz Notation Nuance">
+  Be careful with the placement of the superscripts in Leibniz notation. It is $\dfrac{\text{d}^2y}{\text{d}x^2}$, which conceptually means $\dfrac{\text{d}}{\text{d}x} \left( \dfrac{\text{d}y}{\text{d}x} \right)$. It is **not** $\left(\dfrac{\text{d}y}{\text{d}x}\right)^2$, which would be squaring the first derivative.
+</Aside>
+
+### Worked Example: Finding the Second Derivative
+**Question:** Given $y = x^4 \ln x$, find $\dfrac{\text{d}^2y}{\text{d}x^2}$.  
+**Solution:**
+
+<Steps>
+  1. Find the first derivative using the product rule, where $u = x^4$ and $v = \ln x$.
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}y}{\text{d}x} &= 4x^3 \ln x + x^4 \left(\dfrac{1}{x}\right) \\
+     &= 4x^3 \ln x + x^3
+     \end{aligned}
+     $$
+  2. Differentiate again to find the second derivative.
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}^2y}{\text{d}x^2} &= \left[ 12x^2 \ln x + 4x^3 \left(\dfrac{1}{x}\right) \right] + 3x^2
+     \end{aligned}
+     $$
+  3. Simplify the resulting expression.
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}^2y}{\text{d}x^2} &= 12x^2 \ln x + 4x^2 + 3x^2 \\
+     &= 12x^2 \ln x + 7x^2
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 2. Graphical Behaviour: $f(x)$, $f'(x)$, and $f''(x)$
+
+The IB frequently tests your ability to interpret the graphical relationships between a function and its derivatives. The following SVG uses accurate map points for $f(x) = \frac{1}{3}x^3 - x$, $f'(x) = x^2 - 1$, and $f''(x) = 2x$ to perfectly model the alignment of critical features.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="derivative-graphs" viewBox="0 0 600 500" width="100%" style="max-width: 600px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px;">
+    <defs>
+      <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+        <polygon points="0 0, 6 3, 0 6" fill="#64748b" />
+      </marker>
+      <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+        <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#f1f5f9" stroke-width="1"/>
+      </pattern>
+    </defs>
+    <rect width="600" height="500" fill="url(#grid)" />
+    
+    <g transform="translate(0, 20)">
+      <text x="30" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2563eb">y = f(x)</text>
+      <line x1="50" y1="100" x2="550" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      <line x1="300" y1="160" x2="300" y2="20" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      
+      <polyline 
+        points={Array.from({ length: 46 }).map((_, i) => {
+          const x = 190 + (i * 5);
+          const mathX = (x - 300) / 50;
+          const mathY = (1/3) * Math.pow(mathX, 3) - mathX;
+          return `${x},${100 - (mathY * 30)}`;
+        }).join(" ")}
+        fill="none" stroke="#2563eb" stroke-width="3" stroke-linejoin="round" 
+      />
+      
+      <line x1="250" y1="80" x2="250" y2="450" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,5" />
+      <line x1="350" y1="80" x2="350" y2="450" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,5" />
+      <line x1="300" y1="80" x2="300" y2="450" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5,5" />
+      <circle cx="250" cy="80" r="4" fill="#ef4444" /> 
+      <circle cx="350" cy="120" r="4" fill="#ef4444" /> 
+      <circle cx="300" cy="100" r="4" fill="#eab308" /> 
+    </g>
+
+    <g transform="translate(0, 180)">
+      <text x="30" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#16a34a">y = f'(x)</text>
+      <line x1="50" y1="100" x2="550" y2="100" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      <line x1="300" y1="160" x2="300" y2="20" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      
+      <polyline 
+        points={Array.from({ length: 45 }).map((_, i) => {
+          const x = 190 + (i * 5);
+          const mathX = (x - 300) / 50;
+          const mathY = Math.pow(mathX, 2) - 1;
+          return `${x},${100 - (mathY * 30)}`;
+        }).join(" ")}
+        fill="none" stroke="#16a34a" stroke-width="3" stroke-linejoin="round" 
+      />
+      
+      <circle cx="250" cy="100" r="4" fill="#ef4444" /> 
+      <circle cx="350" cy="100" r="4" fill="#ef4444" /> 
+      <circle cx="300" cy="130" r="4" fill="#eab308" /> 
+    </g>
+
+    <g transform="translate(0, 340)">
+      <text x="30" y="20" font-family="sans-serif" font-size="14" font-weight="bold" fill="#d946ef">y = f''(x)</text>
+      <line x1="50" y1="80" x2="550" y2="80" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      <line x1="300" y1="140" x2="300" y2="20" stroke="#64748b" stroke-width="2" marker-end="url(#arrowhead)" />
+      
+      <polyline 
+        points={Array.from({ length: 52 }).map((_, i) => {
+          const x = 150 + (i * 5);
+          const mathX = (x - 300) / 50;
+          const mathY = 2 * mathX;
+          return `${x},${80 - (mathY * 30)}`;
+        }).join(" ")}
+        fill="none" stroke="#d946ef" stroke-width="3" stroke-linejoin="round" 
+      />
+      
+      <circle cx="300" cy="80" r="4" fill="#eab308" /> 
+    </g>
+  </svg>
+</div>
+
+### Connecting the Behaviours
+The key to mastering these graphical problems is memorising what a specific feature on one graph implies for the others.
+
+* **When $f(x)$ has a local maximum or minimum:** The gradient is zero, so $f'(x) = 0$. (Notice the red dots align vertically).
+* **When $f(x)$ is increasing:** The gradient is positive, so the graph of $f'(x)$ is above the $x$-axis.
+* **When $f(x)$ is decreasing:** The gradient is negative, so the graph of $f'(x)$ is below the $x$-axis.
+
+### Concavity and $f''(x)$
+The second derivative determines the "bending" of the original curve.
+* **Concave Up ($f''(x) > 0$):** The curve of $f(x)$ is shaped like a smile $\cup$. The gradients are increasing.
+* **Concave Down ($f''(x) < 0$):** The curve of $f(x)$ is shaped like a frown $\cap$. The gradients are decreasing.
+* **Point of Inflection ($f''(x) = 0$):** This is where the curve changes from concave up to concave down, or vice versa. (Notice the yellow dots align vertically: inflection on $f(x)$ matches the turning point on $f'(x)$ and the root on $f''(x)$).
+
+<Aside type="danger" title="A Common Misconception">
+  Just because $f''(x) = 0$ does **not** guarantee a point of inflection. The sign of $f''(x)$ must actually change across that point. Think of $f(x) = x^4$. At $x=0$, $f''(0) = 0$, but the graph is concave up everywhere, so $x=0$ is a minimum, not a point of inflection.
+</Aside>
+
+### Worked Example: Interpreting Graphs
+**Question:** The graph of the derivative $y = f'(x)$ is a parabola opening upwards with $x$-intercepts at $x = -2$ and $x = 4$. State the $x$-coordinates of any turning points on $f(x)$ and determine their nature.  
+**Solution:**
+
+<Steps>
+  1. Identify turning points of $f(x)$ by looking for where $f'(x) = 0$.
+     $$
+     \begin{aligned}
+     \text{Turning points are at } x &= -2 \text{ and } x = 4.
+     \end{aligned}
+     $$
+  2. Analyse the behaviour of $f'(x)$ around $x = -2$. $f'(x)$ goes from positive to negative.
+     $$
+     \begin{aligned}
+     f'(x) \text{ changes from } + \text{ to } - \implies \text{Local Maximum at } x &= -2.
+     \end{aligned}
+     $$
+  3. Analyse the behaviour of $f'(x)$ around $x = 4$. $f'(x)$ goes from negative to positive.
+     $$
+     \begin{aligned}
+     f'(x) \text{ changes from } - \text{ to } + \implies \text{Local Minimum at } x &= 4.
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 3. Technology: Using your GDC
+
+<SteveTip title="GDC Skills: Graphing Derivatives on TI-Nspire">
+  When faced with a complex function in Paper 2 where you need to find the roots of the second derivative or map out $f'(x)$, do not calculate it algebraically if the question doesn't require "show that". 
+  
+  In the **Graphs** application:
+  1. Graph your original function in `f1(x)`.
+  2. To graph the first derivative, press `Tab`, open the templates, select `d/d□ (□)`, and type `d/dx (f1(x))` into `f2(x)`.
+  3. To graph the second derivative, enter `d/dx (f2(x))` into `f3(x)`. 
+  
+  You can now use `Menu > Analyze Graph > Zero` on `f3(x)` to find potential points of inflection instantly!
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Basic Polynomials">
+    For the function $f(x) = x^5 - 3x^3 + 2x$:  
+    **a)** Find $f'(x)$.  
+    **b)** Find $f''(x)$.  
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+
+<Steps>
+      1. Apply the power rule.
+         $$
+         \begin{aligned}
+         f'(x) &= 5x^4 - 9x^2 + 2
+         \end{aligned}
+         $$
+    </Steps>  
+    **b)**
+
+<Steps>
+      1. Apply the power rule again to the first derivative.
+         $$
+         \begin{aligned}
+         f''(x) &= 20x^3 - 18x
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Exponentials and Logarithms">
+    For the function $y = \text{e}^{2x} + \ln(3x)$:  
+    **a)** Find $\dfrac{\text{d}y}{\text{d}x}$.  
+    **b)** Find $\dfrac{\text{d}^2y}{\text{d}x^2}$.  
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+
+<Steps>
+      1. Differentiate each term using the chain rule.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= 2\text{e}^{2x} + \dfrac{1}{3x} \times 3 \\
+         &= 2\text{e}^{2x} + \dfrac{1}{x}
+         \end{aligned}
+         $$
+    </Steps>  
+    **b)**
+
+<Steps>
+      1. Rewrite $\dfrac{1}{x}$ as $x^{-1}$ and differentiate again.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}^2y}{\text{d}x^2} &= 4\text{e}^{2x} - x^{-2} \\
+         &= 4\text{e}^{2x} - \dfrac{1}{x^2}
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Evaluating at a Point">
+    Let $g(x) = \sin(4x) - \cos(2x)$.  
+    **a)** Find $g''(x)$.  
+    **b)** Evaluate $g''\left(\dfrac{\pi}{4}\right)$.  
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+
+<Steps>
+      1. Find the first derivative.
+         $$
+         \begin{aligned}
+         g'(x) &= 4\cos(4x) + 2\sin(2x)
+         \end{aligned}
+         $$
+      2. Differentiate again.
+         $$
+         \begin{aligned}
+         g''(x) &= -16\sin(4x) + 4\cos(2x)
+         \end{aligned}
+         $$
+    </Steps>  
+    **b)**
+
+<Steps>
+      1. Substitute $x = \dfrac{\pi}{4}$ into the second derivative.
+         $$
+         \begin{aligned}
+         g''\left(\dfrac{\pi}{4}\right) &= -16\sin(\pi) + 4\cos\left(\dfrac{\pi}{2}\right) \\
+         &= -16(0) + 4(0) \\
+         &= 0
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Kinematics Context">
+    The displacement of a particle in metres is given by $s(t) = t^3 - 6t^2 + 9t$, where $t$ is time in seconds.  
+    **a)** Find an expression for the acceleration of the particle, $a(t)$.  
+    **b)** Determine the time at which the acceleration is exactly zero.  
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+
+<Steps>
+      1. Find velocity by differentiating displacement.
+         $$
+         \begin{aligned}
+         v(t) &= s'(t) = 3t^2 - 12t + 9
+         \end{aligned}
+         $$
+      2. Find acceleration by differentiating velocity.
+         $$
+         \begin{aligned}
+         a(t) &= v'(t) = s''(t) = 6t - 12
+         \end{aligned}
+         $$
+    </Steps>  
+    **b)**
+
+<Steps>
+      1. Set the acceleration expression to zero and solve for $t$.
+         $$
+         \begin{aligned}
+         6t - 12 &= 0 \\
+         6t &= 12 \\
+         t &= 2 \text{ seconds}
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Using the Product Rule">
+    Given $f(x) = x^2 \text{e}^{-x}$:  
+    **a)** Show that $f'(x) = x\text{e}^{-x}(2 - x)$.  
+    **b)** Find $f''(x)$ and simplify fully.  
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+
+<Steps>
+      1. Use the product rule with $u = x^2$ and $v = \text{e}^{-x}$.
+         $$
+         \begin{aligned}
+         f'(x) &= (2x)(\text{e}^{-x}) + (x^2)(-\text{e}^{-x})
+         \end{aligned}
+         $$
+      2. Factorise the expression.
+         $$
+         \begin{aligned}
+         f'(x) &= x\text{e}^{-x}(2 - x)
+         \end{aligned}
+         $$
+    </Steps>  
+    **b)**
+
+<Steps>
+      1. Expand $f'(x)$ to make differentiation easier: $f'(x) = 2x\text{e}^{-x} - x^2\text{e}^{-x}$. Then apply the product rule to both parts.
+         $$
+         \begin{aligned}
+         f''(x) &= [2\text{e}^{-x} - 2x\text{e}^{-x}] - [2x\text{e}^{-x} - x^2\text{e}^{-x}]
+         \end{aligned}
+         $$
+      2. Group like terms.
+         $$
+         \begin{aligned}
+         f''(x) &= \text{e}^{-x}(x^2 - 4x + 2)
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Graphical Interpretation (Linear f')">
+    The graph of the derivative $f'(x)$ is a straight line passing through $(0, 4)$ and $(2, 0)$.  
+    **a)** Find the $x$-coordinate of the turning point of $f(x)$ and state its nature.  
+    **b)** What does the constant gradient of $f'(x)$ tell you about $f''(x)$?  
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+
+<Steps>
+      1. A turning point occurs where $f'(x) = 0$. The graph crosses the $x$-axis at $x = 2$.
+         $$
+         \begin{aligned}
+         \text{Turning point at } x &= 2
+         \end{aligned}
+         $$
+      2. The line goes from positive ($y=4$) to negative as it crosses $x=2$.
+         $$
+         \begin{aligned}
+         \text{Change from } + \text{ to } - \implies \text{Local Maximum}
+         \end{aligned}
+         $$
+    </Steps>  
+    **b)**
+
+<Steps>
+      1. The gradient of $f'(x)$ is the second derivative, $f''(x)$.
+         $$
+         \begin{aligned}
+         \text{Since } f'(x) \text{ is a decreasing line, } f''(x) \text{ is a negative constant.}
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Finding Points of Inflection">
+    Let $y = x^3 - 6x^2 + 5$.  
+    **a)** Find the coordinates of the point of inflection.  
+    **b)** Determine the interval where the graph is concave up.  
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+
+<Steps>
+      1. Find the first and second derivatives.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= 3x^2 - 12x \\
+         \dfrac{\text{d}^2y}{\text{d}x^2} &= 6x - 12
+         \end{aligned}
+         $$
+      2. Set the second derivative to zero to find the possible point of inflection.
+         $$
+         \begin{aligned}
+         6x - 12 &= 0 \\
+         x &= 2
+         \end{aligned}
+         $$
+      3. Substitute $x=2$ back into the original equation to find the $y$-coordinate.
+         $$
+         \begin{aligned}
+         y &= (2)^3 - 6(2)^2 + 5 = 8 - 24 + 5 = -11
+         \end{aligned}
+         $$
+      4. State the coordinates.
+         $$
+         \begin{aligned}
+         \text{Point of inflection: } (2, -11)
+         \end{aligned}
+         $$
+    </Steps>  
+    **b)**
+
+<Steps>
+      1. Concave up occurs when the second derivative is positive.
+         $$
+         \begin{aligned}
+         6x - 12 &> 0 \\
+         x &> 2
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Economics Context">
+    The cost, $C$, of producing $x$ batches of a product is given by $C(x) = 0.1x^3 - 3x^2 + 50x + 200$.   
+    **a)** Find the marginal cost function, $C'(x)$.  
+    **b)** Find $C''(x)$ and determine the production level $x$ at which the marginal cost begins to increase.  
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+
+<Steps>
+      1. Differentiate the cost function.
+         $$
+         \begin{aligned}
+         C'(x) &= 0.3x^2 - 6x + 50
+         \end{aligned}
+         $$
+    </Steps>  
+    **b)**
+
+<Steps>
+      1. Differentiate the marginal cost function.
+         $$
+         \begin{aligned}
+         C''(x) &= 0.6x - 6
+         \end{aligned}
+         $$
+      2. Solve the inequality $C''(x) > 0$.
+         $$
+         \begin{aligned}
+         0.6x - 6 &> 0 \\
+         0.6x &> 6 \\
+         x &> 10
+         \end{aligned}
+         $$
+      3. Interpret the result.
+         $$
+         \begin{aligned}
+         \text{The marginal cost begins to increase when more than 10 batches are produced.}
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q9: Interpreting a Table of Signs">
+    A continuous function $h(x)$ has the properties shown in the table below for its derivatives.  
+
+    | $x$ | $x < 1$ | $x = 1$ | $1 < x < 3$ | $x = 3$ | $x > 3$ |
+    | :--- | :---: | :---: | :---: | :---: | :---: |
+    | $h'(x)$ | Positive | $0$ | Negative | Negative | Negative |
+    | $h''(x)$ | Negative | Negative | Negative | $0$ | Positive |
+
+    **a)** State the $x$-coordinate of the local maximum of $h(x)$.  
+    **b)** State the $x$-coordinate of any point of inflection on $h(x)$.  
+    **c)** Describe the shape of the graph of $h(x)$ for $x > 3$.  
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)**
+
+<Steps>
+      1. A local maximum occurs where $h'(x) = 0$ and changes from positive to negative.
+         $$
+         \begin{aligned}
+         \text{This occurs at } x &= 1.
+         \end{aligned}
+         $$
+    </Steps>  
+    **b)**
+
+<Steps>
+      1. A point of inflection occurs where $h''(x) = 0$ and changes sign.
+         $$
+         \begin{aligned}
+         \text{At } x=3 \text{, } h''(x) \text{ changes from negative to positive. Point of inflection at } x &= 3.
+         \end{aligned}
+         $$
+    </Steps>  
+    **c)**
+
+<Steps>
+      1. For $x > 3$, the first derivative is negative, so the function is decreasing. The second derivative is positive, so it is concave up.
+         $$
+         \begin{aligned}
+         \text{The graph is decreasing and concave up (like the right side of a smile).}
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q10: Reverse Engineering from Derivatives">
+    The graph of the second derivative of a function $f(x)$ is given by the line $f''(x) = 4x - 8$. The first derivative $f'(x)$ has a stationary point at $x = 2$.  
+    **a)** Determine the interval where the graph of $f(x)$ is concave down.  
+    **b)** Given that $f'(x)$ has an $x$-intercept at $x = 0$, find the $x$-coordinate of another turning point of $f(x)$ by analysing the symmetry of $f'(x)$.  
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    **a)**
+
+<Steps>
+      1. Concave down implies $f''(x) < 0$.
+         $$
+         \begin{aligned}
+         4x - 8 &< 0 \\
+         4x &< 8 \\
+         x &< 2
+         \end{aligned}
+         $$
+    </Steps>  
+    **b)**
+
+<Steps>
+      1. Since $f''(x)$ is a linear function with a root at $x=2$, $f'(x)$ must be a quadratic function (a parabola) with its vertex at $x=2$.
+         $$
+         \begin{aligned}
+         \text{The axis of symmetry for } f'(x) \text{ is } x &= 2.
+         \end{aligned}
+         $$
+      2. We are given one root of $f'(x)$ at $x=0$. Due to the symmetry of a parabola, the other root must be equidistant from the vertex $x=2$.
+         $$
+         \begin{aligned}
+         \text{Distance from root to vertex} &= 2 - 0 = 2 \\
+         \text{Other root} &= 2 + 2 = 4
+         \end{aligned}
+         $$
+      3. Turning points of $f(x)$ occur where $f'(x) = 0$.
+         $$
+         \begin{aligned}
+         \text{The other turning point is at } x &= 4.
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>

@@ -1,0 +1,936 @@
+---
+title: 5.6 Advanced Differentiation Rules
+description: Master the standard derivatives for trigonometric, exponential, and logarithmic functions, and learn how to apply the Chain, Product, and Quotient rules to differentiate complex functions.
+---
+
+Now that we have established the concept of a derivative and the power rule, we can expand our mathematical toolkit. Real-world phenomena rarely follow simple polynomial paths. To model complex behaviours—from the oscillation of sound waves to the compounding of continuous interest—we must know how to differentiate trigonometric, exponential, and logarithmic functions, as well as functions that are combined or nested together.
+
+<Aside type="note" title="Connections: Physics and TOK">
+  **Links to Physics:** Uniform circular motion and induced electromotive force (emf) rely heavily on these rules. For instance, an object moving in a circle has a position modelled by $x = r \cos(\omega t)$ and $y = r \sin(\omega t)$. To find its velocity, we must differentiate these trigonometric functions using the chain rule. Similarly, Faraday's Law of Induction states that induced emf is proportional to the rate of change of magnetic flux ($\varepsilon = -N \dfrac{\text{d}\Phi}{\text{d}t}$).
+  
+  **TOK:** *What is the role of convention in mathematics?* In calculus, we use specific notations like $\dfrac{\text{d}y}{\text{d}x}$ (Leibniz notation) or $f'(x)$ (Lagrange notation). Are these merely arbitrary choices, or do they actively shape how we think about the concepts? The chain rule, for instance, looks like fractions cancelling out in Leibniz notation ($\dfrac{\text{d}y}{\text{d}x} = \dfrac{\text{d}y}{\text{d}u} \times \dfrac{\text{d}u}{\text{d}x}$). Does this convention make the math easier to discover, or just easier to remember?
+</Aside>
+
+---
+
+## 1. Standard Derivatives
+
+The IB formula booklet provides the derivatives for several fundamental functions. You do not need to derive these from first principles in the exam, but you must recognise and apply them fluently.
+
+<FormulaBox title="Derivative of $x^n$">
+$$
+f(x) = x^n \implies f'(x) = nx^{n-1}
+$$
+</FormulaBox>
+
+<FormulaBox title="Derivative of $\sin x$">
+$$
+f(x) = \sin x \implies f'(x) = \cos x
+$$
+</FormulaBox>
+
+<FormulaBox title="Derivative of $\cos x$">
+$$
+f(x) = \cos x \implies f'(x) = -\sin x
+$$
+</FormulaBox>
+
+<FormulaBox title="Derivative of $\text{e}^x$">
+$$
+f(x) = \text{e}^x \implies f'(x) = \text{e}^x
+$$
+</FormulaBox>
+
+<FormulaBox title="Derivative of $\ln x$">
+$$
+f(x) = \ln x \implies f'(x) = \dfrac{1}{x}
+$$
+</FormulaBox>
+
+<Aside type="danger" title="Radians are Required">
+  Whenever you differentiate or integrate trigonometric functions ($\sin x$, $\cos x$, etc.) in calculus, **$x$ must be measured in radians**. The standard derivative formulas are invalid if degrees are used.
+</Aside>
+
+### Linearity: Sums and Multiples
+If you have a function multiplied by a constant, the constant simply multiplies the derivative. If functions are added or subtracted, you differentiate them term by term. Roots (square roots, cube roots) and rational terms must first be rewritten as fractional and negative exponents using index laws.
+
+### Worked Example: Standard Rules
+**Question:** Differentiate $f(x) = 4\text{e}^x - \sqrt{x} + \dfrac{5}{x}$.
+
+**Solution:**
+
+<Steps>
+  1. Rewrite the square root and fraction using exponent rules.
+     $$
+     \begin{aligned}
+     f(x) &= 4\text{e}^x - x^{\frac{1}{2}} + 5x^{-1}
+     \end{aligned}
+     $$
+  2. Differentiate each term individually, keeping the constant multipliers.
+     $$
+     \begin{aligned}
+     f'(x) &= 4(\text{e}^x) - \dfrac{1}{2}x^{-\frac{1}{2}} - 5x^{-2}
+     \end{aligned}
+     $$
+  3. Simplify the expression back into surds and fractions.
+     $$
+     \begin{aligned}
+     f'(x) &= 4\text{e}^x - \dfrac{1}{2\sqrt{x}} - \dfrac{5}{x^2}
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 2. The Chain Rule (Composite Functions)
+
+The **Chain Rule** is used when dealing with composite functions—functions "nested" inside other functions, like $y = (3x + 1)^4$ or $y = \sin(x^2)$. 
+
+<FormulaBox title="Chain rule">
+$$
+y = g(u), \text{ where } u = f(x) \implies \dfrac{\text{d}y}{\text{d}x} = \dfrac{\text{d}y}{\text{d}u} \times \dfrac{\text{d}u}{\text{d}x}
+$$
+</FormulaBox>
+
+Informally, we can think of this as: **Derivative of the OUTSIDE function (leaving the inside alone) $\times$ Derivative of the INSIDE function.**
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="chain-rule-machine" viewBox="0 0 600 200" width="100%" style="max-width: 600px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px;">
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a" />
+      </marker>
+    </defs>
+    
+    <rect x="150" y="50" width="120" height="100" rx="8" fill="#bfdbfe" stroke="#2563eb" stroke-width="2" />
+    <text x="210" y="100" font-family="sans-serif" font-size="16" fill="#1e3a8a" text-anchor="middle" font-weight="bold">Inside: u(x)</text>
+    <text x="210" y="130" font-family="sans-serif" font-size="14" fill="#1e3a8a" text-anchor="middle">Multiply by u'(x)</text>
+
+    <rect x="350" y="50" width="120" height="100" rx="8" fill="#bbf7d0" stroke="#16a34a" stroke-width="2" />
+    <text x="410" y="100" font-family="sans-serif" font-size="16" fill="#14532d" text-anchor="middle" font-weight="bold">Outside: y(u)</text>
+    <text x="410" y="130" font-family="sans-serif" font-size="14" fill="#14532d" text-anchor="middle">Derivative: y'(u)</text>
+
+    <line x1="50" y1="100" x2="140" y2="100" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)" />
+    <text x="95" y="90" font-family="sans-serif" font-size="16" fill="#0f172a" text-anchor="middle">Input x</text>
+
+    <line x1="270" y1="100" x2="340" y2="100" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)" />
+    <text x="305" y="90" font-family="sans-serif" font-size="16" fill="#0f172a" text-anchor="middle">u</text>
+
+    <line x1="470" y1="100" x2="560" y2="100" stroke="#0f172a" stroke-width="3" marker-end="url(#arrow)" />
+    <text x="515" y="90" font-family="sans-serif" font-size="16" fill="#0f172a" text-anchor="middle">Output y</text>
+  </svg>
+</div>
+
+### Worked Example: Chain Rule
+**Question:** Differentiate $y = \text{e}^{5x^2 - 3x}$.
+
+**Solution:**
+
+<Steps>
+  1. Identify the outside function and inside function.
+     $$
+     \begin{aligned}
+     \text{Outside: } y &= \text{e}^u \\
+     \text{Inside: } u &= 5x^2 - 3x
+     \end{aligned}
+     $$
+  2. Differentiate both parts with respect to their variables.
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}y}{\text{d}u} &= \text{e}^u \\
+     \dfrac{\text{d}u}{\text{d}x} &= 10x - 3
+     \end{aligned}
+     $$
+  3. Multiply them together according to the chain rule and substitute $u$ back in.
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}y}{\text{d}x} &= \dfrac{\text{d}y}{\text{d}u} \times \dfrac{\text{d}u}{\text{d}x} \\
+     &= \text{e}^u \times (10x - 3) \\
+     &= (10x - 3)\text{e}^{5x^2 - 3x}
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 3. The Product Rule
+
+The **Product Rule** is used when a function is the exact multiplication of two other functions of $x$, such as $y = x^2 \sin x$.
+
+<FormulaBox title="Product rule">
+$$
+y = uv \implies \dfrac{\text{d}y}{\text{d}x} = u\dfrac{\text{d}v}{\text{d}x} + v\dfrac{\text{d}u}{\text{d}x}
+$$
+</FormulaBox>
+
+### Worked Example: Product Rule
+**Question:** Find $f'(x)$ given $f(x) = x^3 \ln x$.
+
+**Solution:**
+
+<Steps>
+  1. Define $u$ and $v$ as the two separate functions being multiplied.
+     $$
+     \begin{aligned}
+     u &= x^3 \\
+     v &= \ln x
+     \end{aligned}
+     $$
+  2. Differentiate $u$ and $v$ individually.
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}u}{\text{d}x} &= 3x^2 \\
+     \dfrac{\text{d}v}{\text{d}x} &= \dfrac{1}{x}
+     \end{aligned}
+     $$
+  3. Apply the product rule formula and simplify.
+     $$
+     \begin{aligned}
+     f'(x) &= u\dfrac{\text{d}v}{\text{d}x} + v\dfrac{\text{d}u}{\text{d}x} \\
+     &= (x^3)\left(\dfrac{1}{x}\right) + (\ln x)(3x^2) \\
+     &= x^2 + 3x^2 \ln x
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 4. The Quotient Rule
+
+The **Quotient Rule** is used when a function is dividing another function of $x$, such as $y = \dfrac{\cos x}{2x}$. 
+
+<FormulaBox title="Quotient rule">
+$$
+y = \dfrac{u}{v} \implies \dfrac{\text{d}y}{\text{d}x} = \dfrac{v\dfrac{\text{d}u}{\text{d}x} - u\dfrac{\text{d}v}{\text{d}x}}{v^2}
+$$
+</FormulaBox>
+
+<Aside type="caution" title="Order Matters!">
+  Unlike the product rule, which has a plus sign and is commutative, the quotient rule uses subtraction in the numerator. You **must** start with $v \times \dfrac{\text{d}u}{\text{d}x}$ first. A helpful mnemonic is: "Bottom d-Top minus Top d-Bottom, over Bottom squared."
+</Aside>
+
+### Worked Example: Quotient Rule
+**Question:** Differentiate $y = \dfrac{\text{e}^x}{x^2 + 1}$.
+
+**Solution:**
+
+<Steps>
+  1. Define $u$ (numerator) and $v$ (denominator).
+     $$
+     \begin{aligned}
+     u &= \text{e}^x \\
+     v &= x^2 + 1
+     \end{aligned}
+     $$
+  2. Differentiate $u$ and $v$.
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}u}{\text{d}x} &= \text{e}^x \\
+     \dfrac{\text{d}v}{\text{d}x} &= 2x
+     \end{aligned}
+     $$
+  3. Substitute into the quotient rule formula.
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}y}{\text{d}x} &= \dfrac{(x^2 + 1)(\text{e}^x) - (\text{e}^x)(2x)}{(x^2 + 1)^2}
+     \end{aligned}
+     $$
+  4. Factor out common terms in the numerator to present a simplified answer.
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}y}{\text{d}x} &= \dfrac{\text{e}^x(x^2 - 2x + 1)}{(x^2 + 1)^2}
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 5. Technology: Using your GDC
+
+<SteveTip title="GDC Skills: Finding Gradients Fast">
+  In Paper 2 exams, if you only need the gradient at a specific point (e.g., $x = 3$) rather than the full algebraic derivative equation, **do not waste time differentiating by hand!** On the TI-Nspire:
+  1. Open the calculator page.
+  2. Press `Shift` + `-` to open the derivative template: $\dfrac{\text{d}}{\text{d}\Box}(\Box)|_{\Box=\Box}$
+  3. Fill it out as $\dfrac{\text{d}}{\text{d}x}(f(x))|_{x=3}$ and press `Enter`. 
+  This directly evaluates the derivative at the point and prevents algebraic slips.
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Standard Rules">
+    Differentiate each of the following functions with respect to $x$:  
+    **a)** $y = 3x^4 - 2x^2 + 5$  
+    **b)** $y = 4\sin x - \cos x$  
+    **c)** $y = 5\text{e}^x + 2\ln x$  
+    **d)** $y = \sqrt{x}$  
+    **e)** $y = \sqrt[3]{x^2}$  
+    **f)** $y = \dfrac{3}{x^2}$  
+    **g)** $y = \dfrac{1}{\sqrt{x}}$  
+    **h)** $y = \dfrac{x^3 + 2x}{x}$  
+    **i)** $y = \text{e}^x - 3x^{\frac{1}{2}} + 7$  
+    **j)** $y = \dfrac{2}{3}x^3 - \ln x + \sin x$  
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** 
+    $$
+    \begin{aligned}
+    \dfrac{\text{d}y}{\text{d}x} &= 12x^3 - 4x
+    \end{aligned}
+    $$
+
+    **b)** 
+    $$
+    \begin{aligned}
+    \dfrac{\text{d}y}{\text{d}x} &= 4\cos x + \sin x
+    \end{aligned}
+    $$
+
+    **c)** 
+    $$
+    \begin{aligned}
+    \dfrac{\text{d}y}{\text{d}x} &= 5\text{e}^x + \dfrac{2}{x}
+    \end{aligned}
+    $$
+
+    **d)**
+    <Steps>
+      1. Rewrite as a fractional power.
+         $$
+         \begin{aligned}
+         y &= x^{\frac{1}{2}}
+         \end{aligned}
+         $$
+      2. Apply the power rule.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{1}{2}x^{-\frac{1}{2}} = \dfrac{1}{2\sqrt{x}}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **e)**
+    <Steps>
+      1. Rewrite as a fractional power.
+         $$
+         \begin{aligned}
+         y &= x^{\frac{2}{3}}
+         \end{aligned}
+         $$
+      2. Apply the power rule.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{2}{3}x^{-\frac{1}{3}} = \dfrac{2}{3\sqrt[3]{x}}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **f)**
+    <Steps>
+      1. Rewrite with a negative exponent.
+         $$
+         \begin{aligned}
+         y &= 3x^{-2}
+         \end{aligned}
+         $$
+      2. Differentiate.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= -6x^{-3} = -\dfrac{6}{x^3}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **g)**
+    <Steps>
+      1. Rewrite with a negative fractional exponent.
+         $$
+         \begin{aligned}
+         y &= x^{-\frac{1}{2}}
+         \end{aligned}
+         $$
+      2. Differentiate.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= -\dfrac{1}{2}x^{-\frac{3}{2}} = -\dfrac{1}{2x\sqrt{x}}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **h)**
+    <Steps>
+      1. Divide through by $x$ to simplify the expression first.
+         $$
+         \begin{aligned}
+         y &= x^2 + 2
+         \end{aligned}
+         $$
+      2. Differentiate.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= 2x
+         \end{aligned}
+         $$
+    </Steps>
+
+    **i)**
+    <Steps>
+      1. Differentiate term by term.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \text{e}^x - \dfrac{3}{2}x^{-\frac{1}{2}}
+         \end{aligned}
+         $$
+      2. Format with surds.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \text{e}^x - \dfrac{3}{2\sqrt{x}}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **j)** 
+    $$
+    \begin{aligned}
+    \dfrac{\text{d}y}{\text{d}x} &= 2x^2 - \dfrac{1}{x} + \cos x
+    \end{aligned}
+    $$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Chain Rule">
+    Use the chain rule to differentiate the following functions:  
+    **a)** $y = (2x+1)^5$  
+    **b)** $y = \sin(3x)$  
+    **c)** $y = \text{e}^{-4x}$  
+    **d)** $y = \cos(x^2)$  
+    **e)** $y = \ln(5x - 2)$  
+    **f)** $y = \sqrt{3x^2 + 1}$  
+    **g)** $y = \text{e}^{\sin x}$  
+    **h)** $y = \sin^3 x$  
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+    <Steps>
+      1. Apply power rule to the outside, multiply by derivative of the inside ($2$).
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= 5(2x+1)^4 \times 2
+         \end{aligned}
+         $$
+      2. Simplify.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= 10(2x+1)^4
+         \end{aligned}
+         $$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Differentiate $\sin$ to get $\cos$, multiply by derivative of inside ($3$).
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \cos(3x) \times 3
+         \end{aligned}
+         $$
+      2. Rearrange.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= 3\cos(3x)
+         \end{aligned}
+         $$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Differentiate $\text{e}^u$, multiply by $u'$.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \text{e}^{-4x} \times (-4)
+         \end{aligned}
+         $$
+      2. Rearrange.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= -4\text{e}^{-4x}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Differentiate outside function $\cos$ to $-\sin$, multiply by inside derivative $2x$.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= -\sin(x^2) \times (2x)
+         \end{aligned}
+         $$
+      2. Simplify.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= -2x\sin(x^2)
+         \end{aligned}
+         $$
+    </Steps>
+
+    **e)**
+    <Steps>
+      1. Derivative of $\ln(u)$ is $\dfrac{1}{u}$, multiplied by $u'$.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{1}{5x-2} \times 5
+         \end{aligned}
+         $$
+      2. Simplify.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{5}{5x-2}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **f)**
+    <Steps>
+      1. Rewrite as $y = (3x^2 + 1)^{\frac{1}{2}}$.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{1}{2}(3x^2 + 1)^{-\frac{1}{2}} \times (6x)
+         \end{aligned}
+         $$
+      2. Simplify and return to surd form.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{3x}{\sqrt{3x^2 + 1}}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **g)**
+    <Steps>
+      1. Differentiate the exponential, multiply by the derivative of its exponent.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \text{e}^{\sin x} \times \cos x
+         \end{aligned}
+         $$
+      2. Rearrange.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \cos x \text{e}^{\sin x}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **h)**
+    <Steps>
+      1. Rewrite as $y = (\sin x)^3$.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= 3(\sin x)^2 \times (\cos x)
+         \end{aligned}
+         $$
+      2. Format using standard trigonometric notation.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= 3\sin^2 x \cos x
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Product Rule">
+    Find $\dfrac{\text{d}y}{\text{d}x}$ for each of the following:  
+    **a)** $y = x^2 \sin x$  
+    **b)** $y = \text{e}^x \cos x$  
+    **c)** $y = x^3 \ln x$  
+    **d)** $y = \sqrt{x} \text{e}^{2x}$  
+    **e)** $y = (x+1)^2(x-2)^3$  
+    **f)** $y = \sin x \ln(x^2+1)$  
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+    <Steps>
+      1. Apply $u'v + uv'$ with $u=x^2$ and $v=\sin x$.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= (2x)(\sin x) + (x^2)(\cos x)
+         \end{aligned}
+         $$
+      2. Simplify.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= 2x\sin x + x^2\cos x
+         \end{aligned}
+         $$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Apply product rule.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= (\text{e}^x)(\cos x) + (\text{e}^x)(-\sin x)
+         \end{aligned}
+         $$
+      2. Factorise.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \text{e}^x(\cos x - \sin x)
+         \end{aligned}
+         $$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Apply product rule.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= (3x^2)(\ln x) + (x^3)\left(\dfrac{1}{x}\right)
+         \end{aligned}
+         $$
+      2. Simplify.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= 3x^2\ln x + x^2
+         \end{aligned}
+         $$
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Apply product rule, noting that $v=\text{e}^{2x}$ requires the chain rule.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \left(\dfrac{1}{2}x^{-\frac{1}{2}}\right)(\text{e}^{2x}) + (x^{\frac{1}{2}})(2\text{e}^{2x})
+         \end{aligned}
+         $$
+      2. Simplify into surd form.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{\text{e}^{2x}}{2\sqrt{x}} + 2\sqrt{x}\text{e}^{2x}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **e)**
+    <Steps>
+      1. Both $u=(x+1)^2$ and $v=(x-2)^3$ require the chain rule during the product rule.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= 2(x+1)(x-2)^3 + (x+1)^2 \times 3(x-2)^2
+         \end{aligned}
+         $$
+      2. Factorise the common terms $(x+1)$ and $(x-2)^2$.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= (x+1)(x-2)^2 [2(x-2) + 3(x+1)]
+         \end{aligned}
+         $$
+      3. Simplify the bracket.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= (x+1)(x-2)^2(5x - 1)
+         \end{aligned}
+         $$
+    </Steps>
+
+    **f)**
+    <Steps>
+      1. Apply product rule with chain rule on the natural log term.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= (\cos x)(\ln(x^2+1)) + (\sin x)\left(\dfrac{2x}{x^2+1}\right)
+         \end{aligned}
+         $$
+      2. Combine.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \cos x \ln(x^2+1) + \dfrac{2x\sin x}{x^2+1}
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Quotient Rule">
+    Differentiate the following functions:  
+    **a)** $y = \dfrac{x^2}{x+1}$  
+
+    **b)** $y = \dfrac{\sin x}{x^2}$  
+
+    **c)** $y = \dfrac{\text{e}^x}{\cos x}$  
+
+    **d)** $y = \dfrac{\ln x}{x}$  
+
+    **e)** $y = \dfrac{2x+3}{x-1}$  
+    
+    **f)** $y = \dfrac{\text{e}^{2x}}{x^2+1}$  
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+    <Steps>
+      1. Apply quotient rule: $\dfrac{vu' - uv'}{v^2}$.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{(x+1)(2x) - (x^2)(1)}{(x+1)^2}
+         \end{aligned}
+         $$
+      2. Expand and simplify numerator.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{2x^2 + 2x - x^2}{(x+1)^2} = \dfrac{x^2 + 2x}{(x+1)^2}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **b)**
+    <Steps>
+      1. Apply quotient rule.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{(x^2)(\cos x) - (\sin x)(2x)}{(x^2)^2}
+         \end{aligned}
+         $$
+      2. Simplify and factorise out $x$.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{x(x\cos x - 2\sin x)}{x^4} = \dfrac{x\cos x - 2\sin x}{x^3}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **c)**
+    <Steps>
+      1. Apply quotient rule. Watch the negative from differentiating $\cos x$.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{(\cos x)(\text{e}^x) - (\text{e}^x)(-\sin x)}{(\cos x)^2}
+         \end{aligned}
+         $$
+      2. Simplify.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{\text{e}^x(\cos x + \sin x)}{\cos^2 x}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **d)**
+    <Steps>
+      1. Apply quotient rule.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{(x)\left(\dfrac{1}{x}\right) - (\ln x)(1)}{x^2}
+         \end{aligned}
+         $$
+      2. Simplify numerator.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{1 - \ln x}{x^2}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **e)**
+    <Steps>
+      1. Apply quotient rule.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{(x-1)(2) - (2x+3)(1)}{(x-1)^2}
+         \end{aligned}
+         $$
+      2. Expand and simplify numerator.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{2x - 2 - 2x - 3}{(x-1)^2} = \dfrac{-5}{(x-1)^2}
+         \end{aligned}
+         $$
+    </Steps>
+
+    **f)**
+    <Steps>
+      1. Apply quotient rule, remembering chain rule for the numerator $u = \text{e}^{2x}$.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{(x^2+1)(2\text{e}^{2x}) - (\text{e}^{2x})(2x)}{(x^2+1)^2}
+         \end{aligned}
+         $$
+      2. Factorise the numerator to fully simplify.
+         $$
+         \begin{aligned}
+         \dfrac{\text{d}y}{\text{d}x} &= \dfrac{2\text{e}^{2x}(x^2 - x + 1)}{(x^2+1)^2}
+         \end{aligned}
+         $$
+    </Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Mixed Rules (Chain inside Product)">
+    Find $\dfrac{\text{d}y}{\text{d}x}$ for the function $y = x^2 \text{e}^{-3x}$. Give your answer in fully factorised form.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+<Steps>
+  1. This is a product of $u = x^2$ and $v = \text{e}^{-3x}$. The $v$ term requires the chain rule.
+     $$
+     \begin{aligned}
+     u' &= 2x \\
+     v' &= -3\text{e}^{-3x}
+     \end{aligned}
+     $$
+  2. Apply the product rule.
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}y}{\text{d}x} &= (2x)(\text{e}^{-3x}) + (x^2)(-3\text{e}^{-3x}) \\
+     \dfrac{\text{d}y}{\text{d}x} &= 2x\text{e}^{-3x} - 3x^2\text{e}^{-3x}
+     \end{aligned}
+     $$
+  3. Factor out the common terms ($x$ and $\text{e}^{-3x}$) as requested.
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}y}{\text{d}x} &= x\text{e}^{-3x}(2 - 3x)
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Tangents and Normals">
+    Consider the curve with equation $y = \dfrac{\ln x}{x}$ for $x > 0$.  
+    **a)** Find $\dfrac{\text{d}y}{\text{d}x}$.  
+    **b)** Hence, find the exact coordinates of the point on the curve where the tangent is horizontal.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+  1. Use the quotient rule with $u = \ln x$ and $v = x$.
+     $$
+     \begin{aligned}
+     u' &= \dfrac{1}{x} \\
+     v' &= 1
+     \end{aligned}
+     $$
+  2. Substitute into the formula.
+     $$
+     \begin{aligned}
+     \dfrac{\text{d}y}{\text{d}x} &= \dfrac{(x)\left(\dfrac{1}{x}\right) - (\ln x)(1)}{x^2} \\
+     \dfrac{\text{d}y}{\text{d}x} &= \dfrac{1 - \ln x}{x^2}
+     \end{aligned}
+     $$
+</Steps>
+
+    **b)**
+<Steps>
+  1. A horizontal tangent implies the gradient is equal to zero. Set the derivative to $0$.
+     $$
+     \begin{aligned}
+     \dfrac{1 - \ln x}{x^2} &= 0
+     \end{aligned}
+     $$
+  2. A fraction equals zero when its numerator is zero (and denominator is non-zero).
+     $$
+     \begin{aligned}
+     1 - \ln x &= 0 \\
+     \ln x &= 1 \\
+     x &= \text{e}
+     \end{aligned}
+     $$
+  3. Substitute $x = \text{e}$ back into the original equation to find the $y$-coordinate.
+     $$
+     \begin{aligned}
+     y &= \dfrac{\ln(\text{e})}{\text{e}} \\
+     y &= \dfrac{1}{\text{e}}
+     \end{aligned}
+     $$
+     The coordinates are $\left(\text{e}, \dfrac{1}{\text{e}}\right)$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Kinematics Context">
+    A particle's displacement $s$ (in metres) from a fixed origin at time $t$ (in seconds) is given by $s(t) = 4\cos(2t)$.  
+    **a)** Find the velocity function $v(t)$.  
+    **b)** Find the first time $t > 0$ when the particle is momentarily at rest.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+<Steps>
+  1. Velocity is the rate of change of displacement, so we differentiate $s(t)$ using the chain rule.
+     $$
+     \begin{aligned}
+     v(t) &= s'(t) \\
+     v(t) &= 4 \times (-\sin(2t)) \times 2 \\
+     v(t) &= -8\sin(2t) \text{ m/s}
+     \end{aligned}
+     $$
+</Steps>
+
+    **b)**
+<Steps>
+  1. "Momentarily at rest" means velocity is zero.
+     $$
+     \begin{aligned}
+     -8\sin(2t) &= 0 \\
+     \sin(2t) &= 0
+     \end{aligned}
+     $$
+  2. Solve for $2t$. The sine function is zero at multiples of $\pi$.
+     $$
+     \begin{aligned}
+     2t &= \pi, 2\pi, 3\pi \dots
+     \end{aligned}
+     $$
+  3. Find the first time $t > 0$.
+     $$
+     \begin{aligned}
+     2t &= \pi \\
+     t &= \dfrac{\pi}{2} \text{ seconds}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Tech-Active GDC Application">
+    The revenue function for selling $x$ units of a luxury good is modelled by $R(x) = 200x \text{e}^{-0.05x}$ in USD.  
+    Use your TI-Nspire GDC to:  
+    **a)** Find the marginal revenue (the derivative $R'(x)$) when $50$ units are sold.  
+    **b)** Determine the number of units that must be sold to maximise revenue.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+  1. Marginal revenue is $R'(x)$. We want $R'(50)$.
+  2. Using the calculator's numerical derivative feature: `d/dx(200x*e^(-0.05x))|x=50`.
+     $$
+     \begin{aligned}
+     R'(50) &= -122.626... \\
+     R'(50) &\approx -123 \text{ USD per unit}
+     \end{aligned}
+     $$
+     *(Note: The negative value implies revenue is decreasing at this point.)*
+</Steps>
+
+    **b)**
+<Steps>
+  1. Maximum revenue occurs when $R'(x) = 0$.
+  2. Using the `nSolve` feature on the GDC: `nSolve(d/dx(200x*e^(-0.05x))=0, x)`. Alternatively, graph $R(x)$ and find the local maximum.
+     $$
+     \begin{aligned}
+     x &= 20
+     \end{aligned}
+     $$
+     $20$ units must be sold to maximise revenue.
+</Steps>
+  </TabItem>
+</Tabs>

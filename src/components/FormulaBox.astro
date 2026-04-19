@@ -25,6 +25,7 @@ const { title = "Key Formula", formula } = Astro.props;
 </div>
 
 <script>
+  // @ts-ignore - KaTeX doesn't provide types for this specific internal path
   import renderMathInElement from 'katex/dist/contrib/auto-render.js';
 
   function renderTitles() {
