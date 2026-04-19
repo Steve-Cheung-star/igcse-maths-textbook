@@ -16,11 +16,10 @@ export default defineConfig({
   adapter: vercel(),
 
   vite: {
-    ssr: {
-      noExternal: ['katex'],
-    },
-    optimizeDeps: {
-      include: ['katex/dist/contrib/auto-render.js'],
+    build: {
+      rollupOptions: {
+        external: ['katex', 'katex/dist/contrib/auto-render.js'],
+      },
     },
   },
 
@@ -67,7 +66,43 @@ export default defineConfig({
             rel: 'stylesheet',
             href: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css',
           },
-        }
+        },
+        {
+          tag: 'script',
+          attrs: {
+            src: 'https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js',
+            defer: true,
+          },
+        },
+        {
+          tag: 'script',
+          content: `
+            (function() {
+              function renderMath() {
+                if (typeof renderMathInElement === 'function') {
+                  renderMathInElement(document.body, {
+                    delimiters: [
+                      { left: '$$', right: '$$', display: true },
+                      { left: '$', right: '$', display: false }
+                    ],
+                    throwOnError: false
+                  });
+                } else {
+                  // If not loaded yet, check again in 50ms
+                  setTimeout(renderMath, 50);
+                }
+              }
+
+              // Run on every possible lifecycle event
+              window.addEventListener('load', renderMath);
+              document.addEventListener('astro:page-load', renderMath);
+              document.addEventListener('astro:after-swap', renderMath);
+              
+              // Immediate attempt
+              renderMath();
+            })();
+          `,
+        },
       ],
       sidebar: [
         {

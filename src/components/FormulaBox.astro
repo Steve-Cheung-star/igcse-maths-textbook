@@ -2,7 +2,7 @@
 /* src/components/FormulaBox.astro */
 interface Props {
   title?: string;
-  formula?: string; // Optional: if you want to pass the formula as a prop
+  formula?: string;
 }
 
 const { title = "Key Formula", formula } = Astro.props;
@@ -24,41 +24,37 @@ const { title = "Key Formula", formula } = Astro.props;
   </div>
 </div>
 
-<script>
-  // @ts-ignore - KaTeX doesn't provide types for this specific internal path
-  import renderMathInElement from 'katex/dist/contrib/auto-render.js';
-
-  function renderTitles() {
-    const titles = document.querySelectorAll('.math-title');
-    titles.forEach((el) => {
-      renderMathInElement(el as HTMLElement, {
-        delimiters: [
-          { left: '$', right: '$', display: false },
-          { left: '$$', right: '$$', display: true }
-        ],
-        throwOnError: false
-      });
-    });
-  }
-
-  // Run on initial load
-  renderTitles();
-  // Run on View Transitions (if you use them)
-  document.addEventListener('astro:after-swap', renderTitles);
+<script is:inline>
+  // This is a browser-only "fire and forget" function
+  (function() {
+    const render = () => {
+      if (window.renderMathInElement) {
+        window.renderMathInElement(document.body, {
+          delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false}
+          ],
+          throwOnError: false
+        });
+      }
+    };
+    render();
+    document.addEventListener('astro:page-load', render);
+    document.addEventListener('astro:after-swap', render);
+  })();
 </script>
 
 <style>
+  /* Use your exact styles here - they don't affect memory */
   .formula-container {
     margin: 2rem 0;
     border: 2px solid #1e293b;
     border-left: 6px solid #1e293b;
     border-radius: 8px;
     background: #ffffff;
-    /* Prevents the header background from bleeding out of the rounded corners */
     overflow: hidden; 
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
   }
-
   .formula-header {
     background: #1e293b;
     color: #f8fafc;
@@ -67,70 +63,30 @@ const { title = "Key Formula", formula } = Astro.props;
     align-items: center;
     gap: 0.75rem;
     font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    font-size: 0.85rem;
-  }
-
-  .formula-header {
-    background: #1e293b;
-    color: #f8fafc;
-    padding: 0.6rem 1.2rem;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-weight: 700;
-    /* Keep this for the normal text */
     text-transform: uppercase; 
     letter-spacing: 0.05em;
     font-size: 0.85rem;
   }
-
-  /* ADD THIS: Forces math inside the title to stay lowercase/normal */
   .formula-title :global(.katex) {
     text-transform: none !important;
-    /* Also ensure the font size isn't shrunk by the header font size */
     font-size: 1.1rem; 
     letter-spacing: normal;
   }
-
-  .formula-icon {
-    font-size: 1.25rem;
-    color: #38bdf8;
-  }
-
+  .formula-icon { font-size: 1.25rem; color: #38bdf8; }
   .formula-content {
     padding: 1.75rem;
-    /* FIX FOR LINE BREAKS: */
     display: flex;
-    flex-direction: column; /* Stacks children vertically */
+    flex-direction: column;
     justify-content: center;
-    align-items: center;    /* Centers them horizontally */
-    gap: 1.2rem;            /* Space between multiple lines of math */
-    
+    align-items: center;
+    gap: 1.2rem;
     font-size: 1.3rem;
     color: #000000 !important; 
     font-weight: 500;
     text-align: center;
   }
-
-  /* Force KaTeX (LaTeX) math to be pure black for the "printed" look */
   .formula-content :global(.katex) {
     color: #000000 !important;
-    /* Subtle weight boost to make it look like real ink */
     text-shadow: 0.15px 0 0 #000000; 
-  }
-
-  /* Ensure display math blocks don't add weird extra margins */
-  .formula-content :global(.katex-display) {
-    margin: 0.2rem 0 !important;
-    width: 100%;
-  }
-
-  /* Target any standard text inside the box */
-  .formula-content :global(p),
-  .formula-content :global(strong) {
-    color: #000000 !important;
-    margin: 0;
   }
 </style>
