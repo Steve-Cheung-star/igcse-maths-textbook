@@ -1,6 +1,602 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 3.4 Radian Measure, Arcs, and Sectors
+description: Discover the radian as an alternative, mathematically natural measure of angle, and apply it to calculate the length of circular arcs and the area of sectors.
 ---
 
-Content coming soon.
+So far, you have likely measured angles exclusively in degrees. In this section, we introduce **radians**, a fundamental unit of angular measure that connects the angle directly to the geometry of the circle itself.
+
+<Aside type="note" title="Connections & TOK">
+  **Cross-curricular Links:** Radian measure is essential in Physics for topics like diffraction patterns, circular motion, and simple harmonic motion.
+
+  **International-mindedness:** The history of the circle is rich and global. We can look to Seki Takakazu's calculation of $\pi$ to ten decimal places, the foundational trigonometric work of Hipparchus, Menelaus, and Ptolemy, or the Babylonian mathematics that gave us 360 degrees in a complete turn.
+
+  **Theory of Knowledge (TOK):** Which is a better measure of angle: radian or degree? What criteria can, do, or should mathematicians use to make such decisions? Degrees are highly divisible (arbitrarily chosen by Babylonians), but radians are mathematically "pure" because they are derived directly from the circle's properties.
+</Aside>
+
+---
+
+## 1. Introducing the Radian
+
+A **radian** is defined by taking the radius of a circle and wrapping it along the circle's edge. The angle created at the centre when the arc length exactly equals the radius is exactly 1 radian.
+
+Because the circumference of a full circle is $2\pi r$, there are exactly $2\pi$ radians in a full $360^\circ$ turn. This gives us our golden conversion rule:
+
+$$
+\begin{aligned}
+\pi \text{ radians} = 180^\circ
+\end{aligned}
+$$
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 0.5rem 0' }}>
+  <svg viewBox="0 0 300 300" width="100%" maxWidth="300px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Circle */}
+    <circle cx="150" cy="150" r="100" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="4 4" />
+    
+    {/* Sector for 1 Radian (approx 57.3 degrees) */}
+    <path d="M 150 150 L 250 150 A 100 100 0 0 0 196 61 Z" fill="#dbeafe" stroke="none" />
+    
+    {/* Radius lines */}
+    <line x1="150" y1="150" x2="250" y2="150" stroke="#1e293b" stroke-width="2" />
+    <line x1="150" y1="150" x2="196" y2="61" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Arc equal to radius */}
+    <path d="M 250 150 A 100 100 0 0 0 196 61" fill="none" stroke="#ef4444" stroke-width="4" />
+    
+    {/* Labels */}
+    <text x="195" y="168" font-size="16" font-style="italic" fill="#1e293b" font-family="sans-serif">r</text>
+    <text x="155" y="100" font-size="16" font-style="italic" fill="#1e293b" font-family="sans-serif">r</text>
+    <text x="240" y="95" font-size="16" font-weight="bold" fill="#ef4444" font-family="sans-serif">Arc = r</text>
+    
+    {/* Angle Arc */}
+    <path d="M 180 150 A 30 30 0 0 0 165 125" fill="none" stroke="#3b82f6" stroke-width="2" />
+    <text x="185" y="140" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">1 rad</text>
+    
+    <circle cx="150" cy="150" r="4" fill="#0f172a" />
+  </svg>
+</div>
+
+<Aside type="tip" title="Converting Between Degrees and Radians">
+  * **Degrees to Radians:** Multiply by $\dfrac{\pi}{180}$
+  * **Radians to Degrees:** Multiply by $\dfrac{180}{\pi}$
+
+  *Note: Radian measure is often expressed as exact multiples of $\pi$ (e.g., $\dfrac{\pi}{2}$, $\dfrac{3\pi}{4}$), but can also be written as plain decimals (e.g., $1.57 \text{ rad}$).*
+</Aside>
+
+### Worked Example 1: Conversions
+**Question:** Convert $120^\circ$ to exact radians, and convert $\dfrac{5\pi}{4}$ radians to degrees.
+
+**Solution:**
+For degrees to radians:
+$$
+\begin{aligned}
+120 \times \dfrac{\pi}{180} &= \dfrac{120\pi}{180} \\
+&= \dfrac{2\pi}{3} \text{ rad}
+\end{aligned}
+$$
+
+For radians to degrees:
+$$
+\begin{aligned}
+\dfrac{5\pi}{4} \times \dfrac{180}{\pi} &= \dfrac{5 \times 180}{4} \\
+&= 5 \times 45 \\
+&= 225^\circ
+\end{aligned}
+$$
+
+---
+
+## 2. Length of an Arc and Area of a Sector
+
+Working in radians dramatically simplifies the formulae for circular geometry. Instead of calculating a fraction of 360 degrees, the formulae become beautifully streamlined.
+
+<FormulaBox title="Length of an arc">
+  $$l = r\theta$$
+</FormulaBox>
+
+where $r$ is the radius, $\theta$ is the angle measured in radians
+
+<FormulaBox title="Area of a sector">
+  $$A = \dfrac{1}{2}r^2\theta$$
+</FormulaBox>
+
+where $r$ is the radius, $\theta$ is the angle measured in radians
+
+<SteveTip title="Calculator Mode Check">
+  Before you type any trigonometric functions ($\sin$, $\cos$, $\tan$) into your calculator during an exam, check the top of your screen! If your angle is in radians, your calculator must be in **RAD** mode. If it's in degrees, it must be in **DEG** mode.
+</SteveTip>
+
+<Aside type="danger" title="The Golden Rule of Sector Formulae">
+  The formulae $l = r\theta$ and $A = \dfrac{1}{2}r^2\theta$ **only work if $\theta$ is in radians**. If you plug $45^\circ$ directly into $l = r\theta$, you are telling the formula you have an angle of 45 radians (which is over 7 full circles!). Always convert first.
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 0.5rem 0' }}>
+  <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Sector Area Fill */}
+    <path d="M 150 180 L 250 180 A 100 100 0 0 0 195 90 Z" fill="#dbeafe" stroke="none" />
+    
+    {/* Full Circle Outline (dashed) */}
+    <circle cx="150" cy="180" r="100" fill="none" stroke="#cbd5e1" stroke-width="1.5" stroke-dasharray="4 4" />
+    
+    {/* Sector Outlines */}
+    <line x1="150" y1="180" x2="250" y2="180" stroke="#1e293b" stroke-width="2" />
+    <line x1="150" y1="180" x2="195" y2="90" stroke="#1e293b" stroke-width="2" />
+    <path d="M 250 180 A 100 100 0 0 0 195 90" fill="none" stroke="#3b82f6" stroke-width="3" />
+    
+    {/* Angle Arc */}
+    <path d="M 180 180 A 30 30 0 0 0 163 154" fill="none" stroke="#ef4444" stroke-width="2" />
+    
+    {/* Labels */}
+    <text x="195" y="195" font-size="14" font-style="italic" fill="#1e293b" font-family="sans-serif">r</text>
+    <text x="155" y="130" font-size="14" font-style="italic" fill="#1e293b" font-family="sans-serif">r</text>
+    <text x="175" y="172" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">θ</text>
+    <text x="235" y="125" font-size="16" font-weight="bold" fill="#3b82f6" font-family="sans-serif">l</text>
+    <text x="200" y="155" font-size="18" font-weight="bold" fill="#60a5fa" font-family="sans-serif">A</text>
+    <circle cx="150" cy="180" r="4" fill="#0f172a" />
+  </svg>
+</div>
+
+### Worked Example 2: Arc Length
+**Question:** A sector has a radius of $6 \text{ cm}$ and a central angle of $0.8 \text{ radians}$. Find the arc length and the total perimeter of the sector.
+
+**Solution:**
+Using the arc length formula:
+$$
+\begin{aligned}
+l &= r\theta \\
+&= 6 \times 0.8 \\
+&= 4.8 \text{ cm}
+\end{aligned}
+$$
+
+The perimeter includes the arc and the two radii straight edges:
+$$
+\begin{aligned}
+\text{Perimeter} &= l + 2r \\
+&= 4.8 + 2(6) \\
+&= 16.8 \text{ cm}
+\end{aligned}
+$$
+
+### Worked Example 3: Sector Area
+**Question:** A garden bed is a sector of a circle with radius $4 \text{ m}$ and an angle of $75^\circ$. Calculate its area.
+
+**Solution:**
+First, convert the angle to radians because the formula requires it:
+$$
+\begin{aligned}
+\theta &= 75 \times \dfrac{\pi}{180} \\
+&= \dfrac{5\pi}{12} \text{ rad}
+\end{aligned}
+$$
+
+Now, apply the area formula:
+$$
+\begin{aligned}
+A &= \dfrac{1}{2}r^2\theta \\
+&= \dfrac{1}{2}(4)^2\left(\dfrac{5\pi}{12}\right) \\
+&= 8 \left(\dfrac{5\pi}{12}\right) \\
+&= \dfrac{10\pi}{3} \text{ m}^2
+\end{aligned}
+$$
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Angle Conversions">
+    **a)** Convert $240^\circ$ into exactly radians, leaving your answer in terms of $\pi$.
+    
+    **b)** Convert $\dfrac{11\pi}{6}$ radians into degrees.
+    
+    **c)** Convert $3.2$ radians into degrees, to 3 significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+    1. **Multiply the degree value by $\dfrac{\pi}{180}$**
+       $$
+       \begin{aligned}
+       240 \times \dfrac{\pi}{180}
+       \end{aligned}
+       $$
+    2. **Simplify the fraction**
+       $$
+       \begin{aligned}
+       \dfrac{240\pi}{180} &= \dfrac{4\pi}{3} \text{ rad}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Multiply the radian value by $\dfrac{180}{\pi}$**
+       $$
+       \begin{aligned}
+       \dfrac{11\pi}{6} \times \dfrac{180}{\pi}
+       \end{aligned}
+       $$
+    2. **Cancel $\pi$ and simplify**
+       $$
+       \begin{aligned}
+       11 \times \dfrac{180}{6} &= 11 \times 30 \\
+       &= 330^\circ
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Multiply by $\dfrac{180}{\pi}$**
+       $$
+       \begin{aligned}
+       3.2 \times \dfrac{180}{\pi}
+       \end{aligned}
+       $$
+    2. **Calculate the decimal value**
+       $$
+       \begin{aligned}
+       \dfrac{576}{\pi} &\approx 183.346...^\circ
+       \end{aligned}
+       $$
+    3. **Round to 3 significant figures**
+       $$
+       \begin{aligned}
+       183^\circ
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Basic Arc Length and Area">
+    A sector of a circle has a radius of $12 \text{ cm}$ and an internal angle of $1.5 \text{ radians}$.
+    
+    **a)** Calculate the length of the arc.
+    
+    **b)** Calculate the area of the sector.
+    
+    **c)** Calculate the total perimeter of the sector.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+<Steps>
+    1. **Apply the arc length formula**
+       $$
+       \begin{aligned}
+       l &= r\theta
+       \end{aligned}
+       $$
+    2. **Substitute known values**
+       $$
+       \begin{aligned}
+       l &= 12 \times 1.5 \\
+       &= 18 \text{ cm}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Apply the sector area formula**
+       $$
+       \begin{aligned}
+       A &= \dfrac{1}{2}r^2\theta
+       \end{aligned}
+       $$
+    2. **Substitute known values and solve**
+       $$
+       \begin{aligned}
+       A &= \dfrac{1}{2}(12)^2(1.5) \\
+       &= \dfrac{1}{2}(144)(1.5) \\
+       &= 72 \times 1.5 \\
+       &= 108 \text{ cm}^2
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Identify the components of a sector's perimeter**
+       The perimeter consists of the arc length plus two radii.
+    2. **Calculate the total**
+       $$
+       \begin{aligned}
+       \text{Perimeter} &= l + 2r \\
+       &= 18 + 2(12) \\
+       &= 18 + 24 \\
+       &= 42 \text{ cm}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Working Backwards">
+    A slice of cake (a sector of a circle) has an area of $54 \text{ cm}^2$. The radius of the cake is $9 \text{ cm}$.
+    
+    **a)** Find the angle of the cake slice in radians.
+    
+    **b)** Calculate the length of the curved edge (the arc length) of this slice.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+    1. **Set up the area formula**
+       $$
+       \begin{aligned}
+       A &= \dfrac{1}{2}r^2\theta
+       \end{aligned}
+       $$
+    2. **Substitute the known area and radius**
+       $$
+       \begin{aligned}
+       54 &= \dfrac{1}{2}(9)^2 \theta
+       \end{aligned}
+       $$
+    3. **Simplify and solve for $\theta$**
+       $$
+       \begin{aligned}
+       54 &= \dfrac{1}{2}(81) \theta \\
+       54 &= 40.5 \theta \\
+       \theta &= \dfrac{54}{40.5} \\
+       \theta &= \dfrac{4}{3} \text{ rad}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Use the arc length formula with the newly found angle**
+       $$
+       \begin{aligned}
+       l &= r\theta
+       \end{aligned}
+       $$
+    2. **Substitute and solve**
+       $$
+       \begin{aligned}
+       l &= 9 \times \dfrac{4}{3} \\
+       &= 12 \text{ cm}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: The Danger of Degrees">
+    A stained glass window features a circular sector. The radius is $8 \text{ m}$ and the angle at the centre is $45^\circ$.
+    
+    **a)** Convert the angle to exact radians.
+    
+    **b)** Calculate the exact area of the glass in terms of $\pi$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    <Aside type="caution" title="Check your units!">
+      Always ensure your angle is in radians before using $A = \dfrac{1}{2}r^2\theta$.
+    </Aside>
+    **a)**
+<Steps>
+    1. **Multiply by $\dfrac{\pi}{180}$**
+       $$
+       \begin{aligned}
+       \theta &= 45 \times \dfrac{\pi}{180}
+       \end{aligned}
+       $$
+    2. **Simplify**
+       $$
+       \begin{aligned}
+       \theta &= \dfrac{\pi}{4} \text{ rad}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Apply the area formula using radians**
+       $$
+       \begin{aligned}
+       A &= \dfrac{1}{2}r^2\theta
+       \end{aligned}
+       $$
+    2. **Substitute values and simplify**
+       $$
+       \begin{aligned}
+       A &= \dfrac{1}{2}(8)^2 \left(\dfrac{\pi}{4}\right) \\
+       &= \dfrac{1}{2}(64) \left(\dfrac{\pi}{4}\right) \\
+       &= 32 \times \dfrac{\pi}{4} \\
+       &= 8\pi \text{ m}^2
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Pendulum Swing">
+    A pendulum of length $45 \text{ cm}$ swings through an angle of $0.4 \text{ radians}$.
+    
+    **a)** Calculate the distance travelled by the tip of the pendulum in one swing.
+    
+    **b)** If the pendulum swings back and forth 5 complete times (10 swings total), calculate the total distance the tip travels.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+<Steps>
+    1. **Recognise this as an arc length problem**
+       The pendulum traces an arc where $r = 45$ and $\theta = 0.4$.
+    2. **Apply the arc length formula**
+       $$
+       \begin{aligned}
+       l &= r\theta \\
+       &= 45 \times 0.4 \\
+       &= 18 \text{ cm}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Multiply the single swing distance by the total number of swings**
+       $$
+       \begin{aligned}
+       \text{Total Distance} &= 18 \times 10 \\
+       &= 180 \text{ cm}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Segment Area (Composite Shapes)">
+    A chord connects two points $A$ and $B$ on a circle of radius $10 \text{ cm}$. The angle subtended at the centre is $1.2 \text{ radians}$.
+    
+    **a)** Calculate the area of the entire sector.
+    
+    **b)** Calculate the area of the triangle formed by the two radii and the chord.
+    
+    **c)** Hence, find the area of the minor segment (the region bounded by the chord and the arc).
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+    1. **Calculate sector area**
+       $$
+       \begin{aligned}
+       A_{\text{sector}} &= \dfrac{1}{2}r^2\theta \\
+       &= \dfrac{1}{2}(10)^2(1.2) \\
+       &= \dfrac{1}{2}(100)(1.2) \\
+       &= 60 \text{ cm}^2
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Use the triangle area formula**
+       $$
+       \begin{aligned}
+       A_{\text{triangle}} &= \dfrac{1}{2}ab\sin(C)
+       \end{aligned}
+       $$
+    2. **Substitute $a=10, b=10$, and $C=1.2 \text{ rad}$**
+       Make sure your calculator is in **RADIAN** mode!
+       $$
+       \begin{aligned}
+       A_{\text{triangle}} &= \dfrac{1}{2}(10)(10)\sin(1.2) \\
+       &= 50 \times 0.9320... \\
+       &\approx 46.60... \text{ cm}^2
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Subtract the triangle area from the sector area**
+       $$
+       \begin{aligned}
+       \text{Area}_{\text{segment}} &= A_{\text{sector}} - A_{\text{triangle}} \\
+       &= 60 - 46.60... \\
+       &= 13.39...
+       \end{aligned}
+       $$
+       The area of the minor segment is **$13.4 \text{ cm}^2$** (to 3 s.f.).
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: The Windscreen Wiper (Annulus Sector)">
+    A car's rear windscreen wiper has a total length of $40 \text{ cm}$. The wiper blade itself is $30 \text{ cm}$ long, leaving a $10 \text{ cm}$ bare arm attached to the pivot. The wiper rotates through an angle of $2.5 \text{ radians}$.
+    
+    **a)** Calculate the total area swept by the entire $40 \text{ cm}$ mechanism.
+    
+    **b)** Calculate the area swept *only* by the $10 \text{ cm}$ bare arm.
+    
+    **c)** Hence, find the area of the glass actually cleaned by the wiper blade.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+<Steps>
+    1. **Calculate the area of the large sector ($r=40, \theta=2.5$)**
+       $$
+       \begin{aligned}
+       A_{\text{large}} &= \dfrac{1}{2}(40)^2(2.5) \\
+       &= \dfrac{1}{2}(1600)(2.5) \\
+       &= 2000 \text{ cm}^2
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Calculate the area of the small inner sector ($r=10, \theta=2.5$)**
+       $$
+       \begin{aligned}
+       A_{\text{small}} &= \dfrac{1}{2}(10)^2(2.5) \\
+       &= \dfrac{1}{2}(100)(2.5) \\
+       &= 125 \text{ cm}^2
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Subtract the small sector from the large sector**
+       $$
+       \begin{aligned}
+       A_{\text{cleaned}} &= 2000 - 125 \\
+       &= 1875 \text{ cm}^2
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: From Sector to Cone (Advanced)">
+    A paper sector has a radius of $15 \text{ cm}$ and an angle of $\dfrac{4\pi}{3} \text{ radians}$. The straight edges are brought together to form a cone.
+    
+    **a)** Calculate the arc length of the paper sector.
+    
+    **b)** The arc length of the sector becomes the circumference of the base of the cone. Find the radius of the cone's base.
+    
+    **c)** Find the slant height of the cone.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+    1. **Calculate the arc length of the sector**
+       $$
+       \begin{aligned}
+       l &= r\theta \\
+       &= 15 \times \dfrac{4\pi}{3} \\
+       &= 20\pi \text{ cm}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Set the arc length equal to the circumference formula of a circle**
+       $$
+       \begin{aligned}
+       C &= 2\pi r_{\text{cone}} \\
+       20\pi &= 2\pi r_{\text{cone}}
+       \end{aligned}
+       $$
+    2. **Solve for $r_{\text{cone}}$**
+       $$
+       \begin{aligned}
+       r_{\text{cone}} &= \dfrac{20\pi}{2\pi} \\
+       &= 10 \text{ cm}
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Relate the sector to the 3D cone**
+       When a sector is folded into a cone, the straight edge (the radius of the original sector) becomes the slant height of the newly formed cone.
+    2. **State the slant height**
+       $$
+       \begin{aligned}
+       \text{Slant height} &= 15 \text{ cm}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Radian measure, arc lengths, and area of sectors" />

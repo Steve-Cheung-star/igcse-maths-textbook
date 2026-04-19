@@ -1,6 +1,463 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 4.2 Presentation of Data
+description: Learn how to effectively organise, visualise, and interpret data using frequency distributions, histograms, cumulative frequency graphs, and box and whisker diagrams.
 ---
 
-Content coming soon.
+Once data has been collected, presenting it clearly is essential for meaningful analysis. In this section, you will learn how to visually represent both discrete and continuous data. These visual tools allow us to quickly identify trends, calculate key measures like the median and interquartile range, and compare different datasets.
+
+<Aside type="note" title="Connections & TOK">
+  **Theory of Knowledge (TOK):** What is the difference between *information* and *data*? Raw data consists of unorganised facts and figures, whereas information is data that has been processed, organised, and structured (like in a histogram or box plot) to give it meaning. Does "data" mean the same thing in Mathematics as it does in History or Biology?
+  
+  **Links to other subjects:** The presentation of data is fundamental across the sciences (e.g., graphing experimental results in Physics or Biology) and individuals and societies (e.g., presenting demographic distributions in Geography or Economics).
+  
+  **International Mindedness:** Different countries and educational systems sometimes use varied formulae or notations for the same statistical measure. However, visual representations like histograms and box plots provide a universal language that transcends these regional differences.
+</Aside>
+
+---
+
+## 1. Frequency Distributions and Histograms
+
+When dealing with continuous data (or large sets of discrete data), we group the data into **class intervals** to summarise it in a frequency distribution table. 
+
+In the IB syllabus, class intervals are given as inequalities without gaps, such as $10 \le x < 20$. This means a value of exactly $20$ goes into the next class interval ($20 \le x < 30$).
+
+### Histograms
+
+A **histogram** is a visual representation of grouped continuous data. 
+* The $x$-axis represents the continuous variable (the class intervals).
+* The $y$-axis represents the frequency.
+* Unlike bar charts, there are **no gaps** between the bars because the data is continuous.
+* For SL, you only need to work with **equal class intervals** (frequency density is not required).
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg viewBox="0 0 400 220" width="100%" style="max-width: 500px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <line x1="40" y1="20" x2="40" y2="180" stroke="#64748b" stroke-width="2" />
+    <line x1="40" y1="180" x2="360" y2="180" stroke="#64748b" stroke-width="2" />
+
+    <text x="30" y="185" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">0</text>
+    <line x1="40" y1="180" x2="360" y2="180" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,4" />
+
+    <text x="30" y="150" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">5</text>
+    <line x1="40" y1="145" x2="360" y2="145" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,4" />
+
+    <text x="30" y="115" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">10</text>
+    <line x1="40" y1="110" x2="360" y2="110" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,4" />
+
+    <text x="30" y="80" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">15</text>
+    <line x1="40" y1="75" x2="360" y2="75" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,4" />
+
+    <text x="30" y="45" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">20</text>
+    <line x1="40" y1="40" x2="360" y2="40" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,4" />
+
+    <text x="40" y="200" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">0</text>
+    <text x="100" y="200" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">10</text>
+    <text x="160" y="200" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">20</text>
+    <text x="220" y="200" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">30</text>
+    <text x="280" y="200" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">40</text>
+    <text x="340" y="200" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">50</text>
+
+    <rect x="40" y="145" width="60" height="35" fill="#3b82f6" stroke="#1e3a8a" stroke-width="1.5" opacity="0.8" />
+    <rect x="100" y="96" width="60" height="84" fill="#3b82f6" stroke="#1e3a8a" stroke-width="1.5" opacity="0.8" />
+    <rect x="160" y="54" width="60" height="126" fill="#3b82f6" stroke="#1e3a8a" stroke-width="1.5" opacity="0.8" />
+    <rect x="220" y="110" width="60" height="70" fill="#3b82f6" stroke="#1e3a8a" stroke-width="1.5" opacity="0.8" />
+    <rect x="280" y="152" width="60" height="28" fill="#3b82f6" stroke="#1e3a8a" stroke-width="1.5" opacity="0.8" />
+
+    <text x="200" y="215" font-size="14" fill="#334155" text-anchor="middle" font-family="sans-serif">Continuous Variable (e.g., Time in seconds)</text>
+    <text x="15" y="100" font-size="14" fill="#334155" text-anchor="middle" transform="rotate(-90 15,100)" font-family="sans-serif">Frequency</text>
+  </svg>
+</div>
+
+### Worked Example 1: Creating a Histogram
+**Question:** The time taken, $t$ minutes, for $40$ students to travel to school is recorded.
+* $0 \le t < 10$: $8$ students
+* $10 \le t < 20$: $15$ students
+* $20 \le t < 30$: $12$ students
+* $30 \le t < 40$: $5$ students
+
+State the modal class and determine how many students take $20$ minutes or more to travel to school.
+
+**Solution:**
+
+<Steps>
+1. **Identify the modal class.**
+   The modal class is the interval with the highest frequency.
+   Looking at the frequencies, $15$ is the highest.
+   Therefore, the modal class is $10 \le t < 20$.
+2. **Calculate the number of students taking $\ge 20$ minutes.**
+   Add the frequencies for the intervals $20 \le t < 30$ and $30 \le t < 40$.
+   $$
+   \begin{aligned}
+   \text{Total} &= 12 + 5 \\
+   &= 17 \text{ students}
+   \end{aligned}
+   $$
+</Steps>
+
+---
+
+## 2. Cumulative Frequency
+
+**Cumulative frequency** is a running total of frequencies. A cumulative frequency graph (also known as an ogive) plots the cumulative frequency on the $y$-axis against the **upper boundary** of each class interval on the $x$-axis. It forms an S-shaped curve.
+
+From a cumulative frequency graph, you can estimate:
+* **Median ($Q_2$):** The value at $50\%$ of the total frequency.
+* **Lower Quartile ($Q_1$):** The value at $25\%$ of the total frequency.
+* **Upper Quartile ($Q_3$):** The value at $75\%$ of the total frequency.
+* **Percentiles:** The $p$-th percentile is the value below which $p\%$ of the observations fall.
+
+The Interquartile Range (IQR) measures the spread of the middle $50\%$ of your data.
+
+<FormulaBox title="Interquartile range">
+$$ \text{IQR} = Q_3 - Q_1 $$
+</FormulaBox>
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg viewBox="-20 -20 450 280" width="100%" style="max-width: 550px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <line x1="40" y1="0" x2="360" y2="0" stroke="#f1f5f9" stroke-width="1" />
+    <line x1="40" y1="40" x2="360" y2="40" stroke="#f1f5f9" stroke-width="1" />
+    <line x1="40" y1="80" x2="360" y2="80" stroke="#f1f5f9" stroke-width="1" />
+    <line x1="40" y1="120" x2="360" y2="120" stroke="#f1f5f9" stroke-width="1" />
+    <line x1="40" y1="160" x2="360" y2="160" stroke="#f1f5f9" stroke-width="1" />
+    <line x1="40" y1="200" x2="360" y2="200" stroke="#f1f5f9" stroke-width="1" />
+
+    <line x1="40" y1="0" x2="40" y2="200" stroke="#f1f5f9" stroke-width="1" />
+    <line x1="104" y1="0" x2="104" y2="200" stroke="#f1f5f9" stroke-width="1" />
+    <line x1="168" y1="0" x2="168" y2="200" stroke="#f1f5f9" stroke-width="1" />
+    <line x1="232" y1="0" x2="232" y2="200" stroke="#f1f5f9" stroke-width="1" />
+    <line x1="296" y1="0" x2="296" y2="200" stroke="#f1f5f9" stroke-width="1" />
+    <line x1="360" y1="0" x2="360" y2="200" stroke="#f1f5f9" stroke-width="1" />
+
+    <line x1="40" y1="0" x2="40" y2="200" stroke="#475569" stroke-width="2" />
+    <line x1="40" y1="200" x2="380" y2="200" stroke="#475569" stroke-width="2" />
+
+    <text x="15" y="100" font-size="14" fill="#334155" text-anchor="middle" transform="rotate(-90 15,100)" font-family="sans-serif">Cum. Frequency</text>
+    <text x="200" y="240" font-size="14" fill="#334155" text-anchor="middle" font-family="sans-serif">Data Values</text>
+
+    <text x="30" y="205" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">0</text>
+    <text x="30" y="155" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">25</text>
+    <text x="30" y="105" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">50</text>
+    <text x="30" y="55" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">75</text>
+    <text x="30" y="5" font-size="12" fill="#64748b" text-anchor="end" font-family="sans-serif">100</text>
+
+    <path d="M 40 200 C 100 195, 150 150, 200 100 C 250 50, 300 10, 360 0" fill="none" stroke="#10b981" stroke-width="3" />
+
+    <line x1="40" y1="100" x2="200" y2="100" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,5" />
+    <line x1="200" y1="100" x2="200" y2="200" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,5" />
+    <text x="200" y="215" font-size="12" fill="#ef4444" text-anchor="middle" font-weight="bold" font-family="sans-serif">Median</text>
+    <text x="210" y="95" font-size="12" fill="#ef4444" font-family="sans-serif">50%</text>
+
+    <line x1="40" y1="150" x2="140" y2="150" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,5" />
+    <line x1="140" y1="150" x2="140" y2="200" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5,5" />
+    <text x="140" y="215" font-size="12" fill="#f59e0b" text-anchor="middle" font-family="sans-serif">Q1</text>
+
+    <line x1="40" y1="50" x2="260" y2="50" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5,5" />
+    <line x1="260" y1="50" x2="260" y2="200" stroke="#3b82f6" stroke-width="2" stroke-dasharray="5,5" />
+    <text x="260" y="215" font-size="12" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">Q3</text>
+  </svg>
+</div>
+
+### Worked Example 2: Finding Quartiles from a Table
+**Question:** The cumulative frequencies for the wages of $80$ workers are recorded. If $Q_1$ is approximately $350 \text{ GBP}$ and $Q_3$ is approximately $520 \text{ GBP}$, find the Interquartile Range.
+
+**Solution:**
+Use the formula for the Interquartile Range.
+$$
+\begin{aligned}
+\text{IQR} &= Q_3 - Q_1 \\
+&= 520 - 350 \\
+&= 170 \text{ GBP}
+\end{aligned}
+$$
+
+---
+
+## 3. Box and Whisker Diagrams
+
+A **box and whisker diagram** (or box plot) is a fantastic tool for visualising the spread and skewness of data. It is constructed using the **five-number summary**:
+1. Minimum value
+2. Lower Quartile ($Q_1$)
+3. Median ($Q_2$)
+4. Upper Quartile ($Q_3$)
+5. Maximum value
+
+<Aside type="danger" title="Important: Outliers">
+  When drawing a box and whisker diagram, **outliers must be indicated with a cross** ($\times$). The whisker then extends only to the lowest or highest data value that is *not* an outlier.
+</Aside>
+
+### Comparing Distributions
+You can use box plots to compare two sets of data by discussing:
+* **Central Tendency:** Compare the medians.
+* **Spread:** Compare the Interquartile Ranges (IQR) and the overall ranges.
+* **Symmetry:** Determine if the data is skewed or roughly symmetrical.
+
+If the median is perfectly in the centre of the box, and the whiskers are of equal length, the data is symmetrical. **A highly symmetrical box and whisker diagram suggests the data may be normally distributed.**
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg viewBox="0 0 500 150" width="100%" style="max-width: 600px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <line x1="50" y1="100" x2="450" y2="100" stroke="#64748b" stroke-width="2" />
+
+    <line x1="50" y1="95" x2="50" y2="105" stroke="#64748b" stroke-width="2" />
+    <text x="50" y="125" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">10</text>
+
+    <line x1="150" y1="95" x2="150" y2="105" stroke="#64748b" stroke-width="2" />
+    <text x="150" y="125" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">20</text>
+
+    <line x1="250" y1="95" x2="250" y2="105" stroke="#64748b" stroke-width="2" />
+    <text x="250" y="125" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">30</text>
+
+    <line x1="350" y1="95" x2="350" y2="105" stroke="#64748b" stroke-width="2" />
+    <text x="350" y="125" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">40</text>
+
+    <line x1="450" y1="95" x2="450" y2="105" stroke="#64748b" stroke-width="2" />
+    <text x="450" y="125" font-size="14" fill="#64748b" text-anchor="middle" font-family="sans-serif">50</text>
+
+    <line x1="80" y1="50" x2="180" y2="50" stroke="#0f172a" stroke-width="2" />
+    <line x1="320" y1="50" x2="380" y2="50" stroke="#0f172a" stroke-width="2" />
+
+    <line x1="80" y1="40" x2="80" y2="60" stroke="#0f172a" stroke-width="2" />
+    <line x1="380" y1="40" x2="380" y2="60" stroke="#0f172a" stroke-width="2" />
+
+    <rect x="180" y="30" width="140" height="40" fill="#bae6fd" stroke="#0284c7" stroke-width="2" />
+
+    <line x1="250" y1="30" x2="250" y2="70" stroke="#0284c7" stroke-width="3" />
+
+    <path d="M 425 45 L 435 55 M 435 45 L 425 55" stroke="#ef4444" stroke-width="2" />
+    <text x="430" y="35" font-size="12" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Outlier</text>
+
+    <text x="80" y="20" font-size="12" fill="#334155" text-anchor="middle" font-family="sans-serif">Min</text>
+    <text x="180" y="20" font-size="12" fill="#334155" text-anchor="middle" font-family="sans-serif">Q1</text>
+    <text x="250" y="20" font-size="12" fill="#334155" text-anchor="middle" font-family="sans-serif">Median</text>
+    <text x="320" y="20" font-size="12" fill="#334155" text-anchor="middle" font-family="sans-serif">Q3</text>
+    <text x="380" y="20" font-size="12" fill="#334155" text-anchor="middle" font-family="sans-serif">Max</text>
+  </svg>
+</div>
+
+<SteveTip title="TI-Nspire: Drawing Box Plots">
+  To easily draw a box plot and find your five-number summary:
+  1. Enter your raw data into a `Lists & Spreadsheet` page and name the column.
+  2. Open a `Data & Statistics` page.
+  3. Click the bottom axis to add your variable.
+  4. Press `Menu > Plot Type > Box Plot`. 
+  The Nspire will automatically calculate $Q_1$, Median, $Q_3$, and flag any outliers with dots!
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Understanding Class Intervals">
+    A dataset of human heights, $h$ in cm, is recorded in a frequency table with intervals $150 \le h < 160$, $160 \le h < 170$, and $170 \le h < 180$.
+    
+    **a)** State the interval in which a height of exactly $170 \text{ cm}$ should be recorded.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** Because the interval $160 \le h < 170$ is strictly less than $170$, the value $170 \text{ cm}$ must be placed in the interval **$170 \le h < 180$**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Histogram Interpretation">
+    A histogram displays the ages of $50$ people attending a concert. The bars have equal widths of $10$ years ($0 \le x < 10$, $10 \le x < 20$, etc.). The frequencies are:
+    * $10 \le x < 20$: $12$
+    * $20 \le x < 30$: $25$
+    * $30 \le x < 40$: $8$
+    * $40 \le x < 50$: $5$
+    
+    **a)** State the modal class.
+    
+    **b)** Calculate the percentage of attendees who are under $30$ years old.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** The highest frequency is $25$. Therefore, the modal class is **$20 \le x < 30$**.
+    
+    **b)** 
+    <Steps>
+    1. **Calculate the total number of people under 30.**
+       $$
+       \begin{aligned}
+       \text{Total} &= 12 \text{ (from 10-20)} + 25 \text{ (from 20-30)} \\
+       &= 37
+       \end{aligned}
+       $$
+    2. **Calculate the percentage.**
+       $$
+       \begin{aligned}
+       \text{Percentage} &= \dfrac{37}{50} \times 100 \\
+       &= 74\%
+       \end{aligned}
+       $$
+</Steps>
+
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Constructing Cumulative Frequency">
+    The weights, $w$ in kg, of $40$ parcels are given below:
+    * $0 \le w < 2$: $5$
+    * $2 \le w < 4$: $14$
+    * $4 \le w < 6$: $16$
+    * $6 \le w < 8$: $5$
+    
+    **a)** Complete a cumulative frequency table for this data.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+    The cumulative frequency is the running total at the upper bound of each class.
+    * $w < 2$: **$5$**
+    * $w < 4$: $5 + 14 = $ **$19$**
+    * $w < 6$: $19 + 16 = $ **$35$**
+    * $w < 8$: $35 + 5 = $ **$40$**
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Reading an Ogive (CF Graph)">
+    A cumulative frequency graph for the time taken to complete a puzzle by $120$ students shows the following key points on the curve:
+    * at $y = 30$, $x = 12 \text{ mins}$
+    * at $y = 60$, $x = 18 \text{ mins}$
+    * at $y = 90$, $x = 26 \text{ mins}$
+    
+    **a)** Estimate the median time taken.
+    
+    **b)** Calculate the interquartile range (IQR).
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+
+<Steps>
+    1. **Find the median position.**
+       The median is at $50\%$ of the total frequency.
+       $50\% \text{ of } 120 = 60$.
+    2. **Read the corresponding $x$ value.**
+       At $y = 60$, $x = 18 \text{ mins}$.
+       The median is **$18 \text{ mins}$**.
+</Steps>
+
+    **b)**
+
+<Steps>
+    1. **Find $Q_1$ and $Q_3$.**
+       $Q_1$ is at $25\%$ of $120 = 30$. At $y = 30$, $x = 12$. So, $Q_1 = 12 \text{ mins}$.
+       $Q_3$ is at $75\%$ of $120 = 90$. At $y = 90$, $x = 26$. So, $Q_3 = 26 \text{ mins}$.
+    2. **Calculate IQR.**
+       $$
+       \begin{aligned}
+       \text{IQR} &= Q_3 - Q_1 \\
+       &= 26 - 12 \\
+       &= 14 \text{ mins}
+       \end{aligned}
+       $$
+</Steps>
+
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Percentiles">
+    Using the same data from Q4 (total students = $120$):
+    
+    **a)** The $90$th percentile is the time within which $90\%$ of students finish the puzzle. Determine the cumulative frequency value you would use to find the $90$th percentile on the graph.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+
+<Steps>
+    1. **Calculate $90\%$ of the total frequency.**
+       $$
+       \begin{aligned}
+       \text{Value} &= 0.90 \times 120 \\
+       &= 108
+       \end{aligned}
+       $$
+</Steps>
+
+    You would look at a cumulative frequency of **$108$** on the $y$-axis and read across to the curve to find the corresponding time.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Box and Whisker Outliers">
+    A dataset of test scores has a minimum value of $15$, $Q_1 = 45$, Median = $60$, $Q_3 = 75$, and a maximum value of $98$. 
+    An outlier is defined as any value less than $Q_1 - 1.5 \times \text{IQR}$ or greater than $Q_3 + 1.5 \times \text{IQR}$.
+    
+    **a)** Calculate the IQR.
+    
+    **b)** Determine mathematically if the minimum value ($15$) or the maximum value ($98$) should be marked as an outlier with a cross ($\times$) on a box plot.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    Use the IQR formula.
+    $$
+    \begin{aligned}
+    \text{IQR} &= Q_3 - Q_1 \\
+    &= 75 - 45 \\
+    &= 30
+    \end{aligned}
+    $$
+    
+    **b)**
+
+<Steps>
+    1. **Calculate the outlier boundaries.**
+       $$
+       \begin{aligned}
+       \text{Lower boundary} &= 45 - 1.5(30) = 45 - 45 = 0 \\
+       \text{Upper boundary} &= 75 + 1.5(30) = 75 + 45 = 120
+       \end{aligned}
+       $$
+    2. **Evaluate the minimum and maximum.**
+       The minimum is $15$. Since $15 > 0$, it is **not** an outlier.
+       The maximum is $98$. Since $98 < 120$, it is **not** an outlier.
+       Neither point should be marked with a cross.
+</Steps>
+
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Comparing Two Distributions">
+    Two classes, A and B, take the same Mathematics exam. Box and whisker diagrams are drawn for both.
+    Class A has a median of $65$ and an IQR of $12$.
+    Class B has a median of $55$ and an IQR of $20$.
+    
+    **a)** State, with a reason, which class performed better overall.
+    
+    **b)** State, with a reason, which class had more consistent results.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** **Class A** performed better overall because its median ($65$) is higher than Class B's median ($55$).
+    
+    **b)** **Class A** had more consistent results because its IQR ($12$) is smaller than Class B's IQR ($20$), indicating that the middle $50\%$ of scores are more tightly clustered together.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Symmetry and Normal Distribution">
+    A researcher draws a box and whisker diagram for the weights of a sample of apples. The diagram shows:
+    Min = $90\text{ g}$, $Q_1 = 110\text{ g}$, Median = $130\text{ g}$, $Q_3 = 150\text{ g}$, Max = $170\text{ g}$.
+    
+    **a)** Calculate the difference between the Median and $Q_1$, and the difference between $Q_3$ and the Median.
+    
+    **b)** Based on the symmetry of the box and whiskers, suggest what type of distribution this data might follow.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+
+<Steps>
+    1. **Calculate differences.**
+       $$
+       \begin{aligned}
+       \text{Median} - Q_1 &= 130 - 110 = 20\text{ g} \\
+       Q_3 - \text{Median} &= 150 - 130 = 20\text{ g}
+       \end{aligned}
+       $$
+</Steps>
+
+    **b)**
+    Because the median is exactly in the middle of $Q_1$ and $Q_3$ (both distances are $20\text{ g}$), and the whiskers are of equal length (both $20\text{ g}$ long), the box plot is perfectly symmetrical. This suggests the data may be **normally distributed**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Histograms, cumulative frequency graphs, box and whisker plots, and finding median/quartiles/IQR" />

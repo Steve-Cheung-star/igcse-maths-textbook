@@ -1,6 +1,346 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 4.4 Bivariate Data, Correlation, and Linear Regression
+description: Explore the relationship between two variables, calculate Pearson's correlation coefficient, and use linear regression to model trends and make predictions.
 ---
 
-Content coming soon.
+Welcome to Topic 4.4! Up to this point, we have largely focused on univariate data (single variables). In the real world, we frequently want to know if two variables are linked. Does studying more hours lead to higher test scores? Does a country's GDP correlate with its life expectancy? By analysing **bivariate data**, we can identify relationships, measure their strength, and create mathematical models for making predictions.
+
+<Aside type="note" title="Connections, Aim 8 & TOK">
+  **Aim 8 & Sciences:** The relationship between smoking and lung cancer is a classic example of statistical modelling. Mathematics "discovered" the strong correlation between the two variables, but it was up to medical scientists to justify the biological *cause*.
+  
+  **Theory of Knowledge (TOK):** This brings us to a fundamental TOK question: Can we ever truly have knowledge of cause-and-effect relationships if we can only ever observe correlations? What factors affect the reliability and validity of mathematical models when we use them to describe complex, real-life phenomena?
+  
+  **Links to other subjects:** Scatter graphs are widely used in Geography to compare demographic indicators. Curves of best fit and the critical distinction between correlation and causation are foundational to all Experimental Sciences.
+</Aside>
+
+---
+
+## 1. Scatter Diagrams and Linear Correlation
+
+A **scatter diagram** is the most effective way to visually represent bivariate data. Each pair of coordinates $(x, y)$ is plotted as a single point. By looking at the overall pattern of the points, we can determine the type of relationship, or **correlation**, that exists.
+
+When plotting a line of best fit "by eye", it should follow the general trend of the data and must always pass through the **mean point**, denoted as $(\bar{x}, \bar{y})$. The mean point is found by calculating the mean of all $x$-values and the mean of all $y$-values.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="scatter-plot-diagram" viewBox="0 0 400 300" width="100%" style="max-width: 500px; background: #f8fafc; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <line x1="40" y1="260" x2="360" y2="260" stroke="#64748b" stroke-width="2" />
+    <line x1="40" y1="40" x2="40" y2="260" stroke="#64748b" stroke-width="2" />
+    <text x="200" y="290" font-family="sans-serif" font-size="14" fill="#475569" text-anchor="middle">Variable x (Independent)</text>
+    <text x="20" y="150" font-family="sans-serif" font-size="14" fill="#475569" text-anchor="middle" transform="rotate(-90 20 150)">Variable y (Dependent)</text>
+    
+    <circle cx="80" cy="230" r="4" fill="#3b82f6" />
+    <circle cx="110" cy="190" r="4" fill="#3b82f6" />
+    <circle cx="140" cy="200" r="4" fill="#3b82f6" />
+    <circle cx="170" cy="150" r="4" fill="#3b82f6" />
+    <circle cx="210" cy="140" r="4" fill="#3b82f6" />
+    <circle cx="250" cy="100" r="4" fill="#3b82f6" />
+    <circle cx="290" cy="110" r="4" fill="#3b82f6" />
+    <circle cx="320" cy="70" r="4" fill="#3b82f6" />
+
+    <circle cx="196" cy="148" r="6" fill="#ef4444" />
+    <text x="210" y="143" font-family="sans-serif" font-size="12" fill="#ef4444" font-weight="bold">Mean Point (x-bar, y-bar)</text>
+
+    <line x1="50" y1="245" x2="340" y2="52" stroke="#10b981" stroke-width="3" stroke-dasharray="5,5" />
+  </svg>
+</div>
+
+### Types of Correlation
+* **Positive Correlation:** As $x$ increases, $y$ increases (line slopes upwards).
+* **Negative Correlation:** As $x$ increases, $y$ decreases (line slopes downwards).
+* **Zero Correlation:** No visible linear pattern.
+
+---
+
+## 2. Pearson's Product-Moment Correlation Coefficient ($r$)
+
+We need a mathematical way to quantify the strength and direction of a linear relationship. This is where **Pearson's product-moment correlation coefficient ($r$)** comes in. The value of $r$ always falls between $-1$ and $1$.
+
+### Interpreting the Strength of $r$
+While there is no universal mathematical agreement on the exact boundaries for "weak," "moderate," and "strong," the IB generally accepts the following scale (using the absolute value, $\lvert r \rvert$):
+
+* $0.00 \le \lvert r \rvert < 0.25$: **Very Weak / No Correlation**
+* $0.25 \le \lvert r \rvert < 0.50$: **Weak**
+* $0.50 \le \lvert r \rvert < 0.75$: **Moderate**
+* $0.75 \le \lvert r \rvert \le 1.00$: **Strong**
+
+<Aside type="caution" title="Context Matters!">
+  These boundaries are just a guide! In experimental physics, an $r$-value of $0.85$ might be considered weakly correlated because laboratory conditions demand precision. Conversely, in sociology, human behaviour is so erratic that an $r$-value of $0.45$ might be considered a remarkably strong correlation.
+</Aside>
+
+### The Impact of Outliers
+Pearson's $r$ is highly sensitive to **outliers** (anomalous data points that do not fit the general trend). A single severe outlier can make a strong linear relationship appear moderate or weak. This is why it is critical to observe the scatter diagram visually; if an outlier is clearly the result of a measurement error, it should be removed before calculating $r$ or generating a regression model.
+
+<SteveTip title="TI-Nspire: Calculating r and Regression">
+  You are expected to use your calculator to find $r$. Hand calculations are not required!
+  1. Open a `Lists & Spreadsheet` document.
+  2. Enter your $x$-values in column A (name it `xval`) and $y$-values in column B (name it `yval`).
+  3. Press `Menu > 4: Statistics > 1: Stat Calculations > 3: Linear Regression (mx+b)`.
+  4. Set the X List to `xval` and the Y List to `yval`.
+  The output screen will give you the gradient $m$, the $y$-intercept $b$, and Pearson's $r$.
+</SteveTip>
+
+---
+
+## 3. The Linear Regression Line ($y$ on $x$)
+
+If the scatter diagram and Pearson's $r$ indicate a correlation, we can construct a mathematical model. The **regression line of $y$ on $x$** is the line that minimises the sum of the squares of the vertical distances from each data point to the line (the residuals).
+
+The equation takes the form:
+$$ y = ax + b $$
+
+* **$a$ (Gradient/Slope):** The average change in $y$ for every one-unit increase in $x$.
+* **$b$ ($y$-intercept):** The predicted value of $y$ when $x = 0$.
+
+### Reliability of Predictions
+
+We use the regression line of $y$ on $x$ to **predict** the value of $y$ for a given value of $x$. The reliability of this prediction depends on two main factors:
+
+1. **The strength of the correlation:** Predictions are only considered reliable if the correlation is **strong** ($\lvert r \rvert \ge 0.75$). If the model is weak or moderate, the data points are too scattered from the line for the prediction to be trustworthy.
+2. **Interpolation vs Extrapolation:**
+   * **Interpolation:** Making predictions within the domain of your original data. (Generally reliable).
+   * **Extrapolation:** Making predictions outside the domain of your original data. (Unreliable, as we do not know if the trend continues).
+
+<Aside type="danger" title="Predicting x from y">
+  The regression line of $y$ on $x$ is specifically calculated to minimise the *vertical* distances from the points to the line. Therefore, **you cannot reliably substitute a $y$-value into the $y$ on $x$ regression equation to predict an $x$-value**.
+</Aside>
+
+---
+
+### Worked Example: Linear Regression
+**Question:** The temperature ($x$ in °C) and the number of hot chocolate drinks sold ($y$) at a cafe are recorded over $5$ days.
+
+| Temperature, $x$ (°C) | $5$ | $8$ | $12$ | $15$ | $18$ |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Hot Chocolates, $y$ | $90$ | $75$ | $60$ | $45$ | $30$ |
+
+**a)** Using your GDC, find the value of Pearson's $r$ and categorise its strength.
+**b)** Find the equation of the regression line of $y$ on $x$.
+**c)** Predict the number of hot chocolates sold if the temperature is $10$°C.
+**d)** Discuss the reliability of your prediction in part (c).
+
+**Solution:**
+<Steps>
+  1. **Enter data and calculate using GDC.**
+     Entering the table into the TI-Nspire and running `Linear Regression (mx+b)` gives:
+     $$
+     \begin{aligned}
+     r &= -0.999 \text{ (to 3 s.f.)} \\
+     a &= -4.53 \text{ (to 3 s.f.)} \\
+     b &= 113 \text{ (to 3 s.f.)}
+     \end{aligned}
+     $$
+     Since $r = -0.999$, this is a **strong negative** correlation.
+  2. **Write the regression equation.**
+     $$ y = -4.53x + 113 $$
+  3. **Substitute $x = 10$ into the equation.**
+     Using the unrounded values on your calculator:
+     $$
+     \begin{aligned}
+     y &= -4.5329...(10) + 112.58... \\
+     &= 67.251... \approx 67.3
+     \end{aligned}
+     $$
+     The cafe would expect to sell approximately $67$ hot chocolates.
+  4. **Evaluate reliability.**
+     The prediction is highly reliable because the correlation is very strong ($\lvert r \rvert > 0.75$) and it is an example of interpolation ($10$°C is within the given data range of $5$°C to $18$°C).
+</Steps>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Basic Scatter & Mean Point">
+    A researcher records the hours spent training per week ($x$) and the $100\text{m}$ sprint times in seconds ($y$) for $5$ athletes.
+    
+    | Training Hours, $x$ | $2$ | $4$ | $5$ | $7$ | $12$ |
+    | :--- | :--- | :--- | :--- | :--- | :--- |
+    | Sprint Time, $y$ | $14.2$ | $13.5$ | $13.0$ | $12.1$ | $10.7$ |
+    
+    **a)** Calculate the coordinates of the mean point $(\bar{x}, \bar{y})$.
+    
+    **b)** State the expected direction of the correlation (positive or negative).
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+  1. **Find the mean of $x$ and $y$ using 1-Var Stats on the GDC.**
+     $$
+     \begin{aligned}
+     \bar{x} &= 6 \\
+     \bar{y} &= 12.7
+     \end{aligned}
+     $$
+     The mean point is $(6, 12.7)$.
+</Steps>
+    
+    **b)** Negative correlation. As training hours increase, the sprint time decreases (gets faster).
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Interpreting the Scale">
+    A sociologist investigates the relationship between the number of books read per year and self-reported happiness levels ($1-10$). They calculate Pearson's $r$ to be $0.38$.
+    
+    **a)** Categorise the strength and direction of this linear relationship.
+    
+    **b)** Explain why an $r$-value of $0.38$ might mean the sociologist's linear regression model is not suitable for predicting a person's exact happiness score.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** The value $0.38$ falls into the $0.25 \le \lvert r \rvert < 0.50$ range, so it is a **weak positive** correlation.
+    
+    **b)** Because the correlation is weak, the data points are widely scattered from any line of best fit. Predicting a dependent variable using a weak model will yield highly unreliable results with a large margin of error.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Handling Outliers">
+    An agricultural student measures the amount of daily sunlight ($x$, in hours) and the subsequent height of a specific plant species ($y$, in cm) after one month.
+    
+    | Sunlight, $x$ | $2$ | $4$ | $6$ | $8$ | $10$ | $12$ |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | Height, $y$ | $15$ | $24$ | $35$ | $5$ | $56$ | $64$ |
+    
+    **a)** Using your GDC, calculate Pearson's $r$ for the data as given. Categorise its strength.
+    
+    **b)** The student identifies a measurement error in one of the readings. Identify the outlier coordinate.
+    
+    **c)** Remove the outlier and recalculate Pearson's $r$. Categorise its new strength.
+    
+    **d)** Using the corrected data, find the regression line $y$ on $x$ and predict the plant height for $7$ hours of sunlight.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+  1. **Enter all $6$ columns into your GDC and run Linear Regression.**
+     $$ r \approx 0.718 $$
+     This is a **moderate positive** correlation.
+</Steps>
+    
+    **b)** Looking at the data, height steadily increases with sunlight, except for $8$ hours of sunlight which yielded an impossibly low $5\text{ cm}$. The outlier is $(8, 5)$.
+    
+    **c)**
+<Steps>
+  1. **Delete the point from the GDC.**
+     *TI-Nspire Trick: Highlight the row number on the left side of the `Lists & Spreadsheet` page and press `Ctrl + Menu` then `Delete Row`. This ensures the paired $x$ and $y$ values are deleted together without shifting other data.*
+  2. **Recalculate $r$ with the remaining $5$ points.**
+     $$ r \approx 0.999 $$
+     The correlation is now **strong positive**.
+</Steps>
+
+    **d)**
+<Steps>
+  1. **Read the corrected regression equation.**
+     $$ y = 5.01x + 4.72 \text{ (to 3 s.f.)} $$
+  2. **Substitute $x = 7$ using unrounded values.**
+     $$ y = 39.8 \text{ (to 3 s.f.)} $$
+     The predicted height is approximately $39.8\text{ cm}$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Causation vs Correlation">
+    A seaside town observes that over the summer, the number of people wearing sunglasses ($x$) and the number of people buying ice cream ($y$) yields an $r$-value of $0.91$. 
+    
+    **a)** A business owner concludes that wearing sunglasses causes people to crave ice cream. Explain why this mathematical reasoning is flawed.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)** The owner is confusing correlation with causation. While there is a strong mathematical link ($r = 0.91$), sunglasses do not cause ice cream cravings. There is a hidden third variable (confounding variable)—sunny, hot weather—that independently causes both the wearing of sunglasses and the purchasing of ice cream to increase.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Extrapolation Dangers">
+    A company models its production volume ($x$, in hundreds of units) against operating costs ($y$, in $1000 \text{ USD}$) using the equation $y = 3.5x + 10$. The model was built using production volumes between $2$ and $15$ (hundreds of units). The correlation is $r = 0.88$.
+    
+    **a)** Predict the operating costs if they produce $5000$ units (i.e., $x = 50$).
+    
+    **b)** Explain why the prediction made in part (a) is highly unreliable, despite the $r$-value being strong.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+<Steps>
+  1. **Substitute $x = 50$ into the equation.**
+     $$
+     \begin{aligned}
+     y &= 3.5(50) + 10 \\
+     &= 175 + 10 \\
+     &= 185
+     \end{aligned}
+     $$
+     The predicted cost is $185,000 \text{ USD}$.
+</Steps>
+    
+    **b)** This prediction is highly unreliable because it involves **extrapolation**. $x = 50$ is far outside the measured data range of $2 \le x \le 15$. The linear trend is unlikely to continue indefinitely; for massive production increases, they might need to build a new factory, which would cause costs to jump non-linearly.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Weak Correlation and Zero Correlation">
+    Consider three datasets and their associated Pearson's $r$ values:  
+    Dataset A: $r = -0.15$   
+    Dataset B: $r = -0.55$  
+    Dataset C: $r = 0.02$
+    
+    **a)** Which dataset represents the strongest relationship out of the three?
+    
+    **b)** For Dataset C, does $r = 0.02$ guarantee there is absolutely no relationship between the variables?
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)** Dataset B is the strongest because the absolute value $\lvert -0.55 \rvert = 0.55$ is the largest of the three. It represents a moderate negative correlation.
+    
+    **b)** No, it only indicates there is no *linear* relationship. The variables could still share a very strong non-linear relationship (e.g., a perfect quadratic curve or sine wave) that Pearson's $r$ cannot detect.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Predicting x from y">
+    A geologist uses the depth of a rock layer ($x$ in metres) to predict the concentration of a certain mineral ($y$ in ppm). They establish a strong positive correlation and formulate the line $y = 12.4x + 5.5$.
+    
+    **a)** The geologist finds a rock sample with a concentration of $80 \text{ ppm}$. They substitute $y = 80$ into the equation to predict the depth $x$ it was found at. Explain why this mathematical method is inappropriate.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** The regression line of $y$ on $x$ is constructed by minimising the *vertical* residuals (the difference between predicted $y$ values and actual $y$ values). It is optimised exclusively for predicting the dependent variable ($y$) from the independent variable ($x$). Rearranging the equation to solve for $x$ is mathematically unreliable. They would need to calculate a separate regression line of $x$ on $y$ to do this.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Exam-Style Complete">
+    The number of hours a student spends playing video games per week ($x$) and their score on a mathematics test out of $100$ ($y$) is recorded for $6$ students.
+    
+    | Games, $x$ (hours) | $2$ | $5$ | $7$ | $10$ | $14$ | $20$ |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | Score, $y$ | $85$ | $90$ | $70$ | $65$ | $72$ | $40$ |
+    
+    **a)** Find the equation of the regression line $y$ on $x$.
+    
+    **b)** Determine Pearson's correlation coefficient, $r$.
+    
+    **c)** Based on your answer to (b), explain whether the regression equation should be used to predict the test score of a student who plays video games for $8$ hours a week. Calculate this prediction.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+  1. **Run Linear Regression on the GDC.**
+     *TI-Nspire Trick: When the setup wizard asks for "Save RegEqn to", leave it as `f1`. This saves the exact equation so you don't have to retype it later!*
+     $$ y = -2.40x + 93.5 \text{ (to 3 s.f.)} $$
+</Steps>
+    
+    **b)**
+<Steps>
+  1. **Read $r$ directly from the output.**
+     $$ r = -0.888 \text{ (to 3 s.f.)} $$
+     *(This is a strong negative correlation).*
+</Steps>
+    
+    **c)**
+<Steps>
+  1. **Evaluate reliability.**
+     Yes, the regression equation *should* be used. The correlation is strong ($\lvert -0.888 \rvert > 0.75$), making the model mathematically reliable. Furthermore, $x=8$ lies well within the domain of our data ($2 \le x \le 20$), meaning this is a safe interpolation. 
+  2. **Calculate the prediction.**
+     *TI-Nspire Trick: Open a `Calculator` page and type `f1(8)`. The GDC will use the exact unrounded equation to calculate the answer!*
+     $$ y = 74.3 \text{ (to 3 s.f.)} $$
+</Steps>
+  </TabItem>
+</Tabs>

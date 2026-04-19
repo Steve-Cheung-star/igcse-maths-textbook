@@ -1,6 +1,711 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 3.7 Circular Functions and Transformations
+description: Explore the periodic nature of sine, cosine, and tangent functions, their transformations, and how they model real-world phenomena like Ferris wheels and tides.
 ---
 
-Content coming soon.
+The trigonometric ratios we explored on the unit circle can be plotted on a Cartesian coordinate system to create **circular functions**. Because angles on a circle repeat every $360^\circ$ (or $2\pi$ radians), these functions are infinitely periodic, making them perfect for modelling cyclical behaviours in the real world.
+
+<Aside type="note" title="Connections & TOK">
+  **Links to other subjects:** Circular functions are the mathematical foundation of **Simple Harmonic Motion (SHM)** in physics. The movement of a pendulum, a mass on a spring, or the vibrations of atoms can all be described using sine and cosine waves.
+
+  **Theory of Knowledge (TOK):** Music can be expressed using mathematics. A pure musical note is simply a sine wave, and complex chords are synthesised by adding multiple sine waves together (Fourier analysis). What does this tell us about the relationship between music and mathematics? Does music sound beautiful because our brains enjoy mathematical patterns?
+</Aside>
+
+---
+
+## 1. The Base Circular Functions
+
+When we plot the values of $\sin x$, $\cos x$, and $\tan x$ against the angle $x$, we observe distinctive wave patterns.
+
+### Sine and Cosine Graphs
+The sine and cosine graphs are identical in shape but shifted horizontally. 
+* **Amplitude:** The maximum displacement from the centre line (principal axis). For $y = \sin x$ and $y = \cos x$, the amplitude is $1$.
+* **Period:** The length of one complete cycle. For both functions, the period is $360^\circ$ or $2\pi$ radians.
+* **Principal Axis:** The horizontal centre line of the wave. For the base graphs, this is the line $y = 0$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 0.5rem 0' }}>
+  <svg viewBox="-50 -120 500 240" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid and Axes */}
+    <line x1="-20" y1="0" x2="420" y2="0" stroke="#cbd5e1" stroke-width="1.5" />
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="#cbd5e1" stroke-width="1.5" />
+    
+    {/* Labels for y-axis */}
+    <text x="-15" y="-75" font-size="12" fill="#64748b" font-family="sans-serif">1</text>
+    <text x="-20" y="85" font-size="12" fill="#64748b" font-family="sans-serif">-1</text>
+    <line x1="-3" y1="-80" x2="3" y2="-80" stroke="#cbd5e1" stroke-width="1.5" />
+    <line x1="-3" y1="80" x2="3" y2="80" stroke="#cbd5e1" stroke-width="1.5" />
+    
+    {/* Labels for x-axis */}
+    <text x="85" y="15" font-size="12" fill="#64748b" font-family="sans-serif">π/2</text>
+    <text x="175" y="15" font-size="12" fill="#64748b" font-family="sans-serif">π</text>
+    <text x="260" y="15" font-size="12" fill="#64748b" font-family="sans-serif">3π/2</text>
+    <text x="350" y="15" font-size="12" fill="#64748b" font-family="sans-serif">2π</text>
+    
+    {/* Tick marks x-axis */}
+    {[90, 180, 270, 360].map((x) => (
+      <line key={x} x1={x} y1="-3" x2={x} y2="3" stroke="#cbd5e1" stroke-width="1.5" />
+    ))}
+
+    {/* Sine Wave using Array Map for accurate rendering */}
+    <polyline 
+      points={[...Array(361)].map((_, x) => `${x},${-80 * Math.sin(x * Math.PI / 180)}`).join(' ')}
+      fill="none" 
+      stroke="#3b82f6" 
+      stroke-width="2.5" 
+    />
+    <text x="100" y="-90" font-size="14" font-weight="bold" fill="#3b82f6" font-family="sans-serif">y = sin(x)</text>
+
+    {/* Cosine Wave using Array Map for accurate rendering */}
+    <polyline 
+      points={[...Array(361)].map((_, x) => `${x},${-80 * Math.cos(x * Math.PI / 180)}`).join(' ')}
+      fill="none" 
+      stroke="#ef4444" 
+      stroke-width="2.5" 
+      stroke-dasharray="5,5" 
+    />
+    <text x="280" y="-90" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">y = cos(x)</text>
+  </svg>
+</div>
+
+### Tangent Graph
+The tangent graph is very different. Because $\tan x = \dfrac{\sin x}{\cos x}$, whenever $\cos x = 0$ (at $90^\circ, 270^\circ$, etc.), the tangent function is undefined, creating **vertical asymptotes**.
+* **Amplitude:** Undefined (the graph goes to infinity).
+* **Period:** $180^\circ$ or $\pi$ radians.
+
+### Worked Example 1: Identifying Base Properties
+**Question:** State the maximum and minimum values of the function $f(x) = \cos x$, and determine the exact values of $x$ in the domain $0 \leq x \leq 2\pi$ where these occur.
+
+**Solution:**
+The base cosine function fluctuates between a maximum of $1$ and a minimum of $-1$.
+* The maximum value is $1$, which occurs at $x = 0$ and $x = 2\pi$.
+* The minimum value is $-1$, which occurs at $x = \pi$.
+
+---
+
+## 2. Transformations of Circular Functions
+
+We can apply geometric transformations to the base graphs to model a wide variety of scenarios. The general composite form is:
+
+$$f(x) = a\sin(b(x + c)) + d$$ 
+*(Note: This applies equally to cosine and tangent functions).*
+
+Let's break down the effect of each parameter:
+
+* **$a$ (Vertical Stretch):** Changes the **amplitude**. Amplitude $= |a|$. If $a$ is negative, the graph is also reflected in the principal axis.
+* **$b$ (Horizontal Stretch):** Changes the **period**. The stretch factor is $\dfrac{1}{b}$. 
+  * Period $= \dfrac{360^\circ}{b}$ (if in degrees)
+  * Period $= \dfrac{2\pi}{b}$ (if in radians)
+* **$c$ (Horizontal Translation):** Creates a **phase shift**. The graph moves horizontally by $-c$ units.
+* **$d$ (Vertical Translation):** Shifts the **principal axis**. The new centre line is the equation $y = d$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 0.5rem 0' }}>
+  <svg viewBox="-50 -120 450 240" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid and Axes */}
+    <line x1="-20" y1="0" x2="380" y2="0" stroke="#cbd5e1" stroke-width="1.5" />
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="#cbd5e1" stroke-width="1.5" />
+    
+    {/* Tick marks x-axis */}
+    {[90, 180, 270, 360].map((x) => (
+      <line key={x} x1={x} y1="-3" x2={x} y2="3" stroke="#cbd5e1" stroke-width="1.5" />
+    ))}
+    
+    {/* Base Sine Wave */}
+    <polyline 
+      points={[...Array(361)].map((_, x) => `${x},${-30 * Math.sin(x * Math.PI / 180)}`).join(' ')}
+      fill="none" 
+      stroke="#94a3b8" 
+      stroke-width="2" 
+      stroke-dasharray="4,4"
+    />
+    <text x="200" y="25" font-size="12" fill="#64748b" font-family="sans-serif">y = sin(x)</text>
+
+    {/* Transformed Wave: y = 2sin(2(x - 30)) + 1 -> amp=60, period=180, shift right 30, up 30 */}
+    <polyline 
+      points={[...Array(361)].map((_, x) => `${x},${-30 - 60 * Math.sin((x - 30) * 2 * Math.PI / 180)}`).join(' ')}
+      fill="none" 
+      stroke="#8b5cf6" 
+      stroke-width="2.5" 
+    />
+    <text x="140" y="-105" font-size="14" font-weight="bold" fill="#8b5cf6" font-family="sans-serif">y = 2sin(2(x - 30°)) + 1</text>
+    
+    {/* Transformation Annotations */}
+    <line x1="-5" y1="-30" x2="380" y2="-30" stroke="#10b981" stroke-width="1.5" stroke-dasharray="3,3" />
+    <text x="290" y="-35" font-size="12" fill="#10b981" font-family="sans-serif">Principal Axis (d=1)</text>
+    
+    <path d="M 75 -30 L 75 -90" fill="none" stroke="#f59e0b" stroke-width="1.5" marker-end="url(#arrow)" marker-start="url(#arrow)" />
+    <text x="80" y="-55" font-size="12" fill="#f59e0b" font-family="sans-serif">Amp (a=2)</text>
+
+    <path d="M 30 -30 L 120 -30" fill="none" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrow)" marker-start="url(#arrow)" />
+    <text x="45" y="-15" font-size="12" fill="#ef4444" font-family="sans-serif">Half Period</text>
+  </svg>
+</div>
+
+<SteveTip title="Order of Transformations & TI-Nspire">
+  When reading transformations from an equation, always follow the order of operations algebraically: 
+  1. Horizontal translations (inside the bracket with $x$)
+  2. Stretches (multiplications)
+  3. Vertical translations (adding $d$ at the end)
+
+  **TI-Nspire Tip:** If you graph a function on your TI-Nspire, you can use `Menu > Analyze Graph > Maximum / Minimum` to quickly find the amplitude and principal axis visually!
+</SteveTip>
+
+### Worked Example 2: Describing Transformations
+**Question:** Describe fully the sequence of geometric transformations that maps the graph of $y = \sin x$ onto the graph of $y = 3\sin(2x) + 1$.
+
+**Solution:**
+Comparing $y = 3\sin(2x) + 1$ to the base $y = \sin x$:
+1. The $2$ inside the function represents a **horizontal stretch** with scale factor $\dfrac{1}{2}$ (the period halves from $2\pi$ to $\pi$).
+2. The $3$ outside the function represents a **vertical stretch** with scale factor $3$ (the amplitude increases from $1$ to $3$).
+3. The $+1$ at the end represents a **vertical translation** by $1$ unit upwards (the principal axis moves to $y = 1$).
+
+---
+
+## 3. Real-Life Contexts and Modelling
+
+Trigonometric functions are excellent for modelling real-world phenomena such as tides, daylight hours, temperature fluctuations, and the height of a carriage on a Ferris wheel.
+
+When constructing a model from data, you can calculate the parameters algebraically:
+* **Amplitude ($a$):** $\quad a = \dfrac{\text{Maximum} - \text{Minimum}}{2}$
+* **Principal Axis ($d$):** $\quad d = \dfrac{\text{Maximum} + \text{Minimum}}{2}$
+* **Parameter $b$:** $\quad b = \dfrac{360^\circ}{\text{Period}}$ or $b = \dfrac{2\pi}{\text{Period}}$
+
+<Aside type="caution" title="TI-Nspire Sinusoidal Regression">
+  If you use `Menu > Statistics > Stat Calculations > Sinusoidal Regression` on your TI-Nspire, the calculator will output the function in the form $y = a\sin(bx + c) + d$. 
+  
+  **Be careful!** The $b$ is *not* factored out of the horizontal shift. If an IB question asks for the form $a\sin(b(x - h)) + d$, you must factorise the $b$ out of the argument: $bx + c = b(x + \dfrac{c}{b})$.
+</Aside>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 0.5rem 0' }}>
+  <svg viewBox="-50 -50 400 350" width="100%" maxWidth="450px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Shift all content left by 40 units to prevent text cropping on the right */}
+    <g transform="translate(-76, 0)">
+      {/* Ground */}
+      <rect x="-10" y="280" width="450" height="20" fill="#cbd5e1" />
+      
+      {/* Ferris Wheel Supports */}
+      <path d="M 150 150 L 80 280 L 100 280 L 150 170 Z" fill="#64748b" />
+      <path d="M 150 150 L 220 280 L 200 280 L 150 170 Z" fill="#64748b" />
+      
+      {/* Ferris Wheel Circle */}
+      <circle cx="150" cy="150" r="100" fill="none" stroke="#3b82f6" stroke-width="4" />
+      
+      {/* Spokes mapped by Array */}
+      {[0, 45, 90, 135].map((angle) => (
+        <line 
+          key={angle}
+          x1="150" y1="50" x2="150" y2="250" 
+          stroke="#94a3b8" stroke-width="2"
+          transform={`rotate(${angle} 150 150)`}
+        />
+      ))}
+      
+      {/* Carriages mapped by Array */}
+      {[0, 45, 90, 135, 180, 225, 270, 315].map((angle) => {
+        const rad = (angle * Math.PI) / 180;
+        const cx = 150 + 100 * Math.sin(rad);
+        const cy = 150 - 100 * Math.cos(rad);
+        return (
+          <rect key={angle} x={cx - 10} y={cy} width="20" height="15" fill="#ef4444" rx="2" />
+        );
+      })}
+
+      {/* Annotations */}
+      <line x1="280" y1="50" x2="320" y2="50" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,4" />
+      <line x1="280" y1="250" x2="320" y2="250" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,4" />
+      <line x1="280" y1="150" x2="320" y2="150" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4" />
+      
+      <text x="325" y="55" font-size="12" fill="#1e293b" font-family="sans-serif">Max Height</text>
+      <text x="325" y="255" font-size="12" fill="#1e293b" font-family="sans-serif">Min Height</text>
+      <text x="325" y="155" font-size="12" fill="#10b981" font-family="sans-serif">Principal Axis (d)</text>
+      
+      {/* Amplitude Arrows */}
+      <path d="M 300 155 L 300 245" fill="none" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrow)" marker-start="url(#arrow)" />
+      <text x="270" y="205" font-size="12" fill="#3b82f6" font-family="sans-serif" transform="rotate(-90 280 205)">Amplitude (a)</text>
+    </g>
+  </svg>
+</div>
+
+### Worked Example 3: Modelling Tides
+**Question:** The depth of water in a harbour, $D$ metres, is modelled by the function $D(t) = 4\cos\left(\dfrac{\pi}{6}t\right) + 10$, where $t$ is the time in hours after midnight. 
+Find the maximum depth of the water, and determine the time gap between two consecutive high tides.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 0.5rem 0' }}>
+  <svg viewBox="-30 -20 300 180" width="100%" maxWidth="500px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid / Axes (t from 0 to 24 hours, x-scale: 10 units = 1 hour, y-scale: 5 units = 1m offset for visual) */}
+    <line x1="0" y1="140" x2="250" y2="140" stroke="#1e293b" stroke-width="2" />
+    <line x1="0" y1="-10" x2="0" y2="140" stroke="#1e293b" stroke-width="2" />
+    
+    <text x="240" y="155" font-size="10" fill="#64748b" font-family="sans-serif">t (hours)</text>
+    <text x="-25" y="0" font-size="10" fill="#64748b" font-family="sans-serif">Depth</text>
+
+    {/* Harbour Wall */}
+    <rect x="-30" y="20" width="30" height="120" fill="#94a3b8" />
+    
+    {/* Water Fill - Area under the curve */}
+    {/* Model: y = 100 - 40*cos(pi*t / 60) in SVG coordinates */}
+    <path 
+      d={`M 0 140 L 0 60 ` + [...Array(241)].map((_, t) => `${t},${100 - 40 * Math.cos(t * Math.PI / 60)}`).join(' ') + ` L 240 140 Z`} 
+      fill="#bae6fd" opacity="0.6" 
+    />
+    
+    {/* Tide Wave Curve */}
+    <polyline 
+      points={[...Array(241)].map((_, t) => `${t},${100 - 40 * Math.cos(t * Math.PI / 60)}`).join(' ')}
+      fill="none" stroke="#0284c7" stroke-width="3" 
+    />
+    
+    {/* Time markers */}
+    <line x1="0" y1="140" x2="0" y2="145" stroke="#1e293b" stroke-width="2" />
+    <text x="-5" y="155" font-size="10" fill="#1e293b">0</text>
+    <line x1="120" y1="140" x2="120" y2="145" stroke="#1e293b" stroke-width="2" />
+    <text x="110" y="155" font-size="10" fill="#1e293b">12 (Noon)</text>
+    <line x1="240" y1="140" x2="240" y2="145" stroke="#1e293b" stroke-width="2" />
+    <text x="235" y="155" font-size="10" fill="#1e293b">24</text>
+
+    {/* Annotations */}
+    <line x1="0" y1="60" x2="240" y2="60" stroke="#f59e0b" stroke-dasharray="4,4" />
+    <text x="130" y="55" font-size="10" fill="#f59e0b" font-weight="bold">Max Depth: 14m</text>
+    <line x1="0" y1="100" x2="240" y2="100" stroke="#10b981" stroke-dasharray="4,4" />
+    <text x="130" y="95" font-size="10" fill="#10b981">Principal Axis: 10m</text>
+    
+    <path d="M 0 45 L 120 45" fill="none" stroke="#ef4444" stroke-width="1.5" marker-end="url(#arrow)" marker-start="url(#arrow)" />
+    <text x="45" y="40" font-size="10" fill="#ef4444" font-weight="bold">Period: 12h</text>
+  </svg>
+</div>
+
+**Solution:**
+The principal axis is $d = 10$, and the amplitude is $a = 4$.
+The maximum depth occurs when the cosine function is at its peak ($+1$).
+$$
+\begin{aligned}
+\text{Max Depth} &= d + a \\
+&= 10 + 4 \\
+&= 14 \text{ metres}
+\end{aligned}
+$$
+
+The time gap between high tides is the **period** of the function.
+$$
+\begin{aligned}
+b &= \dfrac{\pi}{6} \\
+\text{Period} &= \dfrac{2\pi}{b} \\
+&= \dfrac{2\pi}{\left(\dfrac{\pi}{6}\right)} \\
+&= 2\pi \times \dfrac{6}{\pi} \\
+&= 12 \text{ hours}
+\end{aligned}
+$$
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Extracting Graph Properties">
+    Consider the function $f(x) = -3\sin(4x) + 5$, where $x$ is in degrees.
+    
+    **a)** State the amplitude of $f(x)$.
+    
+    **b)** Calculate the period of the function.
+    
+    **c)** State the maximum and minimum values of $f(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+    1. **Identify the amplitude parameter.**
+       The coefficient of sine is $a = -3$. Amplitude is always positive.
+       $$
+       \begin{aligned}
+       \text{Amplitude} &= |-3| = 3
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Use the period formula for degrees.**
+       The parameter $b = 4$.
+       $$
+       \begin{aligned}
+       \text{Period} &= \dfrac{360^\circ}{4} \\
+       &= 90^\circ
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Use the principal axis and amplitude.**
+       The principal axis is $d = 5$.
+       $$
+       \begin{aligned}
+       \text{Maximum} &= d + \text{Amplitude} = 5 + 3 = 8 \\
+       \text{Minimum} &= d - \text{Amplitude} = 5 - 3 = 2
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Describing Algebraic Transformations">
+    The graph of $y = \cos x$ is transformed to form the graph of $g(x) = 2\cos\left(\dfrac{1}{3}(x - \pi)\right) - 4$.
+    
+    **a)** Describe the horizontal translation applied.
+    
+    **b)** Describe the horizontal stretch applied, stating the scale factor.
+    
+    **c)** State the equation of the principal axis for $g(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+<Steps>
+    1. **Examine the inside bracket.**
+       The term is $(x - \pi)$. This corresponds to a horizontal translation.
+       Translation is $\pi$ units to the right.
+</Steps>
+    **b)**
+<Steps>
+    1. **Examine the multiplier of $x$.**
+       The parameter $b = \dfrac{1}{3}$.
+       $$
+       \begin{aligned}
+       \text{Scale Factor} &= \dfrac{1}{b} = \dfrac{1}{\left(\dfrac{1}{3}\right)} = 3
+       \end{aligned}
+       $$
+       The horizontal stretch is by a scale factor of $3$.
+</Steps>
+    **c)**
+<Steps>
+    1. **Identify the vertical shift.**
+       The constant term at the end is $d = -4$.
+       The principal axis is $y = -4$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Generating a Model from a Graph">
+    A trigonometric graph has a maximum point at $(0, 15)$ and its first subsequent minimum point at $(4, 3)$. The function is modelled in the form $y = a\cos(bx) + d$, where $b > 0$.
+    
+    **a)** Find the exact value of $a$ and $d$.
+    
+    **b)** Determine the period of the function, and hence find the value of $b$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+    1. **Calculate the principal axis ($d$).**
+       $$
+       \begin{aligned}
+       d &= \dfrac{\text{Max} + \text{Min}}{2} = \dfrac{15 + 3}{2} = 9
+       \end{aligned}
+       $$
+    2. **Calculate the amplitude ($a$).**
+       Because the graph starts at a maximum at $x=0$, $a$ is positive.
+       $$
+       \begin{aligned}
+       a &= \dfrac{\text{Max} - \text{Min}}{2} = \dfrac{15 - 3}{2} = 6
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Determine the period.**
+       A maximum to a minimum represents exactly half a cycle. The distance from $x=0$ to $x=4$ is $4$.
+       $$
+       \begin{aligned}
+       \text{Half-period} &= 4 \\
+       \text{Full Period} &= 8
+       \end{aligned}
+       $$
+    2. **Calculate $b$.**
+       Assuming radians (standard when not specified by degrees sign):
+       $$
+       \begin{aligned}
+       \text{Period} &= \dfrac{2\pi}{b} \\
+       8 &= \dfrac{2\pi}{b} \\
+       b &= \dfrac{2\pi}{8} = \dfrac{\pi}{4}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Ferris Wheel Dynamics">
+    A large Ferris wheel has a diameter of $40 \text{ m}$ and its lowest point is $2 \text{ m}$ above the ground. It takes exactly $20 \text{ minutes}$ to complete one full revolution. A passenger boards at the lowest point at $t=0$.
+    
+    **a)** Find the maximum height reached by the passenger.
+    
+    **b)** Construct a cosine model for the height $h(t)$ of the passenger at time $t$ minutes in the form $h(t) = a\cos(bt) + d$.
+    
+    **c)** A ticket for the ride costs $15 \text{ GBP}$. Calculate the height of the passenger exactly $5 \text{ minutes}$ into the ride.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+<Steps>
+    1. **Add diameter to minimum height.**
+       $$
+       \begin{aligned}
+       \text{Max Height} &= \text{Min Height} + \text{Diameter} \\
+       &= 2 + 40 \\
+       &= 42 \text{ m}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Calculate amplitude ($a$) and principal axis ($d$).**
+       $$
+       \begin{aligned}
+       a &= \dfrac{42 - 2}{2} = 20 \\
+       d &= \dfrac{42 + 2}{2} = 22
+       \end{aligned}
+       $$
+    2. **Calculate $b$ from the period.**
+       $$
+       \begin{aligned}
+       b &= \dfrac{2\pi}{20} = \dfrac{\pi}{10}
+       \end{aligned}
+       $$
+    3. **Adjust the sign for starting at a minimum.**
+       A standard positive cosine curve starts at a maximum. Since the passenger starts at the minimum at $t=0$, we must reflect the graph vertically by making $a$ negative.
+       $$
+       \begin{aligned}
+       h(t) &= -20\cos\left(\dfrac{\pi}{10}t\right) + 22
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Substitute $t=5$ into the model.**
+       $$
+       \begin{aligned}
+       h(5) &= -20\cos\left(\dfrac{\pi}{10} \times 5\right) + 22 \\
+       &= -20\cos\left(\dfrac{\pi}{2}\right) + 22
+       \end{aligned}
+       $$
+    2. **Evaluate using exact values.**
+       Since $\cos\left(\dfrac{\pi}{2}\right) = 0$:
+       $$
+       \begin{aligned}
+       h(5) &= -20(0) + 22 \\
+       &= 22 \text{ m}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Tidal Constraints & TI-Nspire">
+    The depth of water, $y$ metres, at a port entrance is given by $y = 3\sin\left(\dfrac{\pi}{6}(t - 3)\right) + 8$, where $t$ is the time in hours after midnight. 
+    A large cargo ship requires at least $9.5 \text{ m}$ of water to safely pass through the entrance.
+    
+    **a)** State the period of the tide.
+    
+    **b)** Find the depth of the water at 3:00 AM ($t=3$).
+    
+    **c)** Find the first time after midnight when the ship can safely enter the port. Show how to do this algebraically, and verify using your TI-Nspire.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+<Steps>
+    1. **Use parameter $b$.**
+       $$
+       \begin{aligned}
+       b &= \dfrac{\pi}{6} \\
+       \text{Period} &= \dfrac{2\pi}{\left(\dfrac{\pi}{6}\right)} = 12 \text{ hours}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Substitute $t=3$.**
+       $$
+       \begin{aligned}
+       y(3) &= 3\sin\left(\dfrac{\pi}{6}(3 - 3)\right) + 8 \\
+       &= 3\sin(0) + 8 \\
+       &= 8 \text{ m}
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Set up the equation algebraically.**
+       We need $y = 9.5$.
+       $$
+       \begin{aligned}
+       3\sin\left(\dfrac{\pi}{6}(t - 3)\right) + 8 &= 9.5 \\
+       3\sin\left(\dfrac{\pi}{6}(t - 3)\right) &= 1.5 \\
+       \sin\left(\dfrac{\pi}{6}(t - 3)\right) &= 0.5
+       \end{aligned}
+       $$
+    2. **Solve for $t$.**
+       We know $\arcsin(0.5) = \dfrac{\pi}{6}$.
+       $$
+       \begin{aligned}
+       \dfrac{\pi}{6}(t - 3) &= \dfrac{\pi}{6} \\
+       t - 3 &= 1 \\
+       t &= 4
+       \end{aligned}
+       $$
+       The ship can safely enter at $t=4$, which corresponds to 4:00 AM.
+    3. **TI-Nspire Verification Method.**
+       * **Graphing:** Plot $f_1(x) = 3\sin\left(\dfrac{\pi}{6}(x - 3)\right) + 8$ and $f_2(x) = 9.5$. Make sure your document is in Radians mode. Use `Menu > Analyze Graph > Intersection` to find the first intercept where $x > 0$. The coordinates will be $(4, 9.5)$.
+       * **nSolve:** On a Calculator page, type `nSolve(3*sin(pi/6*(t-3))+8=9.5, t) | t>0`. It will return $4$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: TOK & Music Synthesising">
+    A synthesizer generates a pure musical note modelled by the sound pressure equation $P(t) = 0.05\sin(880\pi t)$, where $t$ is time in seconds.
+    
+    **a)** Calculate the period of the sound wave.
+    
+    **b)** The frequency of a note is the number of cycles per second (measured in Hertz, Hz), which is the reciprocal of the period. Find the frequency of this note.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+    1. **Identify $b$ and calculate the period.**
+       $$
+       \begin{aligned}
+       b &= 880\pi \\
+       \text{Period} &= \dfrac{2\pi}{b} \\
+       &= \dfrac{2\pi}{880\pi} \\
+       &= \dfrac{1}{440} \text{ seconds}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Calculate the frequency.**
+       $$
+       \begin{aligned}
+       \text{Frequency} &= \dfrac{1}{\text{Period}} \\
+       &= \dfrac{1}{\left(\dfrac{1}{440}\right)} \\
+       &= 440 \text{ Hz}
+       \end{aligned}
+       $$
+       *(Note: This is the standard concert pitch "A" note used to tune instruments).*
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Simple Harmonic Motion (Physics Link)">
+    A mass on a spring bounces up and down. Its displacement from the resting position, $x$ centimetres, after $t$ seconds is given by $x(t) = -12\cos(\pi t)$. 
+    
+    **a)** Determine the initial displacement of the mass at $t=0$.
+    
+    **b)** Find the first time the mass passes through its resting position ($x=0$).
+    
+    **c)** Calculate the total distance travelled by the mass during one full period.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+<Steps>
+    1. **Substitute $t=0$.**
+       $$
+       \begin{aligned}
+       x(0) &= -12\cos(\pi \times 0) \\
+       &= -12\cos(0) \\
+       &= -12(1) \\
+       &= -12 \text{ cm}
+       \end{aligned}
+       $$
+       (The mass is pulled down $12 \text{ cm}$ below resting position).
+</Steps>
+    **b)**
+<Steps>
+    1. **Set $x(t) = 0$ and solve.**
+       $$
+       \begin{aligned}
+       -12\cos(\pi t) &= 0 \\
+       \cos(\pi t) &= 0
+       \end{aligned}
+       $$
+    2. **Find the first positive solution for cosine being zero.**
+       Cosine is zero at $\dfrac{\pi}{2}$.
+       $$
+       \begin{aligned}
+       \pi t &= \dfrac{\pi}{2} \\
+       t &= 0.5 \text{ seconds}
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Determine the path over one period.**
+       The mass goes from minimum ($-12$), up to maximum ($+12$), and back down to minimum ($-12$).
+    2. **Calculate distances.**
+       Upward journey: $12 + 12 = 24 \text{ cm}$.
+       Downward journey: $12 + 12 = 24 \text{ cm}$.
+       $$
+       \begin{aligned}
+       \text{Total Distance} &= 24 + 24 \\
+       &= 48 \text{ cm}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Seasonal Daylight Modelling">
+    In a certain city, the number of daylight hours, $L$, on day $d$ of the year ($1 \leq d \leq 365$) is modelled by $L(d) = a\sin(b(d - c)) + 12$.
+    The longest day of the year has $16$ hours of daylight and occurs on day $172$.
+    
+    **a)** Find the value of $a$.
+    
+    **b)** Assuming a 365-day year, calculate the exact value of $b$ in radians.
+    
+    **c)** A sine wave reaches its maximum exactly one quarter of the way through its period. Use this property to calculate the value of the phase shift $c$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+    1. **Use the principal axis and maximum.**
+       The principal axis is given as $12$. The maximum is $16$.
+       $$
+       \begin{aligned}
+       a &= \text{Max} - d \\
+       a &= 16 - 12 \\
+       a &= 4
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Use the period formula.**
+       The period is $365$ days.
+       $$
+       \begin{aligned}
+       b &= \dfrac{2\pi}{\text{Period}} \\
+       b &= \dfrac{2\pi}{365}
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Locate the unshifted maximum.**
+       A standard $\sin(bd)$ graph starts at the principal axis at $d=0$ and reaches its first maximum after $\dfrac{1}{4}$ of a period.
+       $$
+       \begin{aligned}
+       \text{Quarter period} &= \dfrac{365}{4} = 91.25
+       \end{aligned}
+       $$
+    2. **Calculate the shift required.**
+       The actual maximum occurs on day $172$. The shift $c$ is the difference between the standard maximum and the actual maximum.
+       $$
+       \begin{aligned}
+       c &= 172 - 91.25 \\
+       c &= 80.75
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Circular functions, sine and cosine transformations, TI-Nspire trigonometric graphing, and modelling contexts" />

@@ -1,6 +1,423 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 4.5 Introduction to Probability
+description: Understand fundamental probability concepts, sample spaces, theoretical versus experimental probability, and expected outcomes.
 ---
 
-Content coming soon.
+Probability is the mathematical study of chance and uncertainty. While we often think of probability in terms of games of chance like rolling dice or drawing cards, its real-world applications are vast and critical. In fact, Mr. Cheung studied Actuarial Science, a field entirely dedicated to using advanced probability and statistics to assess and manage risk in insurance and finance. By mastering these foundational concepts, you are taking the first steps toward understanding how professionals model unpredictable events and make data-driven decisions.
+
+<Aside type="note" title="Connections: Real-World Applications & TOK">
+  **Other Contexts:** Actuarial studies heavily rely on probability to link the life spans of populations to the calculation of insurance premiums. Similarly, governments base infrastructure and budgetary planning on projected probability figures. In computer science, Monte Carlo methods use repeated random sampling to obtain numerical results for complex problems.
+  
+  **Links to other subjects:** In theoretical genetics (Biology), probability dictates the inheritance of alleles, often visualised using Punnett squares. In modern Physics, the exact position of a subatomic particle is not deterministic but described by probability distributions.
+  
+  **Aim 8 & International-mindedness:** Probability naturally extends to the ethics of gambling and casino operations. Historically, Russian mathematicians like Chebyshev and Pavlovsky laid foundational laws of probability, while the *St. Petersburg paradox* challenges human intuition regarding expected value and infinite payouts.
+  
+  **Theory of Knowledge (TOK):** To what extent are theoretical and experimental probabilities actually linked? Furthermore, what role does emotion play in our perception of risk? People often have an irrational fear of flying (highly safe) compared to driving (statistically more dangerous), showing that human risk assessment is rarely purely mathematical.
+</Aside>
+
+
+
+## 1. Core Terminology and Sample Spaces
+
+To study probability mathematically, we must first define our terms precisely:
+* **Trial:** A single action or experiment that results in an outcome (e.g., flipping a coin, rolling a die).
+* **Outcome:** A single possible result of a trial (e.g., getting a "Heads").
+* **Sample Space ($U$):** The set of *all* possible outcomes of an experiment. It is often represented as a list, a table, or a 2D grid.
+* **Event ($A$):** A specific outcome or a set of outcomes we are interested in (e.g., rolling an even number).
+* **Equally Likely Outcomes:** When every outcome in the sample space has the exact same chance of occurring (e.g., a perfectly fair, balanced die).
+
+### Representing the Sample Space
+
+For simple trials, listing the sample space is easy. For a coin: $U = \{\text{Heads}, \text{Tails}\}$. 
+For combined events, a 2D grid or table is incredibly useful. Below is the sample space for rolling two fair 6-sided dice and summing their scores.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="sample-space-grid" viewBox="0 0 400 400" width="100%" style="max-width: 400px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <rect x="50" y="50" width="300" height="300" fill="none" stroke="#cbd5e1" stroke-width="2" />
+    <line x1="100" y1="50" x2="100" y2="350" stroke="#cbd5e1" stroke-width="1" />
+    <line x1="150" y1="50" x2="150" y2="350" stroke="#cbd5e1" stroke-width="1" />
+    <line x1="200" y1="50" x2="200" y2="350" stroke="#cbd5e1" stroke-width="1" />
+    <line x1="250" y1="50" x2="250" y2="350" stroke="#cbd5e1" stroke-width="1" />
+    <line x1="300" y1="50" x2="300" y2="350" stroke="#cbd5e1" stroke-width="1" />
+    
+    <line x1="50" y1="100" x2="350" y2="100" stroke="#cbd5e1" stroke-width="1" />
+    <line x1="50" y1="150" x2="350" y2="150" stroke="#cbd5e1" stroke-width="1" />
+    <line x1="50" y1="200" x2="350" y2="200" stroke="#cbd5e1" stroke-width="1" />
+    <line x1="50" y1="250" x2="350" y2="250" stroke="#cbd5e1" stroke-width="1" />
+    <line x1="50" y1="300" x2="350" y2="300" stroke="#cbd5e1" stroke-width="1" />
+
+    <text x="25" y="75" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">1</text>
+    <text x="25" y="125" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">2</text>
+    <text x="25" y="175" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">3</text>
+    <text x="25" y="225" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">4</text>
+    <text x="25" y="275" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">5</text>
+    <text x="25" y="325" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">6</text>
+    <text x="15" y="200" font-family="sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" transform="rotate(-90 15 200)" font-weight="bold">Die 1</text>
+
+    <text x="75" y="35" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">1</text>
+    <text x="125" y="35" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">2</text>
+    <text x="175" y="35" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">3</text>
+    <text x="225" y="35" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">4</text>
+    <text x="275" y="35" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">5</text>
+    <text x="325" y="35" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">6</text>
+    <text x="200" y="15" font-family="sans-serif" font-size="14" fill="#0f172a" text-anchor="middle" font-weight="bold">Die 2</text>
+
+    <text x="75" y="80" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">2</text>
+    <text x="125" y="80" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">3</text>
+    <text x="175" y="80" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">4</text>
+    <text x="225" y="80" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">5</text>
+    <text x="275" y="80" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">6</text>
+    <text x="325" y="80" font-family="sans-serif" font-size="16" fill="#ef4444" text-anchor="middle">7</text>
+
+    <text x="75" y="130" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">3</text>
+    <text x="125" y="130" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">4</text>
+    <text x="175" y="130" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">5</text>
+    <text x="225" y="130" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">6</text>
+    <text x="275" y="130" font-family="sans-serif" font-size="16" fill="#ef4444" text-anchor="middle">7</text>
+    <text x="325" y="130" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">8</text>
+
+    <text x="75" y="180" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">4</text>
+    <text x="125" y="180" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">5</text>
+    <text x="175" y="180" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">6</text>
+    <text x="225" y="180" font-family="sans-serif" font-size="16" fill="#ef4444" text-anchor="middle">7</text>
+    <text x="275" y="180" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">8</text>
+    <text x="325" y="180" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">9</text>
+
+    <text x="75" y="230" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">5</text>
+    <text x="125" y="230" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">6</text>
+    <text x="175" y="230" font-family="sans-serif" font-size="16" fill="#ef4444" text-anchor="middle">7</text>
+    <text x="225" y="230" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">8</text>
+    <text x="275" y="230" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">9</text>
+    <text x="325" y="230" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">10</text>
+
+    <text x="75" y="280" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">6</text>
+    <text x="125" y="280" font-family="sans-serif" font-size="16" fill="#ef4444" text-anchor="middle">7</text>
+    <text x="175" y="280" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">8</text>
+    <text x="225" y="280" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">9</text>
+    <text x="275" y="280" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">10</text>
+    <text x="325" y="280" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">11</text>
+
+    <text x="75" y="330" font-family="sans-serif" font-size="16" fill="#ef4444" text-anchor="middle">7</text>
+    <text x="125" y="330" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">8</text>
+    <text x="175" y="330" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">9</text>
+    <text x="225" y="330" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">10</text>
+    <text x="275" y="330" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">11</text>
+    <text x="325" y="330" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">12</text>
+  </svg>
+</div>
+
+Notice that $n(U) = 36$ total outcomes, and the sum of 7 (highlighted in red) is the most likely result because it occurs along the longest diagonal.
+
+---
+
+## 2. Theoretical Probability and Complementary Events
+
+
+
+When outcomes are equally likely, we calculate the theoretical probability of an event $A$ occurring by dividing the number of favourable outcomes by the total number of outcomes in the sample space.
+
+<FormulaBox title="Probability of an event A">
+$$ \text{P}(A) = \dfrac{n(A)}{n(U)} $$
+</FormulaBox>
+
+The probability of an event *not* happening is called the **complementary event**, denoted as $A'$. Because an event must either happen or not happen, their probabilities always sum to 1.
+
+<FormulaBox title="Complementary events">
+$$ \text{P}(A) + \text{P}(A') = 1 $$
+</FormulaBox>
+
+<Aside type="tip" title="Rearranging the Complement Formula">
+  It is frequently much faster to calculate the probability of something *not* happening by rearranging the formula: $\text{P}(A') = 1 - \text{P}(A)$. If a question asks for the probability of rolling "at least a 2" on a standard die, it is faster to calculate $1 - \text{P}(\text{rolling a } 1)$.
+</Aside>
+
+### Worked Example: Basic Probability
+**Question:** A single fair 6-sided die is rolled. Find the probability of rolling a prime number.
+
+**Solution:**
+<Steps>
+  1. **Define the sample space and favourable outcomes.**
+     $$
+     \begin{aligned}
+     U &= \{1, 2, 3, 4, 5, 6\} \Rightarrow n(U) = 6 \\
+     A &= \{2, 3, 5\} \Rightarrow n(A) = 3
+     \end{aligned}
+     $$
+  2. **Calculate $\text{P}(A)$.**
+     $$ \text{P}(A) = \dfrac{3}{6} = \dfrac{1}{2} $$
+</Steps>
+
+---
+
+## 3. Experimental Probability (Relative Frequency)
+
+We do not always know if a coin, die, or system is fair. **Experimental probability** (or relative frequency) is determined by conducting trials and recording the outcomes. 
+
+$$ \text{Experimental Probability} = \dfrac{\text{Number of times event occurs}}{\text{Total number of trials}} $$
+
+As you increase the number of trials, the experimental probability will gradually approach the theoretical probability. This fundamental concept is known as the *Law of Large Numbers*.
+
+<SteveTip title="TI-Nspire: Simulating Trials">
+  You can simulate rolling dice or flipping coins rapidly using your GDC's random integer function.
+  1. Open a Calculator page.
+  2. Press `Menu > 5: Probability > 4: Random > 2: Integer`.
+  3. Type `randint(1, 6, 100)` and press `Enter`. 
+  This instantly simulates rolling a standard 6-sided die 100 times! You can store this into a list to analyse the relative frequencies of each outcome.
+</SteveTip>
+
+---
+
+## 4. Expected Number of Occurrences
+
+If you know the probability of an event, you can predict how many times it will occur over a series of repeated trials.
+
+$$ \text{Expected occurrences} = \text{Total trials} \times \text{P}(A) $$
+
+**Worked Example:** If there are 128 students in a year group and the historical probability of a student being absent on any given Friday is 0.1, the expected number of absent students is $128 \times 0.1 = 12.8$. (Note: Even though we cannot have 0.8 of a student, we leave expected values as exact decimals unless asked to round to the nearest integer contextually).
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Spinners & Complements">
+    A fair octagonal spinner is numbered 1 to 8. It is spun once. Let $A$ be the event "the spinner lands on a multiple of 3".
+    
+    **a)** Find $\text{P}(A)$.
+    
+    **b)** Find $\text{P}(A')$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+  1. **Identify the sample space and favourable outcomes.**
+     $$
+     \begin{aligned}
+     U &= \{1, 2, 3, 4, 5, 6, 7, 8\} \Rightarrow n(U) = 8 \\
+     A &= \{3, 6\} \Rightarrow n(A) = 2
+     \end{aligned}
+     $$
+  2. **Apply the probability formula.**
+     $$ \text{P}(A) = \dfrac{2}{8} = \dfrac{1}{4} $$
+</Steps>
+    
+    **b)**
+<Steps>
+  1. **Use the complementary events formula.**
+     $$
+     \begin{aligned}
+     \text{P}(A') &= 1 - \text{P}(A) \\
+     &= 1 - \dfrac{1}{4} = \dfrac{3}{4}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: 2D Sample Space">
+    Two fair 6-sided dice are rolled simultaneously. 
+    
+    **a)** Find the probability that the sum of the dice is exactly 9.
+    
+    **b)** Find the probability that the sum is greater than 9.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+<Steps>
+  1. **Use the sample space grid (from section 1).**
+     There are 36 total outcomes. The outcomes resulting in a sum of 9 are $(3,6), (4,5), (5,4),$ and $(6,3)$.
+     $$ \text{P}(\text{Sum is } 9) = \dfrac{4}{36} = \dfrac{1}{9} $$
+</Steps>
+    
+    **b)**
+<Steps>
+  1. **Identify all outcomes greater than 9 (sums of 10, 11, or 12).**
+     Outcomes: $(4,6), (5,5), (6,4), (5,6), (6,5), (6,6)$. That is 6 favourable outcomes.
+     $$ \text{P}(\text{Sum } > 9) = \dfrac{6}{36} = \dfrac{1}{6} $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Playing Cards">
+    A single card is drawn at random from a standard deck of 52 playing cards (no jokers). Let $B$ be the event "a black face card (Jack, Queen, or King) is drawn".
+    
+    **a)** Find $\text{P}(B)$.
+    
+    **b)** The card is replaced, the deck is shuffled, and a card is drawn again. Find the expected number of times event $B$ occurs if this process is repeated 260 times.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+  1. **Identify the number of black face cards.**
+     There are 2 black suits (Clubs, Spades). Each has 3 face cards. Total $n(B) = 6$.
+     $$ \text{P}(B) = \dfrac{6}{52} = \dfrac{3}{26} $$
+</Steps>
+    
+    **b)**
+<Steps>
+  1. **Calculate the expected value.**
+     $$
+     \begin{aligned}
+     \text{Expected occurrences} &= n \times \text{P}(B) \\
+     &= 260 \times \left(\dfrac{3}{26}\right) \\
+     &= 30
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Manufacturing Defects">
+    A factory produces smartphone screens. The probability that any single screen passes quality control is 0.985.
+    
+    **a)** Find the probability that a screen is defective.
+    
+    **b)** If the factory produces 8000 screens in a week, calculate the expected number of defective screens.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+<Steps>
+  1. **Use the complementary formula.** Let $A$ be passing quality control.
+     $$
+     \begin{aligned}
+     \text{P}(A') &= 1 - \text{P}(A) \\
+     &= 1 - 0.985 \\
+     &= 0.015
+     \end{aligned}
+     $$
+</Steps>
+    
+    **b)**
+<Steps>
+  1. **Calculate the expected value for defects.**
+     $$
+     \begin{aligned}
+     \text{Expected defects} &= 8000 \times 0.015 \\
+     &= 120
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Experimental vs Theoretical">
+    A student suspects a 4-sided die (tetrahedron) is biased. She rolls it 50 times and records the outcomes below:
+    
+    | Result | 1 | 2 | 3 | 4 |
+    | :--- | :--- | :--- | :--- | :--- |
+    | Frequency | 8 | 10 | 22 | 10 |
+    
+    **a)** Find the experimental probability of rolling a 3.
+    
+    **b)** Find the theoretical probability of rolling a 3 if the die were perfectly fair.
+    
+    **c)** State, with a reason, whether the data suggests the die is biased.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+<Steps>
+  1. **Use the relative frequency from the table.**
+     $$ \text{Experimental P}(3) = \dfrac{22}{50} = \dfrac{11}{25} = 0.44 $$
+</Steps>
+    
+    **b)**
+<Steps>
+  1. **Calculate the theoretical probability.**
+     $$ \text{Theoretical P}(3) = \dfrac{1}{4} = 0.25 $$
+</Steps>
+    
+    **c)** Yes, the data suggests bias. The experimental relative frequency (0.44) is significantly higher than the theoretical probability (0.25). A completely fair die would yield a frequency much closer to 12.5.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Actuarial Link">
+    An insurance company reviews data for 500 drivers over a one-year period. They find that 45 drivers were involved in a minor collision.
+    
+    **a)** Calculate the relative frequency of a driver being involved in a minor collision.
+    
+    **b)** The company insures 12000 drivers in a specific region. Based on the relative frequency, how many drivers are expected to be in a minor collision next year?
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+  1. **Calculate relative frequency.**
+     $$ \text{Relative Frequency} = \dfrac{45}{500} = \dfrac{9}{100} = 0.09 $$
+</Steps>
+    
+    **b)**
+<Steps>
+  1. **Calculate expected occurrences.**
+     $$
+     \begin{aligned}
+     \text{Expected} &= 12000 \times 0.09 \\
+     &= 1080
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Genetics (Punnett Squares)">
+    In pea plants, tall stem trait ($T$) is dominant over short stem trait ($t$). Two heterozygous plants ($Tt$) are crossed. The possible allele combinations for the offspring are $TT$, $Tt$, $tT$, and $tt$, which are all equally likely.
+    
+    **a)** Find the theoretical probability that an offspring plant will be tall (which requires at least one dominant $T$ allele).
+    
+    **b)** If a farmer grows 400 offspring plants, find the expected number of short plants.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+<Steps>
+  1. **Determine favourable outcomes for tall plants.**
+     The sample space is $U = \{TT, Tt, tT, tt\}$. The combinations that result in a tall plant are $\{TT, Tt, tT\}$.
+     $$ \text{P}(\text{Tall}) = \dfrac{3}{4} = 0.75 $$
+</Steps>
+    
+    **b)**
+<Steps>
+  1. **Find probability of short, then expected value.**
+     A short plant requires the $tt$ combination. $\text{P}(\text{Short}) = \dfrac{1}{4}$.
+     $$
+     \begin{aligned}
+     \text{Expected short} &= 400 \times \dfrac{1}{4} \\
+     &= 100
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Simulation and Average Payout">
+    A charity stall hosts a game where a player pays 2.00 USD to spin a completely fair circular wheel. The wheel is divided into 5 equal sectors, coloured Red, Blue, Green, Yellow, and Gold. 
+    * If the spinner lands on Gold, the player wins 10.00 USD.
+    * Otherwise, they win nothing.
+    
+    **a)** State the theoretical probability of winning.
+    
+    **b)** The charity simulates the game 1000 times using a computer. Calculate the expected total amount of money paid out by the charity to winners.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+  1. **Calculate the probability of landing on Gold.**
+     $$ \text{P}(\text{Gold}) = \dfrac{1}{5} = 0.2 $$
+</Steps>
+    
+    **b)**
+<Steps>
+  1. **Calculate the expected number of winners, then total payout.**
+     $$
+     \begin{aligned}
+     \text{Expected winners} &= 1000 \times 0.2 = 200 \\
+     \text{Total payout} &= 200 \times 10.00 \\
+     &= 2000 \text{ USD}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>

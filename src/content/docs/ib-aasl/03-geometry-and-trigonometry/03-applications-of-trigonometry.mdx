@@ -1,6 +1,444 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 3.3 Applications of Trigonometry
+description: Translate real-world scenarios into geometric diagrams, and apply your knowledge of Pythagoras, right-angled trigonometry, and the Sine/Cosine rules to solve practical problems.
 ---
 
-Content coming soon.
+In this section, there are no new formulas to memorise. Instead, the focus shifts to your ability to read a written context—such as a navigation problem or a surveying scenario—and accurately translate it into a mathematical diagram. 
+
+<Aside type="note" title="Connections & TOK">
+**Cross-curricular Links:** The skills here directly translate to map-making, triangulation, radio transmissions, and resolving vector forces in Physics.
+
+**Theory of Knowledge (TOK):** We are taught that angles in a triangle sum to exactly 180°. However, on a curved surface (like Earth), a triangle drawn between the North Pole and the equator can have angles adding up to more than 180° (Spherical Geometry). In other spaces, they add up to less than 180° (Hyperbolic Geometry). What does this tell us about the "absolute truth" of mathematical knowledge? Is math discovered, or is it invented to suit a specific set of axioms?
+</Aside>
+
+---
+
+## 1. Constructing Diagrams from Text
+
+The most critical skill in Topic 3.3 is drawing a well-labelled diagram. If your diagram is wrong, the subsequent math will be wrong, even if your algebra is flawless.
+
+<SteveTip title="Drawing the Perfect Diagram">
+1. **Read the entire problem first** before drawing anything, to understand the scale and layout.
+2. **Draw large.** A cramped diagram makes it difficult to label angles and see geometric relationships.
+3. **Add one piece of information at a time.** Label vertices with capital letters (A, B, C) and clearly mark right angles.
+4. **Identify the goal.** Highlight the specific side or angle you are trying to find so you know which rule to apply.
+</SteveTip>
+
+---
+
+## 2. Angles of Elevation and Depression
+
+When an observer looks at an object, their line of sight forms an angle with the perfectly horizontal line extending from their eyes.
+
+* **Angle of Elevation:** The angle formed when looking **up** from the horizontal.
+* **Angle of Depression:** The angle formed when looking **down** from the horizontal.
+
+**Crucial Geometric Property:** Because the horizontal line at the observer's eye level and the horizontal line at the object's level are parallel, the angle of elevation from observer A to object B is exactly equal to the angle of depression from object B to observer A (they are alternate interior "Z" angles).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 0.5rem 0' }}>
+  <svg viewBox="0 0 500 300" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Sky and Ground background */}
+    <rect x="0" y="0" width="500" height="150" fill="#e0f2fe" opacity="0.5" />
+    <rect x="0" y="150" width="500" height="150" fill="#dcfce3" opacity="0.4" />
+    
+    {/* Horizontal Lines */}
+    <line x1="50" y1="80" x2="450" y2="80" stroke="#64748b" stroke-width="2" stroke-dasharray="6 6" />
+    <line x1="50" y1="220" x2="450" y2="220" stroke="#64748b" stroke-width="2" stroke-dasharray="6 6" />
+    
+    {/* Line of Sight */}
+    <line x1="120" y1="220" x2="380" y2="80" stroke="#3b82f6" stroke-width="3" />
+    
+    {/* Angle of Elevation */}
+    <path d="M 170 220 A 50 50 0 0 0 162 198" fill="none" stroke="#f59e0b" stroke-width="3" />
+    <text x="185" y="215" font-size="14" font-weight="bold" fill="#f59e0b" font-family="sans-serif">Elevation</text>
+    
+    {/* Angle of Depression */}
+    <path d="M 330 80 A 50 50 0 0 0 338 102" fill="none" stroke="#ef4444" stroke-width="3" />
+    <text x="245" y="95" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">Depression</text>
+    
+    {/* Observer points */}
+    <circle cx="120" cy="220" r="6" fill="#0f172a" />
+    <circle cx="380" cy="80" r="6" fill="#0f172a" />
+    
+    {/* Labels */}
+    <text x="10" y="75" font-size="12" font-weight="bold" fill="#64748b" font-family="sans-serif">Horizontal</text>
+    <text x="10" y="215" font-size="12" font-weight="bold" fill="#64748b" font-family="sans-serif">Horizontal</text>
+    <text x="100" y="245" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">Observer A</text>
+    <text x="350" y="65" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">Observer B</text>
+  </svg>
+</div>
+<p style={{ textAlign: 'center', fontStyle: 'italic', fontSize: '0.9em', color: '#64748b', marginBottom: '2rem' }}>Notice how the horizontal sightlines are strictly parallel, making the angle of elevation exactly equal to the angle of depression.</p>
+
+---
+
+## 3. Bearings and Navigation
+
+Bearings are used to define direction, primarily in navigation for ships and aircraft. To properly interpret and draw a bearing, you must follow three absolute rules:
+
+1.  **Always measure from North.** Draw a vertical North line pointing "up" at the starting position.
+2.  **Always measure clockwise.**
+3.  **Always use three digits.** For example, an angle of 45° measured clockwise from North is written as a bearing of 045°. Due East is 090°, South is 180°, and West is 270°.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 0.5rem 0' }}>
+  <svg viewBox="0 0 350 350" width="100%" maxWidth="350px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Compass Grid lines */}
+    <line x1="175" y1="50" x2="175" y2="300" stroke="#cbd5e1" stroke-width="1.5" />
+    <line x1="50" y1="175" x2="300" y2="175" stroke="#cbd5e1" stroke-width="1.5" />
+    
+    {/* North Arrow */}
+    <line x1="175" y1="175" x2="175" y2="40" stroke="#0f172a" stroke-width="3" marker-end="url(#arrowhead)" />
+    <defs>
+      <marker id="arrowhead" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#0f172a" />
+      </marker>
+    </defs>
+    <text x="168" y="25" font-size="18" font-weight="bold" fill="#ef4444" font-family="sans-serif">N</text>
+    
+    {/* Path vector */}
+    <line x1="175" y1="175" x2="280" y2="80" stroke="#10b981" stroke-width="3" marker-end="url(#arrowhead-green)" />
+    <defs>
+      <marker id="arrowhead-green" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#10b981" />
+      </marker>
+    </defs>
+    
+    {/* Angle Arc */}
+    <path d="M 175 105 A 70 70 0 0 1 227 127" fill="none" stroke="#f59e0b" stroke-width="3" />
+    <text x="195" y="105" font-size="16" font-weight="bold" fill="#f59e0b" font-family="sans-serif">042°</text>
+    
+    {/* Points */}
+    <circle cx="175" cy="175" r="5" fill="#0f172a" />
+    <text x="155" y="195" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">A</text>
+    <text x="290" y="75" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">B</text>
+  </svg>
+</div>
+<p style={{ textAlign: 'center', fontStyle: 'italic', fontSize: '0.9em', color: '#64748b', marginBottom: '2rem' }}>Following the three rules: starting from North, measuring clockwise, and writing 042° instead of 42°.</p>
+
+When a problem involves multiple locations, draw a new North line at *every* point. This allows you to use parallel line geometry (like co-interior angles adding to 180°) to find missing angles inside your triangles.
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Wheelchair Ramp (Right Angled)">
+    A building requires a wheelchair ramp to be installed to reach a door that is 1.2 m above the flat ground. The ramp begins at a point 14 m horizontally away from the base of the door.
+    
+    **a)** Calculate the length of the ramp surface.  
+    **b)** Calculate the angle of elevation of the ramp.  
+    **c)** Local safety regulations state that a wheelchair ramp must have an angle of elevation no greater than 4.8°. Does this ramp meet the safety regulations? Justify your answer.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a) Length of the ramp**
+    This forms a right-angled triangle. We can use Pythagoras' Theorem.
+    $$
+    \begin{aligned}
+    c^2 &= a^2 + b^2 \\
+    c^2 &= 14^2 + 1.2^2 \\
+    c^2 &= 196 + 1.44 = 197.44 \\
+    c &= \sqrt{197.44} \approx 14.051...
+    \end{aligned}
+    $$
+    The ramp surface is **14.1 m** long (to 3 s.f.).
+
+    **b) Angle of elevation**
+    We know the opposite (1.2 m) and adjacent (14 m) sides. We use TOA.
+    $$
+    \begin{aligned}
+    \tan(\theta) &= \frac{\text{Opp}}{\text{Adj}} = \frac{1.2}{14} \\
+    \theta &= \tan^{-1}\left(\frac{1.2}{14}\right) \\
+    \theta &\approx 4.899...^\circ
+    \end{aligned}
+    $$
+    The angle of elevation is **4.90°** (to 3 s.f.).
+
+    **c) Safety verification**
+    No, the ramp **does not** meet safety regulations. The calculated angle of 4.90° is greater than the maximum allowed 4.8°.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: The Lighthouse & Two Boats">
+    An observer stands at the top of a lighthouse, 65 m above sea level. She spots two boats, A and B, situated directly in line with the lighthouse on the same side. 
+    The angle of depression to Boat A is 32°.
+    The angle of depression to Boat B is 19°.
+    
+    **a)** Calculate the horizontal distance from the base of the lighthouse to Boat A.  
+    **b)** Calculate the horizontal distance from the base of the lighthouse to Boat B.  
+    **c)** Calculate the exact distance between Boat A and Boat B.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    *Remember: Angle of depression from the top = Angle of elevation from the boat.*
+
+    **a) Distance to Boat A**
+    Using the right-angled triangle formed by the lighthouse and Boat A. The opposite side is 65 m, and the angle is 32°.
+    $$
+    \begin{aligned}
+    \tan(32^\circ) &= \frac{65}{d_A} \\
+    d_A &= \frac{65}{\tan(32^\circ)} \approx 104.02...
+    \end{aligned}
+    $$
+    Boat A is **104 m** away (to 3 s.f.).
+
+    **b) Distance to Boat B**
+    Using the right-angled triangle formed by the lighthouse and Boat B. The angle is 19°.
+    $$
+    \begin{aligned}
+    \tan(19^\circ) &= \frac{65}{d_B} \\
+    d_B &= \frac{65}{\tan(19^\circ)} \approx 188.77...
+    \end{aligned}
+    $$
+    Boat B is **189 m** away (to 3 s.f.).
+
+    **c) Distance between the boats**
+    Subtract the unrounded horizontal distances.
+    $$
+    \begin{aligned}
+    \text{Distance} &= d_B - d_A \\
+    \text{Distance} &= 188.77... - 104.02... = 84.75...
+    \end{aligned}
+    $$
+    The boats are **84.8 m** apart (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Non-Right Bearings (Helicopter Rescue)">
+    A rescue helicopter leaves a hospital (H) and flies 45 km on a bearing of 080° to pick up a patient at point P. 
+    It then flies 60 km on a bearing of 210° to drop the patient at a specialized clinic (C).
+    
+    **a)** Show that the interior angle $\angle HPC$ is 50°.  
+    **b)** Calculate the direct distance from the hospital (H) to the clinic (C).  
+    **c)** Calculate the area of the triangle formed by H, P, and C.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a) Show the interior angle is 50°**
+    * Draw a North line at H. The bearing to P is 080°.
+    * Draw a North line at P. The co-interior angle looking back at H is $180^\circ - 080^\circ = 100^\circ$.
+    * The bearing from P to C is 210°. 
+    * The angles around point P must equal 360°.
+    * Interior $\angle HPC = 360^\circ - 100^\circ - 210^\circ = 50^\circ$.
+
+    **b) Distance from H to C**
+    We have SAS ($HP = 45$, $PC = 60$, included angle = 50°). Use the Cosine Rule.
+    $$
+    \begin{aligned}
+    HC^2 &= 45^2 + 60^2 - 2(45)(60)\cos(50^\circ) \\
+    HC^2 &= 2025 + 3600 - 5400(0.6427...) \\
+    HC^2 &= 5625 - 3471.05... \\
+    HC^2 &= 2153.94... \\
+    HC &= \sqrt{2153.94...} \approx 46.41...
+    \end{aligned}
+    $$
+    The direct distance is **46.4 km** (to 3 s.f.).
+
+    **c) Area of the triangle**
+    $$
+    \begin{aligned}
+    \text{Area} &= \frac{1}{2}(45)(60)\sin(50^\circ) \\
+    \text{Area} &= 1350 \times 0.7660... \approx 1034.1...
+    \end{aligned}
+    $$
+    The area is **1030 km²** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Triangulation & The Sine Rule">
+    Two fire lookout towers, Tower X and Tower Y, are located 12 km apart on a straight East-West road, with Tower Y directly East of Tower X. 
+    Both towers spot a forest fire at point F. 
+    The bearing of the fire from Tower X is 055°.
+    The bearing of the fire from Tower Y is 315°.
+    
+    **a)** Calculate the interior angles of triangle XYF.  
+    **b)** Calculate the distance from Tower X to the fire.  
+    **c)** Calculate the shortest (perpendicular) distance from the fire to the road.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a) Interior angles**
+    * The road is East-West, which corresponds to bearings of 090° and 270°.
+    * At Tower X, the fire is at 055°. The angle from the North line down to the East road is 090°. So, $\angle FXY = 90^\circ - 55^\circ = 35^\circ$.
+    * At Tower Y, the road points West (270° from North). The fire is at 315°. The angle inside the triangle is $\angle FYX = 315^\circ - 270^\circ = 45^\circ$.
+    * The angle at the fire: $\angle XFY = 180^\circ - 35^\circ - 45^\circ = 100^\circ$.
+    **Angles: 35°, 45°, 100°.**
+
+    **b) Distance from Tower X to the fire ($YF$)**
+    We have a matching pair: $\angle F = 100^\circ$ and side $XY = 12$. We want side $XF$ (opposite the 45° angle at Y).
+    $$
+    \begin{aligned}
+    \frac{XF}{\sin(45^\circ)} &= \frac{12}{\sin(100^\circ)} \\
+    XF &= 12 \times \frac{\sin(45^\circ)}{\sin(100^\circ)} \\
+    XF &\approx 12 \times \frac{0.7071...}{0.9848...} \approx 8.616...
+    \end{aligned}
+    $$
+    The distance is **8.62 km** (to 3 s.f.).
+
+    **c) Shortest distance to the road**
+    This creates a right-angled triangle with the road as the adjacent, the perpendicular distance ($h$) as the opposite, and $XF$ as the hypotenuse. We use the 35° angle at X.
+    $$
+    \begin{aligned}
+    \sin(35^\circ) &= \frac{h}{8.616...} \\
+    h &= 8.616... \times \sin(35^\circ) \\
+    h &\approx 4.942...
+    \end{aligned}
+    $$
+    The shortest distance is **4.94 km** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Composite Structures">
+    A communications mast is mounted vertically on top of a flat-roofed building. 
+    From point M on the ground, 50 m from the building's base, the angle of elevation to the top of the building is 28°, and the angle of elevation to the top of the mast is 42°.
+    
+    **a)** Calculate the height of the building.  
+    **b)** Calculate the height of the mast itself.  
+    **c)** A supporting cable is attached from point M to the very top of the mast. Calculate the length of this cable.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a) Height of the building ($h_B$)**
+    $$
+    \begin{aligned}
+    \tan(28^\circ) &= \frac{h_B}{50} \\
+    h_B &= 50\tan(28^\circ) \approx 26.58...
+    \end{aligned}
+    $$
+    The building is **26.6 m** tall.
+
+    **b) Height of the mast**
+    First, find the total height to the top of the mast ($h_T$).
+    $$
+    \begin{aligned}
+    \tan(42^\circ) &= \frac{h_T}{50} \\
+    h_T &= 50\tan(42^\circ) \approx 45.02...
+    \end{aligned}
+    $$
+    Mast height = $h_T - h_B = 45.02... - 26.58... = 18.43...$
+    The mast is **18.4 m** tall.
+
+    **c) Length of the cable**
+    This is the hypotenuse of the large right triangle (angle 42°, adjacent 50).
+    $$
+    \begin{aligned}
+    \cos(42^\circ) &= \frac{50}{\text{Cable}} \\
+    \text{Cable} &= \frac{50}{\cos(42^\circ)} \approx 67.28...
+    \end{aligned}
+    $$
+    The cable is **67.3 m** long.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Finding a Return Bearing (Advanced)">
+    A drone maps a forest area. It flies from base station S for 14 km on a bearing of 110° to point A. 
+    It then flies 22 km from point A on a bearing of 260° to point B.
+    
+    **a)** Calculate the distance the drone must fly to return directly from point B to the base station S.  
+    **b)** Calculate the bearing the drone must take to fly from point B back to base station S.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a) Distance to return (SB)**
+    * Interior angle at A: North line S to A is 110°. Co-interior angle at A looking back to S is $180^\circ - 110^\circ = 070^\circ$.
+    * Bearing of B from A is 260°. 
+    * The angle inside the triangle $\angle SAB = 360^\circ - 260^\circ - 070^\circ = 30^\circ$.
+    * Use the Cosine Rule (SAS): $SA = 14$, $AB = 22$, included angle = 30°.
+    $$
+    \begin{aligned}
+    SB^2 &= 14^2 + 22^2 - 2(14)(22)\cos(30^\circ) \\
+    SB^2 &= 196 + 484 - 616(0.8660...) \\
+    SB^2 &= 680 - 533.47... = 146.52... \\
+    SB &= \sqrt{146.52...} \approx 12.10...
+    \end{aligned}
+    $$
+    The return distance is **12.1 km**.
+
+    **b) Return Bearing from B to S**
+    * First, find the interior angle at B ($\angle SBA$) using the Sine Rule.
+      $$\frac{\sin B}{14} = \frac{\sin 30^\circ}{12.10...} \Rightarrow \sin B \approx 0.578 \Rightarrow B \approx 35.3^\circ$$
+    * Now, set up the North line at B.
+    * The line BA comes from A (bearing 260°). The co-interior angle at B looking back to A is $260^\circ - 180^\circ = 080^\circ$. (Or use parallel North lines: $180^\circ - (360^\circ - 260^\circ) = 080^\circ$).
+    * The bearing to S is measured clockwise from North. We go 080° to the line BA, then subtract the interior angle $35.3^\circ$ to get to the line BS.
+    * $\text{Bearing} = 080^\circ - 35.3^\circ = 044.7^\circ$.
+    The bearing is **045°** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Fencing and Area Costs">
+    A farmer owns a triangular plot of land bounded by three markers, P, Q, and R. 
+    The distance from P to Q is 120 m. The distance from P to R is 150 m. The angle at corner P is 68°.
+    
+    The farmer wants to enclose the entire plot with fencing that costs $12.50 per metre.
+    He also needs to buy fertilizer for the area, which costs $0.40 per square metre.
+    
+    **a)** Calculate the total perimeter of the plot.  
+    **b)** Calculate the total cost of the fencing.  
+    **c)** Calculate the total cost of the fertilizer.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a) Total Perimeter**
+    We need side $QR$. Use Cosine Rule.
+    $$
+    \begin{aligned}
+    QR^2 &= 120^2 + 150^2 - 2(120)(150)\cos(68^\circ) \\
+    QR^2 &= 14400 + 22500 - 36000(0.3746...) \\
+    QR^2 &= 36900 - 13485.8... = 23414.1... \\
+    QR &= \sqrt{23414.1...} \approx 153.01...
+    \end{aligned}
+    $$
+    $$\text{Perimeter} = 120 + 150 + 153.01... = 423.01...$$
+    The perimeter is **423 m** (to 3 s.f.).
+
+    **b) Fencing Cost**
+    $$\text{Cost} = 423.01... \times 12.50 = 5287.6...$$
+    The fencing costs **$5288** (to nearest dollar).
+
+    **c) Fertilizer Cost**
+    First, find the area using $A = \frac{1}{2}ab\sin C$.
+    $$
+    \begin{aligned}
+    \text{Area} &= \frac{1}{2}(120)(150)\sin(68^\circ) \\
+    \text{Area} &= 9000 \times 0.9271... = 8344.6... \text{ m}^2
+    \end{aligned}
+    $$
+    Now find the cost.
+    $$\text{Cost} = 8344.6... \times 0.40 = 3337.8...$$
+    The fertilizer costs **$3338** (to nearest dollar).
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Multi-Step Speeds & Dynamics">
+    A cargo ship leaves Port A and travels on a bearing of 135° at a constant speed of 24 km/h for 2.5 hours until it drops anchor at point B.
+    A patrol boat leaves Port A at the same time and travels on a bearing of 045° at a constant speed of 35 km/h for 2.5 hours to point C.
+    
+    **a)** Calculate the distance each vessel has travelled.  
+    **b)** Calculate the distance between the two vessels when they stop.  
+    **c)** What bearing would the patrol boat at point C need to take to sail directly to the cargo ship at point B?
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a) Distances Travelled**
+    * Cargo Ship ($AB$): $24 \times 2.5 = 60 \text{ km}$.
+    * Patrol Boat ($AC$): $35 \times 2.5 = 87.5 \text{ km}$.
+
+    **b) Distance between vessels ($BC$)**
+    * The angle between their paths at Port A is $135^\circ - 045^\circ = 090^\circ$. 
+    * Since it is exactly 90°, we can use Pythagoras!
+    $$
+    \begin{aligned}
+    BC^2 &= 60^2 + 87.5^2 \\
+    BC^2 &= 3600 + 7656.25 = 11256.25 \\
+    BC &= \sqrt{11256.25} = 106.09...
+    \end{aligned}
+    $$
+    The vessels are **106 km** apart.
+
+    **c) Bearing from C to B**
+    * We need the interior angle at C ($\angle ACB$). Use basic SOH CAH TOA because it's a right triangle.
+    $$\tan(C) = \frac{\text{Opp}}{\text{Adj}} = \frac{60}{87.5} \Rightarrow C \approx 34.4^\circ$$
+    * Set up a North line at C. The bearing from A to C was 045°. The co-interior "look back" angle at C to A is $180^\circ - 045^\circ = 135^\circ$.
+    * The bearing to A is 135° clockwise, plus the interior angle of 34.4° down to the line CB.
+    * $\text{Bearing} = 135^\circ + 34.4^\circ = 169.4^\circ$.
+    The required bearing is **169°**.
+  </TabItem>
+</Tabs>

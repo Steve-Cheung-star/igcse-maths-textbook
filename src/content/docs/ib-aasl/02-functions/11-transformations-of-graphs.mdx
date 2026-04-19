@@ -3,179 +3,331 @@ title: 2.11 Transformations of Graphs
 description: Learn how to shift, reflect, and stretch functions across the coordinate plane, and understand the critical importance of transformation order.
 ---
 
-Functions are not static; they can be moved and resized. By applying specific algebraic changes to a base function $f(x)$, we can transform its graph. This is a vital skill for modelling real-world phenomena, such as shifts in Economic supply and demand curves or the phase shifts in Physics for simple harmonic motion.
+Functions are rarely static; they are dynamically moved, flipped, and resized to model changing conditions. By applying specific algebraic changes to a base function $f(x)$, we can transform its graph. This is a vital skill for modelling real-world phenomena, from shifting economic curves to altering the amplitude of physical waves.
 
-<Aside type="note" title="Connections & TOK">
-**Cross-curricular Links:** In Economics, a change in consumer income might result in a horizontal translation of the demand curve. In Physics, the vertical stretch of a sine wave represents an increase in amplitude (volume or brightness).
-
-**Mathematical Language:** We often use the word "transformation" in everyday life to mean a total change. In mathematics, transformations are rigid and predictable. Does the precision of mathematical language help or hinder our ability to describe a messy, non-linear world?
+<Aside type="note" title="Connections">
+**Cross-curricular Links:** In Economics, a change in consumer income might result in a horizontal translation of the demand curve. In Physics, the vertical stretch of a sine wave represents an increase in amplitude (such as a louder sound), while a horizontal stretch changes the period of simple harmonic motion.
 </Aside>
 
 ---
 
 ## 1. Translations and Reflections
 
-Translations move the graph without changing its shape or orientation, while reflections "flip" the graph across an axis.
+Translations move the entire graph without changing its fundamental shape, while reflections "flip" the graph symmetrically across a coordinate axis.
 
 ### Translations
 * **Vertical Translation:** $y = f(x) + b$  
-  Shifts the graph **up** by $b$ units (or down if $b$ is negative).
+    Shifts the graph **up** by $b$ units (or down if $b$ is negative).
 * **Horizontal Translation:** $y = f(x - a)$  
-  Shifts the graph **right** by $a$ units. 
-  *Note: The sign is counter-intuitive. $f(x - 3)$ moves 3 units to the right.*
+    Shifts the graph **right** by $a$ units. 
+
+<Aside type="caution" title="Counter-intuitive Horizontal Shifts">
+Horizontal translations often catch students off guard. The transformation $f(x - 3)$ moves the graph $3$ units to the **right**, whereas $f(x + 3)$ moves it $3$ units to the **left**. Always think: "What value of $x$ makes the inside of the bracket zero?"
+</Aside>
 
 ### Reflections
 * **Reflection in the $x$-axis:** $y = -f(x)$  
-  The $y$-values change sign. The graph flips upside down.
+    The $y$-values change sign. The graph flips upside down.
 * **Reflection in the $y$-axis:** $y = f(-x)$  
-  The $x$-values change sign. The graph flips horizontally.
+    The $x$-values change sign. The graph flips horizontally across the $y$-axis.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 500 300" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Grid */}
+    <g stroke="#e2e8f0" stroke-width="1" stroke-dasharray="2 2">
+      <line x1="0" y1="50" x2="500" y2="50" />
+      <line x1="0" y1="100" x2="500" y2="100" />
+      <line x1="0" y1="150" x2="500" y2="150" />
+      <line x1="0" y1="200" x2="500" y2="200" />
+      <line x1="0" y1="250" x2="500" y2="250" />
+      <line x1="100" y1="0" x2="100" y2="300" />
+      <line x1="200" y1="0" x2="200" y2="300" />
+      <line x1="300" y1="0" x2="300" y2="300" />
+      <line x1="400" y1="0" x2="400" y2="300" />
+    </g>
+    {/* Axes */}
+    <line x1="20" y1="150" x2="480" y2="150" stroke="#94a3b8" stroke-width="2" />
+    <line x1="250" y1="20" x2="250" y2="280" stroke="#94a3b8" stroke-width="2" />
+    <text x="470" y="140" font-size="12" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="260" y="30" font-size="12" fill="#64748b" font-family="sans-serif">y</text>
+
+    {/* Base Function f(x) = x^2 */}
+    <path d="M 150 50 Q 250 250 350 50" fill="none" stroke="#cbd5e1" stroke-width="3" stroke-dasharray="5 5" />
+    <text x="160" y="40" font-size="12" fill="#94a3b8" font-family="sans-serif">f(x)</text>
+
+    {/* Translation: f(x - 2) - 1 */}
+    <path d="M 250 100 Q 350 300 450 100" fill="none" stroke="#3b82f6" stroke-width="3" />
+    <text x="380" y="90" font-size="12" font-weight="bold" fill="#3b82f6" font-family="sans-serif">f(x - a) - b</text>
+    
+    {/* Arrow for translation */}
+    <path d="M 250 150 L 350 150 L 350 200" fill="none" stroke="#f59e0b" stroke-width="2" marker-end="url(#arrow)" stroke-dasharray="4 4"/>
+    <circle cx="250" cy="150" r="4" fill="#cbd5e1" />
+    <circle cx="350" cy="200" r="4" fill="#3b82f6" />
+    
+    {/* Reflection: -f(x) */}
+    <path d="M 150 250 Q 250 50 350 250" fill="none" stroke="#ef4444" stroke-width="3" />
+    <text x="120" y="270" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">-f(x)</text>
+  </svg>
+</div>
 
 ---
 
 ## 2. Stretches
 
-Stretches pull the graph away from or push it toward the axes.
+Stretches physically deform the graph, pulling it away from or pushing it towards the coordinate axes.
 
-* **Vertical Stretch:** $y = p \cdot f(x)$  
-  The graph is stretched vertically by a **scale factor of $p$**. 
-  * Points on the $x$-axis (where $y=0$) stay fixed.
-* **Horizontal Stretch:** $y = f(q \cdot x)$  
-  The graph is stretched horizontally by a **scale factor of $\frac{1}{q}$**.
-  * Points on the $y$-axis (where $x=0$) stay fixed.
-  * *Note: Like horizontal translations, this is counter-intuitive. $f(2x)$ is a horizontal compression by a factor of $0.5$.*
+* **Vertical Stretch:** $y = p f(x)$  
+    The graph is stretched vertically by a **scale factor of $p$**. 
+    * Points on the $x$-axis (where $y = 0$) remain invariant (fixed in place).
+* **Horizontal Stretch:** $y = f(qx)$  
+    The graph is stretched horizontally by a **scale factor of $\frac{1}{q}$**.
+    * Points on the $y$-axis (where $x = 0$) remain invariant.
 
-
+<Aside type="danger" title="Horizontal Scale Factors">
+Just like horizontal translations, horizontal stretches are the inverse of what you might expect. The transformation $f(2x)$ represents a horizontal compression by a scale factor of $\frac{1}{2}$. It makes the graph twice as "thin".
+</Aside>
 
 ---
 
 ## 3. Composite Transformations and Order
 
-When multiple transformations are applied to a base function, the **order matters**. Generally, you should follow the order of operations (PEMDAS/BODMAS) or work from the "inside" out:
+When multiple transformations are applied to a base function, the **order of execution is strictly important**. As a general rule of thumb, follow the standard order of operations (PEMDAS/BODMAS):
 
-1.  **Horizontal Transformations** (inside the brackets).
-2.  **Stretches/Reflections.**
-3.  **Vertical Translations** (outside the brackets).
+1.  **Horizontal Transformations** (work inside the brackets first).
+2.  **Stretches and Reflections** (multiplication).
+3.  **Vertical Translations** (addition/subtraction outside the function).
 
-**Example:** To transform $y = x^2$ into $y = 3x^2 + 2$:
-1.  **Vertical Stretch** by scale factor 3.
-2.  **Vertical Translation** up by 2 units.
+*(Note: In the SL syllabus, you are not required to perform complex grouped horizontal transformations like $f(ax + b)$ in a single step, but you must be able to read composite vertical transformations accurately).*
 
-*Note: For the SL syllabus, you are not required to perform transformations of the form $f(ax + b)$—you only need to handle them one at a time or in clear composite steps.*
+---
+
+## Technology: Using the GDC for Transformations
+
+<SteveTip title="TI-Nspire Tips for Graphing Transformations">
+You can use your GDC to quickly verify how a transformation behaves without re-typing the entire equation.
+1. Open a **Graph** page and enter your base function, e.g., $f_1(x) = x^2 - 4x$.
+2. To graph a transformation, press **[TAB]** to open the entry line for $f_2(x)$.
+3. Press the **[VAR]** key, select $f_1$, and type your transformation directly into it. 
+   * Example: Type `-2 * f1(x + 3) + 1`
+4. The GDC will automatically plot the complex transformed curve, saving you from expanding the algebra manually!
+</SteveTip>
 
 ---
 
 ## Practice Questions
 
 <Tabs>
-  <TabItem label="📝 Question 1: Identifying Transformations">
-    The graph of $y = f(x)$ is transformed to the graph of $g(x) = -2f(x + 4)$.
+  <TabItem label="📝 Question 1: Describing Transformations">
+    The graph of $y = f(x)$ is transformed to the graph of $g(x) = -3f(x - 2) + 4$.
     
-    Describe the three transformations that have been applied to $f(x)$ to obtain $g(x)$.
+    Describe the sequence of four geometric transformations that have been applied to $f(x)$ to obtain $g(x)$.
   </TabItem>
   <TabItem label="✅ Solution 1">
-    Following the order of operations and the transformation rules:
+    Following the order of operations:
 
-    1.  **Horizontal Translation:** The $(x + 4)$ term indicates a shift **4 units to the left**.
-    2.  **Reflection:** The negative sign in front of the 2 indicates a **reflection in the $x$-axis**.
-    3.  **Vertical Stretch:** The coefficient 2 indicates a **vertical stretch with a scale factor of 2**.
+    1.  **Horizontal Translation:** $(x - 2)$ indicates a translation of **$2$ units to the right**.
+    2.  **Reflection:** The negative sign indicates a **reflection in the $x$-axis**.
+    3.  **Vertical Stretch:** The coefficient $3$ indicates a **vertical stretch with a scale factor of $3$**.
+    4.  **Vertical Translation:** $+4$ indicates a translation of **$4$ units upwards**.
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Describing sequences of graph transformations" />
+<SmartAIGenerator topic="Describing sequences of composite graph transformations" />
 
 <Tabs>
   <TabItem label="📝 Question 2: Transforming Coordinates">
-    A function $f(x)$ passes through the point $(3, 10)$. 
+    A continuous function $f(x)$ has a local minimum at the coordinate point $(-4, 10)$. 
     
-    Find the new coordinates of this point after the following transformations:
-    a) $y = f(x - 5) - 2$  
-    b) $y = f(2x) + 7$  
-    c) $y = -3f(x)$
+    Find the exact coordinates of this local minimum after the function undergoes the transformation $g(x) = \dfrac{1}{2}f(2x) - 5$.
   </TabItem>
   <TabItem label="✅ Solution 2">
-    **a)** $y = f(x - 5) - 2$
-    * Horizontal shift: $x \to 3 + 5 = 8$
-    * Vertical shift: $y \to 10 - 2 = 8$
-    * New Point: **$(8, 8)$**
+    Apply the transformations algebraically to the point $(x, y) = (-4, 10)$.
 
-    **b)** $y = f(2x) + 7$
-    * Horizontal stretch (SF $\frac{1}{2}$): $x \to 3 \times 0.5 = 1.5$
-    * Vertical shift: $y \to 10 + 7 = 17$
-    * New Point: **$(1.5, 17)$**
+    **1. Horizontal Stretch:** $f(2x)$ means a horizontal stretch by a scale factor of $\frac{1}{2}$.
+    $$
+    \begin{aligned}
+    x_{new} &= -4 \times \dfrac{1}{2} \\
+    x_{new} &= -2
+    \end{aligned}
+    $$
 
-    **c)** $y = -3f(x)$
-    * Vertical stretch (SF 3): $y \to 10 \times 3 = 30$
-    * Reflection in $x$-axis: $y \to -30$
-    * New Point: **$(3, -30)$**
+    **2. Vertical Stretch:** $\frac{1}{2}f(\dots)$ means a vertical stretch by a scale factor of $\frac{1}{2}$.
+    $$
+    \begin{aligned}
+    y_{temp} &= 10 \times \dfrac{1}{2} \\
+    y_{temp} &= 5
+    \end{aligned}
+    $$
+
+    **3. Vertical Translation:** $- 5$ means a translation of $5$ units down.
+    $$
+    \begin{aligned}
+    y_{new} &= 5 - 5 \\
+    y_{new} &= 0
+    \end{aligned}
+    $$
+
+    The new coordinates of the local minimum are **$(-2, 0)$**.
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Calculating coordinate changes under transformations" />
+<SmartAIGenerator topic="Calculating coordinate shifts under complex functional transformations" />
 
 <Tabs>
   <TabItem label="📝 Question 3: Transforming Asymptotes">
-    The rational function $h(x) = \dfrac{1}{x}$ has a vertical asymptote at $x = 0$ and a horizontal asymptote at $y = 0$.
+    The exponential function $f(x) = e^x$ has a horizontal asymptote at $y = 0$.
     
-    Find the equations of the new asymptotes for the function $g(x) = \dfrac{4}{x - 3} + 5$.
+    a) Write down the equation of the horizontal asymptote for the transformed function $g(x) = e^{x+3} - 7$.  
+    b) Explain why the horizontal translation does not affect the equation of the horizontal asymptote.
   </TabItem>
   <TabItem label="✅ Solution 3">
-    The function $g(x)$ is a transformed version of $h(x)$:
-    $$ g(x) = 4 \cdot h(x - 3) + 5 $$
+    **a)** The function $g(x)$ is formed by translating $f(x)$ left by $3$ units and down by $7$ units. 
+    The vertical translation shifts the asymptote down by $7$.
+    The new horizontal asymptote is **$y = -7$**.
 
-    **Vertical Asymptote:**
-    * The original VA is $x = 0$.
-    * The horizontal translation $(x - 3)$ moves the graph 3 units right.
-    * New VA: **$x = 3$**.
-
-    **Horizontal Asymptote:**
-    * The original HA is $y = 0$.
-    * The vertical stretch (factor 4) affects $y$, but $0 \times 4 = 0$, so it remains at 0.
-    * The vertical translation $(+ 5)$ moves the graph up 5 units.
-    * New HA: **$y = 5$**.
+    **b)** A horizontal translation shifts the graph left or right along the $x$-axis. Since a horizontal asymptote is a horizontal line extending infinitely in both $x$-directions, sliding it left or right maps the line perfectly back onto itself. Only vertical transformations (stretches or translations) alter the $y$-value of a horizontal line.
   </TabItem>
 </Tabs>
-
-<SmartAIGenerator topic="Determining new asymptotes after function transformations" />
 
 <Tabs>
-  <TabItem label="📝 Question 4: Mapping Graphs">
-    The graph of $f(x) = x^2$ is stretched vertically by a scale factor of $0.5$, reflected in the $y$-axis, and then translated **3 units down**.
+  <TabItem label="📝 Question 4: Real-World Application (Economics)">
+    A company models its weekly profit function for manufacturing $x$ units of a product as $P(x) = 15x - 0.1x^2$, where $P(x)$ is the profit in EUR.
     
-    a) Write the equation of the resulting function $g(x)$.  
-    b) Use your GDC to sketch $f(x)$ and $g(x)$ on the same set of axes.
+    Due to a new factory lease, the company's fixed overhead costs increase by **250 EUR** per week. 
+    
+    a) Write down the new profit function, $P_{new}(x)$, resulting from this increased cost.  
+    b) Describe this change as a geometric transformation of the original profit curve.
   </TabItem>
   <TabItem label="✅ Solution 4">
-    **a)** Let's apply the transformations step-by-step:
-    1.  Vertical stretch (SF 0.5): $\to 0.5x^2$
-    2.  Reflection in $y$-axis: $\to 0.5(-x)^2$. Since $(-x)^2 = x^2$, the reflection of a symmetric parabola in the $y$-axis results in the same equation: $0.5x^2$.
-    3.  Translation 3 units down: $\to 0.5x^2 - 3$.
+    **a)** An increase in fixed overhead costs means the overall profit decreases by a flat $250$ EUR regardless of how many units are produced. We subtract $250$ from the entire function.
     
-    The resulting function is **$g(x) = 0.5x^2 - 3$**.
+    $$
+    \begin{aligned}
+    P_{new}(x) &= P(x) - 250 \\
+    P_{new}(x) &= 15x - 0.1x^2 - 250
+    \end{aligned}
+    $$
+    
+    The new profit function is **$P_{new}(x) = -0.1x^2 + 15x - 250$**.
 
-    **b)** To sketch on the TI-Nspire:
-    1.  Open a **Graph** page.
-    2.  Enter $f_1(x) = x^2$ and $f_2(x) = 0.5x^2 - 3$.
-    3.  Observe that $f_2$ is wider (compressed vertically) and its vertex has moved from $(0,0)$ to $(0,-3)$.
-
-    <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-      <svg viewBox="0 0 300 250" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
-        <line x1="20" y1="180" x2="280" y2="180" stroke="#cbd5e1" stroke-width="2" />
-        <line x1="150" y1="20" x2="150" y2="230" stroke="#cbd5e1" stroke-width="2" />
-        
-        {/* Original f(x) = x^2 */}
-        <path d="M 90 20 Q 150 340 210 20" fill="none" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4 4" />
-        <text x="70" y="40" font-size="10" fill="#94a3b8" font-family="sans-serif">f(x) = x²</text>
-
-        {/* Transformed g(x) = 0.5x^2 - 3 */}
-        <path d="M 70 20 Q 150 320 230 20" fill="none" stroke="#3b82f6" stroke-width="2" />
-        <text x="210" y="40" font-size="10" font-weight="bold" fill="#3b82f6" font-family="sans-serif">g(x) = 0.5x² - 3</text>
-        
-        {/* Vertex of g(x) */}
-        <circle cx="150" cy="210" r="4" fill="#ef4444" />
-        <text x="160" y="225" font-size="10" font-weight="bold" fill="#ef4444" font-family="sans-serif">(0, -3)</text>
-      </svg>
-    </div>
+    **b)** Because a constant was subtracted from the outside of the function, this represents a **vertical translation of $250$ units downwards**.
   </TabItem>
 </Tabs>
 
-<SmartAIGenerator topic="Constructing function equations from a series of geometric transformations" />
+<SmartAIGenerator topic="Applying vertical and horizontal translations to economic profit models" />
+
+<Tabs>
+  <TabItem label="📝 Question 5: Real-World Application (Physics)">
+    A sound wave is initially modelled by the function $h(t) = \sin(t)$.
+    An amplifier is used to increase the volume (amplitude) by a factor of $4$, and a synthesizer increases the pitch (frequency), which compresses the wave horizontally by a scale factor of $\frac{1}{3}$.
+    
+    Write down the new function $g(t)$ that models the altered sound wave.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    1.  **Amplitude Increase:** This is a vertical stretch by a scale factor of $4$. The function becomes $4 \sin(t)$.
+    2.  **Horizontal Compression:** A scale factor of $\frac{1}{3}$ requires a coefficient of $3$ inside the function bracket. The function becomes $4 \sin(3t)$.
+    
+    The new wave model is **$g(t) = 4 \sin(3t)$**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 6: Constructing Composite Equations">
+    Let $f(x) = x^3$. The graph of $f$ is translated **$5$ units to the left** and then **reflected in the $y$-axis** to form the graph of $g(x)$.
+    
+    Write down the equation of $g(x)$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    We must apply the transformations strictly step-by-step.
+
+    **Step 1: Translate $5$ units to the left.**
+    Replace $x$ with $(x + 5)$.
+    $$ y = (x + 5)^3 $$
+
+    **Step 2: Reflect in the $y$-axis.**
+    Replace $x$ with $(-x)$.
+    $$ y = (-x + 5)^3 $$
+
+    The resulting equation is **$g(x) = (-x + 5)^3$**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Roots and Algebraic Verification">
+    Consider the function $f(x) = x^2 - 9$.
+    
+    a) Find the exact roots (x-intercepts) of $f(x)$.  
+    b) A new function is defined as $g(x) = -f(x - 2)$. Find the roots of $g(x)$ algebraically.  
+    c) Outline how you could verify your roots for $g(x)$ using a GDC.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)** Set $f(x) = 0$:
+    $$
+    \begin{aligned}
+    x^2 - 9 &= 0 \\
+    x^2 &= 9 \\
+    x &= \pm 3
+    \end{aligned}
+    $$
+    The roots of $f(x)$ are **$x = -3$** and **$x = 3$**.
+
+    **b)** First, construct the equation for $g(x)$.
+    Substitute $(x - 2)$ into $f$, then make the whole thing negative:
+    $$
+    \begin{aligned}
+    g(x) &= -((x - 2)^2 - 9) \\
+    g(x) &= -(x^2 - 4x + 4 - 9) \\
+    g(x) &= -(x^2 - 4x - 5) \\
+    g(x) &= -x^2 + 4x + 5
+    \end{aligned}
+    $$
+    Set $g(x) = 0$ to find the roots and factorise:
+    $$
+    \begin{aligned}
+    -x^2 + 4x + 5 &= 0 \\
+    x^2 - 4x - 5 &= 0 \\
+    (x - 5)(x + 1) &= 0
+    \end{aligned}
+    $$
+    The roots of $g(x)$ are **$x = -1$** and **$x = 5$**.
+
+    *(Shortcut Check: The original roots were $-3$ and $3$. A translation $2$ units right changes them to $-1$ and $5$. The subsequent reflection in the $x$-axis doesn't move points already on the $x$-axis, so the roots remain $-1$ and $5$.)*
+
+    **c)** To verify using the GDC:
+    1. Open a **Graph** page.
+    2. Enter $f_1(x) = -((x - 2)^2 - 9)$.
+    3. Press **[Menu] > 6: Analyze Graph > 1: Zero**.
+    4. Highlight the regions where the graph crosses the $x$-axis to confirm the values $-1$ and $5$.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving for roots algebraically after applying composite graph transformations" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Reverse Engineering Transformations">
+    The base graph $f(x) = \ln(x)$ is transformed to yield the graph of $h(x) = 2\ln(x + 1) - 6$.
+    
+    A student claims the graph was first translated downwards by $6$, then stretched vertically by $2$, and finally moved left by $1$.
+    
+    Is the student correct? Justify your reasoning mathematically.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **No, the student is incorrect.**
+
+    If we follow the student's claimed order of operations algebraically starting from $f(x)$:
+    1.  Translate downwards by $6$: $y = \ln(x) - 6$
+    2.  Stretch vertically by $2$: $y = 2(\ln(x) - 6) = 2\ln(x) - 12$
+    3.  Move left by $1$: $y = 2\ln(x + 1) - 12$
+    
+    This results in $y = 2\ln(x + 1) - 12$, which does not match the actual target function $h(x) = 2\ln(x + 1) - 6$.
+
+    **The correct order is:**
+    1.  Translate left by $1$: $\ln(x + 1)$
+    2.  Stretch vertically by a scale factor of $2$: $2\ln(x + 1)$
+    3.  Translate down by $6$: $2\ln(x + 1) - 6$
+    
+    This demonstrates why executing vertical stretches before vertical translations (following standard BODMAS rules) is vital.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Reverse engineering transformation equations and checking order of operations" />

@@ -1,6 +1,447 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 4.7 Discrete Random Variables and Expected Value
+description: Understand discrete random variables, their probability distributions, calculating expected values (means), and the mathematical conditions for a fair game.
 ---
 
-Content coming soon.
+In previous sections, we calculated probabilities of specific events. Now, we shift our focus to variables whose numerical values are determined by the outcome of a random phenomenon. We call these **random variables**. When the outcomes are distinct, countable values (like the number of heads in three coin tosses, or the score on a die), it is a **discrete random variable**.
+
+<Aside type="note" title="Connections: Aim 8 & TOK">
+  **Other contexts:** The historical development of probability is deeply intertwined with games of chance. Pascal and Fermat developed much of this theory to solve gambling disputes.
+  
+  **Aim 8:** Why has it been argued that theories based on the calculable probabilities found in casinos are pernicious when applied to everyday life (for example, economics)? In a casino, the "sample space" is closed, fixed, and perfectly mathematically defined. In economics, variables are infinite, human emotion drives markets, and unforeseen "black swan" events occur regularly. Treating the real world like a perfectly defined casino model can lead to catastrophic financial risk and overconfidence.
+  
+  **Theory of Knowledge (TOK):** What do we mean by a "fair" game? In everyday language, "fair" means just or equitable. In mathematics, a "fair game" has an expected financial gain of exactly zero. Is it fair that casinos should make a profit? If a player fully understands the mathematical expectation and still chooses to play for entertainment, does that make the transaction ethical?
+</Aside>
+
+## 1. Probability Distributions
+
+A **probability distribution** of a discrete random variable $X$ lists all possible numerical outcomes $x$, alongside their corresponding probabilities $\text{P}(X = x)$. 
+
+Distributions can be presented as a table or as a probability mass function (a formula).
+Because a probability distribution covers all possible outcomes in the sample space, two absolute rules apply:
+1. Every individual probability must be between 0 and 1 inclusive: $0 \le \text{P}(X=x) \le 1$.
+2. The sum of all probabilities must equal exactly 1: $\sum \text{P}(X=x) = 1$.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="probability-distribution-chart" viewBox="0 0 500 300" width="100%" style="max-width: 500px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <line x1="50" y1="250" x2="450" y2="250" stroke="#475569" stroke-width="2"/>
+    <line x1="50" y1="50" x2="50" y2="250" stroke="#475569" stroke-width="2"/>
+    
+    <text x="40" y="250" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="end">0.0</text>
+    <text x="40" y="200" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="end">0.1</text>
+    <text x="40" y="150" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="end">0.2</text>
+    <text x="40" y="100" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="end">0.3</text>
+    <text x="40" y="50" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="end">0.4</text>
+    
+    <line x1="50" y1="200" x2="450" y2="200" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="50" y1="150" x2="450" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="50" y1="100" x2="450" y2="100" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4"/>
+    
+    <rect x="90" y="200" width="40" height="50" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="110" y="270" font-family="sans-serif" font-size="14" fill="#0f172a" text-anchor="middle">1</text>
+    
+    <rect x="170" y="150" width="40" height="100" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="190" y="270" font-family="sans-serif" font-size="14" fill="#0f172a" text-anchor="middle">2</text>
+    
+    <rect x="250" y="75" width="40" height="175" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="270" y="270" font-family="sans-serif" font-size="14" fill="#0f172a" text-anchor="middle">3</text>
+    
+    <rect x="330" y="125" width="40" height="125" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="350" y="270" font-family="sans-serif" font-size="14" fill="#0f172a" text-anchor="middle">4</text>
+    
+    <rect x="410" y="200" width="40" height="50" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="430" y="270" font-family="sans-serif" font-size="14" fill="#0f172a" text-anchor="middle">5</text>
+    
+    <text x="250" y="295" font-family="sans-serif" font-size="16" fill="#1e293b" text-anchor="middle">Outcome (x)</text>
+    <text x="15" y="150" font-family="sans-serif" font-size="16" fill="#1e293b" text-anchor="middle" transform="rotate(-90 15 150)">P(X = x)</text>
+  </svg>
+</div>
+
+### Worked Example: Completing a Distribution
+**Question:** A discrete random variable $X$ has the probability distribution given by $\text{P}(X=x) = \dfrac{k}{x}$ for $x \in \{1, 2, 3, 4\}$. Find the exact value of the constant $k$.
+
+**Solution:**
+<Steps>
+  1. **Set up the sum of probabilities equal to 1.**
+     $$ \sum \text{P}(X=x) = 1 $$
+     $$ \text{P}(X=1) + \text{P}(X=2) + \text{P}(X=3) + \text{P}(X=4) = 1 $$
+  2. **Substitute the function and solve for $k$.**
+     $$
+     \begin{aligned}
+     \dfrac{k}{1} + \dfrac{k}{2} + \dfrac{k}{3} + \dfrac{k}{4} &= 1 \\
+     k \left( 1 + \dfrac{1}{2} + \dfrac{1}{3} + \dfrac{1}{4} \right) &= 1 \\
+     k \left( \dfrac{12 + 6 + 4 + 3}{12} \right) &= 1 \\
+     k \left( \dfrac{25}{12} \right) &= 1 \\
+     k &= \dfrac{12}{25}
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 2. Expected Value (Mean)
+
+The **expected value** of a random variable, denoted as $\text{E}(X)$, is the theoretical mean of the distribution. If you were to repeat the experiment an infinite number of times and average all the results, it would equal $\text{E}(X)$.
+
+To calculate it, you multiply every possible outcome $x_i$ by its corresponding probability $\text{P}(X = x_i)$, and add them all together.
+
+<FormulaBox title="Expected value of a discrete random variable X">
+$$ \text{E}(X) = \sum_{i=1}^{k} x_i \text{P}(X = x_i) $$
+</FormulaBox>
+
+<Aside type="caution" title="Expected Value Meaning">
+  Do not confuse the "Expected Value" with the "most likely value". The expected value is a mathematically weighted average. For instance, the expected value of rolling a fair 6-sided die is 3.5. You cannot actually roll a 3.5! It simply means over thousands of rolls, the average of your results will converge to 3.5.
+</Aside>
+
+<SteveTip title="TI-Nspire: Calculating E(X) Quickly">
+  If you are given a large table of $x$ values and their probabilities, do not calculate the expected value by hand. 
+  1. Open a **Lists & Spreadsheet** page.
+  2. Enter the $x$ outcomes in column A (label it `xval`).
+  3. Enter the probabilities in column B (label it `prob`).
+  4. Press `Menu > 4: Statistics > 1: Stat Calculations > 1: One-Variable Statistics`.
+  5. Set `X1 List` to `xval` and `Frequency List` to `prob`.
+  6. The expected value will be displayed as $\bar{x}$.
+</SteveTip>
+
+---
+
+## 3. Applications and "Fair Games"
+
+Expected value is highly applicable in insurance, economics, and games of chance. Let the random variable $X$ represent the **financial gain** of a player.
+* **Gain** = Payout received - Cost to play.
+* A game is defined as mathematically **fair** if $\text{E}(X) = 0$.
+* If $\text{E}(X) > 0$, the game is in the player's favour.
+* If $\text{E}(X) < 0$, the game is in the house's (casino's) favour.
+
+### Worked Example: Analysing a Game
+**Question:** A local fair hosts a game where a player pays 5.00 USD to draw a ticket from a bag. The bag contains 20 tickets: 1 "Gold" ticket worth a 40.00 USD prize, 4 "Silver" tickets worth a 10.00 USD prize, and 15 "Blank" tickets worth nothing. Determine if the game is fair.
+
+**Solution:**
+<Steps>
+  1. **Define the random variable $X$ as the player's net gain.**
+     * Gold: Gain = $40 - 5 = 35.00$ USD
+     * Silver: Gain = $10 - 5 = 5.00$ USD
+     * Blank: Gain = $0 - 5 = -5.00$ USD
+  2. **Set up the probability distribution.**
+     | $x$ (Gain) | 35 | 5 | -5 |
+     | :--- | :--- | :--- | :--- |
+     | $\text{P}(X=x)$ | $\dfrac{1}{20}$ | $\dfrac{4}{20}$ | $\dfrac{15}{20}$ |
+  3. **Calculate the expected value.**
+     $$
+     \begin{aligned}
+     \text{E}(X) &= 35\left(\dfrac{1}{20}\right) + 5\left(\dfrac{4}{20}\right) + (-5)\left(\dfrac{15}{20}\right) \\
+     &= \dfrac{35 + 20 - 75}{20} \\
+     &= \dfrac{-20}{20} \\
+     &= -1.00 \text{ USD}
+     \end{aligned}
+     $$
+  4. **Conclude based on the result.**
+     Since $\text{E}(X) = -1.00 \neq 0$, the game is **not fair**. On average, a player loses 1.00 USD per game played.
+</Steps>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Finding an Unknown">
+    A discrete random variable $X$ has the following probability distribution:
+    
+    | $x$ | 0 | 1 | 2 | 3 |
+    | :--- | :--- | :--- | :--- | :--- |
+    | $\text{P}(X=x)$ | $0.2$ | $0.3$ | $p$ | $0.15$ |
+    
+    **a)** Find the value of $p$.
+    
+    **b)** Find $\text{E}(X)$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+  1. **Use the property that probabilities sum to 1.**
+     $$ 0.2 + 0.3 + p + 0.15 = 1 $$
+  2. **Solve for $p$.**
+     $$
+     \begin{aligned}
+     0.65 + p &= 1 \\
+     p &= 0.35
+     \end{aligned}
+     $$
+</Steps>
+    
+    **b)**
+<Steps>
+  1. **Apply the expected value formula.**
+     $$ \text{E}(X) = \sum x_i \text{P}(X = x_i) $$
+     $$
+     \begin{aligned}
+     \text{E}(X) &= 0(0.2) + 1(0.3) + 2(0.35) + 3(0.15) \\
+     &= 0 + 0.3 + 0.7 + 0.45 \\
+     &= 1.45
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Distribution from a Function">
+    The probability distribution of a discrete random variable $Y$ is given by $\text{P}(Y=y) = c(y^2)$ for $y \in \{1, 2, 3\}$.
+    
+    **a)** Find the value of the constant $c$.
+    
+    **b)** Find $\text{P}(Y > 1)$.
+    
+    **c)** Calculate $\text{E}(Y)$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+<Steps>
+  1. **List the probabilities and set their sum to 1.**
+     $$ \text{P}(Y=1) = c(1^2) = c $$
+     $$ \text{P}(Y=2) = c(2^2) = 4c $$
+     $$ \text{P}(Y=3) = c(3^2) = 9c $$
+     $$ c + 4c + 9c = 1 $$
+  2. **Solve for $c$.**
+     $$ 14c = 1 \implies c = \dfrac{1}{14} $$
+</Steps>
+    
+    **b)**
+<Steps>
+  1. **Identify the outcomes where $Y > 1$.**
+     $$
+     \begin{aligned}
+     \text{P}(Y > 1) &= \text{P}(Y=2) + \text{P}(Y=3) \\
+     &= \dfrac{4}{14} + \dfrac{9}{14} \\
+     &= \dfrac{13}{14}
+     \end{aligned}
+     $$
+</Steps>
+
+    **c)**
+<Steps>
+  1. **Apply the expected value formula.**
+     $$
+     \begin{aligned}
+     \text{E}(Y) &= 1\left(\dfrac{1}{14}\right) + 2\left(\dfrac{4}{14}\right) + 3\left(\dfrac{9}{14}\right) \\
+     &= \dfrac{1 + 8 + 27}{14} \\
+     &= \dfrac{36}{14} = \dfrac{18}{7}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Designing a Fair Game">
+    A charity stall features a spinner divided into 4 sectors. The probability of landing on Gold is 0.1, Silver is 0.3, and Bronze is 0.6. 
+    The prize for Gold is 20.00 USD, Silver is 5.00 USD, and Bronze pays nothing.
+    
+    Let $c$ be the cost in USD to play the game once. Find the value of $c$ that makes the game mathematically fair.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+<Steps>
+  1. **Define the random variable $X$ as the player's net gain.**
+     * Gold: $20 - c$
+     * Silver: $5 - c$
+     * Bronze: $0 - c = -c$
+  2. **Set up the expected value equation for a fair game.**
+     For a fair game, $\text{E}(X) = 0$.
+     $$ (20 - c)(0.1) + (5 - c)(0.3) + (-c)(0.6) = 0 $$
+  3. **Solve for $c$.**
+     $$ 2 - 0.1c + 1.5 - 0.3c - 0.6c = 0 $$
+     $$ 3.5 - 1.0c = 0 $$
+     $$ c = 3.50 $$
+     The game is fair if it costs 3.50 USD to play.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Simultaneous Equations">
+    The discrete random variable $X$ has the probability distribution shown below:
+    
+    | $x$ | 1 | 2 | 3 |
+    | :--- | :--- | :--- | :--- |
+    | $\text{P}(X=x)$ | $a$ | $b$ | $0.2$ |
+    
+    Given that $\text{E}(X) = 1.7$, find the values of $a$ and $b$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+<Steps>
+  1. **Create the first equation using the sum of probabilities.**
+     $$ a + b + 0.2 = 1 $$
+     $$ a + b = 0.8 \quad \text{--- (Equation 1)} $$
+  2. **Create the second equation using expected value.**
+     $$ 1(a) + 2(b) + 3(0.2) = 1.7 $$
+     $$ a + 2b + 0.6 = 1.7 $$
+     $$ a + 2b = 1.1 \quad \text{--- (Equation 2)} $$
+  3. **Solve the simultaneous equations.**
+     Subtract Equation 1 from Equation 2:
+     $$ (a + 2b) - (a + b) = 1.1 - 0.8 $$
+     $$ b = 0.3 $$
+     Substitute $b = 0.3$ into Equation 1:
+     $$ a + 0.3 = 0.8 \implies a = 0.5 $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Expected Value of a Function">
+    Let $X$ be the number of tails obtained when two fair coins are flipped.
+    
+    **a)** Construct the probability distribution table for $X$.
+    
+    **b)** A game pays out $X^2$ dollars based on the outcome of the flips. Find the expected payout.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+<Steps>
+  1. **Identify the sample space and probabilities.**
+     Sample space = \{HH, HT, TH, TT\}.
+     $X = 0$ (HH): $\text{P}(X=0) = \dfrac{1}{4}$
+     $X = 1$ (HT, TH): $\text{P}(X=1) = \dfrac{2}{4} = \dfrac{1}{2}$
+     $X = 2$ (TT): $\text{P}(X=2) = \dfrac{1}{4}$
+  2. **Construct the table.**
+     | $x$ | 0 | 1 | 2 |
+     | :--- | :--- | :--- | :--- |
+     | $\text{P}(X=x)$ | $0.25$ | $0.5$ | $0.25$ |
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Calculate the expected value of $X^2$, denoted as $\text{E}(X^2)$.**
+     Multiply each probability by the square of the outcome.
+     $$ \text{E}(X^2) = \sum (x_i)^2 \text{P}(X = x_i) $$
+     $$
+     \begin{aligned}
+     \text{E}(X^2) &= (0^2 \times 0.25) + (1^2 \times 0.5) + (2^2 \times 0.25) \\
+     &= 0 + 0.5 + 4(0.25) \\
+     &= 0.5 + 1 \\
+     &= 1.50 \text{ dollars}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Determining Payout for a Fair Game">
+    A biased 4-sided die has faces numbered 1, 2, 3, and 4. The probability distribution is $\text{P}(X=x) = \dfrac{x}{10}$. 
+    A player pays 3.00 USD to roll the die once. If they roll a 4, they win a prize of $P$ USD. If they roll anything else, they win nothing.
+    
+    Find the value of the prize $P$ that makes this a fair game.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+<Steps>
+  1. **Determine the probabilities of winning and losing.**
+     $\text{P}(\text{Win}) = \text{P}(X=4) = \dfrac{4}{10} = 0.4$
+     $\text{P}(\text{Lose}) = \text{P}(X \neq 4) = 1 - 0.4 = 0.6$
+  2. **Define the random variable $Y$ for the net gain.**
+     * Win: Gain = $P - 3$
+     * Lose: Gain = $0 - 3 = -3$
+  3. **Set the expected gain to zero for a fair game.**
+     $$ \text{E}(Y) = 0 $$
+     $$ (P - 3)(0.4) + (-3)(0.6) = 0 $$
+  4. **Solve for $P$.**
+     $$ 0.4P - 1.2 - 1.8 = 0 $$
+     $$ 0.4P - 3 = 0 $$
+     $$ 0.4P = 3 $$
+     $$ P = \dfrac{3}{0.4} = 7.50 $$
+     The prize must be 7.50 USD.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Contextual Expected Value (Economics Link)">
+    An investment fund presents a model for its expected annual returns. The return $R$ (in thousands of dollars) is modelled as a discrete random variable with the following distribution based on market conditions:
+    
+    | Market State | Bear (Slump) | Stagnant | Bull (Growth) | Boom |
+    | :--- | :--- | :--- | :--- | :--- |
+    | Return ($r$) | -10 | 2 | 8 | 20 |
+    | $\text{P}(R=r)$ | $0.25$ | $0.40$ | $0.20$ | $0.15$ |
+    
+    **a)** Calculate the expected annual return for this fund.
+    
+    **b)** Find the probability that the actual return is strictly greater than the expected return.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+<Steps>
+  1. **Apply the expected value formula.**
+     $$
+     \begin{aligned}
+     \text{E}(R) &= (-10)(0.25) + (2)(0.40) + (8)(0.20) + (20)(0.15) \\
+     &= -2.5 + 0.8 + 1.6 + 3.0 \\
+     &= 2.9
+     \end{aligned}
+     $$
+     The expected return is 2.9 thousand dollars (2900 USD).
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Identify the outcomes where $r > 2.9$.**
+     Looking at the table, returns of 8 and 20 are strictly greater than 2.9.
+  2. **Sum the corresponding probabilities.**
+     $$
+     \begin{aligned}
+     \text{P}(R > \text{E}(R)) &= \text{P}(R=8) + \text{P}(R=20) \\
+     &= 0.20 + 0.15 \\
+     &= 0.35
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Two Dice - Maximum Score">
+    Two fair 4-sided dice (numbered 1 to 4) are rolled simultaneously. Let the random variable $M$ represent the **maximum** (highest) number shown on the two dice. (If a double is rolled, that number is the maximum).
+    
+    **a)** Complete the sample space table to find all possible values of $M$.
+    
+    **b)** Construct the probability distribution table for $M$.
+    
+    **c)** Find $\text{E}(M)$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+  1. **Construct a 2D grid identifying the max value for each roll.**
+     | D1 \ D2 | 1 | 2 | 3 | 4 |
+     | :--- | :--- | :--- | :--- | :--- |
+     | **1** | 1 | 2 | 3 | 4 |
+     | **2** | 2 | 2 | 3 | 4 |
+     | **3** | 3 | 3 | 3 | 4 |
+     | **4** | 4 | 4 | 4 | 4 |
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Count the frequencies of each maximum from the 16 total outcomes.**
+     $M=1$: 1 outcome $(1,1)$
+     $M=2$: 3 outcomes
+     $M=3$: 5 outcomes
+     $M=4$: 7 outcomes
+  2. **Create the probability distribution table.**
+     | $m$ | 1 | 2 | 3 | 4 |
+     | :--- | :--- | :--- | :--- | :--- |
+     | $\text{P}(M=m)$ | $\dfrac{1}{16}$ | $\dfrac{3}{16}$ | $\dfrac{5}{16}$ | $\dfrac{7}{16}$ |
+</Steps>
+
+    **c)**
+<Steps>
+  1. **Calculate the expected value.**
+     $$
+     \begin{aligned}
+     \text{E}(M) &= 1\left(\dfrac{1}{16}\right) + 2\left(\dfrac{3}{16}\right) + 3\left(\dfrac{5}{16}\right) + 4\left(\dfrac{7}{16}\right) \\
+     &= \dfrac{1 + 6 + 15 + 28}{16} \\
+     &= \dfrac{50}{16} \\
+     &= 3.125
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>

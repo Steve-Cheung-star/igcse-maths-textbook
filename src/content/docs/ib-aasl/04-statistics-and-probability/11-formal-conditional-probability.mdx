@@ -1,6 +1,517 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 4.11 Conditional Probability and Independence
+description: Master the formal definitions of conditional probability, understand how a sample space is reduced, and learn the tests for independent events.
 ---
 
-Content coming soon.
+When we calculate probabilities, we often receive new information that changes the likelihood of an event occurring. This is the essence of **conditional probability**. If we know that a certain event has already happened, we are no longer looking at the entire original sample space; instead, we restrict our focus to a smaller, "reduced" sample space.
+
+<Aside type="note" title="Connections: Medicine, TOK & Interdisciplinary Knowledge">
+  **Medical Studies:** Conditional probability is the mathematical foundation of diagnostic testing. When assessing risk factors, doctors don't just look at the overall probability of a disease $\text{P}(D)$. They look at the conditional probability given a symptom $\text{P}(D|\text{Symptom})$ or a positive test result $\text{P}(D|\text{Test Positive})$. 
+  
+  **Theory of Knowledge (TOK):** The applications of probability stretch across medicine, finance, sociology, and physics. Given the highly interdisciplinary nature of real-world probability, is the division of knowledge into discrete subjects (like "Mathematics", "Biology", or "Economics") artificial? Does organising knowledge into separate "silos" limit our ability to understand complex, interconnected global issues?
+</Aside>
+
+## 1. Conditional Probability Formula
+
+The probability of event $A$ occurring, **given that** event $B$ has already occurred, is written as $\text{P}(A|B)$. 
+
+When $B$ has occurred, $B$ becomes our new sample space. The only way $A$ can now occur is if the outcome is in the intersection of $A$ and $B$.
+
+$$ \text{P}(A|B) = \dfrac{\text{P}(A \cap B)}{\text{P}(B)} $$
+*(where $\text{P}(B) > 0$)*
+
+By rearranging this formula, we get the **general multiplication rule**:
+$$ \text{P}(A \cap B) = \text{P}(B)\text{P}(A|B) $$
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="conditional-probability-venn" viewBox="0 0 600 400" width="100%" style="max-width: 600px; background: #ffffff; border-radius: 8px; border: 1px solid #cbd5e1;">
+    <rect x="50" y="40" width="500" height="300" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" rx="8" stroke-dasharray="6"/>
+    <text x="70" y="70" font-family="sans-serif" font-size="14" fill="#64748b">Original Sample Space (U)</text>
+    
+    <circle cx="240" cy="200" r="100" fill="none" stroke="#94a3b8" stroke-width="2"/>
+    <text x="170" y="205" font-family="sans-serif" font-size="28" font-weight="bold" fill="#94a3b8">A</text>
+    
+    <circle cx="360" cy="200" r="100" fill="#dbeafe" stroke="#3b82f6" stroke-width="4" opacity="0.6"/>
+    <text x="430" y="205" font-family="sans-serif" font-size="28" font-weight="bold" fill="#2563eb">B</text>
+    
+    <path d="M 300 120 
+             A 100 100 0 0 1 300 280 
+             A 100 100 0 0 1 300 120 Z" 
+          fill="#2563eb" />
+    
+    <path d="M 300 160 L 300 90" stroke="#0f172a" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <text x="300" y="60" font-family="sans-serif" font-size="14" font-weight="bold" fill="#0f172a" text-anchor="middle">Numerator: P(A ∩ B)</text>
+    
+    <path d="M 400 280 L 400 350" stroke="#2563eb" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+    <text x="400" y="380" font-family="sans-serif" font-size="14" font-weight="bold" fill="#2563eb" text-anchor="middle">Denominator: P(B) (New Sample Space)</text>
+
+    <defs>
+      <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+        <polygon points="0 0, 10 3.5, 0 7" fill="#0f172a" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+<SteveTip title="Translating English to Maths">
+  Look out for keywords in exam questions. "Given that", "if it is known that", or "from the group of..." are all massive hints that you must use conditional probability, not standard probability.
+</SteveTip>
+
+### Worked Example: Using the Formula
+**Question:** In a group of students, the probability that a student studies History is $0.6$. The probability that a student studies both History and Geography is $0.45$. Given that a randomly selected student studies History, find the probability that they also study Geography.
+
+**Solution:**
+<Steps>
+  1. **Define the events and state known probabilities.**
+     Let $H$ be studying History, and $G$ be studying Geography.
+     $\text{P}(H) = 0.6$
+     $\text{P}(H \cap G) = 0.45$
+  2. **Set up the conditional probability formula.**
+     We are looking for $\text{P}(G|H)$.
+     $$ \text{P}(G|H) = \dfrac{\text{P}(G \cap H)}{\text{P}(H)} $$
+  3. **Substitute and solve.**
+     $$
+     \begin{aligned}
+     \text{P}(G|H) &= \dfrac{0.45}{0.6} \\
+     &= 0.75
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 2. Independent Events
+
+Two events are **independent** if the occurrence of one does not affect the probability of the other occurring. 
+
+Formally, $A$ and $B$ are independent if:
+$$ \text{P}(A|B) = \text{P}(A) $$
+This means knowing $B$ happened didn't change the chance of $A$ happening. Furthermore, if $A$ is independent of $B$, it is also independent of $B$ not happening ($B'$). Therefore, for independent events:
+$$ \text{P}(A|B) = \text{P}(A) = \text{P}(A|B') $$
+
+### Testing for Independence
+
+Because $\text{P}(A|B) = \dfrac{\text{P}(A \cap B)}{\text{P}(B)}$, substituting $\text{P}(A)$ for $\text{P}(A|B)$ gives us the standard mathematical test for independence:
+Two events $A$ and $B$ are independent **if and only if**:
+$$ \text{P}(A \cap B) = \text{P}(A) \times \text{P}(B) $$
+
+<Aside type="danger" title="Independent vs. Mutually Exclusive">
+  Students often confuse **Independent** events with **Mutually Exclusive** events. They are completely different concepts!
+  * **Independent:** One event doesn't affect the probability of the other. Test: $\text{P}(A \cap B) = \text{P}(A)\text{P}(B)$.
+  * **Mutually Exclusive:** The two events cannot happen at the same time. Test: $\text{P}(A \cap B) = 0$.
+  In fact, if two events (with probabilities $> 0$) are mutually exclusive, they *cannot* be independent! (Knowing one happened means the other definitely didn't).
+</Aside>
+
+### Worked Example: Testing Independence
+**Question:** Events $X$ and $Y$ are such that $\text{P}(X) = 0.4$, $\text{P}(Y) = 0.5$, and $\text{P}(X \cup Y) = 0.7$. Determine whether events $X$ and $Y$ are independent.
+
+**Solution:**
+<Steps>
+  1. **Find the intersection $\text{P}(X \cap Y)$.**
+     Using the addition rule: $\text{P}(X \cup Y) = \text{P}(X) + \text{P}(Y) - \text{P}(X \cap Y)$.
+     $$
+     \begin{aligned}
+     0.7 &= 0.4 + 0.5 - \text{P}(X \cap Y) \\
+     0.7 &= 0.9 - \text{P}(X \cap Y) \\
+     \text{P}(X \cap Y) &= 0.2
+     \end{aligned}
+     $$
+  2. **Calculate the product of the individual probabilities.**
+     $$
+     \begin{aligned}
+     \text{P}(X) \times \text{P}(Y) &= 0.4 \times 0.5 \\
+     &= 0.2
+     \end{aligned}
+     $$
+  3. **Compare and conclude.**
+     Since $\text{P}(X \cap Y) = \text{P}(X) \times \text{P}(Y)$, the events $X$ and $Y$ are independent.
+</Steps>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Solving for k (Union Constraints)">
+    Events $A$ and $B$ are such that $\text{P}(A) = 0.4$, $\text{P}(B) = k$, and $\text{P}(A \cup B) = 0.7$.  
+    Find the value of $k$ given that:  
+    **a)** $A$ and $B$ are mutually exclusive.  
+    **b)** $A$ and $B$ are independent.  
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+  1. If $A$ and $B$ are mutually exclusive, then $\text{P}(A \cap B) = 0$.
+  2. Substitute into the addition rule: $\text{P}(A \cup B) = \text{P}(A) + \text{P}(B) - \text{P}(A \cap B)$.
+     $$
+     \begin{aligned}
+     0.7 &= 0.4 + k - 0 \\
+     k &= 0.7 - 0.4 \\
+     k &= 0.3
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+<Steps>
+  1. If $A$ and $B$ are independent, then $\text{P}(A \cap B) = \text{P}(A) \times \text{P}(B) = 0.4k$.
+  2. Substitute into the addition rule.
+     $$
+     \begin{aligned}
+     \text{P}(A \cup B) &= \text{P}(A) + \text{P}(B) - \text{P}(A \cap B) \\
+     0.7 &= 0.4 + k - 0.4k \\
+     0.7 - 0.4 &= k(1 - 0.4) \\
+     0.3 &= 0.6k \\
+     k &= \dfrac{0.3}{0.6} = 0.5
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Solving for k (Intersection Constraints)">
+    Events $C$ and $D$ are such that $\text{P}(C) = k$, $\text{P}(D) = 2k$, and $\text{P}(C \cap D) = 0.18$.  
+    **a)** Find the exact value of $k$, given that $C$ and $D$ are independent events.  
+    **b)** Hence, find $\text{P}(C \cup D)$.  
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+<Steps>
+  1. Because $C$ and $D$ are independent, we use the property $\text{P}(C \cap D) = \text{P}(C)\text{P}(D)$.
+     $$
+     \begin{aligned}
+     0.18 &= k \times 2k \\
+     0.18 &= 2k^2 \\
+     k^2 &= 0.09
+     \end{aligned}
+     $$
+  2. Solve for $k$. Since a probability must be non-negative, we reject $k = -0.3$.
+     $$ k = 0.3 $$
+</Steps>
+    **b)**
+<Steps>
+  1. Determine the individual probabilities: $\text{P}(C) = 0.3$ and $\text{P}(D) = 2(0.3) = 0.6$.
+  2. Substitute into the addition rule.
+     $$
+     \begin{aligned}
+     \text{P}(C \cup D) &= \text{P}(C) + \text{P}(D) - \text{P}(C \cap D) \\
+     &= 0.3 + 0.6 - 0.18 \\
+     &= 0.9 - 0.18 \\
+     &= 0.72
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Formula Manipulation">
+    Events $A$ and $B$ are such that $\text{P}(A) = 0.55$, $\text{P}(B) = 0.4$, and $\text{P}(A \cup B) = 0.75$.  
+    **a)** Find $\text{P}(A \cap B)$.  
+    **b)** Find $\text{P}(A|B)$.  
+    **c)** Find $\text{P}(B|A)$.  
+    **d)** State, with a mathematical reason, whether $A$ and $B$ are independent.  
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+  1. Use the addition rule.
+     $$
+     \begin{aligned}
+     \text{P}(A \cup B) &= \text{P}(A) + \text{P}(B) - \text{P}(A \cap B) \\
+     0.75 &= 0.55 + 0.4 - \text{P}(A \cap B) \\
+     \text{P}(A \cap B) &= 0.95 - 0.75 \\
+     \text{P}(A \cap B) &= 0.2
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+<Steps>
+  1. Use the conditional probability formula.
+     $$
+     \begin{aligned}
+     \text{P}(A|B) &= \dfrac{\text{P}(A \cap B)}{\text{P}(B)} \\
+     &= \dfrac{0.2}{0.4} \\
+     &= 0.5
+     \end{aligned}
+     $$
+</Steps>
+    **c)**
+<Steps>
+  1. Use the conditional probability formula.
+     $$
+     \begin{aligned}
+     \text{P}(B|A) &= \dfrac{\text{P}(B \cap A)}{\text{P}(A)} \\
+     &= \dfrac{0.2}{0.55} \\
+     &= \dfrac{20}{55} = \dfrac{4}{11} \approx 0.364 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+    **d)**
+<Steps>
+  1. Check if $\text{P}(A \cap B) = \text{P}(A)\text{P}(B)$ or if $\text{P}(A|B) = \text{P}(A)$.
+     $$
+     \begin{aligned}
+     \text{P}(A)\text{P}(B) &= 0.55 \times 0.4 = 0.22
+     \end{aligned}
+     $$
+  2. Since $\text{P}(A \cap B) = 0.2$ and $\text{P}(A)\text{P}(B) = 0.22$, they are not equal. Therefore, $A$ and $B$ are **not independent**.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Conditional Probability from a Table">
+    A company surveys 120 employees about their preferred working environment. The results are categorised by department.
+    
+    | | Remote | Hybrid | Office | **Total** |
+    | :--- | :--- | :--- | :--- | :--- |
+    | **IT** | 25 | 15 | 5 | **45** |
+    | **Sales** | 10 | 30 | 35 | **75** |
+    | **Total** | **35** | **45** | **40** | **120** |
+    
+    A randomly selected employee is chosen.  
+    **a)** Find the probability that the employee prefers Hybrid work.  
+    **b)** Given that the employee is in IT, find the probability that they prefer Remote work.  
+    **c)** Given that the employee prefers the Office, find the probability that they are in Sales.  
+    **d)** Are the events "Prefers Remote" and "Is in IT" independent? Justify your answer.  
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    Let $H$, $R$, $O$ represent Hybrid, Remote, Office. Let $I$, $S$ represent IT, Sales.
+    
+    **a)**
+<Steps>
+  1. Read the total for Hybrid from the table.
+     $$ \text{P}(H) = \dfrac{45}{120} = \dfrac{3}{8} = 0.375 $$
+</Steps>
+    **b)**
+<Steps>
+  1. We want $\text{P}(R|I)$. The "given that" restricts our total to only the IT row (Total = 45).
+  2. The number of IT employees who prefer Remote is 25.
+     $$
+     \begin{aligned}
+     \text{P}(R|I) &= \dfrac{\text{P}(R \cap I)}{\text{P}(I)} \\
+     &= \dfrac{25/120}{45/120} = \dfrac{25}{45} = \dfrac{5}{9} \approx 0.556 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+    **c)**
+<Steps>
+  1. We want $\text{P}(S|O)$. The restricted sample space is the Office column (Total = 40).
+  2. The number of Office workers in Sales is 35.
+     $$ \text{P}(S|O) = \dfrac{35}{40} = \dfrac{7}{8} = 0.875 $$
+</Steps>
+    **d)**
+<Steps>
+  1. We can test if $\text{P}(R|I) = \text{P}(R)$.
+  2. From (b), $\text{P}(R|I) = \dfrac{5}{9} \approx 0.556$.
+  3. Overall probability of Remote: $\text{P}(R) = \dfrac{35}{120} = \dfrac{7}{24} \approx 0.292$.
+  4. Since $\text{P}(R|I) \neq \text{P}(R)$, the events are **not independent**.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Medical Diagnosis Context">
+    A rare disease affects 2% of a population. A diagnostic test is developed. 
+    If a person has the disease, the test will be positive 95% of the time. 
+    If a person does not have the disease, the test will falsely return a positive result 4% of the time.  
+    **a)** Draw a clearly labelled tree diagram to represent this information.  
+    **b)** Find the probability that a randomly chosen person tests positive.  
+    **c)** Given that a person tests positive, find the probability that they actually have the disease.  
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    Let $D$ be having the disease, and $D'$ be not having the disease. Let $T^+$ be a positive test, and $T^-$ be a negative test.
+    
+    **a)**
+<Steps>
+  1. First branches: Disease ($D$) = 0.02, No Disease ($D'$) = 0.98.
+  2. Second branches from $D$: Positive ($T^+$) = 0.95, Negative ($T^-$) = 0.05.
+  3. Second branches from $D'$: Positive ($T^+$) = 0.04, Negative ($T^-$) = 0.96.
+</Steps>
+    **b)**
+<Steps>
+  1. A positive test can happen two ways: $D \cap T^+$ or $D' \cap T^+$.
+  2. Sum the probabilities of these two paths.
+     $$
+     \begin{aligned}
+     \text{P}(T^+) &= \text{P}(D \cap T^+) + \text{P}(D' \cap T^+) \\
+     &= (0.02 \times 0.95) + (0.98 \times 0.04) \\
+     &= 0.019 + 0.0392 \\
+     &= 0.0582
+     \end{aligned}
+     $$
+</Steps>
+    **c)**
+<Steps>
+  1. We want $\text{P}(D|T^+)$.
+     $$ \text{P}(D|T^+) = \dfrac{\text{P}(D \cap T^+)}{\text{P}(T^+)} $$
+  2. Substitute the values calculated in part (b).
+     $$
+     \begin{aligned}
+     \text{P}(D|T^+) &= \dfrac{0.019}{0.0582} \\
+     &\approx 0.326 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+     *(Note for students: Despite testing positive, there is only a 32.6% chance the person actually has the disease. This is a classic medical statistics counter-intuitive result!)*
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Venn Diagram Complements and Conditionals">
+    A group of 80 students were asked if they like Algebra ($A$) or Geometry ($G$). 
+    45 like Algebra, 35 like Geometry, and 15 like neither.  
+    **a)** Find the number of students who like both Algebra and Geometry.  
+    **b)** Draw a fully labelled Venn diagram representing this information.  
+    **c)** Find $\text{P}(A \cap G')$.  
+    **d)** Find $\text{P}(G | A')$.  
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+  1. Let $x$ be the number of students who like both.
+     The number who like at least one is $80 - 15 = 65$.
+  2. Use the addition rule for sets: $n(A \cup G) = n(A) + n(G) - n(A \cap G)$.
+     $$
+     \begin{aligned}
+     65 &= 45 + 35 - x \\
+     65 &= 80 - x \\
+     x &= 15
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+<Steps>
+  1. Draw the universal set containing 80.
+  2. Intersection ($A \cap G$) = 15.
+  3. Algebra only ($A \cap G'$) = $45 - 15 = 30$.
+  4. Geometry only ($G \cap A'$) = $35 - 15 = 20$.
+  5. Outside both ($(A \cup G)'$) = 15.
+</Steps>
+    **c)**
+<Steps>
+  1. $\text{P}(A \cap G')$ is the probability of liking Algebra but NOT Geometry (Algebra only).
+     $$ \text{P}(A \cap G') = \dfrac{30}{80} = \dfrac{3}{8} = 0.375 $$
+</Steps>
+    **d)**
+<Steps>
+  1. We want $\text{P}(G | A')$. The "given that" condition is $A'$ (students who do NOT like Algebra).
+  2. Find the total number of students in $A'$ (the new sample space).
+     $n(A') = 20 \text{ (Geometry only)} + 15 \text{ (Neither)} = 35$.
+  3. Out of those 35 students, how many like Geometry? Only the 20 who are in $G \cap A'$.
+     $$
+     \begin{aligned}
+     \text{P}(G | A') &= \dfrac{n(G \cap A')}{n(A')} \\
+     &= \dfrac{20}{35} = \dfrac{4}{7} \approx 0.571 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Conceptual Independence Test">
+    A standard fair six-sided die is rolled. 
+    Let $E$ be the event that the number rolled is even.
+    Let $M$ be the event that the number rolled is a multiple of 3.  
+    Determine, with mathematical justification, whether events $E$ and $M$ are independent.  
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+<Steps>
+  1. List the sample space and the outcomes for each event.
+     $U = \{1, 2, 3, 4, 5, 6\}$
+     $E = \{2, 4, 6\} \implies \text{P}(E) = \dfrac{3}{6} = \dfrac{1}{2}$
+     $M = \{3, 6\} \implies \text{P}(M) = \dfrac{2}{6} = \dfrac{1}{3}$
+  2. Find the intersection $E \cap M$.
+     The only number both even and a multiple of 3 is $6$.
+     $E \cap M = \{6\} \implies \text{P}(E \cap M) = \dfrac{1}{6}$
+  3. Test for independence: does $\text{P}(E \cap M) = \text{P}(E) \times \text{P}(M)$?
+     $$
+     \begin{aligned}
+     \text{P}(E) \times \text{P}(M) &= \dfrac{1}{2} \times \dfrac{1}{3} \\
+     &= \dfrac{1}{6}
+     \end{aligned}
+     $$
+  4. Since $\text{P}(E \cap M) = \text{P}(E) \times \text{P}(M)$, the events $E$ and $M$ are **independent**.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Manipulating Conditionals">
+    For two events $S$ and $T$, it is given that $\text{P}(S) = 0.4$, $\text{P}(T|S) = 0.3$, and $\text{P}(S|T) = 0.6$.  
+    **a)** Find $\text{P}(S \cap T)$.  
+    **b)** Find $\text{P}(T)$.  
+    **c)** Are $S$ and $T$ mutually exclusive? Justify your answer.  
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+  1. Use the multiplication rule.
+     $$
+     \begin{aligned}
+     \text{P}(S \cap T) &= \text{P}(S)\text{P}(T|S) \\
+     &= 0.4 \times 0.3 \\
+     &= 0.12
+     \end{aligned}
+     $$
+</Steps>
+    **b)**
+<Steps>
+  1. Use the conditional probability formula for $\text{P}(S|T)$.
+     $$
+     \begin{aligned}
+     \text{P}(S|T) &= \dfrac{\text{P}(S \cap T)}{\text{P}(T)} \\
+     0.6 &= \dfrac{0.12}{\text{P}(T)} \\
+     \text{P}(T) &= \dfrac{0.12}{0.6} \\
+     &= 0.2
+     \end{aligned}
+     $$
+</Steps>
+    **c)**
+<Steps>
+  1. Mutually exclusive events cannot occur at the same time, meaning their intersection probability must be $0$.
+  2. We found $\text{P}(S \cap T) = 0.12$.
+  3. Since $0.12 \neq 0$, events $S$ and $T$ are **not mutually exclusive**.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q9: A Casino Game Context">
+    A casino offers a card game. Event $A$ is drawing an Ace, and Event $K$ is drawing a King. Players must pay 10.00 USD to play.
+    Suppose the casino uses a rigged deck such that $\text{P}(A) = 0.15$ and $\text{P}(K) = 0.20$. You are told that $A$ and $K$ are mutually exclusive in this single draw.  
+    **a)** State $\text{P}(A \cap K)$.  
+    **b)** Find the conditional probability $\text{P}(A | K')$.  
+    **c)** Explain in words what $\text{P}(A | K')$ means in this context.  
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)**
+<Steps>
+  1. Because $A$ and $K$ are mutually exclusive (you cannot draw a card that is both an Ace and a King simultaneously).
+     $$ \text{P}(A \cap K) = 0 $$
+</Steps>
+    **b)**
+<Steps>
+  1. We want $\text{P}(A | K')$. Use the conditional formula:
+     $$ \text{P}(A | K') = \dfrac{\text{P}(A \cap K')}{\text{P}(K')} $$
+  2. Find $\text{P}(K')$.
+     $$ \text{P}(K') = 1 - 0.20 = 0.80 $$
+  3. Find $\text{P}(A \cap K')$. Since $A$ and $K$ are mutually exclusive, all of event $A$ happens entirely outside of $K$. Thus, $A \cap K' = A$.
+     $$ \text{P}(A \cap K') = \text{P}(A) = 0.15 $$
+  4. Calculate the conditional probability.
+     $$
+     \begin{aligned}
+     \text{P}(A | K') &= \dfrac{0.15}{0.80} \\
+     &= 0.1875
+     \end{aligned}
+     $$
+</Steps>
+    **c)**
+<Steps>
+  1. It represents the probability of drawing an Ace, **given that** the card drawn was not a King.
+  2. Because we know a King was not drawn, the total pool of possible outcomes is smaller, making the likelihood of drawing an Ace slightly higher (from 0.15 to 0.1875).
+</Steps>
+  </TabItem>
+</Tabs>

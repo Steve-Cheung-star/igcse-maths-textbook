@@ -1,6 +1,675 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 3.5 Trigonometric Ratios, The Unit Circle, and the Ambiguous Case
+description: Expand your understanding of trigonometry beyond right-angled triangles using the unit circle, explore exact values, and navigate the ambiguous case of the sine rule.
 ---
 
-Content coming soon.
+In previous studies, you likely defined sine, cosine, and tangent using the opposite, adjacent, and hypotenuse sides of a right-angled triangle. Now, we expand these definitions to the **unit circle**, which allows us to find trigonometric ratios for any angle—positive, negative, or greater than $360^\circ$ ($2\pi \text{ rad}$).
+
+<Aside type="note" title="Connections & TOK">
+  **International-mindedness:** The first work to refer explicitly to the sine as a function of an angle is the *Aryabhatiya* of Aryabhata (ca 510). 
+
+  **Theory of Knowledge (TOK):** Trigonometry was developed by successive civilisations and cultures. To what extent is mathematical knowledge embedded in particular traditions or bound to particular cultures? How have key events in the history of mathematics shaped its current form and methods?
+
+  **Enrichment:** The proof of Pythagoras’ theorem in three dimensions.
+</Aside>
+
+---
+
+## 1. The Unit Circle Definition of Sine and Cosine
+
+Imagine a circle with a radius of exactly $1$ unit, centred at the origin $(0,0)$ of a Cartesian coordinate system. If we draw a line from the origin to a point on the circle, making an angle $\theta$ with the positive x-axis, the coordinates of that point are precisely defined by cosine and sine.
+
+* The **x-coordinate** is $\cos\theta$.
+* The **y-coordinate** is $\sin\theta$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 0.5rem 0' }}>
+  <svg viewBox="-150 -150 300 300" width="100%" maxWidth="400px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid and Axes */}
+    <line x1="-150" y1="0" x2="150" y2="0" stroke="#cbd5e1" stroke-width="1.5" />
+    <line x1="0" y1="-150" x2="0" y2="150" stroke="#cbd5e1" stroke-width="1.5" />
+    <text x="135" y="-5" font-size="12" fill="#64748b" font-family="sans-serif">x</text>
+    <text x="5" y="-135" font-size="12" fill="#64748b" font-family="sans-serif">y</text>
+    
+    {/* Unit Circle */}
+    <circle cx="0" cy="0" r="100" fill="none" stroke="#3b82f6" stroke-width="2" />
+    
+    {/* Triangle in Q1 */}
+    <path d="M 0 0 L 70.7 -70.7 L 70.7 0 Z" fill="#dbeafe" stroke="none" opacity="0.6" />
+    <line x1="0" y1="0" x2="70.7" y2="-70.7" stroke="#1e293b" stroke-width="2" />
+    <line x1="70.7" y1="0" x2="70.7" y2="-70.7" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    <line x1="0" y1="0" x2="70.7" y2="0" stroke="#10b981" stroke-width="2" stroke-dasharray="4 4" />
+    
+    {/* Angle Arc */}
+    <path d="M 25 0 A 25 25 0 0 0 17.6 -17.6" fill="none" stroke="#f59e0b" stroke-width="2" />
+    <text x="30" y="-8" font-size="14" font-weight="bold" fill="#f59e0b" font-family="sans-serif">θ</text>
+    
+    {/* Point Coordinates */}
+    <circle cx="70.7" cy="-70.7" r="4" fill="#0f172a" />
+    <text x="75" y="-80" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">(cos θ, sin θ)</text>
+    
+    {/* Labels */}
+    <text x="-95" y="-95" font-size="16" font-weight="bold" fill="#94a3b8" font-family="sans-serif">S</text>
+    <text x="85" y="-95" font-size="16" font-weight="bold" fill="#94a3b8" font-family="sans-serif">A</text>
+    <text x="-95" y="95" font-size="16" font-weight="bold" fill="#94a3b8" font-family="sans-serif">T</text>
+    <text x="85" y="95" font-size="16" font-weight="bold" fill="#94a3b8" font-family="sans-serif">C</text>
+    <text x="40" y="-10" font-size="12" fill="#10b981" font-family="sans-serif">cos θ</text>
+    <text x="75" y="-35" font-size="12" fill="#ef4444" font-family="sans-serif">sin θ</text>
+    <text x="-25" y="-35" font-size="14" fill="#1e293b" font-family="sans-serif">r=1</text>
+  </svg>
+</div>
+
+This definition explains the behaviour of angles across different quadrants, often remembered using the **CAST diagram**:
+
+| Quadrant | Angle Range | CAST Letter | Positive Ratios | Negative Ratios |
+| :--- | :--- | :--- | :--- | :--- |
+| **1st** | $0 < \theta < \dfrac{\pi}{2}$ | **A** (All) | $\sin$, $\cos$, $\tan$ | None |
+| **2nd** | $\dfrac{\pi}{2} < \theta < \pi$ | **S** (Sine) | $\sin$ | $\cos$, $\tan$ |
+| **3rd** | $\pi < \theta < \dfrac{3\pi}{2}$ | **T** (Tangent) | $\tan$ | $\sin$, $\cos$ |
+| **4th** | $\dfrac{3\pi}{2} < \theta < 2\pi$ | **C** (Cosine) | $\cos$ | $\sin$, $\tan$ |
+
+Because of the circle's symmetry, we can deduce important equivalent identities:
+* $\cos x = \cos(-x)$ (cosine is positive in the 4th quadrant, mirroring the 1st)
+* $\sin(\pi + x) = -\sin x$ (moving into the 3rd quadrant makes the y-coordinate negative)
+* $\tan(3\pi - x) = -\tan x$ (equivalent to $\pi - x$, which is in the 2nd quadrant where tangent is negative)
+
+### Worked Example 1: Unit Circle Symmetries
+**Question:** Given that $\sin x = 0.6$ and $x$ is acute, find the value of $\sin(\pi - x)$ and $\sin(-x)$.
+
+**Solution:**
+The angle $(\pi - x)$ is in the second quadrant. Since sine corresponds to the y-coordinate, and y is positive in both the first and second quadrants:
+$$
+\begin{aligned}
+\sin(\pi - x) &= \sin x \\
+&= 0.6
+\end{aligned}
+$$
+
+The angle $-x$ is in the fourth quadrant. The y-coordinate here is negative:
+$$
+\begin{aligned}
+\sin(-x) &= -\sin x \\
+&= -0.6
+\end{aligned}
+$$
+
+---
+
+## 2. The Tangent Function and Straight Lines
+
+The tangent of an angle is fundamentally linked to the slope (gradient) of a line.
+
+Identity for $\tan \theta$
+<FormulaBox>
+  $$\tan\theta = \dfrac{\sin\theta}{\cos\theta}$$
+</FormulaBox>
+
+
+Because slope is defined as "change in $y$ over change in $x$" ($\dfrac{y}{x}$), and on the unit circle $y = \sin\theta$ and $x = \cos\theta$, the tangent of $\theta$ is exactly the slope of the line passing through the origin!
+
+Therefore, the equation of a straight line through the origin can be written as:
+$$
+\begin{aligned}
+y &= x\tan\theta
+\end{aligned}
+$$
+where $\theta$ is the angle formed between the line and the positive x-axis.
+
+### Worked Example 2: Straight Lines
+**Question:** A straight line passes through the origin and makes an angle of $\dfrac{3\pi}{4}$ radians with the positive x-axis. Find the exact equation of this line.
+
+**Solution:**
+Using the relationship $y = x\tan\theta$:
+$$
+\begin{aligned}
+y &= x\tan\left(\dfrac{3\pi}{4}\right)
+\end{aligned}
+$$
+The angle $\dfrac{3\pi}{4}$ is in the second quadrant, where tangent is negative. The reference angle is $\dfrac{\pi}{4}$, and $\tan\left(\dfrac{\pi}{4}\right) = 1$.
+$$
+\begin{aligned}
+\tan\left(\dfrac{3\pi}{4}\right) &= -1 \\
+y &= -1x \\
+y &= -x
+\end{aligned}
+$$
+
+---
+
+## 3. Exact Values of Trigonometric Ratios
+
+You are expected to memorise the exact trigonometric ratios for standard angles across different quadrants.
+
+| Angle (radians) | Angle (degrees) | $\sin\theta$ | $\cos\theta$ | $\tan\theta$ |
+| :--- | :--- | :--- | :--- | :--- |
+| $0$ | $0^\circ$ | $0$ | $1$ | $0$ |
+| $\dfrac{\pi}{6}$ | $30^\circ$ | $\dfrac{1}{2}$ | $\dfrac{\sqrt{3}}{2}$ | $\dfrac{\sqrt{3}}{3}$ |
+| $\dfrac{\pi}{4}$ | $45^\circ$ | $\dfrac{\sqrt{2}}{2}$ | $\dfrac{\sqrt{2}}{2}$ | $1$ |
+| $\dfrac{\pi}{3}$ | $60^\circ$ | $\dfrac{\sqrt{3}}{2}$ | $\dfrac{1}{2}$ | $\sqrt{3}$ |
+| $\dfrac{\pi}{2}$ | $90^\circ$ | $1$ | $0$ | *Undefined* |
+
+<SteveTip title="The Left-Hand Trick">
+  To easily memorise exact values in the first quadrant, use your left hand. Assign $0, \dfrac{\pi}{6}, \dfrac{\pi}{4}, \dfrac{\pi}{3}, \dfrac{\pi}{2}$ to your thumb through to your pinky. Fold down the finger of the angle you want. 
+  * $\sin\theta = \dfrac{\sqrt{\text{fingers below}}}{2}$
+  * $\cos\theta = \dfrac{\sqrt{\text{fingers above}}}{2}$
+</SteveTip>
+
+### Worked Example 3: Exact Values
+**Question:** Find the exact value of $\sin\left(\dfrac{4\pi}{3}\right)$.
+
+**Solution:**
+The angle $\dfrac{4\pi}{3}$ is in the third quadrant, where sine is negative. The reference angle is $\dfrac{\pi}{3}$.
+$$
+\begin{aligned}
+\sin\left(\dfrac{4\pi}{3}\right) &= -\sin\left(\dfrac{\pi}{3}\right) \\
+&= -\dfrac{\sqrt{3}}{2}
+\end{aligned}
+$$
+
+---
+
+## 4. The Ambiguous Case of the Sine Rule
+
+When you are given two sides and a non-included angle (SSA - Side, Side, Angle), there is a possibility that **two different triangles** can be drawn with those exact measurements. This is known as the **ambiguous case**.
+
+Sine rule
+<FormulaBox>
+  $$\dfrac{a}{\sin A} = \dfrac{b}{\sin B} = \dfrac{c}{\sin C}$$
+</FormulaBox>
+
+
+<Aside type="danger" title="Calculator Limitations">
+  When solving for a missing angle using the inverse sine function ($\arcsin$ or $\sin^{-1}$) on your calculator, it will only ever return the **acute** angle (1st quadrant). Because $\sin\theta = \sin(180^\circ - \theta)$, you must manually check if the obtuse angle ($180^\circ - \theta$) is also a valid mathematical possibility for your triangle!
+</Aside>
+
+### Worked Example 4: The Ambiguous Case
+**Question:** In triangle $PQR$, $PQ = 10 \text{ cm}$, $PR = 14 \text{ cm}$, and angle $PQR = 45^\circ$. Find all possible values for angle $PRQ$.
+
+**Solution:**
+Set up the Sine Rule:
+$$
+\begin{aligned}
+\dfrac{14}{\sin(45^\circ)} &= \dfrac{10}{\sin R} \\
+\sin R &= \dfrac{10 \times \sin(45^\circ)}{14} \\
+\sin R &\approx 0.50507...
+\end{aligned}
+$$
+
+Find the acute angle ($R_1$):
+$$
+\begin{aligned}
+R_1 &= \arcsin(0.50507...) \\
+R_1 &\approx 30.3^\circ \text{ (to 3 s.f.)}
+\end{aligned}
+$$
+
+Check for the obtuse ambiguous angle ($R_2$):
+$$
+\begin{aligned}
+R_2 &= 180^\circ - 30.33...^\circ \\
+R_2 &\approx 149.7^\circ
+\end{aligned}
+$$
+
+Verify if $R_2$ is valid: If $R = 149.7^\circ$ and $Q = 45^\circ$, the sum is $194.7^\circ$, which exceeds $180^\circ$. Therefore, there is no ambiguous case here. The only valid angle is $30.3^\circ$.
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Exploring Symmetries">
+    Given that $\cos\left(\dfrac{\pi}{7}\right) = p$, write the following in terms of $p$:
+    
+    **a)** $\cos\left(-\dfrac{\pi}{7}\right)$
+    
+    **b)** $\cos\left(\dfrac{6\pi}{7}\right)$
+    
+    **c)** $\cos\left(\dfrac{8\pi}{7}\right)$
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+    1. **Apply the even function property of cosine.**
+       Cosine is positive in both the first and fourth quadrants.
+       $$
+       \begin{aligned}
+       \cos\left(-\dfrac{\pi}{7}\right) &= \cos\left(\dfrac{\pi}{7}\right) \\
+       &= p
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Identify the quadrant for $\dfrac{6\pi}{7}$.**
+       This is slightly less than $\pi$, putting it in the second quadrant where cosine is negative.
+    2. **Express using the reference angle.**
+       $$
+       \begin{aligned}
+       \cos\left(\dfrac{6\pi}{7}\right) &= \cos\left(\pi - \dfrac{\pi}{7}\right) \\
+       &= -\cos\left(\dfrac{\pi}{7}\right) \\
+       &= -p
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Identify the quadrant for $\dfrac{8\pi}{7}$.**
+       This is slightly more than $\pi$, putting it in the third quadrant where cosine is also negative.
+    2. **Express using the reference angle.**
+       $$
+       \begin{aligned}
+       \cos\left(\dfrac{8\pi}{7}\right) &= \cos\left(\pi + \dfrac{\pi}{7}\right) \\
+       &= -\cos\left(\dfrac{\pi}{7}\right) \\
+       &= -p
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Evaluating Exact Values">
+    Without using a calculator, evaluate the following exact expressions:
+    
+    **a)** $\sin\left(\dfrac{5\pi}{6}\right) + \cos\left(\dfrac{\pi}{3}\right)$
+    
+    **b)** $\tan\left(\dfrac{7\pi}{4}\right) \times \sin\left(\dfrac{\pi}{2}\right)$
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+<Steps>
+    1. **Evaluate each term separately.**
+       $\dfrac{5\pi}{6}$ is in the second quadrant (sine is positive), reference angle is $\dfrac{\pi}{6}$.
+       $$
+       \begin{aligned}
+       \sin\left(\dfrac{5\pi}{6}\right) &= \sin\left(\dfrac{\pi}{6}\right) = \dfrac{1}{2} \\
+       \cos\left(\dfrac{\pi}{3}\right) &= \dfrac{1}{2}
+       \end{aligned}
+       $$
+    2. **Add the values.**
+       $$
+       \begin{aligned}
+       \dfrac{1}{2} + \dfrac{1}{2} &= 1
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Evaluate each term separately.**
+       $\dfrac{7\pi}{4}$ is in the fourth quadrant (tangent is negative), reference angle is $\dfrac{\pi}{4}$.
+       $$
+       \begin{aligned}
+       \tan\left(\dfrac{7\pi}{4}\right) &= -\tan\left(\dfrac{\pi}{4}\right) = -1 \\
+       \sin\left(\dfrac{\pi}{2}\right) &= 1
+       \end{aligned}
+       $$
+    2. **Multiply the values.**
+       $$
+       \begin{aligned}
+       -1 \times 1 &= -1
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Tangents and Lines">
+    A straight line $L_1$ passes through the origin.
+    
+    **a)** If the line makes an angle of $\dfrac{2\pi}{3}$ with the positive x-axis, find its exact equation.
+    
+    **b)** A second line $L_2$ has the equation $y = \dfrac{\sqrt{3}}{3}x$. Find the angle this line makes with the positive x-axis, in radians.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+    1. **Use the tangent-gradient relationship.**
+       $$
+       \begin{aligned}
+       y &= x\tan\left(\dfrac{2\pi}{3}\right)
+       \end{aligned}
+       $$
+    2. **Evaluate the exact value.**
+       $\dfrac{2\pi}{3}$ is in the second quadrant, tangent is negative.
+       $$
+       \begin{aligned}
+       \tan\left(\dfrac{2\pi}{3}\right) &= -\tan\left(\dfrac{\pi}{3}\right) = -\sqrt{3} \\
+       y &= -\sqrt{3}x
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Set up the equation for the angle.**
+       $$
+       \begin{aligned}
+       \tan\theta &= \dfrac{\sqrt{3}}{3}
+       \end{aligned}
+       $$
+    2. **Recognise the exact value.**
+       This is a standard exact value in the first quadrant.
+       $$
+       \begin{aligned}
+       \theta &= \dfrac{\pi}{6} \text{ radians}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Standard Sine Rule Practice">
+    In a triangle $ABC$, $AB = 7 \text{ cm}$, $BC = 9 \text{ cm}$, and angle $BAC = 65^\circ$.
+    
+    **a)** Find the size of the acute angle $BCA$.
+    
+    **b)** Prove mathematically why angle $BCA$ cannot be obtuse in this specific triangle.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+<Steps>
+    1. **Apply the Sine Rule.**
+       $$
+       \begin{aligned}
+       \dfrac{9}{\sin(65^\circ)} &= \dfrac{7}{\sin C}
+       \end{aligned}
+       $$
+    2. **Rearrange for $\sin C$.**
+       $$
+       \begin{aligned}
+       \sin C &= \dfrac{7 \times \sin(65^\circ)}{9} \\
+       \sin C &\approx 0.7049...
+       \end{aligned}
+       $$
+    3. **Solve for the acute angle.**
+       $$
+       \begin{aligned}
+       C_1 &= \arcsin(0.7049...) \\
+       C_1 &\approx 44.8^\circ \text{ (to 3 s.f.)}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Calculate the potential obtuse angle.**
+       $$
+       \begin{aligned}
+       C_2 &= 180^\circ - 44.82...^\circ \\
+       C_2 &= 135.17...^\circ
+       \end{aligned}
+       $$
+    2. **Test the triangle sum.**
+       $$
+       \begin{aligned}
+       A + C_2 &= 65^\circ + 135.17...^\circ \\
+       &= 200.17...^\circ
+       \end{aligned}
+       $$
+    3. **Conclude.**
+       Since the sum of just two angles exceeds $180^\circ$, a triangle cannot be formed with an obtuse angle $C$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Triggering the Ambiguous Case">
+    In triangle $DEF$, side $DE = 12 \text{ cm}$, side $DF = 15 \text{ cm}$, and angle $DEF = 40^\circ$.
+    
+    **a)** Find the valid value(s) for angle $DFE$.
+    
+    **b)** Hence, find the possible value(s) for angle $EDF$.
+    
+    **c)** Calculate the possible length(s) of side $EF$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+<Steps>
+    1. **Apply the Sine Rule to find angle $F$.**
+       $$
+       \begin{aligned}
+       \dfrac{DF}{\sin E} &= \dfrac{DE}{\sin F} \\
+       \dfrac{15}{\sin(40^\circ)} &= \dfrac{12}{\sin F} \\
+       \sin F &= \dfrac{12 \times \sin(40^\circ)}{15} \\
+       \sin F &\approx 0.5142...
+       \end{aligned}
+       $$
+    2. **Find the acute angle ($F_1$).**
+       $$
+       \begin{aligned}
+       F_1 &= \arcsin(0.5142...) \\
+       F_1 &\approx 30.9^\circ \text{ (to 3 s.f.)}
+       \end{aligned}
+       $$
+    3. **Check for the obtuse angle ($F_2$).**
+       $$
+       \begin{aligned}
+       F_2 &= 180^\circ - 30.94...^\circ \\
+       F_2 &\approx 149.1^\circ \text{ (to 3 s.f.)}
+       \end{aligned}
+       $$
+    4. **Verify if $F_2$ is valid.**
+       $40^\circ + 149.1^\circ = 189.1^\circ > 180^\circ$. 
+       Therefore, the second angle is invalid. There is only **one** possible value: $30.9^\circ$.
+</Steps>
+    **b)**
+<Steps>
+    1. **Calculate the single valid angle $EDF$.**
+       $$
+       \begin{aligned}
+       D &= 180^\circ - (40^\circ + 30.94...^\circ) \\
+       D &\approx 109.1^\circ \text{ (to 3 s.f.)}
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Use the Sine Rule to find side $EF$.**
+       $$
+       \begin{aligned}
+       \dfrac{EF}{\sin(109.05...^\circ)} &= \dfrac{15}{\sin(40^\circ)} \\
+       EF &= \dfrac{15 \times \sin(109.05...^\circ)}{\sin(40^\circ)} \\
+       EF &\approx 22.0 \text{ cm} \text{ (to 3 s.f.)}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: A True Ambiguous Triangle">
+    A surveyor measures a triangular plot $XYZ$. Side $XY = 18 \text{ m}$, side $YZ = 14 \text{ m}$, and angle $YXZ = 42^\circ$.
+    
+    **a)** Show that there are two possible values for angle $XZY$.
+    
+    **b)** Calculate the difference in area between the two possible triangles formed by these measurements.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+    1. **Apply the Sine Rule for angle $Z$.**
+       $$
+       \begin{aligned}
+       \dfrac{18}{\sin Z} &= \dfrac{14}{\sin(42^\circ)} \\
+       \sin Z &= \dfrac{18 \times \sin(42^\circ)}{14} \\
+       \sin Z &\approx 0.8603...
+       \end{aligned}
+       $$
+    2. **Find the acute angle ($Z_1$).**
+       $$
+       \begin{aligned}
+       Z_1 &= \arcsin(0.8603...) \\
+       Z_1 &\approx 59.4^\circ \text{ (to 3 s.f.)}
+       \end{aligned}
+       $$
+    3. **Find the obtuse angle ($Z_2$).**
+       $$
+       \begin{aligned}
+       Z_2 &= 180^\circ - 59.35...^\circ \\
+       Z_2 &\approx 120.6^\circ \text{ (to 3 s.f.)}
+       \end{aligned}
+       $$
+    4. **Verify both are valid triangles.**
+       Triangle 1: $42^\circ + 59.4^\circ = 101.4^\circ < 180^\circ$.
+       Triangle 2: $42^\circ + 120.6^\circ = 162.6^\circ < 180^\circ$.
+       Since both sums are under $180^\circ$, there are two valid triangles.
+</Steps>
+    **b)**
+<Steps>
+    1. **Find the two possible angles for $Y$.**
+       $$
+       \begin{aligned}
+       Y_1 &= 180^\circ - 101.35...^\circ = 78.64...^\circ \\
+       Y_2 &= 180^\circ - 162.64...^\circ = 17.35...^\circ
+       \end{aligned}
+       $$
+    2. **Calculate Area 1.**
+       Area of a triangle
+       <FormulaBox>
+         $$A = \dfrac{1}{2}ab\sin C$$
+       </FormulaBox>
+      
+       $$
+       \begin{aligned}
+       \text{Area}_1 &= \dfrac{1}{2}(18)(14)\sin(Y_1) \\
+       &= 126 \times \sin(78.64...^\circ) \\
+       &\approx 123.5 \text{ m}^2
+       \end{aligned}
+       $$
+    3. **Calculate Area 2.**
+       $$
+       \begin{aligned}
+       \text{Area}_2 &= \dfrac{1}{2}(18)(14)\sin(Y_2) \\
+       &= 126 \times \sin(17.35...^\circ) \\
+       &\approx 37.6 \text{ m}^2
+       \end{aligned}
+       $$
+    4. **Find the difference.**
+       $$
+       \begin{aligned}
+       \text{Difference} &= 123.5 - 37.6 \\
+       &= 85.9 \text{ m}^2 \text{ (to 3 s.f.)}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Exact Values and Real Estate">
+    A prestigious garden is shaped as a triangle bounded by three paths. Two of the paths have lengths $40 \text{ m}$ and $60 \text{ m}$, and they meet at an angle of exactly $\dfrac{5\pi}{6}$ radians.
+    
+    **a)** Find the exact area of the garden.
+    
+    **b)** If the landscaping costs $120 \text{ GBP}$ per square metre, calculate the total cost.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+<Steps>
+    1. **Identify the area formula and given values.**
+       Area of a triangle
+       <FormulaBox>
+         $$A = \dfrac{1}{2}ab\sin C$$
+       </FormulaBox>
+      
+       $a = 40$, $b = 60$, $C = \dfrac{5\pi}{6}$.
+    2. **Evaluate the exact sine value.**
+       $\dfrac{5\pi}{6}$ is in the second quadrant, reference angle $\dfrac{\pi}{6}$.
+       $$
+       \begin{aligned}
+       \sin\left(\dfrac{5\pi}{6}\right) &= \sin\left(\dfrac{\pi}{6}\right) = \dfrac{1}{2}
+       \end{aligned}
+       $$
+    3. **Calculate the exact area.**
+       $$
+       \begin{aligned}
+       A &= \dfrac{1}{2}(40)(60)\left(\dfrac{1}{2}\right) \\
+       &= \dfrac{1}{2}(2400)\left(\dfrac{1}{2}\right) \\
+       &= 1200 \times \dfrac{1}{2} \\
+       &= 600 \text{ m}^2
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Multiply the area by the rate.**
+       $$
+       \begin{aligned}
+       \text{Total Cost} &= 600 \times 120 \\
+       &= 72000 \text{ GBP}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Sine, Cosine, and the Unit Circle Synthesis">
+    An angle $\theta$ is such that $\sin\theta = \dfrac{3}{5}$ and $\tan\theta < 0$.
+    
+    **a)** Determine which quadrant $\theta$ lies in, giving a reason.
+    
+    **b)** Using the unit circle identity $\sin^2\theta + \cos^2\theta = 1$, find the exact value of $\cos\theta$.
+    
+    **c)** Hence, evaluate the exact value of $\tan\theta$.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+    1. **Analyse the signs.**
+       We are given $\sin\theta > 0$. Sine is positive in the 1st and 2nd quadrants.
+       We are given $\tan\theta < 0$. Tangent is negative in the 2nd and 4th quadrants.
+    2. **Find the intersection.**
+       The only quadrant where both conditions are true is the **second quadrant**.
+</Steps>
+    **b)**
+<Steps>
+    1. **Substitute into the Pythagorean identity.**
+       $$
+       \begin{aligned}
+       \left(\dfrac{3}{5}\right)^2 + \cos^2\theta &= 1 \\
+       \dfrac{9}{25} + \cos^2\theta &= 1 \\
+       \cos^2\theta &= 1 - \dfrac{9}{25} \\
+       \cos^2\theta &= \dfrac{16}{25}
+       \end{aligned}
+       $$
+    2. **Solve for $\cos\theta$ applying the quadrant condition.**
+       $$
+       \begin{aligned}
+       \cos\theta &= \pm\sqrt{\dfrac{16}{25}} \\
+       \cos\theta &= \pm\dfrac{4}{5}
+       \end{aligned}
+       $$
+       Since $\theta$ is in the second quadrant, cosine must be negative.
+       $$
+       \begin{aligned}
+       \cos\theta &= -\dfrac{4}{5}
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Use the tangent identity.**
+       Identity for $\tan \theta$
+       <FormulaBox>
+         $$\tan\theta = \dfrac{\sin\theta}{\cos\theta}$$
+       </FormulaBox>
+      
+       $$
+       \begin{aligned}
+       \tan\theta &= \dfrac{\sin\theta}{\cos\theta}
+       \end{aligned}
+       $$
+    2. **Substitute exact values.**
+       $$
+       \begin{aligned}
+       \tan\theta &= \dfrac{\dfrac{3}{5}}{-\dfrac{4}{5}} \\
+       &= \dfrac{3}{5} \times -\dfrac{5}{4} \\
+       &= -\dfrac{3}{4}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Trigonometric functions, the unit circle, exact values, and the ambiguous case" />

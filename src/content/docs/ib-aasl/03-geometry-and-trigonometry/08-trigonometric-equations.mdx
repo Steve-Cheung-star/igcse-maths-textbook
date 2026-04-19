@@ -1,6 +1,620 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 3.8 Solving Trigonometric Equations
+description: Learn how to solve trigonometric equations analytically and graphically within a finite interval, including equations that reduce to quadratics.
 ---
 
-Content coming soon.
+Now that you've mastered graphing circular functions and understanding their properties, it's time to find out when these functions reach specific values. Because trigonometric functions are periodic, they repeat their values infinitely many times. Therefore, we almost always solve these equations within a **finite interval** (a restricted domain) to find a specific set of solutions.
+
+<Aside type="note" title="Connections & TOK">
+  **Theory of Knowledge (TOK):** Trigonometric equations naturally have infinite solutions due to their periodic nature, yet in real-world applications, we artificially bound them to finite intervals (like $0 \leq t \leq 24$ hours for a day). Does mathematics exist independently of our physical reality, or is it merely a tool we shape and limit to make sense of our surroundings?
+  
+  **International Mindedness:** The historical development of trigonometry spans many cultures, from the Hellenistic world (Hipparchus) to Indian mathematicians (Aryabhata) and Islamic scholars (Al-Khwarizmi), who compiled comprehensive tables of sines and tangents long before calculators existed.
+</Aside>
+
+---
+
+## 1. Linear Trigonometric Equations
+
+The simplest trigonometric equations involve a single trigonometric ratio. The general approach analytically is:
+1. Isolate the trigonometric ratio (e.g., get $\sin x$ on its own).
+2. Find the **principal value** using the inverse trigonometric function on your calculator (or from your exact values memory).
+3. Use the **unit circle** (CAST diagram) or the **symmetry of the graph** to find all other valid angles within the given domain.
+
+### Solving Graphically (TI-Nspire)
+Your TI-Nspire is an incredibly powerful tool for solving these graphically, which is especially useful on Paper 2.
+
+<SteveTip title="TI-Nspire: Finding Intersections">
+  To solve an equation like $2\sin x = 1$ on your TI-Nspire:
+  1. Go to a **Graphs** page.
+  2. Enter $f_1(x) = 2\sin x$ and $f_2(x) = 1$.
+  3. Set your window to match the given domain (e.g., $0 \leq x \leq 2\pi$). Use `Menu > Window / Zoom > Window Settings`.
+  4. Use `Menu > Analyze Graph > Intersection` and select the lower and upper bounds around each point where the graphs cross.
+</SteveTip>
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 0.5rem 0' }}>
+  <svg viewBox="-20 -120 400 240" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid and Axes */}
+    <line x1="0" y1="0" x2="380" y2="0" stroke="#cbd5e1" stroke-width="1.5" />
+    <line x1="0" y1="-100" x2="0" y2="100" stroke="#cbd5e1" stroke-width="1.5" />
+    
+    {/* Tick marks x-axis (Degrees 0 to 360) */}
+    {[90, 180, 270, 360].map((x) => (
+      <line key={x} x1={x} y1="-3" x2={x} y2="3" stroke="#cbd5e1" stroke-width="1.5" />
+    ))}
+    <text x="85" y="15" font-size="12" fill="#64748b" font-family="sans-serif">π/2</text>
+    <text x="175" y="15" font-size="12" fill="#64748b" font-family="sans-serif">π</text>
+    <text x="260" y="15" font-size="12" fill="#64748b" font-family="sans-serif">3π/2</text>
+    <text x="350" y="15" font-size="12" fill="#64748b" font-family="sans-serif">2π</text>
+
+    {/* Base Sine Wave using Array Map */}
+    <polyline 
+      points={[...Array(361)].map((_, x) => `${x},${-80 * Math.sin(x * Math.PI / 180)}`).join(' ')}
+      fill="none" stroke="#3b82f6" stroke-width="2.5" 
+    />
+    
+    {/* y = 0.5 Line */}
+    <line x1="0" y1="-40" x2="380" y2="-40" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,5" />
+    <text x="280" y="-50" font-size="12" font-weight="bold" fill="#ef4444" font-family="sans-serif">y = 0.5</text>
+    <text x="280" y="-90" font-size="12" font-weight="bold" fill="#3b82f6" font-family="sans-serif">y = sin(x)</text>
+
+    {/* Intersections */}
+    <circle cx="30" cy="-40" r="4" fill="#10b981" />
+    <circle cx="150" cy="-40" r="4" fill="#10b981" />
+    
+    <path d="M 30 -40 L 30 0" fill="none" stroke="#10b981" stroke-dasharray="2,2" />
+    <path d="M 150 -40 L 150 0" fill="none" stroke="#10b981" stroke-dasharray="2,2" />
+    
+    <text x="10" y="25" font-size="12" fill="#10b981" font-family="sans-serif">π/6</text>
+    <text x="135" y="25" font-size="12" fill="#10b981" font-family="sans-serif">5π/6</text>
+  </svg>
+</div>
+
+### Worked Example 1: Simple Linear Equation
+**Question:** Solve the equation $2\sin x = 1$ for $0 \leq x \leq 2\pi$.
+
+**Solution:**
+<Steps>
+1. **Isolate the trigonometric ratio.**
+   $$
+   \begin{aligned}
+   \sin x &= \dfrac{1}{2}
+   \end{aligned}
+   $$
+2. **Find the principal value.**
+   Using exact values or your calculator in radians:
+   $$
+   \begin{aligned}
+   x &= \arcsin\left(\dfrac{1}{2}\right) = \dfrac{\pi}{6}
+   \end{aligned}
+   $$
+3. **Find all other valid angles.**
+   Because sine is positive in the 1st and 2nd quadrants, find the second solution by reflecting across the y-axis:
+   $$
+   \begin{aligned}
+   x &= \pi - \dfrac{\pi}{6} = \dfrac{5\pi}{6}
+   \end{aligned}
+   $$
+</Steps>
+**Final Solutions:** $x = \dfrac{\pi}{6}, \dfrac{5\pi}{6}$
+
+---
+
+## 2. Transformed Arguments and Domain Adjustments
+
+When the angle inside the trigonometric function is transformed (e.g., $2x$ or $x - \dfrac{\pi}{4}$), we must **adjust the domain** before solving. 
+
+<Aside type="danger" title="Common Pitfall">
+  Do not divide by the coefficient *before* you find all the solutions from the unit circle. Always find the solutions for the composite angle first, then solve for $x$ at the very end.
+</Aside>
+
+### Worked Example 2: Adjusting the Domain
+**Question:** Solve $\sqrt{2}\cos(2x) = 1$ for $0^\circ \leq x \leq 180^\circ$.
+
+**Solution:**
+<Steps>
+1. **Isolate the trigonometric ratio.**
+   $$
+   \begin{aligned}
+   \cos(2x) &= \dfrac{1}{\sqrt{2}}
+   \end{aligned}
+   $$
+2. **Adjust the domain.**
+   Since $0^\circ \leq x \leq 180^\circ$, multiply everything by $2$ to find the domain for $2x$:
+   $$
+   \begin{aligned}
+   0^\circ \leq 2x \leq 360^\circ
+   \end{aligned}
+   $$
+3. **Find the principal value for $2x$.**
+   $$
+   \begin{aligned}
+   2x &= \arccos\left(\dfrac{1}{\sqrt{2}}\right) = 45^\circ
+   \end{aligned}
+   $$
+4. **Find other values in the adjusted domain.**
+   Cosine is positive in the 1st and 4th quadrants ($360^\circ - \theta$):
+   $$
+   \begin{aligned}
+   2x &= 360^\circ - 45^\circ = 315^\circ
+   \end{aligned}
+   $$
+5. **Solve for $x$.**
+   Divide both solutions by $2$:
+   $$
+   \begin{aligned}
+   x &= \dfrac{45^\circ}{2} = 22.5^\circ \\
+   x &= \dfrac{315^\circ}{2} = 157.5^\circ
+   \end{aligned}
+   $$
+</Steps>
+**Final Solutions:** $x = 22.5^\circ, 157.5^\circ$
+
+---
+
+## 3. Equations Leading to Quadratics
+
+Sometimes an equation contains squared trigonometric terms, such as $\sin^2 x$ or $\cos^2 x$. These can often be solved by treating them as **quadratic equations**. 
+
+You may need to use the **Pythagorean Identity** ($\sin^2 x + \cos^2 x = 1$) to ensure all terms use the *same* trigonometric function before factorising.
+* If you have $\sin^2 x$ and $\cos x$, replace $\sin^2 x$ with $(1 - \cos^2 x)$.
+* If you have $\cos^2 x$ and $\sin x$, replace $\cos^2 x$ with $(1 - \sin^2 x)$.
+
+### Worked Example 3: Quadratic Trigonometric Equation
+**Question:** Solve $2\sin^2 x - \cos x - 1 = 0$ for $0 \leq x \leq 2\pi$.
+
+**Solution:**
+<Steps>
+1. **Use the Pythagorean Identity.**
+   Substitute $\sin^2 x$ with $1 - \cos^2 x$ to ensure all terms use the same trigonometric function.
+   $$
+   \begin{aligned}
+   2(1 - \cos^2 x) - \cos x - 1 &= 0
+   \end{aligned}
+   $$
+2. **Expand and rearrange into a standard quadratic.**
+   $$
+   \begin{aligned}
+   2 - 2\cos^2 x - \cos x - 1 &= 0 \\
+   -2\cos^2 x - \cos x + 1 &= 0 \\
+   2\cos^2 x + \cos x - 1 &= 0
+   \end{aligned}
+   $$
+3. **Factorise the quadratic.**
+   You can let $u = \cos x$ to see it as $2u^2 + u - 1 = 0$.
+   $$
+   \begin{aligned}
+   (2\cos x - 1)(\cos x + 1) &= 0
+   \end{aligned}
+   $$
+4. **Solve each factor for $x$.**
+   **Case 1:**
+   $$
+   \begin{aligned}
+   2\cos x - 1 &= 0 \\
+   \cos x &= \dfrac{1}{2} \\
+   x &= \dfrac{\pi}{3}, \dfrac{5\pi}{3}
+   \end{aligned}
+   $$
+   **Case 2:**
+   $$
+   \begin{aligned}
+   \cos x + 1 &= 0 \\
+   \cos x &= -1 \\
+   x &= \pi
+   \end{aligned}
+   $$
+</Steps>
+**Final Solutions:** $x = \dfrac{\pi}{3}, \pi, \dfrac{5\pi}{3}$
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Linear Sine Equation">
+    Solve the equation $2\sin x = -\sqrt{3}$ for $0^\circ \leq x \leq 360^\circ$.
+    
+    **a)** Find the principal value of the related acute angle.
+    
+    **b)** Determine all values of $x$ in the given domain.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+    1. **Isolate the sine function and find the acute angle.**
+       Ignore the negative sign to find the first quadrant reference angle.
+       $$
+       \begin{aligned}
+       \sin x &= -\dfrac{\sqrt{3}}{2} \\
+       \text{Reference angle} &= \arcsin\left(\dfrac{\sqrt{3}}{2}\right) = 60^\circ
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Use the CAST diagram for negative sine values.**
+       Sine is negative in the 3rd and 4th quadrants.
+       $$
+       \begin{aligned}
+       \text{Quadrant 3} &= 180^\circ + 60^\circ = 240^\circ \\
+       \text{Quadrant 4} &= 360^\circ - 60^\circ = 300^\circ
+       \end{aligned}
+       $$
+       The solutions are $x = 240^\circ, 300^\circ$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Tangent Equation">
+    Solve the equation $\sqrt{3}\tan x = 1$ for $-\pi \leq x \leq \pi$.
+    
+    **a)** Solve for the exact values of $x$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+<Steps>
+    1. **Isolate the tangent function.**
+       $$
+       \begin{aligned}
+       \tan x &= \dfrac{1}{\sqrt{3}}
+       \end{aligned}
+       $$
+    2. **Find the principal value.**
+       $$
+       \begin{aligned}
+       x &= \arctan\left(\dfrac{1}{\sqrt{3}}\right) = \dfrac{\pi}{6}
+       \end{aligned}
+       $$
+    3. **Find the other value in the specified domain.**
+       Tangent has a period of $\pi$. Subtract $\pi$ to find the solution in the negative domain region.
+       $$
+       \begin{aligned}
+       x &= \dfrac{\pi}{6} - \pi = -\dfrac{5\pi}{6}
+       \end{aligned}
+       $$
+       The solutions are $x = -\dfrac{5\pi}{6}, \dfrac{\pi}{6}$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Domain Adjustment (Multiple Angle)">
+    Solve $2\cos(3x) = 1$ for $0 \leq x \leq \pi$.
+    
+    **a)** State the adjusted domain for $3x$.
+    
+    **b)** Solve the equation to find all exact values of $x$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+    1. **Multiply the domain boundaries by 3.**
+       Since $0 \leq x \leq \pi$, the domain for $3x$ is:
+       $$
+       \begin{aligned}
+       0 \leq 3x \leq 3\pi
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Solve for the composite angle $3x$.**
+       $$
+       \begin{aligned}
+       \cos(3x) &= \dfrac{1}{2}
+       \end{aligned}
+       $$
+       Principal value: $3x = \dfrac{\pi}{3}$.
+    2. **Find all other values within $0 \leq 3x \leq 3\pi$.**
+       4th quadrant solution: $3x = 2\pi - \dfrac{\pi}{3} = \dfrac{5\pi}{3}$.
+       Since the domain goes up to $3\pi$, we must add $2\pi$ to our principal value to check for further solutions.
+       $$
+       \begin{aligned}
+       3x &= \dfrac{\pi}{3} + 2\pi = \dfrac{7\pi}{3}
+       \end{aligned}
+       $$
+    3. **Divide all answers by 3 to solve for $x$.**
+       $$
+       \begin{aligned}
+       x &= \dfrac{\pi}{9}, \dfrac{5\pi}{9}, \dfrac{7\pi}{9}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Domain Adjustment (Phase Shift)">
+    Solve the equation $\sqrt{2}\sin\left(x - \dfrac{\pi}{4}\right) = 1$ for $0 \leq x \leq 2\pi$.
+    
+    **a)** State the adjusted domain for $x - \dfrac{\pi}{4}$.
+    
+    **b)** Find the exact values of $x$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+<Steps>
+    1. **Adjust the domain.**
+       Subtract $\dfrac{\pi}{4}$ from both boundaries.
+       $$
+       \begin{aligned}
+       -\dfrac{\pi}{4} \leq x - \dfrac{\pi}{4} \leq \dfrac{7\pi}{4}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Solve for the shifted angle.**
+       $$
+       \begin{aligned}
+       \sin\left(x - \dfrac{\pi}{4}\right) &= \dfrac{1}{\sqrt{2}}
+       \end{aligned}
+       $$
+       Principal value: $x - \dfrac{\pi}{4} = \dfrac{\pi}{4}$.
+    2. **Find the second value in the domain.**
+       Sine is positive in the 2nd quadrant.
+       $$
+       \begin{aligned}
+       x - \dfrac{\pi}{4} &= \pi - \dfrac{\pi}{4} = \dfrac{3\pi}{4}
+       \end{aligned}
+       $$
+    3. **Solve for $x$ by adding $\dfrac{\pi}{4}$ to both solutions.**
+       $$
+       \begin{aligned}
+       x &= \dfrac{\pi}{4} + \dfrac{\pi}{4} = \dfrac{\pi}{2} \\
+       x &= \dfrac{3\pi}{4} + \dfrac{\pi}{4} = \pi
+       \end{aligned}
+       $$
+       The solutions are $x = \dfrac{\pi}{2}, \pi$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Direct Quadratic Factorisation">
+    Solve the equation $\tan^2 x - \tan x = 0$ for $0^\circ \leq x \leq 360^\circ$.
+    
+    **a)** Find all possible values for $x$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+<Steps>
+    1. **Factorise the equation directly.**
+       $$
+       \begin{aligned}
+       \tan x(\tan x - 1) &= 0
+       \end{aligned}
+       $$
+    2. **Solve each factor.**
+       Case 1: $\tan x = 0$
+       $$
+       \begin{aligned}
+       x &= 0^\circ, 180^\circ, 360^\circ
+       \end{aligned}
+       $$
+       Case 2: $\tan x - 1 = 0 \Rightarrow \tan x = 1$
+       $$
+       \begin{aligned}
+       x &= 45^\circ \\
+       x &= 180^\circ + 45^\circ = 225^\circ
+       \end{aligned}
+       $$
+    3. **Combine all solutions.**
+       $x = 0^\circ, 45^\circ, 180^\circ, 225^\circ, 360^\circ$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Quadratic using Pythagorean Identity">
+    Solve $2\cos^2 x = 3\sin x$ for $0 \leq x \leq 2\pi$.
+    
+    **a)** Rewrite the equation entirely in terms of $\sin x$.
+    
+    **b)** Solve the resulting quadratic equation for $x$.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+    1. **Use the identity $\cos^2 x = 1 - \sin^2 x$.**
+       $$
+       \begin{aligned}
+       2(1 - \sin^2 x) &= 3\sin x \\
+       2 - 2\sin^2 x &= 3\sin x \\
+       2\sin^2 x + 3\sin x - 2 &= 0
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Factorise the quadratic.**
+       Let $u = \sin x$. The equation is $2u^2 + 3u - 2 = 0$.
+       $$
+       \begin{aligned}
+       (2\sin x - 1)(\sin x + 2) &= 0
+       \end{aligned}
+       $$
+    2. **Solve each factor.**
+       Case 1: $2\sin x - 1 = 0 \Rightarrow \sin x = \dfrac{1}{2}$
+       $$
+       \begin{aligned}
+       x &= \dfrac{\pi}{6}, \dfrac{5\pi}{6}
+       \end{aligned}
+       $$
+       Case 2: $\sin x + 2 = 0 \Rightarrow \sin x = -2$
+       This has **no solution** because the range of $\sin x$ is $[-1, 1]$.
+    3. **State the final answers.**
+       $x = \dfrac{\pi}{6}, \dfrac{5\pi}{6}$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Harder Quadratic Identity">
+    Solve $3\sin^2 x + \cos^2 x = 2$ for $0^\circ \leq x \leq 180^\circ$.
+    
+    **a)** Find all values of $x$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+<Steps>
+    1. **Convert to a single trigonometric ratio.**
+       Replace $\cos^2 x$ with $1 - \sin^2 x$.
+       $$
+       \begin{aligned}
+       3\sin^2 x + (1 - \sin^2 x) &= 2 \\
+       2\sin^2 x + 1 &= 2 \\
+       2\sin^2 x &= 1 \\
+       \sin^2 x &= \dfrac{1}{2}
+       \end{aligned}
+       $$
+    2. **Take the square root of both sides.**
+       Remember to include both positive and negative roots!
+       $$
+       \begin{aligned}
+       \sin x &= \pm\dfrac{1}{\sqrt{2}}
+       \end{aligned}
+       $$
+    3. **Solve for $x$ in the domain $0^\circ \leq x \leq 180^\circ$.**
+       Case 1: $\sin x = \dfrac{1}{\sqrt{2}}$
+       $$
+       \begin{aligned}
+       x &= 45^\circ, 135^\circ
+       \end{aligned}
+       $$
+       Case 2: $\sin x = -\dfrac{1}{\sqrt{2}}$
+       There are no solutions in the given domain because sine is positive in the 1st and 2nd quadrants.
+    4. **Final answers.**
+       $x = 45^\circ, 135^\circ$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Solving Graphically using TI-Nspire">
+    Consider the equation $\sin(2x) = x^2 - 1$ for the domain $-2 \leq x \leq 2$.
+    
+    **a)** Using your TI-Nspire, find the coordinates of the points of intersection. Give your $x$ values correct to $3$ significant figures.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+    1. **Graph the functions.**
+       Ensure your calculator is in **Radians** mode.
+       Graph $f_1(x) = \sin(2x)$ and $f_2(x) = x^2 - 1$.
+    2. **Find the intersections.**
+       Use `Menu > Analyze Graph > Intersection`. 
+       Sweep the bounds over the two points where the curves cross.
+       $$
+       \begin{aligned}
+       \text{Intersection 1:} &\quad (-0.518, -0.732) \\
+       \text{Intersection 2:} &\quad (1.13, 0.287)
+       \end{aligned}
+       $$
+    3. **State the solutions.**
+       The solutions to the equation are the $x$-coordinates.
+       $x \approx -0.518, 1.13$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q9: Application - Ferris Wheel">
+    A passenger's height on a Ferris wheel, $h$ metres, at time $t$ minutes is modelled by the equation $h(t) = 15 - 12\cos\left(\dfrac{\pi}{5}t\right)$.
+    
+    **a)** A photograph is taken when the passenger is exactly $21 \text{ m}$ high. Find the first two times $t$ when this occurs.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)**
+<Steps>
+    1. **Set up the equation.**
+       $$
+       \begin{aligned}
+       15 - 12\cos\left(\dfrac{\pi}{5}t\right) &= 21
+       \end{aligned}
+       $$
+    2. **Isolate the cosine function.**
+       $$
+       \begin{aligned}
+       -12\cos\left(\dfrac{\pi}{5}t\right) &= 6 \\
+       \cos\left(\dfrac{\pi}{5}t\right) &= -0.5
+       \end{aligned}
+       $$
+    3. **Find the principal and secondary angles for $\dfrac{\pi}{5}t$.**
+       $$
+       \begin{aligned}
+       \dfrac{\pi}{5}t &= \arccos(-0.5) \\
+       \dfrac{\pi}{5}t &= \dfrac{2\pi}{3} \quad \text{(Quadrant 2)}
+       \end{aligned}
+       $$
+       By symmetry in the 3rd quadrant:
+       $$
+       \begin{aligned}
+       \dfrac{\pi}{5}t &= 2\pi - \dfrac{2\pi}{3} = \dfrac{4\pi}{3}
+       \end{aligned}
+       $$
+    4. **Solve for $t$.**
+       Multiply both sides by $\dfrac{5}{\pi}$.
+       $$
+       \begin{aligned}
+       t_1 &= \dfrac{2\pi}{3} \times \dfrac{5}{\pi} = \dfrac{10}{3} \text{ minutes} \\
+       t_2 &= \dfrac{4\pi}{3} \times \dfrac{5}{\pi} = \dfrac{20}{3} \text{ minutes}
+       \end{aligned}
+       $$
+       The first two times are $3.33 \text{ minutes}$ and $6.67 \text{ minutes}$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q10: Profit Modelling (Aim 8 Link)">
+    A company's daily profit, $P$ in thousands of dollars, is modelled by $P(t) = 8\sin\left(\dfrac{\pi}{6}(t - 2)\right) + 10$, where $t$ is the time in months from the start of the year ($0 \leq t \leq 12$).
+    
+    **a)** The company wants to pay bonuses during months where the profit exceeds $14 \text{ k USD}$. Solve $P(t) = 14$ analytically to find the exact interval of time when this occurs.
+  </TabItem>
+  <TabItem label="✅ Solution 10">
+    **a)**
+<Steps>
+    1. **Set up the equation.**
+       $$
+       \begin{aligned}
+       8\sin\left(\dfrac{\pi}{6}(t - 2)\right) + 10 &= 14
+       \end{aligned}
+       $$
+    2. **Isolate the sine function.**
+       $$
+       \begin{aligned}
+       8\sin\left(\dfrac{\pi}{6}(t - 2)\right) &= 4 \\
+       \sin\left(\dfrac{\pi}{6}(t - 2)\right) &= \dfrac{1}{2}
+       \end{aligned}
+       $$
+    3. **Find the angles.**
+       $$
+       \begin{aligned}
+       \dfrac{\pi}{6}(t - 2) &= \dfrac{\pi}{6} \quad \text{and} \quad \dfrac{5\pi}{6}
+       \end{aligned}
+       $$
+    4. **Solve for $t$ for both cases.**
+       **Case 1:**
+       $$
+       \begin{aligned}
+       \dfrac{\pi}{6}(t - 2) &= \dfrac{\pi}{6} \\
+       t - 2 &= 1 \\
+       t &= 3 \text{ (March)}
+       \end{aligned}
+       $$
+       **Case 2:**
+       $$
+       \begin{aligned}
+       \dfrac{\pi}{6}(t - 2) &= \dfrac{5\pi}{6} \\
+       t - 2 &= 5 \\
+       t &= 7 \text{ (July)}
+       \end{aligned}
+       $$
+       The profit exceeds $14 \text{ k USD}$ between month $3$ and month $7$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving trigonometric equations analytically, domain adjustments, and quadratic trigonometric identities" />

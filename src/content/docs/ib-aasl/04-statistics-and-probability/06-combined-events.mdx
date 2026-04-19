@@ -1,6 +1,464 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 4.6 Probability Rules and Diagrams
+description: Calculate probabilities using combined events, conditional probability, independent events, and visual tools like Venn and tree diagrams.
 ---
 
-Content coming soon.
+Building upon the basic probability concepts, we now explore how to handle multiple events happening simultaneously or sequentially. By using algebraic formulas and visual diagrams, we can model complex, real-world scenarios.
+
+<Aside type="note" title="Connections: Aim 8 & TOK">
+  **Aim 8 (The gambling issue):** The calculation of probabilities is the foundational bedrock of all casino operations. Games are mathematically designed to ensure the "house edge," guaranteeing long-term profit for the casino while allowing short-term wins for players. Could, or should, mathematics help individuals increase their incomes through gambling?
+  
+  **Theory of Knowledge (TOK):** Can the calculation of gambling probabilities be considered an ethical application of mathematics? Casinos rely on mathematical models to profit from the public's misunderstanding of chance. Should mathematicians be held responsible for unethical applications of their work, or is mathematics an objective tool that is neutral in its application?
+</Aside>
+
+## 1. Combined Events and Mutually Exclusive Events
+
+When dealing with two events, $A$ and $B$, we often want to know the probability of either event occurring, or both events occurring.
+* **Intersection ($A \cap B$):** The event that BOTH $A$ and $B$ occur.
+* **Union ($A \cup B$):** The event that $A$ occurs, $B$ occurs, OR both occur. In mathematics, "or" is non-exclusive unless stated otherwise.
+
+To find the probability of a union, we add the probabilities of the individual events but subtract the intersection to avoid double-counting.
+
+<FormulaBox title="Combined events">
+$$ \text{P}(A \cup B) = \text{P}(A) + \text{P}(B) - \text{P}(A \cap B) $$
+</FormulaBox>
+
+**Mutually Exclusive Events** are events that cannot happen at the same time (e.g., rolling a 2 and rolling a 5 on a single die roll). Because they cannot happen together, their intersection is empty, meaning the probability of their intersection is zero.
+
+<FormulaBox title="Mutually exclusive events">
+$$ \text{P}(A \cup B) = \text{P}(A) + \text{P}(B) $$
+</FormulaBox>
+
+### Worked Example: Combined Events
+**Question:** In a class of 30 students, the probability that a randomly chosen student plays football ($F$) is 0.6, the probability they play basketball ($B$) is 0.5, and the probability they play both is 0.3. Find the probability that a student plays either football or basketball.
+
+**Solution:**
+<Steps>
+  1. **Identify the known values and the required formula.**
+     $$ \text{P}(F) = 0.6, \quad \text{P}(B) = 0.5, \quad \text{P}(F \cap B) = 0.3 $$
+  2. **Substitute into the combined events formula.**
+     $$
+     \begin{aligned}
+     \text{P}(F \cup B) &= \text{P}(F) + \text{P}(B) - \text{P}(F \cap B) \\
+     &= 0.6 + 0.5 - 0.3 \\
+     &= 0.8
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 2. Conditional Probability
+
+Often, the probability of an event changes if we know that another event has already occurred. This is called **conditional probability**. The notation $\text{P}(A|B)$ is read as "the probability of $A$, given that $B$ has occurred". 
+
+It restricts our sample space purely to the outcomes where $B$ happens.
+
+<FormulaBox title="Conditional probability">
+$$ \text{P}(A|B) = \dfrac{\text{P}(A \cap B)}{\text{P}(B)} $$
+</FormulaBox>
+
+<Aside type="tip" title="Alternate Form">
+  Rearranging this formula gives us a very useful way to calculate intersections, especially when using tree diagrams: $\text{P}(A \cap B) = \text{P}(B)\text{P}(A|B)$.
+</Aside>
+
+### Worked Example: Conditional Probability
+**Question:** The probability that it rains on Tuesday ($R$) is 0.4. The probability that it rains on Tuesday and a football match is cancelled ($C$) is 0.3. Given that it rains on Tuesday, find the probability that the match is cancelled.
+
+**Solution:**
+<Steps>
+  1. **Identify the known probabilities.**
+     $$ \text{P}(R) = 0.4, \quad \text{P}(C \cap R) = 0.3 $$
+  2. **Apply the conditional probability formula.**
+     $$
+     \begin{aligned}
+     \text{P}(C|R) &= \dfrac{\text{P}(C \cap R)}{\text{P}(R)} \\
+     &= \dfrac{0.3}{0.4} \\
+     &= 0.75
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 3. Independent Events
+
+Two events are **independent** if the occurrence of one does not affect the probability of the other. For example, rolling a die and flipping a coin are independent. If $A$ and $B$ are independent, then $\text{P}(A|B) = \text{P}(A)$. 
+
+Substituting this into the conditional probability formula gives us the standard test for independence.
+
+<FormulaBox title="Independent events">
+$$ \text{P}(A \cap B) = \text{P}(A)\text{P}(B) $$
+</FormulaBox>
+
+<Aside type="caution" title="Mutually Exclusive vs. Independent">
+  Do not confuse mutually exclusive with independent! 
+  * **Mutually exclusive** means they *cannot* happen together: $\text{P}(A \cap B) = 0$.
+  * **Independent** means they *do not affect* each other: $\text{P}(A \cap B) = \text{P}(A)\text{P}(B)$.
+  In fact, if two events (with non-zero probabilities) are mutually exclusive, they strongly affect each other (if one happens, the other definitely doesn't), so they are *never* independent.
+</Aside>
+
+---
+
+## 4. Visualising Probabilities: Venn and Tree Diagrams
+
+Problems can often be solved without explicit use of formulas by visualising the sample space using diagrams.
+
+### Venn Diagrams
+Venn diagrams are excellent for displaying overlapping sets and combined events. The rectangular boundary represents the universal sample space ($U$).
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="venn-diagram" viewBox="0 0 500 300" width="100%" style="max-width: 500px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <rect x="10" y="10" width="480" height="280" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+    <text x="25" y="35" font-family="sans-serif" font-size="20" font-style="italic" fill="#334155">U</text>
+    
+    <circle cx="200" cy="150" r="100" fill="#3b82f6" fill-opacity="0.2" stroke="#3b82f6" stroke-width="3"/>
+    <circle cx="300" cy="150" r="100" fill="#ef4444" fill-opacity="0.2" stroke="#ef4444" stroke-width="3"/>
+    
+    <text x="120" y="155" font-family="sans-serif" font-size="24" fill="#1e3a8a">A</text>
+    <text x="360" y="155" font-family="sans-serif" font-size="24" fill="#7f1d1d">B</text>
+    
+    <text x="250" y="155" font-family="sans-serif" font-size="20" fill="#4c1d95" text-anchor="middle">A ∩ B</text>
+  </svg>
+</div>
+
+### Tree Diagrams (With and Without Replacement)
+Tree diagrams are perfect for sequential events. 
+* Moving along branches: **Multiply** probabilities (Intersection).
+* Moving down columns (combining separate paths): **Add** probabilities (Union).
+
+**With Replacement:** The probabilities on the branches remain identical for the second event because the events are independent.
+**Without Replacement:** The probabilities on the second set of branches change depending on the outcome of the first branch (conditional probability).
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="tree-diagram" viewBox="0 0 600 300" width="100%" style="max-width: 600px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <line x1="100" y1="150" x2="250" y2="75" stroke="#475569" stroke-width="2"/>
+    <line x1="100" y1="150" x2="250" y2="225" stroke="#475569" stroke-width="2"/>
+    
+    <line x1="250" y1="75" x2="400" y2="40" stroke="#475569" stroke-width="2"/>
+    <line x1="250" y1="75" x2="400" y2="110" stroke="#475569" stroke-width="2"/>
+    
+    <line x1="250" y1="225" x2="400" y2="190" stroke="#475569" stroke-width="2"/>
+    <line x1="250" y1="225" x2="400" y2="260" stroke="#475569" stroke-width="2"/>
+    
+    <circle cx="250" cy="75" r="5" fill="#3b82f6"/>
+    <text x="260" y="70" font-family="sans-serif" font-size="18" fill="#1e293b">A</text>
+    <circle cx="250" cy="225" r="5" fill="#ef4444"/>
+    <text x="260" y="240" font-family="sans-serif" font-size="18" fill="#1e293b">A'</text>
+    
+    <circle cx="400" cy="40" r="5" fill="#3b82f6"/>
+    <text x="415" y="45" font-family="sans-serif" font-size="18" fill="#1e293b">B</text>
+    <circle cx="400" cy="110" r="5" fill="#ef4444"/>
+    <text x="415" y="115" font-family="sans-serif" font-size="18" fill="#1e293b">B'</text>
+    
+    <circle cx="400" cy="190" r="5" fill="#3b82f6"/>
+    <text x="415" y="195" font-family="sans-serif" font-size="18" fill="#1e293b">B</text>
+    <circle cx="400" cy="260" r="5" fill="#ef4444"/>
+    <text x="415" y="265" font-family="sans-serif" font-size="18" fill="#1e293b">B'</text>
+
+    <text x="140" y="100" font-family="sans-serif" font-size="16" fill="#64748b" transform="rotate(-26 140 100)">P(A)</text>
+    <text x="140" y="220" font-family="sans-serif" font-size="16" fill="#64748b" transform="rotate(26 140 220)">P(A')</text>
+
+    <text x="310" y="45" font-family="sans-serif" font-size="16" fill="#64748b" transform="rotate(-13 310 45)">P(B|A)</text>
+    <text x="310" y="115" font-family="sans-serif" font-size="16" fill="#64748b" transform="rotate(13 310 115)">P(B'|A)</text>
+
+    <text x="100" y="30" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0f172a" text-anchor="middle">Start</text>
+    <text x="250" y="30" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0f172a" text-anchor="middle">First Trial</text>
+    <text x="400" y="30" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0f172a" text-anchor="middle">Second Trial</text>
+    <text x="520" y="30" font-family="sans-serif" font-size="18" font-weight="bold" fill="#0f172a" text-anchor="middle">Outcomes</text>
+
+    <text x="520" y="45" font-family="sans-serif" font-size="16" fill="#334155" text-anchor="middle">A ∩ B</text>
+    <text x="520" y="115" font-family="sans-serif" font-size="16" fill="#334155" text-anchor="middle">A ∩ B'</text>
+    <text x="520" y="195" font-family="sans-serif" font-size="16" fill="#334155" text-anchor="middle">A' ∩ B</text>
+    <text x="520" y="265" font-family="sans-serif" font-size="16" fill="#334155" text-anchor="middle">A' ∩ B'</text>
+  </svg>
+</div>
+
+<SteveTip title="Calculator Tip for Complex Trees">
+  If you have a tree diagram with very messy fractions (e.g., drawing 3 cards without replacement), use your TI-Nspire to multiply the strings of fractions directly. Avoid converting to decimals early, as this introduces rounding errors. Store intermediate probabilities as variables if needed!
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Basic Formula Application">
+    Given that $\text{P}(A) = 0.55$, $\text{P}(B) = 0.4$, and $\text{P}(A \cup B) = 0.8$.
+    
+    **a)** Find $\text{P}(A \cap B)$.
+    
+    **b)** State, with a mathematical reason, whether events $A$ and $B$ are mutually exclusive.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+  1. **Use the combined events formula and substitute knowns.**
+     $$ \text{P}(A \cup B) = \text{P}(A) + \text{P}(B) - \text{P}(A \cap B) $$
+     $$ 0.8 = 0.55 + 0.4 - \text{P}(A \cap B) $$
+  2. **Rearrange to solve for the intersection.**
+     $$
+     \begin{aligned}
+     \text{P}(A \cap B) &= 0.95 - 0.8 \\
+     &= 0.15
+     \end{aligned}
+     $$
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Test the condition for mutually exclusive events.**
+     Events are mutually exclusive if $\text{P}(A \cap B) = 0$.
+     Since $\text{P}(A \cap B) = 0.15 \neq 0$, the events $A$ and $B$ are **not** mutually exclusive.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Independent Events Test">
+    Let $C$ and $D$ be two events such that $\text{P}(C) = 0.6$ and $\text{P}(D) = 0.3$. It is given that $C$ and $D$ are independent events.
+    
+    **a)** Find $\text{P}(C \cap D)$.
+    
+    **b)** Find $\text{P}(C \cup D)$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+<Steps>
+  1. **Use the property of independent events.**
+     $$
+     \begin{aligned}
+     \text{P}(C \cap D) &= \text{P}(C)\text{P}(D) \\
+     &= 0.6 \times 0.3 \\
+     &= 0.18
+     \end{aligned}
+     $$
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Use the combined events formula.**
+     $$
+     \begin{aligned}
+     \text{P}(C \cup D) &= \text{P}(C) + \text{P}(D) - \text{P}(C \cap D) \\
+     &= 0.6 + 0.3 - 0.18 \\
+     &= 0.72
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Venn Diagrams & Conditionals">
+    A group of 50 students were asked if they study History ($H$) or Geography ($G$). 
+    * 22 study History
+    * 18 study Geography
+    * 15 study neither
+    
+    **a)** Draw a Venn diagram to represent this information and find the number of students who study both subjects.
+    
+    **b)** A student is chosen at random. Find $\text{P}(H|G)$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+  1. **Calculate the intersection.**
+     Total students in the union $H \cup G = 50 - 15 = 35$.
+     Using the cardinality formula: $n(H \cup G) = n(H) + n(G) - n(H \cap G)$
+     $$ 35 = 22 + 18 - x $$
+     $$ x = 40 - 35 = 5 $$
+     So, 5 students study both.
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Apply the conditional probability formula or read directly from the Venn diagram.**
+     Using the formula: $\text{P}(H|G) = \dfrac{\text{P}(H \cap G)}{\text{P}(G)}$
+     Alternatively, restrict the sample space to only those who study Geography ($n=18$). Out of these 18, 5 study History.
+     $$ \text{P}(H|G) = \dfrac{5}{18} $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Tree Diagram (With Replacement)">
+    A bag contains 5 red marbles and 3 blue marbles. A marble is drawn at random, its colour noted, and **replaced** in the bag. A second marble is then drawn.
+    
+    **a)** Find the probability that both marbles are red.
+    
+    **b)** Find the probability that the two marbles are different colours.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+<Steps>
+  1. **Identify the probabilities.** Since the marble is replaced, the events are independent.
+     $$ \text{P}(\text{Red}) = \dfrac{5}{8} $$
+  2. **Multiply along the branches for Red then Red.**
+     $$
+     \begin{aligned}
+     \text{P}(R \cap R) &= \dfrac{5}{8} \times \dfrac{5}{8} \\
+     &= \dfrac{25}{64}
+     \end{aligned}
+     $$
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Identify the paths for different colours: (Red, Blue) and (Blue, Red).**
+     $$ \text{P}(R \cap B) = \dfrac{5}{8} \times \dfrac{3}{8} = \dfrac{15}{64} $$
+     $$ \text{P}(B \cap R) = \dfrac{3}{8} \times \dfrac{5}{8} = \dfrac{15}{64} $$
+  2. **Add the probabilities of these mutually exclusive paths.**
+     $$
+     \begin{aligned}
+     \text{P}(\text{Different}) &= \dfrac{15}{64} + \dfrac{15}{64} \\
+     &= \dfrac{30}{64} = \dfrac{15}{32}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Tree Diagram (Without Replacement)">
+    A box of chocolates contains 6 milk chocolates and 4 dark chocolates. Mark randomly selects a chocolate, eats it, and then randomly selects a second chocolate.
+    
+    **a)** Find the probability that both chocolates eaten are dark.
+    
+    **b)** Given that the second chocolate eaten was dark, find the probability that the first chocolate eaten was also dark.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+<Steps>
+  1. **Calculate sequential probabilities (without replacement).**
+     Total initially = 10. $\text{P}(D_1) = \dfrac{4}{10}$.
+     If the first is dark, there are 3 dark left out of 9 total. $\text{P}(D_2 | D_1) = \dfrac{3}{9}$.
+  2. **Multiply along the branch.**
+     $$
+     \begin{aligned}
+     \text{P}(D_1 \cap D_2) &= \dfrac{4}{10} \times \dfrac{3}{9} \\
+     &= \dfrac{12}{90} = \dfrac{2}{15}
+     \end{aligned}
+     $$
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Recognise this is a conditional probability requiring Bayes' theorem logic: $\text{P}(D_1 | D_2) = \dfrac{\text{P}(D_1 \cap D_2)}{\text{P}(D_2)}$.**
+     We need the total probability of the second being dark, $\text{P}(D_2)$.
+     This can happen via $(M, D)$ or $(D, D)$.
+     $$ \text{P}(M \cap D_2) = \dfrac{6}{10} \times \dfrac{4}{9} = \dfrac{24}{90} $$
+     $$ \text{P}(D_1 \cap D_2) = \dfrac{12}{90} $$
+     $$ \text{P}(D_2) = \dfrac{24}{90} + \dfrac{12}{90} = \dfrac{36}{90} = \dfrac{2}{5} $$
+  2. **Substitute into the conditional formula.**
+     $$
+     \begin{aligned}
+     \text{P}(D_1 | D_2) &= \dfrac{12/90}{36/90} \\
+     &= \dfrac{12}{36} = \dfrac{1}{3}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Tables of Outcomes">
+    A fair 6-sided die and a fair coin are tossed together. 
+    
+    **a)** Construct a sample space diagram or table for this experiment.
+    
+    **b)** Find the probability of getting a "Heads" and a prime number.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+  1. **Construct the table.**
+     Let H = Heads, T = Tails.
+     | | 1 | 2 | 3 | 4 | 5 | 6 |
+     |---|---|---|---|---|---|---|
+     | **H** | H,1 | H,2 | H,3 | H,4 | H,5 | H,6 |
+     | **T** | T,1 | T,2 | T,3 | T,4 | T,5 | T,6 |
+     There are 12 equally likely outcomes.
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Identify the favourable outcomes.**
+     Prime numbers on a die are 2, 3, and 5.
+     Favourable outcomes: $(H,2), (H,3), (H,5)$. Total is 3.
+  2. **Calculate the probability.**
+     $$ \text{P}(H \text{ and Prime}) = \dfrac{3}{12} = \dfrac{1}{4} $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Word Problem - Disease Testing">
+    A rare disease affects 2% of a population. A test for the disease is positive for 95% of people who actually have the disease. It also returns a false positive for 3% of people who do not have the disease. 
+    
+    **a)** Draw a tree diagram to represent this information.
+    
+    **b)** If a person is chosen at random and tests positive, find the probability that they actually have the disease.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+<Steps>
+  1. **Define the branches.**
+     First branch: Disease ($D$) or No Disease ($D'$). $\text{P}(D) = 0.02$, $\text{P}(D') = 0.98$.
+     Second branch: Positive ($+$) or Negative ($-$). 
+     $\text{P}(+|D) = 0.95$, $\text{P}(-|D) = 0.05$.
+     $\text{P}(+|D') = 0.03$, $\text{P}(-|D') = 0.97$.
+</Steps>
+
+    **b)**
+<Steps>
+  1. **We need to find $\text{P}(D|+)$. Use the conditional formula: $\text{P}(D|+) = \dfrac{\text{P}(D \cap +)}{\text{P}(+)}$.**
+     Calculate the intersection (numerator):
+     $$ \text{P}(D \cap +) = 0.02 \times 0.95 = 0.019 $$
+  2. **Calculate the total probability of a positive test (denominator).**
+     $$ \text{P}(D' \cap +) = 0.98 \times 0.03 = 0.0294 $$
+     $$ \text{P}(+) = 0.019 + 0.0294 = 0.0484 $$
+  3. **Substitute and evaluate.**
+     $$
+     \begin{aligned}
+     \text{P}(D|+) &= \dfrac{0.019}{0.0484} \\
+     &\approx 0.393 \quad \text{(3 s.f.)}
+     \end{aligned}
+     $$
+     *Note: Despite a "95% accurate test", there is only a 39.3% chance a positive result means you have this rare disease!*
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Gambling & Expected Values (Aim 8 Link)">
+    In a casino game, a player rolls two fair 6-sided dice. They win a prize if they roll a "double" (both dice show the same number).
+    
+    **a)** Find the probability of rolling a double on a single turn.
+    
+    **b)** A player plays the game 3 times. Assuming each game is independent, find the probability they win exactly 1 prize.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+  1. **Identify the sample space for a double.**
+     Outcomes: $(1,1), (2,2), (3,3), (4,4), (5,5), (6,6)$. There are 6 favourable outcomes out of 36 total.
+     $$ \text{P}(\text{Double}) = \dfrac{6}{36} = \dfrac{1}{6} $$
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Use combinations of independent events.**
+     Let W = Win, L = Lose. $\text{P}(W) = \dfrac{1}{6}$, $\text{P}(L) = \dfrac{5}{6}$.
+     Winning exactly once can happen in three ways: (W, L, L), (L, W, L), or (L, L, W).
+  2. **Calculate the probability of one specific sequence, then multiply by 3.**
+     $$ \text{P}(W \cap L \cap L) = \dfrac{1}{6} \times \dfrac{5}{6} \times \dfrac{5}{6} = \dfrac{25}{216} $$
+     $$
+     \begin{aligned}
+     \text{P}(\text{Exactly 1 Win}) &= 3 \times \dfrac{25}{216} \\
+     &= \dfrac{75}{216} = \dfrac{25}{72}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>

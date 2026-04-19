@@ -1,6 +1,429 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 4.8 The Binomial Distribution
+description: Understand when to use the binomial distribution, how to calculate its probabilities using technology, and how to find its mean and variance.
 ---
 
-Content coming soon.
+While discrete random variables can take many forms, certain patterns occur so frequently in real life that we create specific mathematical models for them. The **binomial distribution** is one of the most important of these models. It applies when we have a fixed number of repeated, independent trials, each with only two possible outcomes. 
+<Aside type="note" title="Connections: History, Aim 8 & TOK">
+  **Aim 8 & International-mindedness:** The calculation of binomial probabilities relies heavily on combinations, historically linked to "Pascal's Triangle," named after the 17th-century French mathematician Blaise Pascal. However, attributing the origin of this mathematical discovery solely to him is Eurocentric and inaccurate. The identical triangular pattern of binomial coefficients was documented by the Chinese mathematician Yang Hui roughly 400 years earlier, and by Persian and Indian mathematicians even before that.   
+  **Theory of Knowledge (TOK):** What criteria can we use to decide between different models? We use the binomial distribution to model everything from disease recovery to factory defects. However, are trials in the real world *truly* independent? Do probabilities remain *perfectly* constant? We must decide if a model is "good enough" to be useful, even if the real-world scenario slightly violates the model's strict theoretical conditions.
+</Aside>
+
+## 1. Conditions for a Binomial Distribution
+
+Before using the binomial model, you must verify that the situation fits four strict criteria, easily remembered by the acronym **B.I.N.S.**:
+
+* **B - Binary Outcomes:** Each trial must have exactly two possible outcomes, usually categorised as "Success" and "Failure".
+* **I - Independent Trials:** The outcome of one trial must not affect the outcome of any other trial.
+* **N - Number of Trials ($n$):** There must be a fixed, predetermined number of trials.
+* **S - Same Probability ($p$):** The probability of "Success" ($p$) must remain constant for every single trial. 
+
+If a random variable $X$ satisfies these conditions, we say it is binomially distributed. We write this using the following notation, where $n$ is the number of trials and $p$ is the probability of success:
+
+$$ X \sim \text{B}(n, p) $$
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="binomial-distribution-graph" viewBox="0 0 600 300" width="100%" style="max-width: 600px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+    <line x1="60" y1="250" x2="550" y2="250" stroke="#475569" stroke-width="2"/>
+    <line x1="60" y1="40" x2="60" y2="250" stroke="#475569" stroke-width="2"/>
+    
+    <text x="50" y="250" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="end">0.0</text>
+    <text x="50" y="200" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="end">0.1</text>
+    <text x="50" y="150" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="end">0.2</text>
+    <text x="50" y="100" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="end">0.3</text>
+    
+    <line x1="60" y1="200" x2="550" y2="200" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="60" y1="150" x2="550" y2="150" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4"/>
+    <line x1="60" y1="100" x2="550" y2="100" stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4"/>
+    
+    <rect x="70" y="249" width="30" height="1" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="85" y="270" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">0</text>
+    <rect x="110" y="245" width="30" height="5" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="125" y="270" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">1</text>
+    <rect x="150" y="228" width="30" height="22" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="165" y="270" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">2</text>
+    <rect x="190" y="191" width="30" height="59" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="205" y="270" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">3</text>
+    <rect x="230" y="147" width="30" height="103" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="245" y="270" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">4</text>
+    <rect x="270" y="127" width="30" height="123" fill="#ef4444" opacity="0.8" rx="2"/>
+    <text x="285" y="270" font-family="sans-serif" font-size="12" fill="#ef4444" font-weight="bold" text-anchor="middle">5</text>
+    <rect x="310" y="147" width="30" height="103" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="325" y="270" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">6</text>
+    <rect x="350" y="191" width="30" height="59" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="365" y="270" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">7</text>
+    <rect x="390" y="228" width="30" height="22" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="405" y="270" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">8</text>
+    <rect x="430" y="245" width="30" height="5" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="445" y="270" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">9</text>
+    <rect x="470" y="249" width="30" height="1" fill="#3b82f6" opacity="0.8" rx="2"/>
+    <text x="485" y="270" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">10</text>
+    
+    <text x="300" y="30" font-family="sans-serif" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle">Distribution of X ~ B(10, 0.5)</text>
+    <text x="300" y="295" font-family="sans-serif" font-size="14" fill="#1e293b" text-anchor="middle">Number of Successes (x)</text>
+    <text x="20" y="150" font-family="sans-serif" font-size="14" fill="#1e293b" text-anchor="middle" transform="rotate(-90 20 150)">Probability P(X=x)</text>
+  </svg>
+</div>
+
+---
+
+## 2. Mean and Variance
+
+The expected value, or **mean**, of a binomial distribution links back to SL 4.5 (expected number of occurrences). If you flip a fair coin 100 times, you "expect" 50 heads ($100 \times 0.5$). The **variance** measures the spread of the distribution around this mean. 
+
+<FormulaBox title="Mean">
+$$ \text{E}(X) = np $$
+</FormulaBox>
+
+<FormulaBox title="Variance">
+$$ \text{Var}(X) = np(1 - p) $$
+</FormulaBox>
+
+<Aside type="tip" title="Standard Deviation">
+  The standard deviation is simply the square root of the variance: $\sigma = \sqrt{np(1-p)}$. Remember that variance is $\sigma^2$.
+</Aside>
+
+### Worked Example: Mean and Variance
+**Question:** A biased die is rolled 60 times. The probability of rolling a "six" is $0.2$. Let $X$ be the number of sixes rolled. Find the mean and standard deviation of $X$.
+
+**Solution:**
+<Steps>
+  1. **Identify the parameters.**
+     $n = 60$ and $p = 0.2$. So, $X \sim \text{B}(60, 0.2)$.
+  2. **Calculate the mean (Expected Value).**
+     $$
+     \begin{aligned}
+     \text{E}(X) &= np \\
+     &= 60 \times 0.2 \\
+     &= 12
+     \end{aligned}
+     $$
+  3. **Calculate the variance and standard deviation.**
+     $$
+     \begin{aligned}
+     \text{Var}(X) &= np(1-p) \\
+     &= 60 \times 0.2 \times (1 - 0.2) \\
+     &= 12 \times 0.8 \\
+     &= 9.6
+     \end{aligned}
+     $$
+     $$
+     \begin{aligned}
+     \sigma &= \sqrt{9.6} \\
+     &\approx 3.10 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+
+---
+
+## 3. Calculating Probabilities with Technology
+
+In IB examinations, you are expected to find binomial probabilities using your Graphic Display Calculator (GDC).
+
+<SteveTip title="TI-Nspire: Binomial Commands">
+  On your TI-Nspire, open a Calculator page and press `Menu` > `5: Probability` > `5: Distributions`.
+  
+  * **BinomialPdf (Probability Density Function):** Use this to find the exact probability of getting *exactly* $x$ successes. $\text{P}(X = x)$.
+    * Format: `binomPdf(n, p, x)`
+  * **BinomialCdf (Cumulative Distribution Function):** Use this to find a range of probabilities, like "at most", "at least", or "between". $\text{P}(\text{lower} \le X \le \text{upper})$.
+    * Format: `binomCdf(n, p, lower bounds, upper bounds)`
+    * Example: For $\text{P}(X \le 4)$, lower bound is 0, upper bound is 4.
+    * Example: For $\text{P}(X \ge 6)$, lower bound is 6, upper bound is $n$.
+</SteveTip>
+
+<Aside type="danger" title="Strict Inequalities">
+  The TI-Nspire strictly calculates inclusive inequalities ($\le$ and $\ge$). If a question asks for a strict inequality, you must convert it to an inclusive one because discrete variables only take integer values!
+  * $\text{P}(X < 5) \implies \text{P}(X \le 4) \implies \text{Lower}=0, \text{Upper}=4$
+  * $\text{P}(X > 7) \implies \text{P}(X \ge 8) \implies \text{Lower}=8, \text{Upper}=n$
+</Aside>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Basic Probability">
+    A random variable $X$ is binomially distributed such that $X \sim \text{B}(15, 0.45)$.
+    Find:
+    
+    **a)** $\text{P}(X = 6)$
+    
+    **b)** $\text{P}(X \le 5)$
+    
+    **c)** $\text{P}(X > 9)$
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+  1. **Identify the need for an exact probability.**
+     Use `binomPdf` with $n=15, p=0.45, x=6$.
+  2. **Calculate using GDC.**
+     $$ \text{P}(X = 6) \approx 0.191 \text{ (3 s.f.)} $$
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Identify the cumulative probability.**
+     Use `binomCdf` with $n=15, p=0.45$, lower bound $= 0$, upper bound $= 5$.
+  2. **Calculate using GDC.**
+     $$ \text{P}(X \le 5) \approx 0.261 \text{ (3 s.f.)} $$
+</Steps>
+
+    **c)**
+<Steps>
+  1. **Convert the strict inequality to an inclusive one.**
+     Since $X > 9$, the possible values are $10, 11, 12, 13, 14, 15$. So we want $\text{P}(X \ge 10)$.
+  2. **Calculate using GDC (`binomCdf`).**
+     $n=15, p=0.45$, lower bound $= 10$, upper bound $= 15$.
+     $$ \text{P}(X \ge 10) \approx 0.0839 \text{ (3 s.f.)} $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: The 'At Least One' Trick">
+    A factory produces lightbulbs. The probability that a randomly chosen lightbulb is defective is $0.03$. A sample of 20 lightbulbs is selected at random.
+    
+    Find the probability that the sample contains **at least one** defective lightbulb.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+<Steps>
+  1. **Define the distribution.**
+     Let $X$ be the number of defective lightbulbs. $X \sim \text{B}(20, 0.03)$.
+  2. **Set up the probability statement.**
+     We want $\text{P}(X \ge 1)$.
+  3. **Use the complementary event strategy.**
+     "At least one" is the complement of "exactly zero".
+     $$ \text{P}(X \ge 1) = 1 - \text{P}(X = 0) $$
+  4. **Calculate using GDC.**
+     Find $\text{P}(X = 0)$ using `binomPdf(20, 0.03, 0)`.
+     $$
+     \begin{aligned}
+     \text{P}(X \ge 1) &= 1 - 0.54379... \\
+     &\approx 0.456 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+     *(Alternatively, you can just use `binomCdf(20, 0.03, 1, 20)` directly on your GDC!)*
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Finding Mean and Variance algebraically">
+    For a binomial distribution $Y \sim \text{B}(n, p)$, it is given that the mean is $12$ and the variance is $3$.
+    
+    **a)** Find the value of $p$.
+    
+    **b)** Find the value of $n$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+  1. **Set up the equations from the given formulas.**
+     $$ np = 12 \quad \text{--- (Equation 1)} $$
+     $$ np(1-p) = 3 \quad \text{--- (Equation 2)} $$
+  2. **Substitute Equation 1 into Equation 2.**
+     Replace the $np$ in Equation 2 with $12$.
+     $$
+     \begin{aligned}
+     12(1-p) &= 3 \\
+     1-p &= \dfrac{3}{12} \\
+     1-p &= 0.25 \\
+     p &= 0.75
+     \end{aligned}
+     $$
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Substitute $p$ back into Equation 1.**
+     $$
+     \begin{aligned}
+     n(0.75) &= 12 \\
+     n &= \dfrac{12}{0.75} \\
+     n &= 16
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Finding the number of trials (n)">
+    An archer has a probability of $0.6$ of hitting the bullseye on any given shot. Find the minimum number of shots she must fire to ensure that the probability of hitting the bullseye **at least once** is greater than $0.99$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+<Steps>
+  1. **Define the distribution.**
+     Let $X$ be the number of bullseyes. $X \sim \text{B}(n, 0.6)$. We need to find $n$.
+  2. **Set up the inequality.**
+     We want $\text{P}(X \ge 1) > 0.99$.
+  3. **Use the complementary event to simplify.**
+     $$
+     \begin{aligned}
+     1 - \text{P}(X = 0) &> 0.99 \\
+     \text{P}(X = 0) &< 0.01
+     \end{aligned}
+     $$
+  4. **Substitute the algebraic formula for $X=0$.**
+     The probability of zero successes is just the probability of $n$ consecutive failures.
+     Failure probability $= 1 - 0.6 = 0.4$.
+     $$ 0.4^n < 0.01 $$
+  5. **Solve for $n$ using logarithms or GDC tables/graphs.**
+     Using logs:
+     $$
+     \begin{aligned}
+     n \log(0.4) &< \log(0.01) \\
+     n &> \dfrac{\log(0.01)}{\log(0.4)} \quad \text{(flip sign as dividing by negative)} \\
+     n &> 5.025...
+     \end{aligned}
+     $$
+  6. **State the integer conclusion.**
+     Since $n$ must be an integer, the minimum number of shots is $6$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Financial Expected Value with Binomial">
+    A car insurance salesperson has a $15\%$ chance of selling a policy to any customer they call. The salesperson makes $25$ calls per day. The salesperson earns a fixed salary of 50.00 USD per day, plus a commission of 10.00 USD for every policy sold.
+    
+    Find the salesperson's expected daily earnings.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+<Steps>
+  1. **Define the binomial distribution for the number of policies sold.**
+     Let $X$ be the number of policies sold per day. $X \sim \text{B}(25, 0.15)$.
+  2. **Find the expected number of policies sold, $\text{E}(X)$.**
+     $$
+     \begin{aligned}
+     \text{E}(X) &= np \\
+     &= 25 \times 0.15 \\
+     &= 3.75
+     \end{aligned}
+     $$
+  3. **Calculate the expected earnings.**
+     Earnings $= 50 + 10 \times (\text{Policies Sold})$.
+     $$
+     \begin{aligned}
+     \text{Expected Earnings} &= 50 + 10 \times \text{E}(X) \\
+     &= 50 + 10(3.75) \\
+     &= 50 + 37.5 \\
+     &= 87.50 \text{ USD}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Between Two Values">
+    A fair coin is tossed 50 times. Let $H$ be the number of heads obtained.
+    Find the probability that the number of heads is strictly greater than 20 but no more than 30.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+<Steps>
+  1. **Define the distribution.**
+     $H \sim \text{B}(50, 0.5)$.
+  2. **Translate the wording into an exact probability statement.**
+     "Strictly greater than 20" $\implies$ starts at 21.
+     "No more than 30" $\implies$ ends at 30.
+     We want $\text{P}(21 \le H \le 30)$.
+  3. **Calculate using GDC.**
+     Use `binomCdf` with $n=50, p=0.5$, lower bound $= 21$, upper bound $= 30$.
+     $$ \text{P}(21 \le H \le 30) \approx 0.881 \text{ (3 s.f.)} $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Conditional Binomial Probability">
+    A machine produces components. $8\%$ of the components are faulty. A quality inspector selects a random sample of 30 components.
+    
+    Given that the sample contains at least one faulty component, find the probability that it contains exactly two faulty components.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+<Steps>
+  1. **Define the distribution and the events.**
+     Let $X \sim \text{B}(30, 0.08)$.
+     Event $A$: $X = 2$
+     Event $B$: $X \ge 1$ (at least one)
+  2. **Set up the conditional probability formula.**
+     We want $\text{P}(A|B) = \dfrac{\text{P}(A \cap B)}{\text{P}(B)}$.
+     The intersection of "exactly two" and "at least one" is simply "exactly two". So, $\text{P}(A \cap B) = \text{P}(X=2)$.
+     $$ \text{P}(X=2 | X \ge 1) = \dfrac{\text{P}(X=2)}{\text{P}(X \ge 1)} $$
+  3. **Calculate the numerator and denominator using GDC.**
+     Numerator: `binomPdf(30, 0.08, 2)` $\approx 0.27456$
+     Denominator: $\text{P}(X \ge 1) = 1 - \text{P}(X=0) = 1 - \text{binomPdf(30, 0.08, 0)} \approx 1 - 0.0820 = 0.9180$
+  4. **Evaluate the fraction.**
+     $$
+     \begin{aligned}
+     \text{P}(X=2 | X \ge 1) &= \dfrac{0.27456}{0.9180} \\
+     &\approx 0.299 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Multi-part Application">
+    A seed manufacturer claims that $85\%$ of their seeds germinate. A gardener plants 40 of these seeds. 
+    
+    **a)** Find the expected number of seeds that will germinate.
+    
+    **b)** Find the standard deviation for the number of seeds that germinate.
+    
+    **c)** Find the probability that exactly 35 seeds germinate.
+    
+    **d)** The gardener plants 5 distinct flower beds, each containing 40 seeds. Find the probability that exactly 3 of these flower beds have more than 35 seeds germinate.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+  1. **Identify parameters and calculate mean.**
+     Let $X \sim \text{B}(40, 0.85)$.
+     $$
+     \begin{aligned}
+     \text{E}(X) &= np \\
+     &= 40 \times 0.85 \\
+     &= 34
+     \end{aligned}
+     $$
+</Steps>
+
+    **b)**
+<Steps>
+  1. **Calculate variance then standard deviation.**
+     $$
+     \begin{aligned}
+     \text{Var}(X) &= 40(0.85)(0.15) = 5.1 \\
+     \sigma &= \sqrt{5.1} \approx 2.26 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+
+    **c)**
+<Steps>
+  1. **Calculate $\text{P}(X = 35)$ using GDC.**
+     `binomPdf(40, 0.85, 35)`
+     $$ \text{P}(X = 35) \approx 0.147 \text{ (3 s.f.)} $$
+</Steps>
+
+    **d)**
+<Steps>
+  1. **Find the probability of success for a single flower bed.**
+     A flower bed "succeeds" if $X > 35$, which is $X \ge 36$.
+     Using `binomCdf(40, 0.85, 36, 40)`:
+     $$ \text{P}(X \ge 36) \approx 0.22223 $$
+  2. **Set up a secondary binomial distribution.**
+     Let $Y$ be the number of flower beds that succeed out of 5.
+     $Y \sim \text{B}(5, 0.22223)$.
+  3. **Calculate the final probability.**
+     We want $\text{P}(Y = 3)$.
+     Using `binomPdf(5, 0.22223, 3)`:
+     $$ \text{P}(Y = 3) \approx 0.0700 \text{ (3 s.f.)} $$
+</Steps>
+  </TabItem>
+</Tabs>

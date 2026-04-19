@@ -1,6 +1,491 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 4.9 The Normal Distribution
+description: Understand the normal curve, its properties, the empirical rule, and how to use technology to calculate normal probabilities and inverse normal values.
 ---
 
-Content coming soon.
+We now move from discrete data (countable outcomes) to **continuous random variables**. A continuous random variable can take any real numerical value within a given range (for example, time, height, mass, or volume). The most important continuous probability distribution is the **normal distribution**. 
+
+<Aside type="note" title="Connections: History, Aim 8 & TOK">
+  **International-mindedness:** Abraham de Moivre, a French mathematician, first introduced the normal distribution in 1733 as an approximation to the binomial distribution. Later, the Belgian astronomer and sociologist Adolphe Quetelet applied it to human characteristics, creating the concept of *l'homme moyen* (the average man).
+  
+  **Links to other subjects:** You will see the normal distribution constantly in the sciences, psychology, and Environmental Systems and Societies (ESS) when analysing natural measurements, survey data, and descriptive statistics.
+  
+  **Aim 8:** Why might the misuse of the normal distribution lead to dangerous inferences? Assuming financial markets follow a strict normal distribution underestimates the likelihood of extreme events ("fat tails"). This misuse of the model has contributed to major global financial crises, as analysts mistakenly believed catastrophic crashes were statistically "impossible".
+  
+  **Theory of Knowledge (TOK):** To what extent can we trust mathematical models such as the normal distribution? The normal curve goes to infinity in both directions, implying humans with negative heights or infinite masses are mathematically possible, albeit with near-zero probability. How can we know what to include and exclude in a model for it to be useful in reality?
+</Aside>
+
+## 1. Properties of the Normal Distribution
+
+If a continuous random variable $X$ is normally distributed with mean $\mu$ and variance $\sigma^2$, we write:
+$$ X \sim \text{N}(\mu, \sigma^2) $$
+
+The normal distribution has several defining properties:
+1. **Bell-shaped and Symmetrical:** The curve is perfectly symmetrical around its centre.
+2. **Central Measures:** The mean, median, and mode are all equal and located exactly at the centre ($\mu$).
+3. **Asymptotic:** The tails of the curve approach the $x$-axis as $x \to \infty$ and $x \to -\infty$, but never actually touch it.
+4. **Total Area is 1:** Because it is a probability distribution, the total area under the curve is exactly $1$.
+5. **Exact Values:** For any continuous distribution, the probability of obtaining an exact value is zero. That is, $\text{P}(X = a) = 0$. Therefore, $\text{P}(X < a)$ is identical to $\text{P}(X \le a)$.
+
+## 2. Sketching and The Empirical Rule (68-95-99.7%)
+
+In examinations, you are highly expected to **sketch the normal curve** and label the shaded area under the curve based on probability expressions. Visualising the area helps prevent errors when using your Graphic Display Calculator (GDC).
+
+For any normally distributed variable, a predictable percentage of data falls within certain distances from the mean, measured in standard deviations ($\sigma$). This is known as the **Empirical Rule** or the **68-95-99.7% Rule**.
+
+* Approximately **68%** of the data lies between $\mu - \sigma$ and $\mu + \sigma$.
+* Approximately **95%** of the data lies between $\mu - 2\sigma$ and $\mu + 2\sigma$.
+* Approximately **99.7%** of the data lies between $\mu - 3\sigma$ and $\mu + 3\sigma$.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="empirical-rule-curve" viewBox="0 0 800 400" width="100%" style="max-width: 800px; background: #f8fafc; border-radius: 8px; border: 1px solid #cbd5e1;">
+    <line x1="50" y1="320" x2="750" y2="320" stroke="#334155" stroke-width="2"/>
+    
+    <polyline points={Array.from({ length: 161 }, (_, i) => i * 5).map(x => x + "," + (320 - 250 * Math.exp(-Math.pow(x - 400, 2) / 20000))).join(' ')} fill="none" stroke="#2563eb" stroke-width="4"/>
+    
+    <line x1="400" y1="70" x2="400" y2="320" stroke="#0f172a" stroke-width="2" stroke-dasharray="4"/>
+    <text x="400" y="345" font-family="sans-serif" font-size="18" fill="#0f172a" text-anchor="middle">μ</text>
+    
+    <line x1="300" y1="169" x2="300" y2="320" stroke="#475569" stroke-width="1.5" stroke-dasharray="4"/>
+    <text x="300" y="345" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">μ - σ</text>
+    <line x1="500" y1="169" x2="500" y2="320" stroke="#475569" stroke-width="1.5" stroke-dasharray="4"/>
+    <text x="500" y="345" font-family="sans-serif" font-size="16" fill="#475569" text-anchor="middle">μ + σ</text>
+    
+    <line x1="200" y1="286" x2="200" y2="320" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4"/>
+    <text x="200" y="345" font-family="sans-serif" font-size="16" fill="#64748b" text-anchor="middle">μ - 2σ</text>
+    <line x1="600" y1="286" x2="600" y2="320" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4"/>
+    <text x="600" y="345" font-family="sans-serif" font-size="16" fill="#64748b" text-anchor="middle">μ + 2σ</text>
+    
+    <line x1="100" y1="312" x2="100" y2="320" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+    <text x="100" y="345" font-family="sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">μ - 3σ</text>
+    <line x1="700" y1="312" x2="700" y2="320" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4"/>
+    <text x="700" y="345" font-family="sans-serif" font-size="16" fill="#94a3b8" text-anchor="middle">μ + 3σ</text>
+    
+    <path d="M 300 170 L 300 160 L 500 160 L 500 170" fill="none" stroke="#2563eb" stroke-width="2"/>
+    <text x="400" y="150" font-family="sans-serif" font-size="18" font-weight="bold" fill="#2563eb" text-anchor="middle">68%</text>
+    <text x="350" y="250" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">34%</text>
+    <text x="450" y="250" font-family="sans-serif" font-size="16" fill="#3b82f6" text-anchor="middle">34%</text>
+    
+    <path d="M 200 210 L 200 200 L 600 200 L 600 210" fill="none" stroke="#16a34a" stroke-width="2"/>
+    <text x="400" y="190" font-family="sans-serif" font-size="18" font-weight="bold" fill="#16a34a" text-anchor="middle">95%</text>
+    <text x="250" y="290" font-family="sans-serif" font-size="14" fill="#22c55e" text-anchor="middle">13.5%</text>
+    <text x="550" y="290" font-family="sans-serif" font-size="14" fill="#22c55e" text-anchor="middle">13.5%</text>
+    
+    <path d="M 100 250 L 100 240 L 700 240 L 700 250" fill="none" stroke="#d946ef" stroke-width="2"/>
+    <text x="400" y="230" font-family="sans-serif" font-size="18" font-weight="bold" fill="#d946ef" text-anchor="middle">99.7%</text>
+    <text x="150" y="310" font-family="sans-serif" font-size="12" fill="#e879f9" text-anchor="middle">2.35%</text>
+    <text x="650" y="310" font-family="sans-serif" font-size="12" fill="#e879f9" text-anchor="middle">2.35%</text>
+  </svg>
+</div>
+
+### Worked Example: Using the Empirical Rule
+**Question:** The lifespans of a specific type of lightbulb are normally distributed with a mean of 1200 hours and a standard deviation of 50 hours. Without using a calculator, estimate the percentage of lightbulbs that last between 1150 hours and 1300 hours.
+
+**Solution:**
+<Steps>
+  1. **Identify how many standard deviations the bounds are from the mean.**
+     Lower bound: 1150 is $1200 - 50 = \mu - 1\sigma$.
+     Upper bound: 1300 is $1200 + 2(50) = \mu + 2\sigma$.
+  2. **Sketch the distribution to visualise the area.**
+     <div style="display: flex; justify-content: center; margin: 1rem 0;">
+       <svg class="sketch-empirical" viewBox="0 0 400 220" width="100%" style="max-width: 400px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+         <polygon points={"160,180 " + Array.from({ length: 61 }, (_, i) => 160 + i * 2).map(x => x + "," + (180 - 140 * Math.exp(-Math.pow(x - 200, 2) / 3200))).join(' ') + " 280,180"} fill="#bfdbfe" />
+         <polyline points={Array.from({ length: 201 }, (_, i) => i * 2).map(x => x + "," + (180 - 140 * Math.exp(-Math.pow(x - 200, 2) / 3200))).join(' ')} fill="none" stroke="#3b82f6" stroke-width="3" />
+         <line x1="10" y1="180" x2="390" y2="180" stroke="#0f172a" stroke-width="2" />
+         <line x1="200" y1="40" x2="200" y2="180" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4" />
+         <text x="200" y="200" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">1200</text>
+         <text x="160" y="200" font-family="sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">1150</text>
+         <text x="280" y="200" font-family="sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">1300</text>
+         <text x="220" y="120" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1d4ed8" text-anchor="middle">81.5%</text>
+       </svg>
+     </div>
+  3. **Use the symmetry of the empirical rule percentages.**
+     The area from $\mu - 1\sigma$ to $\mu$ is half of 68%, which is 34%.
+     The area from $\mu$ to $\mu + 2\sigma$ is half of 95%, which is 47.5%.
+  4. **Sum the percentages.**
+     $$ \text{Percentage} = 34\% + 47.5\% = 81.5\% $$
+</Steps>
+
+---
+
+## 3. Calculating Normal Probabilities
+
+For boundaries that do not land exactly on integer multiples of $\sigma$, we must use technology. A given area under the normal curve represents the probability that a random value falls within that interval.
+
+<SteveTip title="TI-Nspire: normCdf">
+  To find the probability (area) between two values:
+  1. Open a Calculator page.
+  2. Press `Menu` > `5: Probability` > `5: Distributions` > `2: Normal Cdf`.
+  3. Enter `Lower Bound`, `Upper Bound`, `μ` (mean), and `σ` (standard deviation).
+  
+  *If there is no lower bound (e.g., $X < 20$), enter `-9E999` for the lower bound.*
+  *If there is no upper bound (e.g., $X > 30$), enter `9E999` for the upper bound.*
+</SteveTip>
+
+<Aside type="danger" title="Variance vs. Standard Deviation">
+  The notation $X \sim \text{N}(50, 16)$ gives the mean and the **variance** ($\sigma^2 = 16$). Your calculator requires the **standard deviation** ($\sigma$). Always remember to take the square root of the variance before entering it into your GDC! In this case, $\sigma = 4$.
+</Aside>
+
+---
+
+## 4. Inverse Normal Calculations
+
+Sometimes, you are given the probability (the area under the curve) and you need to work backwards to find the data value ($x$) that corresponds to that boundary. This is called an **inverse normal** calculation.
+
+<SteveTip title="TI-Nspire: invNorm">
+  To find a boundary value given a probability:
+  1. Press `Menu` > `5: Probability` > `5: Distributions` > `3: Inverse Normal`.
+  2. Enter the **Area** (this is *always* the area to the **LEFT** of the unknown value on older OS versions, though newer ones let you select left/center/right). Default to calculating the area to the left if unsure.
+  3. Enter `μ` and `σ`.
+</SteveTip>
+
+### Worked Example: Inverse Normal
+**Question:** The weights of parcels sent from a post office are normally distributed with a mean of 2.5 kg and a standard deviation of 0.8 kg. The heaviest 10% of parcels are classified as "oversized". Sketch the distribution and find the minimum weight of an oversized parcel.
+
+**Solution:**
+<Steps>
+  1. **Sketch the curve and identify the area.**
+     We are looking for a value $k$ such that the area to the *right* of $k$ is 10% (0.10).
+     <div style="display: flex; justify-content: center; margin: 1rem 0;">
+       <svg class="sketch-inverse" viewBox="0 0 400 220" width="100%" style="max-width: 400px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+         <polygon points={"252,180 " + Array.from({ length: 75 }, (_, i) => 252 + i * 2).map(x => x + "," + (180 - 140 * Math.exp(-Math.pow(x - 200, 2) / 3200))).join(' ') + " 400,180"} fill="#fecaca" />
+         <polyline points={Array.from({ length: 201 }, (_, i) => i * 2).map(x => x + "," + (180 - 140 * Math.exp(-Math.pow(x - 200, 2) / 3200))).join(' ')} fill="none" stroke="#3b82f6" stroke-width="3" />
+         <line x1="10" y1="180" x2="390" y2="180" stroke="#0f172a" stroke-width="2" />
+         <line x1="200" y1="40" x2="200" y2="180" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4" />
+         <text x="200" y="200" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">2.5</text>
+         <line x1="252" y1="110" x2="252" y2="180" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4" />
+         <text x="252" y="200" font-family="sans-serif" font-size="12" fill="#ef4444" font-weight="bold" text-anchor="middle">k</text>
+         <text x="300" y="140" font-family="sans-serif" font-size="14" font-weight="bold" fill="#b91c1c" text-anchor="middle">10%</text>
+       </svg>
+     </div>
+     $$ \text{P}(X > k) = 0.10 $$
+  2. **Determine the area to the left.**
+     Since the total area is 1, the area to the left of $k$ is $1 - 0.10 = 0.90$.
+     $$ \text{P}(X < k) = 0.90 $$
+  3. **Use the GDC.**
+     Using `invNorm(0.90, 2.5, 0.8)`:
+     $$ k \approx 3.52 \text{ kg (3 s.f.)} $$
+</Steps>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Sketching & Probabilities">
+    The volume of juice in a bottle is normally distributed with a mean of 500 ml and a standard deviation of 12 ml. For each part, sketch the curve representing the probability, then solve.
+    
+    **a)** Find the probability that a randomly selected bottle contains less than 485 ml.
+    
+    **b)** Find the probability that a randomly selected bottle contains between 495 ml and 515 ml.
+    
+    **c)** Find the volume required to be in the top 15% of all bottles.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    Let $X$ be the volume of juice in ml. $X \sim \text{N}(500, 12^2)$.
+    
+    **a)**
+<Steps>
+  1. **Sketch the distribution.**
+     <div style="display: flex; justify-content: center; margin: 1rem 0;">
+       <svg class="sketch-q1a" viewBox="0 0 400 220" width="100%" style="max-width: 400px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+         <polygon points={"0,180 " + Array.from({ length: 76 }, (_, i) => i * 2).map(x => x + "," + (180 - 140 * Math.exp(-Math.pow(x - 200, 2) / 3200))).join(' ') + " 150,180"} fill="#bfdbfe" />
+         <polyline points={Array.from({ length: 201 }, (_, i) => i * 2).map(x => x + "," + (180 - 140 * Math.exp(-Math.pow(x - 200, 2) / 3200))).join(' ')} fill="none" stroke="#3b82f6" stroke-width="3" />
+         <line x1="10" y1="180" x2="390" y2="180" stroke="#0f172a" stroke-width="2" />
+         <line x1="200" y1="40" x2="200" y2="180" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4" />
+         <text x="200" y="200" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">500</text>
+         <line x1="150" y1="117" x2="150" y2="180" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4" />
+         <text x="150" y="200" font-family="sans-serif" font-size="12" fill="#ef4444" text-anchor="middle">485</text>
+         <text x="100" y="150" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1d4ed8" text-anchor="middle">P(X &lt; 485)</text>
+       </svg>
+     </div>
+  2. **Calculate using `normCdf`.**
+     Lower: `-9E999`, Upper: $485$, $\mu = 500$, $\sigma = 12$.
+     $$ \text{P}(X < 485) \approx 0.106 \text{ (3 s.f.)} $$
+</Steps>
+    **b)**
+<Steps>
+  1. **Sketch the distribution.**
+     <div style="display: flex; justify-content: center; margin: 1rem 0;">
+       <svg class="sketch-q1b" viewBox="0 0 400 220" width="100%" style="max-width: 400px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+         <polygon points={"182,180 " + Array.from({ length: 35 }, (_, i) => 182 + i * 2).map(x => x + "," + (180 - 140 * Math.exp(-Math.pow(x - 200, 2) / 3200))).join(' ') + " 250,180"} fill="#bbf7d0" />
+         <polyline points={Array.from({ length: 201 }, (_, i) => i * 2).map(x => x + "," + (180 - 140 * Math.exp(-Math.pow(x - 200, 2) / 3200))).join(' ')} fill="none" stroke="#16a34a" stroke-width="3" />
+         <line x1="10" y1="180" x2="390" y2="180" stroke="#0f172a" stroke-width="2" />
+         <line x1="200" y1="40" x2="200" y2="180" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4" />
+         <text x="200" y="200" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">500</text>
+         <text x="182" y="200" font-family="sans-serif" font-size="12" fill="#16a34a" text-anchor="middle">495</text>
+         <text x="250" y="200" font-family="sans-serif" font-size="12" fill="#16a34a" text-anchor="middle">515</text>
+       </svg>
+     </div>
+  2. **Calculate using `normCdf`.**
+     Lower: $495$, Upper: $515$, $\mu = 500$, $\sigma = 12$.
+     $$ \text{P}(495 < X < 515) \approx 0.556 \text{ (3 s.f.)} $$
+</Steps>
+    **c)**
+<Steps>
+  1. **Sketch the inverse normal problem.**
+     <div style="display: flex; justify-content: center; margin: 1rem 0;">
+       <svg class="sketch-q1c" viewBox="0 0 400 220" width="100%" style="max-width: 400px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+         <polygon points={"240,180 " + Array.from({ length: 81 }, (_, i) => 240 + i * 2).map(x => x + "," + (180 - 140 * Math.exp(-Math.pow(x - 200, 2) / 3200))).join(' ') + " 400,180"} fill="#fecaca" />
+         <polyline points={Array.from({ length: 201 }, (_, i) => i * 2).map(x => x + "," + (180 - 140 * Math.exp(-Math.pow(x - 200, 2) / 3200))).join(' ')} fill="none" stroke="#ef4444" stroke-width="3" />
+         <line x1="10" y1="180" x2="390" y2="180" stroke="#0f172a" stroke-width="2" />
+         <line x1="200" y1="40" x2="200" y2="180" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4" />
+         <text x="200" y="200" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">500</text>
+         <line x1="240" y1="95" x2="240" y2="180" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4" />
+         <text x="240" y="200" font-family="sans-serif" font-size="12" fill="#ef4444" font-weight="bold" text-anchor="middle">k</text>
+         <text x="280" y="140" font-family="sans-serif" font-size="12" font-weight="bold" fill="#b91c1c" text-anchor="middle">15%</text>
+       </svg>
+     </div>
+     Top 15% means the area to the right is 0.15. Thus, the area to the left is $1 - 0.15 = 0.85$.
+     $$ \text{P}(X < k) = 0.85 $$
+  2. **Calculate using `invNorm`.**
+     `invNorm(0.85, 500, 12)`
+     $$ k \approx 512 \text{ ml (3 s.f.)} $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Expected Outcomes">
+    The lengths of adult fish in a lake are normally distributed with a mean of 24 cm and a standard deviation of 3.5 cm.
+    
+    **a)** Find the probability that a randomly caught fish is longer than 28 cm.
+    
+    **b)** An ecologist catches a sample of 200 fish. Estimate the expected number of fish in this sample that are longer than 28 cm.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    Let $L$ be the length of a fish. $L \sim \text{N}(24, 3.5^2)$.
+    
+    **a)**
+<Steps>
+  1. **Identify the bounds and parameters.**
+     Lower: $28$, Upper: `9E999`, $\mu = 24$, $\sigma = 3.5$.
+  2. **Calculate using `normCdf`.**
+     $$ \text{P}(L > 28) \approx 0.1265... \approx 0.127 \text{ (3 s.f.)} $$
+</Steps>
+    **b)**
+<Steps>
+  1. **Use the expected value formula from binomial probability.**
+     $\text{Expected value} = n \times p$.
+     $$
+     \begin{aligned}
+     \text{E}(\text{Count}) &= 200 \times 0.1265... \\
+     &\approx 25.3
+     \end{aligned}
+     $$
+     We expect approximately 25 fish to be longer than 28 cm.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Working with Variance Notation">
+    A continuous random variable $X$ is distributed as $X \sim \text{N}(75, 25)$.
+    
+    **a)** Write down the mean and the standard deviation of $X$.
+    
+    **b)** Find $\text{P}(68 \le X \le 80)$.
+    
+    **c)** Find the value of $q$ such that $\text{P}(X \le q) = 0.72$.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+  1. **Interpret the notation.**
+     The notation is $\text{N}(\mu, \sigma^2)$. Therefore, $\mu = 75$ and $\sigma^2 = 25$.
+     $$ \text{Mean } (\mu) = 75 $$
+     $$ \text{Standard Deviation } (\sigma) = \sqrt{25} = 5 $$
+</Steps>
+    **b)**
+<Steps>
+  1. **Calculate using `normCdf`.**
+     Lower: $68$, Upper: $80$, $\mu = 75$, $\sigma = 5$.
+     $$ \text{P}(68 \le X \le 80) \approx 0.761 \text{ (3 s.f.)} $$
+</Steps>
+    **c)**
+<Steps>
+  1. **Calculate using `invNorm`.**
+     Area to the left: $0.72$, $\mu = 75$, $\sigma = 5$.
+     `invNorm(0.72, 75, 5)`
+     $$ q \approx 77.9 \text{ (3 s.f.)} $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Central Probabilities (Inverse Normal)">
+    The lifespans of laptop batteries are normally distributed with a mean of 48 months and a standard deviation of 8 months.
+    
+    Find the symmetric interval around the mean that contains exactly 80% of the battery lifespans. Sketch the distribution to justify your working.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+<Steps>
+  1. **Sketch and analyse the distribution.**
+     <div style="display: flex; justify-content: center; margin: 1rem 0;">
+       <svg class="sketch-q4" viewBox="0 0 400 220" width="100%" style="max-width: 400px; background: #ffffff; border-radius: 8px; border: 1px solid #e2e8f0;">
+         <polygon points={"148,180 " + Array.from({ length: 53 }, (_, i) => 148 + i * 2).map(x => x + "," + (180 - 140 * Math.exp(-Math.pow(x - 200, 2) / 3200))).join(' ') + " 252,180"} fill="#fef08a" />
+         <polyline points={Array.from({ length: 201 }, (_, i) => i * 2).map(x => x + "," + (180 - 140 * Math.exp(-Math.pow(x - 200, 2) / 3200))).join(' ')} fill="none" stroke="#eab308" stroke-width="3" />
+         <line x1="10" y1="180" x2="390" y2="180" stroke="#0f172a" stroke-width="2" />
+         <line x1="200" y1="40" x2="200" y2="180" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4" />
+         <text x="200" y="200" font-family="sans-serif" font-size="12" fill="#0f172a" text-anchor="middle">48</text>
+         <text x="148" y="200" font-family="sans-serif" font-size="12" fill="#ca8a04" text-anchor="middle">a</text>
+         <text x="252" y="200" font-family="sans-serif" font-size="12" fill="#ca8a04" text-anchor="middle">b</text>
+         <text x="200" y="140" font-family="sans-serif" font-size="14" font-weight="bold" fill="#a16207" text-anchor="middle">80%</text>
+         <text x="100" y="160" font-family="sans-serif" font-size="12" fill="#a16207" text-anchor="middle">10%</text>
+         <text x="300" y="160" font-family="sans-serif" font-size="12" fill="#a16207" text-anchor="middle">10%</text>
+       </svg>
+     </div>
+     We want a lower bound $a$ and an upper bound $b$ such that the middle area is $0.80$.
+     Because the curve is symmetrical, the remaining 20% is split equally into the two tails.
+     Lower tail area $= 10\% = 0.10$.
+     Upper tail area $= 10\% = 0.10$.
+  2. **Find the lower bound $a$.**
+     The area to the left of $a$ is $0.10$.
+     `invNorm(0.10, 48, 8)`
+     $$ a \approx 37.7 \text{ months} $$
+  3. **Find the upper bound $b$.**
+     The area to the left of $b$ is $0.10 + 0.80 = 0.90$.
+     `invNorm(0.90, 48, 8)`
+     $$ b \approx 58.3 \text{ months} $$
+  4. **State the interval.**
+     The symmetric interval is between 37.7 months and 58.3 months.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Conditional Probability with Normal">
+    Scores on a university admissions test are normally distributed with a mean of 60 and a standard deviation of 15. A student must score above 70 to be considered for an interview.
+    
+    Given that a randomly selected student is considered for an interview, find the probability that they scored above 85.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    Let $X \sim \text{N}(60, 15^2)$.
+<Steps>
+  1. **Set up the conditional probability formula.**
+     We want $\text{P}(X > 85 | X > 70)$.
+     $$ \text{P}(X > 85 | X > 70) = \dfrac{\text{P}((X > 85) \cap (X > 70))}{\text{P}(X > 70)} $$
+  2. **Simplify the intersection.**
+     If a score is greater than 85 AND greater than 70, it is simply greater than 85.
+     $$ \text{Numerator} = \text{P}(X > 85) $$
+  3. **Calculate the numerator and denominator using `normCdf`.**
+     Numerator: `normCdf(85, 9E999, 60, 15)` $\approx 0.04779$
+     Denominator: `normCdf(70, 9E999, 60, 15)` $\approx 0.25249$
+  4. **Evaluate the fraction.**
+     $$
+     \begin{aligned}
+     \text{Probability} &= \dfrac{0.04779}{0.25249} \\
+     &\approx 0.189 \text{ (3 s.f.)}
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Integrating Normal and Binomial">
+    The mass of a specific type of melon is normally distributed with $\mu = 1.2$ kg and $\sigma = 0.15$ kg. 
+    Melons with a mass greater than 1.4 kg are classified as "Premium".
+    
+    **a)** Find the probability that a randomly chosen melon is Premium.
+    
+    **b)** A shopper selects 6 melons at random. Find the probability that exactly 2 of them are Premium.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+  1. **Define the normal distribution and calculate.**
+     Let $M \sim \text{N}(1.2, 0.15^2)$. Find $\text{P}(M > 1.4)$.
+     Use `normCdf(1.4, 9E999, 1.2, 0.15)`.
+     $$ \text{P}(M > 1.4) \approx 0.09121... $$
+     The probability is $0.0912$ (3 s.f.).
+</Steps>
+    **b)**
+<Steps>
+  1. **Set up a binomial distribution using the probability from part (a).**
+     Let $Y$ be the number of Premium melons out of 6.
+     $Y \sim \text{B}(6, 0.09121...)$
+  2. **Calculate the binomial probability.**
+     We want $\text{P}(Y = 2)$.
+     Use `binomPdf(6, 0.09121, 2)`.
+     $$ \text{P}(Y = 2) \approx 0.0837 \text{ (3 s.f.)} $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Using Symmetry Properties">
+    The time, $T$ minutes, taken by mechanics to service a car is normally distributed with a mean of 45 minutes. 
+    It is known that $\text{P}(T < 35) = 0.15$.
+    
+    Without calculating the standard deviation, find:
+    
+    **a)** $\text{P}(T > 55)$
+    
+    **b)** $\text{P}(35 < T < 55)$
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+<Steps>
+  1. **Analyse the distances from the mean.**
+     The mean is $\mu = 45$.
+     The value 35 is $10$ units below the mean ($45 - 10 = 35$).
+     The value 55 is $10$ units above the mean ($45 + 10 = 55$).
+  2. **Apply symmetry.**
+     Because 35 and 55 are equidistant from the mean, the areas in the tails are equal.
+     $$ \text{P}(T > 55) = \text{P}(T < 35) = 0.15 $$
+</Steps>
+    **b)**
+<Steps>
+  1. **Use the total probability property.**
+     The total area under the curve is 1.
+     $$ \text{P}(35 < T < 55) = 1 - \text{P}(T < 35) - \text{P}(T > 55) $$
+  2. **Substitute the known areas.**
+     $$
+     \begin{aligned}
+     \text{P}(35 < T < 55) &= 1 - 0.15 - 0.15 \\
+     &= 1 - 0.30 \\
+     &= 0.70
+     \end{aligned}
+     $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Economics Application (Aim 8 Link)">
+    The annual salaries of employees at a large multinational tech company are normally distributed with a mean of 85000.00 USD and a standard deviation of 12500.00 USD.
+    
+    **a)** Calculate the percentage of employees who earn less than 70000.00 USD.
+    
+    **b)** The company decides to give a bonus to the top 8% of earners. Determine the minimum salary required to receive this bonus.
+    
+    **c)** If a manager assumes that global salaries across all industries follow this exact same model, briefly explain why this might be a dangerous inference (Aim 8).
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    Let $S \sim \text{N}(85000, 12500^2)$.
+    
+    **a)**
+<Steps>
+  1. **Calculate using `normCdf`.**
+     Lower: `-9E999`, Upper: $70000$, $\mu = 85000$, $\sigma = 12500$.
+     $$ \text{P}(S < 70000) \approx 0.11507... $$
+  2. **Convert to a percentage.**
+     $$ \text{Percentage} \approx 11.5\% $$
+</Steps>
+    **b)**
+<Steps>
+  1. **Set up the inverse normal.**
+     Top 8% means the area to the right is $0.08$. The area to the left is $1 - 0.08 = 0.92$.
+  2. **Calculate using `invNorm`.**
+     `invNorm(0.92, 85000, 12500)`
+     $$ \text{Salary} \approx 102563.4... $$
+     The minimum salary required is 103000.00 USD (3 s.f.).
+</Steps>
+    **c)**
+<Steps>
+  1. **Explain the context.**
+     A multinational tech company likely pays significantly higher than the global average. Applying this specific normal distribution to all industries globally would drastically overestimate average global wealth and completely ignore the heavily right-skewed nature of global income distribution (where a massive population earns very little, and a few earn billions). This could lead to disastrously poor economic policies or misallocation of aid.
+</Steps>
+  </TabItem>
+</Tabs>

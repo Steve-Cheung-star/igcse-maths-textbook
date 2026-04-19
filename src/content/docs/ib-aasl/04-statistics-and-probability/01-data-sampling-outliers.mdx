@@ -1,6 +1,495 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 4.1 Concepts of Population, Sample, and Data Types
+description: Understanding statistical foundations including populations, samples, sampling techniques, data types, bias, and outliers.
 ---
 
-Content coming soon.
+Welcome to Topic 4.1, the foundation of statistical analysis. Before we can perform any complex calculations, we must understand how data is collected, categorised, and scrutinised. This section covers the critical questions you should ask whenever you are presented with a dataset: Where did the data come from? Is it reliable? What type of data is it? 
+
+<Aside type="note" title="Connections, Aim 8 & TOK">
+  **Theory of Knowledge (TOK):** Statistics is often viewed as objective truth, yet the way data is sampled and presented can dramatically alter our perception of reality. How do the choices made by a statistician regarding sampling methods influence the "truth" of their conclusions?
+  
+  **Aim 8 (Ethical awareness):** The misuse of statistics can lead to false claims in advertising, politics, and science. Understanding bias and reliability equips you to critically evaluate the information you consume daily, promoting ethical data consumption and production.
+  
+  **International Mindedness:** Global organisations like the UN and WHO rely heavily on robust sampling techniques to understand worldwide health and demographic trends, ensuring aid is distributed fairly across diverse populations.
+</Aside>
+
+---
+
+## 1. Population, Sample, and Data Types
+
+Before collecting data, statisticians must define their target group.
+
+* **Population:** The entire group of individuals or items under investigation (e.g., all students in a school).
+* **Sample:** A subset of the population selected for study, used to make inferences about the whole population.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 220" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Population */}
+    <ellipse cx="150" cy="110" rx="120" ry="90" fill="rgba(59, 130, 246, 0.05)" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4 4" />
+    <text x="150" y="50" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Population (N)</text>
+    <text x="150" y="70" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">The entire target group</text>
+    
+    {/* Population dots */}
+    <circle cx="100" cy="100" r="4" fill="#64748b" />
+    <circle cx="120" cy="130" r="4" fill="#64748b" />
+    <circle cx="160" cy="90" r="4" fill="#3b82f6" />
+    <circle cx="180" cy="140" r="4" fill="#64748b" />
+    <circle cx="200" cy="110" r="4" fill="#3b82f6" />
+    <circle cx="140" cy="160" r="4" fill="#64748b" />
+    <circle cx="80" cy="120" r="4" fill="#3b82f6" />
+    <circle cx="150" cy="120" r="4" fill="#64748b" />
+
+    {/* Sample */}
+    <circle cx="450" cy="110" r="60" fill="rgba(16, 185, 129, 0.1)" stroke="#10b981" stroke-width="2" />
+    <text x="450" y="70" font-size="16" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Sample (n)</text>
+    <text x="450" y="170" font-size="12" fill="#64748b" text-anchor="middle" font-family="sans-serif">A subset for analysis</text>
+
+    {/* Sample dots */}
+    <circle cx="430" cy="100" r="4" fill="#3b82f6" />
+    <circle cx="470" cy="120" r="4" fill="#3b82f6" />
+    <circle cx="450" cy="130" r="4" fill="#3b82f6" />
+
+    {/* Top Arrow: Sampling */}
+    <path d="M 220 80 Q 300 40 380 80" fill="none" stroke="#64748b" stroke-width="2" />
+    <polygon points="380,80 370,75 375,85" fill="#64748b" transform="rotate(25 380 80)" />
+    <text x="300" y="50" font-size="14" font-style="italic" fill="#64748b" text-anchor="middle" font-family="sans-serif">Sampling Process</text>
+
+    {/* Bottom Arrow: Inference */}
+    <path d="M 380 140 Q 300 180 220 140" fill="none" stroke="#ef4444" stroke-width="2" />
+    <polygon points="220,140 230,145 225,135" fill="#ef4444" transform="rotate(25 220 140)" />
+    <text x="300" y="180" font-size="14" font-style="italic" fill="#ef4444" text-anchor="middle" font-family="sans-serif">Statistical Inference</text>
+  </svg>
+</div>
+
+### Discrete vs Continuous Data
+
+Quantitative (numerical) data is split into two categories:
+* **Discrete Data:** Data that can only take specific, exact values. It is usually *counted* (e.g., number of cars, shoe size).
+* **Continuous Data:** Data that can take any value within a given range. It is usually *measured* (e.g., height, weight, time).
+
+### Worked Example 1: Identifying Data Types
+**Question:** A biologist is studying a local species of frog. State whether the following variables are discrete or continuous:
+a) The number of eggs laid by a female frog.
+b) The weight of an adult frog.
+
+**Solution:**
+<Steps>
+1. **Analyse variable (a).**
+   The number of eggs must be a whole number. You count them.
+   Therefore, it is **discrete**.
+2. **Analyse variable (b).**
+   Weight is measured and can take any value (e.g., $15.234\text{ g}$ depending on the scale's precision).
+   Therefore, it is **continuous**.
+</Steps>
+
+---
+
+## 2. Sampling Techniques
+
+To ensure a sample accurately reflects the population, different sampling techniques are used. 
+
+* **Simple Random Sampling:** Every member of the population has an equal chance of being selected (e.g., drawing names from a hat or using a random number generator).
+* **Systematic Sampling:** Selecting every $n$-th member of the population from a list (e.g., surveying every 10th person who enters a shop).
+* **Convenience Sampling:** Choosing members of the population who are easiest to reach (e.g., surveying your own friends). *Highly prone to bias.*
+* **Stratified Sampling:** The population is divided into subgroups (strata), and a *random* sample is taken from each stratum proportional to its size in the overall population.
+* **Quota Sampling:** Similar to stratified, the population is divided into subgroups, but the researcher selects people *non-randomly* until a specific quota is met for each group.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+  <svg viewBox="0 0 600 300" width="100%" maxWidth="600px" style={{ background: 'transparent' }}>
+    {/* Root Node */}
+    <rect x="200" y="10" width="200" height="40" rx="6" fill="#1e293b" />
+    <text x="300" y="35" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle" font-family="sans-serif">Sampling Methods</text>
+
+    {/* Branches from Root */}
+    <path d="M 300 50 L 300 70 L 150 70 L 150 90" fill="none" stroke="#64748b" stroke-width="2" />
+    <path d="M 300 50 L 300 70 L 450 70 L 450 90" fill="none" stroke="#64748b" stroke-width="2" />
+
+    {/* Level 2 Nodes */}
+    <rect x="50" y="90" width="200" height="40" rx="6" fill="#3b82f6" />
+    <text x="150" y="115" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle" font-family="sans-serif">Probability (Random)</text>
+
+    <rect x="350" y="90" width="200" height="40" rx="6" fill="#ef4444" />
+    <text x="450" y="115" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle" font-family="sans-serif">Non-Probability</text>
+
+    {/* Branches from Random */}
+    <path d="M 150 130 L 150 150 L 60 150 L 60 180" fill="none" stroke="#64748b" stroke-width="2" />
+    <path d="M 150 130 L 150 180" fill="none" stroke="#64748b" stroke-width="2" />
+    <path d="M 150 130 L 150 150 L 240 150 L 240 180" fill="none" stroke="#64748b" stroke-width="2" />
+
+    {/* Branches from Non-Random */}
+    <path d="M 450 130 L 450 150 L 380 150 L 380 180" fill="none" stroke="#64748b" stroke-width="2" />
+    <path d="M 450 130 L 450 150 L 520 150 L 520 180" fill="none" stroke="#64748b" stroke-width="2" />
+
+    {/* Level 3 Leaf Nodes */}
+    {/* Random Leaves */}
+    <rect x="10" y="180" width="100" height="40" rx="4" fill="#ffffff" stroke="#3b82f6" stroke-width="2" />
+    <text x="60" y="198" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Simple Random</text>
+    <text x="60" y="212" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">(Equal chance)</text>
+
+    <rect x="120" y="180" width="100" height="40" rx="4" fill="#ffffff" stroke="#3b82f6" stroke-width="2" />
+    <text x="170" y="198" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Systematic</text>
+    <text x="170" y="212" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">(Every nth item)</text>
+
+    <rect x="230" y="180" width="100" height="60" rx="4" fill="#ffffff" stroke="#3b82f6" stroke-width="2" />
+    <text x="280" y="198" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Stratified</text>
+    <text x="280" y="212" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">(Proportional</text>
+    <text x="280" y="226" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">subgroups)</text>
+
+    {/* Non-Random Leaves */}
+    <rect x="330" y="180" width="100" height="60" rx="4" fill="#ffffff" stroke="#ef4444" stroke-width="2" />
+    <text x="380" y="198" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Convenience</text>
+    <text x="380" y="212" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">(Ease of</text>
+    <text x="380" y="226" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">access)</text>
+
+    <rect x="470" y="180" width="100" height="60" rx="4" fill="#ffffff" stroke="#ef4444" stroke-width="2" />
+    <text x="520" y="198" font-size="12" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Quota</text>
+    <text x="520" y="212" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">(Target number</text>
+    <text x="520" y="226" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">per group)</text>
+  </svg>
+</div>
+
+<SteveTip title="Exam Tip: Stratified Sampling">
+  In exams, you will often be asked to calculate how many individuals to select from a specific stratum. Use the formula:
+  $$ \text{Sample size of stratum} = \dfrac{\text{Size of stratum}}{\text{Total population}} \times \text{Total sample size} $$
+  Always round to the nearest whole number since you cannot sample a fraction of a person!
+</SteveTip>
+
+### Worked Example 2: Stratified Sampling
+**Question:** A school has $1200$ students. There are $400$ in Year 10, $500$ in Year 11, and $300$ in Year 12. A stratified sample of $60$ students is required. Calculate how many Year 11 students should be selected.
+
+**Solution:**
+<Steps>
+1. **Find the fraction of the population that is in Year 11.**
+   $$
+   \begin{aligned}
+   \text{Fraction} &= \dfrac{500}{1200}
+   \end{aligned}
+   $$
+2. **Multiply this fraction by the total desired sample size.**
+   $$
+   \begin{aligned}
+   \text{Year 11 Sample} &= \dfrac{500}{1200} \times 60 \\
+   &= \dfrac{5}{12} \times 60 \\
+   &= 25
+   \end{aligned}
+   $$
+</Steps>
+**25 students** should be selected from Year 11.
+
+---
+
+## 3. Reliability, Bias, and Errors
+
+Data is only as good as the method used to collect it.
+* **Reliability:** Refers to the consistency of the data. If the survey or experiment were repeated under the same conditions, would it produce similar results?
+* **Bias:** Occurs when the sample is not representative of the population, often systematically favouring one outcome over another (e.g., conducting a survey on the best sports team right outside a specific team's stadium).
+* **Missing Data:** When respondents skip questions or data is lost. This can skew results.
+* **Errors in Recording:** Human error when entering data (typing $100$ instead of $10$).
+
+---
+
+## 4. Interpretation of Outliers
+
+An **outlier** is a data value that is significantly higher or lower than the rest of the data. 
+
+Mathematically, the IB defines an outlier using the Interquartile Range (IQR):
+* **Lower Outlier Boundary:** $Q_1 - 1.5 \times \text{IQR}$
+* **Upper Outlier Boundary:** $Q_3 + 1.5 \times \text{IQR}$
+Any data point strictly less than the lower boundary or strictly greater than the upper boundary is considered an outlier.
+
+<Aside type="danger" title="Caution: Dealing with Outliers">
+  Do you delete an outlier? It depends on the context! 
+  If a student records their height as $1700\text{ cm}$, it is clearly a recording error and should be removed or corrected. However, if a CEO's salary of $5,000,000\text{ USD}$ is an outlier in a company dataset, it is a **valid part of the sample** and represents a true reality, even if it skews the mean.
+</Aside>
+
+### Worked Example 3: Finding Outliers
+**Question:** A dataset has a lower quartile ($Q_1$) of $12$ and an upper quartile ($Q_3$) of $28$. An observation of $54$ is recorded. Determine if $54$ is an outlier.
+
+**Solution:**
+<Steps>
+1. **Calculate the Interquartile Range (IQR).**
+   $$
+   \begin{aligned}
+   \text{IQR} &= Q_3 - Q_1 \\
+   &= 28 - 12 \\
+   &= 16
+   \end{aligned}
+   $$
+2. **Calculate the upper boundary for outliers.**
+   $$
+   \begin{aligned}
+   \text{Upper Boundary} &= Q_3 + 1.5 \times \text{IQR} \\
+   &= 28 + 1.5 \times 16 \\
+   &= 28 + 24 \\
+   &= 52
+   \end{aligned}
+   $$
+3. **Compare the observation to the boundary.**
+   $$
+   \begin{aligned}
+   54 &> 52
+   \end{aligned}
+   $$
+</Steps>
+Since $54$ is strictly greater than the upper boundary of $52$, it **is an outlier**.
+
+<SteveTip title="TI-Nspire: Outliers">
+  Your TI-Nspire can automatically identify outliers when generating a Box Plot. Go to `Data & Statistics`, add your variable, and select `Menu > Plot Type > Box Plot`. The calculator will show outliers as individual dots beyond the whiskers, automatically applying the $1.5 \times \text{IQR}$ rule!
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Data Classification">
+    Classify the following variables as either discrete or continuous:
+    
+    **a)** The time taken by athletes to run a marathon.
+    
+    **b)** The number of goals scored in a football match.
+    
+    **c)** The distance a car travels on a full tank of petrol.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+    **Continuous:** Time is measured and can take infinite decimal values along a spectrum (e.g., $2.541$ hours).
+    
+    **b)**
+    **Discrete:** Goals are counted in whole numbers. You cannot score $1.5$ goals.
+    
+    **c)**
+    **Continuous:** Distance is a measured quantity that can take any value on a continuous scale.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Identifying Sampling Techniques">
+    Identify the sampling technique being used in each scenario:
+    
+    **a)** A teacher puts the names of all her students in a hat and draws $5$ names to form a committee.
+    
+    **b)** A researcher stands outside a shopping centre and asks the first $50$ people who walk past about their favourite brand of coffee.
+    
+    **c)** A factory quality control manager tests every $100$th lightbulb produced on an assembly line.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+    **Simple Random Sampling:** Every student has an equal and independent chance of being selected.
+    
+    **b)**
+    **Convenience Sampling:** The researcher is selecting people purely based on how easily accessible they are.
+    
+    **c)**
+    **Systematic Sampling:** A fixed interval (every $100$th) is used to select the sample from an ordered sequence.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Stratified Sampling Calculation">
+    A multinational company has offices in London ($450$ employees), New York ($600$ employees), and Tokyo ($150$ employees). The HR department wants to take a stratified random sample of $80$ employees to survey regarding workplace satisfaction.
+    
+    **a)** Calculate the total number of employees.
+    
+    **b)** Calculate the number of employees from the London office that should be included in the sample.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+    Sum the employees from all offices:
+    $$
+    \begin{aligned}
+    \text{Total} &= 450 + 600 + 150 \\
+    &= 1200 \text{ employees}
+    \end{aligned}
+    $$
+    
+    **b)**
+<Steps>
+    1. **Find the fraction of London employees.**
+       $$
+       \begin{aligned}
+       \text{Fraction} &= \dfrac{450}{1200}
+       \end{aligned}
+       $$
+    2. **Multiply by the desired sample size.**
+       $$
+       \begin{aligned}
+       \text{Sample (London)} &= \dfrac{450}{1200} \times 80 \\
+       &= \dfrac{3}{8} \times 80 \\
+       &= 30
+       \end{aligned}
+       $$
+</Steps>
+    **30 employees** from London should be sampled.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Outlier Boundaries">
+    A set of exam scores has a lower quartile ($Q_1$) of $42$ and an upper quartile ($Q_3$) of $74$. 
+    
+    **a)** Calculate the interquartile range (IQR).
+    
+    **b)** Calculate the lower and upper boundaries for outliers.
+    
+    **c)** A student scored $18$ on the exam. Determine if this score is an outlier.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+    Apply the IQR formula:
+    $$
+    \begin{aligned}
+    \text{IQR} &= Q_3 - Q_1 \\
+    &= 74 - 42 \\
+    &= 32
+    \end{aligned}
+    $$
+    
+    **b)**
+<Steps>
+    1. **Calculate the lower boundary.**
+       $$
+       \begin{aligned}
+       \text{Lower Boundary} &= Q_1 - 1.5 \times \text{IQR} \\
+       &= 42 - 1.5 \times 32 \\
+       &= 42 - 48 \\
+       &= -6
+       \end{aligned}
+       $$
+    2. **Calculate the upper boundary.**
+       $$
+       \begin{aligned}
+       \text{Upper Boundary} &= Q_3 + 1.5 \times \text{IQR} \\
+       &= 74 + 1.5 \times 32 \\
+       &= 74 + 48 \\
+       &= 122
+       \end{aligned}
+       $$
+</Steps>
+
+    **c)**
+    The score is $18$. The lower boundary is $-6$. Since $18$ is not strictly less than $-6$, the score is **not an outlier**.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Systematic Sampling Setup">
+    A headmaster wishes to survey $25$ students from a school of $850$ students. He possesses an alphabetical list of all students.
+    
+    **a)** If he decides to use systematic sampling, calculate the value of $k$ (where he selects every $k$-th student).
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+    Divide the population by the sample size to find the interval $k$:
+    $$
+    \begin{aligned}
+    k &= \dfrac{850}{25} \\
+    &= 34
+    \end{aligned}
+    $$
+    He should select every **34th** student on the list.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Evaluating Bias">
+    A university student wants to determine the average amount of time teenagers in her city spend playing video games each week. She posts a survey on a popular online gaming forum and receives $500$ responses.
+    
+    **a)** Identify the sampling technique used.
+    
+    **b)** Explain why the results of this survey might be biased and unreliable.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+    Because she is using individuals who are readily available to her online, and respondents volunteer to take the survey, this is a form of **Convenience Sampling** (specifically, voluntary response sampling).
+    
+    **b)**
+    Posting the survey on a *gaming forum* means the sample will almost exclusively consist of people who already enjoy gaming. This excludes teenagers in the city who do not game or do not use that specific forum, leading to an overestimation of the average time spent playing video games. Thus, the sample is unrepresentative of the target population.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Context of Outliers">
+    A scientist measures the mass of a certain chemical compound produced in $20$ identical experiments. The results yield a mean of $12.4\text{ g}$ and an IQR of $0.8\text{ g}$. The upper quartile is $12.9\text{ g}$. One experiment yielded a mass of $16.5\text{ g}$.
+    
+    **a)** Show mathematically that $16.5\text{ g}$ is an outlier.
+    
+    **b)** State one reason why the scientist might choose to exclude this outlier, and one reason why they might choose to keep it in the dataset.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+<Steps>
+    1. **Calculate the upper boundary.**
+       $$
+       \begin{aligned}
+       \text{Upper Boundary} &= Q_3 + 1.5 \times \text{IQR} \\
+       &= 12.9 + 1.5 \times 0.8 \\
+       &= 12.9 + 1.2 \\
+       &= 14.1\text{ g}
+       \end{aligned}
+       $$
+    2. **Compare the value.**
+       Because $16.5 > 14.1$, the value of $16.5\text{ g}$ is an outlier.
+</Steps>
+    
+    **b)**
+    **Reason to exclude:** It might be an error in the recording of the data, or an anomaly in that specific experiment (e.g., contamination), meaning it doesn't represent the true expected chemical yield.
+    **Reason to keep:** It might be a valid, rare reaction outcome that indicates a previously unknown chemical pathway, making it an essential piece of genuine data.
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Full Scenario Analysis">
+    The salaries of $150$ employees at a startup company were analysed. The data has a lower quartile of $35,000\text{ USD}$ and a median of $42,000\text{ USD}$. The interquartile range is $18,000\text{ USD}$. The CEO's salary is $95,000\text{ USD}$.
+    
+    **a)** Calculate the upper quartile ($Q_3$) of the salaries.
+    
+    **b)** Determine mathematically whether the CEO's salary is an outlier.
+    
+    **c)** Is salary data discrete or continuous? Justify your answer.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+    Use the IQR formula to find $Q_3$:
+    $$
+    \begin{aligned}
+    \text{IQR} &= Q_3 - Q_1 \\
+    18,000 &= Q_3 - 35,000 \\
+    Q_3 &= 18,000 + 35,000 \\
+    Q_3 &= 53,000\text{ USD}
+    \end{aligned}
+    $$
+    
+    **b)**
+<Steps>
+    1. **Calculate the upper boundary.**
+       $$
+       \begin{aligned}
+       \text{Upper Boundary} &= Q_3 + 1.5 \times \text{IQR} \\
+       &= 53,000 + 1.5 \times 18,000 \\
+       &= 53,000 + 27,000 \\
+       &= 80,000\text{ USD}
+       \end{aligned}
+       $$
+    2. **Compare.**
+       Because $95,000 > 80,000$, the CEO's salary **is an outlier**.
+</Steps>
+
+    **c)**
+    Currency and salaries are technically **discrete** because money is counted down to the smallest divisible unit (e.g., cents). It cannot take absolutely *any* value on a continuous spectrum. *(Note: For large sets of financial data, statisticians often treat it as continuous for practical analysis, but strictly speaking, it is discrete.)*
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q9: Dealing with Missing Data">
+    A researcher is analysing the test scores of $30$ students. During data entry, the scores for two students are accidentally deleted and cannot be recovered.
+    
+    **a)** Explain one way the missing data could impact the calculation of the mean class score.
+  </TabItem>
+  <TabItem label="✅ Solution 9">
+    **a)**
+    If the two missing scores were significantly higher or lower than the rest of the class, their absence will artificially skew the mean downwards or upwards, making the final calculated mean an unrepresentative reflection of the true overall class performance.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Population, samples, data types, sampling techniques, bias, and outlier calculations" />

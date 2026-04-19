@@ -1,6 +1,275 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 4.10 The Regression Line of x on y
+description: Understand how to find the regression line of x on y, when to use it for predictions, and the limitations of rearranging regression equations.
 ---
 
-Content coming soon.
+In the previous sections, we explored the regression line of $y$ on $x$, which we use to predict a $y$-value for a given $x$-value. However, in statistics, the relationship between two variables is not perfectly symmetrical when it comes to regression. If we want to predict an $x$-value given a $y$-value, we cannot simply algebraically rearrange our $y$ on $x$ equation. We must calculate a completely new line: the **regression line of $x$ on $y$**.
+
+<Aside type="note" title="Connections: TOK & Knowledge of the Future">
+  **Theory of Knowledge (TOK): Is it possible to have knowledge of the future?**
+  When we use regression lines to predict values outside of our current data set (extrapolation), we are essentially trying to model the future or the unknown. But is a mathematical prediction the same as "knowledge"? Statistics provides probabilistic models, not deterministic certainties. A regression line tells us what the trend *suggests* will happen, but black swan events, changing variables, and errors in data collection mean the future remains fundamentally uncertain. How does the language of mathematics give us a false sense of certainty about the future?
+</Aside>
+
+## 1. Minimising Horizontal vs Vertical Distances
+
+The line of best fit for $y$ on $x$ is found by minimising the square of the **vertical distances** (residuals) between the data points and the line. 
+
+Conversely, the regression line of $x$ on $y$ is found by minimising the square of the **horizontal distances**. Because the distances being minimised are different, the two lines are completely different equations, unless the correlation coefficient $r$ is exactly $1$ or $-1$.
+
+<div style="display: flex; justify-content: center; margin: 2rem 0;">
+  <svg class="regression-residuals-comparison" viewBox="0 0 800 350" width="100%" style="max-width: 800px; background: #f8fafc; border-radius: 8px; border: 1px solid #cbd5e1;">
+    <text x="200" y="30" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">y on x (Minimising Vertical Residuals)</text>
+    <line x1="50" y1="300" x2="350" y2="300" stroke="#334155" stroke-width="2"/>
+    <line x1="50" y1="300" x2="50" y2="50" stroke="#334155" stroke-width="2"/>
+    
+    <line x1="50" y1="250" x2="350" y2="100" stroke="#2563eb" stroke-width="3"/>
+    
+    <circle cx="100" cy="180" r="4" fill="#0f172a"/>
+    <line x1="100" y1="180" x2="100" y2="225" stroke="#ef4444" stroke-width="2" stroke-dasharray="4"/>
+    <circle cx="180" cy="120" r="4" fill="#0f172a"/>
+    <line x1="180" y1="120" x2="180" y2="185" stroke="#ef4444" stroke-width="2" stroke-dasharray="4"/>
+    <circle cx="280" cy="200" r="4" fill="#0f172a"/>
+    <line x1="280" y1="200" x2="280" y2="135" stroke="#ef4444" stroke-width="2" stroke-dasharray="4"/>
+    
+    <text x="600" y="30" font-family="sans-serif" font-size="16" font-weight="bold" fill="#0f172a" text-anchor="middle">x on y (Minimising Horizontal Residuals)</text>
+    <line x1="450" y1="300" x2="750" y2="300" stroke="#334155" stroke-width="2"/>
+    <line x1="450" y1="300" x2="450" y2="50" stroke="#334155" stroke-width="2"/>
+    
+    <line x1="450" y1="270" x2="750" y2="70" stroke="#16a34a" stroke-width="3"/>
+    
+    <circle cx="500" cy="180" r="4" fill="#0f172a"/>
+    <line x1="500" y1="180" x2="585" y2="180" stroke="#eab308" stroke-width="2" stroke-dasharray="4"/>
+    <circle cx="580" cy="120" r="4" fill="#0f172a"/>
+    <line x1="580" y1="120" x2="675" y2="120" stroke="#eab308" stroke-width="2" stroke-dasharray="4"/>
+    <circle cx="680" cy="200" r="4" fill="#0f172a"/>
+    <line x1="680" y1="200" x2="555" y2="200" stroke="#eab308" stroke-width="2" stroke-dasharray="4"/>
+  </svg>
+</div>
+
+The equation of the regression line of $x$ on $y$ is written in the form:
+$$ x = cy + d $$
+where $c$ is the gradient and $d$ is the $x$-intercept. Both regression lines always intersect at the mean point $(\bar{x}, \bar{y})$.
+
+<Aside type="danger" title="A Common Exam Trap">
+  You **cannot** reliably make a prediction of $y$ from a value of $x$ by rearranging the $x$ on $y$ equation. 
+  Similarly, you **cannot** reliably predict $x$ by substituting a $y$ value into the $y = ax + b$ equation and solving for $x$. 
+  
+  **Rule of thumb:**
+  * To predict $y$ given $x$, calculate and use the $y$ on $x$ line.
+  * To predict $x$ given $y$, calculate and use the $x$ on $y$ line.
+</Aside>
+
+## 2. Using Technology to Find x on y
+
+Finding the $x$ on $y$ line on your Graphic Display Calculator simply requires you to swap the order of your input lists.
+
+<SteveTip title="TI-Nspire: Regression line of x on y">
+  1. Enter your data into a `Lists & Spreadsheet` page. Name the columns (e.g., `xdata` and `ydata`).
+  2. Go to `Menu` > `4: Statistics` > `1: Stat Calculations` > `3: Linear Regression (mx+b)`.
+  3. **Crucial Step:** For the `X List`, select your **y-data**. For the `Y List`, select your **x-data**.
+  4. The calculator will output $m$ and $b$. Remember, your equation is $x = my + b$.
+</SteveTip>
+
+### Worked Example: Predicting x from y
+**Question:** An economist records the advertising budget ($x$, in thousands of USD) and the resulting sales ($y$, in thousands of USD) for 5 local businesses.
+
+| Advertising ($x$) | 2.5 | 3.0 | 4.5 | 5.0 | 6.5 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Sales ($y$)** | 15.0 | 18.5 | 22.0 | 25.0 | 32.5 |
+
+Find the equation of the regression line of $x$ on $y$, and use it to estimate the required advertising budget for a business aiming for 28.0 thousand USD in sales.
+
+**Solution:**
+<Steps>
+  1. **Enter data into the GDC.**
+     Enter the $x$ values into one list and $y$ values into another.
+  2. **Run Linear Regression, swapping the lists.**
+     Set `X List` to the sales ($y$) data.
+     Set `Y List` to the advertising ($x$) data.
+     The calculator gives $m \approx 0.222$ and $b \approx -0.835$.
+  3. **Write the equation of $x$ on $y$.**
+     $$ x = 0.222y - 0.835 $$
+  4. **Substitute the given $y$ value to predict $x$.**
+     We are given $y = 28.0$.
+     $$
+     \begin{aligned}
+     x &= 0.222(28.0) - 0.835 \\
+     &= 6.216 - 0.835 \\
+     &= 5.381
+     \end{aligned}
+     $$
+  5. **State the final answer in context.**
+     The estimated required advertising budget is approximately 5.38 thousand USD (or 5380.00 USD).
+</Steps>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Basic x on y Calculation">
+    A researcher measures the length ($x$ cm) and the mass ($y$ kg) of 6 newborn animals. The data is as follows:
+    
+    | Length ($x$) | 35.0 | 38.5 | 42.0 | 45.5 | 49.0 | 52.5 |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Mass ($y$)** | 2.1 | 2.6 | 3.2 | 3.5 | 4.1 | 4.8 |
+    
+    **a)** Find the equation of the regression line of $x$ on $y$.  
+    **b)** Use your equation to estimate the length of a newborn animal that has a mass of 3.8 kg.  
+    **c)** State whether your estimate in part (b) is reliable. Justify your answer.  
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+  1. Enter the data into the GDC.
+  2. Run linear regression with $y$ as the independent variable list and $x$ as the dependent variable list.
+  3. $m \approx 6.30$ and $b \approx 22.0$.
+  4. The equation is:
+     $$ x = 6.30y + 22.0 $$
+</Steps>
+    **b)**
+<Steps>
+  1. Substitute $y = 3.8$ into the regression equation.
+     $$
+     \begin{aligned}
+     x &= 6.30(3.8) + 22.0 \\
+     x &\approx 45.94
+     \end{aligned}
+     $$
+  2. The estimated length is 45.9 cm (3 s.f.).
+</Steps>
+    **c)**
+<Steps>
+  1. The value $y = 3.8$ lies within the given data range of mass ($2.1$ to $4.8$).
+  2. Therefore, this is **interpolation**, and assuming a strong linear correlation, the estimate is considered **reliable**.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Comparing the Two Lines">
+    Consider the following bivariate data regarding hours studied ($x$) and test score out of 100 ($y$):
+    
+    | Hours ($x$) | 1 | 3 | 4 | 7 | 8 |
+    | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Score ($y$)** | 40 | 55 | 65 | 80 | 95 |
+    
+    **a)** Find the equation of the regression line of $y$ on $x$.  
+    **b)** Find the equation of the regression line of $x$ on $y$.  
+    **c)** Calculate the mean point $(\bar{x}, \bar{y})$.  
+    **d)** Show algebraically that both regression lines pass through the mean point.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+<Steps>
+  1. Using the GDC with `X List` as Hours and `Y List` as Score.
+     $$ y = 7.35x + 33.2 $$
+</Steps>
+    **b)**
+<Steps>
+  1. Using the GDC with `X List` as Score and `Y List` as Hours.
+     $$ x = 0.133y - 4.39 $$
+</Steps>
+    **c)**
+<Steps>
+  1. Calculate the mean of $x$ and mean of $y$ using 2-Variable Statistics on the GDC.
+     $$ \bar{x} = \dfrac{1+3+4+7+8}{5} = 4.6 $$
+     $$ \bar{y} = \dfrac{40+55+65+80+95}{5} = 67 $$
+  2. The mean point is $(4.6, 67)$.
+</Steps>
+    **d)**
+<Steps>
+  1. Substitute $\bar{x} = 4.6$ into the $y$ on $x$ equation:
+     $$
+     \begin{aligned}
+     y &= 7.35(4.6) + 33.2 \\
+     y &= 33.81 + 33.2 = 67.01 \approx 67 = \bar{y}
+     \end{aligned}
+     $$
+     *(Note: The slight difference is due to rounding the gradient to 3 s.f. Using exact values yields exactly 67).*
+  2. Substitute $\bar{y} = 67$ into the $x$ on $y$ equation:
+     $$
+     \begin{aligned}
+     x &= 0.133(67) - 4.39 \\
+     x &= 8.911 - 4.39 = 4.521 \approx 4.6 = \bar{x}
+     \end{aligned}
+     $$
+     Both lines intersect at $(\bar{x}, \bar{y})$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Real-World Context (Temperatures)">
+    A café owner tracks the average daily temperature ($x$, in $^\circ\text{C}$) and hot chocolate sales ($y$, in GBP) over winter.
+    She calculates the regression line of $y$ on $x$ to be:
+    $$ y = -15.5x + 350 $$
+    She also calculates the regression line of $x$ on $y$ to be:
+    $$ x = -0.060y + 21.0 $$
+    
+    **a)** On a day where the café sold 120.00 GBP of hot chocolate, estimate the average daily temperature.  
+    **b)** The owner decides to use the equation $y = -15.5x + 350$, substitutes $y = 120$, and solves for $x$. State why this method is mathematically flawed for this context.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+  1. Since we are given a $y$-value (sales) and asked to predict an $x$-value (temperature), we must use the regression line of **$x$ on $y$**.
+  2. Substitute $y = 120$ into the correct equation:
+     $$
+     \begin{aligned}
+     x &= -0.060(120) + 21.0 \\
+     x &= -7.2 + 21.0 \\
+     x &= 13.8
+     \end{aligned}
+     $$
+  3. The estimated average daily temperature is $13.8^\circ\text{C}$.
+</Steps>
+    **b)**
+<Steps>
+  1. The line $y = -15.5x + 350$ was constructed by minimising the **vertical residuals** (the errors in $y$). 
+  2. It is strictly designed to predict sales given a temperature. 
+  3. Rearranging this equation to solve for $x$ does not give the line that minimises the horizontal residuals, meaning the prediction for temperature would be unreliable and statistically invalid.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Biology & Prediction Reliability">
+    A marine biologist measures the wingspan ($w$, in cm) and the weight ($m$, in kg) of 8 adult albatrosses.
+    
+    | Wingspan ($w$) | 280 | 295 | 310 | 325 | 340 | 350 | 360 | 370 |
+    | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+    | **Weight ($m$)** | 7.1 | 7.6 | 8.4 | 8.9 | 9.7 | 10.1 | 10.5 | 11.2 |
+    
+    **a)** Find the equation of the regression line of $w$ on $m$.  
+    **b)** An albatross feather is found, and DNA analysis estimates the bird's weight to be 12.5 kg. Use your equation to estimate the wingspan of this bird.  
+    **c)** State, with a reason, whether your estimate in part (b) is reliable.  
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+<Steps>
+  1. We are looking for $w$ on $m$. This means $m$ is our independent variable (acting like $x$) and $w$ is our dependent variable (acting like $y$).
+  2. Input data into GDC: `X List` = Weight ($m$), `Y List` = Wingspan ($w$).
+  3. Calculate linear regression. $m \approx 21.5$ and $b \approx 130$.
+  4. The equation is:
+     $$ w = 21.5m + 130 $$
+</Steps>
+    **b)**
+<Steps>
+  1. Substitute $m = 12.5$ into the equation.
+     $$
+     \begin{aligned}
+     w &= 21.5(12.5) + 130 \\
+     w &\approx 268.75 + 130 \\
+     w &\approx 398.75
+     \end{aligned}
+     $$
+  2. The estimated wingspan is 399 cm (3 s.f.).
+</Steps>
+    **c)**
+<Steps>
+  1. The value $m = 12.5$ kg is significantly outside the given data range for weight ($7.1$ kg to $11.2$ kg).
+  2. This is an example of **extrapolation**. Therefore, the estimate is **unreliable**, as we do not know if the linear relationship continues beyond the measured data set.
+</Steps>
+  </TabItem>
+</Tabs>

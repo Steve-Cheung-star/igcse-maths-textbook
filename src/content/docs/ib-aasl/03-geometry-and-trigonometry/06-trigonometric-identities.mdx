@@ -1,6 +1,516 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 3.6 Trigonometric Identities
+description: Master the Pythagorean identity and double angle identities to evaluate and relate trigonometric ratios without relying on your calculator.
 ---
 
-Content coming soon.
+In this section, we dive into **trigonometric identities**. An identity is an equation that is true for *all* valid values of the variable. By using the unit circle, we can establish powerful relationships between sine, cosine, and tangent, allowing us to find exact values and simplify complex expressions effortlessly.
+
+<Aside type="note" title="What is an Identity?">
+  An equation like $2x = 6$ is only true for a specific value ($x=3$). However, an identity like $2(x+1) = 2x + 2$ is true for *any* value of $x$. Trigonometric identities work the same way—they are fundamental truths of geometry that hold for any angle $\theta$.
+</Aside>
+
+---
+
+## 1. The Pythagorean Identity
+
+Recall from Topic 3.5 that any point on the unit circle can be represented by coordinates $(\cos\theta, \sin\theta)$. The unit circle has a radius of exactly $1$. If we draw a right-angled triangle from the origin to this point, the horizontal leg is $\cos\theta$, the vertical leg is $\sin\theta$, and the hypotenuse is $1$.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0 0.5rem 0' }}>
+  <svg viewBox="-50 -50 250 250" width="100%" maxWidth="350px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Grid and Axes */}
+    <line x1="-50" y1="150" x2="200" y2="150" stroke="#cbd5e1" stroke-width="1.5" />
+    <line x1="0" y1="-50" x2="0" y2="200" stroke="#cbd5e1" stroke-width="1.5" />
+    
+    {/* Circle Arc */}
+    <path d="M 0 0 A 150 150 0 0 1 150 150" fill="none" stroke="#3b82f6" stroke-width="2" />
+    
+    {/* Right Triangle */}
+    <path d="M 0 150 L 106.06 150 L 106.06 43.93 Z" fill="#dbeafe" stroke="none" opacity="0.6" />
+    <line x1="0" y1="150" x2="106.06" y2="43.93" stroke="#1e293b" stroke-width="2" />
+    <line x1="106.06" y1="150" x2="106.06" y2="43.93" stroke="#ef4444" stroke-width="2" />
+    <line x1="0" y1="150" x2="106.06" y2="150" stroke="#10b981" stroke-width="2" />
+    
+    {/* Right Angle Symbol */}
+    <polyline points="96.06,150 96.06,140 106.06,140" fill="none" stroke="#64748b" stroke-width="1.5" />
+    
+    {/* Angle Arc */}
+    <path d="M 40 150 A 40 40 0 0 0 28.28 121.71" fill="none" stroke="#f59e0b" stroke-width="2" />
+    <text x="45" y="140" font-size="16" font-weight="bold" fill="#f59e0b" font-family="sans-serif">θ</text>
+    
+    {/* Labels */}
+    <text x="35" y="80" font-size="14" font-weight="bold" fill="#1e293b" font-family="sans-serif">r=1</text>
+    <text x="40" y="170" font-size="14" font-weight="bold" fill="#10b981" font-family="sans-serif">cos θ</text>
+    <text x="115" y="100" font-size="14" font-weight="bold" fill="#ef4444" font-family="sans-serif">sin θ</text>
+    <circle cx="106.06" cy="43.93" r="4" fill="#0f172a" />
+    <text x="115" y="35" font-size="12" fill="#1e293b" font-family="sans-serif">(cos θ, sin θ)</text>
+  </svg>
+</div>
+
+Applying Pythagoras' theorem ($a^2 + b^2 = c^2$) to this triangle yields the most famous trigonometric identity:
+
+<FormulaBox title="Pythagorean identity">
+  $$\cos^2 \theta + \sin^2 \theta = 1$$
+</FormulaBox>
+
+
+<Aside type="danger" title="Mind the Square Root!">
+  When you rearrange the Pythagorean identity to solve for $\sin\theta$ or $\cos\theta$, you must take the square root. Always remember the $\pm$ sign! 
+  $\sin\theta = \pm\sqrt{1 - \cos^2\theta}$
+  You must use the CAST diagram (from Topic 3.5) to determine whether the positive or negative value is correct based on the quadrant $\theta$ is in.
+</Aside>
+
+### Worked Example 1: Using the Pythagorean Identity
+**Question:** Given that $\cos\theta = -\dfrac{5}{13}$ and $\theta$ is obtuse, find the exact value of $\sin\theta$ without finding $\theta$.
+
+**Solution:**
+Substitute the given value into the Pythagorean identity:
+$$
+\begin{aligned}
+\cos^2\theta + \sin^2\theta &= 1 \\
+\left(-\dfrac{5}{13}\right)^2 + \sin^2\theta &= 1 \\
+\dfrac{25}{169} + \sin^2\theta &= 1 \\
+\sin^2\theta &= 1 - \dfrac{25}{169} \\
+\sin^2\theta &= \dfrac{144}{169} \\
+\sin\theta &= \pm\sqrt{\dfrac{144}{169}} \\
+\sin\theta &= \pm\dfrac{12}{13}
+\end{aligned}
+$$
+Because $\theta$ is an obtuse angle, it lies in the second quadrant. In the second quadrant, sine is positive.
+Therefore, $\sin\theta = \dfrac{12}{13}$.
+
+---
+
+## 2. Double Angle Identities
+
+Sometimes we need to relate the trigonometric ratio of an angle (like $2\theta$) to the ratio of its half ($\theta$). The double angle identities allow us to do exactly this. 
+
+<FormulaBox title="Double angle identity for sine">
+  $$\sin 2\theta = 2\sin \theta \cos \theta$$
+</FormulaBox>
+
+
+<FormulaBox title="Double angle identities for cosine">
+  $$\cos 2\theta = \cos^2 \theta - \sin^2 \theta = 2\cos^2 \theta - 1 = 1 - 2\sin^2 \theta$$
+</FormulaBox>
+
+
+<SteveTip title="Strategic Choices">
+  Notice that $\cos 2\theta$ has *three* different forms. Always choose the version that makes your life easier! 
+  * If you only know $\cos\theta$, use $2\cos^2\theta - 1$.
+  * If you only know $\sin\theta$, use $1 - 2\sin^2\theta$.
+  This saves you from having to use the Pythagorean identity first.
+</SteveTip>
+
+### Worked Example 2: Using Double Angle Identities
+**Question:** Given $\sin x = \dfrac{3}{5}$ and $x$ is acute, find the exact value of $\sin 2x$.
+
+**Solution:**
+To find $\sin 2x$, we need both $\sin x$ and $\cos x$ because $\sin 2x = 2\sin x\cos x$. 
+First, find $\cos x$ using the Pythagorean identity:
+$$
+\begin{aligned}
+\cos^2 x + \left(\dfrac{3}{5}\right)^2 &= 1 \\
+\cos^2 x &= 1 - \dfrac{9}{25} \\
+\cos^2 x &= \dfrac{16}{25} \\
+\cos x &= \pm\dfrac{4}{5}
+\end{aligned}
+$$
+Since $x$ is acute (first quadrant), $\cos x = \dfrac{4}{5}$.
+Now apply the double angle identity:
+$$
+\begin{aligned}
+\sin 2x &= 2\sin x\cos x \\
+&= 2\left(\dfrac{3}{5}\right)\left(\dfrac{4}{5}\right) \\
+&= \dfrac{24}{25}
+\end{aligned}
+$$
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Q1: Basic Relationships">
+    Given that $\sin \theta = \dfrac{4}{5}$ and $\theta$ is an acute angle:
+    
+    **a)** Find the exact value of $\cos \theta$.
+    
+    **b)** Hence, evaluate the exact value of $\tan \theta$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)**
+<Steps>
+    1. **Apply the Pythagorean identity.**
+       $$
+       \begin{aligned}
+       \cos^2 \theta + \sin^2 \theta &= 1 \\
+       \cos^2 \theta + \left(\dfrac{4}{5}\right)^2 &= 1 \\
+       \cos^2 \theta &= 1 - \dfrac{16}{25} \\
+       \cos^2 \theta &= \dfrac{9}{25}
+       \end{aligned}
+       $$
+    2. **Determine the sign.**
+       Since $\theta$ is acute (1st quadrant), cosine is positive.
+       $$
+       \begin{aligned}
+       \cos \theta &= \sqrt{\dfrac{9}{25}} = \dfrac{3}{5}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Use the tangent relationship.**
+       $$
+       \begin{aligned}
+       \tan \theta &= \dfrac{\sin \theta}{\cos \theta} \\
+       &= \dfrac{\dfrac{4}{5}}{\dfrac{3}{5}} \\
+       &= \dfrac{4}{3}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q2: Finding Double Angles">
+    Given that $\cos x = \dfrac{1}{4}$ and $x$ is in the fourth quadrant ($\dfrac{3\pi}{2} < x < 2\pi$):
+    
+    **a)** Find the exact value of $\sin x$.
+    
+    **b)** Calculate the exact value of $\sin 2x$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)**
+<Steps>
+    1. **Apply the Pythagorean identity.**
+       $$
+       \begin{aligned}
+       \left(\dfrac{1}{4}\right)^2 + \sin^2 x &= 1 \\
+       \sin^2 x &= 1 - \dfrac{1}{16} \\
+       \sin^2 x &= \dfrac{15}{16}
+       \end{aligned}
+       $$
+    2. **Determine the sign.**
+       In the fourth quadrant, sine is negative.
+       $$
+       \begin{aligned}
+       \sin x &= -\dfrac{\sqrt{15}}{4}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Apply the double angle identity for sine.**
+       $$
+       \begin{aligned}
+       \sin 2x &= 2\sin x \cos x \\
+       &= 2\left(-\dfrac{\sqrt{15}}{4}\right)\left(\dfrac{1}{4}\right) \\
+       &= -\dfrac{2\sqrt{15}}{16} \\
+       &= -\dfrac{\sqrt{15}}{8}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q3: Strategic Cosine Double Angles">
+    Given $\sin \alpha = \dfrac{2}{3}$:
+    
+    **a)** Find the exact value of $\cos 2\alpha$.
+    
+    **b)** Explain why it was not necessary to know which quadrant $\alpha$ is in to answer part a.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)**
+<Steps>
+    1. **Select the appropriate double angle formula.**
+       Since we only have $\sin \alpha$, use the sine-only version.
+       $$
+       \begin{aligned}
+       \cos 2\alpha &= 1 - 2\sin^2 \alpha
+       \end{aligned}
+       $$
+    2. **Substitute and evaluate.**
+       $$
+       \begin{aligned}
+       \cos 2\alpha &= 1 - 2\left(\dfrac{2}{3}\right)^2 \\
+       &= 1 - 2\left(\dfrac{4}{9}\right) \\
+       &= 1 - \dfrac{8}{9} \\
+       &= \dfrac{1}{9}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Justify mathematically.**
+       The formula for $\cos 2\alpha$ relies entirely on $\sin^2 \alpha$. Because the sine value is squared, it does not matter if $\sin \alpha$ is positive or negative; the square will always be positive. Therefore, the quadrant of $\alpha$ does not affect the value of $\cos 2\alpha$.
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q4: Expressing in Terms of Variables">
+    Given that $\cos A = p$ and $A$ is an acute angle:
+    
+    **a)** Express $\sin A$ in terms of $p$.
+    
+    **b)** Express $\cos 2A$ in terms of $p$.
+    
+    **c)** Express $\sin 2A$ in terms of $p$.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **a)**
+<Steps>
+    1. **Use the Pythagorean identity.**
+       $$
+       \begin{aligned}
+       \sin^2 A + p^2 &= 1 \\
+       \sin^2 A &= 1 - p^2
+       \end{aligned}
+       $$
+    2. **Take the square root.**
+       Since $A$ is acute, sine is positive.
+       $$
+       \begin{aligned}
+       \sin A &= \sqrt{1 - p^2}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Use the cosine double angle identity.**
+       $$
+       \begin{aligned}
+       \cos 2A &= 2\cos^2 A - 1 \\
+       &= 2p^2 - 1
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Use the sine double angle identity.**
+       $$
+       \begin{aligned}
+       \sin 2A &= 2\sin A \cos A \\
+       &= 2\left(\sqrt{1 - p^2}\right)(p) \\
+       &= 2p\sqrt{1 - p^2}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q5: Simplifying Expressions">
+    Show mathematically that the following expressions simplify to a single trigonometric ratio or number:
+    
+    **a)** $(\sin x + \cos x)^2 - 1$
+    
+    **b)** $\dfrac{1 - \cos 2\theta}{2\sin \theta}$
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    **a)**
+<Steps>
+    1. **Expand the bracket.**
+       $$
+       \begin{aligned}
+       (\sin x + \cos x)(\sin x + \cos x) - 1 &= \sin^2 x + 2\sin x \cos x + \cos^2 x - 1
+       \end{aligned}
+       $$
+    2. **Apply the Pythagorean identity.**
+       We know $\sin^2 x + \cos^2 x = 1$.
+       $$
+       \begin{aligned}
+       (\sin^2 x + \cos^2 x) + 2\sin x \cos x - 1 &= 1 + 2\sin x \cos x - 1 \\
+       &= 2\sin x \cos x
+       \end{aligned}
+       $$
+    3. **Apply the double angle identity.**
+       $$
+       \begin{aligned}
+       2\sin x \cos x &= \sin 2x
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Select the correct double angle substitution for cosine.**
+       To cancel out the $1$, use $\cos 2\theta = 1 - 2\sin^2 \theta$.
+       $$
+       \begin{aligned}
+       \dfrac{1 - (1 - 2\sin^2 \theta)}{2\sin \theta} &= \dfrac{1 - 1 + 2\sin^2 \theta}{2\sin \theta} \\
+       &= \dfrac{2\sin^2 \theta}{2\sin \theta}
+       \end{aligned}
+       $$
+    2. **Simplify the fraction.**
+       $$
+       \begin{aligned}
+       \dfrac{2\sin^2 \theta}{2\sin \theta} &= \sin \theta
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q6: Finding Multiple Ratios">
+    Angle $\beta$ is obtuse, and $\cos \beta = -0.6$. Find the exact values of:
+    
+    **a)** $\sin \beta$
+    
+    **b)** $\cos 2\beta$
+    
+    **c)** $\sin 2\beta$
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    **a)**
+<Steps>
+    1. **Convert to a fraction and use the Pythagorean identity.**
+       $\cos \beta = -\dfrac{3}{5}$.
+       $$
+       \begin{aligned}
+       \sin^2 \beta + \left(-\dfrac{3}{5}\right)^2 &= 1 \\
+       \sin^2 \beta &= 1 - \dfrac{9}{25} \\
+       \sin^2 \beta &= \dfrac{16}{25}
+       \end{aligned}
+       $$
+    2. **Determine the sign.**
+       Since $\beta$ is obtuse (2nd quadrant), sine is positive.
+       $$
+       \begin{aligned}
+       \sin \beta &= \dfrac{4}{5} = 0.8
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Use the cosine double angle identity.**
+       $$
+       \begin{aligned}
+       \cos 2\beta &= 2\cos^2 \beta - 1 \\
+       &= 2(-0.6)^2 - 1 \\
+       &= 2(0.36) - 1 \\
+       &= 0.72 - 1 \\
+       &= -0.28
+       \end{aligned}
+       $$
+</Steps>
+    **c)**
+<Steps>
+    1. **Use the sine double angle identity.**
+       $$
+       \begin{aligned}
+       \sin 2\beta &= 2\sin \beta \cos \beta \\
+       &= 2(0.8)(-0.6) \\
+       &= 1.6(-0.6) \\
+       &= -0.96
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q7: Working from Tangent">
+    Given $\tan \theta = \dfrac{5}{12}$ and $\theta$ is acute:
+    
+    **a)** Draw a right-angled triangle to deduce the values of $\sin \theta$ and $\cos \theta$.
+    
+    **b)** Hence, find the exact value of $\sin 2\theta$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    **a)**
+<Steps>
+    1. **Set up the triangle.**
+       Since $\tan = \dfrac{\text{opposite}}{\text{adjacent}}$, label the opposite side $5$ and adjacent side $12$.
+    2. **Find the hypotenuse.**
+       $$
+       \begin{aligned}
+       h^2 &= 5^2 + 12^2 \\
+       h^2 &= 25 + 144 = 169 \\
+       h &= 13
+       \end{aligned}
+       $$
+    3. **Deduce the ratios.**
+       Because $\theta$ is acute, all primary ratios are positive.
+       $$
+       \begin{aligned}
+       \sin \theta &= \dfrac{5}{13} \\
+       \cos \theta &= \dfrac{12}{13}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Use the double angle identity.**
+       $$
+       \begin{aligned}
+       \sin 2\theta &= 2\sin \theta \cos \theta \\
+       &= 2\left(\dfrac{5}{13}\right)\left(\dfrac{12}{13}\right) \\
+       &= \dfrac{120}{169}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Q8: Identity Geometry & Budgeting">
+    A designer cuts two triangular sails for a boat. 
+    Sail A is a right-angled triangle with a hypotenuse of $1 \text{ m}$ and an angle $\theta$, such that $\sin \theta = \dfrac{1}{3}$.
+    Sail B is also a right-angled triangle, but its angle is $2\theta$ and its hypotenuse is $4 \text{ m}$.
+    
+    **a)** Find the exact length of the side opposite the angle $2\theta$ on Sail B.
+    
+    **b)** The specialist fabric for the sails costs $150 \text{ GBP}$ per linear metre for the edge strips. Calculate the exact cost for the edge opposite $2\theta$ on Sail B.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    **a)**
+<Steps>
+    1. **Identify the missing piece for Sail B.**
+       The side opposite $2\theta$ can be found using $\text{Opposite} = \text{Hypotenuse} \times \sin(2\theta)$.
+       We need $\sin 2\theta$.
+    2. **Find $\cos \theta$ for Sail A.**
+       Using the Pythagorean identity:
+       $$
+       \begin{aligned}
+       \cos^2 \theta + \left(\dfrac{1}{3}\right)^2 &= 1 \\
+       \cos^2 \theta &= 1 - \dfrac{1}{9} \\
+       \cos^2 \theta &= \dfrac{8}{9} \\
+       \cos \theta &= \dfrac{\sqrt{8}}{3} = \dfrac{2\sqrt{2}}{3} \text{ (acute angle)}
+       \end{aligned}
+       $$
+    3. **Calculate $\sin 2\theta$.**
+       $$
+       \begin{aligned}
+       \sin 2\theta &= 2\sin \theta \cos \theta \\
+       &= 2\left(\dfrac{1}{3}\right)\left(\dfrac{2\sqrt{2}}{3}\right) \\
+       &= \dfrac{4\sqrt{2}}{9}
+       \end{aligned}
+       $$
+    4. **Find the length on Sail B.**
+       $$
+       \begin{aligned}
+       \text{Length} &= 4 \times \sin 2\theta \\
+       &= 4 \times \dfrac{4\sqrt{2}}{9} \\
+       &= \dfrac{16\sqrt{2}}{9} \text{ m}
+       \end{aligned}
+       $$
+</Steps>
+    **b)**
+<Steps>
+    1. **Calculate the cost.**
+       Multiply the length by the cost per metre.
+       $$
+       \begin{aligned}
+       \text{Cost} &= \dfrac{16\sqrt{2}}{9} \times 150 \\
+       &= \dfrac{16\sqrt{2} \times 50}{3} \\
+       &= \dfrac{800\sqrt{2}}{3} \text{ GBP}
+       \end{aligned}
+       $$
+</Steps>
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Trigonometric identities, pythagorean identity, and double angle identities" />

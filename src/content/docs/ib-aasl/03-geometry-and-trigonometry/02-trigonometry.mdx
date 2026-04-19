@@ -1,6 +1,401 @@
 ---
-title: Placeholder Title
-description: Coming soon.
+title: 3.2 Trigonometry
+description: Master the Sine and Cosine rules, calculate the area of any triangle, and apply these tools to solve real-world problems involving triangulation and bearings.
 ---
 
-Content coming soon.
+In this section, we move beyond the simple world of right-angled triangles and develop the mathematical machinery required to solve *any* triangle. These tools are the foundation of navigation, map-making, architecture, and resolving vector forces in Physics. 
+
+<Aside type="note" title="Connections & TOK">
+**Cross-curricular Links:** Triangulation is used constantly in Geography for map-making and in Physics for calculating the resultant of two vector forces.
+
+**Theory of Knowledge (TOK):** Is it ethical that Pythagoras gave his name to a theorem that may not have been his own creation? Diagrams of Pythagoras’ theorem occur in early Chinese and Indian manuscripts dating centuries before him. What criteria might we use to make such a judgment on mathematical ownership and historical attribution?
+</Aside>
+
+---
+
+## 1. Right-Angled Trigonometry
+
+Before applying advanced rules, always check if your triangle contains a right angle ($90^\circ$). If it does, you can rely on the foundational tools of Pythagoras and SOH CAH TOA, which are often faster and simpler.
+
+* **Pythagoras' Theorem:** $a^2 + b^2 = c^2$
+* **SOH:** $\sin(\theta) = \dfrac{\text{Opposite}}{\text{Hypotenuse}}$
+* **CAH:** $\cos(\theta) = \dfrac{\text{Adjacent}}{\text{Hypotenuse}}$
+* **TOA:** $\tan(\theta) = \dfrac{\text{Opposite}}{\text{Adjacent}}$
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+    {/* Right Triangle */}
+    <polygon points="50,200 300,200 300,50" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="3" />
+    
+    {/* Right Angle Symbol */}
+    <polyline points="280,200 280,180 300,180" fill="none" stroke="#0ea5e9" stroke-width="2" />
+
+    {/* Angle Theta */}
+    <path d="M 100 200 A 50 50 0 0 0 92 174" fill="none" stroke="#f59e0b" stroke-width="3" />
+    <text x="110" y="190" font-size="18" font-weight="bold" fill="#f59e0b" font-family="sans-serif">θ</text>
+
+    {/* Labels */}
+    <text x="315" y="130" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">Opposite</text>
+    <text x="150" y="225" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif">Adjacent</text>
+    <text x="130" y="110" font-size="14" font-weight="bold" fill="#0f172a" font-family="sans-serif" transform="rotate(-31, 150, 110)">Hypotenuse</text>
+  </svg>
+</div>
+
+---
+
+## 2. The Sine and Cosine Rules
+
+When a triangle does not have a right angle, we must use the Sine and Cosine rules. 
+
+**Standard Naming Convention:** Angles are labelled with capital letters (e.g., $A, B, C$), and the side directly opposite each angle is labelled with the corresponding lowercase letter (e.g., $a, b, c$).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 400 250" width="100%" maxWidth="400px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* General Triangle */}
+    <polygon points="80,200 320,200 200,60" fill="#fef3c7" stroke="#d97706" stroke-width="3" />
+    
+    {/* Vertices (Angles) */}
+    <text x="50" y="215" font-size="18" font-weight="bold" fill="#0f172a" font-family="sans-serif">A</text>
+    <text x="330" y="215" font-size="18" font-weight="bold" fill="#0f172a" font-family="sans-serif">B</text>
+    <text x="190" y="45" font-size="18" font-weight="bold" fill="#0f172a" font-family="sans-serif">C</text>
+
+    {/* Sides */}
+    <text x="270" y="125" font-size="16" font-weight="bold" fill="#d97706" font-family="sans-serif">a</text>
+    <text x="120" y="125" font-size="16" font-weight="bold" fill="#d97706" font-family="sans-serif">b</text>
+    <text x="200" y="225" font-size="16" font-weight="bold" fill="#d97706" font-family="sans-serif">c</text>
+
+    {/* Opposite Indication */}
+    <line x1="90" y1="190" x2="255" y2="135" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4 4" marker-end="url(#arrow)"/>
+    <defs>
+      <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#94a3b8" />
+      </marker>
+    </defs>
+  </svg>
+</div>
+
+### The Sine Rule
+Use the Sine Rule when you know a "matching pair" (an angle and the side directly opposite it), plus one other piece of information.
+
+<FormulaBox title="The sine rule">
+$$ \dfrac{a}{\sin A} = \dfrac{b}{\sin B} = \dfrac{c}{\sin C} $$
+</FormulaBox>
+
+*Note: If you are trying to find an unknown angle, it is algebraically much easier to flip the entire formula upside down so the unknown $\sin(A)$ is in the numerator! (e.g., $\frac{\sin A}{a} = \frac{\sin B}{b}$).*
+
+### The Cosine Rule
+Use the Cosine Rule when you do not have a matching pair. This occurs in two specific scenarios:
+1.  **SAS (Side-Angle-Side):** You know two sides and the angle sandwiched between them.
+2.  **SSS (Side-Side-Side):** You know all three sides and want to find an angle.
+
+<FormulaBox title="The cosine rule (for finding a side)">
+$$ c^2 = a^2 + b^2 - 2ab\cos C $$
+</FormulaBox>
+
+<FormulaBox title="The cosine rule (rearranged for finding an angle)">
+$$ \cos C = \dfrac{a^2 + b^2 - c^2}{2ab} $$
+</FormulaBox>
+
+---
+
+## 3. Area of a Triangle
+
+You no longer need to know the perpendicular height to find the area of a triangle. If you know two sides and the included angle (SAS), you can find the area instantly.
+
+<FormulaBox title="Area of a triangle">
+$$ A = \dfrac{1}{2}ab\sin C $$
+</FormulaBox>
+
+<SteveTip title="GDC Mastery: Radians vs. Degrees">
+The most common mistake in IB Mathematics is having your calculator in the wrong angle mode. 
+* In **Geometry & Trigonometry** (Topic 3), you will almost exclusively use **Degrees**.
+* In **Calculus** (Topic 5), you will exclusively use **Radians**.
+Always check the top right corner of your TI-Nspire screen before starting an exam. Click it with your touchpad to toggle instantly between DEG and RAD.
+</SteveTip>
+
+---
+
+## Practice Questions
+
+<Tabs>
+  <TabItem label="📝 Question 1: Direct Application">
+    In triangle $ABC$, the length of $AB$ is $8 \text{ cm}$, $BC$ is $11 \text{ cm}$, and the angle $ABC$ is $65^\circ$.
+    
+    a) Calculate the length of side $AC$.  
+    b) Calculate the size of angle $BAC$.
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    **a)** We have two sides and the included angle (SAS), so we use the Cosine Rule to find the opposite side ($AC$, which we will call $b$).
+    $$
+    \begin{aligned}
+    b^2 &= a^2 + c^2 - 2ac\cos B \\
+    b^2 &= 11^2 + 8^2 - 2(11)(8)\cos(65^\circ) \\
+    b^2 &= 121 + 64 - 176(0.4226...) \\
+    b^2 &= 185 - 74.381... \\
+    b^2 &= 110.618... \\
+    b &= \sqrt{110.618...} \approx 10.517...
+    \end{aligned}
+    $$
+    The length of $AC$ is **$10.5 \text{ cm}$** (to 3 s.f.).
+
+    **b)** We now have a matching pair (angle $B = 65^\circ$ and side $b = 10.517$). We can use the Sine Rule to find angle $A$ (which is $\angle BAC$). Let side $a = 11$.
+    $$
+    \begin{aligned}
+    \dfrac{\sin A}{a} &= \dfrac{\sin B}{b} \\
+    \dfrac{\sin A}{11} &= \dfrac{\sin 65^\circ}{10.517...} \\
+    \sin A &= 11 \times \left( \dfrac{\sin 65^\circ}{10.517...} \right) \\
+    \sin A &\approx 0.9479... \\
+    A &= \sin^{-1}(0.9479...) \approx 71.42...^\circ
+    \end{aligned}
+    $$
+    The angle $BAC$ is **$71.4^\circ$** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving general triangles using sine and cosine rules" />
+
+<Tabs>
+  <TabItem label="📝 Question 2: Working Backwards with Area">
+    In triangle $PQR$, the length of $PQ$ is $12 \text{ cm}$ and the angle $QPR$ is $40^\circ$. 
+    The total area of the triangle is exactly $45 \text{ cm}^2$.
+    
+    a) Find the exact length of side $PR$.  
+    b) Calculate the length of side $QR$.
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    **a)** Let the length of $PR$ be $x$. We use the area formula, knowing it requires two sides and the included angle.
+    $$
+    \begin{aligned}
+    \text{Area} &= \dfrac{1}{2}bc\sin P \\
+    45 &= \dfrac{1}{2}(x)(12)\sin(40^\circ) \\
+    45 &= 6x\sin(40^\circ) \\
+    x &= \dfrac{45}{6\sin(40^\circ)} \\
+    x &= \dfrac{45}{3.8567...} \approx 11.667...
+    \end{aligned}
+    $$
+    The length of $PR$ is **$11.7 \text{ cm}$** (to 3 s.f.).
+
+    **b)** Now we have SAS ($PQ = 12, PR = 11.667, \angle P = 40^\circ$). We use the Cosine Rule to find the opposite side, $QR$ (or $p$).
+    $$
+    \begin{aligned}
+    p^2 &= q^2 + r^2 - 2qr\cos P \\
+    p^2 &= 11.667^2 + 12^2 - 2(11.667)(12)\cos(40^\circ) \\
+    p^2 &= 136.14 + 144 - 280.01\cos(40^\circ) \\
+    p^2 &= 280.14 - 214.49... \\
+    p^2 &= 65.65... \\
+    p &= \sqrt{65.65...} \approx 8.102...
+    \end{aligned}
+    $$
+    The length of $QR$ is **$8.10 \text{ cm}$** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Economics Context (Land Valuation)">
+    A developer intends to purchase a triangular plot of land. Two boundaries of the land measure $40 \text{ m}$ and $60 \text{ m}$, and the angle enclosed between these two boundaries is $110^\circ$.
+    
+    The land is valued at a flat rate of **150 EUR** per square metre.
+    
+    a) Calculate the area of the land.  
+    b) Calculate the total cost of purchasing the plot. Give your answer to the nearest EUR.
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    **a)** Use the area formula with the two given sides and the included angle.
+    $$
+    \begin{aligned}
+    A &= \dfrac{1}{2}ab\sin C \\
+    A &= \dfrac{1}{2}(40)(60)\sin(110^\circ) \\
+    A &= 1200 \times 0.9396... \\
+    A &\approx 1127.63...
+    \end{aligned}
+    $$
+    The area is **$1128 \text{ m}^2$** (to 4 s.f.).
+
+    **b)** Multiply the unrounded area by the cost per square metre.
+    $$
+    \begin{aligned}
+    \text{Total Cost} &= 1127.631... \times 150 \\
+    \text{Total Cost} &= 169144.66...
+    \end{aligned}
+    $$
+    To the nearest whole number, the cost is **169145 EUR**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Applying the area of a triangle formula to real-world geometric problems" />
+
+<Tabs>
+  <TabItem label="📝 Question 4: SSS and the Largest Angle">
+    The three sides of a triangular metal plate measure $7 \text{ cm}$, $9 \text{ cm}$, and $14 \text{ cm}$.
+    
+    Identify the location of the largest angle in the triangle, and calculate its size in degrees.
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    **Identify:** A fundamental rule of geometry states that the largest interior angle is always directly opposite the longest side. Therefore, the largest angle is opposite the $14 \text{ cm}$ side.
+
+    **Calculate:** We have all three sides (SSS), so we use the rearranged Cosine Rule. Let $c = 14$.
+    $$
+    \begin{aligned}
+    \cos C &= \dfrac{a^2 + b^2 - c^2}{2ab} \\
+    \cos C &= \dfrac{7^2 + 9^2 - 14^2}{2(7)(9)} \\
+    \cos C &= \dfrac{49 + 81 - 196}{126} \\
+    \cos C &= \dfrac{-66}{126} = -0.5238... \\
+    C &= \cos^{-1}(-0.5238...) \approx 121.58...^\circ
+    \end{aligned}
+    $$
+    The largest angle is **$121.6^\circ$** (to 3 s.f.). *(Note: A negative cosine value guarantees an obtuse angle, which visually confirms it is the largest!).*
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 5: Navigation and Bearings">
+    A ship sails from Port $A$ on a bearing of $040^\circ$ for a distance of $20 \text{ km}$ to reach a buoy at $B$. 
+    It then turns and sails from the buoy on a bearing of $150^\circ$ for a distance of $35 \text{ km}$ to reach Port $C$.
+    
+    Calculate the direct distance between Port $A$ and Port $C$.
+  </TabItem>
+  <TabItem label="✅ Solution 5">
+    *Bearings are always measured clockwise from the North line.*
+    
+    **Step 1: Sketch and find the interior angle at $B$.**
+    * Draw a North line straight up from $A$. The line $AB$ branches off at $40^\circ$.
+    * Draw a North line straight up from $B$. The line $BC$ branches off at $150^\circ$.
+    * Using parallel North lines, the interior angle at $B$ consists of two parts. The angle "looking back" at $A$ (co-interior with $40^\circ$) is $180^\circ - 40^\circ = 140^\circ$.
+    * Since angles around the point $B$ must sum to $360^\circ$, the interior angle inside the triangle is:
+        $$ \angle ABC = 360^\circ - 140^\circ - 150^\circ = 70^\circ $$
+
+    **Step 2: Use the Cosine Rule.**
+    We now have a triangle with sides $20$, $35$, and an included angle of $70^\circ$.
+    $$
+    \begin{aligned}
+    b^2 &= a^2 + c^2 - 2ac\cos B \\
+    b^2 &= 35^2 + 20^2 - 2(35)(20)\cos(70^\circ) \\
+    b^2 &= 1225 + 400 - 1400(0.3420...) \\
+    b^2 &= 1625 - 478.82... \\
+    b^2 &= 1146.17... \\
+    b &= \sqrt{1146.17...} \approx 33.85...
+    \end{aligned}
+    $$
+    The direct distance from Port $A$ to Port $C$ is **$33.9 \text{ km}$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving navigation bearing problems using the cosine rule" />
+
+<Tabs>
+  <TabItem label="📝 Question 6: Angles of Elevation (Two Observers)">
+    Two observers, Alice and Bob, are standing on the same side of a tall vertical communications tower, on flat ground. Alice is standing $50 \text{ m}$ directly behind Bob.
+    
+    The angle of elevation to the top of the tower from Alice is $25^\circ$, and from Bob is $40^\circ$.
+    
+    Calculate the exact height of the tower.
+  </TabItem>
+  <TabItem label="✅ Solution 6">
+    Let the top of the tower be $T$, the base be $D$, Bob's position be $B$, and Alice's position be $A$.
+    The distance $AB = 50 \text{ m}$.
+    
+    **Method: Use the non-right triangle $\Delta ABT$ first.**
+    1.  The angle $\angle TBD$ is $40^\circ$. The angles on a straight line add to $180^\circ$, so the interior angle $\angle TBA = 180^\circ - 40^\circ = 140^\circ$.
+    2.  The angles in triangle $\Delta ABT$ must sum to $180^\circ$:
+        $$ \angle ATB = 180^\circ - 140^\circ - 25^\circ = 15^\circ $$
+    3.  We now have a matching pair in $\Delta ABT$: angle $15^\circ$ and opposite side $AB = 50$. We can use the Sine Rule to find the hypotenuse $BT$.
+        $$
+        \begin{aligned}
+        \dfrac{BT}{\sin(25^\circ)} &= \dfrac{50}{\sin(15^\circ)} \\
+        BT &= \dfrac{50\sin(25^\circ)}{\sin(15^\circ)} \\
+        BT &\approx 81.65... \text{ m}
+        \end{aligned}
+        $$
+    
+    **Method: Now use the right-angled triangle $\Delta TBD$.**
+    We have the hypotenuse $BT = 81.65$, and the angle $40^\circ$. We want the opposite side (the height, $h$).
+    $$
+    \begin{aligned}
+    \sin(40^\circ) &= \dfrac{h}{81.65...} \\
+    h &= 81.65... \times \sin(40^\circ) \\
+    h &\approx 52.48...
+    \end{aligned}
+    $$
+    The height of the tower is **$52.5 \text{ m}$** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 7: Composite Figures (Quadrilaterals)">
+    A plot of land is in the shape of a quadrilateral $ABCD$. A fence runs diagonally across the plot from $A$ to $C$.
+    In triangle $ABC$: $AB = 5 \text{ km}$, $BC = 8 \text{ km}$, and angle $ABC = 100^\circ$.
+    In triangle $ADC$: $AD = 6 \text{ km}$ and $DC = 7 \text{ km}$.
+    
+    Calculate the size of angle $ADC$.
+  </TabItem>
+  <TabItem label="✅ Solution 7">
+    This requires a two-step process. The diagonal $AC$ is the shared side between both triangles.
+    
+    **Step 1: Find the length of $AC$ using triangle $ABC$.**
+    We have SAS, so we use the Cosine Rule.
+    $$
+    \begin{aligned}
+    AC^2 &= 5^2 + 8^2 - 2(5)(8)\cos(100^\circ) \\
+    AC^2 &= 25 + 64 - 80(-0.1736...) \\
+    AC^2 &= 89 + 13.89... = 102.89... \\
+    AC &= \sqrt{102.89...} \approx 10.143... \text{ km}
+    \end{aligned}
+    $$
+
+    **Step 2: Find angle $ADC$ using triangle $ADC$.**
+    We now have all three sides of $\Delta ADC$ ($AD=6, DC=7, AC=10.143$). We use the rearranged Cosine Rule. Let side $c$ be the diagonal $AC$.
+    $$
+    \begin{aligned}
+    \cos D &= \dfrac{6^2 + 7^2 - (10.143...)^2}{2(6)(7)} \\
+    \cos D &= \dfrac{36 + 49 - 102.89...}{84} \\
+    \cos D &= \dfrac{-17.89...}{84} \approx -0.213... \\
+    D &= \cos^{-1}(-0.213...) \approx 102.29...^\circ
+    \end{aligned}
+    $$
+    The angle $ADC$ is **$102^\circ$** (to 3 s.f.).
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Solving composite 2D shapes combining sine and cosine rules" />
+
+<Tabs>
+  <TabItem label="📝 Question 8: Perimeter and Proportions">
+    A triangular garden $PQR$ has one fence boundary $PQ = 10 \text{ m}$. 
+    The angle at corner $P$ is $50^\circ$, and the angle at corner $Q$ is $60^\circ$.
+    
+    Calculate the total perimeter of the garden.
+  </TabItem>
+  <TabItem label="✅ Solution 8">
+    To find the perimeter, we must calculate the lengths of the two missing sides, $PR$ and $QR$.
+    
+    **Step 1: Find the missing angle.**
+    Angles in a triangle sum to $180^\circ$.
+    $$ \angle R = 180^\circ - 50^\circ - 60^\circ = 70^\circ $$
+    
+    We now have a matching pair: $\angle R = 70^\circ$ and its opposite side $PQ = 10 \text{ m}$.
+    
+    **Step 2: Use the Sine Rule to find $QR$ (side $p$).**
+    $$
+    \begin{aligned}
+    \dfrac{p}{\sin 50^\circ} &= \dfrac{10}{\sin 70^\circ} \\
+    p &= 10 \times \left( \dfrac{\sin 50^\circ}{\sin 70^\circ} \right) \\
+    p &\approx 8.15... \text{ m}
+    \end{aligned}
+    $$
+
+    **Step 3: Use the Sine Rule to find $PR$ (side $q$).**
+    $$
+    \begin{aligned}
+    \dfrac{q}{\sin 60^\circ} &= \dfrac{10}{\sin 70^\circ} \\
+    q &= 10 \times \left( \dfrac{\sin 60^\circ}{\sin 70^\circ} \right) \\
+    q &\approx 9.22... \text{ m}
+    \end{aligned}
+    $$
+
+    **Step 4: Calculate total perimeter.**
+    $$ \text{Perimeter} = 10 + 8.15... + 9.22... = 27.37... $$
+    The total perimeter is **$27.4 \text{ m}$**.
+  </TabItem>
+</Tabs>
+
+<SmartAIGenerator topic="Using the sine rule to find missing sides and calculate perimeter" />
