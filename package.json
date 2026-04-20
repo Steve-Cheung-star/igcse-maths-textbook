@@ -7,7 +7,8 @@
     "start": "astro dev",
     "build": "node --max-old-space-size=8192 ./node_modules/.bin/astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "ship": "npm run build && vercel deploy --prebuilt --prod"
   },
   "dependencies": {
     "@astrojs/mdx": "^5.0.3",

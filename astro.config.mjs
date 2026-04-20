@@ -20,7 +20,6 @@ export default defineConfig({
       imports: [
         './src/components/AIGenerator.jsx',
         './src/components/SteveTip.astro',
-        './src/components/MathPlot.jsx',
         './src/components/SmartAIGenerator.astro',
         './src/components/FormulaBox.astro',
         './src/components/TeacherNotes.astro',
