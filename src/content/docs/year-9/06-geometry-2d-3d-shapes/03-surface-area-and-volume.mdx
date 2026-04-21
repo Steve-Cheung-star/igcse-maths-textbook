@@ -6,40 +6,84 @@ description: Calculate the surface area and volume of prisms and cylinders, and 
 ## 1. Inquiry: Filling and Covering
 **Inquiry Question:** *How do we measure the capacity of a container versus the material needed to build it?*
 
-In 3-D geometry, we distinguish between:
-* **Volume ($V$):** The amount of space *inside* a 3-D object (measured in cubic units like $\text{cm}^3$).
-* **Surface Area ($SA$):** The total area of all the *outside* faces of an object (measured in square units like $\text{cm}^2$).
+In 3-D geometry, we differentiate between the "inside" and the "outside" of objects. Think of a swimming pool: 
+* **Volume ($V$):** The amount of water needed to fill the pool. It is the measure of the space *inside* a 3-D object (measured in cubic units like $\text{cm}^3$, $\text{m}^3$, or liters).
+* **Surface Area ($SA$):** The amount of tile needed to line the bottom and sides of the pool. It is the total area of all the *outside* faces of an object (measured in square units like $\text{cm}^2$ or $\text{m}^2$).
 
 ---
 
 ## 2. Volume of Prisms and Cylinders
-A **prism** is a 3-D shape with a constant cross-section. The volume of *any* prism is calculated by finding the area of the base ($A$) and multiplying it by the height ($h$).
+A **prism** is a 3-D shape with a constant cross-section (the shape stays the same from the bottom to the top). The volume of *any* prism is calculated by finding the area of the base ($A$) and multiplying it by the height ($h$).
+
+import VolumeVisualizer from '../../../../components/VolumeVisualizer.jsx'
+
+<div className="not-content" style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <div style={{ width: '100%', maxWidth: '800px' }}>
+    <VolumeVisualizer client:load />
+  </div>
+</div>
 
 $$V = \text{Area of base} \times \text{height}$$
 
+<div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin: 20px 0;">
+  <div>
+    <svg viewBox="0 0 250 200" width="200" height="160" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,150 150,150 150,50 50,50" fill="#fef08a" stroke="#ca8a04" stroke-width="2"/>
+      <polygon points="150,150 200,120 200,20 150,50" fill="#fde047" stroke="#ca8a04" stroke-width="2"/>
+      <polygon points="50,50 150,50 200,20 100,20" fill="#fef9c3" stroke="#ca8a04" stroke-width="2"/>
+      <text x="95" y="170" fill="#ca8a04" font-family="sans-serif" font-weight="bold">length (l)</text>
+      <text x="180" y="145" fill="#ca8a04" font-family="sans-serif" font-weight="bold">width (w)</text>
+      <text x="15" y="105" fill="#ca8a04" font-family="sans-serif" font-weight="bold">height (h)</text>
+    </svg>
+    <p align="center"><b>Rectangular Prism</b><br/>$V = l \times w \times h$</p>
+  </div>
+  <div>
+    <svg viewBox="0 0 200 250" width="160" height="200" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="100" cy="50" rx="60" ry="20" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+      <path d="M 40 50 L 40 200 A 60 20 0 0 0 160 200 L 160 50" fill="#e0f2fe" stroke="#0284c7" stroke-width="2"/>
+      <path d="M 40 200 A 60 20 0 0 1 160 200" fill="none" stroke="#0284c7" stroke-width="2" stroke-dasharray="4"/>
+      <line x1="100" y1="50" x2="160" y2="50" stroke="#ef4444" stroke-width="2"/>
+      <text x="120" y="45" fill="#ef4444" font-family="sans-serif" font-weight="bold">r</text>
+      <line x1="180" y1="50" x2="180" y2="200" stroke="#22c55e" stroke-width="2"/>
+      <text x="185" y="130" fill="#22c55e" font-family="sans-serif" font-weight="bold">h</text>
+    </svg>
+    <p align="center"><b>Cylinder</b><br/>$V = \pi r^2 h$</p>
+  </div>
+</div>
 
-
-* **Rectangular Prism:** $V = l \times w \times h$
-* **Cylinder:** $V = \pi r^2 h$ (since the base is a circle)
+*Note: For a triangular prism, calculate the area of the triangle first ($\frac{1}{2} \times \text{base} \times \text{height of triangle}$), then multiply by the length of the prism.*
 
 ---
 
 ## 3. Surface Area of Prisms
-To find the surface area, we calculate the area of every flat face and add them together. For a cylinder, this includes the two circular ends and the "curved surface" which, when unrolled, is a rectangle.
+To find the surface area, we calculate the area of every flat 2-D face and add them together. 
+
+* **Rectangular Prism:** Has 6 rectangular faces (Top/Bottom, Front/Back, Left/Right). 
+    $$SA = 2lw + 2lh + 2wh$$
+* **Cylinder:** Includes the two circular ends and a "curved surface". Imagine peeling the label off a soup can—it forms a rectangle! The length of this rectangle is the circumference of the circle ($2\pi r$).
 
 **Cylinder Surface Area Formula:**
+$$SA = \text{Top} + \text{Bottom} + \text{Curved Side}$$
+$$SA = \pi r^2 + \pi r^2 + (2\pi r \times h)$$
 $$SA = 2\pi r^2 + 2\pi rh$$
-
-
 
 ---
 
 ## 4. Nets and 3-D Visualization
-A **net** is a 2-D pattern that can be folded to make a 3-D solid. Visualizing nets helps in calculating surface area because it ensures you don't miss any hidden faces (like the bottom or back of a shape).
+A **net** is a 2-D pattern that can be folded to make a 3-D solid. Visualizing nets helps in calculating surface area because it acts as a checklist, ensuring you don't miss any hidden faces.
+
+<svg viewBox="0 0 350 250" width="300" height="210" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="150" cy="40" r="30" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <rect x="50" y="80" width="200" height="90" fill="#c7d2fe" stroke="#4f46e5" stroke-width="2"/>
+  <circle cx="150" cy="210" r="30" fill="#e0e7ff" stroke="#4f46e5" stroke-width="2"/>
+  <text x="105" y="130" fill="#4f46e5" font-family="sans-serif" font-size="14">2πr (Circumference)</text>
+  <text x="30" y="130" fill="#4f46e5" font-family="sans-serif" font-size="14">h</text>
+</svg>
+*Above: The net of a cylinder. Notice how the length of the rectangle perfectly wraps around the circular bases.*
 
 ---
 
-## 5. Practice & Homework (25 Minutes)
+## 5. Practice & Homework (35 Minutes)
 
 ### Q1: Volume of a Cylinder
 <Tabs>
@@ -47,8 +91,8 @@ A **net** is a 2-D pattern that can be folded to make a 3-D solid. Visualizing n
     A soda can has a radius of $3\text{cm}$ and a height of $12\text{cm}$. Find its volume (use $\pi \approx 3.14$).
   </TabItem>
   <TabItem label="✅ Solution">
-    1. Base Area ($A$) = $\pi \times 3^2 = 3.14 \times 9 = 28.26\text{cm}^2$.
-    2. Volume ($V$) = $28.26 \times 12$.
+    1. Base Area ($A$) = $\pi \times r^2 = 3.14 \times 3^2 = 3.14 \times 9 = 28.26\text{cm}^2$.
+    2. Volume ($V$) = Base Area $\times$ height = $28.26 \times 12$.
     **Result:** $339.12\text{cm}^3$.
   </TabItem>
 </Tabs>
@@ -59,7 +103,7 @@ A **net** is a 2-D pattern that can be folded to make a 3-D solid. Visualizing n
     Find the surface area of a cube with side length $4\text{cm}$.
   </TabItem>
   <TabItem label="✅ Solution">
-    1. Area of one face: $4 \times 4 = 16\text{cm}^2$.
+    1. Area of one square face: $4 \times 4 = 16\text{cm}^2$.
     2. A cube has 6 identical faces.
     3. $16 \times 6 = \mathbf{96\text{cm}^2}$.
   </TabItem>
@@ -71,7 +115,99 @@ A **net** is a 2-D pattern that can be folded to make a 3-D solid. Visualizing n
     A prism has a triangular base with area $15\text{cm}^2$ and a length of $10\text{cm}$. What is its volume?
   </TabItem>
   <TabItem label="✅ Solution">
+    The volume of any prism is the area of its base times its length/height.
     $V = \text{Base Area} \times \text{Length}$
     $V = 15 \times 10 = \mathbf{150\text{cm}^3}$.
+  </TabItem>
+</Tabs>
+
+### Q4: Surface Area of a Rectangular Prism
+<Tabs>
+  <TabItem label="📝 Question">
+    Find the surface area of the rectangular box below.
+    <br/>
+    <svg viewBox="0 0 200 150" width="150" height="110" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="40,110 120,110 120,50 40,50" fill="#fed7aa" stroke="#c2410c" stroke-width="2"/>
+      <polygon points="120,110 160,80 160,20 120,50" fill="#ffedd5" stroke="#c2410c" stroke-width="2"/>
+      <polygon points="40,50 120,50 160,20 80,20" fill="#ffedd5" stroke="#c2410c" stroke-width="2"/>
+      <text x="70" y="125" fill="#c2410c" font-size="12" font-weight="bold">5 cm</text>
+      <text x="145" y="105" fill="#c2410c" font-size="12" font-weight="bold">3 cm</text>
+      <text x="10" y="85" fill="#c2410c" font-size="12" font-weight="bold">2 cm</text>
+    </svg>
+  </TabItem>
+  <TabItem label="✅ Solution">
+    We need to find the area of all 6 faces:
+    1. **Front & Back:** $2 \times (5 \times 2) = 2 \times 10 = 20\text{cm}^2$
+    2. **Top & Bottom:** $2 \times (5 \times 3) = 2 \times 15 = 30\text{cm}^2$
+    3. **Left & Right:** $2 \times (3 \times 2) = 2 \times 6 = 12\text{cm}^2$
+    4. **Total SA:** $20 + 30 + 12 = \mathbf{62\text{cm}^2}$.
+  </TabItem>
+</Tabs>
+
+### Q5: Applied Volume (Swimming Pool)
+<Tabs>
+  <TabItem label="📝 Question">
+    A cylindrical swimming pool has a diameter of $10\text{m}$ and is filled with water to a depth of $2\text{m}$. How many cubic meters of water are in the pool? (Use $\pi \approx 3.14$)
+  </TabItem>
+  <TabItem label="✅ Solution">
+    1. First, find the radius. Radius = Diameter $\div 2 = 10 \div 2 = 5\text{m}$.
+    2. $V = \pi r^2 h$
+    3. $V = 3.14 \times (5^2) \times 2$
+    4. $V = 3.14 \times 25 \times 2 = 3.14 \times 50$
+    **Result:** $\mathbf{157\text{m}^3}$.
+  </TabItem>
+</Tabs>
+
+### Q6: Working Backwards
+<Tabs>
+  <TabItem label="📝 Question">
+    A cylinder has a volume of $314\text{cm}^3$ and a radius of $5\text{cm}$. What is its height? (Use $\pi \approx 3.14$)
+  </TabItem>
+  <TabItem label="✅ Solution">
+    Set up the volume formula and solve for the unknown ($h$):
+    1. $V = \pi r^2 h$
+    2. $314 = 3.14 \times (5^2) \times h$
+    3. $314 = 3.14 \times 25 \times h$
+    4. $314 = 78.5 \times h$
+    5. $h = 314 \div 78.5$
+    **Result:** The height is $\mathbf{4\text{cm}}$.
+  </TabItem>
+</Tabs>
+
+### Q7: Surface Area of a Cylinder
+<Tabs>
+  <TabItem label="📝 Question">
+    A soup company is designing a new can. How much tin is needed to manufacture the can shown below? (Include the top, bottom, and sides. Use $\pi \approx 3.14$)
+    <br/>
+    <svg viewBox="0 0 120 150" width="120" height="150" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="60" cy="30" rx="40" ry="12" fill="#e2e8f0" stroke="#475569" stroke-width="2"/>
+      <path d="M 20 30 L 20 120 A 40 12 0 0 0 100 120 L 100 30" fill="#cbd5e1" stroke="#475569" stroke-width="2"/>
+      <path d="M 20 120 A 40 12 0 0 1 100 120" fill="none" stroke="#475569" stroke-width="2" stroke-dasharray="2"/>
+      <line x1="60" y1="30" x2="100" y2="30" stroke="#dc2626" stroke-width="1.5"/>
+      <text x="75" y="25" fill="#dc2626" font-size="12" font-weight="bold">4 cm</text>
+      <line x1="110" y1="30" x2="110" y2="120" stroke="#16a34a" stroke-width="1.5"/>
+      <text x="115" y="80" fill="#16a34a" font-size="12" font-weight="bold">10 cm</text>
+    </svg>
+  </TabItem>
+  <TabItem label="✅ Solution">
+    Use the Surface Area formula: $SA = 2\pi r^2 + 2\pi rh$
+    1. **Area of circular ends (Top & Bottom):** $2 \times (3.14 \times 4^2) = 2 \times (3.14 \times 16) = 2 \times 50.24 = 100.48\text{cm}^2$.
+    2. **Area of curved side (Rectangle):** $2 \times 3.14 \times 4 \times 10 = 25.12 \times 10 = 251.2\text{cm}^2$.
+    3. **Total SA:** $100.48 + 251.2 = \mathbf{351.68\text{cm}^2}$.
+  </TabItem>
+</Tabs>
+
+### Q8: Surface Area of a Triangular Prism
+<Tabs>
+  <TabItem label="📝 Question">
+    A tent is shaped like a triangular prism. The front opening is a right triangle with a base of $3\text{m}$, a height of $4\text{m}$, and a hypotenuse (slanted side) of $5\text{m}$. The tent is $10\text{m}$ long. Calculate the total surface area of the tent, including the floor.
+  </TabItem>
+  <TabItem label="✅ Solution">
+    Find the area of all 5 faces (2 triangles, 3 rectangles):
+    1. **Front & Back Triangles:** $2 \times (\frac{1}{2} \times 3 \times 4) = 2 \times 6 = 12\text{m}^2$.
+    2. **Floor (Rectangle):** Base $\times$ Length = $3 \times 10 = 30\text{m}^2$.
+    3. **Vertical Wall (Rectangle):** Height $\times$ Length = $4 \times 10 = 40\text{m}^2$.
+    4. **Slanted Roof (Rectangle):** Hypotenuse $\times$ Length = $5 \times 10 = 50\text{m}^2$.
+    5. **Total SA:** $12 + 30 + 40 + 50 = \mathbf{132\text{m}^2}$.
   </TabItem>
 </Tabs>
