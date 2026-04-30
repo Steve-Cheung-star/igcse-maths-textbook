@@ -6,11 +6,7 @@
   <div class="controls-row">
     <div class="input-group">
       <label for="search-text">Search Exam Bank</label>
-      <input 
-        type="text" 
-        id="search-text" 
-        placeholder="Try 'Circle Theorems'" 
-      />
+      <input type="text" id="search-text" placeholder="Try 'Circle Theorems'" />
     </div>
 
     <button id="randomise-btn" class="primary-btn">
@@ -20,13 +16,13 @@
 
   <div id="display-area" class="display-area">
     <p id="status-text" class="status-message"></p>
-    
+
     <div id="content-card" class="hidden">
       <div class="meta-header">
         <span id="res-topic" class="badge">Topic</span>
         <span id="res-subtopic" class="badge secondary">Subtopic</span>
       </div>
-      
+
       <div class="image-wrapper">
         <p class="image-label">Question:</p>
         <img id="question-img" src="" alt="Question Image" />
@@ -44,41 +40,41 @@
 
 <script>
   const API_BASE_URL = "https://igcse-exam-generator-production.up.railway.app";
-  const API_KEY = import.meta.env.PUBLIC_API_KEY; 
-  
-  const btn = document.getElementById('randomise-btn');
-  const searchInput = document.getElementById('search-text');
-  const status = document.getElementById('status-text');
-  const contentCard = document.getElementById('content-card');
-  
-  const resTopic = document.getElementById('res-topic');
-  const resSubtopic = document.getElementById('res-subtopic');
-  const qImg = document.getElementById('question-img');
-  const msImg = document.getElementById('ms-img');
-  
-  // 1. Get a reference to the details element
-  const msDetails = document.querySelector('.ms-details');
+  const API_KEY = import.meta.env.PUBLIC_API_KEY;
 
-  btn.addEventListener('click', async () => {
+  const btn = document.getElementById("randomise-btn");
+  const searchInput = document.getElementById("search-text");
+  const status = document.getElementById("status-text");
+  const contentCard = document.getElementById("content-card");
+
+  const resTopic = document.getElementById("res-topic");
+  const resSubtopic = document.getElementById("res-subtopic");
+  const qImg = document.getElementById("question-img");
+  const msImg = document.getElementById("ms-img");
+
+  // 1. Get a reference to the details element
+  const msDetails = document.querySelector(".ms-details");
+
+  btn.addEventListener("click", async () => {
     const term = searchInput.value.trim();
-    
+
     // 2. Collapse the mark scheme automatically when the button is clicked
     if (msDetails) msDetails.open = false;
 
     btn.disabled = true;
     status.textContent = "🔍 Searching...";
-    contentCard.classList.add('hidden');
+    contentCard.classList.add("hidden");
 
     try {
       const url = new URL(`${API_BASE_URL}/random-question`);
-      if (term) url.searchParams.append('subtopic', term);
+      if (term) url.searchParams.append("subtopic", term);
 
       const response = await fetch(url, {
         headers: {
-            'x-api-key': API_KEY
-        }
+          "x-api-key": API_KEY,
+        },
       });
-      
+
       if (!response.ok) {
         if (response.status === 429) {
           throw new Error("Too many requests. Please wait a minute.");
@@ -86,7 +82,9 @@
         if (response.status === 403) {
           throw new Error("Unauthorized access.");
         }
-        throw new Error(term ? `No results for "${term}"` : "Database is empty.");
+        throw new Error(
+          term ? `No results for "${term}"` : "Database is empty.",
+        );
       }
 
       const data = await response.json();
@@ -96,33 +94,32 @@
 
       // Handle Multiple Question Images
       const qWrapper = qImg.parentElement;
-      qWrapper.querySelectorAll('.extra-q-img').forEach(el => el.remove());
+      qWrapper.querySelectorAll(".extra-q-img").forEach((el) => el.remove());
       qImg.src = data.question_urls[0] || "";
-      data.question_urls.slice(1).forEach(url => {
+      data.question_urls.slice(1).forEach((url) => {
         const newImg = qImg.cloneNode();
-        newImg.id = ""; 
+        newImg.id = "";
         newImg.src = url;
-        newImg.classList.add('extra-q-img');
+        newImg.classList.add("extra-q-img");
         newImg.style.marginTop = "1rem";
         qWrapper.appendChild(newImg);
       });
 
       // Handle Multiple Mark Scheme Images
       const msWrapper = msImg.parentElement;
-      msWrapper.querySelectorAll('.extra-ms-img').forEach(el => el.remove());
+      msWrapper.querySelectorAll(".extra-ms-img").forEach((el) => el.remove());
       msImg.src = data.ms_urls[0] || "";
-      data.ms_urls.slice(1).forEach(url => {
+      data.ms_urls.slice(1).forEach((url) => {
         const newImg = msImg.cloneNode();
         newImg.id = "";
         newImg.src = url;
-        newImg.classList.add('extra-ms-img');
+        newImg.classList.add("extra-ms-img");
         newImg.style.marginTop = "1rem";
         msWrapper.appendChild(newImg);
       });
 
-      contentCard.classList.remove('hidden');
+      contentCard.classList.remove("hidden");
       status.textContent = "";
-
     } catch (err) {
       status.textContent = `❌ ${err.message}`;
     } finally {
@@ -130,8 +127,8 @@
     }
   });
 
-  searchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') btn.click();
+  searchInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") btn.click();
   });
 </script>
 
@@ -144,7 +141,7 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     max-width: 850px;
     margin: 2rem auto;
-    font-family: 'Inter', system-ui, sans-serif;
+    font-family: "Inter", system-ui, sans-serif;
   }
 
   .controls-row {
@@ -155,7 +152,10 @@
   }
 
   @media (max-width: 600px) {
-    .controls-row { flex-direction: column; align-items: stretch; }
+    .controls-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
   }
 
   .input-group {
@@ -197,15 +197,26 @@
     border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.1s, background 0.2s;
+    transition:
+      transform 0.1s,
+      background 0.2s;
     height: 48px;
   }
 
-  .primary-btn:hover { background: #1f2937; }
-  .primary-btn:active { transform: scale(0.98); }
-  .primary-btn:disabled { background: #9ca3af; cursor: not-allowed; }
+  .primary-btn:hover {
+    background: #1f2937;
+  }
+  .primary-btn:active {
+    transform: scale(0.98);
+  }
+  .primary-btn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+  }
 
-  .hidden { display: none; }
+  .hidden {
+    display: none;
+  }
 
   .meta-header {
     margin-bottom: 1.5rem;
@@ -223,7 +234,10 @@
     font-weight: 600;
   }
 
-  .badge.secondary { background: #f3f4f6; color: #4b5563; }
+  .badge.secondary {
+    background: #f3f4f6;
+    color: #4b5563;
+  }
 
   .image-wrapper {
     background: #fcfcfc;
@@ -233,11 +247,16 @@
     margin-bottom: 1.5rem;
   }
 
-  .image-label { font-weight: 700; margin-bottom: 1rem; color: #1f2937; font-size: 0.9rem; }
+  .image-label {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1f2937;
+    font-size: 0.9rem;
+  }
 
   img {
-    max-width: 100%;
-    height: auto;
+    width: 100%; /* Forces the image to take up the full width of its parent */
+    height: auto; /* Maintains aspect ratio */
     display: block;
     border-radius: 4px;
   }
@@ -253,16 +272,19 @@
     color: #3b82f6;
     list-style: none;
     display: flex;
-    align-items: center; gap: 8px;
+    align-items: center;
+    gap: 8px;
   }
 
   summary::before {
-    content: '▶';
+    content: "▶";
     font-size: 0.7rem;
     transition: transform 0.2s;
   }
 
-  details[open] summary::before { transform: rotate(90deg); }
+  details[open] summary::before {
+    transform: rotate(90deg);
+  }
 
   .status-message {
     color: #6b7280;
