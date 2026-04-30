@@ -1,0 +1,273 @@
+---
+/* QuestionRandomizer.astro */
+---
+
+<div class="randomizer-card">
+  <div class="controls-row">
+    <div class="input-group">
+      <label for="search-text">Search Exam Bank</label>
+      <input 
+        type="text" 
+        id="search-text" 
+        placeholder="Try 'Circle Theorems'" 
+      />
+    </div>
+
+    <button id="randomise-btn" class="primary-btn">
+      <span class="btn-text">Randomise</span>
+    </button>
+  </div>
+
+  <div id="display-area" class="display-area">
+    <p id="status-text" class="status-message"></p>
+    
+    <div id="content-card" class="hidden">
+      <div class="meta-header">
+        <span id="res-topic" class="badge">Topic</span>
+        <span id="res-subtopic" class="badge secondary">Subtopic</span>
+      </div>
+      
+      <div class="image-wrapper">
+        <p class="image-label">Question:</p>
+        <img id="question-img" src="" alt="Question Image" />
+      </div>
+
+      <details class="ms-details">
+        <summary>View Mark Scheme</summary>
+        <div class="image-wrapper ms-box">
+          <img id="ms-img" src="" alt="Mark Scheme Image" />
+        </div>
+      </details>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API_BASE_URL = "https://igcse-exam-generator-production.up.railway.app";
+  const API_KEY = import.meta.env.PUBLIC_API_KEY; 
+  
+  const btn = document.getElementById('randomise-btn');
+  const searchInput = document.getElementById('search-text');
+  const status = document.getElementById('status-text');
+  const contentCard = document.getElementById('content-card');
+  
+  const resTopic = document.getElementById('res-topic');
+  const resSubtopic = document.getElementById('res-subtopic');
+  const qImg = document.getElementById('question-img');
+  const msImg = document.getElementById('ms-img');
+  
+  // 1. Get a reference to the details element
+  const msDetails = document.querySelector('.ms-details');
+
+  btn.addEventListener('click', async () => {
+    const term = searchInput.value.trim();
+    
+    // 2. Collapse the mark scheme automatically when the button is clicked
+    if (msDetails) msDetails.open = false;
+
+    btn.disabled = true;
+    status.textContent = "🔍 Searching...";
+    contentCard.classList.add('hidden');
+
+    try {
+      const url = new URL(`${API_BASE_URL}/random-question`);
+      if (term) url.searchParams.append('subtopic', term);
+
+      const response = await fetch(url, {
+        headers: {
+            'x-api-key': API_KEY
+        }
+      });
+      
+      if (!response.ok) {
+        if (response.status === 429) {
+          throw new Error("Too many requests. Please wait a minute.");
+        }
+        if (response.status === 403) {
+          throw new Error("Unauthorized access.");
+        }
+        throw new Error(term ? `No results for "${term}"` : "Database is empty.");
+      }
+
+      const data = await response.json();
+
+      resTopic.textContent = data.topic;
+      resSubtopic.textContent = data.subtopic;
+
+      // Handle Multiple Question Images
+      const qWrapper = qImg.parentElement;
+      qWrapper.querySelectorAll('.extra-q-img').forEach(el => el.remove());
+      qImg.src = data.question_urls[0] || "";
+      data.question_urls.slice(1).forEach(url => {
+        const newImg = qImg.cloneNode();
+        newImg.id = ""; 
+        newImg.src = url;
+        newImg.classList.add('extra-q-img');
+        newImg.style.marginTop = "1rem";
+        qWrapper.appendChild(newImg);
+      });
+
+      // Handle Multiple Mark Scheme Images
+      const msWrapper = msImg.parentElement;
+      msWrapper.querySelectorAll('.extra-ms-img').forEach(el => el.remove());
+      msImg.src = data.ms_urls[0] || "";
+      data.ms_urls.slice(1).forEach(url => {
+        const newImg = msImg.cloneNode();
+        newImg.id = "";
+        newImg.src = url;
+        newImg.classList.add('extra-ms-img');
+        newImg.style.marginTop = "1rem";
+        msWrapper.appendChild(newImg);
+      });
+
+      contentCard.classList.remove('hidden');
+      status.textContent = "";
+
+    } catch (err) {
+      status.textContent = `❌ ${err.message}`;
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') btn.click();
+  });
+</script>
+
+<style>
+  .randomizer-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    max-width: 850px;
+    margin: 2rem auto;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  .controls-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+  }
+
+  @media (max-width: 600px) {
+    .controls-row { flex-direction: column; align-items: stretch; }
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+  }
+
+  label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  input {
+    padding: 12px 16px;
+    border: 2px solid #f3f4f6;
+    background: #f9fafb;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.2s;
+    outline: none;
+  }
+
+  input:focus {
+    border-color: #3b82f6;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  }
+
+  .primary-btn {
+    background: #111827;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.1s, background 0.2s;
+    height: 48px;
+  }
+
+  .primary-btn:hover { background: #1f2937; }
+  .primary-btn:active { transform: scale(0.98); }
+  .primary-btn:disabled { background: #9ca3af; cursor: not-allowed; }
+
+  .hidden { display: none; }
+
+  .meta-header {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .badge {
+    background: #dbeafe;
+    color: #1e40af;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .badge.secondary { background: #f3f4f6; color: #4b5563; }
+
+  .image-wrapper {
+    background: #fcfcfc;
+    padding: 1.5rem;
+    border: 1px solid #f1f1f1;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+  }
+
+  .image-label { font-weight: 700; margin-bottom: 1rem; color: #1f2937; font-size: 0.9rem; }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .ms-details {
+    border-top: 2px solid #f9fafb;
+    padding-top: 1rem;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 700;
+    color: #3b82f6;
+    list-style: none;
+    display: flex;
+    align-items: center; gap: 8px;
+  }
+
+  summary::before {
+    content: '▶';
+    font-size: 0.7rem;
+    transition: transform 0.2s;
+  }
+
+  details[open] summary::before { transform: rotate(90deg); }
+
+  .status-message {
+    color: #6b7280;
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 1rem;
+  }
+</style>

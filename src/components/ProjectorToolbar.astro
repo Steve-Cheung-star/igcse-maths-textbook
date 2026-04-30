@@ -667,7 +667,7 @@
       if (e.key.toLowerCase() === 'c') clear();
 
       if (localState.isDrawing) return;
-      const scrollAmount = window.innerHeight * 0.8;
+      const scrollAmount = window.innerHeight * 0.6;
       if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(e.key)) { e.preventDefault(); window.scrollBy({ top: scrollAmount, behavior: 'smooth' }); }
       if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); window.scrollBy({ top: -scrollAmount, behavior: 'smooth' }); }
     }, { capture: true, signal: globalAborter.signal });

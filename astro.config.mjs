@@ -106,6 +106,7 @@ export default defineConfig({
           items: [
             { label: '⭐ My Revision', link: '/igcse/my-revision/' },
             { label: 'Course Outline', link: '/igcse/course-outline' },
+            { label: 'Exam Practice', link: '/igcse/exam-practice' },
             { label: 'IGCSE Flashcards', link: '/revision/igcse' },
             { label: '1. Number', autogenerate: { directory: 'igcse/01-number' } },
             { label: '2. Algebra', autogenerate: { directory: 'igcse/02-algebra' } },
