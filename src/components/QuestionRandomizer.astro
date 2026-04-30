@@ -51,24 +51,47 @@
   const resSubtopic = document.getElementById("res-subtopic");
   const qImg = document.getElementById("question-img");
   const msImg = document.getElementById("ms-img");
-
-  // 1. Get a reference to the details element
   const msDetails = document.querySelector(".ms-details");
+
+  // Keep track of object URLs so we can clean up memory on each new search
+  let activeBlobUrls = [];
+
+  // Helper function to fetch images with the API Key and return a renderable Object URL
+  async function loadSecureImage(url) {
+    const response = await fetch(url, {
+      headers: {
+        "x-api-key": API_KEY,
+      },
+    });
+    
+    if (!response.ok) {
+        throw new Error("Failed to load secure image from server.");
+    }
+    
+    const blob = await response.blob();
+    const objectUrl = URL.createObjectURL(blob);
+    activeBlobUrls.push(objectUrl); // Save for cleanup later
+    return objectUrl;
+  }
 
   btn.addEventListener("click", async () => {
     const term = searchInput.value.trim();
 
-    // 2. Collapse the mark scheme automatically when the button is clicked
     if (msDetails) msDetails.open = false;
 
     btn.disabled = true;
     status.textContent = "🔍 Searching...";
     contentCard.classList.add("hidden");
 
+    // Clean up old memory to prevent memory leaks in the browser
+    activeBlobUrls.forEach(url => URL.revokeObjectURL(url));
+    activeBlobUrls = [];
+
     try {
       const url = new URL(`${API_BASE_URL}/random-question`);
       if (term) url.searchParams.append("subtopic", term);
 
+      // 1. Fetch the JSON data (IDs and URLs)
       const response = await fetch(url, {
         headers: {
           "x-api-key": API_KEY,
@@ -76,15 +99,9 @@
       });
 
       if (!response.ok) {
-        if (response.status === 429) {
-          throw new Error("Too many requests. Please wait a minute.");
-        }
-        if (response.status === 403) {
-          throw new Error("Unauthorized access.");
-        }
-        throw new Error(
-          term ? `No results for "${term}"` : "Database is empty.",
-        );
+        if (response.status === 429) throw new Error("Too many requests. Please wait a minute.");
+        if (response.status === 403) throw new Error("Unauthorized access.");
+        throw new Error(term ? `No results for "${term}"` : "Database is empty.");
       }
 
       const data = await response.json();
@@ -92,31 +109,43 @@
       resTopic.textContent = data.topic;
       resSubtopic.textContent = data.subtopic;
 
-      // Handle Multiple Question Images
+      // 2. Handle Multiple Question Images securely via Blobs
       const qWrapper = qImg.parentElement;
       qWrapper.querySelectorAll(".extra-q-img").forEach((el) => el.remove());
-      qImg.src = data.question_urls[0] || "";
-      data.question_urls.slice(1).forEach((url) => {
-        const newImg = qImg.cloneNode();
-        newImg.id = "";
-        newImg.src = url;
-        newImg.classList.add("extra-q-img");
-        newImg.style.marginTop = "1rem";
-        qWrapper.appendChild(newImg);
-      });
+      
+      if (data.question_urls.length > 0) {
+          qImg.src = await loadSecureImage(data.question_urls[0]);
+          
+          for (let i = 1; i < data.question_urls.length; i++) {
+              const newImg = qImg.cloneNode();
+              newImg.id = "";
+              newImg.src = await loadSecureImage(data.question_urls[i]);
+              newImg.classList.add("extra-q-img");
+              newImg.style.marginTop = "1rem";
+              qWrapper.appendChild(newImg);
+          }
+      } else {
+          qImg.src = "";
+      }
 
-      // Handle Multiple Mark Scheme Images
+      // 3. Handle Multiple Mark Scheme Images securely via Blobs
       const msWrapper = msImg.parentElement;
       msWrapper.querySelectorAll(".extra-ms-img").forEach((el) => el.remove());
-      msImg.src = data.ms_urls[0] || "";
-      data.ms_urls.slice(1).forEach((url) => {
-        const newImg = msImg.cloneNode();
-        newImg.id = "";
-        newImg.src = url;
-        newImg.classList.add("extra-ms-img");
-        newImg.style.marginTop = "1rem";
-        msWrapper.appendChild(newImg);
-      });
+      
+      if (data.ms_urls.length > 0) {
+          msImg.src = await loadSecureImage(data.ms_urls[0]);
+          
+          for (let i = 1; i < data.ms_urls.length; i++) {
+              const newImg = msImg.cloneNode();
+              newImg.id = "";
+              newImg.src = await loadSecureImage(data.ms_urls[i]);
+              newImg.classList.add("extra-ms-img");
+              newImg.style.marginTop = "1rem";
+              msWrapper.appendChild(newImg);
+          }
+      } else {
+          msImg.src = "";
+      }
 
       contentCard.classList.remove("hidden");
       status.textContent = "";
