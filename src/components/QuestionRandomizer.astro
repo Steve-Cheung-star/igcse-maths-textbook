@@ -58,11 +58,14 @@
 
   // Helper function to fetch images with the API Key and return a renderable Object URL
   async function loadSecureImage(url) {
-    const response = await fetch(url, {
-      headers: {
-        "x-api-key": API_KEY,
-      },
-    });
+  // Force https if the backend accidentally sent http
+  const secureUrl = url.replace("http://", "https://");
+  
+  const response = await fetch(secureUrl, {
+    headers: {
+      "x-api-key": API_KEY,
+    },
+  });
     
     if (!response.ok) {
         throw new Error("Failed to load secure image from server.");
