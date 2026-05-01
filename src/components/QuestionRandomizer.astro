@@ -39,6 +39,8 @@
 </div>
 
 <script>
+  // @ts-nocheck
+  
   const API_BASE_URL = "https://igcse-exam-generator-production.up.railway.app";
   const API_KEY = import.meta.env.PUBLIC_API_KEY;
 
@@ -166,16 +168,63 @@
 
 <style>
   .randomizer-card {
-    background: #ffffff;
-    border: 1px solid #e5e7eb;
+    /* ☀️ LIGHT MODE VARIABLES (Default) */
+    --card-bg: #ffffff;
+    --card-border: #e5e7eb;
+    --card-text: #1f2937;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --label-text: #4b5563;
+    --input-bg: #f9fafb;
+    --input-border: #f3f4f6;
+    --input-text: #111827; /* Explicitly set so it never vanishes! */
+    --btn-bg: #111827;
+    --btn-hover: #1f2937;
+    --btn-text: #ffffff;
+    --badge-bg: #dbeafe;
+    --badge-text: #1e40af;
+    --badge-sec-bg: #f3f4f6;
+    --badge-sec-text: #4b5563;
+    --img-bg: #fcfcfc;
+    --img-border: #f1f1f1;
+    --divider: #f9fafb;
+    --link: #3b82f6;
+
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    color: var(--card-text);
     border-radius: 16px;
     padding: 2rem;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 15px -3px var(--shadow-color);
     max-width: 850px;
     margin: 2rem auto;
     font-family: "Inter", system-ui, sans-serif;
   }
 
+  /* 🌙 DARK MODE VARIABLES (Triggered by Starlight) */
+  :global([data-theme="dark"]) .randomizer-card {
+    --card-bg: #1c1e24;
+    --card-border: #343841;
+    --card-text: #e2e8f0;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+    --label-text: #9ca3af;
+    --input-bg: #0d0f12;
+    --input-border: #2d313a;
+    --input-text: #ffffff;
+    --btn-bg: #3b82f6;
+    --btn-hover: #2563eb;
+    --btn-text: #ffffff;
+    --badge-bg: #1e3a8a;
+    --badge-text: #bfdbfe;
+    --badge-sec-bg: #374151;
+    --badge-sec-text: #d1d5db;
+    --img-bg: #111827;
+    --img-border: #374151;
+    --divider: #374151;
+    --link: #60a5fa;
+  }
+
+  /* --- APPLYING THE VARIABLES --- */
+  
   .controls-row {
     display: flex;
     gap: 12px;
@@ -200,15 +249,16 @@
   label {
     font-size: 0.75rem;
     font-weight: 700;
-    color: #4b5563;
+    color: var(--label-text);
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
 
   input {
     padding: 12px 16px;
-    border: 2px solid #f3f4f6;
-    background: #f9fafb;
+    border: 2px solid var(--input-border);
+    background: var(--input-bg);
+    color: var(--input-text);
     border-radius: 10px;
     font-size: 1rem;
     transition: all 0.2s;
@@ -216,33 +266,33 @@
   }
 
   input:focus {
-    border-color: #3b82f6;
-    background: #ffffff;
-    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    border-color: var(--link);
+    background: var(--card-bg);
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.15);
   }
 
   .primary-btn {
-    background: #111827;
-    color: white;
+    background: var(--btn-bg);
+    color: var(--btn-text);
     border: none;
     padding: 12px 24px;
     border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
-    transition:
-      transform 0.1s,
-      background 0.2s;
+    transition: transform 0.1s, background 0.2s;
     height: 48px;
   }
 
   .primary-btn:hover {
-    background: #1f2937;
+    background: var(--btn-hover);
   }
+  
   .primary-btn:active {
     transform: scale(0.98);
   }
+  
   .primary-btn:disabled {
-    background: #9ca3af;
+    opacity: 0.6;
     cursor: not-allowed;
   }
 
@@ -258,8 +308,8 @@
   }
 
   .badge {
-    background: #dbeafe;
-    color: #1e40af;
+    background: var(--badge-bg);
+    color: var(--badge-text);
     padding: 4px 12px;
     border-radius: 6px;
     font-size: 0.8rem;
@@ -267,14 +317,14 @@
   }
 
   .badge.secondary {
-    background: #f3f4f6;
-    color: #4b5563;
+    background: var(--badge-sec-bg);
+    color: var(--badge-sec-text);
   }
 
   .image-wrapper {
-    background: #fcfcfc;
+    background: var(--img-bg);
     padding: 1.5rem;
-    border: 1px solid #f1f1f1;
+    border: 1px solid var(--img-border);
     border-radius: 12px;
     margin-bottom: 1.5rem;
   }
@@ -282,26 +332,30 @@
   .image-label {
     font-weight: 700;
     margin-bottom: 1rem;
-    color: #1f2937;
+    color: var(--card-text);
     font-size: 0.9rem;
   }
 
   img {
-    width: 100%; /* Forces the image to take up the full width of its parent */
-    height: auto; /* Maintains aspect ratio */
+    width: 100%;
+    height: auto;
     display: block;
     border-radius: 4px;
+    /* Keeps transparent exam images readable in both themes */
+    background: #ffffff; 
+    padding: 1rem;
+    box-sizing: border-box;
   }
 
   .ms-details {
-    border-top: 2px solid #f9fafb;
+    border-top: 2px solid var(--divider);
     padding-top: 1rem;
   }
 
   summary {
     cursor: pointer;
     font-weight: 700;
-    color: #3b82f6;
+    color: var(--link);
     list-style: none;
     display: flex;
     align-items: center;
@@ -319,7 +373,7 @@
   }
 
   .status-message {
-    color: #6b7280;
+    color: var(--label-text);
     font-size: 0.95rem;
     text-align: center;
     padding: 1rem;
