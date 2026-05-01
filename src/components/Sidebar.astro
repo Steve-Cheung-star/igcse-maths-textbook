@@ -3,7 +3,9 @@
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/Sidebar.astro';
 import { filterSidebar } from '../utils/sidebarHelpers';
-//import ExamTimer from './Timer.js'; // <-- Added Timer Import
+
+// Directly import the MDX content
+import { Content as ReferenceContent } from '../content/docs/igcse/reference.mdx';
 
 const isTeacher = import.meta.env.PUBLIC_TEACHER_MODE === 'true';
 const currentSidebar = Astro.locals.starlightRoute?.sidebar || Astro.props.sidebar || [];
@@ -15,14 +17,37 @@ if (Astro.locals.starlightRoute) {
 }
 
 const newProps = { ...Astro.props, sidebar: filteredSidebar };
+
+// LOGIC TO CHECK IF WE ARE IN IGCSE BOOK
+const isIGCSE = Astro.url.pathname.includes('/igcse/');
 ---
 
 <div class="sidebar-container">
   <div class="sidebar-sticky-wrapper">
+    {/* 1. Toggle Button */}
+    {isIGCSE && (
+      <button id="master-reference-toggle" class="ref-toggle-btn" aria-label="Toggle Master Reference" title="Master Reference">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-list">
+            <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
+            <line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/>
+            <line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+        </svg>
+      </button>
+    )}
+    
+    {/* 2. Greeting Text */}
     <div id="dynamic-greeting" class="sidebar-header-hint"></div>
   </div>
   
-  <div class="sidebar-content">
+  {/* 3. The Master Reference Panel */}
+  {isIGCSE && (
+    <div id="master-reference-panel" class="master-reference-panel hidden">
+      <ReferenceContent />
+    </div>
+  )}
+
+  {/* 4. Default Sidebar Content */}
+  <div id="sidebar-default-content" class="sidebar-content">
     <Default {...newProps}><slot /></Default>
   </div>
 </div>
@@ -30,17 +55,65 @@ const newProps = { ...Astro.props, sidebar: filteredSidebar };
 <style>
   .sidebar-container { 
     position: relative; 
+    /* Removed flex constraints so Starlight's native scroll takes over */
+    display: block; 
   }
   
   .sidebar-sticky-wrapper { 
     position: sticky; 
-    top: 0; 
-    z-index: 10; 
-    height: 3rem; 
+    top: 0; /* Sticks to the very top */
+    z-index: 20; 
     display: flex; 
     align-items: center; 
     background: var(--sl-color-bg-sidebar, var(--sl-color-bg));
     border-bottom: 1px solid var(--sl-color-hairline); 
+    
+    /* Pulls the header up to counteract Starlight's default padding */
+    margin: -1rem -1rem 1rem -1rem; 
+    padding: 0.75rem 1rem;
+    gap: 0.75rem; 
+  }
+
+  /* --- TOGGLE BUTTON --- */
+  .ref-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sl-color-gray-6); 
+    border: 1px solid var(--sl-color-hairline); 
+    color: var(--sl-color-gray-3);
+    cursor: pointer;
+    padding: 0.45rem; 
+    border-radius: 0.5rem; 
+    transition: all 0.2s ease-in-out;
+    flex-shrink: 0; 
+  }
+
+  .ref-toggle-btn:hover {
+    background: var(--sl-color-gray-5); 
+    color: var(--sl-color-text);
+    border-color: var(--sl-color-gray-4);
+  }
+
+  .ref-toggle-btn.active {
+    color: var(--sl-color-text-accent);
+    background: var(--sl-color-gray-5);
+    border-color: var(--sl-color-accent);
+  }
+
+  /* --- LAYOUT PANELS --- */
+  .master-reference-panel {
+    /* Flows naturally with the sidebar */
+    padding: 0 0.5rem 1rem 0.5rem; 
+  }
+
+  .sidebar-content {
+    /* Flows naturally with the sidebar */
+    display: block;
+  }
+
+  .hidden {
+    display: none !important;
   }
   
   .sidebar-header-hint { 
@@ -49,26 +122,106 @@ const newProps = { ...Astro.props, sidebar: filteredSidebar };
     letter-spacing: 0.05rem; 
     font-weight: bold; 
     color: var(--sl-color-gray-3); 
-    padding: 0 1rem; 
     opacity: 0.8; 
     font-family: var(--__sl-font-mono); 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
+    line-height: 1.4; 
+    word-wrap: break-word; 
+  }
+
+  /* --- UI FIXES FOR MDX --- */
+
+  /* Add vertical spacing between text paragraphs (like the circle theorems) */
+  .sidebar-container :global(.master-reference-panel p) {
+    margin-bottom: 0.85rem !important;
+    line-height: 1.5 !important; /* Makes the multi-line text a bit easier to read too */
+  }
+  
+  /* Prevent the very last paragraph from adding unnecessary extra scroll space */
+  .sidebar-container :global(.master-reference-panel p:last-of-type) {
+    margin-bottom: 0 !important;
+  }
+
+  /* 1. Hide Heading Links inside the drawer */
+  .sidebar-container :global(.master-reference-panel h1 a),
+  .sidebar-container :global(.master-reference-panel h2 a),
+  .sidebar-container :global(.master-reference-panel h3 a),
+  .sidebar-container :global(.master-reference-panel a.heading-link),
+  .sidebar-container :global(.master-reference-panel a.icon-link),
+  .sidebar-container :global(.master-reference-panel a[href^="#"]),
+  .sidebar-container :global(.master-reference-panel a[aria-hidden="true"]) {
+    display: none !important;
+  }
+
+  /* 2. FORCE ALL MATH TO ACT AS BLOCKS AND INDENT */
+  .sidebar-container :global(.master-reference-panel .katex),
+  .sidebar-container :global(.master-reference-panel .math),
+  .sidebar-container :global(.master-reference-panel .katex-display),
+  .sidebar-container :global(.master-reference-panel .math-display) {
+    display: block !important;
+    font-size: 1.2em !important;       /* Slightly shrink formulas to prevent scrolling */
+    padding-left: 1rem !important; 
+    padding-top: 0.5rem !important;    /* Breathing room for top exponents */
+    padding-bottom: 0.5rem !important; /* Breathing room for bottom fractions */
+    margin-top: 0.75rem !important; 
+    margin-bottom: 1.5rem !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;    /* Stop slicing off the tall bits! */
+    white-space: nowrap !important;
+  }
+
+  /* 3. Prevent standard math from breaking across lines */
+  .sidebar-container :global(.master-reference-panel .katex),
+  .sidebar-container :global(.master-reference-panel .math) {
+    white-space: nowrap !important;
+  }
+
+  /* 4. Sleek scrollbar styling for the math blocks */
+  .sidebar-container :global(.master-reference-panel *::-webkit-scrollbar) {
+    height: 4px;
+  }
+  .sidebar-container :global(.master-reference-panel *::-webkit-scrollbar-thumb) {
+    background: var(--sl-color-gray-5);
+    border-radius: 4px;
   }
 </style>
 
 <script>
   import { getRandomGreeting } from '../utils/sidebarHelpers';
 
-  const setGreeting = () => {
-    const el = document.querySelector('#dynamic-greeting');
-    if (el) el.textContent = getRandomGreeting();
+  const setupSidebar = () => {
+    // 1. Set Greeting
+    const greetingEl = document.querySelector('#dynamic-greeting');
+    if (greetingEl && !greetingEl.textContent) {
+      greetingEl.textContent = getRandomGreeting();
+    }
+
+    // 2. Setup Toggle Logic
+    const toggleBtn = document.getElementById('master-reference-toggle');
+    const refPanel = document.getElementById('master-reference-panel');
+    const defaultContent = document.getElementById('sidebar-default-content');
+
+    if (toggleBtn && refPanel && defaultContent) {
+      toggleBtn.onclick = () => {
+        const isHidden = refPanel.classList.contains('hidden');
+        
+        if (isHidden) {
+          // Open Formula View, Hide default sidebar
+          refPanel.classList.remove('hidden');
+          defaultContent.classList.add('hidden');
+          toggleBtn.classList.add('active');
+        } else {
+          // Close Formula View, Restore default sidebar
+          refPanel.classList.add('hidden');
+          defaultContent.classList.remove('hidden');
+          toggleBtn.classList.remove('active');
+        }
+      };
+    }
   };
 
   // Run on initial load
-  setGreeting();
-
+  setupSidebar();
+  
   // Run on navigation if using View Transitions
-  document.addEventListener('astro:after-swap', setGreeting);
+  document.addEventListener('astro:after-swap', setupSidebar);
 </script>
