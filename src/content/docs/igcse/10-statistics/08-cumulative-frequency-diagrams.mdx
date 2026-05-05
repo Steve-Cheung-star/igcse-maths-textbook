@@ -3,32 +3,57 @@ title: 10.8 Cumulative Frequency Diagrams
 description: Learn how to draw cumulative frequency tables and curves, and use them to estimate the median, quartiles, percentiles, and interquartile range for IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 When dealing with grouped continuous data, a **cumulative frequency diagram** (sometimes called an ogive) is an incredibly powerful visual tool. It plots the running total of frequencies against the data values, allowing us to estimate averages and the spread of the data.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Cumulative Frequency Tables and Diagrams
 
 To draw a cumulative frequency diagram, you first need to convert a standard frequency table into a cumulative frequency table by keeping a running total.
-
-### Example: Creating the Table
-The table below shows the time taken ($t$ minutes) by 80 students to complete a puzzle.
-
-| Time ($t$ mins) | Frequency | Cumulative Frequency (Running Total) |
-| :--- | :--- | :--- |
-| $0 < t \le 10$ | 4 | **4** |
-| $10 < t \le 20$ | 12 | 4 + 12 = **16** |
-| $20 < t \le 30$ | 28 | 16 + 28 = **44** |
-| $30 < t \le 40$ | 22 | 44 + 22 = **66** |
-| $40 < t \le 50$ | 10 | 66 + 10 = **76** |
-| $50 < t \le 60$ | 4 | 76 + 4 = **80** |
 
 <SteveTip title="The Golden Rule of Plotting">
 When plotting your points, you **must** plot the cumulative frequency against the **upper class boundary** of the interval. 
 For example, the first point is plotted at $(10, 4)$, the second at $(20, 16)$, and so on. **Never** plot against the midpoint!
 </SteveTip>
+</section>
 
-### Drawing the Diagram
+<section className="lesson-chunk">
+### Example: Creating the Table & Drawing the Diagram
+
+The table and graph below show the time taken ($t$ minutes) by 80 students to complete a puzzle.
+
+<div className="table-wrapper">
+
+| Time ($t$ mins) | $0 < t \le 10$ | $10 < t \le 20$ | $20 < t \le 30$ | $30 < t \le 40$ | $40 < t \le 50$ | $50 < t \le 60$ |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| **Frequency** | 4 | 12 | 28 | 22 | 10 | 4 |
+| **Cumul. Freq** | 4 | 16 | 44 | 66 | 76 | 80 |
+
+</div>
+
+<style>{`
+  .table-wrapper {
+    width: 100%;
+    overflow-x: auto !important;
+    display: block;
+  }
+  
+  .table-wrapper table {
+    width: auto !important; /* Forces table to be as wide as its content */
+    min-width: 100%;
+    border-collapse: collapse;
+  }
+
+  .table-wrapper th, 
+  .table-wrapper td {
+    white-space: nowrap !important; /* Force no-wrap */
+    word-break: keep-all !important; /* Prevents breaking inside math strings */
+    padding: 0.75rem 1rem;
+  }
+`}</style>
 
 Just like with scatter diagrams, the exam board has strict rules for drawing these:
 1. Plot the points using small, clear **crosses ($\times$)**.
@@ -46,25 +71,19 @@ Just like with scatter diagrams, the exam board has strict rules for drawing the
       </pattern>
     </defs>
 
-    {/* Grid Area: 300px width (0 to 60 mins), 250px height (0 to 100 CF) */}
-    {/* X-axis: 50px = 10 mins. Y-axis: 50px = 20 CF */}
     <rect x="50" y="20" width="300" height="250" fill="url(#majorGrid_cf)" stroke="#94a3b8" stroke-width="1.5" />
 
-    {/* Axes Labels */}
     <text x="200" y="320" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Time Taken (minutes)</text>
     <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Frequency</text>
 
-    {/* X Axis Ticks & Text mapped using array */}
     { [0, 10, 20, 30, 40, 50, 60].map((val, i) => (
       <text key={`x-${val}`} x={50 + i * 50} y="290" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
     ))}
 
-    {/* Y Axis Ticks & Text mapped using array */}
     { [0, 20, 40, 60, 80, 100].map((val, i) => (
       <text key={`y-${val}`} x="40" y={274 - i * 50} font-size="10" fill="#475569" text-anchor="end">{val}</text>
     ))}
 
-    {/* Smooth Curve plotted using an array loop of dense samples to avoid dipping and ensure precision */}
     { [[0,0], [5,1], [10,4], [15,9], [20,16], [25,28], [30,44], [35,56], [40,66], [45,72], [50,76], [55,79], [60,80]].map((pt, i, arr) => (
       i < arr.length - 1 && (
         <line
@@ -80,7 +99,6 @@ Just like with scatter diagrams, the exam board has strict rules for drawing the
       )
     ))}
 
-    {/* Plotted Points (Crosses) using array map */}
     { [[10,4], [20,16], [30,44], [40,66], [50,76], [60,80]].map((pt, i) => {
       const cx = 50 + pt[0] * 5;
       const cy = 270 - pt[1] * 2.5;
@@ -95,9 +113,11 @@ Just like with scatter diagrams, the exam board has strict rules for drawing the
     })}
   </svg>
 </div>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Estimating the Median, Quartiles, and IQR
 
 Once your curve is drawn, you can use it to estimate key statistical values. To do this, you read **across** from the cumulative frequency (y-axis) to your curve, and then **down** to the data value (x-axis).
@@ -107,27 +127,29 @@ Once your curve is drawn, you can use it to estimate key statistical values. To 
 * **Lower Quartile ($Q_1$):** The value at $25\%$ of the total frequency. Read across from $n \div 4$.
 * **Upper Quartile ($Q_3$):** The value at $75\%$ of the total frequency. Read across from $3n \div 4$.
 * **Interquartile Range (IQR):** The difference between the Upper and Lower Quartiles.
-    $$
-    \text{IQR} = Q_3 - Q_1
-    $$
+  $$
+  \text{IQR} = Q_3 - Q_1
+  $$
+</section>
 
-<Aside type="note" title="What about Percentiles?">
-A percentile simply tells you the value below which a given percentage of data falls. For example, to find the **90th percentile** for our 80 students, calculate $90\%$ of $80$ ($0.9 \times 80 = 72$). Read across from $72$ on the y-axis, and down to the x-axis.
-</Aside>
-
+<section className="lesson-chunk">
 ### Example: Reading the Curve
 
 Let's use our graph of the 80 students to find the Median and IQR.
+
+<details style={{ cursor: 'pointer', padding: '1rem', background: '#f1f5f9', borderRadius: '8px', marginBottom: '1rem' }}>
+  <summary style={{ fontWeight: 'bold', color: '#334155' }}>How do we calculate the exact values? (Click to reveal steps)</summary>
 
 <Steps>
   1. **Median:** Half of 80 is 40. Read across from 40 on the y-axis, hit the curve, and go down. The median is roughly **28.5 minutes**.
   2. **Lower Quartile ($Q_1$):** A quarter of 80 is 20. Read across from 20 on the y-axis and down. $Q_1$ is roughly **21.5 minutes**.
   3. **Upper Quartile ($Q_3$):** Three-quarters of 80 is 60. Read across from 60 on the y-axis and down. $Q_3$ is roughly **37 minutes**.
   4. **IQR:** Subtract $Q_1$ from $Q_3$.
-      $$
-      \text{IQR} = 37 - 21.5 = 15.5 \text{ minutes}
-      $$
+     $$
+     \text{IQR} = 37 - 21.5 = 15.5 \text{ minutes}
+     $$
 </Steps>
+</details>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 450 350" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
@@ -139,21 +161,17 @@ Let's use our graph of the 80 students to find the Median and IQR.
 
     <rect x="50" y="20" width="300" height="250" fill="url(#majorGrid_reading)" stroke="#94a3b8" stroke-width="1.5" />
 
-    {/* Axes Labels */}
     <text x="200" y="320" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Time Taken (minutes)</text>
     <text x="15" y="145" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 145)">Cumulative Frequency</text>
 
-    {/* X Axis Ticks & Text using Map */}
     { [0, 10, 20, 30, 40, 50, 60].map((val, i) => (
       <text key={`rx-${val}`} x={50 + i * 50} y="290" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
     ))}
 
-    {/* Y Axis Ticks & Text using Map */}
     { [0, 20, 40, 60, 80, 100].map((val, i) => (
       <text key={`ry-${val}`} x="40" y={274 - i * 50} font-size="10" fill="#475569" text-anchor="end">{val}</text>
     ))}
 
-    {/* Array loop rendered curve for perfect precision */}
     { [[0,0], [5,1], [10,4], [15,9], [20,16], [25,28], [30,44], [35,56], [40,66], [45,72], [50,76], [55,79], [60,80]].map((pt, i, arr) => (
       i < arr.length - 1 && (
         <line
@@ -169,45 +187,70 @@ Let's use our graph of the 80 students to find the Median and IQR.
       )
     ))}
 
-    {/* Median Lines (CF=40 -> X=28.5) */}
     <path d="M 50 170 L 192.5 170 L 192.5 270" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="5 5" />
     <text x="54" y="166" font-size="10" font-weight="bold" fill="#ef4444" text-anchor="start">40</text>
     <text x="196" y="268" font-size="12" font-weight="bold" fill="#ef4444" text-anchor="start" transform="rotate(-90 196 260)">Median (28.5)</text>
 
-    {/* Lower Quartile Lines (CF=20 -> X=21.5) */}
     <path d="M 50 220 L 157.5 220 L 157.5 270" fill="none" stroke="#10b981" stroke-width="2" stroke-dasharray="5 5" />
     <text x="54" y="216" font-size="10" font-weight="bold" fill="#10b981" text-anchor="start">20</text>
     <text x="161.5" y="268" font-size="12" font-weight="bold" fill="#10b981" text-anchor="start" transform="rotate(-90 161.5 260)">LQ (21.5)</text>
 
-    {/* Upper Quartile Lines (CF=60 -> X=37) */}
     <path d="M 50 120 L 235 120 L 235 270" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="5 5" />
     <text x="54" y="116" font-size="10" font-weight="bold" fill="#f59e0b" text-anchor="start">60</text>
     <text x="239" y="268" font-size="12" font-weight="bold" fill="#f59e0b" text-anchor="start" transform="rotate(-90 239 260)">UQ (37)</text>
   </svg>
 </div>
+</section>
 
 ---
 
-## 3. Estimating Probability
+<section className="lesson-chunk">
+## 3. Estimating Probability, Percentiles, and Unknowns
 
-Because the y-axis gives us a running total of the data, we can also use cumulative frequency curves to estimate basic probabilities. 
+Because the y-axis gives us a running total of the data, we can also use cumulative frequency curves to estimate basic probabilities and specific percentile targets.
+</section>
 
-If you are asked to find the probability of a value being **less than** a certain amount, you simply read the cumulative frequency at that point and divide by the total number of items. 
+<section className="lesson-chunk">
+### Finding "Less Than" Probabilities
+If you are asked to find the probability of a value being **less than** a certain amount, read the cumulative frequency at that point and divide by the total.
 
-If you need the probability of a value being **more than** a certain amount, remember that the graph reads from the bottom up! You need to subtract the cumulative frequency reading from the total frequency first.
+<details style={{ cursor: 'pointer', padding: '1rem', background: '#f1f5f9', borderRadius: '8px' }}>
+  <summary style={{ fontWeight: 'bold', color: '#334155' }}><strong>Example:</strong> What is the probability a student took less than $35$ minutes?</summary>
 
-### Example: Calculating Probability
-Using our puzzle times graph, **what is the probability that a randomly selected student took more than 45 minutes to complete the puzzle?**
+  * Find $35$ on the x-axis, read up to the curve, and across to the y-axis. The CF is **$56$**.
+  * Probability $= \frac{56}{80} = \mathbf{\frac{7}{10}}$.
+</details>
+</section>
+
+<section className="lesson-chunk">
+### Finding "More Than" Probabilities
+If you need the probability of a value being **more than** a certain amount, remember that the graph reads from the bottom up! You must subtract the cumulative frequency reading from the total frequency first.
+
+<details style={{ cursor: 'pointer', padding: '1rem', background: '#f1f5f9', borderRadius: '8px' }}>
+  <summary style={{ fontWeight: 'bold', color: '#334155' }}><strong>Example:</strong> What is the probability that a student took more than $45$ minutes?</summary>
+
+  * Find $45$ on the x-axis, read up and across. The CF is roughly **$72$**.
+  * This means $72$ students took *less* than $45$ minutes. To find those who took *more*, subtract from the total: $80 - 72 = \mathbf{8}$ students.
+  * Probability $= \frac{8}{80} = \mathbf{\frac{1}{10}}$.
+</details>
+</section>
+
+<section className="lesson-chunk">
+### Percentiles and Working Backwards (Solving for $k$)
+A percentile tells you the value below which a given percentage of data falls. Sometimes, exams will ask you to work backwards from a percentage to find a specific data value ($k$).
+
+<details style={{ cursor: 'pointer', padding: '1rem', background: '#f1f5f9', borderRadius: '8px' }}>
+  <summary style={{ fontWeight: 'bold', color: '#334155' }}><strong>Example:</strong> The slowest $5\%$ of students took more than $k$ minutes. Estimate the value of $k$.</summary>
 
 <Steps>
-  1. Find 45 minutes on the x-axis.
-  2. Read a straight line up to the curve, and across to the y-axis. At 45 minutes, the cumulative frequency is roughly **72**.
-  3. This means 72 students took *less* than 45 minutes.
-  4. To find the number who took *more* than 45 minutes, subtract from the total (80): 
-     $80 - 72 = 8 \text{ students}$
-  5. Write it as a probability: 
-     $P(>45 \text{ mins}) = \frac{8}{80} = \frac{1}{10}$ (or 10%)
+  1. Identify the percentage below the threshold. If $5\%$ took *more* than $k$ minutes, then $95\%$ of students took *less* than $k$ minutes. 
+  2. Calculate the target cumulative frequency. $95\%$ of our $80$ students is $0.95 \times 80 = \mathbf{76}$.
+  3. Read the graph backwards. Find $76$ on the y-axis, read across to the curve, and drop down to the x-axis. 
+  4. The corresponding value on the x-axis is exactly $50$. 
+  5. Therefore, $k = \mathbf{50}$ **minutes**.
 </Steps>
+</details>
+</section>
 
 ---
 
@@ -267,28 +310,30 @@ Using our puzzle times graph, **what is the probability that a randomly selected
     d) Apples with a mass greater than $70$ g are classified as "Large". Estimate how many Large apples there are.
 
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-      <svg viewBox="0 0 450 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+      <svg viewBox="0 0 380 370" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
         <defs>
-          <pattern id="q2grid_s" width="12" height="8" patternUnits="userSpaceOnUse" x="50" y="20">
-            <path d="M 12 0 L 0 0 0 8" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          <pattern id="q2grid_s" width="10" height="10" patternUnits="userSpaceOnUse" x="60" y="20">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
           </pattern>
-          <pattern id="q2grid_m" width="60" height="40" patternUnits="userSpaceOnUse" x="50" y="20">
-            <rect width="60" height="40" fill="url(#q2grid_s)" />
-            <path d="M 60 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          <pattern id="q2grid_m" width="50" height="50" patternUnits="userSpaceOnUse" x="60" y="20">
+            <rect width="50" height="50" fill="url(#q2grid_s)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
           </pattern>
         </defs>
-        {/* Width: 300px (100 units = 3px/u). Height: 240px (60 units = 4px/u). */}
-        <rect x="50" y="20" width="300" height="240" fill="url(#q2grid_m)" stroke="#94a3b8" stroke-width="1.5" />
-        <path d="M 50 20 L 50 260 L 350 260" fill="none" stroke="#334155" stroke-width="2" />
-        <text x="200" y="300" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Mass (grams)</text>
-        <text x="15" y="140" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 140)">Cumulative Freq.</text>
+        {/* Width: 250px (100 units = 2.5px/u). Height: 300px (60 units = 5px/u). */}
+        <rect x="60" y="20" width="250" height="300" fill="url(#q2grid_m)" stroke="#94a3b8" stroke-width="1.5" />
+        <path d="M 60 20 L 60 320 L 310 320" fill="none" stroke="#334155" stroke-width="2" />
+        
+        <text x="185" y="360" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Mass (grams)</text>
+        <text x="15" y="170" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 170)">Cumulative Freq.</text>
+        
         {/* X Axis */}
         { [0, 20, 40, 60, 80, 100].map((val, i) => (
-          <text key={`q2x-${val}`} x={50 + i * 60} y="280" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
+          <text key={`q2x-${val}`} x={60 + i * 50} y="340" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
         ))}
         {/* Y Axis */}
         { [0, 10, 20, 30, 40, 50, 60].map((val, i) => (
-          <text key={`q2y-${val}`} x="40" y={264 - i * 40} font-size="10" fill="#475569" text-anchor="end">{val}</text>
+          <text key={`q2y-${val}`} x="50" y={324 - i * 50} font-size="10" fill="#475569" text-anchor="end">{val}</text>
         ))}
       </svg>
     </div>
@@ -302,27 +347,28 @@ Using our puzzle times graph, **what is the probability that a randomly selected
     </Steps>
 
     <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-      <svg viewBox="0 0 450 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+      <svg viewBox="0 0 380 370" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
         <defs>
-          <pattern id="q2grid_s2" width="12" height="8" patternUnits="userSpaceOnUse" x="50" y="20">
-            <path d="M 12 0 L 0 0 0 8" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          <pattern id="q2grid_s2" width="10" height="10" patternUnits="userSpaceOnUse" x="60" y="20">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
           </pattern>
-          <pattern id="q2grid_m2" width="60" height="40" patternUnits="userSpaceOnUse" x="50" y="20">
-            <rect width="60" height="40" fill="url(#q2grid_s2)" />
-            <path d="M 60 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          <pattern id="q2grid_m2" width="50" height="50" patternUnits="userSpaceOnUse" x="60" y="20">
+            <rect width="50" height="50" fill="url(#q2grid_s2)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
           </pattern>
         </defs>
-        <rect x="50" y="20" width="300" height="240" fill="url(#q2grid_m2)" stroke="#94a3b8" stroke-width="1.5" />
-        <path d="M 50 20 L 50 260 L 350 260" fill="none" stroke="#334155" stroke-width="2" />
-        <text x="200" y="300" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Mass (grams)</text>
-        <text x="15" y="140" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 140)">Cumulative Freq.</text>
+        <rect x="60" y="20" width="250" height="300" fill="url(#q2grid_m2)" stroke="#94a3b8" stroke-width="1.5" />
+        <path d="M 60 20 L 60 320 L 310 320" fill="none" stroke="#334155" stroke-width="2" />
+        
+        <text x="185" y="360" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Mass (grams)</text>
+        <text x="15" y="170" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 170)">Cumulative Freq.</text>
         
         { [0, 20, 40, 60, 80, 100].map((val, i) => (
-          <text key={`s2x-${val}`} x={50 + i * 60} y="280" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
+          <text key={`s2x-${val}`} x={60 + i * 50} y="340" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
         ))}
         
         { [0, 10, 20, 30, 40, 50, 60].map((val, i) => (
-          <text key={`s2y-${val}`} x="40" y={264 - i * 40} font-size="10" fill="#475569" text-anchor="end">{val}</text>
+          <text key={`s2y-${val}`} x="50" y={324 - i * 50} font-size="10" fill="#475569" text-anchor="end">{val}</text>
         ))}
 
         {/* Dense loop plotted exact curve */}
@@ -330,10 +376,10 @@ Using our puzzle times graph, **what is the probability that a randomly selected
           i < arr.length - 1 && (
             <line
               key={`q2line-${i}`}
-              x1={50 + pt[0] * 3}
-              y1={260 - pt[1] * 4}
-              x2={50 + arr[i+1][0] * 3}
-              y2={260 - arr[i+1][1] * 4}
+              x1={60 + pt[0] * 2.5}
+              y1={320 - pt[1] * 5}
+              x2={60 + arr[i+1][0] * 2.5}
+              y2={320 - arr[i+1][1] * 5}
               stroke="#2563eb"
               stroke-width="2.5"
               stroke-linecap="round"
@@ -343,8 +389,8 @@ Using our puzzle times graph, **what is the probability that a randomly selected
         
         {/* Plotted Crosses mapped */}
         { [[20,4], [40,14], [60,34], [80,52], [100,60]].map((pt, i) => {
-          const cx = 50 + pt[0] * 3;
-          const cy = 260 - pt[1] * 4;
+          const cx = 60 + pt[0] * 2.5;
+          const cy = 320 - pt[1] * 5;
           return (
             <path
               key={`q2cross-${i}`}
@@ -525,32 +571,32 @@ Using our puzzle times graph, **what is the probability that a randomly selected
     The graph below shows the marks scored out of 80 by 120 students in a final exam. Use this graph to answer the following multipart question.
 
     <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-      <svg viewBox="0 0 450 350" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+      <svg viewBox="0 0 500 370" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
         <defs>
-          <pattern id="q4grid_s" width="8" height="8" patternUnits="userSpaceOnUse" x="50" y="30">
-            <path d="M 8 0 L 0 0 0 8" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
+          <pattern id="q4grid_s" width="10" height="10" patternUnits="userSpaceOnUse" x="60" y="20">
+            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
           </pattern>
-          <pattern id="q4grid_m" width="40" height="40" patternUnits="userSpaceOnUse" x="50" y="30">
-            <rect width="40" height="40" fill="url(#q4grid_s)" />
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#94a3b8" stroke-width="1.5" />
+          <pattern id="q4grid_m" width="50" height="50" patternUnits="userSpaceOnUse" x="60" y="20">
+            <rect width="50" height="50" fill="url(#q4grid_s)" />
+            <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#94a3b8" stroke-width="1.5" />
           </pattern>
         </defs>
 
-        {/* Grid Area: x=50 to 370 (320px = 80 marks). y=30 to 270 (240px = 120 CF). */}
-        <rect x="50" y="30" width="320" height="240" fill="url(#q4grid_m)" stroke="#94a3b8" stroke-width="1.5" />
-        <path d="M 50 30 L 50 270 L 370 270" fill="none" stroke="#334155" stroke-width="2" />
+        {/* Grid Area: x=60 to 460 (400px = 80 marks). y=20 to 320 (300px = 120 CF). */}
+        <rect x="60" y="20" width="400" height="300" fill="url(#q4grid_m)" stroke="#94a3b8" stroke-width="1.5" />
+        <path d="M 60 20 L 60 320 L 460 320" fill="none" stroke="#334155" stroke-width="2" />
         
-        <text x="210" y="315" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Marks Scored</text>
-        <text x="15" y="150" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 150)">Cumulative Frequency</text>
+        <text x="260" y="360" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle">Marks Scored</text>
+        <text x="15" y="170" font-size="12" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 15 170)">Cumulative Frequency</text>
 
         {/* X Axis */}
         { [0, 10, 20, 30, 40, 50, 60, 70, 80].map((val, i) => (
-          <text key={`q4x-${val}`} x={50 + i * 40} y="290" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
+          <text key={`q4x-${val}`} x={60 + i * 50} y="340" font-size="10" fill="#475569" text-anchor="middle">{val}</text>
         ))}
 
-        {/* Y Axis (1 unit = 2px) */}
+        {/* Y Axis */}
         { [0, 20, 40, 60, 80, 100, 120].map((val, i) => (
-          <text key={`q4y-${val}`} x="40" y={274 - i * 40} font-size="10" fill="#475569" text-anchor="end">{val}</text>
+          <text key={`q4y-${val}`} x="50" y={324 - i * 50} font-size="10" fill="#475569" text-anchor="end">{val}</text>
         ))}
 
         {/* Dense Loop Plotted Curve */}
@@ -558,10 +604,10 @@ Using our puzzle times graph, **what is the probability that a randomly selected
           i < arr.length - 1 && (
             <line
               key={`q4line-${i}`}
-              x1={50 + pt[0] * 4}
-              y1={270 - pt[1] * 2}
-              x2={50 + arr[i+1][0] * 4}
-              y2={270 - arr[i+1][1] * 2}
+              x1={60 + pt[0] * 5}
+              y1={320 - pt[1] * 2.5}
+              x2={60 + arr[i+1][0] * 5}
+              y2={320 - arr[i+1][1] * 2.5}
               stroke="#2563eb"
               stroke-width="2.5"
               stroke-linecap="round"
@@ -571,8 +617,8 @@ Using our puzzle times graph, **what is the probability that a randomly selected
         
         {/* Array Plotted Points */}
         { [[10,2], [20,10], [30,24], [40,48], [50,78], [60,105], [70,116], [80,120]].map((pt, i) => {
-          const cx = 50 + pt[0] * 4;
-          const cy = 270 - pt[1] * 2;
+          const cx = 60 + pt[0] * 5;
+          const cy = 320 - pt[1] * 2.5;
           return (
             <path
               key={`q4cross-${i}`}
@@ -614,7 +660,6 @@ Using our puzzle times graph, **what is the probability that a randomly selected
 </Tabs>
 
 <SmartAIGenerator topic="Comprehensive cumulative frequency analysis including median, IQR, percentiles, and probability" />
-
 <Tabs>
   <TabItem label="📝 Q5: Grouped Data Distributions">
     The table shows the weekly wages ($w$ in USD) earned by $40$ part-time workers.

@@ -343,3 +343,22 @@
     display: none !important;
   }
 }
+
+/* In your CSS file or Astro <style> tag */
+.scroll-table {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* This line fixes your specific "split interval" problem */
+.scroll-table th, 
+.scroll-table td {
+  white-space: nowrap; 
+  padding: 8px 12px;
+}

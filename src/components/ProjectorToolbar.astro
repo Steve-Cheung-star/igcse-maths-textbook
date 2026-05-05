@@ -158,6 +158,11 @@
     globalAborter = new AbortController();
   });
 
+  // NEW: Added listener to handle re-initialization on Astro view transitions
+  document.addEventListener('astro:page-load', () => {
+    initWhiteboard();
+  });
+
   function initWhiteboard() {
     if (typeof window !== 'undefined' && window.innerWidth < 768) return;
 
@@ -280,6 +285,18 @@
       };
       
       window.addEventListener('resize', resizeCanvas, { signal: globalAborter.signal });
+      
+      // NEW: Added ResizeObserver to catch dynamic DOM changes that affect height
+      const resizeObserver = new ResizeObserver(() => {
+        resizeCanvas();
+      });
+      resizeObserver.observe(document.documentElement);
+      
+      // NEW: Clean up the observer when abort signal is fired
+      globalAborter.signal.addEventListener('abort', () => {
+        resizeObserver.disconnect();
+      });
+
       setTimeout(resizeCanvas, 500); 
 
       const observer = new MutationObserver((mutations) => {
@@ -666,17 +683,76 @@
       if (e.key.toLowerCase() === 'r') { projectorStore.setKey('colorName', 'color4'); projectorStore.setKey('tool', 'pen'); }
       if (e.key.toLowerCase() === 'c') clear();
 
+      // NEW: Changed 0.6 to 1.0 to perfectly advance one full slide
       if (localState.isDrawing) return;
-      const scrollAmount = window.innerHeight * 0.6;
-      if (['ArrowRight', 'ArrowDown', 'PageDown'].includes(e.key)) { e.preventDefault(); window.scrollBy({ top: scrollAmount, behavior: 'smooth' }); }
-      if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(e.key)) { e.preventDefault(); window.scrollBy({ top: -scrollAmount, behavior: 'smooth' }); }
-    }, { capture: true, signal: globalAborter.signal });
 
-    setupCanvas();
+// ==========================================
+      // LOGITECH PRESENTER & KEYBOARD NAVIGATION
+      // ==========================================
+      const nextKeys = ['ArrowRight', 'ArrowDown', 'PageDown']; 
+      const prevKeys = ['ArrowLeft', 'ArrowUp', 'PageUp'];      
+
+      if (nextKeys.includes(e.key) || prevKeys.includes(e.key)) {
+        e.preventDefault();
+
+        const chunks = Array.from(document.querySelectorAll('.lesson-chunk'));
+        if (chunks.length === 0) return;
+
+        // 1. Rock-solid Active Slide Detection
+        // Finds the chunk whose top edge is closest to the top of the screen
+        let activeIndex = 0;
+        let minDistance = Infinity;
+        
+        chunks.forEach((chunk, index) => {
+          const distance = Math.abs(chunk.getBoundingClientRect().top);
+          if (distance < minDistance) {
+            minDistance = distance;
+            activeIndex = index;
+          }
+        });
+
+        const activeChunk = chunks[activeIndex];
+        const detailsElements = Array.from(activeChunk.querySelectorAll('details'));
+
+        // 2. Handle Logic based on Next or Prev
+        if (nextKeys.includes(e.key)) {
+          
+          // Try to open a details tag on the current slide first
+          const firstClosed = detailsElements.find(d => !d.open);
+          if (firstClosed) {
+            firstClosed.open = true;
+            return; // Stop here, wait for next click
+          }
+          
+          // If all details are open, jump instantly to the NEXT slide
+          if (activeIndex < chunks.length - 1) {
+            chunks[activeIndex + 1].scrollIntoView({ behavior: 'instant', block: 'start' });
+          }
+
+        } else if (prevKeys.includes(e.key)) {
+          
+          // Try to close a details tag on the current slide first
+          const openedDetails = detailsElements.filter(d => d.open);
+          if (openedDetails.length > 0) {
+            openedDetails[openedDetails.length - 1].open = false;
+            return; // Stop here, wait for next click
+          }
+          
+          // If all details are closed, jump instantly to the PREVIOUS slide
+          if (activeIndex > 0) {
+            chunks[activeIndex - 1].scrollIntoView({ behavior: 'instant', block: 'start' });
+          }
+        }
+      }
+    });
+
+    // Make sure initDragLogic is actually called 
     initDragLogic();
-    window.addEventListener('resize', clampToolbarPosition, { signal: globalAborter.signal });
+    
+    // Setup Canvas on initialization
+    setupCanvas();
   }
 
+  // Initial call
   initWhiteboard();
-  document.addEventListener('astro:page-load', initWhiteboard);
 </script>

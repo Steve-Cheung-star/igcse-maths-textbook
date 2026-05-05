@@ -5,20 +5,17 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
 
 <style is:global>
 
-  /* STRICT MOBILE HIDE: Completely remove entry point for mobile */
   @media (max-width: 768px) {
-    #wb-enter-projector {
-      display: none !important;
-    }
+    #wb-enter-projector { display: none !important; }
   }
 
   /* =========================================
      1. UI HIDING & CLEANUP
      ========================================= */
-     
-  /* CRITICAL: Override Starlight's sticky nav offset so it doesn't cause chopped text! */
   html[data-mode="bento"] {
     scroll-padding-top: 0 !important; 
+    scroll-snap-type: y mandatory !important;
+    scroll-behavior: smooth !important;
   }
 
   html[data-mode="bento"] .sidebar, 
@@ -33,77 +30,57 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
   html[data-mode="bento"] .katex-display { margin: 2.5rem 0 !important; font-size: 1.3em !important; }
 
   /* =========================================
-     2. STANDARDIZED WIDTHS & SPACING
+     2. PRESENTATION SLIDE SNAPPING
      ========================================= */
-  html[data-mode="bento"] .sl-markdown-content > * { max-width: 850px !important; margin-left: 0 !important; margin-right: auto !important; box-sizing: border-box; }
-  html[data-mode="bento"] .sl-markdown-content canvas,
-  html[data-mode="bento"] .sl-markdown-content .sim-root { max-width: 100% !important; }
+  html[data-mode="bento"] .lesson-chunk {
+    min-height: 100vh !important; 
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important; 
+    scroll-snap-align: start !important; 
+    scroll-snap-stop: always !important;
+    padding: 12vh 2rem 4rem 2rem !important; 
+    box-sizing: border-box !important;
+  }
 
-  /* Set margin-top to 90vh to push previous content away, and scroll-margin to snap cleanly */
-  html[data-mode="bento"] .sl-markdown-content h2,
-  html[data-mode="bento"] .sl-markdown-content h3 { 
-    margin-top: 90vh !important; 
-    padding-top: 0 !important; 
-    scroll-margin-top: 2rem !important; /* Perfect 2rem gap from monitor edge */
-    border-top: none !important; 
-  }
-  
-  html[data-mode="bento"] .sl-markdown-content hr { 
-    display: block !important; 
-    margin-top: 90vh !important; 
-    margin-bottom: 2rem !important; 
-    padding: 0 !important; 
-    height: 0 !important; 
-    border: none !important; 
-    background: transparent !important; 
-    clear: both !important; 
-  }
-  
-  html[data-mode="bento"] .sl-markdown-content h2:first-of-type { 
-    margin-top: 2rem !important; 
-  }
-  html[data-mode="bento"] .sl-markdown-content { 
-    padding-bottom: 80vh !important; 
-  }
-  
+  .lesson-chunk { margin-bottom: 2rem; }
+
   /* =========================================
-     3. NATIVE HARDWARE-ACCELERATED CURSORS
+     3. OPTIMAL TYPOGRAPHY (Wide & Left-Aligned)
+     ========================================= */
+  html[data-mode="bento"] .sl-markdown-content p,
+  html[data-mode="bento"] .sl-markdown-content ul,
+  html[data-mode="bento"] .sl-markdown-content ol {
+    max-width: none !important; /* Removes the 75ch limit */
+    text-align: left !important; /* Forces left justification */
+    margin-left: 0 !important;
+  }
+
+  html[data-mode="bento"] .sl-markdown-content aside,
+  html[data-mode="bento"] .sl-markdown-content .starlight-aside {
+    float: none !important; clear: both !important;
+    position: relative !important;
+    display: block !important;
+    width: 100% !important;
+    max-width: none !important; 
+    margin-top: 2.5rem !important; margin-bottom: 2.5rem !important;
+    margin-left: 0 !important;
+    text-align: left !important;
+  }
+
+  /* =========================================
+     4. NATIVE HARDWARE-ACCELERATED CURSORS
      ========================================= */
   html[data-mode="bento"][data-tool="laser"], 
   html[data-mode="bento"][data-tool="laser"] body,
   html[data-mode="bento"][data-tool="laser"] * { cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="7" fill="%23ff0000" stroke="white" stroke-width="2.5" box-shadow="0 0 10px red"/></svg>') 12 12, auto !important; }
-  
   html[data-mode="bento"][data-tool="pen"] body { cursor: crosshair !important; }
   html[data-mode="bento"][data-tool="eraser"] body { cursor: cell !important; }
-
-  /* =========================================
-     4. OPTIMAL TYPOGRAPHY (Asides & Callouts)
-     ========================================= */
-  html[data-mode="bento"] .sl-markdown-content aside,
-  html[data-mode="bento"] .sl-markdown-content .starlight-aside {
-    float: none !important;
-    clear: both !important;
-    position: relative !important;
-    display: block !important;
-    width: 100% !important;
-    max-width: 50ch !important; 
-    margin-top: 2.5rem !important;
-    margin-bottom: 2.5rem !important;
-    margin-left: 0 !important;
-    margin-right: auto !important;
-  }
-
-  html[data-mode="bento"] .sl-markdown-content p,
-  html[data-mode="bento"] .sl-markdown-content ul,
-  html[data-mode="bento"] .sl-markdown-content ol {
-    max-width: 50ch !important;
-  }
 </style>
 
 <ProjectorToolbar />
 
 <script>
-  // @ts-nocheck
   import { projectorStore } from '../store/projectorStore.js';
 
   function initLayout() {
@@ -112,26 +89,14 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
 
     let previousBentoState = false;
 
-    // Helper: Safely grab the closest heading section
     function getActiveAnchor() {
       const headers = Array.from(document.querySelectorAll('.sl-markdown-content h2, .sl-markdown-content h3'));
       if (headers.length === 0) return null;
-      
-      let activeAnchor = headers[0]; // Default to the first section
-      
+      let activeAnchor = headers[0]; 
       for (const header of headers) {
         const rect = header.getBoundingClientRect();
-        
-        // BUG FIX: Instead of checking the whole top half of the screen,
-        // we only care about headers that have reached the top reading area (~120px).
-        // This prevents short, stacked sections from overwriting the correct anchor.
-        if (rect.top <= 120) {
-          activeAnchor = header;
-        } else {
-          // As soon as we see a header below our top reading threshold, we stop.
-          // The previous header in the loop is guaranteed to be our active section.
-          break; 
-        }
+        if (rect.top <= 120) activeAnchor = header;
+        else break;
       }
       return activeAnchor;
     }
@@ -145,14 +110,10 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
     }
 
     projectorStore.subscribe((state) => {
-      // Detect if we are toggling on/off
       if (state.isBento !== previousBentoState) {
-        
-        // Step A: Check if they are at the very top of the article
         const isAtTop = window.scrollY < 100;
         const anchor = getActiveAnchor();
 
-        // Step B: Apply CSS changes
         if (state.isBento) {
           document.documentElement.setAttribute('data-mode', 'bento');
           document.documentElement.setAttribute('data-tool', state.tool);
@@ -161,32 +122,21 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
           document.documentElement.removeAttribute('data-tool');
         }
 
-        // Step C: Force exact alignment after a tiny delay to let CSS update
         setTimeout(() => {
-          if (isAtTop) {
-            window.scrollTo({ top: 0, behavior: 'instant' });
-          } else if (anchor) {
-            anchor.scrollIntoView({ behavior: 'instant', block: 'start' });
-          }
+          if (isAtTop) window.scrollTo({ top: 0, behavior: 'instant' });
+          else if (anchor) anchor.scrollIntoView({ behavior: 'instant', block: 'start' });
         }, 30); 
-        
         previousBentoState = state.isBento;
-      } else {
-        // If it was just a tool change
-        if (state.isBento) {
-          document.documentElement.setAttribute('data-tool', state.tool);
-        }
+      } else if (state.isBento) {
+        document.documentElement.setAttribute('data-tool', state.tool);
       }
     });
 
-    // Global Hotkey (Ctrl+Alt+P)
     window.addEventListener('keydown', (e) => {
       if (window.innerWidth < 768) return; 
-
       if ((e.ctrlKey || e.metaKey) && e.altKey && (e.key?.toLowerCase() === 'p' || e.code === 'KeyP')) {
         e.preventDefault(); 
-        const isCurrentlyBento = projectorStore.get().isBento;
-        projectorStore.setKey('isBento', !isCurrentlyBento);
+        projectorStore.setKey('isBento', !projectorStore.get().isBento);
       }
     }, true);
   }
