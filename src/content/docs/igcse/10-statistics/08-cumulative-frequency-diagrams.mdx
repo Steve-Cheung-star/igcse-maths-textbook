@@ -42,19 +42,21 @@ The table and graph below show the time taken ($t$ minutes) by 80 students to co
   }
   
   .table-wrapper table {
-    width: auto !important; /* Forces table to be as wide as its content */
+    width: auto !important;
     min-width: 100%;
     border-collapse: collapse;
   }
 
   .table-wrapper th, 
   .table-wrapper td {
-    white-space: nowrap !important; /* Force no-wrap */
-    word-break: keep-all !important; /* Prevents breaking inside math strings */
+    white-space: nowrap !important;
+    word-break: keep-all !important;
     padding: 0.75rem 1rem;
   }
 `}</style>
+</section>
 
+<section className="lesson-chunk">
 Just like with scatter diagrams, the exam board has strict rules for drawing these:
 1. Plot the points using small, clear **crosses ($\times$)**.
 2. Join the points with a **smooth curve**. Do *not* use a ruler to connect the points with straight lines!
@@ -137,13 +139,13 @@ Once your curve is drawn, you can use it to estimate key statistical values. To 
 
 Let's use our graph of the 80 students to find the Median and IQR.
 
-<details style={{ cursor: 'pointer', padding: '1rem', background: '#f1f5f9', borderRadius: '8px', marginBottom: '1rem' }}>
-  <summary style={{ fontWeight: 'bold', color: '#334155' }}>How do we calculate the exact values? (Click to reveal steps)</summary>
+<details className="styled-details">
+  <summary>How do we calculate the exact values? (Click to reveal steps)</summary>
 
 <Steps>
-  1. **Median:** Half of 80 is 40. Read across from 40 on the y-axis, hit the curve, and go down. The median is roughly **28.5 minutes**.
-  2. **Lower Quartile ($Q_1$):** A quarter of 80 is 20. Read across from 20 on the y-axis and down. $Q_1$ is roughly **21.5 minutes**.
-  3. **Upper Quartile ($Q_3$):** Three-quarters of 80 is 60. Read across from 60 on the y-axis and down. $Q_3$ is roughly **37 minutes**.
+  1. **Median:** Half of $80$ is $40$. Read across from $40$ on the y-axis, hit the curve, and go down. The median is roughly **28.5 minutes**.
+  2. **Lower Quartile ($Q_1$):** A quarter of $80$ is $20$. Read across from $20$ on the y-axis and down. $Q_1$ is roughly **21.5 minutes**.
+  3. **Upper Quartile ($Q_3$):** Three-quarters of $80$ is $60$. Read across from $60$ on the y-axis and down. $Q_3$ is roughly **37 minutes**.
   4. **IQR:** Subtract $Q_1$ from $Q_3$.
      $$
      \text{IQR} = 37 - 21.5 = 15.5 \text{ minutes}
@@ -214,8 +216,8 @@ Because the y-axis gives us a running total of the data, we can also use cumulat
 ### Finding "Less Than" Probabilities
 If you are asked to find the probability of a value being **less than** a certain amount, read the cumulative frequency at that point and divide by the total.
 
-<details style={{ cursor: 'pointer', padding: '1rem', background: '#f1f5f9', borderRadius: '8px' }}>
-  <summary style={{ fontWeight: 'bold', color: '#334155' }}><strong>Example:</strong> What is the probability a student took less than $35$ minutes?</summary>
+<details className="styled-details">
+  <summary><strong>Example:</strong> What is the probability a student took less than $35$ minutes?</summary>
 
   * Find $35$ on the x-axis, read up to the curve, and across to the y-axis. The CF is **$56$**.
   * Probability $= \frac{56}{80} = \mathbf{\frac{7}{10}}$.
@@ -226,8 +228,8 @@ If you are asked to find the probability of a value being **less than** a certai
 ### Finding "More Than" Probabilities
 If you need the probability of a value being **more than** a certain amount, remember that the graph reads from the bottom up! You must subtract the cumulative frequency reading from the total frequency first.
 
-<details style={{ cursor: 'pointer', padding: '1rem', background: '#f1f5f9', borderRadius: '8px' }}>
-  <summary style={{ fontWeight: 'bold', color: '#334155' }}><strong>Example:</strong> What is the probability that a student took more than $45$ minutes?</summary>
+<details className="styled-details">
+  <summary><strong>Example:</strong> What is the probability that a student took more than $45$ minutes?</summary>
 
   * Find $45$ on the x-axis, read up and across. The CF is roughly **$72$**.
   * This means $72$ students took *less* than $45$ minutes. To find those who took *more*, subtract from the total: $80 - 72 = \mathbf{8}$ students.
@@ -239,8 +241,8 @@ If you need the probability of a value being **more than** a certain amount, rem
 ### Percentiles and Working Backwards (Solving for $k$)
 A percentile tells you the value below which a given percentage of data falls. Sometimes, exams will ask you to work backwards from a percentage to find a specific data value ($k$).
 
-<details style={{ cursor: 'pointer', padding: '1rem', background: '#f1f5f9', borderRadius: '8px' }}>
-  <summary style={{ fontWeight: 'bold', color: '#334155' }}><strong>Example:</strong> The slowest $5\%$ of students took more than $k$ minutes. Estimate the value of $k$.</summary>
+<details className="styled-details">
+  <summary><strong>Example:</strong> The slowest $5\%$ of students took more than $k$ minutes. Estimate the value of $k$.</summary>
 
 <Steps>
   1. Identify the percentage below the threshold. If $5\%$ took *more* than $k$ minutes, then $95\%$ of students took *less* than $k$ minutes. 
@@ -251,8 +253,6 @@ A percentile tells you the value below which a given percentage of data falls. S
 </Steps>
 </details>
 </section>
-
----
 
 ## Practice Questions
 

@@ -3,25 +3,28 @@ title: 10.5 Averages on a Calculator
 description: Learn how to efficiently use your Graphic Display Calculator (GDC) to find the mean, median, and quartiles for raw lists of data, discrete frequency tables, and grouped data in IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 In Cambridge IGCSE 0607, your Graphic Display Calculator (GDC) is your most powerful tool for Paper 4 and Paper 6. When dealing with large sets of data or frequency tables, manually calculating averages is a massive waste of exam time and highly prone to arithmetic errors. You are expected to use your calculator's statistical functions.
 
 <Aside type="note" title="What Your Calculator Can Do">
 By entering your data into the calculator's spreadsheet, it will instantly generate:
 * **The Mean ($\bar{x}$)**
 * **The Total Sum ($\sum x$)**
-* **The Number of Values ($n$)**
+* **The Number of Values (n)**
 * **The Minimum, Lower Quartile ($Q_1$), Median, Upper Quartile ($Q_3$), and Maximum.**
 </Aside>
 
 <Aside type="caution" title="What Your Calculator CANNOT Do">
 Your GDC does **not** explicitly state the **Mode** or the **Modal Class**. You must always find this manually by scanning your data or table for the value with the highest frequency!
 </Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Entering Data into the GDC
 
-We will use the **TI-Nspire** as our primary example, as it is the most commonly used GDC for this syllabus. The process relies on the **Lists & Spreadsheet** application.
+We will use the **TI-Nspire** as our primary example, as it is the most commonly used GDC for this syllabus.  The process relies on the **Lists & Spreadsheet** application.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 500 250" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
@@ -82,56 +85,68 @@ We will use the **TI-Nspire** as our primary example, as it is the most commonly
     <rect x="202" y="92" width="285" height="145" fill="none" stroke="#10b981" stroke-width="3" stroke-dasharray="6 4" rx="4" />
   </svg>
 </div>
+</section>
 
+<section className="lesson-chunk">
 ### Step-by-Step for a Raw List of Data
 
-The simplest scenario is a raw, unorganised list of numbers. For example, the test scores of 7 students: $12, 15, 8, 14, 15, 9, 20$.
+**Example:** The simplest scenario is a raw, unorganised list of numbers. For example, the test scores of 7 students: 12, 15, 8, 14, 15, 9, 20.
 
-<Steps>
-  1. Open a new **Lists & Spreadsheet** document.
-  2. Go to the very top row (above row 1) and name column A `scores`.
-  3. Enter the 7 numbers straight down column A.
-  4. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **1: One-Variable Statistics**.
-  5. The calculator asks for "Num of Lists". Keep this as **1**.
-  6. A menu will pop up:
-     * **X1 List:** Choose `scores` from the dropdown.
-     * **Frequency List:** Leave this as **1**. (This tells the calculator that each number in your list occurs exactly once).
-  7. Press **OK**. The statistical results will appear in the next empty columns.
-</Steps>
+<details className="styled-details">
+  <summary><strong>View Steps</strong></summary>
+  <Steps>
+    1. Open a new **Lists & Spreadsheet** document. 
+    2. Go to the very top row (above row 1) and name column A `scores`.
+    3. Enter the 7 numbers straight down column A.
+    4. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **1: One-Variable Statistics**.
+    5. The calculator asks for "Num of Lists". Keep this as **1**.
+    6. A menu will pop up: 
+        * **X1 List:** Choose `scores` from the dropdown.
+        * **Frequency List:** Leave this as **1**. (This tells the calculator that each number in your list occurs exactly once).
+    7. Press **OK**. The statistical results will appear in the next empty columns.
+  </Steps>
+</details>
+</section>
 
+<section className="lesson-chunk">
 ### Step-by-Step for Discrete Data (with a Frequency Table)
 
-Often, data is collected in a frequency table to save space. Imagine a table showing the number of goals scored in 20 football matches.
+**Example:** Often, data is collected in a frequency table to save space. Imagine a table showing the number of goals scored in 20 football matches.
 
-| Goals ($x$) | Frequency ($f$) |
+| Goals (x) | Frequency (f) |
 | :--- | :--- |
-| $0$ | $3$ |
-| $1$ | $8$ |
-| $2$ | $6$ |
-| $3$ | $3$ |
+| 0 | 3 |
+| 1 | 8 |
+| 2 | 6 |
+| 3 | 3 |
 
-<Steps>
-  1. Open a new **Lists & Spreadsheet** document.
-  2. Go to the very top row and name column A `goals` and column B `freq`.
-  3. Enter the data: type $0, 1, 2, 3$ down column A, and $3, 8, 6, 3$ down column B.
-  4. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **1: One-Variable Statistics**.
-  5. Keep "Num of Lists" as **1** (we still only have one main variable, which is goals).
-  6. A menu will pop up:
-     * **X1 List:** Choose `goals` (click the arrow and select it from the dropdown).
-     * **Frequency List:** Choose `freq` (this is crucial!).
-  7. Press **OK**. 
-</Steps>
+<details className="styled-details">
+  <summary><strong>View Steps</strong></summary>
+  <Steps>
+    1. Open a new **Lists & Spreadsheet** document.
+    2. Go to the very top row and name column A `goals` and column B `freq`.
+    3. Enter the data: type 0, 1, 2, 3 down column A, and 3, 8, 6, 3 down column B.
+    4. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **1: One-Variable Statistics**.
+    5. Keep "Num of Lists" as **1** (we still only have one main variable, which is goals).
+    6. A menu will pop up:
+        * **X1 List:** Choose `goals` (click the arrow and select it from the dropdown).
+        * **Frequency List:** Choose `freq` (this is crucial!).
+    7. Press **OK**. 
+  </Steps>
+</details>
 
 <Aside type="caution" title="The 'Frequency List' Trap">
 If you leave the Frequency List as '1' instead of changing it to your frequency column, the calculator will assume every goal amount only happened exactly once! Your mean will be completely wrong. Always double-check this setting depending on whether you are using a raw list or a frequency table.
 </Aside>
+</section>
 
+<section className="lesson-chunk">
 ### Reading the Output
 
 Scroll down the results column. You need to recognise the calculator's specific shorthand notation:
 
 * **$\bar{x}$ (x-bar):** This is the **Mean**. 
-* **$n$:** The total frequency ($\sum f$). Use this to check you haven't missed any data!
+* **n:** The total frequency ($\sum f$). Use this to check you haven't missed any data!
 * **MedianX:** The **Median**. 
 * **$Q_1X$:** The **Lower Quartile**. 
 * **$Q_3X$:** The **Upper Quartile**. 
@@ -144,43 +159,51 @@ $$
 $$
 
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Estimating the Mean for Grouped Data
 
-When data is grouped into classes (like $10 < h \le 20$), you **cannot** type "$10 - 20$" into the calculator spreadsheet. The calculator only understands single numerical values. 
+When data is grouped into classes (like $10 < h \le 20$), you **cannot** type "10 - 20" into the calculator spreadsheet. The calculator only understands single numerical values. 
 
 To bypass this, you must calculate the **midpoint** of each class and type the midpoints into Column A.
 
 <Aside type="note" title="Terminology: Midpoint vs. Mid-interval">
-In many IGCSE exam questions or textbooks, the "midpoint" is also referred to as the **mid-interval value**. They mean exactly the same thing: the precise middle of a given class width. For example, the mid-interval value of $10 < h \le 20$ is $15$.
+In many IGCSE exam questions or textbooks, the "midpoint" is also referred to as the **mid-interval value**. They mean exactly the same thing: the precise middle of a given class width. For example, the mid-interval value of $10 < h \le 20$ is 15.
 </Aside>
+</section>
 
+<section className="lesson-chunk">
 ### Step-by-Step for Grouped Continuous Data
 
-A botanist measures the heights ($h$ cm) of 40 plants.
+**Example:** A botanist measures the heights (h cm) of 40 plants.
 
-| Height ($h$ cm) | Frequency ($f$) | Midpoint ($x$) |
+| Height (h cm) | Frequency (f) | Midpoint (x) |
 | :--- | :--- | :--- |
-| $0 < h \le 10$ | $8$ | **$5$** |
-| $10 < h \le 20$ | $20$ | **$15$** |
-| $20 < h \le 30$ | $12$ | **$25$** |
+| $0 < h \le 10$ | 8 | **5** |
+| $10 < h \le 20$ | 20 | **15** |
+| $20 < h \le 30$ | 12 | **25** |
 
-<Steps>
-  1. Open a new **Lists & Spreadsheet** document.
-  2. Name column A `midpoint` and column B `freq`.
-  3. Enter the midpoints ($5, 15, 25$) down column A.
-  4. Enter the frequencies ($8, 20, 12$) down column B.
-  5. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **1: One-Variable Statistics**.
-  6. Set **X1 List** to `midpoint`.
-  7. Set **Frequency List** to `freq`.
-  8. Press **OK**. 
-</Steps>
+<details className="styled-details">
+  <summary><strong>View Steps & Solution</strong></summary>
+  <Steps>
+    1. Open a new **Lists & Spreadsheet** document.
+    2. Name column A `midpoint` and column B `freq`.
+    3. Enter the midpoints (5, 15, 25) down column A.
+    4. Enter the frequencies (8, 20, 12) down column B.
+    5. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **1: One-Variable Statistics**.
+    6. Set **X1 List** to `midpoint`.
+    7. Set **Frequency List** to `freq`.
+    8. Press **OK**. 
+  </Steps>
 
-Look at the **$\bar{x}$** value. 
-The calculator gives $\bar{x} = 16$. 
-Therefore, the **estimated mean** is $16\text{ cm}$.
+  Look at the **$\bar{x}$** value. 
+  The calculator gives $\bar{x} = 16$. 
+  Therefore, the **estimated mean** is **16 cm**.
+</details>
+</section>
 
 ---
 

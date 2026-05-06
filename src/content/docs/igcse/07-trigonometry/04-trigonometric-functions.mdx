@@ -5,11 +5,13 @@ description: Notes and examples on recognizing, sketching, and interpreting the 
 
 import CircleSimulator from '../../../../components/CircleSimulator.jsx';
 
+<section className="lesson-chunk">
+
 ## The Unit Circle Definition
 
-
-
 While SOH CAH TOA works for right-angled triangles, we use the **Unit Circle** (a circle with radius 1) to define trigonometric functions for any angle $\theta$.
+
+
 
 <div class="not-content">
   <CircleSimulator category="trig" client:only="react" />
@@ -17,24 +19,28 @@ While SOH CAH TOA works for right-angled triangles, we use the **Unit Circle** (
 
 ### Key Observations:
 * **Quadrant I:** All values are positive.
-* **Quadrant II:** Only Sine is positive (the $y$-coordinate is still up!).
-* **Tangent:** Notice how the tangent line explodes to infinity near $90^\circ$.
+* **Quadrant II:** Only Sine is positive (the y-coordinate is still up!).
+* **Tangent:** Notice how the tangent line explodes to infinity near 90°.
 
 <SteveTip title="Mode Check">
   Before you do *any* trigonometry in your exam, look at the top right of your TI-Nspire GDC screen. Make sure it says **DEG**. If it says **RAD** or **GRAD**, your graphs and equation answers will be completely wrong! You can usually just click on it with the touchpad to change it quickly.
 </SteveTip>
 
+</section>
+
 ---
 
-## 1. The Trigonometric Graphs ($0^\circ \leqslant x \leqslant 360^\circ$)
+<section className="lesson-chunk">
 
-All three main trigonometric graphs have a repeating pattern (they are **periodic**). You must memorize their general shapes, where they cross the axes, and their maximum/minimum values.
+## 1. The Trigonometric Graphs (0° ⩽ x ⩽ 360°)
+
+All three main trigonometric graphs have a repeating pattern (they are **periodic**). You must memorise their general shapes, where they cross the axes, and their maximum/minimum values.
 
 ### The Sine Graph: $y = \sin x$
-* **Starts at:** $(0, 0)$
-* **Maximum value:** $1$ (at $90^\circ$)
-* **Minimum value:** $-1$ (at $270^\circ$)
-* **Roots (crosses x-axis):** $0^\circ, 180^\circ, 360^\circ$
+* **Starts at:** (0, 0)
+* **Maximum value:** 1 (at 90°)
+* **Minimum value:** -1 (at 270°)
+* **Roots (crosses x-axis):** 0°, 180°, 360°
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 200" width="100%" maxWidth="800px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -54,10 +60,10 @@ All three main trigonometric graphs have a repeating pattern (they are **periodi
 </div>
 
 ### The Cosine Graph: $y = \cos x$
-* **Starts at:** $(0, 1)$ (It looks exactly like the sine wave, but shifted to the left by $90^\circ$)
-* **Maximum value:** $1$ (at $0^\circ$ and $360^\circ$)
-* **Minimum value:** $-1$ (at $180^\circ$)
-* **Roots (crosses x-axis):** $90^\circ, 270^\circ$
+* **Starts at:** (0, 1) (It looks exactly like the sine wave, but shifted to the left by 90°)
+* **Maximum value:** 1 (at 0° and 360°)
+* **Minimum value:** -1 (at 180°)
+* **Roots (crosses x-axis):** 90°, 270°
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 200" width="100%" maxWidth="800px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -77,14 +83,14 @@ All three main trigonometric graphs have a repeating pattern (they are **periodi
 </div>
 
 ### The Tangent Graph: $y = \tan x$
-* **Starts at:** $(0, 0)$
+* **Starts at:** (0, 0)
 * **Maximum/Minimum:** None (It stretches to infinity).
-* **Roots (crosses x-axis):** $0^\circ, 180^\circ, 360^\circ$
-* **Asymptotes:** The graph never touches $x = 90^\circ$ or $x = 270^\circ$ (because $\tan(90^\circ)$ is undefined).
+* **Roots (crosses x-axis):** 0°, 180°, 360°
+* **Asymptotes:** The graph never touches x = 90° or x = 270° (because $\tan(90^\circ)$ is undefined).
 
-<Aside type="danger" title="Misconception">
+<SteveTip title="Misconception">
   We often talk about the "amplitude" (height) of sine and cosine waves. **Tangent graphs do not have an amplitude.** Because they stretch infinitely upwards and downwards, they have no maximum or minimum peak.
-</Aside>
+</SteveTip>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 200" width="100%" maxWidth="800px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -118,85 +124,97 @@ All three main trigonometric graphs have a repeating pattern (they are **periodi
   </svg>
 </div>
 
+</section>
+
 ---
 
-## 2. Solving Trigonometric Equations ($0^\circ \leqslant x \leqslant 360^\circ$)
+<section className="lesson-chunk">
+
+## 2. Solving Trigonometric Equations (0° ⩽ x ⩽ 360°)
 
 When you use the inverse trig functions ($\sin^{-1}$, $\cos^{-1}$, $\tan^{-1}$) on your TI-Nspire GDC, it only gives you **one** answer. This is called the **Principal Value (PV)**. 
 
-However, because the graphs go up and down and repeat themselves, there is almost always a **second valid angle** between $0^\circ$ and $360^\circ$. You find the second angle using the symmetry of the graphs (or the CAST diagram).
+However, because the graphs go up and down and repeat themselves, there is almost always a **second valid angle** between 0° and 360°. You find the second angle using the symmetry of the graphs (or the CAST diagram).
 
-<Aside type="note" title="Principal Value (PV)">
+<SteveTip title="Principal Value (PV)">
   The Principal Value (PV) is simply the valid angle closest to zero. Sometimes, your TI-Nspire GDC will give you a *negative* angle as the PV. Don't panic! Just apply the symmetry rules to that negative number to find the positive angles in your required range.
-</Aside>
+</SteveTip>
 
 **The Symmetry Rules for finding the second angle:**
-* **For $\sin x$:** Second angle $= 180^\circ - \text{PV}$
-* **For $\cos x$:** Second angle $= 360^\circ - \text{PV}$
-* **For $\tan x$:** Second angle $= 180^\circ + \text{PV}$
+* **For $\sin x$:** Second angle = 180° - PV
+* **For $\cos x$:** Second angle = 360° - PV
+* **For $\tan x$:** Second angle = 180° + PV
 
-### Example 1: Solving a basic Sine equation
-Solve $\sin x = 0.5$ for $0^\circ \leqslant x \leqslant 360^\circ$.
+<details className="styled-details">
+  <summary><strong>Example 1:</strong> Solving a basic Sine equation. Solve $\sin x = 0.5$ for 0° ⩽ x ⩽ 360°.</summary>
+  
+  <Steps>
+    1. **Find the Principal Value (PV) using your TI-Nspire GDC:**
+       $$
+       \begin{aligned}
+       x &= \sin^{-1}(0.5) \\
+       x &= 30^\circ
+       \end{aligned}
+       $$
+    2. **Find the second value using the Sine symmetry rule:**
+       $$
+       \begin{aligned}
+       \text{Second } x &= 180^\circ - 30^\circ \\
+       x &= 150^\circ
+       \end{aligned}
+       $$
+    3. **State final answers:**
+       x = 30° or 150°
+  </Steps>
 
-<Steps>
-  1. **Find the Principal Value (PV) using your TI-Nspire GDC:**
-     $$
-     \begin{aligned}
-     x &= \sin^{-1}(0.5) \\
-     x &= 30^\circ
-     \end{aligned}
-     $$
-  2. **Find the second value using the Sine symmetry rule:**
-     $$
-     \begin{aligned}
-     \text{Second } x &= 180^\circ - 30^\circ \\
-     x &= 150^\circ
-     \end{aligned}
-     $$
-  3. **State final answers:**
-     $x = 30^\circ$ or $150^\circ$
-</Steps>
+  *(Visual check: If you draw a horizontal line at y = 0.5 on the sine graph above, you will see it crosses the blue curve twice: once at 30° and once at 150°!)*
+</details>
 
-*(Visual check: If you draw a horizontal line at $y = 0.5$ on the sine graph above, you will see it crosses the blue curve twice: once at $30^\circ$ and once at $150^\circ$!)*
+<details className="styled-details">
+  <summary><strong>Example 2:</strong> Solving a rearranged Cosine equation. Solve $2 \cos x + 1 = 0$ for 0° ⩽ x ⩽ 360°.</summary>
 
-### Example 2: Solving a rearranged Cosine equation
-Solve $2 \cos x + 1 = 0$ for $0^\circ \leqslant x \leqslant 360^\circ$.
+  <Steps>
+    1. **Rearrange the equation to isolate $\cos x$:**
+       $$
+       \begin{aligned}
+       2 \cos x &= -1 \\
+       \cos x &= -0.5
+       \end{aligned}
+       $$
+    2. **Find the Principal Value (PV):**
+       $$
+       \begin{aligned}
+       x &= \cos^{-1}(-0.5) \\
+       x &= 120^\circ
+       \end{aligned}
+       $$
+    3. **Find the second value using the Cosine symmetry rule:**
+       $$
+       \begin{aligned}
+       \text{Second } x &= 360^\circ - 120^\circ \\
+       x &= 240^\circ
+       \end{aligned}
+       $$
+    4. **State final answers:**
+       x = 120° or 240°
+  </Steps>
+</details>
 
-<Steps>
-  1. **Rearrange the equation to isolate $\cos x$:**
-     $$
-     \begin{aligned}
-     2 \cos x &= -1 \\
-     \cos x &= -0.5
-     \end{aligned}
-     $$
-  2. **Find the Principal Value (PV):**
-     $$
-     \begin{aligned}
-     x &= \cos^{-1}(-0.5) \\
-     x &= 120^\circ
-     \end{aligned}
-     $$
-  3. **Find the second value using the Cosine symmetry rule:**
-     $$
-     \begin{aligned}
-     \text{Second } x &= 360^\circ - 120^\circ \\
-     x &= 240^\circ
-     \end{aligned}
-     $$
-  4. **State final answers:**
-     $x = 120^\circ$ or $240^\circ$
-</Steps>
+</section>
 
 ---
 
+<section className="lesson-chunk">
+
 ## 3. The Unit Circle and the CAST Diagram
 
-While the symmetry rules (like $180^\circ - \text{PV}$) are great to memorize, the **Unit Circle** and the **CAST diagram** explain exactly *why* those rules work and give you a foolproof visual tool for finding second angles.
+While the symmetry rules (like 180° - PV) are great to memorize, the **Unit Circle** and the **CAST diagram** explain exactly *why* those rules work and give you a foolproof visual tool for finding second angles.
 
-The Unit Circle is simply a circle with a radius of $1$, centered at the origin $(0,0)$ on a coordinate grid. We measure angles starting from the positive x-axis and rotating **anti-clockwise**.
+The Unit Circle is simply a circle with a radius of 1, centered at the origin (0,0) on a coordinate grid. We measure angles starting from the positive x-axis and rotating **anti-clockwise**.
 
-Because the radius is $1$, any point on the edge of the circle has the coordinates **$(\cos \theta, \sin \theta)$**.
+
+
+Because the radius is 1, any point on the edge of the circle has the coordinates **$(\cos \theta, \sin \theta)$**.
 * The x-coordinate tells you the value of Cosine.
 * The y-coordinate tells you the value of Sine.
 * The slope of the line ($\frac{y}{x}$) tells you the value of Tangent.
@@ -239,15 +257,19 @@ By looking at which coordinates are positive or negative in each of the four qua
 2. Identify which quadrants your answer should be in. If the original equation was $\sin x = -0.5$ (a negative number), Sine is negative in the **T** (3rd) and **C** (4th) quadrants.
 3. Apply the quadrant formulas to your base angle:
    * **Quadrant 1 (A):** $\theta$
-   * **Quadrant 2 (S):** $180^\circ - \theta$
-   * **Quadrant 3 (T):** $180^\circ + \theta$
-   * **Quadrant 4 (C):** $360^\circ - \theta$
+   * **Quadrant 2 (S):** 180° - $\theta$
+   * **Quadrant 3 (T):** 180° + $\theta$
+   * **Quadrant 4 (C):** 360° - $\theta$
 
-<Aside type="tip" title="CAST vs Symmetry">
+<SteveTip title="CAST vs Symmetry">
   You do not have to use both the symmetry rules and the CAST diagram. They are two different methods to achieve the exact same result. Pick the method that makes the most sense to you and stick with it!
-</Aside>
+</SteveTip>
+
+</section>
 
 ---
+
+<section className="lesson-chunk">
 
 ## 4. Transformations: Amplitude and Period (Section 3.1)
 
@@ -255,43 +277,48 @@ In the *Functions* unit, you learn how multiplying parts of an equation stretche
 
 When a trigonometric function is written in the form $y = a \sin(bx)$ or $y = a \cos(bx)$:
 
-### 1. Amplitude ($a$)
+### 1. Amplitude (a)
 The amplitude is the "height" of the wave from its center line to its peak. 
-* A standard sine wave ($y = \sin x$) has an amplitude of $1$.
+* A standard sine wave ($y = \sin x$) has an amplitude of 1.
 * The multiplier $a$ is a **vertical stretch**.
-* **Formula:** $\text{Amplitude} = |a|$ (Always positive, even if $a$ is negative. A negative $a$ just flips the graph upside down).
+* **Formula:** Amplitude = |a| (Always positive, even if $a$ is negative. A negative $a$ just flips the graph upside down).
 
-### 2. Period ($b$)
+### 2. Period (b)
 The period is how many degrees it takes for the graph to complete one full cycle before it starts repeating.
-* A standard sine wave completes one cycle in $360^\circ$.
-* The multiplier $b$ is a **horizontal squash**. It tells you *how many full waves fit into $360^\circ$*.
-* **Formula:** $\text{Period} = \frac{360^\circ}{b}$
+* A standard sine wave completes one cycle in 360°.
+* The multiplier $b$ is a **horizontal squash**. It tells you *how many full waves fit into 360°*.
+* **Formula:** Period = $\frac{360^\circ}{b}$
 
-### Example: Sketching $y = 3 \sin(2x)$
-* **Amplitude:** The number in front is $3$. The graph will peak at $3$ and bottom out at $-3$.
-* **Period:** The multiplier inside is $2$. Two full waves fit into $360^\circ$. The length of one single wave is $\frac{360^\circ}{2} = 180^\circ$.
+<details className="styled-details">
+  <summary><strong>Example:</strong> Sketching $y = 3 \sin(2x)$</summary>
+  
+  * **Amplitude:** The number in front is 3. The graph will peak at 3 and bottom out at -3.
+  * **Period:** The multiplier inside is 2. Two full waves fit into 360°. The length of one single wave is 180°.
 
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 400 200" width="100%" maxWidth="800px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    <line x1="20" y1="100" x2="380" y2="100" stroke="#94a3b8" stroke-width="1" />
-    <line x1="20" y1="20" x2="20" y2="180" stroke="#94a3b8" stroke-width="1" />
-    
-    <polyline 
-      points={Array.from({ length: 361 }).map((_, i) => `${20 + i},${100 - Math.sin(i * Math.PI / 180) * 20}`).join(' ')} 
-      fill="none" stroke="#94a3b8" stroke-dasharray="5,5" stroke-width="2" 
-    />
-    
-    <polyline 
-      points={Array.from({ length: 361 }).map((_, i) => `${20 + i},${100 - 3 * Math.sin(2 * i * Math.PI / 180) * 20}`).join(' ')} 
-      fill="none" stroke="#db2777" stroke-width="2" 
-    />
-    
-    <text x="100" y="115" font-family="sans-serif" font-size="10">90°</text>
-    <text x="190" y="115" font-family="sans-serif" font-size="10">180°</text>
-    <text x="280" y="115" font-family="sans-serif" font-size="10">270°</text>
-    <text x="370" y="115" font-family="sans-serif" font-size="10">360°</text>
-  </svg>
-</div>
+  <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+    <svg viewBox="0 0 400 200" width="100%" maxWidth="800px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+      <line x1="20" y1="100" x2="380" y2="100" stroke="#94a3b8" stroke-width="1" />
+      <line x1="20" y1="20" x2="20" y2="180" stroke="#94a3b8" stroke-width="1" />
+      
+      <polyline 
+        points={Array.from({ length: 361 }).map((_, i) => `${20 + i},${100 - Math.sin(i * Math.PI / 180) * 20}`).join(' ')} 
+        fill="none" stroke="#94a3b8" stroke-dasharray="5,5" stroke-width="2" 
+      />
+      
+      <polyline 
+        points={Array.from({ length: 361 }).map((_, i) => `${20 + i},${100 - 3 * Math.sin(2 * i * Math.PI / 180) * 20}`).join(' ')} 
+        fill="none" stroke="#db2777" stroke-width="2" 
+      />
+      
+      <text x="100" y="115" font-family="sans-serif" font-size="10">90°</text>
+      <text x="190" y="115" font-family="sans-serif" font-size="10">180°</text>
+      <text x="280" y="115" font-family="sans-serif" font-size="10">270°</text>
+      <text x="370" y="115" font-family="sans-serif" font-size="10">360°</text>
+    </svg>
+  </div>
+</details>
+
+</section>
 
 ---
 

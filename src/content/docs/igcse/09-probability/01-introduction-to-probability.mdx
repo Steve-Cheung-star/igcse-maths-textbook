@@ -3,6 +3,7 @@ title: 9.1 Introduction to Probability
 description: Understand the probability scale, probability notation, and how to calculate the probability of a single event for IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 Probability is the mathematical way of measuring how likely it is that an event will happen. Whether you are tossing a coin, rolling a dice, or predicting the weather, probability provides a numerical value to "chance."
 
 <Aside type="note" title="The Probability Scale">
@@ -12,6 +13,8 @@ Probabilities always exist on a scale from **0 to 1**.
 * **1** means the event is absolutely **certain**.
 * **0.5** means there is an **even chance** (a 50/50 probability).
 </Aside>
+
+
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 120" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -48,9 +51,11 @@ Probabilities always exist on a scale from **0 to 1**.
 <SteveTip title="Acceptable Formats">
 Probabilities MUST be written as a **fraction**, **decimal**, or **percentage**. You will lose marks if you write a probability as a ratio (e.g., writing "1:4" instead of "1/4" or "0.25" is incorrect for probability!).
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Probability Notation and The Complement Rule
 
 To save time writing long sentences, mathematicians use specific notation. Let $A$ represent an event (like "rolling a 6").
@@ -73,6 +78,10 @@ $$
 </Aside>
 
 **Example:** If the probability of it raining tomorrow is $P(\text{Rain}) = 0.8$, then the probability of it NOT raining is:
+
+<details>
+<summary>View Solution</summary>
+
 $$
 \begin{aligned}
 P(\text{Rain}') &= 1 - 0.8 \\
@@ -80,8 +89,12 @@ P(\text{Rain}') &= 1 - 0.8 \\
 \end{aligned}
 $$
 
+</details>
+</section>
+
 ---
 
+<section className="lesson-chunk">
 ## 3. Calculating the Probability of a Single Event
 
 To find the probability of a single event where all outcomes are equally likely, use this fundamental formula:
@@ -93,7 +106,9 @@ $$
 Information for these calculations can be presented to you in plain text, in **frequency tables**, or in **Venn diagrams**.
 
 ### Using Venn Diagrams for Probability
-When using a Venn diagram, the "total number of possible outcomes" is the sum of all the numbers (or frequencies) inside the entire Universal Set ($\mathscr{E}$ or $U$).
+When using a Venn diagram, the "total number of possible outcomes" is the sum of all the numbers (or frequencies) inside the entire Universal Set ($U$).
+
+
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 300 200" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -119,13 +134,19 @@ When using a Venn diagram, the "total number of possible outcomes" is the sum of
 
 In the Venn diagram above, the numbers represent frequencies (how many items are in each section).
 
-* Total items = $5 + 3 + 8 + 4 = 20$.
-* Number of items in set $A$ = $5 + 3 = 8$.
+<details>
+<summary>View Calculation</summary>
+
+* Total items = 5 + 3 + 8 + 4 = 20.
+* Number of items in set $A$ = 5 + 3 = 8.
 * Therefore, $P(A) = \frac{8}{20} = \frac{2}{5}$.
+
+</details>
 
 <Aside type="caution" title="Venn Diagram Trap">
 When a question asks for $P(A)$ from a Venn diagram, you must add up **all** the numbers inside the $A$ circle, including the intersection! Don't just take the number sitting alone in the outer crescent of $A$.
 </Aside>
+</section>
 
 ---
 

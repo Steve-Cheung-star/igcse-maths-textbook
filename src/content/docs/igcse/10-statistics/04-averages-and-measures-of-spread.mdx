@@ -3,7 +3,11 @@ title: 10.4 Averages and Measures of Spread
 description: Master the calculation of the mean, median, mode, quartiles, and range for individual data, and learn to calculate averages for grouped discrete and continuous data in IGCSE 0607.
 ---
 
-When analysing data, we usually want to find two things: a single value that represents the "centre" of the data (an **average**), and a value that tells us how stretched out or consistent the data is (a **measure of spread**).
+<section className="lesson-chunk">
+When analysing data, we usually want to find two things: a single value that represents the "centre" of the data (an **average**), and a value that tells us how stretched out or consistent the data is (a **measure of spread**). 
+
+[Image of a distribution curve showing mean, median, and mode]
+
 
 <Aside type="note" title="The Three Averages">
 * **Mode:** The most frequent value.
@@ -17,70 +21,81 @@ It is incredibly common to mix these up in an exam! Use these tricks to remember
 * med**I**an is the m**I**ddle value (both have the letter 'i').
 * The **Mean** is just plain mean 😈 because I make you do the most arithmetic!
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Averages for Individual Data
 
-Let's look at a raw list of data: $4, 7, 2, 7, 9, 10, 3$.
+Before calculating the median or quartiles, **always sort the data into ascending order.**
+</section>
 
-Before doing anything with median or quartiles, **always sort the data into ascending order:**
-$2, 3, 4, 7, 7, 9, 10$
+<section className="lesson-chunk">
+**Example:** Find the mode, median, and mean for the following list of raw data: 4, 7, 2, 7, 9, 10, 3.
 
-### The Mode
-The **mode** is the number that appears most often. 
-In our list, the number $7$ appears twice, while all others appear once. 
-* **Mode = 7**
+<details className="styled-details">
+  <summary><strong>View Solution</strong></summary>
 
-### The Median
-The **median** is the exact middle value. Cross off numbers from both ends until you reach the centre.
-$2, 3, 4, \mathbf{7}, 7, 9, 10$
-* **Median = 7**
+  First, sort the data into ascending order: **2, 3, 4, 7, 7, 9, 10**
 
-*(If there are two middle numbers, add them together and divide by 2).*
+  ### The Mode
+  The **mode** is the number that appears most often. 
+  In our list, the number 7 appears twice, while all others appear once. 
+  * **Mode = 7**
 
-### The Mean
-To find the **mean** (often represented by $\bar{x}$), add up all the numbers and divide by how many numbers there are.
+  ### The Median
+  The **median** is the exact middle value. Cross off numbers from both ends until you reach the centre.
+  2, 3, 4, **7**, 7, 9, 10
+  * **Median = 7**
 
-$$
-\text{Mean} = \frac{2 + 3 + 4 + 7 + 7 + 9 + 10}{7} = \frac{42}{7} = 6
-$$
+  *(If there are two middle numbers, add them together and divide by 2).*
 
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 500 150" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    {/* Fulcrum (Balance point at the mean) */}
-    <polygon points="250,110 240,140 260,140" fill="#94a3b8" />
-    
-    {/* Beam */}
-    <line x1="50" y1="110" x2="450" y2="110" stroke="#475569" stroke-width="4" />
-    
-    {/* Data points as weights, distributed based on their values mapped to coordinates */}
-    {/* Values: 2, 3, 4, 7, 7, 9, 10 -> mapped across 50 to 450 (Mean 6 maps to 250) */}
-    {[
-      { val: 2, x: 50 },
-      { val: 3, x: 100 },
-      { val: 4, x: 150 },
-      { val: 7, x: 300, yOff: 0 },
-      { val: 7, x: 300, yOff: -32 },
-      { val: 9, x: 400 },
-      { val: 10, x: 450 }
-    ].map((pt, i) => (
-      <g key={`weight-${i}`}>
-        <rect x={pt.x - 15} y={pt.yOff ? 80 + pt.yOff : 80} width="30" height="30" fill="#3b82f6" rx="4" />
-        <text x={pt.x} y={pt.yOff ? 100 + pt.yOff : 100} font-size="12" fill="#ffffff" font-weight="bold" text-anchor="middle" font-family="sans-serif">{pt.val}</text>
-      </g>
-    ))}
-    
-    <text x="250" y="40" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">The Mean is the Balance Point</text>
-    <line x1="250" y1="50" x2="250" y2="110" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
-  </svg>
-</div>
+  ### The Mean
+  To find the **mean** (often represented by $\bar{x}$), add up all the numbers and divide by how many numbers there are.
+
+  $$
+  \text{Mean} = \frac{2 + 3 + 4 + 7 + 7 + 9 + 10}{7} = \frac{42}{7} = 6
+  $$
+
+  <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+    <svg viewBox="0 0 500 150" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+      {/* Fulcrum (Balance point at the mean) */}
+      <polygon points="250,110 240,140 260,140" fill="#94a3b8" />
+      
+      {/* Beam */}
+      <line x1="50" y1="110" x2="450" y2="110" stroke="#475569" stroke-width="4" />
+      
+      {/* Data points as weights, distributed based on their values mapped to coordinates */}
+      {/* Values: 2, 3, 4, 7, 7, 9, 10 -> mapped across 50 to 450 (Mean 6 maps to 250) */}
+      {[
+        { val: 2, x: 50 },
+        { val: 3, x: 100 },
+        { val: 4, x: 150 },
+        { val: 7, x: 300, yOff: 0 },
+        { val: 7, x: 300, yOff: -32 },
+        { val: 9, x: 400 },
+        { val: 10, x: 450 }
+      ].map((pt, i) => (
+        <g key={`weight-${i}`}>
+          <rect x={pt.x - 15} y={pt.yOff ? 80 + pt.yOff : 80} width="30" height="30" fill="#3b82f6" rx="4" />
+          <text x={pt.x} y={pt.yOff ? 100 + pt.yOff : 100} font-size="12" fill="#ffffff" font-weight="bold" text-anchor="middle" font-family="sans-serif">{pt.val}</text>
+        </g>
+      ))}
+      
+      <text x="250" y="40" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">The Mean is the Balance Point</text>
+      <line x1="250" y1="50" x2="250" y2="110" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
+    </svg>
+  </div>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Measures of Spread: Range and Quartiles
 
-Averages tell you about the centre, but they don't tell you how spread out the numbers are. For that, we use the **range** and the **interquartile range (IQR)**.
+Averages tell you about the centre, but they don't tell you how spread out the numbers are. For that, we use the **range** and the **interquartile range (IQR)**. 
 
 <Aside type="tip" title="Range vs. IQR">
 * **Range:** The difference between the largest and smallest values. It is heavily affected by extreme outliers.
@@ -89,92 +104,109 @@ Averages tell you about the centre, but they don't tell you how spread out the n
 
 ### Calculating Quartiles
 Quartiles split the data into four equal parts.
+1. **Lower Quartile ($Q_1$):** The median of the lower half of the data.
+2. **Median ($Q_2$):** The middle of the whole data set.
+3. **Upper Quartile ($Q_3$):** The median of the upper half of the data.
+</section>
 
-<Steps>
-  1. **Lower Quartile ($Q_1$):** The median of the lower half of the data.
-  2. **Median ($Q_2$):** The middle of the whole data set.
-  3. **Upper Quartile ($Q_3$):** The median of the upper half of the data.
-</Steps>
+<section className="lesson-chunk">
+**Example:** Using the sorted list from the previous section (**2, 3, 4, 7, 7, 9, 10**), calculate the Range and Interquartile Range (IQR).
 
-Using our previous sorted list: $\mathbf{2}, 3, \mathbf{4}, 7, \mathbf{7}, 9, \mathbf{10}$
-* **Minimum** = $2$
-* **$Q_1$ (Lower Quartile)** = $3$ (middle of $2, 3, 4$)
-* **Median** = $7$
-* **$Q_3$ (Upper Quartile)** = $9$ (middle of $7, 9, 10$)
-* **Maximum** = $10$
+<details className="styled-details">
+  <summary><strong>View Solution</strong></summary>
 
-$$
-\text{Range} = \text{Maximum} - \text{Minimum} = 10 - 2 = 8
-$$
+  First, identify the minimum, maximum, and all three quartiles from the sorted data:
+  * **Minimum** = 2
+  * **$Q_1$ (Lower Quartile)** = 3 (middle of 2, 3, 4)
+  * **Median** = 7
+  * **$Q_3$ (Upper Quartile)** = 9 (middle of 7, 9, 10)
+  * **Maximum** = 10
 
-$$
-\text{Interquartile} \ \text{Range} \ \text{(IQR)} = Q_3 - Q_1 = 9 - 3 = 6
-$$
+  $$
+  \text{Range} = \text{Maximum} - \text{Minimum} = 10 - 2 = 8
+  $$
 
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 600 200" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    {/* Number Line */}
-    <line x1="50" y1="140" x2="550" y2="140" stroke="#64748b" stroke-width="2" />
-    
-    {/* Array Loop for Number Line Ticks */}
-    {[2, 4, 6, 8, 10, 12].map((val, i) => (
-      <text key={`tick-${i}`} x={50 + i * 83.2} y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">{val}</text>
-    ))}
+  $$
+  \text{Interquartile} \ \text{Range} \ \text{(IQR)} = Q_3 - Q_1 = 9 - 3 = 6
+  $$
 
-    {/* Box Plot Elements */}
-    {/* Whiskers */}
-    <line x1="50" y1="90" x2="91.6" y2="90" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 4" />
-    <line x1="341.2" y1="90" x2="382.8" y2="90" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 4" />
-    
-    {/* Whiskers end caps */}
-    <line x1="50" y1="75" x2="50" y2="105" stroke="#0284c7" stroke-width="3" />
-    <line x1="382.8" y1="75" x2="382.8" y2="105" stroke="#0284c7" stroke-width="3" />
+  <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+    <svg viewBox="0 0 600 200" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+      {/* Number Line */}
+      <line x1="50" y1="140" x2="550" y2="140" stroke="#64748b" stroke-width="2" />
+      
+      {/* Array Loop for Number Line Ticks */}
+      {[2, 4, 6, 8, 10, 12].map((val, i) => (
+        <text key={`tick-${i}`} x={50 + i * 83.2} y="160" font-size="14" fill="#475569" text-anchor="middle" font-family="sans-serif">{val}</text>
+      ))}
 
-    {/* The Box (Q1 to Q3) */}
-    <rect x="91.6" y="60" width="249.6" height="60" fill="#bae6fd" stroke="#0284c7" stroke-width="3" />
-    
-    {/* Median Line */}
-    <line x1="258" y1="60" x2="258" y2="120" stroke="#0369a1" stroke-width="4" />
+      {/* Box Plot Elements */}
+      {/* Whiskers */}
+      <line x1="50" y1="90" x2="91.6" y2="90" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 4" />
+      <line x1="341.2" y1="90" x2="382.8" y2="90" stroke="#0284c7" stroke-width="3" stroke-dasharray="4 4" />
+      
+      {/* Whiskers end caps */}
+      <line x1="50" y1="75" x2="50" y2="105" stroke="#0284c7" stroke-width="3" />
+      <line x1="382.8" y1="75" x2="382.8" y2="105" stroke="#0284c7" stroke-width="3" />
 
-    {/* Labels */}
-    <text x="50" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Min</text>
-    <text x="91.6" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Q1 (3)</text>
-    <text x="258" y="45" font-size="14" font-weight="bold" fill="#0369a1" text-anchor="middle" font-family="sans-serif">Median (7)</text>
-    <text x="341.2" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Q3 (9)</text>
-    <text x="382.8" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Max</text>
-    
-    {/* IQR Indicator */}
-    <path d="M 91.6 180 L 91.6 190 L 341.2 190 L 341.2 180" fill="none" stroke="#ef4444" stroke-width="2" />
-    <text x="216.4" y="185" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">IQR = 6</text>
-  </svg>
-</div>
+      {/* The Box (Q1 to Q3) */}
+      <rect x="91.6" y="60" width="249.6" height="60" fill="#bae6fd" stroke="#0284c7" stroke-width="3" />
+      
+      {/* Median Line */}
+      <line x1="258" y1="60" x2="258" y2="120" stroke="#0369a1" stroke-width="4" />
+
+      {/* Labels */}
+      <text x="50" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Min</text>
+      <text x="91.6" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Q1 (3)</text>
+      <text x="258" y="45" font-size="14" font-weight="bold" fill="#0369a1" text-anchor="middle" font-family="sans-serif">Median (7)</text>
+      <text x="341.2" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Q3 (9)</text>
+      <text x="382.8" y="45" font-size="14" font-weight="bold" fill="#0284c7" text-anchor="middle" font-family="sans-serif">Max</text>
+      
+      {/* IQR Indicator */}
+      <path d="M 91.6 180 L 91.6 190 L 341.2 190 L 341.2 180" fill="none" stroke="#ef4444" stroke-width="2" />
+      <text x="216.4" y="185" font-size="14" font-weight="bold" fill="#ef4444" text-anchor="middle" font-family="sans-serif">IQR = 6</text>
+    </svg>
+  </div>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Using the TI-Nspire Calculator
 
 For IGCSE 0607, you are expected to use your Graphic Display Calculator (GDC) to quickly find these statistics without doing manual arithmetic, especially for large data sets.
+</section>
 
-<Steps>
-  1. Open a new **Lists & Spreadsheet** document.
-  2. Label the top of column A (e.g., type `data`).
-  3. Enter your numbers down column A.
-  4. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **1: One-Variable Statistics**.
-  5. Set "Num of Lists" to $1$. 
-  6. Choose your `X1 List` as `data` and press OK.
-</Steps>
+<section className="lesson-chunk">
+**Example:** How do you find the mean, median, and quartiles of a raw list of data using the TI-Nspire GDC?
 
-Your calculator will output a list of variables. The most important ones for this syllabus are:
-* **$\bar{x}$**: The Mean
-* **$n$**: The total number of data values
-* **MinX**: The minimum value
-* **$Q_1X$**: The lower quartile
-* **MedianX**: The median
-* **$Q_3X$**: The upper quartile
-* **MaxX**: The maximum value
+<details className="styled-details">
+  <summary><strong>View Steps</strong></summary>
+
+  <Steps>
+    1. Open a new **Lists & Spreadsheet** document.
+    2. Label the top of column A (e.g., type `data`).
+    3. Enter your numbers down column A.
+    4. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **1: One-Variable Statistics**.
+    5. Set "Num of Lists" to 1. 
+    6. Choose your `X1 List` as `data` and press OK.
+  </Steps>
+
+  Your calculator will output a list of variables. The most important ones for this syllabus are:
+  * **$\bar{x}$**: The Mean
+  * **$n$**: The total number of data values
+  * **MinX**: The minimum value
+  * **$Q_1X$**: The lower quartile
+  * **MedianX**: The median
+  * **$Q_3X$**: The upper quartile
+  * **MaxX**: The maximum value
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Grouped Discrete Data
 
 When discrete data is collected in large amounts, it is often grouped into a frequency table. The data values ($x$) are exact numbers, and the frequency ($f$) tells us how many times that exact number occurs.
@@ -188,30 +220,47 @@ To find the mean, you must multiply each data value by its frequency ($f \times 
 $$
 \text{Mean} = \frac{\sum fx}{\sum f}
 $$
+</section>
 
-**Example:** The number of pets per household in a street.
+<section className="lesson-chunk">
+**Example:** The table below shows the number of pets per household in a street. Calculate the mean and identify the mode.
 
-| Number of Pets ($x$) | Frequency ($f$) | $f \times x$ |
-| :--- | :--- | :--- |
-| $0$ | $5$ | $0 \times 5 = 0$ |
-| $1$ | $8$ | $1 \times 8 = 8$ |
-| $2$ | $4$ | $2 \times 4 = 8$ |
-| $3$ | $3$ | $3 \times 3 = 9$ |
-| **Totals:** | **$\sum f = 20$** | **$\sum fx = 25$** |
+| Number of Pets ($x$) | Frequency ($f$) |
+| :--- | :--- |
+| 0 | 5 |
+| 1 | 8 |
+| 2 | 4 |
+| 3 | 3 |
 
-* **Mode:** $1$ pet (it has the highest frequency of $8$).
-* **Mean:**
+<details className="styled-details">
+  <summary><strong>View Solution</strong></summary>
 
-$$
-\text{Mean} = \frac{25}{20} = 1.25 \ \text{pets}
-$$
+  To calculate the mean, we extend the table to include an $f \times x$ column:
+
+  | Number of Pets ($x$) | Frequency ($f$) | $f \times x$ |
+  | :--- | :--- | :--- |
+  | 0 | 5 | $0 \times 5 = 0$ |
+  | 1 | 8 | $1 \times 8 = 8$ |
+  | 2 | 4 | $2 \times 4 = 8$ |
+  | 3 | 3 | $3 \times 3 = 9$ |
+  | **Totals:** | **$\sum f = 20$** | **$\sum fx = 25$** |
+
+  * **Mode:** 1 pet (it has the highest frequency of 8).
+  * **Mean:**
+
+  $$
+  \text{Mean} = \frac{25}{20} = 1.25 \ \text{pets}
+  $$
+</details>
 
 <Aside type="caution" title="Common Misconception">
 When dividing to find the mean of a frequency table, always divide by the **Total Frequency** ($\sum f$). A very common mistake is dividing by the number of rows in the table!
 </Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 5. Grouped Continuous Data
 
 Continuous data is grouped into classes or intervals (e.g., $10 < h \le 20$). Because we do not know the exact values inside each interval, we can only calculate an **estimate** of the mean.
@@ -221,25 +270,41 @@ We cannot find a single mode. Instead, we find the **modal class** (or modal gro
 
 ### Estimating the Mean
 Because the exact values are unknown, we use the **midpoint** ($x$) of each class as a representative value for that entire group.
+</section>
 
-**Example:** The heights of 40 plants are recorded.
+<section className="lesson-chunk">
+**Example:** The heights of 40 plants are recorded in the table below. Identify the modal class and calculate the estimated mean.
 
-| Height, $h$ (cm) | Frequency ($f$) | Midpoint ($x$) | $f \times x$ |
-| :--- | :--- | :--- | :--- |
-| $0 < h \le 10$ | $8$ | $5$ | $8 \times 5 = 40$ |
-| $10 < h \le 20$ | $20$ | $15$ | $20 \times 15 = 300$ |
-| $20 < h \le 30$ | $12$ | $25$ | $12 \times 25 = 300$ |
-| **Totals:** | **$\sum f = 40$** | | **$\sum fx = 640$** |
+| Height, $h$ (cm) | Frequency ($f$) |
+| :--- | :--- |
+| $0 < h \le 10$ | 8 |
+| $10 < h \le 20$ | 20 |
+| $20 < h \le 30$ | 12 |
 
-* **Modal Class:** $10 < h \le 20$ (it has the highest frequency of $20$).
-* **Estimated Mean:**
+<details className="styled-details">
+  <summary><strong>View Solution</strong></summary>
 
-$$
-\text{Estimated} \ \text{Mean} = \frac{640}{40} = 16 \ \text{cm}
-$$
+  First, identify the midpoint ($x$) of each class, then multiply by the frequency:
+
+  | Height, $h$ (cm) | Frequency ($f$) | Midpoint ($x$) | $f \times x$ |
+  | :--- | :--- | :--- | :--- |
+  | $0 < h \le 10$ | 8 | 5 | $8 \times 5 = 40$ |
+  | $10 < h \le 20$ | 20 | 15 | $20 \times 15 = 300$ |
+  | $20 < h \le 30$ | 12 | 25 | $12 \times 25 = 300$ |
+  | **Totals:** | **$\sum f = 40$** | | **$\sum fx = 640$** |
+
+  * **Modal Class:** $10 < h \le 20$ (it has the highest frequency of 20).
+  * **Estimated Mean:**
+
+  $$
+  \text{Estimated} \ \text{Mean} = \frac{640}{40} = 16 \ \text{cm}
+  $$
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 6. Working Backwards (Adding & Removing Data)
 
 These questions test a deeper understanding of averages. They usually involve adding or removing data, or finding an unknown frequency.
@@ -254,47 +319,72 @@ $$
 $$
 
 </Aside>
+</section>
 
-**Example: Adding a Value**
-A student's mean score across $4$ tests is $75$. What must they score on their $5$th test to raise their mean to $80$?
+<section className="lesson-chunk">
+**Example:** A student's mean score across 4 tests is 75. What must they score on their 5th test to raise their mean to 80?
 
-<Steps>
-  1. Find the total sum of the first 4 tests: $4 \times 75 = 300$
-  2. Find the total sum needed for 5 tests to have a mean of 80: $5 \times 80 = 400$
-  3. The 5th test must make up the difference: $400 - 300 = 100$
-</Steps>
+<details className="styled-details">
+  <summary><strong>View Steps</strong></summary>
+  <Steps>
+    1. Find the total sum of the first 4 tests: $4 \times 75 = 300$
+    2. Find the total sum needed for 5 tests to have a mean of 80: $5 \times 80 = 400$
+    3. The 5th test must make up the difference: $400 - 300 = 100$
+  </Steps>
+</details>
+</section>
 
+<section className="lesson-chunk">
 ### Removing Data from the Mean
 The same logic applies when data is removed. Find the original total, subtract the removed value, and divide by the *new* number of values.
 
-**Example: Removing a Value**
-A group of $6$ friends has a mean height of $160 \text{ cm}$. One friend, who is $180 \text{ cm}$ tall, leaves the group. Calculate the new mean height of the remaining $5$ friends.
+**Example:** A group of 6 friends has a mean height of 160 cm. One friend, who is 180 cm tall, leaves the group. Calculate the new mean height of the remaining 5 friends.
 
-<Steps>
-  1. Original total height of 6 friends: $6 \times 160 = 960 \text{ cm}$
-  2. Subtract the friend who left: $960 - 180 = 780 \text{ cm}$
-  3. Divide by the new number of friends (5): $\text{New Mean} = \frac{780}{5} = 156 \text{ cm}$
-</Steps>
+<details className="styled-details">
+  <summary><strong>View Steps</strong></summary>
+  <Steps>
+    1. Original total height of 6 friends: $6 \times 160 = 960 \text{ cm}$
+    2. Subtract the friend who left: $960 - 180 = 780 \text{ cm}$
+    3. Divide by the new number of friends (5): $\text{New Mean} = \frac{780}{5} = 156 \text{ cm}$
+  </Steps>
+</details>
+</section>
 
+<section className="lesson-chunk">
 ### Finding a Missing Frequency
 If you are *given* the mean but a frequency is missing from a grouped table, set up a simple linear equation to solve for the missing frequency.
 
-**Example:**
-The table shows the time taken to solve a puzzle. The estimated mean time is $14$ minutes. Find the missing frequency, $y$.
+**Example:** The table shows the time taken to solve a puzzle. The estimated mean time is 14 minutes. Find the missing frequency, $y$.
 
-| Time, $t$ (mins) | Frequency ($f$) | Midpoint ($x$) | $f \times x$ |
-| :--- | :--- | :--- | :--- |
-| $0 < t \le 10$ | $5$ | $5$ | $25$ |
-| $10 < t \le 20$ | $y$ | $15$ | $15y$ |
-| $20 < t \le 30$ | $3$ | $25$ | $75$ |
+| Time, $t$ (mins) | Frequency ($f$) |
+| :--- | :--- |
+| $0 < t \le 10$ | 5 |
+| $10 < t \le 20$ | $y$ |
+| $20 < t \le 30$ | 3 |
 
-<Steps>
-  1. **Express total frequency ($\sum f$) algebraically:** $\sum f = 5 + y + 3 = 8 + y$
-  2. **Express total $fx$ ($\sum fx$) algebraically:** $\sum fx = 25 + 15y + 75 = 100 + 15y$
-  3. **Set up the mean equation and solve for $y$:** $\frac{100 + 15y}{8 + y} = 14$
-  4. Multiply both sides by $(8 + y)$: $100 + 15y = 112 + 14y$
-  5. Subtract $14y$ and subtract $100$ from both sides: $y = 12$
-</Steps>
+<details className="styled-details">
+  <summary><strong>View Steps</strong></summary>
+  
+  Extend the table to find the algebraic totals for $\sum f$ and $\sum fx$:
+
+  | Time, $t$ (mins) | Frequency ($f$) | Midpoint ($x$) | $f \times x$ |
+  | :--- | :--- | :--- | :--- |
+  | $0 < t \le 10$ | 5 | 5 | 25 |
+  | $10 < t \le 20$ | $y$ | 15 | $15y$ |
+  | $20 < t \le 30$ | 3 | 25 | 75 |
+
+  <Steps>
+    1. **Express total frequency ($\sum f$) algebraically:** $\sum f = 5 + y + 3 = 8 + y$
+    2. **Express total $fx$ ($\sum fx$) algebraically:** $\sum fx = 25 + 15y + 75 = 100 + 15y$
+    3. **Set up the mean equation and solve for $y$:** 
+       $$
+       \frac{100 + 15y}{8 + y} = 14
+       $$
+    4. Multiply both sides by $(8 + y)$: $100 + 15y = 112 + 14y$
+    5. Subtract $14y$ and subtract 100 from both sides: $y = 12$
+  </Steps>
+</details>
+</section>
 
 ---
 

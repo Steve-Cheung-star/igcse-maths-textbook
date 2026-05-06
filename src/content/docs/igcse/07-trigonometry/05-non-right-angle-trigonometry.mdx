@@ -3,33 +3,47 @@ title: 7.5 Non-Right-Angled Triangles (Trigonometry)
 description: Notes and examples on using the sine and cosine rules, handling obtuse angles and the ambiguous case, calculating the area of any triangle, and their mathematical proofs.
 ---
 
+<section className="lesson-chunk">
+
 SOH CAH TOA and standard Pythagoras' theorem are fantastic tools, but they **only work for right-angled triangles**. When a triangle doesn't have a $90^\circ$ angle, we need a different set of rules.
 
 For IGCSE Extended, you need to master three key formulas: the Area of a Triangle, the Sine Rule, and the Cosine Rule.
 
-<Aside type="note" title="Good News!">
-
+<SteveTip title="Good News!">
   The main versions of these formulas are provided on the IGCSE formula sheet in your exam! You do not need to memorise them, but you *do* need to know **when** and **how** to use them.
+</SteveTip>
 
-</Aside>
+</section>
+
+---
+
+<section className="lesson-chunk">
 
 ## Formula Cheat Sheet
 
+<div className="table-wrapper">
 | Rule | Formula (to find a Side) | Formula (to find an Angle) |
 | :--- | :--- | :--- |
 | **Area** | $\text{Area} = \frac{1}{2}ab \sin C$ | $\sin C = \frac{2 \times \text{Area}}{ab}$ |
 | **Sine Rule** | $\frac{a}{\sin A} = \frac{b}{\sin B} = \frac{c}{\sin C}$ | $\frac{\sin A}{a} = \frac{\sin B}{b} = \frac{\sin C}{c}$ |
 | **Cosine Rule** | $a^2 = b^2 + c^2 - 2bc \cos A$ | $A = \cos^{-1}\left(\frac{b^2 + c^2 - a^2}{2bc}\right)$ |
+</div>
+
+</section>
 
 ---
 
+<section className="lesson-chunk">
+
 ## The Golden Rule of Triangle Labelling
 
+<SteveTip title="Labelling Rules">
 Before using any of these formulas, you must label your triangle correctly.
 
 * **Angles** are labelled with capital letters ($A$, $B$, $C$).
 * **Sides** are labelled with lowercase letters ($a$, $b$, $c$).
 * **Crucial detail:** Side $a$ is always exactly **opposite** angle $A$. Side $b$ is opposite angle $B$, and so on.
+</SteveTip>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
@@ -64,7 +78,11 @@ Before using any of these formulas, you must label your triangle correctly.
   </svg>
 </div>
 
+</section>
+
 ---
+
+<section className="lesson-chunk">
 
 ## 1. Area of a Triangle
 
@@ -108,39 +126,43 @@ $$ \text{Area} = \frac{1}{2} \times b \times (c \sin A) = \frac{1}{2}bc \sin A $
 
 *(This is the exact same formula as $\frac{1}{2}ab \sin C$, just using different sides!)*
 
-### Example: Finding the Area
+<details className="styled-details">
+  <summary><strong>Example:</strong> Find the area of triangle $ABC$ where $a = 7\text{ cm}$, $b = 10\text{ cm}$, and the angle $C$ between them is $42^\circ$.</summary>
 
-Find the area of triangle $ABC$ where $a = 7\text{ cm}$, $b = 10\text{ cm}$, and the angle $C$ between them is $42^\circ$.
+  <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+    <svg viewBox="0 0 300 150" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+      <polygon points="20,130 250,130 180,30" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
+      <text x="10" y="145" font-weight="bold" text-anchor="start">C</text>
+      <text x="255" y="145" font-weight="bold" text-anchor="end">A</text>
+      <text x="175" y="20" font-weight="bold" text-anchor="end">B</text>
+      <text x="120" y="145" fill="#1e293b" font-weight="bold" text-anchor="middle">10 cm</text>
+      <text x="85" y="75" fill="#1e293b" font-weight="bold" text-anchor="middle">7 cm</text>
+      <path d="M 50 130 A 30 30 0 0 0 45.4 114.1" fill="none" stroke="#ef4444" stroke-width="2" />
+      <text x="60" y="120" fill="#ef4444" font-weight="bold" text-anchor="start">42°</text>
+    </svg>
+  </div>
 
-<div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-  <svg viewBox="0 0 300 150" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
-    <polygon points="20,130 250,130 180,30" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
-    <text x="10" y="145" font-weight="bold" text-anchor="start">C</text>
-    <text x="255" y="145" font-weight="bold" text-anchor="end">A</text>
-    <text x="175" y="20" font-weight="bold" text-anchor="end">B</text>
-    <text x="120" y="145" fill="#1e293b" font-weight="bold" text-anchor="middle">10 cm</text>
-    <text x="220" y="75" fill="#1e293b" font-weight="bold" text-anchor="middle">7 cm</text>
-    <path d="M 50 130 A 30 30 0 0 0 45.4 114.1" fill="none" stroke="#ef4444" stroke-width="2" />
-    <text x="60" y="120" fill="#ef4444" font-weight="bold" text-anchor="start">42°</text>
-  </svg>
-</div>
 
-<Steps>
+  <Steps>
+    1. **Identify the rule:** We have Side-Angle-Side (SAS).
+    2. **Substitute values:**
+       $$
+       \begin{aligned}
+       \text{Area} &= \frac{1}{2}ab \sin C \\
+       \text{Area} &= \frac{1}{2}(7)(10) \sin(42^\circ) \\
+       \text{Area} &= 35 \times 0.6691... \\
+       \text{Area} &= 23.4\text{ cm}^2 \text{ (to 1 d.p.)}
+       \end{aligned}
+       $$
+  </Steps>
 
-  1. **Identify the rule:** We have Side-Angle-Side (SAS).
-  2. **Substitute values:**
-     $$
-     \begin{aligned}
-     \text{Area} &= \frac{1}{2}ab \sin C \\
-     \text{Area} &= \frac{1}{2}(7)(10) \sin(42^\circ) \\
-     \text{Area} &= 35 \times 0.6691... \\
-     \text{Area} &= 23.4\text{ cm}^2 \text{ (to 1 d.p.)}
-     \end{aligned}
-     $$
+</details>
 
-</Steps>
+</section>
 
 ---
+
+<section className="lesson-chunk">
 
 ## 2. The Sine Rule
 
@@ -173,42 +195,46 @@ $$ c \sin A = a \sin C $$
 Divide both sides by $(\sin A \sin C)$ to isolate the ratios:
 $$ \frac{c}{\sin C} = \frac{a}{\sin A} $$
 
-### Example: Finding a missing side
+<details className="styled-details">
+  <summary><strong>Example:</strong> In triangle $PQR$, angle $P = 65^\circ$, angle $R = 40^\circ$, and side $p = 12\text{ cm}$. Find the length of side $r$.</summary>
 
-In triangle $PQR$, angle $P = 65^\circ$, angle $R = 40^\circ$, and side $p = 12\text{ cm}$. Find the length of side $r$.
+  <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+    <svg viewBox="0 0 350 180" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+      <polygon points="30,150 320,150 200,30" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
+      <text x="15" y="165" font-weight="bold" text-anchor="start">P</text>
+      <text x="325" y="165" font-weight="bold" text-anchor="end">Q</text>
+      <text x="195" y="20" font-weight="bold" text-anchor="end">R</text>
+      <text x="270" y="85" fill="#ef4444" font-weight="bold" text-anchor="middle">12 cm (p)</text>
+      <text x="175" y="170" fill="#10b981" font-weight="bold" text-anchor="middle">r = ?</text>
+      <path d="M 60 150 A 30 30 0 0 0 54.5 132.7" fill="none" stroke="#ef4444" stroke-width="2" />
+      <text x="70" y="140" fill="#ef4444" font-weight="bold" text-anchor="start">65°</text>
+      <path d="M 179.6 44.4 A 25 25 0 0 0 217.7 47.7" fill="none" stroke="#10b981" stroke-width="2" />
+      <text x="190" y="75" fill="#10b981" font-weight="bold" text-anchor="start">40°</text>
+    </svg>
+  </div>
 
-<div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-  <svg viewBox="0 0 350 180" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
-    <polygon points="30,150 320,150 200,30" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
-    <text x="15" y="165" font-weight="bold" text-anchor="start">P</text>
-    <text x="325" y="165" font-weight="bold" text-anchor="end">Q</text>
-    <text x="195" y="20" font-weight="bold" text-anchor="end">R</text>
-    <text x="270" y="85" fill="#ef4444" font-weight="bold" text-anchor="middle">12 cm (p)</text>
-    <text x="100" y="85" fill="#10b981" font-weight="bold" text-anchor="middle">r = ?</text>
-    <path d="M 60 150 A 30 30 0 0 0 54.5 132.7" fill="none" stroke="#ef4444" stroke-width="2" />
-    <text x="70" y="140" fill="#ef4444" font-weight="bold" text-anchor="start">65°</text>
-    <path d="M 179.6 44.4 A 25 25 0 0 0 217.7 47.7" fill="none" stroke="#10b981" stroke-width="2" />
-    <text x="190" y="75" fill="#10b981" font-weight="bold" text-anchor="start">40°</text>
-  </svg>
-</div>
 
-<Steps>
+  <Steps>
+    1. **Check for a Known Pair:** We know angle $P$ ($65^\circ$) and side $p$ ($12\text{ cm}$). We want side $r$, and we know angle $R$ ($40^\circ$). Perfect for the Sine Rule!
+    2. **Set up the equation (sides on top):**
+       $$ \frac{r}{\sin(40^\circ)} = \frac{12}{\sin(65^\circ)} $$
+    3. **Rearrange and solve:**
+       $$
+       \begin{aligned}
+       r &= \frac{12 \times \sin(40^\circ)}{\sin(65^\circ)} \\
+       r &= \frac{7.713...}{0.906...} \\
+       r &= 8.51\text{ cm} \text{ (to 3 s.f.)}
+       \end{aligned}
+       $$
+  </Steps>
 
-  1. **Check for a Known Pair:** We know angle $P$ ($65^\circ$) and side $p$ ($12\text{ cm}$). We want side $r$, and we know angle $R$ ($40^\circ$). Perfect for the Sine Rule!
-  2. **Set up the equation (sides on top):**
-     $$ \frac{r}{\sin(40^\circ)} = \frac{12}{\sin(65^\circ)} $$
-  3. **Rearrange and solve:**
-     $$
-     \begin{aligned}
-     r &= \frac{12 \times \sin(40^\circ)}{\sin(65^\circ)} \\
-     r &= \frac{7.713...}{0.906...} \\
-     r &= 8.51\text{ cm} \text{ (to 3 s.f.)}
-     \end{aligned}
-     $$
+</details>
 
-</Steps>
+</section>
 
 ---
+
+<section className="lesson-chunk">
 
 ## 3. The Cosine Rule
 
@@ -266,48 +292,49 @@ $$ \cos A = \frac{x}{b} \implies x = b \cos A $$
 Substitute that in for $x$:
 $$ a^2 = b^2 + c^2 - 2bc \cos A $$
 
-### Example: Finding a missing side
+<details className="styled-details">
+  <summary><strong>Example:</strong> In triangle $XYZ$, $y = 8\text{ cm}$, $z = 11\text{ cm}$, and the included angle $X = 115^\circ$. Calculate the length of side $x$.</summary>
 
-In triangle $XYZ$, $y = 8\text{ cm}$, $z = 11\text{ cm}$, and the included angle $X = 115^\circ$. Calculate the length of side $x$.
+  <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
+    <svg viewBox="0 0 350 150" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
+      <polygon points="150,130 330,130 108,40" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
+      <text x="145" y="145" font-weight="bold" text-anchor="end">X</text>
+      <text x="335" y="145" font-weight="bold" text-anchor="start">Y</text>
+      <text x="100" y="35" font-weight="bold" text-anchor="end">Z</text>
+      <text x="240" y="145" fill="#1e293b" font-weight="bold" text-anchor="middle">11 cm (z)</text>
+      <text x="110" y="90" fill="#1e293b" font-weight="bold" text-anchor="end">8 cm (y)</text>
+      <text x="230" y="70" fill="#ef4444" font-weight="bold" text-anchor="middle">x = ?</text>
+      <path d="M 175 130 A 25 25 0 0 0 139.4 107.4" fill="none" stroke="#ef4444" stroke-width="2" />
+      <text x="160" y="115" fill="#ef4444" font-weight="bold" text-anchor="start">115°</text>
+    </svg>
+  </div>
 
-<div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
-  <svg viewBox="0 0 350 150" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px' }}>
-    <polygon points="150,130 330,130 108,40" fill="#eff6ff" stroke="#3b82f6" stroke-width="2" />
-    <text x="145" y="145" font-weight="bold" text-anchor="end">X</text>
-    <text x="335" y="145" font-weight="bold" text-anchor="start">Y</text>
-    <text x="100" y="35" font-weight="bold" text-anchor="end">Z</text>
-    <text x="240" y="145" fill="#1e293b" font-weight="bold" text-anchor="middle">11 cm (z)</text>
-    <text x="110" y="90" fill="#1e293b" font-weight="bold" text-anchor="end">8 cm (y)</text>
-    <text x="230" y="70" fill="#ef4444" font-weight="bold" text-anchor="middle">x = ?</text>
-    <path d="M 175 130 A 25 25 0 0 0 139.4 107.4" fill="none" stroke="#ef4444" stroke-width="2" />
-    <text x="160" y="115" fill="#ef4444" font-weight="bold" text-anchor="start">115°</text>
-  </svg>
-</div>
+  <Steps>
+    1. **Identify the rule:** We have SAS, but we need a side. No known pairs exist. We must use the Cosine Rule.
+    2. **Substitute values:**
+       $$
+       \begin{aligned}
+       x^2 &= 8^2 + 11^2 - 2(8)(11)\cos(115^\circ) \\
+       x^2 &= 64 + 121 - 176(-0.4226...) \\
+       x^2 &= 185 + 74.38... \\
+       x^2 &= 259.38...
+       \end{aligned}
+       $$
+    3. **Square root to find $x$:**
+       $$ x = \sqrt{259.38...} = 16.1\text{ cm} \text{ (to 3 s.f.)} $$
+  </Steps>
 
-<Steps>
+</details>
 
-  1. **Identify the rule:** We have SAS, but we need a side. No known pairs exist. We must use the Cosine Rule.
-  2. **Substitute values:**
-     $$
-     \begin{aligned}
-     x^2 &= 8^2 + 11^2 - 2(8)(11)\cos(115^\circ) \\
-     x^2 &= 64 + 121 - 176(-0.4226...) \\
-     x^2 &= 185 + 74.38... \\
-     x^2 &= 259.38...
-     \end{aligned}
-     $$
-  3. **Square root to find $x$:**
-     $$ x = \sqrt{259.38...} = 16.1\text{ cm} \text{ (to 3 s.f.)} $$
-
-</Steps>
-
-<Aside type="note" title="Obtuse Angles & Cosine">
-
+<SteveTip title="Obtuse Angles & Cosine">
   Unlike the Sine Rule, the Cosine Rule is perfectly well-behaved with obtuse angles. Notice in the example above that $\cos(115^\circ)$ naturally became a negative number, which correctly added length to the opposite side.
+</SteveTip>
 
-</Aside>
+</section>
 
 ---
+
+<section className="lesson-chunk">
 
 ## 4. The Ambiguous Case of the Sine Rule
 
@@ -359,12 +386,14 @@ $$
 </div>
 
 <SteveTip title="Calculator Trick">
-
   If you are using `nSolve()` on your TI-Nspire to find an angle with the Sine Rule, and the question specifies the angle is obtuse, you can tell the calculator to look in the right place by adding bounds! Type: `nSolve(sin(x)/7 = sin(30)/12, x) | 90 < x < 180`. This saves you doing the $180^\circ - x$ step manually.
-
 </SteveTip>
 
+</section>
+
 ---
+
+<section className="lesson-chunk">
 
 ## Flowchart: Which Rule Do I Use?
 
@@ -407,6 +436,8 @@ It can be overwhelming knowing where to start. Ask yourself these questions when
     <text x="545" y="245" fill="#64748b" font-weight="bold" font-size="11" text-anchor="middle">NO</text>
   </svg>
 </div>
+
+</section>
 
 ---
 

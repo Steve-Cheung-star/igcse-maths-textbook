@@ -698,47 +698,66 @@
         const chunks = Array.from(document.querySelectorAll('.lesson-chunk'));
         if (chunks.length === 0) return;
 
-        // 1. Rock-solid Active Slide Detection
-        // Finds the chunk whose top edge is closest to the top of the screen
-        let activeIndex = 0;
-        let minDistance = Infinity;
-        
-        chunks.forEach((chunk, index) => {
-          const distance = Math.abs(chunk.getBoundingClientRect().top);
-          if (distance < minDistance) {
-            minDistance = distance;
-            activeIndex = index;
-          }
+        // 1. Rock-solid Active Slide Detection (Fixed the loop bug!)
+        // We check which slide crosses an invisible line 10% down from the top of the screen.
+        const anchorLine = window.innerHeight * 0.1;
+        let activeIndex = chunks.findIndex(chunk => {
+          const rect = chunk.getBoundingClientRect();
+          // The chunk is active if its top is above the line, and its bottom is below the line
+          return rect.top <= anchorLine && rect.bottom > anchorLine;
         });
+        
+        // Failsafe: if we somehow lose track, find the first visible chunk on screen
+        if (activeIndex === -1) {
+          activeIndex = chunks.findIndex(chunk => chunk.getBoundingClientRect().bottom > 0);
+          if (activeIndex === -1) activeIndex = 0;
+        }
 
         const activeChunk = chunks[activeIndex];
         const detailsElements = Array.from(activeChunk.querySelectorAll('details'));
+        const activeRect = activeChunk.getBoundingClientRect();
 
         // 2. Handle Logic based on Next or Prev
         if (nextKeys.includes(e.key)) {
           
-          // Try to open a details tag on the current slide first
-          const firstClosed = detailsElements.find(d => !d.open);
-          if (firstClosed) {
-            firstClosed.open = true;
-            return; // Stop here, wait for next click
+          // A. Try to open a details tag, but ONLY if it's currently visible on screen!
+          const firstClosedVisible = detailsElements.find(d => {
+            const dRect = d.getBoundingClientRect();
+            return !d.open && dRect.top >= 0 && dRect.top <= window.innerHeight - 50;
+          });
+
+          if (firstClosedVisible) {
+            firstClosedVisible.open = true;
+            return; // Stop here
           }
           
-          // If all details are open, jump instantly to the NEXT slide
+          // B. INTRA-SLIDE SCROLLING: If the slide is taller than the screen, page down!
+          if (activeRect.bottom > window.innerHeight + 50) {
+            window.scrollBy({ top: window.innerHeight * 0.85, behavior: 'instant' });
+            return; // Stop here
+          }
+
+          // C. If all details are open and we are at the bottom, jump instantly to the NEXT slide
           if (activeIndex < chunks.length - 1) {
             chunks[activeIndex + 1].scrollIntoView({ behavior: 'instant', block: 'start' });
           }
 
         } else if (prevKeys.includes(e.key)) {
           
-          // Try to close a details tag on the current slide first
+          // A. Try to close a details tag (the last opened one)
           const openedDetails = detailsElements.filter(d => d.open);
           if (openedDetails.length > 0) {
             openedDetails[openedDetails.length - 1].open = false;
-            return; // Stop here, wait for next click
+            return; // Stop here
           }
           
-          // If all details are closed, jump instantly to the PREVIOUS slide
+          // B. INTRA-SLIDE SCROLLING: Page back up!
+          if (activeRect.top < -50) {
+            window.scrollBy({ top: -window.innerHeight * 0.85, behavior: 'instant' });
+            return; // Stop here
+          }
+
+          // C. If all details are closed and we are at the top, jump instantly to the PREVIOUS slide
           if (activeIndex > 0) {
             chunks[activeIndex - 1].scrollIntoView({ behavior: 'instant', block: 'start' });
           }

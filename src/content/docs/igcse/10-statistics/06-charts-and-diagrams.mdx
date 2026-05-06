@@ -3,6 +3,7 @@ title: 10.6 Statistical Charts and Diagrams
 description: Learn how to draw and interpret bar charts, pie charts, pictograms, stem-and-leaf diagrams, and simple frequency distributions for IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 Once data has been collected, it needs to be presented in a way that is easy to understand at a glance. Examiners will test your ability to both **draw** these charts accurately and **interpret** them to find averages or compare different sets of data.
 
 <Aside type="note" title="Types of Categorical & Discrete Data Charts">
@@ -11,9 +12,11 @@ Once data has been collected, it needs to be presented in a way that is easy to 
 * **Pictograms:** Represent data using symbols or icons.
 * **Stem-and-Leaf Diagrams:** Order and display exact raw data while showing its shape.
 </Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Simple Frequency Distributions
 
 Before drawing any chart, data is usually organised into a **frequency distribution**. For simple discrete data, this is often done using a tally chart to count occurrences, which are then summed into a frequency column.
@@ -25,9 +28,11 @@ Before drawing any chart, data is usually organised into a **frequency distribut
 | 2 | ||| | 3 |
 
 This frequency table is the blueprint for everything that follows.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Bar Charts
 
 A standard bar chart uses rectangular bars to represent frequencies. For discrete or categorical data, there **must be gaps** between the bars.
@@ -38,9 +43,12 @@ A standard bar chart uses rectangular bars to represent frequencies. For discret
 3. The vertical axis (Frequency) must have a uniform scale and start from zero.
 4. Always label both axes!
 </Aside>
+</section>
 
+<section className="lesson-chunk">
 ### Dual (Side-by-Side) and Composite (Stacked) Bar Charts
-When comparing two different groups (e.g., Boys and Girls), we use more advanced bar charts.
+When comparing two different groups (e.g., Boys and Girls), we use more advanced bar charts. 
+
 * **Dual Bar Chart:** Places the bars for each category side-by-side. Excellent for directly comparing groups.
 * **Composite (Stacked) Bar Chart:** Stacks the bars on top of each other. Excellent for showing the *total* frequency while still showing the breakdown.
 
@@ -129,12 +137,14 @@ When comparing two different groups (e.g., Boys and Girls), we use more advanced
     <text x="390" y="70" font-size="12" fill="#334155" font-family="sans-serif">Adults</text>
   </svg>
 </div>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Pie Charts
 
-A pie chart uses sectors of a circle to show the relative sizes of data. The whole circle represents the total frequency ($360^\circ$).
+A pie chart uses sectors of a circle to show the relative sizes of data. The whole circle represents the total frequency (**360°**).
 
 ### Calculating Angles
 To draw a pie chart, you must convert frequencies into angles.
@@ -144,15 +154,20 @@ $$
 \text{Angle} = \frac{\text{Frequency}}{\text{Total Frequency}} \times 360^\circ
 $$
 </Aside>
+</section>
 
-**Example:**
-A shop sells 60 ice creams: 30 Vanilla, 20 Chocolate, and 10 Strawberry.
-* Total Frequency = 60
-* Vanilla Angle = $\frac{30}{60} \times 360^\circ = 180^\circ$
-* Chocolate Angle = $\frac{20}{60} \times 360^\circ = 120^\circ$
-* Strawberry Angle = $\frac{10}{60} \times 360^\circ = 60^\circ$
+<section className="lesson-chunk">
+**Example:** A shop sells 60 ice creams: 30 Vanilla, 20 Chocolate, and 10 Strawberry. How do you calculate the angles for a pie chart?
 
-*(Always check that your angles add up to exactly $360^\circ$!)*
+<details className="styled-details">
+  <summary><strong>View Solution</strong></summary>
+  
+  * **Total Frequency** = 60
+  * **Vanilla Angle** = $\frac{30}{60} \times 360^\circ$ = **180°**
+  * **Chocolate Angle** = $\frac{20}{60} \times 360^\circ$ = **120°**
+  * **Strawberry Angle** = $\frac{10}{60} \times 360^\circ$ = **60°**
+
+  *(Always check that your angles add up to exactly **360°**!)*
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 400" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
@@ -180,24 +195,32 @@ A shop sells 60 ice creams: 30 Vanilla, 20 Chocolate, and 10 Strawberry.
     <text x="130" y="130" font-size="14" fill="#e11d48" text-anchor="middle">60°</text>
   </svg>
 </div>
+</details>
 
 <Aside type="caution" title="Common Misconception">
 A pie chart does **not** show the actual frequencies, only the proportions. If you are given a pie chart and asked "How many people chose Chocolate?", you **cannot** answer it unless you are given the Total Frequency in the question!
 </Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Pictograms
 
 A pictogram uses pictures or symbols to represent frequencies. In modern data presentation, it adds a fun visual flair while still retaining mathematical precision.
 
-For example, a student tracked how many times their teacher, Mr. Cheung, was called alternative names by the class over a term. The student used a heart symbol to represent the counts.
-
 <SteveTip title="The Golden Rule of Pictograms">
 You **MUST** include a key! Without a key telling the examiner what one symbol represents (e.g., "1 heart = 4 times"), the entire diagram is meaningless.
 </SteveTip>
+</section>
+
+<section className="lesson-chunk">
+**Example:** A student tracked how many times their teacher, Mr. Cheung, was called alternative names by the class over a term. The student used a heart symbol to represent the counts. 
 
 If a full symbol represents 4 units, then half a symbol represents 2 units, and a quarter of a symbol represents 1 unit. You can show fractions of a symbol to represent precise data.
+
+<details className="styled-details">
+  <summary><strong>View Pictogram</strong></summary>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 500 230" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
@@ -261,14 +284,17 @@ If a full symbol represents 4 units, then half a symbol represents 2 units, and 
     <text x="180" y="195" font-size="12" fill="#64748b" font-style="italic">(2)</text>
   </svg>
 </div>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 5. Stem-and-Leaf Diagrams
 
 A stem-and-leaf diagram is a brilliant way to group data while keeping every single exact original value visible. 
 
-**Data:** $12, 14, 18, 21, 23, 23, 27, 30, 32, 45$
+**Data:** 12, 14, 18, 21, 23, 23, 27, 30, 32, 45
 
 The "stem" is usually the tens digit, and the "leaf" is the units digit. 
 * Remember: The leaves **must** be ordered from smallest to largest!
@@ -276,27 +302,33 @@ The "stem" is usually the tens digit, and the "leaf" is the units digit.
 
 | Stem | Leaf |
 | :--- | :--- |
-| **1** | $2 \ \ \ 4 \ \ \ 8$ |
-| **2** | $1 \ \ \ 3 \ \ \ 3 \ \ \ 7$ |
-| **3** | $0 \ \ \ 2$ |
-| **4** | $5$ |
+| **1** | 2 &nbsp;&nbsp; 4 &nbsp;&nbsp; 8 |
+| **2** | 1 &nbsp;&nbsp; 3 &nbsp;&nbsp; 3 &nbsp;&nbsp; 7 |
+| **3** | 0 &nbsp;&nbsp; 2 |
+| **4** | 5 |
 
-**Key:** $1 | 2$ represents $12$
+**Key:** **1 | 2** represents **12**
+</section>
 
-### Finding Averages from a Stem-and-Leaf
-Because the data is perfectly ordered, it is very easy to find the median and quartiles directly from the diagram.
+<section className="lesson-chunk">
+**Example:** Because the data is perfectly ordered, it is very easy to find the median and quartiles directly from the diagram. How do you find the median and mode from this stem-and-leaf diagram?
 
-<Steps>
-  1. **Count the leaves** to find total frequency ($n = 10$).
-  2. **Find the median:** The middle of 10 values is between the 5th and 6th value.
-     * Counting through the leaves: 12, 14, 18, 21, **23, 23**...
-     * The 5th value is 23, the 6th is 23. The median is $23$.
-  3. **Mode:** The most common leaf in a single row. The row for '2' has two '3's. Mode = $23$.
-</Steps>
+<details className="styled-details">
+  <summary><strong>View Solution</strong></summary>
+  
+  <Steps>
+    1. **Count the leaves** to find total frequency ($n = 10$).
+    2. **Find the median:** The middle of 10 values is between the 5th and 6th value.
+       * Counting through the leaves: 12, 14, 18, 21, **23, 23**...
+       * The 5th value is 23, the 6th is 23. The median is **23**.
+    3. **Mode:** The most common leaf in a single row. The row for '2' has two '3's. Mode = **23**.
+  </Steps>
+</details>
 
 <Aside type="caution" title="Common Misconception">
 When asked for the mode, students often just write down the leaf. If the most common leaf is '3' in the '2' row, the mode is **23**, not just 3!
 </Aside>
+</section>
 
 ---
 

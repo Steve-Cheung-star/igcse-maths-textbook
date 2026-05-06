@@ -3,15 +3,16 @@ title: 7.6 Pythagoras' Theorem and Trigonometry in 3D
 description: Notes and examples on carrying out calculations and solving problems in three dimensions, including calculating the angle between a line and a plane.
 ---
 
+<section className="lesson-chunk">
 Moving from 2D to 3D can feel intimidating because the diagrams look much more complicated. However, there is only one fundamental secret you need to know for this entire topic:
 
 **Every 3D problem is just a series of 2D problems hidden inside a 3D shape.** Your main goal is to have "x-ray vision" to find the hidden right-angled triangles floating inside cuboids, pyramids, and prisms. Once you extract that flat 2D triangle, you just use standard Pythagoras and SOH CAH TOA!
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. 3D Pythagoras (The Shortcut)
-
-
 
 If you need to find the longest diagonal stretching across an empty room (from the bottom-front-left corner to the top-back-right corner), you are finding the **space diagonal** of a cuboid.
 
@@ -21,6 +22,8 @@ For a cuboid with length $l$, width $w$, and height $h$, the space diagonal $d$ 
 $$
 d = \sqrt{l^2 + w^2 + h^2}
 $$
+
+
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 350 280" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
@@ -44,12 +47,12 @@ $$
     <text x="285" y="135" font-weight="bold" fill="#f59e0b" font-style="italic">h</text>
   </svg>
 </div>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. The Angle Between a Line and a Plane
-
-
 
 This is the most heavily tested concept in 3D trigonometry. A **plane** is just a flat surface (like the floor of a room or the base of a pyramid). 
 
@@ -67,6 +70,8 @@ The angle between a line and a plane is **always** the angle tucked between the 
   If you are struggling to visualize the "shadow" of a line, imagine shining a bright flashlight from the ceiling pointing straight down at the floor. The dark line cast onto the floor by your sloping 3D edge is exactly the shadow you need to draw your 2D triangle!
 
 </SteveTip>
+
+
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 250" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
@@ -106,6 +111,7 @@ The angle between a line and a plane is **always** the angle tucked between the 
   The method is similar, but your flashlight casts a different shadow. The vertical drop goes to the center, but the shadow connects to the **middle of the base edge**, NOT to the corner! Always read carefully to see if they want the edge or the face.
 
 </Aside>
+</section>
 
 ---
 

@@ -3,6 +3,7 @@ title: 9.3 Probability of Combined Events
 description: Calculate the probability of combined events using two-way tables, sample space diagrams, tree diagrams, and Venn diagrams, including conditional probabilities for IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 In the real world, we rarely look at just one event in isolation. We often want to find the probability of multiple things happening together, like flipping a coin *and* rolling a dice, or picking two consecutive winning lottery tickets.
 
 <Aside type="note" title="The Golden Rules of Probability">
@@ -20,9 +21,11 @@ When dealing with combined events, ask yourself if you are dealing with an "AND"
    $$
 
 </Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Probability Two-Way Tables
 
 A **two-way table** is a fantastic way to display categorical data across two different variables. It helps calculate both simple probabilities and conditional probabilities by organising frequencies into rows and columns.
@@ -68,9 +71,11 @@ To find a probability from a two-way table, you usually take the number in a spe
 </div>
 
 If a student is chosen at random, the probability they are a boy who prefers Maths is $\frac{24}{100}$.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Sample Space Diagrams
 
 A **sample space diagram** is a 2D grid used to show all the possible outcomes of two events happening at the same time. It is highly visual and guarantees you won't miss any combinations!
@@ -122,24 +127,30 @@ A **sample space diagram** is a 2D grid used to show all the possible outcomes o
   </svg>
 </div>
 
-Looking at the sample space diagram above, there are $4 \times 4 = 16$ total possible outcomes. By counting the highlighted $6$s in the grid, we can easily see there are exactly $3$ ways to score a 6.
+Looking at the sample space diagram above, there are $4 \times 4 = 16$ total possible outcomes. By counting the highlighted 6s in the grid, we can easily see there are exactly 3 ways to score a 6.
 
 $$
 \begin{aligned}
 P(\text{Score of 6}) &= \frac{3}{16}
 \end{aligned}
 $$
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Venn Diagrams and Set Notation
 
 We can also represent the probability of combined events using Venn diagrams and set notation.
 * **Intersection (AND):** $P(A \cap B)$ is the probability of choosing something that belongs to BOTH event $A$ and event $B$ (the overlapping middle section).
 * **Union (OR):** $P(A \cup B)$ is the probability of choosing something that belongs to event $A$, event $B$, or BOTH (the entirety of both circles).
 
+
+</section>
+
 ---
 
+<section className="lesson-chunk">
 ## 4. Tree Diagrams: Replacement vs. No Replacement
 
 Tree diagrams map out sequential events (one thing happening after another). 
@@ -150,7 +161,7 @@ Tree diagrams map out sequential events (one thing happening after another).
 <Aside type="caution" title="The Replacement Trap">
 
 * **With Replacement (Independent):** If you take an item from a bag and put it back, the probabilities for the second pick stay exactly the same.
-* **Without Replacement (Dependent):** If you eat a sweet or keep a card, the total number of items left decreases by $1$. The probability denominators for the second branch MUST decrease by $1$. Notice the perfectly centred yellow highlights below.
+* **Without Replacement (Dependent):** If you eat a sweet or keep a card, the total number of items left decreases by 1. The probability denominators for the second branch MUST decrease by 1. Notice the perfectly centred yellow highlights below.
 
 </Aside>
 
@@ -232,12 +243,14 @@ Below is a visual comparison of picking two balls from a bag containing **3 Red 
 
 <SteveTip title="Adding the Ends">
 
-A brilliant way to check if your tree diagram is correct in an exam is to add up all the final probabilities on the far right. They MUST add up exactly to $1$ (e.g., in the Without Replacement tree: $\frac{6}{20} + \frac{6}{20} + \frac{6}{20} + \frac{2}{20} = \frac{20}{20} = 1$).
+A brilliant way to check if your tree diagram is correct in an exam is to add up all the final probabilities on the far right. They MUST add up exactly to 1 (e.g., in the Without Replacement tree: $\frac{6}{20} + \frac{6}{20} + \frac{6}{20} + \frac{2}{20} = \frac{20}{20} = 1$).
 
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 5. The "At Least One" Trick (Using the Complement)
 
 Sometimes calculating the probability of a combined event directly is exhausting because there are too many paths. A classic example is finding the probability of getting **"at least one"** of something.
@@ -259,9 +272,11 @@ P(\text{At least one 6}) &= 1 - \frac{125}{216} \\
 &= \frac{91}{216}
 \end{aligned}
 $$
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 6. Complex Conditional Events (Box to Box)
 
 At the Extended level, you may encounter problems where an item is moved from one container to another *before* a second draw takes place. This alters the denominators AND the numerators of the second container!
@@ -286,6 +301,7 @@ P(\text{Blue from Box B}) &= \frac{12}{30} + \frac{10}{30} \\
 &= \frac{11}{15}
 \end{aligned}
 $$
+</section>
 
 ---
 

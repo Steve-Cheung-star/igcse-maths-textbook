@@ -5,6 +5,7 @@ description: Recognise, describe, and draw reflections, rotations, enlargements,
 
 import TransformationLab from '../../../../components/TransformationLab.jsx';
 
+<section className="lesson-chunk">
 A transformation changes the position, size, or orientation of a shape. The original shape is called the **Object**, and the new shape is called the **Image** (often denoted with a prime symbol, e.g., $A'$). 
 
 <Aside type="note" title="Transformation Anatomy">
@@ -24,12 +25,16 @@ A transformation changes the position, size, or orientation of a shape. The orig
   Always use a straight edge or ruler to draw the edges of your shapes, projection lines, and mirror lines in the exam. Furthermore, if a question asks for a "single transformation", you will score zero if you list two (e.g., "a translation and a reflection").
 
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Reflection
 
 A reflection is a "flip" of a shape across a straight line, acting as a mirror. Questions can feature horizontal lines ($y = c$), vertical lines ($x = c$), or diagonal lines ($y = x$ or $y = -x$).
+
+
 
 <div className="not-content" style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <div style={{ width: '100%', maxWidth: '600px' }}>
@@ -44,12 +49,16 @@ A reflection is a "flip" of a shape across a straight line, acting as a mirror. 
   * **The Inverse:** The inverse of a reflection is **exactly the same reflection**. Flipping an image back over the same mirror line returns it to the object's position.
 
 </Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Rotation
 
 A rotation turns a shape around a fixed pivot point. This point does not have to be the origin $(0,0)$; it can be anywhere on the grid!
+
+
 
 <div className="not-content" style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <div style={{ width: '100%', maxWidth: '600px' }}>
@@ -72,12 +81,16 @@ A rotation turns a shape around a fixed pivot point. This point does not have to
   A common misconception is thinking you must provide a direction for a $180^\circ$ rotation. Direction is not needed for $180^\circ$ rotations, because turning halfway clockwise or halfway anticlockwise lands you in the exact same position!
 
 </Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Enlargement
 
 An enlargement changes the size of the shape, altering the side lengths. The centre of enlargement acts as a "projector" lens from which the shape grows or shrinks.
+
+
 
 <div className="not-content" style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <div style={{ width: '100%', maxWidth: '600px' }}>
@@ -99,12 +112,16 @@ An enlargement changes the size of the shape, altering the side lengths. The cen
 * **Positive Integer ($SF > 1$):** Shape gets bigger and moves further from the centre.
 * **Fractional ($0 < SF < 1$):** Shape gets smaller and moves closer to the centre.
 * **Negative ($SF < 0$):** Shape passes *through* the centre of enlargement, gets flipped upside down, and ends up on the opposite side.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Translation
 
 A translation is a straight slide. The shape is not rotated, flipped, or resized.
+
+
 
 <Aside type="tip" title="Properties & Inverse of Translation">
 
@@ -123,6 +140,7 @@ A translation is a straight slide. The shape is not rotated, flipped, or resized
     <TransformationLab category="translation" client:only="react" />
   </div>
 </div>
+</section>
 
 ---
 

@@ -3,18 +3,23 @@ title: 7.3 Exact Trigonometric Values
 description: Notes and examples on deriving and memorizing the exact values of sin, cos, and tan for 0°, 30°, 45°, 60°, and 90° for IGCSE 0607 non-calculator papers.
 ---
 
+<section className="lesson-chunk">
 In non-calculator papers, you are expected to know the exact values (in surd/fraction form) for specific "special" angles: **0°, 30°, 45°, 60°, and 90°**. 
 
 Memorizing a table is one way to do it, but knowing *how to build* the table or *where the values come from* is a much safer strategy for an exam.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. The "Special Triangles" Method (Understanding Why)
 
 If you forget a value, you can instantly re-derive it by sketching one of two simple right-angled triangles.
+</section>
 
+<section className="lesson-chunk">
 ### Triangle 1: The 45° Triangle (Isosceles Right-Angled)
-Imagine a right-angled triangle where the two shorter sides are both exactly 1 unit long. Because it is isosceles, the two base angles must be equal: (180 - 90) ÷ 2 = 45°. By Pythagoras, the hypotenuse is $\sqrt{1^2 + 1^2} = \sqrt{2}$.
+Imagine a right-angled triangle where the two shorter sides are both exactly 1 unit long. Because it is isosceles, the two base angles must be equal: $(180^\circ - 90^\circ) \div 2 = 45^\circ$. By Pythagoras, the hypotenuse is $\sqrt{1^2 + 1^2} = \sqrt{2}$.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '1rem 0' }}>
   <svg viewBox="0 0 250 250" width="100%" maxWidth="250px" style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: '8px' }}>
@@ -35,7 +40,9 @@ Using SOH CAH TOA on the 45° angle:
 * **$\sin(45^\circ) = \frac{1}{\sqrt{2}}$**
 * **$\cos(45^\circ) = \frac{1}{\sqrt{2}}$**
 * **$\tan(45^\circ) = \frac{1}{1} = 1$**
+</section>
 
+<section className="lesson-chunk">
 ### Triangle 2: The 30°-60° Triangle (Equilateral Cut in Half)
 Start with an equilateral triangle where all sides are 2 units and all angles are 60°. Drop a perpendicular line down the middle. This creates a right-angled triangle with a base of 1, a hypotenuse of 2, and a top angle of 30°. By Pythagoras, the height is $\sqrt{2^2 - 1^2} = \sqrt{3}$.
 
@@ -68,9 +75,11 @@ Using SOH CAH TOA on the **60°** angle:
 * **$\sin(60^\circ) = \frac{\sqrt{3}}{2}$**
 * **$\cos(60^\circ) = \frac{1}{2}$**
 * **$\tan(60^\circ) = \frac{\sqrt{3}}{1} = \sqrt{3}$**
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Rationalised vs. Unrationalised Forms
 
 You will often see two different versions of the same exact value, depending on the textbook or marking scheme. 
@@ -80,40 +89,52 @@ Mathematically, it is traditionally considered "messy" to leave a surd (square r
 * **For 45°:** $\frac{1}{\sqrt{2}} \times \frac{\sqrt{2}}{\sqrt{2}} = \mathbf{\frac{\sqrt{2}}{2}}$
 * **For 30°:** $\frac{1}{\sqrt{3}} \times \frac{\sqrt{3}}{\sqrt{3}} = \mathbf{\frac{\sqrt{3}}{3}}$
 
-<Aside type="tip" title="Which one should you use?">
+<SteveTip title="Which one should you use?">
   For Cambridge IGCSE, **both forms are completely acceptable** and will score full marks unless the question specifically says "Give your answer with a rational denominator." Don't let the different formats confuse you—they are exactly the same number!
-</Aside>
+</SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. The "0-1-2-3-4" Table Generation Trick
 
 If you struggle with visualizing triangles, use this foolproof trick to generate the entire table from scratch the moment your exam starts. 
 
 <Steps>
-  1. **Write the angles:** 0°, 30°, 45°, 60°, 90°.
-  2. **Write the numbers 0 to 4:** Write 0, 1, 2, 3, 4 under the angles.
-  3. **Square root them all:** $\sqrt{0}, \sqrt{1}, \sqrt{2}, \sqrt{3}, \sqrt{4}$.
-  4. **Divide them all by 2:** This gives you the entire **Sine** row! (Simplify where possible: $\sqrt{4}/2 = 2/2 = 1$).
-  5. **Reverse the row for Cosine:** Just write the Sine row backwards.
-  6. **Divide Sin by Cos for Tangent:** Because $\tan(\theta) = \frac{\sin(\theta)}{\cos(\theta)}$.
-</Steps>
 
+1. **Write the angles:** 0°, 30°, 45°, 60°, 90°.
+2. **Write the numbers 0 to 4:** Write 0, 1, 2, 3, 4 under the angles.
+3. **Square root them all:** $\sqrt{0}, \sqrt{1}, \sqrt{2}, \sqrt{3}, \sqrt{4}$.
+4. **Divide them all by 2:** This gives you the entire **Sine** row! (Simplify where possible: $\frac{\sqrt{4}}{2} = \frac{2}{2} = 1$).
+5. **Reverse the row for Cosine:** Just write the Sine row backwards.
+6. **Divide Sin by Cos for Tangent:** Because $\tan(\theta) = \frac{\sin(\theta)}{\cos(\theta)}$.
+
+</Steps>
+</section>
+
+<section className="lesson-chunk">
 ### The Master Table of Exact Values
 
+<div className="table-wrapper">
 | Angle ($\theta$) | $0^\circ$ | $30^\circ$ | $45^\circ$ | $60^\circ$ | $90^\circ$ |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **$\sin(\theta)$** | $0$ | $\frac{1}{2}$ | $\frac{\sqrt{2}}{2}$ *(or $\frac{1}{\sqrt{2}}$)* | $\frac{\sqrt{3}}{2}$ | $1$ |
 | **$\cos(\theta)$** | $1$ | $\frac{\sqrt{3}}{2}$ | $\frac{\sqrt{2}}{2}$ *(or $\frac{1}{\sqrt{2}}$)* | $\frac{1}{2}$ | $0$ |
 | **$\tan(\theta)$** | $0$ | $\frac{\sqrt{3}}{3}$ *(or $\frac{1}{\sqrt{3}}$)* | $1$ | $\sqrt{3}$ | **Undefined** |
+</div>
 
 *(Note: $\tan(90^\circ)$ is undefined because dividing by zero ($\frac{1}{0}$) is mathematically impossible).*
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. The Viral "Finger Method"
 
 You’ve likely seen this on social media. While it is purely a memorization gimmick and doesn't teach you *why* the math works, it is undeniably useful for some students in a high-pressure exam scenario.
+
+
 
 1. Hold out your **left hand**, palm facing you. 
 2. Assign angles to your fingers starting from the pinky: Pinky = 0°, Ring = 30°, Middle = 45°, Index = 60°, Thumb = 90°.
@@ -122,7 +143,19 @@ You’ve likely seen this on social media. While it is purely a memorization gim
 5. **For Cosine:** Count the fingers **ABOVE** the folded finger. Put that number in a square root and divide by 2. $\frac{\sqrt{\text{top fingers}}}{2}$
 6. **For Tangent:** Put the square root of bottom fingers over the square root of top fingers. $\frac{\sqrt{\text{bottom fingers}}}{\sqrt{\text{top fingers}}}$
 
-*Example for sin(60°): Put down your index finger. There are 3 fingers below it. So, $\sin(60^\circ) = \frac{\sqrt{3}}{2}$.*
+<details className="styled-details">
+  <summary><strong>Example:</strong> Evaluate $\sin(60^\circ)$ using the finger method.</summary>
+  
+  <Steps>
+
+  1. Put down your index finger (which corresponds to $60^\circ$).
+  2. Count the fingers **BELOW** the folded finger. There are 3 fingers below it (Middle, Ring, and Pinky).
+  3. Put that number in a square root and divide by 2.
+  4. Therefore, $\sin(60^\circ) = \frac{\sqrt{3}}{2}$.
+
+  </Steps>
+</details>
+</section>
 
 ---
 

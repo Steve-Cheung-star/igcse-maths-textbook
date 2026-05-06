@@ -3,6 +3,7 @@ title: 8.2 Vectors in Two Dimensions
 description: Understand vector notation, and perform vector arithmetic including scalar multiplication, addition, and subtraction for IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 In mathematics, quantities are split into two categories. A **scalar** has only a magnitude (size), like temperature, mass, or speed. A **vector** has both a magnitude *and* a direction, like velocity or a translation from one point to another.
 
 <Aside type="note" title="Vector Hierarchy">
@@ -12,9 +13,11 @@ In mathematics, quantities are split into two categories. A **scalar** has only 
   3. **Displacement Vectors:** Vectors that describe the journey between two specific points, denoted using the ray command, e.g., $\overrightarrow{AB}$.
 
 </Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Describing Vectors and Translations
 
 A vector describes a journey. On a grid, we write this journey as a **column vector**:
@@ -37,6 +40,8 @@ Vectors can be written in three ways:
   Do not confuse coordinates with vectors! A coordinate $(4, 3)$ tells you a specific *location* on the grid. A vector $\begin{pmatrix} 4 \\ 3 \end{pmatrix}$ tells you a *movement* (go right 4, up 3), which can start from absolutely anywhere on the page.
 
 </SteveTip>
+
+
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="-20 -20 240 240" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -76,9 +81,11 @@ In the diagram above:
 * $\mathbf{c} = \begin{pmatrix} -2 \\ -6 \end{pmatrix}$ (Left 2, Down 6).
 
 <SmartAIGenerator topic="Reading and writing column vectors from a coordinate grid" />
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Multiplying by a Scalar
 
 A scalar is just a regular number. When you multiply a vector by a scalar, you are scaling its length.
@@ -93,12 +100,17 @@ A scalar is just a regular number. When you multiply a vector by a scalar, you a
 
 Algebraically, you simply multiply both the top and bottom numbers of the column vector by the scalar:
 
+<details>
+<summary>View Calculation</summary>
+
 $$
 \begin{aligned}
 3 \begin{pmatrix} 2 \\ -1 \end{pmatrix} &= \begin{pmatrix} 3 \times 2 \\ 3 \times -1 \end{pmatrix} \\
 &= \begin{pmatrix} 6 \\ -3 \end{pmatrix}
 \end{aligned}
 $$
+
+</details>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="-100 -60 260 180" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -147,9 +159,11 @@ $$
   If one vector is a scalar multiple of another (e.g., $\mathbf{a} = \begin{pmatrix} 2 \\ 3 \end{pmatrix}$ and $3\mathbf{a} = \begin{pmatrix} 6 \\ 9 \end{pmatrix}$), the two vectors are perfectly **parallel**. If the scalar is negative, they are parallel but point in opposite directions!
 
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Vector Addition & Subtraction
 
 Vectors can be added and subtracted both algebraically (using column vectors) and geometrically (drawing them).
@@ -159,6 +173,9 @@ To add or subtract column vectors, simply apply the operation to the $x$ values,
 
 * **Addition:**
 
+<details>
+<summary>View Calculation</summary>
+
 $$
 \begin{aligned}
 \begin{pmatrix} 3 \\ 5 \end{pmatrix} + \begin{pmatrix} 2 \\ -1 \end{pmatrix} &= \begin{pmatrix} 3 + 2 \\ 5 + (-1) \end{pmatrix} \\
@@ -166,7 +183,12 @@ $$
 \end{aligned}
 $$
 
+</details>
+
 * **Subtraction:**
+
+<details>
+<summary>View Calculation</summary>
 
 $$
 \begin{aligned}
@@ -175,6 +197,8 @@ $$
 \end{aligned}
 $$
 
+</details>
+
 ### Geometric Method (Head-to-Tail)
 To add vectors geometrically, you connect them **head-to-tail**. 
 1. Draw the first vector.
@@ -182,6 +206,8 @@ To add vectors geometrically, you connect them **head-to-tail**.
 3. The **resultant vector** (the answer) is the straight line drawn from the very start (the first tail) to the very end (the final head).
 
 To subtract a vector, you add its negative. So, $\mathbf{p} - \mathbf{q}$ is identical to $\mathbf{p} + (-\mathbf{q})$. You draw $\mathbf{p}$, then draw $\mathbf{q}$ but pointing it strictly $180^\circ$ backwards!
+
+[Image illustrating the head-to-tail method for geometric vector addition and subtraction]
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="-20 -20 300 180" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -242,6 +268,7 @@ To subtract a vector, you add its negative. So, $\mathbf{p} - \mathbf{q}$ is ide
     </defs>
   </svg>
 </div>
+</section>
 
 ---
 

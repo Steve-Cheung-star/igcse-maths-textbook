@@ -60,13 +60,16 @@
 /* This specifically targets SVGs that are NOT inside asides, NOT inside math, 
    and NOT inside buttons/interactive elements. */
 
+/* --- 1. TARGET ONLY CALCULATION/DIAGRAM SVGs --- */
 .sl-markdown-content > svg, 
 .sl-markdown-content > p > svg:only-child,
-.sl-markdown-content > div > svg {
+.sl-markdown-content > div > svg,
+.lesson-chunk svg,
+.styled-details svg { /* <-- Added this line */
   display: block !important;
-  margin: 0 auto !important; /* Centers the diagram */
+  margin: 0 auto !important; 
   padding: 0 !important;
-  line-height: 0 !important; /* Kills the bottom ghost gap */
+  line-height: 0 !important; 
   background: transparent !important;
 }
 
@@ -79,10 +82,11 @@
 }
 
 /* --- 3. DARK MODE INVERSION (Strictly for Diagrams) --- */
-/* We explicitly exclude 'aside' to keep your Note/Tip icons original */
 [data-theme='dark'] .sl-markdown-content > svg,
 [data-theme='dark'] .sl-markdown-content > p > svg:only-child,
-[data-theme='dark'] .sl-markdown-content > div > svg {
+[data-theme='dark'] .sl-markdown-content > div > svg,
+[data-theme='dark'] .lesson-chunk svg,
+[data-theme='dark'] .styled-details svg { /* <-- Added this line */
   filter: invert(1) hue-rotate(180deg) brightness(1.2) !important;
 }
 
@@ -344,21 +348,32 @@
   }
 }
 
-/* In your CSS file or Astro <style> tag */
-.scroll-table {
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+/* --- UPDATED STYLED-DETAILS --- */
+.styled-details {
+  cursor: pointer;
+  padding: 1rem;
+  /* Use Starlight variables so it adapts automatically */
+  background-color: var(--sl-color-gray-6); 
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  color: var(--sl-color-text); /* Ensures standard text is readable */
 }
 
-.scroll-table table {
-  width: 100%;
-  border-collapse: collapse;
+.styled-details summary {
+  font-weight: bold;
+  /* Use Accent color or White/Black variable */
+  color: var(--sl-color-white); 
+  outline: none;
 }
 
-/* This line fixes your specific "split interval" problem */
-.scroll-table th, 
-.scroll-table td {
-  white-space: nowrap; 
-  padding: 8px 12px;
+/* Fix the bullet points/list items inside the solution */
+.styled-details li, 
+.styled-details p {
+  color: var(--sl-color-text) !important;
+}
+
+/* Ensure LaTeX math inside the solution also adapts */
+.styled-details .katex {
+  color: var(--sl-color-text) !important;
 }

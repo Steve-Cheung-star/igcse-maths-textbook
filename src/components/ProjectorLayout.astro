@@ -1,49 +1,41 @@
 ---
 // src/components/ProjectorLayout.astro
-import ProjectorToolbar from './ProjectorToolbar.astro';
+import ProjectorToolbar from "./ProjectorToolbar.astro";
 ---
 
 <style is:global>
-
   @media (max-width: 768px) {
-    #wb-enter-projector { display: none !important; }
+    #wb-enter-projector {
+      display: none !important;
+    }
   }
 
   /* =========================================
      1. UI HIDING & CLEANUP
      ========================================= */
   html[data-mode="bento"] {
-    scroll-padding-top: 0 !important; 
-    scroll-snap-type: y mandatory !important;
-    scroll-behavior: smooth !important;
+    scroll-padding-top: 0 !important;
+    /* DELETED: scroll-snap-type and scroll-behavior */
   }
 
-  html[data-mode="bento"] .sidebar, 
-  html[data-mode="bento"] .right-sidebar, 
-  html[data-mode="bento"] header, 
-  html[data-mode="bento"] footer,
-  html[data-mode="bento"] .pagination { display: none !important; }
-  
-  html[data-mode="bento"] .main-frame { padding: 0 !important; min-height: 100vh; }
-  html[data-mode="bento"] .sl-container { max-width: 95vw !important; margin: 4rem auto !important; }
-  html[data-mode="bento"] .sl-markdown-content { font-size: 1.8rem !important; line-height: 1.6; }
-  html[data-mode="bento"] .katex-display { margin: 2.5rem 0 !important; font-size: 1.3em !important; }
+  /* ... (Keep your display: none rules here) ... */
 
   /* =========================================
      2. PRESENTATION SLIDE SNAPPING
      ========================================= */
   html[data-mode="bento"] .lesson-chunk {
-    min-height: 100vh !important; 
+    min-height: 100vh !important;
     display: flex !important;
     flex-direction: column !important;
-    justify-content: flex-start !important; 
-    scroll-snap-align: start !important; 
-    scroll-snap-stop: always !important;
-    padding: 12vh 2rem 4rem 2rem !important; 
+    justify-content: flex-start !important;
+    /* DELETED: scroll-snap-align and scroll-snap-stop */
+    padding: 2rem 2rem 4rem 2rem !important;
     box-sizing: border-box !important;
   }
 
-  .lesson-chunk { margin-bottom: 2rem; }
+  .lesson-chunk {
+    margin-bottom: 2rem;
+  }
 
   /* =========================================
      3. OPTIMAL TYPOGRAPHY (Wide & Left-Aligned)
@@ -58,12 +50,14 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
 
   html[data-mode="bento"] .sl-markdown-content aside,
   html[data-mode="bento"] .sl-markdown-content .starlight-aside {
-    float: none !important; clear: both !important;
+    float: none !important;
+    clear: both !important;
     position: relative !important;
     display: block !important;
     width: 100% !important;
-    max-width: none !important; 
-    margin-top: 2.5rem !important; margin-bottom: 2.5rem !important;
+    max-width: none !important;
+    margin-top: 2.5rem !important;
+    margin-bottom: 2.5rem !important;
     margin-left: 0 !important;
     text-align: left !important;
   }
@@ -71,28 +65,41 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
   /* =========================================
      4. NATIVE HARDWARE-ACCELERATED CURSORS
      ========================================= */
-  html[data-mode="bento"][data-tool="laser"], 
+  html[data-mode="bento"][data-tool="laser"],
   html[data-mode="bento"][data-tool="laser"] body,
-  html[data-mode="bento"][data-tool="laser"] * { cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="7" fill="%23ff0000" stroke="white" stroke-width="2.5" box-shadow="0 0 10px red"/></svg>') 12 12, auto !important; }
-  html[data-mode="bento"][data-tool="pen"] body { cursor: crosshair !important; }
-  html[data-mode="bento"][data-tool="eraser"] body { cursor: cell !important; }
+  html[data-mode="bento"][data-tool="laser"] * {
+    cursor:
+      url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="7" fill="%23ff0000" stroke="white" stroke-width="2.5" box-shadow="0 0 10px red"/></svg>')
+        12 12,
+      auto !important;
+  }
+  html[data-mode="bento"][data-tool="pen"] body {
+    cursor: crosshair !important;
+  }
+  html[data-mode="bento"][data-tool="eraser"] body {
+    cursor: cell !important;
+  }
 </style>
 
 <ProjectorToolbar />
 
 <script>
-  import { projectorStore } from '../store/projectorStore.js';
+  import { projectorStore } from "../store/projectorStore.js";
 
   function initLayout() {
     if (document.documentElement.dataset.layoutInit) return;
-    document.documentElement.dataset.layoutInit = 'true';
+    document.documentElement.dataset.layoutInit = "true";
 
     let previousBentoState = false;
 
     function getActiveAnchor() {
-      const headers = Array.from(document.querySelectorAll('.sl-markdown-content h2, .sl-markdown-content h3'));
+      const headers = Array.from(
+        document.querySelectorAll(
+          ".sl-markdown-content h2, .sl-markdown-content h3",
+        ),
+      );
       if (headers.length === 0) return null;
-      let activeAnchor = headers[0]; 
+      let activeAnchor = headers[0];
       for (const header of headers) {
         const rect = header.getBoundingClientRect();
         if (rect.top <= 120) activeAnchor = header;
@@ -101,11 +108,11 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
       return activeAnchor;
     }
 
-    const enterBtn = document.getElementById('wb-enter-projector');
+    const enterBtn = document.getElementById("wb-enter-projector");
     if (enterBtn) {
-      enterBtn.addEventListener('click', () => {
-        if (window.innerWidth < 768) return; 
-        projectorStore.setKey('isBento', true);
+      enterBtn.addEventListener("click", () => {
+        if (window.innerWidth < 768) return;
+        projectorStore.setKey("isBento", true);
       });
     }
 
@@ -115,32 +122,41 @@ import ProjectorToolbar from './ProjectorToolbar.astro';
         const anchor = getActiveAnchor();
 
         if (state.isBento) {
-          document.documentElement.setAttribute('data-mode', 'bento');
-          document.documentElement.setAttribute('data-tool', state.tool);
+          document.documentElement.setAttribute("data-mode", "bento");
+          document.documentElement.setAttribute("data-tool", state.tool);
         } else {
-          document.documentElement.removeAttribute('data-mode');
-          document.documentElement.removeAttribute('data-tool');
+          document.documentElement.removeAttribute("data-mode");
+          document.documentElement.removeAttribute("data-tool");
         }
 
         setTimeout(() => {
-          if (isAtTop) window.scrollTo({ top: 0, behavior: 'instant' });
-          else if (anchor) anchor.scrollIntoView({ behavior: 'instant', block: 'start' });
-        }, 30); 
+          if (isAtTop) window.scrollTo({ top: 0, behavior: "instant" });
+          else if (anchor)
+            anchor.scrollIntoView({ behavior: "instant", block: "start" });
+        }, 30);
         previousBentoState = state.isBento;
       } else if (state.isBento) {
-        document.documentElement.setAttribute('data-tool', state.tool);
+        document.documentElement.setAttribute("data-tool", state.tool);
       }
     });
 
-    window.addEventListener('keydown', (e) => {
-      if (window.innerWidth < 768) return; 
-      if ((e.ctrlKey || e.metaKey) && e.altKey && (e.key?.toLowerCase() === 'p' || e.code === 'KeyP')) {
-        e.preventDefault(); 
-        projectorStore.setKey('isBento', !projectorStore.get().isBento);
-      }
-    }, true);
+    window.addEventListener(
+      "keydown",
+      (e) => {
+        if (window.innerWidth < 768) return;
+        if (
+          (e.ctrlKey || e.metaKey) &&
+          e.altKey &&
+          (e.key?.toLowerCase() === "p" || e.code === "KeyP")
+        ) {
+          e.preventDefault();
+          projectorStore.setKey("isBento", !projectorStore.get().isBento);
+        }
+      },
+      true,
+    );
   }
 
   initLayout();
-  document.addEventListener('astro:page-load', initLayout);
+  document.addEventListener("astro:page-load", initLayout);
 </script>
