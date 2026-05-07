@@ -3,9 +3,12 @@ title: 7.2 Right-Angled Triangles (Trigonometry)
 description: Notes and examples on using SOH CAH TOA, calculating angles to 1 d.p., complex structured problems combining Pythagoras and Trig, bearings, elevation, and depression for IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 While Pythagoras' theorem connects the three *sides* of a right-angled triangle, **Trigonometry** connects the sides with the **angles**. 
 
 Before doing any calculations, you must know how to label your triangle based on the specific angle you are looking at (usually represented by the Greek letter theta, $\theta$).
+
+
 
 * **Hypotenuse (H):** Always the longest side, directly opposite the 90° angle.
 * **Opposite (O):** The side directly across from the angle $\theta$.
@@ -26,10 +29,14 @@ Before doing any calculations, you must know how to label your triangle based on
     <text x="135" y="90" font-family="sans-serif" font-weight="bold" fill="#7e22ce" text-anchor="middle" transform="rotate(-26 135 90)">Hypotenuse (H)</text>
   </svg>
 </div>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. The Trigonometric Ratios: SOH CAH TOA
+
+
 
 To remember the three trigonometric formulas, we use the famous acronym **SOH CAH TOA**. 
 
@@ -43,11 +50,11 @@ $$
 \end{aligned}
 $$
 
-### Example 1: Finding Missing Sides
-Find the length of the unknown side in each triangle. Give answers to 3 significant figures.
+Find the length of the unknown side in each triangle below. Give answers to 3 significant figures.
 
-#### 1a. Using TOA (Standard Orientation)
-Find side $x$. We know the Adjacent (12 cm) and want the Opposite ($x$). This is TOA.
+<details className="styled-details">
+<summary><strong>Example 1a:</strong> Using TOA (Standard Orientation)</summary>
+Find side *x*. We know the Adjacent (12 cm) and want the Opposite (*x*). This is TOA.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -61,7 +68,6 @@ Find side $x$. We know the Adjacent (12 cm) and want the Opposite ($x$). This is
 </div>
 
 <Steps>
-
 1. **Set up and solve:**
    $$
    \begin{aligned}
@@ -70,30 +76,27 @@ Find side $x$. We know the Adjacent (12 cm) and want the Opposite ($x$). This is
    x &\approx 9.38 \text{ cm (to 3 s.f.)}
    \end{aligned}
    $$
-
 </Steps>
+</details>
 
-#### 1b. Using SOH (Flipped Horizontally)
-Find side $y$. Based on the 25° angle, side $y$ is Opposite, and 18 m is the Hypotenuse. This is SOH.
+<details className="styled-details">
+<summary><strong>Example 1b:</strong> Using SOH (Flipped Horizontally)</summary>
+Find side *y*. Based on the 25° angle, side *y* is Opposite, and 18 m is the Hypotenuse. This is SOH.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    {/* Flipped horizontally: Right angle at bottom left */}
     <polygon points="200,150 50,150 50,40" fill="#e0f2fe" stroke="#0284c7" stroke-width="3" />
     <rect x="50" y="135" width="15" height="15" fill="none" stroke="#0284c7" stroke-width="1.5" />
     
-    {/* Angle Arc at bottom right */}
     <path d="M 160 150 A 40 40 0 0 1 168 126" fill="none" stroke="#1e293b" stroke-width="2" />
     <text x="145" y="140" font-family="sans-serif" font-weight="bold" fill="#1e293b">25°</text>
     
-    {/* Labels */}
     <text x="35" y="100" font-family="sans-serif" font-weight="bold" fill="#059669" text-anchor="middle" transform="rotate(-90 35 100)">y (O)</text>
     <text x="135" y="85" font-family="sans-serif" font-weight="bold" fill="#7e22ce" text-anchor="middle" transform="rotate(36 135 85)">18 m (H)</text>
   </svg>
 </div>
 
 <Steps>
-
 1. **Set up and solve:**
    $$
    \begin{aligned}
@@ -102,30 +105,27 @@ Find side $y$. Based on the 25° angle, side $y$ is Opposite, and 18 m is the Hy
    y &\approx 7.61 \text{ m (to 3 s.f.)}
    \end{aligned}
    $$
-
 </Steps>
+</details>
 
-#### 1c. Using CAH (Flipped Vertically)
-Find side $z$. Based on the 60° angle, side $z$ is Adjacent, and 22 km is the Hypotenuse. This is CAH.
+<details className="styled-details">
+<summary><strong>Example 1c:</strong> Using CAH (Flipped Vertically)</summary>
+Find side *z*. Based on the 60° angle, side *z* is Adjacent, and 22 km is the Hypotenuse. This is CAH.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    {/* Flipped vertically: Right angle at top right */}
     <polygon points="50,40 200,40 200,150" fill="#fef3c7" stroke="#d97706" stroke-width="3" />
     <rect x="185" y="40" width="15" height="15" fill="none" stroke="#d97706" stroke-width="1.5" />
     
-    {/* Angle Arc at top left */}
     <path d="M 90 40 A 40 40 0 0 1 82 64" fill="none" stroke="#1e293b" stroke-width="2" />
     <text x="100" y="55" font-family="sans-serif" font-weight="bold" fill="#1e293b">60°</text>
     
-    {/* Labels */}
     <text x="125" y="30" font-family="sans-serif" font-weight="bold" fill="#ea580c" text-anchor="middle">z (A)</text>
     <text x="115" y="110" font-family="sans-serif" font-weight="bold" fill="#7e22ce" text-anchor="middle" transform="rotate(36 115 110)">22 km (H)</text>
   </svg>
 </div>
 
 <Steps>
-
 1. **Set up and solve:**
    $$
    \begin{aligned}
@@ -134,44 +134,41 @@ Find side $z$. Based on the 60° angle, side $z$ is Adjacent, and 22 km is the H
    z &= 11.0 \text{ km (Exact value)}
    \end{aligned}
    $$
-
 </Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Finding Missing Angles (Inverse Trig)
 
 When you know two sides but need the angle, you must use the **inverse trigonometric functions** on your calculator ($\sin^{-1}$, $\cos^{-1}$, $\tan^{-1}$).
 
 <SteveTip title="Strict Rounding Rule for Angles">
-
 In IGCSE Mathematics, **sides** are rounded to 3 significant figures, but **angles in degrees** must be rounded to **1 decimal place (1 d.p.)** unless exact. Do not lose easy accuracy marks here!
-
 </SteveTip>
 
-### Example 2: Finding Missing Angles
-Calculate the size of the unknown angle in each triangle. Give answers to 1 decimal place.
+Calculate the size of the unknown angle in each triangle below. Give answers to 1 decimal place.
 
-#### 2a. Using Sin (Standard Orientation)
-Find angle $A$. Relative to $A$, we know the Opposite (8 cm) and the Hypotenuse (15 cm).
+<details className="styled-details">
+<summary><strong>Example 2a:</strong> Using Sin (Standard Orientation)</summary>
+Find angle *A*. Relative to *A*, we know the Opposite (8 cm) and the Hypotenuse (15 cm).
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <polygon points="50,150 190,150 190,50" fill="#e0e7ff" stroke="#4f46e5" stroke-width="3" />
     <rect x="175" y="135" width="15" height="15" fill="none" stroke="#4f46e5" stroke-width="1.5" />
     
-    {/* Angle Arc at A */}
     <path d="M 85 150 A 35 35 0 0 0 78 130" fill="none" stroke="#1e293b" stroke-width="2" />
     <text x="95" y="142" font-family="sans-serif" font-weight="bold" fill="#1e293b" font-size="16">A</text>
 
-    {/* Labels */}
     <text x="205" y="100" font-family="sans-serif" font-weight="bold" fill="#059669" text-anchor="middle" transform="rotate(-90 205 100)">8 cm (O)</text>
     <text x="120" y="90" font-family="sans-serif" font-weight="bold" fill="#7e22ce" text-anchor="middle" transform="rotate(-36 120 90)">15 cm (H)</text>
   </svg>
 </div>
 
 <Steps>
-
 1. **Set up and solve:**
    $$
    \begin{aligned}
@@ -181,30 +178,27 @@ Find angle $A$. Relative to $A$, we know the Opposite (8 cm) and the Hypotenuse 
    A &= 32.2^\circ \text{ (to 1 d.p.)}
    \end{aligned}
    $$
-
 </Steps>
+</details>
 
-#### 2b. Using Cos (Flipped Horizontally)
-Find angle $B$. Relative to $B$, we know the Adjacent (9 m) and the Hypotenuse (14 m).
+<details className="styled-details">
+<summary><strong>Example 2b:</strong> Using Cos (Flipped Horizontally)</summary>
+Find angle *B*. Relative to *B*, we know the Adjacent (9 m) and the Hypotenuse (14 m).
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    {/* Flipped horizontally: Right angle at bottom left */}
     <polygon points="200,150 50,150 50,50" fill="#fef3c7" stroke="#d97706" stroke-width="3" />
     <rect x="50" y="135" width="15" height="15" fill="none" stroke="#d97706" stroke-width="1.5" />
     
-    {/* Angle Arc at B (bottom right) */}
     <path d="M 160 150 A 40 40 0 0 1 167 128" fill="none" stroke="#1e293b" stroke-width="2" />
     <text x="145" y="142" font-family="sans-serif" font-weight="bold" fill="#1e293b" font-size="16">B</text>
     
-    {/* Labels */}
     <text x="125" y="170" font-family="sans-serif" font-weight="bold" fill="#ea580c" text-anchor="middle">9 m (A)</text>
     <text x="135" y="90" font-family="sans-serif" font-weight="bold" fill="#7e22ce" text-anchor="middle" transform="rotate(34 135 90)">14 m (H)</text>
   </svg>
 </div>
 
 <Steps>
-
 1. **Set up and solve:**
    $$
    \begin{aligned}
@@ -214,30 +208,27 @@ Find angle $B$. Relative to $B$, we know the Adjacent (9 m) and the Hypotenuse (
    B &= 50.0^\circ \text{ (to 1 d.p.)}
    \end{aligned}
    $$
-
 </Steps>
+</details>
 
-#### 2c. Using Tan (Flipped Both Ways)
-Find angle $C$. Relative to $C$, we know the Opposite (21 km) and the Adjacent (5 km).
+<details className="styled-details">
+<summary><strong>Example 2c:</strong> Using Tan (Flipped Both Ways)</summary>
+Find angle *C*. Relative to *C*, we know the Opposite (21 km) and the Adjacent (5 km).
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    {/* Flipped vertically and horizontally: Right angle at top left */}
     <polygon points="200,40 50,40 50,150" fill="#f0fdf4" stroke="#16a34a" stroke-width="3" />
     <rect x="50" y="40" width="15" height="15" fill="none" stroke="#16a34a" stroke-width="1.5" />
     
-    {/* Angle Arc at C (top right) - Fixed sweep flag */}
     <path d="M 160 40 A 40 40 0 0 0 167 64" fill="none" stroke="#1e293b" stroke-width="2" />
     <text x="145" y="55" font-family="sans-serif" font-weight="bold" fill="#1e293b" font-size="16">C</text>
     
-    {/* Labels */}
     <text x="125" y="30" font-family="sans-serif" font-weight="bold" fill="#ea580c" text-anchor="middle">5 km (A)</text>
     <text x="35" y="100" font-family="sans-serif" font-weight="bold" fill="#059669" text-anchor="middle" transform="rotate(-90 35 100)">21 km (O)</text>
   </svg>
 </div>
 
 <Steps>
-
 1. **Set up and solve:**
    $$
    \begin{aligned}
@@ -247,98 +238,90 @@ Find angle $C$. Relative to $C$, we know the Opposite (21 km) and the Adjacent (
    C &= 76.6^\circ \text{ (to 1 d.p.)}
    \end{aligned}
    $$
-
 </Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Structured Question: Combining Pythagoras and Trig (Shared Sides)
 
 A very common investigative Paper 6 style question chains triangles together. You must solve the first triangle to find a "shared side," then use that side (as an exact value) to solve the second triangle.
 
-### Example Question
-In the compound solid shape below:
-1.  Calculate the exact perpendicular height ($h$).
-2.  Calculate the hypotenuse ($y$) of the right triangle.
-3.  Calculate the angle ($\alpha$).
-
-Give final side answers to 3 s.f. and angles to 1 d.p.
+<details className="styled-details">
+<summary><strong>Example 3:</strong> In the compound solid shape below, calculate *h*, *y*, and $\alpha$. Give final side answers to 3 s.f. and angles to 1 d.p.</summary>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 350 200" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    {/* Triangle 1 (Left - Trig) */}
     <polygon points="150,160 50,160 150,40" fill="#e0e7ff" stroke="#4f46e5" stroke-width="3" />
     <rect x="135" y="145" width="15" height="15" fill="none" stroke="#4f46e5" stroke-width="1.5" />
     
-    {/* Angle Arc in left triangle */}
     <path d="M 85 160 A 35 35 0 0 0 70 135" fill="none" stroke="#1e293b" stroke-width="2" />
     <text x="92" y="152" font-family="sans-serif" font-weight="bold" fill="#1e293b">28°</text>
     
-    {/* Triangle 2 (Right - Pythagoras) pointing outwards */}
     <polygon points="150,160 300,160 150,40" fill="#dcfce7" stroke="#16a34a" stroke-width="3" />
     <rect x="150" y="145" width="15" height="15" fill="none" stroke="#16a34a" stroke-width="1.5" />
 
-    {/* Labels Left */}
     <text x="90" y="90" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle" transform="rotate(-50 90 90)">13 cm (H)</text>
-    
-    {/* Labels Shared */}
     <text x="135" y="105" font-family="sans-serif" font-weight="bold" fill="#b91c1c" text-anchor="middle" transform="rotate(-90 135 105)">h (shared)</text>
-    
-    {/* Labels Right */}
     <text x="225" y="180" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">15 cm</text>
     <text x="235" y="95" font-family="sans-serif" font-weight="bold" fill="#ea580c" text-anchor="middle" transform="rotate(39 235 95)">y</text>
     
-    {/* Angle marker alpha on the right - Fixed sweep flag and pos */}
     <path d="M 270 160 A 30 30 0 0 1 276 141" fill="none" stroke="#b91c1c" stroke-width="2" />
     <text x="252" y="155" font-family="sans-serif" font-weight="bold" fill="#b91c1c" font-size="16">α</text>
   </svg>
 </div>
 
-#### Part 1: Calculate $h$ exactly.
-Relative to the 28° angle, $h$ is Opposite and 13 is Hypotenuse. This is SOH.
-$$
-\begin{aligned}
-\sin(28^\circ) &= \frac{h}{13} \\
-h &= 13 \times \sin(28^\circ) \\
-h &\approx 6.103... \text{ cm}
-\end{aligned}
-$$
+<Steps>
+1. **Calculate *h* exactly.** Relative to the 28° angle, *h* is Opposite and 13 is Hypotenuse. This is SOH.
+   $$
+   \begin{aligned}
+   \sin(28^\circ) &= \frac{h}{13} \\
+   h &= 13 \times \sin(28^\circ) \\
+   h &\approx 6.103... \text{ cm}
+   \end{aligned}
+   $$
 
-#### Part 2: Calculate hypotenuse $y$.
-Use Pythagoras' theorem on the right triangle. The legs are $h$ and 15. We need $y$. **Use the unrounded value of $h$!**
-$$
-\begin{aligned}
-h^2 + 15^2 &= y^2 \\
-(6.103...)^2 + 225 &= y^2 \\
-37.249... + 225 &= y^2 \\
-262.249... &= y^2 \\
-y &= \sqrt{262.249...} \\
-y &\approx 16.194... \\
-y &= 16.2 \text{ cm (to 3 s.f.)}
-\end{aligned}
-$$
+2. **Calculate hypotenuse *y*.** Use Pythagoras' theorem on the right triangle. The legs are *h* and 15. We need *y*. **Use the unrounded value of *h*!**
+   $$
+   \begin{aligned}
+   h^2 + 15^2 &= y^2 \\
+   (6.103...)^2 + 225 &= y^2 \\
+   37.249... + 225 &= y^2 \\
+   262.249... &= y^2 \\
+   y &= \sqrt{262.249...} \\
+   y &\approx 16.194... \\
+   y &= 16.2 \text{ cm (to 3 s.f.)}
+   \end{aligned}
+   $$
 
-#### Part 3: Calculate angle $\alpha$.
-Relative to $\alpha$, we know Adjacent = 15 cm. We found hypotenuse $y \approx 16.2$ cm, but let's use the known legs ($h$ and 15) for maximum accuracy using TOA. **Use unrounded $h$!**
-$$
-\begin{aligned}
-\tan(\alpha) &= \frac{\text{Opposite (h)}}{\text{Adjacent (15)}} \\
-\tan(\alpha) &= \frac{6.103...}{15} \\
-\alpha &= \tan^{-1}\left(\frac{6.103...}{15}\right) \\
-\alpha &\approx 22.140...^\circ \\
-\alpha &= 22.1^\circ \text{ (to 1 d.p.)}
-\end{aligned}
-$$
+3. **Calculate angle $\alpha$.** Relative to $\alpha$, we know Adjacent = 15 cm. We found hypotenuse *y* $\approx$ 16.2 cm, but let's use the known legs (*h* and 15) for maximum accuracy using TOA. **Use unrounded *h*!**
+   $$
+   \begin{aligned}
+   \tan(\alpha) &= \frac{\text{Opposite (h)}}{\text{Adjacent (15)}} \\
+   \tan(\alpha) &= \frac{6.103...}{15} \\
+   \alpha &= \tan^{-1}\left(\frac{6.103...}{15}\right) \\
+   \alpha &\approx 22.140...^\circ \\
+   \alpha &= 22.1^\circ \text{ (to 1 d.p.)}
+   \end{aligned}
+   $$
+</Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Angles of Elevation and Depression
+
+
 
 These terms describe angles relative to a **horizontal line of sight**. 
 * **Angle of Elevation:** Looking UP from the horizontal.
 * **Angle of Depression:** Looking DOWN from the horizontal.
 
-<svg xmlns viewBox="0 0 350 200" width="100%" maxWidth="350px" style={{ background: '#f0f4f8', border: '1px solid #ccc', borderRadius: '8px' }}>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 200" width="100%" maxWidth="350px" style={{ background: '#f0f4f8', border: '1px solid #ccc', borderRadius: '8px' }}>
   <defs>
     <marker id="arrowheadRed" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
       <polygon points="0 0, 8 3, 0 6" fill="#e74c3c" />
@@ -385,27 +368,25 @@ These terms describe angles relative to a **horizontal line of sight**.
   <line x1="303" y1="48" x2="63" y2="48" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowheadRed)" />
   <line x1="63" y1="145" x2="303" y2="145" stroke="#3498db" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowheadBlue)" />
 
-  <path d="M 276,60 A 35,35 0 0, 1268,48" fill="none" stroke="#e74c3c" stroke-width="1.5" />
-  <text x="252" y="62" class="math" fill="#e74c3c">θ</text>
+  <path d="M 276,60 A 35,35 0 0,1 268,48" fill="none" stroke="#e74c3c" stroke-width="1.5" />
+  <text x="252" y="62" fill="#e74c3c">θ</text>
 
   <path d="M 98,145 A 35,35 0 0,0 91,134" fill="none" stroke="#3498db" stroke-width="1.5" />
-  <text x="110" y="142" class="math" fill="#3498db" text-anchor="end">θ</text>
+  <text x="110" y="142" fill="#3498db" text-anchor="end">θ</text>
 
   <text x="175" y="90" font-family="sans-serif" font-weight="bold" fill="#8127ae" text-anchor="middle" transform="rotate(-22 175 103)">Line of Sight</text>
 </svg>
 
-<Aside type="note" title="The 'Z-Angle' Secret">
-
+<SteveTip title="The 'Z-Angle' Secret">
 Because horizontal lines are parallel to each other, the angle of elevation from point A to point B is **always exactly equal** to the angle of depression from point B to point A (Alternate Angles).
+</SteveTip>
 
-</Aside>
-
-### Example 4: Angle of Elevation
+<details className="styled-details">
+<summary><strong>Example 4:</strong> Angle of Elevation</summary>
 A surveyor stands 40 m away from the base of a building. The angle of elevation to the top of the building is 52°. If the surveyor's eye level is 1.6 m above the ground, calculate the total height of the building to 3 s.f.
 
 <Steps>
-
-1. **Calculate the triangle's height ($h$) using TOA:**
+1. **Calculate the triangle's height (*h*) using TOA:**
    $$
    \begin{aligned}
    \tan(52^\circ) &= \frac{h}{40} \\
@@ -420,16 +401,19 @@ A surveyor stands 40 m away from the base of a building. The angle of elevation 
    &\approx 52.8 \text{ m (to 3 s.f.)}
    \end{aligned}
    $$
-
 </Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 5. Trigonometry and Bearings
 
 Bearings describe direction and are always measured **clockwise from North** and written as **three digits** (e.g., 045°, 220°). 
 
-### Example 5: Calculating a Bearing
+<details className="styled-details">
+<summary><strong>Example 5:</strong> Calculating a Bearing</summary>
 Ship A is 30 km due West of Port P. Ship B is 14 km due South of Port P. Calculate the bearing of Ship B **from** Ship A.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
@@ -440,15 +424,12 @@ Ship A is 30 km due West of Port P. Ship B is 14 km due South of Port P. Calcula
       </marker>
     </defs>
     
-    {/* Triangle */}
     <polygon points="50,50 250,50 250,180" fill="#fef3c7" stroke="#d97706" stroke-width="3" />
     <rect x="235" y="50" width="15" height="15" fill="none" stroke="#d97706" stroke-width="1.5" />
     
-    {/* Solid Black North Line with Arrow */}
     <line x1="50" y1="50" x2="50" y2="15" stroke="#000" stroke-width="2" marker-end="url(#north-arrow)" />
     <text x="45" y="15" font-family="sans-serif" font-weight="bold" fill="#000" text-anchor="end">N</text>
     
-    {/* Labels */}
     <text x="35" y="60" font-family="sans-serif" font-weight="bold" fill="#1e293b">A</text>
     <text x="260" y="45" font-family="sans-serif" font-weight="bold" fill="#1e293b">P</text>
     <text x="260" y="190" font-family="sans-serif" font-weight="bold" fill="#1e293b">B</text>
@@ -456,14 +437,12 @@ Ship A is 30 km due West of Port P. Ship B is 14 km due South of Port P. Calcula
     <text x="150" y="40" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="middle">30 km</text>
     <text x="254" y="120" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="start">14 km</text>
     
-    {/* Angle Arc inside triangle */}
     <path d="M 90 50 A 40 40 0 0 1 83 72" fill="none" stroke="#2563eb" stroke-width="2" />
     <text x="100" y="70" font-family="sans-serif" font-weight="bold" fill="#2563eb">θ</text>
   </svg>
 </div>
 
 <Steps>
-
 1. **Find angle $\theta$ inside the triangle using TOA:**
    $$
    \begin{aligned}
@@ -482,17 +461,20 @@ Ship A is 30 km due West of Port P. Ship B is 14 km due South of Port P. Calcula
    &= 115.0^\circ \text{ (to 1 d.p.)}
    \end{aligned}
    $$
-
 </Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 6. The Shortest Distance from a Point to a Line
 
 A classic IGCSE question asks for the "shortest distance" from a point to a line. 
 **The shortest distance is ALWAYS the perpendicular distance (it creates a 90° angle with the line).** This instantly creates right-angled triangles for you to solve.
 
-### Example 6: Shortest Distance
+<details className="styled-details">
+<summary><strong>Example 6:</strong> Shortest Distance</summary>
 Town B is 50 km from Town A on a bearing of 070°. A straight road runs completely due East from Town A. What is the shortest distance from Town B to this road?
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
@@ -532,7 +514,6 @@ Town B is 50 km from Town A on a bearing of 070°. A straight road runs complete
 </div>
 
 <Steps>
-
 1. **Visualize the geometry:** Due East is a bearing of 090°. Town B is at a bearing of 070°. 
 2. **Find the angle inside the triangle:** The angle between the East road and the line to B is $90^\circ - 70^\circ = 20^\circ$.
 3. **Set up the right-angled triangle:** We need the perpendicular drop from B to the road (this is the **Opposite** side). We know the Hypotenuse (50 km) and the angle (20°). Use SOH.
@@ -543,8 +524,9 @@ Town B is 50 km from Town A on a bearing of 070°. A straight road runs complete
    &\approx 17.1 \text{ km (to 3 s.f.)}
    \end{aligned}
    $$
-
 </Steps>
+</details>
+</section>
 
 ---
 

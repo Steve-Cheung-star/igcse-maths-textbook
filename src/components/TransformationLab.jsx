@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import katex from 'katex';
+import 'katex/dist/katex.min.css'; // CRITICAL: Required for math formatting
 import './CircleSimulator.css';
 import { getScaledPointerPos, observeCanvasResize } from '../utils/canvasUtils.js';
 
@@ -186,7 +188,6 @@ export default function TransformationLab({ category = 'translation' }) {
         const pX = toScreen({ x: i, y: 0 });
         const pY = toScreen({ x: 0, y: i });
         
-        // Added some extra padding (40 and 35) so the numbers no longer crash into the new arrows!
         if (pX.x > 20 && pX.x < logicalWidth - 40) {
           ctx.fillText(i, pX.x, centreY + 14);
           ctx.fillRect(pX.x - 0.5, centreY - 3, 1, 6);
@@ -204,7 +205,12 @@ export default function TransformationLab({ category = 'translation' }) {
       if (currentMode === 'translation') {
         const v = toolPoints[0];
         imagePoints = points.map(p => ({ x: p.x + v.x, y: p.y + v.y }));
-        displayMath = `Translation Vector: (${v.x}, ${v.y})`;
+        
+        // Render the column vector using KaTeX string to HTML
+        const matrixLatex = `\\begin{pmatrix} ${v.x} \\\\ ${v.y} \\end{pmatrix}`;
+        const renderedMath = katex.renderToString(matrixLatex, { throwOnError: false });
+        
+        displayMath = `Translation Vector: <span style="display:inline-block; margin-left: 8px;">${renderedMath}</span>`;
 
         const sStart = toScreen(points[0]);
         const sEnd = toScreen(imagePoints[0]);
@@ -384,10 +390,8 @@ export default function TransformationLab({ category = 'translation' }) {
           <div className="sim-math-readout"></div>
           <div className="sim-controls">
 
-            {/* Swapped inline styles for the .sim-action-btn CSS class */}
             <button id="switchBtn" className="sim-action-btn"></button>
 
-            {/* Kept minimal inline styles here since these act as small standalone cards for the sliders */}
             {category === 'rotation' && (
               <div style={{ background: 'var(--sl-color-bg)', padding: '0.5rem', borderRadius: '0.5rem', border: '1px solid var(--sl-color-hairline)', color: 'var(--sl-color-text)' }}>
                 <label style={{ display: 'block', fontSize: '0.85rem', marginBottom: '0.25rem', fontWeight: 'bold' }}>
