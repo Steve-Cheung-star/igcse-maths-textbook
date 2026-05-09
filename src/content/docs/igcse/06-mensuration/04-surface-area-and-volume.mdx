@@ -22,19 +22,15 @@ A **prism** is any 3D solid that has a perfectly uniform (constant) cross-sectio
 
 A **cylinder** is simply a prism with a circular cross-section. 
 
-<SteveTip title="General Prism Formulas">
+<Aside type="note" title="General Prism Formulas">
 
 * **Volume:**
-  $$
-  \text{Volume} = \text{Area of cross-section} \times \text{length}
-  $$
+  $$\text{Volume} = \text{Area of cross-section} \times \text{length}$$
 * **Surface Area:**
   Calculate the area of the two identical ends, and add the areas of all the rectangular sides connecting them.
-  $$
-  \text{Total SA} = 2 \times (\text{Area of cross-section}) + (\text{Perimeter of cross-section} \times \text{length})
-  $$
+  $$\text{Total SA} = 2 \times (\text{Area of cross-section}) + (\text{Perimeter of cross-section} \times \text{length})$$
 
-</SteveTip>
+</Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', margin: '2rem 0' }}>
   <svg viewBox="0 0 300 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -89,7 +85,7 @@ A **cylinder** is simply a prism with a circular cross-section.
   </svg>
 </div>
 
-<SteveTip title="Cylinder-Specific Formulas">
+<Aside type="note" title="Cylinder-Specific Formulas">
 
 While a cylinder follows the general rules of a prism, its circular nature gives it specific algebraic formulas that you should be comfortable with:
 * **Base Area (Cross-section):** $\pi r^2$
@@ -97,7 +93,7 @@ While a cylinder follows the general rules of a prism, its circular nature gives
 * **Total Surface Area (TSA):** $2\pi r^2 + 2\pi r h$
 * **Volume:** $\pi r^2 h$
 
-</SteveTip>
+</Aside>
 </section>
 
 <section className="lesson-chunk">
@@ -105,16 +101,13 @@ While a cylinder follows the general rules of a prism, its circular nature gives
 Calculate the exact volume of a cylinder with a radius of $6\text{ cm}$ and a height of $10\text{ cm}$. Give your answer in terms of $\pi$.
 
 <details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
 <Steps>
 
 1. Identify the area of the base (a circle):
-   $$
-   \text{Base Area} = \pi r^2 = \pi \times 6^2 = 36\pi\text{ cm}^2
-   $$
+   $$\text{Base Area} = \pi r^2 = \pi \times 6^2 = 36\pi\text{ cm}^2$$
 2. Multiply by the height to find the volume:
-   $$
-   \text{Volume} = 36\pi \times 10 = 360\pi\text{ cm}^3
-   $$
+   $$\text{Volume} = 36\pi \times 10 = 360\pi\text{ cm}^3$$
 
 </Steps>
 </details>
@@ -127,14 +120,12 @@ Calculate the exact volume of a cylinder with a radius of $6\text{ cm}$ and a he
 
 Any 3D shape that tapers from a flat base to a single point (an apex) has exactly **one-third** the volume of a prism with the same base and height. A cone is simply a pyramid with a circular base.
 
-<SteveTip title="General Pyramid & Cone Volume">
+<Aside type="note" title="General Pyramid & Cone Volume">
 
 * **Volume:**
-  $$
-  \text{Volume} = \frac{1}{3} \times \text{Base Area} \times \text{Perpendicular Height}
-  $$
+  $$\text{Volume} = \frac{1}{3} \times \text{Base Area} \times \text{Perpendicular Height}$$
 
-</SteveTip>
+</Aside>
 </section>
 
 <section className="lesson-chunk">
@@ -180,9 +171,7 @@ The surface area of a cone is made of two parts: the flat circular base and the 
 For the **volume**, you must use the perpendicular height ($h$). 
 For the **curved surface area**, you must use the slanted height ($l$). 
 Examiners will often give you one, and force you to calculate the other using Pythagoras' Theorem:
-$$
-l^2 = r^2 + h^2
-$$
+$$l^2 = r^2 + h^2$$
 
 </SteveTip>
 
@@ -213,7 +202,7 @@ $$
   </svg>
 </div>
 
-<SteveTip title="Cone-Specific Formulas">
+<Aside type="note" title="Cone-Specific Formulas">
 
 Just like the cylinder, the circular properties of a cone mean it has precise formulas you need to use:
 * **Base Area:** $\pi r^2$
@@ -221,7 +210,7 @@ Just like the cylinder, the circular properties of a cone mean it has precise fo
 * **Total Surface Area (TSA):** $\pi r^2 + \pi r l$
 * **Volume:** $\frac{1}{3}\pi r^2 h$
 
-</SteveTip>
+</Aside>
 </section>
 
 ---
@@ -232,13 +221,9 @@ Just like the cylinder, the circular properties of a cone mean it has precise fo
 Spheres are perfectly symmetrical 3D objects. 
 
 * **Volume of a Sphere:**
-  $$
-  V = \frac{4}{3} \pi r^3
-  $$
+  $$V = \frac{4}{3} \pi r^3$$
 * **Surface Area of a Sphere:**
-  $$
-  SA = 4 \pi r^2
-  $$
+  $$SA = 4 \pi r^2$$
 
 <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 250" width="100%" maxWidth="200px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -279,7 +264,9 @@ Spheres are perfectly symmetrical 3D objects.
     <text x="125" y="240" font-size="14" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Hemisphere</text>
   </svg>
 </div>
+</section>
 
+<section className="lesson-chunk">
 ### The Hemisphere Surface Area Trap
 A hemisphere is exactly half of a sphere. 
 * The **volume** is simply half the volume of a sphere: $\frac{2}{3} \pi r^3$.
@@ -288,9 +275,7 @@ A hemisphere is exactly half of a sphere.
 <SteveTip title="Hemisphere Total Surface Area">
 
 Total SA of a solid hemisphere = Curved SA + Flat Base Area
-$$
-\text{Total SA} = (2\pi r^2) + (\pi r^2) = 3\pi r^2
-$$
+$$\text{Total SA} = (2\pi r^2) + (\pi r^2) = 3\pi r^2$$
 Always read the question carefully to check if the hemisphere is "solid" (needs the base area added) or "open/hollow" like a bowl (curved area only).
 
 </SteveTip>
@@ -311,24 +296,17 @@ Another common scenario is **conservation of volume**, where one shape is melted
 The surface area of a sphere is $144\pi\text{ cm}^2$. Calculate its radius.
 
 <details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
 <Steps>
 
 1. Write down the surface area formula:
-   $$
-   SA = 4\pi r^2
-   $$
+   $$SA = 4\pi r^2$$
 2. Substitute the known value:
-   $$
-   144\pi = 4\pi r^2
-   $$
+   $$144\pi = 4\pi r^2$$
 3. Cancel $\pi$ from both sides:
-   $$
-   144 = 4r^2
-   $$
+   $$144 = 4r^2$$
 4. Divide by 4 and square root:
-   $$
-   36 = r^2 \implies r = 6\text{ cm}
-   $$
+   $$36 = r^2 \implies r = 6\text{ cm}$$
 
 </Steps>
 </details>
@@ -339,29 +317,18 @@ The surface area of a sphere is $144\pi\text{ cm}^2$. Calculate its radius.
 Three identical solid metal spheres, each with a radius of $2\text{ cm}$, are melted down to form a single solid cone with a base radius of $4\text{ cm}$. Calculate the perpendicular height of the cone.
 
 <details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
 <Steps>
 
 1. Calculate the total volume of the 3 spheres:
-   $$
-   \text{Vol}_{\text{spheres}} = 3 \times \left( \frac{4}{3} \pi r^3 \right) = 3 \times \left( \frac{4}{3} \pi \times 2^3 \right) = 4 \pi \times 8 = 32\pi\text{ cm}^3
-   $$
+   $$\text{Vol}_{\text{spheres}} = 3 \times \left( \frac{4}{3} \pi r^3 \right) = 3 \times \left( \frac{4}{3} \pi \times 2^3 \right) = 4 \pi \times 8 = 32\pi\text{ cm}^3$$
 2. Set this equal to the volume formula of the cone:
-   $$
-   \text{Vol}_{\text{cone}} = \frac{1}{3} \pi r^2 h
-   $$
-   $$
-   32\pi = \frac{1}{3} \pi (4)^2 h
-   $$
+   $$\text{Vol}_{\text{cone}} = \frac{1}{3} \pi r^2 h$$
+   $$32\pi = \frac{1}{3} \pi (4)^2 h$$
 3. Solve for $h$: Cancel $\pi$ and simplify:
-   $$
-   32 = \frac{1}{3} \times 16 \times h
-   $$
-   $$
-   32 = \frac{16h}{3}
-   $$
-   $$
-   96 = 16h \implies h = 6\text{ cm}
-   $$
+   $$32 = \frac{1}{3} \times 16 \times h$$
+   $$32 = \frac{16h}{3}$$
+   $$96 = 16h \implies h = 6\text{ cm}$$
 
 </Steps>
 </details>

@@ -3,7 +3,7 @@ title: 2.8 Proportion
 description: Express direct and inverse proportion algebraically, find unknown quantities, and identify the best variation model for given data.
 ---
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 In mathematics, **proportion** (or variation) describes how one variable changes in relation to another. We use the proportional symbol **$\propto$** to show this relationship. 
 
 To solve proportion problems, we always replace the $\propto$ symbol with an equals sign ($=$) and a **constant of proportionality**, usually represented by the letter **$k$**.
@@ -11,12 +11,12 @@ To solve proportion problems, we always replace the $\propto$ symbol with an equ
 
 ---
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 ## 1. Translating Proportionality Statements
 
 Exams will use specific phrasing to tell you exactly what power or root to use in your equation. You must memorise these translations before you can set up your algebra:
 
-<div class="table-wrapper">
+<div className="table-wrapper">
 
 | English Phrasing | Algebraic Translation | Proportionality Equation |
 | :--- | :--- | :--- |
@@ -29,7 +29,7 @@ Exams will use specific phrasing to tell you exactly what power or root to use i
 </div>
 </section>
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 <SteveTip title="The Golden Rule of Proportion">
   Every standard proportion problem follows the exact same three steps:
   <Steps>
@@ -42,7 +42,7 @@ Exams will use specific phrasing to tell you exactly what power or root to use i
 
 ---
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 ## 2. Direct Proportion
 
 If two quantities are in **direct proportion**, as one increases, the other increases at the same relative rate. Graphically, standard direct proportion ($y = kx$) is a straight line passing through the origin $(0,0)$.
@@ -61,15 +61,15 @@ If two quantities are in **direct proportion**, as one increases, the other incr
 </svg>
 </section>
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 ### Algebraic Direct Proportion
 
 Variables aren't always proportional to just $x$. They can be proportional to powers or roots of $x$, as shown in the translation table.
 
 **Example:** $y$ is directly proportional to the square of $x$. When $x = 3$, $y = 36$. Find the value of $y$ when $x = 5$.
 
-<details class="styled-details">
-<summary>View Solution</summary>
+<details className="styled-details">
+<summary>View algebraic solution</summary>
 <Steps>
 1. **Set it up**
    $$
@@ -101,15 +101,15 @@ Variables aren't always proportional to just $x$. They can be proportional to po
 </details>
 </section>
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 ### Direct Proportion in Word Problems
 
 Real-world scenarios often use direct proportion. Common examples include currency conversion (more USD = more EUR), or mass and volume (more volume of a liquid = more mass). 
 
 **Example:** The distance a heavy ball falls ($d$) is directly proportional to the square of the time ($t$) it has been falling. If it falls $20\text{ m}$ in $2$ seconds, how far does it fall in $5$ seconds?
 
-<details class="styled-details">
-<summary>View Solution</summary>
+<details className="styled-details">
+<summary>View word problem solution</summary>
 <Steps>
 1. **Set up**
    $$
@@ -142,13 +142,13 @@ Real-world scenarios often use direct proportion. Common examples include curren
 
 ---
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 ## 3. Inverse Proportion
 
 If two quantities are in **inverse proportion**, as one increases, the other *decreases* at a proportional rate. We express this by making the variable a denominator (the reciprocal). Graphically, inverse proportion creates a curve that approaches, but never touches, the axes (an asymptote).
 
-* **Standard Inverse:** $y \propto \frac{1}{x}$ which becomes $y = \frac{k}{x}$
-* **Inverse Square:** $y \propto \frac{1}{x^2}$ which becomes $y = \frac{k}{x^2}$
+* **Standard Inverse:** $y \propto \dfrac{1}{x}$ which becomes $y = \dfrac{k}{x}$
+* **Inverse Square:** $y \propto \dfrac{1}{x^2}$ which becomes $y = \dfrac{k}{x^2}$
 
 <svg viewBox="0 0 400 250" style="background: transparent; margin: 1.5rem 0;" xmlns="http://www.w3.org/2000/svg">
   <line x1="40" y1="210" x2="360" y2="210" stroke="#333" stroke-width="2" />
@@ -161,37 +161,37 @@ If two quantities are in **inverse proportion**, as one increases, the other *de
 </svg>
 </section>
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 ### Algebraic Inverse Proportion
 
 **Example:** $p$ is inversely proportional to the square root of $q$. When $q = 25$, $p = 4$. Find the value of $q$ when $p = 10$.
 
-<details class="styled-details">
-<summary>View Solution</summary>
+<details className="styled-details">
+<summary>View inverse proportion solution</summary>
 <Steps>
 1. **Set it up**
    $$
    \begin{aligned}
-   p &\propto \frac{1}{\sqrt{q}} \\
-   p &= \frac{k}{\sqrt{q}}
+   p &\propto \dfrac{1}{\sqrt{q}} \\
+   p &= \dfrac{k}{\sqrt{q}}
    \end{aligned}
    $$
 2. **Find $k$**
    Substitute $q = 25$ and $p = 4$:
    $$
    \begin{aligned}
-   4 &= \frac{k}{\sqrt{25}} \\
-   4 &= \frac{k}{5} \\
+   4 &= \dfrac{k}{\sqrt{25}} \\
+   4 &= \dfrac{k}{5} \\
    k &= 20
    \end{aligned}
    $$
-   The exact formula is **$p = \frac{20}{\sqrt{q}}$**.
+   The exact formula is **$p = \dfrac{20}{\sqrt{q}}$**.
 3. **Solve for the unknown**
    Substitute $p = 10$:
    $$
    \begin{aligned}
-   10 &= \frac{20}{\sqrt{q}} \\
-   \sqrt{q} &= \frac{20}{10} \\
+   10 &= \dfrac{20}{\sqrt{q}} \\
+   \sqrt{q} &= \dfrac{20}{10} \\
    \sqrt{q} &= 2
    \end{aligned}
    $$
@@ -206,41 +206,41 @@ If two quantities are in **inverse proportion**, as one increases, the other *de
 </details>
 </section>
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 ### Inverse Proportion Word Problems (The "Man-Power" Rule)
 
 The most common real-world application of inverse proportion is "Work and Time" problems involving man-power or speed. 
 
-<SteveTip title="The More-is-Less Logic">
+<Aside type="tip" title="The More-is-Less Logic">
   Think logically about the scenario: If you have **more** workers on a job, it will take **less** time to finish it. If you drive at a **higher** speed, it will take **less** time to reach your destination. This "more is less" relationship is the definition of **inverse proportion**.
-</SteveTip>
+</Aside>
 
 **Example:** A team of $5$ decorators can finish painting a house in $12$ days. Assuming they all work at the exact same rate, how many decorators are needed to finish the house in $4$ days?
 
-<details class="styled-details">
-<summary>View Solution</summary>
+<details className="styled-details">
+<summary>View man-power solution</summary>
 <Steps>
 1. **Set up**
    Time ($T$) is inversely proportional to Workers ($W$). 
    $$
    \begin{aligned}
-   T &= \frac{k}{W}
+   T &= \dfrac{k}{W}
    \end{aligned}
    $$
 2. **Find $k$**
    Here, $k$ represents the total number of "man-days" required for the whole job.
    $$
    \begin{aligned}
-   12 &= \frac{k}{5} \\
+   12 &= \dfrac{k}{5} \\
    k &= 60
    \end{aligned}
    $$
-   The equation is $T = \frac{60}{W}$.
+   The equation is $T = \dfrac{60}{W}$.
 3. **Solve**
    We need the job done in $T = 4$ days. 
    $$
    \begin{aligned}
-   4 &= \frac{60}{W} \\
+   4 &= \dfrac{60}{W} \\
    4W &= 60 \\
    W &= 15
    \end{aligned}
@@ -252,7 +252,7 @@ The most common real-world application of inverse proportion is "Work and Time" 
 
 ---
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 ## 4. Linking Multiple Proportionality Models
 
 In harder higher-tier questions, you may be given two separate proportionality relationships that share a common variable. You will need to find the equations for both separately, and then substitute them into a combined algebraic expression. 
@@ -260,15 +260,15 @@ In harder higher-tier questions, you may be given two separate proportionality r
 These questions heavily test your ability to simplify algebraic fractions, use the rules of indices, and manipulate surds.
 </section>
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 ### Example: Combining and Simplifying
 
 **Question:** $x$ is directly proportional to the square of $w$. When $w = 2$, $x = 12$. 
 $y$ is inversely proportional to the fourth power of $w$. When $w = 2$, $y = 3$. 
 Find an expression for $\sqrt{xy}$ in its simplest form, in terms of $w$.
 
-<details class="styled-details">
-<summary>View Solution</summary>
+<details className="styled-details">
+<summary>View combining equations solution</summary>
 <Steps>
 1. **Find the equation for $x$**
    $$
@@ -283,27 +283,27 @@ Find an expression for $\sqrt{xy}$ in its simplest form, in terms of $w$.
 2. **Find the equation for $y$**
    $$
    \begin{aligned}
-   y &= \frac{k_2}{w^4} \\
-   3 &= \frac{k_2}{2^4} \\
-   3 &= \frac{k_2}{16} \\
+   y &= \dfrac{k_2}{w^4} \\
+   3 &= \dfrac{k_2}{2^4} \\
+   3 &= \dfrac{k_2}{16} \\
    k_2 &= 48
    \end{aligned}
    $$
-   **Equation 2:** $y = \frac{48}{w^4}$
+   **Equation 2:** $y = \dfrac{48}{w^4}$
 3. **Substitute both into the required expression and simplify**
    We need to find $xy$. First, find $xy$:
    $$
    \begin{aligned}
-   xy &= (3w^2) \times \left(\frac{48}{w^4}\right) \\[1ex]
-   xy &= \frac{144w^2}{w^4} \\[1ex]
-   xy &= \frac{144}{w^2}
+   xy &= (3w^2) \times \left(\dfrac{48}{w^4}\right) \\[1ex]
+   xy &= \dfrac{144w^2}{w^4} \\[1ex]
+   xy &= \dfrac{144}{w^2}
    \end{aligned}
    $$
    Now, take the square root:
    $$
    \begin{aligned}
-   \sqrt{xy} &= \sqrt{\frac{144}{w^2}} \\[1ex]
-   \sqrt{xy} &= \frac{12}{w}
+   \sqrt{xy} &= \sqrt{\dfrac{144}{w^2}} \\[1ex]
+   \sqrt{xy} &= \dfrac{12}{w}
    \end{aligned}
    $$
 </Steps>
@@ -312,25 +312,25 @@ Find an expression for $\sqrt{xy}$ in its simplest form, in terms of $w$.
 
 ---
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 ## 5. Identifying the Best Variation Model
 
 Sometimes, instead of being told the relationship, you are given a table of data and asked to find the model that fits. 
 
-<SteveTip title="Testing for k">
+<Aside type="tip" title="Testing for k">
 To do this, test different formulas to see which one produces a **constant value for $k$** across all pairs of data:
-* If $y = kx$, then **$k = \frac{y}{x}$** (Direct Linear)
-* If $y = kx^2$, then **$k = \frac{y}{x^2}$** (Direct Square)
-* If $y = \frac{k}{x}$, then **$k = yx$** (Inverse Linear)
-</SteveTip>
+* If $y = kx$, then **$k = \dfrac{y}{x}$** (Direct Linear)
+* If $y = kx^2$, then **$k = \dfrac{y}{x^2}$** (Direct Square)
+* If $y = \dfrac{k}{x}$, then **$k = yx$** (Inverse Linear)
+</Aside>
 </section>
 
-<section class="lesson-chunk">
+<section className="lesson-chunk">
 ### Example: Finding the Model from Data
 
 Identify the correct variation model for the data below:
 
-<div class="table-wrapper">
+<div className="table-wrapper">
 
 | $x$ | 2 | 3 | 4 |
 | :--- | :--- | :--- | :--- |
@@ -338,22 +338,22 @@ Identify the correct variation model for the data below:
 
 </div>
 
-<details class="styled-details">
-<summary>View Solution</summary>
+<details className="styled-details">
+<summary>View data model solution</summary>
 Let's test the data against different models to see which gives a constant $k$.
 
-**Test 1: Linear ($k = \frac{y}{x}$)**
+**Test 1: Linear ($k = \dfrac{y}{x}$)**
 * $12 \div 2 = 6$
 * $27 \div 3 = 9$ 
 
 This is not constant. The relationship is NOT $y = kx$.
 
-**Test 2: Square ($k = \frac{y}{x^2}$)**
+**Test 2: Square ($k = \dfrac{y}{x^2}$)**
 * $12 \div 2^2 = 12 \div 4 = 3$
 * $27 \div 3^2 = 27 \div 9 = 3$
 * $48 \div 4^2 = 48 \div 16 = 3$
 
-Because $\frac{y}{x^2}$ always equals $3$, the constant of proportionality is $k = 3$. 
+Because $\dfrac{y}{x^2}$ always equals $3$, the constant of proportionality is $k = 3$. 
 The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
 </details>
 </section>
@@ -444,37 +444,37 @@ The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
   <TabItem label="✅ Solution 2">
     **a)**
     <Steps>
-      1. **Set up:** $T = \frac{k}{M}$  
-      2. **Find $k$:** $15 = \frac{k}{6} \implies k = 90$. Equation: $T = \frac{90}{M}$  
-      3. **Solve:** $T = \frac{90}{9} \implies T = 10$. It will take **10 hours**.  
+      1. **Set up:** $T = \dfrac{k}{M}$  
+      2. **Find $k$:** $15 = \dfrac{k}{6} \implies k = 90$. Equation: $T = \dfrac{90}{M}$  
+      3. **Solve:** $T = \dfrac{90}{9} \implies T = 10$. It will take **10 hours**.  
     </Steps>
 
     **b)**
     <Steps>
-      1. **Set up:** $T = \frac{k}{S}$  
-      2. **Find $k$:** $4 = \frac{k}{60} \implies k = 240$. Equation: $T = \frac{240}{S}$  
-      3. **Solve:** $T = \frac{240}{80} \implies T = 3$. It will take **3 hours**.  
+      1. **Set up:** $T = \dfrac{k}{S}$  
+      2. **Find $k$:** $4 = \dfrac{k}{60} \implies k = 240$. Equation: $T = \dfrac{240}{S}$  
+      3. **Solve:** $T = \dfrac{240}{80} \implies T = 3$. It will take **3 hours**.  
     </Steps>
 
     **c)**
     <Steps>
-      1. **Set up:** $D = \frac{k}{B}$  
-      2. **Find $k$:** $5 = \frac{k}{8} \implies k = 40$. Equation: $D = \frac{40}{B}$  
-      3. **Solve:** $2 = \frac{40}{B} \implies B = \frac{40}{2} \implies B = 20$. It requires **20 builders**.  
+      1. **Set up:** $D = \dfrac{k}{B}$  
+      2. **Find $k$:** $5 = \dfrac{k}{8} \implies k = 40$. Equation: $D = \dfrac{40}{B}$  
+      3. **Solve:** $2 = \dfrac{40}{B} \implies B = \dfrac{40}{2} \implies B = 20$. It requires **20 builders**.  
     </Steps>
 
     **d)**
     <Steps>
-      1. **Set up:** $T = \frac{k}{P}$  
-      2. **Find $k$:** $10 = \frac{k}{12} \implies k = 120$. Equation: $T = \frac{120}{P}$  
-      3. **Solve:** $T = \frac{120}{5} \implies T = 24$. It will take **24 hours**.  
+      1. **Set up:** $T = \dfrac{k}{P}$  
+      2. **Find $k$:** $10 = \dfrac{k}{12} \implies k = 120$. Equation: $T = \dfrac{120}{P}$  
+      3. **Solve:** $T = \dfrac{120}{5} \implies T = 24$. It will take **24 hours**.  
     </Steps>
 
     **e)**
     <Steps>
-      1. **Set up:** $D = \frac{k}{C}$  
-      2. **Find $k$:** $15 = \frac{k}{20} \implies k = 300$. Equation: $D = \frac{300}{C}$  
-      3. **Solve:** The new number of cows is 25. $D = \frac{300}{25} \implies D = 12$. It will last **12 days**.  
+      1. **Set up:** $D = \dfrac{k}{C}$  
+      2. **Find $k$:** $15 = \dfrac{k}{20} \implies k = 300$. Equation: $D = \dfrac{300}{C}$  
+      3. **Solve:** The new number of cows is 25. $D = \dfrac{300}{25} \implies D = 12$. It will last **12 days**.  
     </Steps>
 
     **f)**
@@ -569,44 +569,44 @@ The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
   <TabItem label="✅ Solution 4">
     **a)**
     <Steps>
-      1. **Set up:** $I = \frac{k}{d^2}$  
-      2. **Find $k$:** $40 = \frac{k}{3^2} \implies 40 = \frac{k}{9} \implies k = 360$. Equation: $I = \frac{360}{d^2}$  
-      3. **Solve:** $I = \frac{360}{6^2} \implies I = \frac{360}{36} \implies I = 10$.  
+      1. **Set up:** $I = \dfrac{k}{d^2}$  
+      2. **Find $k$:** $40 = \dfrac{k}{3^2} \implies 40 = \dfrac{k}{9} \implies k = 360$. Equation: $I = \dfrac{360}{d^2}$  
+      3. **Solve:** $I = \dfrac{360}{6^2} \implies I = \dfrac{360}{36} \implies I = 10$.  
     </Steps>
 
     **b)**
     <Steps>
-      1. **Set up:** $F = \frac{k}{r^2}$  
-      2. **Find $k$:** $100 = \frac{k}{2^2} \implies 100 = \frac{k}{4} \implies k = 400$. Equation: $F = \frac{400}{r^2}$  
-      3. **Solve:** $F = \frac{400}{5^2} \implies F = \frac{400}{25} \implies F = 16$.  
+      1. **Set up:** $F = \dfrac{k}{r^2}$  
+      2. **Find $k$:** $100 = \dfrac{k}{2^2} \implies 100 = \dfrac{k}{4} \implies k = 400$. Equation: $F = \dfrac{400}{r^2}$  
+      3. **Solve:** $F = \dfrac{400}{5^2} \implies F = \dfrac{400}{25} \implies F = 16$.  
     </Steps>
 
     **c)**
     <Steps>
-      1. **Set up:** $y = \frac{k}{x^2}$  
-      2. **Find $k$:** $3 = \frac{k}{4^2} \implies 3 = \frac{k}{16} \implies k = 48$. Equation: $y = \frac{48}{x^2}$  
-      3. **Solve:** $y = \frac{48}{2^2} \implies y = \frac{48}{4} \implies y = 12$.  
+      1. **Set up:** $y = \dfrac{k}{x^2}$  
+      2. **Find $k$:** $3 = \dfrac{k}{4^2} \implies 3 = \dfrac{k}{16} \implies k = 48$. Equation: $y = \dfrac{48}{x^2}$  
+      3. **Solve:** $y = \dfrac{48}{2^2} \implies y = \dfrac{48}{4} \implies y = 12$.  
     </Steps>
 
     **d)**
     <Steps>
-      1. **Set up:** $E = \frac{k}{v^3}$  
-      2. **Find $k$:** $10 = \frac{k}{2^3} \implies 10 = \frac{k}{8} \implies k = 80$. Equation: $E = \frac{80}{v^3}$  
-      3. **Solve:** $E = \frac{80}{4^3} \implies E = \frac{80}{64} \implies E = 1.25$.  
+      1. **Set up:** $E = \dfrac{k}{v^3}$  
+      2. **Find $k$:** $10 = \dfrac{k}{2^3} \implies 10 = \dfrac{k}{8} \implies k = 80$. Equation: $E = \dfrac{80}{v^3}$  
+      3. **Solve:** $E = \dfrac{80}{4^3} \implies E = \dfrac{80}{64} \implies E = 1.25$.  
     </Steps>
 
     **e)**
     <Steps>
-      1. **Set up:** $P = \frac{k}{\sqrt{t}}$  
-      2. **Find $k$:** $5 = \frac{k}{\sqrt{16}} \implies 5 = \frac{k}{4} \implies k = 20$. Equation: $P = \frac{20}{\sqrt{t}}$  
-      3. **Solve:** $P = \frac{20}{\sqrt{100}} \implies P = \frac{20}{10} \implies P = 2$.  
+      1. **Set up:** $P = \dfrac{k}{\sqrt{t}}$  
+      2. **Find $k$:** $5 = \dfrac{k}{\sqrt{16}} \implies 5 = \dfrac{k}{4} \implies k = 20$. Equation: $P = \dfrac{20}{\sqrt{t}}$  
+      3. **Solve:** $P = \dfrac{20}{\sqrt{100}} \implies P = \dfrac{20}{10} \implies P = 2$.  
     </Steps>
 
     **f)**
     <Steps>
-      1. **Set up:** $W = \frac{k}{s^2}$  
-      2. **Find $k$:** $40 = \frac{k}{0.5^2} \implies 40 = \frac{k}{0.25} \implies k = 10$. Equation: $W = \frac{10}{s^2}$  
-      3. **Solve:** $10 = \frac{10}{s^2} \implies 10s^2 = 10 \implies s^2 = 1 \implies s = 1$ (assuming $s > 0$).  
+      1. **Set up:** $W = \dfrac{k}{s^2}$  
+      2. **Find $k$:** $40 = \dfrac{k}{0.5^2} \implies 40 = \dfrac{k}{0.25} \implies k = 10$. Equation: $W = \dfrac{10}{s^2}$  
+      3. **Solve:** $10 = \dfrac{10}{s^2} \implies 10s^2 = 10 \implies s^2 = 1 \implies s = 1$ (assuming $s > 0$).  
     </Steps>
   </TabItem>
 </Tabs>
@@ -651,7 +651,7 @@ The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
     **a)**
     <Steps>
       1. Test for constant $k$: $xy = 2 \times 10 = 20$, $4 \times 5 = 20$, $5 \times 4 = 20$.  
-      2. Since $xy$ is constant, this is inverse linear proportion. Equation: **$y = \frac{20}{x}$**
+      2. Since $xy$ is constant, this is inverse linear proportion. Equation: **$y = \dfrac{20}{x}$**
       </Steps>
 
     **b)**
@@ -669,7 +669,7 @@ The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
     **d)**
     <Steps>
       1. Test for constant $k$: $y \times x^2 = 18 \times 2^2 = 72$, $8 \times 3^2 = 72$, $4.5 \times 4^2 = 72$.  
-      2. Since $yx^2$ is constant, this is inverse square proportion. Equation: **$y = \frac{72}{x^2}$** 
+      2. Since $yx^2$ is constant, this is inverse square proportion. Equation: **$y = \dfrac{72}{x^2}$** 
       </Steps>
 
     **e)**
@@ -692,15 +692,15 @@ The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
   <TabItem label="📝 Question 6 (Extended/Hard)">
     Combine proportionality models to find single expressions:  
 
-    a) $a$ is directly proportional to the cube of $b$. When $b = 2$, $a = 24$. $c$ is inversely proportional to $b$. When $b = 3$, $c = 2$. Find an expression for $\frac{a}{c}$ in terms of $b$. Give your answer in its simplest form.  
+    a) $a$ is directly proportional to the cube of $b$. When $b = 2$, $a = 24$. $c$ is inversely proportional to $b$. When $b = 3$, $c = 2$. Find an expression for $\dfrac{a}{c}$ in terms of $b$. Give your answer in its simplest form.  
 
     b) $x$ is directly proportional to $y^2$. When $y = 3$, $x = 18$. $z$ is directly proportional to $y$. When $y = 4$, $z = 20$. Find an expression for $xz$ in terms of $y$.  
 
-    c) $p$ is inversely proportional to $q^2$. When $q = 2$, $p = 5$. $r$ is inversely proportional to $q$. When $q = 5$, $r = 2$. Find an expression for $\frac{p}{r}$ in terms of $q$.  
+    c) $p$ is inversely proportional to $q^2$. When $q = 2$, $p = 5$. $r$ is inversely proportional to $q$. When $q = 5$, $r = 2$. Find an expression for $\dfrac{p}{r}$ in terms of $q$.  
 
     d) $m$ is directly proportional to $\sqrt{n}$. When $n = 16$, $m = 12$. $w$ is inversely proportional to $\sqrt{n}$. When $n = 9$, $w = 2$. Find an expression for $mw$ in terms of $n$.  
 
-    e) $u$ is directly proportional to $v^3$. When $v = 2$, $u = 40$. $t$ is directly proportional to $v^2$. When $v = 3$, $t = 27$. Find an expression for $\frac{u}{t}$ in terms of $v$.  
+    e) $u$ is directly proportional to $v^3$. When $v = 2$, $u = 40$. $t$ is directly proportional to $v^2$. When $v = 3$, $t = 27$. Find an expression for $\dfrac{u}{t}$ in terms of $v$.  
 
     f) $g$ is inversely proportional to $h^3$. When $h = 2$, $g = 3$. $f$ is directly proportional to $h^4$. When $h = 2$, $f = 32$. Find an expression for $gf$ in terms of $h$.  
   </TabItem>
@@ -708,8 +708,8 @@ The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
     **a)**
     <Steps>
       1. Find $a$: $a = k_1 b^3 \implies 24 = k_1(8) \implies k_1 = 3 \implies a = 3b^3$  
-      2. Find $c$: $c = \frac{k_2}{b} \implies 2 = \frac{k_2}{3} \implies k_2 = 6 \implies c = \frac{6}{b}$  
-      3. Combine: $\frac{a}{c} = \frac{3b^3}{\frac{6}{b}} = 3b^3 \times \frac{b}{6} = \frac{3b^4}{6} = \frac{b^4}{2}$  
+      2. Find $c$: $c = \dfrac{k_2}{b} \implies 2 = \dfrac{k_2}{3} \implies k_2 = 6 \implies c = \dfrac{6}{b}$  
+      3. Combine: $\dfrac{a}{c} = \dfrac{3b^3}{\dfrac{6}{b}} = 3b^3 \times \dfrac{b}{6} = \dfrac{3b^4}{6} = \dfrac{b^4}{2}$  
     </Steps>
 
     **b)**
@@ -721,30 +721,30 @@ The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
 
     **c)**
     <Steps>
-      1. Find $p$: $p = \frac{k_1}{q^2} \implies 5 = \frac{k_1}{4} \implies k_1 = 20 \implies p = \frac{20}{q^2}$  
-      2. Find $r$: $r = \frac{k_2}{q} \implies 2 = \frac{k_2}{5} \implies k_2 = 10 \implies r = \frac{10}{q}$  
-      3. Combine: $\frac{p}{r} = \frac{\frac{20}{q^2}}{\frac{10}{q}} = \frac{20}{q^2} \times \frac{q}{10} = \frac{2}{q}$  
+      1. Find $p$: $p = \dfrac{k_1}{q^2} \implies 5 = \dfrac{k_1}{4} \implies k_1 = 20 \implies p = \dfrac{20}{q^2}$  
+      2. Find $r$: $r = \dfrac{k_2}{q} \implies 2 = \dfrac{k_2}{5} \implies k_2 = 10 \implies r = \dfrac{10}{q}$  
+      3. Combine: $\dfrac{p}{r} = \dfrac{\dfrac{20}{q^2}}{\dfrac{10}{q}} = \dfrac{20}{q^2} \times \dfrac{q}{10} = \dfrac{2}{q}$  
     </Steps>
 
     **d)**
     <Steps>
       1. Find $m$: $m = k_1 \sqrt{n} \implies 12 = k_1(4) \implies k_1 = 3 \implies m = 3\sqrt{n}$  
-      2. Find $w$: $w = \frac{k_2}{\sqrt{n}} \implies 2 = \frac{k_2}{3} \implies k_2 = 6 \implies w = \frac{6}{\sqrt{n}}$  
-      3. Combine: $mw = (3\sqrt{n}) \times \left(\frac{6}{\sqrt{n}}\right) = 18$  
+      2. Find $w$: $w = \dfrac{k_2}{\sqrt{n}} \implies 2 = \dfrac{k_2}{3} \implies k_2 = 6 \implies w = \dfrac{6}{\sqrt{n}}$  
+      3. Combine: $mw = (3\sqrt{n}) \times \left(\dfrac{6}{\sqrt{n}}\right) = 18$  
     </Steps>
 
     **e)**
     <Steps>
       1. Find $u$: $u = k_1 v^3 \implies 40 = k_1(8) \implies k_1 = 5 \implies u = 5v^3$  
       2. Find $t$: $t = k_2 v^2 \implies 27 = k_2(9) \implies k_2 = 3 \implies t = 3v^2$  
-      3. Combine: $\frac{u}{t} = \frac{5v^3}{3v^2} = \frac{5v}{3}$  
+      3. Combine: $\dfrac{u}{t} = \dfrac{5v^3}{3v^2} = \dfrac{5v}{3}$  
     </Steps>
 
     **f)**
     <Steps>
-      1. Find $g$: $g = \frac{k_1}{h^3} \implies 3 = \frac{k_1}{8} \implies k_1 = 24 \implies g = \frac{24}{h^3}$  
+      1. Find $g$: $g = \dfrac{k_1}{h^3} \implies 3 = \dfrac{k_1}{8} \implies k_1 = 24 \implies g = \dfrac{24}{h^3}$  
       2. Find $f$: $f = k_2 h^4 \implies 32 = k_2(16) \implies k_2 = 2 \implies f = 2h^4$  
-      3. Combine: $gf = \left(\frac{24}{h^3}\right)(2h^4) = 48h$  
+      3. Combine: $gf = \left(\dfrac{24}{h^3}\right)(2h^4) = 48h$  
     </Steps>
   </TabItem>
 </Tabs>
@@ -786,17 +786,17 @@ The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
 
     **c)**
     <Steps>
-      1. **Initial:** $m_1 = \frac{k}{n_1}$  
+      1. **Initial:** $m_1 = \dfrac{k}{n_1}$  
       2. **New $n$:** $n_2 = 1.25n_1$  
-      3. **Substitute:** $m_2 = \frac{k}{1.25n_1} = \frac{1}{1.25} \times \left(\frac{k}{n_1}\right) = 0.8m_1$  
+      3. **Substitute:** $m_2 = \dfrac{k}{1.25n_1} = \dfrac{1}{1.25} \times \left(\dfrac{k}{n_1}\right) = 0.8m_1$  
       4. **Compare:** A multiplier of 0.8 represents a **20% decrease**.  
     </Steps>
 
     **d)**
     <Steps>
-      1. **Initial:** $w_1 = \frac{k}{v_1^2}$  
+      1. **Initial:** $w_1 = \dfrac{k}{v_1^2}$  
       2. **New $v$:** $v_2 = 2v_1$ (100% increase means it doubles)  
-      3. **Substitute:** $w_2 = \frac{k}{(2v_1)^2} = \frac{k}{4v_1^2} = 0.25w_1$  
+      3. **Substitute:** $w_2 = \dfrac{k}{(2v_1)^2} = \dfrac{k}{4v_1^2} = 0.25w_1$  
       4. **Compare:** A multiplier of 0.25 represents a **75% decrease**.  
     </Steps>
 
@@ -810,9 +810,9 @@ The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
 
     **f)**
     <Steps>
-      1. **Initial:** $a_1 = \frac{k}{\sqrt{b_1}}$  
+      1. **Initial:** $a_1 = \dfrac{k}{\sqrt{b_1}}$  
       2. **New $b$:** $b_2 = 0.64b_1$ (100% - 36% = 64%)  
-      3. **Substitute:** $a_2 = \frac{k}{\sqrt{0.64b_1}} = \frac{k}{0.8\sqrt{b_1}} = \frac{1}{0.8}a_1 = 1.25a_1$  
+      3. **Substitute:** $a_2 = \dfrac{k}{\sqrt{0.64b_1}} = \dfrac{k}{0.8\sqrt{b_1}} = \dfrac{1}{0.8}a_1 = 1.25a_1$  
       4. **Compare:** A multiplier of 1.25 represents a **25% increase**.  
     </Steps>
   </TabItem>
@@ -834,18 +834,18 @@ The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
     **a)**
     <Steps>
       1. **Set up:** $V = kr^3$  
-      2. **Find $k$:** $36\pi = k(3^3) \implies 36\pi = 27k \implies k = \frac{36\pi}{27} \implies k = \frac{4\pi}{3}$. Equation: **$V = \frac{4\pi}{3}r^3$** 
+      2. **Find $k$:** $36\pi = k(3^3) \implies 36\pi = 27k \implies k = \dfrac{36\pi}{27} \implies k = \dfrac{4\pi}{3}$. Equation: **$V = \dfrac{4\pi}{3}r^3$** 
       </Steps>
 
     **b)**
     <Steps>
-      1. **Solve:** $V = \frac{4\pi}{3}(5^3) \implies V = \frac{4\pi}{3}(125) \implies V = \frac{500\pi}{3}$. The volume is **$\frac{500\pi}{3}$ cubic meters**.  
+      1. **Solve:** $V = \dfrac{4\pi}{3}(5^3) \implies V = \dfrac{4\pi}{3}(125) \implies V = \dfrac{500\pi}{3}$. The volume is **$\dfrac{500\pi}{3}$ cubic meters**.  
     </Steps>
 
     **c)**
     <Steps>
-      1. **Solve for r:** $288\pi = \frac{4\pi}{3}r^3$  
-      2. **Rearrange:** $r^3 = \frac{288\pi \times 3}{4\pi} \implies r^3 = 72 \times 3 \implies r^3 = 216$  
+      1. **Solve for r:** $288\pi = \dfrac{4\pi}{3}r^3$  
+      2. **Rearrange:** $r^3 = \dfrac{288\pi \times 3}{4\pi} \implies r^3 = 72 \times 3 \implies r^3 = 216$  
       3. **Cube root:** $r = \sqrt[3]{216} \implies r = 6$. The maximum radius is **6 m**.  
     </Steps>
   </TabItem>
@@ -864,19 +864,19 @@ The correct variation model is **$y \propto x^2$** (or **$y = 3x^2$**).
   <TabItem label="✅ Solution 9">
     **a)**
     <Steps>
-      1. **Set up:** $L = \frac{k}{T^2}$  
-      2. **Find $k$:** $10000 = \frac{k}{40^2} \implies 10000 = \frac{k}{1600} \implies k = 16000000$. Equation: **$L = \frac{16000000}{T^2}$** 
+      1. **Set up:** $L = \dfrac{k}{T^2}$  
+      2. **Find $k$:** $10000 = \dfrac{k}{40^2} \implies 10000 = \dfrac{k}{1600} \implies k = 16000000$. Equation: **$L = \dfrac{16000000}{T^2}$** 
       </Steps>
 
     **b)**
     <Steps>
-      1. **Solve:** $L = \frac{16000000}{50^2} \implies L = \frac{16000000}{2500} \implies L = 6400$. The expected lifespan is **6400 hours**.  
+      1. **Solve:** $L = \dfrac{16000000}{50^2} \implies L = \dfrac{16000000}{2500} \implies L = 6400$. The expected lifespan is **6400 hours**.  
     </Steps>
 
     **c)**
     <Steps>
-      1. **Solve for T:** $40000 = \frac{16000000}{T^2}$  
-      2. **Rearrange:** $T^2 = \frac{16000000}{40000} \implies T^2 = 400$  
+      1. **Solve for T:** $40000 = \dfrac{16000000}{T^2}$  
+      2. **Rearrange:** $T^2 = \dfrac{16000000}{40000} \implies T^2 = 400$  
       3. **Square root:** $T = \sqrt{400} \implies T = 20$. The maximum operating temperature is **20°C**.  
     </Steps>
   </TabItem>

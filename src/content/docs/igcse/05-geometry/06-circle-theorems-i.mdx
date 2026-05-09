@@ -6,7 +6,7 @@ description: Master the geometrical properties of circles, including tangents, c
 <section className="lesson-chunk">
 Circle theorems are a set of geometrical rules that allow you to find missing angles in circles. In the IGCSE Extended exam, you will frequently be asked to calculate unknown angles in complex, multi-layered diagrams and—crucially—state the mathematical reasons for your answers. 
 
-<SteveTip title="Anatomy of a Circle">
+<Aside type="note" title="Anatomy of a Circle">
   Before diving into the theorems, ensure you know the correct terminology:
   * **Radius:** A line from the centre to the circumference.
   * **Diameter:** A line passing through the centre, touching the circumference twice (two radii).
@@ -15,9 +15,7 @@ Circle theorems are a set of geometrical rules that allow you to find missing an
   * **Arc:** A portion of the circumference.
   * **Segment:** The area bounded by a chord and an arc.
   * **Subtend:** To "hold up" or "create" an angle. A chord or arc subtends an angle at the circumference or centre.
-</SteveTip>
-
-
+</Aside>
 
 <SteveTip title="Give Reasons for your Answers">
   When a question says "give a reason", you **must** use the exact terminology specified in the syllabus. Writing "it looks like 90°" or "arrowhead rule" will score zero marks. Memorise the bolded theorem names exactly as they are written below.
@@ -29,7 +27,6 @@ Circle theorems are a set of geometrical rules that allow you to find missing an
 import CircleSimulator from '../../../../components/CircleSimulator.jsx';
 
 <section className="lesson-chunk">
-
 ### 🎮 Interactive Simulator
 
 <div className="not-content" style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
@@ -46,15 +43,15 @@ import CircleSimulator from '../../../../components/CircleSimulator.jsx';
 
 These first two theorems are the most fundamental and are often the first step in solving a complex exam question.
 
-<SteveTip title="Theorem 1: Angle in a Semicircle">
+<Aside type="note" title="Theorem 1: Angle in a Semicircle">
   The **angle in a semicircle = 90°**. 
   Any triangle drawn inside a circle where one side is the **diameter** will always be a right-angled triangle, with the 90° angle touching the circumference.
-</SteveTip>
+</Aside>
 
-<SteveTip title="Theorem 2: Tangent and Radius">
+<Aside type="note" title="Theorem 2: Tangent and Radius">
   The **angle between tangent and radius = 90°**. 
   Where a radius meets a tangent exactly at the circumference, they are completely perpendicular.
-</SteveTip>
+</Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', margin: '2rem 0' }}>
   {/* Angle in a Semicircle */}
@@ -95,9 +92,9 @@ These first two theorems are the most fundamental and are often the first step i
 <section className="lesson-chunk">
 ## 2. The Central Angle Theorem (4 Cases)
 
-<SteveTip title="Theorem 3: Angle at the Centre">
+<Aside type="note" title="Theorem 3: Angle at the Centre">
   The **angle at the centre is twice the angle at the circumference** (when both are subtended by the same arc).
-</SteveTip>
+</Aside>
 
 Examiners love to test this theorem by drawing it in unusual ways. There are **four main cases** you must learn to recognise. 
 
@@ -140,7 +137,9 @@ Examiners love to test this theorem by drawing it in unusual ways. There are **f
     <p>One side of the triangle passes directly through the centre of the circle (forming a diameter). The rule still applies exactly as before.</p>
   </div>
 </div>
+</section>
 
+<section className="lesson-chunk">
 {/* Case 3: Offset Dart */}
 <div style={{ display: 'flex', alignItems: 'center', gap: '2rem', margin: '2rem 0' }}>
   <svg viewBox="0 0 200 200" width="100%" maxWidth="270px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -177,14 +176,14 @@ Examiners love to test this theorem by drawing it in unusual ways. There are **f
   </svg>
   <div>
     <h4>4. The "Kite" (Reflex Angle)</h4>
-    <p>When the angle at the circumference becomes obtuse ($>90^\circ$), the corresponding angle at the centre becomes a <strong>reflex angle</strong> ($>180^\circ$).</p>
+    <p>When the angle at the circumference becomes obtuse (> 90°), the corresponding angle at the centre becomes a **reflex angle** (> 180°).</p>
   </div>
 </div>
 
-<SteveTip title="The Cyclic Quad Trap!">
+<Aside type="caution" title="The Cyclic Quad Trap!">
   Students constantly mix up **Case 4 (The Kite)** with a Cyclic Quadrilateral. 
   In Case 4, one of the vertices is at the **centre** of the circle. This is NOT a cyclic quadrilateral! A true cyclic quad must have **all four** points touching the circumference. If you apply cyclic quad rules to Case 4, your answer will be completely wrong.
-</SteveTip>
+</Aside>
 </section>
 
 ---
@@ -192,14 +191,14 @@ Examiners love to test this theorem by drawing it in unusual ways. There are **f
 <section className="lesson-chunk">
 ## 3. Angles in the Same Segment & Cyclic Quads
 
-<SteveTip title="Theorem 4: Angles in the Same Segment">
+<Aside type="note" title="Theorem 4: Angles in the Same Segment">
   **Angles in the same segment are equal**.
   If two angles at the circumference are subtended by the exact same chord or arc, they are identical. This creates a classic "bowtie" pattern.
-</SteveTip>
+</Aside>
 
-<SteveTip title="Theorem 5: Cyclic Quadrilateral">
+<Aside type="note" title="Theorem 5: Cyclic Quadrilateral">
   **Opposite angles of a cyclic quadrilateral sum to 180°** (they are supplementary).
-</SteveTip>
+</Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', margin: '2rem 0' }}>
   {/* Angles in Same Segment (Bowtie) */}
@@ -242,9 +241,9 @@ Examiners love to test this theorem by drawing it in unusual ways. There are **f
 
 This is the most advanced circle theorem and appears exclusively in the Extended syllabus. It connects tangents and triangles inscribed in a circle.
 
-<SteveTip title="Theorem 6: Alternate Segment Theorem">
+<Aside type="note" title="Theorem 6: Alternate Segment Theorem">
   The angle between a tangent and a chord through the point of contact is equal to the angle in the alternate segment.
-</SteveTip>
+</Aside>
 
 To identify this in an exam:
 1. Look for a **tangent** touching the circle at a single point.

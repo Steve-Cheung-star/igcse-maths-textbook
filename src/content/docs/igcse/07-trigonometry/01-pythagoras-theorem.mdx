@@ -6,11 +6,9 @@ description: Notes and examples on using Pythagoras' theorem, including finding 
 <section className="lesson-chunk">
 Pythagoras' theorem is a fundamental rule in geometry that relates the three sides of a **right-angled triangle**. It states that the square of the longest side (the **hypotenuse**) is equal to the sum of the squares of the other two shorter sides.
 
-
-
-<SteveTip title="The Hypotenuse">
+<Aside type="tip" title="The Hypotenuse">
 The hypotenuse is *always* the longest side of a right-angled triangle, and it is *always* directly opposite the $90^\circ$ right angle. Identifying the hypotenuse correctly is the most important step!
-</SteveTip>
+</Aside>
 
 The formula is universally written as:
 $$
@@ -48,6 +46,7 @@ If you know the two shorter sides, you square them, add them together, and then 
 </div>
 
 <details className="styled-details">
+<summary>View step-by-step solution for finding the hypotenuse</summary>
 <Steps>
 1. **Set up the equation:** Let $a = 5$ and $b = 12$. The hypotenuse is $c$.
    $$
@@ -89,6 +88,7 @@ If you already know the hypotenuse and one shorter side, you must **subtract** t
 </div>
 
 <details className="styled-details">
+<summary>View step-by-step solution for finding a shorter side</summary>
 <Steps>
 1. **Set up the equation:** The hypotenuse is $c = 15$. Let $a = 9$ and the unknown side be $b = x$.
    $$
@@ -119,17 +119,15 @@ A **Pythagorean triple** is a set of three whole numbers that perfectly fit Pyth
 
 If you recognize two sides of a right-angled triangle from a triple, you can instantly know the third side without doing any calculations!
 
-
-
 **The Essential Triples to Memorize:**
 * **3, 4, 5**
 * **5, 12, 13**
 * **8, 15, 17**
 * **7, 24, 25**
 
-<SteveTip title="Multiples of Triples">
+<Aside type="tip" title="Multiples of Triples">
 Any multiple of a Pythagorean triple is *also* a Pythagorean triple. For example, if you multiply the **3-4-5** triangle by 2, you get **6-8-10**. If you multiply it by 10, you get **30-40-50**. Notice that **Example 1b** above (9, 12, 15) is just the 3-4-5 triangle multiplied by 3!
-</SteveTip>
+</Aside>
 </section>
 
 ---
@@ -174,6 +172,7 @@ Calculate the exact length of $x$, and give your final answer to 3 significant f
 </div>
 
 <details className="styled-details">
+<summary>View step-by-step solution for finding the final length</summary>
 <Steps>
 1. **Find the shared edge ($h$) exactly:**
    $$
@@ -213,8 +212,6 @@ Your final answer would be **9.08 cm**, which is mathematically incorrect and wi
 ## 4. Finding the Distance Between Two Points on a Grid
 
 You can use Pythagoras' theorem to find the straight-line distance between any two coordinate points on a Cartesian grid. By drawing horizontal and vertical lines from the points, you can create a right-angled triangle where the distance between the points is the hypotenuse.
-
-
 </section>
 
 <section className="lesson-chunk">
@@ -260,6 +257,7 @@ Find the distance between point $A(2, 3)$ and point $B(8, 11)$.
 </div>
 
 <details className="styled-details">
+<summary>View step-by-step calculation for grid distance</summary>
 <Steps>
 1. **Find the horizontal and vertical distances:**
    $$
@@ -292,11 +290,9 @@ Find the distance between point $A(2, 3)$ and point $B(8, 11)$.
 
 A **chord** is a straight line segment whose endpoints lie on the circle. Pythagoras' theorem frequently appears in circle problems due to a very specific and important circle property.
 
-
-
-<SteveTip title="Crucial Circle Property">
+<Aside type="note" title="Crucial Circle Property">
 A perpendicular line drawn from the **centre** of a circle to a **chord** will always cut that chord exactly in half (bisect it). Drawing the radius from the centre to the end of the chord forms a **right-angled triangle**, allowing you to use Pythagoras' theorem!
-</SteveTip>
+</Aside>
 </section>
 
 <section className="lesson-chunk">
@@ -343,6 +339,7 @@ A circle has a radius of **13 cm**. A chord is located at a perpendicular distan
 </div>
 
 <details className="styled-details">
+<summary>View step-by-step solution for the chord length</summary>
 <Steps>
 1. **Set up the right-angled triangle:**
    Let $x$ be half the length of the chord. The hypotenuse is the radius ($c = 13$). The shorter side is the distance from the centre ($a = 5$).
@@ -392,6 +389,7 @@ The **converse** of Pythagoras' theorem works backwards to check if an unknown t
 A triangle has side lengths of **7 cm**, **24 cm**, and **25 cm**. Is this a right-angled triangle?
 
 <details className="styled-details">
+<summary>View step-by-step proof for the right angle check</summary>
 <Steps>
 1. **Identify the longest side:** The longest side is **25 cm**, so this must be $c$.
 2. **Calculate the sum of the squares of the shorter sides:**
@@ -471,6 +469,7 @@ The points $A(2, 2)$, $B(5, 6)$, and $C(8, 2)$ form a triangle. Find the exact l
 </div>
 
 <details className="styled-details">
+<summary>View step-by-step classification from coordinates</summary>
 <Steps>
 1. **Find the length of $AB$ using Pythagoras:**
    The horizontal distance is $5 - 2 = 3$. The vertical distance is $6 - 2 = 4$.

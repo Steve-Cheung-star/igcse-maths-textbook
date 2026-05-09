@@ -27,8 +27,6 @@ $$
 
 To find the equation of a line when looking at its graph, you need to identify $c$ and calculate $m$.
 
-
-
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
   <svg viewBox="0 0 400 350" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
     {/* Grid Lines */}
@@ -75,6 +73,7 @@ To find the equation of a line when looking at its graph, you need to identify $
 
 <section className="lesson-chunk">
 **Example Walkthrough:**
+
 <details className="styled-details">
   <summary>View Solution Steps</summary>
   <Steps>
@@ -88,7 +87,9 @@ To find the equation of a line when looking at its graph, you need to identify $
   
   **Answer:** $\boldsymbol{y = 0.5x + 1}$
   
-  *(Note: Always give your final equation in a fully simplified form. Write $y = 0.5x + 1$ or $y = \frac{1}{2}x + 1$, not $y = \frac{2}{4}x + 1$.)*
+  <Aside type="note" title="Note">
+  Always give your final equation in a fully simplified form. Write $y = 0.5x + 1$ or $y = \frac{1}{2}x + 1$, not $y = \frac{2}{4}x + 1$.
+  </Aside>
 </details>
 </section>
 
@@ -103,6 +104,7 @@ Often, you are given the gradient ($m$) and just one coordinate point that the l
 If the given point has an $x$-coordinate of 0, it **is** the $y$-intercept. You have everything you need to write the equation immediately.
 
 **Example:** A line has a gradient of -3 and passes through $(0, 5)$.
+
 <details className="styled-details">
   <summary>View Solution</summary>
   <Steps>
@@ -117,8 +119,6 @@ If the given point has an $x$-coordinate of 0, it **is** the $y$-intercept. You 
 <section className="lesson-chunk">
 ### Case B: The point is NOT the $y$-intercept $(x, y)$
 If the point is anywhere else, you must use algebra to solve for $c$. This is the absolute most important method to master for your exams!
-
-
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
   <svg viewBox="0 0 400 300" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
@@ -157,7 +157,7 @@ If the point is anywhere else, you must use algebra to solve for $c$. This is th
   </svg>
 </div>
 
-<SteveTip title="Mastering the Gradient-Intercept Method">
+<Aside type="tip" title="Mastering the Gradient-Intercept Method">
 <Steps>
 1. Start with the standard formula: $y = mx + c$
 2. Substitute your known gradient ($m$) into the equation.
@@ -165,11 +165,12 @@ If the point is anywhere else, you must use algebra to solve for $c$. This is th
 4. Solve the resulting simple linear equation to find $c$.
 5. Rewrite the final equation with both $m$ and $c$ filled in.
 </Steps>
-</SteveTip>
+</Aside>
 </section>
 
 <section className="lesson-chunk">
 **Example:** A line has a gradient of 4 and passes through the point $(2, 11)$. Find its equation.
+
 <details className="styled-details">
   <summary>View Solution</summary>
   <Steps>
@@ -195,9 +196,9 @@ If the point is anywhere else, you must use algebra to solve for $c$. This is th
   **Answer:** $\boldsymbol{y = 4x + 3}$
 </details>
 
-<SteveTip title="Check Your Work!">
+<Aside note="note" title="Check Your Work!">
 Once you find your final equation, plug the original $x$-coordinate back in. In the example above, if $x=2$, then $y = 4(2) + 3 = 11$. It matches the original point! This takes 5 seconds and guarantees you haven't made an arithmetic mistake.
-</SteveTip>
+</Aside>
 </section>
 
 ---
@@ -206,8 +207,6 @@ Once you find your final equation, plug the original $x$-coordinate back in. In 
 ## 3. Horizontal and Vertical Lines
 
 Lines that are perfectly flat or perfectly upright have special, very simple equations. They do not have an $x$ and a $y$ in the same equation.
-
-
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
   <svg viewBox="0 0 400 250" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
@@ -242,11 +241,9 @@ Lines that are perfectly flat or perfectly upright have special, very simple equ
 
 Sometimes, equations are written with both variables on the same side, like $3x + 2y = 12$. This is often called the **general form**. 
 
-
-
-<SteveTip title="Common Misconception">
+<Aside type="danger" title="Common Misconception">
 Students frequently look at $3x + 2y = 12$ and assume the gradient is 3 because it is the number attached to $x$. **This is wrong!** You can only read the gradient when $y$ is completely by itself on one side of the equals sign.
-</SteveTip>
+</Aside>
 </section>
 
 <section className="lesson-chunk">
@@ -282,6 +279,7 @@ Find the gradient and $y$-intercept of the graph with equation $5x + 4y = 8$.
 <section className="lesson-chunk">
 **Another Example (Watch the simplification):**
 Find the gradient of the line $3x + 6y = 10$.
+
 <details className="styled-details">
   <summary>View Solution Steps</summary>
   <Steps>
@@ -323,7 +321,9 @@ Rewrite the equation $y = \frac{2}{3}x - 4$ in the form $ax + by = c$, where $a,
         $$
   </Steps>
   
-  *(Note: Writing $2x - 3y = 12$ is also perfectly correct and means the exact same thing!)*
+  <Aside type="note" title="Note">
+  Writing $2x - 3y = 12$ is also perfectly correct and means the exact same thing!
+  </Aside>
 </details>
 </section>
 
@@ -333,8 +333,6 @@ Rewrite the equation $y = \frac{2}{3}x - 4$ in the form $ax + by = c$, where $a,
 ## 5. Finding the Equation from Two Given Points
 
 If you aren't given a graph, but instead are given two coordinate points, you can calculate the equation entirely algebraically by first finding the gradient, and then using Concept 2 (Case B).
-
-
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
   <svg viewBox="0 0 400 250" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
@@ -399,7 +397,10 @@ While not strictly required in the basic IGCSE 0607 syllabus, the **point-gradie
 $$
 y - y_1 = m(x - x_1)
 $$
-*(Where $m$ is the gradient, and $(x_1, y_1)$ is the given coordinate point).*
+
+<Aside type="note" title="Note">
+Where $m$ is the gradient, and $(x_1, y_1)$ is the given coordinate point.
+</Aside>
 </section>
 
 <section className="lesson-chunk">

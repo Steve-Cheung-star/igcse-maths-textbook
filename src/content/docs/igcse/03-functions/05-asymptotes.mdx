@@ -16,18 +16,16 @@ In the IGCSE 0607 Extended syllabus, you are not expected to use complex algebra
 
 An asymptote is a straight line that a curve approaches as it heads towards infinity. We always draw asymptotes on a graph using **dashed lines**.
 
-
-
 There are two main types you need to identify:
-1. **Vertical Asymptotes:** Lines parallel to the y-axis. They have the equation $x = k$. These usually occur when a function attempts to divide by zero.
-2. **Horizontal Asymptotes:** Lines parallel to the x-axis. They have the equation $y = c$. These describe the "end behaviour" of a graph as $x$ gets extremely large or extremely small.
+1. **Vertical Asymptotes:** Lines parallel to the y-axis. They have the equation $x=k$. These usually occur when a function attempts to divide by zero.
+2. **Horizontal Asymptotes:** Lines parallel to the x-axis. They have the equation $y=c$. These describe the "end behaviour" of a graph as $x$ gets extremely large or extremely small.
 </section>
 
 <section className="lesson-chunk">
 <SteveTip title="Naming the Lines">
 A very common exam mistake is confusing the equations for horizontal and vertical lines. 
-* A **vertical** line crosses the x-axis, so its equation is always **$x = \text{number}$**. 
-* A **horizontal** line crosses the y-axis, so its equation is always **$y = \text{number}$**.
+* A **vertical** line crosses the x-axis, so its equation is always **$x=\text{number}$**. 
+* A **horizontal** line crosses the y-axis, so its equation is always **$y=\text{number}$**.
 </SteveTip>
 
 <SteveTip title="Sketching Asymptotes in Exams">
@@ -44,13 +42,19 @@ Rational functions (fractions with algebra in them) are the most common graphs t
 
 ### Vertical Asymptotes (The Denominator Rule)
 A vertical asymptote occurs where a function is undefined. Since you cannot divide by zero in mathematics, simply **set the denominator equal to zero and solve for $x$**.
+</section>
 
-For the function $f(x) = \dfrac{1}{x - 2} + 1$:
-* The denominator is $x - 2$.
-* Set it to zero: $x - 2 = 0 \implies x = 2$.
-* The vertical asymptote is the line **$x = 2$**.
+<section className="lesson-chunk">
+**Example:** Find the vertical asymptote for the function $f(x)=\frac{1}{x-2}+1$.
 
-
+<details className="styled-details">
+  <summary>View Solution</summary>
+  <Steps>
+    1. Identify the denominator, which is $x-2$.
+    2. Set it to zero: $x-2=0 \implies x=2$.
+    3. The vertical asymptote is the line **$x=2$**.
+  </Steps>
+</details>
 
 <div style={{ display: 'flex', 'justify-content': 'center', margin: '2rem 0', 'vertical-align': 'middle' }}>
   <svg viewBox="0 0 400 250" width="100%" max-width="550px" style={{ background: '#f8fafc', 'border-radius': '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
@@ -94,22 +98,42 @@ For the function $f(x) = \dfrac{1}{x - 2} + 1$:
 <section className="lesson-chunk">
 **Functions with Multiple Vertical Asymptotes:**
 If the denominator is a quadratic expression, the function might have *two* vertical asymptotes!
-For example, $g(x) = \dfrac{5}{x^2 - 9}$. 
-Set $x^2 - 9 = 0$. This gives $x^2 = 9$, which means $x = 3$ or $x = -3$. This graph has two vertical breaks.
+
+**Example:** Find the vertical asymptotes for $g(x)=\frac{5}{x^2-9}$. 
+
+<details className="styled-details">
+  <summary>View Solution</summary>
+  <Steps>
+    1. Set the denominator to zero: $x^2-9=0$.
+    2. Solve for $x$: $x^2=9$, which means $x=3$ or $x=-3$. 
+    3. The graph has two vertical breaks at these lines.
+  </Steps>
+</details>
 </section>
 
 <section className="lesson-chunk">
 ### Horizontal Asymptotes (The Ratio Shortcut)
-Horizontal asymptotes look at what happens when $x$ becomes incredibly large (e.g., $1,000,000$). 
-If you have a rational function in the form **$y = \dfrac{ax + b}{cx + d}$**, as $x$ gets huge, the constants $+b$ and $+d$ become completely insignificant. 
+Horizontal asymptotes look at what happens when $x$ becomes incredibly large (e.g., 1,000,000). 
+If you have a rational function in the form **$y=\frac{ax+b}{cx+d}$**, as $x$ gets huge, the constants $+b$ and $+d$ become completely insignificant. 
 
-The function behaves like $y = \dfrac{ax}{cx}$, and the $x$'s cancel out, leaving just the ratio of the coefficients: **$y = \dfrac{a}{c}$**.
+The function behaves like $y=\frac{ax}{cx}$, and the $x$'s cancel out, leaving just the ratio of the coefficients: **$y=\frac{a}{c}$**.
+</section>
 
+<section className="lesson-chunk">
 <SteveTip title="The Negative Coefficient Trap">
-Examiners love to scramble the order of the terms. 
-If asked for the horizontal asymptote of $h(x) = \dfrac{1 - 3x}{x - 2}$, rewrite the numerator so the $x$ is first: $h(x) = \dfrac{-3x + 1}{x - 2}$. 
-The coefficients are $-3$ and $1$. The horizontal asymptote is $y = \dfrac{-3}{1}$, which is **$y = -3$**.
+Examiners love to scramble the order of the terms. Always ensure you rearrange the terms so $x$ comes first!
 </SteveTip>
+
+**Example:** Find the horizontal asymptote of $h(x)=\frac{1-3x}{x-2}$.
+
+<details className="styled-details">
+  <summary>View Solution</summary>
+  <Steps>
+    1. Rewrite the numerator so the $x$ is first: $h(x)=\frac{-3x+1}{x-2}$. 
+    2. Identify the coefficients for $x$, which are $-3$ and $1$. 
+    3. Calculate the horizontal asymptote: $y=\frac{-3}{1}$, which is **$y=-3$**.
+  </Steps>
+</details>
 </section>
 
 ---
@@ -117,13 +141,11 @@ The coefficients are $-3$ and $1$. The horizontal asymptote is $y = \dfrac{-3}{1
 <section className="lesson-chunk">
 ## 3. Exponential Asymptotes
 
-Graphs of the form $f(x) = a^x$ (such as $y = 2^x$ or $y = e^x$) do not have vertical asymptotes, but they do have **horizontal asymptotes**.
+Graphs of the form $f(x)=a^x$ (such as $y=2^x$ or $y=e^x$) do not have vertical asymptotes, but they do have **horizontal asymptotes**.
 
-The basic $y = a^x$ curve approaches the x-axis but never quite touches it, because no power of a positive base will ever truly equal zero. Therefore, a standard exponential function has a horizontal asymptote at **$y = 0$**.
+The basic $y=a^x$ curve approaches the x-axis but never quite touches it, because no power of a positive base will ever truly equal zero. Therefore, a standard exponential function has a horizontal asymptote at **$y=0$**.
 
 If the graph is vertically translated, the asymptote moves with it. 
-
-
 
 <div style={{ display: 'flex', 'justify-content': 'center', margin: '2rem 0', 'vertical-align': 'middle' }}>
   <svg viewBox="0 0 400 250" width="100%" max-width="550px" style={{ background: '#f8fafc', 'border-radius': '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
@@ -153,7 +175,7 @@ If the graph is vertically translated, the asymptote moves with it.
   </svg>
 </div>
 
-As seen above, the function $f(x) = 2^x - 3$ has been shifted down by 3 units, so its horizontal asymptote is exactly **$y = -3$**.
+As seen above, the function $f(x)=2^x-3$ has been shifted down by 3 units, so its horizontal asymptote is exactly **$y=-3$**.
 </section>
 
 ---
@@ -161,9 +183,7 @@ As seen above, the function $f(x) = 2^x - 3$ has been shifted down by 3 units, s
 <section className="lesson-chunk">
 ## 4. Trigonometric Asymptotes
 
-While the sine and cosine graphs are continuous waves, the tangent graph ($f(x) = \tan x$) is very different. Because $\tan x = \dfrac{\sin x}{\cos x}$, whenever $\cos x = 0$, the tangent function is attempting to divide by zero, creating a recurring pattern of vertical asymptotes.
-
-
+While the sine and cosine graphs are continuous waves, the tangent graph ($f(x)=\tan x$) is very different. Because $\tan x=\frac{\sin x}{\cos x}$, whenever $\cos x=0$, the tangent function is attempting to divide by zero, creating a recurring pattern of vertical asymptotes.
 
 <div style={{ display: 'flex', 'justify-content': 'center', margin: '2rem 0', 'vertical-align': 'middle' }}>
   <svg viewBox="0 0 420 200" width="100%" max-width="600px" style={{ background: '#f8fafc', 'border-radius': '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
@@ -198,7 +218,7 @@ While the sine and cosine graphs are continuous waves, the tangent graph ($f(x) 
   </svg>
 </div>
 
-The $f(x) = \tan x$ graph repeats endlessly. Therefore, its vertical asymptotes exist at **$x = 90^\circ$**, **$x = 270^\circ$**, **$x = 450^\circ$**, and so on.
+The $f(x)=\tan x$ graph repeats endlessly. Therefore, its vertical asymptotes exist at **$x$ = 90°**, **$x$ = 270°**, **$x$ = 450°**, and so on.
 </section>
 
 ---
@@ -206,12 +226,15 @@ The $f(x) = \tan x$ graph repeats endlessly. Therefore, its vertical asymptotes 
 <section className="lesson-chunk">
 ## 5. Checking Asymptotes with your GDC
 
+<Aside type="tip" title="Verify Asymptotes Instantly">
 If you are unsure whether a value is truly a vertical asymptote, you can verify it instantly on your TI-Nspire:
 1. Graph the function.
 2. Press **Menu $\rightarrow$ Trace $\rightarrow$ Graph Trace**.
 3. Type the $x$-value you suspect is the asymptote (e.g., type `2` and press Enter).
 4. If the bottom-right coordinate displays **`undef`** (undefined), you have successfully confirmed your vertical asymptote! 
+
 *(You can also press **Ctrl + T** to bring up the table and look for `undef` errors next to your $x$-values).*
+</Aside>
 </section>
 
 ---

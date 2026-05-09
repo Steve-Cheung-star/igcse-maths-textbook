@@ -11,9 +11,7 @@ import CircleSimulator from '../../../../components/CircleSimulator.jsx';
 
 While SOH CAH TOA works for right-angled triangles, we use the **Unit Circle** (a circle with radius 1) to define trigonometric functions for any angle $\theta$.
 
-
-
-<div class="not-content">
+<div className="not-content">
   <CircleSimulator category="trig" client:only="react" />
 </div>
 
@@ -86,11 +84,11 @@ All three main trigonometric graphs have a repeating pattern (they are **periodi
 * **Starts at:** (0, 0)
 * **Maximum/Minimum:** None (It stretches to infinity).
 * **Roots (crosses x-axis):** 0°, 180°, 360°
-* **Asymptotes:** The graph never touches x = 90° or x = 270° (because $\tan(90^\circ)$ is undefined).
+* **Asymptotes:** The graph never touches $x = 90^\circ$ or $x = 270^\circ$ (because $\tan(90^\circ)$ is undefined).
 
-<SteveTip title="Misconception">
+<Aside type="caution" title="Misconception">
   We often talk about the "amplitude" (height) of sine and cosine waves. **Tangent graphs do not have an amplitude.** Because they stretch infinitely upwards and downwards, they have no maximum or minimum peak.
-</SteveTip>
+</Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 200" width="100%" maxWidth="800px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -136,17 +134,24 @@ When you use the inverse trig functions ($\sin^{-1}$, $\cos^{-1}$, $\tan^{-1}$) 
 
 However, because the graphs go up and down and repeat themselves, there is almost always a **second valid angle** between 0° and 360°. You find the second angle using the symmetry of the graphs (or the CAST diagram).
 
-<SteveTip title="Principal Value (PV)">
+<Aside type="tip" title="Principal Value (PV)">
   The Principal Value (PV) is simply the valid angle closest to zero. Sometimes, your TI-Nspire GDC will give you a *negative* angle as the PV. Don't panic! Just apply the symmetry rules to that negative number to find the positive angles in your required range.
-</SteveTip>
+</Aside>
 
 **The Symmetry Rules for finding the second angle:**
 * **For $\sin x$:** Second angle = 180° - PV
 * **For $\cos x$:** Second angle = 360° - PV
 * **For $\tan x$:** Second angle = 180° + PV
 
+</section>
+
+<section className="lesson-chunk">
+
+**Example 1:** Solving a basic Sine equation. 
+Solve $\sin x = 0.5$ for 0° ⩽ x ⩽ 360°.
+
 <details className="styled-details">
-  <summary><strong>Example 1:</strong> Solving a basic Sine equation. Solve $\sin x = 0.5$ for 0° ⩽ x ⩽ 360°.</summary>
+  <summary>Step-by-step solution</summary>
   
   <Steps>
     1. **Find the Principal Value (PV) using your TI-Nspire GDC:**
@@ -164,14 +169,21 @@ However, because the graphs go up and down and repeat themselves, there is almos
        \end{aligned}
        $$
     3. **State final answers:**
-       x = 30° or 150°
+       $x = 30^\circ$ or $150^\circ$
   </Steps>
 
   *(Visual check: If you draw a horizontal line at y = 0.5 on the sine graph above, you will see it crosses the blue curve twice: once at 30° and once at 150°!)*
 </details>
 
+</section>
+
+<section className="lesson-chunk">
+
+**Example 2:** Solving a rearranged Cosine equation. 
+Solve $2 \cos x + 1 = 0$ for 0° ⩽ x ⩽ 360°.
+
 <details className="styled-details">
-  <summary><strong>Example 2:</strong> Solving a rearranged Cosine equation. Solve $2 \cos x + 1 = 0$ for 0° ⩽ x ⩽ 360°.</summary>
+  <summary>Step-by-step solution</summary>
 
   <Steps>
     1. **Rearrange the equation to isolate $\cos x$:**
@@ -196,7 +208,7 @@ However, because the graphs go up and down and repeat themselves, there is almos
        \end{aligned}
        $$
     4. **State final answers:**
-       x = 120° or 240°
+       $x = 120^\circ$ or $240^\circ$
   </Steps>
 </details>
 
@@ -211,8 +223,6 @@ However, because the graphs go up and down and repeat themselves, there is almos
 While the symmetry rules (like 180° - PV) are great to memorize, the **Unit Circle** and the **CAST diagram** explain exactly *why* those rules work and give you a foolproof visual tool for finding second angles.
 
 The Unit Circle is simply a circle with a radius of 1, centered at the origin (0,0) on a coordinate grid. We measure angles starting from the positive x-axis and rotating **anti-clockwise**.
-
-
 
 Because the radius is 1, any point on the edge of the circle has the coordinates **$(\cos \theta, \sin \theta)$**.
 * The x-coordinate tells you the value of Cosine.
@@ -257,13 +267,13 @@ By looking at which coordinates are positive or negative in each of the four qua
 2. Identify which quadrants your answer should be in. If the original equation was $\sin x = -0.5$ (a negative number), Sine is negative in the **T** (3rd) and **C** (4th) quadrants.
 3. Apply the quadrant formulas to your base angle:
    * **Quadrant 1 (A):** $\theta$
-   * **Quadrant 2 (S):** 180° - $\theta$
-   * **Quadrant 3 (T):** 180° + $\theta$
-   * **Quadrant 4 (C):** 360° - $\theta$
+   * **Quadrant 2 (S):** $180^\circ - \theta$
+   * **Quadrant 3 (T):** $180^\circ + \theta$
+   * **Quadrant 4 (C):** $360^\circ - \theta$
 
-<SteveTip title="CAST vs Symmetry">
+<Aside type="note" title="CAST vs Symmetry">
   You do not have to use both the symmetry rules and the CAST diagram. They are two different methods to achieve the exact same result. Pick the method that makes the most sense to you and stick with it!
-</SteveTip>
+</Aside>
 
 </section>
 
@@ -281,7 +291,7 @@ When a trigonometric function is written in the form $y = a \sin(bx)$ or $y = a 
 The amplitude is the "height" of the wave from its center line to its peak. 
 * A standard sine wave ($y = \sin x$) has an amplitude of 1.
 * The multiplier $a$ is a **vertical stretch**.
-* **Formula:** Amplitude = |a| (Always positive, even if $a$ is negative. A negative $a$ just flips the graph upside down).
+* **Formula:** Amplitude = $|a|$ (Always positive, even if $a$ is negative. A negative $a$ just flips the graph upside down).
 
 ### 2. Period (b)
 The period is how many degrees it takes for the graph to complete one full cycle before it starts repeating.
@@ -289,8 +299,14 @@ The period is how many degrees it takes for the graph to complete one full cycle
 * The multiplier $b$ is a **horizontal squash**. It tells you *how many full waves fit into 360°*.
 * **Formula:** Period = $\frac{360^\circ}{b}$
 
+</section>
+
+<section className="lesson-chunk">
+
+**Example:** Sketching $y = 3 \sin(2x)$
+
 <details className="styled-details">
-  <summary><strong>Example:</strong> Sketching $y = 3 \sin(2x)$</summary>
+  <summary>Explanation and Graph</summary>
   
   * **Amplitude:** The number in front is 3. The graph will peak at 3 and bottom out at -3.
   * **Period:** The multiplier inside is 2. Two full waves fit into 360°. The length of one single wave is 180°.
