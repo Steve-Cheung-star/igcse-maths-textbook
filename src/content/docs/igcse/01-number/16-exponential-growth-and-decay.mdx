@@ -3,10 +3,13 @@ title: 1.16 Exponential Growth and Decay
 description: Understand how populations grow and values depreciate using exponential multipliers and powers.
 ---
 
+<section className="lesson-chunk">
 In the real world, things rarely change by the same fixed amount every year. Instead, they change by a **percentage** of their current value. This creates **Exponential Growth** (speeding up) or **Exponential Decay** (slowing down).
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. The Exponential Formula
 
 While you can calculate change year-by-year, it is much faster to use the general formula. You do not need to know the constant $e$ for IGCSE; we use the **multiplier method**.
@@ -28,50 +31,74 @@ $$Value = P \times (\text{multiplier})^n$$
     <text x="440" y="75" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">- 15% decrease</text>
     <text x="440" y="105" font-family="monospace" font-weight="bold" font-size="20" fill="#e63946" text-anchor="middle">Multiplier = 0.85</text>
 </svg>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Exponential Growth (Population)
 
 Growth occurs when the multiplier is greater than 1. This is commonly seen in population studies or bacterial growth.
+</section>
 
-**Example:** A town has a population of 25,000. The population grows at a rate of 3% per year. Calculate the population after 12 years.
+<section className="lesson-chunk">
+**Example:** A town has a population of $25,000$. The population grows at a rate of $3\%$ per year. Calculate the population after $12$ years.
 
+<details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
+<Steps>
 1.  **Identify the multiplier:** $100\% + 3\% = 103\% \implies \mathbf{1.03}$
 2.  **Set up the equation:** $25,000 \times (1.03)^{12}$
 3.  **Calculate:** $25,000 \times 1.42576... = 35,644.02...$
-4.  **Round to context:** You cannot have 0.02 of a person! 
-    **Answer:** 35,644 people.
+4.  **Round to context:** You cannot have $0.02$ of a person! 
+    **Answer:** $35,644$ people.
+</Steps>
+</details>
 
 <SteveTip title="Linear vs Exponential">
-If the question says "The population increases by 500 people every year," that is **Linear**. You just add.
-If the question says "The population increases by 2% every year," that is **Exponential**. You must use powers!
+If the question says "The population increases by $500$ people every year," that is **Linear**. You just add.
+If the question says "The population increases by $2\%$ every year," that is **Exponential**. You must use powers!
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Exponential Decay (Depreciation)
 
 Decay occurs when the multiplier is less than 1. The most common exam example is **Depreciation**—the loss of value in an item like a car or a computer.
+</section>
 
-**Example:** A car is bought for £18,000. It depreciates at a rate of 15% per year. Find its value after 4 years.
+<section className="lesson-chunk">
+**Example:** A car is bought for £$18,000$. It depreciates at a rate of $15\%$ per year. Find its value after $4$ years.
 
+<details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
+<Steps>
 1.  **Identify the multiplier:** $100\% - 15\% = 85\% \implies \mathbf{0.85}$
 2.  **Set up the equation:** $18,000 \times (0.85)^4$
 3.  **Calculate:** $18,000 \times 0.522 = 9396$
-    **Answer:** £9,396
+    **Answer:** £$9,396$
+</Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Comparing Growth Models
 
 Sometimes you are asked to compare two different investments or populations to see which is "better" over time. 
+
+<div className="table-wrapper">
 
 | Feature | Linear | Exponential |
 | :--- | :--- | :--- |
 | **Change** | Fixed amount | Percentage |
 | **Graph Shape** | Straight line | Curved line |
 | **Formula** | $P + (n \times d)$ | $P \times (\text{multiplier})^n$ |
+
+</div>
 
 <svg viewBox="0 0 600 300" fill="transparent" xmlns="http://www.w3.org/2000/svg">
     <path d="M 50 250 L 550 250" fill="none" stroke="#333" stroke-width="3" marker-end="url(#arrow)"/>
@@ -94,10 +121,11 @@ Sometimes you are asked to compare two different investments or populations to s
         </marker>
     </defs>
 </svg>
+</section>
 
 ---
 
-## 5. Standard Practice Problems
+## Practice Problems
 
 <Tabs>
   <TabItem label="📝 Question 1: Basic Growth">

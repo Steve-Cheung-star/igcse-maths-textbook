@@ -5,18 +5,25 @@ description: Learn how to describe and identify graph translations y = f(x) + k 
 
 import FunctionTranslator from '../../../../components/FunctionTranslator.jsx';
 
+<section className="lesson-chunk">
 In mathematics, you can take a standard graph and "move" it around the coordinate grid. Sliding a graph up, down, left, or right without changing its fundamental shape or orientation is called a **translation**. 
 
 In the IGCSE 0607 syllabus, you need to understand how adding or subtracting an integer $k$ to a function changes its graph, and how to describe this movement using a translation vector.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## Function Translator
 
-<div class="not-content">
+<div className="not-content">
   <FunctionTranslator client:only="react" />
 </div>
+</section>
 
+---
+
+<section className="lesson-chunk">
 ## 1. Vertical Translations: $y = f(x) + k$
 
 When you add or subtract a number on the *outside* of a function, it affects the $y$-values directly. This causes the entire graph to slide vertically.
@@ -24,10 +31,12 @@ When you add or subtract a number on the *outside* of a function, it affects the
 * If you have **$y = f(x) + k$** (where $k$ is positive), the graph shifts **UP** by $k$ units.
 * If you have **$y = f(x) - k$** (where $k$ is positive), the graph shifts **DOWN** by $k$ units.
 
+
+
 Let's look at the base graph of $f(x) = x^2$ and see what happens when we apply vertical translations:
 
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
-  <svg viewBox="0 0 400 300" width="100%" maxWidth="550px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+<div style={{ display: 'flex', 'justify-content': 'center', margin: '2rem 0', 'vertical-align': 'middle' }}>
+  <svg viewBox="0 0 400 300" width="100%" max-width="550px" style={{ background: '#f8fafc', 'border-radius': '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
     <g stroke="#cbd5e1" stroke-width="2">
       <line x1="0" y1="200" x2="400" y2="200" />
       <polygon points="392,196 400,200 392,204" fill="#cbd5e1" stroke-width="0" />
@@ -38,8 +47,6 @@ Let's look at the base graph of $f(x) = x^2$ and see what happens when we apply 
     <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
     <text x="185" y="215" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
 
-    {/* Math Scale: 1 unit = 20px. Origin at (200, 200) */}
-    
     {/* Base Curve: f(x) = x^2 (Black/Gray) */}
     <polyline fill="none" stroke="#64748b" stroke-width="3" stroke-dasharray="4 4" points={Array.from({ length: 401 }, (_, i) => {
       const x = i;
@@ -73,9 +80,11 @@ Let's look at the base graph of $f(x) = x^2$ and see what happens when we apply 
 </div>
 
 Notice how the vertex of the parabola moves exactly according to the number added or subtracted at the end of the equation.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Horizontal Translations: $y = f(x + k)$
 
 When you add or subtract a number on the *inside* of the function's brackets, it affects the $x$-values before the function evaluates them. This causes the entire graph to slide horizontally.
@@ -89,22 +98,22 @@ Horizontal translations are counter-intuitive. They do the **opposite** of what 
 * **$y = f(x + k)$** shifts the graph **LEFT** by $k$ units.
 * **$y = f(x - k)$** shifts the graph **RIGHT** by $k$ units.
 
+
+
 Let's look at the base graph of $f(x) = x^2$ again, this time with horizontal translations:
 
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0', verticalAlign: 'middle' }}>
-  <svg viewBox="0 0 400 300" width="100%" maxWidth="550px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
+<div style={{ display: 'flex', 'justify-content': 'center', margin: '2rem 0', 'vertical-align': 'middle' }}>
+  <svg viewBox="0 0 400 300" width="100%" max-width="550px" style={{ background: '#f8fafc', 'border-radius': '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
     <g stroke="#cbd5e1" stroke-width="2">
       <line x1="0" y1="250" x2="400" y2="250" />
       <polygon points="392,246 400,250 392,254" fill="#cbd5e1" stroke-width="0" />
-      <line x1="200" y1="300" x2="200" y2="0" />
-      <polygon points="196,8 200,0 204,8" fill="#cbd5e1" stroke-width="0" />
+      <line x1="100" y1="300" x2="100" y2="0" />
+      <polygon points="96,8 100,0 104,8" fill="#cbd5e1" stroke-width="0" />
     </g>
     <text x="385" y="240" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">x</text>
-    <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
+    <text x="110" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
     <text x="185" y="265" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
 
-    {/* Math Scale: 1 unit = 20px. Origin at (200, 250) */}
-    
     {/* Base Curve: f(x) = x^2 (Black/Gray) */}
     <polyline fill="none" stroke="#64748b" stroke-width="3" stroke-dasharray="4 4" points={Array.from({ length: 401 }, (_, i) => {
       const x = i;
@@ -138,9 +147,11 @@ Let's look at the base graph of $f(x) = x^2$ again, this time with horizontal tr
 </div>
 
 Notice that $f(x - 4)$ shifted the vertex to the *positive* side ($x = 4$), while $f(x + 3)$ shifted the vertex to the *negative* side ($x = -3$).
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Describing Transformations using Column Vectors
 
 In exams, you are frequently asked to describe a translation using a column vector. A column vector looks like this: $\begin{pmatrix} p \\ q \end{pmatrix}$.
@@ -151,16 +162,19 @@ In exams, you are frequently asked to describe a translation using a column vect
 If a function $f(x)$ is translated by the vector $\begin{pmatrix} p \\ q \end{pmatrix}$ to become a new function $g(x)$, the formula is:
 $$g(x) = f(x - p) + q$$
 
-<Aside type="note" title="Connecting the Formula to the Vector">
+
+
+<SteveTip title="Connecting the Formula to the Vector">
 Because of the "opposite direction trap" for horizontal translations, the horizontal shift ($p$) takes a minus sign inside the brackets, but the vertical shift ($q$) stays precisely as it is on the outside.
 
 For example, translating by $\begin{pmatrix} -5 \\ 2 \end{pmatrix}$ means going left 5 and up 2. 
 The new function would be $y = f(x + 5) + 2$.
-</Aside>
+</SteveTip>
+</section>
 
 ---
 
-## 4. Practice Problems
+## Practice Problems
 
 <Tabs>
   <TabItem label="📝 Question 1: Basic Function Notation">

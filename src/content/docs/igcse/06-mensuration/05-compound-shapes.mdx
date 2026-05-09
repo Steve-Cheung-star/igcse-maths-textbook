@@ -3,6 +3,7 @@ title: 6.5 Compound Shapes and Parts of Shapes
 description: Learn how to calculate the perimeter, area, surface area, and volume of combined shapes and truncated solids like frustums for IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 In the real world, objects are rarely perfect, isolated spheres or basic cylinders. They are usually combinations of multiple shapes (compound shapes) or shapes that have had pieces removed (parts of shapes). 
 
 <SteveTip title="The Golden Rules of Compound Shapes">
@@ -11,9 +12,11 @@ In the real world, objects are rarely perfect, isolated spheres or basic cylinde
 2. **Perimeter and Surface Area are tricky:** You **cannot** just add the perimeters or surface areas together. You must only calculate the exposed outer boundaries. Internal faces where shapes join are hidden and must be ignored!
 
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. 2D Compound Shapes and Parts of Shapes
 
 A 2D compound shape is made by joining basic shapes (rectangles, triangles, semi-circles) together, or by cutting one out of another.
@@ -25,7 +28,9 @@ The perimeter is the total distance around the **outside** edge of the shape. If
 To find the area, either:
 * **Add:** Split the compound shape into simpler shapes, find their individual areas, and add them up.
 * **Subtract:** Find the area of the overall bounding shape and subtract the area of the missing "cut-out" section.
+</section>
 
+<section className="lesson-chunk">
 ### Example 1: A Shape with a Cut-out
 A rectangular metal plate measures **10 cm** by **8 cm**. A semi-circle with a diameter of **6 cm** is cut out from one of the longer sides. Calculate the exact area and perimeter of the remaining plate.
 
@@ -45,8 +50,8 @@ A rectangular metal plate measures **10 cm** by **8 cm**. A semi-circle with a d
   </svg>
 </div>
 
+<details className="styled-details">
 <Steps>
-
 1. **Area Calculation (Subtract):**
    $$
    \begin{aligned}
@@ -70,11 +75,13 @@ A rectangular metal plate measures **10 cm** by **8 cm**. A semi-circle with a d
    \text{Total Perimeter} &= (30 + 3\pi) \text{ cm}
    \end{aligned}
    $$
-
 </Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. 3D Compound Solids and Parts of Solids
 
 When dealing with 3D compound solids, the same principles apply, but surface area requires careful visualization.
@@ -84,7 +91,9 @@ When dealing with 3D compound solids, the same principles apply, but surface are
 If a cone is sitting on top of a cylinder, the flat circular base of the cone and the top circular face of the cylinder are touching. They are now **inside** the new solid. When calculating Total Surface Area, you must exclude these hidden faces and only calculate the exposed outer faces!
 
 </Aside>
+</section>
 
+<section className="lesson-chunk">
 ### Example 2: Compound Solid Surface Area
 A solid is made by attaching a hemisphere of radius **5 cm** to one end of a cylinder of radius **5 cm** and height **12 cm**. Calculate the exact total surface area.
 
@@ -115,8 +124,8 @@ A solid is made by attaching a hemisphere of radius **5 cm** to one end of a cyl
   </svg>
 </div>
 
+<details className="styled-details">
 <Steps>
-
 1. **Identify the exposed faces:** The solid has three exposed parts: the curved surface of the hemisphere, the curved surface of the cylinder, and the flat circular bottom of the cylinder. 
 2. **Calculate individual exposed areas:**
    $$
@@ -131,11 +140,13 @@ A solid is made by attaching a hemisphere of radius **5 cm** to one end of a cyl
    &= 195\pi \text{ cm}^2
    \end{aligned}
    $$
-
 </Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. The Frustum (Truncated Solids)
 
 A **frustum** is what remains when you slice the top off a cone or a pyramid with a cut parallel to the base. It looks like a bucket or a lampshade. 
@@ -149,7 +160,9 @@ V_{\text{frustum}} &= V_{\text{large}} - V_{\text{small removed top}}
 $$
 
 Often, the exam question will not give you the dimensions of the small removed top. You must use **similar triangles** (scale factors) to find them.
+</section>
 
+<section className="lesson-chunk">
 ### Example 3: Volume of a Frustum
 A large cone has a base radius of **8 cm** and a total height of **20 cm**. A smaller cone is cut from the top parallel to the base, at a height of **10 cm** from the bottom. Find the exact volume of the resulting frustum.
 
@@ -162,7 +175,6 @@ A large cone has a base radius of **8 cm** and a total height of **20 cm**. A sm
     {/* Top Base Fill */}
     <ellipse cx="150" cy="120" rx="40" ry="10" fill="#34d399" />
   
-
     {/* OUTLINES (Rendered Last) */}
     {/* Removed Top Cone (Dashed) */}
     <path d="M 110 120 L 150 40 L 190 120" fill="none" stroke="#94a3b8" stroke-dasharray="4 4" stroke-width="2" />
@@ -202,8 +214,8 @@ A large cone has a base radius of **8 cm** and a total height of **20 cm**. A sm
   </svg>
 </div>
 
+<details className="styled-details">
 <Steps>
-
 1. **Find the dimensions of the small (removed) cone:**
    $$
    \begin{aligned}
@@ -233,8 +245,9 @@ A large cone has a base radius of **8 cm** and a total height of **20 cm**. A sm
    &= \frac{1120\pi}{3} \text{ cm}^3
    \end{aligned}
    $$
-
 </Steps>
+</details>
+</section>
 
 ---
 

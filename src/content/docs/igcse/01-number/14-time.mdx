@@ -3,28 +3,33 @@ title: 1.14 Time
 description: Master time calculations, convert between 12-hour and 24-hour clocks, read timetables, and solve time zone differences involving flight speeds.
 ---
 
-Time is one of the few areas in maths that doesn't operate on a base-10 or base-100 system, which makes it a frequent trap for students. You need to be confident converting between units, jumping across time zones, and reading real-world timetables.
+<section className="lesson-chunk">
+Time is one of the few areas in maths that doesn't operate on a base-$10$ or base-$100$ system, which makes it a frequent trap for students. You need to be confident converting between units, jumping across time zones, and reading real-world timetables.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Units of Time and Conversions
 
 You must know the exact relationship between all standard units of time. For the purposes of your exams, leap years are ignored unless specifically mentioned.
 
-* **1 minute** = 60 seconds
-* **1 hour** = 60 minutes
-* **1 day** = 24 hours
-* **1 week** = 7 days
-* **1 year** = 12 months
-* **1 year** = 52 weeks
-* **1 year** = 365 days
+* **$1$ minute** = $60$ seconds
+* **$1$ hour** = $60$ minutes
+* **$1$ day** = $24$ hours
+* **$1$ week** = $7$ days
+* **$1$ year** = $12$ months
+* **$1$ year** = $52$ weeks
+* **$1$ year** = $365$ days
 
 <Aside type="caution" title="Exam Tip: The Decimal Trap">
-Remember from our calculator lesson: **time is not decimal!** A duration of `2.5 hours` is NOT 2 hours and 50 minutes. Because an hour is 60 minutes, `0.5` of an hour is half of 60, which is 30 minutes. Always multiply the decimal part of an hour by 60 to find the exact minutes!
+Remember from our calculator lesson: **time is not decimal!** A duration of `2.5 hours` is NOT $2$ hours and $50$ minutes. Because an hour is $60$ minutes, `0.5` of an hour is half of $60$, which is $30$ minutes. Always multiply the decimal part of an hour by $60$ to find the exact minutes!
 </Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. The 12-Hour and 24-Hour Clock
 
 Exam questions will frequently use the 24-hour clock, especially when dealing with timetables. 
@@ -34,32 +39,46 @@ Exam questions will frequently use the 24-hour clock, especially when dealing wi
 
 ### Conversion Rules:
 * **a.m. times:** Keep the numbers the same, but ensure there are four digits. (e.g., 6.15 a.m. becomes `06 15`). *Exception: 12.xx a.m. (midnight) translates to `00 xx`.*
-* **p.m. times:** Add 12 to the hours. (e.g., 3.15 p.m. becomes 3 + 12 = 15, so it is written as `15 15`). *Exception: 12.xx p.m. (midday) stays as `12 xx`.*
+* **p.m. times:** Add $12$ to the hours. (e.g., 3.15 p.m. becomes $3 + 12 = 15$, so it is written as `15 15`). *Exception: 12.xx p.m. (midday) stays as `12 xx`.*
 
 <SteveTip title="Cambridge Formatting Quirk">
 You are probably used to seeing digital time written with a colon (like `15:15`). However, the Cambridge syllabus officially denotes 24-hour time with a space instead of a colon, such as **`15 15`** or **`03 15`**. Get used to reading and writing it this way for your exam!
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Calculating Durations and Reading Timetables
 
-When calculating how long a journey takes, the safest method is **counting up** (or using a "time line"). Do not try to subtract times using standard column subtraction, because time operates in 60s, not 100s!
+When calculating how long a journey takes, the safest method is **counting up** (or using a "time line"). Do not try to subtract times using standard column subtraction, because time operates in $60$s, not $100$s!
+</section>
 
+<section className="lesson-chunk">
 **Example:** A bus leaves at `08 45` and arrives at `11 20`. How long is the journey?
-1. Jump to the next full hour: `08 45` to `09 00` is **15 minutes**.
-2. Jump the full hours: `09 00` to `11 00` is **2 hours**.
-3. Jump the remaining minutes: `11 00` to `11 20` is **20 minutes**.
-4. Total duration: 2 hours + 15 mins + 20 mins = **2 hours 35 minutes**.
+
+<details className="styled-details">
+<summary>View the step-by-step calculation</summary>
+<Steps>
+1. Jump to the next full hour: `08 45` to `09 00` is **$15$ minutes**.
+2. Jump the full hours: `09 00` to `11 00` is **$2$ hours**.
+3. Jump the remaining minutes: `11 00` to `11 20` is **$20$ minutes**.
+4. Total duration: $2$ hours + $15$ mins + $20$ mins = **$2$ hours $35$ minutes**.
+</Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Time Zones and Overlapping Days
 
 Examiners love to give you a flight that leaves at one local time and arrives at another, often crossing midnight or incorporating half-hour time zones.
-Note that IGCSE uses the **xx xx** convention for 24-hour time without colons (e.g., 08 00).
+Note that IGCSE uses the **xx xx** convention for 24-hour time without colons (e.g., `08 00`).
 To solve these, always **bring the times to a neutral, shared time zone first.**
+</section>
 
+<section className="lesson-chunk">
 **Example: A flight leaves London (GMT) at 18 00 on Tuesday and arrives in Mumbai (GMT+5:30) at 08 00 on Wednesday. How long was the flight?**
 
 <svg viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +108,7 @@ To solve these, always **bring the times to a neutral, shared time zone first.**
 
 ### The Calculation Method
 
-You cannot simply subtract 18 00 from 08 00 because they are in different time zones and on different days.
+You cannot simply subtract `18 00` from `08 00` because they are in different time zones and on different days.
 **Convert the arrival time back to the departure time zone first.**
 
 <svg viewBox="0 0 600 250" xmlns="http://www.w3.org/2000/svg">
@@ -122,16 +141,22 @@ You cannot simply subtract 18 00 from 08 00 because they are in different time z
     </defs>
 </svg>
 
-1.  **Bring to same Time Zone:** When it is 08 00 (Wed) in Mumbai, what time is it in London?
-Mumbai is 5 hours and 30 mins ahead, so subtract 5.5 hours from 08 00. This gives **02 30 (Wed)** in London.
-2.  **Calculate Difference:** From 18 00 (Tue) to midnight is 6 hours.
-From midnight to 02 30 (Wed) is 2.5 hours. 
-3.  6 + 2.5 = 8.5 hours.
-**Answer:** **8 hours 30 minutes**.
+<details className="styled-details">
+<summary>View the calculation steps</summary>
+<Steps>
+1. **Bring to same Time Zone:** When it is `08 00` (Wed) in Mumbai, what time is it in London?
+Mumbai is $5$ hours and $30$ mins ahead, so subtract $5.5$ hours from `08 00`. This gives **`02 30` (Wed)** in London.
+2. **Calculate Difference:** From `18 00` (Tue) to midnight is $6$ hours.
+From midnight to `02 30` (Wed) is $2.5$ hours. 
+3. $6 + 2.5 = 8.5$ hours.
+**Answer:** **$8$ hours $30$ minutes**.
+</Steps>
+</details>
+</section>
 
 ---
 
-## 5. Standard Practice Problems
+## Practice Problems
 
 <Tabs>
   <TabItem label="📝 Question 1: Time Conversions">

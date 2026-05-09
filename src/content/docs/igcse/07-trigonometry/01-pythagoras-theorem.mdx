@@ -3,12 +3,13 @@ title: 7.1 Pythagoras' Theorem
 description: Notes and examples on using Pythagoras' theorem, including finding missing sides, Pythagorean triples, accuracy with surds, grids, and circles for IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 Pythagoras' theorem is a fundamental rule in geometry that relates the three sides of a **right-angled triangle**. It states that the square of the longest side (the **hypotenuse**) is equal to the sum of the squares of the other two shorter sides.
 
+
+
 <SteveTip title="The Hypotenuse">
-
 The hypotenuse is *always* the longest side of a right-angled triangle, and it is *always* directly opposite the $90^\circ$ right angle. Identifying the hypotenuse correctly is the most important step!
-
 </SteveTip>
 
 The formula is universally written as:
@@ -16,13 +17,17 @@ $$
 a^2 + b^2 = c^2
 $$
 Where $c$ is the hypotenuse, and $a$ and $b$ are the two shorter sides (legs).
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Basic Pythagoras: Finding Missing Sides
 
 Before moving to complex shapes or coordinate grids, you must master the two basic mechanics: finding the hypotenuse, and working backward to find a shorter side.
+</section>
 
+<section className="lesson-chunk">
 ### Example 1a: Finding the Hypotenuse
 If you know the two shorter sides, you square them, add them together, and then square root the result to find the hypotenuse.
 
@@ -42,8 +47,8 @@ If you know the two shorter sides, you square them, add them together, and then 
   </svg>
 </div>
 
+<details className="styled-details">
 <Steps>
-
 1. **Set up the equation:** Let $a = 5$ and $b = 12$. The hypotenuse is $c$.
    $$
    \begin{aligned}
@@ -59,9 +64,11 @@ If you know the two shorter sides, you square them, add them together, and then 
    &= 13 \text{ cm}
    \end{aligned}
    $$
-
 </Steps>
+</details>
+</section>
 
+<section className="lesson-chunk">
 ### Example 1b: Finding a Shorter Side (A Leg)
 If you already know the hypotenuse and one shorter side, you must **subtract** the squares instead of adding them.
 
@@ -81,8 +88,8 @@ If you already know the hypotenuse and one shorter side, you must **subtract** t
   </svg>
 </div>
 
+<details className="styled-details">
 <Steps>
-
 1. **Set up the equation:** The hypotenuse is $c = 15$. Let $a = 9$ and the unknown side be $b = x$.
    $$
    \begin{aligned}
@@ -99,16 +106,20 @@ If you already know the hypotenuse and one shorter side, you must **subtract** t
    &= 12 \text{ cm}
    \end{aligned}
    $$
-
 </Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Pythagorean Triples (The "Cheat Codes")
 
 A **Pythagorean triple** is a set of three whole numbers that perfectly fit Pythagoras' theorem. Memorizing the most common ones is a massive advantage for **Paper 2** (where calculators are not allowed) and **Paper 6** (where spotting number patterns is key to investigations). 
 
 If you recognize two sides of a right-angled triangle from a triple, you can instantly know the third side without doing any calculations!
+
+
 
 **The Essential Triples to Memorize:**
 * **3, 4, 5**
@@ -116,20 +127,22 @@ If you recognize two sides of a right-angled triangle from a triple, you can ins
 * **8, 15, 17**
 * **7, 24, 25**
 
-<Aside type="note" title="Multiples of Triples">
-
+<SteveTip title="Multiples of Triples">
 Any multiple of a Pythagorean triple is *also* a Pythagorean triple. For example, if you multiply the **3-4-5** triangle by 2, you get **6-8-10**. If you multiply it by 10, you get **30-40-50**. Notice that **Example 1b** above (9, 12, 15) is just the 3-4-5 triangle multiplied by 3!
-
-</Aside>
+</SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Accuracy: Surds, 3 s.f., and Shared Edges
 
 In IGCSE Mathematics, you must leave your final answers to **3 significant figures (s.f.)** unless the value is exact or the question specifies otherwise. 
 
 However, in multi-step questions with triangles that share an edge, **never round your intermediate answers**. If a side length is a long decimal, keep it in its exact **surd form** (e.g., $\sqrt{18}$) until the very final step. Rounding too early will create compounding errors that cost you accuracy marks.
+</section>
 
+<section className="lesson-chunk">
 ### Example 2: Triangles with a Shared Edge
 Calculate the exact length of $x$, and give your final answer to 3 significant figures.
 
@@ -160,8 +173,8 @@ Calculate the exact length of $x$, and give your final answer to 3 significant f
   </svg>
 </div>
 
+<details className="styled-details">
 <Steps>
-
 1. **Find the shared edge ($h$) exactly:**
    $$
    \begin{aligned}
@@ -184,23 +197,27 @@ Calculate the exact length of $x$, and give your final answer to 3 significant f
    &\implies 9.06 \text{ cm (to 3 s.f.)}
    \end{aligned}
    $$
-
 </Steps>
 
-<Aside type="caution" title="What happens if you round too early?">
-
+<SteveTip title="What happens if you round too early?">
 If you had rounded $h = \sqrt{18}$ to **4.2 cm** early on, your next step would be:
 $x^2 + 4.2^2 = 100 \implies x^2 + 17.64 = 100 \implies x^2 = 82.36 \implies x = 9.075...$
 Your final answer would be **9.08 cm**, which is mathematically incorrect and will lose you the final accuracy mark! Always keep surds.
-
-</Aside>
+</SteveTip>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Finding the Distance Between Two Points on a Grid
 
 You can use Pythagoras' theorem to find the straight-line distance between any two coordinate points on a Cartesian grid. By drawing horizontal and vertical lines from the points, you can create a right-angled triangle where the distance between the points is the hypotenuse.
 
+
+</section>
+
+<section className="lesson-chunk">
 ### Example 3: Distance on a Coordinate Grid
 Find the distance between point $A(2, 3)$ and point $B(8, 11)$.
 
@@ -242,8 +259,8 @@ Find the distance between point $A(2, 3)$ and point $B(8, 11)$.
   </svg>
 </div>
 
+<details className="styled-details">
 <Steps>
-
 1. **Find the horizontal and vertical distances:**
    $$
    \begin{aligned}
@@ -264,21 +281,25 @@ Find the distance between point $A(2, 3)$ and point $B(8, 11)$.
    &= 10 \text{ units}
    \end{aligned}
    $$
-
 </Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 5. Pythagoras in Circles: Chords and Distances
 
 A **chord** is a straight line segment whose endpoints lie on the circle. Pythagoras' theorem frequently appears in circle problems due to a very specific and important circle property.
 
-<Aside type="note" title="Crucial Circle Property">
 
+
+<SteveTip title="Crucial Circle Property">
 A perpendicular line drawn from the **centre** of a circle to a **chord** will always cut that chord exactly in half (bisect it). Drawing the radius from the centre to the end of the chord forms a **right-angled triangle**, allowing you to use Pythagoras' theorem!
+</SteveTip>
+</section>
 
-</Aside>
-
+<section className="lesson-chunk">
 ### Example 4: Finding the Length of a Chord
 A circle has a radius of **13 cm**. A chord is located at a perpendicular distance of **5 cm** from the centre of the circle. Calculate the exact length of the chord.
 
@@ -295,7 +316,7 @@ A circle has a radius of **13 cm**. A chord is located at a perpendicular distan
     
     {/* Chord */}
     <line x1="40" y1="198" x2="260" y2="198" stroke="#059669" stroke-width="3" />
-   
+    
     {/* Perpendicular Distance */}
     <line x1="150" y1="150" x2="150" y2="198" stroke="#ef4444" stroke-width="2.5" />
     
@@ -321,8 +342,8 @@ A circle has a radius of **13 cm**. A chord is located at a perpendicular distan
   </svg>
 </div>
 
+<details className="styled-details">
 <Steps>
-
 1. **Set up the right-angled triangle:**
    Let $x$ be half the length of the chord. The hypotenuse is the radius ($c = 13$). The shorter side is the distance from the centre ($a = 5$).
    $$
@@ -349,11 +370,13 @@ A circle has a radius of **13 cm**. A chord is located at a perpendicular distan
    &= 24 \text{ cm}
    \end{aligned}
    $$
-
 </Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 6. The Converse of Pythagoras' Theorem
 
 The **converse** of Pythagoras' theorem works backwards to check if an unknown triangle has a right angle. If you know the lengths of all three sides of a triangle, you can test if it is a right-angled triangle:
@@ -362,12 +385,14 @@ The **converse** of Pythagoras' theorem works backwards to check if an unknown t
 * **If $a^2 + b^2 \neq c^2$**, then the triangle **IS NOT** a right-angled triangle.
 
 *(Always ensure $c$ is the longest side when setting up your test!)*
+</section>
 
+<section className="lesson-chunk">
 ### Example 5: Checking for a Right Angle
 A triangle has side lengths of **7 cm**, **24 cm**, and **25 cm**. Is this a right-angled triangle?
 
+<details className="styled-details">
 <Steps>
-
 1. **Identify the longest side:** The longest side is **25 cm**, so this must be $c$.
 2. **Calculate the sum of the squares of the shorter sides:**
    $$
@@ -391,11 +416,13 @@ A triangle has side lengths of **7 cm**, **24 cm**, and **25 cm**. Is this a rig
    \end{aligned}
    $$
    Since $a^2 + b^2 = c^2$, this **is** a right-angled triangle.
-
 </Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 7. Classifying Triangles on a Grid
 
 By calculating the distances between three coordinate points, we can determine the exact side lengths of a triangle. Once we have the side lengths, we can classify the triangle based on its properties:
@@ -404,7 +431,9 @@ By calculating the distances between three coordinate points, we can determine t
 * **Isosceles:** Exactly two sides are equal.
 * **Scalene:** All three sides are different lengths.
 * **Right-angled:** The sides satisfy $a^2 + b^2 = c^2$.
+</section>
 
+<section className="lesson-chunk">
 ### Example 6: Classifying by Coordinates
 The points $A(2, 2)$, $B(5, 6)$, and $C(8, 2)$ form a triangle. Find the exact lengths of the three sides and classify the triangle.
 
@@ -441,8 +470,8 @@ The points $A(2, 2)$, $B(5, 6)$, and $C(8, 2)$ form a triangle. Find the exact l
   </svg>
 </div>
 
+<details className="styled-details">
 <Steps>
-
 1. **Find the length of $AB$ using Pythagoras:**
    The horizontal distance is $5 - 2 = 3$. The vertical distance is $6 - 2 = 4$.
    $$
@@ -475,8 +504,9 @@ The points $A(2, 2)$, $B(5, 6)$, and $C(8, 2)$ form a triangle. Find the exact l
    $$
 4. **Classify the Triangle:**
    Because two sides are equal in length ($AB = 5$ and $BC = 5$), the triangle is **Isosceles**.
-
 </Steps>
+</details>
+</section>
 
 ---
 

@@ -3,10 +3,13 @@ title: 2.5 Equations
 description: Solve linear, fractional, simultaneous, and quadratic equations. Rearrange formulas and use a Graphic Display Calculator (GDC).
 ---
 
+<section className="lesson-chunk">
 An equation is a mathematical statement that two expressions are equal. Solving an equation means finding the value(s) of the unknown variable that make the statement true. This section covers everything from basic linear equations to complex algebraic fractions and using your Graphic Display Calculator (GDC).
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Linear Equations
 
 Linear equations are equations where the highest power of the unknown variable is $1$ (e.g., $x$, not $x^2$). The goal is to isolate the variable on one side of the equals sign using inverse operations. Think of an equation like a set of perfectly balanced scales: whatever you do to one side, you **must** do to the other to keep it balanced.
@@ -50,9 +53,16 @@ Linear equations are equations where the highest power of the unknown variable i
         <rect x="437" y="77" width="15" height="15" rx="2"/>
     </g>
 </svg>
+</section>
 
+<section className="lesson-chunk">
 ### Basic Linear Equations
+
 **Example 1:** Solve $3x + 4 = 10$
+
+<details className="styled-details">
+<summary>View the solution for the basic linear equation</summary>
+
 $$
 \begin{aligned}
 3x &= 10 - 4 \\
@@ -61,10 +71,18 @@ x &= 2
 \end{aligned}
 $$
 
+</details>
+</section>
+
+<section className="lesson-chunk">
 ### Equations with Brackets
 Expand the brackets first, then collect like terms.
 
 **Example 2:** Solve $5 - 2x = 3(x + 7)$
+
+<details className="styled-details">
+<summary>View the solution for the equation with brackets</summary>
+
 $$
 \begin{aligned}
 5 - 2x &= 3x + 21
@@ -79,16 +97,25 @@ x &= -\dfrac{16}{5} \quad \text{(or } -3.2\text{)}
 \end{aligned}
 $$
 
+</details>
+</section>
+
 ---
 
+<section className="lesson-chunk">
 ## 2. Fractional Equations
 
 Equations with fractions require you to eliminate the denominators. You can do this by finding a common denominator or using cross-multiplication (if it is a single fraction equal to a single fraction).
+</section>
 
+<section className="lesson-chunk">
 ### Method 1: Cross-Multiplication
 Use this when you have one fraction strictly equal to another.
 
 **Example:** Solve $\dfrac{x}{2} = \dfrac{2x + 1}{3}$
+
+<details className="styled-details">
+<summary>View the solution using cross-multiplication</summary>
 
 Multiply the numerator of one side by the denominator of the other:
 $$
@@ -99,7 +126,9 @@ $$
 \end{aligned}
 $$
 
-<Aside type="caution" title="Variables in the Denominator">
+</details>
+
+<SteveTip title="Variables in the Denominator">
 The same cross-multiplication rule applies even if the variable is in the denominator!
 
 Solve $\dfrac{x}{x + 2} = \dfrac{4}{x - 6}$
@@ -111,12 +140,17 @@ x^2 - 6x &= 4x + 8 \\
 x^2 - 10x - 8 &= 0 \quad \text{(This forms a quadratic equation to solve later!)}
 \end{aligned}
 $$
-</Aside>
+</SteveTip>
+</section>
 
+<section className="lesson-chunk">
 ### Method 2: Finding a Common Denominator
 Use this when adding or subtracting multiple fractions in an equation.
 
 **Example:** Solve $\dfrac{x + 2}{3} + \dfrac{2x - 1}{2} = 1$
+
+<details className="styled-details">
+<summary>View the solution using a common denominator</summary>
 
 The Lowest Common Multiple (LCM) of 3 and 2 is 6. Multiply **every single term** in the equation by 6 to eliminate the fractions.
 
@@ -131,8 +165,12 @@ x &= \dfrac{5}{8}
 \end{aligned}
 $$
 
+</details>
+</section>
+
 ---
 
+<section className="lesson-chunk">
 ## 3. Simultaneous Equations
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
@@ -214,7 +252,6 @@ $$
 
 </svg>
 
-
 Simultaneous equations involve two or more equations with two or more unknowns (usually $x$ and $y$). You must find the pair of values that makes **both** equations true at the same time. Graphically, the solution is the exact coordinate where the two lines intersect.
 
 <svg viewBox="0 0 600 250" fill="transparent" xmlns="http://www.w3.org/2000/svg">
@@ -248,39 +285,45 @@ Simultaneous equations involve two or more equations with two or more unknowns (
         </marker>
     </defs>
 </svg>
+</section>
 
+<section className="lesson-chunk">
 **Example (Elimination):** Solve the simultaneous equations:
 
 1) $3x + 2y = 12$
 2) $4x - y = 5$
 
-*Step 1: Match the coefficients of one variable. Let's multiply equation (2) by 2 to match the $y$ terms.*
-
-(2) $\times 2 \Rightarrow 8x - 2y = 10$
-
-*Step 2: Add or subtract the equations to eliminate $y$.*
-$$
-\begin{aligned}
-(3x + 2y) + (8x - 2y) &= 12 + 10 \\
-11x &= 22 \\
-x &= 2
-\end{aligned}
-$$
-
-*Step 3: Substitute $x = 2$ back into either original equation to find $y$.*
-$$
-\begin{aligned}
-3(2) + 2y &= 12 \\
-6 + 2y &= 12 \\
-2y &= 6 \\
-y &= 3
-\end{aligned}
-$$
+<details className="styled-details">
+<summary>View the step-by-step elimination solution</summary>
+<Steps>
+1. **Match the coefficients of one variable.** Let's multiply equation (2) by 2 to match the $y$ terms.
+   (2) $\times 2 \Rightarrow 8x - 2y = 10$
+2. **Add or subtract the equations to eliminate $y$.**
+   $$
+   \begin{aligned}
+   (3x + 2y) + (8x - 2y) &= 12 + 10 \\
+   11x &= 22 \\
+   x &= 2
+   \end{aligned}
+   $$
+3. **Substitute $x = 2$ back into either original equation to find $y$.**
+   $$
+   \begin{aligned}
+   3(2) + 2y &= 12 \\
+   6 + 2y &= 12 \\
+   2y &= 6 \\
+   y &= 3
+   \end{aligned}
+   $$
+</Steps>
 
 **Solution:** $x = 2$, $y = 3$.
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Quadratic Equations
 
 A quadratic equation takes the form $ax^2 + bx + c = 0$. Depending on the equation, you can solve it via factorisation, the quadratic formula, or your GDC. The solutions to a quadratic equation are the exact points where the parabola crosses the x-axis (its roots).
@@ -303,11 +346,16 @@ A quadratic equation takes the form $ax^2 + bx + c = 0$. Depending on the equati
     
     <text x="310" y="225" font-family="sans-serif" font-size="12" fill="#e63946">y = ax² + bx + c</text>
 </svg>
+</section>
 
+<section className="lesson-chunk">
 ### Solving by Factorisation
 If the expression factorises nicely, use the **Zero Product Property** (If $ab = 0$, then $a = 0$ or $b = 0$).
 
 **Example:** Solve $x^2 - 5x + 6 = 0$
+
+<details className="styled-details">
+<summary>View the factorisation solution</summary>
 
 $$
 \begin{aligned}
@@ -318,7 +366,10 @@ $$
 Therefore, either $x - 2 = 0$ or $x - 3 = 0$.
 
 **Solution:** $x = 2$ or $x = 3$.
+</details>
+</section>
 
+<section className="lesson-chunk">
 ### The Quadratic Formula
 If an equation does not factorise easily, use the quadratic formula (this is provided in your exam).
 
@@ -328,42 +379,49 @@ $$
 
 **Example:** Solve $2x^2 - 5x - 4 = 0$. Give your answers exact in surd form.
 
-**Step 1: Identify $a$, $b$, and $c$.**
-
-Here, $a = 2$, $b = -5$, and $c = -4$. *(Always take the sign in front of the number!)*
-
-**Step 2: Substitute carefully into the formula.**
-
-$$
-\begin{aligned}
-x &= \dfrac{-(-5) \pm \sqrt{(-5)^2 - 4(2)(-4)}}{2(2)}
-\end{aligned}
-$$
-
-**Step 3: Simplify the discriminant (the part under the root) and denominator.**
-
-$$
-\begin{aligned}
-x &= \dfrac{5 \pm \sqrt{25 - (-32)}}{4} \\
-x &= \dfrac{5 \pm \sqrt{25 + 32}}{4} \\
-x &= \dfrac{5 \pm \sqrt{57}}{4}
-\end{aligned}
-$$
+<details className="styled-details">
+<summary>View the step-by-step quadratic formula solution</summary>
+<Steps>
+1. **Identify $a$, $b$, and $c$.**
+   Here, $a = 2$, $b = -5$, and $c = -4$. *(Always take the sign in front of the number!)*
+2. **Substitute carefully into the formula.**
+   $$
+   \begin{aligned}
+   x &= \dfrac{-(-5) \pm \sqrt{(-5)^2 - 4(2)(-4)}}{2(2)}
+   \end{aligned}
+   $$
+3. **Simplify the discriminant (the part under the root) and denominator.**
+   $$
+   \begin{aligned}
+   x &= \dfrac{5 \pm \sqrt{25 - (-32)}}{4} \\
+   x &= \dfrac{5 \pm \sqrt{25 + 32}}{4} \\
+   x &= \dfrac{5 \pm \sqrt{57}}{4}
+   \end{aligned}
+   $$
+</Steps>
+</details>
 
 <SteveTip title="Exact Surd Form">
 Sometimes the exam will ask for the exact answer. This means you must leave your answer containing the square root (surd form), rather than a rounded decimal like $3.12$. 
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 5. Changing the Subject of a Formula
 
 Changing the subject means rearranging a formula so that a different variable is isolated on its own on the left-hand side.
+</section>
 
+<section className="lesson-chunk">
 ### Dealing with Powers and Roots
 Use the inverse operation to remove powers or roots.
 
 **Example 1:** Make $x$ the subject of $y = \sqrt{x + 2}$
+
+<details className="styled-details">
+<summary>View the solution for dealing with powers and roots</summary>
 
 $$
 \begin{aligned}
@@ -373,10 +431,17 @@ x &= y^2 - 2
 \end{aligned}
 $$
 
+</details>
+</section>
+
+<section className="lesson-chunk">
 ### The Subject Appears Twice (Extended)
 If the letter you want to make the subject appears more than once, you **must factorise** to isolate it.
 
 **Example 2:** Make $x$ the subject of $y = \dfrac{2x + 1}{x - 3}$
+
+<details className="styled-details">
+<summary>View the solution for when the subject appears twice</summary>
 
 $$
 \begin{aligned}
@@ -402,8 +467,12 @@ x &= \dfrac{3y + 1}{y - 2} \quad \text{(Divide by the bracket)}
 \end{aligned}
 $$
 
+</details>
+</section>
+
 ---
 
+<section className="lesson-chunk">
 ## 6. Solving Equations with a GDC
 
 For complex or "unfamiliar" equations, your Graphic Display Calculator is your best friend.
@@ -412,21 +481,31 @@ For complex or "unfamiliar" equations, your Graphic Display Calculator is your b
 
 This is highly complex to solve algebraically, but very easy graphically.
 
+<details className="styled-details">
+<summary>View the step-by-step GDC methods</summary>
+
 **Method 1: Intersection**
+<Steps>
 1. Enter $y_1 = 2x - 1$
 2. Enter $y_2 = \dfrac{1}{x^3}$
 3. Graph both functions.
 4. Use `[Menu] → [Analyse Graph] → [Intersection]` to find the $x$-coordinate where the two graphs cross.
+</Steps>
 
 **Method 2: Finding Zeros (Roots)**
+<Steps>
 1. Rearrange the equation to equal zero: $2x - 1 - \dfrac{1}{x^3} = 0$
 2. Enter this entire expression into $y_1$.
 3. Graph the function.
 4. Use `[Menu] → [Analyse Graph] → [Zero]` to find the $x$-intercepts. The $x$-values are your solutions!
+</Steps>
+
+</details>
+</section>
 
 ---
 
-## 7. Practice Questions
+## Practice Questions
 
 <Tabs>
   <TabItem label="📝 Q1: Linear & Fractional Equations">

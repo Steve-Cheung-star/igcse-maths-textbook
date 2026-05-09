@@ -3,10 +3,13 @@ title: 3.4 Finding a Quadratic Function
 description: Learn how to construct the equation of a quadratic graph using its vertex, x-intercepts, and given coordinates.
 ---
 
+<section className="lesson-chunk">
 In previous chapters, you learned how to extract key features from a given quadratic equation. In this section, we work in reverse: you will act as a mathematical detective, using visual clues from a graph (like its turning point or where it crosses the axes) to figure out its original equation.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Using the Vertex Form
 
 Every quadratic function can be written in **vertex form**:
@@ -26,7 +29,6 @@ This form is incredibly powerful because the coordinates of the vertex (the turn
     <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
     <text x="185" y="165" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
 
-    {/* Quadratic: y = (x - 2)^2 + 1. Vertex at (2, 1). Passing through (0, 5). Math Scale: 1 unit = 20px. Origin at (200, 150) */}
     <polyline fill="none" stroke="#d946ef" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
       const x = i;
       const mathX = (x - 200) / 20;
@@ -34,24 +36,28 @@ This form is incredibly powerful because the coordinates of the vertex (the turn
       return `${x},${150 - mathY * 20}`;
     }).join(' ')} />
 
-    {/* Vertex at (2, 1) -> Pixel (240, 130) */}
     <circle cx="240" cy="130" r="5" fill="#d946ef" />
     <line x1="247" y1="130" x2="280" y2="130" stroke="#d946ef" stroke-width="1.5" stroke-dasharray="3 3" />
     <text x="285" y="126" font-size="12" fill="#d946ef" font-family="sans-serif" font-weight="bold">Vertex (h, k)</text>
     <text x="285" y="141" font-size="11" fill="#d946ef" font-family="sans-serif">(2, 1)</text>
 
-    {/* Another point at (0, 5) -> Pixel (200, 50) */}
     <circle cx="200" cy="50" r="5" fill="#1e293b" />
     <line x1="193" y1="50" x2="140" y2="50" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="3 3" />
     <text x="50" y="46" font-size="12" fill="#1e293b" font-family="sans-serif" font-weight="bold">Another Point</text>
     <text x="50" y="61" font-size="11" fill="#1e293b" font-family="sans-serif">(0, 5)</text>
   </svg>
 </div>
+</section>
 
+<section className="lesson-chunk">
 ### Finding the Equation Given the Vertex and One Point
 If you are given the vertex and exactly one other coordinate on the curve, you can find the full equation.
 
 **Example:** A parabola has a vertex at $(2, 1)$ and passes through the point $(0, 5)$. Find its equation.
+
+<details className="styled-details">
+<summary>View step-by-step solution</summary>
+<Steps>
 1. **Substitute the vertex $(h, k)$:** Here, $h = 2$ and $k = 1$.
    $$y = a(x - 2)^2 + 1$$
 2. **Substitute the other point $(x, y)$ to find $a$:**
@@ -67,13 +73,19 @@ If you are given the vertex and exactly one other coordinate on the curve, you c
    $$
 3. **Write the final equation:**
    $$y = 1(x - 2)^2 + 1 \implies y = (x - 2)^2 + 1$$
+</Steps>
+</details>
+</section>
 
-<Aside type="caution" title="The Negative Sign Trap">
+<section className="lesson-chunk">
+<SteveTip title="The Negative Sign Trap">
 Notice the minus sign in $y = a(x - h)^2 + k$. If your vertex has a negative x-coordinate, say $(-3, 4)$, the equation becomes $y = a(x - (-3))^2 + 4$, which simplifies to $y = a(x + 3)^2 + 4$. The sign inside the bracket always looks like the *opposite* of the vertex's x-coordinate!
-</Aside>
+</SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Using the x-intercepts Form
 
 If a graph crosses the x-axis, those crossing points are called **x-intercepts** or **roots**. If you know both roots, let's call them $p$ and $q$, you can build the quadratic using the **factored form**:
@@ -91,7 +103,6 @@ $$y = a(x - p)(x - q)$$
     <text x="210" y="15" font-size="12" fill="#64748b" font-family="sans-serif" font-style="italic">y</text>
     <text x="185" y="115" font-size="10" fill="#64748b" font-family="sans-serif">0</text>
 
-    {/* Quadratic: y = (x + 1)(x - 3) = x^2 - 2x - 3. Roots at -1, 3. Point at (1, -4). Math Scale: 1 unit = 30px. Origin at (200, 100) */}
     <polyline fill="none" stroke="#f59e0b" stroke-width="3" points={Array.from({ length: 401 }, (_, i) => {
       const x = i;
       const mathX = (x - 200) / 30;
@@ -99,7 +110,6 @@ $$y = a(x - p)(x - q)$$
       return `${x},${100 - mathY * 30}`;
     }).join(' ')} />
 
-    {/* Roots at (-1, 0) and (3, 0) -> Pixels (170, 100) and (290, 100) */}
     <circle cx="170" cy="100" r="5" fill="#f59e0b" />
     <circle cx="290" cy="100" r="5" fill="#f59e0b" />
     <line x1="170" y1="93" x2="170" y2="60" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="3 3" />
@@ -109,18 +119,23 @@ $$y = a(x - p)(x - q)$$
     <text x="290" y="50" text-anchor="middle" font-size="12" fill="#f59e0b" font-family="sans-serif" font-weight="bold">Root q</text>
     <text x="290" y="35" text-anchor="middle" font-size="11" fill="#f59e0b" font-family="sans-serif">(3, 0)</text>
 
-    {/* Another point at (1, -4) -> Pixel (230, 220) */}
     <circle cx="230" cy="220" r="5" fill="#1e293b" />
     <line x1="237" y1="220" x2="270" y2="220" stroke="#1e293b" stroke-width="1.5" stroke-dasharray="3 3" />
     <text x="275" y="216" font-size="12" fill="#1e293b" font-family="sans-serif" font-weight="bold">Another Point</text>
     <text x="275" y="231" font-size="11" fill="#1e293b" font-family="sans-serif">(1, -4)</text>
   </svg>
 </div>
+</section>
 
+<section className="lesson-chunk">
 ### Finding the Equation Given the x-intercepts and One Point
 If you are given the two roots and one extra coordinate on the curve, use the factored form.
 
 **Example:** A quadratic graph crosses the x-axis at $x = -1$ and $x = 3$. It passes through the point $(1, -4)$. Find its equation.
+
+<details className="styled-details">
+<summary>View step-by-step solution</summary>
+<Steps>
 1. **Substitute the roots $p$ and $q$:**
    Here, $p = -1$ and $q = 3$.
    $$
@@ -142,15 +157,21 @@ If you are given the two roots and one extra coordinate on the curve, use the fa
 3. **Write the final equation:**
    $$y = 1(x + 1)(x - 3) \implies y = (x + 1)(x - 3)$$
    *(You can expand this to $y = x^2 - 2x - 3$ if the question asks for the form $ax^2 + bx + c$.)*
+</Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. The Special Case: When $a = 1$
 
 Often, an exam question will explicitly tell you that the function is of the form $y = x^2 + bx + c$. Because there is no number written in front of the $x^2$, this immediately tells you that **$a = 1$**.
 
 This saves you half the work! You do not need a secondary point to substitute. You simply plug your vertex $(h, k)$ into $y = (x - h)^2 + k$, or your roots into $y = (x - p)(x - q)$, and expand the brackets to find your final answer.
+</section>
 
+<section className="lesson-chunk">
 <SteveTip title="Expanding Vertex Form Quickly">
 If a question tells you $y = x^2 + bx + c$ has a vertex at $(4, -3)$, write $y = (x - 4)^2 - 3$. 
 Expand carefully using $(A - B)^2 = A^2 - 2AB + B^2$:
@@ -162,10 +183,11 @@ y &= x^2 - 8x + 13
 $$
 You have successfully found the coefficients without doing any messy simultaneous equations!
 </SteveTip>
+</section>
 
 ---
 
-## 4. Practice Problems
+## Practice Problems
 
 <Tabs>
   <TabItem label="📝 Question 1: Given Vertex and a Point">

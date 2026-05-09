@@ -3,6 +3,7 @@ title: 6.2 Area and Perimeter
 description: Calculate the perimeter and area of rectangles, triangles, parallelograms, and trapeziums for IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 Understanding how to calculate the perimeter and area of 2D shapes is a core skill in geometry. In the IGCSE Extended exam, you will not be given the formulas for rectangles, parallelograms, or trapeziums—you must memorise them! 
 
 <Aside type="note" title="Perimeter vs. Area">
@@ -13,9 +14,11 @@ Understanding how to calculate the perimeter and area of 2D shapes is a core ski
 <SteveTip title="The Perpendicular Height Rule">
 For areas of triangles, parallelograms, and trapeziums, you must **always** use the perpendicular height (the height that meets the base at exactly $90^\circ$). Examiners will frequently give you the "slant height" as a trap. Falling for the slant-height trap is like expanding your domain without a cursed technique—a complete waste of energy (and marks). Do not use the slanted edge for area!
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Rectangles and Triangles
 
 These are your foundational shapes. All other area formulas are effectively derived from the rectangle.
@@ -27,6 +30,8 @@ These are your foundational shapes. All other area formulas are effectively deri
   \text{Area} = \text{base} \times \text{height}
   $$
 
+
+
 <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', margin: '2rem 0' }}>
   <svg viewBox="0 0 375 270" width="100%" maxWidth="375px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <rect x="60" y="60" width="255" height="150" fill="#f1f5f9" stroke="#1e293b" stroke-width="4.5" />
@@ -35,7 +40,9 @@ These are your foundational shapes. All other area formulas are effectively deri
     <text x="37.5" y="142.5" font-size="21" font-weight="bold" fill="#10b981" text-anchor="middle" font-family="sans-serif" transform="rotate(-90 37.5,142.5)">height (h)</text>
   </svg>
 </div>
+</section>
 
+<section className="lesson-chunk">
 ### The Triangle
 Every triangle is exactly half of a rectangle (or half of a parallelogram).
 * **Perimeter:** Simply add the lengths of the three outer sides.
@@ -43,6 +50,8 @@ Every triangle is exactly half of a rectangle (or half of a parallelogram).
   $$
   \text{Area} = \frac{1}{2} \times \text{base} \times \text{perpendicular height}
   $$
+
+
 
 <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '2rem', margin: '2rem 0' }}>
   <svg viewBox="0 0 375 270" width="100%" maxWidth="375px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -53,9 +62,11 @@ Every triangle is exactly half of a rectangle (or half of a parallelogram).
     <text x="127.5" y="142.5" font-size="21" font-weight="bold" fill="#ef4444" text-anchor="end" font-family="sans-serif">height (h)</text>
   </svg>
 </div>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Parallelograms
 
 A parallelogram is like a rectangle that has been pushed over. If you chop off the triangular end of a parallelogram and move it to the other side, it forms a perfect rectangle. It’s perfectly balanced, as all things should be. You just snap the left triangle out of existence and materialize it on the right.
@@ -67,6 +78,8 @@ Because of this, the area formula is exactly the same as a rectangle, provided y
   $$
   \text{Area} = \text{base} \times \text{perpendicular height}
   $$
+
+
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 600 270" width="100%" maxWidth="600px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -86,9 +99,11 @@ Because of this, the area formula is exactly the same as a rectangle, provided y
     <polygon points="420,210 480,210 480,60" fill="none" stroke="#94a3b8" stroke-width="3" stroke-dasharray="6 6" />
   </svg>
 </div>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Trapeziums
 
 A trapezium is a quadrilateral with exactly one pair of parallel sides. 
@@ -100,6 +115,8 @@ To find the area, we take the **average of the two parallel sides** and multiply
   \text{Area} = \frac{1}{2} \times (\text{top} + \text{bottom}) \times h
   $$
   *(where $h$ is the perpendicular height).*
+
+
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 525 300" width="100%" maxWidth="525px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -120,6 +137,7 @@ To find the area, we take the **average of the two parallel sides** and multiply
     <text x="150" y="157.5" font-size="21" font-weight="bold" fill="#ef4444" text-anchor="end" font-family="sans-serif">height (h)</text>
   </svg>
 </div>
+</section>
 
 ---
 

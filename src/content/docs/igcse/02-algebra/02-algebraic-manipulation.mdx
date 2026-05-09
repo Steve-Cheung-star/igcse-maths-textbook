@@ -3,10 +3,13 @@ title: 2.2 Algebraic Manipulation
 description: Simplify, expand, and factorise complex algebraic expressions.
 ---
 
+<section className="lesson-chunk">
 Algebra is the language of mathematics. Before solving equations or working with complex functions, you must be able to fluently manipulate algebraic expressions. This means mastering how to simplify, expand, and factorise them efficiently.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Simplifying Expressions
 
 To simplify an algebraic expression, you must collect **like terms**. Like terms are terms that have exactly the same variables with the exact same powers. 
@@ -19,9 +22,14 @@ To simplify an algebraic expression, you must collect **like terms**. Like terms
 </Aside>
 
 When simplifying, look for matching letter combinations and combine their coefficients. Present your working vertically to avoid losing track of signs.
+</section>
 
+<section className="lesson-chunk">
 **Example:**
 Simplify $2a^2 + 3ab - 1 + 5a^2 - 9ab + 4$
+
+<details className="styled-details">
+<summary>View Solution</summary>
 
 $$
 \begin{aligned}
@@ -30,9 +38,12 @@ $$
 &= 7a^2 - 6ab + 3
 \end{aligned}
 $$
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Expanding Products
 
 Expanding an expression means removing the brackets by multiplying out the terms. 
@@ -40,7 +51,14 @@ Expanding an expression means removing the brackets by multiplying out the terms
 ### Single and Double Brackets
 For double brackets, multiply every term in the first bracket by every term in the second bracket. The **FOIL** method (First, Outer, Inner, Last) is a common way to remember this.
 
+
+</section>
+
+<section className="lesson-chunk">
 **Example:** $(3x + y)(x - 4y)$
+
+<details className="styled-details">
+<summary>View Expansion</summary>
 
 $$
 \begin{aligned}
@@ -50,7 +68,10 @@ $$
 &= 3x^2 - 11xy - 4y^2
 \end{aligned}
 $$
+</details>
+</section>
 
+<section className="lesson-chunk">
 <Aside type="caution" title="The Universal Algebra Mistake">
 A very common misconception is thinking that $(x + y)^2 = x^2 + y^2$. **This is completely wrong!** A squared bracket means multiplying the bracket by itself.
 $$
@@ -64,14 +85,21 @@ $$
 
 ### Triple Brackets (Extended)
 To expand three brackets, expand and simplify the first two brackets completely, then multiply that resulting expression by the third bracket.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Factorisation: The Basics
 
 Factorising is the exact opposite of expanding. It means putting expressions back into brackets. Always start by extracting the **Highest Common Factor (HCF)**.
+</section>
 
+<section className="lesson-chunk">
 **Example:** Factorise $18m^3n - 24m^2n^2$
+
+<details className="styled-details">
+<summary>View Factorisation</summary>
 
 $$
 \begin{aligned}
@@ -80,13 +108,18 @@ $$
 &= 6m^2n(3m - 4n)
 \end{aligned}
 $$
+</details>
+</section>
 
+<section className="lesson-chunk">
 <SteveTip title="Factorise Fully">
 When an exam question says "factorise fully", it means you must extract the **Highest Common Factor**. If you factorised $9x^2 + 15xy$ into $x(9x + 15y)$, you would lose a mark because the terms inside the bracket still share a factor of $3$. Always double-check your brackets!
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Advanced Factorisation
 
 As expressions become more complex, you must recognise different patterns to factorise them correctly. Many students struggle here, so we will break down each method step-by-step. Use this flowchart to decide your strategy:
@@ -135,17 +168,23 @@ As expressions become more complex, you must recognise different patterns to fac
     <text x="500" y="338" font-family="sans-serif" font-size="11" fill="#333" text-anchor="middle">Grouping</text>
 
     <defs>
-        <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" marker-width="6" marker-height="6" orient="auto-start-reverse">
             <path d="M 0 0 L 10 5 L 0 10 z" fill="#333" />
         </marker>
     </defs>
 </svg>
+</section>
 
-
+<section className="lesson-chunk">
 ### A. Factorising by Grouping (4 Terms)
 When you have four terms, split them down the middle into pairs and factorise each pair separately.
+</section>
 
+<section className="lesson-chunk">
 **Example:** Factorise $px - qx + 2py - 2qy$
+
+<details className="styled-details">
+<summary>View Solution</summary>
 
 $$
 \begin{aligned}
@@ -154,13 +193,21 @@ $$
 &= (p - q)(x + 2y)
 \end{aligned}
 $$
+</details>
+</section>
 
+<section className="lesson-chunk">
 ### B. Difference of Two Squares (2 Terms)
 <Aside type="tip" title="Difference of Two Squares (DOTS) Theorem">
 Any expression showing the subtraction of two perfect squares, in the form $a^2 - b^2$, can always be factorised as $(a - b)(a + b)$.
 </Aside>
+</section>
 
+<section className="lesson-chunk">
 **Example:** $36x^2 - 49y^2$
+
+<details className="styled-details">
+<summary>View Solution</summary>
 
 $$
 \begin{aligned}
@@ -169,7 +216,10 @@ $$
 &= (6x - 7y)(6x + 7y)
 \end{aligned}
 $$
+</details>
+</section>
 
+<section className="lesson-chunk">
 ### C. Quadratics: $x^2 + bx + c$ (Sum & Product Method)
 When the coefficient of $x^2$ is $1$ (e.g., $x^2 + 7x + 12$), we need to find two integers, $p$ and $q$, such that:
 * **Product:** $p \times q = c$
@@ -202,7 +252,9 @@ When the coefficient of $x^2$ is $1$ (e.g., $x^2 + 7x + 12$), we need to find tw
 </svg>
 
 **Answer:** $(x + 3)(x + 4)$
+</section>
 
+<section className="lesson-chunk">
 ### D. Advanced Quadratics: The Cross Method
 When factorising a non-monic quadratic in the form $ax^2 + bx + c$, the Cross Method visually checks the factors of $a$ and $c$ to see if their cross-products sum to the middle coefficient $b$.
 
@@ -234,17 +286,18 @@ Let's factorise $3x^2 - 11x - 20$:
     <rect x="80" y="145" width="200" height="35" rx="5" fill="none" stroke="#9b5de5" stroke-width="2" stroke-dasharray="4,4"/>
 
     <defs>
-        <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#e63946" /></marker>
-        <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2a9d8f" /></marker>
+        <marker id="arrow-red" viewBox="0 0 10 10" refX="8" refY="5" marker-width="6" marker-height="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#e63946" /></marker>
+        <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" marker-width="6" marker-height="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#2a9d8f" /></marker>
     </defs>
 </svg>
 
 Read straight across the rows to get your brackets.
 **Answer:** $(3x + 4)(x - 5)$
+</section>
 
 ---
 
-## 5. Comprehensive Practice Problems
+## Practice Problems
 
 <Tabs>
   <TabItem label="📝 Q1: Single & Double Expansions">

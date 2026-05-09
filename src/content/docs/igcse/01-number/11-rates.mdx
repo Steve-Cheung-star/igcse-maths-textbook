@@ -3,31 +3,45 @@ title: 1.11 Rates and Speed
 description: Master the calculation of common rates including speed, hourly pay, exchange rates, fuel consumption, and flow rates for IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 A **rate** is a way of comparing two different quantities (like distance and time, or money and hours). In mathematics, the word "per" almost always means **divide**.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Common Measures of Rate
 
 A rate tells you how much of one thing happens for every one unit of another. The units themselves usually tell you the formula you need to use.
 
+<div className="table-wrapper">
+
 | Rate Type | Common Units | Calculation Logic |
 | :--- | :--- | :--- |
-| **Hourly Pay** | GBP/hr | Total Pay ÷ Hours worked |
-| **Exchange Rate** | USD/EUR | Currency A ÷ Currency B |
-| **Fuel Consumption** | km/L | Distance ÷ Fuel used |
-| **Flow Rate** | L/sec | Volume ÷ Time |
-| **Density** | g/cm³ | Mass ÷ Volume |
+| **Hourly Pay** | GBP/hr | Total Pay $\div$ Hours worked |
+| **Exchange Rate** | USD/EUR | Currency A $\div$ Currency B |
+| **Fuel Consumption** | km/L | Distance $\div$ Fuel used |
+| **Flow Rate** | L/sec | Volume $\div$ Time |
+| **Density** | g/cm³ | Mass $\div$ Volume |
+
+</div>
 
 <Aside type="note" title="Reading the Units">
 The forward slash (/) in units like **m/s** is literally a division sign. It tells you to take the **metres** and divide them by the **seconds**. If you forget a formula in the exam, just look at the units in the question!
 </Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Speed, Distance, and Time
 
 Speed is the rate at which distance changes over time. You must be able to rearrange the relationship between these three variables.
+
+
+
+[Image of a distance-speed-time formula triangle]
+
 
 <svg viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
     <rect width="100%" height="100%" fill="transparent" />
@@ -39,22 +53,30 @@ Speed is the rate at which distance changes over time. You must be able to rearr
     <text x="250" y="180" font-family="sans-serif" font-size="36" font-weight="bold" fill="#0a9396" text-anchor="middle">T</text>
     <text x="200" y="235" font-family="sans-serif" font-size="16" fill="#333" text-anchor="middle">Distance = Speed × Time</text>
 </svg>
+</section>
 
+<section className="lesson-chunk">
 ### The Core Formulae
-* $$ \text{Speed} = \frac{\text{Distance}}{\text{Time}} $$
+* $$ \text{Speed} = \dfrac{\text{Distance}}{\text{Time}} $$
 * $$ \text{Distance} = \text{Speed} \times \text{Time} $$
-* $$ \text{Time} = \frac{\text{Distance}}{\text{Speed}} $$
+* $$ \text{Time} = \dfrac{\text{Distance}}{\text{Speed}} $$
+</section>
 
+<section className="lesson-chunk">
 ### The m/s to km/h Shortcut
 In the exam, you often need to convert between these two. Instead of doing three separate conversions (metres to km, seconds to mins, mins to hours), use the **3.6 Rule**:
 
 * **To go from m/s to km/h:** Multiply by **3.6**.
 * **To go from km/h to m/s:** Divide by **3.6**.
 
-> **Why 3.6?** There are **3600** seconds in an hour and **1000** metres in a km. $3600 \div 1000 = 3.6$.
+<Aside type="note" title="Why 3.6?">
+There are **3600** seconds in an hour and **1000** metres in a km. $3600 \div 1000 = 3.6$.
+</Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. The "Time Trap" (Minutes vs. Decimals)
 
 This is the #1 place students lose marks. You **cannot** calculate with minutes directly in a speed formula.
@@ -78,48 +100,66 @@ This is the #1 place students lose marks. You **cannot** calculate with minutes 
         <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#333" /></marker>
     </defs>
 </svg>
+</section>
 
+<section className="lesson-chunk">
 ### Entering the Formula (Minutes to Decimal)
 If the question gives you **2 hours 15 mins**, you must convert to a decimal before multiplying or dividing:
-15 ÷ 60 = 0.25 $\implies$ **2.25 hours**
+$15 \div 60 = 0.25 \implies \mathbf{2.25 \text{ hours}}$
 
 ### Exiting the Formula (Decimal to Minutes)
 If your calculation gives you a time like **4.3 hours**, this is **NOT** 4 hours and 3 minutes.
 1. **The "Whole" is hours:** **4 hours**.
 2. **The decimal is minutes:** Multiply the decimal part by 60.
-3. 0.3 × 60 = **18 minutes**.
+3. $0.3 \times 60 = \mathbf{18 \text{ minutes}}$.
+
 **Answer:** **4 hours and 18 minutes**.
 
 <SteveTip title="The 0.45 Illusion">
 Students often write **1.45** for **1 hour 45 mins**. This is a guaranteed way to lose the method mark. Always ask: "Is 45 minutes nearly an hour?" Yes. So the decimal must be **0.75**. If you find yourself writing the minutes exactly as the decimal, stop and divide by 60!
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Average Speed
 
 Average speed is **not** just the mean of two speeds. It must be calculated using the total distance and total time for the entire journey.
 
-$$ \text{Average Speed} = \frac{\text{Total Distance}}{\text{Total Time}} $$
+$$ \text{Average Speed} = \dfrac{\text{Total Distance}}{\text{Total Time}} $$
 
-**Example from Syllabus:** A cyclist travels 45 km in 3 hours 45 minutes. What is their average speed?
-1. Convert the time to a decimal: 3 hours + (45 ÷ 60) hours = **3.75 hours**.
-2. Apply the formula: 45 ÷ 3.75 = **12 km/h**.
+### Example: Average Speed Calculation
+A cyclist travels 45 km in 3 hours 45 minutes. What is their average speed?
+
+<details className="styled-details">
+<summary>View Solution</summary>
+<Steps>
+1. **Convert the time to a decimal:** $45 \text{ minutes} \div 60 = 0.75 \text{ hours}$. Total time = $3 + 0.75 = \mathbf{3.75 \text{ hours}}$.
+2. **Apply the formula:** $\text{Average Speed} = 45 \div 3.75$.
+3. **Calculate the final result:** $\mathbf{12 \text{ km/h}}$.
+</Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 5. Speed Equations & Algebra
 
 ### Linear Speed Equations
 Sometimes you are told a journey takes **20 minutes** longer if the speed is reduced by **10 km/h**. You set this up by making the **Time** the subject:
-$$ \text{Time}_1 - \text{Time}_2 = \frac{20}{60} $$
+$$ \text{Time}_1 - \text{Time}_2 = \dfrac{20}{60} $$
+</section>
 
+<section className="lesson-chunk">
 ### Quadratic Speed Equations (Sneak Peek)
 In harder Paper 4 questions, you might see something like: *"A car travels **100 km**. If the speed increases by $x$, the time taken decreases by **1 hour**."*
 
-$$ \frac{100}{v} - \frac{100}{v+x} = 1 $$
+$$ \dfrac{100}{v} - \dfrac{100}{v+x} = 1 $$
 
 Multiplying this out leads to a **Quadratic Equation**.
+
 <Aside type="note" title="Coming Soon">
 We will cover how to solve these equations in **Chapter 2: Algebra**. For now, focus on being able to write the initial fraction correctly!
 </Aside>
@@ -129,10 +169,11 @@ When setting up time difference equations, always do:
 **[Slow Time] - [Fast Time] = [Time Difference]**
 Since the slower speed takes *more* time, it must come first to get a positive result.
 </SteveTip>
+</section>
 
 ---
 
-## 6. Practice Problems
+## Practice Problems
 
 ### Part A: Speed and Time Conversions
 
@@ -215,13 +256,13 @@ Since the slower speed takes *more* time, it must come first to get a positive r
     * **c)** A runner covers **12 km** at speed $s$. If they speed up by 2 km/h, they shave 15 minutes off their time. Set up the fractional equation.
   </TabItem>
   <TabItem label="✅ Solution 5">
-    * **a)** $\text{Time}_1 = \frac{200}{x}$, $\text{Time}_2 = \frac{200}{x+10}$.<br/>
-       Equation: $\frac{200}{x} - \frac{200}{x+10} = 1$.<br/>
+    * **a)** $\text{Time}_1 = \dfrac{200}{x}$, $\text{Time}_2 = \dfrac{200}{x+10}$.<br/>
+       Equation: $\dfrac{200}{x} - \dfrac{200}{x+10} = 1$.<br/>
        Multiply by $x(x+10)$: $200(x+10) - 200x = x^2 + 10x \implies$ **$x^2 + 10x - 2000 = 0$**.
     * **b)** Slow Time - Fast Time = Diff. (Note: 30 mins = 0.5 hours).<br/>
-       **$\frac{30}{v-5} - \frac{30}{v} = 0.5$**
+       **$\dfrac{30}{v-5} - \dfrac{30}{v} = 0.5$**
     * **c)** Slow Time - Fast Time = Diff. (Note: 15 mins = 0.25 or 1/4 hours).<br/>
-       **$\frac{12}{s} - \frac{12}{s+2} = 0.25$**
+       **$\dfrac{12}{s} - \dfrac{12}{s+2} = 0.25$**
   </TabItem>
 </Tabs>
 

@@ -3,18 +3,21 @@ title: 4.6 Perpendicular lines
 description: Learn how to find the gradient and equation of straight lines, visualise shortest distances, and calculate perpendicular bisectors for IGCSE 0607 Extended.
 ---
 
-When two straight lines are **perpendicular**, they intersect at exactly a right angle ($90^\circ$).
-
 import PerpendicularLab from '../../../../components/PerpendicularLab.jsx';
+
+<section className="lesson-chunk">
+When two straight lines are **perpendicular**, they intersect at exactly a right angle ($90^\circ$).
 
 <div className="not-content" style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <div style={{ width: '100%', maxWidth: '600px' }}>
     <PerpendicularLab mode="gradients" client:only="react" />
   </div>
 </div>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. The Negative Reciprocal Rule (Visualising Rise/Run)
 
 Unlike parallel lines, perpendicular lines travel in entirely different directions. Look at the diagram above to understand how their gradients are connected.
@@ -41,30 +44,39 @@ To find the perpendicular gradient, remember the two 'flips':
 1.  Flip the **fraction** upside down.
 2.  Flip the **sign** (positive $\leftrightarrow$ negative).
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Identifying Perpendicular Gradients from Equations
 
 You must ensure the equation is in the form $y = mx + c$ before you can identify the original gradient and calculate its negative reciprocal.
+</section>
 
+<section className="lesson-chunk">
 **Syllabus Example Walkthrough:**
 Find the gradient of a line perpendicular to $2y = 3x + 1$.
 
-1.  **Find the original gradient:** The equation is not in $y = mx + c$ form yet. Rearrange it:
+<details className="styled-details">
+  <summary>View Solution</summary>
+  <Steps>
+    1.  **Find the original gradient:** The equation is not in $y = mx + c$ form yet. Rearrange it:
 
-    $$
-    \begin{aligned}
-    \frac{2y}{2} &= \frac{3x + 1}{2} \\
-    y &= \frac{3}{2}x + \frac{1}{2}
-    \end{aligned}
-    $$
+        $$
+        \begin{aligned}
+        \frac{2y}{2} &= \frac{3x + 1}{2} \\
+        y &= \frac{3}{2}x + \frac{1}{2}
+        \end{aligned}
+        $$
 
-    The original gradient ($m_1$) is $\frac{3}{2}$.
+        The original gradient ($m_1$) is $\frac{3}{2}$.
 
-2.  **Find the perpendicular gradient:** Flip $\frac{3}{2}$ and change the sign to negative.
-
-    **Answer:** The perpendicular gradient ($m_2$) is $\boldsymbol{-\frac{2}{3}}$.
+    2.  **Find the perpendicular gradient:** Flip $\frac{3}{2}$ and change the sign to negative.
+  </Steps>
+  
+  **Answer:** The perpendicular gradient ($m_2$) is $\boldsymbol{-\frac{2}{3}}$.
+</details>
 
 <SteveTip title="Speed Trick: The Standard Form Shortcut">
 If you are given an equation in standard form **$ax + by = c$**, you don't actually need to rearrange it to $y = mx + c$! 
@@ -78,9 +90,11 @@ b(p) - a(q) = k
 $$
 
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. The Unique Perpendicular through a Point
 
 For any given line and any given point ($P$) **not on that line**, there is **exactly one** unique perpendicular line that passes through $P$.
@@ -90,29 +104,36 @@ For any given line and any given point ($P$) **not on that line**, there is **ex
     <PerpendicularLab mode="point" client:only="react" />
   </div>
 </div>
+</section>
 
+<section className="lesson-chunk">
 **Syllabus Example:** Find the equation of the line passing through $(-6, 4)$ which is perpendicular to the line $y = 3x - 2$.
 
-<Steps>
-1.  **Find the perpendicular gradient ($m_2$):** The original gradient is $3$. The perpendicular gradient is $m_2 = -\frac{1}{3}$.
+<details className="styled-details">
+  <summary>View Solution</summary>
+  <Steps>
+    1.  **Find the perpendicular gradient ($m_2$):** The original gradient is $3$. The perpendicular gradient is $m_2 = -\frac{1}{3}$.
 
-2.  **Substitute into $y = mx + c$:** Use your perpendicular gradient and the given point $x = -6$, $y = 4$.
+    2.  **Substitute into $y = mx + c$:** Use your perpendicular gradient and the given point $x = -6$, $y = 4$.
 
-    $$
-    \begin{aligned}
-    4 &= \left(-\frac{1}{3}\right)(-6) + c \\
-    4 &= 2 + c \\
-    c &= \mathbf{2}
-    \end{aligned}
-    $$
+        $$
+        \begin{aligned}
+        4 &= \left(-\frac{1}{3}\right)(-6) + c \\
+        4 &= 2 + c \\
+        c &= \mathbf{2}
+        \end{aligned}
+        $$
 
-3.  **Write the final equation:**
+    3.  **Write the final equation:**
+  </Steps>
 
-    **Answer:** $\boldsymbol{y = -\frac{1}{3}x + 2}$
-</Steps>
+  **Answer:** $\boldsymbol{y = -\frac{1}{3}x + 2}$
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. The Perpendicular Bisector
 
 This is a classic Extended-tier question. A **perpendicular bisector** is a line that cuts exactly through the **midpoint** of a line segment connecting two points, at a perfect $90^\circ$ angle.
@@ -122,48 +143,55 @@ This is a classic Extended-tier question. A **perpendicular bisector** is a line
     <PerpendicularLab mode="bisector" client:only="react" />
   </div>
 </div>
+</section>
 
+<section className="lesson-chunk">
 **Syllabus Example Walkthrough:**
 Find the equation of the perpendicular bisector of the line joining the points $(-3, 8)$ and $(9, -2)$.
 
-<Steps>
-1.  **Find the Midpoint ($M$):** You *must* know where the middle is.
+<details className="styled-details">
+  <summary>View Solution</summary>
+  <Steps>
+    1.  **Find the Midpoint ($M$):** You *must* know where the middle is.
 
-    $$
-    M = \left( \frac{-3 + 9}{2}, \frac{8 + (-2)}{2} \right) = \left( \frac{6}{2}, \frac{6}{2} \right) = \mathbf{(3, 3)}
-    $$
+        $$
+        M = \left( \frac{-3 + 9}{2}, \frac{8 + (-2)}{2} \right) = \left( \frac{6}{2}, \frac{6}{2} \right) = \mathbf{(3, 3)}
+        $$
 
-    *Our perpendicular bisector must pass through $(3, 3)$.*
+        *Our perpendicular bisector must pass through $(3, 3)$.*
 
-2.  **Find the Original Gradient ($m_1$):**
+    2.  **Find the Original Gradient ($m_1$):**
 
-    $$
-    m_1 = \frac{y_2 - y_1}{x_2 - x_1} = \frac{-2 - 8}{9 - (-3)} = \frac{-10}{12} = \mathbf{-\frac{5}{6}}
-    $$
+        $$
+        m_1 = \frac{y_2 - y_1}{x_2 - x_1} = \frac{-2 - 8}{9 - (-3)} = \frac{-10}{12} = \mathbf{-\frac{5}{6}}
+        $$
 
-3.  **Find the Perpendicular Gradient ($m_2$):**
+    3.  **Find the Perpendicular Gradient ($m_2$):**
 
-    $$
-    m_2 = \mathbf{\frac{6}{5}}
-    $$
+        $$
+        m_2 = \mathbf{\frac{6}{5}}
+        $$
 
-4.  **Build the Equation:** Use $m = \frac{6}{5}$ and the midpoint $(3, 3)$. Substitute into $y = mx + c$:
+    4.  **Build the Equation:** Use $m = \frac{6}{5}$ and the midpoint $(3, 3)$. Substitute into $y = mx + c$:
 
-    $$
-    \begin{aligned}
-    3 &= \left(\frac{6}{5}\right)(3) + c \\
-    3 &= \frac{18}{5} + c \\
-    c &= 3 - \frac{18}{5} \\
-    c &= \frac{15}{5} - \frac{18}{5} \\
-    c &= \mathbf{-\frac{3}{5}}
-    \end{aligned}
-    $$
+        $$
+        \begin{aligned}
+        3 &= \left(\frac{6}{5}\right)(3) + c \\
+        3 &= \frac{18}{5} + c \\
+        c &= 3 - \frac{18}{5} \\
+        c &= \frac{15}{5} - \frac{18}{5} \\
+        c &= \mathbf{-\frac{3}{5}}
+        \end{aligned}
+        $$
+  </Steps>
 
-    **Answer:** $\boldsymbol{y = \frac{6}{5}x - \frac{3}{5}}$
-</Steps>
+  **Answer:** $\boldsymbol{y = \frac{6}{5}x - \frac{3}{5}}$
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 5. Shortest Distance (Perpendicular Distance)
 
 In geometry, the shortest distance between an external point and a straight line is **always** the perpendicular distance.
@@ -174,16 +202,17 @@ In geometry, the shortest distance between an external point and a straight line
   </div>
 </div>
 
-
 This concept is used in optimization problems (e.g., finding the closest point on a road, a boundary, or a river).
 
 **To find the shortest distance, you must:**
 1.  Find the equation of the unique **perpendicular line** passing through the external point (Concept 3).
 2.  Find the **point of intersection** ($I$) between the original line and your perpendicular line (by solving simultaneous equations).
 3.  Calculate the **distance** between the original external point and the intersection point $I$ (using the Distance Formula).
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 6. Synthesis: Area of a Scalene Triangle
 
 This is a high-difficulty application that brings together multiple skills from Coordinate Geometry. 
@@ -239,101 +268,102 @@ This is a high-difficulty application that brings together multiple skills from 
   </svg>
 </div>
 
-**The Steps:**
+<details className="styled-details">
+  <summary>View Solution</summary>
+  <Steps>
+    1.  **Find the equation of the base line $AB$:** Gradient of $AB = \frac{4 - 1}{7 - 1} = \frac{3}{6} = \frac{1}{2}$.
 
-<Steps>
-1.  **Find the equation of the base line $AB$:** Gradient of $AB = \frac{4 - 1}{7 - 1} = \frac{3}{6} = \frac{1}{2}$.
+        Using $A(1, 1)$ in $y = mx + c$:
 
-    Using $A(1, 1)$ in $y = mx + c$:
+        $$
+        \begin{aligned}
+        1 &= \frac{1}{2}(1) + c \\
+        c &= \frac{1}{2}
+        \end{aligned}
+        $$
 
-    $$
-    \begin{aligned}
-    1 &= \frac{1}{2}(1) + c \\
-    c &= \frac{1}{2}
-    \end{aligned}
-    $$
+        Equation of $AB$: **$y = 0.5x + 0.5$**
 
-    Equation of $AB$: **$y = 0.5x + 0.5$**
+    2.  **Find the equation of the perpendicular height from $C$:**
+        
+        The perpendicular gradient is the negative reciprocal of $\frac{1}{2}$, which is **$-2$**.
 
-2.  **Find the equation of the perpendicular height from $C$:**
-    
-    The perpendicular gradient is the negative reciprocal of $\frac{1}{2}$, which is **$-2$**.
+        Using point $C(3, 8)$ in $y = mx + c$:
 
-    Using point $C(3, 8)$ in $y = mx + c$:
+        $$
+        \begin{aligned}
+        8 &= -2(3) + c \\
+        8 &= -6 + c \\
+        c &= 14
+        \end{aligned}
+        $$
 
-    $$
-    \begin{aligned}
-    8 &= -2(3) + c \\
-    8 &= -6 + c \\
-    c &= 14
-    \end{aligned}
-    $$
+        Equation of perpendicular: **$y = -2x + 14$**
 
-    Equation of perpendicular: **$y = -2x + 14$**
+    3.  **Find the intersection point ($I$) to get the height's end point:**
+        
+        Set the two line equations equal to each other:
 
-3.  **Find the intersection point ($I$) to get the height's end point:**
-    
-    Set the two line equations equal to each other:
+        $$
+        \begin{aligned}
+        0.5x + 0.5 &= -2x + 14 \\
+        2.5x &= 13.5 \\
+        x &= \mathbf{5.4}
+        \end{aligned}
+        $$
 
-    $$
-    \begin{aligned}
-    0.5x + 0.5 &= -2x + 14 \\
-    2.5x &= 13.5 \\
-    x &= \mathbf{5.4}
-    \end{aligned}
-    $$
+        Substitute $x$ back in to find $y$: 
+        
+        $$
+        \begin{aligned}
+        y &= -2(5.4) + 14 \\
+        y &= \mathbf{3.2}
+        \end{aligned}
+        $$
+        
+        The intersection is **$I(5.4, 3.2)$**.
 
-    Substitute $x$ back in to find $y$: 
-    
-    $$
-    \begin{aligned}
-    y &= -2(5.4) + 14 \\
-    y &= \mathbf{3.2}
-    \end{aligned}
-    $$
-    
-    The intersection is **$I(5.4, 3.2)$**.
+    4.  **Calculate lengths using the Distance Formula:**
+        
+        **Base Length ($AB$):**
+        
+        $$
+        \begin{aligned}
+        AB &= \sqrt{(7 - 1)^2 + (4 - 1)^2} \\
+        &= \sqrt{36 + 9} \\
+        &= \mathbf{\sqrt{45}}
+        \end{aligned}
+        $$
+        
+        **Perpendicular Height ($CI$):**
+        
+        $$
+        \begin{aligned}
+        CI &= \sqrt{(5.4 - 3)^2 + (3.2 - 8)^2} \\
+        &= \sqrt{(2.4)^2 + (-4.8)^2} \\
+        &= \sqrt{5.76 + 23.04} \\
+        &= \mathbf{\sqrt{28.8}}
+        \end{aligned}
+        $$
 
-4.  **Calculate lengths using the Distance Formula:**
-    
-    **Base Length ($AB$):**
-    
-    $$
-    \begin{aligned}
-    AB &= \sqrt{(7 - 1)^2 + (4 - 1)^2} \\
-    &= \sqrt{36 + 9} \\
-    &= \mathbf{\sqrt{45}}
-    \end{aligned}
-    $$
-    
-    **Perpendicular Height ($CI$):**
-    
-    $$
-    \begin{aligned}
-    CI &= \sqrt{(5.4 - 3)^2 + (3.2 - 8)^2} \\
-    &= \sqrt{(2.4)^2 + (-4.8)^2} \\
-    &= \sqrt{5.76 + 23.04} \\
-    &= \mathbf{\sqrt{28.8}}
-    \end{aligned}
-    $$
-
-5.  **Calculate Final Area:**
-    
-    $$
-    \begin{aligned}
-    \text{Area} &= \frac{1}{2} \times \text{Base} \times \text{Height} \\
-    &= \frac{1}{2} \times \sqrt{45} \times \sqrt{28.8} \\
-    &= \frac{1}{2} \times \sqrt{1296} \\
-    &= \frac{1}{2} \times 36 \\
-    &= \mathbf{18 \text{ units}^2}
-    \end{aligned}
-    $$
-
-</Steps>
+    5.  **Calculate Final Area:**
+        
+        $$
+        \begin{aligned}
+        \text{Area} &= \frac{1}{2} \times \text{Base} \times \text{Height} \\
+        &= \frac{1}{2} \times \sqrt{45} \times \sqrt{28.8} \\
+        &= \frac{1}{2} \times \sqrt{1296} \\
+        &= \frac{1}{2} \times 36 \\
+        &= \mathbf{18 \text{ units}^2}
+        \end{aligned}
+        $$
+  </Steps>
+</details>
+</section>
 
 ---
 
-## 7. Practice Problems
+## Practice Problems
 
 <Tabs>
   <TabItem label="📝 Question 1: Finding Perpendicular Gradients">

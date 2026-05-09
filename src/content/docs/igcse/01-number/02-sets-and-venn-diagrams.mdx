@@ -3,10 +3,13 @@ title: 1.2 Sets and Venn Diagrams
 description: Understand and use set language, notation, and Venn diagrams to describe relationships for IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 A **set** is simply a collection of things—usually numbers, but they can be letters, coordinates, or even objects. Before you can solve complex probability or logic puzzles, you need to know how to read and write the "secret language" of sets.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. The Language of Sets
 
 In mathematics, we use curly brackets $\{\}$ to list the contents of a set. The items inside the set are called **elements** or **members**. 
@@ -20,7 +23,11 @@ Here is the essential IGCSE vocabulary you must memorise:
 <SteveTip title="Don't List, Just Count!">
 When you see the little $n$ before a set (like $n(A)$), the examiner is NOT asking for a list of numbers. They want a single integer—the count. If you list the elements when they ask for $n(A)$, you will lose the mark!
 </SteveTip>
+</section>
 
+---
+
+<section className="lesson-chunk">
 ### Elements and Subsets
 How do we describe what belongs where?
 
@@ -42,9 +49,11 @@ How do we describe what belongs where?
 </div>
 
 * **$A \not\subseteq B$ ($A$ is not a subset of $B$):** Set $A$ has at least one element that is *not* in set $B$.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Defining Sets (Set-Builder Notation)
 
 Sometimes, sets are too big to list every single number. Instead of listing them like $D = \{a, b, c, \dots\}$, we use a rule to describe them. The vertical line $\mid$ means **"such that"**.
@@ -53,21 +62,20 @@ Here are the common ways you will see sets defined in your exams:
 
 * **Descriptive:**
 $$A = \{x \mid x \text{ is a natural number}\}$$
-
- *(Translation: Set A contains all values of $x$, such that $x$ is a natural whole number: 0, 1, 2, 3...)*
+*(Translation: Set A contains all values of $x$, such that $x$ is a natural whole number: 0, 1, 2, 3...)*
 
 * **Inequalities:**
 $$C = \{x \mid a \leqslant x \leqslant b\}$$
-
- *(Translation: Set C contains all numbers between $a$ and $b$, inclusive.)*
+*(Translation: Set C contains all numbers between $a$ and $b$, inclusive.)*
 
 * **Coordinates/Equations:**
 $$B = \{(x, y) \mid y = mx + c\}$$
-
- *(Translation: Set B contains all coordinate pairs $(x, y)$ that lie perfectly on the straight line $y = mx + c$.)*
+*(Translation: Set B contains all coordinate pairs $(x, y)$ that lie perfectly on the straight line $y = mx + c$.)*
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Relationships Between Sets
 
 When two sets interact, we use specific symbols to describe their relationship. Imagine $A = \{1, 2, 3, 4\}$ and $B = \{3, 4, 5, 6\}$.
@@ -75,24 +83,22 @@ When two sets interact, we use specific symbols to describe their relationship. 
 * **$A \cap B$ (Intersection):** The elements that are in **both** A and B. 
  *Think: "A AND B".* $$A \cap B = \{3, 4\}$$
 
+
+
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 300 200" width="100%" maxWidth="400px" style={{ background: 'transparent' }}>
     <rect x="2" y="2" width="296" height="196" rx="12" fill="transparent" stroke="#94a3b8" strokeWidth="3" strokeDasharray="8 8"/>
     <text x="15" y="30" textAnchor="start" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="24" fill="#64748b">U</text>
-    
-    {/* Mathematically exact intersection shape to avoid rendering gaps */}
     <path d="M 150 55.23 A 65 65 0 0 0 150 164.77 A 65 65 0 0 0 150 55.23 Z" fill="#FFE66D" stroke="#f59e0b" strokeWidth="2"/>
-    
-    {/* Set Outlines */}
     <circle cx="115" cy="110" r="65" fill="none" stroke="#4ECDC4" strokeWidth="4"/>
     <circle cx="185" cy="110" r="65" fill="none" stroke="#FF6B6B" strokeWidth="4"/>
-    
-    {/* Labels */}
     <text x="70" y="60" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#2b7a74">A</text>
     <text x="230" y="60" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#c92a2a">B</text>
   </svg>
 </div>
+</section>
 
+<section className="lesson-chunk">
 * **$A \cup B$ (Union):** The elements that are in A, **or** B, **or** both. Just mash them all together (but don't write duplicates!). 
    *Think: "A OR B".*
   
@@ -114,7 +120,9 @@ When listing the elements of $A \cup B$, students often write down the shared nu
     <text x="230" y="60" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#d97706">B</text>
   </svg>
 </div>
+</section>
 
+<section className="lesson-chunk">
 * **$A'$ (Complement):** Everything in the Universal set that is **NOT** in A. 
    *Think: "Opposite of A".*
 
@@ -138,27 +146,31 @@ When listing the elements of $A \cup B$, students often write down the shared nu
 * **$\cup$ looks like a cup**: It holds *everything* poured into it (Union).
 * **$\cap$ looks like a cap (or a bridge)**: It only connects the exact overlapping middle ground (Intersection).
 </Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Venn Diagrams
 
 Venn diagrams are visual representations of sets. For IGCSE 0607, you will only ever have to deal with **two or three sets** overlapping in a rectangle. The rectangle represents the Universal set ($U$).
 
 <Steps>
-
-1.  **Draw the Universe:** Draw a large box and label it $U$.
-2.  **Draw the Sets:** Draw a circle for each set inside the box. If they share elements, make sure the circles overlap!
-3.  **Fill the Centre First:** Always start by putting the intersection (the elements shared by all sets) in the very middle overlap.
-4.  **Work Outwards:** Fill in the remaining parts of the circles, making sure you don't double-count the middle.
-5.  **Don't forget the outside:** Any elements that don't belong to any circle must be written inside the rectangle, but outside the circles.
-
+1. **Draw the Universe:** Draw a large box and label it $U$.
+2. **Draw the Sets:** Draw a circle for each set inside the box. If they share elements, make sure the circles overlap!
+3. **Fill the Centre First:** Always start by putting the intersection (the elements shared by all sets) in the very middle overlap.
+4. **Work Outwards:** Fill in the remaining parts of the circles, making sure you don't double-count the middle.
+5. **Don't forget the outside:** Any elements that don't belong to any circle must be written inside the rectangle, but outside the circles.
 </Steps>
 
 <SteveTip title="The 'Outside' is easy points">
 Always check if there are elements from the Universal Set ($U$) that didn't fit into any circle. In Paper 2 (Non-Calculator), there is almost always one or two numbers floating in the box. Don't leave them out!
 </SteveTip>
+</section>
 
+---
+
+<section className="lesson-chunk">
 ### Elements vs. Number of Elements
 
 In exams, you will be asked to draw two different types of Venn diagrams. You must read the question carefully to know which one they want!
@@ -193,7 +205,11 @@ Let $B = \{c, d, e\}$
     <text x="260" y="175" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="bold" fontSize="18" fill="#334155">g</text>
   </svg>
 </div>
+</section>
 
+---
+
+<section className="lesson-chunk">
 #### Type 2: Writing the *Number* of Elements $n(A)$
 In this type of diagram, we don't know (or care) what the actual items are. We only write down **how many** items are in each section. 
 
@@ -222,7 +238,11 @@ For example, imagine a survey of 18 people:
 <SteveTip title="The 'Only' Catch">
 This is the #1 mistake in IGCSE Maths. If a question says "$n(A)=10$" and "$n(A \cap B)=2$", then the number of people who like ONLY A is $10 - 2 = 8$. Always subtract the middle from the total before filling in the outer moons!
 </SteveTip>
+</section>
 
+---
+
+<section className="lesson-chunk">
 ### Working with Three Sets
 
 When dealing with three sets (e.g., $A$, $B$, and $C$), you draw three overlapping circles. This creates exactly **8 distinct regions**, including the space outside the circles. 
@@ -234,27 +254,23 @@ The most important rule for 3-set problems is to **work from the inside out**. A
     <rect x="5" y="5" width="390" height="340" rx="12" fill="#f8fafc" stroke="#94a3b8" strokeWidth="3" strokeDasharray="8 8"/>
     <text x="20" y="35" fontFamily="sans-serif" fontSize="24" fill="#64748b" fontWeight="900">U</text>
     
-    {/* Clean, symmetrical 3-circle layout */}
     <circle cx="160" cy="140" r="80" fill="rgba(59, 130, 246, 0.15)" stroke="#3b82f6" strokeWidth="3"/>
     <circle cx="240" cy="140" r="80" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" strokeWidth="3"/>
     <circle cx="200" cy="215" r="80" fill="rgba(34, 197, 94, 0.15)" stroke="#22c55e" strokeWidth="3"/>
     
-    {/* Set Titles */}
     <text x="110" y="70" textAnchor="middle" fontFamily="sans-serif" fontSize="24" fontWeight="bold" fill="#1d4ed8">A</text>
     <text x="290" y="70" textAnchor="middle" fontFamily="sans-serif" fontSize="24" fontWeight="bold" fill="#b91c1c">B</text>
     <text x="200" y="310" textAnchor="middle" fontFamily="sans-serif" fontSize="24" fontWeight="bold" fill="#15803d">C</text>
     
-    {/* Inside Text Label */}
     <text x="176" y="165" textAnchor="middle" fontFamily="sans-serif" fontSize="15" fontWeight="bold" fill="#334155">A∩B∩C</text>
-    
-    {/* Outside Text Label - Exact same styling as inside */}
     <text x="75" y="315" textAnchor="middle" fontFamily="sans-serif" fontSize="15" fontWeight="bold" fill="#334155">(A∪B∪C)'</text>
   </svg>
 </div>
+</section>
 
 ---
 
-## 5. Practice Problems
+## Practice Problems
 
 <Tabs>
   <TabItem label="📝 Question 1: Element & Subset Notation">

@@ -3,6 +3,7 @@ title: 1.17 Radicals and Surds
 description: Learn about the anatomy of radicals, converting between entire and mixed radicals, operations (add, subtract, multiply, divide), expanding brackets, and rationalising the denominator.
 ---
 
+<section className="lesson-chunk">
 ## 1. What are Radicals and Surds?
 
 In mathematics, a **radical** is any expression that uses a root symbol (like a square root, cube root, etc.). 
@@ -10,7 +11,7 @@ In mathematics, a **radical** is any expression that uses a root symbol (like a 
 A **surd** is a specific classification of a radical: it is a root that *cannot* be simplified into a rational number (a whole number or a clean fraction). In other words, a surd evaluates to an **irrational number** (a non-repeating, never-ending decimal). 
 
 In North America, we generally refer to all of these simply as **radicals**, but it is important to know the distinction:
-* $\sqrt{25}$ is a **radical**, but it evaluates to exactly 5. Therefore, it is a rational number, *not* a surd.
+* $\sqrt{25}$ is a **radical**, but it evaluates to exactly $5$. Therefore, it is a rational number, *not* a surd.
 * $\sqrt{20}$ is a **radical**, but it evaluates to $\approx 4.472...$. Because it cannot be written as a clean fraction, it is an **irrational radical**, which is known as a **surd**.
 
 <Aside type="note" title="The Number Hierarchy">
@@ -21,7 +22,9 @@ In North America, we generally refer to all of these simply as **radicals**, but
         * **Rational Radicals:** Simplify cleanly into rational numbers (e.g., $\sqrt{4} = 2$, $\sqrt[3]{8} = 2$)
         * **Surds:** Irrational radicals that remain roots in their simplest form (e.g., $\sqrt{7} \approx 2.645...$)
 </Aside>
+</section>
 
+<section className="lesson-chunk">
 ### Parts of a Radical
 
 Every radical expression is made up of three main components. For an expression like $a\sqrt[n]{x}$:
@@ -54,50 +57,76 @@ Every radical expression is made up of three main components. For an expression 
 
 * **Coefficient ($a$):** The number multiplying the radical on the outside.
 * **Radical Symbol ($\sqrt{\phantom{x}}$):** The symbol indicating a root is being calculated.
-* **Index / Degree ($n$):** The small number sitting in the "v" of the radical symbol, indicating *which* root is being taken. If no index is written, it is mathematically assumed to be 2 (a square root).
+* **Index / Degree ($n$):** The small number sitting in the "v" of the radical symbol, indicating *which* root is being taken. If no index is written, it is mathematically assumed to be $2$ (a square root).
 * **Radicand ($x$):** The number or expression underneath the radical symbol.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. Converting: Entire and Mixed Radicals
 
 Radicals can be written in two forms:
-* **Entire Radicals:** The coefficient is 1 (everything is under the root), e.g., $\sqrt{20}$.
+* **Entire Radicals:** The coefficient is $1$ (everything is under the root), e.g., $\sqrt{20}$.
 * **Mixed Radicals:** There is a coefficient outside the root, e.g., $2\sqrt{5}$.
+</section>
 
+<section className="lesson-chunk">
 ### Simplifying (Entire $\rightarrow$ Mixed)
 To simplify a radical, find the **largest perfect square factor** of the radicand.
-1. **Example:** Simplify $\sqrt{72}$.
-2. Find the largest perfect square factor of 72, which is 36 ($36 \times 2 = 72$).
-3. Split the root: $\sqrt{36} \times \sqrt{2}$.
-4. Evaluate the perfect square: $\mathbf{6\sqrt{2}}$.
 
+**Example:** Simplify $\sqrt{72}$.
+
+<details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
+<Steps>
+1. Find the largest perfect square factor of $72$, which is $36$ ($36 \times 2 = 72$).
+2. Split the root: $\sqrt{36} \times \sqrt{2}$.
+3. Evaluate the perfect square: $\mathbf{6\sqrt{2}}$.
+</Steps>
+</details>
+</section>
+
+<section className="lesson-chunk">
 ### "Unsimplifying" (Mixed $\rightarrow$ Entire)
 Sometimes you need to reverse the process to compare the size of radicals. To bring a coefficient *inside* a square root, you must **square it**.
-1. **Example:** Convert $4\sqrt{3}$ into an entire radical.
-2. Square the outside number and bring it under the root: $\sqrt{4^2 \times 3}$.
-3. Calculate: $\sqrt{16 \times 3}$.
-4. Final Answer: $\mathbf{\sqrt{48}}$.
 
+**Example:** Convert $4\sqrt{3}$ into an entire radical.
+
+<details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
+<Steps>
+1. Square the outside number and bring it under the root: $\sqrt{4^2 \times 3}$.
+2. Calculate: $\sqrt{16 \times 3}$.
+3. Final Answer: $\mathbf{\sqrt{48}}$.
+</Steps>
+</details>
+</section>
+
+<section className="lesson-chunk">
 <SteveTip title="Exam Trick: Finding an Irrational Number Between Two Integers">
-A very common exam question asks you to name an **irrational number** between two standard integers (like 6 and 7). 
+A very common exam question asks you to name an **irrational number** between two standard integers (like $6$ and $7$). 
 
 To solve this, use the "unsimplifying" trick to turn the integers into entire radicals!
 1. Square both integers and put them under a root: $6 = \sqrt{36}$ and $7 = \sqrt{49}$.
-2. Any non-perfect square between 36 and 49 will be an **irrational number** between 6 and 7.
+2. Any non-perfect square between $36$ and $49$ will be an **irrational number** between $6$ and $7$.
 3. Examples: $\mathbf{\sqrt{37}}$, $\mathbf{\sqrt{40}}$, or $\mathbf{\sqrt{48}}$. 
 *(Do not pick $\sqrt{36}$ or $\sqrt{49}$, as those are rational integers!)*
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Operations with Radicals
 
 ### Multiplication and Division
 When multiplying or dividing radicals, apply the operations to the coefficients together, and the radicands together. Keep "outside" numbers with "outside" numbers, and "inside" numbers with "inside" numbers.
 * **Multiplication Rule:** $a\sqrt{b} \times c\sqrt{d} = (a \times c)\sqrt{b \times d}$
 * **Division Rule:** $\frac{a\sqrt{b}}{c\sqrt{d}} = \left(\frac{a}{c}\right)\sqrt{\frac{b}{d}}$
+</section>
 
+<section className="lesson-chunk">
 ### Multiplying the Same Radical 2 or 3 Times
 A very common scenario is multiplying a radical by itself. Because a square root asks "what times itself equals this number?", squaring a square root simply cancels the root out!
 
@@ -112,63 +141,99 @@ A very common scenario is multiplying a radical by itself. Because a square root
 Many students make these fatal errors, especially when doing Pythagorean theorem ($a^2 + b^2 = c^2$) questions:
 
 * ❌ **WRONG:** $2\sqrt{b} = \sqrt{2b}$
-  * **RIGHT:** The 2 outside is actually $\sqrt{4}$. So, $2\sqrt{b} = \sqrt{4} \times \sqrt{b} = \mathbf{\sqrt{4b}}$.
+  * **RIGHT:** The $2$ outside is actually $\sqrt{4}$. So, $2\sqrt{b} = \sqrt{4} \times \sqrt{b} = \mathbf{\sqrt{4b}}$.
 * ❌ **WRONG:** $\frac{\sqrt{b}}{2} = \sqrt{\frac{b}{2}}$
-  * **RIGHT:** The 2 on the bottom is actually $\sqrt{4}$. So, $\frac{\sqrt{b}}{2} = \frac{\sqrt{b}}{\sqrt{4}} = \mathbf{\sqrt{\frac{b}{4}}}$.
+  * **RIGHT:** The $2$ on the bottom is actually $\sqrt{4}$. So, $\frac{\sqrt{b}}{2} = \frac{\sqrt{b}}{\sqrt{4}} = \mathbf{\sqrt{\frac{b}{4}}}$.
 
 Never mix an "outside" integer directly into an "inside" radicand without squaring it first!
 </Aside>
+</section>
 
+<section className="lesson-chunk">
 ### Addition and Subtraction
 You can only add or subtract radicals if they have the **exact same radicand and index**. Think of them like "like terms" in algebra ($3x + 2x = 5x$).
 * **Rule:** $a\sqrt{c} \pm b\sqrt{c} = (a \pm b)\sqrt{c}$
 
 **Example:** Add $3\sqrt{20} + 5\sqrt{5}$.
+
 *You cannot add these immediately because the radicands are different. You must simplify first!*
+
+<details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
+<Steps>
 1. Simplify $3\sqrt{20}$: $3\sqrt{4 \times 5} = 3(2)\sqrt{5} = 6\sqrt{5}$.
 2. Rewrite the equation: $6\sqrt{5} + 5\sqrt{5}$.
 3. Add the coefficients: $(6 + 5)\sqrt{5} = \mathbf{11\sqrt{5}}$.
+</Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Expanding Brackets (FOIL)
 
 When dealing with binomials containing radicals, use the distributive property or **FOIL** (First, Outer, Inner, Last), just like you would with polynomials.
 
 **Example:** Expand and simplify $(3 + 2\sqrt{5})(4 - \sqrt{5})$.
-* **First:** $3 \times 4 = 12$
-* **Outer:** $3 \times -\sqrt{5} = -3\sqrt{5}$
-* **Inner:** $2\sqrt{5} \times 4 = 8\sqrt{5}$
-* **Last:** $2\sqrt{5} \times -\sqrt{5} = -2(5) = -10$
-* **Combine Like Terms:** $(12 - 10) + (-3\sqrt{5} + 8\sqrt{5}) = \mathbf{2 + 5\sqrt{5}}$.
+
+<details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
+<Steps>
+1. **First:** $3 \times 4 = 12$
+2. **Outer:** $3 \times -\sqrt{5} = -3\sqrt{5}$
+3. **Inner:** $2\sqrt{5} \times 4 = 8\sqrt{5}$
+4. **Last:** $2\sqrt{5} \times -\sqrt{5} = -2(5) = -10$
+5. **Combine Like Terms:** $(12 - 10) + (-3\sqrt{5} + 8\sqrt{5}) = \mathbf{2 + 5\sqrt{5}}$.
+</Steps>
+</details>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 5. Rationalising the Denominator
 
 It is a mathematical convention not to leave a radical in the denominator of a fraction. **Rationalising** is the process of eliminating the radical from the bottom.
+</section>
 
+<section className="lesson-chunk">
 ### Type 1: Single Radical Term
 Multiply the numerator and denominator by the radical in the denominator.
 
 **Example:** Rationalise $\frac{7}{2\sqrt{3}}$.
+
+<details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
+<Steps>
 1. Multiply top and bottom by $\sqrt{3}$: $\frac{7 \times \sqrt{3}}{2\sqrt{3} \times \sqrt{3}}$.
 2. Simplify: $\frac{7\sqrt{3}}{2(3)}$.
 3. Final Answer: $\mathbf{\frac{7\sqrt{3}}{6}}$.
+</Steps>
+</details>
+</section>
 
+<section className="lesson-chunk">
 ### Type 2: Two Radical Terms (Binomial Denominator)
 Multiply the top and bottom by the **conjugate** of the denominator. The conjugate is the exact same expression, but with the *opposite sign* in the middle ($a + \sqrt{b} \rightarrow a - \sqrt{b}$). This creates a difference of squares, eliminating the radicals.
 
 **Example:** Rationalise $\frac{5}{\sqrt{7} - \sqrt{2}}$.
+
+<details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
+<Steps>
 1. Multiply by the conjugate $\frac{\sqrt{7} + \sqrt{2}}{\sqrt{7} + \sqrt{2}}$.
 2. Top: $5(\sqrt{7} + \sqrt{2}) = 5\sqrt{7} + 5\sqrt{2}$.
 3. Bottom: $(\sqrt{7} - \sqrt{2})(\sqrt{7} + \sqrt{2}) = (\sqrt{7})^2 - (\sqrt{2})^2 = 7 - 2 = 5$.
 4. Result: $\frac{5\sqrt{7} + 5\sqrt{2}}{5}$.
 5. Factor and simplify: $\frac{5(\sqrt{7} + \sqrt{2})}{5} = \mathbf{\sqrt{7} + \sqrt{2}}$.
+</Steps>
+</details>
+</section>
 
 ---
 
-## 6. Standard Practice Problems
+## Practice Problems
 
 <Tabs>
   <TabItem label="📝 Q1: Entire to Mixed Radicals">

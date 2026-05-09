@@ -15,10 +15,7 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
      ========================================= */
   html[data-mode="bento"] {
     scroll-padding-top: 0 !important;
-    /* DELETED: scroll-snap-type and scroll-behavior */
   }
-
-  /* ... (Keep your display: none rules here) ... */
 
   /* =========================================
      2. PRESENTATION SLIDE SNAPPING
@@ -28,7 +25,6 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
     display: flex !important;
     flex-direction: column !important;
     justify-content: flex-start !important;
-    /* DELETED: scroll-snap-align and scroll-snap-stop */
     padding: 2rem 2rem 4rem 2rem !important;
     box-sizing: border-box !important;
   }
@@ -43,8 +39,8 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
   html[data-mode="bento"] .sl-markdown-content p,
   html[data-mode="bento"] .sl-markdown-content ul,
   html[data-mode="bento"] .sl-markdown-content ol {
-    max-width: none !important; /* Removes the 75ch limit */
-    text-align: left !important; /* Forces left justification */
+    max-width: none !important;
+    text-align: left !important;
     margin-left: 0 !important;
   }
 
@@ -68,10 +64,7 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
   html[data-mode="bento"][data-tool="laser"],
   html[data-mode="bento"][data-tool="laser"] body,
   html[data-mode="bento"][data-tool="laser"] * {
-    cursor:
-      url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="7" fill="%23ff0000" stroke="white" stroke-width="2.5" box-shadow="0 0 10px red"/></svg>')
-        12 12,
-      auto !important;
+    cursor: url('data:image/svg+xml;utf8,<svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="7" fill="%23ff0000" stroke="white" stroke-width="2.5" box-shadow="0 0 10px red"/></svg>') 12 12, auto !important;
   }
   html[data-mode="bento"][data-tool="pen"] body {
     cursor: crosshair !important;
@@ -79,6 +72,34 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
   html[data-mode="bento"][data-tool="eraser"] body {
     cursor: cell !important;
   }
+
+  /* =========================================
+     5. SHRINK SVGS – NOT inside asides NOR KaTeX
+     ========================================= */
+  /* Shrink regular content SVGs */
+  html[data-mode="bento"] .sl-markdown-content svg {
+    max-width: 50%;
+    height: auto;
+  }
+
+  /* Reset for asides */
+  html[data-mode="bento"] .sl-markdown-content aside svg,
+  html[data-mode="bento"] .sl-markdown-content .starlight-aside svg {
+    max-width: none;
+  }
+
+  /* KaTeX: fully restore original layout rules, remove any size cap */
+  html[data-mode="bento"] .sl-markdown-content .katex svg,
+  html[data-mode="bento"] .sl-markdown-content .katex-display svg {
+    max-width: none !important;      /* overrides any max-width, even if your shrink rule has !important */
+    width: 100%;                     /* KaTeX’s original width */
+    height: inherit;                 /* KaTeX’s original height (usually inherited) */
+  }
+
+  /* If you prefer to keep KaTeX’s own width:100% untouched,
+     you can instead just override the shrink rule’s max-width
+     WITHOUT setting width/height (they’ll be inherited from .katex svg).
+     However, setting them explicitly guarantees no interference. */
 </style>
 
 <ProjectorToolbar />

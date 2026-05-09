@@ -3,32 +3,40 @@ title: 5.7 Circle Theorems II
 description: Understand and apply the symmetry properties of circles, including equal chords, perpendicular bisectors, and tangents from an external point for IGCSE 0607.
 ---
 
+<section className="lesson-chunk">
 While the first set of circle theorems focuses heavily on inscribed angles, this second set is all about **symmetry and distance**. Circles are perfectly symmetrical shapes, which means that lines, chords, and tangents interact with them in highly predictable, proportional ways.
 
 <SteveTip title="Reasons are Still Mandatory">
   Just like the angle theorems, you must memorise the exact wording of these symmetry properties. Examiners will ask you to "give a reason for your answer" when you use them to find missing lengths or angles. 
 </SteveTip>
+</section>
 
 ---
 
 import CircleSimulator from '../../../../components/CircleSimulator.jsx';
+
+<section className="lesson-chunk">
 
 ### 🎮 Interactive Simulator
 
 <div class="not-content">
   <CircleSimulator category="lines" client:only="react" />
 </div>
+</section>
 
+---
+
+<section className="lesson-chunk">
 ## 1. Equal Chords are Equidistant from the Centre
 
 A chord is a straight line drawn between any two points on the circumference. Because a circle is perfectly round, chords that are exactly the same length will always be the exact same distance from the centre.
 
 
 
-<Aside type="tip" title="Theorem 1: Equal Chords">
+<SteveTip title="Theorem 1: Equal Chords">
   **Equal chords are equidistant from the centre**.
   Conversely, if two chords are the same distance from the centre, they must be equal in length.
-</Aside>
+</SteveTip>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 300 300" width="100%" maxWidth="350px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -54,12 +62,16 @@ A chord is a straight line drawn between any two points on the circumference. Be
     <text x="145" y="140" font-size="14" font-weight="bold" fill="#10b981" text-anchor="end" font-family="sans-serif">Equal Distance</text>
   </svg>
 </div>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 2. The Perpendicular Bisector of a Chord
 
 If you draw a line from the centre of a circle so that it hits a chord at exactly $90^\circ$ (perpendicular), it will always cut that chord perfectly in half (bisect it). 
+
+
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 300 250" width="100%" maxWidth="350px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -94,15 +106,15 @@ If you draw a line from the centre of a circle so that it hits a chord at exactl
   </svg>
 </div>
 
-<Aside type="tip" title="Theorem 2: Perpendicular Bisector">
+<SteveTip title="Theorem 2: Perpendicular Bisector">
   **The perpendicular bisector of a chord passes through the centre**.
   * **Rule A:** A line from the centre perpendicular to a chord bisects the chord.
   * **Rule B:** A line from the centre that bisects a chord is perpendicular to the chord.
-</Aside>
+</SteveTip>
 
-<Aside type="caution" title="The Pythagoras Connection">
+<SteveTip title="The Pythagoras Connection">
   This theorem is almost *always* paired with **Pythagoras' Theorem** in exams. The radius, half the chord, and the perpendicular distance to the centre form a perfect right-angled triangle.
-</Aside>
+</SteveTip>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 300 250" width="100%" maxWidth="350px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -133,24 +145,28 @@ If you draw a line from the centre of a circle so that it hits a chord at exactl
     <text x="150" y="210" font-size="12" font-weight="bold" fill="#1e293b" text-anchor="middle" font-family="sans-serif">Perpendicular bisector passes through centre</text>
   </svg>
 </div>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Tangents from an External Point
 
 If you pick a random point anywhere outside a circle and draw straight lines to the circle, exactly two lines will act as tangents (touching the edge perfectly). Because of the circle's symmetry, these two lines will be a mirror image of each other.
 
-<Aside type="tip" title="Theorem 3: Tangents from a Point">
-  **Tangents from an external point are equal in length**.
-</Aside>
 
-<Aside type="note" title="The Tangent Kite">
+
+<SteveTip title="Theorem 3: Tangents from a Point">
+  **Tangents from an external point are equal in length**.
+</SteveTip>
+
+<SteveTip title="The Tangent Kite">
   When you draw two tangents from an external point and connect their touching points to the centre with radii, you create a **kite**.
   * The tangents are equal.
   * The radii are equal.
   * The angle between the tangent and radius is $90^\circ$.
   * A line drawn from the centre to the external point slices the kite into **two identical right-angled triangles**.
-</Aside>
+</SteveTip>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 350 300" width="100%" maxWidth="525px" style={{background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -188,9 +204,11 @@ If you pick a random point anywhere outside a circle and draw straight lines to 
     </g>
   </svg>
 </div>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 4. Structured Worked Examples
 
 Examiners will consistently blend these symmetry theorems with Pythagoras' Theorem, trigonometry (SOH CAH TOA), and basic lengths.
@@ -215,7 +233,9 @@ Examiners will consistently blend these symmetry theorems with Pythagoras' Theor
 </div>
 
 **Example Task:** A chord of length $30\text{cm}$ is drawn in a circle with centre $O$. The perpendicular distance from $O$ to the chord is $8\text{cm}$. Calculate the radius of the circle, $r$.
+</section>
 
+<details className="styled-details">
 **Solution:**
 <Steps>
   1. **Apply the theorem:** The perpendicular line from the centre bisects the chord. 
@@ -236,6 +256,7 @@ Examiners will consistently blend these symmetry theorems with Pythagoras' Theor
      r = \sqrt{289} = 17\text{cm}
      $$
 </Steps>
+</details>
 
 ---
 
