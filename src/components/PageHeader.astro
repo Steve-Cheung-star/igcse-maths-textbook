@@ -3,13 +3,16 @@ import Default from '@astrojs/starlight/components/PageTitle.astro';
 import FormulaBox from './FormulaBox.astro';
 
 const { entry } = Astro.locals.starlightRoute;
-const formula = entry?.data?.formula;
+
+// Tell TypeScript to expect that our custom 'formula' string might exist
+const customData = entry?.data as { formula?: string };
+const formula = customData?.formula;
 ---
 
 {/* 1. Render the normal Starlight Title first */}
 <Default><slot /></Default>
 
-{/* 2. ADD THIS: The Graceful Utility Bar */}
+{/* 2. The Graceful Utility Bar */}
 <div class="print-utility-bar no-print">
   <button onclick="window.print()" class="print-meta-btn">
     <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -31,7 +34,7 @@ const formula = entry?.data?.formula;
 )}
 
 <style>
-  /* Your new utility bar styles */
+  /* Your utility bar styles */
   .print-utility-bar {
     display: flex;
     justify-content: flex-end;
@@ -67,4 +70,65 @@ const formula = entry?.data?.formula;
     margin-top: 1.5rem;
     margin-bottom: 2rem;
   }
+
+  /* =========================================
+     PRINT OVERRIDES
+     ========================================= */
+  @media print {
+    /* Hide the print button itself */
+    .no-print {
+      display: none !important;
+    }
+
+    /* Force the summary to show, overriding projector mode's "display: none" */
+    details summary {
+      display: list-item !important;
+      font-weight: bold !important;
+      margin-bottom: 0.5rem !important;
+    }
+
+    /* Force all hidden steps/elements inside details to be visible */
+    details > * {
+      display: block !important;
+      opacity: 1 !important;
+      animation: none !important;
+    }
+
+    /* Specifically ensure list items revert to bullet points instead of block */
+    details li {
+      display: list-item !important;
+      margin-bottom: 0.5rem !important;
+    }
+  }
 </style>
+
+<script>
+  // We use the DOM dataset to track state, which avoids all TypeScript custom property errors!
+  if (document.documentElement.dataset.printHandlersSetup !== 'true') {
+    document.documentElement.dataset.printHandlersSetup = 'true';
+
+    // Fires instantly when Print Dialog is summoned
+    window.addEventListener('beforeprint', () => {
+      document.querySelectorAll('details').forEach(detail => {
+        // Tag it with its current state so we know whether to close it later
+        detail.dataset.wasOpen = detail.open ? 'true' : 'false';
+        
+        // Force expand
+        detail.open = true;
+      });
+    });
+
+    // Fires instantly when Print Dialog is closed/cancelled
+    window.addEventListener('afterprint', () => {
+      document.querySelectorAll('details').forEach(detail => {
+        // If it was closed before the user clicked print, close it again
+        if (detail.dataset.wasOpen === 'false') {
+          detail.open = false;
+        }
+        
+        // Clean up our temporary data attribute
+        delete detail.dataset.wasOpen;
+      });
+    });
+  }
+</script>

@@ -27,6 +27,7 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
     justify-content: flex-start !important;
     padding: 2rem 2rem 4rem 2rem !important;
     box-sizing: border-box !important;
+    position: relative !important;
   }
 
   .lesson-chunk {
@@ -74,32 +75,99 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
   }
 
   /* =========================================
-     5. SHRINK SVGS – NOT inside asides NOR KaTeX
+     5. SHRINK SVGS
      ========================================= */
-  /* Shrink regular content SVGs */
   html[data-mode="bento"] .sl-markdown-content svg {
-    max-width: 50%;
+    max-width: 100%;
+    max-height: 80vh;
     height: auto;
+    object-fit: contain;
   }
 
-  /* Reset for asides */
   html[data-mode="bento"] .sl-markdown-content aside svg,
   html[data-mode="bento"] .sl-markdown-content .starlight-aside svg {
     max-width: none;
   }
 
-  /* KaTeX: fully restore original layout rules, remove any size cap */
   html[data-mode="bento"] .sl-markdown-content .katex svg,
   html[data-mode="bento"] .sl-markdown-content .katex-display svg {
-    max-width: none !important;      /* overrides any max-width, even if your shrink rule has !important */
-    width: 100%;                     /* KaTeX’s original width */
-    height: inherit;                 /* KaTeX’s original height (usually inherited) */
+    max-width: none !important;
+    width: 100%;
+    height: inherit;
   }
 
-  /* If you prefer to keep KaTeX’s own width:100% untouched,
-     you can instead just override the shrink rule’s max-width
-     WITHOUT setting width/height (they’ll be inherited from .katex svg).
-     However, setting them explicitly guarantees no interference. */
+  /* =========================================
+     6. SIDE-BY-SIDE DETAILS & PROGRESSIVE REVEAL
+     ========================================= */
+  html[data-mode="bento"] .lesson-chunk:has(details) {
+    padding-right: 40% !important; 
+  }
+
+  /* Note: Changed to .lesson-chunk details based on your previous fix to prevent teleporting */
+  html[data-mode="bento"] .lesson-chunk details {
+    position: absolute !important;
+    right: 0rem !important;
+    top: 1.5rem !important;
+    width: 35% !important;
+    max-height: 92vh !important;
+    overflow-y: auto !important;
+    overflow-x: auto !important;
+    overflow-wrap: break-word !important;
+    background: var(--sl-color-bg-nav, #1e1e2e) !important;
+    padding: 1.5rem !important;
+    border-radius: 0.5rem !important;
+    border: 1px solid var(--sl-color-hairline, #444) !important;
+    box-sizing: border-box !important;
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  html[data-mode="bento"] .lesson-chunk details summary {
+    display: none !important;
+  }
+
+  html[data-mode="bento"] .lesson-chunk details > p,
+  html[data-mode="bento"] .lesson-chunk details > pre,
+  html[data-mode="bento"] .lesson-chunk details > blockquote,
+  html[data-mode="bento"] .lesson-chunk details > div,
+  html[data-mode="bento"] .lesson-chunk details > h2,
+  html[data-mode="bento"] .lesson-chunk details > h3,
+  html[data-mode="bento"] .lesson-chunk details > h4,
+  html[data-mode="bento"] .lesson-chunk details > ul > li,
+  html[data-mode="bento"] .lesson-chunk details > ol > li {
+    display: none;
+    margin-bottom: 1rem;
+  }
+  
+  html[data-mode="bento"] .lesson-chunk details > p.revealed,
+  html[data-mode="bento"] .lesson-chunk details > pre.revealed,
+  html[data-mode="bento"] .lesson-chunk details > blockquote.revealed,
+  html[data-mode="bento"] .lesson-chunk details > div.revealed,
+  html[data-mode="bento"] .lesson-chunk details > h2.revealed,
+  html[data-mode="bento"] .lesson-chunk details > h3.revealed,
+  html[data-mode="bento"] .lesson-chunk details > h4.revealed {
+    display: block;
+    animation: slideIn 0.15s ease-out forwards;
+  }
+
+  html[data-mode="bento"] .lesson-chunk details > ul > li.revealed,
+  html[data-mode="bento"] .lesson-chunk details > ol > li.revealed {
+    display: list-item;
+    animation: slideIn 0.15s ease-out forwards;
+  }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  html[data-mode="bento"] .lesson-chunk details::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  html[data-mode="bento"] .lesson-chunk details::-webkit-scrollbar-thumb {
+    background: var(--sl-color-text-muted, #666);
+    border-radius: 3px;
+  }
 </style>
 
 <ProjectorToolbar />
@@ -113,22 +181,6 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
 
     let previousBentoState = false;
 
-    function getActiveAnchor() {
-      const headers = Array.from(
-        document.querySelectorAll(
-          ".sl-markdown-content h2, .sl-markdown-content h3",
-        ),
-      );
-      if (headers.length === 0) return null;
-      let activeAnchor = headers[0];
-      for (const header of headers) {
-        const rect = header.getBoundingClientRect();
-        if (rect.top <= 120) activeAnchor = header;
-        else break;
-      }
-      return activeAnchor;
-    }
-
     const enterBtn = document.getElementById("wb-enter-projector");
     if (enterBtn) {
       enterBtn.addEventListener("click", () => {
@@ -137,24 +189,30 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
       });
     }
 
-    projectorStore.subscribe((state) => {
+    projectorStore.subscribe((state: any) => {
       if (state.isBento !== previousBentoState) {
-        const isAtTop = window.scrollY < 100;
-        const anchor = getActiveAnchor();
-
         if (state.isBento) {
           document.documentElement.setAttribute("data-mode", "bento");
           document.documentElement.setAttribute("data-tool", state.tool);
+          
+          setTimeout(() => {
+            const chunkElements = document.querySelectorAll(".lesson-chunk");
+            const viewportCenter = window.innerHeight / 2;
+            let targetChunk = null;
+            
+            for (let i = 0; i < chunkElements.length; i++) {
+              const rect = chunkElements[i].getBoundingClientRect();
+              if (rect.top <= viewportCenter && rect.bottom >= viewportCenter) {
+                targetChunk = chunkElements[i];
+                break;
+              }
+            }
+            if (targetChunk) targetChunk.scrollIntoView({ behavior: "instant", block: "start" });
+          }, 30);
         } else {
           document.documentElement.removeAttribute("data-mode");
           document.documentElement.removeAttribute("data-tool");
         }
-
-        setTimeout(() => {
-          if (isAtTop) window.scrollTo({ top: 0, behavior: "instant" });
-          else if (anchor)
-            anchor.scrollIntoView({ behavior: "instant", block: "start" });
-        }, 30);
         previousBentoState = state.isBento;
       } else if (state.isBento) {
         document.documentElement.setAttribute("data-tool", state.tool);
@@ -163,18 +221,106 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
 
     window.addEventListener(
       "keydown",
-      (e) => {
+      (e: KeyboardEvent) => {
         if (window.innerWidth < 768) return;
-        if (
-          (e.ctrlKey || e.metaKey) &&
-          e.altKey &&
-          (e.key?.toLowerCase() === "p" || e.code === "KeyP")
-        ) {
+
+        if ((e.ctrlKey || e.metaKey) && e.altKey && (e.key?.toLowerCase() === "p" || e.code === "KeyP")) {
           e.preventDefault();
           projectorStore.setKey("isBento", !projectorStore.get().isBento);
+          return;
+        }
+
+        if (projectorStore.get().isBento) {
+          const isNext = e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ";
+          const isPrev = e.key === "ArrowLeft" || e.key === "PageUp";
+
+          if (isNext || isPrev) {
+            e.preventDefault(); 
+            e.stopPropagation(); 
+
+            const chunkElements = document.querySelectorAll(".lesson-chunk");
+            if (chunkElements.length === 0) return;
+
+            const viewportHeight = window.innerHeight;
+            
+            // Initializing with an element guarantees TypeScript recognizes the type
+            let currentChunk = chunkElements[0];
+            let currentIndex = 0;
+            let maxVisibleHeight = 0;
+
+            for (let i = 0; i < chunkElements.length; i++) {
+              const chunk = chunkElements[i];
+              const rect = chunk.getBoundingClientRect();
+              const visibleTop = Math.max(0, rect.top);
+              const visibleBottom = Math.min(viewportHeight, rect.bottom);
+              const visibleHeight = visibleBottom - visibleTop;
+
+              if (visibleHeight > maxVisibleHeight) {
+                maxVisibleHeight = visibleHeight;
+                currentChunk = chunk;
+                currentIndex = i;
+              }
+            }
+
+            const details = currentChunk.querySelector("details");
+            const rect = currentChunk.getBoundingClientRect();
+
+            if (isNext) {
+              if (details) {
+                const stepsNodes = details.querySelectorAll(":scope > p, :scope > pre, :scope > blockquote, :scope > div, :scope > h2, :scope > h3, :scope > h4, :scope > ul > li, :scope > ol > li");
+                const steps = Array.from(stepsNodes);
+
+                if (!details.hasAttribute("open")) {
+                  currentChunk.scrollIntoView({ behavior: "instant", block: "start" });
+                  details.setAttribute("open", "true");
+                  if (steps.length > 0) steps[0].classList.add("revealed");
+                  return;
+                }
+
+                const nextStep = steps.find(step => !step.classList.contains("revealed"));
+                if (nextStep) {
+                  currentChunk.scrollIntoView({ behavior: "instant", block: "start" });
+                  nextStep.classList.add("revealed");
+                  nextStep.scrollIntoView({ behavior: "instant", block: "nearest" });
+                  return;
+                }
+              }
+
+              if (rect.bottom > viewportHeight + 10) {
+                const distanceToBottom = rect.bottom - viewportHeight;
+                const scrollAmount = Math.min(viewportHeight, distanceToBottom);
+                window.scrollBy({ top: scrollAmount, left: 0, behavior: "instant" });
+              } 
+              else if (currentIndex < chunkElements.length - 1) {
+                chunkElements[currentIndex + 1].scrollIntoView({ behavior: "instant", block: "start" });
+              }
+            }
+
+            if (isPrev) {
+              if (details && details.hasAttribute("open")) {
+                currentChunk.scrollIntoView({ behavior: "instant", block: "start" });
+                details.removeAttribute("open");
+                
+                const revealedSteps = details.querySelectorAll(".revealed");
+                for (let i = 0; i < revealedSteps.length; i++) {
+                  revealedSteps[i].classList.remove("revealed");
+                }
+                return;
+              }
+
+              if (rect.top < -10) {
+                const distanceToTop = Math.abs(rect.top);
+                const scrollAmount = Math.min(viewportHeight, distanceToTop);
+                window.scrollBy({ top: -scrollAmount, left: 0, behavior: "instant" });
+              } 
+              else if (currentIndex > 0) {
+                chunkElements[currentIndex - 1].scrollIntoView({ behavior: "instant", block: "start" });
+              }
+            }
+          }
         }
       },
-      true,
+      true 
     );
   }
 

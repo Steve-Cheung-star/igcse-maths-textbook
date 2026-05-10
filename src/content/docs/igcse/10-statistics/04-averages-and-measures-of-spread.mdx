@@ -6,9 +6,6 @@ description: Master the calculation of the mean, median, mode, quartiles, and ra
 <section className="lesson-chunk">
 When analysing data, we usually want to find two things: a single value that represents the "centre" of the data (an **average**), and a value that tells us how stretched out or consistent the data is (a **measure of spread**). 
 
-[Image of a distribution curve showing mean, median, and mode]
-
-
 <Aside type="note" title="The Three Averages">
 * **Mode:** The most frequent value.
 * **Median:** The middle value when the data is in order.
@@ -52,13 +49,14 @@ Before calculating the median or quartiles, **always sort the data into ascendin
   *(If there are two middle numbers, add them together and divide by 2).*
 
   ### The Mean
-  To find the **mean** (often represented by $\bar{x}$), add up all the numbers and divide by how many numbers there are.
+  To find the **mean** (often represented by $\bar{x}$),
+  <Steps>
+    1. Add up all the numbers and divide by how many numbers there are.
+    2. $$ \frac{2 + 3 + 4 + 7 + 7 + 9 + 10}{7} = \frac{42}{7} = 6 $$
+  </Steps>
+</details>
 
-  $$
-  \text{Mean} = \frac{2 + 3 + 4 + 7 + 7 + 9 + 10}{7} = \frac{42}{7} = 6
-  $$
-
-  <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
     <svg viewBox="0 0 500 150" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
       {/* Fulcrum (Balance point at the mean) */}
       <polygon points="250,110 240,140 260,140" fill="#94a3b8" />
@@ -87,7 +85,6 @@ Before calculating the median or quartiles, **always sort the data into ascendin
       <line x1="250" y1="50" x2="250" y2="110" stroke="#ef4444" stroke-width="2" stroke-dasharray="4 4" />
     </svg>
   </div>
-</details>
 </section>
 
 ---

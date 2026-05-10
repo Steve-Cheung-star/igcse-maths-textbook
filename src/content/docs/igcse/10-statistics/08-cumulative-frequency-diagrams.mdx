@@ -139,20 +139,6 @@ Once your curve is drawn, you can use it to estimate key statistical values. To 
 
 Let's use our graph of the 80 students to find the Median and IQR.
 
-<details className="styled-details">
-  <summary>How do we calculate the exact values? (Click to reveal steps)</summary>
-
-<Steps>
-  1. **Median:** Half of $80$ is $40$. Read across from $40$ on the y-axis, hit the curve, and go down. The median is roughly **28.5 minutes**.
-  2. **Lower Quartile ($Q_1$):** A quarter of $80$ is $20$. Read across from $20$ on the y-axis and down. $Q_1$ is roughly **21.5 minutes**.
-  3. **Upper Quartile ($Q_3$):** Three-quarters of $80$ is $60$. Read across from $60$ on the y-axis and down. $Q_3$ is roughly **37 minutes**.
-  4. **IQR:** Subtract $Q_1$ from $Q_3$.
-     $$
-     \text{IQR} = 37 - 21.5 = 15.5 \text{ minutes}
-     $$
-</Steps>
-</details>
-
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 450 350" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
     <defs>
@@ -202,6 +188,23 @@ Let's use our graph of the 80 students to find the Median and IQR.
     <text x="239" y="268" font-size="12" font-weight="bold" fill="#f59e0b" text-anchor="start" transform="rotate(-90 239 260)">UQ (37)</text>
   </svg>
 </div>
+
+<details className="styled-details">
+  <summary>How do we calculate the exact values? (Click to reveal steps)</summary>
+
+<Steps>
+  1. **Median:** Half of $80$ is $40$. Read across from $40$ on the y-axis, hit the curve, and go down. The median is roughly **28.5 minutes**.
+  2. **Lower Quartile ($Q_1$):** A quarter of $80$ is $20$. Read across from $20$ on the y-axis and down. $Q_1$ is roughly **21.5 minutes**.
+  3. **Upper Quartile ($Q_3$):** Three-quarters of $80$ is $60$. Read across from $60$ on the y-axis and down. $Q_3$ is roughly **37 minutes**.
+  4. **IQR:** Subtract $Q_1$ from $Q_3$.
+     $$
+     \begin{aligned}
+     \text{IQR} &= 37 - 21.5 \\ 
+                &= 15.5 \text{ minutes}
+     \end{aligned}
+     $$
+</Steps>
+</details>
 </section>
 
 ---
