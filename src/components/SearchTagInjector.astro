@@ -2,9 +2,10 @@
 import type { Props } from '@astrojs/starlight/props';
 import Default from '@astrojs/starlight/components/ContentPanel.astro';
 
-const { slug } = Astro.props;
+// 1. FIX: Explicitly cast Astro.props to include a string slug
+const { slug } = Astro.props as { slug?: string } & Props;
 
-// 1. Determine curriculum context - Added AA SL
+// Determine curriculum context
 const curriculum = slug && slug.startsWith('ib-aasl') 
   ? 'IB AASL'
   : slug && slug.startsWith('ib-aisl') 
@@ -22,7 +23,6 @@ const curriculum = slug && slug.startsWith('ib-aasl')
 const isBookPage = curriculum !== 'General';
 ---
 
-{/* Keep meta for potential future filtering, but removed static weighting */}
 {isBookPage && (
   <div data-pagefind-filter="curriculum" data-pagefind-meta={`curriculum:${curriculum}`} style="display:none;"></div>
 )}
@@ -33,65 +33,115 @@ const isBookPage = curriculum !== 'General';
 
 <script>
   function setupSearchSorter() {
-    // 1. Find the current book directory from the URL (Included year-9)
     const pathParts = window.location.pathname.split('/').filter(Boolean);
     if (pathParts.length === 0) return;
     const currentBook = pathParts[0]; 
 
-    // Only apply sorting logic if we are inside one of the curriculum books
-    const validBooks = ['ib-aisl', 'igcse', 'year-7', 'year-8', 'year-9'];
-    if (!validBooks.includes(currentBook)) return;
+    const validBooks = ['ib-aasl', 'ib-aisl', 'igcse', 'year-7', 'year-8', 'year-9'];
 
-    // 2. Watch the document for Starlight's Pagefind UI injecting search results
     const observer = new MutationObserver((mutations) => {
       const resultsList = document.querySelector('.pagefind-ui__results');
       if (!resultsList) return;
 
-      const results = Array.from(resultsList.querySelectorAll('.pagefind-ui__result'));
-      if (results.length <= 1) return;
+      // 2. FIX: Cast Elements to HTMLElement so TypeScript knows .dataset exists
+      const results = Array.from(resultsList.querySelectorAll<HTMLElement>('.pagefind-ui__result'));
+      if (results.length === 0) return;
 
-      // Check if the list is out of order (a non-book result is appearing before a book result)
-      let needsSorting = false;
-      for (let i = 1; i < results.length; i++) {
-        const prevLink = results[i-1].querySelector('.pagefind-ui__result-link')?.getAttribute('href') || '';
-        const currLink = results[i].querySelector('.pagefind-ui__result-link')?.getAttribute('href') || '';
+      // 1. INJECT BOOK BADGES
+      results.forEach(res => {
+        // Prevent injecting multiple badges if observer fires repeatedly
+        if (res.dataset.labeled) return; 
         
-        const prevIsCurrent = prevLink.includes(`/${currentBook}/`);
-        const currIsCurrent = currLink.includes(`/${currentBook}/`);
+        const linkEl = res.querySelector('.pagefind-ui__result-link');
+        if (!linkEl) return;
+        const href = linkEl.getAttribute('href') || '';
         
-        if (!prevIsCurrent && currIsCurrent) {
-          needsSorting = true;
-          break;
+        // Extract the top-level directory from the link (e.g., 'igcse' from '/igcse/math/...')
+        const resultPathParts = href.split('/').filter(Boolean);
+        const resultBookDir = resultPathParts[0];
+
+        // 3. FIX: Type the object as Record<string, string> so it accepts dynamic string keys
+        const bookDisplayNames: Record<string, string> = {
+          'ib-aasl': 'IB AASL',
+          'ib-aisl': 'IB AISL',
+          'igcse': 'IGCSE',
+          'year-9': 'Year 9',
+          'year-8': 'Year 8',
+          'year-7': 'Year 7'
+        };
+
+        const displayName = bookDisplayNames[resultBookDir];
+
+        if (displayName) {
+          // Create a visual badge
+          const badge = document.createElement('span');
+          badge.textContent = displayName;
+          
+          // Using Starlight's CSS variables so it natively matches light/dark mode
+          badge.style.cssText = `
+            font-size: 0.65rem;
+            background-color: var(--sl-color-bg-inline-code);
+            color: var(--sl-color-text-accent);
+            padding: 0.15rem 0.4rem;
+            border-radius: 0.25rem;
+            margin-right: 0.6rem;
+            font-weight: 600;
+            vertical-align: text-bottom;
+            border: 1px solid var(--sl-color-gray-5);
+          `;
+          
+          // Prepend to the title for maximum visibility
+          const titleEl = res.querySelector('.pagefind-ui__result-title');
+          if (titleEl) {
+            titleEl.prepend(badge);
+          } else {
+            linkEl.prepend(badge);
+          }
+          
+          res.dataset.labeled = "true";
         }
-      }
+      });
 
-      // 3. If out of order, sort them and update the DOM
-      if (needsSorting) {
-        observer.disconnect(); // Briefly pause observer to prevent an infinite loop
-        
-        results.sort((a, b) => {
-          const aHref = a.querySelector('.pagefind-ui__result-link')?.getAttribute('href') || '';
-          const bHref = b.querySelector('.pagefind-ui__result-link')?.getAttribute('href') || '';
+      // 2. SORT RESULTS (Push current book to the top)
+      if (validBooks.includes(currentBook) && results.length > 1) {
+        let needsSorting = false;
+        for (let i = 1; i < results.length; i++) {
+          const prevLink = results[i-1].querySelector('.pagefind-ui__result-link')?.getAttribute('href') || '';
+          const currLink = results[i].querySelector('.pagefind-ui__result-link')?.getAttribute('href') || '';
+          
+          const prevIsCurrent = prevLink.includes(`/${currentBook}/`);
+          const currIsCurrent = currLink.includes(`/${currentBook}/`);
+          
+          if (!prevIsCurrent && currIsCurrent) {
+            needsSorting = true;
+            break;
+          }
+        }
 
-          const aIsCurrent = aHref.includes(`/${currentBook}/`);
-          const bIsCurrent = bHref.includes(`/${currentBook}/`);
+        if (needsSorting) {
+          observer.disconnect(); // Briefly pause observer
+          
+          results.sort((a, b) => {
+            const aHref = a.querySelector('.pagefind-ui__result-link')?.getAttribute('href') || '';
+            const bHref = b.querySelector('.pagefind-ui__result-link')?.getAttribute('href') || '';
 
-          if (aIsCurrent && !bIsCurrent) return -1; // Push current book UP
-          if (!aIsCurrent && bIsCurrent) return 1;  // Push other books DOWN
-          return 0; // Maintain Pagefind's natural relevance score for ties
-        });
+            const aIsCurrent = aHref.includes(`/${currentBook}/`);
+            const bIsCurrent = bHref.includes(`/${currentBook}/`);
 
-        // Re-append children in the new sorted order
-        results.forEach(res => resultsList.appendChild(res));
-        
-        observer.observe(document.body, { childList: true, subtree: true }); // Reconnect
+            if (aIsCurrent && !bIsCurrent) return -1; 
+            if (!aIsCurrent && bIsCurrent) return 1;  
+            return 0; 
+          });
+
+          results.forEach(res => resultsList.appendChild(res));
+          observer.observe(document.body, { childList: true, subtree: true }); // Reconnect
+        }
       }
     });
 
     observer.observe(document.body, { childList: true, subtree: true });
   }
 
-  // Initialize on direct page loads and Astro view transitions
   setupSearchSorter();
   document.addEventListener('astro:page-load', setupSearchSorter);
 </script>
