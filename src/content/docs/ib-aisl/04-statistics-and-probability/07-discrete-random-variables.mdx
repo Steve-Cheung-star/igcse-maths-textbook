@@ -3,24 +3,35 @@ title: 4.7 Discrete Random Variables and Expected Value
 description: Understand discrete random variables, their probability distributions, calculate expected values, and model fair games for IB Maths AI SL.
 ---
 
+import BinomialLab from '../../../../components/BinomialLab.jsx';
+
+
+<section className="lesson-chunk">
 While our previous studies in probability dealt with isolated events or sequences, we often want to model the numerical outcomes of an entire experiment at once. Whether evaluating the long-term profitability of a casino game or analysing risk in insurance, we use **random variables** to link outcomes to probabilities.
+</section>
 
 ---
 
 ## 1. Discrete Random Variables and Distributions
 
+<section className="lesson-chunk">
 A **random variable** (usually denoted by a capital letter like $X$) is a quantity whose value depends on chance. It is **discrete** if it can only take specific, separate values (often integers), such as the number of heads when flipping three coins, or the winning payout of a lottery ticket.
+</section>
 
 We use a lowercase letter ($x$) to represent the specific values that $X$ can take. Therefore, $P(X = x)$ reads as "the probability that the random variable $X$ takes the value $x$".
 
-A **probability distribution** completely describes a random variable by listing all its possible values and their corresponding probabilities. The IB syllabus presents these in two main ways:
+A **probability distribution** completely describes a random variable by listing all its possible values and their corresponding probabilities.  The IB syllabus presents these in two main ways:
 
+<section className="lesson-chunk">
 ### Method A: Probability Tables
+
 This is a simple list of outcomes and probabilities. The defining rule for *any* valid probability distribution is that the sum of all probabilities must equal exactly 1.
 
-| $x$ | $1$ | $2$ | $3$ | $4$ | $5$ |
+<div className="table-wrapper">
+| $x$ | 1 | 2 | 3 | 4 | 5 |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| $P(X=x)$ | $0.1$ | $0.2$ | $0.15$ | $0.05$ | $0.5$ |
+| $P(X=x)$ | 0.1 | 0.2 | 0.15 | 0.05 | 0.5 |
+</div>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 600 300" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
@@ -71,8 +82,12 @@ This is a simple list of outcomes and probabilities. The defining rule for *any*
     <text x="480" y="40" font-size="12" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">0.5</text>
   </svg>
 </div>
+</section>
+
+<section className="lesson-chunk">
 
 ### Method B: Probability Functions
+
 Sometimes the distribution is given as an algebraic rule. You must substitute the allowed values of $x$ into the function to generate the probabilities.
 
 For example, given $P(X=x) = \frac{1}{18}(4+x)$ for $x \in \{1, 2, 3\}$:
@@ -81,12 +96,15 @@ For example, given $P(X=x) = \frac{1}{18}(4+x)$ for $x \in \{1, 2, 3\}$:
 * $P(X=3) = \frac{1}{18}(4+3) = \frac{7}{18}$
 
 *(Notice that $\frac{5}{18} + \frac{6}{18} + \frac{7}{18} = \frac{18}{18} = 1$, confirming it is a valid probability distribution).*
+</section>
 
 ---
 
+<section className="lesson-chunk">
+
 ## 2. Expected Value $\mathrm{E}(X)$
 
-The **expected value**, denoted as $\mathrm{E}(X)$, is the theoretical mean (average) of the random variable. It tells you what you would expect the average outcome to be if you ran the experiment an infinite number of times.
+The **expected value**, denoted as $\mathrm{E}(X)$, is the theoretical mean (average) of the random variable. It tells you what you would expect the average outcome to be if you ran the experiment an infinite number of times. 
 
 <FormulaBox title="Expected value of a discrete random variable X">
 $$
@@ -95,7 +113,9 @@ $$
 </FormulaBox>
 
 To calculate it manually, you multiply each outcome ($x$) by its probability ($P(X=x)$) and add all the results together.
+</section>
 
+<section className="lesson-chunk">
 <SteveTip title="Using your TI-Nspire for Expected Value">
 You do not need to calculate $\mathrm{E}(X)$ manually if it is a Calculator paper! 
 1. Open a **Lists & Spreadsheet** page.
@@ -105,12 +125,16 @@ You do not need to calculate $\mathrm{E}(X)$ manually if it is a Calculator pape
 5. Set **X1 List** to `x` and **Frequency List** to `prob`.
 6. The value given as **$\bar{x}$** is your Expected Value, $\mathrm{E}(X)$.
 </SteveTip>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 3. Applications: Games of Chance and Fairness
 
+
 A classic application of expected value is analysing games of chance. In mathematics, the definition of a "fair" game is very strict.
+
 
 <Aside type="tip" title="Definition of a Fair Game">
 A game is considered **fair** if the expected gain of a player is exactly zero. 
@@ -121,13 +145,217 @@ $$
 
 where $X$ represents the **financial gain** (Total Prize Winnings $-$ Cost to Play). If $\mathrm{E}(X) < 0$, the game favours the organiser (like a casino). If $\mathrm{E}(X) > 0$, the game favours the player.
 </Aside>
+</section>
 
-<Aside type="caution" title="Theory of Knowledge (TOK) & Aim 8">
+<section className="lesson-chunk">
+<Aside type="note" title="Theory of Knowledge (TOK) & Aim 8">
 **Is it fair that casinos should make a profit?** Mathematical "fairness" implies $\mathrm{E}(X)=0$, but casinos are businesses with overheads and employees. They rely on an $\mathrm{E}(X)$ that is slightly negative for the player (the "house edge") to guarantee long-term profit. What do we mean by a "fair" game in a societal context versus a mathematical one? 
 
 **The Casino Fallacy:** Why has it been argued that theories based on the calculable probabilities found in casinos are pernicious when applied to everyday life (for example, economics)? Casinos operate in "closed systems" with known, fixed probabilities. Real-world economics involve rare outlier events and human irrationality that no simple discrete model can fully capture, making casino-style risk models dangerous if relied upon exclusively.
 </Aside>
+</section>
 
+---
+
+## Worked Examples
+
+<section className="lesson-chunk">
+**Example 1: Finding an Unknown Probability**
+
+A discrete random variable $X$ has the following probability distribution:
+
+<div className="table-wrapper">
+| $x$ | 10 | 20 | 30 | 40 |
+| :--- | :--- | :--- | :--- | :--- |
+| $P(X=x)$ | 0.3 | $k$ | $2k$ | 0.1 |
+</div>
+
+**a)** Find the value of $k$.
+
+**b)** Calculate $P(X \ge 20)$.
+
+<details className="styled-details">
+<summary>Step-by-step solution for Example 1</summary>
+<Steps>
+1. **Set up the equation**
+   The sum of all probabilities in a valid distribution must equal 1.
+   $$
+   0.3 + k + 2k + 0.1 = 1
+   $$
+2. **Solve for $k$**
+   $$
+   0.4 + 3k = 1 
+   $$
+   $$
+   3k = 0.6 
+   $$
+   $$
+   k = 0.2
+   $$
+3. **Calculate the target probability**
+   To find $P(X \ge 20)$, add the probabilities for $x = 20, 30, \text{ and } 40$. Substitute $k = 0.2$ back into the table expressions:
+   $$
+   P(X \ge 20) = 0.2 + 2(0.2) + 0.1
+   $$
+   $$
+   P(X \ge 20) = 0.2 + 0.4 + 0.1 = 0.7
+   $$
+</Steps>
+</details>
+</section>
+
+
+<section className="lesson-chunk">
+**Example 2: Expected Value from a Function**
+
+A random variable $X$ has a probability distribution given by the function:
+
+$$
+P(X=x) = \frac{x^2}{14} \text{ for } x \in \{1, 2, 3\}
+$$
+
+**a)** Write down a probability distribution table for $X$.
+
+**b)** Calculate the expected value, $\mathrm{E}(X)$.
+
+<details className="styled-details">
+<summary>Step-by-step solution for Example 2</summary>
+<Steps>
+1. **Generate individual probabilities**
+   First, calculate the probability for each outcome by substituting the allowed values of $x$:
+   * $P(X=1) = \frac{1^2}{14} = \frac{1}{14}$
+   * $P(X=2) = \frac{2^2}{14} = \frac{4}{14}$
+   * $P(X=3) = \frac{3^2}{14} = \frac{9}{14}$
+2. **Construct the table**
+   <div className="table-wrapper">
+   | $x$ | 1 | 2 | 3 |
+   | :--- | :--- | :--- | :--- |
+   | $P(X=x)$ | $\frac{1}{14}$ | $\frac{4}{14}$ | $\frac{9}{14}$ |
+   </div>
+3. **Apply the expected value formula**
+   $$
+   \mathrm{E}(X) = \sum x P(X=x)
+   $$
+   $$
+   \mathrm{E}(X) = \left(1 \times \frac{1}{14}\right) + \left(2 \times \frac{4}{14}\right) + \left(3 \times \frac{9}{14}\right)
+   $$
+4. **Simplify the result**
+   $$
+   \mathrm{E}(X) = \frac{1 + 8 + 27}{14} 
+   $$
+   $$
+   \mathrm{E}(X) = \frac{36}{14} = \frac{18}{7} \approx 2.57 \text{ (to 3 s.f.)}
+   $$
+</Steps>
+</details>
+</section>
+
+<section className="lesson-chunk">
+**Example 3: Modelling a Fair Game**
+
+A local charity runs a game where players spin a biased wheel. It costs £5 to play.
+* The probability of winning £15 is 0.2.
+* The probability of winning £5 is 0.3.
+* The probability of winning nothing (£0) is 0.5.
+
+Let $X$ represent the player's **financial gain** from one game.
+
+**a)** Construct a probability distribution table for $X$.
+
+**b)** Determine whether the game is mathematically fair, giving a reason for your answer.
+
+<details className="styled-details">
+<summary>Step-by-step solution for Example 3</summary>
+<Steps>
+1. **Calculate the financial gain for each outcome**
+   We must calculate the *gain* (Prize Winnings $-$ Cost to Play) for each outcome.
+   * Win £15: Gain = 15 $-$ 5 = 10
+   * Win £5: Gain = 5 $-$ 5 = 0
+   * Win £0: Gain = 0 $-$ 5 = $-$5
+2. **Construct the distribution table**
+   <div className="table-wrapper">
+   | $x$ (Gain) | 10 | 0 | $-$5 |
+   | :--- | :--- | :--- | :--- |
+   | $P(X=x)$ | 0.2 | 0.3 | 0.5 |
+   </div>
+3. **Calculate the expected value**
+   Find $\mathrm{E}(X)$ of the gain.
+   $$
+   \mathrm{E}(X) = (10 \times 0.2) + (0 \times 0.3) + (-5 \times 0.5)
+   $$
+   $$
+   \mathrm{E}(X) = 2 + 0 - 2.5
+   $$
+   $$
+   \mathrm{E}(X) = -0.5
+   $$
+4. **Evaluate fairness**
+   Because $\mathrm{E}(X) = -0.5$ (which is not equal to 0), **the game is not fair**. On average, a player expects to lose £0.50 per game, meaning the game favours the charity.
+</Steps>
+</details>
+</section>
+
+<section className="lesson-chunk">
+**Example 4: Backwards Expected Value**
+
+A discrete random variable $X$ has the following probability distribution:
+
+<div className="table-wrapper">
+| $x$ | 0 | 2 | 5 | 10 |
+| :--- | :--- | :--- | :--- | :--- |
+| $P(X=x)$ | 0.1 | $p$ | $q$ | 0.2 |
+</div>
+
+It is given that the expected value $\mathrm{E}(X) = 4.3$.
+
+**a)** Write down an equation connecting $p$ and $q$.
+
+**b)** Find the value of $p$ and the value of $q$.
+
+<details className="styled-details">
+<summary>Step-by-step solution for Example 4</summary>
+<Steps>
+1. **Create the first equation**
+   The sum of all probabilities equals 1.
+   $$
+   0.1 + p + q + 0.2 = 1
+   $$
+   $$
+   p + q = 0.7
+   $$
+2. **Create the second equation using expected value**
+   $$
+   \mathrm{E}(X) = (0 \times 0.1) + (2 \times p) + (5 \times q) + (10 \times 0.2)
+   $$
+   $$
+   4.3 = 0 + 2p + 5q + 2
+   $$
+   $$
+   2.3 = 2p + 5q
+   $$
+3. **Solve the simultaneous equations**
+   We now have a system of simultaneous equations. From part a, we can rearrange to get $p = 0.7 - q$. Substitute this into the second equation:
+   $$
+   2(0.7 - q) + 5q = 2.3
+   $$
+   $$
+   1.4 - 2q + 5q = 2.3
+   $$
+   $$
+   3q = 0.9
+   $$
+   $$
+   q = 0.3
+   $$
+4. **Solve for the final variable**
+   Substitute $q = 0.3$ back into $p = 0.7 - q$:
+   $$
+   p = 0.7 - 0.3 = 0.4
+   $$
+   Therefore, $p = 0.4$ and $q = 0.3$.
+</Steps>
+</details>
+</section>
 ---
 
 ## Practice Questions

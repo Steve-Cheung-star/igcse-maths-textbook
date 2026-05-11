@@ -3,23 +3,30 @@ title: 4.8 Binomial Distribution
 description: Master the binomial distribution, understand when it is an appropriate model, calculate probabilities using technology, and find the mean and variance for IB Maths AI SL.
 ---
 
+import BinomialLab from '../../../../components/BinomialLab.jsx';
+
+<section className="lesson-chunk">
+
 While discrete random variables can have wildly different and unique probability distributions, many real-world scenarios follow a very specific, predictable pattern. When an experiment consists of a fixed number of repeated, independent trials, and each trial has only two possible outcomes (success or failure), we can model it using the **binomial distribution**. 
 
 From quality control in manufacturing (is the product defective or not?) to medical testing (does the patient have the antibody or not?), the binomial distribution is one of the most powerful and frequently used tools in applied mathematics.
 
+</section>
+
 ---
+
+<section className="lesson-chunk">
 
 ## 1. Situations Appropriate for a Binomial Model
 
-Before calculating any probabilities, you must verify that the scenario actually fits the binomial model. You can memorise the four strict criteria using the acronym **B.I.N.S.**
-
 <Aside type="note" title="The Anatomy of a Binomial Model (B.I.N.S.)">
-An experiment can be modelled using a binomial distribution if and only if it satisfies all four of these conditions:
-* **B - Binary Outcomes:** There are only two possible outcomes for each trial, usually categorised as "Success" and "Failure".
+An experiment can be modelled using a binomial distribution if and only if it satisfies all four conditions:
+* **B - Binary Outcomes:** There are only two possible outcomes, "Success" and "Failure".
 * **I - Independent Trials:** The outcome of one trial has zero effect on the outcome of any other trial.
-* **N - Number of Trials is Fixed:** The experiment is repeated a set, predetermined number of times (denoted as $n$).
-* **S - Same Probability:** The probability of a "Success" (denoted as $p$) remains constant for every single trial.
+* **N - Number of Trials is Fixed:** The experiment is repeated a set number of times (denoted as $n$).
+* **S - Same Probability:** The probability of a "Success" (denoted as $p$) remains constant for every trial.
 </Aside>
+
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 600 120" width="100%" maxWidth="600px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', overflow: 'hidden' }}>
@@ -48,6 +55,9 @@ An experiment can be modelled using a binomial distribution if and only if it sa
     <text x="517.5" y="90" font-size="10" fill="#64748b" text-anchor="middle" font-family="sans-serif">Constant prob</text>
   </svg>
 </div>
+</section>
+
+<section className="lesson-chunk">
 
 If a random variable $X$ follows a binomial distribution, we write this mathematically as:
 
@@ -57,7 +67,17 @@ $$
 
 Where $n$ is the number of trials and $p$ is the probability of success in a single trial. The probability of failure is often denoted as $q$, where $q = 1 - p$.
 
+<div className="not-content" style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <div style={{ width: '100%', maxWidth: '600px' }}>
+    <BinomialLab category="reflection" client:only="react" />
+  </div>
+</div>
+
+</section>
+
 ---
+
+<section className="lesson-chunk">
 
 ## 2. Calculating Probabilities with Technology
 
@@ -70,6 +90,10 @@ Because the binomial distribution is **discrete** (you cannot have 3.5 successes
 * $P(X > 4)$ means $5, 6, 7 \dots n$. Your bounds are lower = $5$, upper = $n$.
 * $P(X \le 4)$ means $0, 1, 2, 3, 4$. Your bounds are lower = $0$, upper = $4$.
 </Aside>
+
+</section>
+
+<section className="lesson-chunk">
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 600 150" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -115,7 +139,11 @@ You must know the difference between the two binomial functions on your calculat
     * *Example:* "Find the probability of getting *between* 2 and 5 successes." $\implies P(2 \le X \le 5)$
 </SteveTip>
 
+</section>
+
 ---
+
+<section className="lesson-chunk">
 
 ## 3. Mean and Variance of the Binomial Distribution
 
@@ -139,9 +167,127 @@ $$
 The expected value $\text{E}(X) = np$ tells you how many "successes" you should expect to see on average. For example, if a machine produces defective parts 5% of the time ($p=0.05$), and you check 200 parts ($n=200$), you expect $\text{E}(X) = 200 \times 0.05 = 10$ defective parts. This links directly to your prior knowledge of expected occurrences from SL 4.5!
 </Aside>
 
+</section>
+
 ---
 
-## 4. Theory of Knowledge & International-Mindedness
+## Worked Examples
+
+<section className="lesson-chunk">
+
+**Example 1: Using Binomial PDF and CDF**
+
+A basketball player has a 75% success rate for shooting free throws. In a training session, they attempt 12 free throws. Let $X$ represent the number of successful free throws.
+
+a) Find the probability that they score exactly 8 free throws.  
+b) Find the probability that they score fewer than 5 free throws.  
+c) Find the probability that they score between 6 and 9 free throws, inclusive.  
+
+<details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
+<Steps>
+1. **Identify the parameters:** The number of trials is $n = 12$, and the probability of success is $p = 0.75$. Therefore, $X \sim \text{B}(12, 0.75)$.
+2. **Part (a) - Exact probability:** We need $P(X = 8)$. Using the TI-Nspire (`Menu` > `Probability` > `Distributions` > `Binomial Pdf`), evaluate `binomPdf(12, 0.75, 8)` to get 0.19357...
+   *Answer:* 0.194 (to 3 s.f.)
+3. **Part (b) - Inequality (lower bound):** "Fewer than 5" means $P(X < 5)$, which translates to $P(X \le 4)$. Our inclusive bounds are lower $= 0$ and upper $= 4$. Using the TI-Nspire (`Menu` > `Probability` > `Distributions` > `Binomial Cdf`), evaluate `binomCdf(12, 0.75, 0, 4)` to get 0.002781...
+   *Answer:* 0.00278 (to 3 s.f.)
+4. **Part (c) - Range:** "Between 6 and 9 inclusive" means $P(6 \le X \le 9)$. The bounds are lower $= 6$ and upper $= 9$. Using the TI-Nspire, evaluate `binomCdf(12, 0.75, 6, 9)` to get 0.54674...
+   *Answer:* 0.547 (to 3 s.f.)
+</Steps>
+</details>
+
+</section>
+
+<section className="lesson-chunk">
+
+**Example 2: Expected Frequency, Mean, and Variance**
+
+A seed manufacturer states that 80% of their seeds will successfully germinate. A gardener buys a packet of 150 seeds.
+
+a) Calculate the expected number of seeds that will germinate.  
+b) Calculate the variance and standard deviation of the number of germinating seeds.
+
+<details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
+<Steps>
+1. **Identify the parameters:** The number of trials is $n = 150$, and the probability of a seed germinating is $p = 0.80$. The random variable is $X \sim \text{B}(150, 0.80)$.
+2. **Part (a) - Expected Number:** The expected value (or mean) is given by $\text{E}(X) = np$. 
+   $\text{E}(X) = 150 \times 0.80 = 120$. 
+   *Answer:* The expected number of germinating seeds is 120.
+3. **Part (b) - Variance:** The variance formula is $\text{Var}(X) = np(1-p)$.
+   $\text{Var}(X) = 150 \times 0.80 \times (1 - 0.80) = 120 \times 0.20 = 24$.
+   *Answer:* The variance is 24.
+4. **Part (b) - Standard Deviation:** The standard deviation $\sigma$ is the square root of the variance. 
+   $\sigma = \sqrt{24} \approx 4.8989\dots$
+   *Answer:* The standard deviation is 4.90 (to 3 s.f.).
+</Steps>
+</details>
+
+</section>
+
+<section className="lesson-chunk">
+
+**Example 3: Probability With and Without Replacement**
+
+A factory produces batches of 50 machine parts, and it is known that 10 parts in a specific batch are defective. 
+
+a) A quality control inspector randomly selects **8** parts from this batch **with replacement**. Find the probability of getting exactly 3 defective parts.  
+b) Another inspector randomly selects **2** parts from the batch **without replacement**. Find the probability of getting exactly 1 defective part. Explain why a binomial model cannot be used for this selection.
+
+<details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
+<Steps>
+1. **Part (a) - With Replacement:** Because each part is tested and returned to the batch, the probabilities remain constant, and the trials are independent. This satisfies the B.I.N.S. criteria.
+2. **Apply Binomial Model:** The total number of parts is 50. The probability of getting a defective part is $p = \frac{10}{50} = 0.2$. The number of trials is $n = 8$. 
+   $X \sim \text{B}(8, 0.2)$. We need $P(X = 3)$.
+   Using the TI-Nspire `binomPdf(8, 0.2, 3)`, we get $0.14680\dots$
+   *Answer:* 0.147 (to 3 s.f.)
+3. **Part (b) - Without Replacement:** When parts are not returned to the batch, the total number of parts decreases, changing the probability for the second draw (the trials are dependent). The "Same Probability" and "Independent Trials" conditions of B.I.N.S. fail, so $X$ is **not** binomially distributed.
+4. **Calculate Without Replacement:** Because the sample size is only 2, we can use a tree diagram approach. We need exactly 1 defective part, which means two possible paths: (Defective then Functional) OR (Functional then Defective).
+   $$P(\text{1 Defective}) = P(\text{Defective}, \text{Functional}) + P(\text{Functional}, \text{Defective})$$
+5. **Compute:** There are initially 10 defective and 40 functional parts out of 50.
+   $$P(\text{D}, \text{F}) = \frac{10}{50} \times \frac{40}{49} = \frac{400}{2450}$$
+   $$P(\text{F}, \text{D}) = \frac{40}{50} \times \frac{10}{49} = \frac{400}{2450}$$
+   $$\text{Total Probability} = \frac{400}{2450} + \frac{400}{2450} = \frac{800}{2450} \approx 0.32653\dots$$
+   *Answer:* 0.327 (to 3 s.f.)
+</Steps>
+</details>
+
+</section>
+
+<section className="lesson-chunk">
+
+**Example 4: Finding the Least Number of Trials ($n$)**
+
+A popular video game features a "loot box" that has a 5% chance of containing a rare legendary item. Assuming the contents of each loot box are independent of one another, find the minimum number of loot boxes a player must open to have a probability of at least 95% of obtaining **at least one** legendary item.
+
+<details className="styled-details">
+<summary>View Step-by-Step Solution</summary>
+<Steps>
+1. **Identify parameters and the goal:** The probability of success is $p = 0.05$. We want to find the number of trials $n$ such that $P(X \ge 1) \ge 0.95$. 
+2. **Use the complement rule:** Calculating $P(X \ge 1)$ directly is impossible without $n$, because it equals $P(X=1) + P(X=2) + \dots + P(X=n)$. Instead, use the complement: "at least one" is the opposite of "none".
+   $$P(X \ge 1) = 1 - P(X = 0)$$
+3. **Set up the inequality:**
+   $$1 - P(X = 0) \ge 0.95$$
+   $$P(X = 0) \le 0.05$$
+4. **Substitute the formula for $P(X=0)$:** If there are 0 successes, then all $n$ trials must be failures. The probability of failure is $1 - 0.05 = 0.95$.
+   $$0.95^n \le 0.05$$
+5. **Solve for $n$:** On the TI-Nspire, you can find $n$ using `nSolve(0.95^n = 0.05, n)` which gives $58.403\dots$, or by viewing a table (`Ctrl` + `T`) on a Graphs page to find where the value drops below 0.05. Alternatively, solve using logarithms algebraically:
+   $$n \log(0.95) \le \log(0.05)$$
+   $$n \ge \frac{\log(0.05)}{\log(0.95)}$$ *(Note: The inequality sign flips because $\log(0.95)$ is a negative number).*
+   $$n \ge 58.403\dots$$
+6. **State the final answer:** Since you cannot open a fraction of a loot box, we must round up to the next whole number to guarantee the probability hits the 95% threshold.
+   *Answer:* The player needs to open a minimum of 59 loot boxes.
+</Steps>
+</details>
+
+</section>
+
+---
+
+## 5. Theory of Knowledge & International-Mindedness
+
+<section className="lesson-chunk">
 
 <Aside type="note" title="Who really invented Pascal's Triangle?">
 The coefficients used in the algebraic expansion of binomials (which form the foundation of binomial probability proofs) are famously arranged in a pattern known globally as **Pascal's Triangle**, named after the 17th-century French mathematician Blaise Pascal.
@@ -152,6 +298,8 @@ However, this mathematical discovery is heavily misattributed (Aim 8). The exact
 <Aside type="caution" title="Evaluating Mathematical Models (TOK)">
 **What criteria can we use to decide between different models?** A binomial distribution assumes probabilities remain perfectly constant and trials are completely independent. When modelling a penalty shootout in football using the binomial model, we ignore the psychological pressure on a player after a missed shot (meaning trials are *not* truly independent). A mathematical model is only ever an approximation of reality. As statisticians, we must critically decide whether a model simplifies reality usefully, or distorts it dangerously.
 </Aside>
+
+</section>
 
 ---
 
