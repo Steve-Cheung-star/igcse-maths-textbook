@@ -3,6 +3,8 @@ title: 4.9 Normal Distribution
 description: Understand the properties of the normal distribution curve, apply the 68-95-99.7 rule, and perform probability and inverse normal calculations using technology for IB Maths AI SL.
 ---
 
+import NormalLab from '../../../../components/NormalLab.jsx';
+
 While the binomial distribution models discrete successes and failures, many variables in the real world are **continuous**. Heights, weights, exam scores, blood pressures, and measurement errors do not fall into neat, separated categories. Instead, they naturally form a continuous spread. 
 
 When you collect a large amount of continuous data from nature, it almost always forms a symmetrical, bell-shaped curve where most values cluster around the average, and extreme values become increasingly rare. This is known as the **normal distribution**.
@@ -146,6 +148,12 @@ To find the probability (area) between two values, use the Cumulative Distributi
 
 *Caution:* The notation is $X \sim \text{N}(\mu, \sigma^2)$, which gives the **variance**. Your calculator asks for the **standard deviation** ($\sigma$). You may need to square root the given variance first!
 </SteveTip>
+
+<div className="not-content" style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <div style={{ width: '100%', maxWidth: '600px' }}>
+    <NormalLab client:only="react" />
+  </div>
+</div>
 
 ---
 

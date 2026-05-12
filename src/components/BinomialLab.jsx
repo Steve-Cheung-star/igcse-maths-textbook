@@ -182,7 +182,7 @@ export default function BinomialLab() {
   // --- Inline Styles ---
   const styles = {
     wrapper: {
-      maxWidth: '900px',
+      maxWidth: '1100px',
       margin: '0 auto',
       fontFamily: 'system-ui, -apple-system, sans-serif',
       display: 'flex',
@@ -201,8 +201,7 @@ export default function BinomialLab() {
     },
     hub: {
       display: 'grid',
-      // Adjusted grid slightly to ensure left pane has strict limits
-      gridTemplateColumns: 'minmax(0, 1fr) 300px', 
+      gridTemplateColumns: '3fr 2fr',  // 60% Live Calculation, 40% Control Panel
       gap: '1rem',
       alignItems: 'start'
     },
@@ -269,7 +268,7 @@ export default function BinomialLab() {
         <div style={{ ...styles.panel, display: 'flex', flexDirection: 'column', justifyContent: 'center', minHeight: '180px' }}>
           <div style={styles.hubTitle}>Live Calculation</div>
           {/* Output container */}
-          <div ref={mathOutputRef} style={{ fontSize: '1rem' }}></div>
+          <div ref={mathOutputRef} style={{ fontSize: '1rem', overflowWrap: 'break-word' }}></div>
         </div>
 
         <div style={styles.panel}>
