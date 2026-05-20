@@ -4,7 +4,9 @@ description: Learn how to draw and interpret scatter diagrams, understand correl
 ---
 
 <section className="lesson-chunk">
-When we want to see if there is a relationship between two different variables (known as **bivariate data**), we plot them on a **scatter diagram**. For example, we might want to see if there is a link between the hours a student spends studying and the score they get on a test.
+When we want to see if there is a relationship between two different variables (known as **bivariate data**), we plot them on a **scatter diagram**. For example, we might want to see if there is a link between the hours a student spends studying and the score they get on a test. 
+
+
 </section>
 
 ---
@@ -15,7 +17,7 @@ When we want to see if there is a relationship between two different variables (
 **Correlation** describes the type of relationship between the two variables. When you plot your points, the overall pattern they make tells you the correlation.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 600 200" width="100%" maxWidth="600px" style={{ background: 'transparent', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+  <svg viewBox="0 0 600 200" width="100%" max-width="600px" style={{ background: 'transparent', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
     {/* Panel 1: Positive */}
     <g transform="translate(10, 10)">
       <rect x="0" y="0" width="180" height="150" fill="transparent" stroke="#cbd5e1" stroke-width="1" />
@@ -82,20 +84,20 @@ When asked to draw a scatter diagram in the exam, there are strict rules you mus
 
 <SteveTip title="The Golden Rules of Plotting">
   1. **Use Crosses:** You **MUST** plot points using small, neat crosses ($\times$). Do not use dots or filled circles! Examiners will deduct marks if your points are not clear crosses.
-  2. **Read the Scale Carefully:** Do not blindly assume that one little square on the grid equals 1 unit. Common values for one small square are 1, 2, 5, 0.1, 0.2, or 0.5. 
-     *Pro-tip:* To find the exact value of one small square, locate two major number labels on the axis, find their difference (e.g., 40 - 20 = 20), count the number of small squares between them (e.g., 10 squares), and divide the difference by the number of squares (20 ÷ 10 = 2 units per square). Be mindful of this!
+  2. **Read the Scale Carefully:** Do not blindly assume that one little square on the grid equals $1$ unit. Common values for one small square are $1$, $2$, $5$, $0.1$, $0.2$, or $0.5$. 
+     *Pro-tip:* To find the exact value of one small square, locate two major number labels on the axis, find their difference (e.g., $40 - 20 = 20$), count the number of small squares between them (e.g., $10$ squares), and divide the difference by the number of squares ($20 \div 10 = 2$ units per square). Be mindful of this!
 </SteveTip>
 </section>
 
 <section className="lesson-chunk">
 ### Example: Plotting Additional Points
 A teacher plots the Maths and Physics test scores (out of 100) for 5 students. Look closely at the fine grid below:
-* The difference between major labels is 20.
-* There are 10 small squares between them.
+* The difference between major labels is $20$.
+* There are $10$ small squares between them.
 * Therefore, **1 small square = 2 units**.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 350 320" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+  <svg viewBox="0 0 350 320" width="100%" max-width="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
     <defs>
       <pattern id="smallGrid_before" width="5" height="5" patternUnits="userSpaceOnUse" x="50" y="10">
         <path d="M 5 0 L 0 0 0 5" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
@@ -131,20 +133,20 @@ A teacher plots the Maths and Physics test scores (out of 100) for 5 students. L
 </div>
 
 Two students were absent and took the tests at a later date. Their scores were:
-* **Student A:** Maths 45, Physics 50
-* **Student B:** Maths 90, Physics 95
+* **Student A:** Maths $45$, Physics $50$
+* **Student B:** Maths $90$, Physics $95$
 
 <details className="styled-details">
   <summary><strong>Solution:</strong> See how to plot these new points accurately</summary>
   
-  Because 1 small square = 2 units:
-  * For **Student A**, we go to 40 on the Maths axis and count **2.5 small squares** right (to reach 45). For Physics, we go to 40 on the Y-axis and count **5 small squares** up (to reach 50).
-  * For **Student B**, we go to 80 on the Maths axis and count **5 small squares** right (to reach 90). For Physics, we go to 80 on the Y-axis and count **7.5 small squares** up (to reach 95).
+  Because $1$ small square = $2$ units:
+  * For **Student A**, we go to $40$ on the Maths axis and count **2.5 small squares** right (to reach $45$). For Physics, we go to $40$ on the Y-axis and count **5 small squares** up (to reach $50$).
+  * For **Student B**, we go to $80$ on the Maths axis and count **5 small squares** right (to reach $90$). For Physics, we go to $80$ on the Y-axis and count **7.5 small squares** up (to reach $95$).
 
   Here is the updated diagram with the two new points plotted perfectly in red:
 
   <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-    <svg viewBox="0 0 350 320" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
+    <svg viewBox="0 0 350 320" width="100%" max-width="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
       <defs>
         <pattern id="smallGrid_after" width="5" height="5" patternUnits="userSpaceOnUse" x="50" y="10">
           <path d="M 5 0 L 0 0 0 5" fill="none" stroke="#e2e8f0" stroke-width="0.75" />
@@ -171,11 +173,13 @@ Two students were absent and took the tests at a later date. Their scores were:
       <text x="40" y="113" font-size="10" fill="#475569" text-anchor="end">60</text>
       <text x="40" y="63" font-size="10" fill="#475569" text-anchor="end">80</text>
       <text x="40" y="13" font-size="10" fill="#475569" text-anchor="end">100</text>
+      {/* Original points */}
       <path d="M 146 143.5 L 154 151.5 M 146 151.5 L 154 143.5" stroke="#0284c7" stroke-width="2" />
       <path d="M 171 106 L 179 114 M 171 114 L 179 106" stroke="#0284c7" stroke-width="2" />
       <path d="M 196 118.5 L 204 126.5 M 196 126.5 L 204 118.5" stroke="#0284c7" stroke-width="2" />
       <path d="M 221 68.5 L 229 76.5 M 221 76.5 L 229 68.5" stroke="#0284c7" stroke-width="2" />
       <path d="M 246 43.5 L 254 51.5 M 246 51.5 L 254 43.5" stroke="#0284c7" stroke-width="2" />
+      {/* New Points */}
       <path d="M 158.5 131 L 166.5 139 M 158.5 139 L 166.5 131" stroke="#ef4444" stroke-width="2" />
       <path d="M 271 18.5 L 279 26.5 M 271 26.5 L 279 18.5" stroke="#ef4444" stroke-width="2" />
     </svg>
@@ -186,132 +190,85 @@ Two students were absent and took the tests at a later date. Their scores were:
 ---
 
 <section className="lesson-chunk">
-## 3. The Line of Best Fit (By Eye)
+## 3. Predictions and Lines of Best Fit
 
-A line of best fit (LOBF) is a straight line drawn through the center of the data points that best represents the trend. 
+A **line of best fit** is a straight line drawn through the center of the data points that best represents the trend. We can find the equation of this line ($y = mx + c$) and use it to make predictions.
 
-If an exam question asks you to draw a line of best fit "by eye", you must follow these four exact syllabus criteria:
 
-<Steps>
-  1. **Find the Mean Point:** You must calculate the mean of the $x$-values ($\bar{x}$) and the mean of the $y$-values ($\bar{y}$). 
-  2. **Plot the Mean Point:** Plot the coordinate $(\bar{x}, \bar{y})$ on your scatter diagram.
-  3. **Draw a Single Ruled Line:** Use a ruler! The line **must** pass perfectly through your plotted mean point.
-  4. **Balance the Points:** Ensure the line extends across the *full* data set, and that there is a roughly even number of points on either side of the line over its entire length.
-</Steps>
-
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 400 300" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
-    <defs>
-      <pattern id="smallGrid3" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="50">
-        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.5" />
-      </pattern>
-      <pattern id="grid3" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="50">
-        <rect width="50" height="50" fill="url(#smallGrid3)" />
-        <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#cbd5e1" stroke-width="1.5" />
-      </pattern>
-    </defs>
-    
-    <rect x="50" y="50" width="300" height="200" fill="url(#grid3)" stroke="#cbd5e1" stroke-width="1.5" />
-    
-    <path d="M 50 20 L 50 250 L 370 250" fill="none" stroke="#334155" stroke-width="2" />
-    <text x="200" y="285" font-size="14" font-weight="bold" fill="#334155" text-anchor="middle">Variable X</text>
-    <text x="20" y="150" font-size="14" font-weight="bold" fill="#334155" text-anchor="middle" transform="rotate(-90 20 150)">Variable Y</text>
-
-    {/* Points (Crosses) */}
-    <path d="M 96 196 L 104 204 M 96 204 L 104 196" stroke="#0284c7" stroke-width="2" />
-    <path d="M 146 166 L 154 174 M 146 174 L 154 166" stroke="#0284c7" stroke-width="2" />
-    <path d="M 196 156 L 204 164 M 196 164 L 204 156" stroke="#0284c7" stroke-width="2" />
-    <path d="M 246 106 L 254 114 M 246 114 L 254 106" stroke="#0284c7" stroke-width="2" />
-    <path d="M 296 96 L 304 104 M 296 104 L 304 96" stroke="#0284c7" stroke-width="2" />
-
-    {/* Mean Point (200, 148) highlighted */}
-    <circle cx="200" cy="148" r="6" fill="none" stroke="#ef4444" stroke-width="2" />
-    <path d="M 196 144 L 204 152 M 196 152 L 204 144" stroke="#ef4444" stroke-width="2" />
-    <text x="215" y="145" font-size="12" font-weight="bold" fill="#ef4444">Mean Point</text>
-
-    {/* Line of Best Fit */}
-    <line x1="50" y1="223" x2="350" y2="73" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
-  </svg>
-</div>
-</section>
-
-<section className="lesson-chunk">
-### Using the Line of Best Fit
-Once you have drawn the line of best fit, you can use it to estimate values. 
 
 <Aside type="caution" title="Interpolation vs. Extrapolation">
-  * **Interpolation:** Estimating a value *inside* the range of your plotted data. This is generally **reliable**.
-  * **Extrapolation:** Extending the line to estimate a value *outside* the range of your plotted data. This is **unreliable** because we don't know if the trend continues beyond the data we have measured. Examiners love asking why an estimate is unreliable!
+  * **Interpolation:** Predicting a value *inside* the range of your original data. This is usually **reliable** and valid.
+  * **Extrapolation:** Predicting a value *outside* the range of your original data. This is **unreliable** and potentially invalid, because we do not know if the trend continues outside the observed range.
 </Aside>
-
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 500 250" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', fontFamily: 'sans-serif' }}>
-    <defs>
-      <pattern id="smallGrid4" width="10" height="10" patternUnits="userSpaceOnUse" x="50" y="20">
-        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#e2e8f0" stroke-width="0.5" />
-      </pattern>
-      <pattern id="grid4" width="50" height="50" patternUnits="userSpaceOnUse" x="50" y="20">
-        <rect width="50" height="50" fill="url(#smallGrid4)" />
-        <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#cbd5e1" stroke-width="1.5" />
-      </pattern>
-    </defs>
-
-    <rect x="50" y="20" width="400" height="200" fill="url(#grid4)" />
-
-    <rect x="50" y="20" width="80" height="200" fill="#fecaca" opacity="0.6" />
-    <rect x="130" y="20" width="220" height="200" fill="#bbf7d0" opacity="0.6" />
-    <rect x="350" y="20" width="100" height="200" fill="#fecaca" opacity="0.6" />
-
-    <path d="M 50 20 L 50 220 L 450 220" fill="none" stroke="#334155" stroke-width="2" />
-    
-    <path d="M 127 177 L 133 183 M 127 183 L 133 177" stroke="#0284c7" stroke-width="2" />
-    <path d="M 187 147 L 193 153 M 187 153 L 193 147" stroke="#0284c7" stroke-width="2" />
-    <path d="M 237 117 L 243 123 M 237 123 L 243 117" stroke="#0284c7" stroke-width="2" />
-    <path d="M 297 97 L 303 103 M 297 103 L 303 97" stroke="#0284c7" stroke-width="2" />
-    <path d="M 347 57 L 353 63 M 347 63 L 353 57" stroke="#0284c7" stroke-width="2" />
-
-    <line x1="50" y1="216" x2="450" y2="16" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4 4" />
-
-    <text x="240" y="40" font-size="14" font-weight="bold" fill="#166534" text-anchor="middle">Interpolation (Reliable)</text>
-    <text x="90" y="100" font-size="12" font-weight="bold" fill="#991b1b" text-anchor="middle" transform="rotate(-90 90 100)">Extrapolation (Unreliable)</text>
-    <text x="400" y="100" font-size="12" font-weight="bold" fill="#991b1b" text-anchor="middle" transform="rotate(-90 400 100)">Extrapolation</text>
-  </svg>
-</div>
 </section>
 
----
-
 <section className="lesson-chunk">
-## 4. Linear Regression on a Calculator (GDC)
+### Example 1: Interpolation in Action
+A shop owner records the outside temperature ($x^\circ \text{C}$) and the number of ice creams sold ($y$) over five days.
 
-While drawing by eye is a useful skill, the IGCSE 0607 syllabus heavily tests your ability to use a Graphic Display Calculator to find the exact mathematical equation of the line of best fit. This is called the **equation of linear regression**, written in the form $y = mx + c$.
+<div className="table-wrapper">
 
-Imagine you are given this data representing Hours Studied ($x$) vs. Test Score ($y$):
+| Temperature ($x^\circ \text{C}$) | $10$ | $15$ | $18$ | $20$ | $25$ |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Ice Creams Sold ($y$) | $20$ | $35$ | $40$ | $45$ | $60$ |
 
-| Hours ($x$) | 2 | 3 | 5 | 6 | 8 | 9 |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Score ($y$)** | 45 | 55 | 70 | 80 | 90 | 95 |
+</div>
+
+**Questions:**
+a) You are given a scatter plot missing the point for $18^\circ \text{C}$. Describe where to plot it.
+b) The line of best fit equation is found using a GDC. Determine the equation of the line of best fit in the form $y = mx + c$.
+c) Use your equation to predict the number of ice creams sold when the temperature is $22^\circ \text{C}$.
+d) State whether your prediction is reliable, and explain why.
 
 <details className="styled-details">
-  <summary><strong>Step-by-step:</strong> How to find the equation on a TI-Nspire</summary>
-  
+  <summary>Step-by-Step Solution</summary>
   <Steps>
-    1. Open a new **Lists & Spreadsheet** document.
-    2. Label the top of column A with your $x$-variable name (e.g., `hours`).
-    3. Label the top of column B with your $y$-variable name (e.g., `score`).
-    4. Enter all your data points down the columns. Ensure the pairs line up exactly across the rows!
-    5. Press **Menu** > **4: Statistics** > **1: Stat Calculations** > **3: Linear Regression (mx+b)**.
-    6. A box will pop up. Set your **X List** to `hours` and your **Y List** to `score`.
-    7. Press **OK**.
+    1. **Plotting the point:** Find $18$ on the $x$-axis (Temperature) and move vertically to align with $40$ on the $y$-axis (Sales). Mark it with a distinct cross ($\times$).
+    2. **Finding the equation:** Enter the data into the statistics lists on your GDC and run a Linear Regression ($ax+b$). 
+       The calculator gives $m \approx 2.54$ and $c \approx -4.73$. 
+       Equation: $$y = 2.54x - 4.73$$
+    3. **Making a prediction:** Substitute $x = 22$ into your equation.
+       $$
+       y = 2.54(22) - 4.73 = 55.88 - 4.73 = 51.15
+       $$
+       You would predict approximately $51$ ice creams sold.
+    4. **Checking reliability:** Yes, the prediction is **reliable**. The temperature $22^\circ \text{C}$ lies *within* the original data range ($10^\circ \text{C}$ to $25^\circ \text{C}$). This is an example of valid **interpolation**.
   </Steps>
+</details>
+</section>
 
-  The calculator will output a list of variables. The ones you need to write the equation are:
-  * **$m$:** The gradient (slope) of the line.
-  * **$b$:** The $y$-intercept (the syllabus writes this as $c$, but the calculator calls it $b$).
+<section className="lesson-chunk">
+### Example 2: The Danger of Extrapolation
+A researcher investigates the relationship between the age of a car ($x$ years) and its value ($y$ in thousands of dollars).
 
-  For the data above, the calculator gives $m \approx 7.15$ and $b \approx 33.2$, meaning your linear regression equation is:
+<div className="table-wrapper">
 
-  $$y = 7.15x + 33.2$$
+| Age of Car ($x$ years) | $1$ | $3$ | $4$ | $5$ | $7$ |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Value ($y$ in $\$1000$s) | $20$ | $15$ | $13$ | $11$ | $6$ |
+
+</div>
+
+**Questions:**
+a) If plotting this, what type of correlation would you expect to see?
+b) Using linear regression on your GDC, find the line of best fit equation.
+c) Use the equation to predict the value of a car that is $12$ years old.
+d) Is this prediction valid? Explain your reasoning.
+
+<details className="styled-details">
+  <summary>Step-by-Step Solution</summary>
+  <Steps>
+    1. **Identifying correlation:** As the age increases, the value decreases. This is a **strong negative correlation**.
+    2. **Finding the equation:** Entering the points $(1, 20), (3, 15), (4, 13), (5, 11), \text{ and } (7, 6)$ into the GDC for linear regression yields:
+       $m = -2.25$ and $c = 22.15$.
+       Equation: $$y = -2.25x + 22.15$$
+    3. **Making a prediction:** Substitute $x = 12$ into the line of best fit equation.
+       $$
+       y = -2.25(12) + 22.15 = -27 + 22.15 = -4.85
+       $$
+       The predicted value is $-\$4,850$.
+    4. **Checking reliability:** No, this prediction is **not valid**. First, a car cannot have a negative value. Second, $12$ years is far outside the recorded data range ($1$ to $7$ years). This is an example of **extrapolation**, showing how linear models break down outside observed limits.
+  </Steps>
 </details>
 </section>
 

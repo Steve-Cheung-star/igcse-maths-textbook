@@ -12,39 +12,47 @@ Moving from 2D to 3D can feel intimidating because the diagrams look much more c
 ---
 
 <section className="lesson-chunk">
-## 1. 3D Pythagoras (The Shortcut)
+## 1. 3D Pythagoras (The Two-Step Method)
 
 If you need to find the longest diagonal stretching across an empty room (from the bottom-front-left corner to the top-back-right corner), you are finding the **space diagonal** of a cuboid.
 
-You *could* do Pythagoras twice (once to find the diagonal across the floor, and once using that floor diagonal to go up to the ceiling), but there is a brilliant shortcut formula. 
+While there is a shortcut formula, the best way to master 3D geometry is to break it down and do Pythagoras twice. This trains your brain to spot the flat 2D planes hidden inside the 3D object:
 
-For a cuboid with length $l$, width $w$, and height $h$, the space diagonal $d$ is:
-$$
-d = \sqrt{l^2 + w^2 + h^2}
-$$
-
-
+1. **Step 1 (The Base):** Find the 2D diagonal across the flat floor.
+2. **Step 2 (The Vertical Slice):** Use that flat floor diagonal and the height of the room to create a new vertical right-angled triangle that cuts through the empty space.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 350 280" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+    {/* Base Triangle Shading (Blue) */}
+    <polygon points="70,230 220,230 270,180" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="1" />
+    
+    {/* Diagonal Vertical Triangle Shading (Red) */}
+    <polygon points="70,230 270,180 270,80" fill="rgba(239, 68, 68, 0.2)" stroke="#ef4444" stroke-width="1" />
+
     {/* Back faces and hidden lines */}
     <line x1="120" y1="180" x2="270" y2="180" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
     <line x1="120" y1="180" x2="70" y2="230" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
     <line x1="120" y1="180" x2="120" y2="80" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
     
     {/* Solid visible edges */}
-    <polygon points="70,230 220,230 220,130 70,130" fill="#f1f5f9" stroke="#1e293b" stroke-width="2" />
-    <polygon points="220,230 270,180 270,80 220,130" fill="#e2e8f0" stroke="#1e293b" stroke-width="2" />
-    <polygon points="70,130 220,130 270,80 120,80" fill="#cbd5e1" stroke="#1e293b" stroke-width="2" />
+    <polyline points="70,130 70,230 220,230 220,130" fill="none" stroke="#1e293b" stroke-width="2" />
+    <polyline points="220,230 270,180 270,80" fill="none" stroke="#1e293b" stroke-width="2" />
+    <polyline points="70,130 220,130 270,80 120,80 70,130" fill="none" stroke="#1e293b" stroke-width="2" />
     
-    {/* The Space Diagonal */}
+    {/* 2D Triangles Lines */}
+    <line x1="70" y1="230" x2="270" y2="180" stroke="#3b82f6" stroke-width="3" stroke-dasharray="6,6" />
     <line x1="70" y1="230" x2="270" y2="80" stroke="#ef4444" stroke-width="3" />
-    <text x="160" y="145" font-weight="bold" fill="#ef4444" font-size="20">d</text>
     
+    {/* Right Angle Boxes */}
+    <polyline points="210,230 210,223 220,223" fill="none" stroke="#3b82f6" stroke-width="2" />
+    <polyline points="270,170 260,173 260,183" fill="none" stroke="#ef4444" stroke-width="2" />
+
     {/* Labels */}
-    <text x="145" y="250" font-weight="bold" fill="#3b82f6" font-style="italic">l</text>
-    <text x="255" y="215" font-weight="bold" fill="#10b981" font-style="italic">w</text>
-    <text x="285" y="135" font-weight="bold" fill="#f59e0b" font-style="italic">h</text>
+    <text x="145" y="250" font-weight="bold" fill="#1e293b" font-style="italic">l</text>
+    <text x="255" y="215" font-weight="bold" fill="#1e293b" font-style="italic">w</text>
+    <text x="285" y="135" font-weight="bold" fill="#1e293b" font-style="italic">h</text>
+    <text x="170" y="215" font-weight="bold" fill="#3b82f6" font-style="italic" transform="rotate(-14 170 215)">Floor Diagonal (x)</text>
+    <text x="160" y="145" font-weight="bold" fill="#ef4444" transform="rotate(-37 160 145)">Space Diagonal (d)</text>
   </svg>
 </div>
 </section>
@@ -65,19 +73,18 @@ To find the angle between a sloped 3D line and a flat plane, you must find the l
 
 The angle between a line and a plane is **always** the angle tucked between the sloping line and its flat shadow.
 
-<SteveTip title="Flashlight Visualization">
-
+<Aside type="tip" title="Flashlight Visualization">
   If you are struggling to visualize the "shadow" of a line, imagine shining a bright flashlight from the ceiling pointing straight down at the floor. The dark line cast onto the floor by your sloping 3D edge is exactly the shadow you need to draw your 2D triangle!
-
-</SteveTip>
-
-
+</Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 250" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
-    {/* The Plane */}
-    <polygon points="40,200 280,200 360,120 120,120" fill="#e0f2fe" stroke="#3b82f6" stroke-width="2" />
+    {/* The Plane Background */}
+    <polygon points="40,200 280,200 360,120 120,120" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="2" />
     <text x="60" y="190" fill="#3b82f6" font-weight="bold">The Plane (Floor)</text>
+
+    {/* The Extracted Triangle Shading */}
+    <polygon points="100,160 250,160 250,40" fill="rgba(239, 68, 68, 0.15)" stroke="none" />
 
     {/* The Triangle components */}
     {/* Vertical Drop */}
@@ -104,13 +111,211 @@ The angle between a line and a plane is **always** the angle tucked between the 
   </svg>
 </div>
 
-<Aside type="caution" title="Sloping Edge vs. Sloping Face!">
-
+<SteveTip title="Sloping Edge vs. Sloping Face!">
   In pyramid questions, examiners love to trick you by asking for the angle between a **sloping face** (the flat triangular side) and the base, instead of a **sloping edge**. 
 
   The method is similar, but your flashlight casts a different shadow. The vertical drop goes to the center, but the shadow connects to the **middle of the base edge**, NOT to the corner! Always read carefully to see if they want the edge or the face.
+</SteveTip>
+</section>
 
-</Aside>
+---
+
+<section className="lesson-chunk">
+## 3. Worked Examples
+
+### Example 1: Cuboid Space Diagonal
+A cuboid has a length of $8\text{ cm}$, a width of $5\text{ cm}$, and a height of $6\text{ cm}$. Calculate the length of its space diagonal $d$. Give your answer to two decimal places.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 280" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+    <polygon points="70,230 220,230 270,180" fill="rgba(59, 130, 246, 0.2)" />
+    <polygon points="70,230 270,180 270,80" fill="rgba(239, 68, 68, 0.2)" />
+    <line x1="120" y1="180" x2="270" y2="180" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="120" y1="180" x2="70" y2="230" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="120" y1="180" x2="120" y2="80" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <polyline points="70,130 70,230 220,230 220,130" fill="none" stroke="#1e293b" stroke-width="2" />
+    <polyline points="220,230 270,180 270,80" fill="none" stroke="#1e293b" stroke-width="2" />
+    <polyline points="70,130 220,130 270,80 120,80 70,130" fill="none" stroke="#1e293b" stroke-width="2" />
+    <line x1="70" y1="230" x2="270" y2="180" stroke="#3b82f6" stroke-width="3" stroke-dasharray="6,6" />
+    <line x1="70" y1="230" x2="270" y2="80" stroke="#ef4444" stroke-width="3" />
+    <text x="145" y="250" font-weight="bold" fill="#1e293b">8 cm</text>
+    <text x="255" y="215" font-weight="bold" fill="#1e293b">5 cm</text>
+    <text x="285" y="135" font-weight="bold" fill="#1e293b">6 cm</text>
+    <text x="170" y="215" font-weight="bold" fill="#3b82f6" transform="rotate(-14 170 215)">x</text>
+    <text x="160" y="145" font-weight="bold" fill="#ef4444" transform="rotate(-37 160 145)">d</text>
+  </svg>
+</div>
+
+<details className="styled-details">
+  <summary>View Step-by-Step Solution</summary>
+  <Steps>
+    1. **Extract the flat triangle on the base:** Look at the blue shaded right-angled triangle on the floor. Its legs are the length ($8$) and width ($5$).
+    2. **Use Pythagoras to find the base diagonal ($x$):** $x^2 = 8^2 + 5^2$.
+    3. **Calculate $x$:** $x^2 = 64 + 25 = 89$, so $x = \sqrt{89}$. (Keep it as a surd for accuracy).
+    4. **Extract the vertical triangle:** Look at the red shaded triangle cutting through the room. Its base is $x$ ($\sqrt{89}$) and its vertical height is the cuboid's height ($6$).
+    5. **Use Pythagoras again for the space diagonal ($d$):** $d^2 = (\sqrt{89})^2 + 6^2$.
+    6. **Calculate $d$:** $d^2 = 89 + 36 = 125$. Therefore, $d = \sqrt{125} \approx 11.18\text{ cm}$.
+  </Steps>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+### Example 2: Triangular Prism (Working Backwards)
+A right-angled triangular prism has a base of $4\text{ cm}$ and a height of $3\text{ cm}$ on its triangular face. A diagonal distance cutting through the inside space of the prism measures $13\text{ cm}$. Find the length of the prism.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 280" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+    {/* Shaded Triangular Planes */}
+    <polygon points="100,230 200,230 100,130" fill="rgba(16, 185, 129, 0.2)" stroke="#10b981" stroke-width="2" />
+    
+    {/* The internal right-angled triangle slice */}
+    <polygon points="200,230 100,130 180,70" fill="rgba(239, 68, 68, 0.2)" />
+    
+    {/* Hidden Lines */}
+    <line x1="100" y1="230" x2="180" y2="170" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="180" y1="170" x2="280" y2="170" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="180" y1="170" x2="180" y2="70" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    
+    {/* Visible Edges */}
+    <line x1="100" y1="230" x2="200" y2="230" stroke="#1e293b" stroke-width="2" />
+    <line x1="100" y1="130" x2="100" y2="230" stroke="#1e293b" stroke-width="2" />
+    <line x1="100" y1="130" x2="180" y2="70" stroke="#1e293b" stroke-width="2" />
+    <line x1="200" y1="230" x2="280" y2="170" stroke="#1e293b" stroke-width="2" />
+    <line x1="180" y1="70" x2="280" y2="170" stroke="#1e293b" stroke-width="2" />
+    <line x1="200" y1="230" x2="100" y2="130" stroke="#10b981" stroke-width="3" stroke-dasharray="6,6" />
+    
+    {/* Space Diagonal */}
+    <line x1="200" y1="230" x2="180" y2="70" stroke="#ef4444" stroke-width="3" />
+    
+    {/* Right Angle Boxes */}
+    <polyline points="110,230 110,220 100,220" fill="none" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Labels */}
+    <text x="140" y="250" font-weight="bold" fill="#1e293b">4 cm</text>
+    <text x="60" y="190" font-weight="bold" fill="#1e293b">3 cm</text>
+    <text x="120" y="170" font-weight="bold" fill="#10b981">h</text>
+    <text x="185" y="150" font-weight="bold" fill="#ef4444" transform="rotate(83 195 150)">13 cm</text>
+    <text x="140" y="90" font-weight="bold" fill="#1e293b">l</text>
+  </svg>
+</div>
+
+<details className="styled-details">
+  <summary>View Step-by-Step Solution</summary>
+  <Steps>
+    1. **Focus on the front green triangular face:** The right-angled triangle has a base of $4$ and a height of $3$.
+    2. **Use Pythagoras to find its hypotenuse ($h$):** $h^2 = 4^2 + 3^2 = 16 + 9 = 25$. So, $h = \sqrt{25} = 5\text{ cm}$.
+    3. **Focus on the red internal triangular slice:** Visualize the right-angled triangle cutting through the prism. Its base is the face hypotenuse we just found ($h = 5$), its height is the prism's depth ($l$), and its hypotenuse is the given space diagonal ($13$).
+    4. **Apply Pythagoras to the internal slice:** $13^2 = 5^2 + l^2$.
+    5. **Rearrange to solve for $l^2$:** $169 = 25 + l^2 \implies l^2 = 169 - 25 = 144$.
+    6. **Square root to find the length:** $l = \sqrt{144} = 12\text{ cm}$.
+  </Steps>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+### Example 3: Square-Based Pyramid (Finding Base Length)
+A right square-based pyramid has a vertical height of $12\text{ cm}$. The length of one of its sloped edges (from a base corner to the apex) is $15\text{ cm}$. Calculate the length of one side of the square base, giving your answer to two decimal places.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 280" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+    {/* Base Triangle Shading (Blue) */}
+    <polygon points="70,220 210,220 270,160" fill="rgba(59, 130, 246, 0.2)" />
+    
+    {/* Internal Vertical Triangle Shading (Red) */}
+    <polygon points="170,190 210,220 170,40" fill="rgba(239, 68, 68, 0.2)" />
+    
+    {/* Base Lines */}
+    <line x1="70" y1="220" x2="210" y2="220" stroke="#1e293b" stroke-width="2" />
+    <line x1="210" y1="220" x2="270" y2="160" stroke="#1e293b" stroke-width="2" />
+    <line x1="270" y1="160" x2="130" y2="160" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="130" y1="160" x2="70" y2="220" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    
+    {/* Base Diagonal & Center */}
+    <line x1="70" y1="220" x2="270" y2="160" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,4" />
+    <line x1="170" y1="190" x2="210" y2="220" stroke="#3b82f6" stroke-width="2" stroke-dasharray="6,6" />
+    <line x1="130" y1="160" x2="170" y2="190" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,4" />
+    
+    {/* Pyramid Edges */}
+    <line x1="170" y1="40" x2="70" y2="220" stroke="#1e293b" stroke-width="2" />
+    <line x1="170" y1="40" x2="210" y2="220" stroke="#ef4444" stroke-width="3" />
+    <line x1="170" y1="40" x2="270" y2="160" stroke="#1e293b" stroke-width="2" />
+    <line x1="170" y1="40" x2="130" y2="160" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    
+    {/* Vertical Drop */}
+    <line x1="170" y1="40" x2="170" y2="190" stroke="#10b981" stroke-width="3" />
+    
+    {/* Right Angle Box */}
+    <polyline points="170,180 178,185 178,195" fill="none" stroke="#1e293b" stroke-width="2" />
+
+    {/* Labels */}
+    <text x="140" y="120" font-weight="bold" fill="#10b981">12 cm</text>
+    <text x="195" y="130" font-weight="bold" fill="#ef4444" transform="rotate(77 195 130)">15 cm</text>
+    <text x="190" y="215" font-weight="bold" fill="#3b82f6" transform="rotate(37 190 215)">x</text>
+  </svg>
+</div>
+
+<details className="styled-details">
+  <summary>View Step-by-Step Solution</summary>
+  <Steps>
+    1. **Drop and connect to find the hidden red triangle:** The vertical drop is the height ($12\text{ cm}$), the hypotenuse is the sloped edge ($15\text{ cm}$), and the base of this hidden triangle is exactly half of the square's flat diagonal (let's call it $x$).
+    2. **Use Pythagoras to find $x$:** $x^2 + 12^2 = 15^2$.
+    3. **Solve for $x$:** $x^2 = 225 - 144 = 81$, so $x = \sqrt{81} = 9\text{ cm}$.
+    4. **Find the full base diagonal:** Since $x$ is half the diagonal, the full diagonal of the square base is $2 \times 9 = 18\text{ cm}$.
+    5. **Extract the 2D square base:** Look at the blue shaded right-angled triangle on the floor. A square's two identical sides ($s$) and its diagonal form a right-angled triangle. So, $s^2 + s^2 = 18^2$.
+    6. **Solve for side length $s$:** $2s^2 = 324 \implies s^2 = 162 \implies s = \sqrt{162} \approx 12.73\text{ cm}$.
+  </Steps>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+### Example 4: Cylinder (Angle Between Diagonal and Base)
+A cylinder has a radius of $4\text{ cm}$ and a height of $10\text{ cm}$. A straight line is drawn from the bottom edge of the cylinder's base directly to the opposite top edge. Calculate the angle this line makes with the circular base to one decimal place.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 280" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+    {/* Base Ellipse Shading */}
+    <ellipse cx="175" cy="220" rx="100" ry="30" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="2" />
+    
+    {/* Vertical Triangle Cross-Section Shading (Red) */}
+    <polygon points="75,220 275,220 275,80" fill="rgba(239, 68, 68, 0.2)" />
+    
+    {/* Cylinder Body */}
+    <line x1="75" y1="80" x2="75" y2="220" stroke="#1e293b" stroke-width="2" />
+    <line x1="275" y1="80" x2="275" y2="220" stroke="#1e293b" stroke-width="2" />
+    <ellipse cx="175" cy="80" rx="100" ry="30" fill="none" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Internal Triangle */}
+    <line x1="75" y1="220" x2="275" y2="220" stroke="#f59e0b" stroke-width="3" stroke-dasharray="6,6" />
+    <line x1="275" y1="80" x2="275" y2="220" stroke="#10b981" stroke-width="3" stroke-dasharray="4,4" />
+    <line x1="75" y1="220" x2="275" y2="80" stroke="#ef4444" stroke-width="3" />
+    
+    {/* Right Angle and Angle Arc */}
+    <polyline points="260,220 260,210 275,210" fill="none" stroke="#1e293b" stroke-width="2" />
+    <path d="M 115 220 A 40 40 0 0 0 108 197" fill="none" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Labels */}
+    <text x="125" y="210" font-weight="bold" font-size="16">θ</text>
+    <text x="285" y="150" font-weight="bold" fill="#10b981">10 cm</text>
+    <text x="150" y="240" font-weight="bold" fill="#f59e0b">d = 8 cm</text>
+  </svg>
+</div>
+
+<details className="styled-details">
+  <summary>View Step-by-Step Solution</summary>
+  <Steps>
+    1. **Identify the 2D right-angled triangle:** Imagine slicing perfectly through the center of the cylinder. The red shaded triangle appears. The vertical height (the "Drop") of your triangle is $10\text{ cm}$.
+    2. **Determine the base of the triangle:** The sloped diagonal line's shadow stretches entirely across the circular base, passing through the center. This means the shadow is the diameter. Diameter $= 2 \times 4\text{ cm} = 8\text{ cm}$.
+    3. **Identify the target angle:** You need the angle $\theta$ tucked between the sloping diagonal line and its shadow on the base (the diameter).
+    4. **Choose the correct trigonometric ratio:** We know the Opposite side ($10\text{ cm}$) and the Adjacent side ($8\text{ cm}$). Use TOA: $\tan(\theta) = \frac{\text{Opp}}{\text{Adj}}$.
+    5. **Calculate the angle:** $\tan(\theta) = \frac{10}{8} = 1.25$. Therefore, $\theta = \tan^{-1}(1.25) \approx 51.3^\circ$.
+  </Steps>
+</details>
 </section>
 
 ---
