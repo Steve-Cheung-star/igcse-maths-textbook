@@ -418,12 +418,331 @@ $$
 ---
 
 <section className="lesson-chunk">
+## The Ladder Method for Two Numbers
+
+When finding the Highest Common Factor (HCF) and Lowest Common Multiple (LCM) of two numbers, doing separate prime factor trees can be time-consuming. The **repeated division** (or ladder) method allows you to process both numbers at the same time.
+
+<Aside type="tip" title="The 'I' and the 'L'">
+* **HCF (The 'I'):** Multiply only the numbers down the left-hand side (the common divisors).
+* **LCM (The 'L'):** Multiply all the numbers down the left-hand side AND across the bottom row, forming an "L" shape.
+</Aside>
+</section>
+
+---
+
+<section className="lesson-chunk">
+## Visualising the Method
+
+Let's find the HCF and LCM of **36** and **60**. We set them up in a row and repeatedly divide by prime numbers that go into *both* numbers. 
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 600 380" width="100%" maxWidth="600px" xmlns="http://www.w3.org/2000/svg" style={{ fontFamily: 'sans-serif', background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    
+    {/* Blue Box (HCF Column) */}
+    <rect x="180" y="55" width="45" height="155" fill="#e0e7ff" rx="10" />
+    
+    {/* Green Box (Remainders Row) */}
+    <rect x="270" y="225" width="160" height="55" fill="#dcfce7" rx="10" />
+
+    {/* The Ladder (Lines) */}
+    <line x1="240" y1="50" x2="240" y2="280" stroke="#334155" stroke-width="4" />
+    <line x1="240" y1="105" x2="440" y2="105" stroke="#334155" stroke-width="2" />
+    <line x1="240" y1="160" x2="440" y2="160" stroke="#334155" stroke-width="2" />
+    <line x1="240" y1="215" x2="440" y2="215" stroke="#334155" stroke-width="2" />
+
+    {/* Left column (Common Divisors - Blue Text) */}
+    <text x="202.5" y="90" text-anchor="middle" font-size="22" font-weight="bold" fill="#1d4ed8">2</text>
+    <text x="202.5" y="145" text-anchor="middle" font-size="22" font-weight="bold" fill="#1d4ed8">2</text>
+    <text x="202.5" y="200" text-anchor="middle" font-size="22" font-weight="bold" fill="#1d4ed8">3</text>
+
+    {/* Right side numbers */}
+    <text x="300" y="90" text-anchor="middle" font-size="22" font-weight="bold" fill="#1e293b">36</text>
+    <text x="400" y="90" text-anchor="middle" font-size="22" font-weight="bold" fill="#1e293b">60</text>
+
+    <text x="300" y="145" text-anchor="middle" font-size="22" font-weight="bold" fill="#1e293b">18</text>
+    <text x="400" y="145" text-anchor="middle" font-size="22" font-weight="bold" fill="#1e293b">30</text>
+
+    <text x="300" y="200" text-anchor="middle" font-size="22" font-weight="bold" fill="#1e293b">9</text>
+    <text x="400" y="200" text-anchor="middle" font-size="22" font-weight="bold" fill="#1e293b">15</text>
+
+    {/* Bottom row (Remainders - Green Text) */}
+    <text x="300" y="260" text-anchor="middle" font-size="22" font-weight="bold" fill="#15803d">3</text>
+    <text x="400" y="260" text-anchor="middle" font-size="22" font-weight="bold" fill="#15803d">5</text>
+
+    {/* HCF Dotted Line & Text */}
+    <path d="M 170 135 C 130 135 130 220 170 220" fill="none" stroke="#1d4ed8" stroke-width="3" stroke-dasharray="6,6" />
+    <text x="110" y="130" text-anchor="middle" font-size="16" font-weight="bold" fill="#1d4ed8">HCF ("I" shape)</text>
+    <text x="110" y="160" text-anchor="middle" font-size="14" fill="#1e40af">2 × 2 × 3 = 12</text>
+
+    {/* LCM Dotted Line & Text */}
+    <path d="M 180 280 L 180 295 L 430 295 L 430 280" fill="none" stroke="#15803d" stroke-width="3" stroke-dasharray="6,6" />
+    <text x="305" y="330" text-anchor="middle" font-size="18" font-weight="bold" fill="#15803d">LCM ("L" shape)</text>
+    <text x="305" y="355" text-anchor="middle" font-size="16" fill="#166534">2 × 2 × 3 × 3 × 5 = 180</text>
+  </svg>
+</div>
+
+<div className="table-wrapper">
+| Concept | Calculation | Result |
+| :--- | :--- | :--- |
+| **HCF** | Multiply the blue column: $2 \times 2 \times 3$ | **12** |
+| **LCM** | Multiply the blue column AND green row: $2 \times 2 \times 3 \times 3 \times 5$ | **180** |
+</div>
+</section>
+
+---
+
+<section className="lesson-chunk">
+## Worked Example
+
+Find the Highest Common Factor (HCF) and Lowest Common Multiple (LCM) of **48** and **72** using repeated division.
+
+<SteveTip title="Maximising Exam Marks">
+Always explicitly state your final HCF and LCM calculations clearly below your working out. Examiners look for the final product, not just a ladder drawn on the page.
+</SteveTip>
+
+<details className="styled-details">
+  <summary><strong>View Step-by-Step Solution & Ladder</strong></summary>
+  
+  <Steps>
+    1. **Set up the ladder:** Write 48 and 72 next to each other.
+    2. **Divide by a common prime:** Both are even, so divide by $2$. 
+       * $48 \div 2 = 24$
+       * $72 \div 2 = 36$
+    3. **Repeat:** Divide 24 and 36 by $2$ to get $12$ and $18$.
+    4. **Repeat again:** Divide 12 and 18 by $2$ to get $6$ and $9$.
+    5. **Change primes:** 6 and 9 don't both divide by 2, but they do divide by $3$.
+       * $6 \div 3 = 2$
+       * $9 \div 3 = 3$
+    6. **Stop:** 2 and 3 have no common prime factors left.
+    7. **Calculate HCF:** Multiply the common divisors on the left.
+       $$ \text{HCF} = 2 \times 2 \times 2 \times 3 = 24 $$
+    8. **Calculate LCM:** Multiply the common divisors AND the remaining numbers at the bottom.
+       $$ \text{LCM} = 2 \times 2 \times 2 \times 3 \times 2 \times 3 = 144 $$
+  </Steps>
+
+  <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+    <svg viewBox="0 0 400 280" width="100%" maxWidth="400px" xmlns="http://www.w3.org/2000/svg" style={{ fontFamily: 'sans-serif', background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
+      {/* Blue Box (HCF Column) */}
+      <rect x="80" y="35" width="40" height="175" fill="#e0e7ff" rx="8" />
+      
+      {/* Green Box (Remainders Row) exactly matching CleanShot 2026-08-19 at 14.10.42@2x.png */}
+      <rect x="150" y="215" width="130" height="40" fill="#dcfce7" rx="8" />
+
+      {/* The Ladder (Lines) */}
+      <line x1="130" y1="20" x2="130" y2="260" stroke="#334155" stroke-width="3" />
+      <line x1="130" y1="75" x2="280" y2="75" stroke="#334155" stroke-width="2" />
+      <line x1="130" y1="120" x2="280" y2="120" stroke="#334155" stroke-width="2" />
+      <line x1="130" y1="165" x2="280" y2="165" stroke="#334155" stroke-width="2" />
+      <line x1="130" y1="210" x2="280" y2="210" stroke="#334155" stroke-width="2" />
+
+      {/* Divisors (Blue Text) */}
+      <text x="100" y="60" text-anchor="middle" font-size="20" font-weight="bold" fill="#1d4ed8">2</text>
+      <text x="100" y="105" text-anchor="middle" font-size="20" font-weight="bold" fill="#1d4ed8">2</text>
+      <text x="100" y="150" text-anchor="middle" font-size="20" font-weight="bold" fill="#1d4ed8">2</text>
+      <text x="100" y="195" text-anchor="middle" font-size="20" font-weight="bold" fill="#1d4ed8">3</text>
+
+      {/* Numbers */}
+      <text x="180" y="60" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">48</text>
+      <text x="250" y="60" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">72</text>
+      
+      <text x="180" y="105" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">24</text>
+      <text x="250" y="105" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">36</text>
+
+      <text x="180" y="150" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">12</text>
+      <text x="250" y="150" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">18</text>
+      
+      <text x="180" y="195" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">6</text>
+      <text x="250" y="195" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">9</text>
+
+      {/* Remainders (Green Text) */}
+      <text x="180" y="242" text-anchor="middle" font-size="20" font-weight="bold" fill="#15803d">2</text>
+      <text x="250" y="242" text-anchor=
+      "middle" font-size="20" font-weight="bold" fill="#15803d">3</text>
+    </svg>
+  </div>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+## The Ladder Method for Three Numbers
+
+Finding the HCF and LCM for three numbers follows the same ladder method, but introduces a crucial new rule when calculating the LCM. You must be careful to distinguish between when to stop for the HCF and when to keep going for the LCM.
+
+<Aside type="caution" title="The Golden Rule for 3 Numbers">
+* **For the HCF:** You must only divide by a prime number if it goes into **ALL THREE** numbers. Stop when no prime can divide all three.
+* **For the LCM:** After finding the HCF, continue dividing if a prime number goes into **AT LEAST TWO** of the numbers. Bring down the number that cannot be divided as it is. Stop when all remaining numbers share no common factors (other than 1).
+</Aside>
+</section>
+
+---
+
+<section className="lesson-chunk">
+## Worked Example
+
+Find the Highest Common Factor (HCF) and Lowest Common Multiple (LCM) of **18**, **24**, and **36** using repeated division.
+
+<SteveTip title="Avoiding Common Mistakes">
+In exams, a very common mistake is to keep dividing by primes that only go into two numbers while calculating the HCF. Draw a clear line or note where the "all three" divisions stop to ensure your HCF is accurate.
+</SteveTip>
+
+<details className="styled-details">
+  <summary><strong>View Step-by-Step Solution & Ladder</strong></summary>
+  
+  <Steps>
+    1. **Set up the ladder:** Write 18, 24, and 36 in a row.
+    2. **Divide all three:** They are all even, so divide by $2$. 
+       * Leaves $9, 12, 18$.
+    3. **Divide all three again:** They don't all divide by 2, but they do divide by $3$.
+       * Leaves $3, 4, 6$.
+    4. **Stop for HCF:** There is no prime that divides 3, 4, and 6. The HCF calculation stops here.
+       $$ \text{HCF} = 2 \times 3 = 6 $$
+    5. **Continue for LCM (Divide two):** Look at 3, 4, and 6. The prime $3$ divides 3 and 6. 
+       * $3 \div 3 = 1$
+       * $6 \div 3 = 2$
+       * Bring down the $4$ unchanged. 
+       * Row becomes $1, 4, 2$.
+    6. **Continue for LCM again:** Look at 1, 4, and 2. The prime $2$ divides 4 and 2.
+       * $4 \div 2 = 2$
+       * $2 \div 2 = 1$
+       * Bring down the $1$ unchanged.
+       * Row becomes $1, 2, 1$.
+    7. **Stop for LCM:** 1, 2, and 1 share no common prime factors.
+    8. **Calculate LCM:** Multiply ALL the common divisors on the left and the remainders at the bottom.
+       $$ \text{LCM} = 2 \times 3 \times 3 \times 2 \times 1 \times 2 \times 1 = 72 $$
+  </Steps>
+
+  <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+    <svg viewBox="0 0 500 340" width="100%" max-width="500px" xmlns="http://www.w3.org/2000/svg" style={{ fontFamily: 'sans-serif', background: '#f1f5f9', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
+      
+      {/* Blue Box (HCF Column - Must divide all 3) */}
+      <rect x="75" y="30" width="55" height="110" fill="#e0e7ff" rx="10" />
+      
+      {/* Orange Box (LCM extra divisors - Divides at least 2) */}
+      <rect x="75" y="150" width="55" height="105" fill="#ffedd5" rx="10" />
+
+      {/* Green Box (Remainders Row) */}
+      <rect x="155" y="260" width="200" height="45" fill="#dcfce7" rx="10" />
+
+      {/* The Ladder (Lines) */}
+      <line x1="145" y1="20" x2="145" y2="315" stroke="#334155" stroke-width="4" />
+      <line x1="145" y1="85" x2="380" y2="85" stroke="#334155" stroke-width="2.5" />
+      <line x1="145" y1="140" x2="380" y2="140" stroke="#334155" stroke-width="2.5" />
+      {/* HCF line cut-off marker */}
+      <line x1="130" y1="140" x2="160" y2="140" stroke="#2563eb" stroke-width="4" />
+      <line x1="145" y1="195" x2="380" y2="195" stroke="#334155" stroke-width="2.5" />
+      <line x1="145" y1="250" x2="380" y2="250" stroke="#334155" stroke-width="2.5" />
+      
+      {/* HCF Divisors (Blue Text) */}
+      <text x="102.5" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d4ed8">2</text>
+      <text x="102.5" y="125" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d4ed8">3</text>
+
+      {/* LCM Continued Divisors (Orange Text) */}
+      <text x="102.5" y="180" text-anchor="middle" font-size="24" font-weight="bold" fill="#c2410c">3</text>
+      <text x="102.5" y="235" text-anchor="middle" font-size="24" font-weight="bold" fill="#c2410c">2</text>
+
+      {/* Numbers */}
+      {/* Row 1 */}
+      <text x="180" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">18</text>
+      <text x="255" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">24</text>
+      <text x="330" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">36</text>
+      
+      {/* Row 2 */}
+      <text x="180" y="125" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">9</text>
+      <text x="255" y="125" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">12</text>
+      <text x="330" y="125" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">18</text>
+
+      {/* Row 3 - Stop for HCF here */}
+      <text x="180" y="180" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">3</text>
+      <text x="255" y="180" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">4</text>
+      <text x="330" y="180" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">6</text>
+      
+      {/* Row 4 - Bring down 4 */}
+      <text x="180" y="235" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">1</text>
+      <text x="255" y="235" text-anchor="middle" font-size="24" font-weight="bold" fill="#64748b">4</text>
+      <text x="330" y="235" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">2</text>
+
+      {/* Row 5 (Final Remainders - Green Text, bring down 1) */}
+      <text x="180" y="292" text-anchor="middle" font-size="24" font-weight="bold" fill="#15803d">1</text>
+      <text x="255" y="292" text-anchor="middle" font-size="24" font-weight="bold" fill="#15803d">2</text>
+      <text x="330" y="292" text-anchor="middle" font-size="24" font-weight="bold" fill="#15803d">1</text>
+    </svg>
+  </div>
+  
+  <div className="table-wrapper">
+  | Concept | Calculation | Result |
+  | :--- | :--- | :--- |
+  | **HCF** | Multiply only the blue box (divisors of all 3): $2 \times 3$ | **6** |
+  | **LCM** | Multiply everything on the outside (blue + orange + green): $2 \times 3 \times 3 \times 2 \times 1 \times 2 \times 1$ | **72** |
+  </div>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
 ### HCF and LCM from Index Form (Extended)
 
 In IGCSE Extended, you are often given numbers already in index form. You do **not** need to expand them into massive numbers! Just compare their powers:
 
 * **HCF:** Take the **lowest** power of each common prime factor.
 * **LCM:** Take the **highest** power of *every* prime factor present.
+</section>
+
+<section className="lesson-chunk">
+### Example 1: HCF & LCM in Index Form (Extracting Powers)
+Given $A = 2^3 \times 5^2 \times 7$ and $B = 2 \times 7^3$, find the HCF and LCM of $A$ and $B$. Leave your answers in index form.
+
+<details className="styled-details">
+  <summary><strong>View Solution</strong></summary>
+  
+  Use the power rules for index form:
+  
+  <Steps>
+    1. **For the HCF:** Take the **lowest** power of the primes they have in common (which are 2 and 7. Note that 5 is not in both).
+       * The lowest power of 2 is $2^1$ (from $B$).
+       * The lowest power of 7 is $7^1$ (from $A$).
+       $$ \text{HCF} = 2 \times 7 $$
+    2. **For the LCM:** Take the **highest** power of *every* prime factor that appears in either number.
+       * The highest power of 2 is $2^3$.
+       * The highest power of 5 is $5^2$.
+       * The highest power of 7 is $7^3$.
+       $$ \text{LCM} = 2^3 \times 5^2 \times 7^3 $$
+  </Steps>
+</details>
+</section>
+
+<section className="lesson-chunk">
+### Example 2: Finding Missing Exponents using HCF and LCM
+Two numbers, $X$ and $Y$, are written as a product of their prime factors:
+
+$$ X = 2^a \times 3^4 \times 5 $$
+$$ Y = 2^3 \times 3^b \times 7 $$
+
+The Highest Common Factor (HCF) of $X$ and $Y$ is $2^2 \times 3^2$.  
+The Lowest Common Multiple (LCM) of $X$ and $Y$ is $2^3 \times 3^4 \times 5 \times 7$.  
+
+Find the value of $a$ and the value of $b$.
+
+<details className="styled-details">
+  <summary><strong>View Solution</strong></summary>
+  
+  We use the rules for index form HCF and LCM backwards.
+  
+  <Steps>
+    1. **Finding $a$:** Look at the prime factor $2$. $X$ has $2^a$ and $Y$ has $2^3$.
+    2. The HCF uses the **lowest** power. The HCF has $2^2$. Since $Y$ has $2^3$, the $2^2$ must have come from $X$.
+    3. Therefore, $a = 2$.
+    4. **Finding $b$:** Look at the prime factor $3$. $X$ has $3^4$ and $Y$ has $3^b$.
+    5. The HCF uses the **lowest** power. The HCF has $3^2$. Since $X$ has $3^4$, the $3^2$ must have come from $Y$.
+    6. Therefore, $b = 2$.
+  </Steps>
+  
+  <Aside type="note" title="Verification">
+    We can verify this with the LCM: The highest power of 2 is $2^3$, and the highest power of 3 is $3^4$, which perfectly matches our given LCM!
+  </Aside>
+</details>
 </section>
 
 ---

@@ -3,12 +3,15 @@ title: 1.2 Arithmetic Sequences and Series
 description: Master the algebra of arithmetic sequences and series, including the use of sigma notation, simultaneous equations, and contextual problem-solving for IB Maths AA SL.
 ---
 
+<section className="lesson-chunk">
 Mathematics is fundamentally the study of patterns. When a pattern consists of a list of numbers progressing by a constant addition or subtraction, we call it an **arithmetic sequence**. When we add those numbers together, it becomes an **arithmetic series**. 
 
 In the AA SL course, you are expected to move beyond simply identifying the next number in a pattern. You will use rigorous algebra to find the $100^{\text{th}}$ term, sum the first $n$ terms using quadratic equations, decode $\Sigma$ (sigma) notation, and apply these concepts to model discrete real-world phenomena.
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## Syllabus Alignment & Context
 
 <Aside type="note" title="IB Syllabus Guidance">
@@ -27,20 +30,22 @@ In the AA SL course, you are expected to move beyond simply identifying the next
 <Aside type="note" title="Theory of Knowledge (TOK)">
   Is mathematics invented or discovered? Did mathematicians *invent* the formula for the sum of an arithmetic sequence, or did they *discover* an inherent truth about the universe? The famous story of a young Carl Friedrich Gauss summing integers from 1 to 100 in seconds suggests an underlying, elegant architecture just waiting to be noticed.
 </Aside>
+</section>
 
 ---
 
+<section className="lesson-chunk">
 ## 1. Arithmetic Sequences (The $n^{\text{th}}$ Term)
 
 An arithmetic sequence is an ordered list of terms where the difference between any two consecutive terms is strictly constant. We call this the **common difference**, denoted by $d$. 
 
 If the sequence is increasing, $d$ is positive. If the sequence is decreasing, $d$ is negative.
 
-<FormulaBox title="1.2 The nth term of an arithmetic sequence">
+<Aside type="tip" title="1.2 The nth term of an arithmetic sequence">
   $$
   u_n=u_1+(n-1)d
   $$
-</FormulaBox>
+</Aside>
 
 Where:
 * $u_n$ is the value of the $n^{\text{th}}$ term.
@@ -49,20 +54,17 @@ Where:
 * $d$ is the common difference, found by calculating $u_n - u_{n-1}$ (e.g., $u_2 - u_1$).
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 600 150" width="100%" maxWidth="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    {/* Terms */}
+  <svg viewBox="0 0 600 150" width="100%" max-width="600px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <text x="100" y="80" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">u₁</text>
     <text x="233" y="80" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">u₂</text>
     <text x="366" y="80" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">u₃</text>
     <text x="500" y="80" font-size="24" font-weight="bold" fill="#0f172a" text-anchor="middle" font-family="monospace">u₄</text>
 
-    {/* Values (Example) */}
     <text x="100" y="110" font-size="16" fill="#64748b" text-anchor="middle" font-family="sans-serif">5</text>
     <text x="233" y="110" font-size="16" fill="#64748b" text-anchor="middle" font-family="sans-serif">8</text>
     <text x="366" y="110" font-size="16" fill="#64748b" text-anchor="middle" font-family="sans-serif">11</text>
     <text x="500" y="110" font-size="16" fill="#64748b" text-anchor="middle" font-family="sans-serif">14</text>
 
-    {/* Jumps (Common Difference) */}
     <path d="M 120 50 Q 166.5 20 213 50" fill="none" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
     <text x="166.5" y="25" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">+ d</text>
 
@@ -72,7 +74,6 @@ Where:
     <path d="M 386 50 Q 433 20 480 50" fill="none" stroke="#3b82f6" stroke-width="2" marker-end="url(#arrow)"/>
     <text x="433" y="25" font-size="14" font-weight="bold" fill="#3b82f6" text-anchor="middle" font-family="sans-serif">+ d</text>
 
-    {/* Arrow Definition */}
     <defs>
       <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
         <path d="M 0 0 L 10 5 L 0 10 z" fill="#3b82f6" />
@@ -84,40 +85,477 @@ Where:
 <SteveTip title="The Simultaneous Equations Strategy">
   In Paper 1, a classic IB exam question will give you two non-consecutive terms (e.g., "The $3^{\text{rd}}$ term is 12 and the $8^{\text{th}}$ term is 37"). Do not try to guess the pattern. Immediately write down two equations using $u_n = u_1 + (n-1)d$ and solve them simultaneously to find $u_1$ and $d$.
 </SteveTip>
+</section>
 
 ---
 
-## 2. Arithmetic Series & Sigma Notation
+<section className="lesson-chunk">
+### Example 1: Multi-Part Sequence Fundamentals
 
-An arithmetic **series** is formed when you add the terms of an arithmetic sequence together. The sum of the first $n$ terms is denoted by $S_n$.
+Consider the arithmetic sequence: $4, 11, 18, 25, \dots$
 
-<FormulaBox title="1.2 The sum of n terms of an arithmetic sequence">
+**a)** Find the next term in the sequence.  
+**b)** Find the value of the $45^{\text{th}}$ term.  
+**c)** Find the first term in the sequence that exceeds $300$.
+
+<details className="styled-details">
+  <summary>View Step-by-Step Solution</summary>
+  <Steps>
+    1. **Identify parameters for part (a):** 
+       The common difference is $d = 11 - 4 = 7$. 
+       The next term is $u_5 = 25 + 7 = 32$.
+    2. **Calculate the arbitrary term for part (b):** 
+       Use the formula $u_n = u_1 + (n-1)d$ with $n=45$, $u_1=4$, and $d=7$.
+       $$ 
+       \begin{aligned}
+       u_{45} &= 4 + (45-1)(7) \\
+       u_{45} &= 4 + (44)(7) \\
+       u_{45} &= 4 + 308 \\
+       u_{45} &= 312
+       \end{aligned}
+       $$
+    3. **Set up an inequality for part (c):** 
+       We need to find $n$ where $u_n > 300$.
+       $$ 
+       \begin{aligned}
+       4 + (n-1)(7) &> 300 \\
+       (n-1)(7) &> 296 \\
+       n-1 &> 42.28\dots \\
+       n &> 43.28\dots 
+       \end{aligned}
+       $$
+    4. **Interpret the result:** 
+       Since $n$ must be an integer, the smallest valid value is $n=44$. To find the actual term, calculate $u_{44}$:
+       $$ 
+       \begin{aligned}
+       u_{44} &= 4 + (43)(7) \\
+       u_{44} &= 4 + 301 \\
+       u_{44} &= 305
+       \end{aligned}
+       $$
+       The first term to exceed $300$ is $305$.
+  </Steps>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+### Example 2: Working with Arbitrary Terms
+
+In an arithmetic sequence, the $5^{\text{th}}$ term is $19$ and the $12^{\text{th}}$ term is $47$.
+
+**a)** Find the common difference, $d$, and the first term, $u_1$.  
+**b)** Determine the general formula for the $n^{\text{th}}$ term.  
+**c)** Is the number $105$ a term in this sequence? Justify your answer.
+
+<details className="styled-details">
+  <summary>View Step-by-Step Solution</summary>
+  <Steps>
+    1. **Set up simultaneous equations for part (a):**
+       $$ 
+       \begin{aligned}
+       u_5 &= u_1 + 4d = 19 \quad &\text{(Equation 1)} \\
+       u_{12} &= u_1 + 11d = 47 \quad &\text{(Equation 2)}
+       \end{aligned}
+       $$
+    2. **Solve for $d$:** 
+       Subtract Equation 1 from Equation 2:
+       $$ 
+       \begin{aligned}
+       (u_1 + 11d) - (u_1 + 4d) &= 47 - 19 \\
+       7d &= 28 \\
+       d &= 4
+       \end{aligned}
+       $$
+    3. **Solve for $u_1$:** 
+       Substitute $d=4$ into Equation 1:
+       $$ 
+       \begin{aligned}
+       u_1 + 4(4) &= 19 \\
+       u_1 + 16 &= 19 \\
+       u_1 &= 3
+       \end{aligned}
+       $$
+    4. **Find the general formula for part (b):** 
+       Substitute $u_1$ and $d$ into the general formula $u_n$:
+       $$ 
+       \begin{aligned}
+       u_n &= 3 + (n-1)(4) \\
+       u_n &= 3 + 4n - 4 \\
+       u_n &= 4n - 1 
+       \end{aligned}
+       $$
+    5. **Test the value for part (c):** 
+       Set $u_n = 105$ and solve for $n$.
+       $$ 
+       \begin{aligned}
+       4n - 1 &= 105 \\
+       4n &= 106 \\
+       n &= 26.5
+       \end{aligned}
+       $$
+    6. **Conclude:** 
+       Because $n$ must be a strictly positive integer ($n \in \mathbb{Z}^+$), $105$ cannot be a term in the sequence.
+  </Steps>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+### Example 3: Quadratic Relations and Multiple Common Differences
+
+In an arithmetic sequence, the first term is $u_1 = 2$. The product of the second term ($u_2$) and the third term ($u_3$) is equal to $40$.
+
+**a)** Show that the common difference, $d$, satisfies the equation $d^2 + 3d - 18 = 0$.  
+**b)** Given that the sequence is strictly increasing, determine the value of $d$.  
+**c)** Hence, find the value of the $20^{\text{th}}$ term, $u_{20}$.
+
+<details className="styled-details">
+  <summary>View Step-by-Step Solution</summary>
+  <Steps>
+    1. **Express $u_2$ and $u_3$ in terms of $d$ for part (a):**
+       $$
+       \begin{aligned}
+       u_2 &= 2 + d \\
+       u_3 &= 2 + 2d
+       \end{aligned}
+       $$
+    2. **Set up and simplify the product equation:**
+       $$
+       \begin{aligned}
+       u_2 \cdot u_3 &= 40 \\
+       (2 + d)(2 + 2d) &= 40 \\
+       4 + 4d + 2d + 2d^2 &= 40 \\
+       2d^2 + 6d + 4 &= 40 \\
+       2d^2 + 6d - 36 &= 0
+       \end{aligned}
+       $$
+       Divide the entire equation by $2$:
+       $$
+       \begin{aligned}
+       d^2 + 3d - 18 &= 0
+       \end{aligned}
+       $$
+    3. **Solve for $d$ and select the valid root for part (b):**
+       Factorise the quadratic expression:
+       $$
+       \begin{aligned}
+       (d + 6)(d - 3) &= 0 \\
+       d = -6 \quad &\text{or} \quad d = 3
+       \end{aligned}
+       $$
+       Since the sequence is **strictly increasing**, the common difference must be positive ($d > 0$). Therefore:
+       $$
+       \begin{aligned}
+       d &= 3
+       \end{aligned}
+       $$
+    4. **Calculate $u_{20}$ for part (c):**
+       Substitute $u_1 = 2$, $d = 3$, and $n = 20$ into the formula $u_n = u_1 + (n-1)d$:
+       $$
+       \begin{aligned}
+       u_{20} &= 2 + (20-1)(3) \\
+       u_{20} &= 2 + (19)(3) \\
+       u_{20} &= 2 + 57 \\
+       u_{20} &= 59
+       \end{aligned}
+       $$
+  </Steps>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+## 2. Arithmetic Series & The Story of Gauss
+
+When we sum the terms of a sequence, we get a series. But how do we sum hundreds of terms efficiently? 
+
+The famous story goes that in the late 18th century, a lazy school teacher told his class to add together all the integers from $1$ to $100$, hoping for a quiet hour. A 10-year-old Carl Friedrich Gauss walked up a few seconds later with the correct answer: $5050$. 
+
+Gauss noticed an elegant pattern. If you pair the first and last numbers, the second and second-to-last numbers, they all sum to the same value ($1+100 = 101$, $2+99 = 101$, etc.). With 100 numbers, there are 50 pairs of 101. $50 \times 101 = 5050$. We can use this exact logic to prove the general formula for any arithmetic series.
+
+<Aside type="tip" title="1.2 The sum of n terms of an arithmetic sequence">
   $$
-  S_n=\frac{n}{2}(2u_1+(n-1)d) \quad ; \quad S_n=\frac{n}{2}(u_1+u_n)
+  S_n=\frac{n}{2}(2u_1+(n-1)d) \quad \text{or} \quad S_n=\frac{n}{2}(u_1+u_n)
   $$
-</FormulaBox>
-
-You must strategically choose which formula to use:
-1. Use the first version when you know the number of terms ($n$), the first term ($u_1$), and the common difference ($d$).
-2. Use the second version when you know the number of terms ($n$), the first term ($u_1$), and the **last term** ($u_n$).
-
-### Decoding Sigma ($\Sigma$) Notation
-Sigma notation is a concise way to represent a series. The Greek letter $\Sigma$ stands for "sum". 
-
-$$
-\sum_{r=1}^{n} (ar + b)
-$$
-
-* **Bottom ($r=1$):** The starting value of $r$ (the index). Substitute this into the expression to find $u_1$.
-* **Top ($n$):** The final value of $r$. Substitute this into the expression to find the last term $u_n$.
-* **Expression ($ar+b$):** The rule for the sequence. Because it is linear, it guarantees the sequence is arithmetic.
-
-<Aside type="note" title="Key Formula to Memorise">
-  $$
-  \text{Number of terms in a sigma series} = (\text{Top number}) - (\text{Bottom number}) + 1
-  $$
-  *(Note: This is not provided in your exam formula booklet! If a series goes from $r=5$ to $r=12$, there are $12 - 5 + 1 = 8$ terms, not 7!)*
 </Aside>
+
+### Mathematical Proof of the General Formula
+
+We can prove this by writing the series forwards and backwards, then adding them together:
+
+$$ 
+\begin{aligned}
+S_n &= u_1 + (u_1 + d) + \dots + (u_n - d) + u_n \\
+S_n &= u_n + (u_n - d) + \dots + (u_1 + d) + u_1 \\
+\hline
+2S_n &= (u_1 + u_n) + (u_1 + u_n) + \dots + (u_1 + u_n) + (u_1 + u_n)
+\end{aligned}
+$$
+
+Because there are $n$ terms in the sequence, there are $n$ pairs of $(u_1 + u_n)$:
+
+$$ 
+\begin{aligned}
+2S_n &= n(u_1 + u_n) \\
+S_n &= \frac{n}{2}(u_1 + u_n)
+\end{aligned}
+$$
+
+To derive the second version of the formula, substitute the $n^{\text{th}}$ term formula, $u_n = u_1 + (n-1)d$:
+
+$$
+\begin{aligned}
+S_n &= \frac{n}{2} \Big( u_1 + \big(u_1 + (n-1)d\big) \Big) \\
+S_n &= \frac{n}{2}(2u_1 + (n-1)d)
+\end{aligned}
+$$
+</section>
+
+---
+
+<section className="lesson-chunk">
+### Example 4: Finding the Generic Sum
+
+Given the arithmetic sequence: $2.5, 6, 9.5, 13, \dots$
+
+Find the sum of the first $35$ terms.
+
+<details className="styled-details">
+  <summary>View Step-by-Step Solution</summary>
+  <Steps>
+    1. **Identify the variables:** 
+       $u_1 = 2.5$. 
+       The common difference is $d = 6 - 2.5 = 3.5$. 
+       We are looking for $S_{35}$, so $n = 35$.
+    2. **Choose the correct formula:** 
+       Since we don't know the last term, we use $S_n = \frac{n}{2}(2u_1 + (n-1)d)$.
+    3. **Substitute and evaluate:**
+       $$ 
+       \begin{aligned}
+       S_{35} &= \frac{35}{2} \Big( 2(2.5) + (35-1)(3.5) \Big) \\
+       S_{35} &= 17.5 \Big( 5 + (34)(3.5) \Big) \\
+       S_{35} &= 17.5(5 + 119) \\
+       S_{35} &= 17.5(124) \\
+       S_{35} &= 2170
+       \end{aligned}
+       $$
+  </Steps>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+### Example 5: Algebraic General Formulas and Sums
+
+The first three terms of a sequence are given by $8, 15, 22, \dots$
+
+**a)** Write down an expression for $u_n$ in terms of $n$.  
+**b)** Hence, show that the sum of the first $n$ terms can be written as $S_n = \frac{n}{2}(7n + 9)$.  
+**c)** Find the number of terms required for the sum to strictly equal $855$.
+
+<details className="styled-details">
+  <summary>View Step-by-Step Solution</summary>
+  <Steps>
+    1. **Part a - General Formula:** 
+       Identify $u_1 = 8$ and $d = 7$.
+       $$ 
+       \begin{aligned}
+       u_n &= 8 + (n-1)(7) \\
+       u_n &= 8 + 7n - 7 \\
+       u_n &= 7n + 1 
+       \end{aligned}
+       $$
+    2. **Part b - Prove Sum Formula:** 
+       Use the $S_n$ formula involving the last term $u_n$: $S_n = \frac{n}{2}(u_1 + u_n)$.
+       $$ 
+       \begin{aligned}
+       S_n &= \frac{n}{2} \Big( 8 + (7n + 1) \Big) \\
+       S_n &= \frac{n}{2}(7n + 9) 
+       \end{aligned}
+       $$ 
+       *(This confirms the required proof).*
+    3. **Part c - Solve for $n$:** 
+       Set the sum equation to $855$.
+       $$ 
+       \begin{aligned}
+       \frac{n}{2}(7n + 9) &= 855 \\
+       n(7n + 9) &= 1710 \\
+       7n^2 + 9n - 1710 &= 0 
+       \end{aligned}
+       $$
+    4. **Solve the quadratic:** 
+       Factorise the quadratic equation (or use the quadratic formula/GDC).
+       $$ 
+       \begin{aligned}
+       (n - 15)(7n + 114) &= 0 
+       \end{aligned}
+       $$
+       This gives $n = 15$ or $n = -\frac{114}{7}$. Since $n$ must be a positive integer, $15$ terms are needed.
+  </Steps>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+## Sigma Notation ($\Sigma$)
+
+When series become long and cumbersome to write out, mathematicians use a compact shorthand called **sigma notation**. The Greek capital letter sigma ($\Sigma$) translates directly to "the sum of". 
+
+To fully understand and evaluate sigma notation, you need to know how to decode its four main components: the argument (the formula for the sequence), the index variable, the lower bound (starting point), and the upper bound (ending point).
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 900 360" width="100%" max-width="900px" style={{ background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Math Elements */}
+    <text x="450" y="105" font-size="32" fill="#3b82f6" text-anchor="middle" font-family="monospace" font-style="italic">n</text>
+    <text x="450" y="220" font-size="120" fill="#0f172a" text-anchor="middle" font-family="serif">∑</text>
+    <text x="450" y="295" font-size="28" fill="#ef4444" text-anchor="middle" font-family="monospace">r = 1</text>
+    <text x="540" y="200" font-size="44" fill="#10b981" text-anchor="start" font-family="monospace">(5r - 2)</text>
+
+    {/* Blue: Upper Bound */}
+    <text x="370" y="70" font-size="20" fill="#3b82f6" text-anchor="end" font-family="sans-serif" font-weight="bold">Upper Bound (Stop here)</text>
+    <path d="M 385 63 L 475 63 L 475 80" fill="none" stroke="#3b82f6" stroke-width="2" />
+
+    {/* Black: Sigma */}
+    <text x="310" y="195" font-size="20" fill="#0f172a" text-anchor="end" font-family="sans-serif" font-weight="bold">Sigma (Sum of)</text>
+    <path d="M 325 188 L 400 188" fill="none" stroke="#0f172a" stroke-width="2" />
+
+    {/* Red: Lower Bound */}
+    <text x="340" y="290" font-size="20" fill="#ef4444" text-anchor="end" font-family="sans-serif" font-weight="bold">Lower Bound (Start here)</text>
+    <path d="M 355 275 L 355 315 L 485 315" fill="none" stroke="#ef4444" stroke-width="2" />
+
+    {/* Green: Argument */}
+    <text x="750" y="135" font-size="20" fill="#10b981" text-anchor="start" font-family="sans-serif" font-weight="bold">Argument</text>
+    <path d="M 735 128 L 650 128 L 650 155" fill="none" stroke="#10b981" stroke-width="2" />
+  </svg>
+</div>
+
+<Aside type="note" title="Reading Sigma Notation">
+  The expression above is read as: *"The sum of $(5r - 2)$ from $r = 1$ to $n$."* 
+</Aside>
+</section>
+
+---
+
+<section className="lesson-chunk">
+### Example 6: Expanding Sigma Notation
+
+Before jumping into formulas, it is crucial to understand what sigma notation is physically asking you to do. You can always evaluate a sigma expression by manually substituting the index values one by one and adding the results.
+
+Expand and evaluate the following expression: $\sum_{k=1}^{4} (3k - 1)$
+
+<details className="styled-details">
+  <summary>View Step-by-Step Solution</summary>
+  <Steps>
+    1. **Substitute the lower bound ($k=1$):**
+       $$ u_1 = 3(1) - 1 = 2 $$
+    2. **Increment the index by $1$ up to the upper bound ($k=4$):**
+       $$ 
+       \begin{aligned}
+       \text{For } k=2: \quad & u_2 = 3(2) - 1 = 5 \\
+       \text{For } k=3: \quad & u_3 = 3(3) - 1 = 8 \\
+       \text{For } k=4: \quad & u_4 = 3(4) - 1 = 11
+       \end{aligned}
+       $$
+    3. **Sum the generated terms:**
+       $$ 
+       \begin{aligned}
+       \sum_{k=1}^{4} (3k - 1) &= 2 + 5 + 8 + 11 \\
+       &= 26
+       \end{aligned}
+       $$
+  </Steps>
+</details>
+
+<Aside type="tip" title="When to Expand">
+  If the upper bound is small (e.g., $4$ or $5$), it is often faster to just list out the terms and add them up. If the upper bound is large (e.g., $50$) or unknown (e.g., $n$), you should expand the first 2 or 3 terms to find $u_1$ and $d$, and then use the arithmetic series formula $S_n$.
+</Aside>
+</section>
+
+---
+
+<section className="lesson-chunk">
+### Example 7: Sigma Notation and Inequalities
+
+Given the series $\sum_{r=1}^{n} (5r - 2)$:
+Find the least number of terms $n$ such that the sum of the series exceeds $1500$.
+
+<details className="styled-details">
+  <summary>View Step-by-Step Solution</summary>
+  <Steps>
+    1. **Identify the sequence parameters:** 
+       Expand the first two terms to find the starting value and common difference.
+       $$
+       \begin{aligned}
+       \text{When } r=1, \quad &u_1 = 5(1) - 2 = 3 \\
+       \text{When } r=2, \quad &u_2 = 5(2) - 2 = 8 
+       \end{aligned}
+       $$
+       This is an arithmetic sequence with $u_1 = 3$ and $d = 5$.
+    2. **Express the sum in terms of $n$:**
+       Use the formula $S_n = \frac{n}{2}(2u_1 + (n-1)d)$.
+       $$ 
+       \begin{aligned}
+       S_n &= \frac{n}{2} \Big( 2(3) + (n-1)5 \Big) \\
+       S_n &= \frac{n}{2} \Big( 6 + 5n - 5 \Big) \\
+       S_n &= \frac{n}{2}(5n + 1) 
+       \end{aligned}
+       $$
+    3. **Set up the inequality:** 
+       We want $S_n > 1500$.
+       $$ 
+       \begin{aligned}
+       \frac{n}{2}(5n + 1) &> 1500 \\
+       n(5n + 1) &> 3000 \\
+       5n^2 + n - 3000 &> 0 
+       \end{aligned}
+       $$
+    4. **Find the critical values:** 
+       Solve $5n^2 + n - 3000 = 0$ using the quadratic formula or a GDC.
+       $$ 
+       \begin{aligned}
+       n &= \frac{-1 \pm \sqrt{1^2 - 4(5)(-3000)}}{2(5)} \\
+       n &= \frac{-1 \pm \sqrt{60001}}{10} \\
+       n &\approx \frac{-1 \pm 244.95}{10} 
+       \end{aligned}
+       $$
+       Taking the positive root gives $n \approx 24.395$.
+    5. **Determine the least integer:** 
+       Since $n$ must be a positive integer ($n \in \mathbb{Z}^+$) and the sum is strictly increasing (all terms are positive), the least number of terms needed to exceed $1500$ is $n = 25$.
+  </Steps>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+## TI-Nspire GDC Strategies for Sigma Notation
+
+In Paper 2, your TI-Nspire Graphics Display Calculator is an incredibly powerful tool for bypassing heavy algebra when dealing with sigma notation. 
+
+### 1. Fully Defined Sigma Notation (Direct Evaluation)
+If you know the upper bound, you can just type it in and hit enter.
+* **Accessing the template:** Press `math template button` (next to the catalog book) and select the $\Sigma$ template, OR go to `Menu > 4: Calculus > 3: Sum`.
+* **Input:** Fill in the boxes exactly as they appear on the page (e.g., $\sum_{r=1}^{50} (5r - 2)$) and press `Enter`. 
+
+### 2. Finding Unknown Bounds using Graphs and Tables
+If you need to find an unknown upper bound (like in Example 2 above), the fastest method is often using a table of values.
+* **Step 1:** Open a Graphs page.
+* **Step 2:** Enter the sum as a function, replacing the unknown upper bound $n$ with $x$. For example: $f1(x) = \sum_{r=1}^{x} (5r - 2)$. 
+* **Step 3:** Press `Ctrl + T` to open the Table view. 
+* **Step 4:** Scroll down the $x$-column (which represents $n$) and look at the $f1(x)$ column (which represents the sum). Scroll until you see the first value that exceeds $1500$. You will see that at $x=24$, the sum is $1452$, and at $x=25$, the sum is $1525$. The answer is $25$.
+
+<SteveTip title="The Danger of nSolve with Sigma Notation">
+  Technically, you can use `nSolve` on a Calculator page to solve for a missing bound: `nSolve(Σ(5r-2, r, 1, n) = 1500, n)`. 
+  
+  **Warning:** This can be glitchy! `nSolve` relies on continuous calculus algorithms, but sequences are *discrete* (they only exist at integer values). The calculator might throw a "Domain Error" or run endlessly because $1500$ doesn't exist perfectly on an integer index. If you must use `nSolve`, replace $n$ with $x$, set the equation to equal the sum formula $S_n$ instead of using the $\Sigma$ template, and remember to interpret the decimal output correctly. However, the Graph/Table method is almost always safer and gives you a better visual understanding of the threshold.
+</SteveTip>
+</section>
 
 ---
 
