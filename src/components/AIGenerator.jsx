@@ -5,7 +5,6 @@ import remarkGfm from 'remark-gfm';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 
-// 1. ADDED course AND storageKey PROPS HERE
 export default function AIGenerator({ 
   topic, 
   difficulty = "Extended", 
@@ -27,7 +26,7 @@ export default function AIGenerator({
 
   const statusMessages = [
     "Connecting to Math Engine...",
-    `Analyzing ${course} Syllabus...`, // Dynamic message
+    `Analyzing ${course} Syllabus...`,
     "Drafting diagram SVGs...",
     "Hardening the difficulty...",
     "Formatting LaTeX expressions...",
@@ -54,7 +53,6 @@ export default function AIGenerator({
 
   const saveToHistory = (problemText, solutionText) => {
     try {
-      // 2. UPDATED TO USE storageKey PROP
       const existingHistory = JSON.parse(localStorage.getItem(storageKey) || '[]');
       const newRecord = {
         id: crypto.randomUUID(),
@@ -95,8 +93,7 @@ export default function AIGenerator({
     return false; 
   };
 
-  const getPromptText = () => {
-    // 3. ADDED DYNAMIC COURSE LOGIC
+const getPromptText = () => {
     const isIB = course === 'IB-AISL';
     const syllabusContext = isIB 
       ? "Act as an expert IB Mathematics Applications and Interpretation (AI) SL teacher. Focus on real-world contexts, financial maths, and statistical models. Assume the student has a Graphic Display Calculator (GDC). For IB-AISL, if the solution requires a calculation, provide the final answer to 3 significant figures unless specified otherwise."
@@ -120,24 +117,19 @@ Markdown will render consecutive math equations on the same single line unless y
    $x = 5$
 
 CRITICAL TABLE RULE:
-If the problem requires a data table (e.g., for statistics, frequencies, or coordinates), you MUST format it as a standard Markdown table. Keep the math inside single $. 
-Example format:
-| Time ($t$ mins) | Frequency |
-| :--- | :--- |
-| $0 < t \\le 10$ | 8 |
-| $10 < t \\le 20$ | 22 |
+If the problem requires a data table, you MUST format it as a standard Markdown table. Keep the math inside single $. 
 
 CRITICAL SVG SEQUENCE & RULES: 
-1. The very first element inside the <svg> MUST be a white background rectangle: <rect width="100%" height="100%" fill="white" />
-2. Draw all geometric shapes, lines, and paths with generous padding.
-3. Write ALL <text> labels for the math variables. DO NOT use LaTeX inside the SVG. Use plain text and unicode symbols (e.g., x², θ, π).
-4. ONLY AFTER all text is written, output the closing </svg> tag. NEVER place a <text> tag after </svg>.
-5. Do not have any empty lines in between <svg viewBox> and </svg>, make sure each line in between has 2 spaces in the front. 
+1. Provide a clean open svg tag with an appropriate viewBox. DO NOT include an inner white background rect.
+2. Draw all geometric shapes, lines, and paths with generous padding and use explicit stroke colors like stroke="black".
+3. Write ALL text labels for the math variables. DO NOT use LaTeX inside the SVG. Use plain text and unicode symbols like x², θ, or π. Set explicit fill colors like fill="black".
+4. ONLY AFTER all text is written, output the closing svg tag. NEVER place a text tag after the closing svg tag.
+5. Do not have any empty lines in between the opening svg and closing svg tags, make sure each line in between has 2 spaces in the front so Markdown doesn't break the HTML block. 
 
 CRITICAL FORMATTING RULE:
-You MUST wrap your ENTIRE response inside a single markdown code block (using \`\`\`markdown and closing with \`\`\`). Do not write any conversational text outside of this code block. 
+You MUST wrap your ENTIRE response inside a single markdown code block (using triple backticks markdown and closing with triple backticks). Do not write any conversational text outside of this code block. 
 
-Inside the code block, format your response EXACTLY like this (Notice the 3-space indentation to ensure they align properly):
+Inside the code block, format your response EXACTLY like this:
 TOPIC: ${topic}
 DIFFICULTY: ${difficulty}
 
@@ -151,8 +143,6 @@ SOLUTION:
    
 2. **[Brief description of the next step]:**<br>
    $[Next equation]$
-   
-[...continue numbering and stacking equations as needed...]
 
 **Final Answer:** [State the final mathematical answer clearly, keeping units outside the $]`;
 
@@ -196,7 +186,6 @@ SOLUTION:
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        // 4. ALSO PASS THE COURSE TO THE API JUST IN CASE IT NEEDS IT
         body: JSON.stringify({ topic, difficulty, course }), 
       });
 
@@ -247,7 +236,6 @@ SOLUTION:
           padding: 0.2rem 0.5rem;
           border-radius: 4px;
           text-transform: uppercase;
-          /* Using accent colors to make the badge pop */
           color: var(--sl-color-accent-high);
           background-color: var(--sl-color-accent-low);
           border: 1px solid var(--sl-color-accent);
@@ -357,11 +345,12 @@ SOLUTION:
           height: auto;
           display: block;
           margin: 1.5rem auto;
-          /* Changed from white to gray-6 to match Sepia/Dark theme */
-          background-color: var(--sl-color-gray-6) !important; 
+          /* FORCE Pure White Background to guarantee AI's black ink is legible on dark themes */
+          background-color: #ffffff !important; 
+          color: #000000 !important;
           border-radius: 8px;
-          padding: 1rem;
-          box-shadow: inset 0 0 0 1px var(--sl-color-gray-4);
+          padding: 1.5rem;
+          box-shadow: inset 0 0 0 1px var(--sl-color-gray-4), 0 2px 8px rgba(0,0,0,0.1);
           overflow: visible;
         }
 
@@ -514,6 +503,7 @@ SOLUTION:
         {problem && (
           <div className="ai-content-inner">
             <div className="math-renderer">
+              {/* REHYPE ORDER FIXED: rehypeRaw correctly maps HTML BEFORE rehypeKatex parses math nodes */}
               <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeRaw, rehypeKatex]}>
                 {problem}
               </ReactMarkdown>

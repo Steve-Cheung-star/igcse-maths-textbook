@@ -32,8 +32,6 @@
   overflow-y: hidden;
   max-width: 100%;
   padding: 0.5rem 0;
-  /* KaTeX sets display math to 1.21em by default, which is huge. 
-     This scales it back down closer to your normal text size. */
   font-size: 1.05em !important; 
 }
 
@@ -57,15 +55,12 @@
 }
 
 /* --- 1. TARGET ONLY CALCULATION/DIAGRAM SVGs --- */
-/* This specifically targets SVGs that are NOT inside asides, NOT inside math, 
-   and NOT inside buttons/interactive elements. */
-
-/* --- 1. TARGET ONLY CALCULATION/DIAGRAM SVGs --- */
-.sl-markdown-content > svg, 
-.sl-markdown-content > p > svg:only-child,
-.sl-markdown-content > div > svg,
-.lesson-chunk svg,
-.styled-details svg { /* <-- Added this line */
+/* Protects both math elements and aside callout layouts */
+.sl-markdown-content > svg:not(.katex svg):not(.starlight-aside *), 
+.sl-markdown-content > p > svg:only-child:not(.katex svg):not(.starlight-aside *),
+.sl-markdown-content > div > svg:not(.katex svg):not(.starlight-aside *),
+.lesson-chunk svg:not(.katex svg):not(.starlight-aside *),
+.styled-details svg:not(.katex svg):not(.starlight-aside *) {
   display: block !important;
   margin: 0 auto !important; 
   padding: 0 !important;
@@ -74,31 +69,27 @@
 }
 
 /* --- 2. RESET PARAGRAPH SPACING FOR DIAGRAMS --- */
-/* Only kills margins if the paragraph's sole purpose is to hold the SVG */
-.sl-markdown-content > p:has(> svg:only-child) {
+.sl-markdown-content > p:has(> svg:only-child:not(.katex svg):not(.starlight-aside *)) {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
   line-height: 0 !important;
 }
 
 /* --- 3. DARK MODE INVERSION (Strictly for Diagrams) --- */
-[data-theme='dark'] .sl-markdown-content > svg,
-[data-theme='dark'] .sl-markdown-content > p > svg:only-child,
-[data-theme='dark'] .sl-markdown-content > div > svg,
-[data-theme='dark'] .lesson-chunk svg,
-[data-theme='dark'] .styled-details svg { /* <-- Added this line */
+[data-theme='dark'] .sl-markdown-content > svg:not(.katex svg):not(.starlight-aside *),
+[data-theme='dark'] .sl-markdown-content > p > svg:only-child:not(.katex svg):not(.starlight-aside *),
+[data-theme='dark'] .sl-markdown-content > div > svg:not(.katex svg):not(.starlight-aside *),
+[data-theme='dark'] .lesson-chunk svg:not(.katex svg):not(.starlight-aside *),
+[data-theme='dark'] .styled-details svg:not(.katex svg):not(.starlight-aside *) {
   filter: invert(1) hue-rotate(180deg) brightness(1.2) !important;
 }
 
 /* --- 4. ASIDE PROTECTOR --- */
-/* This forces Starlight Asides to keep their internal integrity 
-   regardless of other global rules. */
 .starlight-aside, .starlight-aside * {
   filter: none !important;
-  line-height: var(--sl-line-height) !important; /* Restores text spacing */
+  line-height: var(--sl-line-height) !important;
 }
 
-/* Update: Added :not(.katex *) to protect math SVGs from being shifted */
 .starlight-aside svg:not(.katex *) {
   display: inline-block !important; 
   margin: 0 0.5rem 0 0 !important; 
@@ -113,14 +104,18 @@
   font-size: 1.05em !important; 
 }
 
-/* 1. Only apply filter and color safely */
 .katex {
   filter: none !important;
   color: inherit !important;
 }
 
-/* 2. Target ONLY the normal numbers/text to protect from Dyslexic font, 
-      leaving the structural brackets and delimiters alone! */
+/* Force KaTeX structural SVGs to inherit theme text colors properly */
+.katex svg,
+.katex svg * {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
 .katex .mord, 
 .katex .text {
   font-family: KaTeX_Main, 'Times New Roman', serif !important;
@@ -135,13 +130,11 @@
   font-display: swap;
 }
 
-/* Toggle Class applied to <html> or <body> */
 :root.dyslexic-mode {
   --sl-font-system: 'OpenDyslexic', sans-serif !important;
   --sl-font-mono: 'OpenDyslexic', monospace !important;
 }
 
-/* Optional: Slightly increase line spacing for dyslexic mode */
 :root.dyslexic-mode .sl-markdown-content {
   line-height: 1.8 !important;
   letter-spacing: 0.05ch !important;
@@ -151,7 +144,6 @@
    SEPIA READING MODE (ACCESSIBILITY)
    ========================================= */
 
-/* --- 1. CORE SEPIA VARIABLES --- */
 :root.sepia-mode {
   --sl-color-bg: #f4ecd8 !important;
   --sl-color-text: #5b4636 !important;
@@ -165,15 +157,11 @@
   --sl-color-gray-6: #f4ecd8 !important;
 }
 
-/* --- 2. ASIDE (CALLOUT) NUCLEAR FIX --- */
 :root.sepia-mode .starlight-aside,
 :root.sepia-mode aside.starlight-aside {
-  /* Overwrite Starlight's internal variables */
   --sl-color-asides-bg: #eaddc5 !important;
   --sl-color-asides-border: #8b4513 !important;
   --sl-color-asides-text: #8b4513 !important;
-  
-  /* Hard fallback */
   background-color: #eaddc5 !important;
   border-color: #8b4513 !important;
   color: #5b4636 !important;
@@ -193,7 +181,6 @@
   color: #5b4636 !important;
 }
 
-/* --- 3. SEARCH BAR FIX --- */
 :root.sepia-mode site-search > button {
   background-color: #eaddc5 !important; 
   color: #5b4636 !important; 
@@ -211,53 +198,44 @@
   border-color: #8b4513 !important;
 }
 
-/* --- 10. SEPIA CARD FIX --- */
 :root.sepia-mode .card,
 :root.sepia-mode [role="listitem"] {
-  background-color: #eaddc5 !important; /* Tan box */
-  border: 1px solid #8b4513 !important; /* Brown border */
-  color: #5b4636 !important; /* Brown text */
+  background-color: #eaddc5 !important;
+  border: 1px solid #8b4513 !important;
+  color: #5b4636 !important;
 }
 
-/* Fix icons and titles inside cards */
 :root.sepia-mode .card .title,
 :root.sepia-mode .card svg,
 :root.sepia-mode .card .icon {
   color: #8b4513 !important;
 }
 
-/* Fix checklists/bullets inside cards */
 :root.sepia-mode .card li,
 :root.sepia-mode .card p {
   color: #5b4636 !important;
 }
 
-/* If you are using a custom component for those "Prior Learning" boxes */
 :root.sepia-mode .custom-card-class { 
   background-color: #eaddc5 !important;
   color: #5b4636 !important;
 }
 
-/* --- 11. TOP BAR / HEADER FIX --- */
 :root.sepia-mode body,
 :root.sepia-mode header,
 :root.sepia-mode .header {
   background-color: #f4ecd8 !important;
 }
 
-/* Specifically target the sticky header container in Starlight */
 :root.sepia-mode .page {
   background-color: #f4ecd8 !important;
 }
 
 @media print {
-  /* 1. THE TRICK: Reset the counter to  */
-  /* This compensates for the hidden element pushing everything forward */
   body { 
     counter-reset: q-num 0; 
   }
 
-  /* 2. Hide everything else */
   header, .sidebar, .right-sidebar, footer, 
   .acc-button-group, .calc-toggle-fab, 
   .ai-container-card, button, .no-print,
@@ -265,23 +243,12 @@
     display: none !important;
   }
 
-  /* 3. Force Panels to show */
   starlight-tabs [role="tabpanel"] {
     display: block !important;
     visibility: visible !important;
     opacity: 1 !important;
     position: relative !important;
     margin-bottom: 2rem !important;
-  }
-
-  /* 4. THE OFFSET LOGIC */
-
-  /* If your Solution 0 was showing on the 1st Question,
-     it means the browser thinks the Question is EVEN. */
-
-  /* This targets what the browser thinks is ODD (The hidden element + Solutions) */
-  starlight-tabs [role="tabpanel"]:nth-of-type(odd) {
-    /* We don't increment here to keep it synced */
   }
 
   starlight-tabs [role="tabpanel"]:nth-of-type(odd)::before {
@@ -296,9 +263,8 @@
     border-left: 3px solid #eee;
   }
 
-  /* This targets what the browser thinks is EVEN (The Questions) */
   starlight-tabs [role="tabpanel"]:nth-of-type(even) {
-    counter-increment: q-num 1; /* Add 1 to -1 to get Question 1 */
+    counter-increment: q-num 1;
     border-top: 2px solid #000 !important;
     padding-top: 1rem !important;
   }
@@ -311,7 +277,6 @@
     margin-bottom: 0.5rem;
   }
 
-  /* 5. Cleanup & Reveal Details */
   details { display: block !important; }
   details summary { display: none !important; }
   details > div { display: block !important; }
@@ -332,7 +297,6 @@
   transform: rotateY(180deg);
 }
 
-/* Ensure the back of the card is invisible until flipped */
 .invisible {
   visibility: hidden;
 }
@@ -341,7 +305,6 @@
   visibility: visible;
 }
 
-/* Hide social icons on mobile to clean up the header */
 @media (max-width: 50rem) {
   .social-icons {
     display: none !important;
@@ -352,28 +315,24 @@
 .styled-details {
   cursor: pointer;
   padding: 1rem;
-  /* Use Starlight variables so it adapts automatically */
   background-color: var(--sl-color-gray-6); 
   border: 1px solid var(--sl-color-gray-5);
   border-radius: 8px;
   margin-bottom: 1rem;
-  color: var(--sl-color-text); /* Ensures standard text is readable */
+  color: var(--sl-color-text);
 }
 
 .styled-details summary {
   font-weight: bold;
-  /* Use Accent color or White/Black variable */
   color: var(--sl-color-white); 
   outline: none;
 }
 
-/* Fix the bullet points/list items inside the solution */
 .styled-details li, 
 .styled-details p {
   color: var(--sl-color-text) !important;
 }
 
-/* Ensure LaTeX math inside the solution also adapts */
 .styled-details .katex {
   color: var(--sl-color-text) !important;
 }

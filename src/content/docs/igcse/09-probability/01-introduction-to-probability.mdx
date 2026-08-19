@@ -14,8 +14,6 @@ Probabilities always exist on a scale from **0 to 1**.
 * **0.5** means there is an **even chance** (a 50/50 probability).
 </Aside>
 
-
-
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 120" width="100%" maxWidth="500px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     {/* Main Line */}
@@ -76,19 +74,16 @@ $$
 P(A') = 1 - P(A)
 $$
 </Aside>
+</section>
 
-**Example:** If the probability of it raining tomorrow is $P(\text{Rain}) = 0.8$, then the probability of it NOT raining is:
+<section className="lesson-chunk">
+**Example:** If the probability of it raining tomorrow is $P(\text{Rain}) = 0.8$, then what is the probability of it NOT raining?
 
-<details>
+<details className="styled-details">
 <summary>View Solution</summary>
-
 $$
-\begin{aligned}
-P(\text{Rain}') &= 1 - 0.8 \\
-&= 0.2
-\end{aligned}
+P(\text{Rain}') = 1 - 0.8 = 0.2
 $$
-
 </details>
 </section>
 
@@ -107,8 +102,6 @@ Information for these calculations can be presented to you in plain text, in **f
 
 ### Using Venn Diagrams for Probability
 When using a Venn diagram, the "total number of possible outcomes" is the sum of all the numbers (or frequencies) inside the entire Universal Set ($U$).
-
-
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 300 200" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
@@ -131,21 +124,130 @@ When using a Venn diagram, the "total number of possible outcomes" is the sum of
     <text x="40" y="170" font-weight="bold" fill="#1e293b" text-anchor="middle">4</text>
   </svg>
 </div>
+</section>
 
-In the Venn diagram above, the numbers represent frequencies (how many items are in each section).
 
-<details>
+<section className="lesson-chunk">
+In the Venn diagram above, what is $P(A)$?
+
+<details className="styled-details">
 <summary>View Calculation</summary>
-
-* Total items = 5 + 3 + 8 + 4 = 20.
-* Number of items in set $A$ = 5 + 3 = 8.
-* Therefore, $P(A) = \frac{8}{20} = \frac{2}{5}$.
-
+<Steps>
+1. Calculate the total items in the Universal Set: $5 + 3 + 8 + 4 = 20$.
+2. Find the total number of items in set $A$: $5 + 3 = 8$.
+3. Apply the probability formula: $P(A) = \frac{8}{20} = \frac{2}{5}$.
+</Steps>
 </details>
 
 <Aside type="caution" title="Venn Diagram Trap">
 When a question asks for $P(A)$ from a Venn diagram, you must add up **all** the numbers inside the $A$ circle, including the intersection! Don't just take the number sitting alone in the outer crescent of $A$.
 </Aside>
+</section>
+
+---
+
+<section className="lesson-chunk">
+## 4. Worked Examples: Rolling a Fair Dice
+
+A standard fair dice has 6 sides, numbered 1 through 6. 
+
+**Example Question:** A fair 6-sided dice is rolled. Find the probability of rolling:
+1. An odd number
+2. A number greater than 4
+3. At most 5
+4. A prime number
+
+<details className="styled-details">
+<summary>View Step-by-Step Solutions</summary>
+<Steps>
+1. **Odd number:** The possible odd outcomes are 1, 3, and 5. There are 3 successful outcomes out of 6. 
+   $$P(\text{Odd}) = \frac{3}{6} = \frac{1}{2}$$
+2. **Greater than 4:** The numbers greater than 4 are 5 and 6. There are 2 successful outcomes. 
+   $$P(>4) = \frac{2}{6} = \frac{1}{3}$$
+3. **At most 5:** "At most 5" means 5 or less (1, 2, 3, 4, 5). There are 5 successful outcomes. 
+   $$P(\leq 5) = \frac{5}{6}$$
+4. **Prime number:** The prime numbers on a dice are 2, 3, and 5. Note that 1 is NOT a prime number. There are 3 successful outcomes. 
+   $$P(\text{Prime}) = \frac{3}{6} = \frac{1}{2}$$
+</Steps>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+## 5. Worked Examples: Frequency Tables
+
+Probability questions often use frequency tables to summarize data. You must first find the total frequency to determine your denominator.
+
+**Example Question:** A class of students was asked to pick their favorite color. The results are shown in the table below. If a student is chosen at random, what is the probability their favorite color is Blue?
+
+<div className="table-wrapper">
+| Color | Frequency |
+| :--- | :--- |
+| Red | 8 |
+| Blue | 12 |
+| Green | 5 |
+</div>
+
+<details className="styled-details">
+<summary>View Solution for Frequency Table</summary>
+<Steps>
+1. **Find total possible outcomes:** Add the frequencies together to find the total number of students. 
+   $8 + 12 + 5 = 25$
+2. **Identify successful outcomes:** Look at the frequency for Blue. 
+   The frequency is $12$.
+3. **Calculate probability:** Write the successful outcomes over the total outcomes. 
+   $$P(\text{Blue}) = \frac{12}{25}$$
+</Steps>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+## 6. Worked Examples: Bags of Marbles
+
+Visualizing identical objects in a container is a classic probability scenario.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 200 250" style={{ width: '100%', maxWidth: '400px', background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>    {/* Bag Outline */}
+    <path d="M 40 50 Q 100 80 160 50 L 180 220 Q 100 250 20 220 Z" fill="none" stroke="#64748b" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="100" cy="50" rx="60" ry="15" fill="none" stroke="#64748b" stroke-width="4"/>
+    
+    {/* Red Marbles */}
+    <circle cx="70" cy="180" r="15" fill="#ef4444" />
+    <circle cx="110" cy="195" r="15" fill="#ef4444" />
+    <circle cx="140" cy="160" r="15" fill="#ef4444" />
+    
+    {/* Blue Marbles */}
+    <circle cx="60" cy="140" r="15" fill="#3b82f6" />
+    <circle cx="100" cy="155" r="15" fill="#3b82f6" />
+    
+    {/* Green Marbles */}
+    <circle cx="130" cy="120" r="15" fill="#10b981" />
+    <circle cx="90" cy="115" r="15" fill="#10b981" />
+    <circle cx="55" cy="100" r="15" fill="#10b981" />
+    <circle cx="135" cy="85" r="15" fill="#10b981" />
+    <circle cx="95" cy="75" r="15" fill="#10b981" />
+  </svg>
+</div>
+
+**Example Question:** A bag contains 3 red marbles, 2 blue marbles, and 5 green marbles. A marble is drawn at random. Find the probability of drawing:
+1. A red marble
+2. A marble that is NOT blue
+
+<details className="styled-details">
+<summary>View Marbles Solution</summary>
+<Steps>
+1. **Find total possible outcomes:** Count the total number of marbles in the bag.
+   $3 + 2 + 5 = 10$ marbles in total.
+2. **Probability of Red:** There are 3 red marbles out of 10.
+   $$P(\text{Red}) = \frac{3}{10}$$
+3. **Probability of NOT Blue:** You can calculate this in two ways. 
+   * **Method A (Complement Rule):** First find $P(\text{Blue}) = \frac{2}{10}$. Then, $P(\text{Blue}') = 1 - \frac{2}{10} = \frac{8}{10} = \frac{4}{5}$.
+   * **Method B (Direct Counting):** Count the marbles that are not blue (the red and green ones). $3 + 5 = 8$. Therefore, $P(\text{Not Blue}) = \frac{8}{10} = \frac{4}{5}$.
+</Steps>
+</details>
 </section>
 
 ---
