@@ -1,5 +1,108 @@
 ---
 /* QuestionRandomizer.astro */
+
+const topics = [
+  "Algebraic Fundamentals",
+  "Applied Mathematics",
+  "Calculus (0580 only)",
+  "Coordinate Geometry",
+  "Functions and Graphs",
+  "Geometry and Symmetry",
+  "Kinematics Graphs (0580 only)",
+  "Mensuration",
+  "Number Properties and Arithmetic",
+  "Probability",
+  "Sets",
+  "Statistics",
+  "Trigonometry",
+  "Vectors and Transformations"
+];
+
+const subtopics = [
+  "3D trigonometry",
+  "Algebraic fractions",
+  "Algebraic manipulation",
+  "Angle measurement",
+  "Angles",
+  "Area and perimeter",
+  "Area under the curve",
+  "Asymptotes",
+  "Averages and measures of spread",
+  "Circle theorems",
+  "Circles",
+  "Circles, arcs and sectors",
+  "Classifying and interpreting statistical data",
+  "Compass constructions and Loci (0580 only)",
+  "Compound shapes",
+  "Continuous data",
+  "Coordinates",
+  "Cumulative frequency diagrams",
+  "Differentiation",
+  "Discrete and continuous data",
+  "Distance-time graphs",
+  "Drawing tangents to estimate gradients (0580 only)",
+  "Equations",
+  "Equations of linear graphs",
+  "Estimation",
+  "Exact trigonometric values",
+  "Exponential growth and decay",
+  "Finding a quadratic function",
+  "Fractions, decimals and percentages",
+  "Functions",
+  "Geometrical terms",
+  "Gradient of a curve",
+  "Gradient of linear graphs",
+  "Graphs of functions",
+  "Histograms with frequency density (0580 only)",
+  "Indices",
+  "Inequalities",
+  "Introduction to algebra",
+  "Introduction to probability",
+  "Kinematics formulas",
+  "Length and midpoint",
+  "Limits of accuracy and bounds (0580 only)",
+  "Linear programming and shading regions (0580 only)",
+  "Magnitude of a vector",
+  "Midpoint",
+  "Money",
+  "Non-right-angled triangles",
+  "Ordering",
+  "Parallel lines",
+  "Percentages",
+  "Perpendicular lines",
+  "Plotting curves from tables of values (0580 only)",
+  "Powers and roots",
+  "Probability of combined events",
+  "Pythagoras’ theorem",
+  "Rates",
+  "Ratio and proportion",
+  "Relative and expected frequencies",
+  "Right-angled triangles",
+  "Scatter diagrams",
+  "Sequences",
+  "Sets",
+  "Similarity",
+  "Sketching graphs on a calculator",
+  "Solving equations by drawing lines (0580 only)",
+  "Speed-time graphs",
+  "Standard form",
+  "Statistical charts and diagrams",
+  "Surds",
+  "Surface area and volume",
+  "Symmetry",
+  "The four operations",
+  "The logarithmic function",
+  "Time",
+  "Transformations",
+  "Transforming graphs",
+  "Trigonometric functions",
+  "Turning points",
+  "Types of number",
+  "Units of measure",
+  "Using a calculator",
+  "Vector geometry and diagrams (0580 only)",
+  "Vectors in two dimensions"
+];
 ---
 
 <div class="randomizer-card">
@@ -13,6 +116,26 @@
       <span class="btn-text">Randomise</span>
     </button>
   </div>
+
+  <!-- NEW: Tag Selection Menu -->
+  <details class="tag-details">
+    <summary>Browse Topics & Subtopics</summary>
+    <div class="tag-section">
+      <h4>Topics</h4>
+      <div class="tag-container">
+        {topics.map((topic) => (
+          <button class="auto-fill-btn" data-value={topic}>{topic}</button>
+        ))}
+      </div>
+      
+      <h4>Subtopics</h4>
+      <div class="tag-container">
+        {subtopics.map((subtopic) => (
+          <button class="auto-fill-btn" data-value={subtopic}>{subtopic}</button>
+        ))}
+      </div>
+    </div>
+  </details>
 
   <div id="display-area" class="display-area">
     <p id="status-text" class="status-message"></p>
@@ -55,20 +178,33 @@
   const msImg = document.getElementById("ms-img");
   const msDetails = document.querySelector(".ms-details");
 
+  // NEW: Wire up the tag buttons to the search input
+  const tagButtons = document.querySelectorAll('.auto-fill-btn');
+  tagButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+      // Get the value and set it in the input field
+      searchInput.value = event.target.getAttribute('data-value');
+      
+      // Optional: Automatically trigger the search right after clicking a tag
+      // Un-comment the line below if you want that behavior!
+      // btn.click();
+    });
+  });
+
   // Keep track of object URLs so we can clean up memory on each new search
   let activeBlobUrls = [];
 
   // Helper function to fetch images with the API Key and return a renderable Object URL
   async function loadSecureImage(url) {
-  // Force https if the backend accidentally sent http
-  const secureUrl = url.replace("http://", "https://");
-  
-  const response = await fetch(secureUrl, {
-    headers: {
-      "x-api-key": API_KEY,
-    },
-  });
+    // Force https if the backend accidentally sent http
+    const secureUrl = url.replace("http://", "https://");
     
+    const response = await fetch(secureUrl, {
+      headers: {
+        "x-api-key": API_KEY,
+      },
+    });
+      
     if (!response.ok) {
         throw new Error("Failed to load secure image from server.");
     }
@@ -176,7 +312,7 @@
     --label-text: #4b5563;
     --input-bg: #f9fafb;
     --input-border: #f3f4f6;
-    --input-text: #111827; /* Explicitly set so it never vanishes! */
+    --input-text: #111827; 
     --btn-bg: #111827;
     --btn-hover: #1f2937;
     --btn-text: #ffffff;
@@ -188,6 +324,12 @@
     --img-border: #f1f1f1;
     --divider: #f9fafb;
     --link: #3b82f6;
+    
+    /* NEW Tag Variables */
+    --tag-bg: #f3f4f6;
+    --tag-text: #4b5563;
+    --tag-border: #e5e7eb;
+    --tag-hover: #d1d5db;
 
     background: var(--card-bg);
     border: 1px solid var(--card-border);
@@ -221,6 +363,12 @@
     --img-border: #374151;
     --divider: #374151;
     --link: #60a5fa;
+
+    /* NEW Tag Variables */
+    --tag-bg: #2d313a;
+    --tag-text: #d1d5db;
+    --tag-border: #374151;
+    --tag-hover: #4b5563;
   }
 
   /* --- APPLYING THE VARIABLES --- */
@@ -229,7 +377,7 @@
     display: flex;
     gap: 12px;
     align-items: flex-end;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem; /* Reduced to pull tags closer to input */
   }
 
   @media (max-width: 600px) {
@@ -300,6 +448,47 @@
     display: none;
   }
 
+  /* NEW: TAG STYLES */
+  .tag-details {
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--divider);
+    padding-bottom: 1rem;
+  }
+  
+  .tag-section {
+    padding-top: 1rem;
+  }
+
+  .tag-section h4 {
+    margin: 1rem 0 0.5rem;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    color: var(--label-text);
+    letter-spacing: 0.05em;
+  }
+
+  .tag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .auto-fill-btn {
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    border: 1px solid var(--tag-border);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .auto-fill-btn:hover {
+    background: var(--tag-hover);
+  }
+  /* END NEW STYLES */
+
   .meta-header {
     margin-bottom: 1.5rem;
     display: flex;
@@ -341,7 +530,6 @@
     height: auto;
     display: block;
     border-radius: 4px;
-    /* Keeps transparent exam images readable in both themes */
     background: #ffffff; 
     padding: 1rem;
     box-sizing: border-box;
