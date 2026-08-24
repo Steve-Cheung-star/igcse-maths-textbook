@@ -1,0 +1,181 @@
+---
+title: 0.2 Estimation
+description: Learn how to estimate the answers to complex calculations by rounding numbers to 1 significant figure (1 s.f.) before calculating.
+---
+
+<section className="lesson-chunk">
+Estimation is not about guessing; it is a strict mathematical process used to find an approximate answer. In IGCSE Maths, estimation questions test your ability to simplify an expression so that it can be calculated in your head. 
+
+The golden rule that examiners look for is this: **You must round every single number in the calculation to 1 significant figure (1 s.f.) *before* you do any maths.** If you calculate the exact answer on your calculator and then round it at the end, you will score zero marks!
+</section>
+
+---
+
+<section className="lesson-chunk">
+## 1. The Core Method: Round First, Calculate Second
+
+To estimate an answer, follow a simple two-step process:
+1. Round **each individual number** to 1 s.f. 
+2. Perform the calculation using your new, simpler numbers.
+
+<svg viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#0077b6" />
+        </marker>
+        <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#2a9d8f" />
+        </marker>
+    </defs>
+
+    <rect x="20" y="40" width="140" height="70" rx="10" fill="#f8f9fa" stroke="#333" stroke-width="2"/>
+    <text x="90" y="80" font-family="monospace" font-size="20" font-weight="bold" text-anchor="middle" fill="#333">3.92 × 21.4</text>
+    <text x="90" y="30" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#555">Original</text>
+
+    <path d="M 170 75 L 230 75" fill="none" stroke="#0077b6" stroke-width="3" marker-end="url(#arrow-blue)" />
+    <text x="200" y="65" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#0077b6">Round to</text>
+    <text x="200" y="95" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#0077b6">1 s.f.</text>
+
+    <rect x="250" y="40" width="120" height="70" rx="10" fill="#e9ecef" stroke="#0077b6" stroke-width="2"/>
+    <text x="310" y="80" font-family="monospace" font-size="24" font-weight="bold" text-anchor="middle" fill="#0077b6">4 × 20</text>
+
+    <path d="M 380 75 L 440 75" fill="none" stroke="#2a9d8f" stroke-width="3" marker-end="url(#arrow-green)" />
+    <text x="410" y="65" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#2a9d8f">Calculate</text>
+
+    <rect x="460" y="40" width="120" height="70" rx="10" fill="#d8f3dc" stroke="#2a9d8f" stroke-width="2"/>
+    <text x="520" y="80" font-family="monospace" font-size="28" font-weight="bold" text-anchor="middle" fill="#2a9d8f">80</text>
+    <text x="520" y="30" font-family="sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#2a9d8f">Estimate</text>
+</svg>
+</section>
+
+<section className="lesson-chunk">
+### Basic Operations (Add, Subtract, Multiply, Divide)
+
+When dealing with fractions in estimation, treat the numerator (top) and denominator (bottom) as if they are inside invisible brackets. Simplify the top and bottom separately before dividing.
+
+**Worked Example 1: The Four Operations**  
+By rounding each number to 1 significant figure, estimate the value of:
+* **a)** $412.5 \div 18.9$
+* **b)** $\dfrac{31.4 + 18.92}{4.81}$
+* **c)** $\dfrac{8 920}{0.48}$
+
+<details className="styled-details">
+<summary>View step-by-step solutions</summary>
+* **a) Estimate $412.5 \div 18.9$**
+  * Round $412.5$ to 1 s.f. $\rightarrow 400$
+  * Round $18.9$ to 1 s.f. $\rightarrow 20$
+  * Calculate: $400 \div 20 = \mathbf{20}$
+
+* **b) Estimate $\dfrac{31.4 + 18.92}{4.81}$**
+  * Round top numbers to 1 s.f.: $30 + 20 = 50$
+  * Round bottom number to 1 s.f.: $5$
+  * Calculate: $50 \div 5 = \mathbf{10}$
+
+* **c) Estimate $\dfrac{8 920}{0.48}$**
+  * Round top to 1 s.f.: $9 000$
+  * Round bottom to 1 s.f.: $0.5$
+  * Calculate: $9 000 \div 0.5 = \mathbf{18 000}$ *(Remember: dividing by 0.5 is exactly the same as multiplying by 2!)*
+</details>
+
+<SteveTip title="The Decimal Division Trap">
+Examiners love to include a denominator like `0.48` or `0.52`. When you round these to `0.5`, you will have to divide by a decimal. Do not panic! Dividing by a half (`0.5`) simply doubles your number. 
+For example, $40 \div 0.5 = 80$.
+</SteveTip>
+</section>
+
+---
+
+<section className="lesson-chunk">
+## 2. Advanced Estimations: Powers, Roots, and Brackets
+
+When an expression includes indices (powers) or roots, standard BIDMAS/BEDMAS rules apply. You still round the numbers to 1 s.f. first, and then apply the power or root.
+
+### The Square Root Exception
+While the strict rule is to round numbers to 1 s.f., square roots and cube roots in estimation questions are carefully chosen by examiners. Sometimes, rounding to 1 s.f. gives you a number that is impossible to square root in your head (e.g., $\sqrt{61.4} \rightarrow \sqrt{60}$). 
+
+In these cases, you round the number inside the root to the **nearest square number** or **nearest cube number** instead. 
+
+**Worked Example 2: Squares, Cubes, and Roots**  
+Estimate the value of:
+* **a)** $(8.24 + 2.91)^2$
+* **b)** $3.9^3 \times \sqrt{98.5}$
+* **c)** $\dfrac{\sqrt{38.9}}{0.21}$
+
+<details className="styled-details">
+<summary>View step-by-step solutions</summary>
+* **a) Estimate $(8.24 + 2.91)^2$**
+  * Round numbers inside the bracket to 1 s.f.: $(8 + 3)^2$
+  * Simplify the bracket: $11^2$
+  * Calculate the square: $\mathbf{121}$
+
+* **b) Estimate $3.9^3 \times \sqrt{98.5}$**
+  * Round $3.9$ to 1 s.f.: $4^3$
+  * Round $98.5$ to the nearest easy square: $\sqrt{100}$
+  * Simplify both parts: $64 \times 10$
+  * Calculate: $\mathbf{640}$
+
+* **c) Estimate $\dfrac{\sqrt{38.9}}{0.21}$**
+  * Round $38.9$ to the nearest square number: $\sqrt{36}$ (which is 6)
+  * Round $0.21$ to 1 s.f.: $0.2$
+  * Calculate: $6 \div 0.2$. *(Hint: multiply top and bottom by 10 to get $60 \div 2$)*
+  * Answer: $\mathbf{30}$
+</details>
+</section>
+
+---
+
+## Practice Problems
+
+<Tabs>
+  <TabItem label="📝 Question 1: Basic Operations">
+    By rounding each number to 1 significant figure, estimate the value of:
+    * **a)** $5.93 \times 7.12$
+    * **b)** $814 \div 19.6$
+    * **c)** $18.4 \times 321$
+  </TabItem>
+  <TabItem label="✅ Solution 1">
+    * **a)** $6 \times 7 = \mathbf{42}$
+    * **b)** $800 \div 20 = \mathbf{40}$
+    * **c)** $20 \times 300 = \mathbf{6 000}$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 2: Fractions and Decimals">
+    By rounding each number to 1 significant figure, estimate the value of:
+    * **a)** $\dfrac{41.3 \times 19.8}{3.92}$
+    * **b)** $\dfrac{68.5 - 11.2}{0.48}$
+    * **c)** $\dfrac{9 125}{3.14 \times 2.89}$
+  </TabItem>
+  <TabItem label="✅ Solution 2">
+    * **a)** $\dfrac{40 \times 20}{4} = \dfrac{800}{4} = \mathbf{200}$
+    * **b)** $\dfrac{70 - 10}{0.5} = \dfrac{60}{0.5} = \mathbf{120}$
+    * **c)** $\dfrac{9 000}{3 \times 3} = \dfrac{9 000}{9} = \mathbf{1 000}$
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 3: Powers and Roots">
+    Estimate the value of the following expressions:
+    * **a)** $4.9^2 \times 3.1^3$
+    * **b)** $\sqrt{82.4} \times \sqrt{26.1}$
+    * **c)** $\dfrac{\sqrt[3]{124}}{0.19}$
+  </TabItem>
+  <TabItem label="✅ Solution 3">
+    * **a)** $5^2 \times 3^3 = 25 \times 27$. *(For estimation, $25 \times 30$ or $30 \times 30$ is acceptable for a final step, yielding roughly $\mathbf{750}$ to $\mathbf{900}$. An exact $25 \times 27 = 675$ is also fine).*
+    * **b)** $\sqrt{81} \times \sqrt{25} = 9 \times 5 = \mathbf{45}$
+    * **c)** $\dfrac{\sqrt[3]{125}}{0.2} = \dfrac{5}{0.2} = \mathbf{25}$ *(Since $5 \div 0.2 = 50 \div 2$)*
+  </TabItem>
+</Tabs>
+
+<Tabs>
+  <TabItem label="📝 Question 4: The Mixed Challenge">
+    By rounding each number to 1 significant figure (or suitable squares/cubes), estimate the value of:
+    $$ \dfrac{(18.2 + 21.5)^2}{\sqrt{15.8} \times 0.51} $$
+  </TabItem>
+  <TabItem label="✅ Solution 4">
+    * Round the bracket terms: $(20 + 20)^2 = 40^2 = 1 600$
+    * Round the denominator: $\sqrt{16} \times 0.5 = 4 \times 0.5 = 2$
+    * Put it all together: $\dfrac{1 600}{2} = \mathbf{800}$
+  </TabItem>
+</Tabs>
