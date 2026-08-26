@@ -78,7 +78,7 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
      5. SHRINK SVGS
      ========================================= */
   html[data-mode="bento"] .sl-markdown-content svg {
-    max-width: 100%;
+    max-width: 80%;
     height: auto;
   }
 
@@ -95,28 +95,39 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
   }
 
   /* =========================================
-     6. SIDE-BY-SIDE DETAILS & PROGRESSIVE REVEAL
+     6. BOTTOM DETAILS & PROGRESSIVE REVEAL
      ========================================= */
+  
   html[data-mode="bento"] .lesson-chunk:has(details) {
-    padding-right: 40% !important; 
+    max-height: 100vh !important;
+    background-color: #eef7ff !important; /* Pale pastel blue applied to the whole card */
+    border-radius: 0.75rem !important;
   }
 
-  /* Note: Changed to .lesson-chunk details based on your previous fix to prevent teleporting */
   html[data-mode="bento"] .lesson-chunk details {
-    position: absolute !important;
-    right: 0rem !important;
-    top: 1.5rem !important;
-    width: 35% !important;
-    max-height: 92vh !important;
+    position: relative !important;
+    width: 100% !important;
+    margin-top: 2rem !important;
+    flex: 1 1 0 !important;
+    min-height: 0 !important;
     overflow-y: auto !important;
     overflow-x: auto !important;
     overflow-wrap: break-word !important;
-    background: var(--sl-color-bg-nav, #1e1e2e) !important;
-    padding: 1.5rem !important;
-    border-radius: 0.5rem !important;
-    border: 1px solid var(--sl-color-hairline, #444) !important;
+    
+    /* Removed padding so the text aligns cleanly with the question above */
+    padding: 0 !important; 
     box-sizing: border-box !important;
-    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.15) !important;
+    
+    /* Transparent background lets the blue shine through uniformly */
+    background: transparent !important; 
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Force all text elements inside the solution box to be red */
+  html[data-mode="bento"] .lesson-chunk details,
+  html[data-mode="bento"] .lesson-chunk details * {
+    color: #e60000 !important; 
   }
 
   html[data-mode="bento"] .lesson-chunk details summary {
@@ -163,7 +174,7 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
     height: 6px;
   }
   html[data-mode="bento"] .lesson-chunk details::-webkit-scrollbar-thumb {
-    background: var(--sl-color-text-muted, #666);
+    background: #e60000; 
     border-radius: 3px;
   }
 </style>
@@ -241,7 +252,6 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
 
             const viewportHeight = window.innerHeight;
             
-            // Initializing with an element guarantees TypeScript recognizes the type
             let currentChunk = chunkElements[0];
             let currentIndex = 0;
             let maxVisibleHeight = 0;
