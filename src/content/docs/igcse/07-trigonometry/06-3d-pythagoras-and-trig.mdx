@@ -3,10 +3,14 @@ title: 7.6 Pythagoras' Theorem and Trigonometry in 3D
 description: Notes and examples on carrying out calculations and solving problems in three dimensions, including calculating the angle between a line and a plane.
 ---
 
+import GeometryVisualizer from '../../../../components/GeometryVisualizer.jsx';
+
 <section className="lesson-chunk">
 Moving from 2D to 3D can feel intimidating because the diagrams look much more complicated. However, there is only one fundamental secret you need to know for this entire topic:
 
-**Every 3D problem is just a series of 2D problems hidden inside a 3D shape.** Your main goal is to have "x-ray vision" to find the hidden right-angled triangles floating inside cuboids, pyramids, and prisms. Once you extract that flat 2D triangle, you just use standard Pythagoras and SOH CAH TOA!
+**Every 3D problem is just a series of 2D problems hidden inside a 3D shape.** 
+
+Your main goal is to develop "x-ray vision" to find the hidden right-angled triangles floating inside cuboids, pyramids, and prisms. Once you extract that flat 2D triangle, you just use standard Pythagoras' Theorem and SOH CAH TOA!
 </section>
 
 ---
@@ -16,7 +20,11 @@ Moving from 2D to 3D can feel intimidating because the diagrams look much more c
 
 If you need to find the longest diagonal stretching across an empty room (from the bottom-front-left corner to the top-back-right corner), you are finding the **space diagonal** of a cuboid.
 
-While there is a shortcut formula, the best way to master 3D geometry is to break it down and do Pythagoras twice. This trains your brain to spot the flat 2D planes hidden inside the 3D object:
+While there is a shortcut formula, the best way to master 3D geometry is to break it down and do Pythagoras twice. This trains your brain to spot the flat 2D planes hidden inside the 3D object.
+</section>
+
+<section className="lesson-chunk">
+**The Two-Step Method:**
 
 1. **Step 1 (The Base):** Find the 2D diagonal across the flat floor.
 2. **Step 2 (The Vertical Slice):** Use that flat floor diagonal and the height of the room to create a new vertical right-angled triangle that cuts through the empty space.
@@ -62,26 +70,29 @@ While there is a shortcut formula, the best way to master 3D geometry is to brea
 <section className="lesson-chunk">
 ## 2. The Angle Between a Line and a Plane
 
-This is the most heavily tested concept in 3D trigonometry. A **plane** is just a flat surface (like the floor of a room or the base of a pyramid). 
+This is the most heavily tested concept in 3D trigonometry. A **plane** is just a flat surface (like the floor of a room, a wall, or the base of a pyramid). 
 
 To find the angle between a sloped 3D line and a flat plane, you must find the line's **"shadow"** (its mathematical name is the *projection*).
 
+<Aside type="tip" title="Flashlight Visualization">
+  If you are struggling to visualize the "shadow" of a line, imagine shining a bright flashlight perpendicularly onto the plane. The dark line cast onto the surface by your sloping 3D edge is exactly the shadow you need to draw your 2D triangle!
+</Aside>
+</section>
+
+<section className="lesson-chunk">
 **The 3-Step "Drop and Connect" Method:**
+
 1. Look at the top point of your sloping line. 
-2. Imagine dropping a rock straight down so it hits the plane perfectly vertically. 
-3. Draw a line from where the rock landed back to the bottom of your sloping line. This is your "shadow".
+2. Imagine dropping a perpendicular line straight down so it hits the plane perfectly at a $90^\circ$ angle. 
+3. Draw a line from where the drop landed back to the bottom of your sloping line. This is your "shadow".
 
 The angle between a line and a plane is **always** the angle tucked between the sloping line and its flat shadow.
-
-<Aside type="tip" title="Flashlight Visualization">
-  If you are struggling to visualize the "shadow" of a line, imagine shining a bright flashlight from the ceiling pointing straight down at the floor. The dark line cast onto the floor by your sloping 3D edge is exactly the shadow you need to draw your 2D triangle!
-</Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 250" width="100%" maxWidth="450px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
     {/* The Plane Background */}
     <polygon points="40,200 280,200 360,120 120,120" fill="rgba(59, 130, 246, 0.1)" stroke="#3b82f6" stroke-width="2" />
-    <text x="60" y="190" fill="#3b82f6" font-weight="bold">The Plane (Floor)</text>
+    <text x="60" y="190" fill="#3b82f6" font-weight="bold">The Plane</text>
 
     {/* The Extracted Triangle Shading */}
     <polygon points="100,160 250,160 250,40" fill="rgba(239, 68, 68, 0.15)" stroke="none" />
@@ -89,7 +100,7 @@ The angle between a line and a plane is **always** the angle tucked between the 
     {/* The Triangle components */}
     {/* Vertical Drop */}
     <line x1="250" y1="40" x2="250" y2="160" stroke="#10b981" stroke-width="3" stroke-dasharray="6,6" />
-    <text x="260" y="100" fill="#10b981" font-weight="bold">Vertical Drop</text>
+    <text x="260" y="100" fill="#10b981" font-weight="bold">Perpendicular Drop</text>
     
     {/* Right Angle Box */}
     <polyline points="250,150 240,150 240,160" fill="none" stroke="#1e293b" stroke-width="2" />
@@ -110,12 +121,22 @@ The angle between a line and a plane is **always** the angle tucked between the 
     <text x="80" y="165" font-weight="bold" text-anchor="middle">Bottom</text>
   </svg>
 </div>
+</section>
 
+<section className="lesson-chunk">
 <SteveTip title="Sloping Edge vs. Sloping Face!">
   In pyramid questions, examiners love to trick you by asking for the angle between a **sloping face** (the flat triangular side) and the base, instead of a **sloping edge**. 
 
   The method is similar, but your flashlight casts a different shadow. The vertical drop goes to the center, but the shadow connects to the **middle of the base edge**, NOT to the corner! Always read carefully to see if they want the edge or the face.
 </SteveTip>
+</section>
+
+<section className="lesson-chunk">
+<div className="not-content" style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <div style={{ width: '100%', maxWidth: '600px' }}>
+    <GeometryVisualizer client:only="react" />
+  </div>
+</div>
 </section>
 
 ---
@@ -314,6 +335,64 @@ A cylinder has a radius of $4\text{ cm}$ and a height of $10\text{ cm}$. A strai
     3. **Identify the target angle:** You need the angle $\theta$ tucked between the sloping diagonal line and its shadow on the base (the diameter).
     4. **Choose the correct trigonometric ratio:** We know the Opposite side ($10\text{ cm}$) and the Adjacent side ($8\text{ cm}$). Use TOA: $\tan(\theta) = \frac{\text{Opp}}{\text{Adj}}$.
     5. **Calculate the angle:** $\tan(\theta) = \frac{10}{8} = 1.25$. Therefore, $\theta = \tan^{-1}(1.25) \approx 51.3^\circ$.
+  </Steps>
+</details>
+</section>
+
+---
+
+<section className="lesson-chunk">
+### Example 5: Angle with a Vertical Plane (Not on the Base)
+A rectangular room has a length of $12\text{ m}$, a width of $5\text{ m}$, and a height of $4\text{ m}$. A string is stretched taut from the bottom-front-left corner to the top-back-right corner. Calculate the angle between this string and the **right-hand vertical wall**. Give your answer to one decimal place.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 280" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+    {/* The Right Wall (Plane) Shading (Blue) */}
+    <polygon points="220,230 270,180 270,80 220,130" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="2" />
+    
+    {/* Internal Triangle Cross-Section Shading (Red) */}
+    <polygon points="70,230 220,230 270,80" fill="rgba(239, 68, 68, 0.2)" />
+    
+    {/* Back faces and hidden lines */}
+    <line x1="120" y1="180" x2="270" y2="180" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="120" y1="180" x2="70" y2="230" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="120" y1="180" x2="120" y2="80" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="120" y1="80" x2="270" y2="80" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    <line x1="120" y1="80" x2="70" y2="130" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4" />
+    
+    {/* Solid visible edges */}
+    <polyline points="70,130 70,230 220,230 220,130 70,130" fill="none" stroke="#1e293b" stroke-width="2" />
+    <polyline points="220,230 270,180 270,80 220,130" fill="none" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Internal Triangle Lines */}
+    <line x1="70" y1="230" x2="220" y2="230" stroke="#10b981" stroke-width="3" stroke-dasharray="6,6" /> {/* Perpendicular Drop */}
+    <line x1="220" y1="230" x2="270" y2="80" stroke="#f59e0b" stroke-width="3" /> {/* Shadow on wall */}
+    <line x1="70" y1="230" x2="270" y2="80" stroke="#ef4444" stroke-width="3" /> {/* String */}
+    
+    {/* Right Angle Box in perspective */}
+    <polyline points="210,230 210,220 220,220" fill="none" stroke="#1e293b" stroke-width="2" />
+    
+    {/* Target Angle */}
+    <path d="M 252 92 A 40 40 0 0 0 240 100" fill="none" stroke="#1e293b" stroke-width="2" />
+    <text x="235" y="90" font-weight="bold" font-size="16">θ</text>
+    
+    {/* Labels */}
+    <text x="145" y="250" font-weight="bold" fill="#10b981">12 m</text>
+    <text x="255" y="215" font-weight="bold" fill="#1e293b">5 m</text>
+    <text x="285" y="135" font-weight="bold" fill="#1e293b">4 m</text>
+  </svg>
+</div>
+
+<details className="styled-details">
+  <summary>View Step-by-Step Solution</summary>
+  <Steps>
+    1. **Identify the plane:** The plane in question is the right-hand vertical wall.
+    2. **Drop and Connect:** Start at the far end of the string (bottom-front-left). Drop a perpendicular line to the right wall. Because the wall is vertical, the perpendicular drop is just a horizontal line going straight across the room (length = $12\text{ m}$).
+    3. **Find the shadow:** The string meets the wall at the top-back-right corner. Connect the end of the perpendicular drop (bottom-front-right) to this meeting point. This diagonal on the side wall is our shadow.
+    4. **Calculate the shadow length:** The shadow forms a 2D right-angled triangle on the wall with width $5\text{ m}$ and height $4\text{ m}$. Shadow length = $\sqrt{5^2 + 4^2} = \sqrt{25 + 16} = \sqrt{41}\text{ m}$.
+    5. **Extract the hidden 3D triangle:** We now have a right-angled triangle where the Opposite side is the perpendicular drop ($12\text{ m}$) and the Adjacent side is the shadow ($\sqrt{41}\text{ m}$). The angle $\theta$ is tucked between the string and the shadow.
+    6. **Calculate the angle:** $\tan(\theta) = \frac{\text{Opp}}{\text{Adj}} = \frac{12}{\sqrt{41}}$.
+    7. **Solve for $\theta$:** $\theta = \tan^{-1}\left(\frac{12}{\sqrt{41}}\right) \approx 61.9^\circ$.
   </Steps>
 </details>
 </section>

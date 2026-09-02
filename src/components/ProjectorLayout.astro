@@ -75,23 +75,16 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
   }
 
   /* =========================================
-     5. SHRINK SVGS
+     5. SHRINK SVGS & LEFT ALIGN
      ========================================= */
-  html[data-mode="bento"] .sl-markdown-content svg {
-    max-width: 80%;
-    height: auto;
-  }
-
-  html[data-mode="bento"] .sl-markdown-content aside svg,
-  html[data-mode="bento"] .sl-markdown-content .starlight-aside svg {
-    max-width: none;
-  }
-
-  html[data-mode="bento"] .sl-markdown-content .katex svg,
-  html[data-mode="bento"] .sl-markdown-content .katex-display svg {
-    max-width: none !important;
-    width: 100%;
-    height: inherit;
+  /* Target all SVGs except those inside KaTeX math or Starlight aside warnings */
+  html[data-mode="bento"] .sl-markdown-content svg:not(.katex *):not(.starlight-aside *):not(aside *) {
+    max-width: 80% !important;
+    height: auto !important;
+    /* Enforce left alignment */
+    margin-left: 0 !important;
+    margin-right: auto !important;
+    display: block !important;
   }
 
   /* =========================================
@@ -104,6 +97,7 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
     border-radius: 0.75rem !important;
   }
 
+  /* --- Default Layout: Details below the question --- */
   html[data-mode="bento"] .lesson-chunk details {
     position: relative !important;
     width: 100% !important;
@@ -122,6 +116,27 @@ import ProjectorToolbar from "./ProjectorToolbar.astro";
     background: transparent !important; 
     border: none !important;
     box-shadow: none !important;
+  }
+
+  /* --- Side-by-Side Layout: Active when an SVG exists in the question (outside details) --- */
+  /* Explicitly ignore KaTeX SVGs here so math square roots don't accidentally trigger side-by-side mode */
+  html[data-mode="bento"] .lesson-chunk:has(> :not(details) svg:not(.katex *)):has(details) {
+    /* Reserve ~60% of the space on the right for the details box */
+    padding-right: calc(60% + 4rem) !important; 
+  }
+
+  html[data-mode="bento"] .lesson-chunk:has(> :not(details) svg:not(.katex *)) details {
+    position: absolute !important;
+    top: 2rem !important;
+    right: 2rem !important;
+    width: 60% !important;
+    height: calc(100% - 6rem) !important; /* Span available vertical space minus paddings */
+    margin-top: 0 !important;
+  }
+
+  /* Force SVGs to fit inside the narrower left column if side-by-side mode is triggered */
+  html[data-mode="bento"] .lesson-chunk:has(> :not(details) svg:not(.katex *)):has(details) svg:not(.katex *):not(.starlight-aside *):not(aside *) {
+    max-width: 100% !important;
   }
 
   /* Force all text elements inside the solution box to be red */

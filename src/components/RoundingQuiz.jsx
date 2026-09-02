@@ -16,6 +16,13 @@ const CONSOLATIONS = [
   "Almost! Keep an eye on those trailing zeros. 💪"
 ];
 
+const MAGNITUDE_WORDS = {
+  10: 'ten',
+  100: 'hundred',
+  1000: 'thousand',
+  1000000: 'million'
+};
+
 const formatWithSpaces = (strOrNum) => {
   if (strOrNum === null || strOrNum === undefined) return '';
   const str = String(strOrNum);
@@ -51,6 +58,7 @@ export default function RoundingQuiz() {
   const [reviewIndex, setReviewIndex] = useState(0);
 
   const timerRef = useRef(null);
+  const quizRef = useRef(null);
 
   const generateQuestion = () => {
     try {
@@ -60,11 +68,21 @@ export default function RoundingQuiz() {
       let distractors = [];
 
       if (rand < 0.30) {
-        const mag = [10, 100, 1000, 10000][Math.floor(Math.random() * 4)];
-        const num = Math.floor(Math.random() * 899999) + 1000;
+        // Updated magnitudes to include 1,000,000
+        const mag = [10, 100, 1000, 1000000][Math.floor(Math.random() * 4)];
+        
+        // Generate a suitably large number if rounding to the nearest million
+        let num;
+        if (mag === 1000000) {
+          num = Math.floor(Math.random() * 89999999) + 1500000; // 1.5M to ~91M
+        } else {
+          num = Math.floor(Math.random() * 899999) + 1000;
+        }
         
         correctAnswer = formatWithSpaces((Math.round(num / mag) * mag).toString());
-        promptText = `Round **${formatWithSpaces(num)}** to the **nearest ${mag}**.`;
+        
+        // Use the word map for the prompt
+        promptText = `Round **${formatWithSpaces(num)}** to the **nearest ${MAGNITUDE_WORDS[mag]}**.`;
 
         distractors = [
           formatWithSpaces((Math.floor(num / mag) * mag).toString()),
@@ -136,6 +154,12 @@ export default function RoundingQuiz() {
     };
   }, []);
 
+  useEffect(() => {
+    if (quizRef.current && question && !isSubmitted) {
+      quizRef.current.focus();
+    }
+  }, [question, isSubmitted]);
+
   const handleSelect = (option) => {
     if (isSubmitted) return;
     setSelectedOption(option);
@@ -164,7 +188,16 @@ export default function RoundingQuiz() {
       setFeedbackMessage(CONSOLATIONS[getRandomInt(0, CONSOLATIONS.length - 1)]);
     }
 
-    timerRef.current = setTimeout(() => { generateQuestion(); }, 3000);
+    timerRef.current = setTimeout(() => { generateQuestion(); }, 2000);
+  };
+
+  const handleKeyDown = (e) => {
+    if (['1', '2', '3', '4'].includes(e.key) && question && !isSubmitted) {
+      const index = parseInt(e.key, 10) - 1;
+      if (question.options[index]) {
+        handleSelect(question.options[index]);
+      }
+    }
   };
 
   if (!question) {
@@ -193,8 +226,24 @@ export default function RoundingQuiz() {
   };
 
   return (
-    <div style={{ border: '1px solid #e2e8f0', borderRadius: '12px', padding: '30px', width: '100%', maxWidth: '700px', margin: '0 auto', background: '#fff', fontFamily: 'sans-serif', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)', boxSizing: 'border-box' }}>
-      {/* Header */}
+    <div 
+      ref={quizRef}
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
+      style={{ 
+        border: '1px solid #e2e8f0', 
+        borderRadius: '12px', 
+        padding: '30px', 
+        width: '100%', 
+        maxWidth: '700px', 
+        margin: '0 auto', 
+        background: '#fff', 
+        fontFamily: 'sans-serif', 
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)', 
+        boxSizing: 'border-box',
+        outline: 'none' 
+      }}
+    >
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', fontSize: '1.1rem' }}>
         <div>
           <span style={{ marginRight: '15px' }}><strong>Score:</strong> {score}</span>
@@ -220,7 +269,6 @@ export default function RoundingQuiz() {
         </button>
       </div>
 
-      {/* Review Box UI */}
       {showReview && (
         <div style={{ marginBottom: '25px', padding: '16px', borderRadius: '10px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
@@ -272,17 +320,16 @@ export default function RoundingQuiz() {
         </div>
       )}
 
-      {/* Main Question Prompt */}
       <div style={{ display: 'flex', justifyContent: 'center', margin: '30px 0', minHeight: '60px' }}>
         <h3 style={{ fontSize: '1.4rem', color: '#0f172a', textAlign: 'center', lineHeight: '1.4', margin: 0 }}>
           {renderPrompt(question.promptText)}
         </h3>
       </div>
 
-      {/* Options Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px' }}>
         {question.options.map((opt, i) => {
           let cardStyle = {
+            position: 'relative',
             padding: '20px 10px',
             borderRadius: '12px',
             border: '2px solid #cbd5e1',
@@ -294,7 +341,8 @@ export default function RoundingQuiz() {
             minHeight: '80px',
             fontSize: '1.25rem',
             fontWeight: 'bold',
-            color: '#1e293b'
+            color: '#1e293b',
+            transition: 'all 0.2s ease'
           };
 
           if (isSubmitted) {
@@ -315,17 +363,46 @@ export default function RoundingQuiz() {
             <div
               key={`${question.id}-option-${i}`}
               role="button"
-              tabIndex={0}
+              tabIndex={-1}
               onClick={() => handleSelect(opt)}
               style={cardStyle}
+              onMouseOver={(e) => { if (!isSubmitted) e.currentTarget.style.background = '#f1f5f9' }}
+              onMouseOut={(e) => { if (!isSubmitted) e.currentTarget.style.background = '#f8fafc' }}
             >
+              <div style={{ 
+                position: 'absolute', 
+                top: '8px', 
+                left: '12px', 
+                fontSize: '0.75rem', 
+                color: '#64748b', 
+                border: '1px solid #cbd5e1', 
+                background: '#fff',
+                padding: '2px 6px', 
+                borderRadius: '4px', 
+                fontFamily: 'sans-serif' 
+              }}>
+                {i + 1}
+              </div>
               {opt}
             </div>
           );
         })}
       </div>
 
-      <div style={{ minHeight: '24px', marginTop: '20px', textAlign: 'center', fontSize: '15px', fontWeight: 'bold', color: selectedOption === question.correctAnswer ? '#15803d' : '#b91c1c' }}>
+      <p style={{ textAlign: 'center', fontSize: '0.75rem', color: '#64748b', marginTop: '20px', textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: 'bold' }}>
+        Pro tip: Click here and use keys 1-4 to answer quickly
+      </p>
+
+      <div style={{ 
+        minHeight: '24px', 
+        marginTop: '16px', 
+        textAlign: 'center', 
+        fontSize: '16px', 
+        fontWeight: 'bold', 
+        color: selectedOption === question.correctAnswer ? '#15803d' : '#b91c1c',
+        opacity: isSubmitted ? 1 : 0,
+        transition: 'opacity 0.2s ease'
+      }}>
         {feedbackMessage}
       </div>
     </div>

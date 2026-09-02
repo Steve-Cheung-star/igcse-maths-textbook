@@ -5,13 +5,12 @@ description: Notes and examples on using SOH CAH TOA, calculating angles to 1 d.
 
 import TrigQuiz from '../../../../components/TrigQuiz.jsx';
 
+<section className="lesson-chunk">
 <div className="not-content" style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <div style={{ width: '100%', maxWidth: '600px' }}>
     <TrigQuiz client:only="react" />
   </div>
 </div>
-
-<section className="lesson-chunk">
 
 While Pythagoras' theorem connects the three *sides* of a right-angled triangle, **Trigonometry** connects the sides with the **angles**. 
 
@@ -23,17 +22,17 @@ Before doing any calculations, you must know how to label your triangle based on
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 300 200" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    <polygon points="50,150 250,150 250,50" fill="#e0e7ff" stroke="#4f46e5" stroke-width="3" />
-    <rect x="235" y="135" width="15" height="15" fill="none" stroke="#4f46e5" stroke-width="1.5" />
+    <polygon points="50,150 250,150 250,50" fill="#f1f5f9" stroke="#64748b" stroke-width="2" />
+    <rect x="235" y="135" width="15" height="15" fill="none" stroke="#64748b" stroke-width="1.5" />
     
     {/* Angle Arc */}
-    <path d="M 85 150 A 35 35 0 0 0 81 134" fill="none" stroke="#db2777" stroke-width="2" />
-    <text x="95" y="142" font-family="sans-serif" font-weight="bold" fill="#db2777" font-size="16">θ</text>
+    <path d="M 85 150 A 35 35 0 0 0 81 134" fill="none" stroke="#0ea5e9" stroke-width="1.5" />
+    <text x="95" y="142" font-family="sans-serif" font-size="14" fill="#0ea5e9">θ</text>
 
     {/* Labels */}
-    <text x="260" y="100" font-family="sans-serif" font-weight="bold" fill="#059669" text-anchor="middle" transform="rotate(-90 260 100)">Opposite (O)</text>
-    <text x="150" y="175" font-family="sans-serif" font-weight="bold" fill="#ea580c" text-anchor="middle">Adjacent (A)</text>
-    <text x="135" y="90" font-family="sans-serif" font-weight="bold" fill="#7e22ce" text-anchor="middle" transform="rotate(-26 135 90)">Hypotenuse (H)</text>
+    <text x="260" y="100" font-family="sans-serif" font-size="13" fill="#334155" text-anchor="middle" transform="rotate(-90 260 100)">Opposite (O)</text>
+    <text x="150" y="170" font-family="sans-serif" font-size="13" fill="#334155" text-anchor="middle">Adjacent (A)</text>
+    <text x="135" y="90" font-family="sans-serif" font-size="13" fill="#334155" text-anchor="middle" transform="rotate(-26 135 90)">Hypotenuse (H)</text>
   </svg>
 </div>
 </section>
@@ -65,12 +64,12 @@ Find side *x*. We know the Adjacent (12 cm) and want the Opposite (*x*). This is
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    <polygon points="50,150 200,150 200,40" fill="#fce7f3" stroke="#db2777" stroke-width="3" />
-    <rect x="185" y="135" width="15" height="15" fill="none" stroke="#db2777" stroke-width="1.5" />
-    <path d="M 90 150 A 40 40 0 0 0 82 126" fill="none" stroke="#1e293b" stroke-width="2" />
-    <text x="100" y="140" font-family="sans-serif" font-weight="bold" fill="#1e293b">38°</text>
-    <text x="125" y="170" font-family="sans-serif" font-weight="bold" fill="#ea580c" text-anchor="middle">12 cm (A)</text>
-    <text x="215" y="100" font-family="sans-serif" font-weight="bold" fill="#059669" text-anchor="middle" transform="rotate(-90 215 100)">x (O)</text>
+    <polygon points="50,150 200,150 200,40" fill="#f8fafc" stroke="#3b82f6" stroke-width="2" />
+    <rect x="185" y="135" width="15" height="15" fill="none" stroke="#3b82f6" stroke-width="1.5" />
+    <path d="M 90 150 A 40 40 0 0 0 82 126" fill="none" stroke="#0ea5e9" stroke-width="1.5" />
+    <text x="100" y="140" font-family="sans-serif" font-size="13" fill="#0f172a">38°</text>
+    <text x="125" y="170" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="middle">12 cm (A)</text>
+    <text x="215" y="100" font-family="sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" transform="rotate(-90 215 100)">x (O)</text>
   </svg>
 </div>
 
@@ -96,14 +95,14 @@ Find side *y*. Based on the 25° angle, side *y* is Opposite, and 18 m is the Hy
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    <polygon points="200,150 50,150 50,40" fill="#e0f2fe" stroke="#0284c7" stroke-width="3" />
-    <rect x="50" y="135" width="15" height="15" fill="none" stroke="#0284c7" stroke-width="1.5" />
+    <polygon points="200,150 50,150 50,40" fill="#f8fafc" stroke="#10b981" stroke-width="2" />
+    <rect x="50" y="135" width="15" height="15" fill="none" stroke="#10b981" stroke-width="1.5" />
     
-    <path d="M 160 150 A 40 40 0 0 1 168 126" fill="none" stroke="#1e293b" stroke-width="2" />
-    <text x="145" y="140" font-family="sans-serif" font-weight="bold" fill="#1e293b">25°</text>
+    <path d="M 160 150 A 40 40 0 0 1 168 126" fill="none" stroke="#0ea5e9" stroke-width="1.5" />
+    <text x="145" y="140" font-family="sans-serif" font-size="13" fill="#0f172a">25°</text>
     
-    <text x="35" y="100" font-family="sans-serif" font-weight="bold" fill="#059669" text-anchor="middle" transform="rotate(-90 35 100)">y (O)</text>
-    <text x="135" y="85" font-family="sans-serif" font-weight="bold" fill="#7e22ce" text-anchor="middle" transform="rotate(36 135 85)">18 m (H)</text>
+    <text x="35" y="100" font-family="sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" transform="rotate(-90 35 100)">y (O)</text>
+    <text x="135" y="85" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="middle" transform="rotate(36 135 85)">18 m (H)</text>
   </svg>
 </div>
 
@@ -129,14 +128,14 @@ Find side *z*. Based on the 60° angle, side *z* is Adjacent, and 22 km is the H
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    <polygon points="50,40 200,40 200,150" fill="#fef3c7" stroke="#d97706" stroke-width="3" />
-    <rect x="185" y="40" width="15" height="15" fill="none" stroke="#d97706" stroke-width="1.5" />
+    <polygon points="50,40 200,40 200,150" fill="#f8fafc" stroke="#f59e0b" stroke-width="2" />
+    <rect x="185" y="40" width="15" height="15" fill="none" stroke="#f59e0b" stroke-width="1.5" />
     
-    <path d="M 90 40 A 40 40 0 0 1 82 64" fill="none" stroke="#1e293b" stroke-width="2" />
-    <text x="100" y="55" font-family="sans-serif" font-weight="bold" fill="#1e293b">60°</text>
+    <path d="M 90 40 A 40 40 0 0 1 82 64" fill="none" stroke="#0ea5e9" stroke-width="1.5" />
+    <text x="100" y="55" font-family="sans-serif" font-size="13" fill="#0f172a">60°</text>
     
-    <text x="125" y="30" font-family="sans-serif" font-weight="bold" fill="#ea580c" text-anchor="middle">z (A)</text>
-    <text x="115" y="110" font-family="sans-serif" font-weight="bold" fill="#7e22ce" text-anchor="middle" transform="rotate(36 115 110)">22 km (H)</text>
+    <text x="125" y="30" font-family="sans-serif" font-size="13" fill="#0f172a" text-anchor="middle">z (A)</text>
+    <text x="115" y="110" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="middle" transform="rotate(36 115 110)">22 km (H)</text>
   </svg>
 </div>
 
@@ -176,14 +175,14 @@ Find angle *A*. Relative to *A*, we know the Opposite (8 cm) and the Hypotenuse 
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    <polygon points="50,150 190,150 190,50" fill="#e0e7ff" stroke="#4f46e5" stroke-width="3" />
-    <rect x="175" y="135" width="15" height="15" fill="none" stroke="#4f46e5" stroke-width="1.5" />
+    <polygon points="50,150 190,150 190,50" fill="#f8fafc" stroke="#6366f1" stroke-width="2" />
+    <rect x="175" y="135" width="15" height="15" fill="none" stroke="#6366f1" stroke-width="1.5" />
     
-    <path d="M 85 150 A 35 35 0 0 0 78 130" fill="none" stroke="#1e293b" stroke-width="2" />
-    <text x="95" y="142" font-family="sans-serif" font-weight="bold" fill="#1e293b" font-size="16">A</text>
+    <path d="M 85 150 A 35 35 0 0 0 78 130" fill="none" stroke="#0ea5e9" stroke-width="1.5" />
+    <text x="95" y="142" font-family="sans-serif" font-size="14" fill="#0ea5e9">A</text>
 
-    <text x="205" y="100" font-family="sans-serif" font-weight="bold" fill="#059669" text-anchor="middle" transform="rotate(-90 205 100)">8 cm (O)</text>
-    <text x="120" y="90" font-family="sans-serif" font-weight="bold" fill="#7e22ce" text-anchor="middle" transform="rotate(-36 120 90)">15 cm (H)</text>
+    <text x="205" y="100" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="middle" transform="rotate(-90 205 100)">8 cm (O)</text>
+    <text x="120" y="90" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="middle" transform="rotate(-36 120 90)">15 cm (H)</text>
   </svg>
 </div>
 
@@ -210,14 +209,14 @@ Find angle *B*. Relative to *B*, we know the Adjacent (9 m) and the Hypotenuse (
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    <polygon points="200,150 50,150 50,50" fill="#fef3c7" stroke="#d97706" stroke-width="3" />
-    <rect x="50" y="135" width="15" height="15" fill="none" stroke="#d97706" stroke-width="1.5" />
+    <polygon points="200,150 50,150 50,50" fill="#f8fafc" stroke="#8b5cf6" stroke-width="2" />
+    <rect x="50" y="135" width="15" height="15" fill="none" stroke="#8b5cf6" stroke-width="1.5" />
     
-    <path d="M 160 150 A 40 40 0 0 1 167 128" fill="none" stroke="#1e293b" stroke-width="2" />
-    <text x="145" y="142" font-family="sans-serif" font-weight="bold" fill="#1e293b" font-size="16">B</text>
+    <path d="M 160 150 A 40 40 0 0 1 167 128" fill="none" stroke="#0ea5e9" stroke-width="1.5" />
+    <text x="145" y="142" font-family="sans-serif" font-size="14" fill="#0ea5e9">B</text>
     
-    <text x="125" y="170" font-family="sans-serif" font-weight="bold" fill="#ea580c" text-anchor="middle">9 m (A)</text>
-    <text x="135" y="90" font-family="sans-serif" font-weight="bold" fill="#7e22ce" text-anchor="middle" transform="rotate(34 135 90)">14 m (H)</text>
+    <text x="125" y="170" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="middle">9 m (A)</text>
+    <text x="135" y="90" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="middle" transform="rotate(34 135 90)">14 m (H)</text>
   </svg>
 </div>
 
@@ -244,14 +243,14 @@ Find angle *C*. Relative to *C*, we know the Opposite (21 km) and the Adjacent (
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 250 200" width="100%" maxWidth="250px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    <polygon points="200,40 50,40 50,150" fill="#f0fdf4" stroke="#16a34a" stroke-width="3" />
-    <rect x="50" y="40" width="15" height="15" fill="none" stroke="#16a34a" stroke-width="1.5" />
+    <polygon points="200,40 50,40 50,150" fill="#f8fafc" stroke="#ec4899" stroke-width="2" />
+    <rect x="50" y="40" width="15" height="15" fill="none" stroke="#ec4899" stroke-width="1.5" />
     
-    <path d="M 160 40 A 40 40 0 0 0 167 64" fill="none" stroke="#1e293b" stroke-width="2" />
-    <text x="145" y="55" font-family="sans-serif" font-weight="bold" fill="#1e293b" font-size="16">C</text>
+    <path d="M 160 40 A 40 40 0 0 0 167 64" fill="none" stroke="#0ea5e9" stroke-width="1.5" />
+    <text x="145" y="55" font-family="sans-serif" font-size="14" fill="#0ea5e9">C</text>
     
-    <text x="125" y="30" font-family="sans-serif" font-weight="bold" fill="#ea580c" text-anchor="middle">5 km (A)</text>
-    <text x="35" y="100" font-family="sans-serif" font-weight="bold" fill="#059669" text-anchor="middle" transform="rotate(-90 35 100)">21 km (O)</text>
+    <text x="125" y="30" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="middle">5 km (A)</text>
+    <text x="35" y="100" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="middle" transform="rotate(-90 35 100)">21 km (O)</text>
   </svg>
 </div>
 
@@ -286,22 +285,22 @@ In the compound solid shape below, calculate *h*, *y*, and $\alpha$. Give final 
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 350 200" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
-    <polygon points="150,160 50,160 150,40" fill="#e0e7ff" stroke="#4f46e5" stroke-width="3" />
-    <rect x="135" y="145" width="15" height="15" fill="none" stroke="#4f46e5" stroke-width="1.5" />
+    <polygon points="150,160 50,160 150,40" fill="#f8fafc" stroke="#3b82f6" stroke-width="2" />
+    <rect x="135" y="145" width="15" height="15" fill="none" stroke="#3b82f6" stroke-width="1.5" />
     
-    <path d="M 85 160 A 35 35 0 0 0 70 135" fill="none" stroke="#1e293b" stroke-width="2" />
-    <text x="92" y="152" font-family="sans-serif" font-weight="bold" fill="#1e293b">28°</text>
+    <path d="M 85 160 A 35 35 0 0 0 70 135" fill="none" stroke="#64748b" stroke-width="1.5" />
+    <text x="92" y="152" font-family="sans-serif" font-size="13" fill="#0f172a">28°</text>
     
-    <polygon points="150,160 300,160 150,40" fill="#dcfce7" stroke="#16a34a" stroke-width="3" />
-    <rect x="150" y="145" width="15" height="15" fill="none" stroke="#16a34a" stroke-width="1.5" />
+    <polygon points="150,160 300,160 150,40" fill="#f8fafc" stroke="#10b981" stroke-width="2" />
+    <rect x="150" y="145" width="15" height="15" fill="none" stroke="#10b981" stroke-width="1.5" />
 
-    <text x="90" y="90" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle" transform="rotate(-50 90 90)">13 cm (H)</text>
-    <text x="135" y="105" font-family="sans-serif" font-weight="bold" fill="#b91c1c" text-anchor="middle" transform="rotate(-90 135 105)">h (shared)</text>
-    <text x="225" y="180" font-family="sans-serif" font-weight="bold" fill="#1e293b" text-anchor="middle">15 cm</text>
-    <text x="235" y="95" font-family="sans-serif" font-weight="bold" fill="#ea580c" text-anchor="middle" transform="rotate(39 235 95)">y</text>
+    <text x="90" y="90" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="middle" transform="rotate(-50 90 90)">13 cm (H)</text>
+    <text x="135" y="105" font-family="sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" transform="rotate(-90 135 105)">h</text>
+    <text x="225" y="180" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="middle">15 cm</text>
+    <text x="235" y="95" font-family="sans-serif" font-size="13" fill="#0f172a" text-anchor="middle" transform="rotate(39 235 95)">y</text>
     
-    <path d="M 270 160 A 30 30 0 0 1 276 141" fill="none" stroke="#b91c1c" stroke-width="2" />
-    <text x="252" y="155" font-family="sans-serif" font-weight="bold" fill="#b91c1c" font-size="16">α</text>
+    <path d="M 270 160 A 30 30 0 0 1 276 141" fill="none" stroke="#f59e0b" stroke-width="1.5" />
+    <text x="252" y="155" font-family="sans-serif" font-size="14" fill="#f59e0b">α</text>
   </svg>
 </div>
 
@@ -353,61 +352,63 @@ These terms describe angles relative to a **horizontal line of sight**.
 * **Angle of Elevation:** Looking UP from the horizontal.
 * **Angle of Depression:** Looking DOWN from the horizontal.
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 200" width="100%" maxWidth="350px" style={{ background: '#f0f4f8', border: '1px solid #ccc', borderRadius: '8px' }}>
-  <defs>
-    <marker id="arrowheadRed" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#e74c3c" />
-    </marker>
-    <marker id="arrowheadGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#8127ae" />
-    </marker>
-    <marker id="arrowheadBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
-      <polygon points="0 0, 8 3, 0 6" fill="#3498db" />
-    </marker>
-    <linearGradient id="grassGradientSmall" x1="0%" y1="100%" x2="0%" y2="0%">
-      <stop offset="0%" style={{ stopColor: '#78c850', stopOpacity: 1 }} />
-      <stop offset="100%" style={{ stopColor: '#a0d995', stopOpacity: 0 }} />
-    </linearGradient>
-  </defs>
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 200" width="100%" maxWidth="350px" style={{ background: '#f0f4f8', border: '1px solid #ccc', borderRadius: '8px' }}>
+    <defs>
+      <marker id="arrowheadRed" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#e74c3c" />
+      </marker>
+      <marker id="arrowheadGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#8127ae" />
+      </marker>
+      <marker id="arrowheadBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+        <polygon points="0 0, 8 3, 0 6" fill="#3498db" />
+      </marker>
+      <linearGradient id="grassGradientSmall" x1="0%" y1="100%" x2="0%" y2="0%">
+        <stop offset="0%" style={{ stopColor: '#78c850', stopOpacity: 1 }} />
+        <stop offset="100%" style={{ stopColor: '#a0d995', stopOpacity: 0 }} />
+      </linearGradient>
+    </defs>
 
-  <rect x="0" y="150" width="350" height="50" fill="#a0d995" />
-  <rect x="0" y="133" width="350" height="34" fill="url(#grassGradientSmall)" />
+    <rect x="0" y="150" width="350" height="50" fill="#a0d995" />
+    <rect x="0" y="133" width="350" height="34" fill="url(#grassGradientSmall)" />
 
-  <g transform="translate(52, 160)">
-    <rect x="-10" y="0" width="21" height="40" rx="2" fill="#8e6e46" stroke="#6d5334" stroke-width="1"/>
-    <ellipse cx="0" cy="0" rx="10" ry="3.5" fill="#a18055" stroke="#8e6e46" stroke-width="0.5" />
-  </g>
+    <g transform="translate(52, 160)">
+      <rect x="-10" y="0" width="21" height="40" rx="2" fill="#8e6e46" stroke="#6d5334" stroke-width="1"/>
+      <ellipse cx="0" cy="0" rx="10" ry="3.5" fill="#a18055" stroke="#8e6e46" stroke-width="0.5" />
+    </g>
 
-  <g transform="translate(63, 145) scale(0.4)">
-    <circle cx="0" cy="0" r="10" fill="#a0d995" stroke="#78c850" stroke-width="1.5" />
-    <circle cx="0" cy="0" r="4" fill="#333" />
-    <path d="M -10,-10 C -15,0 -15,10 -10,15 L -25,25 C -20,10 -20,0 -10,-10 Z" fill="#78c850" />
-    <path d="M 5,-8 Q 20,5 30,20" fill="none" stroke="#6d5334" stroke-width="2" />
-    <path d="M 2,-11 Q 12,15 18,30" fill="none" stroke="#6d5334" stroke-width="2" />
-    <path d="M -15,18 C -30,25 -25,40 -15,45 Q -5,40 -10,25" fill="#a0d995" />
-  </g>
+    <g transform="translate(63, 145) scale(0.4)">
+      <circle cx="0" cy="0" r="10" fill="#a0d995" stroke="#78c850" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="4" fill="#333" />
+      <path d="M -10,-10 C -15,0 -15,10 -10,15 L -25,25 C -20,10 -20,0 -10,-10 Z" fill="#78c850" />
+      <path d="M 5,-8 Q 20,5 30,20" fill="none" stroke="#6d5334" stroke-width="2" />
+      <path d="M 2,-11 Q 12,15 18,30" fill="none" stroke="#6d5334" stroke-width="2" />
+      <path d="M -15,18 C -30,25 -25,40 -15,45 Q -5,40 -10,25" fill="#a0d995" />
+    </g>
 
-  <g transform="translate(303, 48) scale(0.4)">
-    <circle cx="0" cy="0" r="10" fill="#3498db" stroke="#2980b9" stroke-width="1.5" />
-    <circle cx="0" cy="0" r="4" fill="#1c2833" />
-    <path d="M -5,-5 C -15,5 -10,15 -5,20 L -25,10 C -20,0 -15,-5 -5,-5 Z" fill="#3498db" />
-    <path d="M -10,0 L -23,3 L -10,6 Z" fill="#2c3e50" />
-    <path d="M -5,20 C 5,30 20,30 30,20 Q 25,10 10,10 Z" fill="#2980b9" />
-    <path d="M -5,15 L 10,40 L 0,40 Z" fill="#3498db" transform="rotate(-15)"/>
-  </g>
+    <g transform="translate(303, 48) scale(0.4)">
+      <circle cx="0" cy="0" r="10" fill="#3498db" stroke="#2980b9" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="4" fill="#1c2833" />
+      <path d="M -5,-5 C -15,5 -10,15 -5,20 L -25,10 C -20,0 -15,-5 -5,-5 Z" fill="#3498db" />
+      <path d="M -10,0 L -23,3 L -10,6 Z" fill="#2c3e50" />
+      <path d="M -5,20 C 5,30 20,30 30,20 Q 25,10 10,10 Z" fill="#2980b9" />
+      <path d="M -5,15 L 10,40 L 0,40 Z" fill="#3498db" transform="rotate(-15)"/>
+    </g>
 
-  <line x1="63" y1="145" x2="303" y2="48" stroke="#8127ae" stroke-width="2" marker-end="url(#arrowheadGreen)"/>
-  <line x1="303" y1="48" x2="63" y2="48" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowheadRed)" />
-  <line x1="63" y1="145" x2="303" y2="145" stroke="#3498db" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowheadBlue)" />
+    <line x1="63" y1="145" x2="303" y2="48" stroke="#8127ae" stroke-width="2" marker-end="url(#arrowheadGreen)"/>
+    <line x1="303" y1="48" x2="63" y2="48" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowheadRed)" />
+    <line x1="63" y1="145" x2="303" y2="145" stroke="#3498db" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrowheadBlue)" />
 
-  <path d="M 276,60 A 35,35 0 0,1 268,48" fill="none" stroke="#e74c3c" stroke-width="1.5" />
-  <text x="252" y="62" fill="#e74c3c">θ</text>
+    <path d="M 276,60 A 35,35 0 0,1 268,48" fill="none" stroke="#e74c3c" stroke-width="1.5" />
+    <text x="252" y="62" fill="#e74c3c">θ</text>
 
-  <path d="M 98,145 A 35,35 0 0,0 91,134" fill="none" stroke="#3498db" stroke-width="1.5" />
-  <text x="110" y="142" fill="#3498db" text-anchor="end">θ</text>
+    <path d="M 98,145 A 35,35 0 0,0 91,134" fill="none" stroke="#3498db" stroke-width="1.5" />
+    <text x="110" y="142" fill="#3498db" text-anchor="end">θ</text>
 
-  <text x="175" y="90" font-family="sans-serif" font-weight="bold" fill="#8127ae" text-anchor="middle" transform="rotate(-22 175 103)">Line of Sight</text>
-</svg>
+    <text x="175" y="90" font-family="sans-serif" font-weight="bold" fill="#8127ae" text-anchor="middle" transform="rotate(-22 175 103)">Line of Sight</text>
+  </svg>
+</div>
 
 <Aside type="tip" title="The 'Z-Angle' Secret">
 Because horizontal lines are parallel to each other, the angle of elevation from point A to point B is **always exactly equal** to the angle of depression from point B to point A (Alternate Angles).
@@ -418,6 +419,40 @@ Because horizontal lines are parallel to each other, the angle of elevation from
 ### Example 4: Angle of Elevation
 
 A surveyor stands 40 m away from the base of a building. The angle of elevation to the top of the building is 52°. If the surveyor's eye level is 1.6 m above the ground, calculate the total height of the building to 3 s.f.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <svg viewBox="0 0 350 200" width="100%" maxWidth="350px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
+    {/* Ground */}
+    <line x1="20" y1="180" x2="330" y2="180" stroke="#94a3b8" stroke-width="2" />
+    
+    {/* Building */}
+    <rect x="250" y="40" width="50" height="140" fill="#e2e8f0" stroke="#64748b" stroke-width="2" />
+    
+    {/* Surveyor (Stick figure logic) */}
+    <line x1="50" y1="180" x2="50" y2="130" stroke="#334155" stroke-width="2" />
+    <circle cx="50" cy="125" r="5" fill="#334155" />
+    
+    {/* Line of sight (Horizontal) */}
+    <line x1="50" y1="125" x2="250" y2="125" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="4,4" />
+    
+    {/* Line of sight to top (Elevation) */}
+    <line x1="50" y1="125" x2="250" y2="40" stroke="#3b82f6" stroke-width="2" />
+    
+    {/* Angle arc */}
+    <path d="M 90 125 A 40 40 0 0 0 87 109" fill="none" stroke="#f59e0b" stroke-width="2" />
+    <text x="96" y="118" font-family="sans-serif" font-size="12" fill="#d97706">52°</text>
+    
+    {/* Labels */}
+    <text x="150" y="195" font-family="sans-serif" font-size="12" fill="#475569" text-anchor="middle">40 m</text>
+    <text x="35" y="155" font-family="sans-serif" font-size="12" fill="#475569" text-anchor="end">1.6 m</text>
+    
+    {/* Height indicator */}
+    <line x1="240" y1="40" x2="245" y2="40" stroke="#3b82f6" stroke-width="1" />
+    <line x1="240" y1="125" x2="245" y2="125" stroke="#3b82f6" stroke-width="1" />
+    <line x1="242" y1="40" x2="242" y2="125" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="2,2" />
+    <text x="235" y="85" font-family="sans-serif" font-size="13" fill="#3b82f6" text-anchor="end">h</text>
+  </svg>
+</div>
 
 <details className="styled-details">
 <summary>View Solution</summary>
@@ -458,25 +493,25 @@ Ship A is 30 km due West of Port P. Ship B is 14 km due South of Port P. Calcula
   <svg viewBox="0 0 300 250" width="100%" maxWidth="300px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <defs>
       <marker id="north-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="#000" />
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155" />
       </marker>
     </defs>
     
-    <polygon points="50,50 250,50 250,180" fill="#fef3c7" stroke="#d97706" stroke-width="3" />
-    <rect x="235" y="50" width="15" height="15" fill="none" stroke="#d97706" stroke-width="1.5" />
+    <polygon points="50,50 250,50 250,180" fill="#f8fafc" stroke="#64748b" stroke-width="2" />
+    <rect x="235" y="50" width="15" height="15" fill="none" stroke="#64748b" stroke-width="1.5" />
     
-    <line x1="50" y1="50" x2="50" y2="15" stroke="#000" stroke-width="2" marker-end="url(#north-arrow)" />
-    <text x="45" y="15" font-family="sans-serif" font-weight="bold" fill="#000" text-anchor="end">N</text>
+    <line x1="50" y1="50" x2="50" y2="15" stroke="#334155" stroke-width="1.5" marker-end="url(#north-arrow)" />
+    <text x="45" y="20" font-family="sans-serif" font-size="12" fill="#334155" text-anchor="end">N</text>
     
-    <text x="35" y="60" font-family="sans-serif" font-weight="bold" fill="#1e293b">A</text>
-    <text x="260" y="45" font-family="sans-serif" font-weight="bold" fill="#1e293b">P</text>
-    <text x="260" y="190" font-family="sans-serif" font-weight="bold" fill="#1e293b">B</text>
+    <text x="35" y="60" font-family="sans-serif" font-size="14" fill="#0f172a">A</text>
+    <text x="260" y="45" font-family="sans-serif" font-size="14" fill="#0f172a">P</text>
+    <text x="260" y="190" font-family="sans-serif" font-size="14" fill="#0f172a">B</text>
 
-    <text x="150" y="40" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="middle">30 km</text>
-    <text x="254" y="120" font-family="sans-serif" font-weight="bold" fill="#ef4444" text-anchor="start">14 km</text>
+    <text x="150" y="40" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="middle">30 km</text>
+    <text x="258" y="120" font-family="sans-serif" font-size="13" fill="#475569" text-anchor="start">14 km</text>
     
-    <path d="M 90 50 A 40 40 0 0 1 83 72" fill="none" stroke="#2563eb" stroke-width="2" />
-    <text x="100" y="70" font-family="sans-serif" font-weight="bold" fill="#2563eb">θ</text>
+    <path d="M 90 50 A 40 40 0 0 1 83 72" fill="none" stroke="#3b82f6" stroke-width="1.5" />
+    <text x="100" y="70" font-family="sans-serif" font-size="13" fill="#3b82f6">θ</text>
   </svg>
 </div>
 
@@ -522,36 +557,36 @@ Town B is 50 km from Town A on a bearing of 070°. A straight road runs complete
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 400 250" width="100%" maxWidth="400px" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <defs>
-      <marker id="arrowhead" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-        <path d="M 0 0 L 10 5 L 0 10 z" fill="#000" />
+      <marker id="arrowhead2" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+        <path d="M 0 0 L 10 5 L 0 10 z" fill="#334155" />
       </marker>
     </defs>
 
-    <line x1="100" y1="200" x2="100" y2="40" stroke="#000" stroke-width="2" marker-end="url(#arrowhead)" />
-    <text x="100" y="30" font-family="sans-serif" font-weight="bold" text-anchor="middle">N</text>
+    <line x1="100" y1="200" x2="100" y2="40" stroke="#334155" stroke-width="1.5" marker-end="url(#arrowhead2)" />
+    <text x="100" y="30" font-family="sans-serif" font-size="12" fill="#334155" text-anchor="middle">N</text>
 
-    <line x1="100" y1="200" x2="350" y2="200" stroke="#64748b" stroke-width="3" stroke-dasharray="8 4" />
-    <text x="340" y="220" font-family="sans-serif" font-size="12" font-weight="bold" fill="#64748b" text-anchor="end">Road (Due East)</text>
+    <line x1="100" y1="200" x2="350" y2="200" stroke="#94a3b8" stroke-width="2" stroke-dasharray="6 4" />
+    <text x="340" y="215" font-family="sans-serif" font-size="12" fill="#64748b" text-anchor="end">Road (Due East)</text>
 
-    <line x1="100" y1="200" x2="241" y2="149" stroke="#4f46e5" stroke-width="2" />
+    <line x1="100" y1="200" x2="241" y2="149" stroke="#3b82f6" stroke-width="2" />
     
-    <line x1="241" y1="149" x2="241" y2="200" stroke="#db2777" stroke-width="3" />
-    <rect x="226" y="185" width="15" height="15" fill="none" stroke="#4f46e5" stroke-width="1.5" />
+    <line x1="241" y1="149" x2="241" y2="200" stroke="#ec4899" stroke-width="2" />
+    <rect x="226" y="185" width="15" height="15" fill="none" stroke="#64748b" stroke-width="1.5" />
 
-    <path d="M 100 140 A 60 60 0 0 1 156.38 179.47" fill="none" stroke="#d97706" stroke-width="2" />
-    <text x="120" y="140" font-family="sans-serif" font-weight="bold" fill="#d97706" font-size="12">070°</text>
+    <path d="M 100 140 A 60 60 0 0 1 156.38 179.47" fill="none" stroke="#f59e0b" stroke-width="1.5" />
+    <text x="120" y="135" font-family="sans-serif" font-size="12" fill="#d97706">070°</text>
 
-    <path d="M 160 200 A 60 60 0 0 0 156.38 179.47" fill="none" stroke="#1e293b" stroke-width="2" />
-    <text x="165" y="195" font-family="sans-serif" font-weight="bold" fill="#1e293b" font-size="12">20°</text>
+    <path d="M 160 200 A 60 60 0 0 0 156.38 179.47" fill="none" stroke="#64748b" stroke-width="1.5" />
+    <text x="165" y="193" font-family="sans-serif" font-size="12" fill="#64748b">20°</text>
 
-    <circle cx="100" cy="200" r="4" fill="#1e293b" />
-    <text x="85" y="215" font-family="sans-serif" font-weight="bold">A</text>
+    <circle cx="100" cy="200" r="4" fill="#0f172a" />
+    <text x="85" y="215" font-family="sans-serif" font-size="13" fill="#0f172a">A</text>
     
-    <circle cx="241" cy="149" r="4" fill="#1e293b" />
-    <text x="241" y="135" font-family="sans-serif" font-weight="bold" text-anchor="middle">B</text>
+    <circle cx="241" cy="149" r="4" fill="#0f172a" />
+    <text x="241" y="135" font-family="sans-serif" font-size="13" fill="#0f172a" text-anchor="middle">B</text>
 
-    <text x="160" y="165" font-family="sans-serif" font-weight="bold" fill="#7e22ce" transform="rotate(-20, 160, 165)">50 km</text>
-    <text x="250" y="180" font-family="sans-serif" font-weight="bold" fill="#db2777">Distance</text>
+    <text x="160" y="165" font-family="sans-serif" font-size="12" fill="#3b82f6" transform="rotate(-20, 160, 165)">50 km</text>
+    <text x="250" y="180" font-family="sans-serif" font-size="12" fill="#ec4899">Distance</text>
   </svg>
 </div>
 

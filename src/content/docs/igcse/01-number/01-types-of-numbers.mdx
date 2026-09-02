@@ -99,7 +99,6 @@ Visualising these numbers makes them much easier to remember:
 * **Square numbers:** The result of multiplying an integer by itself (1, 4, 9, 16, 25...). They can be arranged in a perfect square grid.
 
 
-
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
   <svg viewBox="0 0 500 160" width="100%" maxWidth="500px" xmlns="http://www.w3.org/2000/svg" style={{ background: '#f8fafc', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
     <g transform="translate(75, 0)">
@@ -149,6 +148,149 @@ Visualising these numbers makes them much easier to remember:
     </g>
   </svg>
 </div>
+</section>
+
+
+
+<section className="lesson-chunk">
+export const faces = [
+  { id: 'ABCD', name: 'Bottom Base', points: ['A', 'B', 'C', 'D'] }
+];
+
+<label className="svg-anim-wrapper" style={{ display: "block", cursor: "pointer" }}>
+  <style>{`
+    /* Hide checkbox entirely */
+    .svg-anim-wrapper input { 
+      display: none; 
+    }
+    
+    /* Button Styles */
+    .svg-anim-wrapper .play-pause-btn {
+      display: inline-block;
+      padding: 6px 14px;
+      background: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      transition: background 0.2s;
+    }
+    
+    .svg-anim-wrapper:hover .play-pause-btn {
+      background: #e2e8f0;
+    }
+
+    /* Swap text based on state */
+    .svg-anim-wrapper input:checked ~ .play-pause-btn::after {
+      content: "▶ Play Animation";
+    }
+    .svg-anim-wrapper input:not(:checked) ~ .play-pause-btn::after {
+      content: "⏸ Pause Animation";
+    }
+
+    /* PAUSE LOGIC: If checkbox is checked, pause siblings */
+    .svg-anim-wrapper input:checked ~ svg .cell,
+    .svg-anim-wrapper input:checked ~ svg .text-label {
+      animation-play-state: paused !important;
+    }
+
+    /* SVG Internal Styles */
+    .cell {
+      animation-duration: 6s;
+      animation-iteration-count: infinite;
+      animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    
+    .g1 { fill: #ec4899; animation-name: s1; }
+    .g2 { fill: #a855f7; animation-name: s2; }
+    .g3 { fill: #3b82f6; animation-name: s3; }
+    .g4 { fill: #10b981; animation-name: s4; }
+    .g5 { fill: #f59e0b; animation-name: s5; }
+    
+    @keyframes s1 { 0%, 5% { opacity: 0; transform: scale(0.3); } 10%, 90% { opacity: 1; transform: scale(1); } 95%, 100% { opacity: 0; transform: scale(0.3); } }
+    @keyframes s2 { 0%, 20% { opacity: 0; transform: scale(0.3); } 25%, 90% { opacity: 1; transform: scale(1); } 95%, 100% { opacity: 0; transform: scale(0.3); } }
+    @keyframes s3 { 0%, 40% { opacity: 0; transform: scale(0.3); } 45%, 90% { opacity: 1; transform: scale(1); } 95%, 100% { opacity: 0; transform: scale(0.3); } }
+    @keyframes s4 { 0%, 60% { opacity: 0; transform: scale(0.3); } 65%, 90% { opacity: 1; transform: scale(1); } 95%, 100% { opacity: 0; transform: scale(0.3); } }
+    @keyframes s5 { 0%, 80% { opacity: 0; transform: scale(0.3); } 85%, 90% { opacity: 1; transform: scale(1); } 95%, 100% { opacity: 0; transform: scale(0.3); } }
+    
+    .text-label {
+      animation-duration: 6s;
+      animation-iteration-count: infinite;
+      opacity: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-anchor: middle;
+    }
+    
+    .t1 { animation-name: t1; fill: #ec4899; }
+    .t2 { animation-name: t2; fill: #a855f7; }
+    .t3 { animation-name: t3; fill: #3b82f6; }
+    .t4 { animation-name: t4; fill: #10b981; }
+    .t5 { animation-name: t5; fill: #f59e0b; }
+    
+    @keyframes t1 { 0%, 20% { opacity: 1; } 22%, 100% { opacity: 0; } }
+    @keyframes t2 { 0%, 20% { opacity: 0; } 22%, 40% { opacity: 1; } 42%, 100% { opacity: 0; } }
+    @keyframes t3 { 0%, 40% { opacity: 0; } 42%, 60% { opacity: 1; } 62%, 100% { opacity: 0; } }
+    @keyframes t4 { 0%, 60% { opacity: 0; } 62%, 80% { opacity: 1; } 82%, 100% { opacity: 0; } }
+    @keyframes t5 { 0%, 80% { opacity: 0; } 82%, 92% { opacity: 1; } 95%, 100% { opacity: 0; } }
+  `}</style>
+  
+  <input type="checkbox" />
+  <div className="play-pause-btn"></div>
+  
+  <svg width="50%" viewBox="0 0 105 130" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+    {/* 1^2 = 1 */}
+    <rect x="10" y="10" width="15" height="15" rx="3" className="cell g1"/>
+    
+    {/* 2^2 = 4 (adds 3) */}
+    <rect x="27.5" y="10" width="15" height="15" rx="3" className="cell g2"/>
+    <rect x="27.5" y="27.5" width="15" height="15" rx="3" className="cell g2"/>
+    <rect x="10" y="27.5" width="15" height="15" rx="3" className="cell g2"/>
+    
+    {/* 3^2 = 9 (adds 5) */}
+    <rect x="45" y="10" width="15" height="15" rx="3" className="cell g3"/>
+    <rect x="45" y="27.5" width="15" height="15" rx="3" className="cell g3"/>
+    <rect x="45" y="45" width="15" height="15" rx="3" className="cell g3"/>
+    <rect x="27.5" y="45" width="15" height="15" rx="3" className="cell g3"/>
+    <rect x="10" y="45" width="15" height="15" rx="3" className="cell g3"/>
+    
+    {/* 4^2 = 16 (adds 7) */}
+    <rect x="62.5" y="10" width="15" height="15" rx="3" className="cell g4"/>
+    <rect x="62.5" y="27.5" width="15" height="15" rx="3" className="cell g4"/>
+    <rect x="62.5" y="45" width="15" height="15" rx="3" className="cell g4"/>
+    <rect x="62.5" y="62.5" width="15" height="15" rx="3" className="cell g4"/>
+    <rect x="45" y="62.5" width="15" height="15" rx="3" className="cell g4"/>
+    <rect x="27.5" y="62.5" width="15" height="15" rx="3" className="cell g4"/>
+    <rect x="10" y="62.5" width="15" height="15" rx="3" className="cell g4"/>
+    
+    {/* 5^2 = 25 (adds 9) */}
+    <rect x="80" y="10" width="15" height="15" rx="3" className="cell g5"/>
+    <rect x="80" y="27.5" width="15" height="15" rx="3" className="cell g5"/>
+    <rect x="80" y="45" width="15" height="15" rx="3" className="cell g5"/>
+    <rect x="80" y="62.5" width="15" height="15" rx="3" className="cell g5"/>
+    <rect x="80" y="80" width="15" height="15" rx="3" className="cell g5"/>
+    <rect x="62.5" y="80" width="15" height="15" rx="3" className="cell g5"/>
+    <rect x="45" y="80" width="15" height="15" rx="3" className="cell g5"/>
+    <rect x="27.5" y="80" width="15" height="15" rx="3" className="cell g5"/>
+    <rect x="10" y="80" width="15" height="15" rx="3" className="cell g5"/>
+
+    {/* Equations */}
+    <text x="52.5" y="117.5" className="text-label t1">1² = 1</text>
+    <text x="52.5" y="117.5" className="text-label t2">2² = 4</text>
+    <text x="52.5" y="117.5" className="text-label t3">3² = 9</text>
+    <text x="52.5" y="117.5" className="text-label t4">4² = 16</text>
+    <text x="52.5" y="117.5" className="text-label t5">5² = 25</text>
+  </svg>
+</label>
+</section>
+
+<section className="lesson-chunk">
 
 * **Cube numbers:** The result of multiplying an integer by itself twice (1, 8, 27, 64...). These form 3D cubes.
 * **Triangle numbers:** Numbers that can form a triangle pattern (1, 3, 6, 10, 15...).
@@ -194,7 +336,135 @@ Visualising these numbers makes them much easier to remember:
     </g>
   </svg>
 </div>
+</section>
 
+
+<section className="lesson-chunk">
+<label className="svg-anim-wrapper" style={{ display: "block", cursor: "pointer" }}>
+  <style>{`
+    /* Hide checkbox entirely */
+    .svg-anim-wrapper input { 
+      display: none; 
+    }
+    
+    /* Button Styles */
+    .svg-anim-wrapper .play-pause-btn {
+      display: inline-block;
+      padding: 6px 14px;
+      background: #f1f5f9;
+      color: #0f172a;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-family: ui-sans-serif, system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      transition: background 0.2s;
+    }
+    
+    .svg-anim-wrapper:hover .play-pause-btn {
+      background: #e2e8f0;
+    }
+
+    /* Swap text based on state */
+    .svg-anim-wrapper input:checked ~ .play-pause-btn::after {
+      content: "▶ Play Animation";
+    }
+    .svg-anim-wrapper input:not(:checked) ~ .play-pause-btn::after {
+      content: "⏸ Pause Animation";
+    }
+
+    /* PAUSE LOGIC: If checkbox is checked, pause siblings */
+    .svg-anim-wrapper input:checked ~ svg .cell,
+    .svg-anim-wrapper input:checked ~ svg .text-label {
+      animation-play-state: paused !important;
+    }
+
+    /* SVG Internal Styles */
+    .cell {
+      animation-duration: 6s;
+      animation-iteration-count: infinite;
+      animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+    
+    .g1 { fill: #ec4899; animation-name: s1; }
+    .g2 { fill: #a855f7; animation-name: s2; }
+    .g3 { fill: #3b82f6; animation-name: s3; }
+    .g4 { fill: #10b981; animation-name: s4; }
+    .g5 { fill: #f59e0b; animation-name: s5; }
+    
+    @keyframes s1 { 0%, 5% { opacity: 0; transform: scale(0.3); } 10%, 90% { opacity: 1; transform: scale(1); } 95%, 100% { opacity: 0; transform: scale(0.3); } }
+    @keyframes s2 { 0%, 20% { opacity: 0; transform: scale(0.3); } 25%, 90% { opacity: 1; transform: scale(1); } 95%, 100% { opacity: 0; transform: scale(0.3); } }
+    @keyframes s3 { 0%, 40% { opacity: 0; transform: scale(0.3); } 45%, 90% { opacity: 1; transform: scale(1); } 95%, 100% { opacity: 0; transform: scale(0.3); } }
+    @keyframes s4 { 0%, 60% { opacity: 0; transform: scale(0.3); } 65%, 90% { opacity: 1; transform: scale(1); } 95%, 100% { opacity: 0; transform: scale(0.3); } }
+    @keyframes s5 { 0%, 80% { opacity: 0; transform: scale(0.3); } 85%, 90% { opacity: 1; transform: scale(1); } 95%, 100% { opacity: 0; transform: scale(0.3); } }
+    
+    .text-label {
+      animation-duration: 6s;
+      animation-iteration-count: infinite;
+      opacity: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-anchor: middle;
+    }
+    
+    .t1 { animation-name: t1; fill: #ec4899; }
+    .t2 { animation-name: t2; fill: #a855f7; }
+    .t3 { animation-name: t3; fill: #3b82f6; }
+    .t4 { animation-name: t4; fill: #10b981; }
+    .t5 { animation-name: t5; fill: #f59e0b; }
+    
+    @keyframes t1 { 0%, 20% { opacity: 1; } 22%, 100% { opacity: 0; } }
+    @keyframes t2 { 0%, 20% { opacity: 0; } 22%, 40% { opacity: 1; } 42%, 100% { opacity: 0; } }
+    @keyframes t3 { 0%, 40% { opacity: 0; } 42%, 60% { opacity: 1; } 62%, 100% { opacity: 0; } }
+    @keyframes t4 { 0%, 60% { opacity: 0; } 62%, 80% { opacity: 1; } 82%, 100% { opacity: 0; } }
+    @keyframes t5 { 0%, 80% { opacity: 0; } 82%, 92% { opacity: 1; } 95%, 100% { opacity: 0; } }
+  `}</style>
+  
+  <input type="checkbox" />
+  <div className="play-pause-btn"></div>
+  
+  <svg width="50%" viewBox="0 0 105 130" xmlns="http://www.w3.org/2000/svg" style={{ display: "block" }}>
+    
+    {/* T1 = 1 */}
+    <circle cx="52.5" cy="17.5" r="7.5" className="cell g1"/>
+    
+    {/* T2 = 3 (adds 2) */}
+    <circle cx="43.75" cy="35" r="7.5" className="cell g2"/>
+    <circle cx="61.25" cy="35" r="7.5" className="cell g2"/>
+    
+    {/* T3 = 6 (adds 3) */}
+    <circle cx="35" cy="52.5" r="7.5" className="cell g3"/>
+    <circle cx="52.5" cy="52.5" r="7.5" className="cell g3"/>
+    <circle cx="70" cy="52.5" r="7.5" className="cell g3"/>
+    
+    {/* T4 = 10 (adds 4) */}
+    <circle cx="26.25" cy="70" r="7.5" className="cell g4"/>
+    <circle cx="43.75" cy="70" r="7.5" className="cell g4"/>
+    <circle cx="61.25" cy="70" r="7.5" className="cell g4"/>
+    <circle cx="78.75" cy="70" r="7.5" className="cell g4"/>
+    
+    {/* T5 = 15 (adds 5) */}
+    <circle cx="17.5" cy="87.5" r="7.5" className="cell g5"/>
+    <circle cx="35" cy="87.5" r="7.5" className="cell g5"/>
+    <circle cx="52.5" cy="87.5" r="7.5" className="cell g5"/>
+    <circle cx="70" cy="87.5" r="7.5" className="cell g5"/>
+    <circle cx="87.5" cy="87.5" r="7.5" className="cell g5"/>
+
+    {/* Equations displaying the additive property */}
+    <text x="52.5" y="117.5" className="text-label t1">1</text>
+    <text x="52.5" y="117.5" className="text-label t2">1 + 2 = 3</text>
+    <text x="52.5" y="117.5" className="text-label t3">3 + 3 = 6</text>
+    <text x="52.5" y="117.5" className="text-label t4">6 + 4 = 10</text>
+    <text x="52.5" y="117.5" className="text-label t5">10 + 5 = 15</text>
+  </svg>
+</label>
+</section>
+
+<section className="lesson-chunk">
 * **Reciprocals:** What you multiply a number by to get 1. For example, the reciprocal of 5 is $\frac{1}{5}$.
 
 <Aside type="caution" title="The Prime Number Trap">
@@ -518,48 +788,47 @@ Always explicitly state your final HCF and LCM calculations clearly below your w
        $$ \text{HCF} = 2 \times 2 \times 2 \times 3 = 24 $$
     8. **Calculate LCM:** Multiply the common divisors AND the remaining numbers at the bottom.
        $$ \text{LCM} = 2 \times 2 \times 2 \times 3 \times 2 \times 3 = 144 $$
+    9. **Visual Ladder Diagram:**
+       <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+         <svg viewBox="0 0 400 280" width="100%" maxWidth="400px" xmlns="http://www.w3.org/2000/svg" style={{ fontFamily: 'sans-serif', background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
+           {/* Blue Box (HCF Column) */}
+           <rect x="80" y="35" width="40" height="175" fill="#e0e7ff" rx="8" />
+           
+           {/* Green Box (Remainders Row) exactly matching CleanShot */}
+           <rect x="150" y="215" width="130" height="40" fill="#dcfce7" rx="8" />
+
+           {/* The Ladder (Lines) */}
+           <line x1="130" y1="20" x2="130" y2="260" stroke="#334155" strokeWidth="3" />
+           <line x1="130" y1="75" x2="280" y2="75" stroke="#334155" strokeWidth="2" />
+           <line x1="130" y1="120" x2="280" y2="120" stroke="#334155" strokeWidth="2" />
+           <line x1="130" y1="165" x2="280" y2="165" stroke="#334155" strokeWidth="2" />
+           <line x1="130" y1="210" x2="280" y2="210" stroke="#334155" strokeWidth="2" />
+
+           {/* Divisors (Blue Text) */}
+           <text x="100" y="60" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1d4ed8">2</text>
+           <text x="100" y="105" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1d4ed8">2</text>
+           <text x="100" y="150" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1d4ed8">2</text>
+           <text x="100" y="195" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1d4ed8">3</text>
+
+           {/* Numbers */}
+           <text x="180" y="60" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1e293b">48</text>
+           <text x="250" y="60" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1e293b">72</text>
+           
+           <text x="180" y="105" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1e293b">24</text>
+           <text x="250" y="105" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1e293b">36</text>
+
+           <text x="180" y="150" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1e293b">12</text>
+           <text x="250" y="150" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1e293b">18</text>
+           
+           <text x="180" y="195" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1e293b">6</text>
+           <text x="250" y="195" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#1e293b">9</text>
+
+           {/* Remainders (Green Text) */}
+           <text x="180" y="242" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#15803d">2</text>
+           <text x="250" y="242" textAnchor="middle" fontSize="20" fontWeight="bold" fill="#15803d">3</text>
+         </svg>
+       </div>
   </Steps>
-
-  <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-    <svg viewBox="0 0 400 280" width="100%" maxWidth="400px" xmlns="http://www.w3.org/2000/svg" style={{ fontFamily: 'sans-serif', background: '#ffffff', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
-      {/* Blue Box (HCF Column) */}
-      <rect x="80" y="35" width="40" height="175" fill="#e0e7ff" rx="8" />
-      
-      {/* Green Box (Remainders Row) exactly matching CleanShot 2026-08-19 at 14.10.42@2x.png */}
-      <rect x="150" y="215" width="130" height="40" fill="#dcfce7" rx="8" />
-
-      {/* The Ladder (Lines) */}
-      <line x1="130" y1="20" x2="130" y2="260" stroke="#334155" stroke-width="3" />
-      <line x1="130" y1="75" x2="280" y2="75" stroke="#334155" stroke-width="2" />
-      <line x1="130" y1="120" x2="280" y2="120" stroke="#334155" stroke-width="2" />
-      <line x1="130" y1="165" x2="280" y2="165" stroke="#334155" stroke-width="2" />
-      <line x1="130" y1="210" x2="280" y2="210" stroke="#334155" stroke-width="2" />
-
-      {/* Divisors (Blue Text) */}
-      <text x="100" y="60" text-anchor="middle" font-size="20" font-weight="bold" fill="#1d4ed8">2</text>
-      <text x="100" y="105" text-anchor="middle" font-size="20" font-weight="bold" fill="#1d4ed8">2</text>
-      <text x="100" y="150" text-anchor="middle" font-size="20" font-weight="bold" fill="#1d4ed8">2</text>
-      <text x="100" y="195" text-anchor="middle" font-size="20" font-weight="bold" fill="#1d4ed8">3</text>
-
-      {/* Numbers */}
-      <text x="180" y="60" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">48</text>
-      <text x="250" y="60" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">72</text>
-      
-      <text x="180" y="105" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">24</text>
-      <text x="250" y="105" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">36</text>
-
-      <text x="180" y="150" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">12</text>
-      <text x="250" y="150" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">18</text>
-      
-      <text x="180" y="195" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">6</text>
-      <text x="250" y="195" text-anchor="middle" font-size="20" font-weight="bold" fill="#1e293b">9</text>
-
-      {/* Remainders (Green Text) */}
-      <text x="180" y="242" text-anchor="middle" font-size="20" font-weight="bold" fill="#15803d">2</text>
-      <text x="250" y="242" text-anchor=
-      "middle" font-size="20" font-weight="bold" fill="#15803d">3</text>
-    </svg>
-  </div>
 </details>
 </section>
 
@@ -611,65 +880,65 @@ In exams, a very common mistake is to keep dividing by primes that only go into 
     7. **Stop for LCM:** 1, 2, and 1 share no common prime factors.
     8. **Calculate LCM:** Multiply ALL the common divisors on the left and the remainders at the bottom.
        $$ \text{LCM} = 2 \times 3 \times 3 \times 2 \times 1 \times 2 \times 1 = 72 $$
+    9. **Visual Ladder Diagram:**
+       <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+        <svg viewBox="0 0 500 340" width="100%" max-width="500px" xmlns="http://www.w3.org/2000/svg" style={{ fontFamily: 'sans-serif', background: '#f1f5f9', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
+          
+          {/* Blue Box (HCF Column - Must divide all 3) */}
+          <rect x="75" y="30" width="55" height="110" fill="#e0e7ff" rx="10" />
+          
+          {/* Orange Box (LCM extra divisors - Divides at least 2) */}
+          <rect x="75" y="150" width="55" height="105" fill="#ffedd5" rx="10" />
+
+          {/* Green Box (Remainders Row) */}
+          <rect x="155" y="260" width="200" height="45" fill="#dcfce7" rx="10" />
+
+          {/* The Ladder (Lines) */}
+          <line x1="145" y1="20" x2="145" y2="315" stroke="#334155" stroke-width="4" />
+          <line x1="145" y1="85" x2="380" y2="85" stroke="#334155" stroke-width="2.5" />
+          <line x1="145" y1="140" x2="380" y2="140" stroke="#334155" stroke-width="2.5" />
+          {/* HCF line cut-off marker */}
+          <line x1="130" y1="140" x2="160" y2="140" stroke="#2563eb" stroke-width="4" />
+          <line x1="145" y1="195" x2="380" y2="195" stroke="#334155" stroke-width="2.5" />
+          <line x1="145" y1="250" x2="380" y2="250" stroke="#334155" stroke-width="2.5" />
+          
+          {/* HCF Divisors (Blue Text) */}
+          <text x="102.5" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d4ed8">2</text>
+          <text x="102.5" y="125" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d4ed8">3</text>
+
+          {/* LCM Continued Divisors (Orange Text) */}
+          <text x="102.5" y="180" text-anchor="middle" font-size="24" font-weight="bold" fill="#c2410c">3</text>
+          <text x="102.5" y="235" text-anchor="middle" font-size="24" font-weight="bold" fill="#c2410c">2</text>
+
+          {/* Numbers */}
+          {/* Row 1 */}
+          <text x="180" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">18</text>
+          <text x="255" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">24</text>
+          <text x="330" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">36</text>
+          
+          {/* Row 2 */}
+          <text x="180" y="125" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">9</text>
+          <text x="255" y="125" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">12</text>
+          <text x="330" y="125" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">18</text>
+
+          {/* Row 3 - Stop for HCF here */}
+          <text x="180" y="180" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">3</text>
+          <text x="255" y="180" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">4</text>
+          <text x="330" y="180" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">6</text>
+          
+          {/* Row 4 - Bring down 4 */}
+          <text x="180" y="235" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">1</text>
+          <text x="255" y="235" text-anchor="middle" font-size="24" font-weight="bold" fill="#64748b">4</text>
+          <text x="330" y="235" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">2</text>
+
+          {/* Row 5 (Final Remainders - Green Text, bring down 1) */}
+          <text x="180" y="292" text-anchor="middle" font-size="24" font-weight="bold" fill="#15803d">1</text>
+          <text x="255" y="292" text-anchor="middle" font-size="24" font-weight="bold" fill="#15803d">2</text>
+          <text x="330" y="292" text-anchor="middle" font-size="24" font-weight="bold" fill="#15803d">1</text>
+        </svg>
+       </div>
   </Steps>
 
-  <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-    <svg viewBox="0 0 500 340" width="100%" max-width="500px" xmlns="http://www.w3.org/2000/svg" style={{ fontFamily: 'sans-serif', background: '#f1f5f9', borderRadius: '8px', border: '1px solid #e2e8f0', padding: '1rem' }}>
-      
-      {/* Blue Box (HCF Column - Must divide all 3) */}
-      <rect x="75" y="30" width="55" height="110" fill="#e0e7ff" rx="10" />
-      
-      {/* Orange Box (LCM extra divisors - Divides at least 2) */}
-      <rect x="75" y="150" width="55" height="105" fill="#ffedd5" rx="10" />
-
-      {/* Green Box (Remainders Row) */}
-      <rect x="155" y="260" width="200" height="45" fill="#dcfce7" rx="10" />
-
-      {/* The Ladder (Lines) */}
-      <line x1="145" y1="20" x2="145" y2="315" stroke="#334155" stroke-width="4" />
-      <line x1="145" y1="85" x2="380" y2="85" stroke="#334155" stroke-width="2.5" />
-      <line x1="145" y1="140" x2="380" y2="140" stroke="#334155" stroke-width="2.5" />
-      {/* HCF line cut-off marker */}
-      <line x1="130" y1="140" x2="160" y2="140" stroke="#2563eb" stroke-width="4" />
-      <line x1="145" y1="195" x2="380" y2="195" stroke="#334155" stroke-width="2.5" />
-      <line x1="145" y1="250" x2="380" y2="250" stroke="#334155" stroke-width="2.5" />
-      
-      {/* HCF Divisors (Blue Text) */}
-      <text x="102.5" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d4ed8">2</text>
-      <text x="102.5" y="125" text-anchor="middle" font-size="24" font-weight="bold" fill="#1d4ed8">3</text>
-
-      {/* LCM Continued Divisors (Orange Text) */}
-      <text x="102.5" y="180" text-anchor="middle" font-size="24" font-weight="bold" fill="#c2410c">3</text>
-      <text x="102.5" y="235" text-anchor="middle" font-size="24" font-weight="bold" fill="#c2410c">2</text>
-
-      {/* Numbers */}
-      {/* Row 1 */}
-      <text x="180" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">18</text>
-      <text x="255" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">24</text>
-      <text x="330" y="65" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">36</text>
-      
-      {/* Row 2 */}
-      <text x="180" y="125" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">9</text>
-      <text x="255" y="125" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">12</text>
-      <text x="330" y="125" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">18</text>
-
-      {/* Row 3 - Stop for HCF here */}
-      <text x="180" y="180" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">3</text>
-      <text x="255" y="180" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">4</text>
-      <text x="330" y="180" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">6</text>
-      
-      {/* Row 4 - Bring down 4 */}
-      <text x="180" y="235" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">1</text>
-      <text x="255" y="235" text-anchor="middle" font-size="24" font-weight="bold" fill="#64748b">4</text>
-      <text x="330" y="235" text-anchor="middle" font-size="24" font-weight="bold" fill="#1e293b">2</text>
-
-      {/* Row 5 (Final Remainders - Green Text, bring down 1) */}
-      <text x="180" y="292" text-anchor="middle" font-size="24" font-weight="bold" fill="#15803d">1</text>
-      <text x="255" y="292" text-anchor="middle" font-size="24" font-weight="bold" fill="#15803d">2</text>
-      <text x="330" y="292" text-anchor="middle" font-size="24" font-weight="bold" fill="#15803d">1</text>
-    </svg>
-  </div>
-  
   <div className="table-wrapper">
   | Concept | Calculation | Result |
   | :--- | :--- | :--- |
@@ -736,12 +1005,11 @@ Find the value of $a$ and the value of $b$.
     3. Therefore, $a = 2$.
     4. **Finding $b$:** Look at the prime factor $3$. $X$ has $3^4$ and $Y$ has $3^b$.
     5. The HCF uses the **lowest** power. The HCF has $3^2$. Since $X$ has $3^4$, the $3^2$ must have come from $Y$.
-    6. Therefore, $b = 2$.
+    6. Therefore, $b = 2$.  
+    7. <Aside type="note" title="Verification">
+        We can verify this with the LCM: The highest power of 2 is $2^3$, and the highest power of 3 is $3^4$, which perfectly matches our given LCM!
+       </Aside>
   </Steps>
-  
-  <Aside type="note" title="Verification">
-    We can verify this with the LCM: The highest power of 2 is $2^3$, and the highest power of 3 is $3^4$, which perfectly matches our given LCM!
-  </Aside>
 </details>
 </section>
 

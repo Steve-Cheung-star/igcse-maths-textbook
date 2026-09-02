@@ -4,6 +4,52 @@ description: Understand and use set language, notation, and Venn diagrams to des
 ---
 
 <section className="lesson-chunk">
+### Basic Set Notations & Operations
+
+| Symbol / Notation | Name / Meaning | Example / Explanation |
+| :--- | :--- | :--- |
+| $U$ | Universal Set | $\mathcal{E} = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}$ (The total domain under consideration) |
+| $\varnothing$ or $\{\}$ | Empty Set (Null set) | $\varnothing$ contains no elements: $n(\varnothing) = 0$ |
+| $\in$ | Element of | $3 \in A$ (3 is an element of set $A$) |
+| $\notin$ | Not an element of | $8 \notin A$ (8 is NOT an element of set $A$) |
+| $n(A)$ | Number of elements in set $A$ | If $A = \{2, 4, 6, 8\}$, then $n(A) = 4$ |
+| $A'$ | Complement of $A$ | Everything in $\mathcal{E}$ that is NOT in $A$ |
+| $\cup$ | Union ("OR" / All together) | $A \cup B$ = Elements in $A$, or $B$, or both |
+| $\cap$ | Intersection ("AND" / Overlap) | $A \cap B$ = Elements that are in BOTH $A$ and $B$ |
+| $\subseteq$ | Subset of | $A \subseteq B$ (Every element of $A$ is also in $B$) |
+| $\subset$ | Proper subset of | $A \subset B$ ($A$ is inside $B$, but $A \neq B$) |
+| $\nsubseteq$ | Not a subset of | $A \nsubseteq B$ ($A$ has elements not in $B$) |
+| $\{x : \dots\}$ | Set-builder notation | $\{x : x \text{ is an integer}, 1 \le x < 10\}$ ("The set of all $x$ such that...") |
+</section>
+
+<section className="lesson-chunk">
+### Standard Number Sets (Extended Syllabus)
+
+| Symbol | Definition | Example / Notes |
+| :---: | :--- | :--- |
+| $\mathbb{N}$ | Natural numbers (Positive integers) | $\{1, 2, 3, 4, \dots\}$ |
+| $\mathbb{Z}$ | Integers (Whole numbers) | $\{\dots, -2, -1, 0, 1, 2, \dots\}$ |
+| $\mathbb{Z}^+$ | Positive integers | $\{1, 2, 3, 4, \dots\}$ (Same as $\mathbb{N}$) |
+| $\mathbb{Q}$ | Rational numbers | Numbers that can be written as fractions $\frac{a}{b}$ where $a, b \in \mathbb{Z}, b \neq 0$ |
+| $\mathbb{Q}'$ | Irrational numbers | Real numbers that cannot be written as fractions (e.g., $\pi, \sqrt{2}$) |
+| $\mathbb{R}$ | Real numbers | All rational and irrational numbers combined |
+</section>
+
+<section className="lesson-chunk">
+### Common Venn Diagram Logic & Shading Rules
+
+| Operation | Region Described | Key Exam Tip |
+| :--- | :--- | :--- |
+| $A \cap B$ | Middle overlap of circles $A$ and $B$ | Only items common to both sets. |
+| $A \cup B$ | Entire area covered by both circles $A$ and $B$ | Combine elements without duplicating. |
+| $A \cap B'$ | Only $A$ (Circle $A$ excluding the overlap with $B$) | Also written as $A \setminus B$. |
+| $(A \cup B)'$ | Outside both circles $A$ and $B$ | Everything in $\mathcal{E}$ except $A$ and $B$. |
+| $(A \cap B)'$ | Everything EXCEPT the overlap of $A$ and $B$ | Opposite of intersection. |
+| $A \subseteq B$ | Circle $A$ is completely inside Circle $B$ | $A \cap B = A$ and $A \cup B = B$. |
+| $A \cap B = \varnothing$ | Circle $A$ and Circle $B$ do not overlap | Disjoint / Mutually Exclusive sets. |
+</section>
+
+<section className="lesson-chunk">
 A **set** is simply a collection of things—usually numbers, but they can be letters, coordinates, or even objects. Before you can solve complex probability or logic puzzles, you need to know how to read and write the "secret language" of sets.
 </section>
 
@@ -25,10 +71,9 @@ When you see the little $n$ before a set (like $n(A)$), the examiner is NOT aski
 </SteveTip>
 </section>
 
----
-
 <section className="lesson-chunk">
 ### Elements and Subsets
+
 How do we describe what belongs where?
 
 * **$\in$ (... is an element of ...):** Shows that an item is inside a set. For example, $5 \in \{1, 3, 5, 7\}$.
@@ -36,19 +81,38 @@ How do we describe what belongs where?
 * **$A \subseteq B$ ($A$ is a subset of $B$):** Every element in set $A$ is also found inside set $B$. Set $A$ is entirely swallowed up by set $B$.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 300 200" width="100%" maxWidth="400px" style={{ background: 'transparent' }}>
-    <rect x="2" y="2" width="296" height="196" rx="12" fill="transparent" stroke="#94a3b8" strokeWidth="3" strokeDasharray="8 8"/>
-    <text x="15" y="30" textAnchor="start" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="24" fill="#64748b">U</text>
+  <svg viewBox="0 0 300 200" width="100%" max-width="400px" style={{ background: 'transparent' }}>
+    <rect x="2" y="2" width="296" height="196" rx="12" fill="transparent" stroke="#94a3b8" stroke-width="3" stroke-dasharray="8 8"/>
+    <text x="15" y="30" text-anchor="start" font-family="system-ui, sans-serif" font-weight="900" font-size="24" fill="#64748b">U</text>
     {/* Set B (Outer) */}
-    <circle cx="150" cy="100" r="80" fill="rgba(78, 205, 196, 0.2)" stroke="#4ECDC4" strokeWidth="4"/>
-    <text x="150" y="45" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#2b7a74">B</text>
+    <circle cx="150" cy="100" r="80" fill="rgba(78, 205, 196, 0.2)" stroke="#4ECDC4" stroke-width="4"/>
+    <text x="150" y="45" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="22" fill="#2b7a74">B</text>
     {/* Set A (Inner) */}
-    <circle cx="150" cy="115" r="45" fill="rgba(255, 107, 107, 0.3)" stroke="#FF6B6B" strokeWidth="4"/>
-    <text x="150" y="122" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#c92a2a">A</text>
+    <circle cx="150" cy="115" r="45" fill="rgba(255, 107, 107, 0.3)" stroke="#FF6B6B" stroke-width="4"/>
+    <text x="150" y="122" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="22" fill="#c92a2a">A</text>
   </svg>
 </div>
 
 * **$A \not\subseteq B$ ($A$ is not a subset of $B$):** Set $A$ has at least one element that is *not* in set $B$.
+</section>
+
+<section className="lesson-chunk">
+### Worked Example 1: Set Language & Subsets
+
+Let $U = \{1, 2, 3, 4, 5, 6, 7, 8, 9, 10\}$, $A = \{2, 4, 6, 8, 10\}$, and $B = \{4, 8\}$.
+
+1. State whether $5 \in A$.
+2. Find $n(A)$.
+3. Is $B \subseteq A$? Explain your answer.
+
+<details className="styled-details">
+  <summary>View Solution</summary>
+  <Steps>
+  1. **False:** $5$ is an odd number and is not listed in set $A$, so $5 \notin A$.
+  2. **$n(A) = 5$:** Count the total number of elements inside set $A$ ($2, 4, 6, 8, 10$).
+  3. **Yes:** $B \subseteq A$ because every element in set $B$ ($4$ and $8$) is also contained within set $A$.
+  </Steps>
+</details>
 </section>
 
 ---
@@ -81,19 +145,18 @@ $$B = \{(x, y) \mid y = mx + c\}$$
 When two sets interact, we use specific symbols to describe their relationship. Imagine $A = \{1, 2, 3, 4\}$ and $B = \{3, 4, 5, 6\}$.
 
 * **$A \cap B$ (Intersection):** The elements that are in **both** A and B. 
- *Think: "A AND B".* $$A \cap B = \{3, 4\}$$
-
-
+ *Think: "A AND B".* 
+ $$A \cap B = \{3, 4\}$$
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 300 200" width="100%" maxWidth="400px" style={{ background: 'transparent' }}>
-    <rect x="2" y="2" width="296" height="196" rx="12" fill="transparent" stroke="#94a3b8" strokeWidth="3" strokeDasharray="8 8"/>
-    <text x="15" y="30" textAnchor="start" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="24" fill="#64748b">U</text>
-    <path d="M 150 55.23 A 65 65 0 0 0 150 164.77 A 65 65 0 0 0 150 55.23 Z" fill="#FFE66D" stroke="#f59e0b" strokeWidth="2"/>
-    <circle cx="115" cy="110" r="65" fill="none" stroke="#4ECDC4" strokeWidth="4"/>
-    <circle cx="185" cy="110" r="65" fill="none" stroke="#FF6B6B" strokeWidth="4"/>
-    <text x="70" y="60" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#2b7a74">A</text>
-    <text x="230" y="60" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#c92a2a">B</text>
+  <svg viewBox="0 0 300 200" width="100%" max-width="400px" style={{ background: 'transparent' }}>
+    <rect x="2" y="2" width="296" height="196" rx="12" fill="transparent" stroke="#94a3b8" stroke-width="3" stroke-dasharray="8 8"/>
+    <text x="15" y="30" text-anchor="start" font-family="system-ui, sans-serif" font-weight="900" font-size="24" fill="#64748b">U</text>
+    <path d="M 150 55.23 A 65 65 0 0 0 150 164.77 A 65 65 0 0 0 150 55.23 Z" fill="#FFE66D" stroke="#f59e0b" stroke-width="2"/>
+    <circle cx="115" cy="110" r="65" fill="none" stroke="#4ECDC4" stroke-width="4"/>
+    <circle cx="185" cy="110" r="65" fill="none" stroke="#FF6B6B" stroke-width="4"/>
+    <text x="70" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="22" fill="#2b7a74">A</text>
+    <text x="230" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="22" fill="#c92a2a">B</text>
   </svg>
 </div>
 </section>
@@ -104,20 +167,20 @@ When two sets interact, we use specific symbols to describe their relationship. 
   
 $$A \cup B = \{1, 2, 3, 4, 5, 6\}$$
 
-<SteveTip title="The Union 'Double-Counting' Trap">
+<Aside type="caution" title="The Union 'Double-Counting' Trap">
 When listing the elements of $A \cup B$, students often write down the shared numbers twice. Don't do it! A set only cares if a number is "in" or "out." Listing $\{3, 3, 4, 4\}$ is redundant—just write $\{3, 4\}$.
-</SteveTip>
+</Aside>
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 300 200" width="100%" maxWidth="400px" style={{ background: 'transparent' }}>
-    <rect x="2" y="2" width="296" height="196" rx="12" fill="transparent" stroke="#94a3b8" strokeWidth="3" strokeDasharray="8 8"/>
-    <text x="15" y="30" textAnchor="start" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="24" fill="#64748b">U</text>
+  <svg viewBox="0 0 300 200" width="100%" max-width="400px" style={{ background: 'transparent' }}>
+    <rect x="2" y="2" width="296" height="196" rx="12" fill="transparent" stroke="#94a3b8" stroke-width="3" stroke-dasharray="8 8"/>
+    <text x="15" y="30" text-anchor="start" font-family="system-ui, sans-serif" font-weight="900" font-size="24" fill="#64748b">U</text>
     <circle cx="115" cy="110" r="65" fill="rgba(255, 230, 109, 0.6)"/>
     <circle cx="185" cy="110" r="65" fill="rgba(255, 230, 109, 0.6)"/>
-    <circle cx="115" cy="110" r="65" fill="none" stroke="#FF9F1C" strokeWidth="4"/>
-    <circle cx="185" cy="110" r="65" fill="none" stroke="#FF9F1C" strokeWidth="4"/>
-    <text x="70" y="60" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#d97706">A</text>
-    <text x="230" y="60" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#d97706">B</text>
+    <circle cx="115" cy="110" r="65" fill="none" stroke="#FF9F1C" stroke-width="4"/>
+    <circle cx="185" cy="110" r="65" fill="none" stroke="#FF9F1C" stroke-width="4"/>
+    <text x="70" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="22" fill="#d97706">A</text>
+    <text x="230" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="22" fill="#d97706">B</text>
   </svg>
 </div>
 </section>
@@ -127,18 +190,18 @@ When listing the elements of $A \cup B$, students often write down the shared nu
    *Think: "Opposite of A".*
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 300 200" width="100%" maxWidth="400px" style={{ background: 'transparent' }}>
+  <svg viewBox="0 0 300 200" width="100%" max-width="400px" style={{ background: 'transparent' }}>
     <defs>
       <mask id="complement-mask">
         <rect x="0" y="0" width="300" height="200" fill="white" />
         <circle cx="150" cy="110" r="70" fill="black" />
       </mask>
     </defs>
-    <rect x="2" y="2" width="296" height="196" rx="12" fill="rgba(167, 139, 250, 0.3)" stroke="#8b5cf6" strokeWidth="3" mask="url(#complement-mask)"/>
-    <rect x="2" y="2" width="296" height="196" rx="12" fill="none" stroke="#94a3b8" strokeWidth="3" strokeDasharray="8 8"/>
-    <text x="15" y="30" textAnchor="start" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="24" fill="#64748b">U</text>
-    <circle cx="150" cy="110" r="70" fill="none" stroke="#8b5cf6" strokeWidth="4"/>
-    <text x="150" y="118" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="28" fill="#6d28d9">A</text>
+    <rect x="2" y="2" width="296" height="196" rx="12" fill="rgba(167, 139, 250, 0.3)" stroke="#8b5cf6" stroke-width="3" mask="url(#complement-mask)"/>
+    <rect x="2" y="2" width="296" height="196" rx="12" fill="none" stroke="#94a3b8" stroke-width="3" stroke-dasharray="8 8"/>
+    <text x="15" y="30" text-anchor="start" font-family="system-ui, sans-serif" font-weight="900" font-size="24" fill="#64748b">U</text>
+    <circle cx="150" cy="110" r="70" fill="none" stroke="#8b5cf6" stroke-width="4"/>
+    <text x="150" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="28" fill="#6d28d9">A</text>
   </svg>
 </div>
 
@@ -148,6 +211,26 @@ When listing the elements of $A \cup B$, students often write down the shared nu
 </Aside>
 </section>
 
+<section className="lesson-chunk">
+### Worked Example 2: Set Operations
+
+Let $U = \{1, 2, 3, 4, 5, 6, 7, 8\}$, $P = \{2, 3, 5, 7\}$, and $Q = \{1, 3, 5, 7, 8\}$.
+
+List the elements of:
+1. $P \cap Q$
+2. $P \cup Q$
+3. $P'$
+
+<details className="styled-details">
+  <summary>View Solution</summary>
+  <Steps>
+  1. **$P \cap Q = \{3, 5, 7\}$:** Identify numbers that exist in *both* set $P$ and set $Q$.
+  2. **$P \cup Q = \{1, 2, 3, 5, 7, 8\}$:** Combine all unique numbers present in $P$, $Q$, or both.
+  3. **$P' = \{1, 4, 6, 8\}$:** List all numbers in the universal set $U$ that are not in set $P$.
+  </Steps>
+</details>
+</section>
+
 ---
 
 <section className="lesson-chunk">
@@ -155,20 +238,16 @@ When listing the elements of $A \cup B$, students often write down the shared nu
 
 Venn diagrams are visual representations of sets. For IGCSE 0607, you will only ever have to deal with **two or three sets** overlapping in a rectangle. The rectangle represents the Universal set ($U$).
 
-<Steps>
 1. **Draw the Universe:** Draw a large box and label it $U$.
 2. **Draw the Sets:** Draw a circle for each set inside the box. If they share elements, make sure the circles overlap!
 3. **Fill the Centre First:** Always start by putting the intersection (the elements shared by all sets) in the very middle overlap.
 4. **Work Outwards:** Fill in the remaining parts of the circles, making sure you don't double-count the middle.
 5. **Don't forget the outside:** Any elements that don't belong to any circle must be written inside the rectangle, but outside the circles.
-</Steps>
 
-<SteveTip title="The 'Outside' is easy points">
+<SteveTip title="The 'Outside' is Easy Points">
 Always check if there are elements from the Universal Set ($U$) that didn't fit into any circle. In Paper 2 (Non-Calculator), there is almost always one or two numbers floating in the box. Don't leave them out!
 </SteveTip>
 </section>
-
----
 
 <section className="lesson-chunk">
 ### Elements vs. Number of Elements
@@ -188,26 +267,24 @@ Let $B = \{c, d, e\}$
 * $f$ and $g$ are outside the circles.
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 300 200" width="100%" maxWidth="400px" style={{ background: 'transparent' }}>
-    <rect x="2" y="2" width="296" height="196" rx="12" fill="transparent" stroke="#94a3b8" strokeWidth="3" strokeDasharray="8 8"/>
-    <text x="15" y="30" textAnchor="start" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="24" fill="#64748b">U</text>
-    <circle cx="115" cy="110" r="65" fill="rgba(56, 189, 248, 0.1)" stroke="#38bdf8" strokeWidth="4"/>
-    <circle cx="185" cy="110" r="65" fill="rgba(244, 63, 94, 0.1)" stroke="#f43f5e" strokeWidth="4"/>
-    <text x="70" y="60" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#0284c7">A</text>
-    <text x="230" y="60" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#e11d48">B</text>
+  <svg viewBox="0 0 300 200" width="100%" max-width="400px" style={{ background: 'transparent' }}>
+    <rect x="2" y="2" width="296" height="196" rx="12" fill="transparent" stroke="#94a3b8" stroke-width="3" stroke-dasharray="8 8"/>
+    <text x="15" y="30" text-anchor="start" font-family="system-ui, sans-serif" font-weight="900" font-size="24" fill="#64748b">U</text>
+    <circle cx="115" cy="110" r="65" fill="rgba(56, 189, 248, 0.1)" stroke="#38bdf8" stroke-width="4"/>
+    <circle cx="185" cy="110" r="65" fill="rgba(244, 63, 94, 0.1)" stroke="#f43f5e" stroke-width="4"/>
+    <text x="70" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="22" fill="#0284c7">A</text>
+    <text x="230" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="22" fill="#e11d48">B</text>
     {/* Element List */}
-    <text x="150" y="116" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="bold" fontSize="18" fill="#334155">c</text>
-    <text x="75" y="100" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="bold" fontSize="18" fill="#334155">a</text>
-    <text x="85" y="135" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="bold" fontSize="18" fill="#334155">b</text>
-    <text x="225" y="100" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="bold" fontSize="18" fill="#334155">d</text>
-    <text x="215" y="135" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="bold" fontSize="18" fill="#334155">e</text>
-    <text x="40" y="175" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="bold" fontSize="18" fill="#334155">f</text>
-    <text x="260" y="175" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="bold" fontSize="18" fill="#334155">g</text>
+    <text x="150" y="116" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="bold" font-size="18" fill="#334155">c</text>
+    <text x="75" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="bold" font-size="18" fill="#334155">a</text>
+    <text x="85" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="bold" font-size="18" fill="#334155">b</text>
+    <text x="225" y="100" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="bold" font-size="18" fill="#334155">d</text>
+    <text x="215" y="135" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="bold" font-size="18" fill="#334155">e</text>
+    <text x="40" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="bold" font-size="18" fill="#334155">f</text>
+    <text x="260" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="bold" font-size="18" fill="#334155">g</text>
   </svg>
 </div>
 </section>
-
----
 
 <section className="lesson-chunk">
 #### Type 2: Writing the *Number* of Elements $n(A)$
@@ -220,18 +297,18 @@ For example, imagine a survey of 18 people:
 * **7** people like neither ($n(A \cup B)' = 7$).
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 300 200" width="100%" maxWidth="400px" style={{ background: 'transparent' }}>
-    <rect x="2" y="2" width="296" height="196" rx="12" fill="transparent" stroke="#94a3b8" strokeWidth="3" strokeDasharray="8 8"/>
-    <text x="15" y="30" textAnchor="start" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="24" fill="#64748b">U</text>
-    <circle cx="115" cy="110" r="65" fill="rgba(163, 230, 53, 0.15)" stroke="#84cc16" strokeWidth="4"/>
-    <circle cx="185" cy="110" r="65" fill="rgba(251, 146, 60, 0.15)" stroke="#f97316" strokeWidth="4"/>
-    <text x="70" y="60" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#4d7c0f">A</text>
-    <text x="230" y="60" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="800" fontSize="22" fill="#c2410c">B</text>
+  <svg viewBox="0 0 300 200" width="100%" max-width="400px" style={{ background: 'transparent' }}>
+    <rect x="2" y="2" width="296" height="196" rx="12" fill="transparent" stroke="#94a3b8" stroke-width="3" stroke-dasharray="8 8"/>
+    <text x="15" y="30" text-anchor="start" font-family="system-ui, sans-serif" font-weight="900" font-size="24" fill="#64748b">U</text>
+    <circle cx="115" cy="110" r="65" fill="rgba(163, 230, 53, 0.15)" stroke="#84cc16" stroke-width="4"/>
+    <circle cx="185" cy="110" r="65" fill="rgba(251, 146, 60, 0.15)" stroke="#f97316" stroke-width="4"/>
+    <text x="70" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="22" fill="#4d7c0f">A</text>
+    <text x="230" y="60" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="800" font-size="22" fill="#c2410c">B</text>
     {/* Counts */}
-    <text x="150" y="118" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="26" fill="#1e293b">2</text>
-    <text x="80" y="118" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="24" fill="#1e293b">4</text>
-    <text x="220" y="118" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="24" fill="#1e293b">5</text>
-    <text x="265" y="175" textAnchor="middle" fontFamily="system-ui, sans-serif" fontWeight="900" fontSize="24" fill="#1e293b">7</text>
+    <text x="150" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="900" font-size="26" fill="#1e293b">2</text>
+    <text x="80" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="900" font-size="24" fill="#1e293b">4</text>
+    <text x="220" y="118" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="900" font-size="24" fill="#1e293b">5</text>
+    <text x="265" y="175" text-anchor="middle" font-family="system-ui, sans-serif" font-weight="900" font-size="24" fill="#1e293b">7</text>
   </svg>
 </div>
 
@@ -240,7 +317,29 @@ This is the #1 mistake in IGCSE Maths. If a question says "$n(A)=10$" and "$n(A 
 </SteveTip>
 </section>
 
----
+<section className="lesson-chunk">
+### Worked Example 3: Venn Diagram Counts
+
+In a class of $25$ students, $15$ study Spanish ($S$), $12$ study French ($F$), and $5$ study both languages.
+
+1. Calculate the number of students who study *only* Spanish.
+2. Find $n(S \cup F)'$, the number of students who study neither language.
+
+<details className="styled-details">
+  <summary>View Solution</summary>
+  <Steps>
+  1. **Students studying only Spanish:** Subtract the intersection ($5$) from the total studying Spanish ($15$):
+     $$15 - 5 = 10$$
+  2. **Students studying neither language:**
+     * Students studying only French: $12 - 5 = 7$.
+     * Total students studying at least one language ($n(S \cup F)$):
+       $$10 \text{ (Spanish only)} + 5 \text{ (both)} + 7 \text{ (French only)} = 22$$
+     * Subtract from the class total ($25$):
+       $$25 - 22 = 3$$
+     * Therefore, $n(S \cup F)' = 3$.
+  </Steps>
+</details>
+</section>
 
 <section className="lesson-chunk">
 ### Working with Three Sets
@@ -250,20 +349,20 @@ When dealing with three sets (e.g., $A$, $B$, and $C$), you draw three overlappi
 The most important rule for 3-set problems is to **work from the inside out**. Always start by finding the absolute centre—the elements that belong to all three sets ($A \cap B \cap C$).
 
 <div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <svg viewBox="0 0 400 350" width="100%" maxWidth="500px" style={{ background: 'transparent' }}>
-    <rect x="5" y="5" width="390" height="340" rx="12" fill="#f8fafc" stroke="#94a3b8" strokeWidth="3" strokeDasharray="8 8"/>
-    <text x="20" y="35" fontFamily="sans-serif" fontSize="24" fill="#64748b" fontWeight="900">U</text>
+  <svg viewBox="0 0 400 350" width="100%" max-width="500px" style={{ background: 'transparent' }}>
+    <rect x="5" y="5" width="390" height="340" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="3" stroke-dasharray="8 8"/>
+    <text x="20" y="35" font-family="sans-serif" font-size="24" fill="#64748b" font-weight="900">U</text>
     
-    <circle cx="160" cy="140" r="80" fill="rgba(59, 130, 246, 0.15)" stroke="#3b82f6" strokeWidth="3"/>
-    <circle cx="240" cy="140" r="80" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" strokeWidth="3"/>
-    <circle cx="200" cy="215" r="80" fill="rgba(34, 197, 94, 0.15)" stroke="#22c55e" strokeWidth="3"/>
+    <circle cx="160" cy="140" r="80" fill="rgba(59, 130, 246, 0.15)" stroke="#3b82f6" stroke-width="3"/>
+    <circle cx="240" cy="140" r="80" fill="rgba(239, 68, 68, 0.15)" stroke="#ef4444" stroke-width="3"/>
+    <circle cx="200" cy="215" r="80" fill="rgba(34, 197, 94, 0.15)" stroke="#22c55e" stroke-width="3"/>
     
-    <text x="110" y="70" textAnchor="middle" fontFamily="sans-serif" fontSize="24" fontWeight="bold" fill="#1d4ed8">A</text>
-    <text x="290" y="70" textAnchor="middle" fontFamily="sans-serif" fontSize="24" fontWeight="bold" fill="#b91c1c">B</text>
-    <text x="200" y="310" textAnchor="middle" fontFamily="sans-serif" fontSize="24" fontWeight="bold" fill="#15803d">C</text>
+    <text x="110" y="70" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#1d4ed8">A</text>
+    <text x="290" y="70" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#b91c1c">B</text>
+    <text x="200" y="310" text-anchor="middle" font-family="sans-serif" font-size="24" font-weight="bold" fill="#15803d">C</text>
     
-    <text x="176" y="165" textAnchor="middle" fontFamily="sans-serif" fontSize="15" fontWeight="bold" fill="#334155">A∩B∩C</text>
-    <text x="75" y="315" textAnchor="middle" fontFamily="sans-serif" fontSize="15" fontWeight="bold" fill="#334155">(A∪B∪C)'</text>
+    <text x="176" y="165" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#334155">A∩B∩C</text>
+    <text x="75" y="315" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold" fill="#334155">(A∪B∪C)'</text>
   </svg>
 </div>
 </section>

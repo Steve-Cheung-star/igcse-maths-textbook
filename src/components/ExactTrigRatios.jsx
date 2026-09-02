@@ -89,7 +89,6 @@ export default function ExactTrigRatios() {
       setFeedback({ show: true, status: 'incorrect', message: msg });
     }
 
-    // Give the user a little more time (1.5s) to see the correct answer highlighted
     setTimeout(() => {
       generateQuestion();
     }, 1500);
@@ -126,7 +125,6 @@ export default function ExactTrigRatios() {
         overflow: 'hidden'
       }}
     >
-      {/* Decorative background element inspired by the original HTML */}
       <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '160px', height: '160px', background: '#4f46e5', borderRadius: '50%', opacity: 0.2, filter: 'blur(40px)', pointerEvents: 'none' }}></div>
 
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', position: 'relative', zIndex: 10 }}>
@@ -153,20 +151,19 @@ export default function ExactTrigRatios() {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', position: 'relative', zIndex: 10 }}>
         {options.map((opt, i) => {
           
-          // Determine styles based on selection state
           let bgColor = 'rgba(255, 255, 255, 0.05)';
           let borderColor = 'rgba(255, 255, 255, 0.1)';
           let opacity = 1;
 
           if (isWaiting) {
             if (opt === question.correctAns) {
-              bgColor = 'rgba(16, 185, 129, 0.2)'; // Emerald/Green for correct
+              bgColor = 'rgba(16, 185, 129, 0.2)'; 
               borderColor = 'rgba(16, 185, 129, 0.5)';
             } else if (opt === selectedAnswer) {
-              bgColor = 'rgba(244, 63, 94, 0.2)'; // Rose/Red for wrong selection
+              bgColor = 'rgba(244, 63, 94, 0.2)'; 
               borderColor = 'rgba(244, 63, 94, 0.5)';
             } else {
-              opacity = 0.4; // Dim the unselected, incorrect options
+              opacity = 0.4; 
             }
           }
 
@@ -177,9 +174,13 @@ export default function ExactTrigRatios() {
               onClick={() => handleSelect(opt)}
               style={{
                 position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '96px', // Locked height
                 background: bgColor,
                 border: `1px solid ${borderColor}`,
-                padding: '24px 12px',
+                padding: '0 12px',
                 borderRadius: '16px',
                 color: 'white',
                 fontSize: '1.5rem',
